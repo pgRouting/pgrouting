@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_withPointsDD - Propuesto &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_withPointsDD - Propuesto &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -160,7 +161,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html">2.2</a></p></li>
 </ul>
-<div class="section" id="pgr-withpointsdd-proposed">
+<section id="pgr-withpointsdd-proposed">
 <h1>pgr_withPointsDD - Propuesto<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Devuelve la distancia de conducción desde un punto de partida.</p>
 <div class="admonition warning">
@@ -180,10 +181,12 @@
 </li>
 </ul>
 </div>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
 <li><p>Version 2.2.0</p>
@@ -192,11 +195,11 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Modifica el grafo para incluir puntos y utilizando el algoritmo Dijkstra, extrae todos los nodos y puntos que tienen costes menores o iguales que el valor de <code class="docutils literal notranslate"><span class="pre">distance</span></code> desde el punto inicial. Las aristas extraídas conformarán el árbol de expansión correspondiente.</p>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
@@ -244,7 +247,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 </pre></div>
 </div>
-<div class="section" id="single-vertex">
+<section id="single-vertex">
 <span id="index-0"></span><h3>Un solo vértice<a class="headerlink" href="#single-vertex" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Encuentra la distancia de conducción en función de la configuración de los parámetros opcionales.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, from_vid,  distance [, directed] [, driving_side] [, details])
@@ -276,17 +279,17 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="multiple-vertices">
+</section>
+<section id="multiple-vertices">
 <span id="index-1"></span><h3>Múltiples vértices<a class="headerlink" href="#multiple-vertices" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Encuentra la distancia de conducción en función de la configuración de los parámetros opcionales.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -343,8 +346,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-query">
+</section>
+<section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -462,8 +465,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <dd class="field-even"><p>smallint, int, bigint, real, float</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -518,8 +521,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="additional-examples">
+</section>
+<section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Ejemplos para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">directed</span></code> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p>
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Se utilizan redes para consultas marcadas como directed , cost y  reverse_cost</span></a></p>
@@ -586,8 +589,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 <p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Distancia de conducción usando dijkstra.</p></li>
@@ -598,8 +601,8 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -613,9 +616,9 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

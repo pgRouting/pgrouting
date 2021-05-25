@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flow - Family of functions &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Flow - Family of functions &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -159,7 +160,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/fl
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/flow-family.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/max_flow/doc/maxFlow.html">2.3</a></p></li>
 </ul>
-<div class="section" id="flow-family-of-functions">
+<section id="flow-family-of-functions">
 <h1>Flow - Family of functions<a class="headerlink" href="#flow-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</p></li>
@@ -210,7 +211,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/fl
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="flow-functions-general-information">
+<section id="flow-functions-general-information">
 <h2>Flow Functions General Information<a class="headerlink" href="#flow-functions-general-information" title="Permalink to this headline">¶</a></h2>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
@@ -236,8 +237,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/fl
 </li>
 </ul>
 <p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a>  is the  maximum Flow and that maximum is guaranteed to be the same on the functions <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, but the actual flow through each edge may vary.</p>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -286,8 +287,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/fl
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-queries">
+</section>
+<section id="inner-queries">
 <h2>Inner queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">For <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> :</p>
 <dl class="field-list simple">
@@ -466,8 +467,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/fl
 </dd>
 </dl>
 <p>The function aggregates the sources and the targets, removes the duplicates, and then it calculates the result from the resultant source vertices to the target vertices.</p>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">For <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> :</p>
 <table class="docutils align-default">
@@ -557,8 +558,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/fl
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="adcanced-documentation">
+</section>
+<section id="adcanced-documentation">
 <h2>Adcanced Documentation<a class="headerlink" href="#adcanced-documentation" title="Permalink to this headline">¶</a></h2>
 <p>A flow network is a directed graph where each edge has a capacity and a flow.
 The flow through an edge must not exceed the capacity of the edge.
@@ -609,8 +610,8 @@ and summing the flow from/to it. In particular:</p>
 <li><p><span class="math notranslate nohighlight">\(edge\_id = id_i\)</span> in edges_sql</p></li>
 <li><p><span class="math notranslate nohighlight">\(residual\_capacity_i = capacity_i - flow_i\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem">https://en.wikipedia.org/wiki/Maximum_flow_problem</a></p></li>
@@ -620,8 +621,8 @@ and summing the flow from/to it. In particular:</p>
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -635,9 +636,9 @@ and summing the flow from/to it. In particular:</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

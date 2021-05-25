@@ -3,13 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_KSP &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_KSP &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -40,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -164,13 +165,15 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/ksp/doc/index.html">2.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/ksp/doc/index.html">2.0</a></p></li>
 </ul>
-<div class="section" id="pgr-ksp">
+<section id="pgr-ksp">
 <h1>pgr_KSP<a class="headerlink" href="#pgr-ksp" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_KSP</span></code> — Returns the “K” shortest paths.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li><p>Version 2.1.0</p>
@@ -188,11 +191,11 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The K shortest path routing algorithm based on Yen’s algorithm. “K” is the number of shortest paths desired.</p>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_KSP</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">K</span> <span class="p">[,</span> <span class="n">directed</span><span class="p">]</span> <span class="p">[,</span> <span class="n">heap_paths</span><span class="p">])</span>
@@ -209,7 +212,7 @@
 <dd class="field-odd"><p><strong>TBD</strong></p>
 </dd>
 </dl>
-<div class="section" id="complete-signature">
+<section id="complete-signature">
 <span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_KSP</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">,</span> <span class="n">K</span> <span class="p">[,</span> <span class="n">directed</span><span class="p">]</span> <span class="p">[,</span> <span class="n">heap_paths</span><span class="p">])</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">path_seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span> <span class="k">or</span> <span class="n">EMPTY</span> <span class="k">SET</span>
@@ -220,9 +223,9 @@
 <dd class="field-odd"><p><strong>TBD</strong></p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -264,8 +267,8 @@
 </tbody>
 </table>
 <p>Roughly, if the shortest path has <code class="docutils literal notranslate"><span class="pre">N</span></code> edges, the heap will contain about than <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">k</span></code> paths for small value of <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>.</p>
-</div>
-<div class="section" id="inner-query">
+</section>
+<section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -326,8 +329,8 @@
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">path_id,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -373,8 +376,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="additional-examples">
+</section>
+<section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
@@ -678,8 +681,8 @@
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/K_shortest_path_routing">https://en.wikipedia.org/wiki/K_shortest_path_routing</a></p></li>
@@ -690,8 +693,8 @@
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -705,9 +708,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

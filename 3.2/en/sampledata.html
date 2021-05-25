@@ -3,13 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample Data &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sample Data &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -40,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -162,7 +163,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/developer/sampledata.html">2.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/developer/sampledata.html">2.0</a></p></li>
 </ul>
-<div class="section" id="sample-data">
+<section id="sample-data">
 <h1>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h1>
 <p>The documentation provides very simple example queries based on a small sample network.
 To be able to execute the sample queries, run the following SQL commands to create a table with a small network data set.</p>
@@ -314,7 +315,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">100</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="section" id="images">
+<section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Red arrows correspond when <code class="docutils literal notranslate"><span class="pre">cost</span></code> &gt; 0 in the edge table.</p></li>
@@ -322,37 +323,45 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <li><p>Points are outside the graph.</p></li>
 <li><p>Click on the graph to enlarge.</p></li>
 </ul>
-<div class="section" id="network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used">
+<section id="network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used">
 <span id="fig1"></span><h3>Network for queries marked as <code class="docutils literal notranslate"><span class="pre">directed</span></code> and <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns are used<a class="headerlink" href="#network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used" title="Permalink to this headline">¶</a></h3>
 <p>When working with city networks, this is recommended for point of view of vehicles.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" />
-<p class="caption"><span class="caption-text"><strong>Graph 1: Directed, with cost and reverse cost</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used">
+<figcaption>
+<p><span class="caption-text"><strong>Graph 1: Directed, with cost and reverse cost</strong></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used">
 <span id="fig2"></span><h3>Network for queries marked as <code class="docutils literal notranslate"><span class="pre">undirected</span></code> and <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns are used<a class="headerlink" href="#network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used" title="Permalink to this headline">¶</a></h3>
 <p>When working with city networks, this is recommended for point of view of pedestrians.</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 310.5px; height: 312.0px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Graph 2: Undirected, with cost and reverse cost</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="network-for-queries-marked-as-directed-and-only-cost-column-is-used">
+<figcaption>
+<p><span class="caption-text"><strong>Graph 2: Undirected, with cost and reverse cost</strong></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="network-for-queries-marked-as-directed-and-only-cost-column-is-used">
 <span id="fig3"></span><h3>Network for queries marked as <code class="docutils literal notranslate"><span class="pre">directed</span></code> and only <code class="docutils literal notranslate"><span class="pre">cost</span></code> column is used<a class="headerlink" href="#network-for-queries-marked-as-directed-and-only-cost-column-is-used" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 130.8px; height: 126.60000000000001px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Graph 3: Directed, with cost</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="network-for-queries-marked-as-undirected-and-only-cost-column-is-used">
+<figcaption>
+<p><span class="caption-text"><strong>Graph 3: Directed, with cost</strong></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="network-for-queries-marked-as-undirected-and-only-cost-column-is-used">
 <span id="fig4"></span><h3>Network for queries marked as <code class="docutils literal notranslate"><span class="pre">undirected</span></code> and only <code class="docutils literal notranslate"><span class="pre">cost</span></code> column is used<a class="headerlink" href="#network-for-queries-marked-as-undirected-and-only-cost-column-is-used" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id4">
+<figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 131.20000000000002px; height: 127.2px;" /></a>
-<p class="caption"><span class="caption-text"><strong>Graph 4: Undirected, with cost</strong></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="pick-deliver-data">
+<figcaption>
+<p><span class="caption-text"><strong>Graph 4: Undirected, with cost</strong></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="pick-deliver-data">
 <span id="pickdeliverdata"></span><h3>Pick &amp; Deliver Data<a class="headerlink" href="#pick-deliver-data" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">customer</span> <span class="n">CASCADE</span><span class="p">;</span>
@@ -480,9 +489,9 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <span class="p">(</span> <span class="mi">106</span><span class="p">,</span>   <span class="mi">60</span><span class="p">,</span>   <span class="mi">85</span><span class="p">,</span>   <span class="o">-</span><span class="mi">30</span><span class="p">,</span>   <span class="mi">561</span><span class="p">,</span>   <span class="mi">622</span><span class="p">,</span>   <span class="mi">90</span><span class="p">,</span>   <span class="mi">97</span><span class="p">,</span>    <span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -496,9 +505,9 @@ To be able to execute the sample queries, run the following SQL commands to crea
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_edwardMoore - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_edwardMoore - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -163,7 +164,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html">Latest</a>
 (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html">3.2</a>)</p></li>
 </ul>
-<div class="section" id="pgr-edwardmoore-experimental">
+<section id="pgr-edwardmoore-experimental">
 <h1>pgr_edwardMoore - Experimental<a class="headerlink" href="#pgr-edwardmoore-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> —  Returns the shortest path(s) using Edward-Moore algorithm.
 Edward Moore’s ​ Algorithm is an improvement of the Bellman-Ford Algorithm.</p>
@@ -214,7 +215,7 @@ Edward Moore’s ​ Algorithm is an improvement of the Bellman-Ford Algorithm.<
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It can compute
 the shortest paths from a single source vertex to all other vertices in a weighted directed
@@ -254,8 +255,8 @@ as good as Bellman-Ford algorithm</p>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edwardMoore(Edges SQL, start_vid,  end_vid  [, directed])
 pgr_edwardMoore(Edges SQL, start_vid,  end_vids [, directed])
@@ -291,7 +292,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 </pre></div>
 </div>
-<div class="section" id="one-to-one">
+<section id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edwardMoore(Edges SQL, start_vid, end_vid [, directed]);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -316,8 +317,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="one-to-many">
+</section>
+<section id="one-to-many">
 <span id="index-1"></span><h3>One to many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edwardMoore(Edges SQL, start_vid, end_vids [, directed]);
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
@@ -346,8 +347,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-one">
+</section>
+<section id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edwardMoore(Edges SQL, start_vids, end_vid [, directed]);
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
@@ -376,8 +377,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-many">
+</section>
+<section id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edwardMoore(Edges SQL, start_vids, end_vids [, directed]);
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
@@ -410,8 +411,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="combinations">
+</section>
+<section id="combinations">
 <span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edwardMoore(Edges SQL, Combinations SQL [, directed]);
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
@@ -439,9 +440,9 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -499,10 +500,10 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-queries">
+</section>
+<section id="inner-queries">
 <h2>Inner queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="edges-query">
+<section id="edges-query">
 <h3>Edges query<a class="headerlink" href="#edges-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -563,8 +564,8 @@ OR EMPTY SET
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="combinations-query">
+</section>
+<section id="combinations-query">
 <h3>Combinations query<a class="headerlink" href="#combinations-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -599,9 +600,9 @@ OR EMPTY SET
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="return-columns">
+</section>
+</section>
+<section id="return-columns">
 <h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -667,8 +668,8 @@ Returned when multiple ending vertices are in the query.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="example-application">
+</section>
+<section id="example-application">
 <h2>Example Application<a class="headerlink" href="#example-application" title="Permalink to this headline">¶</a></h2>
 <p>The examples of this section are based on the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
 <p>The examples include combinations from starting vertices 2 and 11 to ending vertices 3 and 5 in a directed and
@@ -1066,8 +1067,8 @@ undirected graph with and with out reverse_cost.</p>
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm">https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm</a></p></li>
@@ -1077,8 +1078,8 @@ undirected graph with and with out reverse_cost.</p>
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -1092,9 +1093,9 @@ undirected graph with and with out reverse_cost.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

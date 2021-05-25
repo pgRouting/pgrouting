@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_stoerWagner - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_stoerWagner - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -152,13 +153,15 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html">3.1</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html">3.0</a></p></li>
 </ul>
-<div class="section" id="pgr-stoerwagner-experimental">
+<section id="pgr-stoerwagner-experimental">
 <h1>pgr_stoerWagner - Experimental<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> — Devuelve el peso del corte mínimo del grafo utilizando el algoritmo stoerWagner. La función determina un corte mínimo y el peso de corte mínimo de un grafo conectado y no dirigido implementado por Boost.Graph.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -199,7 +202,7 @@
 </div></blockquote>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En teoría de grafos, el algoritmo Stoer-Wagner es un algoritmo recursivo para resolver el problema de corte mínimo en gráficos ponderados no dirigidos con pesos no negativos. La idea esencial de este algoritmo es encoger el grafo mediante la fusión de los vértices más intensivos, hasta que el grafo sólo contiene dos conjuntos de vértices combinados. En cada fase, el algoritmo encuentra el corte s-t mínimo para dos vértices s y t elegidos a su voluntad. A continuación, el algoritmo encoge la arista entre s y t para buscar cortes no s-t. El corte mínimo encontrado en todas las fases será el corte ponderado mínimo del grafo.</p>
 <p>Un corte es una partición de los vértices de un grafo en dos subconjuntos separados. Un corte mínimo es un corte para el que el tamaño o peso del corte no es mayor que el tamaño de cualquier otro corte. Para un grafo no ponderado, el corte mínimo sería simplemente el corte con menos aristas. Para un grafo ponderado, la suma del peso de todas las aristas en el corte determina si se trata de un corte mínimo.</p>
@@ -223,8 +226,8 @@
 <ul class="simple">
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V*E + V^2*log V)\)</span>.</p></li>
 </ul>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_stoerWagner(edges_sql)
 
@@ -256,8 +259,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -281,8 +284,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-query">
+</section>
+<section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">edges_sql</dt>
@@ -348,8 +351,8 @@ OR EMPTY SET
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">mincut)</span></code></p>
 <table class="docutils align-default">
@@ -383,8 +386,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="additional-example">
+</section>
+<section id="additional-example">
 <h2>Ejemplo Adicional:<a class="headerlink" href="#additional-example" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_stoerWagner</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
@@ -420,8 +423,8 @@ $$
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm">https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm</a></p></li>
@@ -432,8 +435,8 @@ $$
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -447,9 +450,9 @@ $$
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

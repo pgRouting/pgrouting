@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vehicle Routing Functions - Category (Experimental) &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Vehicle Routing Functions - Category (Experimental) &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -175,7 +176,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/VRP-category.html">3.1</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/VRP-category.html">3.0</a></p></li>
 </ul>
-<div class="section" id="vehicle-routing-functions-category-experimental">
+<section id="vehicle-routing-functions-category-experimental">
 <h1><a class="toc-backref" href="#id4">Vehicle Routing Functions - Category (Experimental)</a><a class="headerlink" href="#vehicle-routing-functions-category-experimental" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -264,7 +265,7 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2><a class="toc-backref" href="#id5">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Vehicle Routing Problems <cite>VRP</cite> are <strong>NP-hard</strong> optimization problem, it generalises the travelling salesman problem (TSP).</p>
 <ul class="simple">
@@ -272,7 +273,7 @@
 <li><p>There are several variants of the VRP problem,</p></li>
 </ul>
 <p><strong>pgRouting does not try to implement all variants.</strong></p>
-<div class="section" id="characteristics">
+<section id="characteristics">
 <h3><a class="toc-backref" href="#id6">Characteristics</a><a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Capacitated Vehicle Routing Problem <cite>CVRP</cite> where The vehicles have limited carrying capacity of the goods.</p></li>
@@ -286,9 +287,9 @@
 <li><p>Less total duration is better.</p></li>
 <li><p>Less wait time is better.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="pick-delivery">
+</section>
+</section>
+<section id="pick-delivery">
 <h2><a class="toc-backref" href="#id7">Pick &amp; Delivery</a><a class="headerlink" href="#pick-delivery" title="Permalink to this headline">¶</a></h2>
 <p>Problem: <cite>CVRPPDTW</cite> Capacitated Pick and Delivery Vehicle Routing problem with Time Windows</p>
 <ul class="simple">
@@ -316,10 +317,10 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2><a class="toc-backref" href="#id8">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pick-deliver">
+<section id="pick-deliver">
 <h3><a class="toc-backref" href="#id9">Pick &amp; deliver</a><a class="headerlink" href="#pick-deliver" title="Permalink to this headline">¶</a></h3>
 <p>Both implementations use the following same parameters:</p>
 <table class="docutils align-default">
@@ -393,9 +394,9 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="inner-queries">
+</section>
+</section>
+<section id="inner-queries">
 <h2><a class="toc-backref" href="#id10">Inner Queries</a><a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a></p></li>
@@ -407,7 +408,7 @@
 <li><p><a class="reference internal" href="#return-vrp-matrix-start"><span class="std std-ref">Description of return columns</span></a></p></li>
 <li><p><a class="reference internal" href="#return-vrp-euclidean-start"><span class="std std-ref">Description of the return columns for Euclidean version</span></a></p></li>
 </ul>
-<div class="section" id="pick-deliver-orders-sql">
+<section id="pick-deliver-orders-sql">
 <h3><a class="toc-backref" href="#id11">Pick &amp; Deliver Orders SQL</a><a class="headerlink" href="#pick-deliver-orders-sql" title="Permalink to this headline">¶</a></h3>
 <p>In general, the columns for the orders SQL is the same in both implementation of pick and delivery:</p>
 <table class="docutils align-default">
@@ -523,8 +524,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pick-deliver-vehicles-sql">
+</section>
+<section id="pick-deliver-vehicles-sql">
 <span id="pd-vehicle-sql"></span><h3><a class="toc-backref" href="#id12">Pick &amp; Deliver Vehicles SQL</a><a class="headerlink" href="#pick-deliver-vehicles-sql" title="Permalink to this headline">¶</a></h3>
 <p>In general, the columns for the vehicles_sql is the same in both implementation of pick and delivery:</p>
 <table class="docutils align-default">
@@ -655,18 +656,18 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pick-deliver-matrix-sql">
+</section>
+<section id="pick-deliver-matrix-sql">
 <h3><a class="toc-backref" href="#id13">Pick &amp; Deliver Matrix SQL</a><a class="headerlink" href="#pick-deliver-matrix-sql" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>TODO</p>
 </div>
-</div>
-</div>
-<div class="section" id="results">
+</section>
+</section>
+<section id="results">
 <h2><a class="toc-backref" href="#id14">Results</a><a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-result-todo-disussion-euclidean-matrix">
+<section id="description-of-the-result-todo-disussion-euclidean-matrix">
 <span id="return-vrp-matrix-start"></span><h3><a class="toc-backref" href="#id15">Description of the result (TODO Disussion: Euclidean &amp; Matrix)</a><a class="headerlink" href="#description-of-the-result-todo-disussion-euclidean-matrix" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RETURNS SET OF
     (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
@@ -825,8 +826,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="return-vrp-euclidean-start">
+</section>
+<section id="return-vrp-euclidean-start">
 <span id="id2"></span><h3><a class="toc-backref" href="#id16">Description of the result (TODO Disussion: Euclidean &amp; Matrix)</a><a class="headerlink" href="#return-vrp-euclidean-start" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RETURNS SET OF
     (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
@@ -994,9 +995,9 @@
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="handling-parameters">
+</section>
+</section>
+<section id="handling-parameters">
 <h2><a class="toc-backref" href="#id17">Handling Parameters</a><a class="headerlink" href="#handling-parameters" title="Permalink to this headline">¶</a></h2>
 <p>To define a problem, several considerations have to be done, to get consistent results.
 This section gives an insight of how parameters are to be considered.</p>
@@ -1006,7 +1007,7 @@ This section gives an insight of how parameters are to be considered.</p>
 <li><p><a class="reference internal" href="#time-handling">Time Handling</a></p></li>
 <li><p><a class="reference internal" href="#factor-handling">Factor Handling</a></p></li>
 </ul>
-<div class="section" id="capacity-and-demand-units-handling">
+<section id="capacity-and-demand-units-handling">
 <h3><a class="toc-backref" href="#id18">Capacity and Demand Units Handling</a><a class="headerlink" href="#capacity-and-demand-units-handling" title="Permalink to this headline">¶</a></h3>
 <p>The <cite>capacity</cite> of a vehicle, can be measured in:</p>
 <ul class="simple">
@@ -1047,8 +1048,8 @@ If the vehicle’s <cite>capacity</cite> is measured by <cite>kg</cite>, a conve
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="locations">
+</section>
+<section id="locations">
 <h3><a class="toc-backref" href="#id19">Locations</a><a class="headerlink" href="#locations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>When using the Euclidean signatures:</p>
@@ -1065,8 +1066,8 @@ If the vehicle’s <cite>capacity</cite> is measured by <cite>kg</cite>, a conve
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="time-handling">
+</section>
+<section id="time-handling">
 <h3><a class="toc-backref" href="#id20">Time Handling</a><a class="headerlink" href="#time-handling" title="Permalink to this headline">¶</a></h3>
 <p>The times are relative to 0</p>
 <p>Suppose that a vehicle’s driver starts the shift at 9:00 am and ends the shift at 4:30 pm
@@ -1115,16 +1116,16 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="factor-handling">
+</section>
+<section id="factor-handling">
 <span id="pd-factor"></span><h3><a class="toc-backref" href="#id21">Factor Handling</a><a class="headerlink" href="#factor-handling" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>TODO</p>
 </div>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+<section id="see-also">
 <h2><a class="toc-backref" href="#id22">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
@@ -1135,8 +1136,8 @@ and the service time duration is 10 minutes with 30 seconds.</p>
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -1150,9 +1151,9 @@ and the service time duration is 10 minutes with 30 seconds.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

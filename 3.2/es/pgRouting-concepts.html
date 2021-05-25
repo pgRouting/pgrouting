@@ -3,13 +3,14 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Conceptos de pgRouting &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Conceptos de pgRouting &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -189,21 +190,10 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-concepts.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html">2.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html">2.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html">2.0</a></p></li>
+<li><p><strong>Versions soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-concepts.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html">2.0</a></p></li>
 </ul>
-<div class="section" id="pgrouting-concepts">
+<section id="pgrouting-concepts">
 <span id="id1"></span><h1><a class="toc-backref" href="#id13">Conceptos de pgRouting</a><a class="headerlink" href="#pgrouting-concepts" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="contents topic" id="contenido">
 <p class="topic-title">Contenido</p>
@@ -270,7 +260,7 @@
 </li>
 </ul>
 </div>
-<div class="section" id="getting-started">
+<section id="getting-started">
 <span id="id2"></span><h2><a class="toc-backref" href="#id14">Comenzando a trabajar</a><a class="headerlink" href="#getting-started" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Esta es una guía simple para llevarte a través de los pasos básicos para trabajar con pgRouting. Esta guía cubre:</p>
 <div class="contents local topic" id="id3">
@@ -282,7 +272,7 @@
 <li><p><a class="reference internal" href="#compute-a-path" id="id50">Calcular una Ruta</a></p></li>
 </ul>
 </div>
-<div class="section" id="create-a-routing-database">
+<section id="create-a-routing-database">
 <span id="create-database"></span><h3><a class="toc-backref" href="#id46">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Lo primero que hay que hacer es crear una base de datos y cargar pgRouting a la base de datos. Típicamente se creará una base de datos para cada proyecto. Una vez que se tiene una base de datos donde trabajar, se pueden cargar los datos y construir la aplicación en la base de datos. Esto hace que sea sencillo de mover el proyecto en el futuro, como por ejemplo, a un servidor de producción.</p>
 <p>Para Postgresql 9.2 y versiones posteriores</p>
@@ -291,15 +281,11 @@ psql mydatabase -c <span class="s2">&quot;create extension postgis&quot;</span>
 psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="load-data">
+</section>
+<section id="load-data">
 <span id="id4"></span><h3><a class="toc-backref" href="#id47">Cargar Datos</a><a class="headerlink" href="#load-data" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>There are several ways to load your data into pgRouting. The most direct way
-is to load an Open Street Maps (OSM) dataset using <strong>osm2pgrouting</strong>. This is a
-tool, integrated in pgRouting project, that loads OSM data into postgresql
-with pgRouting requirements, including data structure and routing topology.</p>
-<p>If you have other requirements, you can try various OpenSource tools that can
-help you, like:</p>
+<p>Hay varias maneras de cargar los datos en pgRouting. La forma más directa es cargar un dataset de Open Street Maps (OSM) utilizando <strong>osm2pgrouting</strong>. Esta es una herramienta, integrada en el proyecto pgRouting, que carga datos OSM en postgresql con requisitos pgRouting, incluida la estructura de datos y la topología de enrutamiento.</p>
+<p>Si tiene otros requisitos, puede probar varias herramientas de OpenSource que pueden ayudarle, como:</p>
 <dl class="field-list simple">
 <dt class="field-odd">shp2pgsql</dt>
 <dd class="field-odd"><ul class="simple">
@@ -317,14 +303,10 @@ help you, like:</p>
 </ul>
 </dd>
 </dl>
-<p>Please note that these tools will not import the data in a structure compatible
-with pgRouting and you might need to adapt it.</p>
-<p>These tools and probably others will allow you to read vector data so that
-you may then load that data into your database as a table of some kind. At this
-point you need to know a little about your data structure and content. One easy
-way to browse your new data table is with pgAdmin or phpPgAdmin.</p>
-</div>
-<div class="section" id="build-a-routing-topology">
+<p>Tenga en cuenta que estas herramientas no importarán los datos en una estructura compatible con pgRouting y es posible que deba adaptarlos.</p>
+<p>Estas herramientas y probablemente otras le permitirán leer datos vectoriales para poder cargar esos datos en la base de datos como una tabla de algún tipo. En este punto necesita saber un poco sobre su estructura de datos y contenido. Una manera fácil de navegar por su nueva tabla de datos es con pgAdmin o phpPgAdmin.</p>
+</section>
+<section id="build-a-routing-topology">
 <span id="build-topology"></span><h3><a class="toc-backref" href="#id48">Construir una Topología de Ruteo</a><a class="headerlink" href="#build-a-routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -334,12 +316,12 @@ way to browse your new data table is with pgAdmin or phpPgAdmin.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>where you should replace “myroads” with the name of your table storing the edges.</p>
+<p>donde debe reemplazar “myroads” con el nombre de su tabla almacenando los bordes.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="check-the-routing-topology">
+</section>
+<section id="check-the-routing-topology">
 <span id="check-graph"></span><h3><a class="toc-backref" href="#id49">Compruebe la Topología de Ruteo</a><a class="headerlink" href="#check-the-routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Hay muchas fuentes posibles de errores en un grafo. Es posible que los datos con los que comenzó no se hayan diseñado teniendo en cuenta el ruteo. Un grafo tiene algunos requisitos muy específicos. Una es que es <em>NODED</em>, esto significa que, a excepción de algunos casos de usos muy específicos, cada segmento de carretera comienza y termina en un nodo y, en general, no cruza otro segmento de carretera al que debería estar conectado.</p>
 <p>Puede haber otros errores como en una calle de un solo sentido tener el sentido equivocado. No contamos con herramientas para buscar todos los errores posibles, pero tenemos algunas herramientas básicas que pueden ayudar.</p>
@@ -350,45 +332,31 @@ way to browse your new data table is with pgAdmin or phpPgAdmin.</p>
 <span class="k">select</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>where you should replace “myroads” with the name of your table storing the edges
-(“ways”, in case you used osm2pgrouting to import the data).</p>
+<p>donde debe reemplazar “myroads” por el nombre de la tabla que almacena los bordes (“ways”, en caso de que haya utilizado osm2pgrouting para importar los datos).</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="compute-a-path">
+</section>
+<section id="compute-a-path">
 <span id="compute-path"></span><h3><a class="toc-backref" href="#id50">Calcular una Ruta</a><a class="headerlink" href="#compute-a-path" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Once you have all the preparation work done above, computing a route is fairly easy.
-We have a lot of different algorithms that can work with your prepared road
-network. The general form of a route query using Dijkstra algorithm is:</p>
+<p>Una vez que tenga todo el trabajo de preparación realizado anteriormente, calcular una ruta es bastante fácil. Tenemos muchos algoritmos diferentes que pueden funcionar con su red de carreteras preparada. La forma general de una consulta de ruta mediante el algoritmo Dijkstra es:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(`SELECT * FROM myroads&#39;, &lt;start&gt;, &lt;end&gt;)
 </pre></div>
 </div>
-<p>This algorithm only requires <em>id</em>, <em>source</em>, <em>target</em> and <em>cost</em> as the minimal attributes, that by
-default will be considered to be columns in your roads table. If the column names in your
-roads table do not match exactly the names of these attributes, you can use aliases. For example,
-if you imported OSM data using <strong>osm2pgrouting</strong>, your id column’s name would be <em>gid</em> and your
-roads table would be <em>ways</em>, so you would query a route from node id 1 to node id 2 by typing:</p>
+<p>Este algoritmo solo requiere <em>id</em>, <em>source</em>, <em>target</em> y <em>cost</em> como los atributos mínimos, que de forma predeterminada se considerarán columnas en la tabla de caminos. Si los nombres de columna de la tabla de caminos no coinciden exactamente con los nombres de estos atributos, puede usar alias. Por ejemplo, si importara datos de OSM mediante <strong>osm2pgrouting</strong>, el nombre de la columna id sería <em>gid</em> y la tabla de caminos sería <em>ways</em>, por lo que consultaría una ruta del id 1 del nodo al id 2 del nodo escribiendo:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(&#39;SELECT gid AS id, source, target, cost FROM ways&#39;, 1, 2)
 </pre></div>
 </div>
-<p>As you can see this is fairly straight forward and it also allows for great flexibility, both in terms
-of database structure and in defining cost functions. You can test the previous query
-using <em>length_m AS cost</em> to compute the shortest path in meters or <em>cost_s / 60 AS cost</em> to compute
-the fastest path in minutes.</p>
-<p>You can look and the specific algorithms for the details of the signatures and how
-to use them. These results have information like edge id and/or the
-node id along with the cost or geometry for the step in the path from <em>start</em>
-to <em>end</em>. Using the ids you can join these result back to your edge table
-to get more information about each step in the path.</p>
+<p>Como puede ver, esto es bastante sencillo y también permite una gran flexibilidad, tanto en términos de estructura de base de datos como en la definición de funciones de coste. Puede probar la consulta anterior utilizando <em>length_m AS cost</em> para calcular la ruta de acceso más corta en metros o <em>cost_s / 60 AS cost</em> para calcular la ruta de acceso más rápida en minutos.</p>
+<p>Puede buscar y los algoritmos específicos para los detalles de las firmas y cómo utilizarlas. Estos resultados tienen información como el id de borde y/o el id del nodo junto con el costo o la geometría del paso en la ruta de acceso de <em>start</em> a <em>end</em>. Con los identificadores puede volver a unir estos resultados a la tabla perimetral para obtener más información sobre cada paso de la ruta de acceso.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="group-of-functions">
+</section>
+</section>
+<section id="group-of-functions">
 <h2><a class="toc-backref" href="#id20">Grupo de Funciones</a><a class="headerlink" href="#group-of-functions" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Una función puede tener diferentes sobrecargas. A través de esta documentación, para indicar qué sobrecarga usamos los siguientes términos:</p>
 <ul class="simple">
@@ -399,39 +367,39 @@ to get more information about each step in the path.</p>
 <li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
 <p>Dependiendo de la sobrecarga son los parámetros utilizados, manteniendo la coherencia en todas las funciones.</p>
-<div class="section" id="one-to-one">
+<section id="one-to-one">
 <h3><a class="toc-backref" href="#id21">Uno a Uno</a><a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde el vértice inicial <strong>one</strong></p></li>
 <li><p>al  vértice final <strong>one</strong></p></li>
 </ul>
-</div>
-<div class="section" id="one-to-many">
+</section>
+<section id="one-to-many">
 <h3><a class="toc-backref" href="#id22">Uno a Muchos</a><a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde el vértice inicial <strong>one</strong></p></li>
 <li><p>a los vértices finales <strong>many</strong></p></li>
 </ul>
-</div>
-<div class="section" id="many-to-one">
+</section>
+<section id="many-to-one">
 <h3><a class="toc-backref" href="#id23">Muchos a Uno</a><a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde  vértices iniciales <strong>many</strong></p></li>
 <li><p>al  vértice final <strong>one</strong></p></li>
 </ul>
-</div>
-<div class="section" id="many-to-many">
+</section>
+<section id="many-to-many">
 <h3><a class="toc-backref" href="#id24">Muchos a Muchos</a><a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde  vértices iniciales <strong>many</strong></p></li>
 <li><p>a los vértices finales <strong>many</strong></p></li>
 </ul>
-</div>
-<div class="section" id="combinations">
+</section>
+<section id="combinations">
 <h3><a class="toc-backref" href="#id25">Combinaciones</a><a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
@@ -440,9 +408,9 @@ to get more information about each step in the path.</p>
 <li><p>Cada tupla especifica un par de vértices iniciales y un vértice final</p></li>
 <li><p>Los usuarios pueden definir las combinaciones como deseen.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="inner-queries">
+</section>
+</section>
+<section id="inner-queries">
 <span id="id5"></span><h2><a class="toc-backref" href="#id26">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="contents local topic" id="id6">
 <ul class="simple">
@@ -459,7 +427,7 @@ to get more information about each step in the path.</p>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-<div class="section" id="description-of-the-edges-sql-query-for-dijkstra-like-functions">
+<section id="description-of-the-edges-sql-query-for-dijkstra-like-functions">
 <h3><a class="toc-backref" href="#id51">Descripción de la consulta edges_sql para funciones similares a dijkstra</a><a class="headerlink" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -580,9 +548,9 @@ to get more information about each step in the path.</p>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2><a class="toc-backref" href="#id28">Parámetros</a><a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -638,7 +606,7 @@ to get more information about each step in the path.</p>
 </tr>
 </tbody>
 </table>
-<div class="section" id="edges-sql-query-for-astar-family-and-astar-family-functions">
+<section id="edges-sql-query-for-astar-family-and-astar-family-functions">
 <h3><a class="toc-backref" href="#id29">consulta edges_sql para las funciones <a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Familia de Funciones</span></a> y <a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Familia de Funciones</span></a></a><a class="headerlink" href="#edges-sql-query-for-astar-family-and-astar-family-functions" title="Enlazar permanentemente con este título">¶</a></h3>
 <dl class="field-list simple">
 <dt class="field-odd">edges_sql</dt>
@@ -918,8 +886,8 @@ to get more information about each step in the path.</p>
 <dd class="field-even"><p>smallint, int, bigint, real, float</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="description-of-the-combinations-sql-query-for-dijkstra-like-functions">
+</section>
+<section id="description-of-the-combinations-sql-query-for-dijkstra-like-functions">
 <h3><a class="toc-backref" href="#id30">Descripción de la consulta de combinaciones_sql para funciones similares a dijkstra</a><a class="headerlink" href="#description-of-the-combinations-sql-query-for-dijkstra-like-functions" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -954,9 +922,9 @@ to get more information about each step in the path.</p>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="return-columns-values">
+</section>
+</section>
+<section id="return-columns-values">
 <span id="return-values"></span><h2><a class="toc-backref" href="#id31">Devolución de columnas y valores</a><a class="headerlink" href="#return-columns-values" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="contents local topic" id="id7">
 <ul class="simple">
@@ -967,7 +935,7 @@ to get more information about each step in the path.</p>
 </ul>
 </div>
 <p>Hay varios tipos de columnas devueltas que dependen de la función.</p>
-<div class="section" id="return-values-for-a-path">
+<section id="return-values-for-a-path">
 <h3><a class="toc-backref" href="#id52">Valores devueltos para una ruta</a><a class="headerlink" href="#return-values-for-a-path" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -1027,8 +995,8 @@ to get more information about each step in the path.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="return-values-for-multiple-paths-from-the-same-source-and-destination">
+</section>
+<section id="return-values-for-multiple-paths-from-the-same-source-and-destination">
 <h3><a class="toc-backref" href="#id53">Valores devueltos para varias rutas desde el mismo origen y destino</a><a class="headerlink" href="#return-values-for-multiple-paths-from-the-same-source-and-destination" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -1092,8 +1060,8 @@ to get more information about each step in the path.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="description-of-the-return-values-for-a-costmatrix-category-function">
+</section>
+<section id="description-of-the-return-values-for-a-costmatrix-category-function">
 <h3><a class="toc-backref" href="#id54">Descripción de los valores devueltos para una función <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></a><a class="headerlink" href="#description-of-the-return-values-for-a-costmatrix-category-function" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Devuelve SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -1123,8 +1091,8 @@ to get more information about each step in the path.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="description-of-the-return-values">
+</section>
+<section id="description-of-the-return-values">
 <h3><a class="toc-backref" href="#id55">Descripción de los valores devueltos</a><a class="headerlink" href="#description-of-the-return-values" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Para <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a>, <a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> :</p>
 <table class="docutils align-default">
@@ -1214,9 +1182,9 @@ to get more information about each step in the path.</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="advanced-topics">
+</section>
+</section>
+<section id="advanced-topics">
 <span id="id8"></span><h2><a class="toc-backref" href="#id36">Tópicos avanzados</a><a class="headerlink" href="#advanced-topics" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="contents local topic" id="id9">
 <ul class="simple">
@@ -1230,7 +1198,7 @@ to get more information about each step in the path.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="routing-topology">
+<section id="routing-topology">
 <span id="topology"></span><h3><a class="toc-backref" href="#id56">Topología para Ruteo</a><a class="headerlink" href="#routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Resumen</p>
 <p>Normalmente cuando se cargan archivos GIS en la base de datos para su uso con pgRouting no tienen información de la topología asociada a ellos. Para crear una topología útil, los datos debe ser «noded». Esto significa que donde dos o más caminos forman una intersección allí debe existir y todos los segmentos de carretera necesitan estar partidos en la intersección, eso suponiendo que puede navegar a cualquier otro segmento mediante la intersección de cualquiera de estos segmentos.</p>
@@ -1316,14 +1284,14 @@ to get more information about each step in the path.</p>
 </pre></div>
 </div>
 <p>Ahora su base de datos debe estar lista para usarse en cualquiera (mayoría?) de los algoritmos de pgRouting.</p>
-</div>
-<div class="section" id="graph-analytics">
+</section>
+<section id="graph-analytics">
 <span id="analytics"></span><h3><a class="toc-backref" href="#id57">Análisis de gráficas</a><a class="headerlink" href="#graph-analytics" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Resumen</p>
 <p>Es común encontrar problemas con los gráficos que no se han construido completamente ligados con nodos o con gráficos con niveles z en intersecciónes que se han introducido incorrectamente. Otro problema es que las calles han sido introducidas en la dirección equivocada. No podemos detectar errores con respecto a la verdad respecto a la «tierra», pero podemos buscar inconsistencias y algunas anomalías en un gráfico y les reportarlas para inspecciones adicionales.</p>
 <p>Nosotros no tenemos herramientas de visualización para estos problemas, pero se ha utilizado MapServer para reproducir la gráfica y poner en relieve las áreas con problemas potenciales. Alguien familiarizado con graphviz podría contribuir con herramientas para generar imágenes para este propósito.</p>
-</div>
-<div class="section" id="analyze-a-graph">
+</section>
+<section id="analyze-a-graph">
 <h3><a class="toc-backref" href="#id58">Analizar un gráfico</a><a class="headerlink" href="#analyze-a-graph" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Con <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> el grafo puede revisarse en busca de errores. Por ejemplo, para la tabla «mytab» que incluye a «mytab_vertices_pgr» como la tabla de vértices:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span>
@@ -1370,13 +1338,13 @@ to get more information about each step in the path.</p>
 </pre></div>
 </div>
 <p>Si quieren visualizar en una imagen gráfica, entonces usted puede utilizar algo como MapServer para representar los bordes y los vértices y el estilizar en base a <code class="docutils literal notranslate"><span class="pre">cnt</span></code> o si están aislados, etc. También se puede hacer esto con una herramienta como graphviz o geoserver u otras herramientas similares.</p>
-</div>
-<div class="section" id="analyze-one-way-streets">
+</section>
+<section id="analyze-one-way-streets">
 <h3><a class="toc-backref" href="#id59">Analizar las calles unidireccionales</a><a class="headerlink" href="#analyze-one-way-streets" title="Enlazar permanentemente con este título">¶</a></h3>
 <p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> analiza las calles unidireccionales de un grafo e identifica los segmentos volteados. Básicamente, si cuenta las aristas que entran en un nodo y las aristas bordes que salen de un nodo, el número tiene que ser mayor que uno.</p>
 <p>Esta consulta agrega dos columnas a la tabla vertices_tmp <code class="docutils literal notranslate"><span class="pre">ein</span> <span class="pre">int</span></code>  y <code class="docutils literal notranslate"><span class="pre">eout</span> <span class="pre">int</span></code> (ein = borde de entrada, eout=borde de salida) y las rellena con los conteos  correspondientes. Después de su ejecución, en un grafo se pueden identificar los nodos con  problemas potenciales utilizando la siguiente consulta.</p>
 <p>Las reglas se definen como un conjunto de cadenas de texto que si coinciden con el valor de <code class="docutils literal notranslate"><span class="pre">col</span></code> se considera como válido para el origen o destino dentro o fuera de la condición.</p>
-<div class="section" id="example">
+<section id="example">
 <h4><a class="toc-backref" href="#id60">Ejemplo</a><a class="headerlink" href="#example" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Supongamos que tenemos una tabla «st» de bordes y una columna «one_way» que podría tener valores como:</p>
 <ul class="simple">
@@ -1405,10 +1373,10 @@ to get more information about each step in the path.</p>
 </div>
 <p>Normalmente estos problemas son generados por una rotura en la red, la dirección un camino equivocado, quizás un error relacionado con niveles z o una red que no esté debidamente indicada con nodos.</p>
 <p>Las herramientas anteriores no detectan todos los problemas de la red, pero identifican algunos problemas comunes. Hay otros problemas que son difíciles de detectar porque son más globales en su naturaleza como múltiples redes desconectadas. Piense usted en una isla con una red de carreteras que no está conectada a la red del continente porque faltan las rutas del puente o del ferry.</p>
-</div>
-</div>
-</div>
-<div class="section" id="performance-tips">
+</section>
+</section>
+</section>
+<section id="performance-tips">
 <span id="performance"></span><h2><a class="toc-backref" href="#id42">Consejos de Rendimiento</a><a class="headerlink" href="#performance-tips" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="contents local topic" id="id10">
 <ul class="simple">
@@ -1416,7 +1384,7 @@ to get more information about each step in the path.</p>
 <li><p><a class="reference internal" href="#for-the-topology-functions" id="id62">Para las funciones de topología:</a></p></li>
 </ul>
 </div>
-<div class="section" id="for-the-routing-functions">
+<section id="for-the-routing-functions">
 <h3><a class="toc-backref" href="#id61">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para obtener resultados más rápidos, las consultas enlazan el área de interés para tener, por ejemplo, no más de un millón de filas.</p>
 <p>Utilice una consulta SQL interna que no incluya algunas aristas en la función de ruteo</p>
@@ -1433,8 +1401,8 @@ to get more information about each step in the path.</p>
     <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="for-the-topology-functions">
+</section>
+<section id="for-the-topology-functions">
 <h3><a class="toc-backref" href="#id62">Para las funciones de topología:</a><a class="headerlink" href="#for-the-topology-functions" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando «sabe» que va a eliminar un conjunto de bordes de la tabla de  bordes, y sin esos bordes va a utilizar una función de enrrutamiento puede hacer el siguiente:</p>
 <p>Analizar la topología nueva basada en la topología actual:</p>
@@ -1446,9 +1414,9 @@ to get more information about each step in the path.</p>
 <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="how-to-contribute">
+</section>
+</section>
+<section id="how-to-contribute">
 <span id="how-contribute"></span><h2><a class="toc-backref" href="#id45">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Wiki</p>
 <ul class="simple">
@@ -1468,8 +1436,8 @@ to get more information about each step in the path.</p>
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -1483,9 +1451,9 @@ to get more information about each step in the path.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

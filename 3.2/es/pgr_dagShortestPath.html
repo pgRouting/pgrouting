@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_dagShortestPath - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_dagShortestPath - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -159,19 +160,17 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html">3.0</a></p></li>
 </ul>
-<div class="section" id="pgr-dagshortestpath-experimental">
+<section id="pgr-dagshortestpath-experimental">
 <h1>pgr_dagShortestPath - Experimental<a class="headerlink" href="#pgr-dagshortestpath-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_dagShortestPath</span></code> —  Devuelve las rutas más cortas para los grafos acíclicos dirigidos ponderados (DAG). En particular, el algoritmo de rutas más cortas de DAG implementado por Boost.Graph.</p>
-<div class="figure align-default" id="id1">
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dagShortestPath</span></code> —  Devuelve la(s) rutas más cortas para los grafos acíclicos dirigidos ponderados (DAG). En particular, el algoritmo de rutas más cortas de DAG implementado por Boost.Graph.</p>
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dag_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -188,7 +187,7 @@
 <ul>
 <li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
 <li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La firma o declaración de funciones podría cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
 <li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
@@ -219,7 +218,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Ruta Más Corta para grafos acíclicos dirigidos (DAG) es un algoritmo de búsqueda de grafos que resuelve el problema de ruta más corta para el grafo acíclico dirigido ponderado, produciendo una ruta más corta desde un vértice inicial (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) a un vértice final (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p>
 <p>Esta implementación solo se puede utilizar con un grafo <strong>dirigido</strong> sin ciclos i.e., es decir, un grafo acíclico dirigido.</p>
@@ -254,8 +253,8 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dagShortestPath(Edges SQL, from_vid,  to_vid)
@@ -268,7 +267,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<div class="section" id="one-to-one">
+<section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dagShortestPath(Edges SQL, from_vid,  to_vid)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -294,8 +293,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="one-to-many">
+</section>
+<section id="one-to-many">
 <span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dagShortestPath(Edges SQL, from_vid,  to_vids)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -324,8 +323,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-one">
+</section>
+<section id="many-to-one">
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dagShortestPath(Edges SQL, from_vids, to_vid)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -353,8 +352,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-many">
+</section>
+<section id="many-to-many">
 <span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dagShortestPath(Edges SQL, from_vids, to_vids)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -389,8 +388,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="combinations">
+</section>
+<section id="combinations">
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dagShortestPath(Edges SQL, Combinations)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -419,11 +418,11 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<p class="rubric">Descripción de los parámetros de las firmas (declaraciones de funciones)</p>
+<p class="rubric">Descripción de los parámetros de las firmas</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
@@ -471,10 +470,10 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-queries">
+</section>
+<section id="inner-queries">
 <h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="section" id="edges-query">
+<section id="edges-query">
 <h3>Consulta de aristas<a class="headerlink" href="#edges-query" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -535,8 +534,8 @@ OR EMPTY SET
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="combinations-query">
+</section>
+<section id="combinations-query">
 <h3>Consulta de combinaciones<a class="headerlink" href="#combinations-query" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -571,9 +570,9 @@ OR EMPTY SET
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="results-columns">
+</section>
+</section>
+<section id="results-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#results-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -633,8 +632,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p></li>
@@ -645,8 +644,8 @@ OR EMPTY SET
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -660,9 +659,9 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

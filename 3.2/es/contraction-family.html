@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contraction - Familia de funciones &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Contraction - Familia de funciones &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -185,26 +186,17 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/contraction-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/contraction-family.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/contraction-family.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/contraction-family.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/contraction-family.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/contraction-family.html">2.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html">2.2</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/contraction-family.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/contraction-family.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/contraction-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/contraction-family.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/contraction-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/contraction-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/contraction-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html">2.2</a></p></li>
 </ul>
-<div class="section" id="contraction-family-of-functions">
+<section id="contraction-family-of-functions">
 <h1>Contraction - Familia de funciones<a class="headerlink" href="#contraction-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En grafos grandes, como los grafos de carretera o de redes eléctricas, la contracción de grafos se puede utilizar para acelerar algunos algoritmos. La contracción reduce el tamaño del grafo eliminando algunos de los vértices y aristas, por ejemplo, podría agregar aristas que representen una secuencia de las aristas originales disminuyendo el tiempo total y el espacio utilizados en los algoritmos de grafos.</p>
 <p>Esta implementación proporciona un marco flexible para agregar algoritmos de contracción en el futuro, actualmente, admite dos algoritmos:</p>
@@ -217,11 +209,11 @@
 <li><p>Prohíba la contracción en un conjunto de nodos.</p></li>
 <li><p>Decida el orden de los algoritmos de contracción y establezca el número máximo de veces que se van a ejecutar.</p></li>
 </ul>
-</div>
-<div class="section" id="dead-end-contraction">
+</section>
+<section id="dead-end-contraction">
 <h2>Contracción sin salida<a class="headerlink" href="#dead-end-contraction" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En el algoritmo, la contracción sin salida se representa mediante 1.</p>
-<div class="section" id="dead-end">
+<section id="dead-end">
 <h3>Sin salida<a class="headerlink" href="#dead-end" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En el caso de un grafo no dirigido, un nodo se considera <cite>dead end</cite> (sin salida)</p>
 <ul class="simple">
@@ -237,7 +229,7 @@
 </li>
 </ul>
 <p>Cuando las condiciones son verdaderas, se puede hacer la <a class="reference internal" href="#operation-dead-end-contraction">Operation: Dead End Contraction</a></p>
-<div class="section" id="the-number-of-adjacent-vertices-is-1">
+<section id="the-number-of-adjacent-vertices-is-1">
 <h4>El número de vértices adyacentes es 1.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-1" title="Enlazar permanentemente con este título">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
@@ -266,8 +258,8 @@
     u -- w [color=darkgray];
     v -- z;
 }" class="graphviz" /></div>
-</div>
-<div class="section" id="there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">
+</section>
+<section id="there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">
 <h4>No hay aristas salientes y tiene al menos una arista entrante.<a class="headerlink" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge" title="Enlazar permanentemente con este título">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
@@ -285,8 +277,8 @@
     v -&gt; w;
     v -&gt; z;
 }" class="graphviz" /></div>
-</div>
-<div class="section" id="there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">
+</section>
+<section id="there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">
 <h4>No hay aristas entrantes y tiene al menos una arista saliente.<a class="headerlink" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge" title="Enlazar permanentemente con este título">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
@@ -305,9 +297,9 @@
     w -&gt; v;
     z -&gt; v;
 }" class="graphviz" /></div>
-</div>
-</div>
-<div class="section" id="operation-dead-end-contraction">
+</section>
+</section>
+<section id="operation-dead-end-contraction">
 <h3>Operación: Contracción sin salida<a class="headerlink" href="#operation-dead-end-contraction" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>La contracción sin salida se detendrá hasta que no haya más nodos sin salida. Por ejemplo, del siguiente grafo donde <code class="docutils literal notranslate"><span class="pre">w</span></code> es el nodo <a class="reference internal" href="#dead-end">dead end</a>:</p>
 <div class="graphviz"><img src="_images/graphviz-5e35f42543a9c600b7fe7e468fc428e28f807680.png" alt="digraph G {
@@ -338,12 +330,12 @@
     G -&gt; u [dir=none, weight=1, penwidth=3];
 }" class="graphviz" /></div>
 <p>El nodo <code class="docutils literal notranslate"><span class="pre">u</span></code> tiene la información de los nodos que se contrajeron.</p>
-</div>
-</div>
-<div class="section" id="linear-contraction">
+</section>
+</section>
+<section id="linear-contraction">
 <h2>Contracción lineal<a class="headerlink" href="#linear-contraction" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En el algoritmo, la contracción lineal es representada con un 2.</p>
-<div class="section" id="linear">
+<section id="linear">
 <h3>Lineal<a class="headerlink" href="#linear" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En el caso de un grafo no dirigido, un nodo se considera un nodo <cite>lineal</cite> cuando</p>
 <ul class="simple">
@@ -357,7 +349,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="the-number-of-adjacent-vertices-is-2">
+<section id="the-number-of-adjacent-vertices-is-2">
 <h4>El número de vértices adyacentes es 2.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-2" title="Enlazar permanentemente con este título">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son <a class="reference internal" href="#linear">lineales</a></p></li>
@@ -385,8 +377,8 @@
     w -- G -- u [dir=none, weight=1, penwidth=3];
     u -- v -- w;
 }" class="graphviz" /></div>
-</div>
-<div class="section" id="linearity-is-symmetrical">
+</section>
+<section id="linearity-is-symmetrical">
 <h4>La linealidad es simétrica<a class="headerlink" href="#linearity-is-symmetrical" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Usando un contra ejemplo, el vértice <code class="docutils literal notranslate"><span class="pre">v</span></code> no es lineal porque no es posible pasar de <code class="docutils literal notranslate"><span class="pre">w</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code> a través de <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p>
 <div class="graphviz"><img src="_images/graphviz-bc77587ebc527e97cf3403da611daafab99363d2.png" alt="digraph G {
@@ -397,9 +389,9 @@
     {w} -&gt; G -&gt; {u} [dir=none, weight=1, penwidth=3];
     u -&gt; v -&gt; w -&gt; v;
 }" class="graphviz" /></div>
-</div>
-</div>
-<div class="section" id="operation-linear-contraction">
+</section>
+</section>
+<section id="operation-linear-contraction">
 <h3>Operación: Contracción Lineal<a class="headerlink" href="#operation-linear-contraction" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>La contracción lineal se detendrá hasta que no haya más nodos lineales. Por ejemplo, en el siguiente grafo donde <code class="docutils literal notranslate"><span class="pre">v</span></code> y <code class="docutils literal notranslate"><span class="pre">w</span></code> son nodos <a class="reference internal" href="#linear">lineales</a> :</p>
 <div class="graphviz"><img src="_images/graphviz-bde47d0456a0ce341e8e9c57a3df5cf0ddc93edc.png" alt="digraph G {
@@ -448,9 +440,9 @@
     u -&gt; z [label=&quot;{v, w}&quot;;color=red]
 }" class="graphviz" /></div>
 <p>El arista <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> tiene la información de los nodos que fueron contraídos.</p>
-</div>
-</div>
-<div class="section" id="the-cycle">
+</section>
+</section>
+<section id="the-cycle">
 <h2>El ciclo<a class="headerlink" href="#the-cycle" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Contraer un grafo se puede hacer con más de una operación. El orden de las operaciones afecta al gráfico contraído resultante; después de aplicar una operación, el conjunto de vértices que se pueden contraer con otra operación cambia.</p>
 <p>Esta implementación alterna los tiempos `` max_cycles`` a través de `` operations_order``.</p>
@@ -462,15 +454,15 @@ do max_cycles times {
 &lt;output&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="contracting-sample-data">
+</section>
+<section id="contracting-sample-data">
 <h2>Contracción de Datos de Muestra<a class="headerlink" href="#contracting-sample-data" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En esta sección, la creación y el uso de un grafo contraído se mostrarán en el ejemplo.</p>
 <ul class="simple">
 <li><p>Se usa <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> para un grafo no dirigido.</p></li>
 <li><p>una operación sin salida primero seguida de una operación lineal.</p></li>
 </ul>
-<div class="section" id="construction-of-the-graph-in-the-database">
+<section id="construction-of-the-graph-in-the-database">
 <h3>Construcción del grafo en la base de datos<a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Datos Originales</p>
 <p>La siguiente consulta muestra los datos originales implicados en la operación de contracción.</p>
@@ -501,7 +493,7 @@ do max_cycles times {
 </div>
 <p>El grafo original:</p>
 <a class="reference internal image-reference" href="_images/undirected_sampledata_a.png"><img alt="_images/undirected_sampledata_a.png" src="_images/undirected_sampledata_a.png" style="width: 262.0px; height: 237.0px;" /></a>
-<div class="section" id="contraction-results">
+<section id="contraction-results">
 <h4>Resultados de la Contracción<a class="headerlink" href="#contraction-results" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Los resultados no representan al grafo contraído. Representan los cambios realizados en el grafo después de aplicar el algoritmo de contracción.</p>
 <p>Observe que los vértices, por ejemplo, <span class="math notranslate nohighlight">\(6\)</span> , no aparecen en los resultados porque no se vieron afectados por el algoritmo de contracción.</p>
@@ -531,8 +523,8 @@ do max_cycles times {
 <li><p><a class="reference internal" href="#store-contraction-information">Almacenar información de la contracción</a></p></li>
 <li><p><a class="reference internal" href="#update-the-vertices-and-edge-tables">Actualizar los vértices y tablas de aristas</a></p></li>
 </ul>
-</div>
-<div class="section" id="add-additional-columns">
+</section>
+<section id="add-additional-columns">
 <h4>Añadir columnas adicionales<a class="headerlink" href="#add-additional-columns" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Adición de columnas adicionales a las tablas <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> y  <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr</span></code> donde:</p>
 <table class="docutils align-default">
@@ -577,8 +569,8 @@ do max_cycles times {
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="store-contraction-information">
+</section>
+<section id="store-contraction-information">
 <h4>Almacenar información de contracción<a class="headerlink" href="#store-contraction-information" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Almacenar los <a class="reference internal" href="#contraction-results">resultados de la contracción</a> en una tabla</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
@@ -588,8 +580,8 @@ do max_cycles times {
 <span class="n">SELECT</span> <span class="mi">7</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="update-the-vertices-and-edge-tables">
+</section>
+<section id="update-the-vertices-and-edge-tables">
 <h4>Actualizar los vértices y las tablas de aristas<a class="headerlink" href="#update-the-vertices-and-edge-tables" title="Enlazar permanentemente con este título">¶</a></h4>
 <p class="rubric">Actualice la tabla <cite>vértice</cite> utilizando la información de contracción</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr.is_contracted</span></code> para indicar los vértices que son contraídos.</p>
@@ -675,11 +667,11 @@ do max_cycles times {
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="the-contracted-graph">
+</section>
+</section>
+<section id="the-contracted-graph">
 <h3>El grafo contraído<a class="headerlink" href="#the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="section" id="vertices-that-belong-to-the-contracted-graph">
+<section id="vertices-that-belong-to-the-contracted-graph">
 <h4>Vértices que pertenecen al grafo contraído.<a class="headerlink" href="#vertices-that-belong-to-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span>
 <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span>
@@ -698,8 +690,8 @@ do max_cycles times {
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="edges-that-belong-to-the-contracted-graph">
+</section>
+<section id="edges-that-belong-to-the-contracted-graph">
 <h4>Aristas que pertenecen al grafo contraído.<a class="headerlink" href="#edges-that-belong-to-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">vertices_in_graph</span> <span class="n">AS</span> <span class="p">(</span>
@@ -727,9 +719,9 @@ do max_cycles times {
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 176.0px; height: 169.5px;" /></a>
-</div>
-</div>
-<div class="section" id="using-the-contracted-graph">
+</section>
+</section>
+<section id="using-the-contracted-graph">
 <h3>Usando el grafo contraído<a class="headerlink" href="#using-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Uso del grafo contraído con <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></p>
 <p>Hay tres casos al calcular la ruta más corta entre un origen y un destino determinados en un grafo contraído:</p>
@@ -738,58 +730,35 @@ do max_cycles times {
 <li><p>Caso 2: El origen y/o el destino pertenecen a un subgrafo de aristas.</p></li>
 <li><p>Caso 3: El origen y/o el destino pertenecen a un vértice.</p></li>
 </ul>
-<div class="section" id="case-1-both-source-and-target-belong-to-the-contracted-graph">
+<section id="case-1-both-source-and-target-belong-to-the-contracted-graph">
 <h4>Caso 1: Tanto el origen como el destino pertenecen al grafo contraído.<a class="headerlink" href="#case-1-both-source-and-target-belong-to-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Usando las <a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Aristas que pertenecen al grafo contraído.</a> en las líneas 10 a 19.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION my_dijkstra(
-    departure BIGINT, destination BIGINT,
-    OUT seq INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-SELECT * FROM pgr_dijkstra(
-    $$
-<span class="hll">    WITH
-</span><span class="hll">    vertices_in_graph AS (
-</span><span class="hll">        SELECT id
-</span><span class="hll">        FROM edge_table_vertices_pgr
-</span><span class="hll">        WHERE is_contracted = false
-</span><span class="hll">    )
-</span><span class="hll">    SELECT id, source, target, cost, reverse_cost
-</span><span class="hll">    FROM edge_table
-</span><span class="hll">    WHERE source IN (SELECT * FROM vertices_in_graph)
-</span><span class="hll">    AND target IN (SELECT * FROM vertices_in_graph)
-</span>    $$,
-    departure, destination, false);
-$BODY$
-LANGUAGE SQL VOLATILE;
-CREATE FUNCTION
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
+<span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
+<span class="linenos"> 3</span>    OUT seq INTEGER, OUT path_seq INTEGER,
+<span class="linenos"> 4</span>    OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 5</span>    OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 7</span>$BODY$
+<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos"> 9</span>    $$
+<span class="hll"><span class="linenos">10</span>    WITH
+</span><span class="hll"><span class="linenos">11</span>    vertices_in_graph AS (
+</span><span class="hll"><span class="linenos">12</span>        SELECT id
+</span><span class="hll"><span class="linenos">13</span>        FROM edge_table_vertices_pgr
+</span><span class="hll"><span class="linenos">14</span>        WHERE is_contracted = false
+</span><span class="hll"><span class="linenos">15</span>    )
+</span><span class="hll"><span class="linenos">16</span>    SELECT id, source, target, cost, reverse_cost
+</span><span class="hll"><span class="linenos">17</span>    FROM edge_table
+</span><span class="hll"><span class="linenos">18</span>    WHERE source IN (SELECT * FROM vertices_in_graph)
+</span><span class="hll"><span class="linenos">19</span>    AND target IN (SELECT * FROM vertices_in_graph)
+</span><span class="linenos">20</span>    $$,
+<span class="linenos">21</span>    departure, destination, false);
+<span class="linenos">22</span>$BODY$
+<span class="linenos">23</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">24</span>CREATE FUNCTION
 </pre></div>
-</td></tr></table></div>
+</div>
 <p class="rubric">Caso 1</p>
 <p>Cuando el origen y el destino pertenecen al grafo contraído, se encuentra ruta.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -822,91 +791,54 @@ CREATE FUNCTION
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="case-2-source-and-or-target-belong-to-an-edge-subgraph">
+</section>
+<section id="case-2-source-and-or-target-belong-to-an-edge-subgraph">
 <h4>Caso 2: El origen y/o el destino pertenecen a un subgrafo de aristas.<a class="headerlink" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Refinar la función anterior para incluir nodos que pertenezcan a una arista.</p>
 <ul class="simple">
 <li><p>Los vértices que deben ampliarse se calculan en las líneas 10 a 16.</p></li>
 <li><p>Añadiendo al grafo contraído esa sección adicional en las líneas 25 a 27.</p></li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION my_dijkstra(
-    departure BIGINT, destination BIGINT,
-    OUT seq INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-SELECT * FROM pgr_dijkstra(
-    $$
-<span class="hll">    WITH
-</span><span class="hll">    edges_to_expand AS (
-</span><span class="hll">        SELECT id
-</span><span class="hll">        FROM edge_table
-</span><span class="hll">        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">    ),
-</span>
-    vertices_in_graph AS (
-        SELECT id
-        FROM edge_table_vertices_pgr
-        WHERE is_contracted = false
-
-        UNION
-
-<span class="hll">        SELECT unnest(contracted_vertices)
-</span><span class="hll">        FROM edge_table
-</span><span class="hll">        WHERE id IN (SELECT id FROM edges_to_expand)
-</span>    )
-
-    SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE source IN (SELECT * FROM vertices_in_graph)
-    AND target IN (SELECT * FROM vertices_in_graph)
-    $$,
-    departure, destination, false);
-$BODY$
-LANGUAGE SQL VOLATILE;
-CREATE FUNCTION
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
+<span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
+<span class="linenos"> 3</span>    OUT seq INTEGER, OUT path_seq INTEGER,
+<span class="linenos"> 4</span>    OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 5</span>    OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 7</span>$BODY$
+<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos"> 9</span>    $$
+<span class="hll"><span class="linenos">10</span>    WITH
+</span><span class="hll"><span class="linenos">11</span>    edges_to_expand AS (
+</span><span class="hll"><span class="linenos">12</span>        SELECT id
+</span><span class="hll"><span class="linenos">13</span>        FROM edge_table
+</span><span class="hll"><span class="linenos">14</span>        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">15</span>           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">16</span>    ),
+</span><span class="linenos">17</span>
+<span class="linenos">18</span>    vertices_in_graph AS (
+<span class="linenos">19</span>        SELECT id
+<span class="linenos">20</span>        FROM edge_table_vertices_pgr
+<span class="linenos">21</span>        WHERE is_contracted = false
+<span class="linenos">22</span>
+<span class="linenos">23</span>        UNION
+<span class="linenos">24</span>
+<span class="hll"><span class="linenos">25</span>        SELECT unnest(contracted_vertices)
+</span><span class="hll"><span class="linenos">26</span>        FROM edge_table
+</span><span class="hll"><span class="linenos">27</span>        WHERE id IN (SELECT id FROM edges_to_expand)
+</span><span class="linenos">28</span>    )
+<span class="linenos">29</span>
+<span class="linenos">30</span>    SELECT id, source, target, cost, reverse_cost
+<span class="linenos">31</span>    FROM edge_table
+<span class="linenos">32</span>    WHERE source IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">33</span>    AND target IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">34</span>    $$,
+<span class="linenos">35</span>    departure, destination, false);
+<span class="linenos">36</span>$BODY$
+<span class="linenos">37</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">38</span>CREATE FUNCTION
 </pre></div>
-</td></tr></table></div>
+</div>
 <p class="rubric">Caso 1</p>
 <p>Cuando el origen y el destino pertenecen al grafo contraído, se encuentra ruta.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -942,117 +874,67 @@ CREATE FUNCTION
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="case-3-source-and-or-target-belong-to-a-vertex">
+</section>
+<section id="case-3-source-and-or-target-belong-to-a-vertex">
 <h4>Caso 3: El origen y/o el destino pertenecen a un vértice.<a class="headerlink" href="#case-3-source-and-or-target-belong-to-a-vertex" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Refinar la función anterior para incluir nodos que pertenezcan a una arista.</p>
 <ul class="simple">
 <li><p>Los vértices que deben ampliarse se calculan en las líneas 18 a 23.</p></li>
 <li><p>Añadiendo al grafo contraído esa sección adicional en las líneas 38 a 40.</p></li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION my_dijkstra(
-    departure BIGINT, destination BIGINT,
-    OUT seq INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-SELECT * FROM pgr_dijkstra(
-    $$
-    WITH
-    edges_to_expand AS (
-        SELECT id
-        FROM edge_table
-        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-    ),
-
-<span class="hll">    vertices_to_expand AS (
-</span><span class="hll">        SELECT id
-</span><span class="hll">        FROM edge_table_vertices_pgr
-</span><span class="hll">        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">    ),
-</span>
-    vertices_in_graph AS (
-        SELECT id
-        FROM edge_table_vertices_pgr
-        WHERE is_contracted = false
-
-        UNION
-
-        SELECT unnest(contracted_vertices)
-        FROM edge_table
-        WHERE id IN (SELECT id FROM edges_to_expand)
-
-        UNION
-
-<span class="hll">        SELECT unnest(contracted_vertices)
-</span><span class="hll">        FROM edge_table_vertices_pgr
-</span><span class="hll">        WHERE id IN (SELECT id FROM vertices_to_expand)
-</span>    )
-
-    SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE source IN (SELECT * FROM vertices_in_graph)
-    AND target IN (SELECT * FROM vertices_in_graph)
-    $$,
-    departure, destination, false);
-$BODY$
-LANGUAGE SQL VOLATILE;
-CREATE FUNCTION
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
+<span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
+<span class="linenos"> 3</span>    OUT seq INTEGER, OUT path_seq INTEGER,
+<span class="linenos"> 4</span>    OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 5</span>    OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 7</span>$BODY$
+<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos"> 9</span>    $$
+<span class="linenos">10</span>    WITH
+<span class="linenos">11</span>    edges_to_expand AS (
+<span class="linenos">12</span>        SELECT id
+<span class="linenos">13</span>        FROM edge_table
+<span class="linenos">14</span>        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+<span class="linenos">15</span>           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+<span class="linenos">16</span>    ),
+<span class="linenos">17</span>
+<span class="hll"><span class="linenos">18</span>    vertices_to_expand AS (
+</span><span class="hll"><span class="linenos">19</span>        SELECT id
+</span><span class="hll"><span class="linenos">20</span>        FROM edge_table_vertices_pgr
+</span><span class="hll"><span class="linenos">21</span>        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">22</span>           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">23</span>    ),
+</span><span class="linenos">24</span>
+<span class="linenos">25</span>    vertices_in_graph AS (
+<span class="linenos">26</span>        SELECT id
+<span class="linenos">27</span>        FROM edge_table_vertices_pgr
+<span class="linenos">28</span>        WHERE is_contracted = false
+<span class="linenos">29</span>
+<span class="linenos">30</span>        UNION
+<span class="linenos">31</span>
+<span class="linenos">32</span>        SELECT unnest(contracted_vertices)
+<span class="linenos">33</span>        FROM edge_table
+<span class="linenos">34</span>        WHERE id IN (SELECT id FROM edges_to_expand)
+<span class="linenos">35</span>
+<span class="linenos">36</span>        UNION
+<span class="linenos">37</span>
+<span class="hll"><span class="linenos">38</span>        SELECT unnest(contracted_vertices)
+</span><span class="hll"><span class="linenos">39</span>        FROM edge_table_vertices_pgr
+</span><span class="hll"><span class="linenos">40</span>        WHERE id IN (SELECT id FROM vertices_to_expand)
+</span><span class="linenos">41</span>    )
+<span class="linenos">42</span>
+<span class="linenos">43</span>    SELECT id, source, target, cost, reverse_cost
+<span class="linenos">44</span>    FROM edge_table
+<span class="linenos">45</span>    WHERE source IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">46</span>    AND target IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">47</span>    $$,
+<span class="linenos">48</span>    departure, destination, false);
+<span class="linenos">49</span>$BODY$
+<span class="linenos">50</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">51</span>CREATE FUNCTION
 </pre></div>
-</td></tr></table></div>
+</div>
 <p class="rubric">Caso 1</p>
 <p>Cuando el origen y el destino pertenecen al grafo contraído, se encuentra ruta.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -1092,10 +974,10 @@ CREATE FUNCTION
 
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
@@ -1107,8 +989,8 @@ CREATE FUNCTION
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -1122,9 +1004,9 @@ CREATE FUNCTION
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

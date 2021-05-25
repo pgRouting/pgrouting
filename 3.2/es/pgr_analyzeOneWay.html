@@ -3,13 +3,14 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_analyzeOneWay &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_analyzeOneWay &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -146,21 +147,10 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_analyzeOneWay.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_analyzeOneWay.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_analyzeOneWay.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_analyzeOneWay.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_analyzeOneWay.html">2.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeOneWay.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeOneWay.html">2.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_oneway.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html">2.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_analyzeOneWay.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_analyzeOneWay.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_analyzeOneWay.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_analyzeOneWay.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_analyzeOneWay.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeOneWay.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeOneWay.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_oneway.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html">2.0</a></p></li>
 </ul>
-<div class="section" id="pgr-analyzeoneway">
+<section id="pgr-analyzeoneway">
 <h1>pgr_analyzeOneWay<a class="headerlink" href="#pgr-analyzeoneway" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> — Analiza las calles de sentido unidireccional e identifica los segmentos volteados.</p>
 <p>Esta función analiza las calles unidireccionales en un gráfico e identifica cualquier segmentos invertido.</p>
@@ -172,7 +162,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El análisis de segmentos que tienen un solo sentido es bastante simple, pero a la vez  ser una herramienta poderosa para identificar algunos problemas potenciales que son creados al establecer la dirección de un segmento de la manera equivocada. Un nodo es un <cite>source</cite> si tiene bordes que salen de ese nodo y no hay bordes que entren a  ese nodo. Por el contrario, un nodo es un`sink` si todos los bordes entran al nodo pero ninguno sale de ese nodo. Para un nodo <cite>source</cite> es lógicamente imposible existir porque ningún vehículo puede salir del nodo o si algún vehículo logró entrar en el nodo. Asimismo, si tuvieras un nodo <cite>sink</cite> tienes un número infinito de vehículos que se van  acumulando en este nodo porque no pueden salir de el.</p>
 <p>Así que ¿por qué nos importa si no es factibles? Si la dirección de un borde se revirtió por error podríamos generar exactamente en estas condiciones. Pensar en una carretera dividida y en el carril que va al norte un segmento o varios segmentos fueron introducidos al revés, o tal vez esto sucedió en una glorieta. El resultado sería potencialmente un nodo <cite>source</cite> y/o a <cite>sink</cite> node.</p>
@@ -183,8 +173,8 @@
 <li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear la tabla de vértices.</p></li>
 <li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</p></li>
 </ul>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="nb">text</span> <span class="n">pgr_analyzeOneWay</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
                        <span class="nb">text</span><span class="p">[]</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">s_out_rules</span><span class="p">,</span>
@@ -193,8 +183,8 @@
                        <span class="nb">boolean</span> <span class="n">two_way_if_null</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">edge_table</dt>
@@ -269,8 +259,8 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Valor de la geometría POINT del vértice.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="additional-examples">
+</section>
+<section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeOneWay</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
@@ -294,8 +284,8 @@
 </pre></div>
 </div>
 <p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de ruteo.</p></li>
@@ -308,8 +298,8 @@
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -323,9 +313,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

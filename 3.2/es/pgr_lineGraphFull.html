@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_lineGraphFull - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -155,7 +156,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html">3.0</a></p></li>
 <li><p><strong>Versiones no sustentadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html">2.6</a></p></li>
 </ul>
-<div class="section" id="pgr-linegraphfull-experimental">
+<section id="pgr-linegraphfull-experimental">
 <h1>pgr_lineGraphFull - Experimental<a class="headerlink" href="#pgr-linegraphfull-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lineGraphFull</span></code> — Transforma un grafo dado en uno nuevo donde todos los vértices del grafo original se convierten en grafos de líneas.</p>
 <div class="admonition warning">
@@ -196,7 +197,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>pgr_lineGraphFull, convierte un grafo dirigido original a un grafo lineal dirigido, convirtiendo cada vértice en un grafo completo y manteniendo todas las aristas originales. Las nuevas aristas de conexión tienen un costo de 0 y van entre las aristas originales adyacentes, respetando la direccionalidad.</p>
 <p>Una posible aplicación del grafo resultante es <strong>«ruteo con restricciones en dos aristas»</strong>:</p>
@@ -214,8 +215,8 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_lineGraphFull(edges_sql)
@@ -272,8 +273,8 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -297,8 +298,8 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-query">
+</section>
+<section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -359,8 +360,8 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="additional-examples">
+</section>
+<section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Los ejemplos de esta sección se basan en la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p>
 <p>Los ejemplos incluyen el subgrafo que incluye las aristas 4, 7, 8 y 10 con reverse_cost.</p>
@@ -582,8 +583,8 @@ SELECT 16
 </div>
 <p>Normalmente la ruta más corta desde el vértice 2 hasta el vértice 8 tendría un costo agregado de 2, pero como hay una gran penalización por hacer el giro necesario para obtener este costo, la ruta pasa por el vértice 6 para evitar este giro.</p>
 <p>Si hace referencia cruzada a la columna de nodo en los resultados de dijkstra con la tabla de mapeo de id de vértices, esto le mostrará que la ruta va desde v2 -&gt; v5 -&gt; v6 -&gt; v5 -&gt; v8 en el grafo original.</p>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Line_graph">https://en.wikipedia.org/wiki/Line_graph</a></p></li>
@@ -594,8 +595,8 @@ SELECT 16
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -609,9 +610,9 @@ SELECT 16
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

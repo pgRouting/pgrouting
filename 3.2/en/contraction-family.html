@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contraction - Family of functions &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Contraction - Family of functions &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -196,14 +197,14 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html">2.2</a></p></li>
 </ul>
-<div class="section" id="contraction-family-of-functions">
+<section id="contraction-family-of-functions">
 <h1>Contraction - Family of functions<a class="headerlink" href="#contraction-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In large graphs, like the road graphs, or electric networks, graph contraction
 can be used to speed up some graph algorithms.
@@ -222,11 +223,11 @@ in the future, currently, it supports two algorithms:</p>
 <li><p>Decide the order of the contraction algorithms and set the maximum number of
 times they are to be executed.</p></li>
 </ul>
-</div>
-<div class="section" id="dead-end-contraction">
+</section>
+<section id="dead-end-contraction">
 <h2>Dead end contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this headline">¶</a></h2>
 <p>In the algorithm, dead end contraction is represented by 1.</p>
-<div class="section" id="dead-end">
+<section id="dead-end">
 <h3>Dead end<a class="headerlink" href="#dead-end" title="Permalink to this headline">¶</a></h3>
 <p>In case of an undirected graph, a node is considered a <cite>dead end</cite> node when</p>
 <ul class="simple">
@@ -242,7 +243,7 @@ times they are to be executed.</p></li>
 </li>
 </ul>
 <p>When the conditions are true then the <a class="reference internal" href="#operation-dead-end-contraction">Operation: Dead End Contraction</a> can be done.</p>
-<div class="section" id="the-number-of-adjacent-vertices-is-1">
+<section id="the-number-of-adjacent-vertices-is-1">
 <h4>The number of adjacent vertices is 1.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-1" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
@@ -271,8 +272,8 @@ times they are to be executed.</p></li>
     u -- w [color=darkgray];
     v -- z;
 }" class="graphviz" /></div>
-</div>
-<div class="section" id="there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">
+</section>
+<section id="there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">
 <h4>There are no outgoing edges and has at least one incoming edge.<a class="headerlink" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
@@ -290,8 +291,8 @@ times they are to be executed.</p></li>
     v -&gt; w;
     v -&gt; z;
 }" class="graphviz" /></div>
-</div>
-<div class="section" id="there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">
+</section>
+<section id="there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">
 <h4>There are no incoming edges and has at least one outgoing edge.<a class="headerlink" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
@@ -310,9 +311,9 @@ times they are to be executed.</p></li>
     w -&gt; v;
     z -&gt; v;
 }" class="graphviz" /></div>
-</div>
-</div>
-<div class="section" id="operation-dead-end-contraction">
+</section>
+</section>
+<section id="operation-dead-end-contraction">
 <h3>Operation: Dead End Contraction<a class="headerlink" href="#operation-dead-end-contraction" title="Permalink to this headline">¶</a></h3>
 <p>The dead end contraction will stop until there are no more dead end nodes.
 For example from the following graph where <code class="docutils literal notranslate"><span class="pre">w</span></code> is the <a class="reference internal" href="#dead-end">dead end</a> node:</p>
@@ -344,12 +345,12 @@ For example from the following graph where <code class="docutils literal notrans
     G -&gt; u [dir=none, weight=1, penwidth=3];
 }" class="graphviz" /></div>
 <p>Node <code class="docutils literal notranslate"><span class="pre">u</span></code> has the information of nodes that were contracted.</p>
-</div>
-</div>
-<div class="section" id="linear-contraction">
+</section>
+</section>
+<section id="linear-contraction">
 <h2>Linear contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this headline">¶</a></h2>
 <p>In the algorithm, linear contraction is represented by 2.</p>
-<div class="section" id="linear">
+<section id="linear">
 <h3>Linear<a class="headerlink" href="#linear" title="Permalink to this headline">¶</a></h3>
 <p>In case of an undirected graph, a node is considered a <cite>linear</cite> node when</p>
 <ul class="simple">
@@ -363,7 +364,7 @@ For example from the following graph where <code class="docutils literal notrans
 </ul>
 </li>
 </ul>
-<div class="section" id="the-number-of-adjacent-vertices-is-2">
+<section id="the-number-of-adjacent-vertices-is-2">
 <h4>The number of adjacent vertices is 2.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-2" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#linear">linear</a> nodes</p></li>
@@ -391,8 +392,8 @@ For example from the following graph where <code class="docutils literal notrans
     w -- G -- u [dir=none, weight=1, penwidth=3];
     u -- v -- w;
 }" class="graphviz" /></div>
-</div>
-<div class="section" id="linearity-is-symmetrical">
+</section>
+<section id="linearity-is-symmetrical">
 <h4>Linearity is symmetrical<a class="headerlink" href="#linearity-is-symmetrical" title="Permalink to this headline">¶</a></h4>
 <p>Using a contra example, vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> is not linear because it’s not possible to
 go from <code class="docutils literal notranslate"><span class="pre">w</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code> via <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p>
@@ -404,9 +405,9 @@ go from <code class="docutils literal notranslate"><span class="pre">w</span></c
     {w} -&gt; G -&gt; {u} [dir=none, weight=1, penwidth=3];
     u -&gt; v -&gt; w -&gt; v;
 }" class="graphviz" /></div>
-</div>
-</div>
-<div class="section" id="operation-linear-contraction">
+</section>
+</section>
+<section id="operation-linear-contraction">
 <h3>Operation: Linear Contraction<a class="headerlink" href="#operation-linear-contraction" title="Permalink to this headline">¶</a></h3>
 <p>The linear contraction will stop until there are no more linear nodes.
 For example from the following graph where <code class="docutils literal notranslate"><span class="pre">v</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> are <a class="reference internal" href="#linear">linear</a> nodes:</p>
@@ -456,9 +457,9 @@ For example from the following graph where <code class="docutils literal notrans
     u -&gt; z [label=&quot;{v, w}&quot;;color=red]
 }" class="graphviz" /></div>
 <p>Edge <span class="math notranslate nohighlight">\(u \rightarrow z\)</span> has the information of nodes that were contracted.</p>
-</div>
-</div>
-<div class="section" id="the-cycle">
+</section>
+</section>
+<section id="the-cycle">
 <h2>The cycle<a class="headerlink" href="#the-cycle" title="Permalink to this headline">¶</a></h2>
 <p>Contracting a graph, can be done with more than one operation.
 The order of the operations affect the resulting contracted graph, after
@@ -473,15 +474,15 @@ do max_cycles times {
 &lt;output&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="contracting-sample-data">
+</section>
+<section id="contracting-sample-data">
 <h2>Contracting Sample Data<a class="headerlink" href="#contracting-sample-data" title="Permalink to this headline">¶</a></h2>
 <p>In this section, building and using a contracted graph will be shown by example.</p>
 <ul class="simple">
 <li><p>The <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> for an undirected graph is used</p></li>
 <li><p>a dead end operation first followed by a linear operation.</p></li>
 </ul>
-<div class="section" id="construction-of-the-graph-in-the-database">
+<section id="construction-of-the-graph-in-the-database">
 <h3>Construction of the graph in the database<a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">Original Data</p>
 <p>The following query shows the original data involved in the contraction operation.</p>
@@ -512,7 +513,7 @@ do max_cycles times {
 </div>
 <p>The original graph:</p>
 <a class="reference internal image-reference" href="_images/undirected_sampledata_a.png"><img alt="_images/undirected_sampledata_a.png" src="_images/undirected_sampledata_a.png" style="width: 262.0px; height: 237.0px;" /></a>
-<div class="section" id="contraction-results">
+<section id="contraction-results">
 <h4>Contraction Results<a class="headerlink" href="#contraction-results" title="Permalink to this headline">¶</a></h4>
 <p>The results do not represent the contracted graph.
 They represent the changes done to the graph after applying the contraction algorithm.</p>
@@ -544,8 +545,8 @@ it was not affected by the contraction algorithm.</p>
 <li><p><a class="reference internal" href="#store-contraction-information">Store contraction information</a></p></li>
 <li><p><a class="reference internal" href="#update-the-vertices-and-edge-tables">Update the vertices and edge tables</a></p></li>
 </ul>
-</div>
-<div class="section" id="add-additional-columns">
+</section>
+<section id="add-additional-columns">
 <h4>Add additional columns<a class="headerlink" href="#add-additional-columns" title="Permalink to this headline">¶</a></h4>
 <p>Adding extra columns to the <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> and <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr</span></code> tables, where:</p>
 <table class="docutils align-default">
@@ -590,8 +591,8 @@ it was not affected by the contraction algorithm.</p>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="store-contraction-information">
+</section>
+<section id="store-contraction-information">
 <h4>Store contraction information<a class="headerlink" href="#store-contraction-information" title="Permalink to this headline">¶</a></h4>
 <p>Store the <a class="reference internal" href="#contraction-results">contraction results</a> in a table</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
@@ -601,8 +602,8 @@ it was not affected by the contraction algorithm.</p>
 <span class="n">SELECT</span> <span class="mi">7</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="update-the-vertices-and-edge-tables">
+</section>
+<section id="update-the-vertices-and-edge-tables">
 <h4>Update the vertices and edge tables<a class="headerlink" href="#update-the-vertices-and-edge-tables" title="Permalink to this headline">¶</a></h4>
 <p class="rubric">Update the <cite>vertex</cite> table using the contraction information</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr.is_contracted</span></code> to indicate the vertices that are contracted.</p>
@@ -688,11 +689,11 @@ it was not affected by the contraction algorithm.</p>
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="the-contracted-graph">
+</section>
+</section>
+<section id="the-contracted-graph">
 <h3>The contracted graph<a class="headerlink" href="#the-contracted-graph" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="vertices-that-belong-to-the-contracted-graph">
+<section id="vertices-that-belong-to-the-contracted-graph">
 <h4>Vertices that belong to the contracted graph.<a class="headerlink" href="#vertices-that-belong-to-the-contracted-graph" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span>
 <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span>
@@ -711,8 +712,8 @@ it was not affected by the contraction algorithm.</p>
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="edges-that-belong-to-the-contracted-graph">
+</section>
+<section id="edges-that-belong-to-the-contracted-graph">
 <h4>Edges that belong to the contracted graph.<a class="headerlink" href="#edges-that-belong-to-the-contracted-graph" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">vertices_in_graph</span> <span class="n">AS</span> <span class="p">(</span>
@@ -740,9 +741,9 @@ it was not affected by the contraction algorithm.</p>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/undirected_sampledata_c.png"><img alt="_images/undirected_sampledata_c.png" src="_images/undirected_sampledata_c.png" style="width: 176.0px; height: 169.5px;" /></a>
-</div>
-</div>
-<div class="section" id="using-the-contracted-graph">
+</section>
+</section>
+<section id="using-the-contracted-graph">
 <h3>Using the contracted graph<a class="headerlink" href="#using-the-contracted-graph" title="Permalink to this headline">¶</a></h3>
 <p>Using the contracted graph with <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></p>
 <p>There are three cases when calculating the shortest path between a given source and target
@@ -752,58 +753,35 @@ in a contracted graph:</p>
 <li><p>Case 2: Source and/or target belong to an edge subgraph.</p></li>
 <li><p>Case 3: Source and/or target belong to a vertex.</p></li>
 </ul>
-<div class="section" id="case-1-both-source-and-target-belong-to-the-contracted-graph">
+<section id="case-1-both-source-and-target-belong-to-the-contracted-graph">
 <h4>Case 1: Both source and target belong to the contracted graph.<a class="headerlink" href="#case-1-both-source-and-target-belong-to-the-contracted-graph" title="Permalink to this headline">¶</a></h4>
 <p>Using the <a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Edges that belong to the contracted graph.</a> on lines 10 to 19.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION my_dijkstra(
-    departure BIGINT, destination BIGINT,
-    OUT seq INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-SELECT * FROM pgr_dijkstra(
-    $$
-<span class="hll">    WITH
-</span><span class="hll">    vertices_in_graph AS (
-</span><span class="hll">        SELECT id
-</span><span class="hll">        FROM edge_table_vertices_pgr
-</span><span class="hll">        WHERE is_contracted = false
-</span><span class="hll">    )
-</span><span class="hll">    SELECT id, source, target, cost, reverse_cost
-</span><span class="hll">    FROM edge_table
-</span><span class="hll">    WHERE source IN (SELECT * FROM vertices_in_graph)
-</span><span class="hll">    AND target IN (SELECT * FROM vertices_in_graph)
-</span>    $$,
-    departure, destination, false);
-$BODY$
-LANGUAGE SQL VOLATILE;
-CREATE FUNCTION
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
+<span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
+<span class="linenos"> 3</span>    OUT seq INTEGER, OUT path_seq INTEGER,
+<span class="linenos"> 4</span>    OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 5</span>    OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 7</span>$BODY$
+<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos"> 9</span>    $$
+<span class="hll"><span class="linenos">10</span>    WITH
+</span><span class="hll"><span class="linenos">11</span>    vertices_in_graph AS (
+</span><span class="hll"><span class="linenos">12</span>        SELECT id
+</span><span class="hll"><span class="linenos">13</span>        FROM edge_table_vertices_pgr
+</span><span class="hll"><span class="linenos">14</span>        WHERE is_contracted = false
+</span><span class="hll"><span class="linenos">15</span>    )
+</span><span class="hll"><span class="linenos">16</span>    SELECT id, source, target, cost, reverse_cost
+</span><span class="hll"><span class="linenos">17</span>    FROM edge_table
+</span><span class="hll"><span class="linenos">18</span>    WHERE source IN (SELECT * FROM vertices_in_graph)
+</span><span class="hll"><span class="linenos">19</span>    AND target IN (SELECT * FROM vertices_in_graph)
+</span><span class="linenos">20</span>    $$,
+<span class="linenos">21</span>    departure, destination, false);
+<span class="linenos">22</span>$BODY$
+<span class="linenos">23</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">24</span>CREATE FUNCTION
 </pre></div>
-</td></tr></table></div>
+</div>
 <p class="rubric">Case 1</p>
 <p>When both source and target belong to the contracted graph, a path is found.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -838,91 +816,54 @@ node <span class="math notranslate nohighlight">\(7\)</span> and of node <span c
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="case-2-source-and-or-target-belong-to-an-edge-subgraph">
+</section>
+<section id="case-2-source-and-or-target-belong-to-an-edge-subgraph">
 <h4>Case 2: Source and/or target belong to an edge subgraph.<a class="headerlink" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph" title="Permalink to this headline">¶</a></h4>
 <p>Refining the above function to include nodes that belong to an edge.</p>
 <ul class="simple">
 <li><p>The vertices that need to be expanded are calculated on lines 10 to 16.</p></li>
 <li><p>Adding to the contracted graph that additional section on lines 25 to 27.</p></li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION my_dijkstra(
-    departure BIGINT, destination BIGINT,
-    OUT seq INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-SELECT * FROM pgr_dijkstra(
-    $$
-<span class="hll">    WITH
-</span><span class="hll">    edges_to_expand AS (
-</span><span class="hll">        SELECT id
-</span><span class="hll">        FROM edge_table
-</span><span class="hll">        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">    ),
-</span>
-    vertices_in_graph AS (
-        SELECT id
-        FROM edge_table_vertices_pgr
-        WHERE is_contracted = false
-
-        UNION
-
-<span class="hll">        SELECT unnest(contracted_vertices)
-</span><span class="hll">        FROM edge_table
-</span><span class="hll">        WHERE id IN (SELECT id FROM edges_to_expand)
-</span>    )
-
-    SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE source IN (SELECT * FROM vertices_in_graph)
-    AND target IN (SELECT * FROM vertices_in_graph)
-    $$,
-    departure, destination, false);
-$BODY$
-LANGUAGE SQL VOLATILE;
-CREATE FUNCTION
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
+<span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
+<span class="linenos"> 3</span>    OUT seq INTEGER, OUT path_seq INTEGER,
+<span class="linenos"> 4</span>    OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 5</span>    OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 7</span>$BODY$
+<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos"> 9</span>    $$
+<span class="hll"><span class="linenos">10</span>    WITH
+</span><span class="hll"><span class="linenos">11</span>    edges_to_expand AS (
+</span><span class="hll"><span class="linenos">12</span>        SELECT id
+</span><span class="hll"><span class="linenos">13</span>        FROM edge_table
+</span><span class="hll"><span class="linenos">14</span>        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">15</span>           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">16</span>    ),
+</span><span class="linenos">17</span>
+<span class="linenos">18</span>    vertices_in_graph AS (
+<span class="linenos">19</span>        SELECT id
+<span class="linenos">20</span>        FROM edge_table_vertices_pgr
+<span class="linenos">21</span>        WHERE is_contracted = false
+<span class="linenos">22</span>
+<span class="linenos">23</span>        UNION
+<span class="linenos">24</span>
+<span class="hll"><span class="linenos">25</span>        SELECT unnest(contracted_vertices)
+</span><span class="hll"><span class="linenos">26</span>        FROM edge_table
+</span><span class="hll"><span class="linenos">27</span>        WHERE id IN (SELECT id FROM edges_to_expand)
+</span><span class="linenos">28</span>    )
+<span class="linenos">29</span>
+<span class="linenos">30</span>    SELECT id, source, target, cost, reverse_cost
+<span class="linenos">31</span>    FROM edge_table
+<span class="linenos">32</span>    WHERE source IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">33</span>    AND target IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">34</span>    $$,
+<span class="linenos">35</span>    departure, destination, false);
+<span class="linenos">36</span>$BODY$
+<span class="linenos">37</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">38</span>CREATE FUNCTION
 </pre></div>
-</td></tr></table></div>
+</div>
 <p class="rubric">Case 1</p>
 <p>When both source and target belong to the contracted graph, a path is found.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -959,117 +900,67 @@ node <span class="math notranslate nohighlight">\(7\)</span>.</p>
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="case-3-source-and-or-target-belong-to-a-vertex">
+</section>
+<section id="case-3-source-and-or-target-belong-to-a-vertex">
 <h4>Case 3: Source and/or target belong to a vertex.<a class="headerlink" href="#case-3-source-and-or-target-belong-to-a-vertex" title="Permalink to this headline">¶</a></h4>
 <p>Refining the above function to include nodes that belong to an edge.</p>
 <ul class="simple">
 <li><p>The vertices that need to be expanded are calculated on lines 18 to 23.</p></li>
 <li><p>Adding to the contracted graph that additional section on lines 38 to 40.</p></li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>CREATE OR REPLACE FUNCTION my_dijkstra(
-    departure BIGINT, destination BIGINT,
-    OUT seq INTEGER, OUT path_seq INTEGER,
-    OUT node BIGINT, OUT edge BIGINT,
-    OUT cost FLOAT, OUT agg_cost FLOAT)
-RETURNS SETOF RECORD AS
-$BODY$
-SELECT * FROM pgr_dijkstra(
-    $$
-    WITH
-    edges_to_expand AS (
-        SELECT id
-        FROM edge_table
-        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-    ),
-
-<span class="hll">    vertices_to_expand AS (
-</span><span class="hll">        SELECT id
-</span><span class="hll">        FROM edge_table_vertices_pgr
-</span><span class="hll">        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
-</span><span class="hll">    ),
-</span>
-    vertices_in_graph AS (
-        SELECT id
-        FROM edge_table_vertices_pgr
-        WHERE is_contracted = false
-
-        UNION
-
-        SELECT unnest(contracted_vertices)
-        FROM edge_table
-        WHERE id IN (SELECT id FROM edges_to_expand)
-
-        UNION
-
-<span class="hll">        SELECT unnest(contracted_vertices)
-</span><span class="hll">        FROM edge_table_vertices_pgr
-</span><span class="hll">        WHERE id IN (SELECT id FROM vertices_to_expand)
-</span>    )
-
-    SELECT id, source, target, cost, reverse_cost
-    FROM edge_table
-    WHERE source IN (SELECT * FROM vertices_in_graph)
-    AND target IN (SELECT * FROM vertices_in_graph)
-    $$,
-    departure, destination, false);
-$BODY$
-LANGUAGE SQL VOLATILE;
-CREATE FUNCTION
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
+<span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
+<span class="linenos"> 3</span>    OUT seq INTEGER, OUT path_seq INTEGER,
+<span class="linenos"> 4</span>    OUT node BIGINT, OUT edge BIGINT,
+<span class="linenos"> 5</span>    OUT cost FLOAT, OUT agg_cost FLOAT)
+<span class="linenos"> 6</span>RETURNS SETOF RECORD AS
+<span class="linenos"> 7</span>$BODY$
+<span class="linenos"> 8</span>SELECT * FROM pgr_dijkstra(
+<span class="linenos"> 9</span>    $$
+<span class="linenos">10</span>    WITH
+<span class="linenos">11</span>    edges_to_expand AS (
+<span class="linenos">12</span>        SELECT id
+<span class="linenos">13</span>        FROM edge_table
+<span class="linenos">14</span>        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+<span class="linenos">15</span>           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+<span class="linenos">16</span>    ),
+<span class="linenos">17</span>
+<span class="hll"><span class="linenos">18</span>    vertices_to_expand AS (
+</span><span class="hll"><span class="linenos">19</span>        SELECT id
+</span><span class="hll"><span class="linenos">20</span>        FROM edge_table_vertices_pgr
+</span><span class="hll"><span class="linenos">21</span>        WHERE ARRAY[$$ || departure || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">22</span>           OR ARRAY[$$ || destination || $$]::BIGINT[] &lt;@ contracted_vertices
+</span><span class="hll"><span class="linenos">23</span>    ),
+</span><span class="linenos">24</span>
+<span class="linenos">25</span>    vertices_in_graph AS (
+<span class="linenos">26</span>        SELECT id
+<span class="linenos">27</span>        FROM edge_table_vertices_pgr
+<span class="linenos">28</span>        WHERE is_contracted = false
+<span class="linenos">29</span>
+<span class="linenos">30</span>        UNION
+<span class="linenos">31</span>
+<span class="linenos">32</span>        SELECT unnest(contracted_vertices)
+<span class="linenos">33</span>        FROM edge_table
+<span class="linenos">34</span>        WHERE id IN (SELECT id FROM edges_to_expand)
+<span class="linenos">35</span>
+<span class="linenos">36</span>        UNION
+<span class="linenos">37</span>
+<span class="hll"><span class="linenos">38</span>        SELECT unnest(contracted_vertices)
+</span><span class="hll"><span class="linenos">39</span>        FROM edge_table_vertices_pgr
+</span><span class="hll"><span class="linenos">40</span>        WHERE id IN (SELECT id FROM vertices_to_expand)
+</span><span class="linenos">41</span>    )
+<span class="linenos">42</span>
+<span class="linenos">43</span>    SELECT id, source, target, cost, reverse_cost
+<span class="linenos">44</span>    FROM edge_table
+<span class="linenos">45</span>    WHERE source IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">46</span>    AND target IN (SELECT * FROM vertices_in_graph)
+<span class="linenos">47</span>    $$,
+<span class="linenos">48</span>    departure, destination, false);
+<span class="linenos">49</span>$BODY$
+<span class="linenos">50</span>LANGUAGE SQL VOLATILE;
+<span class="linenos">51</span>CREATE FUNCTION
 </pre></div>
-</td></tr></table></div>
+</div>
 <p class="rubric">Case 1</p>
 <p>When both source and target belong to the contracted graph, a path is found.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">my_dijkstra</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -1110,10 +1001,10 @@ to an edge subgraph, a path is still found.</p>
 
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
@@ -1125,8 +1016,8 @@ to an edge subgraph, a path is still found.</p>
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -1140,9 +1031,9 @@ to an edge subgraph, a path is still found.</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

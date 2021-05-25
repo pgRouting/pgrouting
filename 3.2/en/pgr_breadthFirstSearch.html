@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_breadthFirstSearch - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_breadthFirstSearch - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -161,13 +162,15 @@
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html">Latest</a>
 (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_breadthFirstSearch.html">3.2</a>)</p></li>
 </ul>
-<div class="section" id="pgr-breadthfirstsearch-experimental">
+<section id="pgr-breadthfirstsearch-experimental">
 <h1>pgr_breadthFirstSearch - Experimental<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> — Returns the traversal order(s) using Breadth First Search algorithm.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
@@ -199,7 +202,7 @@
 </ul>
 </div>
 <p class="rubric">Availability</p>
-<div class="section" id="description">
+<section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Provides the Breadth First Search traversal order from a root vertex to a particular depth.</p>
 <p><strong>The main Characteristics are:</strong></p>
@@ -208,8 +211,8 @@
 <li><p>Provides the Breadth First Search traversal order from a source node to a target depth level</p></li>
 <li><p>Breath First Search Running time: <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_breadthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
 pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
@@ -217,7 +220,7 @@ pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
-<div class="section" id="single-vertex">
+<section id="single-vertex">
 <span id="index-0"></span><h3>Single Vertex<a class="headerlink" href="#single-vertex" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_breadthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
 
@@ -252,8 +255,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="multiple-vertices">
+</section>
+<section id="multiple-vertices">
 <span id="index-1"></span><h3>Multiple Vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
 
@@ -282,9 +285,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -322,7 +325,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="section" id="optional-parameters">
+<section id="optional-parameters">
 <h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -359,9 +362,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="inner-query">
+</section>
+</section>
+<section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -422,8 +425,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -481,7 +484,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<div class="section" id="additional-examples">
+<section id="additional-examples">
 <h3>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h3>
 <p><strong>Undirected Graph</strong></p>
 <dl class="field-list simple">
@@ -529,9 +532,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
@@ -543,8 +546,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -558,9 +561,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

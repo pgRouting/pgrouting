@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_dijkstraNearCost - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_dijkstraNearCost - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -161,11 +162,9 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html">3.2</a>)</p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html">3.2</a>)</p></li>
 </ul>
-<div class="section" id="pgr-dijkstranearcost-experimental">
+<section id="pgr-dijkstranearcost-experimental">
 <h1>pgr_dijkstraNearCost - Experimental<a class="headerlink" href="#pgr-dijkstranearcost-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> — Usando el algoritmo dijkstra, encuentra la ruta que conduce al vértice más cercano.</p>
 <div class="admonition warning">
@@ -184,7 +183,7 @@
 <ul>
 <li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
 <li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La firma o declaración de funciones podría cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
 <li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
@@ -198,10 +197,12 @@
 </li>
 </ul>
 </div>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
@@ -210,10 +211,10 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Dado un gráfico, un vértice inicial y un conjunto de vértices finales, esta función encuentra la ruta más corta desde el vértice inicial hasta el vértice final más cercano.</p>
-<div class="section" id="characteristics">
+<section id="characteristics">
 <h3>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Utiliza el algoritmo Dijkstra.</p></li>
@@ -250,9 +251,9 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="signatures">
+</section>
+</section>
+<section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids  [, directed] [, cap])
@@ -263,7 +264,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET
 </pre></div>
 </div>
-<div class="section" id="one-to-many">
+<section id="one-to-many">
 <span id="index-0"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -285,28 +286,20 @@ OR EMPTY SET
 </ul>
 </li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-<span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
+<span class="linenos">2</span>    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="linenos">4</span><span class="p">);</span>
+<span class="linenos">5</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos">6</span><span class="o">-----------+---------+----------</span>
+<span class="linenos">7</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">8</span><span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<span class="linenos">9</span>
 </pre></div>
-</td></tr></table></div>
-<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(6\)</span> es la más cercana.</p>
 </div>
-<div class="section" id="many-to-one">
+<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(6\)</span> es la más cercana.</p>
+</section>
+<section id="many-to-one">
 <span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vids, End vid  [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -324,34 +317,23 @@ OR EMPTY SET
 <li><p>En la línea <cite>4</cite>: utilizando el parámetro posicional: <cite>directed</cite> configurado en <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
 <li><p>En la línea <cite>5</cite>: usando el parámetro con nombre <cite>cap =&gt; 2</cite></p></li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="n">true</span><span class="p">,</span>
-    <span class="n">cap</span> <span class="o">=&gt;</span> <span class="mi">2</span>
-<span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
-<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span>
+<span class="linenos"> 4</span>    <span class="n">true</span><span class="p">,</span>
+<span class="linenos"> 5</span>    <span class="n">cap</span> <span class="o">=&gt;</span> <span class="mi">2</span>
+<span class="linenos"> 6</span><span class="p">);</span>
+<span class="linenos"> 7</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos"> 8</span><span class="o">-----------+---------+----------</span>
+<span class="linenos"> 9</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">10</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">11</span><span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+<span class="linenos">12</span>
 </pre></div>
-</td></tr></table></div>
-<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(3\)</span> es la más cercana y la siguiente mejor es <span class="math notranslate nohighlight">\(6\)</span>.</p>
 </div>
-<div class="section" id="many-to-many">
+<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(3\)</span> es la más cercana y la siguiente mejor es <span class="math notranslate nohighlight">\(6\)</span>.</p>
+</section>
+<section id="many-to-many">
 <span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -375,31 +357,22 @@ OR EMPTY SET
 </ul>
 </li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-    <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span>
-<span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+<span class="linenos"> 4</span>    <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span>
+<span class="linenos"> 5</span><span class="p">);</span>
+<span class="linenos"> 6</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos"> 7</span><span class="o">-----------+---------+----------</span>
+<span class="linenos"> 8</span>         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos"> 9</span><span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<span class="linenos">10</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Para un peatón la mejor conexión es subir/bajar en el vértice <span class="math notranslate nohighlight">\(3\)</span> de la primera línea de metro y en el vértice <span class="math notranslate nohighlight">\(4\)</span> de la segunda línea de metro.</p>
 <p>Solo se devuelve <cite>una</cite> ruta porque <cite>global</cite> es <code class="docutils literal notranslate"><span class="pre">true</span></code> y <cite>cap</cite> es <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
-</div>
-<div class="section" id="combinations">
+</section>
+<section id="combinations">
 <span id="index-3"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -425,39 +398,24 @@ OR EMPTY SET
 </ul>
 </li>
 </ul>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT unnest(ARRAY[3, 6, 7]) as source, target FROM (SELECT unnest(ARRAY[4, 9]) AS target) a</span>
-    <span class="n">UNION</span>
-    <span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span> <span class="n">target</span> <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="sa">b</span><span class="s1">&#39;,</span>
-    <span class="k">global</span> <span class="o">=&gt;</span> <span class="n">false</span>
-<span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">9</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">4</span>
-<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNearCost</span><span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="s1">&#39;SELECT unnest(ARRAY[3, 6, 7]) as source, target FROM (SELECT unnest(ARRAY[4, 9]) AS target) a</span>
+<span class="linenos"> 4</span>    <span class="n">UNION</span>
+<span class="linenos"> 5</span>    <span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span> <span class="n">target</span> <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="sa">b</span><span class="s1">&#39;,</span>
+<span class="linenos"> 6</span>    <span class="k">global</span> <span class="o">=&gt;</span> <span class="n">false</span>
+<span class="linenos"> 7</span><span class="p">);</span>
+<span class="linenos"> 8</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="linenos"> 9</span><span class="o">-----------+---------+----------</span>
+<span class="linenos">10</span>         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">11</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">12</span>         <span class="mi">9</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">13</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">14</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="linenos">15</span><span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+<span class="linenos">16</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>A partir de los resultados:</p>
 <ul class="simple">
 <li><p>haciendo una conexión desde la primera línea de metro a la segunda:</p>
@@ -471,9 +429,9 @@ OR EMPTY SET
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -545,10 +503,10 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-query">
+</section>
+<section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="section" id="edges-query">
+<section id="edges-query">
 <h3>Consulta de aristas<a class="headerlink" href="#edges-query" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -609,8 +567,8 @@ OR EMPTY SET
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="combinations-query">
+</section>
+<section id="combinations-query">
 <h3>Consulta de combinaciones<a class="headerlink" href="#combinations-query" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -645,9 +603,9 @@ OR EMPTY SET
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="return-columns">
+</section>
+</section>
+<section id="return-columns">
 <h2>Columnas de Devoluciones<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve SET OF <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -677,8 +635,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
@@ -692,8 +650,8 @@ OR EMPTY SET
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -707,9 +665,9 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

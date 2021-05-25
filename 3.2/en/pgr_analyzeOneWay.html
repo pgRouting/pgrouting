@@ -3,13 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_analyzeOneWay &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_analyzeOneWay &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -40,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -159,7 +160,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_oneway.html">2.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html">2.0</a></p></li>
 </ul>
-<div class="section" id="pgr-analyzeoneway">
+<section id="pgr-analyzeoneway">
 <h1>pgr_analyzeOneWay<a class="headerlink" href="#pgr-analyzeoneway" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_analyzeOneWay</span></code> — Analyzes oneway Sstreets and identifies flipped segments.</p>
 <p>This function analyzes oneway streets in a graph and identifies any flipped segments.</p>
@@ -171,7 +172,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The analyses of one way segments is pretty simple but can be a powerful tools to identifying some the potential problems created by setting the direction of a segment the wrong way. A node is a <cite>source</cite> if it has edges the exit from that node and no edges enter that node. Conversely, a node is a <cite>sink</cite> if all edges enter the node but none exit that node. For a <cite>source</cite> type node it is logically impossible to exist because no vehicle can exit the node if no vehicle and enter the node. Likewise, if you had a <cite>sink</cite> node you would have an infinite number of vehicle piling up on this node because you can enter it but not leave it.</p>
 <p>So why do we care if the are not feasible? Well if the direction of an edge was reversed by mistake we could generate exactly these conditions. Think about a divided highway and on the north bound lane one segment got entered wrong or maybe a sequence of multiple segments got entered wrong or maybe this happened on a round-about. The result would be potentially a <cite>source</cite> and/or a <cite>sink</cite> node.</p>
@@ -182,8 +183,8 @@
 <li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to create the vertices table.</p></li>
 <li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> to create the topology and the vertices table.</p></li>
 </ul>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="nb">text</span> <span class="n">pgr_analyzeOneWay</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
                        <span class="nb">text</span><span class="p">[]</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">s_out_rules</span><span class="p">,</span>
@@ -192,8 +193,8 @@
                        <span class="nb">boolean</span> <span class="n">two_way_if_null</span><span class="o">=</span><span class="k">true</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">edge_table</dt>
@@ -268,8 +269,8 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Point geometry of the vertex.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="additional-examples">
+</section>
+<section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeOneWay</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
@@ -293,8 +294,8 @@
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a>  for an overview of a topology for routing algorithms.</p></li>
@@ -307,8 +308,8 @@
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -322,9 +323,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

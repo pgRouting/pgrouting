@@ -3,13 +3,14 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -147,21 +148,10 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_nodeNetwork.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_nodeNetwork.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_nodeNetwork.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_nodeNetwork.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html">2.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html">2.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html">2.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_nodeNetwork.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_nodeNetwork.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_nodeNetwork.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_nodeNetwork.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html">2.0</a></p></li>
 </ul>
-<div class="section" id="pgr-nodenetwork">
+<section id="pgr-nodenetwork">
 <h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> -  Crea los nodos de una tabla de bordes de la red.</p>
 <dl class="field-list simple">
@@ -185,14 +175,14 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p><strong>Las características principales son:</strong></p>
 <p>Un problema común asociado con la incorporación de datos SIG en pgRouting es el hecho de que los datos a menudo no están correctamente referenciados con nodos. Esto provoca topologías no válidas, que resultan en rutas que son incorrectas.</p>
 <p>Que los bordes estén indicados con nodos significa que, en en cada intersección de la red de caminos, los bordes se descompondrán en segmentos separados del camino. Los casos como una intersección de puente o túnel donde no existe conexión vial no son detectados por esta función.</p>
 <p>Esta función lee la tabla  <code class="docutils literal notranslate"><span class="pre">table_in</span></code>, que tiene una columna de clave principal <code class="docutils literal notranslate"><span class="pre">gid_cname</span></code> y columna de la geometría llamada <code class="docutils literal notranslate"><span class="pre">geo_cname</span></code>,  y verifica la intersección de todos los segmentos contra todos los demás segmentos creando una tabla de salida <code class="docutils literal notranslate"><span class="pre">table_out</span></code>. Usa la tolerancia <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> para decidir cuáles nodos son considerados como mismo nodo.</p>
-</div>
-<div class="section" id="parameters">
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">edge_table</dt>
@@ -232,8 +222,8 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Columna de geometría de la red discontínua</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="examples">
+</section>
+<section id="examples">
 <h2>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Vamos a crear la topología para los datos en  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">);</span>
@@ -370,8 +360,8 @@
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="images">
+</section>
+<section id="images">
 <h2>Imágenes<a class="headerlink" href="#images" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -388,8 +378,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="comparing-the-results">
+</section>
+<section id="comparing-the-results">
 <h2>Comparando los resultados<a class="headerlink" href="#comparing-the-results" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Comparando con el análisis del edge_table original,  vemos que:</p>
 <table class="docutils align-default">
@@ -548,8 +538,8 @@
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de enrutamiento.
 <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> para analizar la direccionalidad de los bordes. <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear una topología basada en la geometría. <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  para analizar los bordes y vértices de la tabla de bordes.</p>
@@ -558,8 +548,8 @@
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -573,9 +563,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

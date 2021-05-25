@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vendedor Viajante - Familia de funciones &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Vendedor Viajante - Familia de funciones &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -158,18 +159,14 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/TSP-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/TSP-family.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/TSP-family.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/TSP-family.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/TSP-family.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/TSP-family.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/TSP-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/TSP-family.html">3.0</a></p></li>
 <li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/TSP-family.html">2.6</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/TSP-family.html">2.5</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/TSP-family.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html">2.3</a></p></li>
 </ul>
-<div class="section" id="traveling-sales-person-family-of-functions">
+<section id="traveling-sales-person-family-of-functions">
 <h1>Vendedor Viajante - Familia de funciones<a class="headerlink" href="#traveling-sales-person-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> -Cuando la entrada se da como información de una celda de matriz.</p></li>
@@ -201,17 +198,17 @@
 </li>
 </ul>
 </div>
-<div class="section" id="general-information">
+<section id="general-information">
 <h2><a class="toc-backref" href="#id1">Información general</a><a class="headerlink" href="#general-information" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="section" id="problem-definition">
+<section id="problem-definition">
 <h3><a class="toc-backref" href="#id2">Definición del Problema</a><a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En el problema del vendedor viajante (TSP) se hace la siguiente pregunta:</p>
 <p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
-</div>
-<div class="section" id="origin">
+</section>
+<section id="origin">
 <h3><a class="toc-backref" href="#id3">Origen</a><a class="headerlink" href="#origin" title="Enlazar permanentemente con este título">¶</a></h3>
 <dl class="simple">
-<dt>El problema de los vendedores ambulantes fue estudiado en el siglo XVIII por matemáticos</dt><dd><p><strong>Sir William Rowam Hamilton</strong> y <strong>Thomas Penyngton  Kirkman</strong>.</p>
+<dt>El problema de los vendedores ambulantes fue estudiado en el siglo 18 por matemáticos</dt><dd><p><strong>Sir William Rowam Hamilton</strong> y <strong>Thomas Penyngton  Kirkman</strong>.</p>
 </dd>
 </dl>
 <p>Una discusión sobre el trabajo de Hamilton &amp; Kirkman se puede encontrar en el libro <strong>Graph Theory (Biggs et al. 1976)</strong>.</p>
@@ -220,8 +217,8 @@
 <li><p>ISBN-10: 0198539169</p></li>
 </ul>
 <p>Se cree que la forma general del TSP ha sido estudiada por primera vez por Kalr Menger en Viena y Harvard. El problema fue promovido más tarde por Hassler, Whitney &amp; Merrill en Princeton. Una descripción detallada sobre la conexión entre Menger &amp; Whitney, y el desarrollo del TSP se puede encontrar en  <a class="reference external" href="https://homepages.cwi.nl/~lex/files/histco.ps">On the history of combinatorial optimization (till 1960)</a></p>
-</div>
-<div class="section" id="characteristics">
+</section>
+<section id="characteristics">
 <h3><a class="toc-backref" href="#id4">Características</a><a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Los costes de viaje son simétricos:</p>
@@ -245,9 +242,9 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="simulated-annealing-algorithm">
+</section>
+</section>
+<section id="simulated-annealing-algorithm">
 <span id="simulated-annealing"></span><h2><a class="toc-backref" href="#id5">Algoritmo de Recocido Simulado</a><a class="headerlink" href="#simulated-annealing-algorithm" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El algoritmo de recocido simulado se inspiró originalmente en el proceso de recocido en el trabajo de metal.</p>
 <p>El recocido implica calentar y enfriar un material para alterar sus propiedades físicas debido a los cambios en su estructura interna. A medida que el metal se enfría, su nueva estructura se fija, haciendo que el metal conserve sus propiedades recién obtenidas.</p>
@@ -272,7 +269,7 @@ while (temperature &gt; final_temperature) {
 Output: the best solution
 </pre></div>
 </div>
-<div class="section" id="pgrouting-implementation">
+<section id="pgrouting-implementation">
 <h3><a class="toc-backref" href="#id6">Implementación de pgRouting</a><a class="headerlink" href="#pgrouting-implementation" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>La implementación de pgRouting agrega algunos parámetros adicionales para permitir algunos controles de salida dentro del proceso de recocido simulado.</p>
 <ul class="simple">
@@ -320,8 +317,8 @@ WHILE (temperature &gt; final_temperature) {
 Output: the best solution found
 </pre></div>
 </div>
-</div>
-<div class="section" id="choosing-parameters">
+</section>
+<section id="choosing-parameters">
 <h3><a class="toc-backref" href="#id7">Selección de parámetros</a><a class="headerlink" href="#choosing-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>No hay una regla exacta sobre cómo se deben elegir los parámetros, dependerá de las características especiales del problema.</p>
 <ul class="simple">
@@ -345,8 +342,8 @@ Output: the best solution found
 </li>
 </ul>
 <p>Una recomendación es jugar con los valores y ver lo que se ajusta a los datos en particular.</p>
-</div>
-<div class="section" id="description-of-the-control-parameters">
+</section>
+<section id="description-of-the-control-parameters">
 <h3><a class="toc-backref" href="#id8">Descripción de los Parámetros de Control</a><a class="headerlink" href="#description-of-the-control-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Los parámetros de control son opcionales y tienen un valor predeterminado.</p>
 <table class="docutils align-default">
@@ -421,9 +418,9 @@ Output: the best solution found
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="description-of-the-return-columns">
+</section>
+</section>
+<section id="description-of-the-return-columns">
 <h2><a class="toc-backref" href="#id9">Descripción de las columnas de devolución</a><a class="headerlink" href="#description-of-the-return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve el CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -469,7 +466,7 @@ Output: the best solution found
 </tr>
 </tbody>
 </table>
-<div class="section" id="see-also">
+<section id="see-also">
 <h3><a class="toc-backref" href="#id10">Ver también</a><a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Referencias</p>
 <ul class="simple">
@@ -481,9 +478,9 @@ Output: the best solution found
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -497,9 +494,9 @@ Output: the best solution found
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

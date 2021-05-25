@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_edmondsKarp &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_edmondsKarp &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -155,20 +156,18 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_edmondsKarp.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html">3.0</a></p></li>
-<li><p>Versiones no sustentadas:** <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html">2.3</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_edmondsKarp.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_edmondsKarp.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_edmondsKarp.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_maxFlowEdmondsKarp.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowEdmondsKarp.html">2.3</a></p></li>
 </ul>
-<div class="section" id="pgr-edmondskarp">
+<section id="pgr-edmondskarp">
 <h1>pgr_edmondsKarp<a class="headerlink" href="#pgr-edmondskarp" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_edmondsKarp</span></code> — Calcula el flujo en las aristas del grafo que maximiza el flujo de los orígenes a los destinos mediante el algoritmo de Push Relabel.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
@@ -197,7 +196,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
@@ -214,7 +213,7 @@
 <li><p>Se omiten las aristas con flujo cero.</p></li>
 </ul>
 </li>
-<li><p>Crea una <strong>súper origen</strong>, con aristas para todos los orígenes, y un <strong>súper destino</strong> con aristas para todos los destinos.</p></li>
+<li><p>Crea una <strong>súper origen</strong>, con aristas para todos los orígen(es), y un <strong>súper destino</strong> con aristas para todos los destin(os).</p></li>
 <li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por  <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
 <ul>
 <li><p>Mediante la agregación del flujo saliente de los orígenes</p></li>
@@ -225,8 +224,8 @@
 <ul class="simple">
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O( V * E ^ 2)\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edmondsKarp(Edges SQL, source,  target)
@@ -238,7 +237,7 @@ RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
 OR EMPTY SET
 </pre></div>
 </div>
-<div class="section" id="one-to-one">
+<section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edmondsKarp(Edges SQL, source,  target)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -269,8 +268,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="one-to-many">
+</section>
+<section id="one-to-many">
 <span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edmondsKarp(Edges SQL, source,  targets)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -306,8 +305,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-one">
+</section>
+<section id="many-to-one">
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edmondsKarp(Edges SQL, sources,  target)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -338,8 +337,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-many">
+</section>
+<section id="many-to-many">
 <span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edmondsKarp(Edges SQL, sources,  targets)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -376,8 +375,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="combinations">
+</section>
+<section id="combinations">
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_edmondsKarp(Edges SQL, Combinations SQL)
 RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -414,9 +413,9 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -465,8 +464,8 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-queries">
+</section>
+<section id="inner-queries">
 <h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Edges SQL</dt>
@@ -512,7 +511,7 @@ OR EMPTY SET
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>reverse_capacity</strong> (<strong>capacidad inversa</strong>)</p></td>
+<tr class="row-even"><td><p><strong>reverse_capacity</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>-1</p></td>
 <td><p>Peso de la arista <cite>(target, source)</cite>,</p>
@@ -568,8 +567,8 @@ OR EMPTY SET
 </dd>
 </dl>
 <p>La función agrega los orígenes y los destinos, quita los duplicados y, a continuación, calcula el resultado de los vértices de origen resultantes a los vértices de destino.</p>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -604,14 +603,14 @@ OR EMPTY SET
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Flujo a través del arista en la dirección  (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>residual_capacity</strong> (<strong>capacidad residual</strong>)</p></td>
+<tr class="row-odd"><td><p><strong>residual_capacity</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Capacidad residual del arista en la dirección (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, <a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
@@ -623,8 +622,8 @@ OR EMPTY SET
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -638,9 +637,9 @@ OR EMPTY SET
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

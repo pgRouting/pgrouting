@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_pickDeliverEuclidean - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_pickDeliverEuclidean - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -160,7 +161,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html">3.0</a></p></li>
 <li><p><strong>Versiones No Soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html">2.1</a></p></li>
 </ul>
-<div class="section" id="pgr-pickdelivereuclidean-experimental">
+<section id="pgr-pickdelivereuclidean-experimental">
 <h1>pgr_pickDeliverEuclidean - Experimental<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Problema de Ruteo del Vehículo de Recogida y Entrega</p>
 <div class="admonition warning">
@@ -202,7 +203,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </ul>
 </li>
 </ul>
-<div class="section" id="synopsis">
+<section id="synopsis">
 <h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Problema: Distribuya y optimice los pares de recogida-entrega en una flota de vehículos.</p>
 <ul class="simple">
@@ -235,8 +236,8 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="characteristics">
+</section>
+<section id="characteristics">
 <h2>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p>No hay varias ventanas de tiempo para una ubicación.</p></li>
@@ -249,15 +250,15 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="signature">
+</section>
+<section id="signature">
 <span id="index-0"></span><h2>Firma<a class="headerlink" href="#signature" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor, max_cycles, initial_sol])
 RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
     cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
 </pre></div>
 </div>
-<div class="section" id="parameters">
+<section id="parameters">
 <h3>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Los parámetros son:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>orders_sql, vehicles_sql [,factor, max_cycles, initial_sol]
@@ -315,8 +316,8 @@ RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pick-deliver-orders-sql">
+</section>
+<section id="pick-deliver-orders-sql">
 <h3>Pick &amp; Deliver Orders SQL (Recoger y Entregar Pedidos)<a class="headerlink" href="#pick-deliver-orders-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Una instrucción <cite>SELECT</cite> que devuelve las siguientes columnas:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id, demand
@@ -414,8 +415,8 @@ d_x, d_y, d_open, d_close, [d_service, ]
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pick-deliver-vehicles-sql">
+</section>
+<section id="pick-deliver-vehicles-sql">
 <h3>SQL de Vehículos de Recogida y Entrega<a class="headerlink" href="#pick-deliver-vehicles-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Una instrucción <cite>SELECT</cite> que devuelve las siguientes columnas:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id, capacity
@@ -524,8 +525,8 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="description-of-the-result-todo-disussion-euclidean-matrix">
+</section>
+<section id="description-of-the-result-todo-disussion-euclidean-matrix">
 <h3>Descripción del resultado (TODO Disussion: Euclidean &amp; Matrix)<a class="headerlink" href="#description-of-the-result-todo-disussion-euclidean-matrix" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RETURNS SET OF
     (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
@@ -693,9 +694,9 @@ start_x, start_y, start_open, start_close [, start_service, ]
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="example">
+</section>
+</section>
+<section id="example">
 <h2>Ejemplo<a class="headerlink" href="#example" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En este ejemplo se utilizan los siguientes datos: TODO put link</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_pickDeliverEuclidean</span><span class="p">(</span>
@@ -719,8 +720,8 @@ start_x, start_y, start_open, start_close [, start_service, ]
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Funciones de Ruteo de Vehículos - Categoría (Experimental)</span></a></p></li>
@@ -731,8 +732,8 @@ start_x, start_y, start_open, start_close [, start_service, ]
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -746,9 +747,9 @@ start_x, start_y, start_open, start_close [, start_service, ]
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

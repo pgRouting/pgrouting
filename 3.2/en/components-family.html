@@ -3,13 +3,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Components - Family of functions &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Components - Family of functions &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -40,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -160,7 +161,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/components-family.html">2.6</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/components-family.html">2.5</a></p></li>
 </ul>
-<div class="section" id="components-family-of-functions">
+<section id="components-family-of-functions">
 <h1>Components - Family of functions<a class="headerlink" href="#components-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a> - Connected components of an undirected graph.</p></li>
@@ -205,7 +206,7 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="parameters">
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -229,8 +230,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-query">
+</section>
+<section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Edges SQL</dt>
@@ -296,10 +297,10 @@
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pgr-connectedcomponents-pgr-strongcomponents">
+<section id="pgr-connectedcomponents-pgr-strongcomponents">
 <h3>pgr_connectedComponents &amp; pgr_strongComponents<a class="headerlink" href="#pgr-connectedcomponents-pgr-strongcomponents" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></p>
 <table class="docutils align-default">
@@ -329,8 +330,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pgr-biconnectedcomponents">
+</section>
+<section id="pgr-biconnectedcomponents">
 <h3>pgr_biconnectedComponents<a class="headerlink" href="#pgr-biconnectedcomponents" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">edge)</span></code></p>
 <table class="docutils align-default">
@@ -360,8 +361,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pgr-articulationpoints">
+</section>
+<section id="pgr-articulationpoints">
 <h3>pgr_articulationPoints<a class="headerlink" href="#pgr-articulationpoints" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(node)</span></code></p>
 <table class="docutils align-default">
@@ -383,8 +384,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pgr-bridges">
+</section>
+<section id="pgr-bridges">
 <h3>pgr_bridges<a class="headerlink" href="#pgr-bridges" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(edge)</span></code></p>
 <table class="docutils align-default">
@@ -406,8 +407,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="pgr-makeconnected-experimental">
+</section>
+<section id="pgr-makeconnected-experimental">
 <h3>pgr_makeConnected - Experimental<a class="headerlink" href="#pgr-makeconnected-experimental" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid)</span></code></p>
 <table class="docutils align-default">
@@ -437,17 +438,17 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -461,9 +462,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

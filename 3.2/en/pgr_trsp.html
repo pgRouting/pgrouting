@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_trsp - Turn Restriction Shortest Path (TRSP) &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_trsp - Turn Restriction Shortest Path (TRSP) &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -180,7 +181,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html">2.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html">2.0</a></p></li>
 </ul>
-<div class="section" id="pgr-trsp-turn-restriction-shortest-path-trsp">
+<section id="pgr-trsp-turn-restriction-shortest-path-trsp">
 <h1>pgr_trsp - Turn Restriction Shortest Path (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Permalink to this headline">¶</a></h1>
 <p id="index-0"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> — Returns the shortest path with support for turn restrictions.</p>
 <p class="rubric">Availability</p>
@@ -201,7 +202,7 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
@@ -314,8 +315,8 @@
 <dd class="field-even"><p>cost to traverse from <code class="docutils literal notranslate"><span class="pre">id1</span></code> using <code class="docutils literal notranslate"><span class="pre">id2</span></code></p>
 </dd>
 </dl>
-</div>
-<div class="section" id="support-for-vias">
+</section>
+<section id="support-for-vias">
 <h2>Support for Vias<a class="headerlink" href="#support-for-vias" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -400,8 +401,8 @@
 <dd class="field-odd"><p>cost to traverse from <code class="docutils literal notranslate"><span class="pre">id2</span></code> using <code class="docutils literal notranslate"><span class="pre">id3</span></code></p>
 </dd>
 </dl>
-</div>
-<div class="section" id="additional-examples">
+</section>
+<section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
@@ -528,10 +529,10 @@
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
-</div>
-<div class="section" id="known-issues">
+</section>
+<section id="known-issues">
 <h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="introduction">
+<section id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
 <p>pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to <strong>hide</strong> the issues, not to fix them.</p>
 <p>For clarity on the queries:</p>
@@ -547,8 +548,8 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="the-restrictions">
+</section>
+<section id="the-restrictions">
 <h3>The restrictions<a class="headerlink" href="#the-restrictions" title="Permalink to this headline">¶</a></h3>
 <p>The restriction used in the examples does not have to do anything with the graph:</p>
 <ul class="simple">
@@ -574,14 +575,14 @@
 </pre></div>
 </div>
 <p>therefore the shortest path expected are as if there was no restriction involved</p>
-</div>
-<div class="section" id="the-vertices-signature-version">
+</section>
+<section id="the-vertices-signature-version">
 <h3>The “Vertices” signature version<a class="headerlink" href="#the-vertices-signature-version" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
          <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span> <span class="p">[,</span><span class="n">restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
-<div class="section" id="different-ways-to-represent-no-path-found">
+<section id="different-ways-to-represent-no-path-found">
 <h4>Different ways to represent ‘no path found`<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
@@ -621,8 +622,8 @@ ERROR:  Error computing path: Path Not Found
 </div>
 <p>pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
 which will throw an EXCEPTION to represent no path found.</p>
-</div>
-<div class="section" id="routing-from-to-same-location">
+</section>
+<section id="routing-from-to-same-location">
 <h4>Routing from/to same location<a class="headerlink" href="#routing-from-to-same-location" title="Permalink to this headline">¶</a></h4>
 <p>When routing from location <span class="math notranslate nohighlight">\(1\)</span> to the same location <span class="math notranslate nohighlight">\(1\)</span>, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
@@ -679,8 +680,8 @@ in this case that code throws the expected EXCEPTION</p>
 </div>
 <p>In this case <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> calls the original code when there are restrictions, even if they have nothing to do with the graph,
 in this case that code finds an unexpected path.</p>
-</div>
-<div class="section" id="user-contradictions">
+</section>
+<section id="user-contradictions">
 <h4>User contradictions<a class="headerlink" href="#user-contradictions" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
@@ -716,16 +717,16 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and will cost execution time</p>
-</div>
-</div>
-<div class="section" id="the-edges-signature-version">
+</section>
+</section>
+<section id="the-edges-signature-version">
 <h3>The “Edges” signature version<a class="headerlink" href="#the-edges-signature-version" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">source_edge</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">source_pos</span> <span class="n">float8</span><span class="p">,</span>
          <span class="n">target_edge</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target_pos</span> <span class="n">float8</span><span class="p">,</span>
          <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span> <span class="p">[,</span><span class="n">restrict_sql</span> <span class="nb">text</span><span class="p">]);</span>
 </pre></div>
 </div>
-<div class="section" id="id1">
+<section id="id1">
 <h4>Different ways to represent ‘no path found`<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
@@ -755,8 +756,8 @@ ERROR:  Error computing path: Path Not Found
 </div>
 <p>pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
 which will throw an EXCEPTION to represent no path found.</p>
-</div>
-<div class="section" id="paths-with-equal-number-of-vertices-and-edges">
+</section>
+<section id="paths-with-equal-number-of-vertices-and-edges">
 <h4>Paths with equal number of vertices and edges<a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Permalink to this headline">¶</a></h4>
 <p>A path is made of <cite>N</cite> vertices and <cite>N - 1</cite> edges.</p>
 <ul class="simple">
@@ -794,8 +795,8 @@ on the edge column to indicate the edge number is invalidu for that row.</p>
 </div>
 <p>pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
 and will not return the last vertex of the path.</p>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h4>Routing from/to same location<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>When routing from the same edge and position to the same edge and position, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
@@ -830,8 +831,8 @@ from the second <span class="math notranslate nohighlight">\((edge, position)\)<
 </div>
 <p>pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
 and will not have the row for the vertex <span class="math notranslate nohighlight">\(-2\)</span>.</p>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h4>User contradictions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
@@ -864,8 +865,8 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and will cost execution time</p>
-</div>
-<div class="section" id="using-a-points-of-interest-table">
+</section>
+<section id="using-a-points-of-interest-table">
 <h4>Using a points of interest table<a class="headerlink" href="#using-a-points-of-interest-table" title="Permalink to this headline">¶</a></h4>
 <p>Given a set of points of interest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
@@ -933,8 +934,8 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
 <li><p>Results are more complete</p></li>
 <li><p>Column names are meaningful</p></li>
 </ul>
-</div>
-<div class="section" id="routing-from-a-vertex-to-a-point">
+</section>
+<section id="routing-from-a-vertex-to-a-point">
 <h4>Routing from a vertex to a point<a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Permalink to this headline">¶</a></h4>
 <p>Solving a shortest path from vertex <span class="math notranslate nohighlight">\(6\)</span> to pid 1 using a points of interest table</p>
 <p class="rubric">Using pgr_trsp</p>
@@ -1000,9 +1001,9 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
 <li><p>Results are more complete</p></li>
 <li><p>Column names are meaningful</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="prototypes">
+</section>
+</section>
+<section id="prototypes">
 <h3>prototypes<a class="headerlink" href="#prototypes" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> were added to pgRouting as prototypes</p>
 <p>These functions use the pgr_trsp functions inheriting all the problems mentioned above.
@@ -1010,17 +1011,17 @@ When there are no restrictions and have a routing “via” problem with vertice
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -1034,9 +1035,9 @@ When there are no restrictions and have a routing “via” problem with vertice
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

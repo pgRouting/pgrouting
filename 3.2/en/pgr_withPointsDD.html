@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_withPointsDD - Proposed &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_withPointsDD - Proposed &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -164,7 +165,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html">2.2</a></p></li>
 </ul>
-<div class="section" id="pgr-withpointsdd-proposed">
+<section id="pgr-withpointsdd-proposed">
 <h1>pgr_withPointsDD - Proposed<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Returns the driving distance from a starting point.</p>
 <div class="admonition warning">
@@ -184,10 +185,12 @@
 </li>
 </ul>
 </div>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li><p>Version 2.2.0</p>
@@ -196,14 +199,14 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Modify the graph to include points and
 using Dijkstra algorithm, extracts all the nodes and points that have costs less
 than or equal to the value <code class="docutils literal notranslate"><span class="pre">distance</span></code> from the starting point.
 The edges extracted will conform the corresponding spanning tree.</p>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
@@ -251,7 +254,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 </pre></div>
 </div>
-<div class="section" id="single-vertex">
+<section id="single-vertex">
 <span id="index-0"></span><h3>Single vertex<a class="headerlink" href="#single-vertex" title="Permalink to this headline">¶</a></h3>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, from_vid,  distance [, directed] [, driving_side] [, details])
@@ -283,17 +286,17 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="multiple-vertices">
+</section>
+<section id="multiple-vertices">
 <span id="index-1"></span><h3>Multiple vertices<a class="headerlink" href="#multiple-vertices" title="Permalink to this headline">¶</a></h3>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -351,8 +354,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-query">
+</section>
+<section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -470,8 +473,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 <dd class="field-even"><p>smallint, int, bigint, real, float</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="result-columns">
+</section>
+<section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -526,8 +529,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="additional-examples">
+</section>
+<section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Examples for queries marked as <code class="docutils literal notranslate"><span class="pre">directed</span></code> with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns.</p>
 <p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Network for queries marked as directed and cost and reverse_cost columns are used</span></a></p>
@@ -594,8 +597,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving distance using dijkstra.</p></li>
@@ -606,8 +609,8 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -621,9 +624,9 @@ Default is <code class="docutils literal notranslate"><span class="pre">false</s
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

@@ -3,13 +3,14 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Instalación &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Instalación &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -152,21 +153,10 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-installation.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-installation.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-installation.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-installation.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-installation.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-installation.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-installation.html">2.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html">2.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html">2.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-installation.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-installation.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-installation.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-installation.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-installation.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-installation.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-installation.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html">2.0</a></p></li>
 </ul>
-<div class="section" id="installation">
+<section id="installation">
 <h1>Instalación<a class="headerlink" href="#installation" title="Enlazar permanentemente con este título">¶</a></h1>
 <p class="rubric">Contenido</p>
 <ul class="simple">
@@ -180,7 +170,7 @@
 </ul>
 <p>Las instrucciones para descargar e instalar archivos binarios para diferentes instrucciones de sistemas operativos y notas y correcciones adicionales no incluidas en esta documentación se pueden encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Wiki de Instalación</a></p>
 <p>Para utilizar pgRouting postGIS necesita ser instalado, por favor lea la información sobre la instalación en esta  <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
-<div class="section" id="short-version">
+<section id="short-version">
 <span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Extraer la bola de alquitrán</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvfz pgrouting-3.2.0.tar.gz
@@ -201,8 +191,8 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION PostGIS&#39;</span>
 psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="get-the-sources">
+</section>
+<section id="get-the-sources">
 <span id="install-get-sources"></span><h2>Obtener las fuentes<a class="headerlink" href="#get-the-sources" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>La última versión de pgRouting se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
 <p class="rubric">Wget</p>
@@ -219,8 +209,8 @@ git checkout v3.2.0
 </pre></div>
 </div>
 <p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> a las instrucciones de compilación (no hay bola de alquitrán).</p>
-</div>
-<div class="section" id="enabling-and-upgrading-in-the-database">
+</section>
+<section id="enabling-and-upgrading-in-the-database">
 <span id="install-enable-db"></span><h2>Habilitación y actualización en la base de datos<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Habilitación de la base de datos</p>
 <p>pgRouting es una extensión y depende de postGIS. Habilitar de postGIS antes de habilitar pgRouting en la base de datos</p>
@@ -234,17 +224,15 @@ git checkout v3.2.0
 </pre></div>
 </div>
 <p>Puede hallar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
-</div>
-<div class="section" id="dependencies">
+</section>
+<section id="dependencies">
 <span id="install-dependencies"></span><h2>Dependencias<a class="headerlink" href="#dependencies" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Dependencias de Compilación</p>
 <p>Para poder compilar pgRouting, asegúrese de que se cumplen las siguientes dependencias:</p>
 <ul class="simple">
-<li><p>C and C++0x compilers
-* Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support
-* Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support</p></li>
-<li><p>Postgresql version = Supported versions by PostgreSQL</p></li>
-<li><p>The Boost Graph Library (BGL). Version &gt;= 1.56</p></li>
+<li><p>Compiladores C and C++0x * Compilando con Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support</p></li>
+<li><p>Versión postgresql = Versiones compatibles por PostgreSQL</p></li>
+<li><p>La Biblioteca de Gráficos Boost (BGL). Versión &gt;= 1.56</p></li>
 <li><p>CMake &gt;= 3.2</p></li>
 </ul>
 <p class="rubric">dependencias opcionales</p>
@@ -291,8 +279,8 @@ git checkout v3.2.0
     postgresql-10-pgtap
 </pre></div>
 </div>
-</div>
-<div class="section" id="configuring">
+</section>
+<section id="configuring">
 <span id="install-configuring"></span><h2>Configuración<a class="headerlink" href="#configuring" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>pgRouting utiliza el sistema “cmake” para realizar la configuración.</p>
 <p>El directorio de compilación es diferente del directorio de origen</p>
@@ -300,7 +288,7 @@ git checkout v3.2.0
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir build
 </pre></div>
 </div>
-<div class="section" id="configurable-variables">
+<section id="configurable-variables">
 <h3>Variables configurables<a class="headerlink" href="#configurable-variables" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Para ver las variables que se pueden configurar</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> build
@@ -356,9 +344,9 @@ $ cmake -L ..
 <p class="admonition-title">Nota</p>
 <p>La mayor parte del esfuerzo de la documentación ha estado en los archivos html.</p>
 </div>
-</div>
-</div>
-<div class="section" id="building">
+</section>
+</section>
+<section id="building">
 <span id="install-build"></span><h2>Compilando<a class="headerlink" href="#building" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Uso de <code class="docutils literal notranslate"><span class="pre">make</span></code> para compilar el código y la documentación</p>
 <p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/build</em></p>
@@ -394,8 +382,8 @@ sudo make install
 </pre></div>
 </div>
 <p>e iniciar el proceso de compilación como se mencionó anteriormente.</p>
-</div>
-<div class="section" id="testing">
+</section>
+<section id="testing">
 <span id="install-testing"></span><h2>Pruebas<a class="headerlink" href="#testing" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Actualmente no hay  <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> y las pruebas se realizan de la siguiente manera</p>
 <p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/</em></p>
@@ -405,16 +393,16 @@ sh ./tools/testers/pg_prove_tests.sh &lt;user&gt;
 dropdb  -U &lt;user&gt; ___pgr___test___
 </pre></div>
 </div>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -428,9 +416,9 @@ dropdb  -U &lt;user&gt; ___pgr___test___
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

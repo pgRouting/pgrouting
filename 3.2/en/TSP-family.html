@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Traveling Sales Person - Family of functions &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Traveling Sales Person - Family of functions &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -168,7 +169,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.4/en/TSP-family.html">2.4</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html">2.3</a></p></li>
 </ul>
-<div class="section" id="traveling-sales-person-family-of-functions">
+<section id="traveling-sales-person-family-of-functions">
 <h1>Traveling Sales Person - Family of functions<a class="headerlink" href="#traveling-sales-person-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> - When input is given as matrix cell information.</p></li>
@@ -200,16 +201,16 @@
 </li>
 </ul>
 </div>
-<div class="section" id="general-information">
+<section id="general-information">
 <h2><a class="toc-backref" href="#id1">General Information</a><a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="problem-definition">
+<section id="problem-definition">
 <h3><a class="toc-backref" href="#id2">Problem Definition</a><a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
 <p>The travelling salesman problem (TSP) or travelling salesperson problem asks the
 following question:</p>
 <p><em>Given a list of cities and the distances between each pair of cities, which is
 the shortest possible route that visits each city exactly once and returns to the origin city?</em></p>
-</div>
-<div class="section" id="origin">
+</section>
+<section id="origin">
 <h3><a class="toc-backref" href="#id3">Origin</a><a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt>The traveling sales person problem was studied in the 18th century by mathematicians</dt><dd><p><strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Penyngton  Kirkman</strong>.</p>
@@ -225,8 +226,8 @@ can be found in the book <strong>Graph Theory (Biggs et  al. 1976)</strong>.</p>
 The problem was later promoted by Hassler, Whitney &amp; Merrill at Princeton.
 A detailed description about the connection between Menger &amp; Whitney, and the development of the
 TSP can be found in <a class="reference external" href="https://homepages.cwi.nl/~lex/files/histco.ps">On the history of combinatorial optimization (till 1960)</a></p>
-</div>
-<div class="section" id="characteristics">
+</section>
+<section id="characteristics">
 <h3><a class="toc-backref" href="#id4">Characteristics</a><a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The travel costs are symmetric:</p>
@@ -250,9 +251,9 @@ TSP can be found in <a class="reference external" href="https://homepages.cwi.nl
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="simulated-annealing-algorithm">
+</section>
+</section>
+<section id="simulated-annealing-algorithm">
 <span id="simulated-annealing"></span><h2><a class="toc-backref" href="#id5">Simulated Annealing Algorithm</a><a class="headerlink" href="#simulated-annealing-algorithm" title="Permalink to this headline">¶</a></h2>
 <p>The simulated annealing algorithm was originally inspired from the process of
 annealing in metal work.</p>
@@ -283,7 +284,7 @@ while (temperature &gt; final_temperature) {
 Output: the best solution
 </pre></div>
 </div>
-<div class="section" id="pgrouting-implementation">
+<section id="pgrouting-implementation">
 <h3><a class="toc-backref" href="#id6">pgRouting Implementation</a><a class="headerlink" href="#pgrouting-implementation" title="Permalink to this headline">¶</a></h3>
 <p>pgRouting’s implementation adds some extra parameters to allow some exit controls within the
 simulated annealing process.</p>
@@ -332,8 +333,8 @@ WHILE (temperature &gt; final_temperature) {
 Output: the best solution found
 </pre></div>
 </div>
-</div>
-<div class="section" id="choosing-parameters">
+</section>
+<section id="choosing-parameters">
 <h3><a class="toc-backref" href="#id7">Choosing parameters</a><a class="headerlink" href="#choosing-parameters" title="Permalink to this headline">¶</a></h3>
 <p>There is no exact rule on how the parameters have to be chose, it will depend on the
 special characteristics of the problem.</p>
@@ -359,8 +360,8 @@ and set to a higher number for a slower decrease.</p></li>
 </li>
 </ul>
 <p>A recommendation is to play with the values and see what fits to the particular data.</p>
-</div>
-<div class="section" id="description-of-the-control-parameters">
+</section>
+<section id="description-of-the-control-parameters">
 <h3><a class="toc-backref" href="#id8">Description of the Control Parameters</a><a class="headerlink" href="#description-of-the-control-parameters" title="Permalink to this headline">¶</a></h3>
 <p>The control parameters are optional, and have a default value.</p>
 <table class="docutils align-default">
@@ -435,9 +436,9 @@ and set to a higher number for a slower decrease.</p></li>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="description-of-the-return-columns">
+</section>
+</section>
+<section id="description-of-the-return-columns">
 <h2><a class="toc-backref" href="#id9">Description of the return columns</a><a class="headerlink" href="#description-of-the-return-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -483,7 +484,7 @@ and set to a higher number for a slower decrease.</p></li>
 </tr>
 </tbody>
 </table>
-<div class="section" id="see-also">
+<section id="see-also">
 <h3><a class="toc-backref" href="#id10">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">References</p>
 <ul class="simple">
@@ -495,9 +496,9 @@ and set to a higher number for a slower decrease.</p></li>
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -511,9 +512,9 @@ and set to a higher number for a slower decrease.</p></li>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

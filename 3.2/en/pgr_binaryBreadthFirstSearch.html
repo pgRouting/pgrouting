@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pgr_binaryBreadthFirstSearch - Experimental &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_binaryBreadthFirstSearch - Experimental &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -166,14 +167,16 @@
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_binaryBreadthFirstSearch.html">Latest</a>
 (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html">3.2</a>)</p></li>
 </ul>
-<div class="section" id="pgr-binarybreadthfirstsearch-experimental">
+<section id="pgr-binarybreadthfirstsearch-experimental">
 <h1>pgr_binaryBreadthFirstSearch - Experimental<a class="headerlink" href="#pgr-binarybreadthfirstsearch-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_binaryBreadthFirstSearch</span></code> — Returns the shortest path(s) in a binary graph.
 Any graph whose edge-weights belongs to the set {0,X}, where ‘X’ is any non-negative real integer, is termed as a ‘binary graph’.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
-<p class="caption"><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
@@ -221,7 +224,7 @@ Any graph whose edge-weights belongs to the set {0,X}, where ‘X’ is any non-
 </ul>
 </li>
 </ul>
-<div class="section" id="description">
+<section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in <span class="math notranslate nohighlight">\(O(|E|)\)</span> in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight 1. If not all edges in graph have the same weight, that we need a more general algorithm, like Dijkstra’s Algorithm  which runs in <span class="math notranslate nohighlight">\(O(|E|log|V|)\)</span> time.</p>
 <p>However if the weights are more constrained, we can use a faster algorithm. This algorithm, termed as ‘Binary Breadth First Search’ as well as ‘0-1 BFS’, is a variation of the standard Breadth First Search problem to solve the SSSP (single-source shortest path) problem in <span class="math notranslate nohighlight">\(O(|E|)\)</span>, if the weights of each edge belongs to the set {0,X}, where ‘X’ is any non-negative real integer.</p>
@@ -239,8 +242,8 @@ Any graph whose edge-weights belongs to the set {0,X}, where ‘X’ is any non-
 <li><p>Running time: <span class="math notranslate nohighlight">\(O(| start\_vids | * |E|)\)</span></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="signatures">
+</section>
+<section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_binaryBreadthFirstSearch(Edges SQL, start_vid,  end_vid  [, directed])
 pgr_binaryBreadthFirstSearch(Edges SQL, start_vid,  end_vids [, directed])
@@ -276,7 +279,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 </pre></div>
 </div>
-<div class="section" id="one-to-one">
+<section id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vid [, directed]);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -301,8 +304,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="one-to-many">
+</section>
+<section id="one-to-many">
 <span id="index-1"></span><h3>One to many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vids [, directed]);
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
@@ -331,8 +334,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-one">
+</section>
+<section id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vid [, directed]);
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
@@ -363,8 +366,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="many-to-many">
+</section>
+<section id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vids [, directed]);
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
@@ -399,8 +402,8 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="combinations">
+</section>
+<section id="combinations">
 <span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_binaryBreadthFirstSearch(Edges SQL, Combinations SQL [, directed]);
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
@@ -428,9 +431,9 @@ OR EMPTY SET
 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -488,10 +491,10 @@ OR EMPTY SET
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="inner-queries">
+</section>
+<section id="inner-queries">
 <h2>Inner queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="edges-query">
+<section id="edges-query">
 <h3>Edges query<a class="headerlink" href="#edges-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -552,8 +555,8 @@ OR EMPTY SET
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="combinations-query">
+</section>
+<section id="combinations-query">
 <h3>Combinations query<a class="headerlink" href="#combinations-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
@@ -588,9 +591,9 @@ OR EMPTY SET
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="return-columns">
+</section>
+</section>
+<section id="return-columns">
 <h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
@@ -656,8 +659,8 @@ Returned when multiple ending vertices are in the query.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="example-data">
+</section>
+<section id="example-data">
 <h2>Example Data<a class="headerlink" href="#example-data" title="Permalink to this headline">¶</a></h2>
 <p>This type of data is used on the examples of this page.</p>
 <p>Edwards-Moore Algorithm is best applied when trying to answer queries such as the following:
@@ -676,7 +679,7 @@ construction work/maintenance.</p>
 <p>Then, upon running the algorithm, we obtain the path with the minimum number of road works
 from the given source and destination.</p>
 <p>Thus, the queries used in the previous section can be interpreted in this manner.</p>
-<div class="section" id="table-data">
+<section id="table-data">
 <h3>Table Data<a class="headerlink" href="#table-data" title="Permalink to this headline">¶</a></h3>
 <p>The queries in the previous sections use the table ‘roadworks’.
 The data of the table:</p>
@@ -714,9 +717,9 @@ The data of the table:</p>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">18</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="see-also">
+</section>
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cp-algorithms.com/graph/01_bfs.html">https://cp-algorithms.com/graph/01_bfs.html</a></p></li>
@@ -727,8 +730,8 @@ The data of the table:</p>
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -742,9 +745,9 @@ The data of the table:</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

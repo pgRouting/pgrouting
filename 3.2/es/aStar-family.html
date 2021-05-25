@@ -3,18 +3,19 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>aStar - Familia de Funciones &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>aStar - Familia de Funciones &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -42,7 +43,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -149,17 +150,10 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/aStar-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/aStar-family.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/aStar-family.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/aStar-family.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/aStar-family.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/aStar-family.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/aStar-family.html">2.4</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/aStar-family.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/aStar-family.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/aStar-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/aStar-family.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/aStar-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/aStar-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/aStar-family.html">2.4</a></p></li>
 </ul>
-<div class="section" id="astar-family-of-functions">
+<section id="astar-family-of-functions">
 <h1>aStar - Familia de Funciones<a class="headerlink" href="#astar-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>El algoritmo A * (pronunciado «A estrella») se basa en el algoritmo de Dijkstra con una heurística que permite resolver problemas de ruta más cortos evaluando sólo un subconjunto de la gráfica.</p>
 <ul class="simple">
@@ -169,7 +163,7 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="general-information">
+<section id="general-information">
 <h2>Información general<a class="headerlink" href="#general-information" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Las características principales son:</p>
 <ul class="simple">
@@ -210,11 +204,11 @@
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="advanced-documentation">
+</section>
+<section id="advanced-documentation">
 <h2>Documentación avanzada<a class="headerlink" href="#advanced-documentation" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El algoritmo A * (pronunciado «A estrella») se basa en el algoritmo de Dijkstra con un heurística, que es una estimación de los costos desde el vértice al objetivo, esto permite resolver problemas de ruta más cortos evaluando sólo un subconjunto de la gráfica original. Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p>
-<div class="section" id="heuristic">
+<section id="heuristic">
 <span id="astar-heuristics"></span><h3>Heurística<a class="headerlink" href="#heuristic" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Actualmente las funciones heurísticas disponibles son:</p>
 <ul class="simple">
@@ -226,9 +220,9 @@
 <li><p>5: <span class="math notranslate nohighlight">\(h(v) = abs(\Delta x) + abs(\Delta y)\)</span></p></li>
 </ul>
 <p>Donde <span class="math notranslate nohighlight">\(\Delta x = x_1 - x_0\)</span> y <span class="math notranslate nohighlight">\(\Delta y = y_1 - y_0\)</span></p>
-</div>
-</div>
-<div class="section" id="factor">
+</section>
+</section>
+<section id="factor">
 <span id="astar-factor"></span><h2>Factor<a class="headerlink" href="#factor" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Análisis 1</p>
 <p>Trabajando con cost/reverse_cost como longitud en grados, x / y en lat/lon: Factor = 1 (sin necesidad de cambiar unidades)</p>
@@ -282,8 +276,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a></p></li>
@@ -297,8 +291,8 @@
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -312,9 +306,9 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Actualizado por última vez en mar. 19, 2021.<br/>
-      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Actualizado por última vez en may. 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>

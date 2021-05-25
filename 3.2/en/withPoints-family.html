@@ -3,17 +3,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>withPoints - Family of functions &#8212; pgRouting Manual (3.2-dev)</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>withPoints - Family of functions &#8212; pgRouting Manual (3.2)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -159,7 +160,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/withPoints.html">2.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/withPoints.html">2.2</a></p></li>
 </ul>
-<div class="section" id="withpoints-family-of-functions">
+<section id="withpoints-family-of-functions">
 <h1>withPoints - Family of functions<a class="headerlink" href="#withpoints-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <p>When points are also given as input:</p>
 <div class="admonition warning">
@@ -188,7 +189,7 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="images">
+<section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
 <p>The squared vertices are the temporary vertices, The temporary vertices are added according to the
 driving side, The following images visually show the differences on how depending on the driving side the data is interpreted.</p>
@@ -198,8 +199,8 @@ driving side, The following images visually show the differences on how dependin
 <a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 442.0px; height: 421.5px;" /></a>
 <p class="rubric">doesn’t matter the driving side</p>
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 453.5px; height: 432.0px;" /></a>
-</div>
-<div class="section" id="introduction">
+</section>
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>This family of functions was thought for routing vehicles, but might as well work
 for some other application that we can not think of.</p>
@@ -259,8 +260,8 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </li>
 </ul>
 <p>The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
-</div>
-<div class="section" id="graph-edges">
+</section>
+<section id="graph-edges">
 <h2>Graph &amp; edges<a class="headerlink" href="#graph-edges" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Let <span class="math notranslate nohighlight">\(G_d(V,E)\)</span> where <span class="math notranslate nohighlight">\(V\)</span> is the set of vertices and <span class="math notranslate nohighlight">\(E\)</span> is the set of edges be the original directed graph.</p>
@@ -274,8 +275,8 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="point-definition">
+</section>
+<section id="point-definition">
 <h2>Point Definition<a class="headerlink" href="#point-definition" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>A point is defined by the quadruplet: <span class="math notranslate nohighlight">\((pid, eid, fraction, side)\)</span></p>
@@ -287,8 +288,8 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="creating-temporary-vertices-in-the-graph">
+</section>
+<section id="creating-temporary-vertices-in-the-graph">
 <h2>Creating Temporary Vertices in the Graph<a class="headerlink" href="#creating-temporary-vertices-in-the-graph" title="Permalink to this headline">¶</a></h2>
 <p>For edge (15,  9,12  10, 20), &amp; lets insert point (2, 12, 0.3, r)</p>
 <p class="rubric">On a right hand side driving network</p>
@@ -337,16 +338,16 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="see-also">
+</section>
+<section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>
@@ -360,9 +361,9 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0-dev.<br/>
-      Last updated on Mar 19, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
+      Last updated on May 25, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
     </p>
   </div>
 </footer>
