@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Familias de Funciones &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Todos los Pares - Familia de Funciones" href="allpairs-family.html" />
+    <link rel="prev" title="pgr_full_version" href="pgr_full_version.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Familias de Funciones</a><ul>
+<li><a class="reference internal" href="#functions-by-categories">Funciones por categorías</a><ul>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_full_version.html" title="Previous Chapter: pgr_full_version"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_full_version</span>
+    </a>
+  </li>
+  <li>
+    <a href="allpairs-family.html" title="Next Chapter: Todos los Pares - Familia de Funciones"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Todos los Par... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/routingFunctions.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/routingFunctions.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/routingFunctions.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/routingFunctions.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/routingFunctions.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/routingFunctions.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/routingFunctions.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/routingFunctions.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/routingFunctions.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/index.html">2.0</a></p></li>
+</ul>
+<section id="function-families">
+<h1>Familias de Funciones<a class="headerlink" href="#function-families" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><a class="reference internal" href="allpairs-family.html"><span class="doc">Todos los Pares - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Algoritmo de Floyd-Warshall</p></li>
+<li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Algoritmo de Johnson</p></li>
+</ul>
+<p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* Algoritmo para la ruta más corta.</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - Obtenga el costo agregado de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a> - Obtenga la matriz de costos de las rutas más cortas.</p></li>
+</ul>
+<p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> -  Algoritmo bidireccional A* para obtener rutas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - Algoritmo bidireccional A* para calcular el coste de las rutas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a>  Algoritmo bidireccional A* para calcular una matriz de coste de rutas.</p></li>
+</ul>
+<p><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">Bidirectional Dijkstra - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - Algoritmo Dijkstra bidireccional para las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - Dijkstra bidireccional para calcular el costo de las rutas más cortas</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - Algoritmo Dijkstra bidireccional para crear una matriz de costos de las rutas más cortas.</p></li>
+</ul>
+<p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a>  - Componentes conectados de un grafo no dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> -  Componentes fuertemente conectados de un grafo dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> -  Componentes biconectados de un grafo no dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - Puntos de articulación de un grafo no dirigido.</p></li>
+<li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - Puentes de un grafo no dirigido.</p></li>
+</ul>
+<p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Algoritmo de Dijkstra para las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - Obtenga el costo agrgado de las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - Use pgr_dijkstra para crear una matriz de costos.</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra para calcular información de captación.</p></li>
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use el algoritmo Yen con pgr_dijkstra para obtener las rutas más cortas K.</p></li>
+</ul>
+<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmos Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmo de Edmonds y Karp  algorithm con detalles de flujo con detalles del flujo en aristas.</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmos Push y Relabel con detalles del flujo en aristas.</p></li>
+<li><p>Aplicaciones</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calcula rutas de separación de aristas entre dos grupos de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calcula una cardinalidad máxima coincidiendo dentro de un grafo.</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> -  para crear una topología basada en la geometría.</p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - para reconstruir la tabla de vértices en base a la información de origen y destino.</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> - para analizar los bordes y vértices de la tabla de bordes.</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - para analizar la direccionalidad de los bordes.</p></li>
+<li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> - para crear nodos en una tabla delimitada sin nodos</p></li>
+</ul>
+<p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> -Cuando la entrada se da como información de una celda de matriz.</p></li>
+<li><p><a class="reference internal" href="pgr_TSPeuclidean.html"><span class="doc">pgr_TSPeuclidean</span></a> - Cuando lo que entra son coordenadas.</p></li>
+</ul>
+<p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Camino más corto con giros restringidos (TRSP)</span></a> - Restricción de Giro Ruta Más Corta (Turn Restriction Shortest Path: TRSP)</p>
+<section id="functions-by-categories">
+<h2>Funciones por categorías<a class="headerlink" href="#functions-by-categories" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Distancia Manejando - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Driving Distance basada en el algoritmo de Dijkstra.</p></li>
+<li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Driving Distance basada en el algoritmo de Prim</p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Driving Distance basada en el algoritmo de Kruskal</p></li>
+<li><p>Post poce</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Cálculo de la forma Alpha</p></li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="KSP-category.html"><span class="doc">Rutas más cortas K - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> -  Algoritmo de Yen basado en pgr_dijkstra</p></li>
+</ul>
+<p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<section id="see-also">
+<h3>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h3>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Actualizado por última vez en may. 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

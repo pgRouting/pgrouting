@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>aStar - Family of functions &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_aStar" href="pgr_aStar.html" />
+    <link rel="prev" title="pgr_johnson" href="pgr_johnson.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">aStar - Family of functions</a><ul>
+<li><a class="reference internal" href="#general-information">General Information</a></li>
+<li><a class="reference internal" href="#advanced-documentation">Advanced documentation</a><ul>
+<li><a class="reference internal" href="#heuristic">Heuristic</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#factor">Factor</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_johnson.html" title="Previous Chapter: pgr_johnson"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_johnson</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_aStar.html" title="Next Chapter: pgr_aStar"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_aStar &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/aStar-family.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/aStar-family.html">3.2</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/aStar-family.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/aStar-family.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/aStar-family.html">2.6</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/aStar-family.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/aStar-family.html">2.4</a></p></li>
+</ul>
+<section id="astar-family-of-functions">
+<h1>aStar - Family of functions<a class="headerlink" href="#astar-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<p>The A* (pronounced “A Star”) algorithm is based on Dijkstra’s algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* algorithm for the shortest path.</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - Get the aggregate cost of the shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a> - Get the cost matrix of the shortest paths.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<p>The main Characteristics are:</p>
+<ul class="simple">
+<li><p>Default kind of graph is <strong>directed</strong>  when</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is missing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code> flag is set to true</p></li>
+</ul>
+</li>
+<li><p>Unless specified otherwise, ordering is:</p>
+<ul>
+<li><p>first by <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (if exists)</p></li>
+<li><p>then by <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
+</ul>
+</li>
+<li><p>Values are returned when there is a path</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(u\)</span> be nodes on the graph:</p>
+<ul>
+<li><p>If there is no path from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span>:</p>
+<ul>
+<li><p>no corresponding row is returned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span> is <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+</ul>
+</li>
+<li><p>There is no path when <span class="math notranslate nohighlight">\(v = u\)</span> therefore</p>
+<ul>
+<li><p>no corresponding row is returned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <cite>v</cite> to <cite>u</cite> is <span class="math notranslate nohighlight">\(0\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Edges with negative costs are not included in the graph.</p></li>
+<li><p>When (x,y) coordinates for the same vertex identifier differ:</p>
+<ul>
+<li><p>A random selection of the vertex’s (x,y) coordinates is used.</p></li>
+</ul>
+</li>
+<li><p>Running time: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
+</ul>
+</section>
+<section id="advanced-documentation">
+<h2>Advanced documentation<a class="headerlink" href="#advanced-documentation" title="Permalink to this headline">¶</a></h2>
+<p>The A* (pronounced “A Star”) algorithm is based on Dijkstra’s algorithm with a heuristic, that is an estimation of the remaining cost from the vertex to the goal,
+that allows to solve most shortest path problems by evaluation only a sub-set of the overall graph.
+Running time: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p>
+<section id="heuristic">
+<span id="astar-heuristics"></span><h3>Heuristic<a class="headerlink" href="#heuristic" title="Permalink to this headline">¶</a></h3>
+<p>Currently the heuristic functions available are:</p>
+<ul class="simple">
+<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Use this value to compare with pgr_dijkstra)</p></li>
+<li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
+<li><p>2: <span class="math notranslate nohighlight">\(h(v) = abs(min(\Delta x, \Delta y))\)</span></p></li>
+<li><p>3: <span class="math notranslate nohighlight">\(h(v) = \Delta x * \Delta x + \Delta y * \Delta y\)</span></p></li>
+<li><p>4: <span class="math notranslate nohighlight">\(h(v) = sqrt(\Delta x * \Delta x + \Delta y * \Delta y)\)</span></p></li>
+<li><p>5: <span class="math notranslate nohighlight">\(h(v) = abs(\Delta x) + abs(\Delta y)\)</span></p></li>
+</ul>
+<p>where <span class="math notranslate nohighlight">\(\Delta x = x_1 - x_0\)</span> and <span class="math notranslate nohighlight">\(\Delta y = y_1 - y_0\)</span></p>
+</section>
+</section>
+<section id="factor">
+<span id="astar-factor"></span><h2>Factor<a class="headerlink" href="#factor" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Analysis 1</p>
+<p>Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
+Factor = 1   (no need to change units)</p>
+<p class="rubric">Analysis 2</p>
+<p>Working with cost/reverse_cost as length in meters, x/y in lat/lon:
+Factor =  would depend on the location of the points:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 65%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Latitude</p></th>
+<th class="head"><p>Conversion</p></th>
+<th class="head"><p>Factor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>1 longitude degree is  78846.81 m</p></td>
+<td><p>78846</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1 longitude degree is 111319.46 m</p></td>
+<td><p>111319</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Analysis 3</p>
+<p>Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
+Factor: would depend on the location of the points and on the average speed
+say 25m/s is the speed.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 70%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Latitude</p></th>
+<th class="head"><p>Conversion</p></th>
+<th class="head"><p>Factor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>1 longitude degree is (78846.81m)/(25m/s)</p></td>
+<td><p>3153 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1 longitude degree is (111319.46 m)/(25m/s)</p></td>
+<td><p>4452 s</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Last updated on May 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_dijkstraVia - Proposed &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_dijkstraNear - Experimental" href="pgr_dijkstraNear.html" />
+    <link rel="prev" title="pgr_KSP" href="pgr_KSP.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_dijkstraVia - Proposed</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_KSP.html" title="Previous Chapter: pgr_KSP"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_KSP</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_dijkstraNear.html" title="Next Chapter: pgr_dijkstraNear - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraVia.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html">3.2</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html">2.6</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstraVia.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html">2.2</a></p></li>
+</ul>
+<section id="pgr-dijkstravia-proposed">
+<h1>pgr_dijkstraVia - Proposed<a class="headerlink" href="#pgr-dijkstravia-proposed" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> — Using dijkstra algorithm, it finds the route that goes through
+a list of vertices.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
+<ul class="simple">
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
+<ul>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<figcaption>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li><p>Version 2.2.0</p>
+<ul>
+<li><p>New <strong>proposed</strong> function</p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Given a list of vertices and a graph, this function is equivalent to finding the
+shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</span> and <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> for all <span class="math notranslate nohighlight">\(i &lt; size\_of(vertex_via)\)</span>.</p>
+<p>The paths represents the sections of the route.</p>
+</section>
+<section id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
+RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
+    node, edge, cost, agg_cost, route_agg_cost)
+OR EMPTY SET
+</pre></div>
+</div>
+<p class="rubric">Using default</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraVia(edges_sql, via_vertices)
+RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
+    node, edge, cost, agg_cost, route_agg_cost)
+OR EMPTY SET
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{ 1, 3, 9\}\)</span>  in that order</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
+<span class="o">-----+---------+----------+-----------+---------+------+------+------+----------+----------------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>              <span class="mi">3</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>              <span class="mi">4</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>              <span class="mi">5</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>              <span class="mi">6</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">6</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">7</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>              <span class="mi">8</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<section id="complete-signature">
+<span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
+RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
+    node, edge, cost, agg_cost, route_agg_cost)
+OR EMPTY SET
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{ 1, 3, 9\}\)</span> in that order on an <strong>undirected</strong> graph, avoiding U-turns when possible</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">false</span><span class="p">,</span> <span class="n">strict</span><span class="o">:=</span><span class="n">true</span><span class="p">,</span> <span class="n">U_turn_on_edge</span><span class="o">:=</span><span class="n">false</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
+<span class="o">-----+---------+----------+-----------+---------+------+------+------+----------+----------------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">2</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 4%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p>SQL query as described above.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>via_vertices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td></td>
+<td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>directed</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>strict</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> ignores missing paths returning all paths found</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> if a path is missing stops and returns <cite>EMPTY SET</cite></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>U_turn_on_edge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same <cite>id</cite> is allowed.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same <cite>id</cite> is used when no other path is found.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-query">
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>source</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>target</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td></td>
+<td><p>Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(source, target)</cite> does not exist, therefore it’s not part of the graph.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>reverse_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<td><p>-1</p></td>
+<td><p>Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="simple">
+<li><p>When negative: edge <cite>(target, source)</cite> does not exist, therefore it’s not part of the graph.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
+</section>
+<section id="return-columns">
+<h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 7%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Sequential value starting from 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>path_pid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the path.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>path_seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Sequential value starting from 1 for the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex of the path.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex of the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the node in the path from start_vid to end_vid.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>edge</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the edge used to go from node to the next node in the path sequence. -1 for the last node of the path. -2 for the last node of the route.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the route sequence.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Total cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> of the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>route_agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Total cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> of <code class="docutils literal notranslate"><span class="pre">path_pid</span> <span class="pre">=</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> of the current <code class="docutils literal notranslate"><span class="pre">path_pid</span></code> .</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Example 1</dt>
+<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{1, 5, 3, 9, 4\}\)</span> in that order</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
+<span class="o">-----+---------+----------+-----------+---------+------+------+------+----------+----------------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">2</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span>
+   <span class="mi">7</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>              <span class="mi">5</span>
+   <span class="mi">8</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>              <span class="mi">6</span>
+   <span class="mi">9</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">6</span>
+  <span class="mi">10</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">7</span>
+  <span class="mi">11</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>              <span class="mi">8</span>
+  <span class="mi">12</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">9</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">8</span>
+  <span class="mi">13</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">9</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>              <span class="mi">9</span>
+<span class="p">(</span><span class="mi">13</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example 2</dt>
+<dd class="field-odd"><p>What’s the aggregate cost of the third path?</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">path_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">AND</span> <span class="n">edge</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">;</span>
+ <span class="n">agg_cost</span>
+<span class="o">----------</span>
+        <span class="mi">2</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example 3</dt>
+<dd class="field-odd"><p>What’s the route’s aggregate cost of the route at the end of the third path?</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">path_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">AND</span> <span class="n">edge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="n">route_agg_cost</span>
+<span class="o">----------------</span>
+              <span class="mi">8</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example 4</dt>
+<dd class="field-odd"><p>How are the nodes visited in the route?</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span> <span class="p">()</span> <span class="k">as</span> <span class="n">node_seq</span><span class="p">,</span> <span class="n">node</span>
+<span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">edge</span> <span class="o">&lt;&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
+ <span class="n">node_seq</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">----------+------</span>
+        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
+        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span>
+        <span class="mi">5</span> <span class="o">|</span>    <span class="mi">9</span>
+        <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span>
+        <span class="mi">7</span> <span class="o">|</span>    <span class="mi">3</span>
+        <span class="mi">8</span> <span class="o">|</span>    <span class="mi">6</span>
+        <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span>
+       <span class="mi">10</span> <span class="o">|</span>    <span class="mi">4</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example 5</dt>
+<dd class="field-odd"><p>What are the aggregate costs of the route when the visited vertices are reached?</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">edge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="n">path_id</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
+<span class="o">---------+----------------</span>
+       <span class="mi">1</span> <span class="o">|</span>              <span class="mi">2</span>
+       <span class="mi">2</span> <span class="o">|</span>              <span class="mi">6</span>
+       <span class="mi">3</span> <span class="o">|</span>              <span class="mi">8</span>
+       <span class="mi">4</span> <span class="o">|</span>              <span class="mi">9</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Example 6</dt>
+<dd class="field-odd"><p>Show the route’s seq and aggregate cost and a status of “passes in front” or “visits” node <span class="math notranslate nohighlight">\(9\)</span></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">route_agg_cost</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">agg_cost</span> <span class="p">,</span>
+<span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39;visits&#39;</span>
+<span class="n">ELSE</span> <span class="s1">&#39;passes in front&#39;</span>
+<span class="n">END</span> <span class="k">as</span> <span class="n">status</span>
+<span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">WHERE</span> <span class="n">node</span> <span class="o">=</span> <span class="mi">9</span> <span class="ow">and</span> <span class="p">(</span><span class="n">agg_cost</span>  <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">seq</span> <span class="o">=</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">route_agg_cost</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span>     <span class="n">status</span>
+<span class="o">-----+----------------+------+----------+-----------------</span>
+   <span class="mi">6</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span> <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span>
+  <span class="mi">11</span> <span class="o">|</span>              <span class="mi">8</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span> <span class="n">visits</span>
+<span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
+
+<span class="n">ROLLBACK</span><span class="p">;</span>
+<span class="n">ROLLBACK</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Last updated on May 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

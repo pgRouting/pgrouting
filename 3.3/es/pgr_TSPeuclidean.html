@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_TSPeuclidean &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Árbol de expansión - Categoría" href="spanningTree-family.html" />
+    <link rel="prev" title="pgr_TSP" href="pgr_TSP.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_TSPeuclidean</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_TSP.html" title="Previous Chapter: pgr_TSP"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_TSP</span>
+    </a>
+  </li>
+  <li>
+    <a href="spanningTree-family.html" title="Next Chapter: Árbol de expansión - Categoría"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Árbol de expa... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html">3.2</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP">2.3</a></p></li>
+</ul>
+<section id="pgr-tspeuclidean">
+<h1>pgr_TSPeuclidean<a class="headerlink" href="#pgr-tspeuclidean" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Uso del algoritmo de aproximación <em>Simulated Annealing</em></p>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li><p>Versión 3.0.0</p>
+<ul>
+<li><p>Cambio de nombre de pgr_eucledianTSP</p></li>
+</ul>
+</li>
+<li><p>Versión 2.3.0</p>
+<ul>
+<li><p>Nueva función <strong>Oficial</strong></p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el problema del vendedor viajante (TSP) se hace la siguiente pregunta:</p>
+<p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
+<p>Consulte <a class="reference internal" href="TSP-family.html#simulated-annealing"><span class="std std-ref">Algoritmo de Recocido Simulado</span></a> para obtener una descripción completa de esta implementación</p>
+</section>
+<section id="signatures">
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<p class="rubric">Resumen</p>
+<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_TSPeuclidean(Coordinates SQL,
+    [start_id], [end_id],
+    [max_processing_time],
+    [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
+    [initial_temperature], [final_temperature], [cooling_factor],
+    [randomize])
+RETURNS SETOF (seq, node, cost, agg_cost)
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>No tener una ejecución aleatoria</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
+    $$
+    SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr
+    $$,
+    randomize := false);
+ seq | node |      cost      |   agg_cost
+-----+------+----------------+---------------
+   1 |    1 |  1.41421356237 |             0
+   2 |    3 |              1 | 1.41421356237
+   3 |    4 |              1 | 2.41421356237
+   4 |    9 | 0.583095189485 | 3.41421356237
+   5 |   16 | 0.583095189485 | 3.99730875186
+   6 |    6 |              1 | 4.58040394134
+   7 |   11 |              1 | 5.58040394134
+   8 |   12 |  1.11803398875 | 6.58040394134
+   9 |   17 |            1.5 | 7.69843793009
+  10 |   13 |            0.5 | 9.19843793009
+  11 |   15 |            0.5 | 9.69843793009
+  12 |   10 |  1.58113883008 | 10.1984379301
+  13 |   14 |  1.58113883008 | 11.7795767602
+  14 |    7 |              1 | 13.3607155903
+  15 |    8 |              1 | 14.3607155903
+  16 |    5 |              1 | 15.3607155903
+  17 |    2 |              1 | 16.3607155903
+  18 |    1 |              0 | 17.3607155903
+(18 rows)
+
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Coordenadas SQL</strong></p></td>
+<td><p>una consulta SQL, descrita en la <a class="reference internal" href="#inner-query">Consulta interna</a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 7%" />
+<col style="width: 8%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><cite>0</cite></p></td>
+<td><p>La parte ambiciosa de la implementación utilizará este identificador.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><cite>0</cite></p></td>
+<td><p>El último vértice de visita antes de volver a start_vid.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>max_processing_time</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>+infinity</cite></p></td>
+<td><p>Detenga el proceso de recocido cuando se alcance el valor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tries_per_temperature</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><cite>500</cite></p></td>
+<td><p>Número máximo de veces que se busca a un(os) vecino(s) en cada temperatura.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>max_changes_per_temperature</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><cite>60</cite></p></td>
+<td><p>Número máximo de veces que se cambia la solución en cada temperatura.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>max_consecutive_non_changes</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p><cite>100</cite></p></td>
+<td><p>Número máximo de veces consecutivas que la solución no cambia en cada temperatura.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>initial_temperature</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>100</cite></p></td>
+<td><p>Temperatura de inicio.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>temperatura_final</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>0.1</cite></p></td>
+<td><p>Temperatura final.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>factor_de_enfriamiento</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><cite>0.9</cite></p></td>
+<td><p>Valor entre 0 y 1 (sin incluir) utilizado para calcular la siguiente temperatura.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aleatorizar</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><cite>true</cite></p></td>
+<td><p>Elija la semilla aleatoria</p>
+<ul class="simple">
+<li><p>true: Utilice el tiempo actual como semilla</p></li>
+<li><p>falso: Use <cite>1</cite> como semilla. Usando este valor obtendrá los mismos resultados con los mismos datos en cada ejecución.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-query">
+<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><strong>Coordenadas SQL</strong>: una consulta SQL, que debe devolver un conjunto de filas con las siguientes columnas:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 10%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>(opcional) Identificador de la coordenada.</p>
+<ul class="simple">
+<li><p>Cuando faltan las coordenadas recibirán un <strong>id</strong> a partir de 1, en el orden indicado.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>x</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Valor X de la coordenada.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>y</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Valor Y de la coordenada.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="result-columns">
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Devuelve el CONJUNTO DE <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Secuencia de filas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del nodo/coordenada/punto.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><dl class="simple">
+<dt>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la última fila de la secuencia de ruta.</p></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><dl class="simple">
+<dt>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la primera fila de la secuencia de ruta.</p></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-examples">
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Prueba <span class="math notranslate nohighlight">\(3\)</span> veces por temperatura con factor de enfriamiento de <span class="math notranslate nohighlight">\(0.5\)</span>, sin tener una ejecución aleatoria</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT* from pgr_TSPeuclidean(
+    $$
+    SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
+    $$,
+    tries_per_temperature := 3,
+    cooling_factor := 0.5,
+    randomize := false);
+ seq | node |      cost      |   agg_cost
+-----+------+----------------+---------------
+   1 |    1 |  1.41421356237 |             0
+   2 |    3 |              1 | 1.41421356237
+   3 |    4 |              1 | 2.41421356237
+   4 |    9 | 0.583095189485 | 3.41421356237
+   5 |   16 | 0.583095189485 | 3.99730875186
+   6 |    6 |              1 | 4.58040394134
+   7 |    5 |              1 | 5.58040394134
+   8 |    8 |              1 | 6.58040394134
+   9 |    7 |  1.58113883008 | 7.58040394134
+  10 |   14 |            1.5 | 9.16154277143
+  11 |   15 |            0.5 | 10.6615427714
+  12 |   13 |            1.5 | 11.1615427714
+  13 |   17 |  1.11803398875 | 12.6615427714
+  14 |   12 |              1 | 13.7795767602
+  15 |   11 |              1 | 14.7795767602
+  16 |   10 |              2 | 15.7795767602
+  17 |    2 |              1 | 17.7795767602
+  18 |    1 |              0 | 18.7795767602
+(18 rows)
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Omitir el Recocido Simulado y mostrar información del proceso</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SET client_min_messages TO DEBUG1;
+SET
+SELECT* from pgr_TSPeuclidean(
+    $$
+    SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
+    $$,
+    tries_per_temperature := 0,
+    randomize := false);
+DEBUG:  Processing Information
+Initializing tsp class ---&gt; tsp.greedyInitial ---&gt; tsp.annealing ---&gt; OK
+
+Cycle(100) 	total changes =0	0 were because  delta energy &lt; 0
+Total swaps: 3
+Total slides: 0
+Total reverses: 0
+Times best tour changed: 4
+Best cost reached = 18.7796
+ seq | node |      cost      |   agg_cost
+-----+------+----------------+---------------
+   1 |    1 |  1.41421356237 |             0
+   2 |    3 |              1 | 1.41421356237
+   3 |    4 |              1 | 2.41421356237
+   4 |    9 | 0.583095189485 | 3.41421356237
+   5 |   16 | 0.583095189485 | 3.99730875186
+   6 |    6 |              1 | 4.58040394134
+   7 |    5 |              1 | 5.58040394134
+   8 |    8 |              1 | 6.58040394134
+   9 |    7 |  1.58113883008 | 7.58040394134
+  10 |   14 |            1.5 | 9.16154277143
+  11 |   15 |            0.5 | 10.6615427714
+  12 |   13 |            1.5 | 11.1615427714
+  13 |   17 |  1.11803398875 | 12.6615427714
+  14 |   12 |              1 | 13.7795767602
+  15 |   11 |              1 | 14.7795767602
+  16 |   10 |              2 | 15.7795767602
+  17 |    2 |              1 | 17.7795767602
+  18 |    1 |              0 | 18.7795767602
+(18 rows)
+
+</pre></div>
+</div>
+<p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Simulated_annealing">Wikipedia: Simulated annealing</a></p></li>
+</ul>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Actualizado por última vez en may. 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

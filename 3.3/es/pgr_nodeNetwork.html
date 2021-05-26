@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_nodeNetwork &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Vendedor Viajante - Familia de funciones" href="TSP-family.html" />
+    <link rel="prev" title="pgr_analyzeOneWay" href="pgr_analyzeOneWay.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_nodeNetwork</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#examples">Ejemplos</a></li>
+<li><a class="reference internal" href="#images">Imágenes</a></li>
+<li><a class="reference internal" href="#comparing-the-results">Comparando los resultados</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_analyzeOneWay.html" title="Previous Chapter: pgr_analyzeOneWay"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_analyzeOneWay</span>
+    </a>
+  </li>
+  <li>
+    <a href="TSP-family.html" title="Next Chapter: Vendedor Viajante - Familia de funciones"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Vendedor Viaj... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_nodeNetwork.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_nodeNetwork.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_nodeNetwork.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_nodeNetwork.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_nodeNetwork.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_nodeNetwork.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_nodeNetwork.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_nodeNetwork.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_nodeNetwork.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/node_network.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/node_network.html">2.0</a></p></li>
+</ul>
+<section id="pgr-nodenetwork">
+<h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_nodeNetwork</span></code> -  Crea los nodos de una tabla de bordes de la red.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Autor</dt>
+<dd class="field-odd"><p>Nicolas Ribot</p>
+</dd>
+<dt class="field-even">Derechos de autor</dt>
+<dd class="field-even"><p>Nicolas Ribot, el código fuente está liberado bajo la licencia MIT-X.</p>
+</dd>
+</dl>
+<p>La función carga los bordes de una tabla que no tiene los nodos en las intersecciones y reescribe los bordes con los nodos en una nueva tabla.</p>
+<div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">table_ending</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">,</span> <span class="n">outall</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="nb">TEXT</span>
+</pre></div>
+</div>
+<p class="rubric">Disponibilidad</p>
+<ul class="simple">
+<li><p>Versión 2.0.0</p>
+<ul>
+<li><p>Función <strong>oficial</strong></p></li>
+</ul>
+</li>
+</ul>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><strong>Las características principales son:</strong></p>
+<p>Un problema común asociado con la incorporación de datos SIG en pgRouting es el hecho de que los datos a menudo no están correctamente referenciados con nodos. Esto provoca topologías no válidas, que resultan en rutas que son incorrectas.</p>
+<p>Que los bordes estén indicados con nodos significa que, en en cada intersección de la red de caminos, los bordes se descompondrán en segmentos separados del camino. Los casos como una intersección de puente o túnel donde no existe conexión vial no son detectados por esta función.</p>
+<p>Esta función lee la tabla  <code class="docutils literal notranslate"><span class="pre">table_in</span></code>, que tiene una columna de clave principal <code class="docutils literal notranslate"><span class="pre">gid_cname</span></code> y columna de la geometría llamada <code class="docutils literal notranslate"><span class="pre">geo_cname</span></code>,  y verifica la intersección de todos los segmentos contra todos los demás segmentos creando una tabla de salida <code class="docutils literal notranslate"><span class="pre">table_out</span></code>. Usa la tolerancia <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> para decidir cuáles nodos son considerados como mismo nodo.</p>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">edge_table</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> La tabla de la red. (puede contener el nombre del esquema)</p>
+</dd>
+<dt class="field-even">tolerancia</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> tolerancia para puntos de coincidencia (en la unidad de proyección)</p>
+</dd>
+<dt class="field-odd">id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>”.</p>
+</dd>
+<dt class="field-even">the_geom</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <cite>the_geom`</cite></p>
+</dd>
+<dt class="field-odd">table_ending</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> sufijo para la nueva tabla. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">noded</span></code>.</p>
+</dd>
+</dl>
+<p>La tabla de salida tendrá para  <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</p>
+</dd>
+<dt class="field-even">old_id</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del borde en la tabla original</p>
+</dd>
+<dt class="field-odd">sub_id</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> número del segmento del borde original</p>
+</dd>
+<dt class="field-even">source</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Columna de origen vacía que se utilizará con la función <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
+</dd>
+<dt class="field-odd">target</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Columna  vacía de destinoque se utilizará con la función  <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
+</dd>
+<dt class="field-even">la geom</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Columna de geometría de la red discontínua</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Vamos a crear la topología para los datos en  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">18</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Ahora podemos analizar la red.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">7</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+ <span class="n">pgr_analyzegraph</span>
+<span class="o">------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>El análisis dice que la red tiene un hueco y una intersección. Trataremos de solucionar el problema usando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="nb">id</span><span class="p">:</span> <span class="nb">id</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">the_geom</span><span class="p">:</span> <span class="n">the_geom</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table_ending</span><span class="p">:</span> <span class="n">noded</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">rows_where</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">outall</span><span class="p">:</span> <span class="n">f</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;noded&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>  <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Processing</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>    <span class="n">Split</span> <span class="n">Edges</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">NOTICE</span><span class="p">:</span>   <span class="n">Untouched</span> <span class="n">Edges</span><span class="p">:</span> <span class="mi">15</span>
+<span class="n">NOTICE</span><span class="p">:</span>       <span class="n">Total</span> <span class="n">original</span> <span class="n">Edges</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">NOTICE</span><span class="p">:</span>   <span class="n">Edges</span> <span class="n">generated</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">NOTICE</span><span class="p">:</span>   <span class="n">Untouched</span> <span class="n">Edges</span><span class="p">:</span> <span class="mi">15</span>
+<span class="n">NOTICE</span><span class="p">:</span>         <span class="n">Total</span> <span class="n">New</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">21</span>
+<span class="n">NOTICE</span><span class="p">:</span>   <span class="n">New</span> <span class="n">Table</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_noded</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------</span>
+ <span class="n">pgr_nodenetwork</span>
+<span class="o">-----------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Inspeccionar la tabla generada, podemos ver que los bordes 13,14 y 18 ha sido segmentado</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">sub_id</span> <span class="n">FROM</span> <span class="n">edge_table_noded</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">old_id</span><span class="p">,</span> <span class="n">sub_id</span><span class="p">;</span>
+ <span class="n">old_id</span> <span class="o">|</span> <span class="n">sub_id</span>
+<span class="o">--------+--------</span>
+      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">4</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">9</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">10</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">11</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">12</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">13</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">13</span> <span class="o">|</span>      <span class="mi">2</span>
+     <span class="mi">14</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">14</span> <span class="o">|</span>      <span class="mi">2</span>
+     <span class="mi">15</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">16</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">17</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">18</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">18</span> <span class="o">|</span>      <span class="mi">2</span>
+<span class="p">(</span><span class="mi">21</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Podemos crear la topología de la nueva red</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">21</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_noded</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_noded_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Ahora analicemos la nueva topología</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+ <span class="n">pgr_analyzegraph</span>
+<span class="o">------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="images">
+<h2>Imágenes<a class="headerlink" href="#images" title="Enlazar permanentemente con este título">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 49%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p class="rubric">Imágen del Antes</p>
+<a class="reference internal image-reference" href="_images/before_node_net.png"><img alt="before image" class="align-left" src="_images/before_node_net.png" style="width: 460.2px; height: 440.4px;" /></a>
+</td>
+<td><p class="rubric">Imágen del Después</p>
+<a class="reference internal image-reference" href="_images/after_node_net.png"><img alt="after image" class="align-right" src="_images/after_node_net.png" style="width: 456.0px; height: 439.2px;" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparing-the-results">
+<h2>Comparando los resultados<a class="headerlink" href="#comparing-the-results" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Comparando con el análisis del edge_table original,  vemos que:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 34%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Antes de</p></th>
+<th class="head"><p>Después de</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Nombre de la tabla</p></td>
+<td><p>edge_table</p></td>
+<td><p>edge_table_noded</p></td>
+</tr>
+<tr class="row-odd"><td><p>Campos</p></td>
+<td><p>Todos los campos originales</p></td>
+<td><p>Tiene solamente campos básicos para hacer un análisis de topología</p></td>
+</tr>
+<tr class="row-even"><td><p>Callejones sin salida</p></td>
+<td><ul class="simple">
+<li><p>Los bordes con 1 callejón sin salida: 1,6,24</p></li>
+<li><p>Bordes con 2 callejones sin salida 17,18</p></li>
+</ul>
+<p>Nodo derecho borde de 17 es un callejón sin salida porque no hay ningún otro borde que comparta ese mismo nodo. (cnt = 1)</p>
+</td>
+<td><p>Los bordes con 1 callejón sin salida: 1-1, 6-1,14-2, 18-1-17-1 18-2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Segmentos aislados</p></td>
+<td><p>dos aislados segmentos: 17 y 18 ambos tienen 2 callejones sin salida</p></td>
+<td><dl class="simple">
+<dt>Segmentos no aislados</dt><dd><ul class="simple">
+<li><p>Borde 17 ahora comparte un nodo con bordes 14-1 y 14-2</p></li>
+<li><p>Bordes 18-1 y 18-2 compartir un nodo con bordes 13-1 y 13-2</p></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>Espacios</p></td>
+<td><p>Existe un espacio entre 17 y 14 borde borde 14 es cerca del nodo derecho del borde 17</p></td>
+<td><p>Borde 14 fue segmentado ahora bordes: 14-1 14-2 17 comparten el mismo nodo, el valor de tolerancia fue tomado en cuenta</p></td>
+</tr>
+<tr class="row-odd"><td><p>Intersecciones</p></td>
+<td><p>Bordes 13 y 18 años se intersectan</p></td>
+<td><p>Bordes fueron segmentados, ahora en el punto de la interesección hay un nodo y los bordes siguientes lo comparten: 13-1 13-2-18-1 18-2</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ahora, vamos a incluir los segmentos 13-1, 13-2-14-1, 14-2, 18-1 y 18-2 en nuestra tabla de bordes, copiando además los datos para dir, costo y costo inverso con los siguientes los pasos:</p>
+<ul class="simple">
+<li><p>Agregar una columna old_id en edge_table, esta columna va a seguir la pista el id del borde original</p></li>
+<li><p>Introduzca sólo los bordes segmentados, es decir, aquellos cuyo max(sub_id) &gt; 1</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="n">table</span> <span class="n">edge_table</span> <span class="n">drop</span> <span class="n">column</span> <span class="k">if</span> <span class="n">exists</span> <span class="n">old_id</span><span class="p">;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">column</span> <span class="s2">&quot;old_id&quot;</span> <span class="n">of</span> <span class="n">relation</span> <span class="s2">&quot;edge_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">alter</span> <span class="n">table</span> <span class="n">edge_table</span> <span class="n">add</span> <span class="n">column</span> <span class="n">old_id</span> <span class="n">integer</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">edge_table</span> <span class="p">(</span><span class="n">old_id</span><span class="p">,</span> <span class="nb">dir</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">with</span>
+       <span class="n">segmented</span> <span class="k">as</span> <span class="p">(</span><span class="n">select</span> <span class="n">old_id</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">i</span> <span class="kn">from</span> <span class="nn">edge_table_noded</span> <span class="n">group</span> <span class="n">by</span> <span class="n">old_id</span><span class="p">)</span>
+   <span class="n">select</span>  <span class="n">segments</span><span class="o">.</span><span class="n">old_id</span><span class="p">,</span> <span class="nb">dir</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">segments</span><span class="o">.</span><span class="n">the_geom</span>
+       <span class="kn">from</span> <span class="nn">edge_table</span> <span class="k">as</span> <span class="n">edges</span> <span class="n">join</span> <span class="n">edge_table_noded</span> <span class="k">as</span> <span class="n">segments</span> <span class="n">on</span> <span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">old_id</span><span class="p">)</span>
+       <span class="n">where</span> <span class="n">edges</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">old_id</span> <span class="kn">from</span> <span class="nn">segmented</span> <span class="n">where</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span> <span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>Recreamos la topología:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">6</span> <span class="n">edges</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
+ <span class="n">pgr_createtopology</span>
+<span class="o">--------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Para obtener los mismos resultados de análisis que la topología de edge_table_noded, hacemos la siguiente consulta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id not in (select old_id from edge_table where old_id is not null)&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id not in (select old_id from edge_table where old_id is not null)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+ <span class="n">pgr_analyzegraph</span>
+<span class="o">------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Para obtener los mismos resultados de análisis como el edge_table original, hacemos la siguiente consulta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;old_id is null&#39;</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;old_id is null&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">7</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+ <span class="n">pgr_analyzegraph</span>
+<span class="o">------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>O podemos analizar todo porque, tal vez edge 18 es un puente, borde 14 es un bajo paso y también hay una juntura nivel calle, y lo mismo ocurre con los bordes 17 y 13.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+ <span class="n">pgr_analyzegraph</span>
+<span class="o">------------------</span>
+ <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de enrutamiento.
+<a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> para analizar la direccionalidad de los bordes. <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear una topología basada en la geometría. <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  para analizar los bordes y vértices de la tabla de bordes.</p>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Actualizado por última vez en may. 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

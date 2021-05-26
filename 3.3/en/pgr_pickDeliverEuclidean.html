@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pgr_pickDeliverEuclidean - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pgr_vrpOneDepot - Experimental" href="pgr_vrpOneDepot.html" />
+    <link rel="prev" title="pgr_pickDeliver - Experimental" href="pgr_pickDeliver.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_pickDeliverEuclidean - Experimental</a><ul>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#signature">Signature</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a></li>
+<li><a class="reference internal" href="#pick-deliver-vehicles-sql">Pick &amp; Deliver Vehicles SQL</a></li>
+<li><a class="reference internal" href="#description-of-the-result-todo-disussion-euclidean-matrix">Description of the result (TODO Disussion: Euclidean &amp; Matrix)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_pickDeliver.html" title="Previous Chapter: pgr_pickDeliver - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pickDeliv...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_vrpOneDepot.html" title="Next Chapter: pgr_vrpOneDepot - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_vrpOneDep... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html">3.2</a>)
+current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html">2.6</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html">2.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html">2.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html">2.1</a></p></li>
+</ul>
+<section id="pgr-pickdelivereuclidean-experimental">
+<h1>pgr_pickDeliverEuclidean - Experimental<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Pickup and delivery Vehicle Routing Problem</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Possible server crash</p>
+<ul class="simple">
+<li><p>These functions might create a server crash</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Experimental functions</p>
+<ul class="simple">
+<li><p>They are not officially of the current release.</p></li>
+<li><p>They likely will not be officially be part of the next release:</p>
+<ul>
+<li><p>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might change.</p></li>
+<li><p>Signature might change.</p></li>
+<li><p>Functionality might change.</p></li>
+<li><p>pgTap tests might be missing.</p></li>
+<li><p>Might need c/c++ coding.</p></li>
+<li><p>May lack documentation.</p></li>
+<li><p>Documentation if any might need to be rewritten.</p></li>
+<li><p>Documentation examples might need to be automatically generated.</p></li>
+<li><p>Might need a lot of feedback from the comunity.</p></li>
+<li><p>Might depend on a proposed function of pgRouting</p></li>
+<li><p>Might depend on a deprecated function of pgRouting</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">Availability</p>
+<ul class="simple">
+<li><p>Version 3.0.0</p>
+<ul>
+<li><p>Replaces <code class="docutils literal notranslate"><span class="pre">pgr_gsoc_vrppdtw</span></code></p></li>
+<li><p>New <strong>experimental</strong> function</p></li>
+</ul>
+</li>
+</ul>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.</p>
+<ul class="simple">
+<li><p>Optimization problem is NP-hard.</p></li>
+<li><p>Pickup and Delivery:</p>
+<ul>
+<li><p>capacitated</p></li>
+<li><p>with time windows.</p></li>
+</ul>
+</li>
+<li><p>The vehicles</p>
+<ul>
+<li><p>have (x, y) start and ending locations.</p></li>
+<li><p>have a start and ending service times.</p></li>
+<li><p>have opening and closing times for the start and ending locations.</p></li>
+</ul>
+</li>
+<li><p>An order is for doing a pickup and a a deliver.</p>
+<ul>
+<li><p>has (x, y) pickup and delivery locations.</p></li>
+<li><p>has opening and closing times for the pickup and delivery locations.</p></li>
+<li><p>has a pickup and deliver service times.</p></li>
+</ul>
+</li>
+<li><p>There is a customer where to deliver a pickup.</p>
+<ul>
+<li><p>travel time between customers is distance / speed</p></li>
+<li><p>pickup and delivery pair is done with the same vehicle.</p></li>
+<li><p>A pickup is done before the delivery.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="characteristics">
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>No multiple time windows for a location.</p></li>
+<li><p>Less vehicle used is considered better.</p></li>
+<li><p>Less total duration is better.</p></li>
+<li><p>Less wait time is better.</p></li>
+<li><p>Six different optional different initial solutions</p>
+<ul>
+<li><p>the best solution found will be result</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="signature">
+<span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor, max_cycles, initial_sol])
+RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
+    cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
+</pre></div>
+</div>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>The parameters are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>orders_sql, vehicles_sql [,factor, max_cycles, initial_sol]
+</pre></div>
+</div>
+<p>Where:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 8%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>orders_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a> query containing the orders to be processed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>vehicles_sql</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#pick-deliver-vehicles-sql">Pick &amp; Deliver Vehicles SQL</a> query containing the vehicles to be used.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>factor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
+<td><p>1</p></td>
+<td><p>(Optional) Travel time multiplier. See <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Factor Handling</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>max_cycles</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>10</p></td>
+<td><p>(Optional) Maximum number of cycles to perform on the optimization.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>initial_sol</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>4</p></td>
+<td><p>(Optional) Initial solution to be used.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> One order per truck</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> Push front order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> Push back order.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code> Optimize insert.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5</span></code> Push back order that allows more orders to be inserted at the back</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code> Push front order that allows more orders to be inserted at the front</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pick-deliver-orders-sql">
+<h3>Pick &amp; Deliver Orders SQL<a class="headerlink" href="#pick-deliver-orders-sql" title="Permalink to this headline">¶</a></h3>
+<p>A <cite>SELECT</cite> statement that returns the following columns:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id, demand
+p_x, p_y, p_open, p_close, [p_service, ]
+d_x, d_y, d_open, d_close, [d_service, ]
+</pre></div>
+</div>
+<p>Where:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 10%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td></td>
+<td><p>Identifier of the pick-delivery order pair.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>demand</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>Number of units in the order</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>p_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the pickup location opens.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>p_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the pickup location closes.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>d_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>0</p></td>
+<td><p>The duration of the loading at the pickup location.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>d_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the delivery location opens.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>d_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the delivery location closes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>d_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p>0</p></td>
+<td><p>The duration of the loading at the delivery location.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the euclidean implementation, pick up and delivery  <span class="math notranslate nohighlight">\((x,y)\)</span> locations are needed:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 23%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>p_x</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the pick up location</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>p_y</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the pick up location</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>d_x</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the delivery location</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>d_y</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the delivery location</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pick-deliver-vehicles-sql">
+<h3>Pick &amp; Deliver Vehicles SQL<a class="headerlink" href="#pick-deliver-vehicles-sql" title="Permalink to this headline">¶</a></h3>
+<p>A <cite>SELECT</cite> statement that returns the following columns:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id, capacity
+start_x, start_y, start_open, start_close [, start_service, ]
+[ end_x, end_y, end_open, end_close, end_service ]
+</pre></div>
+</div>
+<p>where:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT">ANY-INTEGER</abbr></p></td>
+<td></td>
+<td><p>Identifier of the pick-delivery order pair.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>capacity</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>Number of units in the order</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>speed</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>1</cite></p></td>
+<td><p>Average speed of the vehicle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the starting location opens.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>start_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p>The time, relative to 0, when the starting location closes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>0</cite></p></td>
+<td><p>The duration of the loading at the starting location.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end_open</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_open</cite></p></td>
+<td><p>The time, relative to 0, when the ending location opens.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end_close</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_close</cite></p></td>
+<td><p>The time, relative to 0, when the ending location closes.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end_service</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_service</cite></p></td>
+<td><p>The duration of the loading at the ending location.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the euclidean implementation, starting and ending <span class="math notranslate nohighlight">\((x,y)\)</span> locations are needed:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>start_x</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the coordinate of the starting location.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start_y</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the coordinate of the starting location.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end_x</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_x</cite></p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> value of the coordinate of the ending location.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end_y</strong></p></td>
+<td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
+<td><p><cite>start_y</cite></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span> value of the coordinate of the ending location.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="description-of-the-result-todo-disussion-euclidean-matrix">
+<h3>Description of the result (TODO Disussion: Euclidean &amp; Matrix)<a class="headerlink" href="#description-of-the-result-todo-disussion-euclidean-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RETURNS SET OF
+    (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
+        travel_time, arrival_time, wait_time, service_time,  departure_time)
+    UNION
+    (summary row)
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p>Sequential value starting from <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>vehicle_seq</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p>Sequential value starting from <strong>1</strong> for current vehicles. The <span class="math notranslate nohighlight">\(n_{th}\)</span> vehicle in the solution.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>vehicle_id</strong></p></td>
+<td><p>BIGINT</p></td>
+<td><p>Current vehicle identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>stop_seq</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p>Sequential value starting from <strong>1</strong> for the stops made by the current vehicle. The <span class="math notranslate nohighlight">\(m_{th}\)</span> stop of the current vehicle.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>stop_type</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p>Kind of stop location the vehicle is at:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: Starting location</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: Pickup location</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code>: Delivery location</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code>: Ending location</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>order_id</strong></p></td>
+<td><p>BIGINT</p></td>
+<td><p>Pickup-Delivery order pair identifier.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-1</span></code>: When no order is involved on the current stop location.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>cargo</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p>Cargo units of the vehicle when leaving the stop.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>travel_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p>Travel time from previous <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code> to current <code class="docutils literal notranslate"><span class="pre">stop_seq</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> When <code class="docutils literal notranslate"><span class="pre">stop_type</span> <span class="pre">=</span> <span class="pre">1</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>arrival_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p>Previous <code class="docutils literal notranslate"><span class="pre">departure_time</span></code> plus current <code class="docutils literal notranslate"><span class="pre">travel_time</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wait_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p>Time spent waiting for current <cite>location</cite> to open.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>service_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p>Service time at current <cite>location</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>departure_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p><span class="math notranslate nohighlight">\(arrival\_time + wait\_time + service\_time\)</span>.</p>
+<ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">stop_type</span> <span class="pre">=</span> <span class="pre">6</span></code> has the <cite>total_time</cite> used for the current vehicle.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Summary Row</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO: Review the summary</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 10%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p>Continues the Sequential value</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>vehicle_seq</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-2</span></code> to indicate is a summary row</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>vehicle_id</strong></p></td>
+<td><p>BIGINT</p></td>
+<td><p><cite>Total Capacity Violations</cite> in the solution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>stop_seq</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p><cite>Total Time Window Violations</cite> in the solution.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>stop_type</strong></p></td>
+<td><p>INTEGER</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>order_id</strong></p></td>
+<td><p>BIGINT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cargo</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>travel_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p><cite>total_travel_time</cite> The sum of all the <cite>travel_time</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>arrival_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wait_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p><cite>total_waiting_time</cite> The sum of all the <cite>wait_time</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>service_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p><cite>total_service_time</cite> The sum of all the <cite>service_time</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>departure_time</strong></p></td>
+<td><p>FLOAT</p></td>
+<td><p><cite>total_solution_time</cite> = <span class="math notranslate nohighlight">\(total\_travel\_time + total\_wait\_time + total\_service\_time\)</span>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>This example use the following data: TODO put link</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_pickDeliverEuclidean</span><span class="p">(</span>
+    <span class="s1">&#39;SELECT * FROM orders ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT * from vehicles&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">vehicle_seq</span> <span class="o">|</span> <span class="n">vehicle_id</span> <span class="o">|</span> <span class="n">stop_seq</span> <span class="o">|</span> <span class="n">stop_type</span> <span class="o">|</span> <span class="n">order_id</span> <span class="o">|</span> <span class="n">cargo</span> <span class="o">|</span>  <span class="n">travel_time</span>  <span class="o">|</span> <span class="n">arrival_time</span>  <span class="o">|</span> <span class="n">wait_time</span> <span class="o">|</span> <span class="n">service_time</span> <span class="o">|</span> <span class="n">departure_time</span>
+<span class="o">-----+-------------+------------+----------+-----------+----------+-------+---------------+---------------+-----------+--------------+----------------</span>
+   <span class="mi">1</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>             <span class="mi">0</span> <span class="o">|</span>             <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">30</span> <span class="o">|</span>             <span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>            <span class="mi">3</span> <span class="o">|</span>              <span class="mi">5</span>
+   <span class="mi">3</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span> <span class="mf">1.41421356237</span> <span class="o">|</span> <span class="mf">6.41421356237</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">3</span> <span class="o">|</span>  <span class="mf">9.41421356237</span>
+   <span class="mi">4</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">20</span> <span class="o">|</span> <span class="mf">1.41421356237</span> <span class="o">|</span> <span class="mf">10.8284271247</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">2</span> <span class="o">|</span>  <span class="mf">12.8284271247</span>
+   <span class="mi">5</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>             <span class="mi">1</span> <span class="o">|</span> <span class="mf">13.8284271247</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">3</span> <span class="o">|</span>  <span class="mf">16.8284271247</span>
+   <span class="mi">6</span> <span class="o">|</span>           <span class="mi">1</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span> <span class="mf">1.41421356237</span> <span class="o">|</span> <span class="mf">18.2426406871</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>  <span class="mf">18.2426406871</span>
+   <span class="mi">7</span> <span class="o">|</span>           <span class="mi">2</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>             <span class="mi">0</span> <span class="o">|</span>             <span class="mi">0</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span>
+   <span class="mi">8</span> <span class="o">|</span>           <span class="mi">2</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">10</span> <span class="o">|</span>             <span class="mi">1</span> <span class="o">|</span>             <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>            <span class="mi">3</span> <span class="o">|</span>              <span class="mi">5</span>
+   <span class="mi">9</span> <span class="o">|</span>           <span class="mi">2</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>  <span class="mf">2.2360679775</span> <span class="o">|</span>  <span class="mf">7.2360679775</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">3</span> <span class="o">|</span>  <span class="mf">10.2360679775</span>
+  <span class="mi">10</span> <span class="o">|</span>           <span class="mi">2</span> <span class="o">|</span>          <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>             <span class="mi">2</span> <span class="o">|</span> <span class="mf">12.2360679775</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>            <span class="mi">0</span> <span class="o">|</span>  <span class="mf">12.2360679775</span>
+  <span class="mi">11</span> <span class="o">|</span>          <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>          <span class="mi">0</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="o">-</span><span class="mi">1</span> <span class="o">|</span> <span class="mf">11.4787086646</span> <span class="o">|</span>            <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>           <span class="mi">17</span> <span class="o">|</span>  <span class="mf">30.4787086646</span>
+<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Vehicle Routing Functions - Category (Experimental)</span></a></p></li>
+<li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Last updated on May 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

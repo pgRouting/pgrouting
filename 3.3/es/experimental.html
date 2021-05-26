@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Funciones Experimentales &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Chinese Postman Problem - Familia de funciones (Experimental)" href="chinesePostmanProblem-family.html" />
+    <link rel="prev" title="pgr_withPointsDD - Propuesto" href="pgr_withPointsDD.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Funciones Experimentales</a><ul>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_withPointsDD.html" title="Previous Chapter: pgr_withPointsDD - Propuesto"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
+    </a>
+  </li>
+  <li>
+    <a href="chinesePostmanProblem-family.html" title="Next Chapter: Chinese Postman Problem - Familia de funciones (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Chinese Postm... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/experimental.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/experimental.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/experimental.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/experimental.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/proposed.html#experimental-functions">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/proposed.html#experimental-functions">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/proposed.html#experimental-and-proposed-functions">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/proposed.html#experimental-and-proposed-functions">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-proposed-functions">2.2</a></p></li>
+</ul>
+<section id="experimental-functions">
+<h1>Funciones Experimentales<a class="headerlink" href="#experimental-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Posible bloqueo del servidor</p>
+<ul class="simple">
+<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Funciones experimentales</p>
+<ul class="simple">
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<ul>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
+<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p class="rubric">Familias</p>
+<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a> - Detalles del flujo y el coste en los bordes.</p></li>
+<li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a> - Solo el cálculo del Coste Mínimo.</p></li>
+</ul>
+<p><a class="reference internal" href="chinesePostmanProblem-family.html"><span class="doc">Chinese Postman Problem - Familia de funciones (Experimental)</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_chinesePostman.html"><span class="doc">pgr_chinesePostman - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_chinesePostmanCost.html"><span class="doc">pgr_chinesePostmanCost - Experimental</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="coloring-family.html"><span class="doc">Colorante - Familia de funciones (Experimental)</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Experimental</span></a>- Algoritmo de coloración de vértices mediante un enfoque codicioso.</p></li>
+<li><p><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite -Experimental</span></a> - Algoritmo de grafo bipartito mediante un enfoque de coloración basado en DFS.</p></li>
+</ul>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Experimental</span></a> - extrae información de vértices basada en el origen y el destino.</p></li>
+</ul>
+<p><a class="reference internal" href="transformation-family.html"><span class="doc">Transformation - Familia de funciones (Experimental)</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph - Experimental</span></a> - Algoritmo de transformación para generar un grafo de líneas.</p></li>
+<li><p><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> -  Algoritmo de transformación para generar un grafo de líneas a partir de cada vértice en el grafo de entrada.</p></li>
+</ul>
+<p><a class="reference internal" href="traversal-family.html"><span class="doc">Transversal - Familia de funciones (Experimental)</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Experimental</span></a> - Primera Búsqueda en Profundidad traversal del grafo.</p></li>
+</ul>
+<p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_makeConnected.html"><span class="doc">pgr_makeConnected - Experimental</span></a> - Detalles de aristas para hacer grafos conectados.</p></li>
+</ul>
+<p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Experimental</span></a> - Obtener la ruta al vértice más cercano.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Experimental</span></a> - Get the cost to the nearest vertex.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">Categorías</p>
+<p><a class="reference internal" href="VRP-category.html"><span class="doc">Funciones de Ruteo de Vehículos - Categoría (Experimental)</span></a></p>
+<ul class="simple">
+<li><p>Problema de recogida y entrega</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> - Recogida y Entrega utilizando una Matriz de Costos.</p></li>
+<li><p><a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> - Recogida y Entrega con distancias Euclideanas.</p></li>
+</ul>
+</li>
+<li><p>Problema de distribución</p>
+<ul>
+<li><p><a class="reference internal" href="pgr_vrpOneDepot.html"><span class="doc">pgr_vrpOneDepot - Experimental</span></a> - Desde un único depósito, distribuye los pedidos</p></li>
+</ul>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<p class="rubric">No clasificado</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bellmanFord.html"><span class="doc">pgr_bellmanFord - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_breadthFirstSearch.html"><span class="doc">pgr_breadthFirstSearch - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dagShortestPath.html"><span class="doc">pgr_dagShortestPath - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_edwardMoore.html"><span class="doc">pgr_edwardMoore - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_isPlanar.html"><span class="doc">pgr_isPlanar - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_stoerWagner.html"><span class="doc">pgr_stoerWagner - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_topologicalSort.html"><span class="doc">pgr_topologicalSort - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_transitiveClosure.html"><span class="doc">pgr_transitiveClosure - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_turnRestrictedPath.html"><span class="doc">pgr_turnRestrictedPath - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_lengauerTarjanDominatorTree.html"><span class="doc">pgr_lengauerTarjanDominatorTree -Experimental</span></a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Actualizado por última vez en may. 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

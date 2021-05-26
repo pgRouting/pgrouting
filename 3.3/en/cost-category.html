@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Cost - Category &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cost Matrix - Category" href="costMatrix-category.html" />
+    <link rel="prev" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="pgr_trsp.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Cost - Category</a><ul>
+<li><a class="reference internal" href="#general-information">General Information</a><ul>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_trsp.html" title="Previous Chapter: pgr_trsp - Turn Restriction Shortest Path (TRSP)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_trsp - Tu...</span>
+    </a>
+  </li>
+  <li>
+    <a href="costMatrix-category.html" title="Next Chapter: Cost Matrix - Category"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Cost Matrix -... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/cost-category.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/cost-category.html">3.2</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/cost-category.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/cost-category.html">3.0</a></p></li>
+<li><p><strong>Unsupported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/2.5/en/cost-category.html">2.5</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.4/en/cost-category.html">2.4</a>
+<a class="reference external" href="https://docs.pgrouting.org/2.6/en/cost-category.html">2.6</a></p></li>
+</ul>
+<section id="cost-category">
+<h1>Cost - Category<a class="headerlink" href="#cost-category" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
+</ul>
+<p class="rubric">Proposed</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
+<ul class="simple">
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
+<ul>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a></p></li>
+</ul>
+<section id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<section id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<p>The main Characteristics are:</p>
+<ul class="simple">
+<li><p>Each function works as part of the family it belongs to.</p></li>
+<li><p>It does not return a path.</p></li>
+<li><p>Returns the sum of the costs of the resulting path(s) for pair combination of nodes in the graph.</p></li>
+<li><p>Process is done only on edges with positive costs.</p></li>
+<li><p>Values are returned when there is a path.</p>
+<ul>
+<li><p>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
+<li><p>When the starting vertex and ending vertex are the same, there is no path.</p>
+<ul>
+<li><p>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite>.</p></li>
+</ul>
+</li>
+<li><p>When the starting vertex and ending vertex are the different and there is no path.</p>
+<ul>
+<li><p>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Let be the case the values returned are stored in a table, so the unique index would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
+<li><p>Depending on the function and its parameters, the results can be symmetric.</p>
+<ul>
+<li><p>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</p></li>
+</ul>
+</li>
+<li><p>Any duplicated value in the <cite>start_vids</cite> or in <cite>end_vids</cite> are ignored.</p></li>
+<li><p>The returned values are ordered:</p>
+<ul>
+<li><p><cite>start_vid</cite> ascending</p></li>
+<li><p><cite>end_vid</cite> ascending</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Last updated on May 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Bidirectional Dijkstra - Familia de funciones &#8212; pgRouting Manual (3.3-dev)</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="pgr_bdDijkstra" href="pgr_bdDijkstra.html" />
+    <link rel="prev" title="pgr_bdAstarCostMatrix" href="pgr_bdAstarCostMatrix.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Bidirectional Dijkstra - Familia de funciones</a><ul>
+<li><a class="reference internal" href="#synopsis">Sinopsis</a></li>
+<li><a class="reference internal" href="#characteristics">Características</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_bdAstarCostMatrix.html" title="Previous Chapter: pgr_bdAstarCostMatrix"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bdAstarCostMatrix</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_bdDijkstra.html" title="Next Chapter: pgr_bdDijkstra"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bdDijkstra &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric">Versiones anteriores de esta página</p>
+<ul class="simple">
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/bdDijkstra-family.html">Actual</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/en/bdDijkstra-family.html">3.2</a>) <a class="reference external" href="https://docs.pgrouting.org/3.1/en/bdDijkstra-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/en/bdDijkstra-family.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/bdDijkstra-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/bdDijkstra-family.html">2.5</a></p></li>
+</ul>
+<section id="bidirectional-dijkstra-family-of-functions">
+<h1>Bidirectional Dijkstra - Familia de funciones<a class="headerlink" href="#bidirectional-dijkstra-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - Algoritmo Dijkstra bidireccional para las rutas más cortas.</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - Dijkstra bidireccional para calcular el costo de las rutas más cortas</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - Algoritmo Dijkstra bidireccional para crear una matriz de costos de las rutas más cortas.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="synopsis">
+<h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Basada en el algoritmo  Dijkstra, la búsqueda bidireccional encuentra una ruta más corta: de un vértice inicial (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) a un vértice final (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>). Ejecuta dos búsquedas simultáneas: una adelante de la fuente y uno hacia atrás del objetivo, deteniéndose cuando los dos se encuentran en el medio. Esta implementación puede utilizarse con un gráfico dirigido y uno no dirigido.</p>
+</section>
+<section id="characteristics">
+<h2>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las características principales son:</p>
+<ul class="simple">
+<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
+<li><p>Valores son regresados cuando hay un camino.</p></li>
+<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
+<ul>
+<li><p>El <cite>agg_cost</cite> de los valores no incluídos <cite>(v, v)</cite> es <cite>0</cite></p></li>
+</ul>
+</li>
+<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
+<ul>
+<li><p>El  “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></p></li>
+</ul>
+</li>
+<li><p>Tiempo de ejecución (peor de los casos): <span class="math notranslate nohighlight">\(O((V \log V + E))\)</span></p></li>
+<li><p>Para grandes gráficos donde hay un camino entre el vértice inicial y el vértice final:</p>
+<ul>
+<li><p>Se espera que termine más rápido que pgr_dijkstra</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="see-also">
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<p class="rubric">Índices y tablas</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
+      Actualizado por última vez en may. 26, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
