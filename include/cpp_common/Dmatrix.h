@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <map>
 
-#include "c_types/matrix_cell_t.h"
+typedef struct Matrix_cell_t Matrix_cell_t;
 
 namespace pgrouting {
 namespace tsp {
@@ -120,7 +120,7 @@ class Dmatrix {
     }
 
  protected:
-    void set_ids(const std::vector<matrix_cell> &data_costs);
+    void set_ids(const std::vector<Matrix_cell_t> &data_costs);
     std::vector<int64_t> ids;
 
  private:

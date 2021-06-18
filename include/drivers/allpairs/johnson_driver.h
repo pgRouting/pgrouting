@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/matrix_cell_t.h"
+typedef struct Matrix_cell_t Matrix_cell_t;
 
 #ifdef __cplusplus
 extern "C" {

@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cmath>
 
 #include "tsp/tour.h"
+#include "c_types/matrix_cell_t.h"
 #include "cpp_common/pgr_assert.h"
 
 
