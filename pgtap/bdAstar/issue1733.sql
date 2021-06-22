@@ -17,8 +17,15 @@ SELECT * FROM pgr_bdAstar(
     true, heuristic := 2
 );
 
-SELECT * FROM lives_ok('q1');
-SELECT * FROM is_empty('q1');
+SELECT CASE
+WHEN NOT min_lib_version('3.1.1') THEN
+  skip(2, 'Issue fixed on 3.1.1')
+ELSE
+  collect_tap(
+    lives_ok('q1'),
+    is_empty('q1'))
+END;
+
 
 
 SELECT finish();

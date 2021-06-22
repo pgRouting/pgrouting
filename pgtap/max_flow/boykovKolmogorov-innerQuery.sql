@@ -12,8 +12,6 @@ SELECT has_function('pgr_boykovkolmogorov',
     ARRAY['text', 'anyarray', 'bigint']);
 SELECT has_function('pgr_boykovkolmogorov',
     ARRAY['text', 'anyarray', 'anyarray']);
-SELECT has_function('pgr_boykovkolmogorov',
-    ARRAY['text', 'text']);
 
 SELECT function_returns('pgr_boykovkolmogorov',
     ARRAY['text', 'bigint', 'bigint'],
@@ -27,10 +25,17 @@ SELECT function_returns('pgr_boykovkolmogorov',
 SELECT function_returns('pgr_boykovkolmogorov',
     ARRAY['text', 'anyarray', 'anyarray'],
     'setof record');
-SELECT function_returns('pgr_boykovkolmogorov',
-    ARRAY['text', 'text'],
-    'setof record');
 
+-- new signature on 3.2
+SELECT CASE
+WHEN NOT min_version('3.2.0') THEN
+  skip(2, 'Combinations functiontionality new on 3.2.0')
+ELSE
+  collect_tap(
+    has_function('pgr_boykovkolmogorov', ARRAY['text', 'text']),
+    function_returns('pgr_boykovkolmogorov', ARRAY['text', 'text'], 'setof record')
+  )
+END;
 
 -- ONLY WORKS ON DIRECTED GRAPH
 SELECT style_max_flow('pgr_boykovkolmogorov', ', 2, 3)');

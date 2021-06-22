@@ -18,8 +18,7 @@ SELECT function_returns('pgr_maxflow', ARRAY[ 'text', 'anyarray', 'anyarray' ], 
 -- testing column names
 SELECT set_eq(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflow'$$,
-    $$SELECT  NULL::TEXT[] $$
-);
+    $$SELECT  NULL::TEXT[] $$);
 
 
 -- pgr_maxflow works

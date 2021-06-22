@@ -13,13 +13,19 @@ sql_Combinations TEXT;
 sql_Many TEXT;
 BEGIN
 
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Combinations signature added on 3.2.0');
+    RETURN;
+  END IF;
+
     sql_Combinations := '';
     sql_Many := '';
     FOR i IN 1.. cant LOOP
         IF (i > 1) THEN
             sql_Many := sql_Many ||', ';
         END IF;
-        sql_Many := sql_Many || i ;
+       sql_Many := sql_Many || i ;
     END LOOP;
 
     FOR i IN 1.. cant LOOP

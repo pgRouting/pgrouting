@@ -1,4 +1,5 @@
 
+DROP TABLE IF EXISTS edge_table_old;
 SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1,y1,x2,y2
 INTO edge_table_old
 FROM edge_table;

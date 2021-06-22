@@ -8,7 +8,28 @@ name: Check Documentation
 # - build Links
 # - English is always tested
 
-on: [push,pull_request]
+on:
+  push:
+    paths:
+      - 'doc/**'
+      - 'locale/**'
+      - '.github/workflows/doc-check.yml'
+      - 'tools/testers/**'
+
+    branches-ignore:
+      - 'gh-pages'
+
+
+  pull_request:
+    branches:
+      - master
+      - develop
+    paths:
+      - 'doc/**'
+      - 'locale/**'
+      - '.github/workflows/doc-check.yml'
+      - 'tools/testers/**'
+
 
 jobs:
   build:

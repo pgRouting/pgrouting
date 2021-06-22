@@ -1,8 +1,7 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(658);
-SET client_min_messages TO ERROR;
+SELECT CASE WHEN min_version('3.2.0') THEN plan (658) ELSE plan(657) END;
 
 
 SELECT has_function('pgr_withpointscost',
@@ -13,8 +12,6 @@ SELECT has_function('pgr_withpointscost',
     ARRAY['text', 'text', 'anyarray', 'bigint', 'boolean','character']);
 SELECT has_function('pgr_withpointscost',
     ARRAY['text', 'text', 'anyarray', 'anyarray', 'boolean','character']);
-SELECT has_function('pgr_withpointscost',
-    ARRAY['text', 'text', 'text', 'boolean','character']);
 
 SELECT function_returns('pgr_withpointscost',
     ARRAY['text', 'text', 'bigint', 'bigint', 'boolean','character'],
@@ -28,10 +25,17 @@ SELECT function_returns('pgr_withpointscost',
 SELECT function_returns('pgr_withpointscost',
     ARRAY['text', 'text', 'anyarray', 'anyarray', 'boolean','character'],
     'setof record');
-SELECT function_returns('pgr_withpointscost',
-    ARRAY['text', 'text', 'text', 'boolean','character'],
-    'setof record');
 
+-- new signature on 3.2
+SELECT CASE
+WHEN NOT min_version('3.2.0') THEN
+  skip(1, 'Combinations functiontionality new on 3.2.0')
+ELSE
+  collect_tap(
+    has_function('pgr_withpointscost', ARRAY['text', 'text', 'text', 'boolean','character']),
+    function_returns('pgr_withpointscost', ARRAY['text', 'text', 'text', 'boolean','character'], 'setof record')
+  )
+END;
 
 -- DIRECTED
 SELECT style_withpoints('pgr_withpointscost', ', 2, 3)');

@@ -31,5 +31,6 @@ BEGIN;
     \i no_crash_test.sql
     \i alphaShapeTester.sql
     \i binaryBreadthFirstSearch_pgtap_data.sql
+    \i general_pgtap_tests.sql
 
 END;
