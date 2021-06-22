@@ -12,8 +12,6 @@ SELECT has_function('pgr_dijkstracost',
     ARRAY['text', 'anyarray', 'bigint', 'boolean']);
 SELECT has_function('pgr_dijkstracost',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
-SELECT has_function('pgr_dijkstracost',
-    ARRAY['text', 'text', 'boolean']);
 
 SELECT function_returns('pgr_dijkstracost',
     ARRAY['text', 'bigint', 'bigint', 'boolean'],
@@ -27,9 +25,15 @@ SELECT function_returns('pgr_dijkstracost',
 SELECT function_returns('pgr_dijkstracost',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean'],
     'setof record');
-SELECT function_returns('pgr_dijkstracost',
-    ARRAY['text', 'text','boolean'],
-    'setof record');
+
+SELECT CASE
+WHEN NOT min_version('3.1.0') THEN
+  skip(2, 'Combinations signature added on 3.1.0')
+ELSE
+  collect_tap(
+ has_function('pgr_dijkstracost', ARRAY['text', 'text', 'boolean']),
+ function_returns('pgr_dijkstracost', ARRAY['text', 'text','boolean'], 'setof record'))
+END;
 
 
 -- ONE TO ONE

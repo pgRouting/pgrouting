@@ -23,7 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 \i setup.sql
 
-SELECT plan(1156);
+SELECT CASE
+WHEN NOT min_lib_version('3.1.1') THEN plan(1)
+ELSE plan(1156) END;
 
 SET extra_float_digits = -3;
 
@@ -39,6 +41,12 @@ dijkstra_sql TEXT;
 withPoints_sql TEXT;
 result_columns TEXT;
 BEGIN
+  IF NOT min_lib_version('3.1.1') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Issue fixed on 3.1.1');
+    RETURN;
+  END IF;
+
     result_columns := 'seq, path_seq, node, edge, cost, agg_cost';
     points_sql := 'SELECT pid, edge_id, fraction, side from pointsOfInterest WHERE pid IN (-1)';
 

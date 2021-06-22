@@ -100,9 +100,7 @@ SELECT is(pgr_createVerticesTable('edges2', target:='the_geom'), 'FAIL', '2');
 
 SELECT * INTO "Edges2" from edges2;
 
--- TODO The following should be OK BUT ARE FAILING
 
-SELECT * FROM TODO_START('For some reson the index name is not set up correctly');
 SELECT is(pgr_createVerticesTable('Edges2'), 'FAIL', '3');
 UPDATE "Edges2" set the_geom = NULL where id=5;
 
@@ -110,7 +108,6 @@ SELECT is(pgr_createVerticesTable('Edges2'), 'FAIL', '3');
 
 UPDATE "Edges2" set source = NULL where id=7;
 SELECT is(pgr_createVerticesTable('Edges2'), 'FAIL', '3');
-SELECT * FROM TODO_END();
 
 create schema myschema;
 SET search_path TO myschema,public;

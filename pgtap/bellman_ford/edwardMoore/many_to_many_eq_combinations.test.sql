@@ -4,13 +4,18 @@ SELECT plan(1);
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE OR REPLACE FUNCTION foo( sql_TestFunction TEXT, cant INTEGER default 18 )
+CREATE OR REPLACE FUNCTION compare_many_to_many( sql_TestFunction TEXT, cant INTEGER default 18 )
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
 sql_Combinations TEXT;
 sql_Many TEXT;
 BEGIN
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Combinations signature added on 3.2.0');
+    RETURN;
+  END IF;
 
     sql_Combinations := '';
     sql_Many := '';
@@ -44,7 +49,7 @@ END
 $BODY$
 language plpgsql;
 
-SELECT * FROM foo('SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM pgr_edwardMoore');
+SELECT * FROM compare_many_to_many('SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM pgr_edwardMoore');
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

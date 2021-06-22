@@ -15,6 +15,7 @@ DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE IF EXISTS new_restrictions;
 DROP TABLE IF EXISTS retrict;
+DROP TABLE IF EXISTS combinations_table;
 DROP TABLE IF EXISTS vertex_table;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS vehicles;

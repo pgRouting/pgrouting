@@ -1,9 +1,10 @@
 
 \i setup.sql
 
-SELECT plan(119);
+SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(119) END;
 
-CREATE OR REPLACE FUNCTION foo( TestFunction TEXT, sql_EdgesQuery TEXT, cant INTEGER default 18 )
+
+CREATE OR REPLACE FUNCTION flow_combinations_eq_test(TestFunction TEXT, sql_EdgesQuery TEXT, cant INTEGER default 18 )
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
@@ -12,7 +13,6 @@ sql_ManySource TEXT;
 sql_ManyTarget TEXT;
 sql_Many TEXT;
 BEGIN
-
     FOR id IN 1.. (cant - 1) LOOP
         sql_Combinations := '';
         sql_ManySource := '';
@@ -51,48 +51,70 @@ END
 $BODY$
 language plpgsql;
 
--- test pgr_maxFlow
-SELECT * FROM foo(
+CREATE OR REPLACE FUNCTION check_eq()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Combinations functionality is new on 3.2.0');
+    RETURN;
+  END IF;
+
+  -- test pgr_maxFlow
+  RETURN QUERY
+  SELECT * FROM flow_combinations_eq_test(
     'pgr_maxFlow',
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
-);
+  );
 
--- test pgr_boykovKolmogorov
-SELECT * FROM foo(
+  -- test pgr_boykovKolmogorov
+  RETURN QUERY
+  SELECT * FROM flow_combinations_eq_test(
     'pgr_boykovKolmogorov',
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
-);
+  );
 
--- test pgr_edmondsKarp
-SELECT * FROM foo(
+  -- test pgr_edmondsKarp
+  RETURN QUERY
+  SELECT * FROM flow_combinations_eq_test(
     'pgr_edmondsKarp',
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
-);
+  );
 
--- test pgr_pushRelabel
-SELECT * FROM foo(
+  -- test pgr_pushRelabel
+  RETURN QUERY
+  SELECT * FROM flow_combinations_eq_test(
     'pgr_pushRelabel',
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table'
-);
+  );
 
--- test pgr_edgeDisjointPaths
-SELECT * FROM foo(
+  -- test pgr_edgeDisjointPaths
+  RETURN QUERY
+  SELECT * FROM flow_combinations_eq_test(
     'pgr_edgeDisjointPaths',
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
-);
+  );
 
--- test pgr_maxFlowMinCost
-SELECT * FROM foo(
+  -- test pgr_maxFlowMinCost
+  RETURN QUERY
+  SELECT * FROM flow_combinations_eq_test(
     'pgr_maxFlowMinCost',
     'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table'
-);
+  );
 
--- test pgr_maxFlowMinCost_Cost
-SELECT * FROM foo(
+  -- test pgr_maxFlowMinCost_Cost
+  RETURN QUERY
+  SELECT * FROM flow_combinations_eq_test(
     'pgr_maxFlowMinCost_Cost',
     'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost FROM edge_table'
-);
+  );
 
--- Finish the tests and clean up.
-SELECT * FROM finish();
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT check_eq();
+SELECT finish();
 ROLLBACK;

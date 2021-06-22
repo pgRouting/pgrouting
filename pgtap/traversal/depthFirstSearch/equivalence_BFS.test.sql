@@ -2,7 +2,18 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(16);
+SELECT CASE WHEN min_version('3.2.0') THEN plan (16) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
 
 
 PREPARE sample_data AS
@@ -53,8 +64,11 @@ FROM pgr_breadthFirstSearch(
     5, max_depth => 1
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch1', 'breadthFirstSearch1', '1: max_depth => 1 cases (directed)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch2', 'breadthFirstSearch2', '2: max_depth => 1 cases (directed)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch3', 'breadthFirstSearch3', '3: max_depth => 1 cases (directed)');
 
 -- max_depth 1 cases (undirected)
@@ -101,8 +115,11 @@ FROM pgr_breadthFirstSearch(
     5, directed => false, max_depth => 1
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch4', 'breadthFirstSearch4', '4: max_depth => 1 cases (undirected)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch5', 'breadthFirstSearch5', '5: max_depth => 1 cases (undirected)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch6', 'breadthFirstSearch6', '6: max_depth => 1 cases (undirected)');
 
 -- max_depth 2 cases (directed)
@@ -149,8 +166,11 @@ FROM pgr_breadthFirstSearch(
     5, max_depth => 2
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch7', 'breadthFirstSearch7', '7: max_depth => 2 cases (directed)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch8', 'breadthFirstSearch8', '8: max_depth => 2 cases (directed)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch9', 'breadthFirstSearch9', '9: max_depth => 2 cases (directed)');
 
 -- max_depth 2 cases (undirected)
@@ -197,8 +217,11 @@ FROM pgr_breadthFirstSearch(
     5, directed => false, max_depth => 2
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch10', 'breadthFirstSearch10', '10: max_depth => 2 cases (undirected)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch11', 'breadthFirstSearch11', '11: max_depth => 2 cases (undirected)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch12', 'breadthFirstSearch12', '12: max_depth => 2 cases (undirected)');
 
 -- max_depth 3 cases (directed)
@@ -245,8 +268,11 @@ FROM pgr_breadthFirstSearch(
     5, max_depth => 3
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch13', 'breadthFirstSearch13', '13: max_depth => 3 cases (directed)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch14', 'breadthFirstSearch14', '14: max_depth => 3 cases (directed)');
+RETURN QUERY
 SELECT set_eq('depthFirstSearch15', 'breadthFirstSearch15', '15: max_depth => 3 cases (directed)');
 
 -- max_depth 3 cases (undirected)
@@ -265,7 +291,14 @@ FROM pgr_breadthFirstSearch(
     1, directed => false, max_depth => 3
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch16', 'breadthFirstSearch16', '16: max_depth => 3 cases (undirected)');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
 
 
 -- Finish the tests and clean up.

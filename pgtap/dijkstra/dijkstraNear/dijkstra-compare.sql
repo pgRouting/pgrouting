@@ -1,19 +1,10 @@
---\i setup.sql
+\i setup.sql
 
-SELECT plan(142);
+SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(142) END;
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
--- Initial tables are good to work
 
-SELECT isnt_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table$$);
-SELECT isnt_empty($$SELECT id FROM edge_table_vertices_pgr$$);
-
--- vertex id values that dont exist
-SELECT is_empty($$SELECT id FROM edge_table_vertices_pgr WHERE id > 18$$);
-SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE source > 18$$);
-SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE target > 18$$);
-SELECT is_empty($$SELECT id FROM edge_table WHERE id > 18$$);
 
 CREATE TABLE expected AS
 WITH
@@ -49,7 +40,6 @@ DECLARE
 dijkstraNear_query TEXT;
 dijkstra_query TEXT;
 BEGIN
-
     FOR id IN 1..17 LOOP
         dijkstraNear_query := format($$
             SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost
@@ -77,24 +67,54 @@ END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
 
+CREATE OR REPLACE FUNCTION compare()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
+
+RETURN QUERY
+SELECT isnt_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table$$);
+RETURN QUERY
+SELECT isnt_empty($$SELECT id FROM edge_table_vertices_pgr$$);
+
+-- vertex id values that dont exist
+RETURN QUERY
+SELECT is_empty($$SELECT id FROM edge_table_vertices_pgr WHERE id > 18$$);
+RETURN QUERY
+SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE source > 18$$);
+RETURN QUERY
+SELECT is_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE target > 18$$);
+RETURN QUERY
+SELECT is_empty($$SELECT id FROM edge_table WHERE id > 18$$);
+
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     $$SELECT start_vid AS frst, d_w_1 AS scnd FROM expected$$,
     'directed => true, cap => 1', 'directed => true'
 );
 
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     $$SELECT start_vid AS frst, u_w_1 AS scnd FROM expected$$,
     'directed => false, cap => 1', 'directed => false'
 );
 
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost  FROM edge_table$$,
     $$SELECT start_vid AS frst, d_n_1 AS scnd FROM expected$$,
     'directed => true, cap => 1', 'directed => true'
 );
 
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost  FROM edge_table$$,
     $$SELECT start_vid AS frst, u_n_1 AS scnd FROM expected$$,
@@ -102,29 +122,39 @@ SELECT * from check_compare(
 );
 
 
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
     $$SELECT start_vid AS frst, d_w_2 AS scnd FROM expected$$,
     'directed => true, cap => 2', 'directed => true'
 );
 
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
     $$SELECT start_vid AS frst, u_w_2 AS scnd FROM expected$$,
     'directed => false, cap => 2', 'directed => false'
 );
 
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost  FROM edge_table$$,
     $$SELECT start_vid AS frst, d_n_2 AS scnd FROM expected$$,
     'directed => true, cap => 2', 'directed => true'
 );
 
+RETURN QUERY
 SELECT * from check_compare(
     $$SELECT id, source, target, cost  FROM edge_table$$,
     $$SELECT start_vid AS frst, u_n_2 AS scnd FROM expected$$,
     'directed => false, cap => 2', 'directed => false'
 );
 
-DROP TABLE IF EXISTS expected;
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+SELECT compare();
 SELECT finish();
+ROLLBACK;

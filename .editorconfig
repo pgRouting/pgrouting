@@ -22,6 +22,12 @@ indent_size = 4
 indent_style = tab
 indent_size = 8
 
+
+# SQL files want space indentation
+[*.sql]
+indent_style = space
+indent_size = 2
+
 # YML files want space indentation
 [*.yml]
 indent_style = space
