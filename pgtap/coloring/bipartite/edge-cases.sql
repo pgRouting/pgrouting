@@ -1,7 +1,18 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(16);
+SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(16) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
 
 -- 0 edge, 0 vertex test
 
@@ -10,6 +21,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id > 18;
 
+RETURN QUERY
 SELECT is_empty('q1', '1: Graph with 0 edge and 0 vertex');
 
 PREPARE bipartite1 AS
@@ -18,6 +30,7 @@ FROM pgr_bipartite(
     'q1'
 );
 
+RETURN QUERY
 SELECT is_empty('bipartite1', '2: Graph with 0 edge and 0 vertex -> Empty row is returned');
 
 
@@ -28,6 +41,7 @@ SELECT id, source, 2 AS target, cost, reverse_cost
 FROM edge_table
 WHERE id = 2;
 
+RETURN QUERY
 SELECT set_eq('q2', $$VALUES (2, 2, 2, -1, 1)$$, '3: Graph with only vertex 2');
 
 PREPARE bipartite2 AS
@@ -35,6 +49,7 @@ SELECT *
 FROM pgr_bipartite(
     'q2'
 );
+RETURN QUERY
 SELECT is_empty('bipartite2', '4: One vertex graph can not be bipartite-> Empty row is returned');
 
 
@@ -46,6 +61,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id = 7;
 
+RETURN QUERY
 SELECT set_eq('q3', $$VALUES (7, 8, 5, 1, 1)$$, '5: Graph with two connected vertices 8 and 5');
 
 PREPARE bipartite3 AS
@@ -54,6 +70,7 @@ FROM pgr_bipartite(
     'q3'
 );
 
+RETURN QUERY
 SELECT set_eq('bipartite3', $$VALUES (8, 0), (5, 1)$$, '6: Graph is bi-partite');
 
 
@@ -66,6 +83,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id <= 2;
 
+RETURN QUERY
 SELECT set_eq('q4', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, '7: Graph with three vertices 1, 2 and 3');
 
 PREPARE bipartite4 AS
@@ -74,6 +92,7 @@ FROM pgr_bipartite(
     'q4'
 );
 
+RETURN QUERY
 SELECT set_eq('bipartite4', $$VALUES (1, 0), (2, 1), (3, 0)$$, '8: Bi-partite graph with 3 vertices');
 
 
@@ -84,6 +103,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id <= 3;
 
+RETURN QUERY
 SELECT set_eq('q5',
     $$VALUES
         (1, 1, 2, 1, 1),
@@ -99,6 +119,7 @@ FROM pgr_bipartite(
     'q5'
 );
 
+RETURN QUERY
 SELECT set_eq('bipartite5', $$VALUES (1, 0), (2, 1), (3, 0), (4, 1)$$, '10: Bi-partite graph with 4 vertices');
 
 
@@ -113,6 +134,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id IN (8, 10, 11, 12);
 
+RETURN QUERY
 SELECT set_eq('q6',
     $$VALUES
         (8, 5, 6, 1, 1),
@@ -129,6 +151,7 @@ FROM pgr_bipartite(
     'q6'
 );
 
+RETURN QUERY
 SELECT set_eq('bipartite6', $$VALUES (5, 0), (6, 1), (10, 1), (11, 0)$$, '12: Cyclic and bipartite graph');
 
 
@@ -153,6 +176,7 @@ PREPARE q7 AS
 SELECT id, source, target, cost, reverse_cost
 FROM three_vertices_table;
 
+RETURN QUERY
 SELECT set_eq('q7',
     $$VALUES
         (1, 3, 6, 20, 15),
@@ -169,6 +193,7 @@ FROM pgr_bipartite(
 );
 
 
+RETURN QUERY
 SELECT is_empty('bipartite7', '14: Graph with odd lenght cycle -> Empty row is returned');
 
 
@@ -188,11 +213,12 @@ INSERT INTO five_vertices_table (source, target, cost, reverse_cost) VALUES
     (3, 4, 1, -1),
     (4, 5, 1, 1),
     (5, 1, 1, -1);
-    
+
 PREPARE q8 AS
 SELECT id, source, target, cost, reverse_cost
 FROM five_vertices_table;
 
+RETURN QUERY
 SELECT set_eq('q8',
     $$VALUES
         (1, 1, 2, 1, 1),
@@ -211,8 +237,15 @@ FROM pgr_bipartite(
 );
 
 
+RETURN QUERY
 SELECT is_empty('bipartite8', '16: Graph with odd lenght cycle -> Empty row is returned');
 
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
 
 
 

@@ -7,6 +7,13 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Combinations signature added on 3.2.0');
+    RETURN;
+  END IF;
+
+
     RETURN query SELECT is_empty(
       'SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_bellmanFord(
         ''SELECT id, source, target, cost, reverse_cost FROM edge_table'',

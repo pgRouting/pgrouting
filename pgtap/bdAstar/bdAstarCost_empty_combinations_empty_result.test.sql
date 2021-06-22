@@ -3,23 +3,27 @@
 
 SELECT plan(1);
 
-create or REPLACE FUNCTION foo()
+CREATE OR REPLACE FUNCTION test_function()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-
-    RETURN query SELECT is_empty(
-      'SELECT start_vid,  end_vid, agg_cost FROM pgr_bdAstarCost(
-        ''SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table'',
-        ''SELECT * FROM combinations_table WHERE source IN (-1)'' ) '
-    );
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Combinations signature added on 3.2.0');
     RETURN;
+  END IF;
+
+  RETURN QUERY
+  SELECT is_empty(
+    'SELECT start_vid,  end_vid, agg_cost FROM pgr_bdAstarCost(
+      ''SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table'',
+      ''SELECT * FROM combinations_table WHERE source IN (-1)'' ) '
+  );
+  RETURN;
 END
 $BODY$
 language plpgsql;
 
-select * from foo();
-
--- Finish the tests and clean up.
-SELECT * FROM finish();
+SELECT test_function();
+SELECT finish();
 ROLLBACK;

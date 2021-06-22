@@ -1,13 +1,13 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(658);
+SELECT CASE WHEN min_version('3.2.0') THEN plan(658) ELSE plan(657) END;
+
 
 SELECT has_function('pgr_bddijkstra', ARRAY['text', 'bigint', 'bigint', 'boolean']);
 SELECT has_function('pgr_bddijkstra', ARRAY['text', 'bigint', 'anyarray', 'boolean']);
 SELECT has_function('pgr_bddijkstra', ARRAY['text', 'anyarray', 'bigint', 'boolean']);
 SELECT has_function('pgr_bddijkstra', ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
-SELECT has_function('pgr_bddijkstra', ARRAY['text', 'text', 'boolean']);
 
 SELECT function_returns('pgr_bddijkstra', ARRAY['text', 'bigint', 'bigint', 'boolean'],
     'setof record');
@@ -17,9 +17,17 @@ SELECT function_returns('pgr_bddijkstra', ARRAY['text', 'anyarray', 'bigint', 'b
     'setof record');
 SELECT function_returns('pgr_bddijkstra', ARRAY['text', 'anyarray', 'anyarray', 'boolean'],
     'setof record');
-SELECT function_returns('pgr_bddijkstra', ARRAY['text', 'text', 'boolean'],
-    'setof record');
 
+-- new signature on 3.2
+SELECT CASE
+WHEN NOT min_version('3.2.0') THEN
+  skip(1, 'Combinations signature added on 3.2.0')
+ELSE
+  collect_tap(
+    has_function('pgr_bddijkstra', ARRAY['text', 'text', 'boolean']),
+    function_returns('pgr_bddijkstra', ARRAY['text', 'text', 'boolean'], 'setof record')
+  )
+END;
 
 
 SELECT style_dijkstra('pgr_bddijkstra', ', 2, 3, true)');
