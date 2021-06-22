@@ -7,6 +7,12 @@ CREATE OR REPLACE FUNCTION foo( TestFunction TEXT, sql_EdgesQuery TEXT )
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
+    IF NOT min_version('3.2.0') THEN
+      RETURN QUERY
+      SELECT skip(1, 'Combinations functionality is new on 3.2.0');
+      RETURN;
+    END IF;
+
 
     IF TestFunction = 'pgr_maxFlow' THEN
         RETURN query SELECT set_eq( 'SELECT * FROM ' || TestFunction || '( $$' || sql_EdgesQuery || '$$,

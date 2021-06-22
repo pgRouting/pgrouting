@@ -11,6 +11,11 @@ DECLARE
 sql_Combinations TEXT;
 sql_Many TEXT;
 BEGIN
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Combinations signature added on 3.2.0');
+    RETURN;
+  END IF;
 
     sql_Combinations := '';
     sql_Many := '';

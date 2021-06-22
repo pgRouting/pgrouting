@@ -1,7 +1,18 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(8);
+SELECT CASE WHEN min_version('3.2.0') THEN plan (8) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION issue()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
 
 
 CREATE TABLE sample_table (
@@ -30,6 +41,7 @@ SELECT * FROM pgr_depthFirstSearch (
     3
 );
 
+RETURN QUERY
 SELECT set_eq('q1',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -48,6 +60,7 @@ SELECT * FROM pgr_depthFirstSearch (
     6
 );
 
+RETURN QUERY
 SELECT set_eq('q2',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
@@ -66,6 +79,7 @@ SELECT * FROM pgr_depthFirstSearch (
     6, max_depth => 1
 );
 
+RETURN QUERY
 SELECT set_eq('q3',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
@@ -83,6 +97,7 @@ SELECT * FROM pgr_depthFirstSearch (
     2
 );
 
+RETURN QUERY
 SELECT set_eq('q4',
     $$VALUES (1, 0, 2, 2, -1, 0, 0)$$,
     '4: Vertex not present in graph'
@@ -97,6 +112,7 @@ SELECT * FROM pgr_depthFirstSearch (
     3, directed => false
 );
 
+RETURN QUERY
 SELECT set_eq('q5',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -115,6 +131,7 @@ SELECT * FROM pgr_depthFirstSearch (
     6, directed => false
 );
 
+RETURN QUERY
 SELECT set_eq('q6',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
@@ -133,6 +150,7 @@ SELECT * FROM pgr_depthFirstSearch (
     6, directed => false, max_depth => 1
 );
 
+RETURN QUERY
 SELECT set_eq('q7',
     $$VALUES
         (1, 0, 6, 6, -1, 0, 0),
@@ -151,6 +169,7 @@ SELECT * FROM pgr_depthFirstSearch (
     ARRAY[6, 3, 6]
 );
 
+RETURN QUERY
 SELECT set_eq('q8',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -162,6 +181,12 @@ SELECT set_eq('q8',
     $$,
     'q8: Directed Graph with multiple Root vids'
 );
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issue();
 
 
 SELECT * FROM finish();

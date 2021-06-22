@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(22);
+SELECT CASE WHEN min_version('3.2.0') THEN plan (22) ELSE plan(2) END;
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
@@ -12,6 +12,12 @@ DECLARE
 sql_SingleVertex TEXT;
 sql_MultipleVertices TEXT;
 BEGIN
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Function is new on 3.2.0');
+    RETURN;
+  END IF;
+
 
     FOR depth IN 1..11 LOOP
         sql_SingleVertex := '';
@@ -34,6 +40,7 @@ BEGIN
             END IF;
             sql_MultipleVertices := sql_MultipleVertices || i ;
         END LOOP;
+
         sql_MultipleVertices :=
             '( SELECT depth, start_vid, node, edge, cost, agg_cost  FROM pgr_depthFirstSearch(
                     ''SELECT id, source, target, cost, reverse_cost FROM edge_table'', '

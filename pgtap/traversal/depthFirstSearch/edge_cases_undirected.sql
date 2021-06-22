@@ -1,7 +1,18 @@
 \i setup.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(18);
+SELECT CASE WHEN min_version('3.2.0') THEN plan (18) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.2.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.2.0');
+  RETURN;
+END IF;
 
 
 
@@ -12,6 +23,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id > 18;
 
+RETURN QUERY
 SELECT is_empty('q1', '1: Graph with 0 edge and 0 vertex');
 
 PREPARE depthFirstSearch2 AS
@@ -21,6 +33,7 @@ FROM pgr_depthFirstSearch(
     5, directed => false
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch2',
     $$VALUES (1, 0, 5, 5, -1, 0, 0)$$,
     '2: 0 edge 0 vertex test'
@@ -34,6 +47,7 @@ PREPARE q3 AS
 SELECT id, source, target, cost, reverse_cost
 FROM edge_table;
 
+RETURN QUERY
 SELECT is_empty(
     'SELECT id, source, target, cost, reverse_cost
     FROM edge_table
@@ -48,6 +62,7 @@ FROM pgr_depthFirstSearch(
     100, directed => false
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch4',
     $$VALUES (1, 0, 100, 100, -1, 0, 0)$$,
     '4: Vertex not present in graph'
@@ -64,6 +79,7 @@ FROM pgr_depthFirstSearch(
     4, directed => false, max_depth => -3
 );
 
+RETURN QUERY
 SELECT throws_ok('depthFirstSearch5',
     'P0001', 'Negative value found on ''max_depth''',
     '5: Negative max_depth throws'
@@ -78,6 +94,7 @@ SELECT id, source, 2 AS target, cost, reverse_cost
 FROM edge_table
 WHERE id = 2;
 
+RETURN QUERY
 SELECT set_eq('q6',
     $$VALUES (2, 2, 2, -1, 1)$$,
     '6: Graph with only vertex 2'
@@ -90,6 +107,7 @@ FROM pgr_depthFirstSearch(
     2, directed => false
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch7',
     $$VALUES (1, 0, 2, 2, -1, 0, 0)$$,
     '7: 1 vertex test'
@@ -104,6 +122,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM edge_table
 WHERE id = 5;
 
+RETURN QUERY
 SELECT set_eq('q8',
     $$VALUES (5, 3, 6, 1, -1)$$,
     '8: Graph with two vertices 3 and 6 and edge from 3 to 6'
@@ -130,6 +149,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[3, 6], directed => false, max_depth => 1
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch9',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -140,6 +160,7 @@ SELECT set_eq('depthFirstSearch9',
     '9: Two vertices tests'
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch10',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -148,6 +169,7 @@ SELECT set_eq('depthFirstSearch10',
     '10: Two vertices tests'
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch11',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -180,6 +202,7 @@ SELECT id, source, target, cost, reverse_cost
 FROM three_vertices_table;
 
 -- Cyclic Graph with three vertices 3, 6 and 8
+RETURN QUERY
 SELECT set_eq('q12',
     $$VALUES
         (1, 3, 6, 20, 15),
@@ -204,6 +227,7 @@ FROM pgr_depthFirstSearch(
 );
 
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch13',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -219,6 +243,7 @@ SELECT set_eq('depthFirstSearch13',
     '13: 3 vertices tests'
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch14',
     $$VALUES
         (1, 0, 3, 3, -1, 0, 0),
@@ -244,6 +269,7 @@ FROM edge_table
 WHERE (id >= 10 AND id <= 12)
     OR id = 8;
 
+RETURN QUERY
 SELECT set_eq('q15',
     $$VALUES
         (8, 5, 6, 1, 1),
@@ -275,6 +301,7 @@ FROM pgr_depthFirstSearch(
     ARRAY[5, 6, 10, 11], directed => false, max_depth => 2
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch16',
     $$VALUES
         (1, 0, 5, 5, -1, 0, 0),
@@ -297,6 +324,7 @@ SELECT set_eq('depthFirstSearch16',
     '16: 4 vertices tests'
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch17',
     $$VALUES
         (1, 0, 5, 5, -1, 0, 0),
@@ -315,6 +343,7 @@ SELECT set_eq('depthFirstSearch17',
     '17: 4 vertices tests'
 );
 
+RETURN QUERY
 SELECT set_eq('depthFirstSearch18',
     $$VALUES
         (1, 0, 5, 5, -1, 0, 0),
@@ -336,6 +365,12 @@ SELECT set_eq('depthFirstSearch18',
     $$,
     '18: 4 vertices tests'
 );
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
 
 
 SELECT * FROM finish();

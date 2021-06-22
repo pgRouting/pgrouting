@@ -18,9 +18,14 @@ SELECT function_returns('pgr_dijkstracost', ARRAY['text','bigint','anyarray','bo
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','bigint','boolean'],'setof record');
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
 
--- V3.1+
-SELECT has_function('pgr_dijkstracost', ARRAY['text','text','boolean']);
-SELECT function_returns('pgr_dijkstracost', ARRAY['text','text','boolean'],'setof record');
+SELECT CASE
+WHEN NOT min_version('3.1.0') THEN
+  skip(2, 'Combinations signature added on 3.1.0')
+ELSE
+  collect_tap(
+    has_function('pgr_dijkstracost', ARRAY['text','text','boolean']),
+    function_returns('pgr_dijkstracost', ARRAY['text','text','boolean'],'setof record'))
+END;
 
 -- testing for the 4 signatures that they return the correct names & columns
 -- Preparing
@@ -303,5 +308,5 @@ SELECT throws_ok('v200r5',
     'XX000','Unexpected Column ''reverse_cost'' type. Expected ANY-NUMERICAL',
     'throws because reverse_cost is TEXT');
 
-    SELECT finish();
-    ROLLBACK;
+SELECT finish();
+ROLLBACK;
