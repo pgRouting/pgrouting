@@ -27,6 +27,7 @@ on:
     paths:
       - 'sql/**'
       - 'src/**'
+      - 'pgtap/**'
       - 'include/**'
       - 'pgtap/**'
       - '.github/workflows/update.yml'
