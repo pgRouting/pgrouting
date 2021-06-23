@@ -13,6 +13,7 @@ on:
       - 'pgtap/**'
       - '.github/workflows/update.yml'
       - 'tools/testers/**'
+      - 'CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'
@@ -29,6 +30,7 @@ on:
       - 'include/**'
       - 'pgtap/**'
       - '.github/workflows/update.yml'
+      - 'CMakeLists.txt'
 
 
 jobs:
