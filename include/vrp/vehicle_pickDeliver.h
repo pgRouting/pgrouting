@@ -179,14 +179,6 @@ class Vehicle_pickDeliver : public Vehicle {
              Initials_code kind,
              Identifiers<size_t> &unassigned,
              Identifiers<size_t> &assigned);
-
-
-     /*!
-      * The order that is picked last is removed
-      *
-      * \returns id of the removed order
-      */
-
 };
 
 }  //  namespace vrp
