@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * this file is not compiled with boost 1.53 or less
  */
 #include "drivers/alpha_shape/alphaShape_driver.h"
+#include <boost/geometry/io/wkt/write.hpp>
 
 #include <cmath>
 #include <vector>
@@ -41,7 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/bpoint.hpp"
 #include "cpp_common/bline.hpp"
-#include <boost/geometry/io/wkt/write.hpp>
 
 
 namespace {

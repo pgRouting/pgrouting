@@ -107,12 +107,11 @@ class Solution {
      Vehicle::Cost cost() const;
 
      /** The problem's message */
-     static Pgr_messages& msg() ;
+     static Pgr_messages& msg();
 
-private:
+ private:
      /** this solution belongs to this problem */
      static Pgr_pickDeliver* problem;
-
 };
 
 
