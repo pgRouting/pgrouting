@@ -64,11 +64,10 @@ class Dnode : public Identifier {
      friend std::ostream& operator << (std::ostream &log, const Dnode &node);
 
  protected:
-     static Pgr_messages& msg() ;
+     static Pgr_messages& msg();
 
      /** The problem */
      static Pgr_pickDeliver* problem;
-
 };
 
 }  // namespace vrp

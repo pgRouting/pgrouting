@@ -34,8 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
-#include "c_types/pgr_combination_t.h"
-
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
 #include <deque>
@@ -48,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <numeric>
 
+#include "c_types/pgr_combination_t.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
