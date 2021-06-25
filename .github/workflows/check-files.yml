@@ -46,3 +46,18 @@ jobs:
           sudo apt install -y shellcheck
       - name: Run Shell Check
         run: ./tools/scripts/test_shell.sh
+
+  style-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Requirements
+        uses: actions/checkout@v2
+        with:
+          repository: 'google/styleguide'
+          ref: "gh-pages"
+          path: "code_linter/styleguide"
+      - name: Run linter
+        run: |
+          bash ./tools/scripts/code_checker.sh
