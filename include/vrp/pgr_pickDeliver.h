@@ -62,7 +62,6 @@ class Pgr_pickDeliver : public PD_problem {
     friend Initial_solution;
 
  public:
-
     Pgr_pickDeliver(
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,

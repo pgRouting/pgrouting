@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef WITH_TIME
 #ifdef WITH_TIME
 #include <ctime>
-#include <chrono>
+#include <chrono>   // NOLINT [build/c++11]
 
 static
 void
