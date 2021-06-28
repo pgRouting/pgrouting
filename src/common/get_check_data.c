@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include <stdbool.h>
+#include "c_types/column_info_t.h"
 #include "c_common/postgres_connection.h"
 #include "c_common/get_check_data.h"
 #include "c_common/arrays_input.h"
