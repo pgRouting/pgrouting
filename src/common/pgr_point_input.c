@@ -21,7 +21,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-
+#include "c_types/column_info_t.h"
 #include "c_common/pgr_point_input.h"
 
 #include "c_common/debug_macro.h"
