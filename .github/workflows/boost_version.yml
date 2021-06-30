@@ -1,25 +1,61 @@
 name: Boost supported versions
 
+
+# This action runs:
+# - When this file changes
+# - When changes on code (src, include)
+# - When changes on data or testing scripts (tools/testers)
+# - When the way the build changes (CMakeLists.txt)
+#
+# Test is done on:
+# - the preinstalled postgres version
+# - postgis 3
+#
+# The boost version tested are when changes that affect pgRouting on
+# - boost::graph
+# - boost::geometry
+# See https://www.boost.org/users/history/
+# Currently
+# - boost::geometry has not changed anything we use
+# - boost::graph changed on 1.68 and 1.75 requires C++14
+# - 1.56 is the minimum version we ask
+
 on:
   push:
-    branches-ignore:
-      - 'translations_*'
-    tags: []
-  pull_request:
-    paths-ignore:
-      - '**.po'
+    paths:
+      - '.github/workflows/boost_version.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'pgtap/**'
+      - 'tools/testers/**'
+      - 'CMakeLists.txt'
 
+    branches-ignore:
+      - 'gh-pages'
+
+    tags: []
+
+  pull_request:
+    paths:
+      - '.github/workflows/boost_version.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'pgtap/**'
+      - 'tools/testers/**'
+      - 'CMakeLists.txt'
+
+    branches-ignore:
+      - 'gh-pages'
 
 jobs:
   build:
     name: Build
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
         fail-fast: false
         matrix:
-          boost_minor: [56, 74, 75]
-          os: [ubuntu-latest]
+          boost_minor: [56, 68, 75]
 
     steps:
       - uses: actions/checkout@v2

@@ -1,35 +1,41 @@
 name: Check Documentation
+
+# This action runs:
+# - When this file changes
+# - When changes on documentation (doc)
+# - When changes on translation (locale)
+# - When the way the documentation build changes (CMakeLists.txt, doc/CMakeLists.txt, doc/conf.py.in)
+#
 # documentation is tested only on:
 # - ubuntu-latest
 # - default postgres installed on ubuntu-latest
 # - postgis 3
-# The corresponding language based on the PR commit message:
-# - links
-# - build Links
-# - English is always tested
+#
+# Currently more than 50% translated
+# - es
 
 on:
   push:
     paths:
+      - '.github/workflows/doc-check.yml'
       - 'doc/**'
       - 'locale/**'
-      - '.github/workflows/doc-check.yml'
-      - 'tools/testers/**'
+      - 'CMakeLists.txt'
 
     branches-ignore:
       - 'gh-pages'
 
+    tags: []
 
   pull_request:
-    branches:
-      - master
-      - develop
     paths:
+      - '.github/workflows/doc-check.yml'
       - 'doc/**'
       - 'locale/**'
-      - '.github/workflows/doc-check.yml'
-      - 'tools/testers/**'
+      - 'CMakeLists.txt'
 
+    branches-ignore:
+      - 'gh-pages'
 
 jobs:
   build:
@@ -39,29 +45,29 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          language: [de,en,es,ja]
-
-    env:
-        LANG_MSG: "in${{ matrix.language }}"
+          language: [en,es]
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 2
 
-      - name: Get commit message
+      - name: check modified files
+        id: check_files
         run: |
-           PROCESS=${{ false }}
-           if [[ $(git log --format=%B -n 2 | tr -d "'" | tr -d " " | grep -Po '(?<=\.po)[^;]+') == *"${LANG_MSG}"* ]]; then
-             PROCESS=${{ true }}
-           fi
-           if [[ $(git log --format=%B -n 2 | tr -d "'" | tr -d " " | grep "\[${{ matrix.language }}\]") ]]; then
-             PROCESS=${{ true }}
-           fi
-           if [[ "${{ matrix.language }}" == "en" ]]; then
-             PROCESS=${{ true }}
-           fi
-           echo "PROCESS=${PROCESS}" >> $GITHUB_ENV
+          # allways processing english, no matter what the change was
+          if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
+
+          # when this file changes  all languages are tested
+          if git diff --name-only HEAD^ HEAD | grep -q '.github/workflows/doc-check.yml' ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
+
+          # when there is a change on the way the build is done all languages are tested
+          if git diff --name-only HEAD^ HEAD | grep -q '^CMakeLists.txt' ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
+          if git diff --name-only HEAD^ HEAD | grep -q '^doc/CMakeLists.txt' ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
+          if git diff --name-only HEAD^ HEAD | grep -q '^doc/conf.py.in' ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
+
+          # if there is a change on the translation
+          if git diff --name-only HEAD^ HEAD | grep -q "^locale/${{ matrix.language }}" ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
 
       - name: Get postgres version
         if: env.PROCESS == 'true'
@@ -100,14 +106,15 @@ jobs:
           pip install -r requirements.txt
           pip list
 
+
       - name: Configure
         if: env.PROCESS == 'true'
         run: |
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DLINKCHECK=ON -DHTML=ON -DWITH_DOC=ON \
-                -DDE=ON -DES=ON -DFR=ON -DJA=ON -DIT=ON \
+          cmake -DLINKCHECK=ON -DWITH_DOC=ON \
+                -DES=ON  \
                 -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release ..
 
       - name: Check Links
