@@ -1,14 +1,11 @@
 name: Build for Ubuntu
 
-on:
-  push:
-    branches-ignore:
-      - 'translations_*'
-    tags: []
-  pull_request:
-    paths-ignore:
-      - '**.po'
+# manually triggered workflow
+# - 5 * 2 * 2 = 20 jobs are triggered
+# - So many jobs take too much time
 
+on:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,9 +15,9 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          psql: [9.5,9.6,10,11,12, 13]
+          psql: [9.6,10,11,12, 13]
           postgis: [2.5,3]
-          os: [ubuntu-latest]
+          os: [ubuntu-latest, ubuntu-18.04]
 
     steps:
       - uses: actions/checkout@v2
@@ -53,7 +50,7 @@ jobs:
             postgresql-${{ matrix.psql }}-postgis-${{ matrix.postgis }}-scripts \
             postgresql-server-dev-${{ matrix.psql }}
 
-      - name: Configure
+      - name: Configure for gcc
         run: |
           export PATH=/usr/lib/postgresql/${{ matrix.psql }}/bin:$PATH
           mkdir build

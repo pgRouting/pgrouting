@@ -1,37 +1,11 @@
 name: Update
 
-# This action tests the update script
-# Do not want to run it all the time, as it is very time consuming
-# TODO Find the way to trigger it manualy
-# On the meantime it can be disabled on github while developing
 
+# manually triggered workflow
+# - 10+ jobs created and continue to grow
 
 on:
-  push:
-    paths:
-      - 'sql/sigs'
-      - 'pgtap/**'
-      - '.github/workflows/update.yml'
-      - 'tools/testers/**'
-      - 'CMakeLists.txt'
-
-    branches-ignore:
-      - 'gh-pages'
-
-    tags: []
-
-  pull_request:
-    branches:
-      - master
-      - develop
-    paths:
-      - 'sql/**'
-      - 'src/**'
-      - 'pgtap/**'
-      - 'include/**'
-      - 'pgtap/**'
-      - '.github/workflows/update.yml'
-      - 'CMakeLists.txt'
+  workflow_dispatch:
 
 
 jobs:
@@ -43,7 +17,6 @@ jobs:
         fail-fast: false
         matrix:
           old_pgr: [3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.5, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.2.0]
-          #old_pgr: [3.0.0, 3.1.0, 3.2.0]
 
     steps:
       - uses: actions/checkout@v2
