@@ -1,22 +1,49 @@
 name: Check queries
+
+
+# This action runs:
+# - When this file changes
+# - When changes on code (src, include, sql)
+# - When changes on data or testing scripts (tools/testers)
+# - When the way the build changes (CMakeLists.txt)
+#
 # using
 # - the installed version on actions
 # - the latest postgis version
 
 on:
   push:
+    paths:
+      - '.github/workflows/check-queries.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'sql/**'
+      - 'docqueries/**'
+      - 'tools/testers/**'
+      - 'CMakeLists.txt'
+
     branches-ignore:
-      - 'translations_*'
+      - 'gh-pages'
+
     tags: []
+
   pull_request:
-    paths-ignore:
-      - '**.po'
+    paths:
+      - '.github/workflows/check-queries.yml'
+      - 'src/**'
+      - 'include/**'
+      - 'sql/**'
+      - 'docqueries/**'
+      - 'tools/testers/**'
+      - 'CMakeLists.txt'
+
+    branches-ignore:
+      - 'gh-pages'
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-
 
     strategy:
         fail-fast: false
