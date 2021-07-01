@@ -1,13 +1,10 @@
 name: Build for macOS
 
+# manually triggered workflow
+# - macOS test takes too much time
+
 on:
-  push:
-    branches-ignore:
-      - 'translations_*'
-    tags: []
-  pull_request:
-    paths-ignore:
-      - '**.po'
+  workflow_dispatch:
 
 jobs:
   build:

@@ -2,14 +2,6 @@ name: Publish Users Documentation
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-      - develop
-    paths:
-      - 'doc/**'
-      - 'docqueries/**'
-      - 'locale/**'
 
 jobs:
   release:
