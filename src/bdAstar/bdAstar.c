@@ -196,11 +196,9 @@ _pgr_bdastar(PG_FUNCTION_ARGS) {
 
 
 
-#if PGSQL_VERSION > 95
+
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
