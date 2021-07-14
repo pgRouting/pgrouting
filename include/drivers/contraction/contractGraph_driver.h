@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/contracted_rt.h"
+typedef struct contracted_rt contracted_rt;
 #include "c_types/pgr_edge_t.h"
 
 #ifdef __cplusplus
