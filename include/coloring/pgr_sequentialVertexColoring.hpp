@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
 
+#include "c_types/pgr_vertex_color_rt.h"
 
 /** @file pgr_sequentialVertexColoring.hpp
  * @brief The main file which calls the respective boost function.
