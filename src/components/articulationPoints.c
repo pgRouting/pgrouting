@@ -114,11 +114,8 @@ PGDLLEXPORT Datum _pgr_articulationpoints(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-#if PGSQL_VERSION > 94
         funcctx->max_calls = (uint32_t)result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
