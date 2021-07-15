@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct Delauny_t {
     int64_t tid;
     int64_t pid;
     double x;
     double y;
-} Delauny_t;
+};
 
 #endif  // INCLUDE_C_TYPES_DELAUNY_T_H_
