@@ -124,11 +124,7 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-#if PGSQL_VERSION > 94
-        funcctx->max_calls = (uint32_t)result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+        funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
