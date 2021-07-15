@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #include <stddef.h>
 
-#include "c_types/coordinate_t.h"
+typedef struct Coordinate_t Coordinate_t;
 
 /*!
   bigint id,
