@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/matrix_cell_t.h"
-#include "c_types/general_path_element_t.h"
+typedef struct General_path_element_t General_path_element_t;
 
 
 #ifdef __cplusplus

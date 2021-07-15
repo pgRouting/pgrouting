@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct General_path_element_t {
     int seq;
     int64_t start_id;
     int64_t end_id;
@@ -42,6 +42,6 @@ typedef struct {
     int64_t edge;
     double cost;
     double agg_cost;
-} General_path_element_t;
+};
 
 #endif  // INCLUDE_C_TYPES_GENERAL_PATH_ELEMENT_T_H_

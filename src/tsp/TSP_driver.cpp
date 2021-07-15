@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "c_types/general_path_element_t.h"
 #include "cpp_common/Dmatrix.h"
 #include "tsp/pgr_tsp.hpp"
 
