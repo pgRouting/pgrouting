@@ -33,9 +33,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_vertex_color_rt {
     int64_t node;
     int64_t color;
-} pgr_vertex_color_rt;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_VERTEX_COLOR_RT_H_
