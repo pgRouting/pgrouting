@@ -38,6 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "tsp/pgr_tsp.hpp"
 #include "tsp/euclideanDmatrix.h"
 
+#include "c_types/general_path_element_t.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
