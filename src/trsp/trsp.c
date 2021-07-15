@@ -570,11 +570,7 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
                                    &path, &path_count);
 
       // total number of tuples to be returned
-#if PGSQL_VERSION > 95
         funcctx->max_calls = path_count;
-#else
-        funcctx->max_calls = (uint32_t)path_count;
-#endif
 
         funcctx->user_fctx = path;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
