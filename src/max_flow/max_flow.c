@@ -41,6 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/combinations_input.h"
 #include "drivers/max_flow/max_flow_driver.h"
 
+#include "c_types/pgr_flow_t.h"
+
 PGDLLEXPORT Datum
 _pgr_maxflow(PG_FUNCTION_ARGS);
 
