@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_flow_t {
   int64_t edge;
   int64_t source;
   int64_t target;
@@ -42,6 +42,6 @@ typedef struct {
   int64_t residual_capacity;
   double cost;
   double agg_cost;
-} pgr_flow_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_FLOW_T_H_
