@@ -2,6 +2,7 @@
 -- withPoints
 ------------------------
 SET extra_float_digits=-3;
+SET client_min_messages to WARNING;
 
 \echo -- withPoints q1
 SELECT * FROM pgr_withPointsCostMatrix(
