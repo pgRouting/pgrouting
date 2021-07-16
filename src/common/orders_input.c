@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
 
+#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 
 static
 void fetch_pd_orders(
