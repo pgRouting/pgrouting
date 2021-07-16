@@ -88,12 +88,6 @@ class Dmatrix {
      */
     size_t size() const {return ids.size();}
 
-    /*! @brief tour evaluation
-     *
-     * @param [in] tour
-     * @returns total cost of traversing the tour
-     */
-    double tourCost(const Tour &tour) const;
 
     /*! @brief returns a row of distances
      *
