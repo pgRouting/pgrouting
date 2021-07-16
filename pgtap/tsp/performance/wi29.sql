@@ -1,22 +1,16 @@
 \i setup.sql
-
-SELECT plan(29);
-SET client_min_messages TO WARNING;
-
--- http://www.math.uwaterloo.ca/tsp/world/wi29.tsp
--- http://www.math.uwaterloo.ca/tsp/world/countries.html
+\i tsp_pgtap_tests.sql
 
 -- NAME : wi29
 -- COMMENT : 29 locations in Western Sahara
--- COMMENT : Derived FROM National Imagery and Mapping Agency data
+-- COMMENT : Derived from National Imagery and Mapping Agency data
 -- TYPE : TSP
 -- DIMENSION : 29
 -- EDGE_WEIGHT_TYPE : EUC_2D
--- NODE_COORD_SECTION
 
--- best 27603
-
-CREATE TEMP TABLE wi29 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
+SET client_min_messages TO WARNING;
+DROP TABLE IF EXISTS wi29;
+CREATE TABLE wi29 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 1 20833.3333 17100.0000
 2 20900.0000 17066.6667
@@ -51,21 +45,8 @@ COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
+SET client_min_messages TO NOTICE;
 
-CREATE OR REPLACE FUNCTION test_performance(upper_bound FLOAT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-    FOR i IN 1..29 LOOP
-        RETURN query SELECT is((SELECT agg_cost < 27603 * upper_bound  FROM pgr_TSPeuclidean('select * FROM wi29', i, randomize := false) WHERE seq = 30),
-            't',
-            'i= ' || i || ' upper_bound = ' || upper_bound);
-    END LOOP;
-END;
-$BODY$ LANGUAGE plpgsql;
-
-select test_performance(1.065);
-
+SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(29) ELSE plan(1) END;
+SELECT tsp_performance('wi29', 29, 95345, 2);
 SELECT finish();
-ROLLBACK;
-
