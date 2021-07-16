@@ -46,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 
+#include "c_types/line_graph_rt.h"
 /* for macro PGR_DBG */
 #include "c_common/debug_macro.h"
 /* for pgr_global_report */
