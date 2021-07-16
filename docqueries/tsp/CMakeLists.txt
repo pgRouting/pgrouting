@@ -4,6 +4,8 @@ SET(LOCAL_FILES
     doc-pgr_TSP
     )
 
+configure_file("wi29.sql" "${PGR_DOCUMENTATION_SOURCE_DIR}/wi29.queries")
+
 foreach (f ${LOCAL_FILES})
     configure_file("${f}.result" "${PGR_DOCUMENTATION_SOURCE_DIR}/${f}.queries")
     list(APPEND LOCAL_DOC_FILES  "${PGR_DOCUMENTATION_SOURCE_DIR}/${f}.queries")
