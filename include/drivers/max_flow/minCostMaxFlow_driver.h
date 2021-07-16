@@ -38,9 +38,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_flow_t.h"
 #include "c_types/pgr_combination_t.h"
 #include "c_types/pgr_costFlow_t.h"
+
+typedef struct pgr_flow_t pgr_flow_t;
 
 #ifdef __cplusplus
 extern "C" {

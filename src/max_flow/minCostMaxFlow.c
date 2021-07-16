@@ -62,6 +62,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/max_flow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
 
+#include "c_types/pgr_flow_t.h"
+
 PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxflowmincost);
 
