@@ -1,10 +1,5 @@
 \i setup.sql
-
-SELECT plan(39);
-SET client_min_messages TO WARNING;
-
--- http://www.math.uwaterloo.ca/tsp/world/dj38.tsp
--- http://www.math.uwaterloo.ca/tsp/world/countries.html
+\i tsp_pgtap_tests.sql
 
 -- NAME: dj38
 -- COMMENT : 38 locations in Djibouti
@@ -15,12 +10,10 @@ SET client_min_messages TO WARNING;
 -- TYPE: TSP
 -- DIMENSION: 38
 -- EDGE_WEIGHT_TYPE: EUC_2D
--- NODE_COORD_SECTION
 
--- best 6656
-
+SET client_min_messages TO WARNING;
+DROP TABLE IF EXISTS dj38;
 CREATE TABLE dj38 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
-CREATE TEMP TABLE dj38 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY dj38 (id, x, y) FROM stdin WITH DELIMITER ' ';
 1 11003.611100 42102.500000
 2 11108.611100 42373.888900
@@ -64,21 +57,10 @@ COPY dj38 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE dj38 SET the_geom = ST_makePoint(x,y);
+SET client_min_messages TO NOTICE;
 
-CREATE OR REPLACE FUNCTION test_performance(upper_bound FLOAT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-    FOR i IN 1..39 LOOP
-        RETURN query SELECT is((SELECT agg_cost < 6656 * upper_bound  FROM pgr_euclideanTSP('select * FROM dj38', i, randomize := false) WHERE seq = 39),
-            't',
-            'i= ' || i || ' upper_bound = ' || upper_bound);
-    END LOOP;
-END;
-$BODY$ LANGUAGE plpgsql;
 
-select test_performance(1.1);
+SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(38) ELSE plan(1) END;
 
+SELECT tsp_performance('dj38', 38, 6656.0, 2.0);
 SELECT finish();
-ROLLBACK;
-

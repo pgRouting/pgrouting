@@ -5,11 +5,14 @@ UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(9);
 
 CREATE TEMP TABLE  data AS
-SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr;
+SELECT * FROM pgr_dijkstraCostMatrix(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 14),
+    directed := false
+);
 
 SELECT isnt_empty('SELECT * FROM data', 'Should not be empty true to tests be meaningful');
-SELECT tspeuclidean_no_crash();
+SELECT tsp_no_crash();
 
 SELECT finish();
 ROLLBACK;
-
