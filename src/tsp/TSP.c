@@ -1,11 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: newTSP.c
+File: TSP.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
+Copyright (c) 2021 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
@@ -36,71 +37,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 #include "c_common/matrixRows_input.h"
+#include "c_types/tsp_tour_rt.h"
 #include "drivers/tsp/TSP_driver.h"
-
 
 
 PGDLLEXPORT Datum _pgr_tsp(PG_FUNCTION_ARGS);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
         char* distances_sql,
         int64_t start_vid,
         int64_t end_vid,
+        int max_cycles,
 
-        double time_limit,
-
-        int64_t tries_per_temperature,
-        int64_t max_changes_per_temperature,
-        int64_t max_consecutive_non_changes,
-
-        double initial_temperature,
-        double final_temperature,
-        double cooling_factor,
-
-        bool randomize,
-
-        General_path_element_t **result_tuples,
+        TSP_tour_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
-
-    /*
-     * errors in parameters
-     */
-
-    if (initial_temperature < final_temperature) {
-        elog(ERROR, "Condition not met: initial_temperature"
-               " > final_temperature");
-    }
-    if (final_temperature <= 0) {
-        elog(ERROR, "Condition not met: final_temperature > 0");
-    }
-    if (cooling_factor <=0 || cooling_factor >=1) {
-        elog(ERROR, "Condition not met: 0 < cooling_factor < 1");
-    }
-    if (tries_per_temperature < 0) {
-        elog(ERROR, "Condition not met: tries_per_temperature >= 0");
-    }
-    if (max_changes_per_temperature  < 1) {
-        elog(ERROR, "Condition not met: max_changes_per_temperature > 0");
-    }
-    if (max_consecutive_non_changes < 1) {
-        elog(ERROR, "Condition not met: max_consecutive_non_changes > 0");
-    }
-    if (time_limit < 0) {
-        elog(ERROR, "Condition not met: max_processing_time >= 0");
-    }
-
 
     Matrix_cell_t *distances = NULL;
     size_t total_distances = 0;
     pgr_get_matrixRows(distances_sql, &distances, &total_distances);
 
     if (total_distances == 0) {
-        PGR_DBG("No distances found");
+        ereport(WARNING,
+                (errmsg("Insufficient data found on inner query."),
+                 errhint("%s", distances_sql)));
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -118,14 +80,8 @@ process(
             distances, total_distances,
             start_vid,
             end_vid,
-            initial_temperature,
-            final_temperature,
-            cooling_factor,
-            tries_per_temperature,
-            max_changes_per_temperature,
-            max_consecutive_non_changes,
-            randomize,
-            time_limit,
+            max_cycles,
+
             result_tuples,
             result_count,
             &log_msg,
@@ -149,8 +105,6 @@ process(
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(_pgr_tsp);
 PGDLLEXPORT Datum
@@ -158,62 +112,31 @@ _pgr_tsp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
-    General_path_element_t  *result_tuples = NULL;
+    TSP_tour_rt  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-
-           CREATE OR REPLACE FUNCTION pgr_newTSP(
-           matrix_row_sql TEXT,
-           start_id BIGINT DEFAULT 0,
-           end_id BIGINT DEFAULT 0,
-
-           max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
-
-           tries_per_temperature INTEGER DEFAULT 500,
-           max_changes_per_temperature INTEGER DEFAULT 60,
-           max_consecutive_non_changes INTEGER DEFAULT 200,
-
-           initial_temperature FLOAT DEFAULT 100,
-           final_temperature FLOAT DEFAULT 0.1,
-           cooling_factor FLOAT DEFAULT 0.9,
-
-           randomize BOOLEAN DEFAULT true,
-           */
+        ereport(NOTICE,
+                (errmsg("pgr_TSP no longer solving with simulated annaeling"),
+                 errhint("Ignoring annaeling parameters")));
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
+                /*
+                 * TODO(vicky) version 4.0.0
+                 * Get parameter for max_cycles
+                 * PG_GETARG_INT32(3),
+                 */
+                1,
 
-                PG_GETARG_FLOAT8(3),
-
-                PG_GETARG_INT32(4),
-                PG_GETARG_INT32(5),
-                PG_GETARG_INT32(6),
-
-                PG_GETARG_FLOAT8(7),
-                PG_GETARG_FLOAT8(8),
-                PG_GETARG_FLOAT8(9),
-
-                PG_GETARG_BOOL(10),
                 &result_tuples,
                 &result_count);
-        /*                                                                    */
-        /**********************************************************************/
 
         funcctx->max_calls = result_count;
 
@@ -232,20 +155,13 @@ _pgr_tsp(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (TSP_tour_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
         bool*        nulls;
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        // OUT seq INTEGER,
-        // OUT node BIGINT,
-        // OUT cost FLOAT,
-        // OUT agg_cost FLOAT
 
         values = palloc(4 * sizeof(Datum));
         nulls = palloc(4 * sizeof(bool));
@@ -256,12 +172,10 @@ _pgr_tsp(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

@@ -6,6 +6,7 @@
  * Mail: project@pgrouting.org
  *
  * Function's developer:
+ * Copyright (c) 2021 Celia Virginia Vergara Castillo
  * Copyright (c) 2015 Celia Virginia Vergara Castillo
  * Mail: vicky_vergara@hotmail.com
  *
@@ -39,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/matrix_cell_t.h"
-typedef struct General_path_element_t General_path_element_t;
+typedef struct TSP_tour_rt TSP_tour_rt;
 
 
 #ifdef __cplusplus
@@ -51,17 +52,9 @@ do_pgr_tsp(
         Matrix_cell_t *distances, size_t total_distances,
         int64_t start_vid,
         int64_t end_vid,
+        bool strict,
 
-        double initial_temperature,
-        double final_temperature,
-        double cooling_factor,
-        int64_t tries_per_temperature,
-        int64_t max_changes_per_temperature,
-        int64_t max_consecutive_non_changes,
-        bool randomize,
-        double time_limit,
-
-        General_path_element_t **results,
+        TSP_tour_rt **results,
         size_t *total_results,
         char **log_msg,
         char **notice_msg,
