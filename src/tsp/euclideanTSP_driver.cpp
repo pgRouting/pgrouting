@@ -35,29 +35,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "tsp/pgr_tsp.hpp"
-#include "tsp/euclideanDmatrix.h"
+#include "tsp/tsp.hpp"
 
+#include "c_types/tsp_tour_rt.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 void
 do_pgr_euclideanTSP(
-        Coordinate_t *coordinates_data,
+        Coordinate_t *coordinates,
         size_t total_coordinates,
         int64_t start_vid,
         int64_t end_vid,
+        bool max_cycles,
 
-        double initial_temperature,
-        double final_temperature,
-        double cooling_factor,
-        int64_t tries_per_temperature,
-        int64_t max_changes_per_temperature,
-        int64_t max_consecutive_non_changes,
-        bool randomize,
-        double time_limit,
-
-        General_path_element_t **return_tuples,
+        TSP_tour_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -67,138 +59,40 @@ do_pgr_euclideanTSP(
     std::ostringstream err;
 
     try {
-        std::vector< Coordinate_t > coordinates(
-                coordinates_data,
-                coordinates_data + total_coordinates);
+        pgrouting::algorithm::TSP fn_tsp{coordinates, total_coordinates, true};
 
-        pgrouting::tsp::EuclideanDmatrix costs(coordinates);
-
-
-        size_t idx_start = costs.has_id(start_vid) ?
-            costs.get_index(start_vid) : 0;
-
-        size_t idx_end = costs.has_id(end_vid) ?
-            costs.get_index(end_vid) : 0;
-
-        /* The ending vertex needs to be by the starting vertex */
-        double real_cost = 0;
-        if (costs.has_id(start_vid)
-                && costs.has_id(end_vid)
-                && start_vid != end_vid) {
-            /*
-             * Saving the real cost (distance)  between the start_vid and end_vid
-             */
-            real_cost = costs.distance(idx_start, idx_end);
-            /*
-             * Temporarily setting the cost between the start_vid and end_vid to 0
-             */
-            costs.set(idx_start, idx_end, 0);
+#if Boost_VERSION_MACRO >= 106800
+        log << fn_tsp;
+#endif
+        if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
+            err << "Parameter 'start_id' do not exist on the data";
+            *err_msg = pgr_msg(err.str().c_str());
+            return;
         }
 
-
-        log << "Processing Information\n"
-            << "Initializing tsp class --->";
-        pgrouting::tsp::TSP<pgrouting::tsp::EuclideanDmatrix> tsp(costs);
-
-
-        log << " tsp.greedyInitial --->";
-        tsp.greedyInitial(idx_start);
-
-
-
-        log << " tsp.annealing --->";
-        tsp.annealing(
-                initial_temperature,
-                final_temperature,
-                cooling_factor,
-                tries_per_temperature,
-                max_changes_per_temperature,
-                max_consecutive_non_changes,
-                randomize,
-                time_limit);
-         log << " OK\n";
-         log << tsp.get_log();
-         log << tsp.get_stats();
-
-
-        auto bestTour(tsp.get_tour());
-
-        /* The ending vertex needs to be by the starting vertex */
-        if (costs.has_id(start_vid)
-                && costs.has_id(end_vid)
-                && start_vid != end_vid) {
-            /*
-             * Restoring the real cost (distance)  between the start_vid and end_vid
-             */
-            costs.set(idx_start, idx_end, real_cost);
+        if (end_vid != 0 && !fn_tsp.has_vertex(end_vid)) {
+            err << "Parameter 'end_id' do not exist on the data";
+            *err_msg = pgr_msg(err.str().c_str());
+            return;
         }
 
-        log << "\nBest cost reached = " << costs.tourCost(bestTour);
+        auto tsp_path = fn_tsp.tsp(start_vid, end_vid, max_cycles);
+        log << fn_tsp.get_log();
 
-        auto start_ptr = std::find(
-                bestTour.cities.begin(),
-                bestTour.cities.end(),
-                idx_start);
+        if (!tsp_path.empty()) {
+            *return_count = tsp_path.size();
+            (*return_tuples) = pgr_alloc(tsp_path.size(), (*return_tuples));
 
-        std::rotate(
-                bestTour.cities.begin(),
-                start_ptr,
-                bestTour.cities.end());
-
-        if (costs.has_id(start_vid)
-                && costs.has_id(end_vid)
-                && start_vid != end_vid) {
-            if (*(bestTour.cities.begin() + 1) == idx_end) {
-                std::reverse(
-                        bestTour.cities.begin() + 1,
-                        bestTour.cities.end());
+            size_t seq{0};
+            double total{0};
+            for (const auto &e : tsp_path) {
+                total += e.second;
+                TSP_tour_rt data {e.first, e.second, total};
+                (*return_tuples)[seq] = data;
+                seq++;
             }
         }
 
-
-        std::vector< General_path_element_t > result;
-        result.reserve(bestTour.cities.size() + 1);
-        pgassert(bestTour.cities.size() == costs.size());
-
-        bestTour.cities.push_back(bestTour.cities.front());
-
-        auto prev_id = bestTour.cities.front();
-        double agg_cost = 0;
-        for (const auto &id : bestTour.cities) {
-            if (id == prev_id) continue;
-            General_path_element_t data;
-            data.node = costs.get_id(prev_id);
-            data.edge = static_cast<int64_t>(prev_id);
-            data.cost = costs.distance(prev_id, id);
-            data.agg_cost = agg_cost;
-            result.push_back(data);
-            agg_cost += data.cost;
-            prev_id = id;
-        }
-
-        /* inserting the returning to starting point */
-        {
-            General_path_element_t data;
-            data.node = costs.get_id(bestTour.cities.front());
-            data.edge = static_cast<int64_t>(bestTour.cities.front());
-            data.cost = costs.distance(prev_id, bestTour.cities.front());
-            agg_cost += data.cost;
-            data.agg_cost = agg_cost;
-            result.push_back(data);
-        }
-
-        pgassert(result.size() == bestTour.cities.size());
-        *return_count = bestTour.size();
-        (*return_tuples) = pgr_alloc(result.size(), (*return_tuples));
-
-        /* store the results */
-        int seq = 0;
-        for (const auto &row : result) {
-            (*return_tuples)[seq] = row;
-            ++seq;
-        }
-
-        pgassert(!log.str().empty());
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
@@ -211,6 +105,10 @@ do_pgr_euclideanTSP(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::pair<std::string, std::string>& ex) {
+        (*return_count) = 0;
+        *err_msg = pgr_msg(ex.first.c_str());
+        *log_msg = pgr_msg(ex.second.c_str());
     } catch (std::exception &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;

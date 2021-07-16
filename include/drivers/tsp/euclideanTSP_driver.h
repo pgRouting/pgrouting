@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/coordinate_t.h"
-#include "c_types/general_path_element_t.h"
+typedef struct TSP_tour_rt TSP_tour_rt;
 
 
 #ifdef __cplusplus
@@ -51,17 +51,9 @@ do_pgr_euclideanTSP(
         Coordinate_t *coordinates, size_t total_coordinates,
         int64_t start_vid,
         int64_t end_vid,
+        bool strict,
 
-        double initial_temperature,
-        double final_temperature,
-        double cooling_factor,
-        int64_t tries_per_temperature,
-        int64_t max_changes_per_temperature,
-        int64_t max_consecutive_non_changes,
-        bool randomize,
-        double time_limit,
-
-        General_path_element_t **results,
+        TSP_tour_rt **results,
         size_t *total_results,
         char **log_msg,
         char **notice_msg,
