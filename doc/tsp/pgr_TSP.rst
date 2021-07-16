@@ -26,9 +26,26 @@
 pgr_TSP
 =============================================================================
 
-* ``pgr_TSP`` - Using *Simulated Annealing* approximation algorithm
+* ``pgr_TSP`` - Aproximation using *metric* algorithm.
 
-.. rubric:: Availability: 2.0.0
+.. figure:: images/boost-inside.jpeg
+   :target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html
+
+   Boost Graph Inside
+
+
+.. rubric:: Availability:
+
+* Version 3.2.1
+
+  * Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+  * Simulated Annealing Algorithm no longer supported
+
+    * The Simulated Annealing Algorithm related parameters are ignored:
+      max_processing_time, tries_per_temperature,
+      max_changes_per_temperature, max_consecutive_non_changes,
+      initial_temperature, final_temperature, cooling_factor,
+      randomize
 
 * Version 2.3.0
 
@@ -48,7 +65,54 @@ Description
    :start-after: tsp problem definition start
    :end-before: tsp problem definition end
 
-See :ref:`simulated-annealing` for a complete description of this implementation
+.. include:: TSP-family.rst
+   :start-after: tsp characteristics start
+   :end-before: tsp characteristics end
+
+Characteristics
+...............................................................................
+
+- Can be Used with :doc:`costMatrix-category` functions preferably with `directed => false`.
+
+  - With ``directed => false``
+
+    - Will generate a graph that:
+
+      - is undirected
+      - is fully connected (As long as the graph has one component)
+      - all traveling costs on edges obey the triangle inequality.
+
+    - When ``start_vid = 0 OR end_vid = 0``
+
+      - The solutions generated is garanteed to be *twice as long as the
+        optimal tour in the worst case*
+
+    - When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``
+
+      - It is **not garanteed** that the solution will be, in the worse case,
+        twice as long as the optimal tour, due to the fact that `end_vid` is
+        forced to be in a fixed position.
+
+  - With ``directed => true``
+
+    - It is **not garanteed** that the solution will be, in the worse case,
+      twice as long as the optimal tour
+    - Will generate a graph that:
+
+      - is directed
+      - is fully connected (As long as the graph has one component)
+      - some (or all) traveling costs on edges might not obey the triangle inequality.
+
+    - As an undirected graph is required, the directed graph is transformed as follows:
+
+      - edges `(u, v)` and `(v, u)` is considered to be the same edge (denoted `(u, v)`
+      - if ``agg_cost`` differs between one or more instances of edge `(u, v)`
+      - The minimum value of the ``agg_cost`` all instances of edge `(u, v)`
+        is going to be considered as the ``agg_cost`` of edge  `(u, v)`
+      - Some (or all) traveling costs on edges will still might not obey the triangle inequality.
+
+- When the data is incomplete, but it is a connected graph,
+  the missing values will be calculated with dijkstra algorithm.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -60,80 +124,97 @@ Signatures
 
 .. code-block:: none
 
-    pgr_TSP(Matrix SQL,
-        [start_id], [end_id],
-        [max_processing_time],
-        [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
-        [initial_temperature], [final_temperature], [cooling_factor],
-        [randomize])
+    pgr_TSP(Matrix SQL, [start_id], [end_id])
     RETURNS SETOF (seq, node, cost, agg_cost)
 
-:Example: Not having a random execution
+.. rubric:: Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information
+
+* **Line 5** Vertices 15 to 18 are not included because they are not connected.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q1
    :end-before: -- q2
+   :linenos:
 
 Parameters
 -------------------------------------------------------------------------------
 
-====================  =================================================
-Parameter             Description
-====================  =================================================
-**Matrix SQL**        an SQL query, described in the `Inner query`_
-====================  =================================================
+=============== ===========  ============  =================================================
+Parameter          Type         Default       Description
+=============== ===========  ============  =================================================
+**Matrix SQL**   ``TEXT``                   An SQL query, described in the `Matrix SQL`_ section.
+**start_vid**    ``BIGINT``    ``0``        The first visiting vertex
 
-Optional Parameters
-...............................................................................
+                                            * When `0` any vertex can become the first visiting vertex.
 
-.. include:: TSP-family.rst
-   :start-after: tsp control parameters begin
-   :end-before: tsp control parameters end
+**end_vid**      ``BIGINT``    ``0``        Last visiting vertex before returning to ``start_vid``.
+
+                                            * When ``0`` any vertex can become the last visiting vertex before returning to ``start_vid``.
+                                            * When ``NOT 0`` and ``start_vid = 0`` then it is the first and last vertex
+=============== ===========  ============  =================================================
+
 
 Inner query
 -------------------------------------------------------------------------------
 
-**Matrix SQL**: an SQL query, which should return a set of rows with the following columns:
+.. include:: ../../src/common/matrixRows_input.c
+   :start-after: Matrix SQL definition start
+   :end-before: Matrix SQL definition end
 
-============= =========== =================================================
-Column        Type              Description
-============= =========== =================================================
-**start_vid** ``BIGINT``  Identifier of the starting vertex.
-**end_vid**   ``BIGINT``  Identifier of the ending vertex.
-**agg_cost**  ``FLOAT``   Cost for going from start_vid to end_vid
-============= =========== =================================================
 
-Can be Used with :doc:`costMatrix-category` functions with `directed := false`.
-
-If using `directed := true`, the resulting non symmetric matrix must be converted to
-symmetric by fixing the non symmetric values according to your application needs.
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: TSP-family.rst
-   :start-after: tsp return values begin
-   :end-before: tsp return values end
+.. include:: ../../include/c_types/tsp_tour_rt.h
+   :start-after: TSP tour return type begin
+   :end-before: TSP tour return type end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Start from vertex :math:`7`
 
+* **Line 9** ``start_vid => 7``
+
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q2
    :end-before: -- q3
+   :linenos:
 
-:Example: Using with points of interest.
+:Example: Using points of interest to generate an asymetric matrix.
 
-To generate a symmetric matrix:
+To generate an asymmetric matrix:
 
-* the **side** information of pointsOfInterset is ignored by not including it in the query
-* and **directed := false**
+* **Line 5** The ``side`` information of pointsOfInterset is ignored by not including it in the query
+* **Line 7** Generating an asymetric matrix with ``directed => true``
+
+  * :math:`min(agg\_cost(u, v), agg\_cost(v, u))` is going to be considered as the ``agg_cost``
+  * The solution that can be larger than *twice as long as the optimal tour* because:
+
+    * Triangle inequality might not be satisfied.
+    * ``start_id != 0 AND end_id != 0``
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q3
    :end-before: -- q4
+   :linenos:
+
+:Example: Connected incomplete data
+
+Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is connected
+
+.. literalinclude:: doc-pgr_TSP.queries
+   :start-after: -- q4
+   :end-before: -- q5
+   :linenos:
+
+Edge `(5,12)` does not exist on the initial data, but it is calculated internally.
+
+.. literalinclude:: doc-pgr_TSP.queries
+   :start-after: -- q5
+   :end-before: -- q6
+   :linenos:
 
 The queries use the :doc:`sampledata` network.
 
@@ -141,8 +222,9 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
+* Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
-* `Wikipedia: Simulated annealing <https://en.wikipedia.org/wiki/Simulated_annealing>`__
 
 .. rubric:: Indices and tables
 
