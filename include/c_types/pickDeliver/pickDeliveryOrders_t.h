@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
  * its with either (foo_x, foo_y) pairs (for euclidean or with foo_node_id (for matrix)
  */
-typedef struct {
+struct PickDeliveryOrders_t {
     int64_t id;
     double demand;
 
@@ -59,6 +59,6 @@ typedef struct {
     double deliver_open_t;
     double deliver_close_t;
     double deliver_service_t;
-} PickDeliveryOrders_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PICKDELIVER_PICKDELIVERYORDERS_T_H_
