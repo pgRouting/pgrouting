@@ -102,7 +102,7 @@ for d in ${TESTDIRS}
 do
     #tools/testers/doc_queries_generator.pl  -alg ${d} -documentation  -pgport ${PGPORT}
     tools/testers/doc_queries_generator.pl  -alg ${d} -pgport ${PGPORT}
-    tools/developer/taptest.sh  ${d} -p ${PGPORT}
+    taptest.sh  ${d} -p ${PGPORT}
 done
 
 
