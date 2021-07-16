@@ -24,5 +24,5 @@ echo "../../pgtap/${DIR}"
 
 cd tools/testers/
 psql "$PGFLAGS"  -f setup_db.sql -d "${PGDATABASE}"
-pg_prove --recurse --ext .sql "${PGFLAGS}"  -d "${PGDATABASE}" "../../pgtap/${DIR}"
+pg_prove -v --recurse --ext .sql "${PGFLAGS}"  -d "${PGDATABASE}" "../../pgtap/${DIR}"
 dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
