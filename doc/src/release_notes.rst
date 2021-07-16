@@ -11,8 +11,7 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/release_notes.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/release_notes.html>`__)
-  `3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__
+  (`3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__)
   `3.1 <https://docs.pgrouting.org/3.1/en/release_notes.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/release_notes.html>`__
 * **Unsupported versions:**
@@ -38,6 +37,16 @@ pgRouting 3.2.1 Release Notes
 -------------------------------------------------------------------------------
 
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github.
+
+.. rubric:: Issues
+
+* `#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__: pgr_TSPEuclidean crashes connection on Windows
+
+  * The solution is to use Boost::graph::metric_tsp_approx
+  * To not break user's code the optional parameters related to the TSP Annaeling are ignored
+  * The function with the annaeling optional parameters is deprecated
+
+
 
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
