@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #else
 #   include <stdint.h>
 #endif
-typedef struct {
+struct pgr_ltdtree_rt {
     int64_t vid;
     int64_t idom;
-} pgr_ltdtree_rt;
+};
 #endif  // INCLUDE_C_TYPES_PGR_LTDTREE_RT_H_"

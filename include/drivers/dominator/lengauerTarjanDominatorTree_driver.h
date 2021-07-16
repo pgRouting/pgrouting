@@ -40,8 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include <c_types/pgr_ltdtree_rt.h>
 #include "c_types/pgr_edge_t.h"
+
+typedef struct pgr_ltdtree_rt pgr_ltdtree_rt;
 
 #ifdef __cplusplus
 extern "C" {
