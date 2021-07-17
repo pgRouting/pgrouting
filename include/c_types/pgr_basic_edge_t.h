@@ -35,13 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_basic_edge_t {
   int64_t id;
   int64_t source;
   int64_t target;
   bool going;
   bool coming;
   int64_t edge_id;
-} pgr_basic_edge_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_BASIC_EDGE_T_H_
