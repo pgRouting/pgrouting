@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
+#include "c_types/point_on_edge_t.h"
 #include "utils/array.h"
 
 #include "c_types/general_path_element_t.h"
