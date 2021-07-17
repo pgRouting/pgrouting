@@ -37,13 +37,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
+#include "c_types/pgr_bipartite_rt.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "drivers/coloring/bipartite_driver.h"
 #include "coloring/pgr_bipartite_driver.hpp"
-#include "c_types/pgr_bipartite_rt.h"
 
 
 /************************************************************
