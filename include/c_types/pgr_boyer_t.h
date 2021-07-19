@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_boyer_t {
     int64_t source;
     int64_t target;
     double cost;
-} pgr_boyer_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_BOYER_T_H_
