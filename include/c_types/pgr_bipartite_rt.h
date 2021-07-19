@@ -33,8 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_bipartite_rt{
     int64_t vid;
     int64_t color;
-}pgr_bipartite_rt;
+};
 #endif  // INCLUDE_C_TYPES_PGR_BIPARTITE_RT_H_
