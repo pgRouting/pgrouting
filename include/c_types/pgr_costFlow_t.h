@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-typedef struct {
+struct pgr_costFlow_t {
   int64_t edge_id;
   int64_t source;
   int64_t target;
@@ -43,6 +43,6 @@ typedef struct {
   int64_t reverse_capacity;
   double cost;
   double reverse_cost;
-} pgr_costFlow_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_COSTFLOW_T_H_
