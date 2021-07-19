@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #include <stddef.h>
-#include "c_types/pgr_combination_t.h"
+typedef struct pgr_combination_t pgr_combination_t;
 
 
 /*! @brief combinations_sql
