@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
+#include "c_types/pgr_topologicalSort_t.h"
 #include "utils/array.h"
-
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
