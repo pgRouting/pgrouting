@@ -40,10 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_combination_t {
     int64_t source;
     int64_t target;
-} pgr_combination_t;
+};
 
 
 #endif  // INCLUDE_C_TYPES_PGR_COMBINATION_T_H_
