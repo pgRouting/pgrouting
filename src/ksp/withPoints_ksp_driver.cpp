@@ -29,13 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/yen/withPoints_ksp_driver.h"
 
-
 #include <sstream>
 #include <deque>
 #include <vector>
 
 #include "yen/pgr_ksp.hpp"
-
+#include "c_types/point_on_edge_t.h"
 #include "withPoints/pgr_withPoints.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"

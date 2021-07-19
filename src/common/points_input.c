@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 
 
+#include "c_types/point_on_edge_t.h"
 #include "c_types/column_info_t.h"
 #include "c_common/points_input.h"
 #include "c_common/debug_macro.h"

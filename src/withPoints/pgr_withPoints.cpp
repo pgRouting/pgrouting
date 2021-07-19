@@ -27,7 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
 #include "withPoints/pgr_withPoints.hpp"
 
 #include <sstream>
@@ -38,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <cassert>
 
+#include "c_types/point_on_edge_t.h"
 #include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {

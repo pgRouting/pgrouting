@@ -27,7 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
 #include "drivers/driving_distance/withPoints_dd_driver.h"
 
 #include <sstream>
@@ -35,9 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "c_types/point_on_edge_t.h"
 #include "dijkstra/pgr_dijkstra.hpp"
 #include "withPoints/pgr_withPoints.hpp"
-
 
 #include "cpp_common/pgr_alloc.hpp"
 
