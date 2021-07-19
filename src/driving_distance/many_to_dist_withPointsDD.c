@@ -188,7 +188,7 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
         /**********************************************************************/
 
         funcctx->max_calls = result_count;
-        
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
