@@ -218,7 +218,7 @@ then
 else
 
     psql -c "CREATE DATABASE ___pgr___test___"
-    tools/testers/pg_prove_tests.sh "${PGUSER}"
+    tools/testers/pg_prove_tests.sh "${PGUSER}" "${PGPORT}"
     psql -c "DROP DATABASE ___pgr___test___"
 
 fi
