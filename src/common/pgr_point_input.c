@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 #include "c_types/column_info_t.h"
+#include "c_types/pgr_point_t.h"
 #include "c_common/pgr_point_input.h"
 
 #include "c_common/debug_macro.h"
