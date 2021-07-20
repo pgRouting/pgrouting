@@ -27,9 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_TYPES_PGR_POINT_T_H_
 #pragma once
 
-typedef struct {
+struct Pgr_point_t {
     double x;
     double y;
-} Pgr_point_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_POINT_T_H_
