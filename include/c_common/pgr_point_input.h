@@ -29,8 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #include <stddef.h>
 
-#include "c_types/pgr_point_t.h"
-
+typedef struct Pgr_point_input_t Pgr_point_input_t;
 /*! @brief pgr_point_input
 
 For queries of the type:
