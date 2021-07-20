@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <stddef.h>
-#include "c_types/pickDeliver/vehicle_t.h"
+typedef struct Vehicle_t Vehicle_t;
 
 /** @brief Reads the vehicles orders
  *
