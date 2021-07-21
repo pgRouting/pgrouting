@@ -34,9 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_makeConnected_t {
     int64_t start_vid;
     int64_t end_vid;
-} pgr_makeConnected_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_MAKECONNECTED_T_H_

@@ -39,8 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_makeConnected_t.h"
 #include "c_types/pgr_mst_rt.h"
+
+typedef struct pgr_makeConnected_t pgr_makeConnected_t;
 
 #ifdef __cplusplus
 extern "C" {
