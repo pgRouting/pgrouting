@@ -478,8 +478,9 @@ TSP::get_boost_vertex(int64_t id) const {
     try {
         return id_to_V.at(id);
     } catch (...) {
-        pgassert(false);
-        throw;
+        throw std::make_pair(
+                std::string("INTERNAL: something went wrong when getting the vertex descriptor"),
+                std::string(__PRETTY_FUNCTION__));
     }
 }
 
@@ -488,8 +489,9 @@ TSP::get_vertex_id(V v) const {
     try {
         return V_to_id.at(v);
     } catch (...) {
-        pgassert(false);
-        throw;
+        throw std::make_pair(
+                std::string("INTERNAL: something went wrong when getting the vertex id"),
+                std::string(__PRETTY_FUNCTION__));
     }
 }
 
@@ -498,6 +500,9 @@ TSP::get_edge_id(E e) const {
     try {
         return E_to_id.at(e);
     } catch (...) {
+        throw std::make_pair(
+                std::string("INTERNAL: something went wrong when getting the edge id"),
+                std::string(__PRETTY_FUNCTION__));
         pgassert(false);
         throw;
     }
