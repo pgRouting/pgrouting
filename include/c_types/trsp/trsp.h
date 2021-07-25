@@ -38,26 +38,25 @@ typedef double float8;
 #   include <stdint.h>
 #endif
 
-typedef struct edge {
+struct edge_t {
     int64 id;
     int64 source;
     int64 target;
     float8 cost;
     float8 reverse_cost;
-} edge_t;
+};
 
-typedef struct restrict_struct {
+struct restrict_t {
     int target_id;
     float8 to_cost;
     int via[MAX_RULE_LENGTH];
-}
-restrict_t;
+};
 
-typedef struct path_element {
+struct path_element_tt {
     int64 vertex_id;
     int64 edge_id;
     float8 cost;
-} path_element_tt;
+};
 
 #ifdef __cplusplus
 extern "C" {
