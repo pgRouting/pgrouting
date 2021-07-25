@@ -37,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 
-#include "c_types/pgr_mst_rt.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
 #include "spanningTree/details.hpp"
