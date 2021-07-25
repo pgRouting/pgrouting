@@ -40,6 +40,6 @@ struct pgr_mst_rt {
     int64_t edge;
     double cost;
     double agg_cost;
-}
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_MST_RT_H_
