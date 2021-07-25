@@ -24,13 +24,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/* for bool */
+#include <stdbool.h>
+
+
+#include "c_types/trsp/trsp.h"
 
 #include "c_common/postgres_connection.h"
 #include "catalog/pg_type.h"
 #include "c_common/debug_macro.h"
 
-
-#include "c_types/trsp/trsp.h"
 
 PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);
 
@@ -154,7 +157,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
 
 static void
 fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
-           edge_columns_t *edge_columns, edge_t *target_edge) {
+           edge_columns_t *edge_columns, struct edge_t *target_edge) {
   Datum binval;
   bool isnull;
 
@@ -195,7 +198,7 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
 
 static void
 fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
-           restrict_columns_t *restrict_columns, restrict_t *rest) {
+           restrict_columns_t *restrict_columns, struct restrict_t *rest) {
   Datum binval;
   bool isnull;
   int t;
@@ -243,7 +246,7 @@ static int compute_trsp(
     bool directed,
     bool has_reverse_cost,
     char* restrict_sql,
-    path_element_tt **path,
+    struct path_element_tt **path,
     size_t *path_count) {
 
   int SPIcode;
@@ -253,7 +256,7 @@ static int compute_trsp(
   uint32_t TUPLIMIT = 1000;
   uint32_t ntuples;
 
-  edge_t *edges = NULL;
+  struct edge_t *edges = NULL;
   uint32_t total_tuples = 0;
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id = -1, .source = -1, .target = -1,
@@ -261,7 +264,7 @@ static int compute_trsp(
 #else  // _MSC_VER
   edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif  // _MSC_VER
-  restrict_t *restricts = NULL;
+  struct restrict_t *restricts = NULL;
   uint32_t total_restrict_tuples = 0;
   restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
                                  .to_cost = -1};
@@ -319,9 +322,9 @@ static int compute_trsp(
 
       if (ntuples > 0) {
           if (!edges)
-            edges = palloc(total_tuples * sizeof(edge_t));
+            edges = palloc(total_tuples * sizeof(struct edge_t));
           else
-            edges = repalloc(edges, total_tuples * sizeof(edge_t));
+            edges = repalloc(edges, total_tuples * sizeof(struct edge_t));
 
           if (edges == NULL) {
               elog(ERROR, "Out of memory");
@@ -440,10 +443,10 @@ static int compute_trsp(
 
           if (ntuples > 0) {
               if (!restricts)
-                restricts = palloc(total_restrict_tuples * sizeof(restrict_t));
+                restricts = palloc(total_restrict_tuples * sizeof(struct restrict_t));
               else
                 restricts = repalloc(restricts,
-                    total_restrict_tuples * sizeof(restrict_t));
+                    total_restrict_tuples * sizeof(struct restrict_t));
 
               if (restricts == NULL) {
                   elog(ERROR, "Out of memory");
@@ -506,7 +509,7 @@ PGDLLEXPORT Datum
 _pgr_trsp(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   TupleDesc            tuple_desc;
-  path_element_tt      *path;
+  struct path_element_tt      *path;
 
   // stuff done only on the first call of the function
   if (SRF_IS_FIRSTCALL()) {
@@ -594,7 +597,7 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
   funcctx = SRF_PERCALL_SETUP();
 
   tuple_desc = funcctx->tuple_desc;
-  path = (path_element_tt*) funcctx->user_fctx;
+  path = (struct path_element_tt*) funcctx->user_fctx;
 
   if (funcctx->call_cntr < funcctx->max_calls) {
       // do when there is more left to send

@@ -32,11 +32,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for int64_t */
 #ifdef __cplusplus
 #   include <cstdint>
-typedef int64_t int64;
-typedef double float8;
 #else
 #   include <stdint.h>
 #endif
+
+typedef int64_t int64;
+typedef double float8;
 
 struct edge_t {
     int64 id;
@@ -63,9 +64,9 @@ extern "C" {
 #endif
 
 int trsp_edge_wrapper(
-    edge_t *edges,
+    struct edge_t *edges,
     size_t edge_count,
-    restrict_t *restricts,
+    struct restrict_t *restricts,
     size_t restrict_count,
     int64_t start_edge,
     double start_pos,
@@ -73,7 +74,7 @@ int trsp_edge_wrapper(
     double end_pos,
     bool directed,
     bool has_reverse_cost,
-    path_element_tt **path,
+    struct path_element_tt **path,
     size_t *path_count,
     char **err_msg
 );
