@@ -31,9 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stddef.h>
 
-
-#include "c_types/routes_t.h"
 #include "c_types/pgr_edge_t.h"
+typedef struct Routes_t Routes_t;
 
 #ifdef __cplusplus
 extern "C" {
