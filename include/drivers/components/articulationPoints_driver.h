@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 #include "c_types/pgr_components_rt.h"
 
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ extern "C" {
 
     void
         do_pgr_articulationPoints(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_edges,
                 int64_t **return_tuples,
                 size_t *return_count,

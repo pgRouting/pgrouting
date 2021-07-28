@@ -78,9 +78,9 @@ pgr_bellman_ford(
 
 void
 do_pgr_bellman_ford_neg(
-                pgr_edge_t  *positive_edges,
+                Edge_t  *positive_edges,
                 size_t total_positive_edges,
-                pgr_edge_t  *negative_edges,
+                Edge_t  *negative_edges,
                 size_t total_negative_edges,
                 pgr_combination_t *combinations,
                 size_t total_combinations,

@@ -52,7 +52,7 @@ void process(
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_tuples = 0;
     pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 

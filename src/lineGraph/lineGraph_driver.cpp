@@ -59,7 +59,7 @@ void get_postgres_result(
 
 void
 do_pgr_lineGraph(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         bool directed,
         Line_graph_rt **return_tuples,

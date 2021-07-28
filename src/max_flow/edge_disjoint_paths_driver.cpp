@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 static
 std::vector<General_path_element_t>
 single_execution(
-        std::vector<pgr_edge_t> edges,
+        std::vector<Edge_t> edges,
         int64_t source,
         int64_t target,
         bool directed) {
@@ -64,7 +64,7 @@ single_execution(
 
 void
 do_pgr_edge_disjoint_paths(
-    pgr_edge_t *data_edges,
+    Edge_t *data_edges,
     size_t total_edges,
     pgr_combination_t *combinations,
     size_t total_combinations,
@@ -98,7 +98,7 @@ do_pgr_edge_disjoint_paths(
                 sinks, sinks + size_sink_verticesArr);
         std::vector< pgr_combination_t > combinations_vector(
                 combinations, combinations + total_combinations);
-        std::vector<pgr_edge_t> edges(
+        std::vector<Edge_t> edges(
                 data_edges, data_edges + total_edges);
 
         if (!combinations_vector.empty()) {

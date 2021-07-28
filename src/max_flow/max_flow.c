@@ -69,7 +69,7 @@ process(
     int64_t *sink_vertices = NULL;
     size_t size_sink_verticesArr = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_combination_t *combinations = NULL;

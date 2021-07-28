@@ -73,7 +73,7 @@ process(
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
     if (normal) {
         pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -165,7 +165,7 @@ process_combinations(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_combination_t *combinations = NULL;

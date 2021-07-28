@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 #include "c_types/pgr_combination_t.h"
 #include "c_types/general_path_element_t.h"
 
@@ -57,9 +57,9 @@ extern "C" {
 
     void
         do_pgr_bellman_ford_neg(
-                pgr_edge_t  *positive_edges,
+                Edge_t  *positive_edges,
                 size_t total_positive_edges,
-                pgr_edge_t  *negative_edges,
+                Edge_t  *negative_edges,
                 size_t total_negative_edges,
                 pgr_combination_t  *combinations,
                 size_t total_combinations,

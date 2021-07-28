@@ -50,14 +50,14 @@ class Pg_points_graph : public Pgr_messages {
      Pg_points_graph(const Pg_points_graph &) = delete;
      Pg_points_graph(
              std::vector<Point_on_edge_t> p_points,
-             std::vector<pgr_edge_t>      p_edges_to_modify,
+             std::vector<Edge_t>      p_edges_to_modify,
              bool p_normal,
              char p_driving_side,
              bool p_directed);
 
      std::vector<Point_on_edge_t> points() const;
-     std::vector<pgr_edge_t> edges_of_points() const;
-     std::vector<pgr_edge_t> new_edges() const;
+     std::vector<Edge_t> edges_of_points() const;
+     std::vector<Edge_t> new_edges() const;
      inline char driving_side() const {return m_driving_side;}
 
 
@@ -85,13 +85,13 @@ class Pg_points_graph : public Pgr_messages {
      void check_points();
      void reverse_sides();
      int64_t get_edge_id(int64_t pid) const;
-     const pgr_edge_t*  get_edge_data(int64_t eid) const;
+     const Edge_t*  get_edge_data(int64_t eid) const;
 
  private:
      std::vector<Point_on_edge_t> m_points;
      std::vector<Point_on_edge_t> m_o_points;
-     std::vector<pgr_edge_t>      m_edges_of_points;
-     std::vector<pgr_edge_t>      m_new_edges;
+     std::vector<Edge_t>      m_edges_of_points;
+     std::vector<Edge_t>      m_new_edges;
      char m_driving_side;
      bool m_directed;
 };

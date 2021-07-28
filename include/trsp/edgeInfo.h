@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 #include "cpp_common/pgr_assert.h"
 
 namespace pgrouting {
@@ -41,7 +41,7 @@ class EdgeInfo {
      EdgeInfo() = default;
 
      EdgeInfo(
-             pgr_edge_t edgeIn,
+             Edge_t edgeIn,
              size_t edgeIndex);
 
      inline size_t idx() const {return m_edgeIndex;}
@@ -87,7 +87,7 @@ class EdgeInfo {
 
 
  private:
-     pgr_edge_t m_edge;
+     Edge_t m_edge;
      size_t m_edgeIndex;
      std::vector<size_t> m_startConnectedEdge;
      std::vector<size_t> m_endConnectedEdge;

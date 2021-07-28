@@ -50,7 +50,7 @@ pgr_randomSpanningTree(
 
 void
 do_pgr_randomSpanningTree(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         int64_t root_vertex,
         bool directed,

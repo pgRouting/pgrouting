@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/transitiveClosure_rt.h"
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,7 +50,7 @@ extern "C" {
      ********************************************************/
     void
         do_pgr_transitiveClosure(
-               pgr_edge_t  *data_edges,
+               Edge_t  *data_edges,
         size_t total_tuples,
         transitiveClosure_rt **return_tuples,
         size_t *return_count,

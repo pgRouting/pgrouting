@@ -74,7 +74,7 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);

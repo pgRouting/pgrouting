@@ -116,7 +116,7 @@ pgr_depthFirstSearch(
  */
 void
 do_pgr_depthFirstSearch(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
 
         int64_t *rootsArr,

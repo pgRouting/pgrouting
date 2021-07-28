@@ -57,9 +57,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_many_withPointsDD(
-        pgr_edge_t      *edges,             size_t total_edges,
+        Edge_t      *edges,             size_t total_edges,
         Point_on_edge_t *points_p,          size_t total_points,
-        pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
+        Edge_t      *edges_of_points,   size_t total_edges_of_points,
 
         int64_t  *start_pidsArr,    size_t s_len,
         double distance,
@@ -92,7 +92,7 @@ do_pgr_many_withPointsDD(
                 std::vector<Point_on_edge_t>(
                     points_p,
                     points_p + total_points),
-                std::vector< pgr_edge_t >(
+                std::vector< Edge_t >(
                     edges_of_points,
                     edges_of_points + total_edges_of_points),
                 true,

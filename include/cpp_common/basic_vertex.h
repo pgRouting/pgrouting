@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <ostream>
 
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 
 
 
@@ -49,7 +49,7 @@ class Basic_vertex {
 
      Basic_vertex& operator=(const Basic_vertex&) = default;
 
-     Basic_vertex(const pgr_edge_t &other, bool is_source) :
+     Basic_vertex(const Edge_t &other, bool is_source) :
          id(is_source? other.source : other.target) {}
 
      void cp_members(const Basic_vertex &other) {
@@ -68,17 +68,17 @@ size_t check_vertices(std::vector < Basic_vertex > vertices);
 
 std::vector < Basic_vertex > extract_vertices(
         std::vector < Basic_vertex > vertices,
-        const pgr_edge_t *data_edges, size_t count);
+        const Edge_t *data_edges, size_t count);
 
 std::vector < Basic_vertex > extract_vertices(
         std::vector < Basic_vertex > vertices,
-        const std::vector < pgr_edge_t > data_edges);
+        const std::vector < Edge_t > data_edges);
 
 std::vector < Basic_vertex > extract_vertices(
-        const pgr_edge_t *data_edges, size_t count);
+        const Edge_t *data_edges, size_t count);
 
 std::vector < Basic_vertex > extract_vertices(
-        const std::vector < pgr_edge_t > &data_edges);
+        const std::vector < Edge_t > &data_edges);
 
 
 }  // namespace pgrouting

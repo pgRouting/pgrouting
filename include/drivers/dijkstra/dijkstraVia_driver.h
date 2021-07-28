@@ -29,9 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRAVIA_DRIVER_H_
 #pragma once
 
-#include <stddef.h>
+/* for size-t */
+#ifdef __cplusplus
+#   include <cstdint>
+#   include <cstddef>
+#else
+#   include <stddef.h>
+#   include <stdint.h>
+#endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 typedef struct Routes_t Routes_t;
 
 #ifdef __cplusplus
@@ -46,7 +53,7 @@ extern "C" {
        */
     void
         do_pgr_dijkstraVia(
-                pgr_edge_t  *data_edges,  size_t total_edges,
+                Edge_t  *data_edges,  size_t total_edges,
                 int64_t  *via_vidsArr,    size_t size_via_vidsArr,
                 bool directed,
                 bool strict,

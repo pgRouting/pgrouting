@@ -58,7 +58,7 @@ pgr_breadthFirstSearch(
 
 void
 do_pgr_breadthFirstSearch(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_edges,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
