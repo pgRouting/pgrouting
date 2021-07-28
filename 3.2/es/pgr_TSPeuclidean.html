@@ -15,7 +15,6 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -43,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.2.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.2.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -96,13 +95,18 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_TSPeuclidean</a><ul>
-<li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#signatures">Firmas</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#description">Descripción</a><ul>
+<li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
+<li><a class="reference internal" href="#general-characteristics">General Characteristics</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
+<li><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -162,9 +166,31 @@
 </ul>
 <section id="pgr-tspeuclidean">
 <h1>pgr_TSPeuclidean<a class="headerlink" href="#pgr-tspeuclidean" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Uso del algoritmo de aproximación <em>Simulated Annealing</em></p>
-<p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<figcaption>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
+<p class="rubric">Availability:</p>
+<ul class="simple">
+<li><p>Version 3.2.1</p>
+<ul>
+<li><p>Metric Algorithm from <a class="reference external" href=":target:https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
+<li><p>Simulated Annealing Algorithm no longer supported</p>
+<ul>
+<li><p>The Simulated Annealing Algorithm related parameters are ignored:
+max_processing_time, tries_per_temperature,
+max_changes_per_temperature, max_consecutive_non_changes,
+initial_temperature, final_temperature, cooling_factor,
+randomize</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>Versión 3.0.0</p>
 <ul>
 <li><p>Cambio de nombre de pgr_eucledianTSP</p></li>
@@ -178,52 +204,91 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>En el problema del vendedor viajante (TSP) se hace la siguiente pregunta:</p>
+<section id="problem-definition">
+<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The travelling salesperson problem (TSP) asks the following question:</p>
 <p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
-<p>Consulte <a class="reference internal" href="TSP-family.html#simulated-annealing"><span class="std std-ref">Algoritmo de Recocido Simulado</span></a> para obtener una descripción completa de esta implementación</p>
+</section>
+<section id="general-characteristics">
+<h3>General Characteristics<a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>This problem is an NP-hard optimization problem.</p></li>
+<li><p>Metric Algorithm is used</p></li>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour in the worst case</em> when:</p>
+<ul>
+<li><p>Graph is undirected</p></li>
+<li><p>Graph is fully connected</p></li>
+<li><p>Graph where traveling costs on edges obey the triangle inequality.</p></li>
+</ul>
+</li>
+<li><p>On an undirected graph:</p>
+<ul>
+<li><p>The traveling costs are symmetric:</p></li>
+<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from  <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul>
+<li><p>Duplicated identifiers with different coordinates are not allowed</p>
+<ul>
+<li><p>The coordinates are quite the same for the same identifier, for example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mf">3.499999999999</span> <span class="mf">0.9999999</span>
+</pre></div>
+</div>
+</li>
+<li><p>The coordinates are quite different for the same identifier, for example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="mi">2</span> <span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">1.1</span>
+</pre></div>
+</div>
+</li>
+<li><p>Any duplicated identifier will be ignored. The coordinates that will be kept
+is arbitrarly.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_TSPeuclidean(Coordinates SQL,
-    [start_id], [end_id],
-    [max_processing_time],
-    [tries_per_temperature], [max_changes_per_temperature], [max_consecutive_non_changes],
-    [initial_temperature], [final_temperature], [cooling_factor],
-    [randomize])
+<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_TSPeuclidean(Coordinates SQL, [start_id], [end_id])
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>No tener una ejecución aleatoria</p>
+<dd class="field-odd"><p>With default values</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
     $$
     SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr
-    $$,
-    randomize := false);
+    $$);
  seq | node |      cost      |   agg_cost
 -----+------+----------------+---------------
-   1 |    1 |  1.41421356237 |             0
-   2 |    3 |              1 | 1.41421356237
-   3 |    4 |              1 | 2.41421356237
-   4 |    9 | 0.583095189485 | 3.41421356237
-   5 |   16 | 0.583095189485 | 3.99730875186
-   6 |    6 |              1 | 4.58040394134
-   7 |   11 |              1 | 5.58040394134
-   8 |   12 |  1.11803398875 | 6.58040394134
-   9 |   17 |            1.5 | 7.69843793009
-  10 |   13 |            0.5 | 9.19843793009
-  11 |   15 |            0.5 | 9.69843793009
-  12 |   10 |  1.58113883008 | 10.1984379301
-  13 |   14 |  1.58113883008 | 11.7795767602
-  14 |    7 |              1 | 13.3607155903
-  15 |    8 |              1 | 14.3607155903
-  16 |    5 |              1 | 15.3607155903
-  17 |    2 |              1 | 16.3607155903
-  18 |    1 |              0 | 17.3607155903
+   1 |    1 |              0 |             0
+   2 |    2 |              1 |             1
+   3 |    8 |  1.41421356237 | 2.41421356237
+   4 |    7 |              1 | 3.41421356237
+   5 |   14 |  1.58113883008 | 4.99535239246
+   6 |   15 |            1.5 | 6.49535239246
+   7 |   13 |            0.5 | 6.99535239246
+   8 |   17 |            1.5 | 8.49535239246
+   9 |   12 |  1.11803398875 | 9.61338638121
+  10 |    9 |              1 | 10.6133863812
+  11 |   16 | 0.583095189485 | 11.1964815707
+  12 |    6 | 0.583095189485 | 11.7795767602
+  13 |   11 |              1 | 12.7795767602
+  14 |   10 |              1 | 13.7795767602
+  15 |    5 |              1 | 14.7795767602
+  16 |    4 |   2.2360679775 | 17.0156447377
+  17 |    3 |              1 | 18.0156447377
+  18 |    1 |  1.41421356237 |    19.4298583
 (18 rows)
 
 </pre></div>
@@ -233,28 +298,10 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 29%" />
-<col style="width: 71%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Coordenadas SQL</strong></p></td>
-<td><p>una consulta SQL, descrita en la <a class="reference internal" href="#inner-query">Consulta interna</a></p></td>
-</tr>
-</tbody>
-</table>
-<section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 7%" />
+<col style="width: 14%" />
 <col style="width: 8%" />
-<col style="width: 66%" />
+<col style="width: 9%" />
+<col style="width: 69%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -264,73 +311,43 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<tr class="row-even"><td><p><strong>Coordenadas SQL</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p>An SQL query, described in the <a class="reference internal" href="#coordinates-sql">Coordinates SQL</a> section</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p><cite>0</cite></p></td>
-<td><p>La parte ambiciosa de la implementación utilizará este identificador.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p><cite>0</cite></p></td>
-<td><p>El último vértice de visita antes de volver a start_vid.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>max_processing_time</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p><cite>+infinity</cite></p></td>
-<td><p>Detenga el proceso de recocido cuando se alcance el valor.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>tries_per_temperature</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p><cite>500</cite></p></td>
-<td><p>Número máximo de veces que se busca a un(os) vecino(s) en cada temperatura.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>max_changes_per_temperature</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p><cite>60</cite></p></td>
-<td><p>Número máximo de veces que se cambia la solución en cada temperatura.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>max_consecutive_non_changes</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p><cite>100</cite></p></td>
-<td><p>Número máximo de veces consecutivas que la solución no cambia en cada temperatura.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>initial_temperature</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p><cite>100</cite></p></td>
-<td><p>Temperatura de inicio.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>temperatura_final</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p><cite>0.1</cite></p></td>
-<td><p>Temperatura final.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>factor_de_enfriamiento</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p><cite>0.9</cite></p></td>
-<td><p>Valor entre 0 y 1 (sin incluir) utilizado para calcular la siguiente temperatura.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>aleatorizar</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p><cite>true</cite></p></td>
-<td><p>Elija la semilla aleatoria</p>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The first visiting vertex</p>
 <ul class="simple">
-<li><p>true: Utilice el tiempo actual como semilla</p></li>
-<li><p>falso: Use <cite>1</cite> como semilla. Usando este valor obtendrá los mismos resultados con los mismos datos en cada ejecución.</p></li>
+<li><p>When <cite>0</cite> any vertex can become the first visiting vertex.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last vertex</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 </section>
-</section>
 <section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="coordinates-sql">
+<h3>Coordinates SQL<a class="headerlink" href="#coordinates-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p><strong>Coordenadas SQL</strong>: una consulta SQL, que debe devolver un conjunto de filas con las siguientes columnas:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 6%" />
-<col style="width: 10%" />
-<col style="width: 83%" />
+<col style="width: 12%" />
+<col style="width: 23%" />
+<col style="width: 65%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -340,23 +357,20 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>id</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>(opcional) Identificador de la coordenada.</p>
-<ul class="simple">
-<li><p>Cuando faltan las coordenadas recibirán un <strong>id</strong> a partir de 1, en el orden indicado.</p></li>
-</ul>
-</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p>Identifier of the starting vertex.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>x</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
 <td><p>Valor X de la coordenada.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>y</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
 <td><p>Valor Y de la coordenada.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -384,22 +398,18 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tr>
 <tr class="row-even"><td><p><strong>cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><dl class="simple">
-<dt>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la última fila de la secuencia de ruta.</p></li>
+<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the tour sequence.</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><dl class="simple">
-<dt>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la primera fila de la secuencia de ruta.</p></li>
+<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the tour sequence.</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -409,94 +419,84 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Prueba <span class="math notranslate nohighlight">\(3\)</span> veces por temperatura con factor de enfriamiento de <span class="math notranslate nohighlight">\(0.5\)</span>, sin tener una ejecución aleatoria</p>
+<dd class="field-odd"><p>Test 29 cities of Western Sahara</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT* from pgr_TSPeuclidean(
-    $$
-    SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
-    $$,
-    tries_per_temperature := 3,
-    cooling_factor := 0.5,
-    randomize := false);
- seq | node |      cost      |   agg_cost
------+------+----------------+---------------
-   1 |    1 |  1.41421356237 |             0
-   2 |    3 |              1 | 1.41421356237
-   3 |    4 |              1 | 2.41421356237
-   4 |    9 | 0.583095189485 | 3.41421356237
-   5 |   16 | 0.583095189485 | 3.99730875186
-   6 |    6 |              1 | 4.58040394134
-   7 |    5 |              1 | 5.58040394134
-   8 |    8 |              1 | 6.58040394134
-   9 |    7 |  1.58113883008 | 7.58040394134
-  10 |   14 |            1.5 | 9.16154277143
-  11 |   15 |            0.5 | 10.6615427714
-  12 |   13 |            1.5 | 11.1615427714
-  13 |   17 |  1.11803398875 | 12.6615427714
-  14 |   12 |              1 | 13.7795767602
-  15 |   11 |              1 | 14.7795767602
-  16 |   10 |              2 | 15.7795767602
-  17 |    2 |              1 | 17.7795767602
-  18 |    1 |              0 | 18.7795767602
-(18 rows)
+<p>This example shows how to make performance tests using University of Waterloo’s <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">example data</a> using the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Western Sahara
+dataset</a></p>
+<p>Creating a table for the data and storing the data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">20900.0000</span><span class="p">,</span><span class="mf">17066.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">21300.0000</span><span class="p">,</span><span class="mf">13016.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">14150.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">14966.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mf">21600.0000</span><span class="p">,</span><span class="mf">16500.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mf">22183.3333</span><span class="p">,</span><span class="mf">13133.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">22583.3333</span><span class="p">,</span><span class="mf">14300.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mf">22683.3333</span><span class="p">,</span><span class="mf">12716.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">23616.6667</span><span class="p">,</span><span class="mf">15866.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mf">23700.0000</span><span class="p">,</span><span class="mf">15933.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mf">23883.3333</span><span class="p">,</span><span class="mf">14533.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mf">24166.6667</span><span class="p">,</span><span class="mf">13250.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mf">25149.1667</span><span class="p">,</span><span class="mf">12365.8333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mf">26133.3333</span><span class="p">,</span><span class="mf">14500.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mf">26150.0000</span><span class="p">,</span><span class="mf">10550.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mf">26283.3333</span><span class="p">,</span><span class="mf">12766.6667</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mf">26433.3333</span><span class="p">,</span><span class="mf">13433.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mf">26550.0000</span><span class="p">,</span><span class="mf">13850.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">26733.3333</span><span class="p">,</span><span class="mf">11683.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mf">27026.1111</span><span class="p">,</span><span class="mf">13051.9444</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mf">27096.1111</span><span class="p">,</span><span class="mf">13415.8333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="mf">27153.6111</span><span class="p">,</span><span class="mf">13203.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mf">27166.6667</span><span class="p">,</span><span class="mf">9833.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mf">27233.3333</span><span class="p">,</span><span class="mf">10450.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">26</span><span class="p">,</span><span class="mf">27233.3333</span><span class="p">,</span><span class="mf">11783.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">27</span><span class="p">,</span><span class="mf">27266.6667</span><span class="p">,</span><span class="mf">10383.3333</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mf">27433.3333</span><span class="p">,</span><span class="mf">12400.0000</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">29</span><span class="p">,</span><span class="mf">27462.5000</span><span class="p">,</span><span class="mf">12992.2222</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Adding a geometry (for visual purposes)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Getting a total cost of the tour, compare the value with the length of an optimal tour is 27603, given on the dataset</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
+FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
+WHERE seq = 30;
+ seq | node |     cost      |   agg_cost
+-----+------+---------------+---------------
+  30 |    1 | 2266.91173136 | 28777.4854127
+(1 row)
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Omitir el Recocido Simulado y mostrar información del proceso</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SET client_min_messages TO DEBUG1;
-SET
-SELECT* from pgr_TSPeuclidean(
-    $$
-    SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
-    $$,
-    tries_per_temperature := 0,
-    randomize := false);
-DEBUG:  Processing Information
-Initializing tsp class ---&gt; tsp.greedyInitial ---&gt; tsp.annealing ---&gt; OK
-
-Cycle(100) 	total changes =0	0 were because  delta energy &lt; 0
-Total swaps: 3
-Total slides: 0
-Total reverses: 0
-Times best tour changed: 4
-Best cost reached = 18.7796
- seq | node |      cost      |   agg_cost
------+------+----------------+---------------
-   1 |    1 |  1.41421356237 |             0
-   2 |    3 |              1 | 1.41421356237
-   3 |    4 |              1 | 2.41421356237
-   4 |    9 | 0.583095189485 | 3.41421356237
-   5 |   16 | 0.583095189485 | 3.99730875186
-   6 |    6 |              1 | 4.58040394134
-   7 |    5 |              1 | 5.58040394134
-   8 |    8 |              1 | 6.58040394134
-   9 |    7 |  1.58113883008 | 7.58040394134
-  10 |   14 |            1.5 | 9.16154277143
-  11 |   15 |            0.5 | 10.6615427714
-  12 |   13 |            1.5 | 11.1615427714
-  13 |   17 |  1.11803398875 | 12.6615427714
-  14 |   12 |              1 | 13.7795767602
-  15 |   11 |              1 | 14.7795767602
-  16 |   10 |              2 | 15.7795767602
-  17 |    2 |              1 | 17.7795767602
-  18 |    1 |              0 | 18.7795767602
-(18 rows)
+<p>Getting a geometry of the tour</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
+SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    st_makeline
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 01020000001E000000F085C9545558D4400000000000B3D040000000000069D440107A36ABAAAAD040000000000018D54000000000001DD040107A36AB2A10D7401FF46C5655FDCE40000000000025D740E10B93A9AA1ECF40F085C954D552D740E10B93A9AA62CC40107A36ABAA99D7400000000000E1C940107A36AB4A8FD840E10B93A9EA26C840F085C954D5AAD9401FF46C5655EFC840F085C95455D0D940E10B93A9AA3CCA40F085C9545585D940000000000052CC400000000080EDD94000000000000DCB40A52C431C0776DA40E10B93A9EA33CA40A52C431C6784DA40E10B93A9AAC9C940A52C431C8764DA402C6519E2F87DC94000000000A0D1DA4096B20C711C60C940F085C95455CADA40000000000038C840F085C9545598DA40E10B93A9AA03C740F085C954551BDA40E10B93A9AAD1C640F085C9545598DA40000000000069C440107A36ABAAA0DA40E10B93A9AA47C440107A36ABAA87DA40E10B93A9AA34C340000000008089D94000000000009BC440F085C954D526D6401FF46C5655D6C840F085C954D5A9D540E10B93A9AAA6C9400000000000CDD4401FF46C56556CC940000000000018D5400000000000A3CB40F085C954D50DD6400000000000EECB40000000000018D5401FF46C56553BCD40F085C9545558D4400000000000B3D040
+(1 row)
 
 </pre></div>
 </div>
-<p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
+<p>Visualy, The first image is the <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">optimal solution</a>  and
+the second image is the solution obtained with <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
+<a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
+<a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" /></a>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> network.</p></li>
+<li><p>Metric Algorithm from <a class="reference external" href=":target:https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
+<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">University of Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Simulated_annealing">Wikipedia: Simulated annealing</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -518,9 +518,9 @@ Best cost reached = 18.7796
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.2.0.<br/>
-      Actualizado por última vez en may. 25, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.2.1.<br/>
+      Actualizado por última vez en jul. 28, 2021.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
     </p>
   </div>
 </footer>
