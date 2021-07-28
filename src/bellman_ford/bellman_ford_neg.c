@@ -90,7 +90,7 @@ process(
     (*result_count) = 0;
 
     PGR_DBG("Load data");
-    pgr_edge_t *positive_edges = NULL;
+    Edge_t *positive_edges = NULL;
     size_t total_positive_edges = 0;
 
     pgr_get_edges(edges_sql, &positive_edges, &total_positive_edges);
@@ -98,7 +98,7 @@ process(
             "Total positive weighted edges in query: %ld",
             total_positive_edges);
 
-    pgr_edge_t *negative_edges = NULL;
+    Edge_t *negative_edges = NULL;
     size_t total_negative_edges = 0;
 
     pgr_get_edges(neg_edges_sql, &negative_edges, &total_negative_edges);

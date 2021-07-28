@@ -61,7 +61,7 @@ Pg_points_graph::points() const {
     return m_points;
 }
 
-std::vector<pgr_edge_t>
+std::vector<Edge_t>
 Pg_points_graph::edges_of_points() const {
     return m_edges_of_points;
 }
@@ -70,7 +70,7 @@ Pg_points_graph::edges_of_points() const {
 
 Pg_points_graph::Pg_points_graph(
         std::vector<Point_on_edge_t> p_points,
-        std::vector<pgr_edge_t>      p_edges_of_points,
+        std::vector<Edge_t>      p_edges_of_points,
         bool p_normal,
         char p_driving_side,
         bool p_directed) :
@@ -161,11 +161,11 @@ Pg_points_graph::get_edge_id(int64_t pid) const {
         -1;
 }
 
-const pgr_edge_t*
+const Edge_t*
 Pg_points_graph::get_edge_data(int64_t eid) const {
     auto e_itr = std::find_if(
             m_edges_of_points.begin(), m_edges_of_points.end(),
-            [&eid](const pgr_edge_t &edge)
+            [&eid](const Edge_t &edge)
             {return eid == edge.id;});
     return e_itr ==  m_edges_of_points.end()?
        nullptr : &(*e_itr);
@@ -256,7 +256,7 @@ Pg_points_graph::eliminate_details(
         int64_t edge_to_find = newPath[i].edge;
         auto edge_ptr = std::find_if(
                 m_edges_of_points.begin(), m_edges_of_points.end(),
-                [&edge_to_find](const pgr_edge_t &edge)
+                [&edge_to_find](const Edge_t &edge)
                 {return edge_to_find == edge.id;});
         if (edge_ptr != m_edges_of_points.end()) {
             newPath[i].cost = edge_ptr->target == newPath[i+1].node ?
@@ -319,7 +319,7 @@ Pg_points_graph::adjust_pids(
 
 
 
-std::vector<pgr_edge_t>
+std::vector<Edge_t>
 Pg_points_graph::new_edges() const {
     return m_new_edges;
 }
@@ -420,7 +420,7 @@ Pg_points_graph::create_new_edges() {
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     if (edge.cost >= 0) {
                         last_cost = deltaFraction * edge.cost;
-                        pgr_edge_t new_edge = {
+                        Edge_t new_edge = {
                             edge.id,
                             prev_target,
                             point.vertex_id,
@@ -437,7 +437,7 @@ Pg_points_graph::create_new_edges() {
                     }
                     if (edge.reverse_cost >= 0) {
                         last_rcost = deltarFraction * edge.reverse_cost;
-                        pgr_edge_t new_edge = {
+                        Edge_t new_edge = {
                             edge.id,
                             prev_target,
                             point.vertex_id,
@@ -471,7 +471,7 @@ Pg_points_graph::create_new_edges() {
                 log << "Breaking (source, target) when its not the extreme\n";
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     last_cost = deltaFraction * edge.cost;
-                    pgr_edge_t new_edge = {
+                    Edge_t new_edge = {
                         edge.id, prev_target, point.vertex_id, last_cost, -1};
                     m_new_edges.push_back(new_edge);
                     log << "new_edge("
@@ -491,7 +491,7 @@ Pg_points_graph::create_new_edges() {
             log << "\ntwo way and driving side != the side of the point";
             if (point.fraction > 0 &&  point.fraction < 1) {
                 last_rcost = deltarFraction * edge.reverse_cost;
-                pgr_edge_t new_edge = {
+                Edge_t new_edge = {
                     edge.id,
                     prev_rtarget,
                     point.vertex_id,
@@ -511,7 +511,7 @@ Pg_points_graph::create_new_edges() {
         }
 
         {  //  the last segments
-            pgr_edge_t new_edge = {
+            Edge_t new_edge = {
                 edge.id,
                 prev_target,
                 edge.target,

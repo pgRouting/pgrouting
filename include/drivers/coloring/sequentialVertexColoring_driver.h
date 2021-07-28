@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 typedef struct pgr_vertex_color_rt pgr_vertex_color_rt;
 
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ extern "C" {
      *
      *************************************************/
     void do_pgr_sequentialVertexColoring(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_edges,
 
             pgr_vertex_color_rt **return_tuples,

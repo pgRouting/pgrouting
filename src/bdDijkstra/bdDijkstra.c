@@ -68,7 +68,7 @@ process(
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_combination_t *combinations = NULL;

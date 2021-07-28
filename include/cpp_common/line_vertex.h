@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <ostream>
 
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 
 
 
@@ -47,7 +47,7 @@ class Line_vertex {
      Line_vertex() :
          id(0) {}
 
-     explicit Line_vertex(const pgr_edge_t& edge) :
+     explicit Line_vertex(const Edge_t& edge) :
          id(edge.id),
          vertex_id(edge.id),
          source(edge.source),

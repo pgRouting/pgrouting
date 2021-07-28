@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edge_t.h
+File: Edge_t.h
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_EDGE_T_H_
-#define INCLUDE_C_TYPES_PGR_EDGE_T_H_
+#ifndef INCLUDE_C_TYPES_EDGE_T_H_
+#define INCLUDE_C_TYPES_EDGE_T_H_
 #pragma once
 
 /* for int64_t */
@@ -34,12 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct Edge_t{
     int64_t id;
     int64_t source;
     int64_t target;
     double cost;
     double reverse_cost;
-} pgr_edge_t;
+};
 
-#endif  // INCLUDE_C_TYPES_PGR_EDGE_T_H_
+#endif  // INCLUDE_C_TYPES_EDGE_T_H_

@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 #include "c_types/pgr_stoerWagner_t.h"
 
 #ifdef __cplusplus
@@ -47,7 +47,7 @@ extern "C" {
 
     void
         do_pgr_stoerWagner(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_edges,
                 pgr_stoerWagner_t **return_tuples,
                 size_t *return_count,

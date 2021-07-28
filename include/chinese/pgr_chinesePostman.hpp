@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "max_flow/pgr_minCostMaxFlow.hpp"
 #include "c_types/general_path_element_t.h"
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 #include "c_types/pgr_flow_t.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/identifiers.hpp"
@@ -49,7 +49,7 @@ namespace graph {
 class PgrDirectedChPPGraph {
  public:
      PgrDirectedChPPGraph(
-             const pgr_edge_t *dataEdges,
+             const Edge_t *dataEdges,
              const size_t totalEdges);
 
      double DirectedChPP() const {
@@ -80,12 +80,12 @@ class PgrDirectedChPPGraph {
      /** (source, target) -> idx to originalEdges;
       * Only the one with the lower cost is kept
       */
-     std::map<std::pair<int64_t, int64_t>, const pgr_edge_t*> edgeToIdx;
+     std::map<std::pair<int64_t, int64_t>, const Edge_t*> edgeToIdx;
      std::map<std::pair<int64_t, int64_t>,  // source, target
               size_t> edgeToId;  // index in resultEdges
 
-     std::vector<pgr_edge_t> originalEdges;
-     std::vector<pgr_edge_t> resultEdges;
+     std::vector<Edge_t> originalEdges;
+     std::vector<Edge_t> resultEdges;
 
      /** vector of vertex -> vector of edges **/
      std::vector<std::pair<int64_t, std::vector<size_t>>> resultGraph;
@@ -106,7 +106,7 @@ PgrDirectedChPPGraph::~PgrDirectedChPPGraph() {
     edgeToIdx.clear();
 }
 PgrDirectedChPPGraph::PgrDirectedChPPGraph(
-        const pgr_edge_t *dataEdges,
+        const Edge_t *dataEdges,
         const size_t totalEdges) :
     totalDeg(0), totalCost(0), vertices(),
     edgeToIdx(), originalEdges(),
@@ -233,7 +233,7 @@ PgrDirectedChPPGraph::setPathEdges(graph::PgrCostFlowGraph &flowGraph) {
             if (flow_t.source != superSource && flow_t.source != superTarget
                     && flow_t.target != superSource && flow_t.target != superTarget) {
                 auto current_edge(std::make_pair(flow_t.source, flow_t.target));
-                pgr_edge_t newEdge = *edgeToIdx[current_edge];
+                Edge_t newEdge = *edgeToIdx[current_edge];
                 /* adding edges that need to be traversed twice */
                 while (flow_t.flow--) resultEdges.push_back(newEdge);
             }

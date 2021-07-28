@@ -55,7 +55,7 @@ void compute(
     size_t k = (size_t)p_k;
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
 

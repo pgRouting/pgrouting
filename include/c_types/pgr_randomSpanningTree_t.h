@@ -34,12 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct pgr_randomSpanningTree_t {
     int seq;
     int64_t root_vertex;
     int64_t edge;
     double cost;
     double tree_cost;
-} pgr_randomSpanningTree_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_RANDOMSPANNINGTREE_T_H_

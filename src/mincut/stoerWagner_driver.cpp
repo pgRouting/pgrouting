@@ -49,7 +49,7 @@ pgr_stoerWagner(
 
 void
 do_pgr_stoerWagner(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         pgr_stoerWagner_t **return_tuples,
         size_t *return_count,

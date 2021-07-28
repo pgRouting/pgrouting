@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_trsp(
-        pgr_edge_t *edges,
+        Edge_t *edges,
         size_t total_edges,
 
         Restriction_t *restrictions,

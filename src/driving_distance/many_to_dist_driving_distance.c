@@ -54,7 +54,7 @@ void process(
     size_t size_start_vidsArr = 0;
     int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts);
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_tuples = 0;
     pgr_get_edges(sql, &edges, &total_tuples);
 

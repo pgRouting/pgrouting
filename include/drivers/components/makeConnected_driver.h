@@ -38,9 +38,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_makeConnected_t.h"
+typedef struct Edge_t Edge_t;
 #include "c_types/pgr_mst_rt.h"
+
+typedef struct pgr_makeConnected_t pgr_makeConnected_t;
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,7 +53,7 @@ extern "C" {
 
 
     void do_pgr_makeConnected(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_tuples,
                 pgr_makeConnected_t **return_tuples,
                 size_t *return_count,

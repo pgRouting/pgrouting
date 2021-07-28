@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 
 typedef struct pgr_ltdtree_rt pgr_ltdtree_rt;
 
@@ -54,7 +54,7 @@ extern "C" {
  ********************************************************/
 void
 do_pgr_LTDTree(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_tuples,
         int64_t root_vertex,
         pgr_ltdtree_rt **return_tuples,

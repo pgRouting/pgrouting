@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 #include "c_types/pgr_mst_rt.h"
 
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ extern "C" {
 
 
     void do_pgr_breadthFirstSearch(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_tuples,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,

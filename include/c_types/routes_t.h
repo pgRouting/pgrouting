@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct Routes_t{
     int route_id;
     int path_id;
     int path_seq;
@@ -45,6 +45,6 @@ typedef struct {
     double cost;
     double agg_cost;
     double route_agg_cost;
-} Routes_t;
+};
 
 #endif  // INCLUDE_C_TYPES_ROUTES_T_H_

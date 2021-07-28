@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 #include "c_types/pgr_flow_t.h"
+#include "c_types/edge_t.h"
 
 static
 void fetch_basic_edge(
@@ -77,7 +78,7 @@ void fetch_edge(
         Column_info_t info[5],
         int64_t *default_id,
         float8 default_rcost,
-        pgr_edge_t *edge,
+        Edge_t *edge,
         size_t *valid_edges,
         bool normal) {
     if (column_found(info[0].colNumber)) {
@@ -313,7 +314,7 @@ static
 void
 get_edges_5_columns(
         char *sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *totalTuples,
         bool ignore_id,
         bool normal) {
@@ -368,11 +369,11 @@ get_edges_5_columns(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_edge_t *)
-                    palloc0(total_tuples * sizeof(pgr_edge_t));
+                (*edges) = (Edge_t *)
+                    palloc0(total_tuples * sizeof(Edge_t));
             else
-                (*edges) = (pgr_edge_t *)
-                    repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
+                (*edges) = (Edge_t *)
+                    repalloc((*edges), total_tuples * sizeof(Edge_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -409,7 +410,7 @@ static
 void
 get_edges_flow(
     char *sql,
-    pgr_edge_t **edges,
+    Edge_t **edges,
     size_t *totalTuples,
     bool ignore_id) {
     clock_t start_t = clock();
@@ -459,10 +460,10 @@ get_edges_flow(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_edge_t *)
+                (*edges) = (Edge_t *)
                     palloc0(total_tuples * sizeof(pgr_flow_t));
             else
-                (*edges) = (pgr_edge_t *)
+                (*edges) = (Edge_t *)
                     repalloc((*edges), total_tuples * sizeof(pgr_flow_t));
 
             if ((*edges) == NULL) {
@@ -694,7 +695,7 @@ get_edges_basic(
 void
 pgr_get_flow_edges(
     char *sql,
-    pgr_edge_t **edges,
+    Edge_t **edges,
     size_t *total_edges) {
     bool ignore_id = false;
     get_edges_flow(sql, edges, total_edges, ignore_id);
@@ -714,7 +715,7 @@ pgr_get_costFlow_edges(
 void
 pgr_get_edges(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = false;
     bool normal = true;
@@ -725,7 +726,7 @@ pgr_get_edges(
 void
 pgr_get_edges_reversed(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = false;
     bool normal = false;
@@ -736,7 +737,7 @@ pgr_get_edges_reversed(
 void
 pgr_get_edges_no_id(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = true;
     bool normal = true;

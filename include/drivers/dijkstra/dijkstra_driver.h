@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 #include "c_types/pgr_combination_t.h"
 typedef struct General_path_element_t General_path_element_t;
 
@@ -57,7 +57,7 @@ extern "C" {
     //  end_vids anyarray,
     //  directed boolean default true,
     void do_pgr_many_to_many_dijkstra(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_tuples,
             int64_t  *start_vidsArr,
             size_t size_start_vidsArr,
@@ -82,7 +82,7 @@ extern "C" {
     //  combinations_sql text,
     //  directed boolean default true,
     void do_pgr_combinations_dijkstra(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_tuples,
             pgr_combination_t  *combinations,
             size_t total_combinations,
