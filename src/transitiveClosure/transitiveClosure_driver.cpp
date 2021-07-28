@@ -92,7 +92,7 @@ void get_postgres_result(
  ***********************************************************/
 void
 do_pgr_transitiveClosure(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         transitiveClosure_rt **return_tuples,
         size_t *return_count,
@@ -113,7 +113,7 @@ do_pgr_transitiveClosure(
         /*
          * Converting to C++ structures
          */
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        std::vector<Edge_t> edges(data_edges, data_edges + total_edges);
 
 
         graphType gType = DIRECTED;

@@ -210,7 +210,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     }
 
  private:
-    std::map < int64_t, pgr_edge_t > m_edges;
+    std::map < int64_t, Edge_t > m_edges;
 
  public:
     std::ostringstream log;

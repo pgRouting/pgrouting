@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/point_on_edge_t.h"
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 #include "c_types/pgr_combination_t.h"
 typedef struct General_path_element_t General_path_element_t;
 
@@ -53,13 +53,13 @@ extern "C" {
 // end_pid BIGINT,
 // directed BOOLEAN DEFAULT true,
     void do_pgr_withPoints(
-            pgr_edge_t *edges,
+            Edge_t *edges,
             size_t total_edges,
 
             Point_on_edge_t *points,
             size_t total_points,
 
-            pgr_edge_t *edges_of_points,
+            Edge_t *edges_of_points,
             size_t total_edges_of_points,
 
             pgr_combination_t  *combinations,

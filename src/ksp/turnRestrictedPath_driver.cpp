@@ -75,7 +75,7 @@ pgr_dijkstraTR(
 
 void
 do_pgr_turnRestrictedPath(
-        pgr_edge_t *data_edges,
+        Edge_t *data_edges,
         size_t total_edges,
 
         Restriction_t *restrictions,
@@ -120,7 +120,7 @@ do_pgr_turnRestrictedPath(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::vector < pgr_edge_t > edges(data_edges, data_edges + total_edges);
+        std::vector < Edge_t > edges(data_edges, data_edges + total_edges);
 
         std::deque<Path> paths;
 

@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "c_types/pgr_flow_t.h"
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 #include "c_types/general_path_element_t.h"
 #include "cpp_common/interruption.h"
 
@@ -107,13 +107,13 @@ class PgrFlowGraph {
      }
 
      PgrFlowGraph(
-             const std::vector<pgr_edge_t> &edges,
+             const std::vector<Edge_t> &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices,
              int algorithm);
 
      PgrFlowGraph(
-             const std::vector<pgr_edge_t> &edges,
+             const std::vector<Edge_t> &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices,
              bool directed);
@@ -143,11 +143,11 @@ class PgrFlowGraph {
              const std::set<int64_t> &sink_vertices);
 
      void insert_edges_push_relabel(
-             const std::vector<pgr_edge_t> &edges);
+             const std::vector<Edge_t> &edges);
      void insert_edges(
-             const std::vector<pgr_edge_t> &edges);
+             const std::vector<Edge_t> &edges);
      void insert_edges_edge_disjoint(
-             const std::vector<pgr_edge_t> &edges,
+             const std::vector<Edge_t> &edges,
              bool directed);
 
      void flow_dfs(

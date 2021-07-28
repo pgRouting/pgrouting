@@ -32,13 +32,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #ifdef __cplusplus
+#   include <cstdint>
 #   include <cstddef>
 #else
+#   include <stdint.h>
 #   include <stddef.h>
 #endif
 
 typedef struct contracted_rt contracted_rt;
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,7 +55,7 @@ extern "C" {
      ********************************************************/
     void
         do_pgr_contractGraph(
-               pgr_edge_t  *data_edges,
+               Edge_t  *data_edges,
         size_t total_tuples,
         int64_t *forbidden_vertices,
         size_t size_forbidden_vertices,

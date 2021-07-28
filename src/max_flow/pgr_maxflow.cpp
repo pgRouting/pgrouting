@@ -36,7 +36,7 @@ namespace graph {
 
 
 PgrFlowGraph::PgrFlowGraph(
-        const std::vector<pgr_edge_t> &edges,
+        const std::vector<Edge_t> &edges,
         const std::set<int64_t> &source_vertices,
         const std::set<int64_t> &sink_vertices,
         int algorithm) {
@@ -54,7 +54,7 @@ PgrFlowGraph::PgrFlowGraph(
 }
 
 PgrFlowGraph::PgrFlowGraph(
-        const std::vector<pgr_edge_t> &edges,
+        const std::vector<Edge_t> &edges,
         const std::set<int64_t> &source_vertices,
         const std::set<int64_t> &sink_vertices,
         bool directed) {
@@ -72,7 +72,7 @@ PgrFlowGraph::PgrFlowGraph(
  * Push-relabel requires each edge to be mapped to its reverse with capacity 0.
  */
 void PgrFlowGraph::insert_edges_push_relabel(
-        const std::vector<pgr_edge_t> &edges) {
+        const std::vector<Edge_t> &edges) {
     bool added;
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
@@ -107,7 +107,7 @@ void PgrFlowGraph::insert_edges_push_relabel(
  * The other pgr_maxflow algorithms have no such requirement. (can have have as many edges)
  */
 void PgrFlowGraph::insert_edges(
-        const std::vector<pgr_edge_t> &edges) {
+        const std::vector<Edge_t> &edges) {
     bool added;
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
@@ -130,7 +130,7 @@ void PgrFlowGraph::insert_edges(
  * for the edge_disjoint_paths  algorithms
  */
 void PgrFlowGraph::insert_edges_edge_disjoint(
-        const std::vector<pgr_edge_t> &edges,
+        const std::vector<Edge_t> &edges,
         bool directed) {
     bool added;
     for (const auto edge : edges) {

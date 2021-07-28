@@ -28,12 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #include <stddef.h>
-#include "c_types/pgr_edge_t.h"
 #include "c_types/pgr_edge_xy_t.h"
 
 typedef struct pgr_flow_t pgr_flow_t;
 typedef struct pgr_basic_edge_t pgr_basic_edge_t;
 typedef struct pgr_costFlow_t pgr_costFlow_t;
+typedef struct Edge_t Edge_t;
 
 
 /*! @brief edges_sql without id parameter
@@ -51,7 +51,7 @@ Currently used in: allpairs
 */
 void pgr_get_edges_no_id(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges);
 
 
@@ -70,11 +70,11 @@ FROM edge_table;
 */
 void pgr_get_edges(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges);
 void pgr_get_edges_reversed(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges);
 
 
@@ -138,7 +138,7 @@ bigint reverse_capacity
 */
 void pgr_get_flow_edges(
     char *sql,
-    pgr_edge_t **edges,
+    Edge_t **edges,
     size_t *total_edges);
 
 /*! @brief read edges for cost flow

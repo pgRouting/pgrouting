@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_directedChPP(
-        pgr_edge_t *data_edges, size_t total_edges,
+        Edge_t *data_edges, size_t total_edges,
         bool only_cost,
 
         General_path_element_t **return_tuples, size_t *return_count,

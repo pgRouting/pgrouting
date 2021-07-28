@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 #include "c_types/restriction_t.h"
 #include "c_types/general_path_element_t.h"
 
@@ -60,7 +60,7 @@ void compute_trsp(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
 

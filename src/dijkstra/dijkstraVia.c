@@ -53,7 +53,7 @@ process(char* edges_sql,
     size_t size_via_vidsArr = 0;
     int64_t* via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, vias);
 
-    pgr_edge_t* edges = NULL;
+    Edge_t* edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
 

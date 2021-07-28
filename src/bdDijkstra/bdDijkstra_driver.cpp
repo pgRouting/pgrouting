@@ -127,7 +127,7 @@ pgr_bdDijkstra(
 
 void
 do_pgr_bdDijkstra(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         pgr_combination_t *combinations,
         size_t total_combinations,

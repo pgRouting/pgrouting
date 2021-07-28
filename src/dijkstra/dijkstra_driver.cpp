@@ -156,7 +156,7 @@ pgr_dijkstra(
 // directed boolean default true,
 void
 do_pgr_many_to_many_dijkstra(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
@@ -260,7 +260,7 @@ do_pgr_many_to_many_dijkstra(
 // directed boolean default true,
 void
 do_pgr_combinations_dijkstra(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         pgr_combination_t *combinations,
         size_t total_combinations,

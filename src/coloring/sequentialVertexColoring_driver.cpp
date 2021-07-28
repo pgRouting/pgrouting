@@ -91,7 +91,7 @@ pgr_sequentialVertexColoring(G &graph) {
 
 void
 do_pgr_sequentialVertexColoring(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
 
         pgr_vertex_color_rt **return_tuples,

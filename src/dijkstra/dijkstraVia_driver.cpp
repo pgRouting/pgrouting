@@ -88,7 +88,7 @@ get_route(
 
 void
 do_pgr_dijkstraVia(
-        pgr_edge_t* data_edges,    size_t total_edges,
+        Edge_t* data_edges,    size_t total_edges,
         int64_t* via_vidsArr,     size_t size_via_vidsArr,
         bool directed,
         bool strict,

@@ -28,12 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #ifdef __cplusplus
+#   include <cstdint>
 #   include <cstddef>
 #else
 #   include <stddef.h>
+#   include <stdint.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
+typedef struct Edge_t Edge_t;
 typedef struct General_path_element_t General_path_element_t;
 
 
@@ -42,7 +44,7 @@ extern "C" {
 #endif
 
     void  do_pgr_ksp(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_edges,
             int64_t  start_vid,
             int64_t end_vid,

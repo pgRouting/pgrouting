@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <vector>
 
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 #include "cpp_common/identifiers.hpp"
 
 namespace pgrouting {
@@ -42,7 +42,7 @@ class CH_vertex {
     int64_t id;
     CH_vertex() = default;
     CH_vertex(const CH_vertex &) = default;
-    CH_vertex(const pgr_edge_t &other, bool is_source) :
+    CH_vertex(const Edge_t &other, bool is_source) :
       id(is_source? other.source : other.target)
       {}
     void cp_members(const CH_vertex &other) {
@@ -65,11 +65,11 @@ check_vertices(std::vector < CH_vertex > vertices);
 #if 0
 std::vector < CH_vertex >
 extract_vertices(
-    const pgr_edge_t *data_edges, int64_t count);
+    const Edge_t *data_edges, int64_t count);
 
 std::vector < CH_vertex >
 extract_vertices(
-    const std::vector < pgr_edge_t > &data_edges);
+    const std::vector < Edge_t > &data_edges);
 #endif
 }  // namespace pgrouting
 

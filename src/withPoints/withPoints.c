@@ -96,10 +96,10 @@ process(
             &edges_no_points_query);
 
 
-    pgr_edge_t *edges_of_points = NULL;
+    Edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     if (normal) {
