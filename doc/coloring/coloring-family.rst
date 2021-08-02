@@ -25,6 +25,7 @@ Coloring - Family of functions (Experimental)
 
 * :doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach.
 * :doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach.
+* :doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem.
 
 .. index to here
 
@@ -34,6 +35,7 @@ Coloring - Family of functions (Experimental)
 
     pgr_sequentialVertexColoring
     pgr_bipartite
+    pgr_edgeColoring
 
 
 Parameters
@@ -79,6 +81,24 @@ Column           Type        Description
 
 .. result columns end
 
+.. result columns start edgeColoring
+
+Returns SET OF ``(edge_id, color_id)``
+
+===============  =========== ====================================================
+Column           Type        Description
+===============  =========== ====================================================
+**edge_id**      ``BIGINT``  Identifier of the edge.
+**color_id**     ``BIGINT``  Identifier of the color of the edge.
+
+                             - The minimum value of color is 1.
+
+===============  =========== ====================================================
+
+.. result columns end edgeColoring
+
+
+
 
 See Also
 -------------------------------------------------------------------------------
@@ -90,6 +110,12 @@ See Also
 
 
 .. include:: pgr_bipartite.rst
+    :start-after: see also start
+    :end-before: see also end
+
+
+
+.. include:: pgr_edgeColoring.rst
     :start-after: see also start
     :end-before: see also end
 
