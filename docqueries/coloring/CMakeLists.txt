@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     doc-pgr_sequentialVertexColoring
     doc-bipartite
+    doc-edgeColoring
     )
 
 foreach (f ${LOCAL_FILES})
