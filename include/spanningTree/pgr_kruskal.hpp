@@ -40,19 +40,19 @@ namespace functions {
 template <class G>
 class Pgr_kruskal : public Pgr_mst<G> {
  public:
-     std::vector<pgr_mst_rt> kruskal(G &graph);
+     std::vector<MST_rt> kruskal(G &graph);
 
-     std::vector<pgr_mst_rt> kruskalBFS(
+     std::vector<MST_rt> kruskalBFS(
              G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth);
 
-     std::vector<pgr_mst_rt> kruskalDFS(
+     std::vector<MST_rt> kruskalDFS(
              G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth);
 
-     std::vector<pgr_mst_rt> kruskalDD(
+     std::vector<MST_rt> kruskalDD(
              G &graph,
              std::vector<int64_t> roots,
              double distance);
@@ -81,7 +81,7 @@ Pgr_kruskal<G>::generate_mst(const G &graph) {
 
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_kruskal<G>::kruskal(
         G &graph) {
     return this->mst(graph);
@@ -89,7 +89,7 @@ Pgr_kruskal<G>::kruskal(
 
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_kruskal<G>::kruskalBFS(
         G &graph,
         std::vector<int64_t> roots,
@@ -98,7 +98,7 @@ Pgr_kruskal<G>::kruskalBFS(
 }
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_kruskal<G>::kruskalDFS(
         G &graph,
         std::vector<int64_t> roots,
@@ -107,7 +107,7 @@ Pgr_kruskal<G>::kruskalDFS(
 }
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_kruskal<G>::kruskalDD(
         G &graph,
         std::vector<int64_t> roots,

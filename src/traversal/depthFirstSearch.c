@@ -42,6 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
+#include "c_types/mst_rt.h"
+
 #include "drivers/traversal/depthFirstSearch_driver.h"
 
 PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS);
@@ -72,7 +74,7 @@ process(
         bool directed,
         int64_t max_depth,
 
-        pgr_mst_rt **result_tuples,
+        MST_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -135,7 +137,7 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
     TupleDesc           tuple_desc;
 
     /**********************************************************************/
-    pgr_mst_rt *result_tuples = NULL;
+    MST_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -184,7 +186,7 @@ PGDLLEXPORT Datum _pgr_depthfirstsearch(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_mst_rt*) funcctx->user_fctx;
+    result_tuples = (MST_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

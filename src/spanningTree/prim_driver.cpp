@@ -36,6 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "c_types/mst_rt.h"
+
 #include "spanningTree/pgr_prim.hpp"
 #include "spanningTree/details.hpp"
 
@@ -53,7 +55,7 @@ do_pgr_prim(
         int64_t max_depth,
         double distance,
 
-        pgr_mst_rt **return_tuples,
+        MST_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -72,7 +74,7 @@ do_pgr_prim(
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
         std::string suffix(fn_suffix);
 
-        std::vector<pgr_mst_rt> results;
+        std::vector<MST_rt> results;
 
         if (total_edges == 0) {
             results = pgrouting::details::get_no_edge_graph_result(roots);

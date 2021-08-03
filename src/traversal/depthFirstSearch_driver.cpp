@@ -69,7 +69,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 template < class G >
-std::vector < pgr_mst_rt >
+std::vector < MST_rt >
 pgr_depthFirstSearch(
         G &graph,
         std::vector < int64_t > roots,
@@ -125,7 +125,7 @@ do_pgr_depthFirstSearch(
         bool directed,
         int64_t max_depth,
 
-        pgr_mst_rt **return_tuples,
+        MST_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -143,7 +143,7 @@ do_pgr_depthFirstSearch(
 
         std::vector < int64_t > roots(rootsArr, rootsArr + size_rootsArr);
 
-        std::vector < pgr_mst_rt > results;
+        std::vector < MST_rt > results;
 
         graphType gType = directed ? DIRECTED : UNDIRECTED;
 

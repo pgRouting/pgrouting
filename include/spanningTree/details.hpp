@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <vector>
-#include "c_types/pgr_mst_rt.h"
+#include "c_types/mst_rt.h"
 
 namespace pgrouting {
 
@@ -36,7 +36,7 @@ namespace details {
 std::vector<int64_t>
 clean_vids(std::vector<int64_t> vids);
 
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 get_no_edge_graph_result(
         std::vector<int64_t> vids);
 
