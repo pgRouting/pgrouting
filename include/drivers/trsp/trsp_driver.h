@@ -27,14 +27,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 #define INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 
-/* for size-t */
+/* for size_t and int64_t */
 #ifdef __cplusplus
-#   include <cstddef>
+#  include <cstddef>
+#  include <cstdint>
 #else
-#   include <stddef.h>
+#  include <stddef.h>
+#  include <stdint.h>
 #endif
 
-#include "c_types/restriction_t.h"
+typedef struct Restriction_t Restriction_t;
 typedef struct General_path_element_t General_path_element_t;
 typedef struct Edge_t Edge_t;
 

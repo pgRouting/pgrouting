@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/rule.h"
 
 #include "cpp_common/basePath_SSEC.hpp"
+#include "c_types/restriction_t.h"
 #include "yen/pgr_turnRestrictedPath.hpp"
 
 using pgrouting::yen::Pgr_turnRestrictedPath;

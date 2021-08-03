@@ -34,12 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct Restriction_t {
     int64_t id;
     double cost;
     int64_t * via;
     uint64_t via_size;
-}
-Restriction_t;
+};
 
 #endif  // INCLUDE_C_TYPES_RESTRICTION_T_H_
