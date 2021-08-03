@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #include <stddef.h>
 
-#include "c_types/restriction_t.h"
+typedef struct Restriction_t Restriction_t;
 
 void pgr_get_restrictions(
         char *restrictions_sql,
