@@ -50,19 +50,19 @@ class Pgr_prim : public Pgr_mst<G> {
      typedef typename G::B_G B_G;
 
  public:
-     std::vector<pgr_mst_rt> prim(G &graph);
+     std::vector<MST_rt> prim(G &graph);
 
-     std::vector<pgr_mst_rt> primBFS(
+     std::vector<MST_rt> primBFS(
              G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth);
 
-     std::vector<pgr_mst_rt> primDFS(
+     std::vector<MST_rt> primDFS(
              G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth);
 
-     std::vector<pgr_mst_rt> primDD(
+     std::vector<MST_rt> primDD(
              G &graph,
              std::vector<int64_t> roots,
              double distance);
@@ -161,14 +161,14 @@ Pgr_prim<G>::generate_mst(const G &graph) {
 }
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_prim<G>::prim(
         G &graph) {
     return this->mst(graph);
 }
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_prim<G>::primBFS(
         G &graph,
         std::vector<int64_t> roots,
@@ -177,7 +177,7 @@ Pgr_prim<G>::primBFS(
 }
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_prim<G>::primDFS(
         G &graph,
         std::vector<int64_t> roots,
@@ -186,7 +186,7 @@ Pgr_prim<G>::primDFS(
 }
 
 template <class G>
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 Pgr_prim<G>::primDD(
         G &graph,
         std::vector<int64_t> roots,

@@ -34,12 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
 #else
 #   include <stddef.h>
+#   include <stdint.h>
 #endif
 
 typedef struct Edge_t Edge_t;
-#include "c_types/pgr_mst_rt.h"
+typedef struct MST_rt MST_rt;
 
 #ifdef __cplusplus
 extern "C" {
@@ -60,7 +62,7 @@ extern "C" {
                 size_t size_start_vidsArr,
                 int64_t max_depth,
                 bool directed,
-                pgr_mst_rt **return_tuples,
+                MST_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

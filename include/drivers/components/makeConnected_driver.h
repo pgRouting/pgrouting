@@ -39,8 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-#include "c_types/pgr_mst_rt.h"
-
 typedef struct pgr_makeConnected_t pgr_makeConnected_t;
 
 #ifdef __cplusplus

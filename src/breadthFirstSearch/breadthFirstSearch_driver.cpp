@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "breadthFirstSearch/pgr_breadthFirstSearch.hpp"
 
 template < class G >
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 pgr_breadthFirstSearch(
         G &graph,
         std::vector < int64_t > sources,
@@ -65,7 +65,7 @@ do_pgr_breadthFirstSearch(
                 int64_t  max_depth,
                 bool directed,
 
-                pgr_mst_rt **return_tuples,
+                MST_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
@@ -87,7 +87,7 @@ do_pgr_breadthFirstSearch(
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
 
-        std::vector<pgr_mst_rt> results;
+        std::vector<MST_rt> results;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);

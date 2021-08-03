@@ -41,10 +41,10 @@ clean_vids(std::vector<int64_t> vids) {
     return vids;
 }
 
-std::vector<pgr_mst_rt>
+std::vector<MST_rt>
 get_no_edge_graph_result(
         std::vector<int64_t> vids) {
-    std::vector<pgr_mst_rt> results;
+    std::vector<MST_rt> results;
     if (vids.empty()) return results;
     for (auto const root : clean_vids(vids)) {
         results.push_back({root, 0, root, -1, 0.0, 0.0});

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_kruskal_t.h
+File: mst_rt.h
 
 Copyright (c) 2015 Aditya Pratap Singh
 Mail: adityapratap.singh28@gmail.com
@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_MST_RT_H_
-#define INCLUDE_C_TYPES_PGR_MST_RT_H_
+#ifndef INCLUDE_C_TYPES_MST_RT_H_
+#define INCLUDE_C_TYPES_MST_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -33,13 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct MST_rt {
     int64_t from_v;
     int64_t depth;
     int64_t node;
     int64_t edge;
     double cost;
     double agg_cost;
-} pgr_mst_rt;
+};
 
-#endif  // INCLUDE_C_TYPES_PGR_MST_RT_H_
+#endif  // INCLUDE_C_TYPES_MST_RT_H_

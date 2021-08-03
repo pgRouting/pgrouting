@@ -53,7 +53,7 @@ do_pgr_kruskal(
         int64_t max_depth,
         double distance,
 
-        pgr_mst_rt **return_tuples,
+        MST_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -72,7 +72,7 @@ do_pgr_kruskal(
         std::vector<int64_t> roots(rootsArr, rootsArr + size_rootsArr);
         std::string suffix(fn_suffix);
 
-        std::vector<pgr_mst_rt> results;
+        std::vector<MST_rt> results;
 
         if (total_edges == 0) {
             results = pgrouting::details::get_no_edge_graph_result(roots);
