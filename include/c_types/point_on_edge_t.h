@@ -34,12 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct Point_on_edge_t {
     int64_t pid;
     int64_t edge_id;
     char side;  // 'r', 'l', 'b' (default is both)
     double fraction;
     int64_t vertex_id;  // number is negative and is used for processing
-} Point_on_edge_t;
+};
 
 #endif  // INCLUDE_C_TYPES_POINT_ON_EDGE_T_H_
