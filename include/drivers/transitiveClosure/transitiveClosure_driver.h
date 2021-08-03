@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: contractGraph_driver.h
+File: transitiveClosure_driver.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/transitiveClosure_rt.h"
+typedef struct TransitiveClosure_rt TransitiveClosure_rt;
 typedef struct Edge_t Edge_t;
 
 #ifdef __cplusplus
@@ -46,13 +46,13 @@ extern "C" {
 
     /*********************************************************
         edges_sql TEXT,
- 
+
      ********************************************************/
     void
         do_pgr_transitiveClosure(
                Edge_t  *data_edges,
         size_t total_tuples,
-        transitiveClosure_rt **return_tuples,
+        TransitiveClosure_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
