@@ -54,7 +54,7 @@ static
 void
 process(char* edges_sql,
 
-        transitiveClosure_rt **result_tuples,
+        TransitiveClosure_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -103,7 +103,7 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    transitiveClosure_rt  *result_tuples = NULL;
+    TransitiveClosure_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -139,7 +139,7 @@ _pgr_transitiveclosure(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (transitiveClosure_rt*) funcctx->user_fctx;
+    result_tuples = (TransitiveClosure_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple   tuple;
