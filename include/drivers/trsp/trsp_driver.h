@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/trsp_types.h"
 #include "c_types/restriction_t.h"
 typedef struct General_path_element_t General_path_element_t;
 typedef struct Edge_t Edge_t;
