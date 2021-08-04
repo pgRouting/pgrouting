@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-#include "c_types/pgr_stoerWagner_t.h"
+typedef struct StoerWagner_t StoerWagner_t;
 
 #ifdef __cplusplus
 extern "C" {
@@ -49,7 +49,7 @@ extern "C" {
         do_pgr_stoerWagner(
                 Edge_t  *data_edges,
                 size_t total_edges,
-                pgr_stoerWagner_t **return_tuples,
+                StoerWagner_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

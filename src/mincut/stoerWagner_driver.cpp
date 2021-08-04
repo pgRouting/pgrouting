@@ -36,10 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "c_types/stoerWagner_t.h"
 
 template < class G >
 static
-std::vector<pgr_stoerWagner_t>
+std::vector<StoerWagner_t>
 pgr_stoerWagner(
         G &graph ) {
     Pgr_stoerWagner< G > fn_stoerWagner;
@@ -51,7 +52,7 @@ void
 do_pgr_stoerWagner(
         Edge_t  *data_edges,
         size_t total_edges,
-        pgr_stoerWagner_t **return_tuples,
+        StoerWagner_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -69,7 +70,7 @@ do_pgr_stoerWagner(
 
         graphType gType = UNDIRECTED;
 
-        std::vector<pgr_stoerWagner_t> results;
+        std::vector<StoerWagner_t> results;
 
         log << "Working with Undirected Graph\n";
 

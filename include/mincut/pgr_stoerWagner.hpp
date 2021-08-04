@@ -46,6 +46,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
+#include "c_types/stoerWagner_t.h"
+
 
 template < class G > class Pgr_stoerWagner;
 // user's functions
@@ -60,14 +62,14 @@ class Pgr_stoerWagner {
      typedef typename G::E E;
      typedef typename G::E_i E_i;
 
-     std::vector<pgr_stoerWagner_t> stoerWagner(
+     std::vector<StoerWagner_t> stoerWagner(
                  G &graph);
 
  private:
-     std::vector< pgr_stoerWagner_t >
+     std::vector< StoerWagner_t >
      generatestoerWagner(
         const G &graph ) {
-       std::vector< pgr_stoerWagner_t > results;
+       std::vector< StoerWagner_t > results;
        auto parities = boost::make_one_bit_color_map(
                                         num_vertices(graph.graph),
                                         get(boost::vertex_index, graph.graph));
@@ -84,7 +86,7 @@ class Pgr_stoerWagner {
           auto t = target(*ei, graph.graph);
 
           if (get(parities, s) != get(parities, t)) {
-               pgr_stoerWagner_t tmp;
+               StoerWagner_t tmp;
 
                tmp.cost = graph[*ei].cost;
 
@@ -107,7 +109,7 @@ class Pgr_stoerWagner {
 };
 
 template < class G >
-std::vector<pgr_stoerWagner_t>
+std::vector<StoerWagner_t>
 Pgr_stoerWagner< G >::stoerWagner(
                 G &graph) {
       pgassert(num_vertices(graph.graph) > 1);

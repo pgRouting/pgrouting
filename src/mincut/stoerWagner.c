@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 
 #include "c_common/edges_input.h"
+#include "c_types/stoerWagner_t.h"
 
 #include "drivers/mincut/stoerWagner_driver.h"
 
@@ -47,7 +48,7 @@ static
 void
 process(
         char* edges_sql,
-        pgr_stoerWagner_t **result_tuples,
+        StoerWagner_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -109,7 +110,7 @@ PGDLLEXPORT Datum _pgr_stoerwagner(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_stoerWagner_t *result_tuples = NULL;
+    StoerWagner_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -148,7 +149,7 @@ PGDLLEXPORT Datum _pgr_stoerwagner(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_stoerWagner_t*) funcctx->user_fctx;
+    result_tuples = (StoerWagner_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

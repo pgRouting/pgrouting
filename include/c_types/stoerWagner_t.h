@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_STOERWAGNER_T_H_
-#define INCLUDE_C_TYPES_PGR_STOERWAGNER_T_H_
+#ifndef INCLUDE_C_TYPES_STOERWAGNER_T_H_
+#define INCLUDE_C_TYPES_STOERWAGNER_T_H_
 #pragma once
 
 /* for int64_t */
@@ -33,11 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct StoerWagner_t {
     int seq;
     int64_t edge;
     double cost;
     double mincut;
-} pgr_stoerWagner_t;
+};
 
-#endif  // INCLUDE_C_TYPES_PGR_STOERWAGNER_T_H_
+#endif  // INCLUDE_C_TYPES_STOERWAGNER_T_H_
