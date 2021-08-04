@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pickDeliver/general_vehicle_orders_t.h"
+typedef struct Schedule_rt Schedule_rt;
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 
@@ -61,7 +61,7 @@ extern "C" {
             int max_cycles,
             int initial_solution_id,
 
-            General_vehicle_orders_t **return_tuples,
+            Schedule_rt **return_tuples,
             size_t *return_count,
 
             char **log_msg,

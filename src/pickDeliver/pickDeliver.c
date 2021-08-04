@@ -34,6 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/orders_input.h"
 #include "c_common/vehicles_input.h"
 #include "c_common/matrixRows_input.h"
+
+#include "c_types/pickDeliver/schedule_rt.h"
+
 #include "drivers/pickDeliver/pickDeliver_driver.h"
 
 PGDLLEXPORT Datum
@@ -51,7 +54,7 @@ process(
         int max_cycles,
         int initial_solution_id,
 
-        General_vehicle_orders_t **result_tuples,
+        Schedule_rt **result_tuples,
         size_t *result_count) {
     if (factor <= 0) {
         ereport(ERROR,
@@ -213,7 +216,7 @@ _pgr_pickdeliver(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
-    General_vehicle_orders_t *result_tuples = 0;
+    Schedule_rt *result_tuples = 0;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -261,7 +264,7 @@ _pgr_pickdeliver(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_vehicle_orders_t*) funcctx->user_fctx;
+    result_tuples = (Schedule_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr <  funcctx->max_calls) {
         HeapTuple   tuple;

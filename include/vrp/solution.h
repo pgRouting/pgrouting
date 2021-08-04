@@ -37,6 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "vrp/vehicle_pickDeliver.h"
 #include "vrp/fleet.h"
 
+using Schedule_rt = struct Schedule_rt;
+
 namespace pgrouting {
 namespace vrp {
 
@@ -52,7 +54,7 @@ class Solution {
      Fleet trucks;
 
  public:
-     std::vector<General_vehicle_orders_t>
+     std::vector<Schedule_rt>
          get_postgres_result() const;
 
 

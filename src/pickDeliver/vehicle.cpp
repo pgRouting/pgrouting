@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <vector>
 
+#include "c_types/pickDeliver/schedule_rt.h"
+
 #include "cpp_common/pgr_assert.h"
 
 #include "vrp/pgr_pickDeliver.h"
@@ -140,15 +142,15 @@ Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
 
 
 
-std::vector<General_vehicle_orders_t>
+std::vector<Schedule_rt>
 Vehicle::get_postgres_result(
         int vid) const {
-    std::vector<General_vehicle_orders_t> result;
+    std::vector<Schedule_rt> result;
     /* postgres numbering starts with 1 */
     int stop_seq(1);
     msg().log << "getting solution: " << tau() << "\n";
     for (const auto &p_stop : m_path) {
-        General_vehicle_orders_t data = {
+        Schedule_rt data = {
             vid,
             id(),
             stop_seq,
