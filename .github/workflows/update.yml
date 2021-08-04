@@ -82,6 +82,7 @@ jobs:
           cd ./tools/testers/
           sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           sudo -u postgres psql -p 5432  -d ___pgr___test___ -X -q -v ON_ERROR_STOP=1 --pset pager=off -f setup_db.sql
+          sudo -u postgres pg_prove -v --recurse --ext .sql -p 5432  -d ___pgr___test___ ../../pgtap/tsp/tsp/edge_cases.sql
           sudo -u postgres pg_prove --directive --recurse --ext .sql -p 5432  -d ___pgr___test___ ../../pgtap/
 
 
@@ -97,7 +98,7 @@ jobs:
       - name: Test old version after update
         run: |
           sudo service postgresql start
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.3.0';"
+          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.2.1';"
           sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres 5432
           sudo -u postgres dropdb -p 5432  ___pgr___test___
@@ -113,6 +114,6 @@ jobs:
 
       - name: Test old version with new lib after update
         run: |
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.3.0';"
+          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '3.2.1';"
           sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           sudo -u postgres bash ./tools/testers/pg_prove_tests.sh postgres 5432

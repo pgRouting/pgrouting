@@ -1,4 +1,5 @@
--- http://www.math.uwaterloo.ca/tsp/world/qa194.tsp
+\i setup.sql
+\i tsp_pgtap_tests.sql
 
 -- NAME : qa194
 -- COMMENT : 194 locations in Qatar
@@ -6,10 +7,9 @@
 -- TYPE : TSP
 -- DIMENSION : 194
 -- EDGE_WEIGHT_TYPE : EUC_2D
--- NODE_COORD_SECTION
 
-
-
+SET client_min_messages TO WARNING;
+DROP TABLE IF EXISTS qa194;
 CREATE TABLE qa194 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY qa194 (id, x, y) FROM stdin WITH DELIMITER ' ';
 1 24748.3333 50840.0000
@@ -210,63 +210,8 @@ COPY qa194 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE qa194 SET the_geom = ST_makePoint(x,y);
--- SELECT * from pgr_tsp('SELECT id::integer, x, y from qa194', 1);
+SET client_min_messages TO NOTICE;
 
-SET client_min_messages TO DEBUG1;
-SELECT * from pgr_euclideanTSP($$SELECT id::integer, x, y from qa194$$);
-SELECT * from pgr_euclideanTSP($$SELECT id::integer, x, y from qa194$$, max_processing_time := 3);
-
-/*
-CREATE VIEW qa194_path AS
-WITH
-results AS (
-    SELECT seq, node, cost, agg_cost from pgr_xydtsp($$select * from pgr_euclideanDmatrix('qa194'::regclass)$$, 1)
-),
-geoms AS (
-    SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN qa194 ON (node = id)
-),
-edges AS (
-    SELECT seq, node, ST_MakeLine(lag(second) over(), second) AS line, cost, agg_cost FROM geoms
-)
-SELECT * FROM edges;
-
-WITH
-results AS (
-    SELECT * from pgr_xydtsp($$select * from
-        pgr_euclideanDmatrix('SELECT id::integer, st_x(the_geom) as x, st_y(the_geom) as y FROM edge_table_vertices_pgr')$$, 6, 5)
-),
-geoms AS (
-    SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN edge_table_vertices_pgr ON (node = id) order by seq
-),
-edges AS (
-    SELECT seq, node, ST_MakeLine(lag(second) over(), second) AS line, cost, agg_cost FROM geoms
-)
-SELECT * INTO newtsp FROM edges;
-
-
-WITH
-results AS (
-    SELECT * from pgr_tsp(
-        'SELECT id::integer, st_x(the_geom) as x, st_y(the_geom) as y FROM edge_table_vertices_pgr', 6, 5)
-),
-geoms AS (
-    SELECT results.*, the_geom AS second  FROM results JOIN edge_table_vertices_pgr ON (id2 = id)
-),
-edges AS (
-    SELECT seq, id1, id2, cost, ST_MakeLine(lag(second) over(), second) AS line FROM geoms order by seq
-)
-SELECT * INTO oldtsp FROM edges;
-
-
-WITH
-results AS (
-    select * from pgr_xydtsp($$SELECT * from pgr_dijkstraDmatrix('SELECT id, source, target, cost, reverse_cost from edge_table', array[1,2,3,4,5,6,7,8,9,10,11,12,13], false)$$, 6,5)
-),
-geoms AS (
-    SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN edge_table_vertices_pgr ON (node = id) order by seq
-),
-edges AS (
-    SELECT seq, node, ST_MakeLine(lag(second) over(), second) AS line, cost, agg_cost FROM geoms
-)
-SELECT * INTO newtspWdijkstra FROM edges;
-*/
+SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(194) ELSE plan(1) END;
+SELECT tsp_performance('qa194', 194, 9352, 2);
+SELECT finish();

@@ -188,9 +188,9 @@ ls "${PGPATHEDB}"/share/extension/pgrouting*
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
 #cp *.dll ${PGPATHEDB}/lib/  #TODO remove this once we fix so the .dlls are created in lib folder
-cp "${PGPATH}/lib/*.dll" "${PGPATHEDB}/lib/"
-cp "${PGPATH}/share/extension/pgrouting*.sql" "${PGPATHEDB}/share/extension/"
-cp "${PGPATH}/share/extension/*.control" "${PGPATHEDB}/share/extension/"
+cp -r ${PGPATH}/lib/libpgrouting*.dll ${PGPATHEDB}/lib/
+cp -r ${PGPATH}/share/extension/pgrouting*.sql ${PGPATHEDB}/share/extension/
+cp -r ${PGPATH}/share/extension/pgrouting.control ${PGPATHEDB}/share/extension/
 
 #---------------
 echo
@@ -198,8 +198,8 @@ echo "***************************"
 echo "After copying to PGPATHEDB ${PGPATHEDB}"
 echo "***************************"
 #---------------
-ls "${PGPATHEDB}/lib/libpgrouting*"
-ls "${PGPATHEDB}/share/extension/pgrouting*"
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
 
 cd "${PROJECTS}/pgrouting/branches/${PGROUTING_VER}" || exit 1
 
@@ -218,7 +218,7 @@ then
 else
 
     psql -c "CREATE DATABASE ___pgr___test___"
-    tools/testers/pg_prove_tests.sh "${PGUSER}"
+    tools/testers/pg_prove_tests.sh "${PGUSER}" "${PGPORT}"
     psql -c "DROP DATABASE ___pgr___test___"
 
 fi

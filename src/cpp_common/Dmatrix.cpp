@@ -34,32 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <cmath>
 
-#include "tsp/tour.h"
 #include "cpp_common/pgr_assert.h"
 
 
 namespace pgrouting {
 namespace tsp {
-
-double
-Dmatrix::tourCost(const Tour &tour) const {
-    double total_cost(0);
-    if (tour.cities.empty()) return total_cost;
-
-    auto prev_id = tour.cities.front();
-    for (const auto &id : tour.cities) {
-        if (id == tour.cities.front()) continue;
-
-        pgassert(distance(prev_id, id) != (std::numeric_limits<double>::max)());
-
-        total_cost += costs[prev_id][id];
-        prev_id = id;
-    }
-    total_cost += costs[prev_id][tour.cities.front()];
-    return total_cost;
-}
-
-
 
 void
 Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
