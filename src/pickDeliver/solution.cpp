@@ -29,8 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <algorithm>
 
+#include "c_types/pickDeliver/schedule_rt.h"
+
 #include "vrp/pgr_pickDeliver.h"
-#include "c_types/pickDeliver/general_vehicle_orders_t.h"
+
 
 namespace pgrouting {
 namespace vrp {
@@ -38,13 +40,13 @@ namespace vrp {
 Pgr_pickDeliver* Solution::problem;
 
 
-std::vector<General_vehicle_orders_t>
+std::vector<Schedule_rt>
 Solution::get_postgres_result() const {
-    std::vector<General_vehicle_orders_t> result;
+    std::vector<Schedule_rt> result;
     /* postgres numbering starts with 1 */
     int i(1);
     for (const auto& truck : fleet) {
-        std::vector<General_vehicle_orders_t> data =
+        std::vector<Schedule_rt> data =
             truck.get_postgres_result(i);
         result.insert(result.end(), data.begin(), data.end());
 

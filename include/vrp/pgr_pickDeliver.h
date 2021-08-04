@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <memory>
 #include <utility>
 
-#include "c_types/pickDeliver/general_vehicle_orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "c_types/pickDeliver/pickDeliveryOrders_t.h"
 #include "vrp/pd_problem.h"
@@ -43,6 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "vrp/fleet.h"
 #include "vrp/pd_orders.h"
 #include "vrp/solution.h"
+
+using Schedule_rt = struct Schedule_rt;
 
 namespace pgrouting {
 namespace vrp {
@@ -72,7 +73,7 @@ class Pgr_pickDeliver : public PD_problem {
 
     void solve();
 
-    std::vector<General_vehicle_orders_t>
+    std::vector<Schedule_rt>
         get_postgres_result() const;
 
 

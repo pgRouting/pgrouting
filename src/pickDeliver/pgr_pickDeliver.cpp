@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <utility>
 
+#include "c_types/pickDeliver/schedule_rt.h"
+
 #include "cpp_common/pgr_assert.h"
 
 #include "vrp/initials_code.h"
@@ -90,11 +92,11 @@ Pgr_pickDeliver::solve() {
 
 
 
-std::vector< General_vehicle_orders_t >
+std::vector< Schedule_rt >
 Pgr_pickDeliver::get_postgres_result() const {
     auto result = solutions.back().get_postgres_result();
 
-    General_vehicle_orders_t aggregates = {
+    Schedule_rt aggregates = {
             /*
              * Vehicle id = -2 indicates its an aggregate row
              *

@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PICKDELIVER_GENERAL_VEHICLE_ORDERS_T_H_
-#define INCLUDE_C_TYPES_PICKDELIVER_GENERAL_VEHICLE_ORDERS_T_H_
+#ifndef INCLUDE_C_TYPES_PICKDELIVER_SCHEDULE_RT_H_
+#define INCLUDE_C_TYPES_PICKDELIVER_SCHEDULE_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    OUT departureTime FLOAT,
    */
 
-typedef struct  {
+struct  Schedule_rt {
     int vehicle_seq;
     int64_t vehicle_id;
     int stop_seq;
@@ -59,8 +59,8 @@ typedef struct  {
     double waitTime;
     double serviceTime;
     double departureTime;
-} General_vehicle_orders_t;
+};
 
 /*************************************************************************/
 
-#endif  // INCLUDE_C_TYPES_PICKDELIVER_GENERAL_VEHICLE_ORDERS_T_H_
+#endif  // INCLUDE_C_TYPES_PICKDELIVER_SCHEDULE_RT_H_
