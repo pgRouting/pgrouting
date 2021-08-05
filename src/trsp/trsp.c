@@ -60,6 +60,7 @@ typedef struct restrict_columns {
 
 
 
+#if 0
 static int
 finish(int code, int ret) {
   PGR_DBG("In finish, trying to disconnect from spi %d", ret);
@@ -70,6 +71,8 @@ finish(int code, int ret) {
   }
   return ret;
 }
+#endif
+
 
 /*
  * This function fetches the resturction columns from an SPITupleTable..
@@ -254,8 +257,8 @@ static int compute_trsp(
         path_element_tt **path,
         size_t *path_count) {
 
+  pgr_SPI_connect();
 
-  int SPIcode;
   SPIPlanPtr SPIplan;
   Portal SPIportal;
   bool moredata = true;
@@ -265,9 +268,7 @@ static int compute_trsp(
   Edge_t *edges = NULL;
   size_t total_tuples = 0;
 #if 0
-  pgr_SPI_connect();
   pgr_get_edges(sql, &edges, &total_tuples);
-  pgr_SPI_finish();
 #else
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id = -1, .source = -1, .target = -1,
@@ -291,21 +292,25 @@ static int compute_trsp(
 
   PGR_DBG("start turn_restrict_shortest_path\n");
 
+#if 0
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT) {
       elog(ERROR, "turn_restrict_shortest_path: "
       "couldn't open a connection to SPI");
       return -1;
   }
+#endif
 
   SPIplan = SPI_prepare(sql, 0, NULL);
   if (SPIplan  == NULL) {
+      pgr_SPI_finish();
       elog(ERROR, "turn_restrict_shortest_path: "
-      "couldn't create query plan via SPI");
+              "couldn't create query plan via SPI");
       return -1;
   }
 
   if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
+      pgr_SPI_finish();
       elog(ERROR, "turn_restrict_shortest_path: "
       "SPI_cursor_open('%s') returns NULL", sql);
       return -1;
@@ -317,13 +322,16 @@ static int compute_trsp(
 
       if (SPI_tuptable == NULL) {
           elog(ERROR, "SPI_tuptable is NULL");
-          return finish(SPIcode, -1);
+          pgr_SPI_finish();
+          return -1;
       }
 
       if (edge_columns.id == -1) {
           if (fetch_edge_columns(SPI_tuptable, &edge_columns,
-                                 has_reverse_cost) == -1)
-                return finish(SPIcode, ret);
+                      has_reverse_cost) == -1) {
+              pgr_SPI_finish();
+              return -1;
+          }
       }
 
       ntuples = SPI_processed;
@@ -337,8 +345,9 @@ static int compute_trsp(
             edges = repalloc(edges, total_tuples * sizeof(Edge_t));
 
           if (edges == NULL) {
+              pgr_SPI_finish();
               elog(ERROR, "Out of memory");
-              return finish(SPIcode, ret);
+              return -1;
           }
 
           uint32_t t;
@@ -361,6 +370,7 @@ static int compute_trsp(
   // defining min and max vertex id
 
   for (size_t z = 0; z < total_tuples; z++) {
+    PGR_DBG("id %ld source %ld target %ld cost %f rev %f", edges[z].id, edges[z].source, edges[z].target, edges[z].cost, edges[z].reverse_cost);
     if (edges[z].source < v_min_id)
       v_min_id = edges[z].source;
 
@@ -440,7 +450,8 @@ static int compute_trsp(
               if (fetch_restrict_columns(SPI_tuptable, &restrict_columns) \
               == -1) {
                 PGR_DBG("fetch_restrict_columns failed!");
-                return finish(SPIcode, ret);
+                pgr_SPI_finish();
+                return -1;
               }
           }
 
@@ -460,8 +471,9 @@ static int compute_trsp(
                     total_restrict_tuples * sizeof(restrict_t));
 
               if (restricts == NULL) {
+                  pgr_SPI_finish();
                   elog(ERROR, "Out of memory");
-                  return finish(SPIcode, ret);
+                  return -1;
               }
 
               uint32_t t;
@@ -511,7 +523,8 @@ static int compute_trsp(
         errmsg("Error computing path: %s", err_msg)));
     }
 
-  return finish(SPIcode, ret);
+  pgr_SPI_finish();
+  return 0;
 }
 
 
