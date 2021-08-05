@@ -23,17 +23,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
+#include "trsp/GraphDefinition.h"
 
 #include <utility>
 #include <queue>
 #include <vector>
 #include <functional>
-#include "trsp/GraphDefinition.h"
+
+#include "c_types/edge_t.h"
 
 // -------------------------------------------------------------------------
 GraphDefinition::GraphDefinition(void) {
@@ -208,7 +205,7 @@ void GraphDefinition::explore(
 
 // -------------------------------------------------------------------------
 int GraphDefinition::my_dijkstra1(
-        edge_t *edges, size_t edge_count,
+        Edge_t *edges, size_t edge_count,
         int64 start_edge_id, double start_part,
         int64 end_edge_id, double end_part,
         bool directed, bool has_reverse_cost,
@@ -224,7 +221,7 @@ int GraphDefinition::my_dijkstra1(
         }
         GraphEdgeInfo* start_edge_info =
         m_vecEdgeVector[static_cast<size_t>(m_mapEdgeId2Index[static_cast<int64>(start_edge_id)])];
-        edge_t start_edge;
+        Edge_t start_edge;
         int64 start_vertex, end_vertex;
         m_dStartpart = start_part;
         m_dEndPart = end_part;
@@ -262,7 +259,7 @@ int GraphDefinition::my_dijkstra1(
 
     GraphEdgeInfo* end_edge_info =
     m_vecEdgeVector[static_cast<size_t>(m_mapEdgeId2Index[static_cast<int64>(end_edge_id)])];
-    edge_t end_edge;
+    Edge_t end_edge;
 
     if (end_part == 0.0) {
         end_vertex = end_edge_info->m_lStartNode;
@@ -305,7 +302,7 @@ int GraphDefinition::my_dijkstra1(
 
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra2(
-        edge_t *edges, size_t edge_count,
+        Edge_t *edges, size_t edge_count,
     int64 start_vertex, int64 end_vertex,
     bool directed, bool has_reverse_cost,
 
@@ -366,7 +363,7 @@ int GraphDefinition:: my_dijkstra2(
 
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra3(
-        edge_t *edges, size_t edge_count,
+        Edge_t *edges, size_t edge_count,
     int64 start_vertex, int64 end_vertex,
     bool directed, bool has_reverse_cost,
     path_element_tt **path, size_t *path_count, char **err_msg
@@ -540,7 +537,7 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_tt **path,
 
 
 // -------------------------------------------------------------------------
-bool GraphDefinition::construct_graph(edge_t* edges, size_t edge_count,
+bool GraphDefinition::construct_graph(Edge_t* edges, size_t edge_count,
     bool has_reverse_cost, bool directed) {
     for (size_t i = 0; i < edge_count; i++) {
         if (!has_reverse_cost) {
@@ -591,7 +588,7 @@ bool GraphDefinition::connectEdge(GraphEdgeInfo& firstEdge,
 
 
 // -------------------------------------------------------------------------
-bool GraphDefinition::addEdge(edge_t edgeIn) {
+bool GraphDefinition::addEdge(Edge_t edgeIn) {
     // int64 lTest;
     Long2LongMap::iterator itMap = m_mapEdgeId2Index.find(edgeIn.id);
     if (itMap != m_mapEdgeId2Index.end())
