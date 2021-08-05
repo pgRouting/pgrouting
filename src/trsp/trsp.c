@@ -32,6 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/trsp/trsp.h"
 #include "c_types/edge_t.h"
+
+#include "c_common/edges_input.h"
+
 #include "trsp/trsp_core.h"
 typedef struct restrict_t restrict_t;
 typedef struct Edge_t Edge_t;
@@ -239,17 +242,18 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 
 
 static int compute_trsp(
-    char* sql,
-    int dovertex,
-    int64_t start_id,
-    double start_pos,
-    int64_t end_id,
-    double end_pos,
-    bool directed,
-    bool has_reverse_cost,
-    char* restrict_sql,
-    path_element_tt **path,
-    size_t *path_count) {
+        char* sql,
+        int dovertex,
+        int64_t start_id,
+        double start_pos,
+        int64_t end_id,
+        double end_pos,
+        bool directed,
+        bool has_reverse_cost,
+        char* restrict_sql,
+        path_element_tt **path,
+        size_t *path_count) {
+
 
   int SPIcode;
   SPIPlanPtr SPIplan;
@@ -259,7 +263,12 @@ static int compute_trsp(
   uint32_t ntuples;
 
   Edge_t *edges = NULL;
-  uint32_t total_tuples = 0;
+  size_t total_tuples = 0;
+#if 0
+  pgr_SPI_connect();
+  pgr_get_edges(sql, &edges, &total_tuples);
+  pgr_SPI_finish();
+#else
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id = -1, .source = -1, .target = -1,
                                  .cost = -1, .reverse_cost = -1};
@@ -279,7 +288,6 @@ static int compute_trsp(
 
   char *err_msg;
   int ret = -1;
-  uint32_t z;
 
   PGR_DBG("start turn_restrict_shortest_path\n");
 
@@ -348,10 +356,11 @@ static int compute_trsp(
       }
   }
   SPI_cursor_close(SPIportal);
+#endif
 
   // defining min and max vertex id
 
-  for (z = 0; z < total_tuples; z++) {
+  for (size_t z = 0; z < total_tuples; z++) {
     if (edges[z].source < v_min_id)
       v_min_id = edges[z].source;
 
@@ -368,7 +377,7 @@ static int compute_trsp(
   // ::::::::::::::::::::::::::::::::::::
   // :: reducing vertex id (renumbering)
   // ::::::::::::::::::::::::::::::::::::
-  for (z = 0; z < total_tuples; z++) {
+  for (size_t z = 0; z < total_tuples; z++) {
     // check if edges[] contains source and target
     if (dovertex) {
         if (edges[z].source == start_id || edges[z].target == start_id)
@@ -387,7 +396,7 @@ static int compute_trsp(
   }
 
   PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);
-  PGR_DBG("Total %i edge tuples", total_tuples);
+  PGR_DBG("Total %ld edge tuples", total_tuples);
 
   if (s_count == 0) {
     elog(ERROR, "Start id was not found.");
@@ -488,7 +497,7 @@ static int compute_trsp(
   // ::::::::::::::::::::::::::::::::
   // :: restoring original vertex id
   // ::::::::::::::::::::::::::::::::
-  for (z = 0; z < *path_count; z++) {
+  for (size_t z = 0; z < *path_count; z++) {
     if (z || (*path)[z].vertex_id != -1)
         (*path)[z].vertex_id += v_min_id;
   }
