@@ -38,14 +38,6 @@ typedef double float8;
 #   include <stdint.h>
 #endif
 
-struct edge_t {
-    int64 id;
-    int64 source;
-    int64 target;
-    float8 cost;
-    float8 reverse_cost;
-};
-
 struct restrict_t {
     int target_id;
     float8 to_cost;

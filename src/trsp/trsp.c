@@ -31,9 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_types/trsp/trsp.h"
+#include "c_types/edge_t.h"
 #include "trsp/trsp_core.h"
 typedef struct restrict_t restrict_t;
-typedef struct edge_t edge_t;
+typedef struct Edge_t Edge_t;
 typedef struct path_element_tt path_element_tt;
 
 PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);
@@ -158,7 +159,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
 
 static void
 fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
-           edge_columns_t *edge_columns, edge_t *target_edge) {
+           edge_columns_t *edge_columns, Edge_t *target_edge) {
   Datum binval;
   bool isnull;
 
@@ -257,7 +258,7 @@ static int compute_trsp(
   uint32_t TUPLIMIT = 1000;
   uint32_t ntuples;
 
-  edge_t *edges = NULL;
+  Edge_t *edges = NULL;
   uint32_t total_tuples = 0;
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id = -1, .source = -1, .target = -1,
@@ -323,9 +324,9 @@ static int compute_trsp(
 
       if (ntuples > 0) {
           if (!edges)
-            edges = palloc(total_tuples * sizeof(edge_t));
+            edges = palloc(total_tuples * sizeof(Edge_t));
           else
-            edges = repalloc(edges, total_tuples * sizeof(edge_t));
+            edges = repalloc(edges, total_tuples * sizeof(Edge_t));
 
           if (edges == NULL) {
               elog(ERROR, "Out of memory");

@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct restrict_t restrict_t;
-typedef struct edge_t edge_t;
+typedef struct Edge_t Edge_t;
 typedef struct path_element_tt path_element_tt;
 
 #ifdef __cplusplus
@@ -43,7 +43,7 @@ extern "C" {
 #endif
 
 int trsp_edge_wrapper(
-    edge_t *edges,
+    Edge_t *edges,
     size_t edge_count,
     restrict_t *restricts,
     size_t restrict_count,
