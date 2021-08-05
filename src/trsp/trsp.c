@@ -104,6 +104,7 @@ fetch_restrict_columns(SPITupleTable *tuptable,
   return 0;
 }
 
+#if 0
 /*
  * This function fetches the edge columns from the SPITupleTable.
  *
@@ -157,7 +158,9 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
 
   return 0;
 }
+#endif
 
+#if 0
 /*
  * To fetch a edge from Tuple.
  *
@@ -197,7 +200,7 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
       target_edge->reverse_cost =  DatumGetFloat8(binval);
     }
 }
-
+#endif
 
 /*
  * To fetch a edge from Tuple.
@@ -256,7 +259,6 @@ static int compute_trsp(
         char* restrict_sql,
         path_element_tt **path,
         size_t *path_count) {
-
   pgr_SPI_connect();
 
   SPIPlanPtr SPIplan;
@@ -267,28 +269,16 @@ static int compute_trsp(
 
   Edge_t *edges = NULL;
   size_t total_tuples = 0;
-#if 0
   pgr_get_edges(sql, &edges, &total_tuples);
-#else
+
+#if 0
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id = -1, .source = -1, .target = -1,
                                  .cost = -1, .reverse_cost = -1};
 #else  // _MSC_VER
   edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif  // _MSC_VER
-  restrict_t *restricts = NULL;
-  uint32_t total_restrict_tuples = 0;
-  restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
-                                 .to_cost = -1};
-  int64_t v_max_id = 0;
-  int64_t v_min_id = INT_MAX;
 
-  /* track if start and end are both in edge tuples */
-  int s_count = 0;
-  int t_count = 0;
-
-  char *err_msg;
-  int ret = -1;
 
   PGR_DBG("start turn_restrict_shortest_path\n");
 
@@ -368,9 +358,12 @@ static int compute_trsp(
 #endif
 
   // defining min and max vertex id
+  int64_t v_max_id = 0;
+  int64_t v_min_id = INT_MAX;
 
   for (size_t z = 0; z < total_tuples; z++) {
-    PGR_DBG("id %ld source %ld target %ld cost %f rev %f", edges[z].id, edges[z].source, edges[z].target, edges[z].cost, edges[z].reverse_cost);
+    PGR_DBG("id %ld source %ld target %ld cost %f rev %f",
+            edges[z].id, edges[z].source, edges[z].target, edges[z].cost, edges[z].reverse_cost);
     if (edges[z].source < v_min_id)
       v_min_id = edges[z].source;
 
@@ -387,6 +380,9 @@ static int compute_trsp(
   // ::::::::::::::::::::::::::::::::::::
   // :: reducing vertex id (renumbering)
   // ::::::::::::::::::::::::::::::::::::
+  /* track if start and end are both in edge tuples */
+  int s_count = 0;
+  int t_count = 0;
   for (size_t z = 0; z < total_tuples; z++) {
     // check if edges[] contains source and target
     if (dovertex) {
@@ -424,6 +420,13 @@ static int compute_trsp(
   }
 
   PGR_DBG("Fetching restriction tuples\n");
+  restrict_t *restricts = NULL;
+  uint32_t total_restrict_tuples = 0;
+  restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
+                                 .to_cost = -1};
+
+  char *err_msg;
+  int ret = -1;
 
   if (restrict_sql == NULL) {
       PGR_DBG("Sql for restrictions is null.");
