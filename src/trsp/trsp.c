@@ -31,6 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_types/trsp/trsp.h"
+#include "trsp/trsp_core.h"
+typedef struct restrict_t restrict_t;
+typedef struct edge_t edge_t;
+typedef struct path_element_tt path_element_tt;
 
 PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);
 
