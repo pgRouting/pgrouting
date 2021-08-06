@@ -33,13 +33,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using General_path_element_t = struct General_path_element_t;
 #else
 #   include <stddef.h>
+typedef struct General_path_element_t General_path_element_t;
 #endif
 
 #include "c_types/pgr_edge_xy_t.h"
 #include "c_types/pgr_combination_t.h"
-typedef struct General_path_element_t General_path_element_t;
+
 
 
 #ifdef __cplusplus
