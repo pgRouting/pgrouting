@@ -119,7 +119,8 @@ CREATE FUNCTION  _pgr_withPointsVia(
      ELSE
          IF has_rcost THEN
             new_edges:= 'WITH
-                   original AS ( ' || sql || '),
+                   orig AS ( ' || sql || '),
+                   original AS (SELECT id, source, target, cost, reverse_cost FROM orig),
                    the_union AS ( ' || sql_new_vertices || '),
                    first_part AS ( SELECT * FROM (SELECT id, target AS source,  lead(target) OVER w  AS target,
                          lead(cost) OVER w  - cost AS cost,
@@ -144,7 +145,8 @@ CREATE FUNCTION  _pgr_withPointsVia(
                   SELECT *  FROM more_union';
          ELSE
             new_edges:= 'WITH
-                   original AS ( ' || sql || '),
+                   orig AS ( ' || sql || '),
+                   original AS (SELECT id, source, target, cost FROM orig),
                    the_union AS ( ' || sql_new_vertices || '),
                    first_part AS ( SELECT * FROM (SELECT id, target AS source,  lead(target) OVER w  AS target,
                          lead(cost) OVER w  - cost AS cost
@@ -161,8 +163,8 @@ CREATE FUNCTION  _pgr_withPointsVia(
           END IF;
       END IF;
 
- -- raise notice '%', new_edges;
      sql_new_vertices := sql_new_vertices || v_union || ' (' || sql || ')';
+
      RETURN query SELECT *
          FROM pgr_dijkstraVia(new_edges, via_vertices, directed, has_rcost);
   END
