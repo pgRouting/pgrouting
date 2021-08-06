@@ -1,6 +1,6 @@
 
 DROP TABLE IF EXISTS edge_table_old;
-SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1,y1,x2,y2
+SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
 INTO edge_table_old
 FROM edge_table;
 
@@ -26,6 +26,7 @@ BEGIN
     RETURN query SELECT throws_ok(query);
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
+    IF NOT min_version('3.3.0') THEN PERFORM todo(1, 'Bug fix on 3.3.0'); END IF;
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
@@ -35,6 +36,9 @@ BEGIN
     RETURN query SELECT throws_ok(query);
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
+    RETURN query SELECT throws_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
     RETURN query SELECT throws_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;
@@ -70,8 +74,51 @@ BEGIN
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
     RETURN query SELECT lives_ok(query);
+
+    query := start_sql || parameter || '::NUMERIC ' || end_sql;
+    RETURN query SELECT throws_ok(query);
 END;
 $BODY$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE FUNCTION style_dijkstra_trsp(fn TEXT, rest_sql TEXT, withrev BOOLEAN)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF withrev THEN
+    --with reverse cost
+    RETURN QUERY SELECT test_integer(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'id');
+    RETURN QUERY SELECT test_integer(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'source');
+    RETURN QUERY SELECT test_integer(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'target');
+    RETURN QUERY SELECT test_float(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'cost');
+    RETURN QUERY SELECT test_float(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'reverse_cost');
+  ELSE
+    --without reverse cost
+    RETURN QUERY SELECT test_integer(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost'],
+      'id');
+    RETURN QUERY SELECT test_integer(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost'],
+      'source');
+    RETURN QUERY SELECT test_integer(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost'],
+      'target');
+    RETURN QUERY SELECT test_float(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost'],
+      'cost');
+  END IF;
+END;
+$BODY$
+LANGUAGE plpgsql;
 
