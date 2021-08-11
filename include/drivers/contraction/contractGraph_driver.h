@@ -34,13 +34,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
+using contracted_rt = struct contracted_rt;
+using Edge_t = struct Edge_t;
 #else
 #   include <stdint.h>
 #   include <stddef.h>
-#endif
-
 typedef struct contracted_rt contracted_rt;
 typedef struct Edge_t Edge_t;
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {
