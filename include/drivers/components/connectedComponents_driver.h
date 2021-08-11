@@ -34,12 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Edge_t = struct Edge_t;
+using pgr_components_rt = struct pgr_components_rt;
 #else
 #   include <stddef.h>
-#endif
-
 typedef struct Edge_t Edge_t;
 typedef struct pgr_components_rt pgr_components_rt;
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {
