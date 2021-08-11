@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-typedef struct {
+struct Pgr_edge_xy_t {
     int64_t id;
     int64_t source;
     int64_t target;
@@ -45,6 +45,6 @@ typedef struct {
     double y1;
     double x2;
     double y2;
-} Pgr_edge_xy_t;
+};
 
 #endif  // INCLUDE_C_TYPES_PGR_EDGE_XY_T_H_
