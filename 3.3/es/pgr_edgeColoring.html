@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_sequentialVertexColoring - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>pgr_edgeColoring - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -14,12 +14,13 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_bipartite -Experimental" href="pgr_bipartite.html" />
-    <link rel="prev" title="Coloring - Family of functions (Experimental)" href="coloring-family.html" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Transformation - Familia de funciones (Experimental)" href="transformation-family.html" />
+    <link rel="prev" title="pgr_bipartite -Experimental" href="pgr_bipartite.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -58,29 +59,29 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Soporte</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Datos Muestra</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 </ul>
 </li>
@@ -94,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_sequentialVertexColoring - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_edgeColoring - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -112,11 +113,11 @@
               
                 
   <li>
-    <a href="coloring-family.html" title="Previous Chapter: Coloring - Family of functions (Experimental)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Coloring - Fa...</span>
+    <a href="pgr_bipartite.html" title="Previous Chapter: pgr_bipartite -Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_bipartite...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_bipartite.html" title="Next Chapter: pgr_bipartite -Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bipartite... &raquo;</span>
+    <a href="transformation-family.html" title="Next Chapter: Transformation - Familia de funciones (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Transformatio... &raquo;</span>
     </a>
   </li>
               
@@ -149,28 +150,27 @@
 </div>
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html">3.2</a>)</p></li>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_edgeColoring.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_edgeColoring.html">3.3</a>)</p></li>
 </ul>
-<section id="pgr-sequentialvertexcoloring-experimental">
-<h1>pgr_sequentialVertexColoring - Experimental<a class="headerlink" href="#pgr-sequentialvertexcoloring-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_sequentialVertexColoring</span></code> — Returns the vertex coloring of an undirected graph,
-using greedy approach.</p>
+<section id="pgr-edgecoloring-experimental">
+<h1>pgr_edgeColoring - Experimental<a class="headerlink" href="#pgr-edgecoloring-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_edgeColoring</span></code> — Returns the edge coloring of an undirected and loop-free (i.e <em>no self-loops and no parallel edges</em>) graph.</p>
 <figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/edge_coloring.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Advertencia</p>
 <p>Possible server crash</p>
 <ul class="simple">
 <li><p>These functions might create a server crash</p></li>
 </ul>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Advertencia</p>
 <p>Experimental functions</p>
 <ul class="simple">
 <li><p>They are not officially of the current release.</p></li>
@@ -194,80 +194,80 @@ using greedy approach.</p>
 </div>
 <p class="rubric">Availability</p>
 <ul class="simple">
-<li><p>Version 3.2.0</p>
+<li><p>Version 3.3.0</p>
 <ul>
 <li><p>New <strong>experimental</strong> function</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Sequential Vertex Coloring algorithm is a graph coloring algorithm in which color
-identifiers are assigned to the vertices of a graph in a sequential manner,
-such that no edge connects two identically colored vertices.</p>
+<h2>Description<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Edge Coloring is an algorithm used for coloring of the edges for the vertices in the graph. It
+is an assignment of colors to the edges of the graph so that no two adjacent edges have the same
+color.</p>
 <p><strong>The main Characteristics are:</strong></p>
 <ul class="simple">
-<li><p>The implementation is applicable only for <strong>undirected</strong> graphs.</p></li>
-<li><p>Provides the color to be assigned to all the vertices present in the graph.</p></li>
-<li><p>Color identifiers values are in the Range <span class="math notranslate nohighlight">\([1, |V|]\)</span></p></li>
-<li><p>The algorithm tries to assign the least possible color to every vertex.</p></li>
+<li><p>The implementation is applicable only for <strong>undirected</strong> and <strong>loop-free</strong> (i.e <em>no self-loops and no parallel edges</em>) graphs.</p></li>
+<li><p>Provides the color to be assigned to all the edges present in the graph.</p></li>
+<li><p>At most <strong>Δ + 1</strong> colors are used, where <strong>Δ</strong> is the degree of the graph. This is optimal for some graphs, and by Vizing’s theorem it uses at most one color more than the optimal for all others.</p></li>
+<li><p>It can tell us whether a graph is <strong>Bipartite</strong>. If in a graph, the chromatic number <strong>χ′(G)</strong> i.e. minimum number of colors needed for proper edge coloring of graph is equal to degree <strong>Δ</strong> of the graph, (i.e. <strong>χ′(G) = Δ</strong>) then graph is said to be Bipartite. But, the vice-versa is not always true.</p></li>
+<li><p>The algorithm tries to assign the least possible color to every edge.</p></li>
 <li><p>Efficient graph coloring is an NP-Hard problem, and therefore, this algorithm
-does not always produce optimal coloring. It follows a greedy strategy by
-iterating through all the vertices sequentially, and assigning the smallest
-possible color that is not used by its neighbors, to each vertex.</p></li>
-<li><p>The returned rows are ordered in ascending order of the vertex value.</p></li>
-<li><p>Sequential Vertex Coloring Running Time: <span class="math notranslate nohighlight">\(O(|V|*(d + k))\)</span></p>
+does not always produce optimal coloring.</p></li>
+<li><p>The returned rows are ordered in ascending order of the edge value.</p></li>
+<li><p>This algorithm is the fastest known almost-optimal algorithm for edge coloring.</p></li>
+<li><p>Edge Coloring Running Time: <span class="math notranslate nohighlight">\(O(|E||V|)\)</span></p>
 <ul>
-<li><p>where <span class="math notranslate nohighlight">\(|V|\)</span> is the number of vertices,</p></li>
-<li><p><span class="math notranslate nohighlight">\(d\)</span> is the maximum degree of the vertices in the graph,</p></li>
-<li><p><span class="math notranslate nohighlight">\(k\)</span> is the number of colors used.</p></li>
+<li><p>where <span class="math notranslate nohighlight">\(|E|\)</span> is the number of edges in the graph,</p></li>
+<li><p><span class="math notranslate nohighlight">\(|V|\)</span> is the number of vertices in the graph.</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_sequentialVertexColoring(Edges SQL) -- Experimental on v3.2
+<h2>Signatures<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_edgeColoring</span><span class="p">(</span><span class="n">Edges</span> <span class="k">SQL</span><span class="p">)</span> <span class="c1">-- Experimental on v3.3</span>
 
-RETURNS SET OF (vertex_id, color_id)
-OR EMPTY SET
+<span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">edge_id</span><span class="p">,</span> <span class="n">color_id</span><span class="p">)</span>
+<span class="k">OR</span> <span class="n">EMPTY</span> <span class="k">SET</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Graph coloring of pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
+<dd class="field-odd"><p>Graph coloring of pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_sequentialVertexColoring</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeColoring</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table</span>
     <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="s1">&#39;</span>
 <span class="p">);</span>
- <span class="n">vertex_id</span> <span class="o">|</span> <span class="n">color_id</span>
-<span class="o">-----------+----------</span>
-         <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">9</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">10</span> <span class="o">|</span>        <span class="mi">2</span>
-        <span class="mi">11</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">12</span> <span class="o">|</span>        <span class="mi">2</span>
-        <span class="mi">13</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">14</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">15</span> <span class="o">|</span>        <span class="mi">2</span>
-        <span class="mi">16</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">17</span> <span class="o">|</span>        <span class="mi">2</span>
-<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+ <span class="n">edge_id</span> <span class="o">|</span> <span class="n">color_id</span>
+<span class="o">---------+----------</span>
+       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
+       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span>
+       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span>
+       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">4</span>
+       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
+       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">2</span>
+       <span class="mi">8</span> <span class="o">|</span>        <span class="mi">1</span>
+       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">2</span>
+      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">5</span>
+      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span>
+      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">3</span>
+      <span class="mi">13</span> <span class="o">|</span>        <span class="mi">2</span>
+      <span class="mi">14</span> <span class="o">|</span>        <span class="mi">1</span>
+      <span class="mi">15</span> <span class="o">|</span>        <span class="mi">3</span>
+      <span class="mi">16</span> <span class="o">|</span>        <span class="mi">1</span>
+      <span class="mi">17</span> <span class="o">|</span>        <span class="mi">1</span>
+      <span class="mi">18</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 <span class="target" id="index-0"></span></section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 21%" />
@@ -289,7 +289,7 @@ OR EMPTY SET
 </table>
 </section>
 <section id="inner-query">
-<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<h2>Inner query<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Edges SQL</dt>
 <dd class="field-odd"><p>an SQL query of an <strong>undirected</strong> graph, which should return
@@ -357,8 +357,8 @@ a set of rows with the following columns:</p>
 </dl>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(vertex_id,</span> <span class="pre">color_id)</span></code></p>
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(edge_id,</span> <span class="pre">color_id)</span></code></p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
@@ -372,13 +372,13 @@ a set of rows with the following columns:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>vertex_id</strong></p></td>
+<tr class="row-even"><td><p><strong>edge_id</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the vertex.</p></td>
+<td><p>Identifier of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>color_id</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the color of the vertex.</p>
+<td><p>Identifier of the color of the edge.</p>
 <ul class="simple">
 <li><p>The minimum value of color is 1.</p></li>
 </ul>
@@ -388,18 +388,18 @@ a set of rows with the following columns:</p>
 </table>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
+<li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> network.</p></li>
 </ul>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html">Boost: Sequential Vertex Coloring algorithm documentation</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graph_coloring">Wikipedia: Graph coloring</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/edge_coloring.html">Boost: Edge Coloring Algorithm documentation</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graph_coloring">Wikipedia: Graph Coloring</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -417,7 +417,7 @@ a set of rows with the following columns:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Aug 13, 2021.<br/>
+      Actualizado por última vez en ago. 13, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
     </p>
   </div>
