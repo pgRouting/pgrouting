@@ -340,8 +340,6 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/traversal-family.html',
     'https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html',
     'https://docs.pgrouting.org/latest/en/withPoints.html',
-    'https://docs.pgrouting.org/3.3/en/pgr_edgeColoring.html',
-    'https://docs.pgrouting.org/latest/en/pgr_edgeColoring.html',
 
 
 
