@@ -43,6 +43,10 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 * `#2057 <https://github.com/pgRouting/pgrouting/issues/1850>`__: trspViaEdges columns in different order
 
+.. rubric:: New experimental functions
+
+* pgr_edgeColoring
+
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
 
