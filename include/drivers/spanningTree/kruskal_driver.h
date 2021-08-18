@@ -31,12 +31,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_SPANNINGTREE_KRUSKAL_DRIVER_H_
 #pragma once
 
+
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Edge_t = struct Edge_t;
+using Matrix_cell_t = struct Matrix_cell_t;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+#   include <stdbool.h>
+typedef struct Edge_t Edge_t;
+typedef struct Matrix_cell_t Matrix_cell_t;
 #endif
+
 
 #include "c_types/pgr_edge_t.h"
 #include "c_types/pgr_mst_rt.h"
