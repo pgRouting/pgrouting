@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <c_types/pgr_bipartite_rt.h>
 #include "c_types/pgr_edge_t.h"
 
-#ifdef __cplusplusx
+#ifdef __cplusplus
 extern "C" {
 #endif
 
