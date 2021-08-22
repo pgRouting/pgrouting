@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for syze_t */
 #include <stddef.h>
 #include "c_types/pgr_edge_xy_t.h"
-#include "c_types/geom_text_rt.h"
+typedef struct GeomText_t GeomText_t;
 
 
 #ifdef __cplusplus
