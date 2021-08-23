@@ -34,13 +34,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Edge_t = struct Edge_t;
+using pgr_flow_t = struct pgr_flow_t;
 #else
 #   include <stddef.h>
+typedef struct Edge_t Edge_t;
+typedef struct pgr_flow_t pgr_flow_t;
 #endif
 
-#include "c_types/pgr_flow_t.h"
 #include "c_types/pgr_combination_t.h"
-#include "c_types/pgr_edge_t.h"
+
+
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -48,7 +53,7 @@ extern "C" {
 
     void
         do_pgr_max_flow(
-            pgr_edge_t *data_edges,
+            Edge_t *data_edges,
             size_t total_tuples,
 
             pgr_combination_t  *combinations,
