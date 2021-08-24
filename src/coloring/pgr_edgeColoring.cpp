@@ -53,7 +53,7 @@ Pgr_edgeColoring::edgeColoring() {
     } catch (...) {
         throw std::make_pair(
             std::string("INTERNAL: something went wrong while calling boost::edge_coloring"),
-            std::string(__PRETTY_FUNCTION__));
+            std::string(__PGR_PRETTY_FUNCTION__));
     }
 
     for (auto e_i : boost::make_iterator_range(boost::edges(graph))) {
@@ -110,7 +110,7 @@ Pgr_edgeColoring::get_boost_vertex(int64_t id) const {
     } catch (...) {
         throw std::make_pair(
             std::string("INTERNAL: something went wrong when getting the vertex descriptor"),
-            std::string(__PRETTY_FUNCTION__));
+            std::string(__PGR_PRETTY_FUNCTION__));
     }
 }
 
@@ -121,7 +121,7 @@ Pgr_edgeColoring::get_vertex_id(V v) const {
     } catch (...) {
         throw std::make_pair(
             std::string("INTERNAL: something went wrong when getting the vertex id"),
-            std::string(__PRETTY_FUNCTION__));
+            std::string(__PGR_PRETTY_FUNCTION__));
     }
 }
 
@@ -132,7 +132,7 @@ Pgr_edgeColoring::get_edge_id(E e) const {
     } catch (...) {
         throw std::make_pair(
             std::string("INTERNAL: something went wrong when getting the edge id"),
-            std::string(__PRETTY_FUNCTION__));
+            std::string(__PGR_PRETTY_FUNCTION__));
     }
 }
 
