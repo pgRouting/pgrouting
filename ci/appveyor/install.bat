@@ -11,30 +11,28 @@ echo platform %platform%
 :: Set some defaults. Infer some variables.
 ::
 
-if not defined MSVC_VER set MSVC_VER=12.0
+if not defined MSVC_VER set MSVC_VER=15.0
 if not defined RUNTIME set RUNTIME=msvc%MSVC_VER:.=%
-if not defined MSVC_YEAR set MSVC_YEAR=2013
+if not defined MSVC_YEAR set MSVC_YEAR=2017
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 if not defined DOWNLOADS_DIR set DOWNLOADS_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
 if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\%RUNTIME%\%PLATFORM%
 
 :: for cmake its the min version
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
-if not defined PGIS_VERSION set PGIS_VERSION=2.3
-if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
-set PG_VER_NO_DOT=pg%PG_VER:.=%
+if not defined PGIS_VERSION set PGIS_VERSION=3.2
+if not defined BOOST_VERSION set BOOST_VERSION=1.65.0
+set PG_VER_NO_DOT=pg%PG_VER%
 
 
-set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
-if "%platform%"=="x64" (
-    set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
-)
+set CMAKE_GENERATOR=Visual Studio 15 2017 Win64
 
-:: Determine if arch is 32/64 bits
-if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
+:: Determine if arch is 64 bits
+set arch=64
+
 
 :: Determine compiler used to build postgis
-if "%arch%"=="64" (set GCC=48) else (set GCC=481)
+:: set GCC=81
 
 ::
 :: =========================================================
@@ -101,7 +99,7 @@ echo ====================================
 :: Download and install Postgis
 ::
 
-set PGIS_WILD_FILE=postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION*%w%arch%gcc%GCC%.zip
+set PGIS_WILD_FILE=postgis-pg12-binaries-3.2.0devw64gcc81
 set PGIS_FILE=postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%w%arch%gcc%GCC%.zip
 
 echo %PGIS_WILD_FILE%
@@ -131,6 +129,7 @@ if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\%PGIS_WILD_FILE%" (
 
     echo **** Installing postGIS %PGIS_VERSION%
     dir %BUILD_ROOT_DIR%\postgis*
+    dir C:\Progra~1\PostgreSQL\
     dir C:\Progra~1\PostgreSQL\%PG_VER%\postgis*
     xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-%PG_VER_NO_DOT%-binaries-%PGIS_VERSION%*w%arch%gcc%GCC% C:\Progra~1\PostgreSQL\%PG_VER%
     dir %BUILD_ROOT_DIR%\postgis*
@@ -149,28 +148,18 @@ if not exist "C:\Progra~1\PostgreSQL\%PG_VER%\%PGIS_WILD_FILE%" (
 echo ====================================
 
 
+
 :: =========================================================
 :: Download and install Boost
 ::
 
-:: set BOOST_LOCAL_DEBUG=1
-call ci/appveyor/install-boost.bat
+dir C:\Libraries
 
-echo ======================================================
-echo Installation of Prerequisites done.
-echo Environment variables set:
 
-echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
-echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+set BOOST_INCLUDE_DIR=C:\Libraries\boost_1_69_0
 
-echo ======================================================
-echo.
 
 endlocal & (
-    set BOOST_THREAD_LIB=%BOOST_THREAD_LIB%
-    set BOOST_SYSTEM_LIB=%BOOST_SYSTEM_LIB%
     set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%
     set CMAKE_GENERATOR=%CMAKE_GENERATOR%
 )
