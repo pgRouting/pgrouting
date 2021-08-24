@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <algorithm>
 
+#include "c_types/geom_text_rt.h"
 #include "cpp_common/pgr_assert.h"
 #include "alphaShape/pgr_alphaShape.h"
 
