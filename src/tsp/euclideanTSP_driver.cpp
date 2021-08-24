@@ -30,10 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/tsp/euclideanTSP_driver.h"
 
-#include <string.h>
+#include <string>
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <utility>
 
 #include "tsp/tsp.hpp"
 
@@ -61,9 +62,6 @@ do_pgr_euclideanTSP(
     try {
         pgrouting::algorithm::TSP fn_tsp{coordinates, total_coordinates, true};
 
-#if Boost_VERSION_MACRO >= 106800
-        log << fn_tsp;
-#endif
         if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
             *err_msg = pgr_msg(err.str().c_str());
@@ -77,7 +75,6 @@ do_pgr_euclideanTSP(
         }
 
         auto tsp_path = fn_tsp.tsp(start_vid, end_vid, max_cycles);
-        log << fn_tsp.get_log();
 
         if (!tsp_path.empty()) {
             *return_count = tsp_path.size();

@@ -27,9 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_CPP_COMMON_INTERRUPTION_H_
 #define INCLUDE_CPP_COMMON_INTERRUPTION_H_
 
+#ifdef _MSC_VER
+#define __PGR_PRETTY_FUNCTION__ __FUNCSIG__
+#else
+#define __PGR_PRETTY_FUNCTION__ __PRETTY_FUNCTION__
+#endif
+
 extern "C" {
 
-#if 0
+#ifdef _MSC_VER
 
 #include <postgres.h>
 #include <miscadmin.h>
@@ -76,9 +82,9 @@ extern "C" {
         if (INTERRUPTS_PENDING_CONDITION()) \
         ProcessInterrupts(); \
     } while (0)
+#endif
 
 }
 
-#endif
 
 #endif  // INCLUDE_CPP_COMMON_INTERRUPTION_H_

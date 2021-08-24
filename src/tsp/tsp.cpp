@@ -146,8 +146,8 @@ TSP::tsp() {
                 back_inserter(tsp_path));
     } catch (...) {
         throw std::make_pair(
-                std::string("INTERNAL: something went wrong while calling boost::metric_tsp_approx_tour_from_vertex"),
-                std::string(__PRETTY_FUNCTION__));
+                std::string("INTERNAL: something went wrong while calling boost::metric_tsp_approx_tour"),
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
     pgassert(tsp_path.size() == num_vertices(graph) + 1);
 
@@ -163,7 +163,7 @@ TSP::tsp(int64_t start_vid) {
     if (id_to_V.find(start_vid) == id_to_V.end()) {
         throw std::make_pair(
                 std::string("INTERNAL: Verify start_vid before calling"),
-                std::string(__PRETTY_FUNCTION__));
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 
     auto v = get_boost_vertex(start_vid);
@@ -177,7 +177,7 @@ TSP::tsp(int64_t start_vid) {
     }  catch (...)  {
         throw std::make_pair(
                 std::string("INTERNAL: something went wrong while calling boost::metric_tsp_approx_tour_from_vertex"),
-                std::string(__PRETTY_FUNCTION__));
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
     pgassert(tsp_path.size() == num_vertices(graph) + 1);
 
@@ -216,13 +216,13 @@ TSP::tsp(
     if (id_to_V.find(start_vid) == id_to_V.end()) {
         throw std::make_pair(
                 std::string("INTERNAL: start_id not found on data"),
-                std::string(__PRETTY_FUNCTION__));
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 
     if (id_to_V.find(end_vid) == id_to_V.end()) {
         throw std::make_pair(
                 std::string("INTERNAL: end_id not found on data"),
-                std::string(__PRETTY_FUNCTION__));
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 
     auto u = get_boost_vertex(start_vid);
@@ -257,7 +257,7 @@ TSP::crossover_optimize(std::deque<std::pair<int64_t, double>> result, size_t li
         for (size_t i = 1; i < result.size() - limit; ++i) {
             for (size_t j = result.size() - limit; j >=i + 1; --j) {
                 auto tmp = result;
-                std::reverse(tmp.begin() + i,  tmp.begin() + j);
+                std::reverse(tmp.begin() + static_cast<ptrdiff_t>(i),  tmp.begin() + static_cast<ptrdiff_t>(j));
                 auto new_cost = eval_tour(tmp);
                 if (new_cost < best_cost) {
 #ifdef DEBUG_TSP
@@ -338,7 +338,7 @@ TSP::TSP(
         if (!add_result.second) {
             throw std::make_pair(
                     std::string("INTERNAL: something went wrong adding and edge\n"),
-                    std::string(__PRETTY_FUNCTION__));
+                    std::string(__PGR_PRETTY_FUNCTION__));
         }
     }
 
@@ -427,7 +427,7 @@ TSP::TSP(Coordinate_t *coordinates,
             if (!add_result.second) {
                 throw std::make_pair(
                         std::string("INTERNAL: something went wrong adding and edge\n"),
-                        std::string(__PRETTY_FUNCTION__));
+                        std::string(__PGR_PRETTY_FUNCTION__));
             }
         }
     }
@@ -480,7 +480,7 @@ TSP::get_boost_vertex(int64_t id) const {
     } catch (...) {
         throw std::make_pair(
                 std::string("INTERNAL: something went wrong when getting the vertex descriptor"),
-                std::string(__PRETTY_FUNCTION__));
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 }
 
@@ -491,7 +491,7 @@ TSP::get_vertex_id(V v) const {
     } catch (...) {
         throw std::make_pair(
                 std::string("INTERNAL: something went wrong when getting the vertex id"),
-                std::string(__PRETTY_FUNCTION__));
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 }
 
@@ -502,9 +502,7 @@ TSP::get_edge_id(E e) const {
     } catch (...) {
         throw std::make_pair(
                 std::string("INTERNAL: something went wrong when getting the edge id"),
-                std::string(__PRETTY_FUNCTION__));
-        pgassert(false);
-        throw;
+                std::string(__PGR_PRETTY_FUNCTION__));
     }
 }
 
