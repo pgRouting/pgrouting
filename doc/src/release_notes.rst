@@ -33,6 +33,15 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 
 
+pgRouting 3.2.2 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github.
+
+.. rubric:: Issues
+
+* `#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation on Visual Studio
+
 pgRouting 3.2.1 Release Notes
 -------------------------------------------------------------------------------
 

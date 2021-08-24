@@ -18,7 +18,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.2.1
+project(PGROUTING VERSION 3.2.2
     LANGUAGES C CXX )
 set(PROJECT_VERSION_DEV "")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
@@ -33,7 +33,7 @@ string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d")
 
 set(MINORS 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
-    3.2.0
+    3.2.1 3.2.0
     3.1.3 3.1.2 3.1.1 3.1.0
     3.0.5 3.0.4 3.0.3 3.0.2 3.0.1 3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
