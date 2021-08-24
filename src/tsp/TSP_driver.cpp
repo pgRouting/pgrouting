@@ -63,10 +63,6 @@ do_pgr_tsp(
     try {
         pgrouting::algorithm::TSP fn_tsp{distances, total_distances, true};
 
-#if Boost_VERSION_MACRO >= 106800
-        log << fn_tsp;
-#endif
-
         if (start_vid != 0 && !fn_tsp.has_vertex(start_vid)) {
             err << "Parameter 'start_id' do not exist on the data";
             *err_msg = pgr_msg(err.str().c_str());
@@ -80,7 +76,6 @@ do_pgr_tsp(
         }
 
         auto tsp_path = fn_tsp.tsp(start_vid, end_vid, max_cycles);
-        log << fn_tsp.get_log();
 
         if (!tsp_path.empty()) {
             *return_count = tsp_path.size();
