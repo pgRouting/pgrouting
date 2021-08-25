@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/contraction/contractGraph_driver.h"
 
-#include <string.h>
+#include <string>
 #include <sstream>
 #include <deque>
 #include <vector>
