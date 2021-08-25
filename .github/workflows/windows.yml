@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        pg_mayor: [10]
+        pg_mayor: [11,12,13]
 
     steps:
       - name: Checkout repository
