@@ -12,7 +12,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_lengauerTarjanDominatorTree.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_lengauerTarjanDominatorTree.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_lengauerTarjanDominatorTree.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lengauerTarjanDominatorTree.html>`__
 
 pgr_lengauerTarjanDominatorTree -Experimental
 ===============================================================================
