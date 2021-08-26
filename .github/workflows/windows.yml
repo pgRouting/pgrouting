@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        pg_mayor: [11,12,13]
+        pg_major: [11.13, 12.8, 13.4]
 
     steps:
       - name: Checkout repository
@@ -33,11 +33,25 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.3
 
+      - name: Install PostgreSQL
+        run: |
+          curl https://get.enterprisedb.com/postgresql/postgresql-${{ matrix.pg_major }}-1-windows-x64-binaries.zip --output pgsql.zip
+          Expand-Archive 'pgsql.zip' -Force
+          $env:path += ";$(Get-Location)\pgsql\pgsql\bin\"
+          $env:path -split ";"
+          initdb -D pgsql\data -U postgres
+          pg_ctl -D pgsql\data start
+          echo "POSTGRESQL_DIR=$pwd\pgsql\pgsql" >> $env:GITHUB_ENV
+
+      - name: Check Postgres running
+        run: |
+          ${{ env.POSTGRESQL_DIR }}\bin\psql -U postgres -d postgres -c "SELECT version()"
+
       - name: Configure
         run: |
           mkdir build
           cd build
-          cmake -G"Visual Studio 16 2019" -DPOSTGRESQL_VERSION=${{ matrix.pg_mayor }} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DPOSTGRESQL_BIN=${{ env.POSTGRESQL_DIR }}\bin -DPOSTGRESQL_INCLUDE_DIR="${{ env.POSTGRESQL_DIR }}\include;${{ env.POSTGRESQL_DIR }}\include\server" -G"Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
         env:
           BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
 
