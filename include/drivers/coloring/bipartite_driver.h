@@ -35,11 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 using Edge_t = struct Edge_t;
-using pgr_bipartite_rt = struct pgr_bipartite_rt;
+using Double_int64_t_rt = struct Double_int64_t_rt;
 #else
 #   include <stddef.h>
 typedef struct Edge_t Edge_t;
-typedef struct pgr_bipartite_rt pgr_bipartite_rt;
+typedef struct Double_int64_t_rt Double_int64_t_rt;
 #endif
 
 
@@ -55,7 +55,7 @@ void
 do_pgr_bipartite(
         Edge_t  *data_edges,
         size_t total_tuples,
-        pgr_bipartite_rt **return_tuples,
+        Double_int64_t_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
