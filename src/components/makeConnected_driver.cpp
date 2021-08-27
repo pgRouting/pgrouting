@@ -44,7 +44,7 @@ do_pgr_makeConnected(
                 Edge_t  *data_edges,
                 size_t total_edges,
 
-                pgr_makeConnected_t **return_tuples,
+                Double_int64_t_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
@@ -60,7 +60,7 @@ do_pgr_makeConnected(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector<pgr_makeConnected_t> results;
+        std::vector<Double_int64_t_rt> results;
         std::string logstr;
 
 
