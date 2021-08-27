@@ -3,7 +3,6 @@
 DIR=$1
 TASK=$2
 
-To achive the change: ff [ -z "${DIR}" ] ; then echo "USE: tools/developer/commitByDirectory.sh directory message"; exit 1; fi;
 if [ -z "${DIR}" ] ; then echo "USE: tools/developer/commitByDirectory.sh directory message"; exit 1; fi;
 if [ -z "${TASK}" ] ; then echo "USE: tools/developer/commitByDirectory.sh directory message"; exit 1; fi;
 
