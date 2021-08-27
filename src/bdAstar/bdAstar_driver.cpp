@@ -139,7 +139,7 @@ pgr_bdAstar(
 
 void
 do_pgr_bdAstar(
-        Pgr_edge_xy_t *edges,
+        Edge_xy_t *edges,
         size_t total_edges,
         pgr_combination_t *combinations,
         size_t total_combinations,

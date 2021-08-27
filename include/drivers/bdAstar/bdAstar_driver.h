@@ -40,7 +40,7 @@ using Path_rt = struct Path_rt;
 typedef struct Path_rt Path_rt;
 #endif
 
-#include "c_types/pgr_edge_xy_t.h"
+#include "c_types/edge_xy_t.h"
 #include "c_types/pgr_combination_t.h"
 
 
@@ -58,7 +58,7 @@ extern "C" {
 
 
     void do_pgr_bdAstar(
-            Pgr_edge_xy_t  *data_edges,
+            Edge_xy_t  *data_edges,
             size_t total_edges,
 
             pgr_combination_t  *combinations,

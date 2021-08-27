@@ -164,7 +164,7 @@ struct CompareRadius {
 /*
  * Constructor
  */
-Pgr_alphaShape::Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges) :
+Pgr_alphaShape::Pgr_alphaShape(const std::vector<Edge_xy_t> &edges) :
 graph(UNDIRECTED) {
     graph.insert_edges(edges);
     make_triangles();

@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 bool
-data_eq(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs, int64_t round) {
+data_eq(const Edge_xy_t &lhs, const Edge_xy_t &rhs, int64_t round) {
     return
         std::floor(lhs.x1 * static_cast<double>(round)) == std::floor(rhs.x1 * static_cast<double>(round))
         &&
@@ -58,7 +58,7 @@ data_eq(const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs, int64_t round) {
 
 void
 do_alphaShape(
-        Pgr_edge_xy_t *edgesArr,
+        Edge_xy_t *edgesArr,
         size_t edgesSize,
 
         double alpha,
@@ -78,7 +78,7 @@ do_alphaShape(
         pgassert(*return_count == 0);
         const int64_t round = 100000000000000;
 
-        std::vector<Pgr_edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
+        std::vector<Edge_xy_t> edges(edgesArr, edgesArr + edgesSize);
         /*
           id   | source | target | cost |     x1     |     y1     | x2 | y2
         -------+--------+--------+------+------------+------------+----+----
@@ -90,12 +90,12 @@ do_alphaShape(
         */
 
         std::sort(edges.begin(), edges.end(),
-                [&](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+                [&](const Edge_xy_t &lhs, const Edge_xy_t &rhs) {
             return
                 std::floor(lhs.y1 *  static_cast<double>(round)) < std::floor(rhs.y1 *  static_cast<double>(round));
         });
         std::stable_sort(edges.begin(), edges.end(),
-                [&](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+                [&](const Edge_xy_t &lhs, const Edge_xy_t &rhs) {
             return
                 std::floor(lhs.x1 *  static_cast<double>(round)) < std::floor(rhs.x1 *  static_cast<double>(round));
         });
@@ -114,7 +114,7 @@ do_alphaShape(
             }
         }
         std::stable_sort(edges.begin(), edges.end(),
-                [](const Pgr_edge_xy_t &lhs, const Pgr_edge_xy_t &rhs) {
+                [](const Edge_xy_t &lhs, const Edge_xy_t &rhs) {
             return
                 lhs.id < rhs.id;
         });
@@ -122,8 +122,8 @@ do_alphaShape(
         /*
          * Vertices of triangle a, b, c
          */
-        Pgr_edge_xy_t *a(nullptr);
-        Pgr_edge_xy_t *b(nullptr);
+        Edge_xy_t *a(nullptr);
+        Edge_xy_t *b(nullptr);
         size_t count(0);
         for (auto &c : edges) {
             if (count == 0) {

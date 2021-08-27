@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/column_info_t.h"
 #include "c_types/pgr_basic_edge_t.h"
 #include "c_types/pgr_costFlow_t.h"
-#include "c_types/pgr_edge_xy_t.h"
+#include "c_types/edge_xy_t.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
@@ -166,7 +166,7 @@ void fetch_edge_with_xy(
         Column_info_t info[9],
         int64_t *default_id,
         float8 default_rcost,
-        Pgr_edge_xy_t *edge,
+        Edge_xy_t *edge,
         size_t *valid_edges,
         bool normal) {
     if (column_found(info[0].colNumber)) {
@@ -210,7 +210,7 @@ static
 void
 get_edges_9_columns(
         char *sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges,
         bool normal) {
     clock_t start_t = clock();
@@ -273,11 +273,11 @@ get_edges_9_columns(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (Pgr_edge_xy_t *)
-                    palloc0(total_tuples * sizeof(Pgr_edge_xy_t));
+                (*edges) = (Edge_xy_t *)
+                    palloc0(total_tuples * sizeof(Edge_xy_t));
             else
-                (*edges) = (Pgr_edge_xy_t *)
-                    repalloc((*edges), total_tuples * sizeof(Pgr_edge_xy_t));
+                (*edges) = (Edge_xy_t *)
+                    repalloc((*edges), total_tuples * sizeof(Edge_xy_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -749,7 +749,7 @@ pgr_get_edges_no_id(
 void
 pgr_get_edges_xy(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges) {
     get_edges_9_columns(edges_sql, edges, total_edges, true);
 }
@@ -762,7 +762,7 @@ pgr_get_edges_xy(
 void
 pgr_get_edges_xy_reversed(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges) {
     get_edges_9_columns(edges_sql, edges, total_edges, false);
 }

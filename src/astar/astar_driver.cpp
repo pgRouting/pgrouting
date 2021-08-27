@@ -84,7 +84,7 @@ pgr_astar(
   end_vid BIGINT  directed BOOLEAN DEFAULT true,
  ***********************************************************/
 void do_pgr_astarManyToMany(
-        Pgr_edge_xy_t *edges, size_t total_edges,
+        Edge_xy_t *edges, size_t total_edges,
 
         pgr_combination_t *combinations, size_t total_combinations,
 

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_edge_xy_t.h
+File: edge_xy_t.h
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
