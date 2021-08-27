@@ -1,6 +1,6 @@
-How to use the scripts
+# How to use the scripts
 
-# addNewVersionLink.sh
+## addNewVersionLink.sh
 
 All the documentation files have a history of older versions.
 When a new mayor or minor is created the top lines need to change
@@ -24,7 +24,7 @@ To achive the change: from the root of the repository:
 ./tools/developer/addNewVersionLink.sh "3\.2" "3\.3"'
 ```
 
-# commitByDirectory.sh
+## commitByDirectory.sh
 
 Some times legwork is done on a directory, for example when using the
 `addNewVersionLink.sh` script
