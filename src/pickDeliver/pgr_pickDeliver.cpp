@@ -135,7 +135,7 @@ Pgr_pickDeliver::add_node(const Vehicle_node &node) {
  *
  */
 Pgr_pickDeliver::Pgr_pickDeliver(
-        const std::vector<PickDeliveryOrders_t> &pd_orders,
+        const std::vector<Orders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         const pgrouting::tsp::Dmatrix &cost_matrix,
         double factor,

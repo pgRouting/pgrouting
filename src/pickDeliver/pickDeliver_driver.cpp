@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_pickDeliver(
-        PickDeliveryOrders_t customers_arr[],
+        Orders_t customers_arr[],
         size_t total_customers,
 
         Vehicle_t *vehicles_arr,
@@ -84,7 +84,7 @@ do_pgr_pickDeliver(
         /*
          * transform to C++ containers
          */
-        std::vector<PickDeliveryOrders_t> orders(
+        std::vector<Orders_t> orders(
                 customers_arr, customers_arr + total_customers);
 
         std::vector<Vehicle_t> vehicles(

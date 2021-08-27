@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliveryOrders_t.h
+File: orders_t.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PICKDELIVER_PICKDELIVERYORDERS_T_H_
-#define INCLUDE_C_TYPES_PICKDELIVER_PICKDELIVERYORDERS_T_H_
+#ifndef INCLUDE_C_TYPES_PICKDELIVER_ORDERS_T_H_
+#define INCLUDE_C_TYPES_PICKDELIVER_ORDERS_T_H_
 #pragma once
 
 /* for int64_t */
@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
  * its with either (foo_x, foo_y) pairs (for euclidean or with foo_node_id (for matrix)
  */
-struct PickDeliveryOrders_t {
+struct Orders_t {
     int64_t id;
     double demand;
 
@@ -61,4 +61,4 @@ struct PickDeliveryOrders_t {
     double deliver_service_t;
 };
 
-#endif  // INCLUDE_C_TYPES_PICKDELIVER_PICKDELIVERYORDERS_T_H_
+#endif  // INCLUDE_C_TYPES_PICKDELIVER_ORDERS_T_H_
