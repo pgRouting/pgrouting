@@ -84,7 +84,7 @@ process(
     pgr_SPI_connect();
 
     PGR_DBG("Load orders");
-    PickDeliveryOrders_t *pd_orders_arr = NULL;
+    Orders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
     pgr_get_pd_orders(pd_orders_sql,
            &pd_orders_arr, &total_pd_orders);

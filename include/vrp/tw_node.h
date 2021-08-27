@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 
-#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+#include "c_types/pickDeliver/orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/identifier.h"
@@ -213,7 +213,7 @@ class Tw_node : public Dnode {
      Tw_node(const Tw_node &) = default;
      Tw_node(
              size_t id,
-             PickDeliveryOrders_t data,
+             Orders_t data,
              NodeType type);
      Tw_node(
              size_t id,

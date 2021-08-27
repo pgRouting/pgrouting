@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
 
-#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+#include "c_types/pickDeliver/orders_t.h"
 
 static
 void fetch_pd_orders(
@@ -38,7 +38,7 @@ void fetch_pd_orders(
         TupleDesc *tupdesc,
         Column_info_t info[14],
         bool matrix_version,
-        PickDeliveryOrders_t *pd_order) {
+        Orders_t *pd_order) {
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
 
@@ -78,7 +78,7 @@ static
 void
 pgr_get_pd_orders_general(
         char *pd_orders_sql,
-        PickDeliveryOrders_t **pd_orders,
+        Orders_t **pd_orders,
         size_t *total_pd_orders,
         bool with_id) {
     clock_t start_t = clock();
@@ -159,12 +159,12 @@ pgr_get_pd_orders_general(
         PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
             if ((*pd_orders) == NULL)
-                (*pd_orders) = (PickDeliveryOrders_t *)palloc0(
-                        total_tuples * sizeof(PickDeliveryOrders_t));
+                (*pd_orders) = (Orders_t *)palloc0(
+                        total_tuples * sizeof(Orders_t));
             else
-                (*pd_orders) = (PickDeliveryOrders_t *)repalloc(
+                (*pd_orders) = (Orders_t *)repalloc(
                         (*pd_orders),
-                        total_tuples * sizeof(PickDeliveryOrders_t));
+                        total_tuples * sizeof(Orders_t));
 
             if ((*pd_orders) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -205,7 +205,7 @@ pgr_get_pd_orders_general(
 void
 pgr_get_pd_orders(
         char *pd_orders_sql,
-        PickDeliveryOrders_t **pd_orders,
+        Orders_t **pd_orders,
         size_t *total_pd_orders) {
     pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, false);
 }
@@ -213,7 +213,7 @@ pgr_get_pd_orders(
 void
 pgr_get_pd_orders_with_id(
         char *pd_orders_sql,
-        PickDeliveryOrders_t **pd_orders,
+        Orders_t **pd_orders,
         size_t *total_pd_orders) {
     pgr_get_pd_orders_general(pd_orders_sql, pd_orders, total_pd_orders, true);
 }

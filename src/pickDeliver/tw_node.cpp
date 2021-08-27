@@ -150,7 +150,7 @@ Tw_node::operator ==(const Tw_node &other) const {
 
 Tw_node::Tw_node(
         size_t id,
-        PickDeliveryOrders_t data,
+        Orders_t data,
         NodeType type) :
     Dnode(id, data.pick_node_id),
     m_order(data.id),

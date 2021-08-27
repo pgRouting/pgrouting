@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Schedule_rt Schedule_rt;
-#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+#include "c_types/pickDeliver/orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
 
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliverEuclidean(
-            PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+            Orders_t *pd_orders_arr, size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
 
             double factor,
