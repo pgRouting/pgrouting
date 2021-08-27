@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "c_types/edge_t.h"
-#include "c_types/pgr_vertex_color_rt.h"
+#include "c_types/double_int64_t_rt.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_messages.h"
 
@@ -46,7 +46,7 @@ class Pgr_edgeColoring : public Pgr_messages {
  public:
     using EdgeColoring_Graph =
         boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS, boost::no_property,
-        size_t, boost::no_property>;
+        int64_t, boost::no_property>;
 
     using V       = boost::graph_traits<EdgeColoring_Graph>::vertex_descriptor;
     using E       = boost::graph_traits<EdgeColoring_Graph>::edge_descriptor;
@@ -54,7 +54,7 @@ class Pgr_edgeColoring : public Pgr_messages {
     using E_it    = boost::graph_traits<EdgeColoring_Graph>::edge_iterator;
 
  public:
-    std::vector<pgr_vertex_color_rt> edgeColoring();
+    std::vector<Double_int64_t_rt> edgeColoring();
 
     Pgr_edgeColoring(Edge_t*, size_t);
     Pgr_edgeColoring() = delete;

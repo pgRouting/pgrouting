@@ -42,9 +42,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
-std::vector<pgr_vertex_color_rt>
+std::vector<Double_int64_t_rt>
 Pgr_edgeColoring::edgeColoring() {
-    std::vector<pgr_vertex_color_rt> results;
+    std::vector<Double_int64_t_rt> results;
 
     CHECK_FOR_INTERRUPTS();
 
@@ -97,7 +97,7 @@ Pgr_edgeColoring::Pgr_edgeColoring(Edge_t *edges,
         if (edge.cost < 0 && edge.reverse_cost < 0) continue;
 
         E e;
-        boost::tie(e, added) = boost::add_edge(v1, v2, edge.cost, graph);
+        boost::tie(e, added) = boost::add_edge(v1, v2, graph);
 
         E_to_id.insert(std::make_pair(e, edge.id));
     }

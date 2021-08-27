@@ -58,7 +58,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
 template < class G >
-std::vector < pgr_vertex_color_rt >
+std::vector <Double_int64_t_rt>
 pgr_sequentialVertexColoring(G &graph) {
     pgrouting::functions::Pgr_sequentialVertexColoring < G > fn_sequentialVertexColoring;
     auto results = fn_sequentialVertexColoring.sequentialVertexColoring(graph);
@@ -94,7 +94,7 @@ do_pgr_sequentialVertexColoring(
         Edge_t  *data_edges,
         size_t total_edges,
 
-        pgr_vertex_color_rt **return_tuples,
+        Double_int64_t_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -110,7 +110,7 @@ do_pgr_sequentialVertexColoring(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::vector < pgr_vertex_color_rt > results;
+        std::vector <Double_int64_t_rt> results;
 
         graphType gType = UNDIRECTED;
         pgrouting::UndirectedGraph undigraph(gType);

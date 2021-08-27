@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_types/pgr_vertex_color_rt.h"
+#include "c_types/double_int64_t_rt.h"
 
 #include "drivers/coloring/edgeColoring_driver.h"
 
@@ -68,7 +68,7 @@ void
 process(
         char* edges_sql,
 
-        pgr_vertex_color_rt **result_tuples,
+        Double_int64_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -134,7 +134,7 @@ PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
     TupleDesc           tuple_desc;
 
     /**********************************************************************/
-    pgr_vertex_color_rt *result_tuples = NULL;
+    Double_int64_t_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -177,7 +177,7 @@ PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_vertex_color_rt*) funcctx->user_fctx;
+    result_tuples = (Double_int64_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -202,8 +202,8 @@ PGDLLEXPORT Datum _pgr_edgecoloring(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].color);
+        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.id);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
 
         /**********************************************************************/
 
