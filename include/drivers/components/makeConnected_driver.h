@@ -35,11 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 using Edge_t = struct Edge_t;
-using pgr_makeConnected_t = struct pgr_makeConnected_t;
+using Double_int64_t_rt = struct Double_int64_t_rt;
 #else
 #   include <stddef.h>
 typedef struct Edge_t Edge_t;
-typedef struct pgr_makeConnected_t pgr_makeConnected_t;
+typedef struct Double_int64_t_rt Double_int64_t_rt;
 #endif
 
 
@@ -55,7 +55,7 @@ extern "C" {
     void do_pgr_makeConnected(
                 Edge_t  *data_edges,
                 size_t total_tuples,
-                pgr_makeConnected_t **return_tuples,
+                Double_int64_t_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
