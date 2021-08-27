@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: double_int_t_rt.h
+File: double_int64_t_rt.h
 
 
 Copyright (c) 2021 pgRouting developers

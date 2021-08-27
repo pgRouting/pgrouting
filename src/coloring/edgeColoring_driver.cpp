@@ -44,7 +44,7 @@ void do_pgr_edgeColoring(
     Edge_t *data_edges,
     size_t total_edges,
 
-    pgr_vertex_color_rt **return_tuples,
+    Double_int64_t_rt **return_tuples,
     size_t *return_count,
 
     char **log_msg,
@@ -60,7 +60,7 @@ void do_pgr_edgeColoring(
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-        std::vector<pgr_vertex_color_rt> results;
+        std::vector<Double_int64_t_rt> results;
 
         pgrouting::functions::Pgr_edgeColoring fn_edgeColoring {data_edges, total_edges};
 
