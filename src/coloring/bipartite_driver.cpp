@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
-#include "c_types/pgr_bipartite_rt.h"
+#include "c_types/double_int64_t_rt.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
@@ -53,7 +53,7 @@ void
 do_pgr_bipartite(
         Edge_t  *data_edges,
         size_t total_edges,
-        pgr_bipartite_rt **return_tuples,
+        Double_int64_t_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -75,7 +75,7 @@ do_pgr_bipartite(
         graphType gType = UNDIRECTED;
         pgrouting::UndirectedGraph undigraph(gType);
         undigraph.insert_edges(data_edges, total_edges);
-        std::vector<pgr_bipartite_rt> results;
+        std::vector<Double_int64_t_rt> results;
         pgrouting::functions::Pgr_Bipartite <pgrouting::UndirectedGraph> fn_Bipartite;
         results = fn_Bipartite.pgr_bipartite(undigraph);
         logstr += fn_Bipartite.get_log();
