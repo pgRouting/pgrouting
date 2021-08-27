@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
-using General_path_element_t = struct General_path_element_t;
+using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
-typedef struct General_path_element_t General_path_element_t;
+typedef struct Path_rt Path_rt;
 #endif
 
 #include "c_types/pgr_edge_xy_t.h"
@@ -75,7 +75,7 @@ extern "C" {
             double epsilon,
             bool only_cost,
 
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
 
             char** log_msg,

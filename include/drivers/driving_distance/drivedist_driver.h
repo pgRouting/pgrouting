@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-typedef struct General_path_element_t General_path_element_t;
+typedef struct Path_rt Path_rt;
 
 
 #ifdef __cplusplus
@@ -48,7 +48,7 @@ extern "C" {
             double distance,
             bool directed,
             bool equicost,
-            General_path_element_t** return_tuples, size_t* return_count,
+            Path_rt** return_tuples, size_t* return_count,
             char **log_msg,
             char **notice_msg,
             char **err_msg);
