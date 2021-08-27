@@ -93,7 +93,7 @@ process(char* edges_sql,
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
 
-    Pgr_edge_xy_t *edges = NULL;
+    Edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_combination_t *combinations = NULL;

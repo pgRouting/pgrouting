@@ -47,7 +47,7 @@ static void process(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    Pgr_edge_xy_t *edgesArr = NULL;
+    Edge_xy_t *edgesArr = NULL;
     size_t edgesSize = 0;
 
     pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize);

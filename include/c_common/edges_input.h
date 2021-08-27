@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #include <stddef.h>
 
-typedef struct Pgr_edge_xy_t Pgr_edge_xy_t;
+typedef struct Edge_xy_t Edge_xy_t;
 typedef struct pgr_flow_t pgr_flow_t;
 typedef struct pgr_basic_edge_t pgr_basic_edge_t;
 typedef struct pgr_costFlow_t pgr_costFlow_t;
@@ -93,7 +93,7 @@ FROM edge_table;
 */
 void pgr_get_edges_xy(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges);
 
 /*! @brief for many to 1 on aStar
@@ -118,7 +118,7 @@ FROM edge_table;
 */
 void pgr_get_edges_xy_reversed(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges);
 
 

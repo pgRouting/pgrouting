@@ -85,7 +85,7 @@ process(char* edges_sql,
         pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
     }
 
-    Pgr_edge_xy_t *edges = NULL;
+    Edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges_xy(edges_sql, &edges, &total_edges);

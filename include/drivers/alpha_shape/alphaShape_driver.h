@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for syze_t */
 #include <stddef.h>
-#include "c_types/pgr_edge_xy_t.h"
+#include "c_types/edge_xy_t.h"
 typedef struct GeomText_t GeomText_t;
 
 
@@ -37,7 +37,7 @@ extern "C" {
 #endif
 
     void do_alphaShape(
-            Pgr_edge_xy_t *edgesArr,
+            Edge_xy_t *edgesArr,
             size_t edgesTotal,
 
             double alpha,
