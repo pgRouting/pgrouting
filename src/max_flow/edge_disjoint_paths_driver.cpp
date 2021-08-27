@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 static
-std::vector<General_path_element_t>
+std::vector<Path_rt>
 single_execution(
         std::vector<Edge_t> edges,
         int64_t source,
@@ -73,7 +73,7 @@ do_pgr_edge_disjoint_paths(
     int64_t *sinks,
     size_t size_sink_verticesArr,
     bool directed,
-    General_path_element_t **return_tuples,
+    Path_rt **return_tuples,
     size_t *return_count,
     char** log_msg,
     char** notice_msg,
@@ -112,7 +112,7 @@ do_pgr_edge_disjoint_paths(
         }
 
 
-        std::vector<General_path_element_t> paths;
+        std::vector<Path_rt> paths;
         for (const auto &s : set_source_vertices) {
             for (const auto &t : set_sink_vertices) {
                 auto path = single_execution(

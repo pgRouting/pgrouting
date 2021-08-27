@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
-#include "c_types/general_path_element_t.h"
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -46,7 +46,7 @@ void compute(
         int p_k,
         bool directed,
         bool heap_paths,
-        General_path_element_t **result_tuples, size_t *result_count) {
+        Path_rt **result_tuples, size_t *result_count) {
     pgr_SPI_connect();
     if (p_k < 0) {
         return;
@@ -121,7 +121,7 @@ PGDLLEXPORT Datum
 _pgr_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
-    General_path_element_t      *path = NULL;
+    Path_rt      *path = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -171,7 +171,7 @@ _pgr_ksp(PG_FUNCTION_ARGS) {
 
 
     tuple_desc = funcctx->tuple_desc;
-    path = (General_path_element_t*) funcctx->user_fctx;
+    path = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

@@ -250,10 +250,10 @@ PgrFlowGraph::flow_dfs(V vertex,
     }
 }
 
-std::vector<General_path_element_t>
+std::vector<Path_rt>
 PgrFlowGraph::get_edge_disjoint_paths(
         size_t flow) {
-    std::vector<General_path_element_t> path_elements;
+    std::vector<Path_rt> path_elements;
 
     std::vector<std::vector<int64_t> > paths(flow, std::vector<int64_t>());
     size_t path_id = 0;
@@ -280,7 +280,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
         bool exists;
         size_t j;
         for (j = 0; j < size - 1; j++) {
-            General_path_element_t edge;
+            Path_rt edge;
             edge.seq = static_cast<int>(j + 1);
             edge.start_id = paths[i][0];
             edge.end_id = paths[i][size - 1];
@@ -291,7 +291,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
             edge.edge = get_edge_id(e);
             path_elements.push_back(edge);
         }
-        General_path_element_t edge;
+        Path_rt edge;
         edge.seq = static_cast<int>(j + 1);
         edge.start_id = paths[i][0];
         edge.end_id = paths[i][size - 1];

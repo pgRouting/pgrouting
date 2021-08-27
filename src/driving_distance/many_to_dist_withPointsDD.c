@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-#include "c_types/general_path_element_t.h"
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -54,7 +54,7 @@ void process(
         bool details,
         bool equicost,
 
-        General_path_element_t **result_tuples,
+        Path_rt **result_tuples,
         size_t *result_count) {
     driving_side[0] = estimate_drivingSide(driving_side[0]);
     PGR_DBG("estimated driving side:%c", driving_side[0]);
@@ -148,7 +148,7 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
     TupleDesc               tuple_desc;
 
     /**********************************************************************/
-    General_path_element_t  *result_tuples = 0;
+    Path_rt  *result_tuples = 0;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -205,7 +205,7 @@ _pgr_withpointsdd(PG_FUNCTION_ARGS) {
     funcctx = SRF_PERCALL_SETUP();
 
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

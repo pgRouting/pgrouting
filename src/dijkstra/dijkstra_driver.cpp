@@ -168,7 +168,7 @@ do_pgr_many_to_many_dijkstra(
         int64_t n_goals,
         bool global,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -270,7 +270,7 @@ do_pgr_combinations_dijkstra(
         int64_t n_goals,
         bool global,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,

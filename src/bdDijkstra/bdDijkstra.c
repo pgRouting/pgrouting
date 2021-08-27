@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
-#include "c_types/general_path_element_t.h"
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -58,7 +58,7 @@ process(
         ArrayType *ends,
         bool directed,
         bool only_cost,
-        General_path_element_t **result_tuples,
+        Path_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -140,7 +140,7 @@ PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t  *result_tuples = NULL;
+    Path_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -201,7 +201,7 @@ PGDLLEXPORT Datum _pgr_bddijkstra(PG_FUNCTION_ARGS) {
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
 
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

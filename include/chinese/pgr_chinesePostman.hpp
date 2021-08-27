@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stack>
 
 #include "max_flow/pgr_minCostMaxFlow.hpp"
-#include "c_types/general_path_element_t.h"
+#include "c_types/path_rt.h"
 #include "c_types/edge_t.h"
 #include "c_types/pgr_flow_t.h"
 #include "cpp_common/pgr_assert.h"
@@ -56,7 +56,7 @@ class PgrDirectedChPPGraph {
          return m_cost;
      }
 
-     std::vector<General_path_element_t> GetPathEdges() const {
+     std::vector<Path_rt> GetPathEdges() const {
          return resultPath;
      }
 
@@ -94,7 +94,7 @@ class PgrDirectedChPPGraph {
      Identifiers<int64_t> vertexVisited;
 
      std::stack<int64_t> pathStack;  // node stack
-     std::vector<General_path_element_t> resultPath;
+     std::vector<Path_rt> resultPath;
 
      /* for the flow graph */
      std::vector<pgr_costFlow_t> edges;
@@ -272,7 +272,7 @@ PgrDirectedChPPGraph::BuildResultPath() {
     int64_t preNode = pathStack.top();
     pathStack.pop();
 
-    General_path_element_t newElement;
+    Path_rt newElement;
     while (!pathStack.empty()) {
         int64_t nowNode = pathStack.top();
         pathStack.pop();

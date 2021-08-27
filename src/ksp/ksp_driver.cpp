@@ -48,7 +48,7 @@ void  do_pgr_ksp(
         size_t k,
         bool directed,
         bool heap_paths,
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,

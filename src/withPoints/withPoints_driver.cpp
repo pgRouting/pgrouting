@@ -106,7 +106,7 @@ do_pgr_withPoints(
         bool only_cost,
         bool normal,
 
-        General_path_element_t **return_tuples, size_t *return_count,
+        Path_rt **return_tuples, size_t *return_count,
 
         char** log_msg,
         char** notice_msg,

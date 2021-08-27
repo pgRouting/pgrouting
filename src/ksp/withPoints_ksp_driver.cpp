@@ -62,7 +62,7 @@ do_pgr_withPointsKsp(
         bool heap_paths,
         char driving_side,
         bool details,
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
