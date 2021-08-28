@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "c_types/matrix_cell_t.h"
+#include "c_types/iid_t_rt.h"
 #include "c_types/coordinate_t.h"
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_assert.h"
@@ -73,7 +73,7 @@ class TSP : public Pgr_messages {
             std::deque<std::pair<int64_t, double>> result,
             size_t limit, int cycles);
 
-    TSP(Matrix_cell_t *, size_t, bool);
+    TSP(IID_t_rt *, size_t, bool);
     TSP(Coordinate_t *, size_t, bool);
     TSP() = delete;
 

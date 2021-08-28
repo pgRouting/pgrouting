@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: matrix_cell_t.h
+File: iid_t_rt.h
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_MATRIX_CELL_T_H_
-#define INCLUDE_C_TYPES_MATRIX_CELL_T_H_
+#ifndef INCLUDE_C_TYPES_IID_T_RT_H_
+#define INCLUDE_C_TYPES_IID_T_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-struct Matrix_cell_t {
+struct IID_t_rt {
     int64_t from_vid;
     int64_t to_vid;
     double cost;
 };
 
-#endif  // INCLUDE_C_TYPES_MATRIX_CELL_T_H_
+#endif  // INCLUDE_C_TYPES_IID_T_RT_H_

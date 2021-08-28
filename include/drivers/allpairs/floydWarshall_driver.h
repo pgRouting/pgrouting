@@ -35,11 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 using Edge_t = struct Edge_t;
-using Matrix_cell_t = struct Matrix_cell_t;
+using IID_t_rt = struct IID_t_rt;
 #else
 #   include <stddef.h>
 typedef struct Edge_t Edge_t;
-typedef struct Matrix_cell_t Matrix_cell_t;
+typedef struct IID_t_rt IID_t_rt;
 #endif
 
 
@@ -55,7 +55,7 @@ do_pgr_floydWarshall(
     bool directedFlag,
 
     // return values
-    Matrix_cell_t **ret_matrix,
+    IID_t_rt **ret_matrix,
     size_t *return_tuple_count,
     char ** log_msg,
     char ** err_msg);

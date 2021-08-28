@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/matrix_cell_t.h"
+#include "c_types/iid_t_rt.h"
 typedef struct TSP_tour_rt TSP_tour_rt;
 
 
@@ -49,7 +49,7 @@ extern "C" {
 
 void
 do_pgr_tsp(
-        Matrix_cell_t *distances, size_t total_distances,
+        IID_t_rt *distances, size_t total_distances,
         int64_t start_vid,
         int64_t end_vid,
         bool strict,

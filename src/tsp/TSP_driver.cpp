@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_tsp(
-        Matrix_cell_t *distances,
+        IID_t_rt *distances,
         size_t total_distances,
         int64_t start_vid,
         int64_t end_vid,

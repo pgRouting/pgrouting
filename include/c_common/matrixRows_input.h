@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stddef.h>
 
-typedef struct Matrix_cell_t Matrix_cell_t;
+typedef struct IID_t_rt IID_t_rt;
 
 /*!
   bigint start_vid,
@@ -37,7 +37,7 @@ typedef struct Matrix_cell_t Matrix_cell_t;
   */
 void pgr_get_matrixRows(
         char *sql,
-        Matrix_cell_t **distaces,
+        IID_t_rt **distaces,
         size_t *total_distances);
 
 #endif  // INCLUDE_C_COMMON_MATRIXROWS_INPUT_H_

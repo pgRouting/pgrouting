@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 
-#include "c_types/matrix_cell_t.h"
+#include "c_types/iid_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
@@ -55,14 +55,14 @@ template < class G > class Pgr_allpairs;
 // user's functions
 template < class G >
 void
-pgr_johnson(G &graph, std::vector< Matrix_cell_t> &rows) {
+pgr_johnson(G &graph, std::vector< IID_t_rt> &rows) {
     Pgr_allpairs< G > fn_johnson;
     fn_johnson.johnson(graph, rows);
 }
 
 template < class G >
 void
-pgr_floydWarshall(G &graph, std::vector< Matrix_cell_t> &rows) {
+pgr_floydWarshall(G &graph, std::vector< IID_t_rt> &rows) {
     Pgr_allpairs< G > fn_floydWarshall;
     fn_floydWarshall.floydWarshall(graph, rows);
 }
@@ -73,7 +73,7 @@ void
 pgr_johnson(
         G &graph,
         size_t &result_tuple_count,
-        Matrix_cell_t **postgres_rows) {
+        IID_t_rt **postgres_rows) {
     Pgr_allpairs< G > fn_johnson;
     fn_johnson.johnson(graph, result_tuple_count, postgres_rows);
 }
@@ -84,7 +84,7 @@ void
 pgr_floydWarshall(
         G &graph,
         size_t &result_tuple_count,
-        Matrix_cell_t **postgres_rows) {
+        IID_t_rt **postgres_rows) {
     Pgr_allpairs< G > fn_floydWarshall;
     fn_floydWarshall.floydWarshall(graph, result_tuple_count, postgres_rows);
 }
@@ -97,7 +97,7 @@ class Pgr_allpairs {
      void floydWarshall(
              G &graph,
              size_t &result_tuple_count,
-             Matrix_cell_t **postgres_rows) {
+             IID_t_rt **postgres_rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
@@ -118,7 +118,7 @@ class Pgr_allpairs {
 
      void floydWarshall(
              G &graph,
-             std::vector< Matrix_cell_t> &rows) {
+             std::vector< IID_t_rt> &rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
@@ -140,7 +140,7 @@ class Pgr_allpairs {
      void johnson(
              G &graph,
              size_t &result_tuple_count,
-             Matrix_cell_t **postgres_rows) {
+             IID_t_rt **postgres_rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
@@ -162,7 +162,7 @@ class Pgr_allpairs {
 
      void johnson(
              G &graph,
-             std::vector< Matrix_cell_t> &rows) {
+             std::vector< IID_t_rt> &rows) {
          std::vector< std::vector<double>> matrix;
          make_matrix(graph.num_vertices(), matrix);
          inf_plus<double> combine;
@@ -195,7 +195,7 @@ class Pgr_allpairs {
              const G &graph,
              const std::vector< std::vector<double> > &matrix,
              size_t &result_tuple_count,
-             Matrix_cell_t **postgres_rows) const {
+             IID_t_rt **postgres_rows) const {
          result_tuple_count = count_rows(graph, matrix);
          *postgres_rows = pgr_alloc(result_tuple_count, (*postgres_rows));
 
@@ -233,7 +233,7 @@ class Pgr_allpairs {
      void make_result(
              G &graph,
              std::vector< std::vector<double> > &matrix,
-             std::vector< Matrix_cell_t> &rows) {
+             std::vector< IID_t_rt> &rows) {
          size_t count = count_rows(graph, matrix);
          rows.resize(count);
          size_t seq = 0;
