@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 
-#include "c_types/pgr_components_rt.h"
+#include "c_types/double_int64_t_rt.h"
 
 
 namespace pgrouting {
@@ -38,7 +38,7 @@ namespace algorithms {
 
 namespace detail {
 
-std::vector<pgr_components_rt>
+std::vector<Double_int64_t_rt>
 componentsResult(
         std::vector<std::vector<int64_t>> &components);
 
