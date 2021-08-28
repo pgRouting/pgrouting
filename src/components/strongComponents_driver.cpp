@@ -45,7 +45,7 @@ void
 do_pgr_strongComponents(
         Edge_t  *data_edges,
         size_t total_edges,
-        pgr_components_rt **return_tuples,
+        Double_int64_t_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
