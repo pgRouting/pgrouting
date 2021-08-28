@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-typedef struct pgr_topologicalSort_t pgr_topologicalSort_t;
+typedef struct I_rt I_rt;
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,7 +51,7 @@ extern "C" {
             Edge_t  *data_edges,
             size_t total_tuples,
 
-            pgr_topologicalSort_t **return_tuples,
+            I_rt **return_tuples,
             size_t *return_count,
 
             char** log_msg,
