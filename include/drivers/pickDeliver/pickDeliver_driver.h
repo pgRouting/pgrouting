@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/pickDeliver/orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
-#include "c_types/matrix_cell_t.h"
+#include "c_types/iid_t_rt.h"
 typedef struct Schedule_rt Schedule_rt;
 
 #ifdef __cplusplus
@@ -57,7 +57,7 @@ extern "C" {
     void do_pgr_pickDeliver(
             Orders_t pd_orders_arr[], size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
-            Matrix_cell_t *matrix_cells_arr, size_t total_cells,
+            IID_t_rt *matrix_cells_arr, size_t total_cells,
 
             double factor,
             int max_cycles,

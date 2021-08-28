@@ -53,7 +53,7 @@ do_pgr_pickDeliver(
         Vehicle_t *vehicles_arr,
         size_t total_vehicles,
 
-        Matrix_cell_t *matrix_cells_arr,
+        IID_t_rt *matrix_cells_arr,
         size_t total_cells,
 
         double factor,
@@ -90,7 +90,7 @@ do_pgr_pickDeliver(
         std::vector<Vehicle_t> vehicles(
                 vehicles_arr, vehicles_arr + total_vehicles);
 
-        std::vector <Matrix_cell_t> data_costs(
+        std::vector <IID_t_rt> data_costs(
                 matrix_cells_arr,
                 matrix_cells_arr + total_cells);
 

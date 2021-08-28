@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/postgres_connection.h"
 
-#include "c_types/matrix_cell_t.h"
+#include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -48,7 +48,7 @@ void
 process(
         char* edges_sql,
         bool directed,
-        Matrix_cell_t **result_tuples,
+        IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -106,7 +106,7 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
 
     /**************************************************************************/
     /*                                                                        */
-    Matrix_cell_t  *result_tuples = NULL;
+    IID_t_rt  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -154,7 +154,7 @@ _pgr_floydwarshall(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Matrix_cell_t*) funcctx->user_fctx;
+    result_tuples = (IID_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

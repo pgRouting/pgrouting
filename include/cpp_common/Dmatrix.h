@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <utility>
 
-typedef struct Matrix_cell_t Matrix_cell_t;
+typedef struct IID_t_rt IID_t_rt;
 
 namespace pgrouting {
 namespace tsp {
@@ -44,7 +44,7 @@ class Tour;  // for tourCost
 class Dmatrix {
  public:
     Dmatrix() = default;
-    explicit Dmatrix(const std::vector < Matrix_cell_t > &data_costs);
+    explicit Dmatrix(const std::vector < IID_t_rt > &data_costs);
     explicit Dmatrix(const std::map<std::pair<double, double>, int64_t> &euclidean_data);
 
     bool has_no_infinity() const;
@@ -115,7 +115,7 @@ class Dmatrix {
     }
 
  protected:
-    void set_ids(const std::vector<Matrix_cell_t> &data_costs);
+    void set_ids(const std::vector<IID_t_rt> &data_costs);
     std::vector<int64_t> ids;
 
  private:

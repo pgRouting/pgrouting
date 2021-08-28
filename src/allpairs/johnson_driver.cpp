@@ -43,7 +43,7 @@ do_pgr_johnson(
         Edge_t  *data_edges,
         size_t total_tuples,
         bool directed,
-        Matrix_cell_t **return_tuples,
+        IID_t_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** err_msg) {

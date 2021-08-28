@@ -55,7 +55,7 @@ process(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    Matrix_cell_t *distances = NULL;
+    IID_t_rt *distances = NULL;
     size_t total_distances = 0;
     pgr_get_matrixRows(distances_sql, &distances, &total_distances);
 

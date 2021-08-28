@@ -144,7 +144,7 @@ process(
     }
 #endif
     PGR_DBG("load matrix");
-    Matrix_cell_t *matrix_cells_arr = NULL;
+    IID_t_rt *matrix_cells_arr = NULL;
     size_t total_cells = 0;
     pgr_get_matrixRows(matrix_sql, &matrix_cells_arr, &total_cells);
 
