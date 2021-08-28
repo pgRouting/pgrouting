@@ -41,7 +41,7 @@ typedef struct Flow_t Flow_t;
 #endif
 
 #include "c_types/ii_t_rt.h"
-#include "c_types/pgr_costFlow_t.h"
+#include "c_types/costFlow_t.h"
 
 
 
@@ -58,7 +58,7 @@ extern "C" {
 
     void
         do_pgr_minCostMaxFlow(
-                pgr_costFlow_t  *data_edges,
+                CostFlow_t  *data_edges,
                 size_t total_edges,
                 II_t_rt  *combinations,
                 size_t total_combinations,

@@ -97,7 +97,7 @@ class PgrDirectedChPPGraph {
      std::vector<Path_rt> resultPath;
 
      /* for the flow graph */
-     std::vector<pgr_costFlow_t> edges;
+     std::vector<CostFlow_t> edges;
      std::set<int64_t> sources;
      std::set<int64_t> targets;
 };
@@ -160,7 +160,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
             }
         }
 
-        pgr_costFlow_t edge;
+        CostFlow_t edge;
         edge.edge_id = e.id;
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
@@ -188,7 +188,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
             continue;
         if (d > 0)
             totalDeg += d;
-        pgr_costFlow_t edge;
+        CostFlow_t edge;
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
         edge.cost = 0.0;

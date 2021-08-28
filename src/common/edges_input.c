@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_types/column_info_t.h"
 #include "c_types/pgr_basic_edge_t.h"
-#include "c_types/pgr_costFlow_t.h"
+#include "c_types/costFlow_t.h"
 #include "c_types/edge_xy_t.h"
 
 #include "c_common/debug_macro.h"
@@ -123,7 +123,7 @@ void fetch_costFlow_edge(
         int64_t *default_id,
         int64_t default_rcapacity,
         float8 default_rcost,
-        pgr_costFlow_t *edge,
+        CostFlow_t *edge,
         size_t *valid_edges,
         bool normal) {
     if (column_found(info[0].colNumber)) {
@@ -503,7 +503,7 @@ static
 void
 get_edges_costFlow(
     char *sql,
-    pgr_costFlow_t **edges,
+    CostFlow_t **edges,
     size_t *totalTuples,
     bool ignore_id) {
     clock_t start_t = clock();
@@ -559,11 +559,11 @@ get_edges_costFlow(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_costFlow_t *)
-                    palloc0(total_tuples * sizeof(pgr_costFlow_t));
+                (*edges) = (CostFlow_t *)
+                    palloc0(total_tuples * sizeof(CostFlow_t));
             else
-                (*edges) = (pgr_costFlow_t *)
-                    repalloc((*edges), total_tuples * sizeof(pgr_costFlow_t));
+                (*edges) = (CostFlow_t *)
+                    repalloc((*edges), total_tuples * sizeof(CostFlow_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -706,7 +706,7 @@ pgr_get_flow_edges(
 void
 pgr_get_costFlow_edges(
     char *sql,
-    pgr_costFlow_t **edges,
+    CostFlow_t **edges,
     size_t *total_edges) {
     bool ignore_id = false;
     get_edges_costFlow(sql, edges, total_edges, ignore_id);

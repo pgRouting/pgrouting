@@ -92,7 +92,7 @@ process(
     size_t sizeSinkVerticesArr = 0;
 
     PGR_DBG("Load data");
-    pgr_costFlow_t *edges = NULL;
+    CostFlow_t *edges = NULL;
     size_t total_edges = 0;
 
     II_t_rt *combinations = NULL;

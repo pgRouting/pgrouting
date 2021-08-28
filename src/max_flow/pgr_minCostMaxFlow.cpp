@@ -35,7 +35,7 @@ namespace pgrouting {
 namespace graph {
 
 PgrCostFlowGraph::PgrCostFlowGraph(
-        const std::vector<pgr_costFlow_t> &edges,
+        const std::vector<CostFlow_t> &edges,
         const std::set<int64_t> &sourceVertices,
         const std::set<int64_t> &sinkVertices) {
     AddVertices(edges, sourceVertices, sinkVertices);
@@ -61,7 +61,7 @@ PgrCostFlowGraph::E PgrCostFlowGraph::AddEdge(
 }
 
 void PgrCostFlowGraph::InsertEdges(
-        const std::vector<pgr_costFlow_t> &edges) {
+        const std::vector<CostFlow_t> &edges) {
     for (const auto edge : edges) {
         PgrCostFlowGraph::E e1, e1Rev, e2, e2Rev;
         V v1 = GetBoostVertex(edge.source);
