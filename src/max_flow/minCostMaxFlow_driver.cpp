@@ -47,7 +47,7 @@ do_pgr_minCostMaxFlow(
         int64_t *sinkVertices, size_t sizeSinkVerticesArr,
         bool only_cost,
 
-        pgr_flow_t **return_tuples, size_t *return_count,
+        Flow_t **return_tuples, size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -98,10 +98,10 @@ do_pgr_minCostMaxFlow(
         double min_cost;
         min_cost = digraph.MinCostMaxFlow();
 
-        std::vector<pgr_flow_t> flow_edges;
+        std::vector<Flow_t> flow_edges;
 
         if (only_cost) {
-            pgr_flow_t edge;
+            Flow_t edge;
             edge.edge = -1;
             edge.source = -1;
             edge.target = -1;

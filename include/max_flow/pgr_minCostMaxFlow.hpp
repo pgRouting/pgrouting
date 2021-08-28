@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "c_types/pgr_flow_t.h"
+#include "c_types/flow_t.h"
 #include "c_types/pgr_costFlow_t.h"
 #include "max_flow/pgr_costFlowGraph.hpp"
 
@@ -74,7 +74,7 @@ class PgrCostFlowGraph {
 
      int64_t GetMaxFlow() const;
 
-     std::vector<pgr_flow_t> GetFlowEdges() const;
+     std::vector<Flow_t> GetFlowEdges() const;
 
  private:
      V GetBoostVertex(int64_t id) const {

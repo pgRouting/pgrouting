@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_flow_t.h
+File: flow_t.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-struct pgr_flow_t {
+struct Flow_t {
   int64_t edge;
   int64_t source;
   int64_t target;

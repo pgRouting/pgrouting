@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "c_types/pgr_flow_t.h"
+#include "c_types/flow_t.h"
 #include "c_types/edge_t.h"
 #include "c_types/path_rt.h"
 #include "cpp_common/interruption.h"
@@ -119,7 +119,7 @@ class PgrFlowGraph {
              bool directed);
 
 
-     std::vector<pgr_flow_t> get_flow_edges() const;
+     std::vector<Flow_t> get_flow_edges() const;
 
      std::vector<Path_rt> get_edge_disjoint_paths(
              size_t flow);

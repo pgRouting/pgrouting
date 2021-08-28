@@ -200,9 +200,9 @@ void PgrFlowGraph::set_supersink(
     }
 }
 
-std::vector<pgr_flow_t>
+std::vector<Flow_t>
 PgrFlowGraph::get_flow_edges() const {
-    std::vector<pgr_flow_t> flow_edges;
+    std::vector<Flow_t> flow_edges;
     E_it e, e_end;
     for (boost::tie(e, e_end) = boost::edges(graph); e != e_end;
             ++e) {
@@ -210,7 +210,7 @@ PgrFlowGraph::get_flow_edges() const {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source != supersource) &&
                 ((*e).m_target != supersink)) {
-            pgr_flow_t edge;
+            Flow_t edge;
             edge.edge = get_edge_id(*e);
             edge.source = get_vertex_id((*e).m_source);
             edge.target = get_vertex_id((*e).m_target);

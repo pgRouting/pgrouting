@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/combinations_input.h"
 #include "drivers/max_flow/max_flow_driver.h"
 
-#include "c_types/pgr_flow_t.h"
+#include "c_types/flow_t.h"
 
 PGDLLEXPORT Datum
 _pgr_maxflow(PG_FUNCTION_ARGS);
@@ -55,7 +55,7 @@ process(
         ArrayType *ends,
         int algorithm,
         bool only_flow,
-        pgr_flow_t **result_tuples,
+        Flow_t **result_tuples,
         size_t *result_count) {
     if (algorithm < 1 || algorithm > 3) {
         elog(ERROR, "Unknown algorithm");
@@ -165,7 +165,7 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    pgr_flow_t *result_tuples = 0;
+    Flow_t *result_tuples = 0;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -225,7 +225,7 @@ _pgr_maxflow(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_flow_t *) funcctx->user_fctx;
+    result_tuples = (Flow_t *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
