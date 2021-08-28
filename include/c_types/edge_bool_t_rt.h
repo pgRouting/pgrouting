@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_basic_edge_t.h
+File: edge_bool_t_rt.h
 
 Copyright (c) 2017 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_BASIC_EDGE_T_H_
-#define INCLUDE_C_TYPES_PGR_BASIC_EDGE_T_H_
+#ifndef INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
+#define INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-struct pgr_basic_edge_t {
+struct Edge_bool_t_rt {
   int64_t id;
   int64_t source;
   int64_t target;
@@ -44,4 +44,4 @@ struct pgr_basic_edge_t {
   int64_t edge_id;
 };
 
-#endif  // INCLUDE_C_TYPES_PGR_BASIC_EDGE_T_H_
+#endif  // INCLUDE_C_TYPES_EDGE_BOOL_T_RT_H_

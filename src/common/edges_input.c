@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/column_info_t.h"
-#include "c_types/pgr_basic_edge_t.h"
+#include "c_types/edge_bool_t_rt.h"
 #include "c_types/costFlow_t.h"
 #include "c_types/edge_xy_t.h"
 
@@ -52,7 +52,7 @@ void fetch_basic_edge(
     TupleDesc *tupdesc,
     Column_info_t info[5],
     int64_t *default_id,
-    pgr_basic_edge_t *edge,
+    Edge_bool_t_rt *edge,
     size_t *valid_edges) {
     if (column_found(info[0].colNumber)) {
         edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
@@ -601,7 +601,7 @@ static
 void
 get_edges_basic(
     char *sql,
-    pgr_basic_edge_t **edges,
+    Edge_bool_t_rt **edges,
     size_t *totalTuples,
     bool ignore_id) {
     clock_t start_t = clock();
@@ -655,11 +655,11 @@ get_edges_basic(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_basic_edge_t *)palloc0(
-                        total_tuples * sizeof(pgr_basic_edge_t));
+                (*edges) = (Edge_bool_t_rt *)palloc0(
+                        total_tuples * sizeof(Edge_bool_t_rt));
             else
-                (*edges) = (pgr_basic_edge_t *)repalloc(
-                        (*edges), total_tuples * sizeof(pgr_basic_edge_t));
+                (*edges) = (Edge_bool_t_rt *)repalloc(
+                        (*edges), total_tuples * sizeof(Edge_bool_t_rt));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -771,7 +771,7 @@ pgr_get_edges_xy_reversed(
 void
 pgr_get_basic_edges(
         char *sql,
-        pgr_basic_edge_t **edges,
+        Edge_bool_t_rt **edges,
         size_t *total_edges) {
     bool ignore_id = false;
     get_edges_basic(sql, edges, total_edges, ignore_id);
