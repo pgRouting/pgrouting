@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "dijkstra/pgr_dijkstra.hpp"
 
-#include "c_types/line_graph_rt.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
@@ -45,8 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void get_postgres_result(
-        std::vector< Line_graph_rt > edge_result,
-        Line_graph_rt **return_tuples,
+        std::vector< Edge_t > edge_result,
+        Edge_t **return_tuples,
         size_t &sequence) {
     (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));
 
@@ -62,7 +61,7 @@ do_pgr_lineGraph(
         Edge_t  *data_edges,
         size_t total_edges,
         bool directed,
-        Line_graph_rt **return_tuples,
+        Edge_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -88,7 +87,7 @@ do_pgr_lineGraph(
             pgrouting::LinearDirectedGraph,
             pgrouting::Line_vertex,
             pgrouting::Basic_edge> line(digraph);
-        std::vector< Line_graph_rt > line_graph_edges;
+        std::vector< Edge_t > line_graph_edges;
         line_graph_edges = line.get_postgres_results_directed();
         auto count = line_graph_edges.size();
 

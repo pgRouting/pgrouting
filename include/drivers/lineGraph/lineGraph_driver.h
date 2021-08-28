@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-typedef struct Line_graph_rt Line_graph_rt;
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,7 +55,7 @@ extern "C" {
                 Edge_t  *data_edges,
                 size_t total_edges,
                 bool directed,
-                Line_graph_rt **return_tuples,
+                Edge_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

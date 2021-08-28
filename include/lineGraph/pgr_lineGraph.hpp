@@ -87,12 +87,12 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
     }
 
 
-    std::vector< Line_graph_rt >
+    std::vector< Edge_t >
         get_postgres_results_directed() {
-            std::vector< Line_graph_rt > results;
+            std::vector< Edge_t > results;
 
             typename boost::graph_traits < G >::edge_iterator edgeIt, edgeEnd;
-            std::map < std::pair<int64_t, int64_t >, Line_graph_rt > unique;
+            std::map < std::pair<int64_t, int64_t >, Edge_t > unique;
             int64_t count = 0;
 
             for (boost::tie(edgeIt, edgeEnd) = boost::edges(this->graph);
@@ -116,7 +116,7 @@ class Pgr_lineGraph : public Pgr_base_graph<G, T_V, T_E> {
                 e_source *= -1;
                 e_target *= -1;
 
-                Line_graph_rt edge = {
+                Edge_t edge = {
                     ++count,
                     e_source,
                     e_target,
