@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "drivers/dijkstra/dijkstra_driver.h"
-#include <c_types/pgr_combination_t.h>
+#include <c_types/double_int64_t_rt.h>
 
 #include <sstream>
 #include <deque>
@@ -131,7 +131,7 @@ template < class G >
 std::deque< Path >
 pgr_dijkstra(
         G &graph,
-        std::vector < pgr_combination_t > &combinations,
+        std::vector < Double_int64_t_rt > &combinations,
         bool only_cost,
         bool normal,
         size_t n_goals,
@@ -262,7 +262,7 @@ void
 do_pgr_combinations_dijkstra(
         Edge_t  *data_edges,
         size_t total_edges,
-        pgr_combination_t *combinations,
+        Double_int64_t_rt *combinations,
         size_t total_combinations,
         bool directed,
         bool only_cost,
@@ -291,7 +291,7 @@ do_pgr_combinations_dijkstra(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
 
-        std::vector<pgr_combination_t>
+        std::vector<Double_int64_t_rt>
                 combinations_vector(combinations, combinations + total_combinations);
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);

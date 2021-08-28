@@ -43,7 +43,7 @@ typedef struct Path_rt Path_rt;
 #endif
 
 
-#include "c_types/pgr_combination_t.h"
+#include "c_types/double_int64_t_rt.h"
 
 
 
@@ -55,7 +55,7 @@ extern "C" {
         do_pgr_edge_disjoint_paths(
             Edge_t *data_edges,
             size_t total_tuples,
-            pgr_combination_t  *combinations,
+            Double_int64_t_rt  *combinations,
             size_t total_combinations,
             int64_t *source_vertices,
             size_t size_source_verticesArr,

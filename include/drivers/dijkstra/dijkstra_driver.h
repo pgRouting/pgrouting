@@ -46,7 +46,7 @@ typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
 #endif
 
-#include "c_types/pgr_combination_t.h"
+#include "c_types/double_int64_t_rt.h"
 
 
 #ifdef __cplusplus
@@ -86,7 +86,7 @@ extern "C" {
     void do_pgr_combinations_dijkstra(
             Edge_t  *data_edges,
             size_t total_tuples,
-            pgr_combination_t  *combinations,
+            Double_int64_t_rt  *combinations,
             size_t total_combinations,
             bool directed,
             bool only_cost,

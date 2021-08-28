@@ -79,18 +79,18 @@ class Pgr_edwardMoore {
     // preparation for the parallel arrays
     std::deque<Path> edwardMoore(
         G &graph,
-        const std::vector<pgr_combination_t> &combinations) {
+        const std::vector<Double_int64_t_rt> &combinations) {
         std::deque<Path> paths;
 
         // group targets per distinct source
         std::map< int64_t, std::vector<int64_t> > vertex_map;
-        for (const pgr_combination_t &comb : combinations) {
-            std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.source);
+        for (const Double_int64_t_rt &comb : combinations) {
+            std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
             if (it != vertex_map.end()) {
-                it->second.push_back(comb.target);
+                it->second.push_back(comb.d2.target);
             } else {
-                std::vector<int64_t > targets{comb.target};
-                vertex_map[comb.source] = targets;
+                std::vector<int64_t > targets{comb.d2.target};
+                vertex_map[comb.d1.source] = targets;
             }
         }
 

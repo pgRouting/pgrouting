@@ -45,7 +45,7 @@ template < class G >
 std::deque<Path>
 pgr_astar(
         G &graph,
-        std::vector <pgr_combination_t> &combinations,
+        std::vector <Double_int64_t_rt> &combinations,
         std::vector<int64_t> sources,
         std::vector<int64_t> targets,
         int heuristic,
@@ -86,7 +86,7 @@ pgr_astar(
 void do_pgr_astarManyToMany(
         Edge_xy_t *edges, size_t total_edges,
 
-        pgr_combination_t *combinations, size_t total_combinations,
+        Double_int64_t_rt *combinations, size_t total_combinations,
 
         int64_t  *start_vidsArr, size_t size_start_vidsArr,
         int64_t  *end_vidsArr, size_t size_end_vidsArr,
@@ -113,7 +113,7 @@ void do_pgr_astarManyToMany(
 
 
         log << "Inserting target vertices into a c++ vector structure\n";
-        std::vector<pgr_combination_t>
+        std::vector<Double_int64_t_rt>
                 combinations_vector(combinations, combinations + total_combinations);
         std::vector< int64_t > end_vids(
                 end_vidsArr,
