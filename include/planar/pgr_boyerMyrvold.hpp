@@ -80,7 +80,7 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
          int64_t src = graph[graph.source(*ei)].id;
          int64_t tgt = graph[graph.target(*ei)].id;
          double cost = graph[*ei].cost;
-         results.push_back({src,tgt,cost});
+         results.push_back({src, tgt, cost});
       }
     }
      return results;
