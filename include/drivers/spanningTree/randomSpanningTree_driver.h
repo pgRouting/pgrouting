@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-typedef pgr_randomSpanningTree_t pgr_randomSpanningTree_t;
+typedef SpanTree_rt SpanTree_rt;
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,7 +51,7 @@ extern "C" {
                 size_t total_edges,
                 int64_t root_vertex,
                 bool directed,
-                pgr_randomSpanningTree_t **return_tuples,
+                SpanTree_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

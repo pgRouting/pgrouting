@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-std::vector<pgr_randomSpanningTree_t>
+std::vector<SpanTree_rt>
 pgr_randomSpanningTree(
         G &graph,
         int64_t root_vertex ) {
@@ -54,7 +54,7 @@ do_pgr_randomSpanningTree(
         size_t total_edges,
         int64_t root_vertex,
         bool directed,
-        pgr_randomSpanningTree_t **return_tuples,
+        SpanTree_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -72,7 +72,7 @@ do_pgr_randomSpanningTree(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::vector<pgr_randomSpanningTree_t> results;
+        std::vector<SpanTree_rt> results;
 
         if (directed) {
             log << "Working with directed Graph\n";

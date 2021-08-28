@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
-#include "c_types/pgr_randomSpanningTree_t.h"
+#include "c_types/spanTree_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -46,7 +46,7 @@ process(
         char* edges_sql,
         int64_t root_vertex,
         bool directed,
-        pgr_randomSpanningTree_t **result_tuples,
+        SpanTree_rt **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -107,7 +107,7 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    pgr_randomSpanningTree_t *result_tuples = NULL;
+    SpanTree_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -140,7 +140,7 @@ PGDLLEXPORT Datum randomSpanningTree(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_randomSpanningTree_t*) funcctx->user_fctx;
+    result_tuples = (SpanTree_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
