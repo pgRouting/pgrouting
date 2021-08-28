@@ -48,11 +48,11 @@ void
 process(
     char *edges_sql,
     bool directed,
-    pgr_basic_edge_t **result_tuples,
+    Edge_bool_t_rt **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
-    pgr_basic_edge_t *edges = NULL;
+    Edge_bool_t_rt *edges = NULL;
     size_t total_edges = 0;
     pgr_get_basic_edges(edges_sql, &edges, &total_edges);
 
@@ -104,7 +104,7 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    pgr_basic_edge_t *result_tuples = NULL;
+    Edge_bool_t_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -140,7 +140,7 @@ _pgr_maxcardinalitymatch(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_basic_edge_t *) funcctx->user_fctx;
+    result_tuples = (Edge_bool_t_rt *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;

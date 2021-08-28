@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_basic_edge_t.h"
+#include "c_types/edge_bool_t_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,11 +46,11 @@ extern "C" {
 
     void
         do_pgr_maximum_cardinality_matching(
-            pgr_basic_edge_t *data_edges,
+            Edge_bool_t_rt *data_edges,
             size_t total_edges,
             bool directed,
 
-            pgr_basic_edge_t **return_tuples,
+            Edge_bool_t_rt **return_tuples,
             size_t *return_count,
 
             char** log_msg,
