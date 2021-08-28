@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_topologicalSortt.h
+File: i_rt.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_TOPOLOGICALSORT_T_H_
-#define INCLUDE_C_TYPES_PGR_TOPOLOGICALSORT_T_H_
+#ifndef INCLUDE_C_TYPES_I_RT_H_
+#define INCLUDE_C_TYPES_I_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -34,9 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-struct pgr_topologicalSort_t{
-    int seq;
-    int64_t sorted_v;
+struct I_rt {
+    int64_t id;
 };
 
-#endif  // INCLUDE_C_TYPES_PGR_TOPOLOGICALSORT_T_H_
+#endif  // INCLUDE_C_TYPES_I_RT_H_

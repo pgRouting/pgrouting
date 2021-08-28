@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
-#include "c_types//pgr_topologicalSort_t.h"
+#include "c_types//i_rt.h"
 
 // user's functions
 // for development
@@ -55,14 +55,14 @@ class Pgr_topologicalSort {
  public:
      typedef typename G::V V;
 
-     std::vector<pgr_topologicalSort_t> topologicalSort(
+     std::vector<I_rt> topologicalSort(
                  G &graph);
 
  private:
-     std::vector< pgr_topologicalSort_t >
+     std::vector< I_rt >
      generatetopologicalSort(
         const G &graph ) {
-        std::vector< pgr_topologicalSort_t > results;
+        std::vector< I_rt > results;
 
         typedef typename std::vector< V > container;
         container c;
@@ -75,8 +75,8 @@ class Pgr_topologicalSort {
         typename std::vector< V >::reverse_iterator ii;
         for (ii = c.rbegin(); ii != c.rend(); ++ii) {
             auto t = *ii;
-            pgr_topologicalSort_t tmp;
-            tmp.sorted_v = graph.graph[t].id;
+            I_rt tmp;
+            tmp.id = graph.graph[t].id;
             results.push_back(tmp);
         }
 
@@ -85,7 +85,7 @@ class Pgr_topologicalSort {
 };
 
 template < class G >
-std::vector<pgr_topologicalSort_t>
+std::vector<I_rt>
 Pgr_topologicalSort< G >::topologicalSort(
                 G &graph) {
       return generatetopologicalSort(
