@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
 
-#include "c_types/pgr_flow_t.h"
+#include "c_types/flow_t.h"
 #include "c_types/edge_t.h"
 
 static
@@ -462,10 +462,10 @@ get_edges_flow(
         if (ntuples > 0) {
             if ((*edges) == NULL)
                 (*edges) = (Edge_t *)
-                    palloc0(total_tuples * sizeof(pgr_flow_t));
+                    palloc0(total_tuples * sizeof(Flow_t));
             else
                 (*edges) = (Edge_t *)
-                    repalloc((*edges), total_tuples * sizeof(pgr_flow_t));
+                    repalloc((*edges), total_tuples * sizeof(Flow_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");

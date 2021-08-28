@@ -35,11 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 using Edge_t = struct Edge_t;
-using pgr_flow_t = struct pgr_flow_t;
+using Flow_t = struct Flow_t;
 #else
 #   include <stddef.h>
 typedef struct Edge_t Edge_t;
-typedef struct pgr_flow_t pgr_flow_t;
+typedef struct Flow_t Flow_t;
 #endif
 
 #include "c_types/double_int64_t_rt.h"
@@ -65,7 +65,7 @@ extern "C" {
             size_t size_sink_verticesArr,
             int algorithm,
             bool only_flow,
-            pgr_flow_t **return_tuples,
+            Flow_t **return_tuples,
             size_t *return_count,
             char** log_msg,
             char** notice_msg,

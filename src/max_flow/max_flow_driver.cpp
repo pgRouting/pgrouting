@@ -48,7 +48,7 @@ do_pgr_max_flow(
         int algorithm,
         bool only_flow,
 
-        pgr_flow_t **return_tuples, size_t *return_count,
+        Flow_t **return_tuples, size_t *return_count,
         char** log_msg,
         char** notice_msg,
         char **err_msg) {
@@ -117,10 +117,10 @@ do_pgr_max_flow(
         }
 
 
-        std::vector<pgr_flow_t> flow_edges;
+        std::vector<Flow_t> flow_edges;
 
         if (only_flow) {
-            pgr_flow_t edge;
+            Flow_t edge;
             edge.edge = -1;
             edge.source = -1;
             edge.target = -1;

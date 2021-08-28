@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "max_flow/pgr_minCostMaxFlow.hpp"
 #include "c_types/path_rt.h"
 #include "c_types/edge_t.h"
-#include "c_types/pgr_flow_t.h"
+#include "c_types/flow_t.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/identifiers.hpp"
 
@@ -227,7 +227,7 @@ PgrDirectedChPPGraph::setPathEdges(graph::PgrCostFlowGraph &flowGraph) {
     try {
         flowGraph.MinCostMaxFlow();
         flowGraph.GetMaxFlow();
-        std::vector<pgr_flow_t> addedEdges = flowGraph.GetFlowEdges();
+        std::vector<Flow_t> addedEdges = flowGraph.GetFlowEdges();
         resultEdges = originalEdges;
         for (auto &flow_t : addedEdges) {
             if (flow_t.source != superSource && flow_t.source != superTarget
