@@ -53,7 +53,7 @@ template < class G >
 std::deque< Path >
 pgr_bellman_ford(
         G &graph,
-        std::vector <pgr_combination_t> &combinations,
+        std::vector <Double_int64_t_rt> &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
         std::string &log,
@@ -83,7 +83,7 @@ void
 do_pgr_bellman_ford(
                 Edge_t  *data_edges,
                 size_t total_edges,
-                pgr_combination_t *combinations,
+                Double_int64_t_rt *combinations,
                 size_t total_combinations,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
@@ -118,7 +118,7 @@ do_pgr_bellman_ford(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< pgr_combination_t >
+        std::vector< Double_int64_t_rt >
             combinations_vector(combinations, combinations + total_combinations);
 
         std::deque< Path >paths;

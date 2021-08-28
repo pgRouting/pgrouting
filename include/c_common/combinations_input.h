@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #include <stddef.h>
-typedef struct pgr_combination_t pgr_combination_t;
+typedef struct Double_int64_t_rt Double_int64_t_rt;
 
 
 /*! @brief combinations_sql
@@ -44,7 +44,7 @@ FROM combinations_table;
 */
 void pgr_get_combinations(
         char *combinations_sql,
-        pgr_combination_t **combinations,
+        Double_int64_t_rt **combinations,
         size_t *total_combinations);
 
 #endif  // INCLUDE_C_COMMON_COMBINATIONS_INPUT_H_

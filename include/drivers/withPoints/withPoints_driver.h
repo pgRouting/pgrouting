@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef struct Point_on_edge_t Point_on_edge_t;
 typedef struct Edge_t Edge_t;
-#include "c_types/pgr_combination_t.h"
+#include "c_types/double_int64_t_rt.h"
 typedef struct Path_rt Path_rt;
 
 #ifdef __cplusplus
@@ -62,7 +62,7 @@ extern "C" {
             Edge_t *edges_of_points,
             size_t total_edges_of_points,
 
-            pgr_combination_t  *combinations,
+            Double_int64_t_rt  *combinations,
             size_t total_combinations,
 
             int64_t *start_pidsArr,

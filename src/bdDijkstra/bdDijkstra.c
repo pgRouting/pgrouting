@@ -71,7 +71,7 @@ process(
     Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_combination_t *combinations = NULL;
+    Double_int64_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
     if (starts && ends) {

@@ -40,7 +40,7 @@ using pgr_flow_t = struct pgr_flow_t;
 typedef struct pgr_flow_t pgr_flow_t;
 #endif
 
-#include "c_types/pgr_combination_t.h"
+#include "c_types/double_int64_t_rt.h"
 #include "c_types/pgr_costFlow_t.h"
 
 
@@ -60,7 +60,7 @@ extern "C" {
         do_pgr_minCostMaxFlow(
                 pgr_costFlow_t  *data_edges,
                 size_t total_edges,
-                pgr_combination_t  *combinations,
+                Double_int64_t_rt  *combinations,
                 size_t total_combinations,
                 int64_t* source_vertices,
                 size_t size_source_verticesArr,

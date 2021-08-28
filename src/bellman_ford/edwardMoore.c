@@ -67,7 +67,7 @@ process(
     int64_t *end_vidsArr = NULL;
 
     size_t total_combinations = 0;
-    pgr_combination_t *combinations = NULL;
+    Double_int64_t_rt *combinations = NULL;
 
     if (starts && ends) {
         start_vidsArr = (int64_t*)
