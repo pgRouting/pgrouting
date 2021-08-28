@@ -76,7 +76,7 @@ process(
     size_t size_end_pidsArr = 0;
     int64_t* end_pidsArr = NULL;
 
-    Double_int64_t_rt *combinations = NULL;
+    II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
     Point_on_edge_t *points = NULL;

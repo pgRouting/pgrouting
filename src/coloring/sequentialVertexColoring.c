@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 
-#include "c_types/double_int64_t_rt.h"
+#include "c_types/ii_t_rt.h"
 
 #include "drivers/coloring/sequentialVertexColoring_driver.h"
 
@@ -68,7 +68,7 @@ void
 process(
         char* edges_sql,
 
-        Double_int64_t_rt **result_tuples,
+        II_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -122,7 +122,7 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
     TupleDesc           tuple_desc;
 
     /**********************************************************************/
-    Double_int64_t_rt *result_tuples = NULL;
+    II_t_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -162,7 +162,7 @@ PGDLLEXPORT Datum _pgr_sequentialvertexcoloring(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Double_int64_t_rt*) funcctx->user_fctx;
+    result_tuples = (II_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

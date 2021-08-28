@@ -169,7 +169,7 @@ class Pgr_astar {
      // preparation for parallel arrays
      std::deque<Path> astar(
              G &graph,
-             const std::vector<Double_int64_t_rt> &combinations,
+             const std::vector<II_t_rt> &combinations,
              int heuristic,
              double factor,
              double epsilon,
@@ -179,7 +179,7 @@ class Pgr_astar {
 
          // group targets per distinct source
          std::map< int64_t, std::vector<int64_t> > vertex_map;
-         for (const Double_int64_t_rt &comb : combinations) {
+         for (const II_t_rt &comb : combinations) {
              std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
              if (it != vertex_map.end()) {
                  it->second.push_back(comb.d2.target);

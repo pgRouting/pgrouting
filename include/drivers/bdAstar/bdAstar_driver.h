@@ -41,7 +41,7 @@ typedef struct Path_rt Path_rt;
 #endif
 
 #include "c_types/edge_xy_t.h"
-#include "c_types/double_int64_t_rt.h"
+#include "c_types/ii_t_rt.h"
 
 
 #ifdef __cplusplus
@@ -61,7 +61,7 @@ extern "C" {
             Edge_xy_t  *data_edges,
             size_t total_edges,
 
-            Double_int64_t_rt  *combinations,
+            II_t_rt  *combinations,
             size_t total_combinations,
 
             int64_t  *start_vidsArr,

@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "c_types/edge_t.h"
-#include "c_types/double_int64_t_rt.h"
+#include "c_types/ii_t_rt.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_messages.h"
 
@@ -54,7 +54,7 @@ class Pgr_edgeColoring : public Pgr_messages {
     using E_it    = boost::graph_traits<EdgeColoring_Graph>::edge_iterator;
 
  public:
-    std::vector<Double_int64_t_rt> edgeColoring();
+    std::vector<II_t_rt> edgeColoring();
 
     Pgr_edgeColoring(Edge_t*, size_t);
     Pgr_edgeColoring() = delete;

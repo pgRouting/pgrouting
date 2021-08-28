@@ -50,7 +50,7 @@ static
 std::deque<Path>
 pgr_bdDijkstra(
         G &graph,
-        std::vector < Double_int64_t_rt > &combinations,
+        std::vector < II_t_rt > &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
 
@@ -89,17 +89,17 @@ pgr_bdDijkstra(
 
     } else {
         std::sort(combinations.begin(), combinations.end(),
-                [](const Double_int64_t_rt &lhs, const Double_int64_t_rt &rhs)->bool {
+                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
                     return lhs.d2.target < rhs.d2.target;
                 });
         std::stable_sort(combinations.begin(), combinations.end(),
-                [](const Double_int64_t_rt &lhs, const Double_int64_t_rt &rhs)->bool {
+                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
                     return lhs.d1.source < rhs.d1.source;
                 });
 
-        Double_int64_t_rt previousCombination{0, 0};
+        II_t_rt previousCombination{0, 0};
 
-        for (const Double_int64_t_rt &comb : combinations) {
+        for (const II_t_rt &comb : combinations) {
             fn_bdDijkstra.clear();
             if (comb.d1.source == previousCombination.d1.source &&
                     comb.d2.target == previousCombination.d2.target) {
@@ -129,7 +129,7 @@ void
 do_pgr_bdDijkstra(
         Edge_t  *data_edges,
         size_t total_edges,
-        Double_int64_t_rt *combinations,
+        II_t_rt *combinations,
         size_t total_combinations,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
@@ -160,7 +160,7 @@ do_pgr_bdDijkstra(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< Double_int64_t_rt >
+        std::vector< II_t_rt >
             combinations_vector(combinations, combinations + total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;

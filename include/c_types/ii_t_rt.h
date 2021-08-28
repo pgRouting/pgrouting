@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: double_int64_t_rt.h
+File: ii_t_rt.h
 
 
 Copyright (c) 2021 pgRouting developers
@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_DOUBLE_INT64_T_RT_H_
-#define INCLUDE_C_TYPES_DOUBLE_INT64_T_RT_H_
+#ifndef INCLUDE_C_TYPES_II_T_RT_H_
+#define INCLUDE_C_TYPES_II_T_RT_H_
 #pragma once
 
 /* for int64_t */
@@ -39,10 +39,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-struct Double_int64_t_rt {
+struct II_t_rt {
     union {int64_t id; int64_t source; int64_t start_vid;} d1;
     union {int64_t value; int64_t target; int64_t end_vid;} d2;
 };
 
 
-#endif  // INCLUDE_C_TYPES_DOUBLE_INT64_T_RT_H_
+#endif  // INCLUDE_C_TYPES_II_T_RT_H_

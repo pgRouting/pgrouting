@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/column_info_t.h"
-#include "c_types/double_int64_t_rt.h"
+#include "c_types/ii_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
@@ -51,7 +51,7 @@ void fetch_combination(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[2],
-        Double_int64_t_rt *combination,
+        II_t_rt *combination,
         size_t *valid_combinations) {
     combination->d1.source = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     combination->d2.target = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
@@ -65,7 +65,7 @@ static
 void
 get_combinations_2_columns(
         char *sql,
-        Double_int64_t_rt **combinations,
+        II_t_rt **combinations,
         size_t *totalTuples) {
     clock_t start_t = clock();
 
@@ -106,11 +106,11 @@ get_combinations_2_columns(
 
         if (ntuples > 0) {
             if ((*combinations) == NULL)
-                (*combinations) = (Double_int64_t_rt *)
-                    palloc0(total_tuples * sizeof(Double_int64_t_rt));
+                (*combinations) = (II_t_rt *)
+                    palloc0(total_tuples * sizeof(II_t_rt));
             else
-                (*combinations) = (Double_int64_t_rt *)
-                    repalloc((*combinations), total_tuples * sizeof(Double_int64_t_rt));
+                (*combinations) = (II_t_rt *)
+                    repalloc((*combinations), total_tuples * sizeof(II_t_rt));
 
             if ((*combinations) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -146,7 +146,7 @@ get_combinations_2_columns(
 void
 pgr_get_combinations(
         char *combinations_sql,
-        Double_int64_t_rt **combinations,
+        II_t_rt **combinations,
         size_t *total_combinations) {
     get_combinations_2_columns(combinations_sql, combinations, total_combinations);
 }

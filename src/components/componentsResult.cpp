@@ -34,7 +34,7 @@ namespace algorithms {
 
 namespace detail {
 
-std::vector<Double_int64_t_rt>
+std::vector<II_t_rt>
 componentsResult(
         std::vector< std::vector< int64_t > > &components) {
     // sort identifier
@@ -44,7 +44,7 @@ componentsResult(
     sort(components.begin(), components.end());
 
     // generate results
-    std::vector< Double_int64_t_rt > results;
+    std::vector< II_t_rt > results;
     for (const auto& component : components) {
         auto component_id = component[0];
         for (const auto edge_id : component) {

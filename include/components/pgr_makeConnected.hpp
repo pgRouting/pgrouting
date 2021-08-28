@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <map>
 
-#include "c_types/double_int64_t_rt.h"
+#include "c_types/ii_t_rt.h"
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
@@ -52,12 +52,12 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-     std::vector<Double_int64_t_rt> makeConnected(G &graph) {
+     std::vector<II_t_rt> makeConnected(G &graph) {
                    return generatemakeConnected(graph);
      }
 
  private:
-      std::vector< Double_int64_t_rt > generatemakeConnected(G &graph ) {
+      std::vector< II_t_rt > generatemakeConnected(G &graph ) {
       std::vector<size_t> component(boost::num_vertices(graph.graph));
       auto comp = boost::connected_components(graph.graph, &component[0]);
       comp--;
@@ -82,7 +82,7 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
 
       log << "Number of Components after: " << boost::connected_components(graph.graph, &component[0]) << "\n";
       E_i  ei, ei_end;
-      std::vector< Double_int64_t_rt > results(comp);
+      std::vector< II_t_rt > results(comp);
       for (boost::tie(ei, ei_end) = edges(graph.graph); ei != ei_end; ++ei) {
               int64_t src = graph[graph.source(*ei)].id;
               int64_t tgt = graph[graph.target(*ei)].id;

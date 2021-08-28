@@ -66,7 +66,7 @@ void
 do_pgr_edge_disjoint_paths(
     Edge_t *data_edges,
     size_t total_edges,
-    Double_int64_t_rt *combinations,
+    II_t_rt *combinations,
     size_t total_combinations,
     int64_t *sources,
     size_t size_source_verticesArr,
@@ -96,7 +96,7 @@ do_pgr_edge_disjoint_paths(
                 sources, sources + size_source_verticesArr);
         std::set<int64_t> set_sink_vertices(
                 sinks, sinks + size_sink_verticesArr);
-        std::vector< Double_int64_t_rt > combinations_vector(
+        std::vector< II_t_rt > combinations_vector(
                 combinations, combinations + total_combinations);
         std::vector<Edge_t> edges(
                 data_edges, data_edges + total_edges);
@@ -105,7 +105,7 @@ do_pgr_edge_disjoint_paths(
             pgassert(set_source_vertices.empty());
             pgassert(set_sink_vertices.empty());
 
-            for (const Double_int64_t_rt &comb : combinations_vector) {
+            for (const II_t_rt &comb : combinations_vector) {
                 set_source_vertices.insert(comb.d1.source);
                 set_sink_vertices.insert(comb.d2.target);
             }

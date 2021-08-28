@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace algorithms {
 
-std::vector<Double_int64_t_rt>
+std::vector<II_t_rt>
 pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
     typedef pgrouting::UndirectedGraph::V V;
     // perform the algorithm
@@ -67,7 +67,7 @@ pgr_connectedComponents(pgrouting::UndirectedGraph &graph) {
 }
 
 //! Strongly Connected Components Vertex Version
-std::vector<Double_int64_t_rt>
+std::vector<II_t_rt>
 strongComponents(
         pgrouting::DirectedGraph &graph) {
     typedef pgrouting::UndirectedGraph::V V;
@@ -97,7 +97,7 @@ strongComponents(
 
 
 //! Biconnected Components
-std::vector<Double_int64_t_rt>
+std::vector<II_t_rt>
 biconnectedComponents(
         pgrouting::UndirectedGraph &graph) {
     using G = pgrouting::UndirectedGraph;

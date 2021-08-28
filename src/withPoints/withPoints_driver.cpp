@@ -47,7 +47,7 @@ template < class G >
 std::deque< Path >
 pgr_dijkstra(
         G &graph,
-        std::vector < Double_int64_t_rt > &combinations,
+        std::vector < II_t_rt > &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
         bool only_cost,
@@ -95,7 +95,7 @@ do_pgr_withPoints(
         Point_on_edge_t *points_p, size_t total_points,
         Edge_t *edges_of_points, size_t total_edges_of_points,
 
-        Double_int64_t_rt *combinations, size_t total_combinations,
+        II_t_rt *combinations, size_t total_combinations,
 
         int64_t *start_pidsArr, size_t size_start_pidsArr,
         int64_t *end_pidsArr, size_t size_end_pidsArr,
@@ -142,7 +142,7 @@ do_pgr_withPoints(
         }
 
 
-        std::vector<Double_int64_t_rt>
+        std::vector<II_t_rt>
                 combinations_vector(combinations, combinations + total_combinations);
         std::vector<int64_t>
             start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
