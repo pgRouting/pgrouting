@@ -183,13 +183,13 @@ class Pgr_dag {
      // preparation for parallel arrays
      std::deque<Path> dag(
              G &graph,
-             const std::vector<Double_int64_t_rt> &combinations,
+             const std::vector<II_t_rt> &combinations,
              bool only_cost) {
          std::deque<Path> paths;
 
          // group targets per distinct source
          std::map< int64_t, std::vector<int64_t> > vertex_map;
-         for (const Double_int64_t_rt &comb : combinations) {
+         for (const II_t_rt &comb : combinations) {
              std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
              if (it != vertex_map.end()) {
                  it->second.push_back(comb.d2.target);

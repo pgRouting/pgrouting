@@ -95,7 +95,7 @@ process(
     pgr_costFlow_t *edges = NULL;
     size_t total_edges = 0;
 
-    Double_int64_t_rt *combinations = NULL;
+    II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
     if (starts && ends) {

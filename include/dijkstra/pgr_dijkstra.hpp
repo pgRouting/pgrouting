@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <numeric>
 
-#include "c_types/double_int64_t_rt.h"
+#include "c_types/ii_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
@@ -289,7 +289,7 @@ class Pgr_dijkstra {
     // preparation for parallel arrays
     std::deque<Path> dijkstra(
             G &graph,
-            const std::vector< Double_int64_t_rt > &combinations,
+            const std::vector< II_t_rt > &combinations,
             bool only_cost,
             size_t n_goals) {
         // a call to 1 to many is faster for each of the sources
@@ -297,7 +297,7 @@ class Pgr_dijkstra {
 
         // group targets per distinct source
         std::map<int64_t , std::vector<int64_t> > vertex_map;
-        for (const Double_int64_t_rt &comb : combinations) {
+        for (const II_t_rt &comb : combinations) {
             std::map< int64_t , std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
             if (it != vertex_map.end()) {
                 it->second.push_back(comb.d2.target);

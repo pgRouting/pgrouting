@@ -42,9 +42,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace functions {
 
-std::vector<Double_int64_t_rt>
+std::vector<II_t_rt>
 Pgr_edgeColoring::edgeColoring() {
-    std::vector<Double_int64_t_rt> results;
+    std::vector<II_t_rt> results;
 
     CHECK_FOR_INTERRUPTS();
 

@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 do_pgr_minCostMaxFlow(
         pgr_costFlow_t  *data_edges, size_t total_edges,
-        Double_int64_t_rt *combinations, size_t total_combinations,
+        II_t_rt *combinations, size_t total_combinations,
         int64_t *sourceVertices, size_t sizeSourceVerticesArr,
         int64_t *sinkVertices, size_t sizeSinkVerticesArr,
         bool only_cost,
@@ -70,14 +70,14 @@ do_pgr_minCostMaxFlow(
                 sourceVertices, sourceVertices + sizeSourceVerticesArr);
         std::set<int64_t> targets(
                 sinkVertices, sinkVertices + sizeSinkVerticesArr);
-        std::vector< Double_int64_t_rt > combinations_vector(
+        std::vector< II_t_rt > combinations_vector(
                 combinations, combinations + total_combinations);
 
         if (!combinations_vector.empty()) {
             pgassert(sources.empty());
             pgassert(targets.empty());
 
-            for (const Double_int64_t_rt &comb : combinations_vector) {
+            for (const II_t_rt &comb : combinations_vector) {
                 sources.insert(comb.d1.source);
                 targets.insert(comb.d2.target);
             }

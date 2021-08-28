@@ -73,7 +73,7 @@ process(char* edges_sql,
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
 
-    Double_int64_t_rt *combinations = NULL;
+    II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
     if (starts && ends) {
