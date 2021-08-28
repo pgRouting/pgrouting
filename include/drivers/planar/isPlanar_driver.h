@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-#include "c_types/pgr_boyer_t.h"
+#include "c_types/iid_t_rt.h"
 
 #ifdef __cplusplus
 extern "C" {

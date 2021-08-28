@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
-#include "c_types/pgr_boyer_t.h"
+#include "c_types/iid_t_rt.h"
 //******************************************
 namespace pgrouting {
 namespace functions {
@@ -49,7 +49,7 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
      typedef typename G::V V;
      typedef typename G::E E;
      typedef typename G::E_i E_i;
-     std::vector<pgr_boyer_t> boyerMyrvold(G &graph) {
+     std::vector<IID_t_rt> boyerMyrvold(G &graph) {
           return generateboyerMyrvold(graph);
      }
 
@@ -71,8 +71,8 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
      }
 
  private:
-     std::vector< pgr_boyer_t >generateboyerMyrvold(const G &graph ) {
-     std::vector< pgr_boyer_t > results;
+     std::vector< IID_t_rt >generateboyerMyrvold(const G &graph ) {
+     std::vector< IID_t_rt > results;
      auto check = boost::boyer_myrvold_planarity_test(graph.graph);
      if (check) {
          E_i ei, ei_end;
@@ -80,11 +80,7 @@ class Pgr_boyerMyrvold : public pgrouting::Pgr_messages {
          int64_t src = graph[graph.source(*ei)].id;
          int64_t tgt = graph[graph.target(*ei)].id;
          double cost = graph[*ei].cost;
-         pgr_boyer_t tmp;
-         tmp.source = src;
-         tmp.target = tgt;
-         tmp.cost = cost;
-         results.push_back(tmp);
+         results.push_back({src,tgt,cost});
       }
     }
      return results;

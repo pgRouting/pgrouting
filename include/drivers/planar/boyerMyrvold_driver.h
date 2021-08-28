@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 typedef struct Edge_t Edge_t;
-#include "c_types/pgr_boyer_t.h"
+#include "c_types/iid_t_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,7 +53,7 @@ extern "C" {
     void do_pgr_boyerMyrvold(
                 Edge_t  *data_edges,
                 size_t total_tuples,
-                pgr_boyer_t **return_tuples,
+                IID_t_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
