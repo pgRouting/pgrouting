@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_SPANNTREE_RT_H_
-#define INCLUDE_C_TYPES_SPANNTREE_RT_H_
+#ifndef INCLUDE_C_TYPES_SPANTREE_RT_H_
+#define INCLUDE_C_TYPES_SPANTREE_RT_H_
 #pragma once
 
 
@@ -42,4 +42,4 @@ struct SpanTree_rt {
     double tree_cost;
 };
 
-#endif  // INCLUDE_C_TYPES_SPANNTREE_RT_H_
+#endif  // INCLUDE_C_TYPES_SPANTREE_RT_H_
