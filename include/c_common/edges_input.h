@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 typedef struct Edge_xy_t Edge_xy_t;
 typedef struct Flow_t Flow_t;
 typedef struct pgr_basic_edge_t pgr_basic_edge_t;
-typedef struct pgr_costFlow_t pgr_costFlow_t;
+typedef struct CostFlow_t CostFlow_t;
 typedef struct Edge_t Edge_t;
 
 
@@ -159,7 +159,7 @@ float reverse_cost
 */
 void pgr_get_costFlow_edges(
     char *sql,
-    pgr_costFlow_t **edges,
+    CostFlow_t **edges,
     size_t *total_edges);
 
 /*! @brief read basic edges

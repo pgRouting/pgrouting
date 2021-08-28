@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_costFlow_t.h
+File: costFlow_t.h
 
 Copyright (c) 2018 Maoguang Wang
 Mail: xjtumg1007@gmail.com
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 /*! @file */
 
-#ifndef INCLUDE_C_TYPES_PGR_COSTFLOW_T_H_
-#define INCLUDE_C_TYPES_PGR_COSTFLOW_T_H_
+#ifndef INCLUDE_C_TYPES_COSTFLOW_T_H_
+#define INCLUDE_C_TYPES_COSTFLOW_T_H_
 #pragma once
 
 /* for int64_t */
@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-struct pgr_costFlow_t {
+struct CostFlow_t {
   int64_t edge_id;
   int64_t source;
   int64_t target;
@@ -45,4 +45,4 @@ struct pgr_costFlow_t {
   double reverse_cost;
 };
 
-#endif  // INCLUDE_C_TYPES_PGR_COSTFLOW_T_H_
+#endif  // INCLUDE_C_TYPES_COSTFLOW_T_H_
