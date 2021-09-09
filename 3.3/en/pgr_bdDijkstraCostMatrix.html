@@ -154,7 +154,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCostMatrix.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html">3.2</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCostMatrix.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html">3.0</a></p></li>
 <li><p><strong>Unsupported versions:</strong>
@@ -427,11 +428,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 );
  seq | node | cost | agg_cost
 -----+------+------+----------
-   1 |    1 |    1 |        0
+   1 |    1 |    0 |        0
    2 |    2 |    1 |        1
    3 |    3 |    1 |        2
-   4 |    4 |    3 |        3
-   5 |    1 |    0 |        6
+   4 |    4 |    1 |        3
+   5 |    1 |    3 |        6
 (5 rows)
 
 </pre></div>
@@ -466,7 +467,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Aug 13, 2021.<br/>
+      Last updated on Sep 09, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
     </p>
   </div>

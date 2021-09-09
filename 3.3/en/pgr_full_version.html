@@ -147,7 +147,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_full_version.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_full_version.html">3.2</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_full_version.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_full_version.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_full_version.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_full_version.html">3.0</a></p></li>
 </ul>
@@ -177,10 +178,10 @@
 <dd class="field-odd"><p>Information when this documentation was build</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_full_version</span><span class="p">();</span>
- <span class="n">version</span> <span class="o">|</span> <span class="n">build_type</span> <span class="o">|</span> <span class="n">compile_date</span> <span class="o">|</span>     <span class="n">library</span>     <span class="o">|</span>         <span class="n">system</span>         <span class="o">|</span>                   <span class="n">postgresql</span>                   <span class="o">|</span> <span class="n">compiler</span>  <span class="o">|</span> <span class="n">boost</span>  <span class="o">|</span>    <span class="nb">hash</span>
-<span class="o">---------+------------+--------------+-----------------+------------------------+------------------------------------------------+-----------+--------+------------</span>
- <span class="mf">3.2.0</span>   <span class="o">|</span> <span class="n">Debug</span>      <span class="o">|</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">24</span>   <span class="o">|</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.2.0</span> <span class="o">|</span> <span class="n">Linux</span><span class="o">-</span><span class="mf">5.4.0</span><span class="o">-</span><span class="mi">72</span><span class="o">-</span><span class="n">generic</span> <span class="o">|</span> <span class="n">PostgreSQL</span> <span class="mf">12.6</span> <span class="p">(</span><span class="n">Ubuntu</span> <span class="mf">12.6</span><span class="o">-</span><span class="mi">0</span><span class="n">ubuntu0</span><span class="mf">.20.04.1</span><span class="p">)</span> <span class="o">|</span> <span class="n">GNU</span><span class="o">-</span><span class="mf">8.4.0</span> <span class="o">|</span> <span class="mf">1.71.0</span> <span class="o">|</span> <span class="mf">3e0</span><span class="n">a07c7f9</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version</span><span class="p">,</span> <span class="n">library</span> <span class="n">FROM</span> <span class="n">pgr_full_version</span><span class="p">();</span>
+  <span class="n">version</span>  <span class="o">|</span>     <span class="n">library</span>
+<span class="o">-----------+-----------------</span>
+ <span class="mf">3.3.0</span><span class="o">-</span><span class="n">dev</span> <span class="o">|</span> <span class="n">pgrouting</span><span class="o">-</span><span class="mf">3.3.0</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -266,7 +267,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Aug 13, 2021.<br/>
+      Last updated on Sep 09, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
     </p>
   </div>
