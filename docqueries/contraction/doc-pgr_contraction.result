@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-/* /* -- q1 */ */
+/* /* /* -- q1 */ */ */
 SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1, 2]);
@@ -15,7 +15,7 @@ SELECT * FROM pgr_contraction(
  v    | 17 | {16}                |     -1 |     -1 |   -1
 (5 rows)
 
-/* /* -- q2 */ */
+/* /* /* -- q2 */ */ */
 SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
@@ -28,7 +28,7 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
  v    | 17 | {16}                |     -1 |     -1 |   -1
 (5 rows)
 
-/* /* -- q3 */ */
+/* /* /* -- q3 */ */ */
 SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]);
@@ -41,7 +41,7 @@ ARRAY[1]);
  v    | 17 | {16}                |     -1 |     -1 |   -1
 (5 rows)
 
-/* /* -- q4 */ */
+/* /* /* -- q4 */ */ */
 SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[2]);
@@ -51,6 +51,6 @@ ARRAY[2]);
  e    | -2 | {8}                 |      7 |      5 |    2
 (2 rows)
 
-/* /* -- q5 */ */
+/* /* /* -- q5 */ */ */
 ROLLBACK;
 ROLLBACK
