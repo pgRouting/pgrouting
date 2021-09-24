@@ -1,63 +1,63 @@
 
-\echo -- q00
+/* -- q00 */
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
-\echo -- q01
-\echo -- q1
+/* -- q01 */
+/* -- q1 */
 ALTER TABLE edge_table_vertices_pgr ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE edge_table_vertices_pgr ADD contracted_vertices BIGINT[];
 ALTER TABLE edge_table ADD is_new BOOLEAN DEFAULT false;
 ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
 
-\echo -- q2
+/* -- q2 */
 SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1,2], directed:=false);
 
-\echo -- q3
+/* -- q3 */
 SELECT * INTO contraction_results
 FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1,2], directed:=false);
 
-\echo -- q4
+/* -- q4 */
 UPDATE edge_table_vertices_pgr
 SET is_contracted = true
 WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
 
-\echo -- q5
+/* -- q5 */
 SELECT id, is_contracted
 FROM edge_table_vertices_pgr
 ORDER BY id;
 
-\echo -- q6
+/* -- q6 */
 UPDATE edge_table_vertices_pgr
 SET contracted_vertices = contraction_results.contracted_vertices
 FROM contraction_results
 WHERE type = 'v' AND edge_table_vertices_pgr.id = contraction_results.id;
 
-\echo -- q7
+/* -- q7 */
 SELECT id, contracted_vertices, is_contracted
 FROM edge_table_vertices_pgr
 ORDER BY id;
 
-\echo -- q8
+/* -- q8 */
 INSERT INTO edge_table(source, target, cost, reverse_cost, contracted_vertices, is_new)
 SELECT source, target, cost, -1, contracted_vertices, true
 FROM contraction_results
 WHERE type = 'e';
 
-\echo -- q9
+/* -- q9 */
 SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_new
 FROM edge_table
 ORDER BY id;
 
-\echo -- q10
+/* -- q10 */
 SELECT id
 FROM edge_table_vertices_pgr
 WHERE is_contracted = false
 ORDER BY id;
 
-\echo -- q11
+/* -- q11 */
 WITH
 vertices_in_graph AS (
     SELECT id
