@@ -1,11 +1,11 @@
-name: Publish Users Documentation
+name: Update Locale and Website
 
 on:
   workflow_dispatch:
 
 jobs:
   release:
-    name: Publish Users Documentation
+    name: Update Locale and Website
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,8 +27,10 @@ jobs:
           echo "PGIS=3" >> $GITHUB_ENV
           echo "PROJECT_VERSION=${PROJECT_VERSION}" >> $GITHUB_ENV
 
-      - name: Extract commit hash
+      - name: Extract branch name and commit hash
         run: |
+          branch=${GITHUB_REF#refs/heads/}
+          echo "BRANCH=$branch" >> $GITHUB_ENV
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo "GIT_HASH=$git_hash" >> $GITHUB_ENV
 
@@ -58,6 +60,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install Sphinx
           pip install sphinx-bootstrap-theme
+          pip install sphinx-intl[transifex]
           pip list
 
       - name: Configure
@@ -65,19 +68,38 @@ jobs:
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DES=ON ..
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DLOCALE=ON -DES=ON ..
 
       - name: Build
         run: |
           cd build
+          if [[ "${{ env.BRANCH }}" == "develop" ]]; then
+            make locale
+          fi
           make doc
-          make -j 4
-          sudo make install
 
       - name: Initialize mandatory git config
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update locale
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          # List all the files that needs to be committed in build/doc/locale_changes.txt
+          awk '/^Update|^Create/{print $2}' build/doc/locale_changes.txt > tmp && mv tmp build/doc/locale_changes.txt        # .po files
+          cat build/doc/locale_changes.txt | perl -pe 's/(.*)en\/LC_MESSAGES(.*)/$1pot$2t/' >> build/doc/locale_changes.txt  # .pot files
+          cat build/doc/locale_changes.txt
+          # Remove obsolete entries #~ from .po files
+          tools/transifex/remove_obsolete_entries.sh
+          # Add the files, commit and push
+          for line in `cat build/doc/locale_changes.txt`; do git add "$line"; done
+          git diff --staged --quiet || git commit -m "Update locale: commit ${{ env.GIT_HASH }}"
+          git fetch origin
+          git reset --hard  # Remove the unstaged changes before rebasing
+          git rebase origin/develop
+          git push origin develop
+
 
       - name: Update Users Documentation
         run: |
