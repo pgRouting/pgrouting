@@ -2,11 +2,16 @@ name: Update Locale and Website
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
   release:
     name: Update Locale and Website
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'pgRouting' }}
 
     strategy:
         fail-fast: false
