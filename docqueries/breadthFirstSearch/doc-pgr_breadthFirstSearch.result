@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
+/* --q1 */
 SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     2
@@ -24,7 +24,7 @@ SELECT * FROM pgr_breadthFirstSearch(
   13 |     5 |         2 |    3 |    3 |    1 |        5
 (13 rows)
 
---q2
+/* --q2 */
 SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     ARRAY[11,12], max_depth := 2
@@ -40,7 +40,7 @@ SELECT * FROM pgr_breadthFirstSearch(
    7 |     2 |        12 |    4 |   16 |    1 |        2
 (7 rows)
 
---q3
+/* --q3 */
 SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     ARRAY[11,12], max_depth := 2, directed := false
@@ -63,7 +63,7 @@ SELECT * FROM pgr_breadthFirstSearch(
   14 |     2 |        12 |    4 |   16 |    1 |        2
 (14 rows)
 
---q4
+/* --q4 */
 SELECT * FROM pgr_breadthFirstSearch(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     -10
@@ -72,6 +72,6 @@ SELECT * FROM pgr_breadthFirstSearch(
 -----+-------+-----------+------+------+------+----------
 (0 rows)
 
---q5
+/* --q5 */
 ROLLBACK;
 ROLLBACK
