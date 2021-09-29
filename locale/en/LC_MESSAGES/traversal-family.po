@@ -241,11 +241,3 @@ msgstr ""
 msgid ":ref:`search`"
 msgstr ""
 
-#~ msgid "Versions of this page"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.2 "
-#~ "<https://docs.pgrouting.org/3.2/en/traversal-family.html>`__)"
-#~ msgstr ""
-
