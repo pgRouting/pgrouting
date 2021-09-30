@@ -34,7 +34,7 @@ INSERT INTO roadworks(
 
 /* --data-end */
 
-/*  -- q1 8?
+/*  -- q1 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks',
     2, 3
