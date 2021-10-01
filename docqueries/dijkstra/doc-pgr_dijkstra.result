@@ -82,6 +82,8 @@ SELECT * FROM pgr_dijkstra(
 (10 rows)
 
 /* -- q6 */
+
+
 /* -- q7 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -217,6 +219,8 @@ SELECT * FROM pgr_dijkstra(
 (18 rows)
 
 /* -- q8 */
+
+
 /* -- q9 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -330,6 +334,8 @@ SELECT * FROM pgr_dijkstra(
 (10 rows)
 
 /* -- q10 */
+
+
 /* -- q11 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM edge_table',
@@ -406,6 +412,8 @@ SELECT * FROM pgr_dijkstra(
 (2 rows)
 
 /* -- q12 */
+
+
 /* -- q13 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM edge_table',
@@ -527,6 +535,8 @@ SELECT * FROM pgr_dijkstra(
 (12 rows)
 
 /* -- q14 */
+
+
 /* -- q15 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -630,6 +640,8 @@ SELECT * FROM pgr_dijkstra(
 (6 rows)
 
 /* -- q16 */
+
+
 /* -- q17 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -687,6 +699,8 @@ SELECT * FROM pgr_dijkstra(
 (2 rows)
 
 /* -- q18 */
+
+
 /* -- q19 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
