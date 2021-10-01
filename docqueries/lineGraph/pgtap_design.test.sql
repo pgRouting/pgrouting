@@ -1,10 +1,10 @@
 
-\echo -- one edge graph
+/* -- one edge graph */
 SELECT * FROM pgr_lineGraph(
     'SELECT id, source, target, cost FROM edge_table WHERE id = 1'
 );
 
-\echo -- two edge graphs
+/* -- two edge graphs */
 SELECT * FROM pgr_lineGraph($$
     SELECT -id AS id, target, source, reverse_cost AS cost FROM edge_table WHERE id = 1
     UNION
