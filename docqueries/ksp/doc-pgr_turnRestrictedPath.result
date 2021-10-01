@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM new_restrictions;
  id |  path   | cost
 ----+---------+------
@@ -15,7 +15,7 @@ SELECT * FROM new_restrictions;
   7 | {3,5,8} |  100
 (7 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM new_restrictions WHERE id < 3',
@@ -30,7 +30,7 @@ SELECT * FROM pgr_turnRestrictedPath(
    5 |       1 |        5 |   12 |   -1 |    0 |        4
 (5 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM new_restrictions',
@@ -56,7 +56,7 @@ SELECT * FROM pgr_turnRestrictedPath(
   15 |       3 |        5 |   12 |   -1 |    0 |        4
 (15 rows)
 
--- q4
+/* -- q4 */
 SELECT * FROM pgr_turnRestrictedPath(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM new_restrictions',
@@ -72,6 +72,6 @@ SELECT * FROM pgr_turnRestrictedPath(
    5 |       1 |        5 |   12 |   -1 |    0 |        4
 (5 rows)
 
--- q5
+/* -- q5 */
 ROLLBACK;
 ROLLBACK
