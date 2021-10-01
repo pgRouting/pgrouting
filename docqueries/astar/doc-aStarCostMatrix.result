@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- astar q1
+/* -- astar q1 */
 SELECT * FROM pgr_aStarCostMatrix(
     'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
     (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5)
@@ -23,7 +23,7 @@ SELECT * FROM pgr_aStarCostMatrix(
          4 |       3 |        1
 (12 rows)
 
--- astar q2
+/* -- astar q2 */
 SELECT * FROM pgr_aStarCostMatrix(
     'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
     (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
@@ -45,7 +45,7 @@ SELECT * FROM pgr_aStarCostMatrix(
          4 |       3 |        1
 (12 rows)
 
--- astar q3
+/* -- astar q3 */
 SELECT * FROM pgr_TSP(
     $$
     SELECT * FROM pgr_aStarCostMatrix(
@@ -65,6 +65,6 @@ SELECT * FROM pgr_TSP(
    5 |    1 |    0 |        6
 (5 rows)
 
--- astar q4
+/* -- astar q4 */
 ROLLBACK;
 ROLLBACK
