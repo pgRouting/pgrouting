@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
+/* --q1 */
 SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2,
@@ -40,7 +40,7 @@ SELECT * FROM pgr_KSP(
   10 |       2 |        5 |   12 |   -1 |    0 |        4
 (10 rows)
 
---q2
+/* --q2 */
 SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2
@@ -105,7 +105,7 @@ SELECT * FROM pgr_KSP(
   15 |       3 |        5 |   12 |   -1 |    0 |        4
 (15 rows)
 
---q3
+/* --q3 */
 SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, directed:=false
@@ -154,7 +154,7 @@ SELECT * FROM pgr_KSP(
   22 |       4 |        7 |   12 |   -1 |    0 |        6
 (22 rows)
 
---q4
+/* --q4 */
 SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 3, 2
@@ -227,7 +227,7 @@ SELECT  * FROM pgr_KSP(
   15 |       3 |        5 |   12 |   -1 |    0 |        4
 (15 rows)
 
---q5
+/* --q5 */
 SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, directed:=false
@@ -269,6 +269,6 @@ SELECT  * FROM pgr_KSP(
   15 |       3 |        5 |   12 |   -1 |    0 |        4
 (15 rows)
 
---q6
+/* --q6 */
 ROLLBACK;
 ROLLBACK

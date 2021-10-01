@@ -2,7 +2,7 @@
 --              PGR_KSP V3
 --------------------------------------------------------------------------------
 
-\echo --q1
+/* --q1 */
 
    SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -15,7 +15,7 @@
       2, 12, 2
    );
 
-\echo --q2
+/* --q2 */
 
    SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -34,7 +34,7 @@
    );
 
 
-\echo --q3
+/* --q3 */
 
   SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -47,7 +47,7 @@
    );
 
 
-\echo --q4
+/* --q4 */
 
   SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
@@ -71,7 +71,7 @@
    );
 
 
-\echo --q5
+/* --q5 */
 
   SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
@@ -84,4 +84,4 @@
    );
 
 
-\echo --q6
+/* --q6 */
