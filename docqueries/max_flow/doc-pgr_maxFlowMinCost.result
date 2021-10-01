@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -19,7 +19,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
    5 |   16 |      9 |      4 |   80 |                 0 |   80 |      400
 (5 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -42,7 +42,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
   11 |   13 |     11 |     12 |   80 |                20 |   80 |      650
 (11 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -62,7 +62,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
    8 |   14 |     13 |     10 |  100 |                30 |  100 |      450
 (8 rows)
 
--- q4
+/* -- q4 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -83,7 +83,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
    9 |   14 |     13 |     10 |  100 |                30 |  100 |      600
 (9 rows)
 
--- q5
+/* -- q5 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -104,6 +104,6 @@ SELECT * FROM pgr_MaxFlowMinCost(
    9 |   14 |     13 |     10 |  100 |                30 |  100 |      600
 (9 rows)
 
--- q6
+/* -- q6 */
 ROLLBACK;
 ROLLBACK
