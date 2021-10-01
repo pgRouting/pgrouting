@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_chinesePostman(
     'SELECT id,
      source, target,
@@ -47,7 +47,7 @@ SELECT * FROM pgr_chinesePostman(
   35 |    1 |   -1 |    0 |       34
 (35 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_chinesePostman(
     'SELECT id,
      source, target,
@@ -66,6 +66,6 @@ SELECT * FROM pgr_chinesePostman(
    9 |    6 |   -1 |    0 |        8
 (9 rows)
 
--- q3
+/* -- q3 */
 ROLLBACK;
 ROLLBACK
