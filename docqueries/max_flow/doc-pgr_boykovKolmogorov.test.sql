@@ -1,5 +1,5 @@
 
-\echo -- q1
+/* -- q1 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -10,7 +10,7 @@ SELECT * FROM pgr_boykovKolmogorov(
     , 6, 11
 );
 
-\echo -- q2
+/* -- q2 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -21,7 +21,7 @@ SELECT * FROM pgr_boykovKolmogorov(
     , 6, ARRAY[1, 3, 11]
 );
 
-\echo -- q3
+/* -- q3 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -32,7 +32,7 @@ SELECT * FROM pgr_boykovKolmogorov(
     , ARRAY[6, 8, 12], 11
 );
 
-\echo -- q4
+/* -- q4 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -43,7 +43,7 @@ SELECT * FROM pgr_boykovKolmogorov(
     , ARRAY[6, 8, 12], ARRAY[1, 3, 11]
 );
 
-\echo -- q5
+/* -- q5 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -54,4 +54,4 @@ SELECT * FROM pgr_boykovKolmogorov(
     'SELECT * FROM ( VALUES (6, 1), (8, 3), (12, 11), (8, 1) ) AS t(source, target)'
 );
 
-\echo -- q6
+/* -- q6 */
