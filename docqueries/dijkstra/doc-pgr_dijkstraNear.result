@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_dijkstraNear(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3, 6, 7]
@@ -14,7 +14,7 @@ SELECT * FROM pgr_dijkstraNear(
    3 |        3 |         2 |       6 |    6 |   -1 |    0 |        2
 (3 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_dijkstraNear(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[3, 6, 7], 2,
@@ -30,7 +30,7 @@ SELECT * FROM pgr_dijkstraNear(
    5 |        3 |         6 |       2 |    2 |   -1 |    0 |        2
 (5 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_dijkstraNear(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[4, 9], ARRAY[3, 6, 7],
@@ -42,7 +42,7 @@ SELECT * FROM pgr_dijkstraNear(
    2 |        2 |         4 |       3 |    3 |   -1 |    0 |        1
 (2 rows)
 
--- q4
+/* -- q4 */
 SELECT * FROM pgr_dijkstraNear(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT unnest(ARRAY[3, 6, 7]) as source, target FROM (SELECT unnest(ARRAY[4, 9]) AS target) a
@@ -68,6 +68,6 @@ SELECT * FROM pgr_dijkstraNear(
   14 |        5 |         7 |       9 |    9 |   -1 |    0 |        4
 (14 rows)
 
--- q5
+/* -- q5 */
 ROLLBACK;
 ROLLBACK
