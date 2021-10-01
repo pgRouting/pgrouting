@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3
@@ -17,7 +17,7 @@ SELECT * FROM pgr_dijkstra(
    6 |        6 |    3 |   -1 |    0 |        5
 (6 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -29,7 +29,7 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |    3 |   -1 |    0 |        1
 (2 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM edge_table',
     2, ARRAY[3,5],
@@ -45,7 +45,7 @@ SELECT * FROM pgr_dijkstra(
    6 |        2 |       5 |    5 |   -1 |    0 |        1
 (6 rows)
 
--- q4
+/* -- q4 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], 5
@@ -61,7 +61,7 @@ SELECT * FROM pgr_dijkstra(
    7 |        5 |        11 |    5 |   -1 |    0 |        4
 (7 rows)
 
--- q5
+/* -- q5 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2,11], ARRAY[3,5],
@@ -81,8 +81,8 @@ SELECT * FROM pgr_dijkstra(
   10 |        3 |        11 |       5 |    5 |   -1 |    0 |        2
 (10 rows)
 
--- q6
--- q7
+/* -- q6 */
+/* -- q7 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3
@@ -216,8 +216,8 @@ SELECT * FROM pgr_dijkstra(
   18 |        5 |        11 |       5 |    5 |   -1 |    0 |        4
 (18 rows)
 
--- q8
--- q9
+/* -- q8 */
+/* -- q9 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -329,8 +329,8 @@ SELECT * FROM pgr_dijkstra(
   10 |        3 |        11 |       5 |    5 |   -1 |    0 |        2
 (10 rows)
 
--- q10
--- q11
+/* -- q10 */
+/* -- q11 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM edge_table',
     2, 3
@@ -405,8 +405,8 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
 (2 rows)
 
--- q12
--- q13
+/* -- q12 */
+/* -- q13 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM edge_table',
     2, 3,
@@ -526,8 +526,8 @@ SELECT * FROM pgr_dijkstra(
   12 |        3 |        11 |       5 |    5 |   -1 |    0 |        2
 (12 rows)
 
--- q14
--- q15
+/* -- q14 */
+/* -- q15 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -629,8 +629,8 @@ SELECT * FROM pgr_dijkstra(
    6 |        6 |         2 |       3 |    3 |   -1 |    0 |        5
 (6 rows)
 
--- q16
--- q17
+/* -- q16 */
+/* -- q17 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -686,8 +686,8 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |         2 |       3 |    3 |   -1 |    0 |        1
 (2 rows)
 
--- q18
--- q19
+/* -- q18 */
+/* -- q19 */
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM combinations_table',
@@ -708,6 +708,6 @@ SELECT * FROM pgr_dijkstra(
   11 |        3 |         2 |       4 |    4 |   -1 |    0 |        2
 (11 rows)
 
--- q20
+/* -- q20 */
 ROLLBACK;
 ROLLBACK
