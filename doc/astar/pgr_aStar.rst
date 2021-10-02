@@ -111,8 +111,8 @@ Optional parameters are `named parameters` and have a default value.
 :Example: From vertex :math:`2` to vertex :math:`12` on a **directed** graph
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: aStar(One to One)
@@ -130,8 +130,8 @@ One to One
 :Example: From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: astar(One to Many)
@@ -148,8 +148,8 @@ One to many
 :Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: aStar(Many to One)
@@ -166,8 +166,8 @@ Many to One
 :Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q4
-   :end-before: --q5
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
     single: aStar(Many to Many)
@@ -184,8 +184,8 @@ Many to Many
 :Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q5
-   :end-before: --q6
+   :start-after: -- q5
+   :end-before: -- q6
 
 .. index::
     single: aStar(Combinations) -- Proposed on v3.2
@@ -203,8 +203,8 @@ Combinations
 
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q6
-   :end-before: --q7
+   :start-after: -- q6
+   :end-before: -- q7
 
 Parameters
 -------------------------------------------------------------------------------
