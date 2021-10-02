@@ -76,7 +76,7 @@ Signatures
 :Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}`  in that order
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
-    :start-after: --q00
+    :start-after: -- q00
     :end-before: -- q0
 
 .. index::
