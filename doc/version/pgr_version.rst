@@ -56,7 +56,7 @@ Signature
 
 	TEXT pgr_version();
 
-:Example: pgRouting Version for this documentatoin
+:Example: pgRouting Version for this documentation
 
 .. literalinclude:: doc-version.queries
    :start-after: -- q1
