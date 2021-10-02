@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2021-10-02 19:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,7 +91,7 @@ msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:59
-msgid "pgRouting Version for this documentatoin"
+msgid "pgRouting Version for this documentation"
 msgstr ""
 
 #: ../../build/doc/pgr_version.rst:66
