@@ -226,7 +226,7 @@
 <dd class="field-odd"><p>The lengauerTarjanDominatorTree with root vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lengauertarjandominatortree(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   SELECT * FROM pgr_lengauertarjandominatortree(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
     1
 );
@@ -381,7 +381,7 @@
 <dd class="field-odd"><p>When the edge is disonnectd from graph then it will returns immidiate dominator of all other vertex as zero.</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lengauertarjandominatortree(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   SELECT * FROM pgr_lengauertarjandominatortree(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
     16
 );
@@ -437,7 +437,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Oct 01, 2021.<br/>
+      Last updated on Oct 02, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>

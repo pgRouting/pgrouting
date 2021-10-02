@@ -380,7 +380,7 @@
 </dd>
 </dl>
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Se utilizan redes para consultas marcadas como directed , cost y  reverse_cost</span></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
       <span class="n">directed</span><span class="o">:=</span><span class="n">true</span>
@@ -425,7 +425,7 @@
 </dd>
 </dl>
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig1"><span class="std std-ref">Se utilizan redes para consultas marcadas como directed , cost y  reverse_cost</span></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span>
    <span class="p">);</span>
@@ -497,7 +497,7 @@
 </dd>
 </dl>
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Se utiliza la red para consultas marcadas como undirected , cost y  reverse_cost</span></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="o">:=</span><span class="n">false</span>
    <span class="p">);</span>
@@ -553,7 +553,7 @@
 </dd>
 </dl>
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig3"><span class="std std-ref">Red para consultas marcadas como directed y sólo se utiliza la columna cost</span></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span>
    <span class="p">);</span>
@@ -633,7 +633,7 @@
 </dd>
 </dl>
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig4"><span class="std std-ref">Red para consultas marcadas como undirected y solo se utiliza la columna cost</span></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
      <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
       <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span><span class="o">:=</span><span class="n">false</span>
    <span class="p">);</span>
@@ -704,7 +704,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Actualizado por última vez en oct. 01, 2021.<br/>
+      Actualizado por última vez en oct. 02, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>

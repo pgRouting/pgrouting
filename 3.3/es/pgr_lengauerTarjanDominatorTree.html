@@ -227,7 +227,7 @@
 <dd class="field-odd"><p>El lengauerTarjanDominatorTree con vértice raíz <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lengauertarjandominatortree(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   SELECT * FROM pgr_lengauertarjandominatortree(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
     1
 );
@@ -382,7 +382,7 @@
 <dd class="field-odd"><p>Cuando la arista se desconecte del grafo, entonces devolverá el dominador inmidiate de todos los demás vértices como cero.</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lengauertarjandominatortree(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   SELECT * FROM pgr_lengauertarjandominatortree(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
     16
 );
@@ -438,7 +438,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Actualizado por última vez en oct. 01, 2021.<br/>
+      Actualizado por última vez en oct. 02, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
