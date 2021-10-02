@@ -42,7 +42,7 @@ ARRAY[1]);
 (5 rows)
 
 /* -- q4 */
-SELECT * FROM pgr_contraction(
+ SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[2]);
  type | id | contracted_vertices | source | target | cost
