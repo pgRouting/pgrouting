@@ -33,14 +33,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Point_on_edge_t = struct Point_on_edge_t;
+using Edge_t = struct Edge_t;
+using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
-#endif
-
+#   include <stdint.h>
+#   include <stdbool.h>
 typedef struct Point_on_edge_t Point_on_edge_t;
 typedef struct Edge_t Edge_t;
-#include "c_types/ii_t_rt.h"
 typedef struct Path_rt Path_rt;
+#endif
+
+#include "c_types/ii_t_rt.h"
 
 #ifdef __cplusplus
 extern "C" {
