@@ -35,13 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using TSP_tour_rt = struct TSP_tour_rt;
 #else
 #   include <stddef.h>
+typedef struct TSP_tour_rt TSP_tour_rt;
 #endif
 
 #include "c_types/iid_t_rt.h"
-typedef struct TSP_tour_rt TSP_tour_rt;
-
 
 #ifdef __cplusplus
 extern "C" {
