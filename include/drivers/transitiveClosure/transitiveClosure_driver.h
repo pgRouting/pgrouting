@@ -33,12 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using TransitiveClosure_rt = struct TransitiveClosure_rt;
+using Edge_t = struct Edge_t;
 #else
 #   include <stddef.h>
-#endif
-
 typedef struct TransitiveClosure_rt TransitiveClosure_rt;
 typedef struct Edge_t Edge_t;
+#endif
 
 #ifdef __cplusplus
 extern "C" {
