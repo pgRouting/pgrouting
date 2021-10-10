@@ -31,25 +31,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_PLANAR_ISPLANAR_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Edge_t = struct Edge_t;
 #else
 #   include <stddef.h>
-#endif
-
 typedef struct Edge_t Edge_t;
-#include "c_types/iid_t_rt.h"
+#endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    /*********************************************************
-    TEXT
-     ********************************************************/
-
-
     bool do_pgr_isPlanar(
                 Edge_t  *data_edges,
                 size_t total_tuples,
