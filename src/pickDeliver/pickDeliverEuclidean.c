@@ -35,6 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/orders_input.h"
 #include "c_common/vehicles_input.h"
+#include "c_types/iid_t_rt.h"
+#include "c_types/pickDeliver/orders_t.h"
+#include "c_types/pickDeliver/vehicle_t.h"
 #include "c_types/pickDeliver/schedule_rt.h"
 
 #include "drivers/pickDeliver/pickDeliverEuclidean_driver.h"

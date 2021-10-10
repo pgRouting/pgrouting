@@ -35,14 +35,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Orders_t = struct Orders_t;
+using Vehicle_t = struct Vehicle_t;
+using Schedule_rt = struct Schedule_rt;
+using IID_t_rt = struct IID_t_rt;
 #else
 #   include <stddef.h>
-#endif
-
-#include "c_types/pickDeliver/orders_t.h"
-#include "c_types/pickDeliver/vehicle_t.h"
-#include "c_types/iid_t_rt.h"
+typedef struct Orders_t Orders_t;
+typedef struct Vehicle_t Vehicle_t;
 typedef struct Schedule_rt Schedule_rt;
+typedef struct IID_t_rt IID_t_rt;
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,7 +58,7 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliver(
-            Orders_t pd_orders_arr[], size_t total_pd_orders,
+            Orders_t *pd_orders_arr, size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
             IID_t_rt *matrix_cells_arr, size_t total_cells,
 

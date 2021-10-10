@@ -36,14 +36,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <utility>
 
-#include "c_types/pickDeliver/schedule_rt.h"
-
 #include "vrp/pgr_pickDeliver.h"
 #include "vrp/initials_code.h"
 #include "cpp_common/Dmatrix.h"
 
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
+
+#include "c_types/iid_t_rt.h"
+#include "c_types/pickDeliver/orders_t.h"
+#include "c_types/pickDeliver/vehicle_t.h"
+#include "c_types/pickDeliver/schedule_rt.h"
 
 void
 do_pgr_pickDeliver(
