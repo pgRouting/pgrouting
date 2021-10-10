@@ -26,11 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_ALPHA_SHAPE_ALPHASHAPE_DRIVER_H_
 #pragma once
 
-/* for syze_t */
-#include <stddef.h>
-#include "c_types/edge_xy_t.h"
+#ifdef __cplusplus
+#   include <cstddef>
+using GeomText_t = struct GeomText_t;
+using Edge_xy_t = struct Edge_xy_t;
+#else
+#   include <stddef.h>
+typedef struct Edge_xy_t Edge_xy_t;
 typedef struct GeomText_t GeomText_t;
-
+#endif
 
 #ifdef __cplusplus
 extern "C" {
