@@ -41,11 +41,11 @@ We also provide a function to node an unoded network.
 
 .. topology_index_end
 
-.. rubric:: Experimental
+.. rubric:: Proposed
 
-.. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. topology_proposed_start
 
@@ -57,11 +57,11 @@ We also provide a function to node an unoded network.
   :hidden:
 
   pgr_createTopology
-  pgr_extractVertices
   pgr_createVerticesTable
   pgr_analyzeGraph
   pgr_analyzeOneWay
   pgr_nodeNetwork
+  pgr_extractVertices
 
 See Also
 -------------------------------------------------------------------------------

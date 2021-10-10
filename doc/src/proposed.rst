@@ -55,6 +55,12 @@ Proposed Functions
    :start-after: index proposed from here
    :end-before: index proposed to here
 
+:doc:`topology-functions`
+
+.. include:: topology-functions.rst
+   :start-after: topology_proposed_start
+   :end-before: topology_proposed_end
+
 .. rubric:: categories
 
 :doc:`cost-category`
@@ -86,7 +92,6 @@ Proposed Functions
 
     withPoints-family
     KSP-category
-
 
 See Also
 -------------------------------------------------------------------------------

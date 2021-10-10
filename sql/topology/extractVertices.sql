@@ -361,7 +361,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_extractVertices(TEXT, BOOLEAN)
 IS 'pgr_extractVertices
-- EXPERIMENTAL
+- PROPOSED
 - Parameters
   - Edges SQL with columns: [id,] startpoint, endpoint
         OR

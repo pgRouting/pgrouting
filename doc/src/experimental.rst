@@ -71,12 +71,6 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
-:doc:`topology-functions`
-
-.. include:: topology-functions.rst
-   :start-after: topology_proposed_start
-   :end-before: topology_proposed_end
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst

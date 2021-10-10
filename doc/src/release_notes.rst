@@ -45,7 +45,12 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 .. rubric:: Issue fixes
 
-* `#2057 <https://github.com/pgRouting/pgrouting/issues/1850>`__: trspViaEdges columns in different order
+* `#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges columns in different order
+* `#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: pgr_extractVertices to proposed
+
+.. rubric:: Experimental moved to proposed
+
+* pgr_extractVertices
 
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
