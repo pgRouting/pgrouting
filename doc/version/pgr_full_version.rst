@@ -45,7 +45,7 @@ Signatures
    RETURNS RECORD OF (version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)
 
 
-:Example: Information when this documentation was build
+:Example: Information about when this documentation was built
 
 .. literalinclude:: doc-full_version.queries
    :start-after: -- q1
