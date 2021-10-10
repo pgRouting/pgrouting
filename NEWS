@@ -9,7 +9,12 @@ To see all issues & pull requests closed by this release see the [Git closed mil
 
 **Issue fixes**
 
-* [#2057](https://github.com/pgRouting/pgrouting/issues/1850): trspViaEdges columns in different order
+* [#2057](https://github.com/pgRouting/pgrouting/issues/2057): trspViaEdges columns in different order
+* [#2087](https://github.com/pgRouting/pgrouting/issues/2087): pgr_extractVertices to proposed
+
+**Experimental moved to proposed**
+
+* pgr_extractVertices
 
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
