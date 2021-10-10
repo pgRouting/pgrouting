@@ -100,8 +100,8 @@ jobs:
           # Add the files, commit and push
           for line in `cat build/doc/locale_changes.txt`; do git add "$line"; done
           git diff --staged --quiet || git commit -m "Update locale: commit ${{ env.GIT_HASH }}"
-          git fetch origin
-          git reset --hard  # Remove the unstaged changes before rebasing
+          git fetch origin develop
+          git restore .  # Remove the unstaged changes before rebasing
           git rebase origin/develop
           git push origin develop
 
