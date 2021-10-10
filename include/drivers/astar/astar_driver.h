@@ -33,16 +33,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Edge_xy_t = struct Edge_xy_t;
+using II_t_rt = struct II_t_rt;
 using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_xy_t Edge_xy_t;
+typedef struct II_t_rt II_t_rt;
 typedef struct Path_rt Path_rt;
 #endif
-
-#include "c_types/edge_xy_t.h"
-#include "c_types/ii_t_rt.h"
-
-
 
 #ifdef __cplusplus
 extern "C" {
