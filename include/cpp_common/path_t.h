@@ -33,12 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
  * This one is for processing
  */
-struct Path_t{
+struct Path_t {
     int64_t node;
     int64_t edge;
     double cost;
     double agg_cost;
 };
-
 
 #endif  // INCLUDE_CPP_COMMON_PATH_T_H_
