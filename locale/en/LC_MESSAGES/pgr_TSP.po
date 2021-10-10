@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2021-10-10 16:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,8 +61,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:42 ../../build/doc/pgr_TSP.rst:226
 msgid ""
-"Metric Algorithm from `Boost library <:target: "
-"https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+"Metric Algorithm from `Boost library "
+"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:43
