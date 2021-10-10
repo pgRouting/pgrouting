@@ -98,6 +98,7 @@ SELECT * FROM pgr_edwardMoore(
 
 /* -- q7 */
 
+
 /* -- q8 */
 SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -208,6 +209,7 @@ SELECT * FROM pgr_edwardMoore(
 
 /* -- q9 */
 
+
 /* -- q10 */
 SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -303,6 +305,7 @@ SELECT * FROM pgr_edwardMoore(
 
 /* -- q11 */
 
+
 /* -- q12 */
 SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost FROM edge_table',
@@ -369,6 +372,7 @@ SELECT * FROM pgr_edwardMoore(
 (2 rows)
 
 /* -- q13 */
+
 
 /* -- q14 */
 SELECT * FROM pgr_edwardMoore(
