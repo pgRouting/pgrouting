@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------------------
 
 # For all the chapter files
-for file in locale/en/LC_MESSAGES/*.po; do
+for file in $(find locale/en -type f -name "*.po"); do
     if grep -q '#~' $file; then
         perl -pi -0777 -e 's/#~.*//s' $file
         git add $file
