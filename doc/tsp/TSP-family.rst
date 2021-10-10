@@ -112,7 +112,7 @@ See Also
 
 .. rubric:: References
 
-* Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
 * `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
 

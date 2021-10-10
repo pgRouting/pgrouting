@@ -39,7 +39,7 @@ pgr_TSP
 
 * Version 3.2.1
 
-  * Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+  * Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
   * Simulated Annealing Algorithm no longer supported
 
     * The Simulated Annealing Algorithm related parameters are ignored:
@@ -223,7 +223,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
-* Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
 
