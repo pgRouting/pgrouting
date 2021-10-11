@@ -6,21 +6,21 @@ ROLLBACK;
 ROLLBACK
 SET extra_float_digits=-3;
 SET
---place1
+/* --place1 */
 SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
  to_cost | target_id | via_path
 ---------+-----------+----------
      100 |        25 | 32, 33
 (1 row)
 
---place2
+/* --place2 */
 SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path;
  id | cost | target_id |    path
 ----+------+-----------+------------
   1 |  100 |        25 | {33,32,25}
 (1 row)
 
---place3
+/* --place3 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
@@ -29,7 +29,7 @@ SELECT * FROM pgr_trsp(
 -----+-----+-----+------
 (0 rows)
 
---place4
+/* --place4 */
 SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15
@@ -38,14 +38,14 @@ SELECT * FROM pgr_dijkstra(
 -----+----------+------+------+------+----------
 (0 rows)
 
---place5
+/* --place5 */
 SELECT * FROM pgr_trsp(
      $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
      1, 15, true, true,
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
---place6
+/* --place6 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  true, true
@@ -54,14 +54,14 @@ SELECT * FROM pgr_trsp(
 -----+-----+-----+------
 (0 rows)
 
---place7
+/* --place7 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     14, 14, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
---place8
+/* --place8 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1, true, true,
@@ -80,14 +80,14 @@ SELECT * FROM pgr_trsp(
    8 |   1 |  -1 |    0
 (9 rows)
 
---place9
+/* --place9 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
     2, 3, false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did't return 'reverse_cost' column
---place10
+/* --place10 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     2, 3, false, false,
@@ -101,7 +101,7 @@ SELECT * FROM pgr_trsp(
    3 |   3 |  -1 |    0
 (4 rows)
 
---place11
+/* --place11 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true
@@ -110,14 +110,14 @@ SELECT * FROM pgr_trsp(
 -----+-----+-----+------
 (0 rows)
 
---place12
+/* --place12 */
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
---place13
+/* --place13 */
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true
@@ -128,7 +128,7 @@ SELECT * FROM pgr_TRSP(
    1 |  -2 |  -1 |    0
 (2 rows)
 
---place14
+/* --place14 */
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true,
@@ -139,7 +139,7 @@ SELECT * FROM pgr_TRSP(
    0 |  -1 |   1 |  0.3
 (1 row)
 
---place15
+/* --place15 */
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
@@ -150,7 +150,7 @@ SELECT * FROM pgr_TRSP(
    1 |  -2 |  -1 |    0
 (2 rows)
 
---place16
+/* --place16 */
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true,
@@ -161,14 +161,14 @@ SELECT * FROM pgr_TRSP(
    0 |  -1 |   1 |    0
 (1 row)
 
---place17
+/* --place17 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
     1, 0.5, 1, 0.8, false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did't return 'reverse_cost' column
---place18
+/* --place18 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 0.5, 1, 0.8, false, false,
@@ -179,7 +179,8 @@ SELECT * FROM pgr_trsp(
    0 |  -1 |   1 |  0.3
 (1 row)
 
---place19
+/* --place19 */
+
 SELECT * FROM pointsOfInterest;
  pid |  x  |  y  | edge_id | side | fraction |                  the_geom                  |                  newpoint
 -----+-----+-----+---------+------+----------+--------------------------------------------+--------------------------------------------
@@ -191,7 +192,7 @@ SELECT * FROM pointsOfInterest;
    6 | 2.2 | 1.7 |       4 | b    |      0.7 | 01010000009A99999999990140333333333333FB3F | 01010000000000000000000040333333333333FB3F
 (6 rows)
 
---place20
+/* --place20 */
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
@@ -207,7 +208,7 @@ SELECT * FROM pgr_TRSP(
    1 |   2 |   4 |  0.7
 (2 rows)
 
---place21
+/* --place21 */
 SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
@@ -220,7 +221,7 @@ SELECT * FROM pgr_withPoints(
    3 |        3 |   -6 |   -1 |    0 |      1.3
 (3 rows)
 
---place22
+/* --place22 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     8, 1,
@@ -236,7 +237,7 @@ SELECT * FROM pgr_trsp(
    2 |   2 |   1 |  0.6
 (3 rows)
 
---place23
+/* --place23 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     11, 0,
@@ -252,7 +253,7 @@ SELECT * FROM pgr_trsp(
    2 |   2 |   1 |  0.6
 (3 rows)
 
---place24
+/* --place24 */
 SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
@@ -266,31 +267,26 @@ SELECT * FROM pgr_withPoints(
    4 |        4 |   -1 |   -1 |    0 |      2.6
 (4 rows)
 
---place25
-# pgr_trspViaVertices
-## pgr_trspViaVertices No path representation differences
-pgr_trspViaVertices uses:
-"* When there are restrictions: `_pgr_trsp(one to one)`"
-"* When there are no restrictions: `pgr_dijkstraVia`"
+/* --place25 */
 
-**PLEASE: Use pgr_dijstraVia when there are no restrictions**
 
-Representation of **no path found**:
-"* Sometimes represents with Error a no path found"
-"* Sometimes represents with EMPTY SET when no path found"
-"* Forcing the user to use the wrapper or the replacement function"
 
-Calls to the original function of is no longer allowed without restrictions
-```
+
+
+
+
+
+
+
+
+
+
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2],
     false, true
 );
 ERROR:  Restrictions Missing
-```
-Calls to the wrapper function allowed without restrictions
-```
 SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[2, 3, 2],
@@ -303,9 +299,6 @@ SELECT * FROM pgr_trspViaVertices(
    3 |   2 |   2 |  -1 |    0
 (3 rows)
 
-```
-But it uses pgr_dijkstraVia that gives more information on the result
-```
 SELECT * FROM pgr_dijkstraVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[2, 3, 2],
@@ -319,15 +312,6 @@ SELECT * FROM pgr_dijkstraVia(
    4 |       2 |        2 |         3 |       2 |    2 |   -2 |    0 |        1 |              2
 (4 rows)
 
-```
-## when a path does not exist on the route
-pgr_TRSPViaVertices gives different results even if restrictions are nt involved on the
-shortest path(s) when restrictions are used VS when restrictions are not used:
-
-Because there is no path from 1 to 1 then there is no complete route 1 to 1 to 2
-therefore the expected result is EMPTY SET to represent no route was found
-"* without restrictions"
-```
 SELECT * FROM pgr_TRSPViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
@@ -337,10 +321,6 @@ SELECT * FROM pgr_TRSPViaVertices(
 -----+-----+-----+-----+------
 (0 rows)
 
-```
-"* with restrictions"
-Restrictions on the wrapper function, is the last parameter and its the old style:
-```
 SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
@@ -359,19 +339,6 @@ SELECT * FROM pgr_trspViaVertices(
    8 |   2 |   2 |  -1 |    0
 (8 rows)
 
-```
-# pgr_trspViaEdges
-*pgr_trspViaEdges* will use the original code when
-* There are restrictions
-* A point is a vertex in disguise (with pcts value of 0)
-
-What it returns
-* Error to represent no route
-* the points are renumbered to -1, -2 .. -N
-* if a point is part of a path it will **not** show on the path
-
-Exaple execution
-```
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 2, 1], ARRAY[0.1,0.5,0.5],
@@ -390,26 +357,6 @@ SELECT * FROM pgr_trspViaEdges(
    8 |   2 |   2 |   1 |  0.5
 (8 rows)
 
-```
-A temporay wraper function is used when:
-* There are no restrictions
-* Before: No point is a vertex in disguise (with pcts value of 0)
-* Now: c$Undefined behaviour when a point is a vertex in disguise (with pcts value of 0)
-
-Internaly:
-* builds a new graph and calls pgr_dijkstraVia
-
-What it returns
-* returns EMPTY SET to represent no route
-* edge = -1 in the result to represent the end of a intermediate path
-* edge = -2 in the result to represent the end of the last path & route
-* the points are renumbered to -1, -2 .. -N
-* if a point is part of a path it will show on the path
-
-Note: I do not mention the wrapper name due to the fact that this is not official documentation
-Note: I will use *_pgr_withPointsVia* as the wrapper name just for sake of this notes
-Example excution
-```
 SELECT * FROM _pgr_withPointsVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 2, 1], ARRAY[0.1,0.5,0.5],
@@ -425,13 +372,6 @@ SELECT * FROM _pgr_withPointsVia(
    6 |       2 |        3 |        -2 |      -3 |   -3 |   -2 |    0 |        1 |            1.6
 (6 rows)
 
-```
-## pgr_trspViaEdges No path representation differences
-This example no path is found (edge 17 is disconnected) from the big graph.
-* There is a vertex in disguise (fraction 0 or 1)
-* Undefined behaviour
-
-```
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
@@ -442,29 +382,6 @@ SELECT * FROM pgr_trspViaEdges(
    1 |     |     |     |
 (1 row)
 
-```
-This example no path is found (edge 17 is disconnected) from the big graph.
-* Has a restriction
-* *pgr_trspViaEdges* original code is used
-* throws error to represent no route was not found
-
-```
-SELECT * FROM pgr_trspViaEdges(
-$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-ARRAY[1, 17, 1], ARRAY[0.5,0.5,0.5],
-false, true,
-$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, 32, 33::TEXT AS via_path$$
-);
-server closed the connection unexpectedly
-This probably means the server terminated abnormally
-before or while processing the request.
-The connection to the server was lost. Attempting reset: Failed.
-```
-This example no path is found (edge 17 is disconnected) from the big graph.
-* *_pgr_withPointsVia* is used
-* returns EMPTY SET to represent no route
-
-```
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 17, 1], ARRAY[0.1,0.5,0.5],
@@ -475,13 +392,6 @@ SELECT * FROM pgr_trspViaEdges(
 -----+-----+-----+-----+------
 (0 rows)
 
-```
-## (pgr_trspViaEdges) Using the pointsOfInterest table
-Only routing points
-when *_pgr_withPointsVia* is used
-* the renumbering still takes place
-
-```
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[
@@ -509,11 +419,6 @@ SELECT * FROM pgr_trspViaEdges(
   10 |   2 |  -3 |  -2 |    0
 (10 rows)
 
-```
-Only routing points
-when originalcode is used (because there is a restriction)
-
-```
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[
@@ -540,11 +445,6 @@ SELECT * FROM pgr_trspViaEdges(
    9 |   2 |   5 |   4 |  0.3
 (9 rows)
 
-```
-Routing points & vertices
-* vertex 6 is on edge 11 with fraction 0
-* Undefined behavior
-```
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[
@@ -569,7 +469,6 @@ SELECT * FROM pgr_trspViaEdges(
    7 |   2 |   6 |  -1 |    0
 (7 rows)
 
-```
 BEGIN;
 BEGIN
 ROLLBACK;

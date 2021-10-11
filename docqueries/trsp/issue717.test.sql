@@ -23,12 +23,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 -------------------------------------
 -------------------------------------
-\echo -- tests to without restrictions
+-- tests to without restrictions
 -------------------------------------
 -------------------------------------
 
 -------------------------------------
-\echo -- directed  with reverse_cost
+-- directed  with reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -37,7 +37,6 @@ SELECT * FROM pgr_trspViaVertices(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
@@ -46,7 +45,6 @@ SELECT * FROM pgr_trspViaEdges(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -56,7 +54,6 @@ SELECT * FROM pgr_trspViaEdges(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -66,10 +63,9 @@ SELECT * FROM pgr_trspViaEdges(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 -------------------------------------
-\echo -- directed  without reverse_cost
+-- directed  without reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -78,7 +74,6 @@ SELECT * FROM pgr_trspViaVertices(
     false  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
@@ -87,7 +82,6 @@ SELECT * FROM pgr_trspViaEdges(
     false  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -97,7 +91,6 @@ SELECT * FROM pgr_trspViaEdges(
     false  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -107,11 +100,10 @@ SELECT * FROM pgr_trspViaEdges(
     false  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 
 -------------------------------------
-\echo -- undirected  with reverse_cost
+-- undirected  with reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -120,7 +112,6 @@ SELECT * FROM pgr_trspViaVertices(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
@@ -129,7 +120,6 @@ SELECT * FROM pgr_trspViaEdges(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -139,7 +129,6 @@ SELECT * FROM pgr_trspViaEdges(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -149,10 +138,9 @@ SELECT * FROM pgr_trspViaEdges(
     true  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 -------------------------------------
-\echo -- undirected  without reverse_cost
+-- undirected  without reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -161,7 +149,6 @@ SELECT * FROM pgr_trspViaVertices(
     false  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
@@ -170,7 +157,6 @@ SELECT * FROM pgr_trspViaEdges(
     false  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -180,7 +166,6 @@ SELECT * FROM pgr_trspViaEdges(
     false  -- has_reverse_cost?
 );
 
-\echo '---------------------------'
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
@@ -189,5 +174,3 @@ SELECT * FROM pgr_trspViaEdges(
     false,  -- directed graph?
     false  -- has_reverse_cost?
 );
-
-\echo '---------------------------'

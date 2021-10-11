@@ -6,15 +6,15 @@
     ------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------
 
-\echo --q1
+/* --q1 */
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         7, 12, false, false
     );
 
-\echo --q2
+/* --q2 */
 
-\echo --q3
+/* --q3 */
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         2, 7, false, false,
@@ -31,7 +31,7 @@
     );
 
 
-\echo --q4
+/* --q4 */
     SELECT * FROM pgr_trspViaVertices(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         ARRAY[2,7,11]::INTEGER[],
@@ -40,7 +40,7 @@
         coalesce('',''||via_path,'''') AS via_path FROM restrictions');
 
 
-\echo --q5
+/* --q5 */
     SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,
         reverse_cost FROM edge_table',
@@ -51,4 +51,4 @@
         'SELECT to_cost, target_id::int4, FROM_edge ||
         coalesce('',''||via_path,'''') AS via_path FROM restrictions');
 
-\echo --q6
+/* --q6 */
