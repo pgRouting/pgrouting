@@ -2,8 +2,8 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
-SELECT pgr_analyzeOneWay('edge_table',
+/* --q1 */
+	SELECT pgr_analyzeOneWay('edge_table',
         ARRAY['', 'B', 'TF'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'FT'],
@@ -22,6 +22,6 @@ NOTICE:  Found 0 potential problems in directionality
  OK
 (1 row)
 
---q1.1
+/* --q1.1 */
 ROLLBACK;
 ROLLBACK

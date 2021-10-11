@@ -6,7 +6,7 @@ SET extra_float_digits=-3;
 SET
 SET client_min_messages TO WARNING;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_dijkstraCostMatrix(
@@ -32,7 +32,7 @@ SELECT * FROM pgr_TSP(
   14 |    1 |    4 |       20
 (14 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_dijkstraCostMatrix(
@@ -61,7 +61,7 @@ SELECT * FROM pgr_TSP(
   14 |    7 |    4 |       18
 (14 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_withPointsCostMatrix(
@@ -83,7 +83,7 @@ SELECT * FROM pgr_TSP(
    6 |    5 |    1 |      5.2
 (6 rows)
 
--- q4
+/* -- q4 */
 SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
 FROM edge_table WHERE id IN (2,4,5,8, 9, 15);
  start_vid | end_vid | agg_cost
@@ -96,7 +96,7 @@ FROM edge_table WHERE id IN (2,4,5,8, 9, 15);
          9 |      12 |        1
 (6 rows)
 
--- q5
+/* -- q5 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
@@ -114,6 +114,6 @@ SELECT * FROM pgr_TSP(
    7 |    2 |    1 |        6
 (7 rows)
 
--- q6
+/* -- q6 */
 ROLLBACK;
 ROLLBACK

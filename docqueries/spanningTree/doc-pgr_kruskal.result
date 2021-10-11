@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_kruskal(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table ORDER BY id'
@@ -25,6 +25,6 @@ SELECT * FROM pgr_kruskal(
    18 |    1
 (14 rows)
 
--- q2
+/* -- q2 */
 ROLLBACK;
 ROLLBACK

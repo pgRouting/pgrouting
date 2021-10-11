@@ -20,7 +20,7 @@ FROM pgr_trsp(
     true,
     null
 ) PG ;
- seq |   node |  edge  |   cost   
+ seq |  node  |  edge  |   cost
 -----+--------+--------+----------
    0 | 408918 | 582877 | 229.0450
    1 |     -2 |     -1 |   0.0000
@@ -85,7 +85,7 @@ FROM pgr_trsp(
     true,
     true
 );
- seq |  node  |  edge  |   cost   
+ seq |  node  |  edge  |   cost
 -----+--------+--------+----------
    0 | 408918 | 582877 | 458.0900
    1 |   5556 |     -1 |   0.0000

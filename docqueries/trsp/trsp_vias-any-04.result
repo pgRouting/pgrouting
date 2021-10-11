@@ -53,7 +53,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   18 |   2 |  11 |  -1 |    0
 (18 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
         ARRAY[4,6,11]::INTEGER[],
@@ -82,7 +81,6 @@ SELECT * FROM pgr_trspViaEdges(
   16 |   2 |   6 |  11 |  0.5
 (16 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
         ARRAY[1,11,6]::INTEGER[],
@@ -109,7 +107,6 @@ SELECT * FROM pgr_trspViaEdges(
   14 |   2 |   8 |   6 |  0.5
 (14 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
         ARRAY[1,11,6]::INTEGER[],
@@ -136,6 +133,5 @@ SELECT * FROM pgr_trspViaEdges(
   14 |   2 |   8 |   6 |  0.5
 (14 rows)
 
----------------------------
 ROLLBACK;
 ROLLBACK

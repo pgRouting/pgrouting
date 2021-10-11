@@ -2,8 +2,6 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- tests to without restrictions
--- directed with reverse_cost
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2015 pgRouting developers
@@ -32,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
+
+
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[2, 7, 11]::INTEGER[],
@@ -50,7 +50,6 @@ SELECT * FROM pgr_trspViaVertices(
    8 |   2 |  11 |  -1 |    0
 (8 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],
@@ -71,7 +70,6 @@ SELECT * FROM pgr_trspViaEdges(
    9 |   2 |  -3 |  -2 |    0
 (9 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -96,7 +94,6 @@ SELECT * FROM pgr_trspViaEdges(
   13 |   2 |  -3 |  -2 |    0
 (13 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -121,8 +118,6 @@ SELECT * FROM pgr_trspViaEdges(
   13 |   2 |  -3 |  -2 |    0
 (13 rows)
 
----------------------------
--- directed without reverse_cost
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[2, 7, 11]::INTEGER[],
@@ -133,7 +128,6 @@ SELECT * FROM pgr_trspViaVertices(
 -----+-----+-----+-----+------
 (0 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],
@@ -150,7 +144,6 @@ SELECT * FROM pgr_trspViaEdges(
    5 |   2 |  -3 |  -2 |    0
 (5 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -167,7 +160,6 @@ SELECT * FROM pgr_trspViaEdges(
    5 |   1 |  -2 |  -2 |    0
 (5 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -184,8 +176,6 @@ SELECT * FROM pgr_trspViaEdges(
    5 |   1 |  -2 |  -2 |    0
 (5 rows)
 
----------------------------
--- undirected with reverse_cost
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[2, 7, 11]::INTEGER[],
@@ -204,7 +194,6 @@ SELECT * FROM pgr_trspViaVertices(
    8 |   2 |  11 |  -1 |    0
 (8 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],
@@ -225,7 +214,6 @@ SELECT * FROM pgr_trspViaEdges(
    9 |   2 |  -3 |  -2 |    0
 (9 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -247,7 +235,6 @@ SELECT * FROM pgr_trspViaEdges(
   10 |   2 |  -3 |  -2 |    0
 (10 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -269,8 +256,6 @@ SELECT * FROM pgr_trspViaEdges(
   10 |   2 |  -3 |  -2 |    0
 (10 rows)
 
----------------------------
--- undirected without reverse_cost
 SELECT * FROM pgr_trspViaVertices(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[2, 7, 11]::INTEGER[],
@@ -289,7 +274,6 @@ SELECT * FROM pgr_trspViaVertices(
    8 |   2 |  11 |  -1 |    0
 (8 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],
@@ -310,7 +294,6 @@ SELECT * FROM pgr_trspViaEdges(
    9 |   2 |  -3 |  -2 |    0
 (9 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -332,7 +315,6 @@ SELECT * FROM pgr_trspViaEdges(
   10 |   2 |  -3 |  -2 |    0
 (10 rows)
 
----------------------------
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
@@ -354,6 +336,5 @@ SELECT * FROM pgr_trspViaEdges(
   10 |   2 |  -3 |  -2 |    0
 (10 rows)
 
----------------------------
 ROLLBACK;
 ROLLBACK

@@ -1,7 +1,7 @@
 SET extra_float_digits=-3;
 SET client_min_messages TO WARNING;
 
-\echo -- q1
+/* -- q1 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_dijkstraCostMatrix(
@@ -9,7 +9,7 @@ SELECT * FROM pgr_TSP(
     (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 14),
     directed => false)
   $$);
-\echo -- q2
+/* -- q2 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_dijkstraCostMatrix(
@@ -20,7 +20,7 @@ SELECT * FROM pgr_TSP(
   $$,
   start_id => 7
 );
-\echo -- q3
+/* -- q3 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_withPointsCostMatrix(
@@ -32,14 +32,14 @@ SELECT * FROM pgr_TSP(
   start_id => 5,
   end_id => 6
 );
-\echo -- q4
+/* -- q4 */
 SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
 FROM edge_table WHERE id IN (2,4,5,8, 9, 15);
-\echo -- q5
+/* -- q5 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
   FROM edge_table
   WHERE id IN (2,4,5,8,9,15)
   $$);
-\echo -- q6
+/* -- q6 */

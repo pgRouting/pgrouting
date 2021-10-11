@@ -194,7 +194,7 @@ ORDER BY id;
  22 |      9 |     11 |    2 |           -1 | {12}
 (8 rows)
 
--- case1
+/* -- case1 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -219,7 +219,7 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 CREATE FUNCTION
--- use1
+/* -- use1 */
 SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -228,19 +228,19 @@ SELECT * FROM my_dijkstra(3, 11);
    3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
--- use1-1
+/* -- use1-1 */
 SELECT * FROM my_dijkstra(4, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- use1-2
+/* -- use1-2 */
 SELECT * FROM my_dijkstra(4, 7);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- case2
+/* -- case2 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -279,7 +279,7 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 CREATE FUNCTION
--- use2
+/* -- use2 */
 SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -288,7 +288,7 @@ SELECT * FROM my_dijkstra(3, 11);
    3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
--- use2-1
+/* -- use2-1 */
 SELECT * FROM my_dijkstra(4, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -297,13 +297,13 @@ SELECT * FROM my_dijkstra(4, 11);
    3 |        3 |   11 |   -1 |    0 |        3
 (3 rows)
 
--- use2-2
+/* -- use2-2 */
 SELECT * FROM my_dijkstra(4, 7);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- case3
+/* -- case3 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -355,7 +355,7 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 CREATE FUNCTION
--- use3
+/* -- use3 */
 SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -364,7 +364,7 @@ SELECT * FROM my_dijkstra(3, 11);
    3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
--- use3-1
+/* -- use3-1 */
 SELECT * FROM my_dijkstra(4, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -373,7 +373,7 @@ SELECT * FROM my_dijkstra(4, 11);
    3 |        3 |   11 |   -1 |    0 |        3
 (3 rows)
 
--- use3-2
+/* -- use3-2 */
 SELECT * FROM my_dijkstra(4, 7);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -384,6 +384,6 @@ SELECT * FROM my_dijkstra(4, 7);
    5 |        5 |    7 |   -1 |    0 |        5
 (5 rows)
 
--- end
+/* -- end */
 ROLLBACK;
 ROLLBACK
