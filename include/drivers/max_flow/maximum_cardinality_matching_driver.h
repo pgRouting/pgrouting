@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Edge_bool_t_rt = struct Edge_bool_t_rt;
 #else
 #   include <stddef.h>
+typedef struct Edge_bool_t_rt Edge_bool_t_rt;
 #endif
-
-#include "c_types/edge_bool_t_rt.h"
 
 #ifdef __cplusplus
 extern "C" {

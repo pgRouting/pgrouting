@@ -34,13 +34,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using TSP_tour_rt = struct TSP_tour_rt;
+using Coordinate_t = struct Coordinate_t;
 #else
 #   include <stddef.h>
-#endif
-
-#include "c_types/coordinate_t.h"
+#   include <stdint.h>
 typedef struct TSP_tour_rt TSP_tour_rt;
-
+typedef struct Coordinate_t Coordinate_t;
+#endif
 
 #ifdef __cplusplus
 extern "C" {

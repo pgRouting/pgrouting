@@ -34,8 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/astar_search.hpp>
 
 #include <cmath>
-
-
 #include <deque>
 #include <limits>
 #include <algorithm>
@@ -46,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
+#include "c_types/ii_t_rt.h"
 
 namespace pgrouting {
 namespace algorithms {

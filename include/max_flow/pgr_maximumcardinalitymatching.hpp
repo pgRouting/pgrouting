@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 
+#include "c_types/edge_bool_t_rt.h"
 
 
 namespace pgrouting {

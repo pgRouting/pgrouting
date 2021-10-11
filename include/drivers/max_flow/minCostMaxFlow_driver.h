@@ -34,27 +34,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using CostFlow_t = struct CostFlow_t;
 using Flow_t = struct Flow_t;
+using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
 typedef struct Flow_t Flow_t;
+typedef struct Flow_t Flow_t;
+typedef struct II_t_rt II_t_rt;
 #endif
-
-#include "c_types/ii_t_rt.h"
-#include "c_types/costFlow_t.h"
 
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    /*********************************************************
-      TEXT,
-    BIGINT,
-    BIGINT,
-     ********************************************************/
-
 
     void
         do_pgr_minCostMaxFlow(

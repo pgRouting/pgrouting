@@ -31,14 +31,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #  include <cstddef>
 #  include <cstdint>
+using Restriction_t = struct Restriction_t;
+using Path_rt = struct Path_rt;
+using Edge_t = struct Edge_t;
 #else
 #  include <stddef.h>
 #  include <stdint.h>
-#endif
-
 typedef struct Restriction_t Restriction_t;
 typedef struct Path_rt Path_rt;
 typedef struct Edge_t Edge_t;
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {

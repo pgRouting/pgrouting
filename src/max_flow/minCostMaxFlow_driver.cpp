@@ -39,6 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "c_types/costFlow_t.h"
+#include "c_types/ii_t_rt.h"
+
 void
 do_pgr_minCostMaxFlow(
         CostFlow_t  *data_edges, size_t total_edges,

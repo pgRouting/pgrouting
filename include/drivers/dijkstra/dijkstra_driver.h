@@ -38,26 +38,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
 using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
+using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
 typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
+typedef struct II_t_rt II_t_rt;
 #endif
-
-#include "c_types/ii_t_rt.h"
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    //  CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    //  sql text,
-    //  start_vids anyarray,
-    //  end_vids anyarray,
-    //  directed boolean default true,
     void do_pgr_many_to_many_dijkstra(
             Edge_t  *data_edges,
             size_t total_tuples,

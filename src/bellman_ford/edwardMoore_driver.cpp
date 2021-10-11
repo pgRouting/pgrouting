@@ -42,15 +42,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "bellman_ford/pgr_edwardMoore.hpp"
 
-
-
-
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-
-
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+
+#include "c_types/ii_t_rt.h"
 
 
 template < class G >

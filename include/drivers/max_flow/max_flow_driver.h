@@ -34,18 +34,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
 using Edge_t = struct Edge_t;
 using Flow_t = struct Flow_t;
+using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
 typedef struct Edge_t Edge_t;
 typedef struct Flow_t Flow_t;
+typedef struct II_t_rt II_t_rt;
 #endif
-
-#include "c_types/ii_t_rt.h"
-
-
-
 
 #ifdef __cplusplus
 extern "C" {

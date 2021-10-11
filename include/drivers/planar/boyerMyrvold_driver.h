@@ -31,25 +31,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_PLANAR_BOYERMYRVOLD_DRIVER_H_
 #pragma once
 
-/* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Edge_t = struct Edge_t;
+using IID_t_rt = struct IID_t_rt;
 #else
 #   include <stddef.h>
-#endif
-
 typedef struct Edge_t Edge_t;
-#include "c_types/iid_t_rt.h"
+typedef struct IID_t_rt IID_t_rt;
+#endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    /*********************************************************
-    TEXT
-     ********************************************************/
-
-
     void do_pgr_boyerMyrvold(
                 Edge_t  *data_edges,
                 size_t total_tuples,
