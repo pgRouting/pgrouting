@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3
@@ -17,7 +17,7 @@ SELECT * FROM pgr_bdDijkstra(
    6 |        6 |    3 |   -1 |    0 |        5
 (6 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -29,7 +29,7 @@ SELECT * FROM pgr_bdDijkstra(
    2 |        2 |    3 |   -1 |    0 |        1
 (2 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, ARRAY[3, 11]);
@@ -47,7 +47,7 @@ SELECT * FROM pgr_bdDijkstra(
   10 |        4 |      11 |   11 |   -1 |    0 |        3
 (10 rows)
 
--- q4
+/* -- q4 */
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2, 7], 3);
@@ -68,7 +68,7 @@ SELECT * FROM pgr_bdDijkstra(
   13 |        7 |         7 |    3 |   -1 |    0 |        6
 (13 rows)
 
--- q5
+/* -- q5 */
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[2, 7], ARRAY[3, 11]);
@@ -98,7 +98,7 @@ SELECT * FROM pgr_bdDijkstra(
   22 |        5 |         7 |      11 |   11 |   -1 |    0 |        4
 (22 rows)
 
--- q6
+/* -- q6 */
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     'SELECT * FROM ( VALUES (2, 3), (7, 11) ) AS t(source, target)');
@@ -117,6 +117,6 @@ SELECT * FROM pgr_bdDijkstra(
   11 |        5 |         7 |      11 |   11 |   -1 |    0 |        4
 (11 rows)
 
--- q7
+/* -- q7 */
 ROLLBACK;
 ROLLBACK
