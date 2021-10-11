@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
+/* --q1 */
 SELECT  pgr_createVerticesTable('edge_table');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
@@ -19,8 +19,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q1.1
---q2
+/* --q1.1 */
+/* --q2 */
 SELECT  pgr_createVerticesTable('edge_table', 'the_geom', 'source', 'target');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
@@ -37,7 +37,7 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q2.1
+/* --q2.1 */
 SELECT  pgr_createVerticesTable('edge_table', 'source', 'the_geom', 'target');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','source','the_geom','target','true')
@@ -50,8 +50,8 @@ NOTICE:  Unexpected error raise_exception
  FAIL
 (1 row)
 
---q2.2
---q3.1
+/* --q2.2 */
+/* --q3.1 */
 SELECT  pgr_createVerticesTable('edge_table', the_geom:='the_geom', source:='source', target:='target');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
@@ -68,8 +68,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q3.2
---q4
+/* --q3.2 */
+/* --q4 */
 SELECT  pgr_createVerticesTable('edge_table', source:='source', target:='target', the_geom:='the_geom');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
@@ -86,8 +86,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q4.1
---q5
+/* --q4.1 */
+/* --q5 */
 SELECT  pgr_createVerticesTable('edge_table',source:='source');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
@@ -104,8 +104,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q5.1
---q6
+/* --q5.1 */
+/* --q6 */
 SELECT  pgr_createVerticesTable('edge_table',rows_where:='id < 10');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','id < 10')
@@ -122,8 +122,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q6.1
---q7
+/* --q6.1 */
+/* --q7 */
 SELECT  pgr_createVerticesTable('edge_table',
     rows_where:='the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)');
 NOTICE:  PROCESSING:
@@ -141,8 +141,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q7.1
---q8
+/* --q7.1 */
+/* --q8 */
 DROP TABLE IF EXISTS otherTable;
 NOTICE:  table "othertable" does not exist, skipping
 DROP TABLE
@@ -165,15 +165,15 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q8.1
---tab1
+/* --q8.1 */
+/* --tab1 */
 DROP TABLE IF EXISTS mytable;
 NOTICE:  table "mytable" does not exist, skipping
 DROP TABLE
 CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom, source AS src ,target AS tgt FROM edge_table) ;
 SELECT 18
---tab2
---q9
+/* --tab2 */
+/* --q9 */
 SELECT  pgr_createVerticesTable('mytable', 'mygeom', 'src', 'tgt');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
@@ -190,7 +190,7 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q9.1
+/* --q9.1 */
 SELECT  pgr_createVerticesTable('mytable', 'src', 'mygeom', 'tgt');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','src','mygeom','tgt','true')
@@ -203,8 +203,8 @@ NOTICE:  Unexpected error raise_exception
  FAIL
 (1 row)
 
---q9.2
---q10
+/* --q9.2 */
+/* --q10 */
 SELECT  pgr_createVerticesTable('mytable',the_geom:='mygeom',source:='src',target:='tgt');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('mytable','mygeom','src','tgt','true')
@@ -221,8 +221,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q10.1
---q11
+/* --q10.1 */
+/* --q11 */
 SELECT  pgr_createVerticesTable(
     'mytable', source:='src', target:='tgt',
     the_geom:='mygeom');
@@ -241,8 +241,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q11.1
---q12
+/* --q11.1 */
+/* --q12 */
 SELECT  pgr_createVerticesTable(
     'mytable', 'mygeom', 'src', 'tgt',
     rows_where:='gid < 10');
@@ -261,8 +261,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q12.1
---q13
+/* --q12.1 */
+/* --q13 */
 SELECT  pgr_createVerticesTable(
     'mytable', source:='src', target:='tgt', the_geom:='mygeom',
     rows_where:='gid < 10');
@@ -281,8 +281,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q13.1
---q14
+/* --q13.1 */
+/* --q14 */
 SELECT  pgr_createVerticesTable(
     'mytable', 'mygeom', 'src', 'tgt',
     rows_where := 'the_geom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE gid=5)');
@@ -297,8 +297,8 @@ NOTICE:  select * from public.mytable WHERE true AND (the_geom && (SELECT st_buf
  FAIL
 (1 row)
 
---q14.1
---q15
+/* --q14.1 */
+/* --q15 */
 SELECT  pgr_createVerticesTable(
     'mytable', source:='src', target:='tgt', the_geom:='mygeom',
     rows_where:='mygeom && (SELECT st_buffer(mygeom,0.5) FROM mytable WHERE id=5)');
@@ -313,13 +313,13 @@ NOTICE:  select * from public.mytable WHERE true AND (mygeom && (SELECT st_buffe
  FAIL
 (1 row)
 
---q15.1
---q16
+/* --q15.1 */
+/* --q16 */
 DROP TABLE IF EXISTS otherTable;
 DROP TABLE
 CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 SELECT 1
---q16.1
+/* --q16.1 */
 SELECT pgr_createVerticesTable(
     'mytable', 'mygeom', 'src', 'tgt',
     rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
@@ -334,8 +334,8 @@ NOTICE:  select * from public.mytable WHERE true AND (the_geom && (SELECT st_buf
  FAIL
 (1 row)
 
---q16.2
---q17
+/* --q16.2 */
+/* --q17 */
 SELECT  pgr_createVerticesTable(
     'mytable',source:='src',target:='tgt',the_geom:='mygeom',
     rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
@@ -350,6 +350,6 @@ NOTICE:  select * from public.mytable WHERE true AND (the_geom && (SELECT st_buf
  FAIL
 (1 row)
 
---q17.1
+/* --q17.1 */
 ROLLBACK;
 ROLLBACK
