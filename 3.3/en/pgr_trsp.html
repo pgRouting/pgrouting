@@ -410,7 +410,7 @@
 <dd class="field-odd"><p>Without turn restrictions</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span>
     <span class="p">);</span>
@@ -432,7 +432,7 @@
 </dd>
 </dl>
 <p>Then a query with turn restrictions is created as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4,</span>
@@ -472,7 +472,7 @@
 </pre></div>
 </div>
 <p>An example query using vertex ids and via points:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trspViaVertices</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trspViaVertices</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]::</span><span class="n">INTEGER</span><span class="p">[],</span>
         <span class="n">false</span><span class="p">,</span>  <span class="n">false</span><span class="p">,</span>
@@ -499,7 +499,7 @@
 </pre></div>
 </div>
 <p>An example query using edge ids and vias:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,</span>
         <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]::</span><span class="n">INTEGER</span><span class="p">[],</span>
@@ -870,7 +870,8 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
 <section id="using-a-points-of-interest-table">
 <h4>Using a points of interest table<a class="headerlink" href="#using-a-points-of-interest-table" title="Permalink to this headline">¶</a></h4>
 <p>Given a set of points of interest:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
  <span class="n">pid</span> <span class="o">|</span>  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span>                  <span class="n">the_geom</span>                  <span class="o">|</span>                  <span class="n">newpoint</span>
 <span class="o">-----+-----+-----+---------+------+----------+--------------------------------------------+--------------------------------------------</span>
    <span class="mi">1</span> <span class="o">|</span> <span class="mf">1.8</span> <span class="o">|</span> <span class="mf">0.4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="mi">0101000000</span><span class="n">CDCCCCCCCCCCFC3F9A9999999999D93F</span> <span class="o">|</span> <span class="mi">010100000000000000000000409</span><span class="n">A9999999999D93F</span>

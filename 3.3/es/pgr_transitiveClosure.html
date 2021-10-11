@@ -406,7 +406,7 @@ RETURNS SETOF (id, vid, target_array)
    <span class="mi">2</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span> <span class="p">{}</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
-<span class="o">--</span> <span class="n">q3</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="n">q3</span> <span class="o">*/</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_transitiveclosure</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id,source,target,cost,reverse_cost FROM edge_table where cost=-1 or reverse_cost=-1&#39;</span>
 <span class="p">);</span>
