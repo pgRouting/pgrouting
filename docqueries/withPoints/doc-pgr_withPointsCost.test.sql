@@ -1,51 +1,51 @@
 SET extra_float_digits=-3;
 
-\echo --e1
+/* --e1 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -3);
-\echo --e2
+/* --e2 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, 3,
     directed := false);
-\echo --e3
+/* --e3 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, ARRAY[-3,5]);
-\echo --e4
+/* --e4 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,2], -3);
-\echo --e5
+/* --e5 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,2], ARRAY[-3,7]);
 
-\echo --q2
+/* --q2 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,2], ARRAY[-3,7],
     driving_side := 'l');
-\echo --q3
+/* --q3 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,2], ARRAY[-3,7],
     driving_side := 'r');
-\echo --q4
+/* --q4 */
 SELECT * FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     ARRAY[-1,2], ARRAY[-3,7],
     driving_side := 'b');
-\echo --q5
+/* --q5 */
 
 
 SELECT * FROM pgr_withPointsCost(
@@ -53,4 +53,4 @@ SELECT * FROM pgr_withPointsCost(
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     'SELECT * FROM ( VALUES (-1, 3), (2, -3) ) AS t(source, target)',
     driving_side => 'r');
-\echo --q6
+/* --q6 */

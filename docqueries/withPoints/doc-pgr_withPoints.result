@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 SET extra_float_digits=-3;
 SET
---e1
+/* --e1 */
 SELECT * FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -18,7 +18,7 @@ SELECT * FROM pgr_withPoints(
    5 |        5 |   -3 |   -1 |    0 |      3.2
 (5 rows)
 
---e2
+/* --e2 */
 SELECT * FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -36,7 +36,7 @@ SELECT * FROM pgr_withPoints(
    8 |        8 |    3 |   -1 |    0 |      5.6
 (8 rows)
 
---e3
+/* --e3 */
 SELECT * FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -53,7 +53,7 @@ SELECT * FROM pgr_withPoints(
    8 |        3 |       5 |    5 |   -1 |    0 |      1.6
 (8 rows)
 
---e4
+/* --e4 */
 SELECT * FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -71,7 +71,7 @@ SELECT * FROM pgr_withPoints(
    9 |        4 |         2 |   -3 |   -1 |    0 |      2.6
 (9 rows)
 
---e5
+/* --e5 */
 SELECT * FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -98,7 +98,7 @@ SELECT * FROM pgr_withPoints(
   18 |        4 |         2 |       7 |    7 |   -1 |    0 |        3
 (18 rows)
 
---q2
+/* --q2 */
 SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
         CASE WHEN edge = -1 THEN ' visits'
             ELSE ' passes in front of'
@@ -134,7 +134,7 @@ SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:
  (1 => 6) at 5th step:   |  visits             | Vertex |  6
 (16 rows)
 
---q3
+/* --q3 */
 SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
         CASE WHEN edge = -1 THEN ' visits'
             ELSE ' passes in front of'
@@ -170,7 +170,7 @@ SELECT ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:
  (1 => 6) at 6th step:   |  visits             | Vertex |  6
 (16 rows)
 
---q4
+/* --q4 */
 SELECT * FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -205,7 +205,7 @@ SELECT * FROM pgr_withPoints(
   24 |        6 |         2 |       7 |    7 |   -1 |    0 |        3
 (24 rows)
 
---q5
+/* --q5 */
 SELECT * FROM pgr_withPoints(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -230,6 +230,6 @@ SELECT * FROM pgr_withPoints(
   14 |        5 |         2 |      -3 |   -3 |   -1 |    0 |      2.6
 (14 rows)
 
---q6
+/* --q6 */
 ROLLBACK;
 ROLLBACK
