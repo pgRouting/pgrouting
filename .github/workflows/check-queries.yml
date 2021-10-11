@@ -42,7 +42,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Check queries
     runs-on: ubuntu-latest
 
     strategy:

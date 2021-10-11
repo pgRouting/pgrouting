@@ -49,7 +49,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Ubuntu Boost
     runs-on: ubuntu-latest
 
     strategy:
