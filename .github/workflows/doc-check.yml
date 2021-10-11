@@ -39,7 +39,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: documentation
     runs-on: ubuntu-latest
 
     strategy:

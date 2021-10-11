@@ -39,7 +39,7 @@ on:
 
 jobs:
   Test_clang:
-    name: Build
+    name: Ubuntu clang
     runs-on: ubuntu-latest
 
     strategy:

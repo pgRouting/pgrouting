@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Ubuntu psql
     runs-on: ${{ matrix.os }}
 
     strategy:
