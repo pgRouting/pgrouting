@@ -1,9 +1,9 @@
-\echo -- q1
+/* -- q1 */
 SELECT * FROM pgr_isPlanar(
     'SELECT id, source, target, cost, reverse_cost
      FROM edge_table'
 );
-\echo -- q2
+/* -- q2 */
 
 INSERT INTO edge_table (source, target, cost, reverse_cost) VALUES
 (3, 9, 1, 1), (3, 16, 1, 1),
@@ -11,10 +11,10 @@ INSERT INTO edge_table (source, target, cost, reverse_cost) VALUES
 (6, 16, 1, 1),
 (9, 16, 1, 1);
 
-\echo -- q3
+/* -- q3 */
 SELECT * FROM pgr_isPlanar(
     'SELECT id, source, target, cost, reverse_cost
      FROM edge_table'
 );
 
-\echo -- q4
+/* -- q4 */
