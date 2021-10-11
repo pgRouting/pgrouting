@@ -22,7 +22,7 @@ INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (1,2,1,-1);
 INSERT 0 1
 INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (3,2,1,-1);
 INSERT 0 1
--- q1
+/* -- q1 */
 SELECT * FROM pgr_transitiveclosure(
   'SELECT id,source,target,cost,reverse_cost FROM edge_table1'
 );
@@ -34,7 +34,7 @@ SELECT * FROM pgr_transitiveclosure(
    4 |   2 | {}
 (4 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_transitiveclosure(
   'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=2'
 );
@@ -72,7 +72,7 @@ SELECT * FROM pgr_transitiveclosure(
    2 |  11 | {}
 (2 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_transitiveclosure(
   'SELECT id,source,target,cost,reverse_cost FROM edge_table where cost=-1 or reverse_cost=-1'
 );
@@ -87,6 +87,6 @@ SELECT * FROM pgr_transitiveclosure(
    7 |  12 | {}
 (7 rows)
 
--- q4
+/* -- q4 */
 ROLLBACK;
 ROLLBACK
