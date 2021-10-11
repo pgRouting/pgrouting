@@ -71,7 +71,7 @@ AND target IN (SELECT * FROM vertices_in_graph)
 ORDER BY id;
 
 
-\echo -- case1
+/* -- case1 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -96,14 +96,14 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 
-\echo -- use1
+/* -- use1 */
 SELECT * FROM my_dijkstra(3, 11);
-\echo -- use1-1
+/* -- use1-1 */
 SELECT * FROM my_dijkstra(4, 11);
-\echo -- use1-2
+/* -- use1-2 */
 SELECT * FROM my_dijkstra(4, 7);
 
-\echo -- case2
+/* -- case2 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -142,14 +142,14 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 
-\echo -- use2
+/* -- use2 */
 SELECT * FROM my_dijkstra(3, 11);
-\echo -- use2-1
+/* -- use2-1 */
 SELECT * FROM my_dijkstra(4, 11);
-\echo -- use2-2
+/* -- use2-2 */
 SELECT * FROM my_dijkstra(4, 7);
 
-\echo -- case3
+/* -- case3 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -201,10 +201,10 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 
-\echo -- use3
+/* -- use3 */
 SELECT * FROM my_dijkstra(3, 11);
-\echo -- use3-1
+/* -- use3-1 */
 SELECT * FROM my_dijkstra(4, 11);
-\echo -- use3-2
+/* -- use3-2 */
 SELECT * FROM my_dijkstra(4, 7);
-\echo -- end
+/* -- end */
