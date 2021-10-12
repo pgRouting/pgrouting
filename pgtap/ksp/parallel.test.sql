@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 
 --   SAMPLE DATA FROM THE ISSUE 285

@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 -- node the network
 -- create 2 test cases with overlapping lines, one with crossing lines and one with touching (but no crossing) lines

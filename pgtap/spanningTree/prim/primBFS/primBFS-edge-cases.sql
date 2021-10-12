@@ -1,6 +1,6 @@
-\i setup.sql
+BEGIN;
 
-SELECT plan(10);
+SELECT plan(13);
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
@@ -196,6 +196,35 @@ SELECT set_eq('prim10',
        (17, 16, 1,17,18, true)
     $$,
     '10: root = 0 -> forest (with random root vertices)');
+
+--
+PREPARE prim11 AS
+SELECT * FROM pgr_primBFS(
+  'SELECT id, source, target, cost, reverse_cost
+    FROM edge_table', 18
+);
+
+SELECT set_eq('prim11', 'VALUES (1, 0, 18, 18, -1, 0, 0)', 'Vertex 18 does not exist');
+
+--
+PREPARE prim12 AS
+SELECT *
+FROM pgr_primBFS(
+    'SELECT id, source, target, cost, reverse_cost
+       FROM edge_table ORDER BY id', 4)
+WHERE cost < 0;
+
+SELECT is_empty('prim12', 'No cost can be negative');
+
+--
+PREPARE prim13 AS
+SELECT *
+FROM pgr_primBFS(
+    'SELECT id, source, target, cost, reverse_cost
+       FROM edge_table ', 16
+);
+
+SELECT set_eq('prim13', 'VALUES (1, 0, 16, 16, -1, 0, 0), (2, 1, 16, 17, 18, 1.324, 1.324)' , 'Compare when node is 16 with expected result');
 
 SELECT * FROM finish();
 ROLLBACK;

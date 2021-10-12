@@ -1,5 +1,5 @@
 
-\i setup.sql
+BEGIN;
 
 
 CREATE TABLE edge_table_i244 (

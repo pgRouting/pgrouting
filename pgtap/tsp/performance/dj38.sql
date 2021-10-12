@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 \i tsp_pgtap_tests.sql
 
 -- NAME: dj38
@@ -11,7 +11,6 @@
 -- DIMENSION: 38
 -- EDGE_WEIGHT_TYPE: EUC_2D
 
-SET client_min_messages TO WARNING;
 DROP TABLE IF EXISTS dj38;
 CREATE TABLE dj38 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY dj38 (id, x, y) FROM stdin WITH DELIMITER ' ';
@@ -57,10 +56,9 @@ COPY dj38 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE dj38 SET the_geom = ST_makePoint(x,y);
-SET client_min_messages TO NOTICE;
-
 
 SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(38) ELSE plan(1) END;
 
 SELECT tsp_performance('dj38', 38, 6656.0, 2.0);
 SELECT finish();
+ROLLBACK;

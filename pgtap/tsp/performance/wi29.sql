@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 \i tsp_pgtap_tests.sql
 
 -- NAME : wi29
@@ -8,7 +8,6 @@
 -- DIMENSION : 29
 -- EDGE_WEIGHT_TYPE : EUC_2D
 
-SET client_min_messages TO WARNING;
 DROP TABLE IF EXISTS wi29;
 CREATE TABLE wi29 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
@@ -45,7 +44,6 @@ COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
-SET client_min_messages TO NOTICE;
 
 SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(29) ELSE plan(1) END;
 SELECT tsp_performance('wi29', 29, 95345, 2);

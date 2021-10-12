@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 \i tsp_pgtap_tests.sql
 
 SELECT plan(5);

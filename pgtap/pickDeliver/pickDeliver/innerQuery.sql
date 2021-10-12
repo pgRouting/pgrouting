@@ -1,9 +1,7 @@
-\i setup.sql
-SET client_min_messages TO NOTICE;
+BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(80);
-SET client_min_messages TO ERROR;
 
 /* A call looks like this
 SELECT * INTO pickDeliverResults FROM pgr_pickdeliverEuclidean(

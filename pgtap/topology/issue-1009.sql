@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 -- node the network
 

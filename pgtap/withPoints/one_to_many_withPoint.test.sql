@@ -1,5 +1,5 @@
 
-\i setup.sql
+BEGIN;
 
 SELECT PLAN(8);
 

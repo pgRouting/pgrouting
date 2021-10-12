@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 SELECT plan(15);
 SET client_min_messages TO NOTICE;
@@ -18,21 +18,19 @@ SELECT * FROM pgr_pickDeliver(
     $$
 );
 
-SELECT lives_ok('No_problem_query', 'Should live: '|| 1);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 2);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 3);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 4);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 5);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 6);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 7);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 8);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 9);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 10);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 11);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 12);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 13);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 14);
-SELECT lives_ok('No_problem_query', 'Should live: '|| 15);
+CREATE OR REPLACE FUNCTION repeat_lives_ok(query_to_test TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE i SMALLINT;
+BEGIN
+  FOR i IN 1..15 LOOP
+    RETURN QUERY SELECT lives_ok(query_to_test, 'Should live: '|| i);
+  END LOOP;
+END;
+$BODY$
+LANGUAGE plpgsql;
 
+SELECT * FROM repeat_lives_ok('No_problem_query');
 
 SELECT finish();
+ROLLBACK;
