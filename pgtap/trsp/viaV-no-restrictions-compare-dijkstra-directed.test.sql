@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 \i trsp_tests.sql
 
 SELECT plan(1024);

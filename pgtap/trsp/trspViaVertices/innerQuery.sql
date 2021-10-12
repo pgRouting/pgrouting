@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 -- This test is prepared for when:
 -- Tentatively trsp will accepts ANY-INTEGER and ANY-NUMERICAL on 4.0.0
