@@ -1,5 +1,6 @@
-\i setup.sql
+BEGIN;
 
+SET client_min_messages TO WARNING;
 SELECT plan(23);
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
