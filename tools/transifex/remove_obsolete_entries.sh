@@ -7,10 +7,9 @@
 # ------------------------------------------------------------------------------
 
 # For all the chapter files
-for file in $(find locale/en -type f -name "*.po"); do
-    if grep -q '#~' $file; then
-        perl -pi -0777 -e 's/#~.*//s' $file
-        git add $file
+find locale/en -type f -name '*.po' -exec sh -c '
+    if grep -q "#~" "$1"; then
+        perl -pi -0777 -e "s/#~.*//s" "$1"
+        git add "$1"
     fi
-done
-
+  ' sh {} \;

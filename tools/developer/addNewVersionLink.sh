@@ -8,4 +8,4 @@ if [ -z "${NEWVER}" ] ; then echo 'USE: tools/developer/addNewVersionLink.sh "3\
 
 OLDSTR='^  \(`'"${OLDVER}"' (.*)\/'"${OLDVER}"'(.*)\)$'
 NEWSTR='  \(`'"${NEWVER}"' $1\/'"${NEWVER}"'$2\)\n  `'"${OLDVER}"' $1\/'"${OLDVER}"'$2'
-perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' $(git ls-files | grep '\.rst')
+perl -pi -e 's/'"$OLDSTR"'/'"${NEWSTR}"'/' $(git ls-files './*.rst')
