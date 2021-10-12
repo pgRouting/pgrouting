@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 \i tsp_pgtap_tests.sql
 
 -- NAME : qa194
@@ -8,7 +8,6 @@
 -- DIMENSION : 194
 -- EDGE_WEIGHT_TYPE : EUC_2D
 
-SET client_min_messages TO WARNING;
 DROP TABLE IF EXISTS qa194;
 CREATE TABLE qa194 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY qa194 (id, x, y) FROM stdin WITH DELIMITER ' ';
@@ -210,7 +209,6 @@ COPY qa194 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE qa194 SET the_geom = ST_makePoint(x,y);
-SET client_min_messages TO NOTICE;
 
 SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(5) ELSE plan(1) END;
 SELECT tsp_performance('qa194', 5, 9352, 2);

@@ -1,5 +1,5 @@
 
-\i setup.sql
+BEGIN;
 \i tsp_pgtap_tests.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);

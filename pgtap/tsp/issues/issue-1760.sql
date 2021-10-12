@@ -1,7 +1,7 @@
 
-\i setup.sql
+BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SET client_min_messages TO ERROR;
 SELECT CASE WHEN  min_lib_version('3.2.1') THEN plan(11) ELSE plan(1) END;
 
 CREATE FUNCTION issue()
