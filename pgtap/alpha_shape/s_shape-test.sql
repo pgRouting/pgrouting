@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 /*
 data from
