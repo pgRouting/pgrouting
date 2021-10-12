@@ -1,5 +1,5 @@
 
-\i setup.sql
+BEGIN;
 
 SELECT CASE WHEN min_version('3.2.0') THEN plan (22) ELSE plan(2) END;
 
