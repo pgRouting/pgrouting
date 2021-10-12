@@ -1,3 +1,5 @@
+SET client_min_messages TO WARNING;
+
 CREATE OR REPLACE FUNCTION tsp_performance(
     tbl REGCLASS,
     loop_limit INTEGER,
