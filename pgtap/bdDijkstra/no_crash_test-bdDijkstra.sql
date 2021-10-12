@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 \i no_crash_general.sql
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
