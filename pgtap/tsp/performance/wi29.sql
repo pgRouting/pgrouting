@@ -1,5 +1,5 @@
 BEGIN;
-\i tsp_pgtap_tests.sql
+SET client_min_messages TO WARNING;
 
 -- NAME : wi29
 -- COMMENT : 29 locations in Western Sahara

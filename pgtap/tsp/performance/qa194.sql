@@ -1,5 +1,5 @@
 BEGIN;
-\i tsp_pgtap_tests.sql
+SET client_min_messages TO WARNING;
 
 -- NAME : qa194
 -- COMMENT : 194 locations in Qatar
