@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2021-10-13 05:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,75 +80,43 @@ msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:45
-msgid "Experimental"
+msgid "Proposed"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:3
-msgid "Possible server crash"
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:5
-msgid "These functions might create a server crash"
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:7
-msgid "Experimental functions"
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:9
-msgid "They are not officially of the current release."
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:10
-msgid "They likely will not be officially be part of the next release:"
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:12
-msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:13
-msgid "Name might change."
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:14
-msgid "Signature might change."
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:15
-msgid "Functionality might change."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:16
-msgid "pgTap tests might be missing."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:17
-msgid "Might need c/c++ coding."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:18
-msgid "May lack documentation."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:19
-msgid "Documentation if any might need to be rewritten."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:20
-msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:21
-msgid "Might need a lot of feedback from the comunity."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:22
-msgid "Might depend on a proposed function of pgRouting"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:23
-msgid "Might depend on a deprecated function of pgRouting"
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:52

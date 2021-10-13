@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2021-10-13 05:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,11 +100,19 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:59
+#: ../../build/doc/proposed.rst:58
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:3
+msgid ":doc:`pgr_extractVertices` - Extracts vertices information based on the source and target."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:65
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:60
+#: ../../build/doc/proposed.rst:66
 msgid ":doc:`cost-category`"
 msgstr ""
 
@@ -112,7 +120,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:66
+#: ../../build/doc/proposed.rst:72
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
@@ -120,7 +128,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:72
+#: ../../build/doc/proposed.rst:78
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -128,7 +136,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:78
+#: ../../build/doc/proposed.rst:84
 msgid ":doc:`KSP-category`"
 msgstr ""
 
@@ -136,22 +144,22 @@ msgstr ""
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:92
+#: ../../build/doc/proposed.rst:97
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:94
+#: ../../build/doc/proposed.rst:99
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:97
+#: ../../build/doc/proposed.rst:102
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:98
+#: ../../build/doc/proposed.rst:103
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:99
+#: ../../build/doc/proposed.rst:104
 msgid ":ref:`search`"
 msgstr ""
