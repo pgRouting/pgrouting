@@ -1,5 +1,5 @@
 BEGIN;
-\i trsp_tests.sql
+
 
 SELECT plan(612);
 

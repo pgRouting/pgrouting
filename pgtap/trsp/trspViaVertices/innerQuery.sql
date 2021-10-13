@@ -4,7 +4,7 @@ BEGIN;
 -- Tentatively trsp will accepts ANY-INTEGER and ANY-NUMERICAL on 4.0.0
 -- Adjust the version when that happens
 
-\i innerQuery_old.sql
+
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT CASE WHEN min_version('4.0.0') THEN plan(162) ELSE plan(324) END;
