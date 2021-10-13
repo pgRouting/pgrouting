@@ -68,19 +68,12 @@ jobs:
           pip install sphinx-intl[transifex]
           pip list
 
-      - name: Configure
+      - name: Configure and build documentation
         run: |
           export PATH=/usr/lib/postgresql/${PGVER}/bin:$PATH
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DLOCALE=ON -DES=ON ..
-
-      - name: Build
-        run: |
-          cd build
-          if [[ "${{ env.BRANCH }}" == "develop" ]]; then
-            make locale
-          fi
+          cmake -DPOSTGRESQL_VERSION=${PGVER} -DDOC_USE_BOOTSTRAP=ON -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release -DES=ON ..
           make doc
 
       - name: Initialize mandatory git config
@@ -91,14 +84,10 @@ jobs:
       - name: Update locale
         if: github.ref == 'refs/heads/develop'
         run: |
-          # List all the files that needs to be committed in build/doc/locale_changes.txt
-          awk '/^Update|^Create/{print $2}' build/doc/locale_changes.txt > tmp && mv tmp build/doc/locale_changes.txt        # .po files
-          cat build/doc/locale_changes.txt | perl -pe 's/(.*)en\/LC_MESSAGES(.*)/$1pot$2t/' >> build/doc/locale_changes.txt  # .pot files
-          cat build/doc/locale_changes.txt
-          # Remove obsolete entries #~ from .po files
-          tools/transifex/remove_obsolete_entries.sh
+          tools/transifex/update_locale.sh
+
           # Add the files, commit and push
-          for line in `cat build/doc/locale_changes.txt`; do git add "$line"; done
+          for line in `cat build/doc/locale_changes_po_pot.txt`; do git add "$line"; done
           git diff --staged --quiet || git commit -m "Update locale: commit ${{ env.GIT_HASH }}"
           git fetch origin develop
           git restore .  # Remove the unstaged changes before rebasing
