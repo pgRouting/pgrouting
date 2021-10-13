@@ -1,6 +1,6 @@
 
 
-\i tools/testers/pickDeliver_pgtap_data.sql
+-- Using this data tools/testers/pickDeliver_pgtap_data.sql
 SET extra_float_digits=-3;
 
 
