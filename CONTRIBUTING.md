@@ -14,16 +14,20 @@ Here are some important resources:
 
 * [pgRouting for Developers](https://docs.pgrouting.org/doxygen) has the
   internals C/C++ code information,
-* [Wish list on the wiki]
-  (https://github.com/pgRouting/pgrouting/wiki/GSoC-Ideas) is the foot view
-  of what we think the community needs.
+
+* [Wish list on the wiki](https://github.com/pgRouting/pgrouting/wiki/GSoC-Ideas)
+  is the foot view of what we think the community needs.
+
 * [Additional wish
   lst](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3A%22Functionality+Request%22).
   (TODO to move the information to the wiki wish list)
+
 * Participate in the
   [discussions](https://github.com/pgRouting/pgrouting/discussions).
+
 * Participate in fixing
   [Documentation](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3ADocumentation).
+
 * Find a bug? [Let us know](https://github.com/pgRouting/pgrouting/issues).
 
 ## Contribution agreement
