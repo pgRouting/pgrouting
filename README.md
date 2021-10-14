@@ -2,9 +2,7 @@
 
 [![Join the chat at https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pgRouting/pgrouting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## STATUS
-
-### Branches
+## Branches
 
 * The *master* branch has the development of the next micro release
 * The *develop* branch has the development of the next minor/major release
@@ -37,7 +35,6 @@ This library contains the following features:
 * A variety of applications of Dijkstra algorithms
 
   * Cost functions
-
   * With points
 
 * Driving Distance
@@ -55,16 +52,19 @@ The latest documentation: http://docs.pgrouting.org/latest
 
 ### Building requirements
 
-* Perl
+* perl
+
 * C and C++ compilers
   * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support
   * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support
 
 * Postgresql = Supported version by PostgreSQL
-* The Boost Graph Library (BGL) >= 1.56
-* CMake >= 3.2
-* Sphinx >= 4.0.0
 
+* The Boost Graph Library (BGL) >= 1.56
+
+* CMake >= 3.2
+
+* Sphinx >= 4.0.0
 
 ### User's requirements
 
