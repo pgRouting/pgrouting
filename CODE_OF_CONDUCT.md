@@ -1,5 +1,5 @@
 Contributors to pgRouting are expected to act respectfully toward others in
-accordance with the http://www.osgeo.org/code_of_conduct
+accordance with the [OSGeo's Code of Conduct](http://www.osgeo.org/code_of_conduct)
 
 Full transcription:
 
@@ -108,10 +108,15 @@ but is not limited to:
   racist or sexist terms.
 
 - Offensive comments, excessive or unnecessary profanity.
+
 - Intimidation, violent threats or demands.
+
 - Sustained disruption of sessions or events.
+
 - Stalking, harassing photography or recording.
+
 - Unwelcome physical contact or sexual attention.
+
 - Repeated harassment of others. In general, if someone asks you to stop, then
   stop.
 
