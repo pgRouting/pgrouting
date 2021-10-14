@@ -8,12 +8,11 @@ Purpose of this directory
 - Convention:
   - files must end with `_input`
 
-
 Example
 ----------------------------------
 
 in `foo.c` file
-
+```C
     #include "c_common/edges_input.h"
     #include "c_common/arrays_input.h"
-
+```
