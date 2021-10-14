@@ -150,9 +150,6 @@ static int compute_trsp(
 
   SPIPlanPtr SPIplan;
   Portal SPIportal;
-  bool moredata = true;
-  uint32_t TUPLIMIT = 1000;
-  uint32_t ntuples;
 
   Edge_t *edges = NULL;
   size_t total_tuples = 0;
@@ -222,7 +219,7 @@ static int compute_trsp(
 
   PGR_DBG("Fetching restriction tuples\n");
   restrict_t *restricts = NULL;
-  uint32_t total_restrict_tuples = 0;
+  uint64_t total_restrict_tuples = 0;
   restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
                                  .to_cost = -1};
 
@@ -232,6 +229,8 @@ static int compute_trsp(
   if (restrict_sql == NULL) {
       PGR_DBG("Sql for restrictions is null.");
   } else {
+      uint32_t TUPLIMIT = 1000;
+
       SPIplan = SPI_prepare(restrict_sql, 0, NULL);
       if (SPIplan  == NULL) {
           elog(ERROR, "turn_restrict_shortest_path: "
@@ -246,7 +245,7 @@ static int compute_trsp(
           return -1;
       }
 
-      moredata = true;
+      bool moredata = true;
       while (moredata == true) {
           SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
 
@@ -260,10 +259,7 @@ static int compute_trsp(
           }
 
           /* Suppress the -Wconversion warning temporarily */
-          #pragma GCC diagnostic push
-          #pragma GCC diagnostic ignored "-Wconversion"
-          ntuples = SPI_processed;
-          #pragma GCC diagnostic pop
+          uint64_t ntuples = SPI_processed;
 
           total_restrict_tuples += ntuples;
 
@@ -297,7 +293,7 @@ static int compute_trsp(
       SPI_cursor_close(SPIportal);
   }
 
-  PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
+  PGR_DBG("Total %ld restriction tuples", total_restrict_tuples);
 
       PGR_DBG("Calling trsp_edge_wrapper\n");
       ret = trsp_edge_wrapper(edges, total_tuples,
@@ -383,8 +379,6 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
         sql = NULL;
       } else {
         sql = text_to_cstring(PG_GETARG_TEXT_P(7));
-        if (strlen(sql) == 0)
-            sql = NULL;
       }
 
       PGR_DBG("Calling compute_trsp");

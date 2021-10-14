@@ -39,6 +39,5 @@ void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);
 SPIPlanPtr pgr_SPI_prepare(char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
-char* pgr_cstring2char(const char *inStr);
 
 #endif  // INCLUDE_C_COMMON_POSTGRES_CONNECTION_H_

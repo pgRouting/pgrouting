@@ -224,7 +224,6 @@ class Pgr_bidirectional {
     double INF;  //!< infinity
 
     double best_cost;
-    bool cost_only;
 
     mutable std::ostringstream m_log;
     Priority_queue forward_queue;
