@@ -21,7 +21,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 BEGIN;
-\set VERBOSITY 'terse'
 
 SELECT * INTO edges2 FROM edge_table;
 UPDATE edges2 SET source = NULL, target = NULL;

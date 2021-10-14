@@ -8,11 +8,10 @@ CREATE TABLE restrictions2 (
     via text
 );
 
-COPY restrictions2 (rid, to_cost, teid, feid, via) FROM stdin WITH NULL '__NULL__' DELIMITER ',';
-1,100,7,4,__NULL__
-2,4,8,3,5
-3,100,9,16,__NULL__
-\.
+INSERT INTO  restrictions2 (rid, to_cost, teid, feid, via) VALUES
+(1,100,7,4,NULL),
+(2,4,8,3,'5'),
+(3,100,9,16,NULL);
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
@@ -26,4 +25,3 @@ select * from pgr_trsp(
     true, -- has_reverse_cost?
     -- include the turn restrictions
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
-

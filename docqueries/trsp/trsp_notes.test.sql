@@ -1,7 +1,7 @@
 ROLLBACK;
+set LOG_ERROR_VERBOSITY TO terse;
 SET extra_float_digits=-3;
 
-\set VERBOSITY terse
 /* --place1 */
 SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
 /* --place2 */
@@ -161,13 +161,13 @@ SELECT * FROM pgr_withPoints(
 -- "* Forcing the user to use the wrapper or the replacement function"
 -- Calls to the original function of is no longer allowed without restrictions
 -- '\`\`\`'
-\set VERBOSITY terse
+SET LOG_ERROR_VERBOSITY TO terse;
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2],
     false, true
 );
-\set VERBOSITY default
+SET LOG_ERROR_VERBOSITY TO terse;
 -- '\`\`\`'
 
 -- Calls to the wrapper function allowed without restrictions
@@ -373,5 +373,5 @@ SELECT * FROM pgr_trspViaEdges(
     true
 );
 -- '\`\`\`'
-\set VERBOSITY default
+set LOG_ERROR_VERBOSITY TO default;
 BEGIN;
