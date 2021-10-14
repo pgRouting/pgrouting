@@ -1,4 +1,3 @@
-
 Add licences to a directory files
 ------------------------------------
 
