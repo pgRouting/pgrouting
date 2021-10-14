@@ -106,6 +106,7 @@ but is not limited to:
 
 - Personal insults or discriminatory jokes and language, especially those using
   racist or sexist terms.
+
 - Offensive comments, excessive or unnecessary profanity.
 - Intimidation, violent threats or demands.
 - Sustained disruption of sessions or events.
@@ -113,10 +114,13 @@ but is not limited to:
 - Unwelcome physical contact or sexual attention.
 - Repeated harassment of others. In general, if someone asks you to stop, then
   stop.
+
 - Posting (or threatening to post) other people's personally identifying
   information ("doxing").
+
 - Sharing private content, such as emails sent privately or non-publicly, or
   unlogged forums such as IRC channel history.
+
 - Advocating for, or encouraging, any of the above behaviour.
 
 ## Reporting Guidelines
