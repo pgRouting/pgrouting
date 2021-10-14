@@ -85,7 +85,7 @@ Fleet::get_truck(size_t order) {
     msg().log << "Available vehicles: " << m_un_used << "\n";
     msg().log << "NOT Available vehicles: " << m_used << "\n";
 #endif
-    auto idx = m_un_used.front();
+    size_t idx{0};
 
     for (const auto &i : m_un_used) {
         if (m_trucks[i].feasable_orders().has(order)) {

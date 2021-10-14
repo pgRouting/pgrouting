@@ -49,22 +49,6 @@ pgr_send_error(int errcode) {
 }
 
 
-char*
-pgr_cstring2char(const char *inStr) {
-    if (!inStr) return NULL;
-
-    char *outStr;
-    outStr = palloc(strlen(inStr));
-    if (!outStr) return NULL;
-
-    memcpy(outStr, inStr, strlen(inStr));
-
-    outStr[strlen(inStr)] = '\0';
-
-    return outStr;
-}
-
-
 
 // http://www.postgresql.org/docs/9.4/static/spi-spi-finish.html
 void

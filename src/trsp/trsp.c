@@ -150,9 +150,6 @@ static int compute_trsp(
 
   SPIPlanPtr SPIplan;
   Portal SPIportal;
-  bool moredata = true;
-  uint32_t TUPLIMIT = 1000;
-  uint32_t ntuples;
 
   Edge_t *edges = NULL;
   size_t total_tuples = 0;
@@ -232,6 +229,9 @@ static int compute_trsp(
   if (restrict_sql == NULL) {
       PGR_DBG("Sql for restrictions is null.");
   } else {
+      uint32_t TUPLIMIT = 1000;
+      uint32_t ntuples;
+
       SPIplan = SPI_prepare(restrict_sql, 0, NULL);
       if (SPIplan  == NULL) {
           elog(ERROR, "turn_restrict_shortest_path: "
@@ -246,7 +246,7 @@ static int compute_trsp(
           return -1;
       }
 
-      moredata = true;
+      bool moredata = true;
       while (moredata == true) {
           SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
 
@@ -383,8 +383,6 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
         sql = NULL;
       } else {
         sql = text_to_cstring(PG_GETARG_TEXT_P(7));
-        if (strlen(sql) == 0)
-            sql = NULL;
       }
 
       PGR_DBG("Calling compute_trsp");
