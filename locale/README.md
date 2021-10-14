@@ -33,7 +33,6 @@ git restore .
 
 Resources are updated on transifex automatically from the develop branch.
 
-
 ### Pull the resources from transifex
 
 Be patient takes time (I like the `-d` flag just to know what is being
@@ -81,18 +80,18 @@ make html-es
 
 `Refresh browser`
 
-## Building the documentation:
+## Building the documentation
 
 NOTE: in any case English is always build
 
-**Building all languages**
+### Building all languages
 
 ```bash
 cmake -D HTML=ON -D WITH_ALL_LANG=ON ..
 make doc
 ```
 
-**Building a particular language**
+### Building a particular language
 
 This example shows Spanish:
 
