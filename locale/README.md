@@ -1,152 +1,107 @@
-
-
 # Locale
 
-Currently the setup is for  `es` `ru` `ja` `it` `de` `fr`
+Currently the setup is for  `es`
 
-## Building the LOCALE:
+## Building the LOCALE
 
-Use this when the English documentation changed.
+This task needs to be done when the English changes.
 
-```
-cd build
-#rm -rf *   #BE VERY CAREFULL
-cmake -D LOCALE=ON ..
-make locale
-cd ..
-sphinx-intl update -d locale
+Although it is automatically done in the github action from time to time it
+might be desirable to build the locale locally.
+
+```bash
+tools/transifex/update_locale.sh
 ```
 
-When there is a new resource
-```
-sphinx-intl update-txconfig-resources --locale-dir locale --pot-dir locale/pot --transifex-project-name pgrouting
-```
+Only files that changed need to be added to the commit. Sometimes the change is
+only a timestamp those files are not to be commited.
 
+Note: This is done automatically on the action.
 
-review
-```
-for f in locale/pot/*; do echo $f; grep $f .tx/config; done
-for f in `grep '\.pot' .tx/config | sed 's/^.*pot\/\(.*\)$/\1/' | grep '\.pot'` ; do  echo $f; ls locale/pot/* | grep $f  ; done
+```bash
+for line in `cat build/doc/locale_changes_po_pot.txt`; do git add "$line"; done
 ```
 
-commit changes and push
+After the files are added and before the commit, restore the files that only
+have changes on timestamps
 
-## Cleanup unused messages
-
-Hint
-```
-for f in ${FILE}
-do
-    echo one ${f}
-    grep '#~' ${f}
-    msgattrib --output-file=${f} --no-obsolete ${f}
-    echo two
-    grep '#~' ${f}
-done
+```bash
+git restore .
 ```
 
+## MANAGERS: Interaction with transifex
 
-## MANAGERS: Interaction with transifex:
+Resources are updated on transifex automatically from the develop branch.
 
-### Push the resource to transifex
-
-Push a New or changed resource:
-
-* New resource
-
-Add the resource to the `.tx/config` located at the root of the repository
-(Use as example the other resources)
-
-```
-vim ../.tx/config
-```
-
-* Push the new resource
-```
-tx push --source -r pgrouting.pgr_createVerticesTable
-
-```
-Note: Do not put the file extension
-
-NOTE: INFORM: A documentation frezze to let translators translate
 
 ### Pull the resources from transifex
 
-Be patient takes time (I like the `-d` flag just to know what is being downloaded)
+Be patient takes time (I like the `-d` flag just to know what is being
+downloaded)
 
 * this pulls all the translations
-```
+
+```bash
 tx -d pull -f
 ```
 
 * this pulls the Spanish translations
-```
+
+```bash
 tx -d pull -f -l es
 ```
 
-
-
 ## TRANSLATORS
 
-For this example the translator is translating `pgr_createVerticesTable` to `Spanish`
+For this example the translator is translating `pgr_createVerticesTable` to
+`Spanish`
 
-* Step 1: Build a local documentation
+**Step 1:** Build a local documentation
 
-```
+```bash
 cd build
 rm -rf *
 cmake -D HTML=ON -D ES=ON ..
 make html-es
 ```
 
-* Step 2: Navigate to the page you are translating:
+**Step 2:** Navigate to the page you are translating:
 
 On the Browser go to:
-```
+```bash
 file:///path/to/build/doc/_build/html/es/pgr_createVerticesTable.html
 ```
 
-* Step 3: Pull the translation & build the documentation & refresh browser
+**Step 3:** Pull the translation & build the documentation & refresh browser
 
-```
+```bash
 tx pull -r pgrouting.pgr_createVerticesTable -l es
 make html-es
 ```
+
 `Refresh browser`
 
 ## Building the documentation:
 
 NOTE: in any case English is always build
 
-* Building all languages
+**Building all languages**
 
-```
+```bash
 cmake -D HTML=ON -D WITH_ALL_LANG=ON ..
 make doc
 ```
 
-* Building a a particular language
+**Building a particular language**
 
 This example shows Spanish:
 
-```
-cmake -D HTML=ON -D ES=ON ..
+```bash
+cmake -DWITH_DOC=ON -DES=ON ..
 make html
 ```
 
-* Building a particular language
-
-This example shows Spanish:
-
-```
-make -D HTML=ON -D SINGLEHTML=OM -D ES=ON ..
-make html
-make singlehtml
-# OR to build both:
-make doc
-```
-
-# References
+## References
 
 * https://pypi.python.org/pypi/sphinx-intl
 * https://docs.transifex.com/client/introduction
