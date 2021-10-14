@@ -40,11 +40,18 @@ We strive to:
     Whether we are participating as professionals or volunteers, we value professionalism in all interactions, and take responsibility for our own speech. Be kind to others. Do not insult or put down other participants.
 
 - Be concise
-    Keep in mind that what you write once will be read by hundreds of persons. Writing a short email means people can understand the conversation as efficiently as possible. Short emails should always strive to be empathetic, welcoming, friendly and patient. When a long explanation is necessary, consider adding a summary.
 
-    Try to bring new ideas to a conversation so that each mail adds something unique to the thread, keeping in mind that the rest of the thread still contains the other messages with arguments that have already been made.
+  Keep in mind that what you write once will be read by hundreds of persons.
+  Writing a short email means people can understand the conversation as
+  efficiently as possible. Short emails should always strive to be empathetic,
+  welcoming, friendly and patient. When a long explanation is necessary, consider
+  adding a summary.
 
-    Try to stay on topic, especially in discussions that are already fairly large.
+  Try to bring new ideas to a conversation so that each mail adds something
+  unique to the thread, keeping in mind that the rest of the thread still
+  contains the other messages with arguments that have already been made.
+
+  Try to stay on topic, especially in discussions that are already fairly large.
 
 - Step down considerately.
     Members of every project come and go. When somebody leaves or disengages from the project they should tell people they are leaving and take the proper steps to ensure that others can pick up where they left off. In doing so, they should remain respectful of those who continue to participate in the project and should not misrepresent the project's goals or achievements. Likewise, community members should respect any individual's choice to leave the project.
