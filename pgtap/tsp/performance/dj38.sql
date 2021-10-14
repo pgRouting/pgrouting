@@ -1,5 +1,5 @@
 BEGIN;
-\i tsp_pgtap_tests.sql
+SET client_min_messages TO WARNING;
 
 -- NAME: dj38
 -- COMMENT : 38 locations in Djibouti

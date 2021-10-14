@@ -1,7 +1,6 @@
 BEGIN;
 
 SELECT plan(15);
-SET client_min_messages TO NOTICE;
 
 
 PREPARE No_problem_query AS
