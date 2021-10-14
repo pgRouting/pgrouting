@@ -12,11 +12,18 @@ you, will contact you back ASAP.
 
 Here are some important resources:
 
-* [pgRouting for Developers](http://docs.pgrouting.org/doxy/2.4/index.html) has the internals C/C++ code information,
-* [Wish list on the wiki](https://github.com/pgRouting/pgrouting/wiki/GSoC-Ideas) is the foot view of what we think the community needs.
-* [Additional wish lst](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3A%22Functionality+Request%22). (TODO to move the information to the wiki wish list)
-* Participate in the [discussions](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3ADiscussion).
-* Participate in fixing [Documentation](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3ADocumentation).
+* [pgRouting for Developers](https://docs.pgrouting.org/doxygen) has the
+  internals C/C++ code information,
+* [Wish list on the wiki]
+  (https://github.com/pgRouting/pgrouting/wiki/GSoC-Ideas) is the foot view
+  of what we think the community needs.
+* [Additional wish
+  lst](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3A%22Functionality+Request%22).
+  (TODO to move the information to the wiki wish list)
+* Participate in the
+  [discussions](https://github.com/pgRouting/pgrouting/discussions).
+* Participate in fixing
+  [Documentation](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3ADocumentation).
 * Find a bug? [Let us know](https://github.com/pgRouting/pgrouting/issues).
 
 ## Contribution agreement
@@ -26,6 +33,7 @@ Any kind of contribution will automatically fall to the following Licences:
 * Code contribution: GNU General Public License v2.0 or later,
   * Directly by making an explicit pull request.
   * Indirectly by posting code on issues/wiki/gitter/mailng lists
+
 * Documentation contribution:
   * Creative Commons Attribution-Share Alike 3.0
 
@@ -33,12 +41,14 @@ Any kind of contribution will automatically fall to the following Licences:
 
 Write a clear log message for your commits. One-line messages are fine for small
 changes, but bigger changes should have more information.
+
 Fill in the commit message template.
 
 ## Coding conventions
 
 Start reading our code and you'll get the hang of it. We optimize for
 readability.
+
 This is open source software. Consider the people who will read your code, and
 make it look nice for them.
 
