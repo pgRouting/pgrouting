@@ -619,6 +619,7 @@
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
 </pre></div>
 </div>
 <p>pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
@@ -654,6 +655,7 @@ the expected to return <cite>EMPTY SET</cite> to represent no path found.</p>
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
 </pre></div>
 </div>
 <p>In this case <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> calls the original code when there are restrictions, even if they have nothing to do with the graph,
@@ -698,6 +700,7 @@ of <code class="docutils literal notranslate"><span class="pre">reverse_cost</sp
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RAISE
 </pre></div>
 </div>
 <p>An EXCEPTION is thrown.</p>
@@ -849,6 +852,7 @@ of <code class="docutils literal notranslate"><span class="pre">reverse_cost</sp
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 36 at RAISE
 </pre></div>
 </div>
 <p>An EXCEPTION is thrown.</p>
@@ -1038,7 +1042,7 @@ When there are no restrictions and have a routing “via” problem with vertice
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Oct 14, 2021.<br/>
+      Last updated on Oct 15, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>

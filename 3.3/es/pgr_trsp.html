@@ -612,6 +612,7 @@
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
 </pre></div>
 </div>
 <p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, lo que producirá una EXCEPCIÓN para representar ninguna ruta encontrada.</p>
@@ -643,6 +644,7 @@ ERROR:  Error computing path: Path Not Found
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
 </pre></div>
 </div>
 <p>En este caso <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> llama al código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, en este caso ese código lanza la EXCEPCIÓN esperada</p>
@@ -683,6 +685,7 @@ ERROR:  Error computing path: Path Not Found
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RAISE
 </pre></div>
 </div>
 <p>Se produce una EXCEPCIÓN.</p>
@@ -823,6 +826,7 @@ ERROR:  Error computing path: Path Not Found
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 36 at RAISE
 </pre></div>
 </div>
 <p>Se produce una EXCEPCIÓN.</p>
@@ -1011,7 +1015,7 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Actualizado por última vez en oct. 14, 2021.<br/>
+      Actualizado por última vez en oct. 15, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
