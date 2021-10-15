@@ -1,8 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: __FILENAME__
-
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2015~2021 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -27,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
---- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/*
 ---
 --- pgRouting provides geospatial routing functionality.
 --- http://pgrouting.org
@@ -35,15 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ---
 ---
---- This is free software; you can redistribute and/or modify it:
+--- This is free software, you can redistribute and/or modify it:
 --- the terms of the GNU General Public Licence. See the COPYING file.
 --- the terms of the MIT-X Licence. See the COPYING file.
 ---
 --- The following functions have MIT-X licence:
----     pgr_version()
----     pgr_tsp(matrix float8[][], startpt integer, endpt integer DEFAULT -1, OUT seq integer, OUT id integer)
----     _pgr_makeDistanceMatrix(sqlin text, OUT dmatrix double precision[], OUT ids integer[])
----     pgr_analyzegraph(edge_table text,tolerance double precision,the_geom text default 'the_geom',id text default 'id',source text default 'source',target text default 'target',rows_where text default 'true')
+---  pgr_analyzeGraph
+---  pgr_analizeOneWay
 ---
 ---
 --- All other functions are under GNU General Public Licence.
@@ -57,5 +53,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --          are cleanly handled.
 --
 -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+*/
 

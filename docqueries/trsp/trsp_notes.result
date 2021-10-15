@@ -4,6 +4,8 @@ SET client_min_messages TO NOTICE;
 SET
 ROLLBACK;
 ROLLBACK
+set LOG_ERROR_VERBOSITY TO terse;
+SET
 SET extra_float_digits=-3;
 SET
 /* --place1 */
@@ -45,6 +47,7 @@ SELECT * FROM pgr_trsp(
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
 /* --place6 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -61,6 +64,7 @@ SELECT * FROM pgr_trsp(
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
 /* --place8 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -87,6 +91,7 @@ SELECT * FROM pgr_trsp(
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did't return 'reverse_cost' column
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RAISE
 /* --place10 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -168,6 +173,7 @@ SELECT * FROM pgr_trsp(
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did't return 'reverse_cost' column
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 36 at RAISE
 /* --place18 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -281,12 +287,17 @@ SELECT * FROM pgr_withPoints(
 
 
 
+SET LOG_ERROR_VERBOSITY TO terse;
+SET
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2],
     false, true
 );
 ERROR:  Restrictions Missing
+CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 14 at RAISE
+SET LOG_ERROR_VERBOSITY TO terse;
+SET
 SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[2, 3, 2],
@@ -469,6 +480,8 @@ SELECT * FROM pgr_trspViaEdges(
    7 |   2 |   6 |  -1 |    0
 (7 rows)
 
+set LOG_ERROR_VERBOSITY TO default;
+SET
 BEGIN;
 BEGIN
 ROLLBACK;
