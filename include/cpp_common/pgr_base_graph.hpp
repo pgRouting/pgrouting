@@ -323,9 +323,12 @@ class Pgr_base_graph {
                  log << "Key: "
                      << iter->first <<"\tValue:" << iter->second << "\n";
              }
+#if 0
+             /* expensive assertion */
              for (const auto vertex : vertices) {
                  pgassert(has_vertex(vertex.id));
              }
+#endif
              // pgassert(mapIndex.size() == vertices.size());
          }
 
