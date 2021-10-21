@@ -39,8 +39,8 @@ namespace pgrouting {
 class Pgr_messages {
  public:
     Pgr_messages() = default;
-    Pgr_messages(const Pgr_messages&) = default;
-    Pgr_messages& operator=(const Pgr_messages&) = default;
+    Pgr_messages(const Pgr_messages&) = delete;
+    Pgr_messages& operator=(const Pgr_messages&) = delete;
 
     /*! @brief get_log
      *
