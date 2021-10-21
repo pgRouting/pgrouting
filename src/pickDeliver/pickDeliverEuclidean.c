@@ -95,7 +95,8 @@ process(
            &vehicles_arr, &total_vehicles);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
-    for (size_t i = 0; i < total_pd_orders; i++) {
+    size_t i;
+    for (i = 0; i < total_pd_orders; i++) {
         PGR_DBG("%ld %f pick %f %f %ld - "
                 "%f %f %f deliver %f %f %ld - %f %f %f ",
                 pd_orders_arr[i].id,
@@ -120,7 +121,7 @@ process(
 
 
 
-    for (size_t i = 0; i < total_vehicles; i++) {
+    for (i = 0; i < total_vehicles; i++) {
         PGR_DBG("%ld %f %f , start %f %f %f %f %f "
                 "end %f %f %f %f %f number %ld ",
                vehicles_arr[i].id,
