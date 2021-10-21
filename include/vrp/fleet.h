@@ -112,7 +112,7 @@ class Fleet {
              const Vehicle_node&);
 
      /** @brief the problem message */
-     static Pgr_messages& msg() ;
+     static Pgr_messages& msg();
 
      /** The problem */
      static Pgr_pickDeliver* problem;

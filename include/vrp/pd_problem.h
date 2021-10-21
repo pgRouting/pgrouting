@@ -41,7 +41,6 @@ class Pgr_pickDeliver;
 
 class PD_problem {
  public:
-
     /** @brief Initializing the problem pointer */
     explicit PD_problem(Pgr_pickDeliver* p_problem);
 

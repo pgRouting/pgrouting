@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <numeric>
 #include <vector>
+#include <utility>
 
 #include "cpp_common/Dmatrix.h"
 
@@ -41,6 +42,7 @@ namespace tsp {
 
 class Tour {
     using difference_type = std::vector<size_t>::difference_type;
+
  public:
      Tour(const Tour &) = default;
 

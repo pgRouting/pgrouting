@@ -103,7 +103,6 @@ class PD_Orders {
 
      /** The problem */
      static Pgr_pickDeliver* problem;
-
 };
 
 }  //  namespace vrp
