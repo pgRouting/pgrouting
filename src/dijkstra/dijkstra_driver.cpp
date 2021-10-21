@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "drivers/dijkstra/dijkstra_driver.h"
-#include <c_types/pgr_combination_t.h>
 
 #include <sstream>
 #include <deque>
@@ -40,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
+#include "c_types/pgr_combination_t.h"
 #include "dijkstra/pgr_dijkstra.hpp"
 
 #include "cpp_common/pgr_alloc.hpp"
@@ -51,7 +51,7 @@ void
 post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals) {
     paths.erase(std::remove_if(paths.begin(), paths.end(),
                 [](const Path &p){
-                    return p.size()==0;}),
+                    return p.size() == 0;}),
             paths.end());
     using difference_type = std::deque<double>::difference_type;
 
