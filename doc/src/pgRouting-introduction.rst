@@ -30,7 +30,7 @@ pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL
 <https://www.postgresql.org>`__ geospatial database and adds routing and other
 network analysis functionality. A predecessor of pgRouting – pgDijkstra, written
 by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`__, was later extended
-by `Orkney <http://www.orkney.co.jp>`_ and renamed to pgRouting. The project is
+by Orkney and renamed to pgRouting. The project is
 now supported and maintained by `Georepublic <https://georepublic.info>`__,
 `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community.
 
