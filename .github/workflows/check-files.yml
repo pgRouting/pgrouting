@@ -1,11 +1,19 @@
 name: Check files
 
-on:
-  push:
-  pull_request:
+
+# Makes a general check on the files
+# Verifies:
+# - the signatures are up-to-date
+# - the release_notes and NEWS are consitent
+# - the C/C++ files have a license
+# - the shell scripts are ok
+# - the code style is ok
+# Does not makes a compilation
+
+on: [push, pull_request]
 
 jobs:
-  signature_check:
+  Signature_check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,7 +33,7 @@ jobs:
           if git status | grep 'NEWS'; then echo "NEWS is not up to date"; exit 1; fi
           if ! grep -q $(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt) NEWS; then echo "Missing section in NEWS"; exit 1; fi
 
-  license_check:
+  License_check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,7 +44,7 @@ jobs:
       - name: Run License Check
         run: ./tools/scripts/test_license.sh
 
-  shell_check:
+  Shell_check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -46,3 +54,18 @@ jobs:
           sudo apt install -y shellcheck
       - name: Run Shell Check
         run: ./tools/scripts/test_shell.sh
+
+  style-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Requirements
+        uses: actions/checkout@v2
+        with:
+          repository: 'google/styleguide'
+          ref: "gh-pages"
+          path: "code_linter/styleguide"
+      - name: Run linter
+        run: |
+          bash ./tools/scripts/code_checker.sh
