@@ -6,7 +6,7 @@ SET
 SELECT pgr_version();
  pgr_version
 -------------
- 3.0.5
+ 3.0.6
 (1 row)
 
 -- q2

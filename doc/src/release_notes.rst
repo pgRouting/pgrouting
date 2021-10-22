@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_3_0_6`
 * :ref:`changelog_3_0_5`
 * :ref:`changelog_3_0_4`
 * :ref:`changelog_3_0_3`
@@ -51,6 +52,18 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+
+.. _changelog_3_0_6:
+
+pgRouting 3.0.6 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the [Git closed milestone for 3.0.6](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22) on Github.
+
+**Issues fixes**
+
+* [#2189](https://github.com/pgRouting/pgrouting/issues/2189): Build error on RHEL 7
 
 .. _changelog_3_0_5:
 
