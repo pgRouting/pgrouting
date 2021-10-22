@@ -32,7 +32,6 @@ To see the full list of changes check the list of `Git commits <https://github.c
    :local:
 
 
-
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
 
@@ -41,6 +40,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 .. rubric:: Issues
 
 * `#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation on Visual Studio
+* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7
 
 pgRouting 3.2.1 Release Notes
 -------------------------------------------------------------------------------
@@ -130,6 +130,16 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * pgr_withPoints(Combinations)
 * pgr_withPointsCost(Combinations)
 
+pgRouting 3.1.4 Release Notes
+--------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github.
+
+.. rubric:: Issues fixes
+
+* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7
+
 
 pgRouting 3.1.3 Release Notes
 -------------------------------------------------------------------------------
@@ -185,6 +195,16 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 .. rubric:: Build changes
 
 * Minimal requirement for Sphinx: version 1.8
+
+pgRouting 3.0.6 Release Notes
+--------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.6
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github.
+
+.. rubric:: Issues fixes
+
+* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7
 
 
 pgRouting 3.0.5 Release Notes
