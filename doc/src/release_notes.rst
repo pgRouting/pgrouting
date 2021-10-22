@@ -447,7 +447,7 @@ pgRouting 2.6.0 Release Notes
 To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github.
 
 
-.. rubric:: New fexperimental functions
+.. rubric:: New experimental functions
 
 *  pgr_lineGraphFull
 
