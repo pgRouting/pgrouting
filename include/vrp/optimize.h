@@ -76,11 +76,6 @@ class Optimize : public Solution {
              Order to_order,
              Vehicle_pickDeliver &to_truck);
      void save_if_best();
-
-#if 0
- private:
-     Swap_bk p_swaps;
-#endif
 };
 
 }  //  namespace vrp
