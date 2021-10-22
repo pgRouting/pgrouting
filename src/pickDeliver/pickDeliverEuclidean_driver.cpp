@@ -30,12 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/pickDeliver/pickDeliverEuclidean_driver.h"
 
-#include <string.h>
 #include <sstream>
 #include <string>
 #include <deque>
 #include <vector>
 #include <map>
+#include <utility>
 
 #include "vrp/pgr_pickDeliver.h"
 
@@ -95,13 +95,13 @@ do_pgr_pickDeliverEuclidean(
         }
 
         Identifiers<int64_t> unique_ids;
-        for (const auto &e: matrix_data) {
+        for (const auto &e : matrix_data) {
             unique_ids += e.second;
         }
         if (unique_ids.size() != matrix_data.size()) {
             // ignoring ids given by the user
             int64_t id(0);
-            for (auto &e: matrix_data) {
+            for (auto &e : matrix_data) {
                 e.second = id++;
             }
         }

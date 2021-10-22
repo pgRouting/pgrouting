@@ -46,7 +46,7 @@ void
 post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals) {
     paths.erase(std::remove_if(paths.begin(), paths.end(),
                 [](const Path &p){
-                    return p.size()==0;}),
+                    return p.size() == 0;}),
             paths.end());
     using difference_type = std::deque<double>::difference_type;
 
@@ -118,7 +118,7 @@ pgr_dijkstra(
 
     return paths;
 }
-}
+}  // namespace detail
 
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(

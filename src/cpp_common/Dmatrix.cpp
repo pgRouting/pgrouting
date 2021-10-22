@@ -25,13 +25,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/Dmatrix.h"
 
-#include <string.h>
+#include <string>
 #include <sstream>
 #include <algorithm>
 #include <limits>
 #include <vector>
 #include <map>
 #include <cmath>
+#include <utility>
 
 #include "tsp/tour.h"
 #include "cpp_common/pgr_assert.h"
@@ -135,7 +136,7 @@ get_distance(std::pair<double, double> p1 , std::pair<double, double> p2) {
  */
 Dmatrix::Dmatrix(const std::map<std::pair<double, double>, int64_t> &euclidean_data) {
     ids.reserve(euclidean_data.size());
-    for (const auto &e: euclidean_data) {
+    for (const auto &e : euclidean_data) {
         ids.push_back(e.second);
     }
     costs.resize(

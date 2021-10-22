@@ -108,7 +108,6 @@ class PgrCardinalityGraph {
 
   std::vector<pgr_basic_edge_t>
   get_matched_vertices() {
-
       std::vector<V> mate_map(boost::num_vertices(boost_graph));
       std::vector<pgr_basic_edge_t> matched_vertices;
       maximum_cardinality_matching(mate_map);
