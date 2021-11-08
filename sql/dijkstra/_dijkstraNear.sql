@@ -112,40 +112,10 @@ ROWS 1000;
 -- COMMENTS
 
 COMMENT ON FUNCTION _pgr_dijkstraNear(TEXT, BIGINT, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_dijkstraNear(One to Many)
-- PRE-EXPERIMENTAL
-- Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From vertex identifier
-   - To ARRAY[vertices identifiers]
-   - Stop at nth found
-- Optional Parameters
-   - directed := true
-- Documentation: None
-';
+IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BIGINT, BOOLEAN)
-IS 'pgr_dijkstraNear(Many to One)
-- PRE-EXPERIMENTAL
-- Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From ARRAY[vertices identifiers]
-   - To vertex identifier
-   - Stop at nth found
-- Optional Parameters
-   - directed := true
-- Documentation: None
-';
+IS 'pgRouting internal function';
 
 COMMENT ON FUNCTION  _pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BIGINT, BOOLEAN)
-IS 'pgr_dijkstraNear(Many to Many)
-- PRE-EXPERIMENTAL
-- Parameters:
-   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-   - From ARRAY[vertices identifiers]
-   - To ARRAY[vertices identifiers]
-   - Stop at nth found
-- Optional Parameters
-   - directed := true
-- Documentation: None
-';
+IS 'pgRouting internal function';
