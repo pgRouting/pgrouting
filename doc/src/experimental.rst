@@ -77,12 +77,6 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
-:doc:`traversal-family`
-
-.. include:: traversal-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
 :doc:`components-family`
 
 .. include:: components-family.rst
@@ -95,7 +89,6 @@ Experimental Functions
    chinesePostmanProblem-family
    coloring-family
    transformation-family
-   traversal-family
    components-family
 
 .. rubric:: categories

@@ -103,6 +103,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, BIGINT, BOOLEAN, BIGINT)
 IS 'pgr_depthFirstSearch(Single Vertex)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From root vertex identifier
@@ -115,6 +116,7 @@ IS 'pgr_depthFirstSearch(Single Vertex)
 
 COMMENT ON FUNCTION pgr_depthFirstSearch(TEXT, ANYARRAY, BOOLEAN, BIGINT)
 IS 'pgr_depthFirstSearch(Multiple Vertices)
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - From ARRAY[root vertices identifiers]
