@@ -13,12 +13,14 @@
   `Latest <https://docs.pgrouting.org/latest/en/traversal-family.html>`__
   current(`3.2 <https://docs.pgrouting.org/3.2/en/traversal-family.html>`__)
 
-Traversal - Family of functions (Experimental)
+Traversal - Family of functions
 ===============================================================================
 
-.. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+.. rubric:: Proposed
+
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. index from here
 

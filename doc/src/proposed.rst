@@ -61,6 +61,18 @@ Proposed Functions
    :start-after: topology_proposed_start
    :end-before: topology_proposed_end
 
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+
+.. toctree::
+   :hidden:
+
+   traversal-family
+
 .. rubric:: categories
 
 :doc:`cost-category`
