@@ -142,7 +142,7 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_dijkstraNear(TEXT, BIGINT, ANYARRAY, BOOLEAN, BIGINT)
 IS 'pgr_dijkstraNear(One to Many)
-- EXPERIMENTAL
+- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From vertex identifier
@@ -156,6 +156,7 @@ IS 'pgr_dijkstraNear(One to Many)
 
 COMMENT ON FUNCTION  pgr_dijkstraNear(TEXT, ANYARRAY, BIGINT, BOOLEAN, BIGINT)
 IS 'pgr_dijkstraNear(Many to One)
+- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
@@ -169,7 +170,7 @@ IS 'pgr_dijkstraNear(Many to One)
 
 COMMENT ON FUNCTION  pgr_dijkstraNear(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, BIGINT, BOOLEAN)
 IS 'pgr_dijkstraNear(Many to Many)
-- EXPERIMENTAL
+- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - From ARRAY[vertices identifiers]
@@ -183,7 +184,7 @@ IS 'pgr_dijkstraNear(Many to Many)
 
 COMMENT ON FUNCTION  pgr_dijkstraNear(TEXT, TEXT, BOOLEAN, BIGINT, BOOLEAN)
 IS 'pgr_dijkstraNear(Combinations)
-- EXPERIMENTAL
+- PROPOSED
 - Parameters:
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
   - Combinations SQL with columns: source, target
