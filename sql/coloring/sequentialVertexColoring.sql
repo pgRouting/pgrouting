@@ -52,6 +52,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_sequentialVertexColoring(TEXT)
 IS 'pgr_sequentialVertexColoring
+- PROPOSED
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:

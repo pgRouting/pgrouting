@@ -67,6 +67,11 @@ Proposed Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`coloring-family`
+
+.. include:: coloring-family.rst
+   :start-after: index proposed from here
+   :end-before: index proposed to here
 
 .. toctree::
    :hidden:

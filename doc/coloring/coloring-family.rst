@@ -15,8 +15,22 @@
   `3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__
 
 
-Coloring - Family of functions (Experimental)
+Coloring - Family of functions
 ===============================================================================
+
+.. rubric:: Proposed
+
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
+.. index proposed from here
+
+* :doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach.
+
+.. index proposed to here
+
+.. rubric:: Experimental
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
@@ -24,7 +38,6 @@ Coloring - Family of functions (Experimental)
 
 .. index from here
 
-* :doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach.
 * :doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach.
 * :doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem.
 
@@ -108,13 +121,9 @@ See Also
     :start-after: see also start
     :end-before: see also end
 
-
-
 .. include:: pgr_bipartite.rst
     :start-after: see also start
     :end-before: see also end
-
-
 
 .. include:: pgr_edgeColoring.rst
     :start-after: see also start
