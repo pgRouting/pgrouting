@@ -37,7 +37,7 @@ CREATE FUNCTION pgr_lengauerTarjanDominatorTree(
     OUT vertex_id BIGINT,
     OUT idom BIGINT
     )
-RETURNS SETOF RECORD AS 
+RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
 
@@ -53,7 +53,7 @@ LANGUAGE  plpgsql VOLATILE STRICT;
 
 
 COMMENT ON FUNCTION pgr_lengauerTarjanDominatorTree(TEXT,BIGINT)
-IS 'pgr_LTDTree
+IS 'pgr_lengauerTarjanDominatorTree
 - EXPERIMENTAL
 - Directed graph
 - Parameters:
