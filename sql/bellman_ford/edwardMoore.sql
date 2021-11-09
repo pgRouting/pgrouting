@@ -151,6 +151,7 @@ LANGUAGE SQL VOLATILE STRICT;
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_edwardMoore(One to One)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
@@ -163,6 +164,7 @@ IS 'pgr_edwardMoore(One to One)
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_edwardMoore(One to Many)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From vertex identifier
@@ -175,6 +177,7 @@ IS 'pgr_edwardMoore(One to Many)
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_edwardMoore(Many to One)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
@@ -187,6 +190,7 @@ IS 'pgr_edwardMoore(Many to One)
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_edwardMoore(Many to Many)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - From ARRAY[vertices identifiers]
@@ -199,6 +203,7 @@ IS 'pgr_edwardMoore(Many to Many)
 
 COMMENT ON FUNCTION pgr_edwardMoore(TEXT, TEXT, BOOLEAN)
 IS 'pgr_edwardMoore(Combinations)
+- EXPERIMENTAL
 - Parameters:
    - Edges SQL with columns: id, source, target, cost [,reverse_cost]
    - Combinations SQL with columns: source, target
