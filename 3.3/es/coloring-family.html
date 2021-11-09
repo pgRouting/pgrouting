@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Colorante - Familia de funciones (Experimental) &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>Coloring - Family of functions &#8212; pgRouting Manual (3.3-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_sequentialVertexColoring - Experimental" href="pgr_sequentialVertexColoring.html" />
+    <link rel="next" title="pgr_sequentialVertexColoring - Proposed" href="pgr_sequentialVertexColoring.html" />
     <link rel="prev" title="pgr_chinesePostmanCost - Experimental" href="pgr_chinesePostmanCost.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -94,7 +94,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Colorante - Familia de funciones (Experimental)</a><ul>
+<li><a class="reference internal" href="#">Coloring - Family of functions</a><ul>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
 <li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -114,7 +114,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_sequentialVertexColoring.html" title="Next Chapter: pgr_sequentialVertexColoring - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_sequentia... &raquo;</span>
+    <a href="pgr_sequentialVertexColoring.html" title="Next Chapter: pgr_sequentialVertexColoring - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_sequentia... &raquo;</span>
     </a>
   </li>
               
@@ -151,8 +151,30 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.3/en/coloring-family.html">3.3</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/coloring-family.html">3.2</a></p></li>
 </ul>
-<section id="coloring-family-of-functions-experimental">
-<h1>Colorante - Familia de funciones (Experimental)<a class="headerlink" href="#coloring-family-of-functions-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
+<section id="coloring-family-of-functions">
+<h1>Coloring - Family of functions<a class="headerlink" href="#coloring-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<p class="rubric">Proposed</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Proposed functions for next mayor release.</p>
+<ul class="simple">
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
+<ul>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Proposed</span></a>- Algoritmo de coloración de vértices mediante un enfoque codicioso.</p></li>
+</ul>
+<p class="rubric">Experimental</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -184,7 +206,6 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Experimental</span></a>- Algoritmo de coloración de vértices mediante un enfoque codicioso.</p></li>
 <li><p><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite -Experimental</span></a> - Algoritmo de grafo bipartito mediante un enfoque de coloración basado en DFS.</p></li>
 <li><p><a class="reference internal" href="pgr_edgeColoring.html"><span class="doc">pgr_edgeColoring - Experimental</span></a> - Edge Coloring algorithm using Vizing’s theorem.</p></li>
 </ul>

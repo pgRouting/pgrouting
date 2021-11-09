@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_sequentialVertexColoring - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>pgr_sequentialVertexColoring - Proposed &#8212; pgRouting Manual (3.3-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -20,7 +20,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="pgr_bipartite -Experimental" href="pgr_bipartite.html" />
-    <link rel="prev" title="Colorante - Familia de funciones (Experimental)" href="coloring-family.html" />
+    <link rel="prev" title="Coloring - Family of functions" href="coloring-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_sequentialVertexColoring - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_sequentialVertexColoring - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -113,7 +113,7 @@
               
                 
   <li>
-    <a href="coloring-family.html" title="Previous Chapter: Colorante - Familia de funciones (Experimental)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Colorante - F...</span>
+    <a href="coloring-family.html" title="Previous Chapter: Coloring - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Coloring - Fa...</span>
     </a>
   </li>
   <li>
@@ -154,8 +154,8 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html">3.3</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html">3.2</a></p></li>
 </ul>
-<section id="pgr-sequentialvertexcoloring-experimental">
-<h1>pgr_sequentialVertexColoring - Experimental<a class="headerlink" href="#pgr-sequentialvertexcoloring-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
+<section id="pgr-sequentialvertexcoloring-proposed">
+<h1>pgr_sequentialVertexColoring - Proposed<a class="headerlink" href="#pgr-sequentialvertexcoloring-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_sequentialVertexColoring</span></code> — Devuelve el color de vértice de un grafo no dirigido, utilizando un enfoque codicioso.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -165,36 +165,28 @@
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Posible bloqueo del servidor</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Funciones experimentales</p>
-<ul class="simple">
-<li><p>No son oficialmente de la versión actual.</p></li>
-<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
 <ul>
-<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
-<li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
-<li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
-<li><p>Posiblemente necesite codificación c/c++.</p></li>
-<li><p>Puede haber carencia de documentación.</p></li>
-<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
-<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p>Version 3.3.0</p>
+<ul>
+<li><p>Promoted to <strong>proposed</strong> function</p></li>
+</ul>
+</li>
 <li><p>Versión 3.2.0</p>
 <ul>
 <li><p>Nueva función <strong>experimental</strong></p></li>
@@ -223,7 +215,7 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_sequentialVertexColoring(Edges SQL) -- Experimental on v3.2
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_sequentialVertexColoring(Edges SQL) -- Proposed on v3.3
 
 RETURNS SET OF (vertex_id, color_id)
 OR EMPTY SET
