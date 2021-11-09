@@ -50,7 +50,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: pgr_extractVertices -- Proposed
+    single: pgr_extractVertices - Proposed on v3.3
 
 .. code-block:: sql
 

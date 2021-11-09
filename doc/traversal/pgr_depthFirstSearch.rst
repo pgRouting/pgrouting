@@ -69,8 +69,8 @@ Signatures
 
 .. code-block:: none
 
-    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth]) -- Proposed on v3.3
-    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth]) -- Proposed on v3.3
+    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
+    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -83,7 +83,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: depthFirstSearch(Single vertex) -- Proposed on v3.3
+    single: depthFirstSearch(Single vertex) - Proposed on v3.3
 
 Single vertex
 ...............................................................................
@@ -102,7 +102,7 @@ Single vertex
    :end-before: -- q3
 
 .. index::
-    single: depthFirstSearch(Multiple vertices) -- Proposed on v3.3
+    single: depthFirstSearch(Multiple vertices) - Proposed on v3.3
 
 Multiple vertices
 ...............................................................................

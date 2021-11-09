@@ -57,6 +57,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: dijkstraVia - Proposed
+
 .. code-block:: none
 
     pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
@@ -78,9 +81,6 @@ Signatures
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q00
     :end-before: -- q0
-
-.. index::
-    single: dijkstraVia - Proposed
 
 Complete Signature
 ...............................................................................

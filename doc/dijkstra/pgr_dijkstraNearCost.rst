@@ -69,7 +69,7 @@ Signatures
     OR EMPTY SET
 
 .. index::
-    single: dijkstraNearCost(One to Many) - Proposed
+    single: dijkstraNearCost(One to Many) - Proposed on v3.3
 
 One to Many
 ...............................................................................
@@ -98,7 +98,7 @@ One to Many
 The result shows that station at vertex :math:`6` is the nearest.
 
 .. index::
-    single: dijkstraNearCost(Many to One)  - Proposed
+    single: dijkstraNearCost(Many to One) - Proposed on v3.3
 
 Many to One
 ...............................................................................
@@ -126,7 +126,7 @@ The result shows that station at vertex :math:`3` is the nearest and the next be
 is :math:`6`.
 
 .. index::
-    single: dijkstraNearCost(Many to Many)  - Experimental
+    single: dijkstraNearCost(Many to Many) - Proposed on v3.3
 
 Many to Many
 ...............................................................................
@@ -159,7 +159,7 @@ first subway line and at vertex :math:`4` of the second subway line.
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
 .. index::
-    single: dijkstraNearCost(Combinations)  - Proposed
+    single: dijkstraNearCost(Combinations) - Proposed on v3.3
 
 Combinations
 ...............................................................................

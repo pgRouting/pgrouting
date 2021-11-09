@@ -84,7 +84,7 @@ Characteristics
 
 
 .. index::
-    single: pgr_pickDeliverEuclidean - Experimental
+    single: pgr_pickDeliverEuclidean - Experimental on 3.0
 
 
 Signature

@@ -78,7 +78,7 @@ Signatures
     pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids [, directed])
     pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid [, directed])
     pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids [, directed])
-    pgr_edgeDisjointPaths(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.2
+    pgr_edgeDisjointPaths(Edges SQL, Combinations SQL [, directed])
 
     RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET

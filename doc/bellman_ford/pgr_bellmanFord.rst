@@ -84,7 +84,7 @@ Signatures
     pgr_bellmanFord(Edges SQL, from_vid,  to_vids [, directed])
     pgr_bellmanFord(Edges SQL, from_vids, to_vid  [, directed])
     pgr_bellmanFord(Edges SQL, from_vids, to_vids [, directed])
-    pgr_bellmanFord(Edges SQL, Combinations SQL [, directed]) -- Experimental on v3.2
+    pgr_bellmanFord(Edges SQL, Combinations SQL [, directed])
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -104,7 +104,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: bellman_ford(One to One) - Experimental
+    single: bellman_ford(One to One) - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -122,7 +122,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: bellmanFord(One to Many) - Experimental
+    single: bellmanFord(One to Many) - Experimental on v3.0
 
 One to many
 ...............................................................................
@@ -140,7 +140,7 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: bellman_ford(Many to One) - Experimental
+    single: bellman_ford(Many to One) - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -158,7 +158,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: bellmanFord(Many to Many) - Experimental
+    single: bellmanFord(Many to Many) - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -176,7 +176,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: bellmanFord(Combinations) -- Experimental on v3.2
+    single: bellmanFord(Combinations) - Experimental on v3.2
 
 Combinations
 ...............................................................................
@@ -249,4 +249,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

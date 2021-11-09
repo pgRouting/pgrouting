@@ -62,6 +62,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+   single: topologicalSort - Experimental on v3.0
+
 .. code-block:: none
 
     pgr_topologicalSort(edges_sql)

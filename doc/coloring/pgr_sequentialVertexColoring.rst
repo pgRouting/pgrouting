@@ -67,9 +67,12 @@ such that no edge connects two identically colored vertices.
 Signatures
 ------------------------------------------------------------------------------
 
+.. index::
+    single: sequentialVertexColoring - Proposed on v3.3
+
 .. code-block:: none
 
-    pgr_sequentialVertexColoring(Edges SQL) -- Proposed on v3.3
+    pgr_sequentialVertexColoring(Edges SQL)
 
     RETURNS SET OF (vertex_id, color_id)
     OR EMPTY SET
@@ -79,9 +82,6 @@ Signatures
 .. literalinclude:: doc-pgr_sequentialVertexColoring.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. index::
-    single: sequentialVertexColoring -- Proposed on v3.3
 
 .. Parameters, Inner query & result columns
 

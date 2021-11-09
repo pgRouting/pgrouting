@@ -73,14 +73,14 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: lineGraph(Complete signature)
+    single: lineGraph - Experimental on v2.5
 
 Complete Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_lineGraph(edges_sql, directed);
+    pgr_lineGraph(edges_sql, directed)
     RETURNS SET OF (seq, source, target, cost, reverse_cost) OR EMPTY SET
 
 :Example: For an **undirected** graph

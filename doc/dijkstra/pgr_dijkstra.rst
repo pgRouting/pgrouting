@@ -105,7 +105,7 @@ Signatures
     pgr_dijkstra(Edges SQL, start_vid,  end_vids [, directed])
     pgr_dijkstra(Edges SQL, start_vids, end_vid  [, directed])
     pgr_dijkstra(Edges SQL, start_vids, end_vids [, directed])
-    pgr_dijkstra(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.1
+    pgr_dijkstra(Edges SQL, Combinations SQL [, directed])
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -195,7 +195,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: dijkstra(Combinations) -- Proposed on v3.1
+    single: dijkstra(Combinations) - Proposed on v3.1
 
 Combinations
 ...............................................................................

@@ -38,10 +38,6 @@ pgRouting 3.3.0 Release Notes
 
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github.
 
-.. rubric:: New experimental functions
-
-* pgr_edgeColoring
-
 .. rubric:: Issue fixes
 
 * `#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges columns in different order
@@ -50,13 +46,42 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * `#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: pgr_sequentialVertexColoring to proposed
 * `#2203 <https://github.com/pgRouting/pgrouting/issues/2203>`__: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed
 
-.. rubric:: Experimental promoted to proposed
+.. rubric:: New experimental functions
 
-* pgr_depthFirstSearch
-* pgr_dijkstraNear
-* pgr_dijkstraNearCost
-* pgr_extractVertices
-* pgr_sequentialVertexColoring
+* Coloring
+
+  * pgr_edgeColoring
+
+.. rubric:: Experimental promoted to Proposed
+
+* Dijkstra
+
+  * pgr_dijkstraNear
+
+    * dijkstraNear(Combinations)
+    * dijkstraNear(Many to Many)
+    * dijkstraNear(Many to One)
+    * dijkstraNear(One to Many)
+
+  * pgr_dijkstraNearCost
+
+    * dijkstraNearCost(Combinations)
+    * dijkstraNearCost(Many to Many)
+    * dijkstraNearCost(Many to One)
+    * dijkstraNearCost(One to Many)
+
+* Coloring
+
+  * pgr_sequentialVertexColoring
+
+* Topology
+
+  * pgr_extractVertices
+
+* Traversal
+
+  * depthFirstSearch(Multiple vertices)
+  * depthFirstSearch(Single vertex)
 
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
@@ -102,7 +127,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * pgr_depthFirstSearch
 * Dijkstra Near
 
-  * pgr_dijkstraNearCost
+  * pgr_dijkstraNear
 
     * pgr_dijkstraNear(One to Many)
     * pgr_dijkstraNear(Many to One)

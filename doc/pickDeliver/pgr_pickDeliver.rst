@@ -76,7 +76,7 @@ Characteristics
   - the best solution found will be result
 
 .. index::
-    single: pgr_pickDeliver - Experimental
+    single: pgr_pickDeliver - Experimental on v3.0
 
 Signature
 -------------------------------------------------------------------------------

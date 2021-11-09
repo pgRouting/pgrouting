@@ -50,13 +50,13 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: withPointsVia - Proposed on v2.2
+
 .. code-block:: none
 
 	withPointsVia(edges_sql, points_sql, start_pid, distance [, directed] [, driving_side] [, details])
   RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
-.. index::
-	single: withPointsVia(edges_sql, points_sql, start_pid, distance) -- proposed
 
 .. rubric:: Using defaults
 ...................................................

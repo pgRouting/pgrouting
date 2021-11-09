@@ -60,9 +60,12 @@ color.
 Signatures
 ------------------------------------------------------------------------------
 
+.. index::
+    single: edgeColoring - Experimental on v3.3
+
 .. code-block:: sql
 
-    pgr_edgeColoring(Edges SQL) -- Experimental on v3.3
+    pgr_edgeColoring(Edges SQL)
 
     RETURNS SET OF (edge_id, color_id)
     OR EMPTY SET
@@ -72,9 +75,6 @@ Signatures
 .. literalinclude:: doc-edgeColoring.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. index::
-    single: edgeColoring -- Experimental on v3.3
 
 .. Parameters, Inner query & result columns
 

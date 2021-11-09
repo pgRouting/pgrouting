@@ -61,7 +61,7 @@ Signatures
 The pgr_transitiveClosure function has the following signature:
 
 .. index::
-   single: transitiveClosure
+   single: transitiveClosure - Experimental on v3.0
 
 .. code-block:: none
 

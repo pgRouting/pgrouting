@@ -57,6 +57,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: lineGraphFull - Experimental on v2.6
+
 .. code-block:: none
 
     pgr_lineGraphFull(edges_sql)

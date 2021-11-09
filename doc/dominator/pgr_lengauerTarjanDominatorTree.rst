@@ -1,4 +1,3 @@
-
 ..
    ****************************************************************************
     pgRouting Manual
@@ -55,13 +54,13 @@ Signatures
 
 .. code-block:: sql
 
-    pgr_lengauerTarjanDominatorTree(Edges SQL, root vertex) -- Experimental on v3.2
+    pgr_lengauerTarjanDominatorTree(Edges SQL, root vertex)
     RETURNS SET OF (seq, vertex_id, idom)
     OR EMPTY SET
 
 
 .. index::
-    single: pgr_lengauerTarjanDominatorTree
+    single: lengauerTarjanDominatorTree - Experimental on v3.2
 
 
 :Example: The lengauerTarjanDominatorTree with root vertex :math:`1`

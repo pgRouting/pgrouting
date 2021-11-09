@@ -93,7 +93,7 @@ Signatures
     pgr_aStar(Edges SQL, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon]) -- Proposed on v3.2
+    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -188,7 +188,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: aStar(Combinations) -- Proposed on v3.2
+    single: aStar(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

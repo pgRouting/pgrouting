@@ -85,7 +85,7 @@ Signatures
    :end-before: --q2
 
 .. index::
-    single: withPointsDD(Single Start Vertex) - proposed
+    single: withPointsDD(Single Start Vertex) - Proposed on v2.2
 
 Single vertex
 ...............................................................................
@@ -104,7 +104,7 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 .. index::
-    single: withPointsDD(Multiple Starting Vertices) - proposed
+    single: withPointsDD(Multiple Starting Vertices) - Proposed on v2.2
 
 Multiple vertices
 ...............................................................................
