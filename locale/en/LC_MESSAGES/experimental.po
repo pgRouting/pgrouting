@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 15:18+0000\n"
+"POT-Creation-Date: 2021-11-09 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,17 +147,11 @@ msgstr ""
 
 #: ../../build/doc/coloring-family.rst:3
 msgid ""
-":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using "
-"greedy approach."
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:4
-msgid ""
 ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based "
 "coloring approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:5
+#: ../../build/doc/coloring-family.rst:4
 msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
 msgstr ""
 

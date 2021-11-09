@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 15:18+0000\n"
+"POT-Creation-Date: 2021-11-09 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,11 +139,21 @@ msgstr ""
 msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:77
+#: ../../build/doc/proposed.rst:70
+msgid ":doc:`coloring-family`"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:3
+msgid ""
+":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using "
+"greedy approach."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:82
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:78
+#: ../../build/doc/proposed.rst:83
 msgid ":doc:`cost-category`"
 msgstr ""
 
@@ -151,7 +161,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:84
+#: ../../build/doc/proposed.rst:89
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
@@ -159,7 +169,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:90
+#: ../../build/doc/proposed.rst:95
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -167,7 +177,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:96
+#: ../../build/doc/proposed.rst:101
 msgid ":doc:`KSP-category`"
 msgstr ""
 
@@ -175,23 +185,23 @@ msgstr ""
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:109
+#: ../../build/doc/proposed.rst:114
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:111
+#: ../../build/doc/proposed.rst:116
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:114
+#: ../../build/doc/proposed.rst:119
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:115
+#: ../../build/doc/proposed.rst:120
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:116
+#: ../../build/doc/proposed.rst:121
 msgid ":ref:`search`"
 msgstr ""
 
