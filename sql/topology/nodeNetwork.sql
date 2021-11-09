@@ -305,4 +305,6 @@ COMMENT ON FUNCTION pgr_nodeNetwork(TEXT, DOUBLE PRECISION, TEXT, TEXT, TEXT, TE
   - table_ending := ''noded''
   - rows_where := ''''
   - outall := false
+- DOCUMENTATION:
+  - ${PROJECT_DOC_LINK}/pgr_nodeNetwork.html
 ';
