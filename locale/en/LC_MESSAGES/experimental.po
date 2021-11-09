@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 14:40+0000\n"
+"POT-Creation-Date: 2021-11-09 15:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,14 +178,6 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/experimental.rst:80
-msgid ":doc:`traversal-family`"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:3
-msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
-msgstr ""
-
-#: ../../build/doc/experimental.rst:86
 msgid ":doc:`components-family`"
 msgstr ""
 
@@ -193,11 +185,11 @@ msgstr ""
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:102
+#: ../../build/doc/experimental.rst:95
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:103
+#: ../../build/doc/experimental.rst:96
 msgid ":doc:`VRP-category`"
 msgstr ""
 
@@ -223,67 +215,67 @@ msgstr ""
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:115
+#: ../../build/doc/experimental.rst:108
 msgid "Not classified"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:116
+#: ../../build/doc/experimental.rst:109
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:117
+#: ../../build/doc/experimental.rst:110
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:118
+#: ../../build/doc/experimental.rst:111
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:119
+#: ../../build/doc/experimental.rst:112
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:120
+#: ../../build/doc/experimental.rst:113
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:121
+#: ../../build/doc/experimental.rst:114
 msgid ":doc:`pgr_isPlanar`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:122
+#: ../../build/doc/experimental.rst:115
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:123
+#: ../../build/doc/experimental.rst:116
 msgid ":doc:`pgr_topologicalSort`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:124
+#: ../../build/doc/experimental.rst:117
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:125
+#: ../../build/doc/experimental.rst:118
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:126
+#: ../../build/doc/experimental.rst:119
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:145
+#: ../../build/doc/experimental.rst:138
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:148
+#: ../../build/doc/experimental.rst:141
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:149
+#: ../../build/doc/experimental.rst:142
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:150
+#: ../../build/doc/experimental.rst:143
 msgid ":ref:`search`"
 msgstr ""
 
