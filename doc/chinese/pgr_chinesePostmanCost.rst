@@ -46,7 +46,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: chinesePostmanCost - Experimental
+    single: chinesePostmanCost - Experimental on v3.0
 
 .. code-block:: none
 

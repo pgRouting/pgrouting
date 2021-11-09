@@ -13,7 +13,9 @@
   `Latest <https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html>`__
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_breadthFirstSearch.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_breadthFirstSearch.html>`__
-  
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__
+  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__
+
 pgr_breadthFirstSearch - Experimental
 ===============================================================================
 
@@ -29,6 +31,10 @@ pgr_breadthFirstSearch - Experimental
    :end-before: end-warn-expr
 
 .. rubric:: Availability
+
+* Version 3.0.0
+
+  * New **experimental** function:
 
 Description
 -------------------------------------------------------------------------------
@@ -52,7 +58,7 @@ Signatures
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
-    single: breadthFirstSearch(Single vertex) - Experimental
+    single: breadthFirstSearch(Single vertex) - Experimental on v3.0
 
 Single Vertex
 ...............................................................................
@@ -70,7 +76,7 @@ Single Vertex
    :end-before: --q2
 
 .. index::
-    single: breadthFirstSearch(Multiple vertices) - Experimental
+    single: breadthFirstSearch(Multiple vertices) - Experimental on v3.0
 
 Multiple Vertices
 ...............................................................................

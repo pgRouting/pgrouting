@@ -97,7 +97,7 @@ Signatures
      pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
-     pgr_dijkstraCost(edges_sql, combinations_sql   [, directed]) -- Proposed on v3.1
+     pgr_dijkstraCost(edges_sql, combinations_sql   [, directed])
      RETURNS SET OF (start_vid, end_vid, agg_cost)
      OR EMPTY SET
 
@@ -188,7 +188,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: dijkstraCost(Combinations) -- Proposed on v3.1
+    single: dijkstraCost(Combinations) - Proposed on v3.1
 
 Combinations
 ...............................................................................

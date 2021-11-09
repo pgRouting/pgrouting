@@ -52,10 +52,13 @@ A bipartite graph is possible if the graph coloring is possible using two colors
 Signatures
 -------------------------------------------------------------------------------
 
+.. index::
+    single: bipartite - Experimental on v3.2
+
 
 .. code-block:: sql
 
-    pgr_bipartite(Edges SQL) -- Experimental on v3.2
+    pgr_bipartite(Edges SQL)
 
     RETURNS SET OF (vertex_id, color_id)
     OR EMPTY SET
@@ -68,9 +71,6 @@ Signatures
    :start-after: --q1
    :end-before: --q2
 
-
-.. index::
-    single: bipartite (Single Vertex) - Experimental on v3.2
 
 
 .. Parameters, Inner query & result columns

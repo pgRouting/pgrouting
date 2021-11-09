@@ -58,6 +58,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: makeConnected - Experimental on v3.2
+
 .. code-block:: none
 
     pgr_makeConnected(Edges SQL)

@@ -73,7 +73,7 @@ Signatures
     pgr_aStarCost(Edges SQL, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStarCost(Edges SQL, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStarCost(Edges SQL, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStarCost(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon]) -- Proposed on v3.2
+    pgr_aStarCost(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
@@ -167,7 +167,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: aStarCost(Combinations) -- Proposed on v3.2
+    single: aStarCost(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

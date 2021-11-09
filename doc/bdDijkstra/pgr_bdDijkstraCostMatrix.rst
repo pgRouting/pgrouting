@@ -63,7 +63,7 @@ Signatures
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 .. index::
-    single: bdDijkstraCostMatrix(Minimal Use)
+    single: bdDijkstraCostMatrix
 
 .. rubric:: Using default
 

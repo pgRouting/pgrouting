@@ -54,6 +54,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: withPointsKSP - Proposed on v2.2
+
 .. code-block:: none
 
     pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K [, directed] [, heap_paths] [, driving_side] [, details])

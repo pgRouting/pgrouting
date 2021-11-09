@@ -73,7 +73,7 @@ Signatures
     pgr_boykovKolmogorov(Edges SQL, sources, target)
     pgr_boykovKolmogorov(Edges SQL, source,  targets)
     pgr_boykovKolmogorov(Edges SQL, sources, targets)
-    pgr_boykovKolmogorov(Edges SQL, Combinations SQL) -- Proposed on v3.2
+    pgr_boykovKolmogorov(Edges SQL, Combinations SQL)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -150,7 +150,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: boykovKolmogorov(Combinations) -- Proposed on v3.2
+    single: boykovKolmogorov(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

@@ -46,7 +46,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: chinesePostman - Experimental
+    single: chinesePostman - Experimental on v3.0
 
 .. code-block:: none
 

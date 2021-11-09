@@ -52,6 +52,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: dijkstraCostMatrix
+
 .. code-block:: none
 
     pgr_dijkstraCostMatrix(edges_sql, start_vids [, directed])
@@ -70,9 +73,6 @@ Signatures
    :start-after: -- dijkstra q1
    :end-before: -- dijkstra q2
 
-
-.. index::
-    single: dijkstraCostMatrix
 
 Complete Signature
 ...............................................................................

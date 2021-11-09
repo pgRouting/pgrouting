@@ -109,9 +109,6 @@ Signatures
 
 .. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
 
-.. index::
-    single: withPointsCost(Minimal Use) - proposed
-
 .. rubric:: Using defaults
 
 .. code-block:: none
@@ -130,7 +127,7 @@ Signatures
    :end-before: --e2
 
 .. index::
-    single: withPointsCost(One To One) - proposed
+    single: withPointsCost(One To One) - proposed on v2.2
 
 One to One
 ...............................................................................
@@ -147,7 +144,7 @@ One to One
    :end-before: --e3
 
 .. index::
-    single: withPointsCost(One To Many) - proposed
+    single: withPointsCost(One To Many) - proposed on v2.2
 
 One to Many
 ...............................................................................
@@ -164,7 +161,7 @@ One to Many
    :end-before: --e4
 
 .. index::
-    single: withPointsCost(Many To One) - proposed
+    single: withPointsCost(Many To One) - proposed on v2.2
 
 Many to One
 ...............................................................................
@@ -181,7 +178,7 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPointsCost(Many To Many) - proposed
+    single: withPointsCost(Many To Many) - proposed on v2.2
 
 Many to Many
 ...............................................................................

@@ -76,7 +76,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: stoerWagner - Experimental
+    single: stoerWagner - Experimental on v3.0
 
 .. code-block:: none
 

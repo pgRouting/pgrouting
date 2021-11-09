@@ -74,12 +74,12 @@ Signatures
     pgr_maxFlowMinCost(Edges SQL, sources, target)
     pgr_maxFlowMinCost(Edges SQL, source,  targets)
     pgr_maxFlowMinCost(Edges SQL, sources, targets)
-    pgr_maxFlowMinCost(Edges SQL, Combinations SQL) -- Experimental on v3.2
+    pgr_maxFlowMinCost(Edges SQL, Combinations SQL)
     RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
 .. index::
-    single: maxFlowMinCost(One to One) - Experimental
+    single: maxFlowMinCost(One to One) - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -97,7 +97,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: maxFlowMinCost(One to Many) - Experimental
+    single: maxFlowMinCost(One to Many) - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -115,7 +115,7 @@ One to Many
    :end-before: -- q4
 
 .. index::
-    single: maxFlowMinCost(Many to One) - Experimental
+    single: maxFlowMinCost(Many to One) - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -133,7 +133,7 @@ Many to One
    :end-before: -- q3
 
 .. index::
-    single: maxFlowMinCost(Many to Many) - Experimental
+    single: maxFlowMinCost(Many to Many) - Experimental on v3.0
 
 Many to Many
 ...............................................................................

@@ -40,6 +40,19 @@ Description
 Signatures
 -------------------------------------------------------------------------------
 
+.. rubric:: Summary
+
+.. index::
+   single: turnRestrictedPath - Experimental on v3.0
+
+.. code-block:: none
+
+    pgr_turnRestrictedPath(Edges SQL, Restrictions SQL, Start vertex, End vertex, K cycles,
+      [, directed] [,heap_paths] [, stop_on_first] [,strict])
+    RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+
+Parameters
+-------------------------------------------------------------------------------
 * TBD
 
 Parameters

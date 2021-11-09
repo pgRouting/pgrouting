@@ -78,7 +78,7 @@ The minimal signature:
    :end-before: -- withPoints q2
 
 .. index::
-    single: withPointsCostMatrix - Proposed
+    single: withPointsCostMatrix - Proposed on v2.2
 
 Complete Signature
 ...............................................................................
