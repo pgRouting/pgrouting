@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_dijkstraNearCost - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>pgr_dijkstraNearCost - Proposed &#8212; pgRouting Manual (3.3-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -20,7 +20,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Flow - Familia de funciones." href="flow-family.html" />
-    <link rel="prev" title="pgr_dijkstraNear - Experimental" href="pgr_dijkstraNear.html" />
+    <link rel="prev" title="pgr_dijkstraNear - Proposed" href="pgr_dijkstraNear.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_dijkstraNearCost - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_dijkstraNearCost - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a><ul>
 <li><a class="reference internal" href="#characteristics">Características</a></li>
 </ul>
@@ -126,7 +126,7 @@
               
                 
   <li>
-    <a href="pgr_dijkstraNear.html" title="Previous Chapter: pgr_dijkstraNear - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
+    <a href="pgr_dijkstraNear.html" title="Previous Chapter: pgr_dijkstraNear - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
     </a>
   </li>
   <li>
@@ -167,35 +167,22 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html">3.3</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html">3.2</a></p></li>
 </ul>
-<section id="pgr-dijkstranearcost-experimental">
-<h1>pgr_dijkstraNearCost - Experimental<a class="headerlink" href="#pgr-dijkstranearcost-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
+<section id="pgr-dijkstranearcost-proposed">
+<h1>pgr_dijkstraNearCost - Proposed<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> — Usando el algoritmo dijkstra, encuentra la ruta que conduce al vértice más cercano.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Posible bloqueo del servidor</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Funciones experimentales</p>
-<ul class="simple">
-<li><p>No son oficialmente de la versión actual.</p></li>
-<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
 <ul>
-<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
-<li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma o declaración de funciones podría cambiar.</p></li>
-<li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
-<li><p>Posiblemente necesite codificación c/c++.</p></li>
-<li><p>Puede haber carencia de documentación.</p></li>
-<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
-<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +195,11 @@
 </figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p>Version 3.3.0</p>
+<ul>
+<li><p>Promoted to <strong>proposed</strong> function</p></li>
+</ul>
+</li>
 <li><p>Versión 3.2.0</p>
 <ul>
 <li><p>Nueva función <strong>experimental</strong></p></li>
@@ -643,7 +635,7 @@ OR EMPTY SET
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a></p></li>
 <li><p>Red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 <li><p>boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/table_of_contents.html">https://www.boost.org/libs/graph/doc/table_of_contents.html</a></p></li>
 <li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
@@ -669,7 +661,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Actualizado por última vez en oct. 23, 2021.<br/>
+      Actualizado por última vez en nov. 09, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>

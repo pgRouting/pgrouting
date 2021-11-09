@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_dijkstraNear - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>pgr_dijkstraNear - Proposed &#8212; pgRouting Manual (3.3-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_dijkstraNearCost - Experimental" href="pgr_dijkstraNearCost.html" />
+    <link rel="next" title="pgr_dijkstraNearCost - Proposed" href="pgr_dijkstraNearCost.html" />
     <link rel="prev" title="pgr_dijkstraVia - Proposed" href="pgr_dijkstraVia.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -94,7 +94,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_dijkstraNear - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_dijkstraNear - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Description</a><ul>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 </ul>
@@ -129,7 +129,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_dijkstraNearCost.html" title="Next Chapter: pgr_dijkstraNearCost - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
+    <a href="pgr_dijkstraNearCost.html" title="Next Chapter: pgr_dijkstraNearCost - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
     </a>
   </li>
               
@@ -166,36 +166,23 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraNear.html">3.3</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html">3.2</a></p></li>
 </ul>
-<section id="pgr-dijkstranear-experimental">
-<h1>pgr_dijkstraNear - Experimental<a class="headerlink" href="#pgr-dijkstranear-experimental" title="Permalink to this headline">¶</a></h1>
+<section id="pgr-dijkstranear-proposed">
+<h1>pgr_dijkstraNear - Proposed<a class="headerlink" href="#pgr-dijkstranear-proposed" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> — Using dijkstra algorithm, finds the route that leads to
 the nearest vertex.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Possible server crash</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="simple">
-<li><p>These functions might create a server crash</p></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Experimental functions</p>
-<ul class="simple">
-<li><p>They are not officially of the current release.</p></li>
-<li><p>They likely will not be officially be part of the next release:</p>
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
 <ul>
-<li><p>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
-<li><p>Name might change.</p></li>
-<li><p>Signature might change.</p></li>
-<li><p>Functionality might change.</p></li>
-<li><p>pgTap tests might be missing.</p></li>
-<li><p>Might need c/c++ coding.</p></li>
-<li><p>May lack documentation.</p></li>
-<li><p>Documentation if any might need to be rewritten.</p></li>
-<li><p>Documentation examples might need to be automatically generated.</p></li>
-<li><p>Might need a lot of feedback from the comunity.</p></li>
-<li><p>Might depend on a proposed function of pgRouting</p></li>
-<li><p>Might depend on a deprecated function of pgRouting</p></li>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +195,11 @@ the nearest vertex.</p>
 </figure>
 <p class="rubric">Availability</p>
 <ul class="simple">
+<li><p>Version 3.3.0</p>
+<ul>
+<li><p>Promoted to <strong>proposed</strong> function</p></li>
+</ul>
+</li>
 <li><p>Version 3.2.0</p>
 <ul>
 <li><p>New <strong>experimental</strong> function</p></li>
@@ -697,7 +689,7 @@ OR EMPTY SET</p>
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Family of functions</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Experimental</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
 <li><p>boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/table_of_contents.html">https://www.boost.org/libs/graph/doc/table_of_contents.html</a></p></li>
 <li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
@@ -723,7 +715,7 @@ OR EMPTY SET</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Oct 23, 2021.<br/>
+      Last updated on Nov 09, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
