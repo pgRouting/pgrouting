@@ -14,7 +14,7 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html>`__
 
-pgr_sequentialVertexColoring - Experimental
+pgr_sequentialVertexColoring - Proposed
 ===============================================================================
 
 ``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an undirected graph,
@@ -25,11 +25,15 @@ using greedy approach.
 
    Boost Graph Inside
 
-.. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-exp
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. rubric:: Availability
+
+* Version 3.3.0
+
+  * Promoted to **proposed** function
 
 * Version 3.2.0
 
@@ -65,7 +69,7 @@ Signatures
 
 .. code-block:: none
 
-    pgr_sequentialVertexColoring(Edges SQL) -- Experimental on v3.2
+    pgr_sequentialVertexColoring(Edges SQL) -- Proposed on v3.3
 
     RETURNS SET OF (vertex_id, color_id)
     OR EMPTY SET
@@ -77,7 +81,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: sequentialVertexColoring -- Experimental on v3.2
+    single: sequentialVertexColoring -- Proposed on v3.3
 
 .. Parameters, Inner query & result columns
 
