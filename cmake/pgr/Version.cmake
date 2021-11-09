@@ -13,7 +13,7 @@ set(PROJECT_FULL_VERSION "v${PROJECT_VERSION}${PROJECT_VERSION_DEV}")
 if (PROJECT_VERSION_DEV)
     set(PROJECT_DOC_LINK "https://docs.pgrouting.org/dev/en")
 else()
-    set(PROJECT_DOC_LINK "https://docs.pgrouting.org/${PROJECT_LIB_VERSION}/en")
+    set(PROJECT_DOC_LINK "https://docs.pgrouting.org/latest/en")
 endif()
 
 
