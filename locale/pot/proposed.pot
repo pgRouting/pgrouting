@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-13 05:24+0000\n"
+"POT-Creation-Date: 2021-11-09 14:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,6 +74,14 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:3
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:4
+msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:5
+msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:52
