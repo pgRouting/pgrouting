@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_depthFirstSearch - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>pgr_depthFirstSearch - Proposed &#8212; pgRouting Manual (3.3-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -19,8 +19,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Funciones de Ruteo de Vehículos - Categoría (Experimental)" href="VRP-category.html" />
-    <link rel="prev" title="Transversal - Familia de funciones (Experimental)" href="traversal-family.html" />
+    <link rel="next" title="withPoints - Familia de funciones" href="withPoints-family.html" />
+    <link rel="prev" title="Traversal - Family of functions" href="traversal-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -77,8 +77,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Funciones propuestas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experimental.html">Funciones Experimentales</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_depthFirstSearch - Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_depthFirstSearch - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#single-vertex">Un solo vértice</a></li>
@@ -121,11 +121,11 @@
               
                 
   <li>
-    <a href="traversal-family.html" title="Previous Chapter: Transversal - Familia de funciones (Experimental)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Transversal -...</span>
+    <a href="traversal-family.html" title="Previous Chapter: Traversal - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Traversal - F...</span>
     </a>
   </li>
   <li>
-    <a href="VRP-category.html" title="Next Chapter: Funciones de Ruteo de Vehículos - Categoría (Experimental)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Funciones de ... &raquo;</span>
+    <a href="withPoints-family.html" title="Next Chapter: withPoints - Familia de funciones"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">withPoints - ... &raquo;</span>
     </a>
   </li>
               
@@ -162,8 +162,8 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html">3.3</a>)
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html">3.2</a></p></li>
 </ul>
-<section id="pgr-depthfirstsearch-experimental">
-<h1>pgr_depthFirstSearch - Experimental<a class="headerlink" href="#pgr-depthfirstsearch-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
+<section id="pgr-depthfirstsearch-proposed">
+<h1>pgr_depthFirstSearch - Proposed<a class="headerlink" href="#pgr-depthfirstsearch-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> — Devuelve un recorrido de búsqueda de profundidad del grafo. El grafo puede ser dirigido o no dirigido.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/depth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -173,36 +173,28 @@
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Posible bloqueo del servidor</p>
+<p>Proposed functions for next mayor release.</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Advertencia</p>
-<p>Funciones experimentales</p>
-<ul class="simple">
-<li><p>No son oficialmente de la versión actual.</p></li>
-<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
 <ul>
-<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
-<li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma o declaración de funciones podría cambiar.</p></li>
-<li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
-<li><p>Posiblemente necesite codificación c/c++.</p></li>
-<li><p>Puede haber carencia de documentación.</p></li>
-<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
-<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p>Version 3.3.0</p>
+<ul>
+<li><p>Promoted to <strong>proposed</strong> function</p></li>
+</ul>
+</li>
 <li><p>Versión 3.2.0</p>
 <ul>
 <li><p>Nueva función <strong>experimental</strong></p></li>
@@ -227,8 +219,8 @@
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth]) -- Experimental on v3.2
-pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth]) -- Experimental on v3.2
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth]) -- Proposed on v3.3
+pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth]) -- Proposed on v3.3
 
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </pre></div>
