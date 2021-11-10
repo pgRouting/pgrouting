@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2021-11-10 15:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,10 +120,10 @@ msgid "Description"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:38
-#: ../../build/doc/pgr_turnRestrictedPath.rst:43
-#: ../../build/doc/pgr_turnRestrictedPath.rst:48
-#: ../../build/doc/pgr_turnRestrictedPath.rst:53
-#: ../../build/doc/pgr_turnRestrictedPath.rst:58
+#: ../../build/doc/pgr_turnRestrictedPath.rst:56
+#: ../../build/doc/pgr_turnRestrictedPath.rst:61
+#: ../../build/doc/pgr_turnRestrictedPath.rst:66
+#: ../../build/doc/pgr_turnRestrictedPath.rst:71
 msgid "TBD"
 msgstr ""
 
@@ -131,19 +131,24 @@ msgstr ""
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:46
+#: ../../build/doc/pgr_turnRestrictedPath.rst:44
+msgid "Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_turnRestrictedPath.rst:55
+#: ../../build/doc/pgr_turnRestrictedPath.rst:59
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:51
+#: ../../build/doc/pgr_turnRestrictedPath.rst:64
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:56
+#: ../../build/doc/pgr_turnRestrictedPath.rst:69
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:61
+#: ../../build/doc/pgr_turnRestrictedPath.rst:74
 msgid "Additional Examples"
 msgstr ""
 
@@ -151,19 +156,19 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:66
+#: ../../build/doc/pgr_turnRestrictedPath.rst:79
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:69
+#: ../../build/doc/pgr_turnRestrictedPath.rst:82
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:70
+#: ../../build/doc/pgr_turnRestrictedPath.rst:83
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:71
+#: ../../build/doc/pgr_turnRestrictedPath.rst:84
 msgid ":ref:`search`"
 msgstr ""
 
