@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_turnRestrictedPath - Experimental &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>pgr_turnRestrictedPath - Experimental &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -41,7 +41,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -97,6 +97,7 @@
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#id1">Parameters</a></li>
 <li><a class="reference internal" href="#inner-query">Inner query</a></li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
@@ -204,12 +205,21 @@
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Summary</p>
+<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_turnRestrictedPath(Edges SQL, Restrictions SQL, Start vertex, End vertex, K cycles,
+  [, directed] [,heap_paths] [, stop_on_first] [,strict])
+RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>TBD</p></li>
 </ul>
 </section>
-<section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>TBD</p></li>
 </ul>
@@ -255,8 +265,8 @@
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Nov 09, 2021.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0.<br/>
+      Last updated on Nov 10, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>

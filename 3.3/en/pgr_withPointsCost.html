@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_withPointsCost - Proposed &#8212; pgRouting Manual (3.3-dev)</title>
+    <title>pgr_withPointsCost - Proposed &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -42,7 +42,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v3.3.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v3.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -282,7 +282,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <p class="admonition-title">Note</p>
 <p>There is no <strong>details</strong> flag, unlike the other members of the withPoints family of functions.</p>
 </div>
-<p class="rubric" id="index-0">Using defaults</p>
+<p class="rubric">Using defaults</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -308,7 +308,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 <section id="one-to-one">
-<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
+<span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side])
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
@@ -332,7 +332,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 </section>
 <section id="one-to-many">
-<span id="index-2"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
+<span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -356,7 +356,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 </section>
 <section id="many-to-one">
-<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
+<span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -380,7 +380,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 </section>
 <section id="many-to-many">
-<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
+<span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
@@ -406,7 +406,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </div>
 </section>
 <section id="combinations-sql">
-<span id="index-5"></span><h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
+<span id="index-4"></span><h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(Edges SQL, Points SQL, Combinations SQL [, directed] [, driving_side] [, details])
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </pre></div>
@@ -773,8 +773,8 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v3.3.0-dev.<br/>
-      Last updated on Nov 09, 2021.<br/>
+        &copy; Copyright pgRouting Contributors - Version v3.3.0.<br/>
+      Last updated on Nov 10, 2021.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
