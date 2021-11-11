@@ -13,7 +13,6 @@
   `Latest <https://docs.pgrouting.org/latest/en/flow-family.html>`__
   (`3.3 <https://docs.pgrouting.org/3.3/en/flow-family.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__
-  current(`3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__)
   `3.1 <https://docs.pgrouting.org/3.1/en/flow-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/flow-family.html>`__
 * **Unsupported versions:**

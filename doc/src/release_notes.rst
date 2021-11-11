@@ -58,17 +58,17 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
   * pgr_dijkstraNear
 
-    * dijkstraNear(Combinations)
-    * dijkstraNear(Many to Many)
-    * dijkstraNear(Many to One)
-    * dijkstraNear(One to Many)
+    * pgr_dijkstraNear(Combinations)
+    * pgr_dijkstraNear(Many to Many)
+    * pgr_dijkstraNear(Many to One)
+    * pgr_dijkstraNear(One to Many)
 
   * pgr_dijkstraNearCost
 
-    * dijkstraNearCost(Combinations)
-    * dijkstraNearCost(Many to Many)
-    * dijkstraNearCost(Many to One)
-    * dijkstraNearCost(One to Many)
+    * pgr_dijkstraNearCost(Combinations)
+    * pgr_dijkstraNearCost(Many to Many)
+    * pgr_dijkstraNearCost(Many to One)
+    * pgr_dijkstraNearCost(One to Many)
 
 * Coloring
 
