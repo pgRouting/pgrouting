@@ -80,8 +80,8 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 
 * Traversal
 
-  * depthFirstSearch(Multiple vertices)
-  * depthFirstSearch(Single vertex)
+  * pgr_depthFirstSearch(Multiple vertices)
+  * pgr_depthFirstSearch(Single vertex)
 
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
