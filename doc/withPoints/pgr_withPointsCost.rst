@@ -13,7 +13,6 @@
   `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsCost.html>`__
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsCost.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsCost.html>`__
-  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsCost.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsCost.html>`__
 * **Unsupported versions:**
