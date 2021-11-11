@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-10 15:33+0000\n"
+"POT-Creation-Date: 2021-11-11 13:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,19 +98,23 @@ msgid "pgr_dijkstraNear"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:61
-msgid "dijkstraNear(Combinations)"
+#: ../../build/doc/release_notes.rst:135
+msgid "pgr_dijkstraNear(Combinations)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:62
-msgid "dijkstraNear(Many to Many)"
+#: ../../build/doc/release_notes.rst:134
+msgid "pgr_dijkstraNear(Many to Many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:63
-msgid "dijkstraNear(Many to One)"
+#: ../../build/doc/release_notes.rst:133
+msgid "pgr_dijkstraNear(Many to One)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:64
-msgid "dijkstraNear(One to Many)"
+#: ../../build/doc/release_notes.rst:132
+msgid "pgr_dijkstraNear(One to Many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:66
@@ -119,19 +123,23 @@ msgid "pgr_dijkstraNearCost"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:68
-msgid "dijkstraNearCost(Combinations)"
+#: ../../build/doc/release_notes.rst:142
+msgid "pgr_dijkstraNearCost(Combinations)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:69
-msgid "dijkstraNearCost(Many to Many)"
+#: ../../build/doc/release_notes.rst:141
+msgid "pgr_dijkstraNearCost(Many to Many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:70
-msgid "dijkstraNearCost(Many to One)"
+#: ../../build/doc/release_notes.rst:140
+msgid "pgr_dijkstraNearCost(Many to One)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:71
-msgid "dijkstraNearCost(One to Many)"
+#: ../../build/doc/release_notes.rst:139
+msgid "pgr_dijkstraNearCost(One to Many)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:75
@@ -153,11 +161,11 @@ msgid "Traversal"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:83
-msgid "depthFirstSearch(Multiple vertices)"
+msgid "pgr_depthFirstSearch(Multiple vertices)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:84
-msgid "depthFirstSearch(Single vertex)"
+msgid "pgr_depthFirstSearch(Single vertex)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:87
@@ -248,38 +256,6 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:128
 msgid "Dijkstra Near"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:132
-msgid "pgr_dijkstraNear(One to Many)"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:133
-msgid "pgr_dijkstraNear(Many to One)"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:134
-msgid "pgr_dijkstraNear(Many to Many)"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:135
-msgid "pgr_dijkstraNear(Combinations)"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:139
-msgid "pgr_dijkstraNearCost(One to Many)"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:140
-msgid "pgr_dijkstraNearCost(Many to One)"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:141
-msgid "pgr_dijkstraNearCost(Many to Many)"
-msgstr ""
-
-#: ../../build/doc/release_notes.rst:142
-msgid "pgr_dijkstraNearCost(Combinations)"
 msgstr ""
 
 #: ../../build/doc/release_notes.rst:144
