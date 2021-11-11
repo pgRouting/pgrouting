@@ -5,8 +5,8 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# Vicky Vergara <vicky@georepublic.de>, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2021
+# MarPetra <mvergaratrejo@gmail.com>, 2020
+# Vicky Vergara <vicky@georepublic.de>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 10:56-0600\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,6 +31,10 @@ msgid ""
 " <https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__) `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_maxCardinalityMatch.html>`__ (`3.1"
+" <https://docs.pgrouting.org/3.1/es/pgr_maxCardinalityMatch.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_maxCardinalityMatch.html>`__"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:16
 msgid ""
@@ -379,15 +383,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:142
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "Support"
-#~ msgstr "Soporte"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.1 "
-#~ "<https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__) `3.0 "
-#~ "<https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.1 "
-#~ "<https://docs.pgrouting.org/3.1/en/pgr_maxCardinalityMatch.html>`__) `3.0 "
-#~ "<https://docs.pgrouting.org/3.0/en/pgr_maxCardinalityMatch.html>`__"

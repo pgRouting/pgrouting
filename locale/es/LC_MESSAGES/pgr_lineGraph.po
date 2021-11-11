@@ -5,35 +5,42 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
+# Vicky Vergara <vicky@georepublic.de>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"POT-Creation-Date: 2021-09-29 12:23+0000\n"
 "PO-Revision-Date: 2020-11-04 18:27+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_lineGraph.rst:12
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_lineGraph.html>`__ (`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__) `3.1 "
+"<https://docs.pgrouting.org/latest/en/pgr_lineGraph.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_lineGraph.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__) `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Última  "
+"<https://docs.pgrouting.org/latest/es/pgr_lineGraph.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_lineGraph.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_lineGraph.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_lineGraph.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_lineGraph.html>`__"
 
-#: ../../build/doc/pgr_lineGraph.rst:17
+#: ../../build/doc/pgr_lineGraph.rst:18
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__ `2.5 "
@@ -43,11 +50,11 @@ msgstr ""
 "<https://docs.pgrouting.org/2.6/en/pgr_lineGraph.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_lineGraph.html>`__"
 
-#: ../../build/doc/pgr_lineGraph.rst:22
+#: ../../build/doc/pgr_lineGraph.rst:23
 msgid "pgr_lineGraph - Experimental"
 msgstr "pgr_lineGraph - Experimental"
 
-#: ../../build/doc/pgr_lineGraph.rst:24
+#: ../../build/doc/pgr_lineGraph.rst:25
 msgid ""
 "``pgr_lineGraph`` — Transforms a given graph into its corresponding edge-"
 "based graph."
@@ -55,7 +62,7 @@ msgstr ""
 "``pgr_lineGraph`` — Transforma un grafo dado en su grafo correspondiente "
 "basado en aristas."
 
-#: ../../build/doc/pgr_lineGraph.rst:29
+#: ../../build/doc/pgr_lineGraph.rst:30
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
@@ -128,34 +135,34 @@ msgstr "Puede depender de una función propuesta de pgRouting."
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_lineGraph.rst:36
+#: ../../build/doc/pgr_lineGraph.rst:37
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_lineGraph.rst:37
+#: ../../build/doc/pgr_lineGraph.rst:38
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-#: ../../build/doc/pgr_lineGraph.rst:39
+#: ../../build/doc/pgr_lineGraph.rst:40
 msgid "New **Experimental** function"
 msgstr "Nueva función **Experimental**"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_lineGraph.rst:43 ../../build/doc/pgr_lineGraph.rst:95
-#: ../../build/doc/pgr_lineGraph.rst:115
+#: ../../build/doc/pgr_lineGraph.rst:44 ../../build/doc/pgr_lineGraph.rst:96
+#: ../../build/doc/pgr_lineGraph.rst:116
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_lineGraph.rst:45
+#: ../../build/doc/pgr_lineGraph.rst:46
 msgid "Given a graph G, its line graph L(G) is a graph such that:"
 msgstr ""
 "Dado un grafo G, su grafo de líneas L(G) es un grafo de tal forma que:"
 
-#: ../../build/doc/pgr_lineGraph.rst:47
+#: ../../build/doc/pgr_lineGraph.rst:48
 msgid "Each vertex of L(G) represents an edge of G"
 msgstr "Cada vértice de L(G) representa una arista de G"
 
-#: ../../build/doc/pgr_lineGraph.rst:48
+#: ../../build/doc/pgr_lineGraph.rst:49
 msgid ""
 "Two vertices of L(G) are adjacent if and only if their corresponding edges "
 "share a common endpoint in G."
@@ -163,15 +170,15 @@ msgstr ""
 "Dos vértices de L(G) son adyacentes si y sólo si sus aristas "
 "correspondientes comparten un punto final común en G."
 
-#: ../../build/doc/pgr_lineGraph.rst:51
+#: ../../build/doc/pgr_lineGraph.rst:52
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_lineGraph.rst:54
+#: ../../build/doc/pgr_lineGraph.rst:55
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_lineGraph.rst:62
+#: ../../build/doc/pgr_lineGraph.rst:63
 msgid "Using defaults"
 msgstr "Uso de valores predeterminados"
 
@@ -179,61 +186,61 @@ msgstr "Uso de valores predeterminados"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_lineGraph.rst:68
+#: ../../build/doc/pgr_lineGraph.rst:69
 msgid "For a **directed** graph"
 msgstr "Para un grafo **dirigido**"
 
-#: ../../build/doc/pgr_lineGraph.rst:78
+#: ../../build/doc/pgr_lineGraph.rst:79
 msgid "Complete Signature"
 msgstr "Firma completa"
 
-#: ../../build/doc/pgr_lineGraph.rst:85
+#: ../../build/doc/pgr_lineGraph.rst:86
 msgid "For an **undirected** graph"
 msgstr "Para un grafo **no dirigido**"
 
-#: ../../build/doc/pgr_lineGraph.rst:92
+#: ../../build/doc/pgr_lineGraph.rst:93
 msgid "Parameters"
 msgstr "Parámetros"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_lineGraph.rst:95 ../../build/doc/pgr_lineGraph.rst:115
+#: ../../build/doc/pgr_lineGraph.rst:96 ../../build/doc/pgr_lineGraph.rst:116
 msgid "Column"
 msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_lineGraph.rst:95 ../../build/doc/pgr_lineGraph.rst:115
+#: ../../build/doc/pgr_lineGraph.rst:96 ../../build/doc/pgr_lineGraph.rst:116
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_lineGraph.rst:97
+#: ../../build/doc/pgr_lineGraph.rst:98
 msgid "**edges_sql**"
 msgstr "**edges_sql**"
 
-#: ../../build/doc/pgr_lineGraph.rst:97
+#: ../../build/doc/pgr_lineGraph.rst:98
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_lineGraph.rst:97
+#: ../../build/doc/pgr_lineGraph.rst:98
 msgid "SQL query as described above."
 msgstr "Consulta SQL como se describió anteriormente."
 
-#: ../../build/doc/pgr_lineGraph.rst:98
+#: ../../build/doc/pgr_lineGraph.rst:99
 msgid "**directed**"
 msgstr "**dirigido**"
 
-#: ../../build/doc/pgr_lineGraph.rst:98
+#: ../../build/doc/pgr_lineGraph.rst:99
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgr_lineGraph.rst:98
+#: ../../build/doc/pgr_lineGraph.rst:99
 msgid "When ``true`` the graph is considered as `Directed`."
 msgstr "En caso de ''true'' el grafo se considera como `Dirigido`."
 
-#: ../../build/doc/pgr_lineGraph.rst:99
+#: ../../build/doc/pgr_lineGraph.rst:100
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
 
-#: ../../build/doc/pgr_lineGraph.rst:103
+#: ../../build/doc/pgr_lineGraph.rst:104
 msgid "Inner query"
 msgstr "Consulta interna"
 
@@ -256,7 +263,7 @@ msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgr_lineGraph.rst:119
+#: ../../build/doc/pgr_lineGraph.rst:120
 msgid "**source**"
 msgstr "**origen**"
 
@@ -265,7 +272,7 @@ msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_lineGraph.rst:123
+#: ../../build/doc/pgr_lineGraph.rst:124
 msgid "**target**"
 msgstr "**objetivo**"
 
@@ -274,7 +281,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_lineGraph.rst:127
+#: ../../build/doc/pgr_lineGraph.rst:128
 msgid "**cost**"
 msgstr "**cost**"
 
@@ -296,7 +303,7 @@ msgstr ""
 "es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgr_lineGraph.rst:131
+#: ../../build/doc/pgr_lineGraph.rst:132
 msgid "**reverse_cost**"
 msgstr "**reverse_cost**"
 
@@ -336,57 +343,57 @@ msgstr "ANY-NUMERICAL"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
-#: ../../build/doc/pgr_lineGraph.rst:110
+#: ../../build/doc/pgr_lineGraph.rst:111
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_lineGraph.rst:112
+#: ../../build/doc/pgr_lineGraph.rst:113
 msgid "RETURNS SETOF  (seq, source, target, cost, reverse_cost)"
 msgstr "DEVUELVE UN CONJUNTO DE (seq, origen, destino, coste, invers_coste)"
 
-#: ../../build/doc/pgr_lineGraph.rst:117
+#: ../../build/doc/pgr_lineGraph.rst:118
 msgid "**seq**"
 msgstr "**seq**"
 
-#: ../../build/doc/pgr_lineGraph.rst:117
+#: ../../build/doc/pgr_lineGraph.rst:118
 msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
-#: ../../build/doc/pgr_lineGraph.rst:117
+#: ../../build/doc/pgr_lineGraph.rst:118
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/pgr_lineGraph.rst:119 ../../build/doc/pgr_lineGraph.rst:123
+#: ../../build/doc/pgr_lineGraph.rst:120 ../../build/doc/pgr_lineGraph.rst:124
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_lineGraph.rst:119
+#: ../../build/doc/pgr_lineGraph.rst:120
 msgid "Identifier of the source vertex of the current edge `id`."
 msgstr "Identificador del vértice de origen de la arista actual `id`."
 
-#: ../../build/doc/pgr_lineGraph.rst:121
+#: ../../build/doc/pgr_lineGraph.rst:122
 msgid "When `negative`: the source is the reverse edge in the original graph."
 msgstr ""
 "Cuando es 'negativo': el origen es la arista inversa en el grafo original."
 
-#: ../../build/doc/pgr_lineGraph.rst:123
+#: ../../build/doc/pgr_lineGraph.rst:124
 msgid "Identifier of the target vertex of the current edge `id`."
 msgstr "Identificador del vértice de destino de la arista actual `id`."
 
-#: ../../build/doc/pgr_lineGraph.rst:125
+#: ../../build/doc/pgr_lineGraph.rst:126
 msgid "When `negative`: the target is the reverse edge in the original graph."
 msgstr ""
 "Cuando es `negativo`: el objetivo es la arista inversa en el grafo original."
 
-#: ../../build/doc/pgr_lineGraph.rst:127 ../../build/doc/pgr_lineGraph.rst:131
+#: ../../build/doc/pgr_lineGraph.rst:128 ../../build/doc/pgr_lineGraph.rst:132
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgr_lineGraph.rst:127
+#: ../../build/doc/pgr_lineGraph.rst:128
 msgid "Weight of the edge (`source`, `target`)."
 msgstr "Peso de la arista (`source`, `target`)."
 
-#: ../../build/doc/pgr_lineGraph.rst:129
+#: ../../build/doc/pgr_lineGraph.rst:130
 msgid ""
 "When `negative`: edge (`source`, `target`) does not exist, therefore it’s "
 "not part of the graph."
@@ -394,11 +401,11 @@ msgstr ""
 "Cuando `negative`: la arista (`source`, `target`) no existe, por lo tanto no"
 " es parte del grafo."
 
-#: ../../build/doc/pgr_lineGraph.rst:131
+#: ../../build/doc/pgr_lineGraph.rst:132
 msgid "Weight of the edge (`target`, `source`)."
 msgstr "Peso de la arista (`target`, `source`)."
 
-#: ../../build/doc/pgr_lineGraph.rst:133
+#: ../../build/doc/pgr_lineGraph.rst:134
 msgid ""
 "When `negative`: edge (`target`, `source`) does not exist, therefore it’s "
 "not part of the graph."
@@ -406,38 +413,26 @@ msgstr ""
 "Cuando `negative`: la arista (`target`, `source`) no existe, por lo tanto no"
 " es parte del grafo."
 
-#: ../../build/doc/pgr_lineGraph.rst:137
+#: ../../build/doc/pgr_lineGraph.rst:138
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_lineGraph.rst:139
+#: ../../build/doc/pgr_lineGraph.rst:140
 msgid "https://en.wikipedia.org/wiki/Line_graph"
 msgstr "https://en.wikipedia.org/wiki/Line_graph"
 
-#: ../../build/doc/pgr_lineGraph.rst:140
+#: ../../build/doc/pgr_lineGraph.rst:141
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_lineGraph.rst:143
+#: ../../build/doc/pgr_lineGraph.rst:144
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_lineGraph.rst:144
+#: ../../build/doc/pgr_lineGraph.rst:145
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_lineGraph.rst:145
+#: ../../build/doc/pgr_lineGraph.rst:146
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "Support"
-#~ msgstr "Soporte"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.1 "
-#~ "<https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__) `3.0 "
-#~ "<https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.1 "
-#~ "<https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__) `3.0 "
-#~ "<https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__"

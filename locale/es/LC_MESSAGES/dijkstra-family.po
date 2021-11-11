@@ -5,40 +5,42 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
+# Vicky Vergara <vicky@georepublic.de>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"POT-Creation-Date: 2021-11-09 14:40+0000\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/dijkstra-family.rst:12
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
-"/dijkstra-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-"
-"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-"
+"/dijkstra-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-"
+"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-"
+"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-"
 "family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-"
 "family.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Actual <https://docs.pgrouting.org/latest/en"
-"/dijkstra-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-"
-"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-"
-"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
+"/dijkstra-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es/dijkstra-"
+"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es/dijkstra-"
+"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/dijkstra-"
+"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/dijkstra-"
 "family.html>`__"
 
-#: ../../build/doc/dijkstra-family.rst:17
+#: ../../build/doc/dijkstra-family.rst:18
 msgid ""
 "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-"
 "family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-"
@@ -54,29 +56,29 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 "
 "<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
 
-#: ../../build/doc/dijkstra-family.rst:25
+#: ../../build/doc/dijkstra-family.rst:26
 msgid "Dijkstra - Family of functions"
 msgstr "Dijkstra - Familia de funciones"
 
-#: ../../build/doc/dijkstra-family.rst:29
+#: ../../build/doc/dijkstra-family.rst:30
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
 msgstr ""
 ":doc:`pgr_dijkstra` - Algoritmo de Dijkstra para las rutas más cortas."
 
-#: ../../build/doc/dijkstra-family.rst:30
+#: ../../build/doc/dijkstra-family.rst:31
 msgid ""
 ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 ":doc:`pgr_dijkstraCost` - Obtenga el costo agrgado de las rutas más cortas."
 
-#: ../../build/doc/dijkstra-family.rst:31
+#: ../../build/doc/dijkstra-family.rst:32
 msgid ""
 ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
 ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra para crear una matriz de "
 "costos."
 
-#: ../../build/doc/dijkstra-family.rst:32
+#: ../../build/doc/dijkstra-family.rst:33
 msgid ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
 "information."
@@ -84,7 +86,7 @@ msgstr ""
 ":doc:`pgr_drivingDistance` - Use pgr_dijkstra para calcular información de "
 "captación."
 
-#: ../../build/doc/dijkstra-family.rst:33
+#: ../../build/doc/dijkstra-family.rst:34
 msgid ""
 ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
 "paths."
@@ -92,7 +94,7 @@ msgstr ""
 ":doc:`pgr_KSP` - Use el algoritmo Yen con pgr_dijkstra para obtener las "
 "rutas más cortas K."
 
-#: ../../build/doc/dijkstra-family.rst:38
+#: ../../build/doc/dijkstra-family.rst:39
 msgid "Proposed"
 msgstr "Propuesto"
 
@@ -132,37 +134,33 @@ msgstr "Se han hecho pruebas de pgTap. Pero tal vez necesite más."
 msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
-#: ../../build/doc/dijkstra-family.rst:46
+#: ../../build/doc/dijkstra-family.rst:47
 msgid ":doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices."
 msgstr ""
 ":doc:`pgr_dijkstraVia` - Obtenga una ruta a partir de una secuencia de "
 "vértices."
 
-#: ../../build/doc/dijkstra-family.rst:51
-msgid "Experimental"
-msgstr "Experimental"
-
-#: ../../build/doc/dijkstra-family.rst:58
+#: ../../build/doc/dijkstra-family.rst:48
 msgid ":doc:`pgr_dijkstraNear` - Get the route to the nearest vertex."
 msgstr ":doc:`pgr_dijkstraNear` - Obtener la ruta al vértice más cercano."
 
-#: ../../build/doc/dijkstra-family.rst:59
+#: ../../build/doc/dijkstra-family.rst:49
 msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
 msgstr ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
 
-#: ../../build/doc/dijkstra-family.rst:77
+#: ../../build/doc/dijkstra-family.rst:67
 msgid "The problem definition (Advanced documentation)"
 msgstr "La definición de problema (Documentación avanzada)"
 
-#: ../../build/doc/dijkstra-family.rst:80
+#: ../../build/doc/dijkstra-family.rst:70
 msgid "Given the following query:"
 msgstr "Dada la siguiente consulta:"
 
-#: ../../build/doc/dijkstra-family.rst:83
+#: ../../build/doc/dijkstra-family.rst:73
 msgid "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 msgstr "pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)"
 
-#: ../../build/doc/dijkstra-family.rst:85
+#: ../../build/doc/dijkstra-family.rst:75
 msgid ""
 "where  :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
 "reverse\\_cost_i)\\}`"
@@ -170,45 +168,45 @@ msgstr ""
 "Donde :math:`sql = \\{(id_i, source_i, target_i, cost_i, "
 "reverse\\_cost_i)\\}`"
 
-#: ../../build/doc/dijkstra-family.rst:87
+#: ../../build/doc/dijkstra-family.rst:77
 msgid "and"
 msgstr "y"
 
-#: ../../build/doc/dijkstra-family.rst:89
+#: ../../build/doc/dijkstra-family.rst:79
 msgid ":math:`source = \\bigcup source_i`,"
 msgstr ":math:`source = \\bigcup source_i`,"
 
-#: ../../build/doc/dijkstra-family.rst:90
+#: ../../build/doc/dijkstra-family.rst:80
 msgid ":math:`target = \\bigcup target_i`,"
 msgstr ":math:`target = \\bigcup target_i`,"
 
-#: ../../build/doc/dijkstra-family.rst:92
+#: ../../build/doc/dijkstra-family.rst:82
 msgid "The graphs are defined as follows:"
 msgstr "Los gráficos se definen como sigue:"
 
-#: ../../build/doc/dijkstra-family.rst:95
+#: ../../build/doc/dijkstra-family.rst:85
 msgid "Directed graph"
 msgstr "Grafo dirigido"
 
-#: ../../build/doc/dijkstra-family.rst:96
+#: ../../build/doc/dijkstra-family.rst:86
 msgid "The weighted directed graph, :math:`G_d(V,E)`, is definied by:"
 msgstr "El gráfico dirigido ponderado, :math:`G_d(V,E)`, se define por:"
 
-#: ../../build/doc/dijkstra-family.rst:98
-#: ../../build/doc/dijkstra-family.rst:117
+#: ../../build/doc/dijkstra-family.rst:88
+#: ../../build/doc/dijkstra-family.rst:107
 msgid "the set of vertices  :math:`V`"
 msgstr "Conjunto de vértices :math:`V`"
 
-#: ../../build/doc/dijkstra-family.rst:100
+#: ../../build/doc/dijkstra-family.rst:90
 msgid ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 msgstr ":math:`V = source \\cup target \\cup {start_{vid}} \\cup  {end_{vid}}`"
 
-#: ../../build/doc/dijkstra-family.rst:102
-#: ../../build/doc/dijkstra-family.rst:122
+#: ../../build/doc/dijkstra-family.rst:92
+#: ../../build/doc/dijkstra-family.rst:112
 msgid "the set of edges :math:`E`"
 msgstr "El conjunto de aristas :math:`E`"
 
-#: ../../build/doc/dijkstra-family.rst:104
+#: ../../build/doc/dijkstra-family.rst:94
 msgid ""
 ":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{"
 " when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\"
@@ -226,19 +224,19 @@ msgstr ""
 "reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq "
 "\\varnothing \\\\ \\end{cases}`"
 
-#: ../../build/doc/dijkstra-family.rst:114
+#: ../../build/doc/dijkstra-family.rst:104
 msgid "Undirected graph"
 msgstr "Grafo no dirigido"
 
-#: ../../build/doc/dijkstra-family.rst:115
+#: ../../build/doc/dijkstra-family.rst:105
 msgid "The weighted undirected graph, :math:`G_u(V,E)`, is definied by:"
 msgstr "El grafo ponderado no dirigido :math:`G_u(V,E)`, es definido por:"
 
-#: ../../build/doc/dijkstra-family.rst:119
+#: ../../build/doc/dijkstra-family.rst:109
 msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 
-#: ../../build/doc/dijkstra-family.rst:124
+#: ../../build/doc/dijkstra-family.rst:114
 msgid ""
 ":math:`E = \\begin{cases} \\text{ }  \\{(source_i, target_i, cost_i) \\text{"
 " when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup      \\{(target_i, "
@@ -264,23 +262,23 @@ msgstr ""
 ">=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ "
 "\\end{cases}`"
 
-#: ../../build/doc/dijkstra-family.rst:137
+#: ../../build/doc/dijkstra-family.rst:127
 msgid "The problem"
 msgstr "El problema"
 
-#: ../../build/doc/dijkstra-family.rst:138
+#: ../../build/doc/dijkstra-family.rst:128
 msgid "Given:"
 msgstr "Dado:"
 
-#: ../../build/doc/dijkstra-family.rst:140
+#: ../../build/doc/dijkstra-family.rst:130
 msgid ":math:`start_{vid} \\in V` a starting vertex"
 msgstr ":math:`start_{vid} \\in V` a starting vertex"
 
-#: ../../build/doc/dijkstra-family.rst:141
+#: ../../build/doc/dijkstra-family.rst:131
 msgid ":math:`end_{vid} \\in V` an ending vertex"
 msgstr ":math:`end_{vid} \\in V` un vértice final"
 
-#: ../../build/doc/dijkstra-family.rst:142
+#: ../../build/doc/dijkstra-family.rst:132
 msgid ""
 ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = "
 "true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
@@ -290,11 +288,11 @@ msgstr ""
 "true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ "
 "\\end{cases}`"
 
-#: ../../build/doc/dijkstra-family.rst:147
+#: ../../build/doc/dijkstra-family.rst:137
 msgid "Then:"
 msgstr "Entonces:"
 
-#: ../../build/doc/dijkstra-family.rst:156
+#: ../../build/doc/dijkstra-family.rst:146
 msgid ""
 ":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
 "agg\\_cost_i)\\}`"
@@ -302,35 +300,35 @@ msgstr ""
 ":math:`\\boldsymbol{\\pi} = \\{(path\\_seq_i, node_i, edge_i, cost_i, "
 "agg\\_cost_i)\\}`"
 
-#: ../../build/doc/dijkstra-family.rst:169
+#: ../../build/doc/dijkstra-family.rst:159
 msgid "where:"
 msgstr "Donde:"
 
-#: ../../build/doc/dijkstra-family.rst:159
+#: ../../build/doc/dijkstra-family.rst:149
 msgid ":math:`path\\_seq_i = i`"
 msgstr ":math:`path\\_seq_i = i`"
 
-#: ../../build/doc/dijkstra-family.rst:160
+#: ../../build/doc/dijkstra-family.rst:150
 msgid ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
 msgstr ":math:`path\\_seq_{| \\pi |} = | \\pi |`"
 
-#: ../../build/doc/dijkstra-family.rst:161
+#: ../../build/doc/dijkstra-family.rst:151
 msgid ":math:`node_i \\in V`"
 msgstr ":math:`node_i \\in V`"
 
-#: ../../build/doc/dijkstra-family.rst:162
+#: ../../build/doc/dijkstra-family.rst:152
 msgid ":math:`node_1 = start_{vid}`"
 msgstr ":math:`node_1 = start_{vid}`"
 
-#: ../../build/doc/dijkstra-family.rst:163
+#: ../../build/doc/dijkstra-family.rst:153
 msgid ":math:`node_{| \\pi |}  = end_{vid}`"
 msgstr ":math:`node_{| \\pi |}  = end_{vid}`"
 
-#: ../../build/doc/dijkstra-family.rst:164
+#: ../../build/doc/dijkstra-family.rst:154
 msgid ":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) \\in E`"
 msgstr ":math:`\\forall i \\neq | \\pi |, \\quad (node_i, node_{i+1}, cost_i) \\in E`"
 
-#: ../../build/doc/dijkstra-family.rst:165
+#: ../../build/doc/dijkstra-family.rst:155
 msgid ""
 ":math:`edge_i  = \\begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &\\quad  "
 "\\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i = | \\pi | "
@@ -340,11 +338,11 @@ msgstr ""
 "\\text{when } i \\neq | \\pi | \\\\ -1 &\\quad  \\text{when } i = | \\pi | "
 "\\\\ \\end{cases}`"
 
-#: ../../build/doc/dijkstra-family.rst:166
+#: ../../build/doc/dijkstra-family.rst:156
 msgid ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
 msgstr ":math:`cost_i = cost_{(node_i, node_{i+1})}`"
 
-#: ../../build/doc/dijkstra-family.rst:167
+#: ../../build/doc/dijkstra-family.rst:157
 msgid ""
 ":math:`agg\\_cost_i  = \\begin{cases}  0   &\\quad  \\text{when } i = 1  "
 "\\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad  "
@@ -354,7 +352,7 @@ msgstr ""
 "\\\\ \\displaystyle\\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &\\quad  "
 "\\text{when } i \\neq 1 \\\\ \\end{cases}`"
 
-#: ../../build/doc/dijkstra-family.rst:175
+#: ../../build/doc/dijkstra-family.rst:165
 msgid ""
 "In other words: The algorithm returns a the shortest path between "
 ":math:`start_{vid}` and :math:`end_{vid}` , if it exists, in terms of a "
@@ -364,7 +362,7 @@ msgstr ""
 ":math:`start_{vid}` y :math:`end_{vid}`, si es que existe, en términos de "
 "una secuencia de nodos y de aristas,"
 
-#: ../../build/doc/dijkstra-family.rst:172
+#: ../../build/doc/dijkstra-family.rst:162
 msgid ""
 ":math:`path\\_seq` indicates the relative position in the path of the "
 ":math:`node` or :math:`edge`."
@@ -372,65 +370,35 @@ msgstr ""
 ":math:`path\\_seq` indica la posición relativa en el camino de  :math:`node`"
 " o :math:`edge`."
 
-#: ../../build/doc/dijkstra-family.rst:173
+#: ../../build/doc/dijkstra-family.rst:163
 msgid ""
 ":math:`cost` is the cost of the edge to be used to go to the next node."
 msgstr ""
 ":math:`cost` es el coste del borde que se utilizará para ir al siguiente "
 "nodo."
 
-#: ../../build/doc/dijkstra-family.rst:174
+#: ../../build/doc/dijkstra-family.rst:164
 msgid ""
 ":math:`agg\\_cost` is the cost from the :math:`start_{vid}` up to the node."
 msgstr ""
 ":math:`agg\\_cost` es el costo desde el :math:`start_{vid}` hasta el nodo."
 
-#: ../../build/doc/dijkstra-family.rst:177
+#: ../../build/doc/dijkstra-family.rst:167
 msgid "If there is no path, the resulting set is empty."
 msgstr "Si no hay ruta, el conjunto resultante estará vacío."
 
-#: ../../build/doc/dijkstra-family.rst:181
+#: ../../build/doc/dijkstra-family.rst:171
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/dijkstra-family.rst:184
+#: ../../build/doc/dijkstra-family.rst:174
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/dijkstra-family.rst:185
+#: ../../build/doc/dijkstra-family.rst:175
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/dijkstra-family.rst:186
+#: ../../build/doc/dijkstra-family.rst:176
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "proposed"
-#~ msgstr "propuesta"
-
-#~ msgid "Previous versions of this page"
-#~ msgstr "Versiones anteriores de esta página"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.1 <https://docs.pgrouting.org/3.1/en"
-#~ "/dijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-"
-#~ "family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-"
-#~ "family.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.1 <https://docs.pgrouting.org/3.1/en"
-#~ "/dijkstra-family.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-"
-#~ "family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/dijkstra-"
-#~ "family.html>`__"
-
-#~ msgid ""
-#~ "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/dijkstra-"
-#~ "family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-"
-#~ "family.html>`__ `2.3 "
-#~ "<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 "
-#~ "<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
-#~ msgstr ""
-#~ "**Versiones no soportadas:** `2.5 <https://docs.pgrouting.org/2.5/en"
-#~ "/dijkstra-family.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/dijkstra-"
-#~ "family.html>`__ `2.3 "
-#~ "<https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/dijkstra.html>`__ `2.2 "
-#~ "<https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html>`__"
