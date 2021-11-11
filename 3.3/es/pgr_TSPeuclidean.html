@@ -96,15 +96,15 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_TSPeuclidean</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a><ul>
-<li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
-<li><a class="reference internal" href="#general-characteristics">General Characteristics</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
+<li><a class="reference internal" href="#general-characteristics">Características generales</a></li>
+<li><a class="reference internal" href="#characteristics">Características</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
 <li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
-<li><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></li>
+<li><a class="reference internal" href="#coordinates-sql">Coordenadas SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -157,37 +157,28 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html">3.3</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_TSPeuclidean.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_TSPeuclidean.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_TSPeuclidean.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_TSPeuclidean.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP">2.3</a></p></li>
 </ul>
 <section id="pgr-tspeuclidean">
 <h1>pgr_TSPeuclidean<a class="headerlink" href="#pgr-tspeuclidean" title="Enlazar permanentemente con este título">¶</a></h1>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximación usando el algoritmo <em>metric</em>.</p></li>
 </ul>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
-<p class="rubric">Availability:</p>
+<p class="rubric">Disponibilidad:</p>
 <ul class="simple">
-<li><p>Version 3.2.1</p>
+<li><p>Versión 3.2.1</p>
 <ul>
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
-<li><p>Simulated Annealing Algorithm no longer supported</p>
+<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p>El algoritmo de recocido simulado ya no es utilizado.</p>
 <ul>
-<li><p>The Simulated Annealing Algorithm related parameters are ignored:
-max_processing_time, tries_per_temperature,
-max_changes_per_temperature, max_consecutive_non_changes,
-initial_temperature, final_temperature, cooling_factor,
-randomize</p></li>
+<li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
@@ -206,49 +197,48 @@ randomize</p></li>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="problem-definition">
-<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>The travelling salesperson problem (TSP) asks the following question:</p>
+<h3>Definición del Problema<a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En el problema del vendedor viajante (TSP) hace la siguiente pregunta:</p>
 <p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
 </section>
 <section id="general-characteristics">
-<h3>General Characteristics<a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Características generales<a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
-<li><p>This problem is an NP-hard optimization problem.</p></li>
-<li><p>Metric Algorithm is used</p></li>
-<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour in the worst case</em> when:</p>
+<li><p>Este problema es un problema de optimización NP-duro.</p></li>
+<li><p>Se utiliza el algoritmo métrico</p></li>
+<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em> cuando:</p>
 <ul>
-<li><p>Graph is undirected</p></li>
-<li><p>Graph is fully connected</p></li>
-<li><p>Graph where traveling costs on edges obey the triangle inequality.</p></li>
+<li><p>El grafo es no dirigido</p></li>
+<li><p>El grafo está completamente conectado</p></li>
+<li><p>Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad del triángulo.</p></li>
 </ul>
 </li>
-<li><p>On an undirected graph:</p>
+<li><p>En un grafo no dirigido:</p>
 <ul>
-<li><p>The traveling costs are symmetric:</p></li>
-<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from  <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+<li><p>Los costos del viaje son simétricos:</p></li>
+<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul>
-<li><p>Duplicated identifiers with different coordinates are not allowed</p>
+<li><p>No se permiten identificadores duplicados con diferentes coordenadas</p>
 <ul>
-<li><p>The coordinates are quite the same for the same identifier, for example</p>
+<li><p>Las coordenadas son bastante iguales para el mismo identificador, por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span>
 <span class="mi">1</span><span class="p">,</span> <span class="mf">3.499999999999</span> <span class="mf">0.9999999</span>
 </pre></div>
 </div>
 </li>
-<li><p>The coordinates are quite different for the same identifier, for example</p>
+<li><p>Las coordenadas son bastante diferentes para el mismo identificador, por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.0</span>
 <span class="mi">2</span> <span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">1.1</span>
 </pre></div>
 </div>
 </li>
-<li><p>Any duplicated identifier will be ignored. The coordinates that will be kept
-is arbitrarly.</p></li>
+<li><p>Cualquier identificador duplicado será ignorado. Las coordenadas que se mantendrán son arbitrarias.</p></li>
 </ul>
 </li>
 </ul>
@@ -263,7 +253,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>With default values</p>
+<dd class="field-odd"><p>Con valores predeterminados</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
@@ -315,24 +305,24 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <tr class="row-even"><td><p><strong>Coordenadas SQL</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>An SQL query, described in the <a class="reference internal" href="#coordinates-sql">Coordinates SQL</a> section</p></td>
+<td><p>Una consulta SQL, descrita en la sección <a class="reference internal" href="#coordinates-sql">Coordenadas SQL</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>The first visiting vertex</p>
+<td><p>El primer vértice visitado</p>
 <ul class="simple">
-<li><p>When <cite>0</cite> any vertex can become the first visiting vertex.</p></li>
+<li><p>Cuando <cite>0</cite>  cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>end_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<td><p>Último vértice visitado antes de regresar a “<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last vertex</p></li>
+<li><p>Cuando  <code class="docutils literal notranslate"><span class="pre">0</span></code>  cualquier vértice puede convertirse en el último vértice visitado antes de regresr a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> entonces es el primer y último vértice</p></li>
 </ul>
 </td>
 </tr>
@@ -342,7 +332,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="coordinates-sql">
-<h3>Coordinates SQL<a class="headerlink" href="#coordinates-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Coordenadas SQL<a class="headerlink" href="#coordinates-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p><strong>Coordenadas SQL</strong>: una consulta SQL, que debe devolver un conjunto de filas con las siguientes columnas:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -359,7 +349,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <tbody>
 <tr class="row-even"><td><p><strong>id</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identifier of the starting vertex.</p></td>
+<td><p>Identificador del vértice inicial.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>x</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
@@ -401,7 +391,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the tour sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la última fila de la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
@@ -409,7 +399,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the tour sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la primera fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
@@ -420,12 +410,11 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Test 29 cities of Western Sahara</p>
+<dd class="field-odd"><p>Prueba 29 ciudades del Sáhara Occidental</p>
 </dd>
 </dl>
-<p>This example shows how to make performance tests using University of Waterloo’s <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">example data</a> using the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Western Sahara
-dataset</a></p>
-<p>Creating a table for the data and storing the data</p>
+<p>Este ejemplo muestra cómo hacer pruebas de rendimiento utilizando los <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">datos de ejemplo</a> de la Universidad de Waterloo utilizando el conjunto de datos de 29 ciudades del <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Sáhara Occidental</a></p>
+<p>Creación de una tabla para datos y almacenamiento de los datos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
@@ -459,11 +448,11 @@ dataset</a></p>
 <span class="p">(</span><span class="mi">29</span><span class="p">,</span><span class="mf">27462.5000</span><span class="p">,</span><span class="mf">12992.2222</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Adding a geometry (for visual purposes)</p>
+<p>Agregar una geometría (con fines visuales)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Getting a total cost of the tour, compare the value with the length of an optimal tour is 27603, given on the dataset</p>
+<p>Al obtener un costo total del recorrido, comparar el valor con la duración de un recorrido óptimo, que es 27603, dado en el conjunto de datos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
 WHERE seq = 30;
@@ -474,7 +463,7 @@ WHERE seq = 30;
 
 </pre></div>
 </div>
-<p>Getting a geometry of the tour</p>
+<p>Obtener una geometría del recorrido</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
 SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
@@ -485,8 +474,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 
 </pre></div>
 </div>
-<p>Visualy, The first image is the <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">optimal solution</a>  and
-the second image is the solution obtained with <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
+<p>Visualmente, la primera imagen es la “solución óptima”&lt;<a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">https://www.math.uwaterloo.ca/tsp/world/witour.html</a>&gt;`__  y la segunda imagen es la solución obtenida con <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
 <a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
 <a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" /></a>
 </section>
@@ -494,9 +482,9 @@ the second image is the solution obtained with <code class="docutils literal not
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
-<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> network.</p></li>
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
-<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">University of Waterloo TSP</a></p></li>
+<li><p>Red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>

@@ -149,12 +149,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_lineGraphFull.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_lineGraphFull.html">3.3</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_lineGraphFull.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_lineGraphFull.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_lineGraphFull.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_lineGraphFull.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_lineGraphFull.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_lineGraphFull.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_lineGraphFull.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_lineGraphFull.html">3.0</a></p></li>
 <li><p><strong>Versiones no sustentadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_lineGraphFull.html">2.6</a></p></li>
 </ul>
 <section id="pgr-linegraphfull-experimental">
@@ -378,7 +373,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"><img alt="first" class="align-middle" src="_images/original.png" /></div>
+<div class="line"><img alt="primero" class="align-middle" src="_images/original.png" /></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_lineGraphFull(&#39;SELECT id,
                                         source,
@@ -390,7 +385,7 @@ RETURNS SET OF (seq, source, target, cost, edge) OR EMPTY SET
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"><img alt="second" class="align-middle" src="_images/transformation.png" /></div>
+<div class="line"><img alt="segundo" class="align-middle" src="_images/transformation.png" /></div>
 </div>
 <p>En el grafo transformado, todas las aristas del grafo original siguen presentes (amarillos), pero ahora tenemos aristas adicionales para cada giro que se podría hacer a través del vértice 6 (naranja).</p>
 <dl class="field-list simple">

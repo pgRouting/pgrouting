@@ -150,12 +150,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_turnRestrictedPath.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_turnRestrictedPath.html">3.3</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_turnRestrictedPath.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_turnRestrictedPath.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_turnRestrictedPath.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_turnRestrictedPath.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_turnRestrictedPath.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_turnRestrictedPath.html">3.0</a></p></li>
 </ul>
 <section id="pgr-turnrestrictedpath-experimental">
 <h1>pgr_turnRestrictedPath - Experimental<a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
@@ -176,7 +171,7 @@
 <ul>
 <li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
 <li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La firma o declaración de funciones podría cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
 <li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
@@ -206,7 +201,7 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<p class="rubric">Summary</p>
+<p class="rubric">Resumen</p>
 <div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_turnRestrictedPath(Edges SQL, Restrictions SQL, Start vertex, End vertex, K cycles,
   [, directed] [,heap_paths] [, stop_on_first] [,strict])
 RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)

@@ -97,15 +97,15 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_TSP</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a><ul>
-<li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
-<li><a class="reference internal" href="#general-characteristics">General Characteristics</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
+<li><a class="reference internal" href="#general-characteristics">Características generales</a></li>
+<li><a class="reference internal" href="#characteristics">Características</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
 <li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
-<li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
+<li><a class="reference internal" href="#matrix-sql">Matriz SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -158,37 +158,28 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_TSP.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_TSP.html">3.3</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_TSP.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_TSP.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_TSP.html">3.0</a></p></li>
-<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_TSP.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_TSP.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_TSP.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html">2.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_TSP.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_TSP.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_TSP.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_TSP.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_TSP.html">3.0</a></p></li>
+<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_TSP.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_TSP.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_TSP.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_tsp.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/tsp/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/es/src/tsp/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-tsp">
 <h1>pgr_TSP<a class="headerlink" href="#pgr-tsp" title="Enlazar permanentemente con este título">¶</a></h1>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Aproximación usando el algoritmo*metrico*.</p></li>
 </ul>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
-<p class="rubric">Availability:</p>
+<p class="rubric">Disponibilidad:</p>
 <ul class="simple">
-<li><p>Version 3.2.1</p>
+<li><p>Versión 3.2.1</p>
 <ul>
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
-<li><p>Simulated Annealing Algorithm no longer supported</p>
+<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p>El algoritmo de recocido simulado ya no es utilizado.</p>
 <ul>
-<li><p>The Simulated Annealing Algorithm related parameters are ignored:
-max_processing_time, tries_per_temperature,
-max_changes_per_temperature, max_consecutive_non_changes,
-initial_temperature, final_temperature, cooling_factor,
-randomize</p></li>
+<li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
@@ -211,85 +202,79 @@ randomize</p></li>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="problem-definition">
-<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>The travelling salesperson problem (TSP) asks the following question:</p>
+<h3>Definición del Problema<a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En el problema del vendedor viajante (TSP) hace la siguiente pregunta:</p>
 <p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
 </section>
 <section id="general-characteristics">
-<h3>General Characteristics<a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Características generales<a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
-<li><p>This problem is an NP-hard optimization problem.</p></li>
-<li><p>Metric Algorithm is used</p></li>
-<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour in the worst case</em> when:</p>
+<li><p>Este problema es un problema de optimización NP-duro.</p></li>
+<li><p>Se utiliza el algoritmo métrico</p></li>
+<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em> cuando:</p>
 <ul>
-<li><p>Graph is undirected</p></li>
-<li><p>Graph is fully connected</p></li>
-<li><p>Graph where traveling costs on edges obey the triangle inequality.</p></li>
+<li><p>El grafo es no dirigido</p></li>
+<li><p>El grafo está completamente conectado</p></li>
+<li><p>Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad del triángulo.</p></li>
 </ul>
 </li>
-<li><p>On an undirected graph:</p>
+<li><p>En un grafo no dirigido:</p>
 <ul>
-<li><p>The traveling costs are symmetric:</p></li>
-<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from  <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+<li><p>Los costos del viaje son simétricos:</p></li>
+<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
-<li><p>Can be Used with <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a> functions preferably with <cite>directed =&gt; false</cite>.</p>
+<li><p>Se puede utilizar con funciones <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a> preferiblemente con <cite>directed =&gt; false</cite>.</p>
 <ul>
-<li><p>With <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
 <ul>
-<li><p>Will generate a graph that:</p>
+<li><p>Generará un grafo que:</p>
 <ul>
-<li><p>is undirected</p></li>
-<li><p>is fully connected (As long as the graph has one component)</p></li>
-<li><p>all traveling costs on edges obey the triangle inequality.</p></li>
+<li><p>es no dirigido</p></li>
+<li><p>está completamente conectado (siempre que el grafo tenga un componente)</p></li>
+<li><p>todos los costos de viaje en los segmentos vumplen con la desigualdad del triángulo.</p></li>
 </ul>
 </li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">OR</span> <span class="pre">end_vid</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">Ó</span> <span class="pre">end_vid</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
 <ul>
-<li><p>The solutions generated is garanteed to be <em>twice as long as the
-optimal tour in the worst case</em></p></li>
+<li><p>Las soluciones generadas están garantizadas para ser <em>el doble de largas que el recorrido óptimo en el peor de los casos</em></p></li>
 </ul>
 </li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
 <ul>
-<li><p>It is <strong>not garanteed</strong> that the solution will be, in the worse case,
-twice as long as the optimal tour, due to the fact that <cite>end_vid</cite> is
-forced to be in a fixed position.</p></li>
+<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo, debido al hecho de que <cite>end_vid</cite>  se ve obligado a estar en una posición fija.</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>With <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p>It is <strong>not garanteed</strong> that the solution will be, in the worse case,
-twice as long as the optimal tour</p></li>
-<li><p>Will generate a graph that:</p>
+<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo.</p></li>
+<li><p>Generará un grafo que:</p>
 <ul>
-<li><p>is directed</p></li>
-<li><p>is fully connected (As long as the graph has one component)</p></li>
-<li><p>some (or all) traveling costs on edges might not obey the triangle inequality.</p></li>
+<li><p>es dirigido</p></li>
+<li><p>está completamente conectado (siempre que el grafo tenga un componente)</p></li>
+<li><p>algunos (o todos) los costos de viaje en los segmentos podrían no obedecer a la desigualdad del triángulo.</p></li>
 </ul>
 </li>
-<li><p>As an undirected graph is required, the directed graph is transformed as follows:</p>
+<li><p>Como se requiere un grafo no dirigido, el grafo dirigido se transforma de la siguiente manera:</p>
 <ul>
-<li><p>edges <cite>(u, v)</cite> and <cite>(v, u)</cite> is considered to be the same edge (denoted <cite>(u, v)</cite></p></li>
-<li><p>if <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> differs between one or more instances of edge <cite>(u, v)</cite></p></li>
-<li><p>The minimum value of the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> all instances of edge <cite>(u, v)</cite>
-is going to be considered as the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> of edge  <cite>(u, v)</cite></p></li>
-<li><p>Some (or all) traveling costs on edges will still might not obey the triangle inequality.</p></li>
+<li><p>los segmentos <cite>(u, v)</cite> y <cite>(v, u)</cite> se consideran el mismo segmentos (denotado <cite>(u, v)</cite></p></li>
+<li><p>Si “<code class="docutils literal notranslate"><span class="pre">agg_cost</span></code>  difiere entre una o más instancias del segmento <cite>(u, v)</cite></p></li>
+<li><p>El valor mínimo de <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code>  en todas las instancias del segmento <cite>(u, v)</cite> se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de la arista <cite>(u, v)</cite></p></li>
+<li><p>Algunos (o todos) los costos de viaje en los segmentos aún podrían no obedecer a la desigualdad del triángulo.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>When the data is incomplete, but it is a connected graph,
-the missing values will be calculated with dijkstra algorithm.</p></li>
+<li><p>Cuando los datos están incompletos, pero es un grafo conectado, los valores faltantes se calcularán con el algoritmo Dijkstra.</p></li>
 </ul>
 </section>
 </section>
@@ -300,9 +285,9 @@ the missing values will be calculated with dijkstra algorithm.</p></li>
 RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
-<p class="rubric">Example: Using <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> to generate the matrix information</p>
+<p class="rubric">Ejemplo: Usando <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> para generar la información de la matriz</p>
 <ul class="simple">
-<li><p><strong>Line 5</strong> Vertices 15 to 18 are not included because they are not connected.</p></li>
+<li><p><strong>Línea 5</strong> Los vértices 15 a 18 no están incluidos porque no están conectados.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$
@@ -352,24 +337,24 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <tr class="row-even"><td><p><strong>Matrix SQL</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>An SQL query, described in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a> section.</p></td>
+<td><p>Una consulta SQL, descrita en la sección <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>The first visiting vertex</p>
+<td><p>El primer vértice visitado</p>
 <ul class="simple">
-<li><p>When <cite>0</cite> any vertex can become the first visiting vertex.</p></li>
+<li><p>Cuando <cite>0</cite>  cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>end_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<td><p>Último vértice visitado antes de regresar a “<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last vertex</p></li>
+<li><p>Cuando  <code class="docutils literal notranslate"><span class="pre">0</span></code>  cualquier vértice puede convertirse en el último vértice visitado antes de regresr a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">es</span> <span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> entonces es el primer y último vértice</p></li>
 </ul>
 </td>
 </tr>
@@ -379,7 +364,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="matrix-sql">
-<h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Matriz SQL<a class="headerlink" href="#matrix-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p><strong>Matrix SQL</strong>: una consulta SQL, que debe devolver un conjunto de filas con las siguientes columnas:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -438,7 +423,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the tour sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la última fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
@@ -446,7 +431,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the tour sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la primera fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
@@ -461,7 +446,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </dd>
 </dl>
 <ul class="simple">
-<li><p><strong>Line 9</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">7</span></code></p></li>
+<li><p><strong>Línea 9</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">7</span></code></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$
@@ -495,19 +480,19 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Using points of interest to generate an asymetric matrix.</p>
+<dd class="field-odd"><p>Uso de puntos de interés para generar una matriz asimétrica.</p>
 </dd>
 </dl>
-<p>To generate an asymmetric matrix:</p>
+<p>Para generar una matriz asimétrica:</p>
 <ul class="simple">
-<li><p><strong>Line 5</strong> The <code class="docutils literal notranslate"><span class="pre">side</span></code> information of pointsOfInterset is ignored by not including it in the query</p></li>
-<li><p><strong>Line 7</strong> Generating an asymetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<li><p><strong>Línea 5</strong> La información  <code class="docutils literal notranslate"><span class="pre">side</span></code>  de <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> se ignora al no incluirla en la consulta</p></li>
+<li><p><strong>Línea 7</strong> Generación de una matriz asimétrica con <cite>directed =&gt; true`</cite></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> is going to be considered as the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
-<li><p>The solution that can be larger than <em>twice as long as the optimal tour</em> because:</p>
+<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span>  se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
+<li><p>La solución que puede ser mayor que <em>el doble de larga que el tour óptimo</em> porque:</p>
 <ul>
-<li><p>Triangle inequality might not be satisfied.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">end_id</span> <span class="pre">!=</span> <span class="pre">0</span></code></p></li>
+<li><p>La desigualdad del triángulo podría no estar satisfecha.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">end_id</span> <span class="pre">!=</span> <span class="pre">0</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -538,10 +523,10 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Connected incomplete data</p>
+<dd class="field-odd"><p>Datos incompletos conectados</p>
 </dd>
 </dl>
-<p>Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is connected</p>
+<p>Usando segmentos seleccionados (2, 4, 5, 8, 9, 15) la matriz no es completa pero está conectada</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">end_vid</span><span class="p">,</span> <span class="mi">1</span> <span class="n">AS</span> <span class="n">agg_cost</span>
 <span class="linenos"> 2</span><span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
 <span class="linenos"> 3</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -556,7 +541,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <span class="linenos">12</span>
 </pre></div>
 </div>
-<p>Edge <cite>(5,12)</cite> does not exist on the initial data, but it is calculated internally.</p>
+<p>El segmento <cite>(5, 12)</cite> no existe en los datos iniciales, pero se calcula internamente.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$
 <span class="linenos"> 3</span>  SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
@@ -582,8 +567,8 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
+<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>

@@ -20,7 +20,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="pgr_TSP" href="pgr_TSP.html" />
-    <link rel="prev" title="pgr_extractVertices – Proposed" href="pgr_extractVertices.html" />
+    <link rel="prev" title="pgr_extractVertices – Propuesto" href="pgr_extractVertices.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -99,7 +99,7 @@
 <li><a class="reference internal" href="#general-information">Información general</a><ul>
 <li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
 <li><a class="reference internal" href="#origin">Origen</a></li>
-<li><a class="reference internal" href="#general-characteristics">General Characteristics</a></li>
+<li><a class="reference internal" href="#general-characteristics">Características generales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -114,7 +114,7 @@
               
                 
   <li>
-    <a href="pgr_extractVertices.html" title="Previous Chapter: pgr_extractVertices – Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_extractVe...</span>
+    <a href="pgr_extractVertices.html" title="Previous Chapter: pgr_extractVertices – Propuesto"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_extractVe...</span>
     </a>
   </li>
   <li>
@@ -150,12 +150,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/TSP-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/TSP-family.html">3.3</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/TSP-family.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/TSP-family.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/TSP-family.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/TSP-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/TSP-family.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/TSP-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/TSP-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/TSP-family.html">3.0</a></p></li>
 <li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/TSP-family.html">2.6</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/TSP-family.html">2.5</a>
@@ -177,7 +172,7 @@
 <ul>
 <li><p><a class="reference internal" href="#problem-definition" id="id2">Definición del Problema</a></p></li>
 <li><p><a class="reference internal" href="#origin" id="id3">Origen</a></p></li>
-<li><p><a class="reference internal" href="#general-characteristics" id="id4">General Characteristics</a></p></li>
+<li><p><a class="reference internal" href="#general-characteristics" id="id4">Características generales</a></p></li>
 <li><p><a class="reference internal" href="#see-also" id="id5">Ver también</a></p></li>
 </ul>
 </li>
@@ -187,13 +182,13 @@
 <h2><a class="toc-backref" href="#id1">Información general</a><a class="headerlink" href="#general-information" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="problem-definition">
 <h3><a class="toc-backref" href="#id2">Definición del Problema</a><a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>The travelling salesperson problem (TSP) asks the following question:</p>
+<p>En el problema del vendedor viajante (TSP) hace la siguiente pregunta:</p>
 <p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
 </section>
 <section id="origin">
 <h3><a class="toc-backref" href="#id3">Origen</a><a class="headerlink" href="#origin" title="Enlazar permanentemente con este título">¶</a></h3>
 <dl class="simple">
-<dt>El problema de los vendedores ambulantes fue estudiado en el siglo 18 por matemáticos</dt><dd><p><strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Penyngton Kirkman</strong>.</p>
+<dt>El problema de los vendedores ambulantes fue estudiado en el siglo 18 por matemáticos</dt><dd><p><strong>Sir William Rowam Hamilton</strong> y <strong>Thomas Penyngton Kirkman</strong>.</p>
 </dd>
 </dl>
 <p>Una discusión sobre el trabajo de Hamilton &amp; Kirkman se puede encontrar en el libro <strong>Graph Theory (Biggs et al. 1976)</strong>.</p>
@@ -208,7 +203,7 @@
 <li><p>Hay  <span class="math notranslate nohighlight">\(n-1\)</span> opción para la segunda ciudad,</p></li>
 <li><p>Y <span class="math notranslate nohighlight">\(n-2\)</span> opciones para la tercera ciudad, etc.</p></li>
 <li><p>Multiplicando estos juntos obtenemos <span class="math notranslate nohighlight">\((n-1)! = (n-1) (n-2) . . 1\)</span>.</p></li>
-<li><p>Now since the travel costs do not depend on the direction taken around the tour:</p>
+<li><p>Ahora, dado que los costos de viaje no dependen de la dirección tomada alrededor del recorrido:</p>
 <ul>
 <li><p>este número por 2</p></li>
 <li><p><span class="math notranslate nohighlight">\((n-1)!/2\)</span>.</p></li>
@@ -217,21 +212,21 @@
 </ul>
 </section>
 <section id="general-characteristics">
-<h3><a class="toc-backref" href="#id4">General Characteristics</a><a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id4">Características generales</a><a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
-<li><p>Metric Algorithm is used</p></li>
-<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour in the worst case</em> when:</p>
+<li><p>Se utiliza el algoritmo métrico</p></li>
+<li><p>La implementación genera soluciones que <em>son el doble de largas que el recorrido óptimo en el peor de los casos</em> cuando:</p>
 <ul>
-<li><p>Graph is undirected</p></li>
-<li><p>Graph is fully connected</p></li>
-<li><p>Graph where traveling costs on edges obey the triangle inequality.</p></li>
+<li><p>El grafo es no dirigido</p></li>
+<li><p>El grafo está completamente conectado</p></li>
+<li><p>Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad del triángulo.</p></li>
 </ul>
 </li>
-<li><p>On an undirected graph:</p>
+<li><p>En un grafo no dirigido:</p>
 <ul>
-<li><p>The traveling costs are symmetric:</p></li>
-<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from  <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+<li><p>Los costos del viaje son simétricos:</p></li>
+<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -240,8 +235,8 @@
 <h3><a class="toc-backref" href="#id5">Ver también</a><a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Referencias</p>
 <ul class="simple">
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
-<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">University of Waterloo TSP</a></p></li>
+<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
