@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "c_types/pgr_flow_t.h"
-#include "c_types/pgr_costFlow_t.h"
+#include "c_types/flow_t.h"
+#include "c_types/costFlow_t.h"
 #include "max_flow/pgr_costFlowGraph.hpp"
 
 namespace pgrouting {
@@ -68,13 +68,13 @@ class PgrCostFlowGraph {
      PgrCostFlowGraph() = delete;
 
      PgrCostFlowGraph(
-             const std::vector<pgr_costFlow_t> &edges,
+             const std::vector<CostFlow_t> &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices);
 
      int64_t GetMaxFlow() const;
 
-     std::vector<pgr_flow_t> GetFlowEdges() const;
+     std::vector<Flow_t> GetFlowEdges() const;
 
  private:
      V GetBoostVertex(int64_t id) const {
@@ -99,7 +99,7 @@ class PgrCostFlowGraph {
      E AddEdge(V v, V w, double wei, double cap);
 
      void InsertEdges(
-             const std::vector<pgr_costFlow_t> &edges);
+             const std::vector<CostFlow_t> &edges);
 
      /*
       * vertices = {sources} U {sink} U {edges.source} U {edge.target}

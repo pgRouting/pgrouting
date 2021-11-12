@@ -42,10 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_directedChPP(
-        pgr_edge_t *data_edges, size_t total_edges,
+        Edge_t *data_edges, size_t total_edges,
         bool only_cost,
 
-        General_path_element_t **return_tuples, size_t *return_count,
+        Path_rt **return_tuples, size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -66,10 +66,10 @@ do_pgr_directedChPP(
         double minCost;
         minCost = digraph.DirectedChPP();
 
-        std::vector<General_path_element_t> pathEdges;
+        std::vector<Path_rt> pathEdges;
         if (only_cost) {
             if (minCost >= 0.0) {
-                General_path_element_t edge;
+                Path_rt edge;
                 edge.seq = -1;
                 edge.node = edge.edge = -1;
                 edge.cost = edge.agg_cost = minCost;

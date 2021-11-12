@@ -62,6 +62,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "drivers/max_flow/minCostMaxFlow_driver.h"  // the link to the C++ code of the function
 
+#include "c_types/flow_t.h"
+
 PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_maxflowmincost);
 
@@ -76,7 +78,7 @@ process(
         ArrayType *starts,
         ArrayType *ends,
         bool only_cost,
-        pgr_flow_t **result_tuples,
+        Flow_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -90,10 +92,10 @@ process(
     size_t sizeSinkVerticesArr = 0;
 
     PGR_DBG("Load data");
-    pgr_costFlow_t *edges = NULL;
+    CostFlow_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_combination_t *combinations = NULL;
+    II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
     if (starts && ends) {
@@ -182,7 +184,7 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_flow_t *result_tuples = NULL;
+    Flow_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -234,11 +236,7 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
         /*                                                                    */
         /**********************************************************************/
 
-#if PGSQL_VERSION > 94
-        funcctx->max_calls = (uint32_t)result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+        funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -254,7 +252,7 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_flow_t*) funcctx->user_fctx;
+    result_tuples = (Flow_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -302,4 +300,3 @@ PGDLLEXPORT Datum _pgr_maxflowmincost(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

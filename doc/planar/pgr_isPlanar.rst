@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_isPlanar.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__
 
 pgr_isPlanar - Experimental
 ===============================================================================
@@ -58,18 +59,18 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+   single: isPlanar - Experimental on v3.2
+
 .. code-block:: none
 
-    pgr_isPlanar(Edges SQL) -- Experimental on v3.2
+    pgr_isPlanar(Edges SQL)
 
     RETURNS BOOLEAN
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q1
    :end-before: -- q2
-
-.. index::
-   single: isPlanar(Edges SQL) -- Experimental on v3.2
 
 Parameters
 -------------------------------------------------------------------------------

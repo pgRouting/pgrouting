@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/interruption.h"
-
+typedef struct II_t_rt II_t_rt;
 
 namespace pgrouting {
 namespace functions {
@@ -53,9 +53,9 @@ template<class G>
 class Pgr_Bipartite : public pgrouting::Pgr_messages {
  public:
             typedef typename G::V_i V_i;
-            std::vector<pgr_bipartite_rt> print_Bipartite(
+            std::vector<II_t_rt> print_Bipartite(
                     G &graph) {
-                std::vector<pgr_bipartite_rt> results;
+                std::vector<II_t_rt> results;
                 std::vector <boost::default_color_type> partition(graph.num_vertices());
                 auto partition_map =
                     make_iterator_property_map(partition.begin(), boost::get(boost::vertex_index, graph.graph));
@@ -82,9 +82,9 @@ class Pgr_Bipartite : public pgrouting::Pgr_messages {
                 }
                 return results;
             }
-            std::vector<pgr_bipartite_rt> pgr_bipartite(
+            std::vector<II_t_rt> pgr_bipartite(
                     G &graph ){
-                std::vector<pgr_bipartite_rt> results;
+                std::vector<II_t_rt> results;
                 bool bipartite = boost::is_bipartite(graph.graph);
                 if (bipartite) results = print_Bipartite(graph);
                 return results;

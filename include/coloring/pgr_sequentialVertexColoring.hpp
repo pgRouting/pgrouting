@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
 
+#include "c_types/ii_t_rt.h"
 
 /** @file pgr_sequentialVertexColoring.hpp
  * @brief The main file which calls the respective boost function.
@@ -78,8 +79,8 @@ class Pgr_sequentialVertexColoring {
       * @see [boost::sequential_vertex_coloring]
       * (https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html)
       */
-     std::vector < pgr_vertex_color_rt > sequentialVertexColoring(G &graph) {
-         std::vector < pgr_vertex_color_rt > results;
+     std::vector <II_t_rt> sequentialVertexColoring(G &graph) {
+         std::vector <II_t_rt> results;
 
          auto i_map = boost::get(boost::vertex_index, graph.graph);
 
@@ -121,10 +122,10 @@ class Pgr_sequentialVertexColoring {
       *
       * @returns `results` vector
       */
-     std::vector < pgr_vertex_color_rt > get_results(
+     std::vector <II_t_rt> get_results(
              std::vector < vertices_size_type > &colors,
              const G &graph) {
-         std::vector < pgr_vertex_color_rt > results;
+         std::vector <II_t_rt> results;
 
          typename boost::graph_traits < Graph > ::vertex_iterator v, vend;
 
@@ -136,8 +137,8 @@ class Pgr_sequentialVertexColoring {
 
          // ordering the results in an increasing order of the node id
          std::sort(results.begin(), results.end(),
-             [](const pgr_vertex_color_rt row1, const pgr_vertex_color_rt row2) {
-                 return row1.node < row2.node;
+             [](const II_t_rt row1, const II_t_rt row2) {
+                 return row1.d1.id < row2.d1.id;
              });
 
          return results;

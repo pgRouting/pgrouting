@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /**************************************************************************
  * return type for contraction
  * ***********************************************************************/
-typedef struct {
+struct contracted_rt {
     int64_t id;
     char* type;
     int64_t source;
@@ -45,6 +45,6 @@ typedef struct {
     double cost;
     int64_t *contracted_vertices;
     int contracted_vertices_size;
-} contracted_rt;
+};
 
 #endif  // INCLUDE_C_TYPES_CONTRACTED_RT_H_

@@ -35,13 +35,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Orders_t = struct Orders_t;
+using Vehicle_t = struct Vehicle_t;
+using Schedule_rt = struct Schedule_rt;
 #else
 #   include <stddef.h>
+typedef struct Orders_t Orders_t;
+typedef struct Vehicle_t Vehicle_t;
+typedef struct Schedule_rt Schedule_rt;
 #endif
-
-#include "c_types/pickDeliver/general_vehicle_orders_t.h"
-#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
-#include "c_types/pickDeliver/vehicle_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,14 +56,14 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliverEuclidean(
-            PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+            Orders_t *pd_orders_arr, size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
 
             double factor,
             int max_cycles,
             int initial_solution_id,
 
-            General_vehicle_orders_t **return_tuples,
+            Schedule_rt **return_tuples,
             size_t *return_count,
 
             char **log_msg,

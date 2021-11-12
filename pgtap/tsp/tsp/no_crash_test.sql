@@ -1,5 +1,5 @@
-\i setup.sql
-\i tsp_pgtap_tests.sql
+BEGIN;
+SET client_min_messages TO WARNING;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(9);

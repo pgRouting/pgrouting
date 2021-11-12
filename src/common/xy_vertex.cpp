@@ -80,7 +80,7 @@ check_vertices(
 
 std::vector < XY_vertex >
 extract_vertices(
-    const std::vector <Pgr_edge_xy_t > &data_edges) {
+    const std::vector <Edge_xy_t > &data_edges) {
 
     std::vector< XY_vertex > vertices;
     if (data_edges.empty()) return vertices;
@@ -112,16 +112,16 @@ extract_vertices(
 
 std::vector < XY_vertex >
 extract_vertices(
-    const Pgr_edge_xy_t *data_edges, size_t count) {
+    const Edge_xy_t *data_edges, size_t count) {
     return extract_vertices(
-        std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
+        std::vector <Edge_xy_t >(data_edges, data_edges + count));
 }
 
 #if 0
 /* the following might be needed when using withPoints */
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
-    const std::vector < Pgr_edge_xy_t > data_edges) {
+    const std::vector <Edge_xy_t > data_edges) {
     if (data_edges.empty()) return vertices;
 
     vertices.reserve(vertices.size() + data_edges.size() * 2);
@@ -146,9 +146,9 @@ std::vector < XY_vertex > extract_vertices(
 }
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
-    const Pgr_edge_xy_t *data_edges, int64_t count) {
+    const Edge_xy_t *data_edges, int64_t count) {
     return extract_vertices(vertices,
-            std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
+            std::vector <Edge_xy_t >(data_edges, data_edges + count));
 }
 #endif
 

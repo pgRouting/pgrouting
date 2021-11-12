@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
-#include "c_types/pgr_ltdtree_rt.h"
+#include "c_types/ii_t_rt.h"
 #include "drivers/dominator/lengauerTarjanDominatorTree_driver.h"
 #include "dominator/pgr_lengauerTarjanDominatorTree_driver.hpp"
 
@@ -49,10 +49,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ***********************************************************/
 void
 do_pgr_LTDTree(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         int64_t root_vertex,
-        pgr_ltdtree_rt **return_tuples,
+        II_t_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -77,7 +77,7 @@ do_pgr_LTDTree(
         graphType gType = DIRECTED;
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
-        std::vector<pgr_ltdtree_rt> results;
+        std::vector<II_t_rt> results;
         pgrouting::functions::Pgr_LTDTree<pgrouting::DirectedGraph> fn_LTDTree;
         results = fn_LTDTree.pgr_ltdtree(digraph, root_vertex);
 

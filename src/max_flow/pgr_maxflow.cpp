@@ -36,7 +36,7 @@ namespace graph {
 
 
 PgrFlowGraph::PgrFlowGraph(
-        const std::vector<pgr_edge_t> &edges,
+        const std::vector<Edge_t> &edges,
         const std::set<int64_t> &source_vertices,
         const std::set<int64_t> &sink_vertices,
         int algorithm) {
@@ -54,7 +54,7 @@ PgrFlowGraph::PgrFlowGraph(
 }
 
 PgrFlowGraph::PgrFlowGraph(
-        const std::vector<pgr_edge_t> &edges,
+        const std::vector<Edge_t> &edges,
         const std::set<int64_t> &source_vertices,
         const std::set<int64_t> &sink_vertices,
         bool directed) {
@@ -72,7 +72,7 @@ PgrFlowGraph::PgrFlowGraph(
  * Push-relabel requires each edge to be mapped to its reverse with capacity 0.
  */
 void PgrFlowGraph::insert_edges_push_relabel(
-        const std::vector<pgr_edge_t> &edges) {
+        const std::vector<Edge_t> &edges) {
     bool added;
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
@@ -107,7 +107,7 @@ void PgrFlowGraph::insert_edges_push_relabel(
  * The other pgr_maxflow algorithms have no such requirement. (can have have as many edges)
  */
 void PgrFlowGraph::insert_edges(
-        const std::vector<pgr_edge_t> &edges) {
+        const std::vector<Edge_t> &edges) {
     bool added;
     for (const auto edge : edges) {
         V v1 = get_boost_vertex(edge.source);
@@ -130,7 +130,7 @@ void PgrFlowGraph::insert_edges(
  * for the edge_disjoint_paths  algorithms
  */
 void PgrFlowGraph::insert_edges_edge_disjoint(
-        const std::vector<pgr_edge_t> &edges,
+        const std::vector<Edge_t> &edges,
         bool directed) {
     bool added;
     for (const auto edge : edges) {
@@ -200,9 +200,9 @@ void PgrFlowGraph::set_supersink(
     }
 }
 
-std::vector<pgr_flow_t>
+std::vector<Flow_t>
 PgrFlowGraph::get_flow_edges() const {
-    std::vector<pgr_flow_t> flow_edges;
+    std::vector<Flow_t> flow_edges;
     E_it e, e_end;
     for (boost::tie(e, e_end) = boost::edges(graph); e != e_end;
             ++e) {
@@ -210,7 +210,7 @@ PgrFlowGraph::get_flow_edges() const {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source != supersource) &&
                 ((*e).m_target != supersink)) {
-            pgr_flow_t edge;
+            Flow_t edge;
             edge.edge = get_edge_id(*e);
             edge.source = get_vertex_id((*e).m_source);
             edge.target = get_vertex_id((*e).m_target);
@@ -250,10 +250,10 @@ PgrFlowGraph::flow_dfs(V vertex,
     }
 }
 
-std::vector<General_path_element_t>
+std::vector<Path_rt>
 PgrFlowGraph::get_edge_disjoint_paths(
         size_t flow) {
-    std::vector<General_path_element_t> path_elements;
+    std::vector<Path_rt> path_elements;
 
     std::vector<std::vector<int64_t> > paths(flow, std::vector<int64_t>());
     size_t path_id = 0;
@@ -280,7 +280,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
         bool exists;
         size_t j;
         for (j = 0; j < size - 1; j++) {
-            General_path_element_t edge;
+            Path_rt edge;
             edge.seq = static_cast<int>(j + 1);
             edge.start_id = paths[i][0];
             edge.end_id = paths[i][size - 1];
@@ -291,7 +291,7 @@ PgrFlowGraph::get_edge_disjoint_paths(
             edge.edge = get_edge_id(e);
             path_elements.push_back(edge);
         }
-        General_path_element_t edge;
+        Path_rt edge;
         edge.seq = static_cast<int>(j + 1);
         edge.start_id = paths[i][0];
         edge.end_id = paths[i][size - 1];

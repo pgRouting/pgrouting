@@ -1,5 +1,5 @@
-\i setup.sql
-\i flow_pgtap_tests.sql
+BEGIN;
+
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 

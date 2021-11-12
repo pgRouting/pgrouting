@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_TSP.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSP.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSP.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSP.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSP.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSP.html>`__
 * **Unsupported versions:**
@@ -38,7 +39,7 @@ pgr_TSP
 
 * Version 3.2.1
 
-  * Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+  * Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
   * Simulated Annealing Algorithm no longer supported
 
     * The Simulated Annealing Algorithm related parameters are ignored:
@@ -222,7 +223,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
-* Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
 

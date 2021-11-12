@@ -43,22 +43,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 
+#include "c_types/iid_t_rt.h"
+#include "c_types/pickDeliver/orders_t.h"
+#include "c_types/pickDeliver/vehicle_t.h"
+#include "c_types/pickDeliver/schedule_rt.h"
+
 void
 do_pgr_pickDeliver(
-        PickDeliveryOrders_t customers_arr[],
+        Orders_t customers_arr[],
         size_t total_customers,
 
         Vehicle_t *vehicles_arr,
         size_t total_vehicles,
 
-        Matrix_cell_t *matrix_cells_arr,
+        IID_t_rt *matrix_cells_arr,
         size_t total_cells,
 
         double factor,
         int max_cycles,
         int initial_solution_id,
 
-        General_vehicle_orders_t **return_tuples,
+        Schedule_rt **return_tuples,
         size_t *return_count,
 
         char **log_msg,
@@ -82,13 +87,13 @@ do_pgr_pickDeliver(
         /*
          * transform to C++ containers
          */
-        std::vector<PickDeliveryOrders_t> orders(
+        std::vector<Orders_t> orders(
                 customers_arr, customers_arr + total_customers);
 
         std::vector<Vehicle_t> vehicles(
                 vehicles_arr, vehicles_arr + total_vehicles);
 
-        std::vector <Matrix_cell_t> data_costs(
+        std::vector <IID_t_rt> data_costs(
                 matrix_cells_arr,
                 matrix_cells_arr + total_cells);
 

@@ -97,7 +97,7 @@ Signatures
      pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
      pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
-     pgr_dijkstraCost(edges_sql, combinations_sql   [, directed]) -- Proposed on v3.1
+     pgr_dijkstraCost(edges_sql, combinations_sql   [, directed])
      RETURNS SET OF (start_vid, end_vid, agg_cost)
      OR EMPTY SET
 
@@ -112,8 +112,8 @@ Signatures
 :Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
 	single: dijkstraCost(One to One)
@@ -130,8 +130,8 @@ One to One
 :Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-    :start-after: --q2
-    :end-before: --q3
+    :start-after: -- q2
+    :end-before: -- q3
 
 .. index::
     single: dijkstraCost(One to Many)
@@ -148,8 +148,8 @@ One to Many
 :Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: --q4
-   :end-before: --q5
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
 	single: dijkstraCost(Many to One)
@@ -166,8 +166,8 @@ Many to One
 :Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-    :start-after: --q3
-    :end-before: --q4
+    :start-after: -- q3
+    :end-before: -- q4
 
 .. index::
 	single: dijkstraCost(Many to Many)
@@ -184,11 +184,11 @@ Many to Many
 :Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: --q5
-   :end-before: --q6
+   :start-after: -- q5
+   :end-before: -- q6
 
 .. index::
-    single: dijkstraCost(Combinations) -- Proposed on v3.1
+    single: dijkstraCost(Combinations) - Proposed on v3.1
 
 Combinations
 ...............................................................................
@@ -202,8 +202,8 @@ Combinations
 :Example: Using a combinations table on an **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: --q8
-   :end-before: --q9
+   :start-after: -- q8
+   :end-before: -- q9
 
 
 
@@ -245,20 +245,20 @@ Additional Examples
 :Example 1: Demonstration of repeated values are ignored, and result is sorted.
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-    :start-after: --q6
-    :end-before: --q7
+    :start-after: -- q6
+    :end-before: -- q7
 
 :Example 2: Making `start_vids` the same as `end_vids`
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-    :start-after: --q7
-    :end-before: --q8
+    :start-after: -- q7
+    :end-before: -- q8
 
 :Example 3: Four manually assigned (source, target) vertex combinations
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: --q9
-   :end-before: --q10
+   :start-after: -- q9
+   :end-before: -- q10
 
 See Also
 -------------------------------------------------------------------------------

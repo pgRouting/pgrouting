@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
+/* --q1 */
 SELECT pgr_createTopology('edge_table', 0.001, clean := TRUE);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
@@ -17,8 +17,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q1.1
---q2
+/* --q1.1 */
+/* --q2 */
 SELECT pgr_analyzegraph('edge_table', 0.001);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
@@ -39,8 +39,8 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
---q2.1
---q3
+/* --q2.1 */
+/* --q3 */
 SELECT pgr_nodeNetwork('edge_table', 0.001);
 NOTICE:  PROCESSING:
 NOTICE:  id: id
@@ -64,8 +64,8 @@ NOTICE:  ----------------------------------
  OK
 (1 row)
 
---q3.1
---q4
+/* --q3.1 */
+/* --q4 */
 SELECT old_id, sub_id FROM edge_table_noded ORDER BY old_id, sub_id;
  old_id | sub_id
 --------+--------
@@ -92,8 +92,8 @@ SELECT old_id, sub_id FROM edge_table_noded ORDER BY old_id, sub_id;
      18 |      2
 (21 rows)
 
---q4.1
---q5
+/* --q4.1 */
+/* --q5 */
 SELECT pgr_createTopology('edge_table_noded', 0.001);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table_noded', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
@@ -108,8 +108,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q5.1
---q6
+/* --q5.1 */
+/* --q6 */
 SELECT pgr_analyzegraph('edge_table_noded', 0.001);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edge_table_noded',0.001,'the_geom','id','source','target','true')
@@ -130,8 +130,8 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
---q6.1
---q7
+/* --q6.1 */
+/* --q7 */
 alter table edge_table drop column if exists old_id;
 NOTICE:  column "old_id" of relation "edge_table" does not exist, skipping
 ALTER TABLE
@@ -144,8 +144,8 @@ insert into edge_table (old_id, dir, cost, reverse_cost, the_geom)
        from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id)
        where edges.id in (select old_id from segmented where i>1) );
 INSERT 0 6
---q7.1
---q8
+/* --q7.1 */
+/* --q8 */
 SELECT pgr_createTopology('edge_table', 0.001);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
@@ -160,8 +160,8 @@ NOTICE:  ----------------------------------------------
  OK
 (1 row)
 
---q8.1
---q9
+/* --q8.1 */
+/* --q9 */
 SELECT pgr_analyzegraph('edge_table', 0.001, rows_where:='id not in (select old_id from edge_table where old_id is not null)');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','id not in (select old_id from edge_table where old_id is not null)')
@@ -182,8 +182,8 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
---q9.1
---q10
+/* --q9.1 */
+/* --q10 */
 SELECT pgr_analyzegraph('edge_table', 0.001, rows_where:='old_id is null');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','old_id is null')
@@ -204,8 +204,8 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
---q10.1
---q11
+/* --q10.1 */
+/* --q11 */
 SELECT pgr_analyzegraph('edge_table', 0.001);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
@@ -226,6 +226,6 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
---q11.1
+/* --q11.1 */
 ROLLBACK;
 ROLLBACK

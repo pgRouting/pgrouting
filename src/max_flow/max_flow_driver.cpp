@@ -38,17 +38,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 
+#include "c_types/ii_t_rt.h"
 
 void
 do_pgr_max_flow(
-        pgr_edge_t *data_edges, size_t total_edges,
-        pgr_combination_t *combinations, size_t total_combinations,
+        Edge_t *data_edges, size_t total_edges,
+        II_t_rt *combinations, size_t total_combinations,
         int64_t *source_vertices, size_t size_source_verticesArr,
         int64_t *sink_vertices, size_t size_sink_verticesArr,
         int algorithm,
         bool only_flow,
 
-        pgr_flow_t **return_tuples, size_t *return_count,
+        Flow_t **return_tuples, size_t *return_count,
         char** log_msg,
         char** notice_msg,
         char **err_msg) {
@@ -67,21 +68,21 @@ do_pgr_max_flow(
         pgassert((source_vertices && sink_vertices) || combinations);
         pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
 
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        std::vector<Edge_t> edges(data_edges, data_edges + total_edges);
         std::set<int64_t> sources(
                 source_vertices, source_vertices + size_source_verticesArr);
         std::set<int64_t> targets(
                 sink_vertices, sink_vertices + size_sink_verticesArr);
-        std::vector< pgr_combination_t > combinations_vector(
+        std::vector< II_t_rt > combinations_vector(
                 combinations, combinations + total_combinations);
 
         if (!combinations_vector.empty()) {
             pgassert(sources.empty());
             pgassert(targets.empty());
 
-            for (const pgr_combination_t &comb : combinations_vector) {
-                sources.insert(comb.source);
-                targets.insert(comb.target);
+            for (const II_t_rt &comb : combinations_vector) {
+                sources.insert(comb.d1.source);
+                targets.insert(comb.d2.target);
             }
         }
 
@@ -117,10 +118,10 @@ do_pgr_max_flow(
         }
 
 
-        std::vector<pgr_flow_t> flow_edges;
+        std::vector<Flow_t> flow_edges;
 
         if (only_flow) {
-            pgr_flow_t edge;
+            Flow_t edge;
             edge.edge = -1;
             edge.source = -1;
             edge.target = -1;

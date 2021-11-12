@@ -1,12 +1,12 @@
 
-\echo -- q1
+/* -- q1 */
 SELECT * FROM pgr_lineGraphFull(
     'SELECT id, source, target, cost, reverse_cost
       FROM edge_table
       WHERE id IN (4,7,8,10)'
 );
 
-\echo -- q2
+/* -- q2 */
 CREATE TABLE lineGraph_edges AS SELECT * FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id IN (4,7,8,10)$$
@@ -19,13 +19,13 @@ FROM (SELECT source AS id FROM lineGraph_edges
     SELECT target FROM lineGraph_edges) as foo
 ORDER BY id;
 
-\echo -- q3
+/* -- q3 */
 UPDATE lineGraph_vertices AS r
   SET original_id = v.id
   FROM edge_table_vertices_pgr AS v
   WHERE v.id = r.id;
 
-\echo -- q4
+/* -- q4 */
 WITH
 unassignedVertices
   AS (SELECT e.id, e.original_id
@@ -76,7 +76,7 @@ UPDATE lineGraph_vertices
   FROM verticesFromEdgesWithUnassignedTarget
   WHERE verticesFromEdgesWithUnassignedTarget.source = id;
 
-\echo -- q5
+/* -- q5 */
 WITH
 unassignedVertexIds
   AS (SELECT id
@@ -121,10 +121,10 @@ UPDATE lineGraph_vertices AS d
                             WHERE edgesWithUnassignedTarget.target = d.id))
   WHERE id IN (SELECT id FROM unassignedVertexIds);
 
-\echo -- q6
+/* -- q6 */
 SELECT * FROM lineGraph_vertices;
 
-\echo -- q7
+/* -- q7 */
 UPDATE lineGraph_edges
   SET cost = 100
   WHERE source IN (SELECT target
@@ -133,7 +133,7 @@ UPDATE lineGraph_edges
                                                       FROM lineGraph_edges
                                                       WHERE edge = -7);
 
-\echo -- q8
+/* -- q8 */
 SELECT * FROM
   (SELECT * FROM
     (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM lineGraph_edges$$,
@@ -142,5 +142,5 @@ SELECT * FROM
     )) as shortestPaths
   WHERE start_vid = 2 AND end_vid = 8 AND (cost != 0 OR edge = -1)) as b;
 
-\echo -- q9
+/* -- q9 */
 

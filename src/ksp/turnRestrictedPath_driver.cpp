@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/rule.h"
 
 #include "cpp_common/basePath_SSEC.hpp"
+#include "c_types/restriction_t.h"
 #include "yen/pgr_turnRestrictedPath.hpp"
 
 using pgrouting::yen::Pgr_turnRestrictedPath;
@@ -75,7 +76,7 @@ pgr_dijkstraTR(
 
 void
 do_pgr_turnRestrictedPath(
-        pgr_edge_t *data_edges,
+        Edge_t *data_edges,
         size_t total_edges,
 
         Restriction_t *restrictions,
@@ -90,7 +91,7 @@ do_pgr_turnRestrictedPath(
         bool stop_on_first,
         bool strict,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -120,7 +121,7 @@ do_pgr_turnRestrictedPath(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::vector < pgr_edge_t > edges(data_edges, data_edges + total_edges);
+        std::vector < Edge_t > edges(data_edges, data_edges + total_edges);
 
         std::deque<Path> paths;
 

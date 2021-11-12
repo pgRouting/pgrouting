@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
  * its with either (foo_x, foo_y) pairs for euclidean or with foo_node_id (for matrix)
  */
-typedef struct {
+struct  Vehicle_t {
     int64_t id;
     double capacity;
     double speed;
@@ -59,7 +59,7 @@ typedef struct {
     double end_open_t;
     double end_close_t;
     double end_service_t;
-} Vehicle_t;
+};
 
 
 #endif  // INCLUDE_C_TYPES_PICKDELIVER_VEHICLE_T_H_

@@ -10,8 +10,9 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/withPoints.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/withPoints.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/withPoints-family.html>`__
+  (`3.3 <https://docs.pgrouting.org/3.3/en/withPoints-family.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/withPoints-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/withPoints-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/withPoints-family.html>`__
 * **Unsupported versions:**

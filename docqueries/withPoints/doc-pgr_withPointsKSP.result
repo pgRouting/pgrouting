@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 SET extra_float_digits=-3;
 SET
---q1
+/* --q1 */
 SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -26,7 +26,7 @@ SELECT * FROM pgr_withPointsKSP(
   13 |       2 |        7 |   -2 |   -1 |    0 |      5.2
 (13 rows)
 
---q2
+/* --q2 */
 SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -51,7 +51,7 @@ SELECT * FROM pgr_withPointsKSP(
   16 |       2 |       11 |    6 |   -1 |    0 |      6.6
 (16 rows)
 
---q3
+/* --q3 */
 SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -77,7 +77,7 @@ SELECT * FROM pgr_withPointsKSP(
   16 |       2 |        8 |   -2 |   -1 |    0 |      5.2
 (16 rows)
 
---q4
+/* --q4 */
 SELECT * FROM pgr_withPointsKSP(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
@@ -116,6 +116,6 @@ SELECT * FROM pgr_withPointsKSP(
   29 |       3 |       11 |   -2 |   -1 |    0 |      6.8
 (29 rows)
 
---q5
+/* --q5 */
 ROLLBACK;
 ROLLBACK

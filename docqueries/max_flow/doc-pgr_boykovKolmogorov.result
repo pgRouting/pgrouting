@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -20,7 +20,7 @@ SELECT * FROM pgr_boykovKolmogorov(
    4 |   12 |        10 |      11 |  100 |                 0
 (4 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -43,7 +43,7 @@ SELECT * FROM pgr_boykovKolmogorov(
    9 |   12 |        10 |      11 |   80 |                20
 (9 rows)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -61,7 +61,7 @@ SELECT * FROM pgr_boykovKolmogorov(
    4 |   12 |        10 |      11 |  100 |                 0
 (4 rows)
 
--- q4
+/* -- q4 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -85,7 +85,7 @@ SELECT * FROM pgr_boykovKolmogorov(
   10 |   12 |        10 |      11 |  100 |                 0
 (10 rows)
 
--- q5
+/* -- q5 */
 SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
@@ -109,6 +109,6 @@ SELECT * FROM pgr_boykovKolmogorov(
   10 |   12 |        10 |      11 |  100 |                 0
 (10 rows)
 
--- q6
+/* -- q6 */
 ROLLBACK;
 ROLLBACK

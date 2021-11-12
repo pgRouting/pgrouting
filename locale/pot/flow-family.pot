@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.3.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.2.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"POT-Creation-Date: 2021-11-11 13:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/flow-family.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/flow-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__) current(`3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/flow-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/flow-family.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/flow-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/flow-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/flow-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/flow-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/flow-family.html>`__"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:18
@@ -684,4 +684,3 @@ msgstr ""
 #: ../../build/doc/flow-family.rst:296
 msgid ":ref:`search`"
 msgstr ""
-

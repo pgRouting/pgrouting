@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_chinesePostmanCost.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_chinesePostmanCost.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_chinesePostmanCost.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_chinesePostmanCost.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostmanCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__
 
@@ -45,7 +46,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: chinesePostmanCost - Experimental
+    single: chinesePostmanCost - Experimental on v3.0
 
 .. code-block:: none
 

@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 
 #include "c_common/postgres_connection.h"
+#include "c_types/i_rt.h"
 #include "utils/array.h"
-
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
@@ -50,11 +50,11 @@ static
 void
 process(
         char* edges_sql,
-        pgr_topologicalSort_t **result_tuples,
+        I_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
@@ -95,7 +95,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    pgr_topologicalSort_t *result_tuples = NULL;
+    I_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -116,11 +116,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
 
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
@@ -137,7 +133,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_topologicalSort_t*) funcctx->user_fctx;
+    result_tuples = (I_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -160,7 +156,7 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].sorted_v);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].id);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -170,4 +166,3 @@ _pgr_topologicalsort(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

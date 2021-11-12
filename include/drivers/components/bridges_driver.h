@@ -34,12 +34,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Edge_t = struct Edge_t;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_t Edge_t;
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_components_rt.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,7 +57,7 @@ extern "C" {
 
     void
         do_pgr_bridges(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_edges,
                 int64_t **return_tuples,
                 size_t *return_count,

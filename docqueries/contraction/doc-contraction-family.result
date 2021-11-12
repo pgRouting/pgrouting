@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q00
+/* -- q00 */
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
  id | source | target | cost | reverse_cost
 ----+--------+--------+------+--------------
@@ -26,8 +26,8 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table;
  18 |     16 |     17 |    1 |            1
 (18 rows)
 
--- q01
--- q1
+/* -- q01 */
+/* -- q1 */
 ALTER TABLE edge_table_vertices_pgr ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE
 ALTER TABLE edge_table_vertices_pgr ADD contracted_vertices BIGINT[];
@@ -36,7 +36,7 @@ ALTER TABLE edge_table ADD is_new BOOLEAN DEFAULT false;
 ALTER TABLE
 ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
 ALTER TABLE
--- q2
+/* -- q2 */
 SELECT * FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1,2], directed:=false);
@@ -51,18 +51,18 @@ SELECT * FROM pgr_contraction(
  e    | -4 | {12}                |      9 |     11 |    2
 (7 rows)
 
--- q3
+/* -- q3 */
 SELECT * INTO contraction_results
 FROM pgr_contraction(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     array[1,2], directed:=false);
 SELECT 7
--- q4
+/* -- q4 */
 UPDATE edge_table_vertices_pgr
 SET is_contracted = true
 WHERE id IN (SELECT  unnest(contracted_vertices) FROM  contraction_results);
 UPDATE 10
--- q5
+/* -- q5 */
 SELECT id, is_contracted
 FROM edge_table_vertices_pgr
 ORDER BY id;
@@ -87,13 +87,13 @@ ORDER BY id;
  17 | f
 (17 rows)
 
--- q6
+/* -- q6 */
 UPDATE edge_table_vertices_pgr
 SET contracted_vertices = contraction_results.contracted_vertices
 FROM contraction_results
 WHERE type = 'v' AND edge_table_vertices_pgr.id = contraction_results.id;
 UPDATE 3
--- q7
+/* -- q7 */
 SELECT id, contracted_vertices, is_contracted
 FROM edge_table_vertices_pgr
 ORDER BY id;
@@ -118,13 +118,13 @@ ORDER BY id;
  17 | {16}                | f
 (17 rows)
 
--- q8
+/* -- q8 */
 INSERT INTO edge_table(source, target, cost, reverse_cost, contracted_vertices, is_new)
 SELECT source, target, cost, -1, contracted_vertices, true
 FROM contraction_results
 WHERE type = 'e';
 INSERT 0 4
--- q9
+/* -- q9 */
 SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_new
 FROM edge_table
 ORDER BY id;
@@ -154,7 +154,7 @@ ORDER BY id;
  22 |      9 |     11 |    2 |           -1 | {12}                | t
 (22 rows)
 
--- q10
+/* -- q10 */
 SELECT id
 FROM edge_table_vertices_pgr
 WHERE is_contracted = false
@@ -170,7 +170,7 @@ ORDER BY id;
  17
 (7 rows)
 
--- q11
+/* -- q11 */
 WITH
 vertices_in_graph AS (
     SELECT id
@@ -194,7 +194,7 @@ ORDER BY id;
  22 |      9 |     11 |    2 |           -1 | {12}
 (8 rows)
 
--- case1
+/* -- case1 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -219,7 +219,7 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 CREATE FUNCTION
--- use1
+/* -- use1 */
 SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -228,19 +228,19 @@ SELECT * FROM my_dijkstra(3, 11);
    3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
--- use1-1
+/* -- use1-1 */
 SELECT * FROM my_dijkstra(4, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- use1-2
+/* -- use1-2 */
 SELECT * FROM my_dijkstra(4, 7);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- case2
+/* -- case2 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -279,7 +279,7 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 CREATE FUNCTION
--- use2
+/* -- use2 */
 SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -288,7 +288,7 @@ SELECT * FROM my_dijkstra(3, 11);
    3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
--- use2-1
+/* -- use2-1 */
 SELECT * FROM my_dijkstra(4, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -297,13 +297,13 @@ SELECT * FROM my_dijkstra(4, 11);
    3 |        3 |   11 |   -1 |    0 |        3
 (3 rows)
 
--- use2-2
+/* -- use2-2 */
 SELECT * FROM my_dijkstra(4, 7);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
 
--- case3
+/* -- case3 */
 CREATE OR REPLACE FUNCTION my_dijkstra(
     departure BIGINT, destination BIGINT,
     OUT seq INTEGER, OUT path_seq INTEGER,
@@ -355,7 +355,7 @@ SELECT * FROM pgr_dijkstra(
 $BODY$
 LANGUAGE SQL VOLATILE;
 CREATE FUNCTION
--- use3
+/* -- use3 */
 SELECT * FROM my_dijkstra(3, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -364,7 +364,7 @@ SELECT * FROM my_dijkstra(3, 11);
    3 |        3 |   11 |   -1 |    0 |        2
 (3 rows)
 
--- use3-1
+/* -- use3-1 */
 SELECT * FROM my_dijkstra(4, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -373,7 +373,7 @@ SELECT * FROM my_dijkstra(4, 11);
    3 |        3 |   11 |   -1 |    0 |        3
 (3 rows)
 
--- use3-2
+/* -- use3-2 */
 SELECT * FROM my_dijkstra(4, 7);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -384,6 +384,6 @@ SELECT * FROM my_dijkstra(4, 7);
    5 |        5 |    7 |   -1 |    0 |        5
 (5 rows)
 
--- end
+/* -- end */
 ROLLBACK;
 ROLLBACK

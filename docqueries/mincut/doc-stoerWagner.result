@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_stoerWagner(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
@@ -13,7 +13,7 @@ SELECT * FROM pgr_stoerWagner(
    1 |    1 |    1 |      1
 (1 row)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_stoerWagner(
     'SELECT id, source, target, cost, reverse_cost
         FROM edge_table
@@ -24,7 +24,7 @@ SELECT * FROM pgr_stoerWagner(
    1 |   18 |    1 |      1
 (1 row)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_stoerWagner(
 $$
  SELECT id, source, target, cost, reverse_cost FROM edge_table
@@ -44,6 +44,6 @@ $$
    1 |   17 |    1 |      1
 (1 row)
 
--- q4
+/* -- q4 */
 ROLLBACK;
 ROLLBACK

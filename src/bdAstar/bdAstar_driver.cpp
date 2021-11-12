@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "c_types/ii_t_rt.h"
 
 
 
@@ -56,7 +57,7 @@ static
 std::deque<Path>
 pgr_bdAstar(
         G &graph,
-        std::vector < pgr_combination_t > &combinations,
+        std::vector < II_t_rt > &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
 
@@ -99,32 +100,32 @@ pgr_bdAstar(
 
     } else {
         std::sort(combinations.begin(), combinations.end(),
-                [](const pgr_combination_t &lhs, const pgr_combination_t &rhs)->bool {
-                    return lhs.target < rhs.target;
+                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
+                    return lhs.d2.target < rhs.d2.target;
                 });
         std::stable_sort(combinations.begin(), combinations.end(),
-                [](const pgr_combination_t &lhs, const pgr_combination_t &rhs)->bool {
-                    return lhs.source < rhs.source;
+                [](const II_t_rt &lhs, const II_t_rt &rhs)->bool {
+                    return lhs.d1.source < rhs.d1.source;
                 });
 
-        pgr_combination_t previousCombination{0, 0};
+        II_t_rt previousCombination{0, 0};
 
-        for (const pgr_combination_t &comb : combinations) {
+        for (const II_t_rt &comb : combinations) {
             fn_bdAstar.clear();
 
-            if (comb.source == previousCombination.source &&
-                    comb.target == previousCombination.target) {
+            if (comb.d1.source == previousCombination.d1.source &&
+                    comb.d2.target == previousCombination.d2.target) {
                 continue;
             }
 
-            if (!graph.has_vertex(comb.source)
-                    || !graph.has_vertex(comb.target)) {
-                paths.push_back(Path(comb.source, comb.target));
+            if (!graph.has_vertex(comb.d1.source)
+                    || !graph.has_vertex(comb.d2.target)) {
+                paths.push_back(Path(comb.d1.source, comb.d2.target));
                 continue;
             }
 
             paths.push_back(fn_bdAstar.pgr_bdAstar(
-                    graph.get_V(comb.source), graph.get_V(comb.target),
+                    graph.get_V(comb.d1.source), graph.get_V(comb.d2.target),
                     heuristic, factor, epsilon, only_cost));
 
             previousCombination = comb;
@@ -139,9 +140,9 @@ pgr_bdAstar(
 
 void
 do_pgr_bdAstar(
-        Pgr_edge_xy_t *edges,
+        Edge_xy_t *edges,
         size_t total_edges,
-        pgr_combination_t *combinations,
+        II_t_rt *combinations,
         size_t total_combinations,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
@@ -155,7 +156,7 @@ do_pgr_bdAstar(
         double epsilon,
         bool only_cost,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,
@@ -178,7 +179,7 @@ do_pgr_bdAstar(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< pgr_combination_t >
+        std::vector< II_t_rt >
             combinations_vector(combinations, combinations + total_combinations);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;

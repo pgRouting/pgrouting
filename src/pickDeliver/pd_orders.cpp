@@ -39,7 +39,7 @@ namespace vrp {
 Pgr_pickDeliver* PD_Orders::problem;
 
 PD_Orders::PD_Orders(
-        const std::vector<PickDeliveryOrders_t> &pd_orders
+        const std::vector<Orders_t> &pd_orders
         ) {
     build_orders(pd_orders);
 }
@@ -47,7 +47,7 @@ PD_Orders::PD_Orders(
 
 void
 PD_Orders:: add_order(
-        const PickDeliveryOrders_t &order,
+        const Orders_t &order,
         const Vehicle_node &pick,
         const Vehicle_node &drop) {
     /*
@@ -62,7 +62,7 @@ PD_Orders:: add_order(
 
 void
 PD_Orders::build_orders(
-        const std::vector<PickDeliveryOrders_t> &pd_orders
+        const std::vector<Orders_t> &pd_orders
         ) {
 #if 0
     ENTERING();

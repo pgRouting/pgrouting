@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <stddef.h>
-#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+typedef struct Orders_t Orders_t;
 
 /** @brief Reads the pick-Deliver orders
  *
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 void
 pgr_get_pd_orders(
         char *pd_orders_sql,
-        PickDeliveryOrders_t **pd_orders,
+        Orders_t **pd_orders,
         size_t *total_pd_orders);
 
 /** @brief Reads the pick-Deliver orders
@@ -50,7 +50,7 @@ pgr_get_pd_orders(
 void
 pgr_get_pd_orders_with_id(
         char *pd_orders_sql,
-        PickDeliveryOrders_t **pd_orders,
+        Orders_t **pd_orders,
         size_t *total_pd_orders);
 
 #endif  // INCLUDE_C_COMMON_ORDERS_INPUT_H_

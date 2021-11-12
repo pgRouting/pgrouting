@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
+#include "c_types/mst_rt.h"
 
 
 /** @file pgr_depthFirstSearch.hpp
@@ -77,12 +78,12 @@ class Pgr_depthFirstSearch {
       * @see [boost::undirected_dfs]
       * (https://www.boost.org/libs/graph/doc/undirected_dfs.html)
       */
-     std::vector < pgr_mst_rt > depthFirstSearch(
+     std::vector < MST_rt > depthFirstSearch(
              G &graph,
              std::vector < int64_t > roots,
              bool directed,
              int64_t max_depth) {
-         std::vector < pgr_mst_rt > results;
+         std::vector < MST_rt > results;
 
          for (auto root : roots) {
              std::vector < E > visited_order;
@@ -176,12 +177,12 @@ class Pgr_depthFirstSearch {
       * @returns `results` vector
       */
      template < typename T >
-     std::vector < pgr_mst_rt > get_results(
+     std::vector < MST_rt > get_results(
              T visited_order,
              int64_t root,
              int64_t max_depth,
              const G &graph) {
-         std::vector < pgr_mst_rt > results;
+         std::vector < MST_rt > results;
 
          std::vector < double > agg_cost(graph.num_vertices(), 0);
          std::vector < int64_t > depth(graph.num_vertices(), 0);

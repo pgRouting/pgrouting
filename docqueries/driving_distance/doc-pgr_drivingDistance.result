@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
+/* --q1 */
 SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3
@@ -82,7 +82,7 @@ SELECT * FROM pgr_drivingDistance(
   11 |     13 |   12 |   13 |    1 |        3
 (11 rows)
 
---q2
+/* --q2 */
 SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         2, 3, false
@@ -168,7 +168,7 @@ SELECT * FROM pgr_drivingDistance(
   13 |     13 |   12 |   13 |    1 |        3
 (13 rows)
 
---q3
+/* --q3 */
 SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         2, 3
@@ -224,7 +224,7 @@ SELECT * FROM pgr_drivingDistance(
    7 |     13 |   13 |   -1 |    0 |        0
 (7 rows)
 
---q4
+/* --q4 */
 SELECT * FROM pgr_drivingDistance(
         'SELECT id, source, target, cost FROM edge_table',
         2, 3, false
@@ -307,6 +307,6 @@ SELECT * FROM pgr_drivingDistance(
   12 |     13 |   12 |   13 |    1 |        3
 (12 rows)
 
---q5
+/* --q5 */
 ROLLBACK;
 ROLLBACK

@@ -34,6 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/orders_input.h"
 #include "c_common/vehicles_input.h"
 #include "c_common/matrixRows_input.h"
+
+#include "c_types/iid_t_rt.h"
+#include "c_types/pickDeliver/schedule_rt.h"
+
 #include "drivers/pickDeliver/pickDeliver_driver.h"
 
 PGDLLEXPORT Datum
@@ -51,7 +55,7 @@ process(
         int max_cycles,
         int initial_solution_id,
 
-        General_vehicle_orders_t **result_tuples,
+        Schedule_rt **result_tuples,
         size_t *result_count) {
     if (factor <= 0) {
         ereport(ERROR,
@@ -80,7 +84,7 @@ process(
     pgr_SPI_connect();
 
     PGR_DBG("Load orders");
-    PickDeliveryOrders_t *pd_orders_arr = NULL;
+    Orders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
     pgr_get_pd_orders_with_id(pd_orders_sql,
            &pd_orders_arr, &total_pd_orders);
@@ -141,7 +145,7 @@ process(
     }
 #endif
     PGR_DBG("load matrix");
-    Matrix_cell_t *matrix_cells_arr = NULL;
+    IID_t_rt *matrix_cells_arr = NULL;
     size_t total_cells = 0;
     pgr_get_matrixRows(matrix_sql, &matrix_cells_arr, &total_cells);
 
@@ -213,7 +217,7 @@ _pgr_pickdeliver(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
-    General_vehicle_orders_t *result_tuples = 0;
+    Schedule_rt *result_tuples = 0;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -243,11 +247,9 @@ _pgr_pickdeliver(PG_FUNCTION_ARGS) {
 
         /*********************************************************************/
 
-#if PGSQL_VERSION > 95
+
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -263,7 +265,7 @@ _pgr_pickdeliver(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_vehicle_orders_t*) funcctx->user_fctx;
+    result_tuples = (Schedule_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr <  funcctx->max_calls) {
         HeapTuple   tuple;

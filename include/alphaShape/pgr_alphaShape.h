@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <iosfwd>
 
-#include "c_types/pgr_edge_xy_t.h"
+#include "c_types/edge_xy_t.h"
 #include "cpp_common/pgr_messages.h"
 
 #include "cpp_common/pgr_base_graph.hpp"
@@ -63,7 +63,7 @@ using Triangle = std::set<E>;
 class Pgr_alphaShape : public Pgr_messages {
  public:
      Pgr_alphaShape() = delete;
-     explicit Pgr_alphaShape(const std::vector<Pgr_edge_xy_t> &edges);
+     explicit Pgr_alphaShape(const std::vector<Edge_xy_t> &edges);
 
      std::vector<Bpoly> operator() (double alpha) const;
 

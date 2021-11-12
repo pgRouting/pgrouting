@@ -28,13 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #ifdef __cplusplus
+#   include <cstdint>
 #   include <cstddef>
+using Edge_t = struct Edge_t;
+using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_t Edge_t;
+typedef struct Path_rt Path_rt;
 #endif
-
-#include "c_types/pgr_edge_t.h"
-#include "c_types/general_path_element_t.h"
 
 
 #ifdef __cplusplus
@@ -42,14 +45,14 @@ extern "C" {
 #endif
 
     void  do_pgr_ksp(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_edges,
             int64_t  start_vid,
             int64_t end_vid,
             size_t K,
             bool directed,
             bool heap_paths,
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
             char ** log_msg,
             char ** notice_msg,

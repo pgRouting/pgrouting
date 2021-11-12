@@ -27,6 +27,7 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
 ###############################################################################
+set -e
 
 if ! test -d code_linter; then
     # Get our fork of codespell that adds --words-white-list and full filename support for -S option

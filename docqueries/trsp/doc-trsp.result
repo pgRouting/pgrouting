@@ -2,8 +2,8 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
-SELECT * FROM pgr_trsp(
+/* --q1 */
+    SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         7, 12, false, false
     );
@@ -17,9 +17,9 @@ SELECT * FROM pgr_trsp(
    5 |  12 |  -1 |    0
 (6 rows)
 
---q2
---q3
-SELECT * FROM pgr_trsp(
+/* --q2 */
+/* --q3 */
+    SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         2, 7, false, false,
         'SELECT to_cost, target_id::int4,
@@ -56,8 +56,8 @@ SELECT * FROM pgr_trsp(
    6 |  11 |  -1 |    0
 (7 rows)
 
---q4
-SELECT * FROM pgr_trspViaVertices(
+/* --q4 */
+    SELECT * FROM pgr_trspViaVertices(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         ARRAY[2,7,11]::INTEGER[],
         false,  false,
@@ -81,8 +81,8 @@ SELECT * FROM pgr_trspViaVertices(
   14 |   2 |  11 |  -1 |    0
 (14 rows)
 
---q5
-SELECT * FROM pgr_trspViaEdges(
+/* --q5 */
+    SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,
         reverse_cost FROM edge_table',
         ARRAY[2,7,11]::INTEGER[],
@@ -110,6 +110,6 @@ SELECT * FROM pgr_trspViaEdges(
   15 |   2 |   6 |  11 |  0.5
 (15 rows)
 
---q6
+/* --q6 */
 ROLLBACK;
 ROLLBACK

@@ -34,12 +34,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Edge_t = struct Edge_t;
+using StoerWagner_t = struct StoerWagner_t;
 #else
 #   include <stddef.h>
+typedef struct Edge_t Edge_t;
+typedef struct StoerWagner_t StoerWagner_t;
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_stoerWagner_t.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,9 +50,9 @@ extern "C" {
 
     void
         do_pgr_stoerWagner(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_edges,
-                pgr_stoerWagner_t **return_tuples,
+                StoerWagner_t **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

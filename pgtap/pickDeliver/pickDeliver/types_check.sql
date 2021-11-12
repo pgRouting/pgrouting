@@ -1,9 +1,7 @@
 
-\i setup.sql
+BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(4);
-
 
 SELECT has_function('pgr_pickdeliver',
     ARRAY['text','text', 'text', 'double precision', 'integer', 'integer']);

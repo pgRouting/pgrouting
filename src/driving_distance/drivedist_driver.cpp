@@ -80,12 +80,12 @@ end_timing(
 
 void
 do_pgr_driving_many_to_dist(
-        pgr_edge_t  *data_edges, size_t total_edges,
+        Edge_t  *data_edges, size_t total_edges,
         int64_t *start_vertex, size_t s_len,
         double distance,
         bool directedFlag,
         bool equiCostFlag,
-        General_path_element_t **return_tuples, size_t *return_count,
+        Path_rt **return_tuples, size_t *return_count,
         char **log_msg,
         char **notice_msg,
         char **err_msg) {

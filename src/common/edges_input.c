@@ -35,10 +35,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/column_info_t.h"
+#include "c_types/edge_bool_t_rt.h"
+#include "c_types/costFlow_t.h"
+#include "c_types/edge_xy_t.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
+
+#include "c_types/flow_t.h"
+#include "c_types/edge_t.h"
 
 static
 void fetch_basic_edge(
@@ -46,7 +52,7 @@ void fetch_basic_edge(
     TupleDesc *tupdesc,
     Column_info_t info[5],
     int64_t *default_id,
-    pgr_basic_edge_t *edge,
+    Edge_bool_t_rt *edge,
     size_t *valid_edges) {
     if (column_found(info[0].colNumber)) {
         edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
@@ -73,7 +79,7 @@ void fetch_edge(
         Column_info_t info[5],
         int64_t *default_id,
         float8 default_rcost,
-        pgr_edge_t *edge,
+        Edge_t *edge,
         size_t *valid_edges,
         bool normal) {
     if (column_found(info[0].colNumber)) {
@@ -117,7 +123,7 @@ void fetch_costFlow_edge(
         int64_t *default_id,
         int64_t default_rcapacity,
         float8 default_rcost,
-        pgr_costFlow_t *edge,
+        CostFlow_t *edge,
         size_t *valid_edges,
         bool normal) {
     if (column_found(info[0].colNumber)) {
@@ -160,7 +166,7 @@ void fetch_edge_with_xy(
         Column_info_t info[9],
         int64_t *default_id,
         float8 default_rcost,
-        Pgr_edge_xy_t *edge,
+        Edge_xy_t *edge,
         size_t *valid_edges,
         bool normal) {
     if (column_found(info[0].colNumber)) {
@@ -204,7 +210,7 @@ static
 void
 get_edges_9_columns(
         char *sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges,
         bool normal) {
     clock_t start_t = clock();
@@ -267,11 +273,11 @@ get_edges_9_columns(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (Pgr_edge_xy_t *)
-                    palloc0(total_tuples * sizeof(Pgr_edge_xy_t));
+                (*edges) = (Edge_xy_t *)
+                    palloc0(total_tuples * sizeof(Edge_xy_t));
             else
-                (*edges) = (Pgr_edge_xy_t *)
-                    repalloc((*edges), total_tuples * sizeof(Pgr_edge_xy_t));
+                (*edges) = (Edge_xy_t *)
+                    repalloc((*edges), total_tuples * sizeof(Edge_xy_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -309,7 +315,7 @@ static
 void
 get_edges_5_columns(
         char *sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *totalTuples,
         bool ignore_id,
         bool normal) {
@@ -364,11 +370,11 @@ get_edges_5_columns(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_edge_t *)
-                    palloc0(total_tuples * sizeof(pgr_edge_t));
+                (*edges) = (Edge_t *)
+                    palloc0(total_tuples * sizeof(Edge_t));
             else
-                (*edges) = (pgr_edge_t *)
-                    repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
+                (*edges) = (Edge_t *)
+                    repalloc((*edges), total_tuples * sizeof(Edge_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -405,7 +411,7 @@ static
 void
 get_edges_flow(
     char *sql,
-    pgr_edge_t **edges,
+    Edge_t **edges,
     size_t *totalTuples,
     bool ignore_id) {
     clock_t start_t = clock();
@@ -455,11 +461,11 @@ get_edges_flow(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_edge_t *)
-                    palloc0(total_tuples * sizeof(pgr_flow_t));
+                (*edges) = (Edge_t *)
+                    palloc0(total_tuples * sizeof(Flow_t));
             else
-                (*edges) = (pgr_edge_t *)
-                    repalloc((*edges), total_tuples * sizeof(pgr_flow_t));
+                (*edges) = (Edge_t *)
+                    repalloc((*edges), total_tuples * sizeof(Flow_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -497,7 +503,7 @@ static
 void
 get_edges_costFlow(
     char *sql,
-    pgr_costFlow_t **edges,
+    CostFlow_t **edges,
     size_t *totalTuples,
     bool ignore_id) {
     clock_t start_t = clock();
@@ -553,11 +559,11 @@ get_edges_costFlow(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_costFlow_t *)
-                    palloc0(total_tuples * sizeof(pgr_costFlow_t));
+                (*edges) = (CostFlow_t *)
+                    palloc0(total_tuples * sizeof(CostFlow_t));
             else
-                (*edges) = (pgr_costFlow_t *)
-                    repalloc((*edges), total_tuples * sizeof(pgr_costFlow_t));
+                (*edges) = (CostFlow_t *)
+                    repalloc((*edges), total_tuples * sizeof(CostFlow_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -595,7 +601,7 @@ static
 void
 get_edges_basic(
     char *sql,
-    pgr_basic_edge_t **edges,
+    Edge_bool_t_rt **edges,
     size_t *totalTuples,
     bool ignore_id) {
     clock_t start_t = clock();
@@ -649,11 +655,11 @@ get_edges_basic(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_basic_edge_t *)palloc0(
-                        total_tuples * sizeof(pgr_basic_edge_t));
+                (*edges) = (Edge_bool_t_rt *)palloc0(
+                        total_tuples * sizeof(Edge_bool_t_rt));
             else
-                (*edges) = (pgr_basic_edge_t *)repalloc(
-                        (*edges), total_tuples * sizeof(pgr_basic_edge_t));
+                (*edges) = (Edge_bool_t_rt *)repalloc(
+                        (*edges), total_tuples * sizeof(Edge_bool_t_rt));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -690,7 +696,7 @@ get_edges_basic(
 void
 pgr_get_flow_edges(
     char *sql,
-    pgr_edge_t **edges,
+    Edge_t **edges,
     size_t *total_edges) {
     bool ignore_id = false;
     get_edges_flow(sql, edges, total_edges, ignore_id);
@@ -700,7 +706,7 @@ pgr_get_flow_edges(
 void
 pgr_get_costFlow_edges(
     char *sql,
-    pgr_costFlow_t **edges,
+    CostFlow_t **edges,
     size_t *total_edges) {
     bool ignore_id = false;
     get_edges_costFlow(sql, edges, total_edges, ignore_id);
@@ -710,7 +716,7 @@ pgr_get_costFlow_edges(
 void
 pgr_get_edges(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = false;
     bool normal = true;
@@ -721,7 +727,7 @@ pgr_get_edges(
 void
 pgr_get_edges_reversed(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = false;
     bool normal = false;
@@ -732,7 +738,7 @@ pgr_get_edges_reversed(
 void
 pgr_get_edges_no_id(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = true;
     bool normal = true;
@@ -743,7 +749,7 @@ pgr_get_edges_no_id(
 void
 pgr_get_edges_xy(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges) {
     get_edges_9_columns(edges_sql, edges, total_edges, true);
 }
@@ -756,7 +762,7 @@ pgr_get_edges_xy(
 void
 pgr_get_edges_xy_reversed(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges) {
     get_edges_9_columns(edges_sql, edges, total_edges, false);
 }
@@ -765,7 +771,7 @@ pgr_get_edges_xy_reversed(
 void
 pgr_get_basic_edges(
         char *sql,
-        pgr_basic_edge_t **edges,
+        Edge_bool_t_rt **edges,
         size_t *total_edges) {
     bool ignore_id = false;
     get_edges_basic(sql, edges, total_edges, ignore_id);

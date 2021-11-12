@@ -34,33 +34,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Edge_xy_t = struct Edge_xy_t;
+using Path_rt = struct Path_rt;
+using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_xy_t Edge_xy_t;
+typedef struct Path_rt Path_rt;
+typedef struct II_t_rt II_t_rt;
 #endif
-
-#include "c_types/pgr_edge_xy_t.h"
-#include "c_types/pgr_combination_t.h"
-#include "c_types/general_path_element_t.h"
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /*********************************************************
-      edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-     ********************************************************/
-
-
     void do_pgr_bdAstar(
-            Pgr_edge_xy_t  *data_edges,
+            Edge_xy_t  *data_edges,
             size_t total_edges,
 
-            pgr_combination_t  *combinations,
+            II_t_rt  *combinations,
             size_t total_combinations,
 
             int64_t  *start_vidsArr,
@@ -74,7 +68,7 @@ extern "C" {
             double epsilon,
             bool only_cost,
 
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
 
             char** log_msg,

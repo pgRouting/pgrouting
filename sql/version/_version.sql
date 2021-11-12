@@ -74,7 +74,7 @@ RETURNS TEXT AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE STRICT;
 
-COMMENT ON FUNCTION _pgr_compilation_date() IS
+COMMENT ON FUNCTION _pgr_git_hash() IS
 'pgRouting internal function';
 
 ---

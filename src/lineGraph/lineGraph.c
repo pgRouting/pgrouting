@@ -46,13 +46,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 
-/* for macro PGR_DBG */
+#include "c_types/edge_t.h"
 #include "c_common/debug_macro.h"
-/* for pgr_global_report */
 #include "c_common/e_report.h"
-/* for time_msg & clock */
 #include "c_common/time_msg.h"
-/* for functions to get edges information */
 #include "c_common/edges_input.h"
 
 #include "drivers/lineGraph/lineGraph_driver.h"  // the link to the C++ code of the function
@@ -68,7 +65,7 @@ void
 process(
         char* edges_sql,
         bool directed,
-        Line_graph_rt **result_tuples,
+        Edge_t **result_tuples,
         size_t *result_count) {
     /*
      *  https://www.postgresql.org/docs/current/static/spi-spi-connect.html
@@ -85,7 +82,7 @@ process(
     (*result_count) = 0;
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -137,7 +134,7 @@ PGDLLEXPORT Datum _pgr_linegraph(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    Line_graph_rt  *result_tuples = NULL;
+    Edge_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -167,11 +164,7 @@ PGDLLEXPORT Datum _pgr_linegraph(PG_FUNCTION_ARGS) {
         /*                                                                    */
         /**********************************************************************/
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -187,7 +180,7 @@ PGDLLEXPORT Datum _pgr_linegraph(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Line_graph_rt*) funcctx->user_fctx;
+    result_tuples = (Edge_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

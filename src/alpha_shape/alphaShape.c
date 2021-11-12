@@ -47,7 +47,7 @@ static void process(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    Pgr_edge_xy_t *edgesArr = NULL;
+    Edge_xy_t *edgesArr = NULL;
     size_t edgesSize = 0;
 
     pgr_get_edges_xy(edges_sql, &edgesArr, &edgesSize);
@@ -127,12 +127,7 @@ Datum _pgr_alphashape(PG_FUNCTION_ARGS) {
 
         /******************************************************************/
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
-
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,

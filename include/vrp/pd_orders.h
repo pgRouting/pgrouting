@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <memory>
 #include <utility>
 
-#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+#include "c_types/pickDeliver/orders_t.h"
 #include "cpp_common/identifiers.hpp"
 
 #include "vrp/pd_problem.h"
@@ -61,7 +61,7 @@ class PD_Orders {
       */
      PD_Orders() = default;
      PD_Orders(const PD_Orders&) = default;
-     explicit PD_Orders(const std::vector<PickDeliveryOrders_t>&);
+     explicit PD_Orders(const std::vector<Orders_t>&);
      /*!@}*/
 
      void set_compatibles(double speed);
@@ -85,10 +85,10 @@ class PD_Orders {
 
  private:
      void build_orders(
-             const std::vector<PickDeliveryOrders_t> &pd_orders);
+             const std::vector<Orders_t> &pd_orders);
 
      void add_order(
-             const PickDeliveryOrders_t &,
+             const Orders_t &,
              const Vehicle_node&,
              const Vehicle_node&);
 

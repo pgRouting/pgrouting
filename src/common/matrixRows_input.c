@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 
 #include "c_types/column_info_t.h"
+#include "c_types/iid_t_rt.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
@@ -62,7 +63,7 @@ void pgr_fetch_row(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[3],
-        Matrix_cell_t *distance) {
+        IID_t_rt *distance) {
     distance->from_vid = pgr_SPI_getBigInt(tuple, tupdesc,  info[0]);
     distance->to_vid = pgr_SPI_getBigInt(tuple, tupdesc,  info[1]);
     distance->cost = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
@@ -75,7 +76,7 @@ void pgr_fetch_row(
  */
 void pgr_get_matrixRows(
         char *sql,
-        Matrix_cell_t **rows,
+        IID_t_rt **rows,
         size_t *total_rows) {
     clock_t start_t = clock();
 
@@ -119,11 +120,11 @@ void pgr_get_matrixRows(
 
         if (ntuples > 0) {
             if ((*rows) == NULL)
-                (*rows) = (Matrix_cell_t *)palloc0(
-                        total_tuples * sizeof(Matrix_cell_t));
+                (*rows) = (IID_t_rt *)palloc0(
+                        total_tuples * sizeof(IID_t_rt));
             else
-                (*rows) = (Matrix_cell_t *)repalloc(
-                        (*rows), total_tuples * sizeof(Matrix_cell_t));
+                (*rows) = (IID_t_rt *)repalloc(
+                        (*rows), total_tuples * sizeof(IID_t_rt));
 
             if ((*rows) == NULL) {
                 elog(ERROR, "Out of memory");

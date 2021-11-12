@@ -41,7 +41,7 @@ namespace trsp {
 
 // -------------------------------------------------------------------------
 Pgr_trspHandler::Pgr_trspHandler(
-        pgr_edge_t *edges,
+        Edge_t *edges,
         const size_t edge_count,
         const bool directed,
         const std::vector<Rule> &ruleList) :
@@ -60,7 +60,7 @@ Pgr_trspHandler::Pgr_trspHandler(
 
 // -------------------------------------------------------------------------
 int64_t Pgr_trspHandler::renumber_edges(
-        pgr_edge_t *edges,
+        Edge_t *edges,
         size_t total_edges) const {
         int64_t v_min_id = INT64_MAX;
         size_t z;
@@ -433,7 +433,7 @@ Pgr_trspHandler::process_trsp(
 
 // -------------------------------------------------------------------------
 void Pgr_trspHandler::construct_graph(
-        pgr_edge_t* edges,
+        Edge_t* edges,
         const size_t edge_count,
         const bool directed) {
     for (size_t i = 0; i < edge_count; i++) {
@@ -505,7 +505,7 @@ void Pgr_trspHandler::connectEndEdge(
 
 
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::addEdge(const pgr_edge_t edgeIn) {
+bool Pgr_trspHandler::addEdge(const Edge_t edgeIn) {
     /*
      * The edge was already inserted
      *

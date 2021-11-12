@@ -2,7 +2,6 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
 /*PGR-GNU*****************************************************************
 
 Copyright (c) 2016 pgRouting developers
@@ -25,6 +24,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+/* --q1 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 5700, 6733, true);
  seq | node  | edge  |  round
@@ -132,7 +132,7 @@ SELECT seq, node, edge, round(cost::numeric, 6)  FROM
  101 |  6733 |    -1 | 0.000000
 (101 rows)
 
---q2
+/* --q2 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 6585, 8247, true);
  seq | node  | edge  |  round
@@ -199,7 +199,7 @@ SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   60 |  8247 |    -1 | 0.000000
 (60 rows)
 
---q3
+/* --q3 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 9426, 3606, true);
  seq | node | edge  |  round
@@ -208,7 +208,7 @@ SELECT seq, node, edge, round(cost::numeric, 6)  FROM
    2 | 3606 |    -1 | 0.000000
 (2 rows)
 
---q4
+/* --q4 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 3606, 9426, true);
  seq | node | edge  |  round
@@ -217,7 +217,7 @@ SELECT seq, node, edge, round(cost::numeric, 6)  FROM
    2 | 9426 |    -1 | 0.000000
 (2 rows)
 
---q5
+/* --q5 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 6733, 5700, true);
  seq | node  | edge  |  round
@@ -325,7 +325,7 @@ SELECT seq, node, edge, round(cost::numeric, 6)  FROM
  101 |  5700 |    -1 | 0.000000
 (101 rows)
 
---q6
+/* --q6 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 8247, 6585, true);
  seq | node  | edge  |  round

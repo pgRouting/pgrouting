@@ -31,16 +31,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_DRIVERS_YEN_TURNRESTRICTEDPATH_DRIVER_H_
 #pragma once
 
-/* for size-t */
+/* for size_t and int64_t */
 #ifdef __cplusplus
+#   include <cstdint>
 #   include <cstddef>
+using Edge_t = struct Edge_t;
+using Restriction_t = struct Restriction_t;
+using Path_rt = struct Path_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_t Edge_t;
+typedef struct Restriction_t Restriction_t;
+typedef struct Path_rt Path_rt;
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/restriction_t.h"
-#include "c_types/general_path_element_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -59,7 +64,7 @@ extern "C" {
 
 
     void do_pgr_turnRestrictedPath(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_edges,
 
             Restriction_t *restrictions,
@@ -74,7 +79,7 @@ extern "C" {
             bool stop_on_first,
             bool strict,
 
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
             char ** log_msg,
             char ** notice_msg,

@@ -27,24 +27,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 #define INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 
-/* for size-t */
+/* for size_t and int64_t */
 #ifdef __cplusplus
-#   include <cstddef>
+#  include <cstddef>
+#  include <cstdint>
+using Restriction_t = struct Restriction_t;
+using Path_rt = struct Path_rt;
+using Edge_t = struct Edge_t;
 #else
-#   include <stddef.h>
+#  include <stddef.h>
+#  include <stdint.h>
+typedef struct Restriction_t Restriction_t;
+typedef struct Path_rt Path_rt;
+typedef struct Edge_t Edge_t;
 #endif
 
-#include "c_types/trsp_types.h"
-#include "c_types/pgr_edge_t.h"
-#include "c_types/restriction_t.h"
-#include "c_types/general_path_element_t.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
     void do_trsp(
-            pgr_edge_t *edges,
+            Edge_t *edges,
             size_t edge_count,
 
             Restriction_t *restrictions,
@@ -58,7 +62,7 @@ extern "C" {
 
             bool directed,
 
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
 
             char **log_msg,

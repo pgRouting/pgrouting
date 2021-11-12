@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "c_common/postgres_connection.h"
-#include "c_types/column_info_t.h"
+typedef struct Column_info_t Column_info_t;
 
 /*!
 @brief  Function will check whether the colNumber represent any specific column or NULL (SPI_ERROR_NOATTRIBUTE).

@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
+#include "c_types/path_rt.h"
 #include "c_common/time_msg.h"
 #include "c_common/e_report.h"
 
@@ -59,7 +60,7 @@ process(
         char *driving_side,
         bool details,
 
-        General_path_element_t **result_tuples,
+        Path_rt **result_tuples,
         size_t *result_count) {
     if (p_k < 0) {
         return;
@@ -88,13 +89,13 @@ process(
             &edges_no_points_query);
 
 
-    pgr_edge_t *edges_of_points = NULL;
+    Edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
     pgr_get_edges(edges_of_points_query,
             &edges_of_points,
             &total_edges_of_points);
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
@@ -166,7 +167,7 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    General_path_element_t  *result_tuples = 0;
+    Path_rt  *result_tuples = 0;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -206,11 +207,8 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -225,7 +223,7 @@ PGDLLEXPORT Datum _pgr_withpointsksp(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

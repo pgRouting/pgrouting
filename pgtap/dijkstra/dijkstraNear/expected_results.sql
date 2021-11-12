@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(142) END;
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;

@@ -1,17 +1,13 @@
-\i setup.sql
+BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(24);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(38) ELSE plan(23) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
 
 PREPARE null_ret AS
 SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
-
-SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
-SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
-
 
 CREATE OR REPLACE FUNCTION test(params TEXT[], subs TEXT[])
 RETURNS SETOF TEXT AS
@@ -58,6 +54,46 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+  IF min_version('4.0.0') THEN
+
+    RETURN QUERY SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
+    RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
+
+    params = ARRAY['$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$',
+    '1',
+    '2',
+    'true',
+    'true'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL',
+    'NULL',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
+
+    params = ARRAY['$$edges$$',
+    '1',
+    '2',
+    'true',
+    'true'
+    ]::TEXT[];
+    RETURN query SELECT no_crash_test('pgr_trsp', params, subs);
+
+  ELSE
+
     params = ARRAY['SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edge_table',
     '1',
     '2',
@@ -72,7 +108,7 @@ BEGIN
     'NULL'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM test(params, subs);
+    RETURN query SELECT test(params, subs);
 
     subs = ARRAY[
     NULL,
@@ -81,7 +117,11 @@ BEGIN
     'NULL',
     'NULL'
     ]::TEXT[];
-    RETURN query SELECT * FROM test(params, subs);
+    RETURN query SELECT test(params, subs);
+
+    RETURN QUERY SELECT skip(1, 'pgr_trsp Has some crashes');
+
+  END IF;
 
 END
 $BODY$

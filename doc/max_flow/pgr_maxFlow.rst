@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_maxFlow.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlow.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_maxFlow.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlow.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlow.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlow.html>`__
 * **Unsupported versions:**
@@ -73,7 +74,7 @@ Signatures
     pgr_maxFlow(Edges SQL, sources,  target)
     pgr_maxFlow(Edges SQL, source,  targets)
     pgr_maxFlow(Edges SQL, sources,  targets)
-    pgr_maxFlow(Edges SQL, Combinations SQL) -- Proposed on v3.2
+    pgr_maxFlow(Edges SQL, Combinations SQL)
     RETURNS BIGINT
 
 .. index::
@@ -145,7 +146,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: maxFlow(Combinations) -- Proposed on v3.2
+    single: maxFlow(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

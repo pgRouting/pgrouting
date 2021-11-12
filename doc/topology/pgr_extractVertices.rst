@@ -11,21 +11,26 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_extractVertices.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_extractVertices.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__
 
-pgr_extractVertices -- Experimental
+pgr_extractVertices -- Proposed
 ===============================================================================
 
 ``pgr_extractVertices`` — Extracts the vertices information based on the source and target.
 
 
-.. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. rubric:: Availability
+
+* Version 3.3.0
+
+  * Clasiffied as **proposed** function
 
 * Version 3.0.0
 
@@ -45,7 +50,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: pgr_extractVertices -- Experimental
+    single: pgr_extractVertices - Proposed on v3.3
 
 .. code-block:: sql
 

@@ -1,7 +1,6 @@
-\i setup.sql
+BEGIN;
+SET client_min_messages TO WARNING;
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
-
-SET client_min_messages TO ERROR;
 
 SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(56) ELSE plan(18) END;
 

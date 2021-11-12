@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCost.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCost.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__
 * **Unsupported versions:**
@@ -65,7 +66,7 @@ Signatures
     pgr_bdDijkstraCost(Edges SQL, from_vid,  to_vids [, directed])
     pgr_bdDijkstraCost(Edges SQL, from_vids, to_vid  [, directed])
     pgr_bdDijkstraCost(Edges SQL, from_vids, to_vids [, directed])
-    pgr_bdDijkstraCost(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.2
+    pgr_bdDijkstraCost(Edges SQL, Combinations SQL [, directed])
 
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
@@ -157,7 +158,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: bdDijkstraCost(Combinations) -- Proposed on v3.2
+    single: bdDijkstraCost(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

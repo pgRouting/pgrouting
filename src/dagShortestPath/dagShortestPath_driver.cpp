@@ -46,7 +46,7 @@ template < class G >
 std::deque< Path >
 pgr_dagShortestPath(
         G &graph,
-        std::vector <pgr_combination_t> &combinations,
+        std::vector <II_t_rt> &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
         bool only_cost = false) {
@@ -72,9 +72,9 @@ pgr_dagShortestPath(
 
 void
 do_pgr_dagShortestPath(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
-        pgr_combination_t *combinations,
+        II_t_rt *combinations,
         size_t total_combinations,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
@@ -83,7 +83,7 @@ do_pgr_dagShortestPath(
         bool directed,
         bool only_cost,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -109,7 +109,7 @@ do_pgr_dagShortestPath(
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
             end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::vector< pgr_combination_t >
+        std::vector< II_t_rt >
             combinations_vector(combinations, combinations + total_combinations);
 
         std::deque< Path >paths;

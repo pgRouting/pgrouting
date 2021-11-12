@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsDD.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsDD.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsDD.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsDD.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsDD.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html>`__
 * **Unsupported versions:**
@@ -84,7 +85,7 @@ Signatures
    :end-before: --q2
 
 .. index::
-    single: withPointsDD(Single Start Vertex) - proposed
+    single: withPointsDD(Single Start Vertex) - Proposed on v2.2
 
 Single vertex
 ...............................................................................
@@ -103,7 +104,7 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 .. index::
-    single: withPointsDD(Multiple Starting Vertices) - proposed
+    single: withPointsDD(Multiple Starting Vertices) - Proposed on v2.2
 
 Multiple vertices
 ...............................................................................

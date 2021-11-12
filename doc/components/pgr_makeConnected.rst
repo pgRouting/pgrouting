@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_makeConnected.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_makeConnected.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__
 
 pgr_makeConnected - Experimental
 ===============================================================================
@@ -56,6 +57,9 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
+
+.. index::
+    single: makeConnected - Experimental on v3.2
 
 .. code-block:: none
 

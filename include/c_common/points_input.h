@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #include <stddef.h>
 
-#include "c_types/point_on_edge_t.h"
+typedef struct Point_on_edge_t Point_on_edge_t;
 
 /*! @brief pgr_get_points
 

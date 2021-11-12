@@ -11,17 +11,18 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__
 
-pgr_dijkstraNearCost - Experimental
+pgr_dijkstraNearCost - Proposed
 ===============================================================================
 
 ``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads to
 the nearest vertex.
 
-.. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
@@ -29,6 +30,10 @@ the nearest vertex.
    Boost Graph Inside
 
 .. rubric:: Availability
+
+* Version 3.3.0
+
+  * Promoted to **proposed** function
 
 * Version 3.2.0
 
@@ -64,7 +69,7 @@ Signatures
     OR EMPTY SET
 
 .. index::
-    single: dijkstraNearCost(One to Many) - Experimental
+    single: dijkstraNearCost(One to Many) - Proposed on v3.3
 
 One to Many
 ...............................................................................
@@ -93,7 +98,7 @@ One to Many
 The result shows that station at vertex :math:`6` is the nearest.
 
 .. index::
-    single: dijkstraNearCost(Many to One)  - Experimental
+    single: dijkstraNearCost(Many to One) - Proposed on v3.3
 
 Many to One
 ...............................................................................
@@ -121,7 +126,7 @@ The result shows that station at vertex :math:`3` is the nearest and the next be
 is :math:`6`.
 
 .. index::
-    single: dijkstraNearCost(Many to Many)  - Experimental
+    single: dijkstraNearCost(Many to Many) - Proposed on v3.3
 
 Many to Many
 ...............................................................................
@@ -154,7 +159,7 @@ first subway line and at vertex :math:`4` of the second subway line.
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
 .. index::
-    single: dijkstraNearCost(Combinations)  - Experimental
+    single: dijkstraNearCost(Combinations) - Proposed on v3.3
 
 Combinations
 ...............................................................................

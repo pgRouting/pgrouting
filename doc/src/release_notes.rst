@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/release_notes.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/release_notes.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/release_notes.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/release_notes.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/release_notes.html>`__
 * **Unsupported versions:**
@@ -32,6 +33,56 @@ To see the full list of changes check the list of `Git commits <https://github.c
    :local:
 
 
+pgRouting 3.3.0 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github.
+
+.. rubric:: Issue fixes
+
+* `#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges columns in different order
+* `#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: pgr_extractVertices to proposed
+* `#2201 <https://github.com/pgRouting/pgrouting/issues/2201>`__: pgr_depthFirstSearch to proposed
+* `#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: pgr_sequentialVertexColoring to proposed
+* `#2203 <https://github.com/pgRouting/pgrouting/issues/2203>`__: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed
+
+.. rubric:: New experimental functions
+
+* Coloring
+
+  * pgr_edgeColoring
+
+.. rubric:: Experimental promoted to Proposed
+
+* Dijkstra
+
+  * pgr_dijkstraNear
+
+    * pgr_dijkstraNear(Combinations)
+    * pgr_dijkstraNear(Many to Many)
+    * pgr_dijkstraNear(Many to One)
+    * pgr_dijkstraNear(One to Many)
+
+  * pgr_dijkstraNearCost
+
+    * pgr_dijkstraNearCost(Combinations)
+    * pgr_dijkstraNearCost(Many to Many)
+    * pgr_dijkstraNearCost(Many to One)
+    * pgr_dijkstraNearCost(One to Many)
+
+* Coloring
+
+  * pgr_sequentialVertexColoring
+
+* Topology
+
+  * pgr_extractVertices
+
+* Traversal
+
+  * pgr_depthFirstSearch(Multiple vertices)
+  * pgr_depthFirstSearch(Single vertex)
+
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
 
@@ -47,14 +98,13 @@ pgRouting 3.2.1 Release Notes
 
 To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github.
 
-.. rubric:: Issues
+.. rubric:: Issue fixes
 
 * `#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__: pgr_TSPEuclidean crashes connection on Windows
 
   * The solution is to use Boost::graph::metric_tsp_approx
   * To not break user's code the optional parameters related to the TSP Annaeling are ignored
   * The function with the annaeling optional parameters is deprecated
-
 
 
 pgRouting 3.2.0 Release Notes
@@ -77,7 +127,7 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 * pgr_depthFirstSearch
 * Dijkstra Near
 
-  * pgr_dijkstraNearCost
+  * pgr_dijkstraNear
 
     * pgr_dijkstraNear(One to Many)
     * pgr_dijkstraNear(Many to One)
@@ -500,7 +550,7 @@ pgRouting 2.6.0 Release Notes
 To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github.
 
 
-.. rubric:: New fexperimental functions
+.. rubric:: New experimental functions
 
 *  pgr_lineGraphFull
 

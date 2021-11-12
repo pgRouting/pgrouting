@@ -36,9 +36,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stack>
 
 #include "max_flow/pgr_minCostMaxFlow.hpp"
-#include "c_types/general_path_element_t.h"
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_flow_t.h"
+#include "c_types/path_rt.h"
+#include "c_types/edge_t.h"
+#include "c_types/flow_t.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/identifiers.hpp"
 
@@ -49,14 +49,14 @@ namespace graph {
 class PgrDirectedChPPGraph {
  public:
      PgrDirectedChPPGraph(
-             const pgr_edge_t *dataEdges,
+             const Edge_t *dataEdges,
              const size_t totalEdges);
 
      double DirectedChPP() const {
          return m_cost;
      }
 
-     std::vector<General_path_element_t> GetPathEdges() const {
+     std::vector<Path_rt> GetPathEdges() const {
          return resultPath;
      }
 
@@ -80,12 +80,12 @@ class PgrDirectedChPPGraph {
      /** (source, target) -> idx to originalEdges;
       * Only the one with the lower cost is kept
       */
-     std::map<std::pair<int64_t, int64_t>, const pgr_edge_t*> edgeToIdx;
+     std::map<std::pair<int64_t, int64_t>, const Edge_t*> edgeToIdx;
      std::map<std::pair<int64_t, int64_t>,  // source, target
               size_t> edgeToId;  // index in resultEdges
 
-     std::vector<pgr_edge_t> originalEdges;
-     std::vector<pgr_edge_t> resultEdges;
+     std::vector<Edge_t> originalEdges;
+     std::vector<Edge_t> resultEdges;
 
      /** vector of vertex -> vector of edges **/
      std::vector<std::pair<int64_t, std::vector<size_t>>> resultGraph;
@@ -94,10 +94,10 @@ class PgrDirectedChPPGraph {
      Identifiers<int64_t> vertexVisited;
 
      std::stack<int64_t> pathStack;  // node stack
-     std::vector<General_path_element_t> resultPath;
+     std::vector<Path_rt> resultPath;
 
      /* for the flow graph */
-     std::vector<pgr_costFlow_t> edges;
+     std::vector<CostFlow_t> edges;
      std::set<int64_t> sources;
      std::set<int64_t> targets;
 };
@@ -106,7 +106,7 @@ PgrDirectedChPPGraph::~PgrDirectedChPPGraph() {
     edgeToIdx.clear();
 }
 PgrDirectedChPPGraph::PgrDirectedChPPGraph(
-        const pgr_edge_t *dataEdges,
+        const Edge_t *dataEdges,
         const size_t totalEdges) :
     totalDeg(0), totalCost(0), vertices(),
     edgeToIdx(), originalEdges(),
@@ -160,7 +160,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
             }
         }
 
-        pgr_costFlow_t edge;
+        CostFlow_t edge;
         edge.edge_id = e.id;
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
@@ -188,7 +188,7 @@ PgrDirectedChPPGraph::PgrDirectedChPPGraph(
             continue;
         if (d > 0)
             totalDeg += d;
-        pgr_costFlow_t edge;
+        CostFlow_t edge;
         edge.reverse_capacity = -1;
         edge.reverse_cost = -1.0;
         edge.cost = 0.0;
@@ -227,13 +227,13 @@ PgrDirectedChPPGraph::setPathEdges(graph::PgrCostFlowGraph &flowGraph) {
     try {
         flowGraph.MinCostMaxFlow();
         flowGraph.GetMaxFlow();
-        std::vector<pgr_flow_t> addedEdges = flowGraph.GetFlowEdges();
+        std::vector<Flow_t> addedEdges = flowGraph.GetFlowEdges();
         resultEdges = originalEdges;
         for (auto &flow_t : addedEdges) {
             if (flow_t.source != superSource && flow_t.source != superTarget
                     && flow_t.target != superSource && flow_t.target != superTarget) {
                 auto current_edge(std::make_pair(flow_t.source, flow_t.target));
-                pgr_edge_t newEdge = *edgeToIdx[current_edge];
+                Edge_t newEdge = *edgeToIdx[current_edge];
                 /* adding edges that need to be traversed twice */
                 while (flow_t.flow--) resultEdges.push_back(newEdge);
             }
@@ -272,7 +272,7 @@ PgrDirectedChPPGraph::BuildResultPath() {
     int64_t preNode = pathStack.top();
     pathStack.pop();
 
-    General_path_element_t newElement;
+    Path_rt newElement;
     while (!pathStack.empty()) {
         int64_t nowNode = pathStack.top();
         pathStack.pop();

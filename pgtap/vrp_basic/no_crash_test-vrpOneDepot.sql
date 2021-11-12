@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(13);

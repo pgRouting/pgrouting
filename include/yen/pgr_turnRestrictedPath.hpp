@@ -43,7 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/compPaths.h"
 #include "cpp_common/pgr_messages.h"
 #include "cpp_common/rule.h"
-#include "c_types/line_graph_rt.h"
 
 namespace pgrouting {
 namespace yen {

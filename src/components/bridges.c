@@ -56,7 +56,7 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -113,11 +113,8 @@ PGDLLEXPORT Datum _pgr_bridges(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-#if PGSQL_VERSION > 94
-        funcctx->max_calls = (uint32_t)result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+        funcctx->max_calls = result_count;
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {

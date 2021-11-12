@@ -35,14 +35,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <memory>
 #include <utility>
 
-#include "c_types/pickDeliver/general_vehicle_orders_t.h"
 #include "c_types/pickDeliver/vehicle_t.h"
-#include "c_types/pickDeliver/pickDeliveryOrders_t.h"
+#include "c_types/pickDeliver/orders_t.h"
 #include "vrp/pd_problem.h"
 #include "cpp_common/Dmatrix.h"
 #include "vrp/fleet.h"
 #include "vrp/pd_orders.h"
 #include "vrp/solution.h"
+
+using Schedule_rt = struct Schedule_rt;
 
 namespace pgrouting {
 namespace vrp {
@@ -63,7 +64,7 @@ class Pgr_pickDeliver : public PD_problem {
 
  public:
     Pgr_pickDeliver(
-            const std::vector<PickDeliveryOrders_t> &pd_orders,
+            const std::vector<Orders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
             const pgrouting::tsp::Dmatrix &cost_matrix,
             double factor,
@@ -72,7 +73,7 @@ class Pgr_pickDeliver : public PD_problem {
 
     void solve();
 
-    std::vector<General_vehicle_orders_t>
+    std::vector<Schedule_rt>
         get_postgres_result() const;
 
 

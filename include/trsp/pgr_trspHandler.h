@@ -101,7 +101,7 @@ class Pgr_trspHandler {
 
  public:
     Pgr_trspHandler(
-            pgr_edge_t *edges,
+            Edge_t *edges,
             const size_t edge_count,
             const bool directed,
             const std::vector<Rule> &ruleList);
@@ -123,7 +123,7 @@ class Pgr_trspHandler {
 
  private:
     void construct_graph(
-            pgr_edge_t *edges,
+            Edge_t *edges,
             const size_t edge_count,
             const bool directed);
 
@@ -148,7 +148,7 @@ class Pgr_trspHandler {
             int64_t cur_node,
             const EdgeInfo &new_edge,
             bool isStart);
-    bool addEdge(const pgr_edge_t edgeIn);
+    bool addEdge(const Edge_t edgeIn);
 
     void connectStartEdge(
             size_t firstEdge_idx,
@@ -162,7 +162,7 @@ class Pgr_trspHandler {
 
 
     int64_t renumber_edges(
-            pgr_edge_t *edges,
+            Edge_t *edges,
             const size_t edge_count) const;
 
     void  add_to_que(

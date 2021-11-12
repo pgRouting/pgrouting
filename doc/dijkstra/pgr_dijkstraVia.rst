@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraVia.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraVia.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__
 * **Unsupported versions:**
@@ -56,6 +57,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: dijkstraVia - Proposed
+
 .. code-block:: none
 
     pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
@@ -75,11 +79,8 @@ Signatures
 :Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}`  in that order
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
-    :start-after: --q00
+    :start-after: -- q00
     :end-before: -- q0
-
-.. index::
-    single: dijkstraVia - Proposed
 
 Complete Signature
 ...............................................................................

@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 
+#include "c_types/edge_bool_t_rt.h"
 
 
 namespace pgrouting {
@@ -77,7 +78,7 @@ class PgrCardinalityGraph {
       return E_to_id[e];
   }
 
-  PgrCardinalityGraph(pgr_basic_edge_t *data_edges, size_t total_tuples) {
+  PgrCardinalityGraph(Edge_bool_t_rt *data_edges, size_t total_tuples) {
       std::set<int64_t> vertices;
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
@@ -106,10 +107,10 @@ class PgrCardinalityGraph {
       }
   }
 
-  std::vector<pgr_basic_edge_t>
+  std::vector<Edge_bool_t_rt>
   get_matched_vertices() {
       std::vector<V> mate_map(boost::num_vertices(boost_graph));
-      std::vector<pgr_basic_edge_t> matched_vertices;
+      std::vector<Edge_bool_t_rt> matched_vertices;
       maximum_cardinality_matching(mate_map);
 
       V_it vi, vi_end;
@@ -135,7 +136,7 @@ class PgrCardinalityGraph {
                   && !already_matched[mate_map[*vi]]) {
                   already_matched[*vi] = true;
                   already_matched[mate_map[*vi]] = true;
-                  pgr_basic_edge_t matched_couple;
+                  Edge_bool_t_rt matched_couple;
                   matched_couple.source = get_vertex_id(*vi);
                   matched_couple.target = get_vertex_id(mate_map[*vi]);
                   matched_couple.edge_id = get_edge_id(e);
@@ -151,7 +152,7 @@ class PgrCardinalityGraph {
               if (((uint64_t)mate_map[*vi]
                           != boost::graph_traits<G>::null_vertex())
                   && (*vi < (uint64_t)mate_map[*vi])) {
-                  pgr_basic_edge_t matched_couple;
+                  Edge_bool_t_rt matched_couple;
                   matched_couple.source = get_vertex_id(*vi);
                   matched_couple.target = get_vertex_id(mate_map[*vi]);
                   matched_couple.edge_id = get_edge_id(e);

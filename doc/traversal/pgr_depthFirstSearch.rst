@@ -11,9 +11,10 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__
 
-pgr_depthFirstSearch - Experimental
+pgr_depthFirstSearch - Proposed
 ===============================================================================
 
 ``pgr_depthFirstSearch`` — Returns a depth first search traversal of the graph.
@@ -24,11 +25,15 @@ The graph can be directed or undirected.
 
    Boost Graph Inside
 
-.. include:: experimental.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-exp
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
 .. rubric:: Availability
+
+* Version 3.3.0
+
+  * Promoted to **proposed** function
 
 * Version 3.2.0
 
@@ -64,8 +69,8 @@ Signatures
 
 .. code-block:: none
 
-    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth]) -- Experimental on v3.2
-    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth]) -- Experimental on v3.2
+    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
+    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -78,7 +83,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: depthFirstSearch(Single vertex) -- Experimental on v3.2
+    single: depthFirstSearch(Single vertex) - Proposed on v3.3
 
 Single vertex
 ...............................................................................
@@ -97,7 +102,7 @@ Single vertex
    :end-before: -- q3
 
 .. index::
-    single: depthFirstSearch(Multiple vertices) -- Experimental on v3.2
+    single: depthFirstSearch(Multiple vertices) - Proposed on v3.3
 
 Multiple vertices
 ...............................................................................

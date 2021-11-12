@@ -28,12 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
+#include "c_types/restriction_t.h"
 
 
 namespace pgrouting {
 namespace trsp {
 
-    Rule::Rule(Restriction_t r) :
+    Rule::Rule(const Restriction_t &r) :
         m_cost(r.cost),
         m_precedencelist(r.via, r.via + r.via_size),
         m_all(r.via, r.via + r.via_size) {

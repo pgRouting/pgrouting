@@ -56,7 +56,7 @@ class Pgr_randomSpanningTree {
      typedef typename G::V V;
      typedef typename G::E E;
 
-     std::vector<pgr_randomSpanningTree_t> randomSpanningTree(
+     std::vector<SpanTree_rt> randomSpanningTree(
                  G &graph,
                  int64_t root_vertex);
 
@@ -65,7 +65,7 @@ class Pgr_randomSpanningTree {
       std::vector< V > predecessors;
 
       // Function
-      std::vector< pgr_randomSpanningTree_t >
+      std::vector< SpanTree_rt >
       undirectedGraph(
            const G &graph,
                int64_t root_vertex) {
@@ -92,11 +92,12 @@ class Pgr_randomSpanningTree {
              log << "Unknown exception caught";
          }
 
-         std::vector< pgr_randomSpanningTree_t > resul;
+         std::vector< SpanTree_rt > resul;
          return resul;
-         std::vector< pgr_randomSpanningTree_t > results;
+#if 0
+         std::vector< SpanTree_rt > results;
          double totalcost = 0;
-         pgr_randomSpanningTree_t tmp;
+         SpanTree_rt tmp;
 
          tmp.root_vertex = root_vertex;
          tmp.edge = -1;
@@ -107,7 +108,7 @@ class Pgr_randomSpanningTree {
 
          for (size_t j = 0; j < predecessors.size(); j++) {
            if (j != v_root) {
-             pgr_randomSpanningTree_t tmp;
+             SpanTree_rt tmp;
 
              auto start_node = graph.graph[predecessors[j]].id;
              auto end_node = graph.graph[j].id;  // node
@@ -130,10 +131,11 @@ class Pgr_randomSpanningTree {
          }
          return results;
     }
+#endif
 };
 
 template < class G >
-std::vector<pgr_randomSpanningTree_t>
+std::vector<SpanTree_rt>
 Pgr_randomSpanningTree< G >::randomSpanningTree(
                 G &graph,
                 int64_t root_vertex ) {

@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 
+#include "c_types/iid_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -46,12 +47,12 @@ static
 void process(
         char* edges_sql,
         bool directed,
-        Matrix_cell_t **result_tuples,
+        IID_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_tuples = 0;
     pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 
@@ -106,7 +107,7 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    Matrix_cell_t *result_tuples = NULL;
+    IID_t_rt *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -133,11 +134,7 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
         /*                                                                   */
         /*********************************************************************/
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -152,7 +149,7 @@ _pgr_johnson(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (Matrix_cell_t*) funcctx->user_fctx;
+    result_tuples = (IID_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

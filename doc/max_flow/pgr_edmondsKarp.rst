@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_edmondsKarp.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_edmondsKarp.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_edmondsKarp.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_edmondsKarp.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_edmondsKarp.html>`__
 * **Unsupported versions:**
@@ -73,7 +74,7 @@ Signatures
     pgr_edmondsKarp(Edges SQL, sources, target)
     pgr_edmondsKarp(Edges SQL, source,  targets)
     pgr_edmondsKarp(Edges SQL, sources, targets)
-    pgr_edmondsKarp(Edges SQL, Combinations SQL) -- Proposed on v3.2
+    pgr_edmondsKarp(Edges SQL, Combinations SQL)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -150,7 +151,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: edmondsKarp(Combinations) -- Proposed on v3.2
+    single: edmondsKarp(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

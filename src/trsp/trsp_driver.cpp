@@ -34,12 +34,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/rule.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
+#include "c_types/restriction_t.h"
 
 
 
 void
 do_trsp(
-        pgr_edge_t *edges,
+        Edge_t *edges,
         size_t total_edges,
 
         Restriction_t *restrictions,
@@ -53,7 +54,7 @@ do_trsp(
 
         bool directed,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,

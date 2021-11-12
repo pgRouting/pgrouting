@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "drivers/dijkstra/dijkstra_driver.h"
-#include <c_types/pgr_combination_t.h>
+#include <c_types/ii_t_rt.h>
 
 #include <sstream>
 #include <deque>
@@ -131,7 +131,7 @@ template < class G >
 std::deque< Path >
 pgr_dijkstra(
         G &graph,
-        std::vector < pgr_combination_t > &combinations,
+        std::vector < II_t_rt > &combinations,
         bool only_cost,
         bool normal,
         size_t n_goals,
@@ -156,7 +156,7 @@ pgr_dijkstra(
 // directed boolean default true,
 void
 do_pgr_many_to_many_dijkstra(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
@@ -168,7 +168,7 @@ do_pgr_many_to_many_dijkstra(
         int64_t n_goals,
         bool global,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -260,9 +260,9 @@ do_pgr_many_to_many_dijkstra(
 // directed boolean default true,
 void
 do_pgr_combinations_dijkstra(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
-        pgr_combination_t *combinations,
+        II_t_rt *combinations,
         size_t total_combinations,
         bool directed,
         bool only_cost,
@@ -270,7 +270,7 @@ do_pgr_combinations_dijkstra(
         int64_t n_goals,
         bool global,
 
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -291,7 +291,7 @@ do_pgr_combinations_dijkstra(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
 
-        std::vector<pgr_combination_t>
+        std::vector<II_t_rt>
                 combinations_vector(combinations, combinations + total_combinations);
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);

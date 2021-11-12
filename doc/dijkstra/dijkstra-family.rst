@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/dijkstra-family.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-family.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__
 * **Unsupported versions:**
@@ -44,21 +45,10 @@ Dijkstra - Family of functions
 .. index proposed from here
 
 * :doc:`pgr_dijkstraVia` - Get a route of a seuence of vertices.
-
-.. index proposed to here
-
-.. rubric:: Experimental
-
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
-.. index experimental from here
-
 * :doc:`pgr_dijkstraNear` - Get the route to the nearest vertex.
 * :doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex.
 
-.. index experimental to here
+.. index proposed to here
 
 .. toctree::
     :hidden:

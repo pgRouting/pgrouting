@@ -50,6 +50,8 @@ class Pgr_ksp :  public Pgr_messages {
 
  public:
      Pgr_ksp() :
+         m_start(0),
+         m_end(0),
          m_K(0),
          m_heap_paths(false) {
              m_vis = new Visitor;

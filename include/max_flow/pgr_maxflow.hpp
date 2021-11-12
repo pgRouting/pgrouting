@@ -42,9 +42,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include "c_types/pgr_flow_t.h"
-#include "c_types/pgr_edge_t.h"
-#include "c_types/general_path_element_t.h"
+#include "c_types/flow_t.h"
+#include "c_types/edge_t.h"
+#include "c_types/path_rt.h"
 #include "cpp_common/interruption.h"
 
 
@@ -96,7 +96,7 @@ class PgrFlowGraph {
                  supersink);
      }
 
-     std::vector<General_path_element_t> edge_disjoint_paths() {
+     std::vector<Path_rt> edge_disjoint_paths() {
          /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
          CHECK_FOR_INTERRUPTS();
          auto flow = boost::boykov_kolmogorov_max_flow(
@@ -107,21 +107,21 @@ class PgrFlowGraph {
      }
 
      PgrFlowGraph(
-             const std::vector<pgr_edge_t> &edges,
+             const std::vector<Edge_t> &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices,
              int algorithm);
 
      PgrFlowGraph(
-             const std::vector<pgr_edge_t> &edges,
+             const std::vector<Edge_t> &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices,
              bool directed);
 
 
-     std::vector<pgr_flow_t> get_flow_edges() const;
+     std::vector<Flow_t> get_flow_edges() const;
 
-     std::vector<General_path_element_t> get_edge_disjoint_paths(
+     std::vector<Path_rt> get_edge_disjoint_paths(
              size_t flow);
 
  private:
@@ -143,11 +143,11 @@ class PgrFlowGraph {
              const std::set<int64_t> &sink_vertices);
 
      void insert_edges_push_relabel(
-             const std::vector<pgr_edge_t> &edges);
+             const std::vector<Edge_t> &edges);
      void insert_edges(
-             const std::vector<pgr_edge_t> &edges);
+             const std::vector<Edge_t> &edges);
      void insert_edges_edge_disjoint(
-             const std::vector<pgr_edge_t> &edges,
+             const std::vector<Edge_t> &edges,
              bool directed);
 
      void flow_dfs(

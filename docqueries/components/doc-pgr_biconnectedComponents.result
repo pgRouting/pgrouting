@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_biconnectedComponents(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
@@ -28,7 +28,7 @@ SELECT * FROM pgr_biconnectedComponents(
   18 |        18 |   18
 (18 rows)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_biconnectedComponents(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );

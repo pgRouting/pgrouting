@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+using Edge_bool_t_rt = struct Edge_bool_t_rt;
 #else
 #   include <stddef.h>
+typedef struct Edge_bool_t_rt Edge_bool_t_rt;
 #endif
-
-#include "c_types/pgr_basic_edge_t.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,11 +46,11 @@ extern "C" {
 
     void
         do_pgr_maximum_cardinality_matching(
-            pgr_basic_edge_t *data_edges,
+            Edge_bool_t_rt *data_edges,
             size_t total_edges,
             bool directed,
 
-            pgr_basic_edge_t **return_tuples,
+            Edge_bool_t_rt **return_tuples,
             size_t *return_count,
 
             char** log_msg,

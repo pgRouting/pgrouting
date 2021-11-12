@@ -31,6 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "c_types/trsp/trsp.h"
+#include "c_types/edge_t.h"
+
+#include "c_common/edges_input.h"
+
+#include "trsp/trsp_core.h"
+typedef struct restrict_t restrict_t;
+typedef struct Edge_t Edge_t;
+typedef struct path_element_tt path_element_tt;
 
 PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);
 
@@ -49,19 +57,6 @@ typedef struct restrict_columns {
   int to_cost;
 } restrict_columns_t;
 
-
-
-
-static int
-finish(int code, int ret) {
-  PGR_DBG("In finish, trying to disconnect from spi %d", ret);
-  code = SPI_finish();
-  if (code != SPI_OK_FINISH) {
-    elog(ERROR, "couldn't disconnect from SPI");
-    return -1;
-  }
-  return ret;
-}
 
 /*
  * This function fetches the resturction columns from an SPITupleTable..
@@ -91,100 +86,6 @@ fetch_restrict_columns(SPITupleTable *tuptable,
   }
 
   return 0;
-}
-
-/*
- * This function fetches the edge columns from the SPITupleTable.
- *
-*/
-static int
-fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
-                   bool has_reverse_cost) {
-  edge_columns->id = SPI_fnumber(tuptable->tupdesc, "id");
-  edge_columns->source = SPI_fnumber(tuptable->tupdesc, "source");
-  edge_columns->target = SPI_fnumber(tuptable->tupdesc, "target");
-  edge_columns->cost = SPI_fnumber(tuptable->tupdesc, "cost");
-  if (edge_columns->id == SPI_ERROR_NOATTRIBUTE ||
-      edge_columns->source == SPI_ERROR_NOATTRIBUTE ||
-      edge_columns->target == SPI_ERROR_NOATTRIBUTE ||
-      edge_columns->cost == SPI_ERROR_NOATTRIBUTE) {
-      elog(ERROR, "Error, query must return columns "
-           "'id', 'source', 'target' and 'cost'");
-      return -1;
-    }
-
-  if (SPI_gettypeid(tuptable->tupdesc, edge_columns->source) != INT4OID ||
-      SPI_gettypeid(tuptable->tupdesc, edge_columns->target) != INT4OID ||
-      SPI_gettypeid(tuptable->tupdesc, edge_columns->cost) != FLOAT8OID) {
-      elog(ERROR, "Error, columns 'source', 'target' must be of type int4, "
-      "'cost' must be of type float8");
-      return -1;
-    }
-
-  PGR_DBG("columns: id %i source %i target %i cost %i",
-      edge_columns->id, edge_columns->source,
-      edge_columns->target, edge_columns->cost);
-
-  if (has_reverse_cost) {
-      edge_columns->reverse_cost = SPI_fnumber(tuptable->tupdesc,
-                                               "reverse_cost");
-
-      if (edge_columns->reverse_cost == SPI_ERROR_NOATTRIBUTE) {
-          elog(ERROR, "Error, reverse_cost is used, but query did't return "
-               "'reverse_cost' column");
-          return -1;
-        }
-
-      if (SPI_gettypeid(tuptable->tupdesc, edge_columns->reverse_cost)
-          != FLOAT8OID) {
-          elog(ERROR, "Error, columns 'reverse_cost' must be of type float8");
-          return -1;
-        }
-
-      PGR_DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
-    }
-
-  return 0;
-}
-
-/*
- * To fetch a edge from Tuple.
- *
- */
-
-static void
-fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
-           edge_columns_t *edge_columns, edge_t *target_edge) {
-  Datum binval;
-  bool isnull;
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->id, &isnull);
-  if (isnull)
-    elog(ERROR, "id contains a null value");
-  target_edge->id = DatumGetInt32(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->source, &isnull);
-  if (isnull)
-    elog(ERROR, "source contains a null value");
-  target_edge->source = DatumGetInt32(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->target, &isnull);
-  if (isnull)
-    elog(ERROR, "target contains a null value");
-  target_edge->target = DatumGetInt32(binval);
-
-  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->cost, &isnull);
-  if (isnull)
-    elog(ERROR, "cost contains a null value");
-  target_edge->cost = DatumGetFloat8(binval);
-
-  if (edge_columns->reverse_cost != -1) {
-      binval = SPI_getbinval(*tuple, *tupdesc, edge_columns->reverse_cost,
-                             &isnull);
-      if (isnull)
-        elog(ERROR, "reverse_cost contains a null value");
-      target_edge->reverse_cost =  DatumGetFloat8(binval);
-    }
 }
 
 
@@ -234,119 +135,33 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 
 
 static int compute_trsp(
-    char* sql,
-    int dovertex,
-    int64_t start_id,
-    double start_pos,
-    int64_t end_id,
-    double end_pos,
-    bool directed,
-    bool has_reverse_cost,
-    char* restrict_sql,
-    path_element_tt **path,
-    size_t *path_count) {
+        char* sql,
+        int dovertex,
+        int64_t start_id,
+        double start_pos,
+        int64_t end_id,
+        double end_pos,
+        bool directed,
+        bool has_reverse_cost,
+        char* restrict_sql,
+        path_element_tt **path,
+        size_t *path_count) {
+  pgr_SPI_connect();
 
-  int SPIcode;
   SPIPlanPtr SPIplan;
   Portal SPIportal;
-  bool moredata = true;
-  uint32_t TUPLIMIT = 1000;
-  uint32_t ntuples;
 
-  edge_t *edges = NULL;
-  uint32_t total_tuples = 0;
-#ifndef _MSC_VER
-  edge_columns_t edge_columns = {.id = -1, .source = -1, .target = -1,
-                                 .cost = -1, .reverse_cost = -1};
-#else  // _MSC_VER
-  edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
-#endif  // _MSC_VER
-  restrict_t *restricts = NULL;
-  uint32_t total_restrict_tuples = 0;
-  restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
-                                 .to_cost = -1};
+  Edge_t *edges = NULL;
+  size_t total_tuples = 0;
+  pgr_get_edges(sql, &edges, &total_tuples);
+
+  // defining min and max vertex id
   int64_t v_max_id = 0;
   int64_t v_min_id = INT_MAX;
 
-  /* track if start and end are both in edge tuples */
-  int s_count = 0;
-  int t_count = 0;
-
-  char *err_msg;
-  int ret = -1;
-  uint32_t z;
-
-  PGR_DBG("start turn_restrict_shortest_path\n");
-
-  SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT) {
-      elog(ERROR, "turn_restrict_shortest_path: "
-      "couldn't open a connection to SPI");
-      return -1;
-  }
-
-  SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL) {
-      elog(ERROR, "turn_restrict_shortest_path: "
-      "couldn't create query plan via SPI");
-      return -1;
-  }
-
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
-      elog(ERROR, "turn_restrict_shortest_path: "
-      "SPI_cursor_open('%s') returns NULL", sql);
-      return -1;
-  }
-
-  while (moredata == true) {
-      // PGR_DBG("calling SPI_cursor_fetch");
-      SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
-
-      if (SPI_tuptable == NULL) {
-          elog(ERROR, "SPI_tuptable is NULL");
-          return finish(SPIcode, -1);
-      }
-
-      if (edge_columns.id == -1) {
-          if (fetch_edge_columns(SPI_tuptable, &edge_columns,
-                                 has_reverse_cost) == -1)
-                return finish(SPIcode, ret);
-      }
-
-      ntuples = SPI_processed;
-
-      total_tuples += ntuples;
-
-      if (ntuples > 0) {
-          if (!edges)
-            edges = palloc(total_tuples * sizeof(edge_t));
-          else
-            edges = repalloc(edges, total_tuples * sizeof(edge_t));
-
-          if (edges == NULL) {
-              elog(ERROR, "Out of memory");
-              return finish(SPIcode, ret);
-          }
-
-          uint32_t t;
-          SPITupleTable *tuptable = SPI_tuptable;
-          TupleDesc tupdesc = SPI_tuptable->tupdesc;
-
-          for (t = 0; t < ntuples; t++) {
-              HeapTuple tuple = tuptable->vals[t];
-              fetch_edge(&tuple, &tupdesc, &edge_columns,
-                         &edges[total_tuples - ntuples + t]);
-          }
-          SPI_freetuptable(tuptable);
-      } else {
-          moredata = false;
-      }
-  }
-  SPI_cursor_close(SPIportal);
-
-  // defining min and max vertex id
-
-  for (z = 0; z < total_tuples; z++) {
+  for (size_t z = 0; z < total_tuples; z++) {
+    PGR_DBG("id %ld source %ld target %ld cost %f rev %f",
+            edges[z].id, edges[z].source, edges[z].target, edges[z].cost, edges[z].reverse_cost);
     if (edges[z].source < v_min_id)
       v_min_id = edges[z].source;
 
@@ -363,7 +178,10 @@ static int compute_trsp(
   // ::::::::::::::::::::::::::::::::::::
   // :: reducing vertex id (renumbering)
   // ::::::::::::::::::::::::::::::::::::
-  for (z = 0; z < total_tuples; z++) {
+  /* track if start and end are both in edge tuples */
+  int s_count = 0;
+  int t_count = 0;
+  for (size_t z = 0; z < total_tuples; z++) {
     // check if edges[] contains source and target
     if (dovertex) {
         if (edges[z].source == start_id || edges[z].target == start_id)
@@ -382,7 +200,7 @@ static int compute_trsp(
   }
 
   PGR_DBG("Min vertex id: %ld , Max vid: %ld", v_min_id, v_max_id);
-  PGR_DBG("Total %i edge tuples", total_tuples);
+  PGR_DBG("Total %ld edge tuples", total_tuples);
 
   if (s_count == 0) {
     elog(ERROR, "Start id was not found.");
@@ -400,10 +218,19 @@ static int compute_trsp(
   }
 
   PGR_DBG("Fetching restriction tuples\n");
+  restrict_t *restricts = NULL;
+  uint64_t total_restrict_tuples = 0;
+  restrict_columns_t restrict_columns = {.target_id = -1, .via_path = -1,
+                                 .to_cost = -1};
+
+  char *err_msg;
+  int ret = -1;
 
   if (restrict_sql == NULL) {
       PGR_DBG("Sql for restrictions is null.");
   } else {
+      uint32_t TUPLIMIT = 1000;
+
       SPIplan = SPI_prepare(restrict_sql, 0, NULL);
       if (SPIplan  == NULL) {
           elog(ERROR, "turn_restrict_shortest_path: "
@@ -418,7 +245,7 @@ static int compute_trsp(
           return -1;
       }
 
-      moredata = true;
+      bool moredata = true;
       while (moredata == true) {
           SPI_cursor_fetch(SPIportal, true, TUPLIMIT);
 
@@ -426,15 +253,13 @@ static int compute_trsp(
               if (fetch_restrict_columns(SPI_tuptable, &restrict_columns) \
               == -1) {
                 PGR_DBG("fetch_restrict_columns failed!");
-                return finish(SPIcode, ret);
+                pgr_SPI_finish();
+                return -1;
               }
           }
 
           /* Suppress the -Wconversion warning temporarily */
-          #pragma GCC diagnostic push
-          #pragma GCC diagnostic ignored "-Wconversion"
-          ntuples = SPI_processed;
-          #pragma GCC diagnostic pop
+          uint64_t ntuples = SPI_processed;
 
           total_restrict_tuples += ntuples;
 
@@ -446,8 +271,9 @@ static int compute_trsp(
                     total_restrict_tuples * sizeof(restrict_t));
 
               if (restricts == NULL) {
+                  pgr_SPI_finish();
                   elog(ERROR, "Out of memory");
-                  return finish(SPIcode, ret);
+                  return -1;
               }
 
               uint32_t t;
@@ -467,7 +293,7 @@ static int compute_trsp(
       SPI_cursor_close(SPIportal);
   }
 
-  PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
+  PGR_DBG("Total %ld restriction tuples", total_restrict_tuples);
 
       PGR_DBG("Calling trsp_edge_wrapper\n");
       ret = trsp_edge_wrapper(edges, total_tuples,
@@ -483,7 +309,7 @@ static int compute_trsp(
   // ::::::::::::::::::::::::::::::::
   // :: restoring original vertex id
   // ::::::::::::::::::::::::::::::::
-  for (z = 0; z < *path_count; z++) {
+  for (size_t z = 0; z < *path_count; z++) {
     if (z || (*path)[z].vertex_id != -1)
         (*path)[z].vertex_id += v_min_id;
   }
@@ -497,7 +323,8 @@ static int compute_trsp(
         errmsg("Error computing path: %s", err_msg)));
     }
 
-  return finish(SPIcode, ret);
+  pgr_SPI_finish();
+  return 0;
 }
 
 
@@ -552,8 +379,6 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
         sql = NULL;
       } else {
         sql = text_to_cstring(PG_GETARG_TEXT_P(7));
-        if (strlen(sql) == 0)
-            sql = NULL;
       }
 
       PGR_DBG("Calling compute_trsp");
@@ -570,11 +395,7 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
                                    &path, &path_count);
 
       // total number of tuples to be returned
-#if PGSQL_VERSION > 95
         funcctx->max_calls = path_count;
-#else
-        funcctx->max_calls = (uint32_t)path_count;
-#endif
 
         funcctx->user_fctx = path;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)

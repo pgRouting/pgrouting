@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/support.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/support.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/support.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/support.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/support.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/support.html>`__
 * **Unsupported versions:**
@@ -26,7 +27,7 @@
 Support
 ===============================================================================
 
-pgRouting community support is available through the `pgRouting website <https://pgrouting.org/support.html>`_, `documentation <http://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services.
+pgRouting community support is available through the `pgRouting website <https://pgrouting.org/support.html>`_, `documentation <https://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services.
 
 
 Reporting Problems
@@ -84,9 +85,6 @@ For users who require professional support, development and consulting services,
    * - Paragon Corporation
      - United States
      - https://www.paragoncorporation.com
-   * - Camptocamp
-     - Switzerland, France
-     - https://www.camptocamp.com
    * - Netlab
      - Capranica, Italy
      - https://www.osgeo.org/service-providers/netlab/

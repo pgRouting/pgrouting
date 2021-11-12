@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_withPoints.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPoints.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPoints.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPoints.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__
 * **Unsupported versions:**
@@ -97,12 +98,12 @@ Signatures
 
 .. code-block:: none
 
-    pgr_withPoints(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side] [, details])
-    pgr_withPoints(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side] [, details])
-    pgr_withPoints(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side] [, details])
-    pgr_withPoints(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side] [, details])
-    pgr_withPoints(Edges SQL, Points SQL, Combinations SQL  [, directed] [, driving_side] [, details])
-    RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+   pgr_withPoints(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side] [, details])
+   pgr_withPoints(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side] [, details])
+   pgr_withPoints(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side] [, details])
+   pgr_withPoints(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side] [, details])
+   pgr_withPoints(Edges SQL, Points SQL, Combinations SQL [, directed] [, driving_side] [, details])
+   RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 .. rubric:: Using defaults
 
@@ -122,7 +123,7 @@ Signatures
    :end-before: --e2
 
 .. index::
-    single: withPoints(One to One) - Proposed
+    single: withPoints(One to One) - Proposed on v2.2
 
 One to One
 ...............................................................................
@@ -139,7 +140,7 @@ One to One
    :end-before: --e3
 
 .. index::
-    single: withPoints(One to Many) - Proposed
+    single: withPoints(One to Many) - Proposed on v2.2
 
 One to Many
 ...............................................................................
@@ -156,7 +157,7 @@ One to Many
    :end-before: --e4
 
 .. index::
-    single: withPoints(Many to One) - Proposed
+    single: withPoints(Many to One) - Proposed on v2.2
 
 Many to One
 ...............................................................................
@@ -173,7 +174,7 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPoints(Many to Many) - Proposed
+    single: withPoints(Many to Many) - Proposed on v2.2
 
 Many to Many
 ...............................................................................
@@ -190,7 +191,7 @@ Many to Many
    :end-before: --q2
 
 .. index::
-    single: withPoints(Combinations) -- Proposed on v3.2
+    single: withPoints(Combinations) - Proposed on v3.2
 
 Combinations SQL
 ...............................................................................

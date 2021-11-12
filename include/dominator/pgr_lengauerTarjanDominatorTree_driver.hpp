@@ -55,11 +55,11 @@ class Pgr_LTDTree : public pgrouting::Pgr_messages {
             typedef typename G::V Vertex;
             typedef typename G::E_i E_i;
             typedef typename G::V_i V_i;
-            std::vector <pgr_ltdtree_rt> pgr_ltdtree(
+            std::vector <II_t_rt> pgr_ltdtree(
                     G &graph,
                     int64_t root
                     ){
-                std::vector<pgr_ltdtree_rt> results;
+                std::vector<II_t_rt> results;
                 std::vector<int64_t> idoms = std::vector<int64_t>(boost::num_vertices(graph.graph), -1);
                 auto dominatorTree =
                 make_iterator_property_map

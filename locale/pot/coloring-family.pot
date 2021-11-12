@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.2.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"POT-Creation-Date: 2021-11-09 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/coloring-family.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/coloring-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__)"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/coloring-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/coloring-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:18
-msgid "Coloring - Family of functions (Experimental)"
+#: ../../build/doc/coloring-family.rst:19
+msgid "Coloring - Family of functions"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:22
+msgid "Proposed"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:29
+msgid ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:34
+msgid "Experimental"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:3
@@ -92,47 +140,49 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:26
-msgid ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach."
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:27
+#: ../../build/doc/coloring-family.rst:41
 msgid ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:40
+#: ../../build/doc/coloring-family.rst:42
+msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:56
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:61
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:61
 #: ../../build/doc/traversal-family.rst:4
-#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:87
+#: ../../build/doc/coloring-family.rst:103
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:45
+#: ../../build/doc/coloring-family.rst:61
 #: ../../build/doc/traversal-family.rst:4
-#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:87
+#: ../../build/doc/coloring-family.rst:103
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:47
+#: ../../build/doc/coloring-family.rst:63
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:47
+#: ../../build/doc/coloring-family.rst:63
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:47
+#: ../../build/doc/coloring-family.rst:63
 msgid "Inner query as described below."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:53
+#: ../../build/doc/coloring-family.rst:69
 msgid "Inner query"
 msgstr ""
 
@@ -140,12 +190,13 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:55
+#: ../../build/doc/coloring-family.rst:71
 msgid "an SQL query of an **undirected** graph, which should return a set of rows with the following columns:"
 msgstr ""
 
 #: ../../build/doc/traversal-family.rst:4
-#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:87
+#: ../../build/doc/coloring-family.rst:103
 msgid "Column"
 msgstr ""
 
@@ -164,6 +215,7 @@ msgid "``ANY-INTEGER``"
 msgstr ""
 
 #: ../../build/doc/traversal-family.rst:6
+#: ../../build/doc/coloring-family.rst:105
 msgid "Identifier of the edge."
 msgstr ""
 
@@ -236,40 +288,56 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:64
+#: ../../build/doc/coloring-family.rst:80
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:68
+#: ../../build/doc/coloring-family.rst:84
 msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:73
+#: ../../build/doc/coloring-family.rst:89
 msgid "**vertex_id**"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:73
-#: ../../build/doc/coloring-family.rst:74
+#: ../../build/doc/coloring-family.rst:89
+#: ../../build/doc/coloring-family.rst:90
+#: ../../build/doc/coloring-family.rst:105
+#: ../../build/doc/coloring-family.rst:106
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:73
+#: ../../build/doc/coloring-family.rst:89
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:74
+#: ../../build/doc/coloring-family.rst:90
+#: ../../build/doc/coloring-family.rst:106
 msgid "**color_id**"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:74
+#: ../../build/doc/coloring-family.rst:90
 msgid "Identifier of the color of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:76
+#: ../../build/doc/coloring-family.rst:92
+#: ../../build/doc/coloring-family.rst:108
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:84
+#: ../../build/doc/coloring-family.rst:100
+msgid "Returns SET OF ``(edge_id, color_id)``"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:105
+msgid "**edge_id**"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:106
+msgid "Identifier of the color of the edge."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:118
 msgid "See Also"
 msgstr ""
 
@@ -289,15 +357,22 @@ msgstr ""
 msgid "`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:98
+#: ../../build/doc/pgr_edgeColoring.rst:3
+msgid "`Boost: Edge Coloring Algorithm documentation <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeColoring.rst:4
+msgid "`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:134
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:99
+#: ../../build/doc/coloring-family.rst:135
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:100
+#: ../../build/doc/coloring-family.rst:136
 msgid ":ref:`search`"
 msgstr ""
-

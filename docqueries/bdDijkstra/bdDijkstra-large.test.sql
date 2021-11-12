@@ -21,27 +21,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-\echo --q1
+/* --q1 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 5700, 6733, true);
 
-\echo --q2
+/* --q2 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 6585, 8247, true);
 
-\echo --q3
+/* --q3 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 9426, 3606, true);
 
-\echo --q4
+/* --q4 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 3606, 9426, true);
 
-\echo --q5
+/* --q5 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 6733, 5700, true);
 
-\echo --q6
+/* --q6 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 8247, 6585, true);
 

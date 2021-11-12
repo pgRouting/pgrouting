@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #include <stddef.h>
 
-#include "c_types/delauny_t.h"
+typedef struct Delauny_t Delauny_t;
 
 /*!
   bigint tid,

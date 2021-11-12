@@ -43,29 +43,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // using namespace std;
 
+using Edge_t = struct Edge_t;
 typedef std::vector<int64> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<int64, bool> PIB;
 typedef std::pair<double, PIB> PDP;
 typedef std::pair<double, std::vector<int64> > PDVI;
-
-/*
-typedef struct edge
-{
-    int id;
-    int source;
-    int target;
-    double cost;
-    double reverse_cost;
-} edge_t;
-
-typedef struct path_element
-{
-    int vertex_id;
-    int edge_id;
-    double cost;
-}path_element_tt;
-*/
 
 typedef struct {
     int64 ed_ind[2];
@@ -117,20 +100,20 @@ class GraphDefinition {
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra3(edge_t *edges, size_t edge_count,
+    int my_dijkstra3(Edge_t *edges, size_t edge_count,
                     int64 start_vertex, int64 end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
-    int my_dijkstra2(edge_t *edges, size_t edge_count,
+    int my_dijkstra2(Edge_t *edges, size_t edge_count,
                     int64 start_vertex, int64 end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    int my_dijkstra1(edge_t *edges, size_t edge_count,
+    int my_dijkstra1(Edge_t *edges, size_t edge_count,
                     int64 start_edge, double start_part,
                     int64 end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
@@ -138,7 +121,7 @@ class GraphDefinition {
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    bool construct_graph(edge_t *edges, size_t edge_count,
+    bool construct_graph(Edge_t *edges, size_t edge_count,
                          bool has_reverse_cost, bool directed);
 
 
@@ -149,7 +132,7 @@ class GraphDefinition {
                  std::vector<PDP>, std::greater<PDP> > &que);
     double getRestrictionCost(int64 cur_node, GraphEdgeInfo& new_edge,
                               bool isStart);
-    bool addEdge(edge_t edgeIn);
+    bool addEdge(Edge_t edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
                      bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_tt **path,

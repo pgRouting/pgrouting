@@ -34,10 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct  {
+struct Coordinate_t {
     int64_t id;
     double x;
     double y;
-} Coordinate_t;
+};
 
 #endif  // INCLUDE_C_TYPES_COORDINATE_T_H_

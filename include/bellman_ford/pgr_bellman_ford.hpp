@@ -44,6 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
+#include "c_types/ii_t_rt.h"
+
 
 
 
@@ -184,7 +186,7 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
      // BellmanFord combinations
      std::deque<Path> bellman_ford(
              G &graph,
-             const std::vector<pgr_combination_t> &combinations,
+             const std::vector<II_t_rt> &combinations,
              bool only_cost = false) {
          // a call to 1 to many is faster for each of the sources
          std::deque<Path> paths;
@@ -192,13 +194,13 @@ class Pgr_bellman_ford : public pgrouting::Pgr_messages {
 
          // group targets per distinct source
          std::map< int64_t, std::vector<int64_t> > vertex_map;
-         for (const pgr_combination_t &comb : combinations) {
-             std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.source);
+         for (const II_t_rt &comb : combinations) {
+             std::map< int64_t, std::vector<int64_t> >::iterator it = vertex_map.find(comb.d1.source);
              if (it != vertex_map.end()) {
-                 it->second.push_back(comb.target);
+                 it->second.push_back(comb.d2.target);
              } else {
-                 std::vector<int64_t > targets{comb.target};
-                 vertex_map[comb.source] = targets;
+                 std::vector<int64_t > targets{comb.d2.target};
+                 vertex_map[comb.d1.source] = targets;
              }
          }
 

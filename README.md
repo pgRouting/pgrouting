@@ -2,16 +2,13 @@
 
 [![Join the chat at https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pgRouting/pgrouting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## STATUS
-
-### Branches
+## Branches
 
 * The *master* branch has the development of the next micro release
 * The *develop* branch has the development of the next minor/major release
 
 For the complete list of releases go to:
 https://github.com/pgRouting/pgrouting/releases
-
 
 ## LINKS
 
@@ -30,14 +27,21 @@ pgRouting extends the PostGIS/PostgreSQL geospatial database to provide geospati
 This library contains the following features:
 
 * All Pairs Shortest Path Algorithms
+
 * A-star algorithm
+
 * Bi-directional algorithms
+
 * A variety of applications of Dijkstra algorithms
+
   * Cost functions
   * With points
+
 * Driving Distance
   * With points
+
 * Yen's algorithm
+
 * Traveling Sales Person (TSP)
 
 and many more.
@@ -46,20 +50,23 @@ The latest documentation: http://docs.pgrouting.org/latest
 
 ## REQUIREMENTS
 
-Building requirements
---------------------
-* Perl
+### Building requirements
+
+* perl
+
 * C and C++ compilers
   * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support
   * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support
+
 * Postgresql = Supported version by PostgreSQL
+
 * The Boost Graph Library (BGL) >= 1.56
+
 * CMake >= 3.2
-* Sphinx >= 1.8
 
+* Sphinx >= 4.0.0
 
-User's requirements
---------------------
+### User's requirements
 
 * PostGIS
 
@@ -101,5 +108,3 @@ See online documentation: http://docs.pgrouting.org/latest/en/index.html
 * Most features are available under [GPL-2.0-or-later](https://spdx.org/licenses/GPL-2.0-or-later.html)
 * Some Boost extensions are available under Boost license (see LICENSE_1_0.txt)
 * Some code contributed by iMaptools.com is available under MIT-X license.
-
-

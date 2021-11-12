@@ -39,13 +39,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "c_types/edge_xy_t.h"
+#include "c_types/ii_t_rt.h"
 
 
 template < class G >
 std::deque<Path>
 pgr_astar(
         G &graph,
-        std::vector <pgr_combination_t> &combinations,
+        std::vector <II_t_rt> &combinations,
         std::vector<int64_t> sources,
         std::vector<int64_t> targets,
         int heuristic,
@@ -84,9 +86,9 @@ pgr_astar(
   end_vid BIGINT  directed BOOLEAN DEFAULT true,
  ***********************************************************/
 void do_pgr_astarManyToMany(
-        Pgr_edge_xy_t *edges, size_t total_edges,
+        Edge_xy_t *edges, size_t total_edges,
 
-        pgr_combination_t *combinations, size_t total_combinations,
+        II_t_rt *combinations, size_t total_combinations,
 
         int64_t  *start_vidsArr, size_t size_start_vidsArr,
         int64_t  *end_vidsArr, size_t size_end_vidsArr,
@@ -96,7 +98,7 @@ void do_pgr_astarManyToMany(
         double epsilon,
         bool only_cost,
         bool normal,
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char** log_msg,
         char** notice_msg,
@@ -113,7 +115,7 @@ void do_pgr_astarManyToMany(
 
 
         log << "Inserting target vertices into a c++ vector structure\n";
-        std::vector<pgr_combination_t>
+        std::vector<II_t_rt>
                 combinations_vector(combinations, combinations + total_combinations);
         std::vector< int64_t > end_vids(
                 end_vidsArr,

@@ -52,9 +52,9 @@ using pgrouting::yen::Pgr_ksp;
 
 int
 do_pgr_withPointsKsp(
-        pgr_edge_t  *edges,           size_t total_edges,
+        Edge_t  *edges,           size_t total_edges,
         Point_on_edge_t  *points_p,   size_t total_points,
-        pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
+        Edge_t  *edges_of_points, size_t total_edges_of_points,
         int64_t start_pid,
         int64_t end_pid,
         size_t k,
@@ -62,7 +62,7 @@ do_pgr_withPointsKsp(
         bool heap_paths,
         char driving_side,
         bool details,
-        General_path_element_t **return_tuples,
+        Path_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -82,7 +82,7 @@ do_pgr_withPointsKsp(
                 std::vector<Point_on_edge_t>(
                     points_p,
                     points_p + total_points),
-                std::vector< pgr_edge_t >(
+                std::vector< Edge_t >(
                     edges_of_points,
                     edges_of_points + total_edges_of_points),
                 true,

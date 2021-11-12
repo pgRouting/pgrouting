@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -52,7 +53,7 @@ process(
     ArrayType *ends,
 
     bool directed,
-    General_path_element_t **result_tuples,
+    Path_rt **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
@@ -63,10 +64,10 @@ process(
     size_t size_sink_verticesArr = 0;
 
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_combination_t *combinations = NULL;
+    II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
     if (starts && ends) {
@@ -139,7 +140,7 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     TupleDesc tuple_desc;
 
-    General_path_element_t *result_tuples = NULL;
+    Path_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -176,11 +177,7 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
         }
 
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -196,7 +193,7 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t *) funcctx->user_fctx;
+    result_tuples = (Path_rt *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
@@ -231,4 +228,3 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

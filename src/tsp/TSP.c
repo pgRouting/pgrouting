@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -54,7 +55,7 @@ process(
         size_t *result_count) {
     pgr_SPI_connect();
 
-    Matrix_cell_t *distances = NULL;
+    IID_t_rt *distances = NULL;
     size_t total_distances = 0;
     pgr_get_matrixRows(distances_sql, &distances, &total_distances);
 
@@ -137,11 +138,7 @@ _pgr_tsp(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
 
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
@@ -187,4 +184,3 @@ _pgr_tsp(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "cpp_common/bpoint.hpp"
-#include "c_types/pgr_edge_xy_t.h"
+#include "c_types/edge_xy_t.h"
 
 
 namespace pgrouting {
@@ -45,7 +45,7 @@ class XY_vertex {
       id(_id), point(_x, _y) {
       }
 
-  XY_vertex(const Pgr_edge_xy_t &other, bool is_source) :
+  XY_vertex(const Edge_xy_t &other, bool is_source) :
       id(is_source? other.source : other.target),
       point(is_source? Bpoint(other.x1, other.y1) : Bpoint(other.x2, other.y2))
       {}
@@ -72,20 +72,20 @@ check_vertices(std::vector < XY_vertex > vertices);
 
 std::vector < XY_vertex >
 extract_vertices(
-    const Pgr_edge_xy_t *data_edges, size_t count);
+    const Edge_xy_t *data_edges, size_t count);
 
 std::vector < XY_vertex >
 extract_vertices(
-    const std::vector < Pgr_edge_xy_t > &data_edges);
+    const std::vector <Edge_xy_t > &data_edges);
 
 #if 0
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
-    const Pgr_edge_xy_t *data_edges, int64_t count);
+    const Edge_xy_t *data_edges, int64_t count);
 
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
-    const std::vector < Pgr_edge_xy_t > data_edges);
+    const std::vector <Edge_xy_t > data_edges);
 #endif
 
 }  // namespace pgrouting

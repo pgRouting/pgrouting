@@ -1,5 +1,6 @@
 
-\i setup.sql
+BEGIN;
+SET client_min_messages TO WARNING;
 
 
 CREATE TABLE edge_table_i244 (
@@ -41,9 +42,7 @@ WHEN (cost>0 and reverse_cost<0) THEN 'FT' -- direction of the LINESSTRING
 WHEN (cost<0 and reverse_cost>0) THEN 'TF' -- reverse direction
 ELSE '' END;
 
-SET client_min_messages TO WARNING;
 SELECT pgr_createTopology('edge_table_i244',0.001);
-SET client_min_messages TO NOTICE;
 
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);

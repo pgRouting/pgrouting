@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_pushRelabel.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_pushRelabel.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_pushRelabel.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pushRelabel.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pushRelabel.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pushRelabel.html>`__
 * **Unsupported versions:**
@@ -72,7 +73,7 @@ Signatures
     pgr_pushRelabel(Edges SQL, sources, target)
     pgr_pushRelabel(Edges SQL, source,  targets)
     pgr_pushRelabel(Edges SQL, sources, targets)
-    pgr_pushRelabel(Edges SQL, Combinations SQL) -- Proposed on v3.2
+    pgr_pushRelabel(Edges SQL, Combinations SQL)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -151,7 +152,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: pushRelabel(Combinations) -- Proposed on v3.2
+    single: pushRelabel(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

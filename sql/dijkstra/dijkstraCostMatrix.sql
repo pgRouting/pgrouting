@@ -52,7 +52,6 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_dijkstraCostMatrix(TEXT, ANYARRAY, BOOLEAN)
 IS 'pgr_dijkstraCostMatrix
-- EXPERIMENTAL
 - Parameters:
     - Edges SQL with columns: id, source, target, cost [,reverse_cost]
     - ARRAY [vertices identifiers]

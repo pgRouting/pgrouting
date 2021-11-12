@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "c_types/column_info_t.h"
-#include "c_types/pgr_combination_t.h"
+#include "c_types/ii_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/get_check_data.h"
 #include "c_common/time_msg.h"
@@ -51,10 +51,10 @@ void fetch_combination(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[2],
-        pgr_combination_t *combination,
+        II_t_rt *combination,
         size_t *valid_combinations) {
-    combination->source = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    combination->target = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
+    combination->d1.source = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    combination->d2.target = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
 
     *valid_combinations = *valid_combinations + 1;
 }
@@ -65,7 +65,7 @@ static
 void
 get_combinations_2_columns(
         char *sql,
-        pgr_combination_t **combinations,
+        II_t_rt **combinations,
         size_t *totalTuples) {
     clock_t start_t = clock();
 
@@ -106,11 +106,11 @@ get_combinations_2_columns(
 
         if (ntuples > 0) {
             if ((*combinations) == NULL)
-                (*combinations) = (pgr_combination_t *)
-                    palloc0(total_tuples * sizeof(pgr_combination_t));
+                (*combinations) = (II_t_rt *)
+                    palloc0(total_tuples * sizeof(II_t_rt));
             else
-                (*combinations) = (pgr_combination_t *)
-                    repalloc((*combinations), total_tuples * sizeof(pgr_combination_t));
+                (*combinations) = (II_t_rt *)
+                    repalloc((*combinations), total_tuples * sizeof(II_t_rt));
 
             if ((*combinations) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -146,7 +146,7 @@ get_combinations_2_columns(
 void
 pgr_get_combinations(
         char *combinations_sql,
-        pgr_combination_t **combinations,
+        II_t_rt **combinations,
         size_t *total_combinations) {
     get_combinations_2_columns(combinations_sql, combinations, total_combinations);
 }

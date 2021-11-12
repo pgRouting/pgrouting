@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -60,7 +61,7 @@ process(
         bool stop_on_first,
         bool strict,
 
-        General_path_element_t **path,
+        Path_rt **path,
         size_t *result_count) {
     (*path) = NULL;
     (*result_count) = 0;
@@ -79,7 +80,7 @@ process(
     pgr_SPI_connect();
 
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
 
@@ -141,7 +142,7 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    General_path_element_t  *path = NULL;
+    Path_rt  *path = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -184,11 +185,8 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
                 &path,
                 &result_count);
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = path;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -204,7 +202,7 @@ _pgr_turnrestrictedpath(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    path = (General_path_element_t*) funcctx->user_fctx;
+    path = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

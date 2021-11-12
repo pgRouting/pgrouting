@@ -1,4 +1,4 @@
-\i setup.sql
+BEGIN;
 
 -- node the network
 -- create 4x4 grid of overlapping lines horizontal and vertical

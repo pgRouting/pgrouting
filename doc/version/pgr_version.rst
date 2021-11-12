@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_version.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_version.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_version.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_version.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_version.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_version.html>`__
 * **Unsupported versions:**
@@ -55,7 +56,7 @@ Signature
 
 	TEXT pgr_version();
 
-:Example: pgRouting Version for this documentatoin
+:Example: pgRouting Version for this documentation
 
 .. literalinclude:: doc-version.queries
    :start-after: -- q1

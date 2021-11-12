@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgRouting-introduction.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-introduction.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-introduction.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-introduction.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-introduction.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-introduction.html>`__
 * **Unsupported versions:**
@@ -29,7 +30,7 @@ Introduction
 pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL
 <https://www.postgresql.org>`__ geospatial database and adds routing and other
 network analysis functionality. A predecessor of pgRouting – pgDijkstra, written
-by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`__, was later extended
+by Sylvain Pasche from `Camptocamp <https://camptocamp.com>`__, was later extended
 by Orkney and renamed to pgRouting. The project is
 now supported and maintained by `Georepublic <https://georepublic.info>`__,
 `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community.
@@ -77,6 +78,7 @@ Daniel Kastl,
 Himanshu Raj,
 Martha Vergara,
 Regina Obe,
+Veenit Kumar,
 Virginia Vergara
 
 
@@ -118,7 +120,7 @@ Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, 
 Razequl Islam,
 Regina Obe, Rohith Reddy,
 Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche,
-Vidhan Jain, Virginia Vergara
+Veenit Kumar, Vidhan Jain, Virginia Vergara
 
 Corporate Sponsors (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,4 +1,4 @@
-\echo --data-start
+/* --data-start */
 
 DROP TABLE IF EXISTS roadworks CASCADE;
 CREATE table roadworks (
@@ -32,40 +32,40 @@ INSERT INTO roadworks(
   (17,  14,  15,  0,  0),
   (18,  16,  17,  0,  0);
 
-\echo --data-end
+/* --data-end */
 
-\echo -- q1
+/*  -- q1 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks',
     2, 3
 );
-\echo -- q2
+/* -- q2 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks',
     2, 3,
     FALSE
 );
-\echo -- q3
+/* -- q3 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost FROM roadworks',
     2, ARRAY[3,5],
     FALSE
 );
-\echo -- q4
+/* -- q4 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks',
     ARRAY[2,11], 5
 );
-\echo -- q5
+/* -- q5 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks',
     ARRAY[2,11], ARRAY[3,5],
     FALSE
 );
-\echo -- q6
+/* -- q6 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
     'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost FROM roadworks',
     'SELECT * FROM ( VALUES (2, 3), (11, 5) ) AS t(source, target)',
     FALSE
 );
-\echo -- q7
+/* -- q7 */

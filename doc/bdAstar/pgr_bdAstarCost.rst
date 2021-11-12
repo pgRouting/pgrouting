@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_bdAstarCost.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstarCost.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdAstarCost.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdAstarCost.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdAstarCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdAstarCost.html>`__
 * **Unsupported versions:**
@@ -69,7 +70,7 @@ Signatures
     pgr_bdAstarCost(Edges SQL, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_bdAstarCost(Edges SQL, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_bdAstarCost(Edges SQL, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_bdAstarCost(Edges SQL, Combinations SQL [, directed] [, heuristic] [, factor] [, epsilon]) -- Proposed on v3.2
+    pgr_bdAstarCost(Edges SQL, Combinations SQL [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
@@ -163,7 +164,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: bdAstarCost(Combinations) -- Proposed on v3.2
+    single: bdAstarCost(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................

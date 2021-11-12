@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include <algorithm>
 
-#include "c_types/general_path_element_t.h"
+#include "c_types/path_rt.h"
 #include "cpp_common/path_t.h"
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/rule.h"
@@ -131,23 +131,23 @@ class Path {
     void empty_path(unsigned int d_vertex);
 
     void get_pg_dd_path(
-            General_path_element_t **ret_path,
+            Path_rt **ret_path,
             size_t &sequence) const;
 
     void get_pg_ksp_path(
-            General_path_element_t **ret_path,
+            Path_rt **ret_path,
             size_t &sequence, int routeId) const;
 
     void get_pg_turn_restricted_path(
-            General_path_element_t **ret_path,
+            Path_rt **ret_path,
             size_t &sequence, int routeId) const;
 
     void generate_postgres_data(
-            General_path_element_t **postgres_data,
+            Path_rt **postgres_data,
             size_t &sequence) const;
 
     friend size_t collapse_paths(
-            General_path_element_t **ret_path,
+            Path_rt **ret_path,
             const std::deque< Path > &paths);
 
 

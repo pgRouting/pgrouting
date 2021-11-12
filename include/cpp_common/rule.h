@@ -29,19 +29,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <sstream>
-#include "c_types/restriction_t.h"
+
+typedef struct Restriction_t Restriction_t;
+
 
 namespace pgrouting {
 namespace trsp {
-
-
 
 class Rule {
     using iterator = std::vector<int64_t>::iterator;
     using constiterator = std::vector<int64_t>::const_iterator;
 
  public:
-    explicit Rule(Restriction_t r);
+    explicit Rule(const Restriction_t &r);
 
     inline double cost() const {
         return m_cost;

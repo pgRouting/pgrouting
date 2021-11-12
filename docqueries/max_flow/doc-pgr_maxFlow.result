@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
--- q1
+/* -- q1 */
 SELECT * FROM pgr_maxFlow(
     'SELECT id,
             source,
@@ -17,7 +17,7 @@ SELECT * FROM pgr_maxFlow(
          230
 (1 row)
 
--- q2
+/* -- q2 */
 SELECT * FROM pgr_maxFlow(
     'SELECT id,
             source,
@@ -32,7 +32,7 @@ SELECT * FROM pgr_maxFlow(
          340
 (1 row)
 
--- q3
+/* -- q3 */
 SELECT * FROM pgr_maxFlow(
     'SELECT id,
             source,
@@ -47,7 +47,7 @@ SELECT * FROM pgr_maxFlow(
          230
 (1 row)
 
--- q4
+/* -- q4 */
 SELECT * FROM pgr_maxFlow(
     'SELECT id,
             source,
@@ -62,7 +62,7 @@ SELECT * FROM pgr_maxFlow(
          360
 (1 row)
 
--- q5
+/* -- q5 */
 SELECT * FROM pgr_maxFlow(
     'SELECT id,
             source,
@@ -77,6 +77,6 @@ SELECT * FROM pgr_maxFlow(
          360
 (1 row)
 
--- q6
+/* -- q6 */
 ROLLBACK;
 ROLLBACK

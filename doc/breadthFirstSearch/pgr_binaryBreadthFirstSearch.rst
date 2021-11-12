@@ -11,8 +11,9 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_binaryBreadthFirstSearch.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__)
-  
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_binaryBreadthFirstSearch.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__
+
 pgr_binaryBreadthFirstSearch - Experimental
 ===============================================================================
 
@@ -70,7 +71,7 @@ Signatures
     pgr_binaryBreadthFirstSearch(Edges SQL, start_vid,  end_vids [, directed])
     pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vid  [, directed])
     pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vids [, directed])
-    pgr_binaryBreadthFirstSearch(Edges SQL, Combinations SQL [, directed]) -- Proposed on v3.2
+    pgr_binaryBreadthFirstSearch(Edges SQL, Combinations SQL [, directed])
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -86,7 +87,7 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: binaryBreadthFirstSearch(One to One) - Experimental
+    single: binaryBreadthFirstSearch(One to One) - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -104,7 +105,7 @@ One to One
    :end-before: -- q3
 
 .. index::
-    single: binaryBreadthFirstSearch(One to Many) - Experimental
+    single: binaryBreadthFirstSearch(One to Many) - Experimental on v3.0
 
 One to many
 ...............................................................................
@@ -122,7 +123,7 @@ One to many
    :end-before: -- q4
 
 .. index::
-    single: binaryBreadthFirstSearch(Many to One) - Experimental
+    single: binaryBreadthFirstSearch(Many to One) - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -140,7 +141,7 @@ Many to One
    :end-before: -- q5
 
 .. index::
-    single: binaryBreadthFirstSearch(Many to Many) - Experimental
+    single: binaryBreadthFirstSearch(Many to Many) - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -158,7 +159,7 @@ Many to Many
    :end-before: -- q6
 
 .. index::
-    single: binaryBreadthFirstSearch(Combinations) -- Experimental on v3.2
+    single: binaryBreadthFirstSearch(Combinations) - Experimental on v3.2
 
 Combinations
 ...............................................................................

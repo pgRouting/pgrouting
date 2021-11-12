@@ -12,17 +12,23 @@ PGUSER=$1
 PGPORT=$2
 if [ "b$PGPORT" = "b" ]
 then
-    PGPORT="-p 5432"
-else
-    PGPORT="-p $PGPORT"
+    PGPORT="5432"
 fi
 PGDATABASE="___pgr___test___"
 echo "$PGPORT"
 
 
-echo "cd ./tools/testers/"
-cd ./tools/testers/
-echo "psql -f setup_db.sql"
-psql "$PGPORT" -U "$PGUSER"  -d "$PGDATABASE" -X -q -v ON_ERROR_STOP=1 --pset pager=off -f setup_db.sql
+pushd ./tools/testers/ || exit 1
 
-pg_prove --failures --quiet --recurse --ext .sql "$PGPORT" -d "$PGDATABASE"  -U "$PGUSER"  ../../pgtap/
+bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "3.3.0"
+
+pg_prove --failures --quiet --recurse --ext .sql \
+    --S client_min_messages=WARNING \
+    --S on_error_rollback=off \
+    --S on_error_stop=true \
+    --P format=unaligned \
+    --P tuples_only=true \
+    --P pager=off \
+    -p "$PGPORT" -d "$PGDATABASE"  -U "$PGUSER"  ../../pgtap/
+
+popd

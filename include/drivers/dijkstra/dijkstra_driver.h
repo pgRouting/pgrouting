@@ -38,26 +38,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Edge_t = struct Edge_t;
+using Path_rt = struct Path_rt;
+using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_t Edge_t;
+typedef struct Path_rt Path_rt;
+typedef struct II_t_rt II_t_rt;
 #endif
-
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_combination_t.h"
-#include "c_types/general_path_element_t.h"
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    //  CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    //  sql text,
-    //  start_vids anyarray,
-    //  end_vids anyarray,
-    //  directed boolean default true,
     void do_pgr_many_to_many_dijkstra(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_tuples,
             int64_t  *start_vidsArr,
             size_t size_start_vidsArr,
@@ -69,7 +67,7 @@ extern "C" {
             int64_t n_goals,
             bool global,
 
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
 
             char** log_msg,
@@ -82,9 +80,9 @@ extern "C" {
     //  combinations_sql text,
     //  directed boolean default true,
     void do_pgr_combinations_dijkstra(
-            pgr_edge_t  *data_edges,
+            Edge_t  *data_edges,
             size_t total_tuples,
-            pgr_combination_t  *combinations,
+            II_t_rt  *combinations,
             size_t total_combinations,
             bool directed,
             bool only_cost,
@@ -92,7 +90,7 @@ extern "C" {
             int64_t n_goals,
             bool global,
 
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
 
             char** log_msg,

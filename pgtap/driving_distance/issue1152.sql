@@ -1,5 +1,5 @@
-\i setup.sql
-\i tmp_net.sql
+BEGIN;
+
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(71);
@@ -70,7 +70,6 @@ $BODY$
 language plpgsql;
 
 SELECT * FROM issue1154();
-
 SELECT lives_ok($$
     SELECT *
     FROM pgr_drivingdistance(
@@ -90,7 +89,7 @@ SELECT lives_ok($$
     $$);
 
 SELECT bag_has($$
-    SELECT *
+    SELECT from_v, node, edge, cost, agg_cost
     FROM pgr_drivingdistance(
         'SELECT * FROM tmp_net',
         ARRAY[
@@ -105,7 +104,7 @@ SELECT bag_has($$
         equicost:=TRUE,
         directed:=TRUE
     )$$,
-    $$ VALUES (12, 85930, 85930, -1, 0, 0) $$
+    $$ VALUES (85930, 85930, -1, 0, 0) $$
 );
 
 SELECT finish();

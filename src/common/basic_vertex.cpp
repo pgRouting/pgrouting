@@ -58,7 +58,7 @@ namespace pgrouting {
 
     std::vector < Basic_vertex > extract_vertices(
             std::vector < Basic_vertex > vertices,
-            const std::vector <pgr_edge_t > data_edges) {
+            std::vector <Edge_t> data_edges) {
         if (data_edges.empty()) return vertices;
 
         vertices.reserve(vertices.size() + data_edges.size() * 2);
@@ -90,7 +90,7 @@ namespace pgrouting {
 
 
     std::vector < Basic_vertex > extract_vertices(
-            const std::vector <pgr_edge_t > &data_edges) {
+            const std::vector <Edge_t > &data_edges) {
         std::vector< Basic_vertex > vertices;
         if (data_edges.empty()) return vertices;
 
@@ -122,17 +122,17 @@ namespace pgrouting {
     }
 
     std::vector < Basic_vertex > extract_vertices(
-            const pgr_edge_t *data_edges, size_t count) {
+            const Edge_t *data_edges, size_t count) {
         return extract_vertices(
-                std::vector < pgr_edge_t >(
+                std::vector < Edge_t >(
                     data_edges, data_edges + count));
     }
 
     std::vector < Basic_vertex > extract_vertices(
             const std::vector < Basic_vertex > &vertices,
-            const pgr_edge_t *data_edges, size_t count) {
+            const Edge_t *data_edges, size_t count) {
         return extract_vertices(
-                vertices, std::vector < pgr_edge_t >(
+                vertices, std::vector < Edge_t >(
                     data_edges, data_edges + count));
     }
 

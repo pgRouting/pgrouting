@@ -62,22 +62,22 @@ class Pgr_mst {
          this->m_tree_id.clear();
      }
 
-     std::vector<pgr_mst_rt>
+     std::vector<MST_rt>
      no_order(const G &graph) {
          return no_ordering(graph);
      }
 
-     std::vector<pgr_mst_rt>
+     std::vector<MST_rt>
      dfs_order(const G &graph) {
          return dfs_ordering(graph);
      }
 
-     std::vector<pgr_mst_rt>
+     std::vector<MST_rt>
      bfs_order(const G &graph) {
          return bfs_ordering(graph);
      }
 
-     std::vector<pgr_mst_rt> mst(const G &graph) {
+     std::vector<MST_rt> mst(const G &graph) {
          m_suffix = "";
          m_get_component = false;
          m_distance = -1;
@@ -90,7 +90,7 @@ class Pgr_mst {
      }
 
 
-     std::vector<pgr_mst_rt> mstBFS(
+     std::vector<MST_rt> mstBFS(
              const G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth) {
@@ -104,7 +104,7 @@ class Pgr_mst {
          return bfs_order(graph);
      }
 
-     std::vector<pgr_mst_rt> mstDFS(
+     std::vector<MST_rt> mstDFS(
              const G &graph,
              std::vector<int64_t> roots,
              int64_t max_depth) {
@@ -118,7 +118,7 @@ class Pgr_mst {
          return dfs_order(graph);
      }
 
-     std::vector<pgr_mst_rt> mstDD(
+     std::vector<MST_rt> mstDD(
              const G &graph,
              std::vector<int64_t> roots,
              double distance) {
@@ -167,11 +167,11 @@ class Pgr_mst {
 
  private:
      template <typename T>
-     std::vector<pgr_mst_rt> get_results(
+     std::vector<MST_rt> get_results(
              T order,
              int64_t p_root,
              const G &graph) {
-         std::vector<pgr_mst_rt> results;
+         std::vector<MST_rt> results;
 
          std::vector<double> agg_cost(graph.num_vertices(), 0);
          std::vector<int64_t> depth(graph.num_vertices(), 0);
@@ -246,12 +246,12 @@ class Pgr_mst {
          }
      }
 
-     std::vector<pgr_mst_rt>
+     std::vector<MST_rt>
          no_ordering(const G &graph) {
              return get_results(m_spanning_tree.edges, 0, graph);
          }
 
-     std::vector<pgr_mst_rt>
+     std::vector<MST_rt>
          dfs_forest(const G &graph) {
              boost::filtered_graph<B_G, InSpanning, boost::keep_all>
                  mstGraph(graph.graph, m_spanning_tree, {});
@@ -276,7 +276,7 @@ class Pgr_mst {
          }
 
 
-     std::vector<pgr_mst_rt>
+     std::vector<MST_rt>
          dfs_ordering(const G &graph) {
              boost::filtered_graph<B_G, InSpanning, boost::keep_all>
                  mstGraph(graph.graph, m_spanning_tree, {});
@@ -284,7 +284,7 @@ class Pgr_mst {
              if (m_roots.empty()) {
                  return dfs_forest(graph);
              } else {
-                 std::vector<pgr_mst_rt> results;
+                 std::vector<MST_rt> results;
                  for (const auto root : m_roots) {
                      std::vector<E> visited_order;
 
@@ -318,9 +318,9 @@ class Pgr_mst {
              }
          }
 
-     std::vector<pgr_mst_rt>
+     std::vector<MST_rt>
      bfs_ordering(const G &graph) {
-         std::vector<pgr_mst_rt> results;
+         std::vector<MST_rt> results;
          /*
           * order by bfs
           */

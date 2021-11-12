@@ -61,13 +61,6 @@ void
 pgr_error(char* err) {
     PGR_DBG("Returned error message = %s", err);
 
-#if 0
-    char *error = NULL;
-    if (*err_msg) {
-        error = pgr_cstring2char(*err_msg);
-        free(*err_msg);
-    }
-#endif
     if (err) {
         ereport(ERROR,
                 (errmsg_internal("Unexpected"),

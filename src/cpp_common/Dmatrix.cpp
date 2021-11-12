@@ -35,13 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cmath>
 
 #include "cpp_common/pgr_assert.h"
+#include "c_types/iid_t_rt.h"
 
 
 namespace pgrouting {
 namespace tsp {
 
 void
-Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
+Dmatrix::set_ids(const std::vector < IID_t_rt > &data_costs) {
     ids.reserve(data_costs.size() * 2);
     for (const auto &cost : data_costs) {
         ids.push_back(cost.from_vid);
@@ -85,7 +86,7 @@ Dmatrix::get_id(size_t id) const {
 /*
  * Transforms the input data to a matrix
  */
-Dmatrix::Dmatrix(const std::vector < Matrix_cell_t > &data_costs) {
+Dmatrix::Dmatrix(const std::vector < IID_t_rt > &data_costs) {
     set_ids(data_costs);
     costs.resize(
             ids.size(),

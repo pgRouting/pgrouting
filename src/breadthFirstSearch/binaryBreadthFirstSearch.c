@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
+#include "c_types/path_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -53,7 +54,7 @@ process(
     ArrayType *ends,
     bool directed,
 
-    General_path_element_t **result_tuples,
+    Path_rt **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
@@ -66,7 +67,7 @@ process(
     int64_t *end_vidsArr = NULL;
 
     size_t total_combinations = 0;
-    pgr_combination_t *combinations = NULL;
+    II_t_rt *combinations = NULL;
 
     if (starts && ends) {
         start_vidsArr = (int64_t*)
@@ -87,7 +88,7 @@ process(
     (*result_count) = 0;
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -155,7 +156,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    General_path_element_t *result_tuples = NULL;
+    Path_rt *result_tuples = NULL;
     size_t result_count = 0;
     /**************************************************************************/
 
@@ -203,11 +204,8 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
@@ -222,7 +220,7 @@ PGDLLEXPORT Datum _pgr_binarybreadthfirstsearch(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t *)funcctx->user_fctx;
+    result_tuples = (Path_rt *)funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;

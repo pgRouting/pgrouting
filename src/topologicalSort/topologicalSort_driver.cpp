@@ -26,7 +26,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
 #include "drivers/topologicalSort/topologicalSort_driver.h"
 
 #include <sstream>
@@ -37,13 +36,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "topologicalSort/pgr_topologicalSort.hpp"
 
-
+#include "c_types/i_rt.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 template < class G >
 static
-std::vector<pgr_topologicalSort_t>
+std::vector<I_rt>
 pgr_topologicalSort(
         G &graph) {
     Pgr_topologicalSort< G > fn_topologicalSort;
@@ -55,11 +54,11 @@ pgr_topologicalSort(
 // sql text,
 void
 do_pgr_topologicalSort(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
 
 
-        pgr_topologicalSort_t **return_tuples,
+        I_rt **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
@@ -78,7 +77,7 @@ do_pgr_topologicalSort(
 
         graphType gType =  DIRECTED;
 
-        std::vector<pgr_topologicalSort_t> results;
+        std::vector<I_rt> results;
 
         log << "Working with Directed Graph\n";
         pgrouting::DirectedGraph digraph(gType);

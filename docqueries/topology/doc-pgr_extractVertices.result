@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
+/* --q1 */
 SELECT  * FROM pgr_extractVertices(
     'SELECT id, the_geom AS geom
     FROM edge_table');
@@ -27,8 +27,8 @@ SELECT  * FROM pgr_extractVertices(
  17 | {13,15}  |           |              4 |   3 | 010100000000000000000010400000000000000840
 (17 rows)
 
---q1.1
---q2
+/* --q1.1 */
+/* --q2 */
 SELECT  * FROM pgr_extractVertices(
     'SELECT id, the_geom AS geom FROM edge_table',
     dryrun := true);
@@ -73,22 +73,22 @@ NOTICE:
 ----+----------+-----------+---+---+------
 (0 rows)
 
---q2.1
---q3
+/* --q2.1 */
+/* --q3 */
 DROP TABLE IF EXISTS vertices_table;
 NOTICE:  table "vertices_table" does not exist, skipping
 DROP TABLE
---q3.1
+/* --q3.1 */
 UPDATE edge_table
 SET source = NULL, target = NULL,
    x1 = NULL, y1 = NULL,
    x2 = NULL, y2 = NULL;
 UPDATE 18
---q3.2
+/* --q3.2 */
 SELECT  * INTO vertices_table
 FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table');
 SELECT 17
---q3.3
+/* --q3.3 */
 SELECT *
 FROM vertices_table;
  id | in_edges | out_edges |       x        |  y  |                    geom
@@ -112,7 +112,7 @@ FROM vertices_table;
  17 | {13,15}  |           |              4 |   3 | 010100000000000000000010400000000000000840
 (17 rows)
 
---q3.4
+/* --q3.4 */
 WITH
     out_going AS (
         SELECT id AS vid, unnest(out_edges) AS eid, x, y
@@ -122,7 +122,7 @@ UPDATE edge_table
 SET source = vid, x1 = x, y1 = y
 FROM out_going WHERE id = eid;
 UPDATE 18
---q3.5
+/* --q3.5 */
 WITH
     in_coming AS (
         SELECT id AS vid, unnest(in_edges) AS eid, x, y
@@ -132,7 +132,7 @@ UPDATE edge_table
 SET target = vid, x2 = x, y2 = y
 FROM in_coming WHERE id = eid;
 UPDATE 18
---q3.6
+/* --q3.6 */
 SELECT id, source, target, x1, y1, x2, y2
 FROM edge_table;
  id | source | target | x1  | y1  |       x2       | y2
@@ -157,6 +157,6 @@ FROM edge_table;
  15 |     16 |     17 |   4 |   2 |              4 |   3
 (18 rows)
 
---q3.7
+/* --q3.7 */
 ROLLBACK;
 ROLLBACK

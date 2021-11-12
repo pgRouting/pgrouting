@@ -18,7 +18,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 3.2.2
+project(PGROUTING VERSION 3.3.0
     LANGUAGES C CXX )
 set(PROJECT_VERSION_DEV "")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
@@ -31,9 +31,9 @@ set(PROJECT_LIB_NAME "${PROJECT_NAME_LOWER}-${PROJECT_LIB_VERSION}")
 
 string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d")
 
-set(MINORS 3.2 3.1 3.0 2.6)
+set(MINORS 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
-    3.2.1 3.2.0
+    3.2.2 3.2.1 3.2.0
     3.1.4 3.1.3 3.1.2 3.1.1 3.1.0
     3.0.6 3.0.5 3.0.4 3.0.3 3.0.2 3.0.1 3.0.0
     2.6.3 2.6.2 2.6.1 2.6.0
@@ -51,7 +51,7 @@ include(pgr/Configure)
 # minimum versions
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.7")
-set(SPHINX_MINIMUM_VERSION "1.8")
+set(SPHINX_MINIMUM_VERSION "4.0")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
 set(BOOST_MINIMUM_VERSION "1.56.0")
 set(POSTGIS_MINIMUM_VERSION "2.0.0")
@@ -311,6 +311,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     endif()
 
     set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+    add_definitions(-Wsign-conversion  -Wfloat-conversion)
     if(BOOST_Geometry_VERSION_OK)
         set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
     else()

@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-\i setup.sql
+BEGIN;
 
 SELECT CASE
 WHEN NOT min_lib_version('3.1.1') THEN plan(1)

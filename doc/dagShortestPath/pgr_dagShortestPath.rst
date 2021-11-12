@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dagShortestPath.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__
 
@@ -87,14 +88,14 @@ Signatures
     pgr_dagShortestPath(Edges SQL, from_vid,  to_vids)
     pgr_dagShortestPath(Edges SQL, from_vids, to_vid)
     pgr_dagShortestPath(Edges SQL, from_vids, to_vids)
-    pgr_dagShortestPath(Edges SQL, Combinations) -- Experimental on v3.2
+    pgr_dagShortestPath(Edges SQL, Combinations)
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 
 .. index::
-    single: dagShortestPath(One to One) - Experimental
+    single: dagShortestPath(One to One) - Experimental on v3.0
 
 One to One
 ...............................................................................
@@ -112,7 +113,7 @@ One to One
    :end-before: -- q2
 
 .. index::
-    single: dagShortestPath(One to Many) - Experimental
+    single: dagShortestPath(One to Many) - Experimental on v3.0
 
 One to Many
 ...............................................................................
@@ -130,7 +131,7 @@ One to Many
    :end-before: -- q3
 
 .. index::
-    single: dagShortestPath(Many to One) - Experimental
+    single: dagShortestPath(Many to One) - Experimental on v3.0
 
 Many to One
 ...............................................................................
@@ -148,7 +149,7 @@ Many to One
    :end-before: -- q4
 
 .. index::
-    single: dagShortestPath(Many to Many) - Experimental
+    single: dagShortestPath(Many to Many) - Experimental on v3.0
 
 Many to Many
 ...............................................................................
@@ -167,7 +168,7 @@ Many to Many
    :end-before: -- q5
 
 .. index::
-    single: dagShortestPath(Combinations) -- Experimental on v3.2
+    single: dagShortestPath(Combinations) - Experimental on v3.2
 
 Combinations
 ...............................................................................

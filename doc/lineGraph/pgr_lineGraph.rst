@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_lineGraph.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_lineGraph.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lineGraph.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_lineGraph.html>`__)
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_lineGraph.html>`__
 * **Unsupported versions:**
@@ -72,14 +73,14 @@ Signatures
    :end-before: -- q2
 
 .. index::
-    single: lineGraph(Complete signature)
+    single: lineGraph - Experimental on v2.5
 
 Complete Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_lineGraph(edges_sql, directed);
+    pgr_lineGraph(edges_sql, directed)
     RETURNS SET OF (seq, source, target, cost, reverse_cost) OR EMPTY SET
 
 :Example: For an **undirected** graph

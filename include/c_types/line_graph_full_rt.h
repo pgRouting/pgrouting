@@ -39,12 +39,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stdint.h>
 #endif
 
-typedef struct {
+struct Line_graph_full_rt {
     int64_t id;
     int64_t source;
     int64_t target;
     double cost;
     int64_t edge;
-} Line_graph_full_rt;
+};
 
 #endif  // INCLUDE_C_TYPES_LINE_GRAPH_FULL_RT_H_

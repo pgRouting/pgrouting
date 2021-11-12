@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: macos
     runs-on: macos-latest
 
     steps:

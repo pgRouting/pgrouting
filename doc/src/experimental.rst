@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/experimental.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/experimental.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/experimental.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/experimental.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/experimental.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/experimental.html>`__
 * **Unsupported versions:**
@@ -70,21 +71,9 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
-:doc:`topology-functions`
-
-.. include:: topology-functions.rst
-   :start-after: topology_proposed_start
-   :end-before: topology_proposed_end
-
 :doc:`transformation-family`
 
 .. include:: transformation-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
-:doc:`traversal-family`
-
-.. include:: traversal-family.rst
    :start-after: index from here
    :end-before: index to here
 
@@ -94,19 +83,12 @@ Experimental Functions
    :start-after: index experimental from here
    :end-before: index experimental to here
 
-:doc:`dijkstra-family`
-
-.. include:: dijkstra-family.rst
-   :start-after: index experimental from here
-   :end-before: index experimental to here
-
 .. toctree::
    :hidden:
 
    chinesePostmanProblem-family
    coloring-family
    transformation-family
-   traversal-family
    components-family
 
 .. rubric:: categories

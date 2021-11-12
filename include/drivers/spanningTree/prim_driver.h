@@ -34,19 +34,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
 #else
 #   include <stddef.h>
+#   include <stdint.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_mst_rt.h"
+typedef struct Edge_t Edge_t;
+typedef struct MST_rt MST_rt;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 void do_pgr_prim(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
 
         int64_t *rootsArr,
@@ -57,7 +59,7 @@ void do_pgr_prim(
         int64_t max_depth,
         double distance,
 
-        pgr_mst_rt **return_tuples,
+        MST_rt **return_tuples,
         size_t *return_count,
 
         char ** log_msg,

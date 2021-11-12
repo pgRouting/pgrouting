@@ -34,13 +34,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Edge_t = struct Edge_t;
+using Path_rt = struct Path_rt;
+using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_t Edge_t;
+typedef struct Path_rt Path_rt;
+typedef struct II_t_rt II_t_rt;
 #endif
-
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_combination_t.h"
-#include "c_types/general_path_element_t.h"
 
 
 #ifdef __cplusplus
@@ -49,16 +53,16 @@ extern "C" {
 
     void
         do_pgr_edge_disjoint_paths(
-            pgr_edge_t *data_edges,
+            Edge_t *data_edges,
             size_t total_tuples,
-            pgr_combination_t  *combinations,
+            II_t_rt  *combinations,
             size_t total_combinations,
             int64_t *source_vertices,
             size_t size_source_verticesArr,
             int64_t *sink_vertices,
             size_t size_sink_verticesArr,
             bool directed,
-            General_path_element_t **return_tuples,
+            Path_rt **return_tuples,
             size_t *return_count,
             char** log_msg,
             char** notice_msg,

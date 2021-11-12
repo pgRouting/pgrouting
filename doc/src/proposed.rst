@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/proposed.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/proposed.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/proposed.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/proposed.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/proposed.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/proposed.html>`__
 * **Unsupported versions:**
@@ -54,6 +55,29 @@ Proposed Functions
    :start-after: index proposed from here
    :end-before: index proposed to here
 
+:doc:`topology-functions`
+
+.. include:: topology-functions.rst
+   :start-after: topology_proposed_start
+   :end-before: topology_proposed_end
+
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`coloring-family`
+
+.. include:: coloring-family.rst
+   :start-after: index proposed from here
+   :end-before: index proposed to here
+
+.. toctree::
+   :hidden:
+
+   traversal-family
+
 .. rubric:: categories
 
 :doc:`cost-category`
@@ -85,7 +109,6 @@ Proposed Functions
 
     withPoints-family
     KSP-category
-
 
 See Also
 -------------------------------------------------------------------------------

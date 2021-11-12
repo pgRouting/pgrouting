@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #   include <stddef.h>
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_randomSpanningTree_t.h"
+typedef struct Edge_t Edge_t;
+typedef SpanTree_rt SpanTree_rt;
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,11 +47,11 @@ extern "C" {
 
     void
         do_pgr_randomSpanningTree(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_edges,
                 int64_t root_vertex,
                 bool directed,
-                pgr_randomSpanningTree_t **return_tuples,
+                SpanTree_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

@@ -27,14 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_C_TYPES_GEOM_TEXT_RT_H_
 #pragma once
 
-typedef struct {
-#if 0
-    size_t pid;
-    double x;
-    double y;
-#else
+struct GeomText_t {
     char *geom;
-#endif
-} GeomText_t;
+};
 
 #endif  // INCLUDE_C_TYPES_GEOM_TEXT_RT_H_

@@ -33,6 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_base_graph.hpp"
 #include "cpp_common/interruption.h"
+#include "c_types/mst_rt.h"
+
 //******************************************
 
 namespace pgrouting {
@@ -46,11 +48,11 @@ class Pgr_breadthFirstSearch {
     typedef typename G::B_G B_G;
 
 
-    std::vector<pgr_mst_rt> breadthFirstSearch(
+    std::vector<MST_rt> breadthFirstSearch(
         G &graph,
         std::vector<int64_t> start_vertex,
         int64_t depth) {
-        std::vector<pgr_mst_rt> results;
+        std::vector<MST_rt> results;
         using bfs_visitor = visitors::Edges_order_bfs_visitor<E>;
 
         for (auto source : start_vertex) {
@@ -74,12 +76,12 @@ class Pgr_breadthFirstSearch {
 
  private:
      template <typename T>
-     std::vector<pgr_mst_rt> get_results(
+     std::vector<MST_rt> get_results(
              T order,
              int64_t source,
              int64_t max_depth,
              const G &graph) {
-         std::vector<pgr_mst_rt> results;
+         std::vector<MST_rt> results;
 
          std::vector<double> agg_cost(graph.num_vertices(), 0);
          std::vector<int64_t> depth(graph.num_vertices(), 0);

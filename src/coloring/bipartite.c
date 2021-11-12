@@ -34,15 +34,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/postgres_connection.h"
 
-
+#include "c_types/ii_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
-#include "c_types/pgr_bipartite_rt.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "drivers/coloring/bipartite_driver.h"
-
 
 
 PGDLLEXPORT Datum _pgr_bipartite(PG_FUNCTION_ARGS);
@@ -52,12 +50,12 @@ PG_FUNCTION_INFO_V1(_pgr_bipartite);
 static
 void
 process(char* edges_sql,
-        pgr_bipartite_rt **result_tuples,
+        II_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
     size_t total_edges = 0;
-    pgr_edge_t* edges = NULL;
+    Edge_t* edges = NULL;
     pgr_get_edges(edges_sql, &edges, &total_edges);
     if (total_edges == 0) {
         pgr_SPI_finish();
@@ -98,7 +96,7 @@ PGDLLEXPORT Datum
 _pgr_bipartite(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
-    pgr_bipartite_rt *result_tuples = NULL;
+    II_t_rt *result_tuples = NULL;
     size_t result_count = 0;
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -110,11 +108,8 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -128,7 +123,7 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_bipartite_rt*) funcctx->user_fctx;
+    result_tuples = (II_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple   tuple;
@@ -144,8 +139,8 @@ _pgr_bipartite(PG_FUNCTION_ARGS) {
         for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
-            values[0] = Int64GetDatum(result_tuples[call_cntr].vid);
-            values[1] = Int64GetDatum(result_tuples[call_cntr].color);
+            values[0] = Int64GetDatum(result_tuples[call_cntr].d1.id);
+            values[1] = Int64GetDatum(result_tuples[call_cntr].d2.value);
             tuple = heap_form_tuple(tuple_desc, values, nulls);
             result = HeapTupleGetDatum(tuple);
             SRF_RETURN_NEXT(funcctx, result);

@@ -83,7 +83,7 @@ process(char* edges_sql,
 
 
     size_t total_edges = 0;
-    pgr_edge_t* edges = NULL;
+    Edge_t* edges = NULL;
     pgr_get_edges(edges_sql, &edges, &total_edges);
     if (total_edges == 0) {
         if (forbidden_vertices) pfree(forbidden_vertices);
@@ -163,11 +163,8 @@ _pgr_contraction(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)

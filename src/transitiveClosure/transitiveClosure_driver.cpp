@@ -35,6 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
 
+#include "c_types/transitiveClosure_rt.h"
+
 
 
 template < class G >
@@ -51,7 +53,7 @@ template <typename G>
 static
 void get_postgres_result(
         G &graph,
-        transitiveClosure_rt **return_tuples,
+        TransitiveClosure_rt **return_tuples,
         size_t *count) {
     boost::adjacency_list <> TC;
     TC = pgr_transitiveClosure(graph);
@@ -92,9 +94,9 @@ void get_postgres_result(
  ***********************************************************/
 void
 do_pgr_transitiveClosure(
-        pgr_edge_t  *data_edges,
+        Edge_t  *data_edges,
         size_t total_edges,
-        transitiveClosure_rt **return_tuples,
+        TransitiveClosure_rt **return_tuples,
         size_t *return_count,
         char **log_msg,
         char **notice_msg,
@@ -113,7 +115,7 @@ do_pgr_transitiveClosure(
         /*
          * Converting to C++ structures
          */
-        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        std::vector<Edge_t> edges(data_edges, data_edges + total_edges);
 
 
         graphType gType = DIRECTED;

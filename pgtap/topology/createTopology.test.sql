@@ -20,8 +20,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-\i setup.sql
-\set VERBOSITY 'terse'
+BEGIN;
 
 SELECT * INTO edges2 FROM edge_table;
 UPDATE edges2 SET source = NULL, target = NULL;

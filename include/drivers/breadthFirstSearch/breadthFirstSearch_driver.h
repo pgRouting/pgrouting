@@ -34,12 +34,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* for size-t */
 #ifdef __cplusplus
 #   include <cstddef>
+#   include <cstdint>
+using Edge_t = struct Edge_t;
+using MST_rt = struct MST_rt;
 #else
 #   include <stddef.h>
+#   include <stdint.h>
+typedef struct Edge_t Edge_t;
+typedef struct MST_rt MST_rt;
 #endif
 
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_mst_rt.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,13 +59,13 @@ extern "C" {
 
 
     void do_pgr_breadthFirstSearch(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_tuples,
                 int64_t  *start_vidsArr,
                 size_t size_start_vidsArr,
                 int64_t max_depth,
                 bool directed,
-                pgr_mst_rt **return_tuples,
+                MST_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,

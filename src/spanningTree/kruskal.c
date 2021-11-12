@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "c_types/pgr_mst_rt.h"
+#include "c_types/mst_rt.h"
 
 #include "drivers/spanningTree/mst_common.h"
 #include "drivers/spanningTree/kruskal_driver.h"
@@ -54,7 +54,7 @@ process(
         int64_t max_depth,
         double distance,
 
-        pgr_mst_rt **result_tuples,
+        MST_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
@@ -74,7 +74,7 @@ process(
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -112,7 +112,7 @@ PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    pgr_mst_rt *result_tuples = NULL;
+    MST_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -131,11 +131,7 @@ PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -151,7 +147,7 @@ PGDLLEXPORT Datum _pgr_kruskal(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_mst_rt*) funcctx->user_fctx;
+    result_tuples = (MST_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

@@ -34,9 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
 
-#include "c_types/pgr_edge_t.h"
+#include "c_types/edge_t.h"
 #include "c_types/restriction_t.h"
-#include "c_types/general_path_element_t.h"
+#include "c_types/path_rt.h"
 
 #include "c_common/edges_input.h"
 #include "c_common/restrictions_input.h"
@@ -56,11 +56,11 @@ void compute_trsp(
 
         bool directed,
 
-        General_path_element_t **result_tuples,
+        Path_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
@@ -120,7 +120,7 @@ _trsp(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     size_t result_count             = 0;
-    General_path_element_t  *result_tuples   = NULL;
+    Path_rt  *result_tuples   = NULL;
 
     // stuff done only on the first call of the function
     if (SRF_IS_FIRSTCALL()) {
@@ -161,7 +161,7 @@ _trsp(PG_FUNCTION_ARGS) {
     funcctx = SRF_PERCALL_SETUP();
 
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t *) funcctx->user_fctx;
+    result_tuples = (Path_rt *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         // do when there is more left to send

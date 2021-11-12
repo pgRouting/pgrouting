@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraCostMatrix.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCostMatrix.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCostMatrix.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCostMatrix.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCostMatrix.html>`__)
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCostMatrix.html>`__
 * **Unsupported versions:**
@@ -51,6 +52,9 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: dijkstraCostMatrix
+
 .. code-block:: none
 
     pgr_dijkstraCostMatrix(edges_sql, start_vids [, directed])
@@ -69,9 +73,6 @@ Signatures
    :start-after: -- dijkstra q1
    :end-before: -- dijkstra q2
 
-
-.. index::
-    single: dijkstraCostMatrix
 
 Complete Signature
 ...............................................................................

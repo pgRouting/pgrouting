@@ -46,14 +46,13 @@ enum {
 } expectType;
 
 
-typedef
-struct {
+struct Column_info_t {
     int colNumber;
     uint64_t type;
     bool strict;
     char *name;
     expectType eType;
-} Column_info_t;
+};
 
 
 #endif  // INCLUDE_C_TYPES_COLUMN_INFO_T_H_

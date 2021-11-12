@@ -8,25 +8,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"POT-Creation-Date: 2021-10-10 16:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/TSP-family.rst:12
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
-"/TSP-family.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/en/TSP-"
-"family.html>`__) `3.1 <https://docs.pgrouting.org/3.1/en/TSP-"
+"/TSP-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/TSP-"
+"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/TSP-"
+"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/TSP-"
 "family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/TSP-"
 "family.html>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:17
+#: ../../build/doc/TSP-family.rst:18
 msgid ""
 "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/TSP-"
 "family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/TSP-"
@@ -35,34 +36,32 @@ msgid ""
 "<https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:24
+#: ../../build/doc/TSP-family.rst:25
 msgid "Traveling Sales Person - Family of functions"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:28
+#: ../../build/doc/TSP-family.rst:29
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:29
+#: ../../build/doc/TSP-family.rst:30
 msgid ":doc:`pgr_TSPeuclidean` - When input are coordinates."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:42
+#: ../../build/doc/TSP-family.rst:43
 msgid "Table of Contents"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:45
+#: ../../build/doc/TSP-family.rst:46
 msgid "General Information"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:48
+#: ../../build/doc/TSP-family.rst:51
 msgid "Problem Definition"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:52
-msgid ""
-"The travelling salesman problem (TSP) or travelling salesperson problem "
-"asks the following question:"
+#: ../../build/doc/TSP-family.rst:53
+msgid "The travelling salesperson problem (TSP) asks the following question:"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:55
@@ -83,7 +82,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:64
-msgid "**Sir William Rowam Hamilton** and **Thomas Penyngton  Kirkman**."
+msgid "**Sir William Rowam Hamilton** and **Thomas Penyngton Kirkman**."
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:66
@@ -110,484 +109,117 @@ msgid ""
 "<https://homepages.cwi.nl/~lex/files/histco.ps>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:78
-msgid "Characteristics"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:80
-msgid "The travel costs are symmetric:"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:82
-msgid ""
-"traveling costs from city A to city B are just as much as traveling from "
-"B to A."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:84
-msgid "This problem is an NP-hard optimization problem."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:86
+#: ../../build/doc/TSP-family.rst:77
 msgid "To calculate the number of different tours through :math:`n` cities:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:88
+#: ../../build/doc/TSP-family.rst:79
 msgid "Given a starting city,"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:89
+#: ../../build/doc/TSP-family.rst:80
 msgid "There are :math:`n-1` choices for the second city,"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:90
+#: ../../build/doc/TSP-family.rst:81
 msgid "And  :math:`n-2` choices for the third city, etc."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:91
+#: ../../build/doc/TSP-family.rst:82
 msgid "Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:92
+#: ../../build/doc/TSP-family.rst:83
 msgid ""
-"Now since our travel costs do not depend on the direction we take around "
+"Now since the travel costs do not depend on the direction taken around "
 "the tour:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:94
+#: ../../build/doc/TSP-family.rst:85
 msgid "this number by 2"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:95
+#: ../../build/doc/TSP-family.rst:86
 msgid ":math:`(n-1)!/2`."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:100
-msgid "Simulated Annealing Algorithm"
+#: ../../build/doc/TSP-family.rst:91
+msgid "General Characteristics"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:102
+#: ../../build/doc/TSP-family.rst:93
+msgid "This problem is an NP-hard optimization problem."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:94
+msgid "Metric Algorithm is used"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:95
 msgid ""
-"The simulated annealing algorithm was originally inspired from the "
-"process of annealing in metal work."
+"Implementation generates solutions that *are twice as long as the optimal"
+" tour in the worst case* when:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:105
+#: ../../build/doc/TSP-family.rst:97
+msgid "Graph is undirected"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:98
+msgid "Graph is fully connected"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:99
+msgid "Graph where traveling costs on edges obey the triangle inequality."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:101
+msgid "On an undirected graph:"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:103
+msgid "The traveling costs are symmetric:"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:104
 msgid ""
-"Annealing involves heating and cooling a material to alter its physical "
-"properties due to the changes in its internal structure. As the metal "
-"cools its new structure becomes fixed, consequently causing the metal to "
-"retain its newly obtained properties."
+"Traveling costs from ``u`` to ``v`` are just as much as traveling from  "
+"``v`` to ``u``"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:112
-msgid "Pseudocode"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:113
-msgid ""
-"Given an initial solution, the simulated annealing process, will start "
-"with a high temperature and gradually cool down until the desired "
-"temperature is reached."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:116
-msgid ""
-"For each temperature, a neighbouring new solution **newSolution** is "
-"calculated. The higher the temperature the higher the probability of "
-"accepting the new solution as a possible bester solution."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:119
-msgid ""
-"Once the desired temperature is reached, the best solution found is "
-"returned"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:142
-msgid "pgRouting Implementation"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:144
-msgid ""
-"pgRouting's implementation adds some extra parameters to allow some exit "
-"controls within the simulated annealing process."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:147
-msgid "``max_changes_per_temperature``:"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:149
-msgid "Limits the number of changes in the solution per temperature"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:150
-msgid "Count is reset to :math:`0` when **temperature** changes"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:151 ../../build/doc/TSP-family.rst:157
-msgid "Count is increased by :math: `1` when **solution** changes"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:153
-msgid "``max_consecutive_non_changes``:"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:155
-msgid "Limits the number of consecutive non changes per temperature"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:156
-msgid "Count is reset to :math:`0` when **solution** changes"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:159
-msgid "``max_processing_time``:"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:161
-msgid "Limits the time the simulated annealing is performed."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:190
-msgid "Choosing parameters"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:192
-msgid ""
-"There is no exact rule on how the parameters have to be chose, it will "
-"depend on the special characteristics of the problem."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:195
-msgid ""
-"If the computational time is crucial, then limit execution time with "
-"**max_processing_time**."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:196
-msgid ""
-"Make the **tries_per_temperture** depending on the number of cities "
-"(:math:`n`), for example:"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:198
-msgid "Useful to estimate the time it takes to do one cycle: use `1`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:200
-msgid "this will help to set a reasonable **max_processing_time**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:202
-msgid ":math:`n * (n-1)`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:203
-msgid ":math:`500 * n`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:205
-msgid ""
-"For a faster decreasing the temperature set **cooling_factor** to a "
-"smaller number, and set to a higher number for a slower decrease."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:208
-msgid ""
-"When for the same given data the same results are needed, set "
-"**randomize** to `false`."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:210
-msgid "When estimating how long it takes to do one cycle: use `false`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:213
-msgid ""
-"A recommendation is to play with the values and see what fits to the "
-"particular data."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:217
-msgid "Description of the Control Parameters"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:219
-msgid "The control parameters are optional, and have a default value."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:224
-msgid "Parameter"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:224 ../../build/doc/TSP-family.rst:254
-msgid "Type"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:224
-msgid "Default"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:224 ../../build/doc/TSP-family.rst:254
-msgid "Description"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:226
-msgid "**start_vid**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:226 ../../build/doc/TSP-family.rst:227
-#: ../../build/doc/TSP-family.rst:257
-msgid "``BIGINT``"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:226 ../../build/doc/TSP-family.rst:227
-msgid "`0`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:226
-msgid "The greedy part of the implementation will use this identifier."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:227
-msgid "**end_vid**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:227
-msgid "Last visiting vertex before returning to start_vid."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:228
-msgid "**max_processing_time**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:228 ../../build/doc/TSP-family.rst:232
-#: ../../build/doc/TSP-family.rst:233 ../../build/doc/TSP-family.rst:234
-#: ../../build/doc/TSP-family.rst:258 ../../build/doc/TSP-family.rst:261
-msgid "``FLOAT``"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:228
-msgid "`+infinity`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:228
-msgid "Stop the annealing processing when the value is reached."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:229
-msgid "**tries_per_temperature**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:229 ../../build/doc/TSP-family.rst:230
-#: ../../build/doc/TSP-family.rst:231 ../../build/doc/TSP-family.rst:256
-msgid "``INTEGER``"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:229
-msgid "`500`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:229
-msgid "Maximum number of times a neighbor(s) is searched in each temperature."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:230
-msgid "**max_changes_per_temperature**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:230
-msgid "`60`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:230
-msgid "Maximum number of times the solution is changed in each temperature."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:231
-msgid "**max_consecutive_non_changes**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:231 ../../build/doc/TSP-family.rst:232
-msgid "`100`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:231
-msgid ""
-"Maximum number of consecutive times the solution is not changed in each "
-"temperature."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:232
-msgid "**initial_temperature**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:232
-msgid "Starting temperature."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:233
-msgid "**final_temperature**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:233
-msgid "`0.1`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:233
-msgid "Ending temperature."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:234
-msgid "**cooling_factor**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:234
-msgid "`0.9`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:234
-msgid ""
-"Value between between 0 and 1 (not including) used to calculate the next "
-"temperature."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:235
-msgid "**randomize**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:235
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:235
-msgid "`true`"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:235
-msgid "Choose the random seed"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:237
-msgid "true: Use current time as seed"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:238
-msgid ""
-"false: Use `1` as seed. Using this value will get the same results with "
-"the same data in each execution."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:247
-msgid "Description of the return columns"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:251
-msgid "Returns SET OF ``(seq, node, cost, agg_cost)``"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:254
-msgid "Column"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:256
-msgid "**seq**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:256
-msgid "Row sequence."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:257
-msgid "**node**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:257
-msgid "Identifier of the node/coordinate/point."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:258
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:259
-msgid ""
-"Cost to traverse from the current ``node`` to the next ``node`` in the "
-"path sequence."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:259
-msgid "``0`` for the last row in the path sequence."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:261
-msgid "**agg_cost**"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:262
-msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:262
-msgid "``0`` for the first row in the path sequence."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:269
+#: ../../build/doc/TSP-family.rst:111
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:272
+#: ../../build/doc/TSP-family.rst:114
 msgid "References"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:273
+#: ../../build/doc/TSP-family.rst:115
+msgid ""
+"Metric Algorithm from `Boost library "
+"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:116
+msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:117
 msgid ""
 "`Wikipedia: Traveling Salesman Problem "
 "<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:274
-msgid ""
-"`Wikipedia: Simulated annealing "
-"<https://en.wikipedia.org/wiki/Simulated_annealing>`__"
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:277
+#: ../../build/doc/TSP-family.rst:120
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:278
+#: ../../build/doc/TSP-family.rst:121
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:279
+#: ../../build/doc/TSP-family.rst:122
 msgid ":ref:`search`"
 msgstr ""
-
-#~ msgid ""
-#~ "`Simulated annaeling algorithm for beginners"
-#~ " <https://www.theprojectspot.com/tutorial-post/simulated-"
-#~ "annealing-algorithm-for-beginners/6>`__"
-#~ msgstr ""
-
-#~ msgid "Previous versions of this page"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.1 "
-#~ "<https://docs.pgrouting.org/3.1/en/TSP-family.html>`__) "
-#~ "`3.0 <https://docs.pgrouting.org/3.0/en/TSP-"
-#~ "family.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en"
-#~ "/TSP-family.html>`__"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**Unsupported versions:** `2.5 "
-#~ "<https://docs.pgrouting.org/2.5/en/TSP-family.html>`__ "
-#~ "`2.4 <https://docs.pgrouting.org/2.4/en/TSP-"
-#~ "family.html>`__ `2.3 "
-#~ "<https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
-#~ msgstr ""
 

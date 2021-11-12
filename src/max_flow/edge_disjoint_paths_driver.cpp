@@ -39,11 +39,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "c_types/ii_t_rt.h"
 
 static
-std::vector<General_path_element_t>
+std::vector<Path_rt>
 single_execution(
-        std::vector<pgr_edge_t> edges,
+        std::vector<Edge_t> edges,
         int64_t source,
         int64_t target,
         bool directed) {
@@ -64,16 +65,16 @@ single_execution(
 
 void
 do_pgr_edge_disjoint_paths(
-    pgr_edge_t *data_edges,
+    Edge_t *data_edges,
     size_t total_edges,
-    pgr_combination_t *combinations,
+    II_t_rt *combinations,
     size_t total_combinations,
     int64_t *sources,
     size_t size_source_verticesArr,
     int64_t *sinks,
     size_t size_sink_verticesArr,
     bool directed,
-    General_path_element_t **return_tuples,
+    Path_rt **return_tuples,
     size_t *return_count,
     char** log_msg,
     char** notice_msg,
@@ -96,23 +97,23 @@ do_pgr_edge_disjoint_paths(
                 sources, sources + size_source_verticesArr);
         std::set<int64_t> set_sink_vertices(
                 sinks, sinks + size_sink_verticesArr);
-        std::vector< pgr_combination_t > combinations_vector(
+        std::vector< II_t_rt > combinations_vector(
                 combinations, combinations + total_combinations);
-        std::vector<pgr_edge_t> edges(
+        std::vector<Edge_t> edges(
                 data_edges, data_edges + total_edges);
 
         if (!combinations_vector.empty()) {
             pgassert(set_source_vertices.empty());
             pgassert(set_sink_vertices.empty());
 
-            for (const pgr_combination_t &comb : combinations_vector) {
-                set_source_vertices.insert(comb.source);
-                set_sink_vertices.insert(comb.target);
+            for (const II_t_rt &comb : combinations_vector) {
+                set_source_vertices.insert(comb.d1.source);
+                set_sink_vertices.insert(comb.d2.target);
             }
         }
 
 
-        std::vector<General_path_element_t> paths;
+        std::vector<Path_rt> paths;
         for (const auto &s : set_source_vertices) {
             for (const auto &t : set_sink_vertices) {
                 auto path = single_execution(

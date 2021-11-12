@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 SET extra_float_digits=-3;
 SET
---q1
+/* --q1 */
 SELECT * FROM pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * from vehicles',
@@ -35,7 +35,7 @@ SELECT * FROM pgr_pickDeliver(
   11 |          -2 |          0 |        0 |        -1 |      -1 |       -1 |    -1 | 11.4787086646 |            -1 |         2 |           17 |  30.4787086646
 (11 rows)
 
---q2
+/* --q2 */
 SELECT * FROM pgr_pickDeliver(
     $$ SELECT * FROM orders ORDER BY id $$,
     $$ SELECT * FROM vehicles ORDER BY id$$,
@@ -63,6 +63,6 @@ SELECT * FROM pgr_pickDeliver(
   11 |          -2 |          0 |        0 |        -1 |      -1 |       -1 |    -1 |          16 |           -1 |         1 |           17 |             34
 (11 rows)
 
---q3
+/* --q3 */
 ROLLBACK;
 ROLLBACK

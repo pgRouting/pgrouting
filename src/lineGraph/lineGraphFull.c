@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
+#include "c_types/line_graph_full_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -53,7 +54,7 @@ process(
     (*result_count) = 0;
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -115,11 +116,7 @@ PGDLLEXPORT Datum _pgr_linegraphfull(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {

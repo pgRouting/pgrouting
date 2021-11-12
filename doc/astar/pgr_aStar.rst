@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_aStar.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStar.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStar.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStar.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStar.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStar.html>`__
 * **Unsupported versions:**
@@ -92,7 +93,7 @@ Signatures
     pgr_aStar(Edges SQL, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon]) -- Proposed on v3.2
+    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -110,8 +111,8 @@ Optional parameters are `named parameters` and have a default value.
 :Example: From vertex :math:`2` to vertex :math:`12` on a **directed** graph
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: aStar(One to One)
@@ -129,8 +130,8 @@ One to One
 :Example: From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: astar(One to Many)
@@ -147,8 +148,8 @@ One to many
 :Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: aStar(Many to One)
@@ -165,8 +166,8 @@ Many to One
 :Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q4
-   :end-before: --q5
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
     single: aStar(Many to Many)
@@ -183,11 +184,11 @@ Many to Many
 :Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q5
-   :end-before: --q6
+   :start-after: -- q5
+   :end-before: -- q6
 
 .. index::
-    single: aStar(Combinations) -- Proposed on v3.2
+    single: aStar(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................
@@ -202,8 +203,8 @@ Combinations
 
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q6
-   :end-before: --q7
+   :start-after: -- q6
+   :end-before: -- q7
 
 Parameters
 -------------------------------------------------------------------------------

@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliver.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliver.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliver.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__)
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__
 
@@ -75,7 +76,7 @@ Characteristics
   - the best solution found will be result
 
 .. index::
-    single: pgr_pickDeliver - Experimental
+    single: pgr_pickDeliver - Experimental on v3.0
 
 Signature
 -------------------------------------------------------------------------------

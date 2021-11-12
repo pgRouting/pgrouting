@@ -1,5 +1,5 @@
 
-\echo -- q1
+/* -- q1 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -8,7 +8,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
     2, 3
 );
 
-\echo -- q2
+/* -- q2 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -17,7 +17,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
     ARRAY[1, 7, 14], 12
 );
 
-\echo -- q3
+/* -- q3 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -26,7 +26,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
     13, ARRAY[7, 1, 4]
 );
 
-\echo -- q4
+/* -- q4 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -35,7 +35,7 @@ SELECT * FROM pgr_MaxFlowMinCost(
     ARRAY[7, 13], ARRAY[3, 9]
 );
 
-\echo -- q5
+/* -- q5 */
 SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT id,
      source, target,
@@ -44,4 +44,4 @@ SELECT * FROM pgr_MaxFlowMinCost(
     'SELECT * FROM ( VALUES (7, 3), (13, 9) ) AS t(source, target)'
 );
 
-\echo -- q6
+/* -- q6 */

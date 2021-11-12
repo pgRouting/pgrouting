@@ -65,16 +65,16 @@ Current Available edge classes:
 extract_vertices function
 -------------------------
 Data obtained from postgresql is stored in
-A C array of pgr_edge_t type.
+A C array of Edge_t type.
 ~~~~{.c}
 std::vector< T_V >
-extract_vertices(pgr_edge_t *, size_t)
+extract_vertices(Edge_t *, size_t)
 ~~~~
 Data obtained from postgresql is stored in
 o a vector container.
 ~~~~{.c}
 std::vector< T_V >
-extract_vertices(std::vector< pgr_edge_t >)
+extract_vertices(std::vector< Edge_t >)
 ~~~~
 Boost Graph
 -------------
@@ -95,7 +95,7 @@ Example Usage:
 For this example we will use:
 - Basic_vertex
 - Basic_edge
-- pgr_edge_t
+- Edge_t
 Create Graph type
 -----------------
 ~~~~{.c}
@@ -118,7 +118,7 @@ Graph initialization is for seting the Vertices of the graph.
 Vector of unique vertices of the graph
 ~~~~{.c}
 size_t total_edges;
-pgr_edge_t *my_edges = NULL;
+Edge_t *my_edges = NULL;
 pgr_get_edges(edges_sql, &my_edges, &total_tuples);
 std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
@@ -380,7 +380,7 @@ class Pgr_base_graph {
              insert_negative_edges(std::vector < T >(edges, edges + count));
          }
 
-     /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
+     /*! @brief Inserts *count* edges of type *Edge_t* into the graph
         The set of edges should not have an illegal vertex defined
         When the graph is empty calls:
         - @b extract_vertices

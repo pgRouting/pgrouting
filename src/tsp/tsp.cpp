@@ -281,7 +281,7 @@ TSP::crossover_optimize(std::deque<std::pair<int64_t, double>> result, size_t li
 
 
 TSP::TSP(
-    Matrix_cell_t *distances,
+    IID_t_rt *distances,
     size_t total_distances, bool) {
     /*
      * Inserting vertices

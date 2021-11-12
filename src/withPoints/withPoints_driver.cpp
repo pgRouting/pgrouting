@@ -47,7 +47,7 @@ template < class G >
 std::deque< Path >
 pgr_dijkstra(
         G &graph,
-        std::vector < pgr_combination_t > &combinations,
+        std::vector < II_t_rt > &combinations,
         std::vector < int64_t > sources,
         std::vector < int64_t > targets,
         bool only_cost,
@@ -91,11 +91,11 @@ pgr_dijkstra(
 
 void
 do_pgr_withPoints(
-        pgr_edge_t *edges, size_t total_edges,
+        Edge_t *edges, size_t total_edges,
         Point_on_edge_t *points_p, size_t total_points,
-        pgr_edge_t *edges_of_points, size_t total_edges_of_points,
+        Edge_t *edges_of_points, size_t total_edges_of_points,
 
-        pgr_combination_t *combinations, size_t total_combinations,
+        II_t_rt *combinations, size_t total_combinations,
 
         int64_t *start_pidsArr, size_t size_start_pidsArr,
         int64_t *end_pidsArr, size_t size_end_pidsArr,
@@ -106,7 +106,7 @@ do_pgr_withPoints(
         bool only_cost,
         bool normal,
 
-        General_path_element_t **return_tuples, size_t *return_count,
+        Path_rt **return_tuples, size_t *return_count,
 
         char** log_msg,
         char** notice_msg,
@@ -126,7 +126,7 @@ do_pgr_withPoints(
                 std::vector<Point_on_edge_t>(
                     points_p,
                     points_p + total_points),
-                std::vector< pgr_edge_t >(
+                std::vector< Edge_t >(
                     edges_of_points,
                     edges_of_points + total_edges_of_points),
                 normal,
@@ -142,7 +142,7 @@ do_pgr_withPoints(
         }
 
 
-        std::vector<pgr_combination_t>
+        std::vector<II_t_rt>
                 combinations_vector(combinations, combinations + total_combinations);
         std::vector<int64_t>
             start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);

@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
-#include "c_types/pgr_boyer_t.h"
+#include "c_types/iid_t_rt.h"
 
 #include "planar/pgr_boyerMyrvold.hpp"
 #include "cpp_common/pgr_base_graph.hpp"
@@ -44,10 +44,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_boyerMyrvold(
-                pgr_edge_t  *data_edges,
+                Edge_t  *data_edges,
                 size_t total_edges,
 
-                pgr_boyer_t **return_tuples,
+                IID_t_rt **return_tuples,
                 size_t *return_count,
                 char ** log_msg,
                 char ** notice_msg,
@@ -63,7 +63,7 @@ do_pgr_boyerMyrvold(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        std::vector<pgr_boyer_t> results;
+        std::vector<IID_t_rt> results;
         std::string logstr;
 
         graphType gType = UNDIRECTED;

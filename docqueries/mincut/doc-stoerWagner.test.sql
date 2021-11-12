@@ -1,18 +1,18 @@
-\echo -- q1
+/* -- q1 */
 SELECT * FROM pgr_stoerWagner(
     'SELECT id, source, target, cost, reverse_cost 
         FROM edge_table 
      WHERE id < 17'
 );
 
-\echo -- q2
+/* -- q2 */
 SELECT * FROM pgr_stoerWagner(
     'SELECT id, source, target, cost, reverse_cost 
         FROM edge_table 
      WHERE id = 18'
 );
 
-\echo -- q3
+/* -- q3 */
 SELECT * FROM pgr_stoerWagner(
 $$
  SELECT id, source, target, cost, reverse_cost FROM edge_table 
@@ -28,4 +28,4 @@ $$
 $$
  );
 
-\echo -- q4
+/* -- q4 */

@@ -5,39 +5,46 @@
 # 
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
-# Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
+# Vicky Vergara <vicky@georepublic.de>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 10:56-0600\n"
+"POT-Creation-Date: 2021-11-10 15:33+0000\n"
 "PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
+"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.8.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:12
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_turnRestrictedPath.html>`__ (`3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_turnRestrictedPath.html>`__) `3.1 "
+"<https://docs.pgrouting.org/latest/en/pgr_turnRestrictedPath.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_turnRestrictedPath.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_turnRestrictedPath.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_turnRestrictedPath.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_turnRestrictedPath.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_turnRestrictedPath.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_turnRestrictedPath.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_turnRestrictedPath.html>`__"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:19
+#: ../../build/doc/pgr_turnRestrictedPath.rst:20
 msgid "pgr_turnRestrictedPath - Experimental"
 msgstr "pgr_turnRestrictedPath - Experimental"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:21
+#: ../../build/doc/pgr_turnRestrictedPath.rst:22
 msgid "``pgr_turnRestrictedPath``"
 msgstr "``pgr_turnRestrictedPath``"
 
@@ -71,7 +78,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma o declaración de funciones podría cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -110,47 +117,52 @@ msgstr "Puede depender de una función propuesta de pgRouting."
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:28
+#: ../../build/doc/pgr_turnRestrictedPath.rst:29
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:29
+#: ../../build/doc/pgr_turnRestrictedPath.rst:30
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:31
+#: ../../build/doc/pgr_turnRestrictedPath.rst:32
 msgid "New **Experimental** function"
 msgstr "Nueva función **Experimental**"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:35
+#: ../../build/doc/pgr_turnRestrictedPath.rst:36
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:37
-#: ../../build/doc/pgr_turnRestrictedPath.rst:42
-#: ../../build/doc/pgr_turnRestrictedPath.rst:47
-#: ../../build/doc/pgr_turnRestrictedPath.rst:52
-#: ../../build/doc/pgr_turnRestrictedPath.rst:57
+#: ../../build/doc/pgr_turnRestrictedPath.rst:38
+#: ../../build/doc/pgr_turnRestrictedPath.rst:56
+#: ../../build/doc/pgr_turnRestrictedPath.rst:61
+#: ../../build/doc/pgr_turnRestrictedPath.rst:66
+#: ../../build/doc/pgr_turnRestrictedPath.rst:71
 msgid "TBD"
 msgstr "Por Definirse"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:40
+#: ../../build/doc/pgr_turnRestrictedPath.rst:41
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:45
+#: ../../build/doc/pgr_turnRestrictedPath.rst:44
+msgid "Summary"
+msgstr "Resumen"
+
+#: ../../build/doc/pgr_turnRestrictedPath.rst:55
+#: ../../build/doc/pgr_turnRestrictedPath.rst:59
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:50
+#: ../../build/doc/pgr_turnRestrictedPath.rst:64
 msgid "Inner query"
 msgstr "Consulta interna"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:55
+#: ../../build/doc/pgr_turnRestrictedPath.rst:69
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:60
+#: ../../build/doc/pgr_turnRestrictedPath.rst:74
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
@@ -158,30 +170,18 @@ msgstr "Ejemplos Adicionales"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:65
+#: ../../build/doc/pgr_turnRestrictedPath.rst:79
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:68
+#: ../../build/doc/pgr_turnRestrictedPath.rst:82
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:69
+#: ../../build/doc/pgr_turnRestrictedPath.rst:83
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_turnRestrictedPath.rst:70
+#: ../../build/doc/pgr_turnRestrictedPath.rst:84
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "Support"
-#~ msgstr "Soporte"
-
-#~ msgid ""
-#~ "**Supported versions:** current(`3.1 "
-#~ "<https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__) `3.0 "
-#~ "<https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
-#~ msgstr ""
-#~ "**Versiones soportadas:** actual(`3.1 "
-#~ "<https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__) `3.0 "
-#~ "<https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"

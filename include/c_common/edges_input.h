@@ -28,11 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* for size-t */
 #include <stddef.h>
-#include "c_types/pgr_costFlow_t.h"
-#include "c_types/pgr_flow_t.h"
-#include "c_types/pgr_basic_edge_t.h"
-#include "c_types/pgr_edge_t.h"
-#include "c_types/pgr_edge_xy_t.h"
+
+typedef struct Edge_xy_t Edge_xy_t;
+typedef struct Flow_t Flow_t;
+typedef struct Edge_bool_t_rt Edge_bool_t_rt;
+typedef struct CostFlow_t CostFlow_t;
+typedef struct Edge_t Edge_t;
 
 
 /*! @brief edges_sql without id parameter
@@ -50,7 +51,7 @@ Currently used in: allpairs
 */
 void pgr_get_edges_no_id(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges);
 
 
@@ -69,11 +70,11 @@ FROM edge_table;
 */
 void pgr_get_edges(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges);
 void pgr_get_edges_reversed(
         char *edges_sql,
-        pgr_edge_t **edges,
+        Edge_t **edges,
         size_t *total_edges);
 
 
@@ -92,7 +93,7 @@ FROM edge_table;
 */
 void pgr_get_edges_xy(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges);
 
 /*! @brief for many to 1 on aStar
@@ -117,7 +118,7 @@ FROM edge_table;
 */
 void pgr_get_edges_xy_reversed(
         char *edges_sql,
-        Pgr_edge_xy_t **edges,
+        Edge_xy_t **edges,
         size_t *total_edges);
 
 
@@ -137,7 +138,7 @@ bigint reverse_capacity
 */
 void pgr_get_flow_edges(
     char *sql,
-    pgr_edge_t **edges,
+    Edge_t **edges,
     size_t *total_edges);
 
 /*! @brief read edges for cost flow
@@ -158,7 +159,7 @@ float reverse_cost
 */
 void pgr_get_costFlow_edges(
     char *sql,
-    pgr_costFlow_t **edges,
+    CostFlow_t **edges,
     size_t *total_edges);
 
 /*! @brief read basic edges
@@ -175,7 +176,7 @@ FROM edge_table;
 */
 void pgr_get_basic_edges(
     char *sql,
-    pgr_basic_edge_t **edges,
+    Edge_bool_t_rt **edges,
     size_t *total_edges);
 
 

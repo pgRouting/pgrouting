@@ -35,7 +35,7 @@ namespace pgrouting {
 namespace graph {
 
 PgrCostFlowGraph::PgrCostFlowGraph(
-        const std::vector<pgr_costFlow_t> &edges,
+        const std::vector<CostFlow_t> &edges,
         const std::set<int64_t> &sourceVertices,
         const std::set<int64_t> &sinkVertices) {
     AddVertices(edges, sourceVertices, sinkVertices);
@@ -61,7 +61,7 @@ PgrCostFlowGraph::E PgrCostFlowGraph::AddEdge(
 }
 
 void PgrCostFlowGraph::InsertEdges(
-        const std::vector<pgr_costFlow_t> &edges) {
+        const std::vector<CostFlow_t> &edges) {
     for (const auto edge : edges) {
         PgrCostFlowGraph::E e1, e1Rev, e2, e2Rev;
         V v1 = GetBoostVertex(edge.source);
@@ -137,15 +137,15 @@ PgrCostFlowGraph::GetMaxFlow() const {
     return maxFlow;
 }
 
-std::vector<pgr_flow_t>
+std::vector<Flow_t>
 PgrCostFlowGraph::GetFlowEdges() const {
-    std::vector<pgr_flow_t> flowEdges;
+    std::vector<Flow_t> flowEdges;
     E_it e, eEnd;
     for (boost::tie(e, eEnd) = boost::edges(graph); e != eEnd; ++e) {
         if (((capacity[*e] - residual_capacity[*e]) > 0) &&
                 ((*e).m_source != supersource) &&
                 ((*e).m_target != supersink)) {
-            pgr_flow_t edge;
+            Flow_t edge;
             edge.edge = GetEdgeId(*e);
             edge.source = GetVertexId((*e).m_source);
             edge.target = GetVertexId((*e).m_target);

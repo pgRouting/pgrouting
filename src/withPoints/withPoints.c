@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
 
+#include "c_types/path_rt.h"
+#include "c_types/point_on_edge_t.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -62,7 +64,7 @@ process(
         bool only_cost,
         bool normal,
 
-        General_path_element_t **result_tuples,
+        Path_rt **result_tuples,
         size_t *result_count) {
     driving_side[0] = estimate_drivingSide(driving_side[0]);
 
@@ -74,7 +76,7 @@ process(
     size_t size_end_pidsArr = 0;
     int64_t* end_pidsArr = NULL;
 
-    pgr_combination_t *combinations = NULL;
+    II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
     Point_on_edge_t *points = NULL;
@@ -95,10 +97,10 @@ process(
             &edges_no_points_query);
 
 
-    pgr_edge_t *edges_of_points = NULL;
+    Edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     if (normal) {
@@ -202,7 +204,7 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
 
     /**********************************************************************/
-    General_path_element_t *result_tuples = 0;
+    Path_rt *result_tuples = 0;
     size_t result_count = 0;
     /**********************************************************************/
 
@@ -253,11 +255,8 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
 
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE)
@@ -272,7 +271,7 @@ _pgr_withpoints(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (Path_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;

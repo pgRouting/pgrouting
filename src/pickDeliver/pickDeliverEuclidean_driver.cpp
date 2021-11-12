@@ -37,6 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <utility>
 
+#include "c_types/pickDeliver/schedule_rt.h"
+
 #include "vrp/pgr_pickDeliver.h"
 
 #include "cpp_common/pgr_assert.h"
@@ -51,7 +53,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ***********************************************************/
 void
 do_pgr_pickDeliverEuclidean(
-        PickDeliveryOrders_t *customers_arr,
+        Orders_t *customers_arr,
         size_t total_customers,
 
         Vehicle_t *vehicles_arr,
@@ -61,7 +63,7 @@ do_pgr_pickDeliverEuclidean(
         int max_cycles,
         int initial_solution_id,
 
-        General_vehicle_orders_t **return_tuples,
+        Schedule_rt **return_tuples,
         size_t *return_count,
 
         char **log_msg,
@@ -77,7 +79,7 @@ do_pgr_pickDeliverEuclidean(
         /*
          * transform to C++ containers
          */
-        std::vector<PickDeliveryOrders_t> orders(
+        std::vector<Orders_t> orders(
                 customers_arr, customers_arr + total_customers);
         std::vector<Vehicle_t> vehicles(
                 vehicles_arr, vehicles_arr + total_vehicles);

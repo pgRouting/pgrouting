@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/postgres_connection.h"
 
 
+#include "c_types/ii_t_rt.h"
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
@@ -49,14 +50,14 @@ static
 void
 process(
         char* edges_sql,
-        pgr_components_rt **result_tuples,
+        II_t_rt **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
-    pgr_edge_t *edges = NULL;
+    Edge_t *edges = NULL;
     size_t total_edges = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -99,7 +100,7 @@ PGDLLEXPORT Datum _pgr_strongcomponents(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    pgr_components_rt *result_tuples = NULL;
+    II_t_rt *result_tuples = NULL;
     size_t result_count = 0;
 
     if (SRF_IS_FIRSTCALL()) {
@@ -114,11 +115,8 @@ PGDLLEXPORT Datum _pgr_strongcomponents(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-#if PGSQL_VERSION > 94
-        funcctx->max_calls = (uint32_t)result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
+        funcctx->max_calls = result_count;
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -134,7 +132,7 @@ PGDLLEXPORT Datum _pgr_strongcomponents(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_components_rt*) funcctx->user_fctx;
+    result_tuples = (II_t_rt*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
@@ -152,8 +150,8 @@ PGDLLEXPORT Datum _pgr_strongcomponents(PG_FUNCTION_ARGS) {
         }
 
         values[0] = Int64GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].component);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].identifier);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].d2.value);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].d1.id);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

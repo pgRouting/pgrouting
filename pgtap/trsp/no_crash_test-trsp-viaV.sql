@@ -1,17 +1,13 @@
-\i setup.sql
+BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(20);
+SELECT CASE WHEN min_version('4.0.0') THEN plan(22) ELSE plan(19) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
 
 PREPARE null_ret AS
 SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1);
-
-SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
-SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
-
 
 CREATE OR REPLACE FUNCTION test(params TEXT[], subs TEXT[])
 RETURNS SETOF TEXT AS
@@ -54,6 +50,35 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
+  IF min_version('4.0.0') THEN
+
+    RETURN QUERY SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
+    RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
+
+    params = ARRAY['$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
+    'ARRAY[1, 3]',
+    'true',
+    'true'
+    ]::TEXT[];
+    subs = ARRAY[
+    'NULL',
+    '(SELECT array_agg(id)::INTEGER[] FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+
+    RETURN query SELECT * FROM no_crash_test('pgr_trspViaVertices', params, subs);
+
+    subs = ARRAY[
+    'NULL',
+    'NULL::INTEGER[]',
+    'NULL',
+    'NULL'
+    ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_trspViaVertices', params, subs);
+
+  ELSE
+
     params = ARRAY['SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edge_table',
     'ARRAY[1]',
     'true',
@@ -76,11 +101,16 @@ BEGIN
     ]::TEXT[];
     RETURN query SELECT * FROM test(params, subs);
 
+    RETURN QUERY SELECT skip(1, 'pgr_trspViaVertices Has some crashes');
+
+  END IF;
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
 
 
-SELECT * FROM test_function();
+SELECT test_function();
 
+SELECT finish();
 ROLLBACK;

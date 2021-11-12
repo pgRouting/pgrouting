@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__
 * **Unsupported versions:**
@@ -34,7 +35,7 @@ pgr_TSPeuclidean
 
 * Version 3.2.1
 
-  * Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+  * Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
   * Simulated Annealing Algorithm no longer supported
 
     * The Simulated Annealing Algorithm related parameters are ignored:
@@ -185,7 +186,7 @@ See Also
 
 * :doc:`TSP-family`
 * :doc:`sampledata` network.
-* Metric Algorithm from `Boost library <:target: https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
 * `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
 

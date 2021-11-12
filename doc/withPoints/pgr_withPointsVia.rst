@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html>`__
-  (`3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsVia.html>`__)
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsVia.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsVia.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsVia.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsVia.html>`__
 
@@ -49,13 +50,13 @@ Signatures
 
 .. rubric:: Summary
 
+.. index::
+    single: withPointsVia - Proposed on v2.2
+
 .. code-block:: none
 
 	withPointsVia(edges_sql, points_sql, start_pid, distance [, directed] [, driving_side] [, details])
   RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
-.. index::
-	single: withPointsVia(edges_sql, points_sql, start_pid, distance) -- proposed
 
 .. rubric:: Using defaults
 ...................................................

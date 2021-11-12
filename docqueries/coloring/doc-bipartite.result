@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
---q1
+/* --q1 */
 SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
 );
@@ -27,11 +27,11 @@ SELECT * FROM pgr_bipartite(
         17 |        1
 (17 rows)
 
---q2
+/* --q2 */
 INSERT INTO edge_table (source, target, cost, reverse_cost) VALUES
 (1, 7, 1, 1);
 INSERT 0 1
---q3
+/* --q3 */
 SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
 );
@@ -39,6 +39,6 @@ SELECT * FROM pgr_bipartite(
 -----------+----------
 (0 rows)
 
---q4
+/* --q4 */
 ROLLBACK;
 ROLLBACK
