@@ -6,7 +6,7 @@
 DIR=$(git rev-parse --show-toplevel)/sql/sigs
 
 pushd "${DIR}" > /dev/null || exit
-SIGNATURES=$(git ls-files "*.sig" | perl -pe 's/pgrouting--(.*)\.sig/$1/')
+SIGNATURES=($(git ls-files "*.sig" | perl -pe 's/pgrouting--(.*)\.sig/$1/'))
 
 for s1 in "${SIGNATURES[@]}"
 do

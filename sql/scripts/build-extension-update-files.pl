@@ -59,6 +59,8 @@ my $version_2_6 = qr/(2.6.[\d+])/;
 my $version_3_0 = qr/(3.0.[\d+])/;
 my $version_3_1 = qr/(3.1.[\d+])/;
 my $version_3_2 = qr/(3.2.[\d+])/;
+my $version_3_3 = qr/(3.3.[\d+])/;
+my $version_3_4 = qr/(3.4.[\d+])/;
 # add minor here
 
 my $version_2 = qr/(2.[\d+].[\d+])/;
@@ -68,7 +70,7 @@ my $minor_format   = qr/([\d+].[\d+]).[\d+]/;
 my $mayor_format   = qr/([\d+]).[\d+].[\d+]/;
 
 
-my $current = $version_3_2;
+my $current = $version_3_4;
 
 
 sub Usage {

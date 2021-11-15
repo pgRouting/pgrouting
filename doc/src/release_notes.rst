@@ -32,6 +32,8 @@ To see the full list of changes check the list of `Git commits <https://github.c
 .. contents:: Contents
    :local:
 
+
+
 pgRouting 3.4.0 Release Notes
 -------------------------------------------------------------------------------
 
