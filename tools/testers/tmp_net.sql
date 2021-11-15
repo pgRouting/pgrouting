@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS tmp_net;
 
 CREATE TABLE tmp_net (
     id integer,
