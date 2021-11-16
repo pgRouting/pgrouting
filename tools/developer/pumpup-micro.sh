@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 # ------------------------------------------------------------------------------
 # pgRouting Scripts
 # Copyright(c) pgRouting Contributors
@@ -9,26 +7,37 @@ set -e
 # Pump up version
 # ------------------------------------------------------------------------------
 
-# Script to pump up branch to next minor development
+# Script to pump up branch to next development
 
 OLD_VERSION=$(grep -Po '(?<=project\(PGROUTING VERSION )[^;]+' CMakeLists.txt)
 KIND=$(grep -Po '(?<=set\(PROJECT_VERSION_DEV )[^;]+\"\)' CMakeLists.txt)
+echo "KIND=${KIND}"
 KIND=$(echo "${KIND}" | awk -F'"' '{print $2}')
 echo "OLD_VERSION=${OLD_VERSION}"
 echo "KIND=${KIND}"
+
 IFS='\. ' read -r -a a <<< "${OLD_VERSION}"
 
 MAYOR="${a[0]}"
 MINOR="${a[1]}"
-#MICRO="${a[2]}"
+MICRO="${a[2]}"
+((a[2]++))                              # increment micro
+NEW_MICRO="${a[2]}"
 
-((a[1]++))
-NEW_MINOR="${a[1]}"
-NEW_MICRO="0"
-NEW_KIND="-dev"
-NEW_VERSION="${MAYOR}.${NEW_MINOR}.${NEW_MICRO}"
+echo "MAYOR=${MAYOR}"
+echo "MINOR=${MINOR}"
+echo "MICRO=${MICRO}"
+echo "NEW_MICRO=${NEW_MICRO}"
+
+
+NEW_VERSION="${MAYOR}.${MINOR}.${NEW_MICRO}"
+U_NEW_VERSION="${NEW_VERSION//./_}"
+U_OLD_VERSION="${OLD_VERSION//./_}"
 
 echo "NEW_VERSION=${NEW_VERSION}"
+echo "U_VERSION=${U_NEW_VERSION}"
+echo "U_OLD_VERSION=${U_OLD_VERSION}"
+
 
 # --------------------------------------------
 # Modifications to CMakeLists
@@ -36,26 +45,13 @@ echo "NEW_VERSION=${NEW_VERSION}"
 
 # set version to new version
 perl -pi -e 's/project\(PGROUTING VERSION (.*)$/project\(PGROUTING VERSION '"${NEW_VERSION}"'/g' CMakeLists.txt
-perl -pi -e 's/set\(PROJECT_VERSION_DEV(.*)$/set\(PROJECT_VERSION_DEV "'"${NEW_KIND}"'"\)/g'  CMakeLists.txt
-perl -pi -e 's/set\(MINORS(.*)$/set\(MINORS '"${MAYOR}"'.'"${NEW_MINOR}"'$1/g'  CMakeLists.txt
 perl -pi -e 's/OLD_SIGNATURES$/OLD_SIGNATURES\n    '"${OLD_VERSION}"' /g' CMakeLists.txt
-
-# --------------------------------------------
-# --------------------------------------------
-# sql directory
-# --------------------------------------------
-# --------------------------------------------
-
-# --------------------------------------------
-# Copy last signature file
-# --------------------------------------------
-
-cp -f "sql/sigs/pgrouting--${MAYOR}.${MINOR}.sig" "sql/sigs/pgrouting--${MAYOR}.${NEW_MINOR}.sig"
-#git add "sql/sigs/pgrouting--${MAYOR}.${NEW_MINOR}.sig
 
 # --------------------------------------------
 # Adding section in release notes & news
 # --------------------------------------------
+#perl -pi -e 's/(\* :ref:`changelog_'"${U_OLD_VERSION}"'`)$/\* :ref:`changelog_'"${U_NEW_VERSION}"'`\n$1/g' doc/src/release_notes.rst
+#perl -pi -e 's/(\* :ref:`changelog_'"${U_OLD_VERSION}"'`)$/\* :ref:`changelog_'"${U_NEW_VERSION}"'`\n$1/g' doc/src/release_notes.rst
 perl -pi -e 's/(pgRouting '"${OLD_VERSION}"' Release Notes)/
 pgRouting '"${NEW_VERSION}"' Release Notes
 -------------------------------------------------------------------------------
@@ -76,8 +72,7 @@ perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/g' tools/testers/pg_prove_t
 # Change return values of version
 # --------------------------------------------
 
-perl -pi -e 's/'"${OLD_VERSION}${KIND}"'/'"${NEW_VERSION}${NEW_KIND}"'/' docqueries/version/*.result
-perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/' docqueries/version/*.result
+perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/g' docqueries/version/*.result
 
 # --------------------------------------------
 # Update action to include old version
@@ -85,11 +80,3 @@ perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/' docqueries/version/*.resu
 
 perl -pi -e 's/'"${OLD_VERSION}"'/'"${NEW_VERSION}"'/g' .github/workflows/update.yml
 perl -pi -e 's/old_pgr: \[/old_pgr: \['"${OLD_VERSION}"', /g' .github/workflows/update.yml
-
-# --------------------------------------------
-# Include file in CMakeLists.txt
-# --------------------------------------------
-
-perl -pi -e 's/# add minor here/my \$version_'"${MAYOR}"'_'"${NEW_MINOR}"' = qr\/\('"${MAYOR}"'\.'"${NEW_MINOR}"'\.\[\\d\+\]\)\/;\n# add minor here/g' sql/scripts/build-extension-update-files.pl
-perl -pi -e 's/my \$current = (.*)$/my \$current = \$version_'"${MAYOR}"'\_'"${NEW_MINOR}"';/g' sql/scripts/build-extension-update-files.pl
-perl -pi -e 's/unless \$old_version =~ (.*)\/;$/unless \$old_version =~ $1|\$version_'"${MAYOR}"'_'"${NEW_MINOR}"'\/;/g' sql/scripts/build-extension-update-files.pl
