@@ -22,7 +22,7 @@ pushd ./tools/testers/ || exit 1
 
 bash setup_db.sh "${PGPORT}" "${PGDATABASE}" "${PGUSER}" "3.4.0"
 
-pg_prove --failures --quiet --recurse --ext .sql \
+pg_prove --failures --quiet --recurse \
     --S client_min_messages=WARNING \
     --S on_error_rollback=off \
     --S on_error_stop=true \
