@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(22) ELSE plan(19) END;
+SELECT CASE WHEN min_version('4.0.1') THEN plan(22) ELSE plan(19) END;
 SET client_min_messages TO ERROR;
 
 PREPARE edges AS
@@ -70,7 +70,7 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-  IF min_version('4.0.0') THEN
+  IF min_version('4.0.1') THEN
 
     RETURN QUERY SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
     RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');

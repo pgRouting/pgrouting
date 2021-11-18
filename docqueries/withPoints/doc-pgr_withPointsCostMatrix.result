@@ -34,8 +34,6 @@ SELECT * FROM pgr_TSP(
     array[-1, 10, 11, -6], directed := false);
   $$
 );
-NOTICE:  pgr_TSP no longer solving with simulated annaeling
-HINT:  Ignoring annaeling parameters
  seq | node | cost | agg_cost
 -----+------+------+----------
    1 |   -6 |    0 |        0
