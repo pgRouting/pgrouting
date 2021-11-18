@@ -42,7 +42,7 @@ p TEXT;
 randomize TEXT := ', randomize := false)';
 BEGIN
 
-  IF min_version('4.0.0') THEN randomize :=')'; END IF;
+  IF min_version('4.0.1') THEN randomize :=')'; END IF;
 
   start_sql = 'SELECT * from ' || fn || '($$ SELECT ';
   FOREACH  p IN ARRAY params
@@ -84,7 +84,7 @@ p TEXT;
 randomize TEXT := ', randomize := false)';
 BEGIN
 
-  IF min_version('4.0.0') THEN randomize :=')'; END IF;
+  IF min_version('4.0.1') THEN randomize :=')'; END IF;
 
   start_sql = 'select * from ' || fn || '($$ SELECT ';
   FOREACH  p IN ARRAY params
@@ -249,7 +249,7 @@ BEGIN
   RETURN QUERY
   SELECT has_function(fn);
 
-  IF min_version('4.0.0') THEN
+  IF min_version('4.0.1') THEN
     RETURN QUERY
     SELECT tsp_types_check_4(fn);
   ELSE
@@ -266,7 +266,7 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF min_version('4.0.0') THEN
+  IF min_version('4.0.1') THEN
 
     RETURN QUERY
     SELECT skip(1, fn || ' should not have annaeling parameters');
