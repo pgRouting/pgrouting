@@ -94,7 +94,7 @@ function build_doc {
 
 function test_compile {
 
-    set_compiler ${GCC}
+    set_compiler "${GCC}"
 
 
     pushd build > /dev/null || exit 1
