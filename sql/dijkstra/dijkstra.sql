@@ -50,7 +50,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, true) AS a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, true, 0, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -75,7 +75,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, false, true, 0, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -100,7 +100,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false) AS a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, false, false, 0, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -126,7 +126,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true) AS a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, false, true, 0, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -151,7 +151,7 @@ CREATE FUNCTION pgr_dijkstra(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, false, true) AS a;
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, false, 0, false) AS a;
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100

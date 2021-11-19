@@ -43,7 +43,7 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, true, true, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -66,7 +66,7 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, true, true, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -90,7 +90,7 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, true, false, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -114,7 +114,7 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, true, true, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100
@@ -134,7 +134,7 @@ CREATE FUNCTION pgr_dijkstraCost(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT start_vid, end_vid, agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, true, true);
+    FROM _pgr_dijkstra(_pgr_get_statement($1), _pgr_get_statement($2), $3, true, 0, false);
 $BODY$
 LANGUAGE sql VOLATILE STRICT
 COST 100

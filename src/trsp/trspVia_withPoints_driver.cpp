@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <algorithm>
 
-#include "dijkstra/pgr_dijkstraVia.hpp"
+#include "dijkstra/dijkstraVia.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 #include "c_types/routes_t.h"
 #include "c_types/restriction_t.h"
@@ -196,7 +196,7 @@ do_trspVia_withPoints(
             pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     digraph,
                     via_vertices,
                     paths,
@@ -207,7 +207,7 @@ do_trspVia_withPoints(
             pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     undigraph,
                     via_vertices,
                     paths,
