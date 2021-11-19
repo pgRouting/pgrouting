@@ -56,6 +56,7 @@ static
 void
 process(
         char* edges_sql,
+        char* combinations_sql,
         ArrayType *starts,
         ArrayType *ends,
         bool directed,
@@ -73,14 +74,23 @@ process(
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
 
+    II_t_rt *combinations = NULL;
+    size_t total_combinations = 0;
+
     Edge_t *edges = NULL;
     size_t total_edges = 0;
+
     if (normal) {
         pgr_get_edges(edges_sql, &edges, &total_edges);
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, starts);
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+
+        if (starts && ends) {
+            start_vidsArr = (int64_t*)
+                pgr_get_bigIntArray(&size_start_vidsArr, starts);
+            end_vidsArr = (int64_t*)
+                pgr_get_bigIntArray(&size_end_vidsArr, ends);
+        } else if (combinations_sql) {
+            pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+        }
     } else {
         pgr_get_edges_reversed(edges_sql, &edges, &total_edges);
         end_vidsArr = (int64_t*)
@@ -100,8 +110,9 @@ process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_pgr_many_to_many_dijkstra(
+    do_dijkstra(
             edges, total_edges,
+            combinations, total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
@@ -150,93 +161,6 @@ process(
     pgr_SPI_finish();
 }
 
-
-
-static
-void
-process_combinations(
-        char* edges_sql,
-        char* combinations_sql,
-        bool directed,
-        bool only_cost,
-        int64_t n_goals,
-        bool global,
-        Path_rt **result_tuples,
-        size_t *result_count) {
-    pgr_SPI_connect();
-
-    Edge_t *edges = NULL;
-    size_t total_edges = 0;
-
-    II_t_rt *combinations = NULL;
-    size_t total_combinations = 0;
-
-    pgr_get_edges(edges_sql, &edges, &total_edges);
-
-    if (total_edges == 0) {
-        pgr_SPI_finish();
-        return;
-    }
-    pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
-    if (total_combinations == 0) {
-        if (edges) pfree(edges);
-        pgr_SPI_finish();
-        return;
-    }
-
-    clock_t start_t = clock();
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
-    do_pgr_combinations_dijkstra(
-            edges, total_edges,
-            combinations, total_combinations,
-            directed,
-            only_cost,
-            true,
-            n_goals,
-            global,
-
-            result_tuples,
-            result_count,
-
-            &log_msg,
-            &notice_msg,
-            &err_msg);
-
-    if (only_cost) {
-        if (n_goals > 0) {
-            time_msg("Processing pgr_dijkstraNearCost", start_t, clock());
-        } else {
-            time_msg("Processing pgr_dijkstraCost", start_t, clock());
-        }
-    } else {
-        if (n_goals > 0) {
-            time_msg("Processing pgr_dijkstraNear", start_t, clock());
-        } else {
-            time_msg("Processing pgr_dijkstra", start_t, clock());
-        }
-    }
-
-    if (err_msg && (*result_tuples)) {
-        pfree(*result_tuples);
-        (*result_tuples) = NULL;
-        (*result_count) = 0;
-    }
-
-    pgr_global_report(log_msg, notice_msg, err_msg);
-
-    if (log_msg) pfree(log_msg);
-    if (notice_msg) pfree(notice_msg);
-    if (err_msg) pfree(err_msg);
-    if (edges) pfree(edges);
-    if (combinations) pfree(combinations);
-    pgr_SPI_finish();
-}
-
-
-
-
 PGDLLEXPORT Datum
 _pgr_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -251,49 +175,10 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        if (PG_NARGS() == 7) {
-            /**********************************************************************/
-            // pgr_dijkstra(
-            // sql TEXT,
-            // start_vids ANYARRAY,
-            // end_vids ANYARRAY,
-            // directed BOOLEAN default true,
-            // only_cost BOOLEAN default false
-            // normal BOOLEAN default true
-
+        if (PG_NARGS() == 8) {
             process(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
-                    PG_GETARG_ARRAYTYPE_P(1),
-                    PG_GETARG_ARRAYTYPE_P(2),
-                    PG_GETARG_BOOL(3),
-                    PG_GETARG_BOOL(4),
-                    PG_GETARG_BOOL(5),
-                    PG_GETARG_INT64(6),
-                    true,
-                    &result_tuples,
-                    &result_count);
-
-            /**********************************************************************/
-        } else if (PG_NARGS() == 5) {
-            /**********************************************************************/
-            // pgr_dijkstra(
-            // edge_sql TEXT,
-            // combinations_sql TEXT,
-            // directed BOOLEAN default true,
-            // only_cost BOOLEAN default false
-
-            process_combinations(
-                    text_to_cstring(PG_GETARG_TEXT_P(0)),
-                    text_to_cstring(PG_GETARG_TEXT_P(1)),
-                    PG_GETARG_BOOL(2),
-                    PG_GETARG_BOOL(3),
-                    0, true,
-                    &result_tuples,
-                    &result_count);
-
-        } else if (PG_NARGS() == 8) {
-            process(
-                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    NULL, /* combinations sql */
                     PG_GETARG_ARRAYTYPE_P(1),
                     PG_GETARG_ARRAYTYPE_P(2),
                     PG_GETARG_BOOL(3),
@@ -303,27 +188,18 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
                     PG_GETARG_BOOL(7),
                     &result_tuples,
                     &result_count);
-
-            /**********************************************************************/
         } else /* (PG_NARGS() == 6) */ {
-            /**********************************************************************/
-            // pgr_dijkstra(
-            // edge_sql TEXT,
-            // combinations_sql TEXT,
-            // directed BOOLEAN default true,
-            // only_cost BOOLEAN default false
-
-            process_combinations(
+            process(
                     text_to_cstring(PG_GETARG_TEXT_P(0)),
                     text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    NULL, NULL,  /* starts, ends */
                     PG_GETARG_BOOL(2),
                     PG_GETARG_BOOL(3),
+                    true, /* normal */
                     PG_GETARG_INT64(4),
                     PG_GETARG_BOOL(5),
                     &result_tuples,
                     &result_count);
-
-            /**********************************************************************/
         }
 
         funcctx->max_calls = result_count;
@@ -352,16 +228,6 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         bool*        nulls;
         size_t       call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
-        // OUT seq INTEGER,
-        // OUT path_seq INTEGER,
-        // OUT start_vid BIGINT,
-        // OUT end_vid BIGINT,
-        // OUT node BIGINT,
-        // OUT edge BIGINT,
-        // OUT cost FLOAT,
-        // OUT agg_cost FLOAT)
-
         size_t numb = 8;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -388,4 +254,3 @@ _pgr_dijkstra(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

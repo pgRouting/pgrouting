@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
- ********************************************************************PGR-GNU*/
+********************************************************************PGR-GNU*/
 
 
 #include "drivers/driving_distance/withPoints_dd_driver.h"
@@ -33,26 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <set>
 #include <algorithm>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
 
 #include "cpp_common/pgr_alloc.hpp"
-
-
-/**********************************************************************/
-// CREATE OR REPLACE FUNCTION pgr_withPointsDD(
-// edges_sql TEXT,
-// points_sql TEXT,
-// start_pids anyarray,
-// distance FLOAT,
-//
-// driving_side CHAR -- DEFAULT 'b',
-// details BOOLEAN -- DEFAULT false,
-// directed BOOLEAN -- DEFAULT true,
-// equicost BOOLEAN -- DEFAULT false,
 
 
 void
@@ -112,8 +100,7 @@ do_pgr_many_withPointsDD(
         /*
          * storing on C++ containers
          */
-        std::vector<int64_t> start_vids(
-                start_pidsArr, start_pidsArr + s_len);
+        std::set<int64_t> start_vids(start_pidsArr, start_pidsArr + s_len);
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
@@ -124,15 +111,12 @@ do_pgr_many_withPointsDD(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
-            paths = pgr_drivingDistance(
-                    digraph, start_vids, distance, equiCost, log);
+            paths = pgrouting::drivingDistance(digraph, start_vids, distance, equiCost);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-
-            paths = pgr_drivingDistance(
-                    undigraph, start_vids, distance, equiCost, log);
+            paths = pgrouting::drivingDistance(undigraph, start_vids, distance, equiCost);
         }
 
         for (auto &path : paths) {
