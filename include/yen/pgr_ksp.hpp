@@ -26,7 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define INCLUDE_YEN_PGR_KSP_HPP_
 #pragma once
 
-#include "dijkstra/pgr_dijkstra.hpp"
 
 #include <sstream>
 #include <deque>
@@ -35,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
+#include "dijkstra/dijkstra.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/compPaths.h"
 #include "cpp_common/pgr_messages.h"
@@ -150,8 +150,7 @@ class Pgr_ksp :  public Pgr_messages {
      Path getFirstSolution(G &graph) {
          Path path;
 
-         Pgr_dijkstra< G > fn_dijkstra;
-         path = fn_dijkstra.dijkstra(graph, m_start, m_end);
+         path = pgrouting::dijkstra(graph, m_start, m_end);
          path.recalculate_agg_cost();
 
          if (path.empty()) return path;
@@ -179,8 +178,7 @@ class Pgr_ksp :  public Pgr_messages {
 
              removeVertices(graph, rootPath);
 
-             Pgr_dijkstra< G > fn_dijkstra;
-             auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
+             auto spurPath = pgrouting::dijkstra(graph, spurNodeId, m_end);
 
              if (spurPath.size() > 0) {
                  rootPath.appendPath(spurPath);

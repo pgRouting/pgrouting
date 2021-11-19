@@ -25,15 +25,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_
-#define INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_
+#ifndef INCLUDE_DIJKSTRA_DIJKSTRAVIA_HPP_
+#define INCLUDE_DIJKSTRA_DIJKSTRAVIA_HPP_
 #pragma once
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstra.hpp"
+#include "dijkstra/dijkstra.hpp"
 
 #include "cpp_common/pgr_assert.h"
 
@@ -42,10 +42,10 @@ namespace pgrouting {
 
 template <class G>
 void
-pgr_dijkstraVia(
+dijkstraVia(
         G &graph,
-        const std::vector< int64_t > &via_vertices,
-        std::deque< Path > &paths,
+        const std::vector<int64_t> &via_vertices,
+        std::deque<Path> &paths,
         bool strict,
         bool U_turn_on_edge,
         std::ostringstream &log) {
@@ -90,7 +90,7 @@ pgr_dijkstraVia(
         }
 
         log << "\nfrom " << prev_vertex << " to " << vertex;
-        path = pgr_dijkstra(graph, prev_vertex, vertex);
+        path = pgrouting::dijkstra(graph, prev_vertex, vertex, false);
 
         if (!U_turn_on_edge && i > 1) {
             graph.restore_graph();
@@ -101,7 +101,7 @@ pgr_dijkstraVia(
                  */
                 log << "\nEmpty so again from "
                     << prev_vertex << " to " << vertex;
-                path = pgr_dijkstra(graph, prev_vertex, vertex);
+                path = pgrouting::dijkstra(graph, prev_vertex, vertex, false);
             }
         }
 
@@ -121,4 +121,4 @@ pgr_dijkstraVia(
 
 }  // namespace pgrouting
 
-#endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_
+#endif  // INCLUDE_DIJKSTRA_DIJKSTRAVIA_HPP_
