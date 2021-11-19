@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "drivers/dijkstra/dijkstra_driver.h"
-#include <c_types/ii_t_rt.h>
 
 #include <sstream>
 #include <deque>
@@ -40,12 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 
-#include "dijkstra/pgr_dijkstra.hpp"
-
+#include "c_types/ii_t_rt.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
+#include "cpp_common/combinations.h"
+#include "dijkstra/dijkstra.hpp"
 
-namespace detail {
+namespace {
 
 void
 post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
@@ -95,73 +95,21 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
 }
 
 
-template < class G >
-std::deque< Path >
-pgr_dijkstra(
-        G &graph,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
-        bool only_cost,
-        bool normal,
-        size_t n_goals,
-        bool global) {
-    std::sort(sources.begin(), sources.end());
-    sources.erase(
-            std::unique(sources.begin(), sources.end()),
-            sources.end());
-
-    std::sort(targets.begin(), targets.end());
-    targets.erase(
-            std::unique(targets.begin(), targets.end()),
-            targets.end());
-
-    pgrouting::Pgr_dijkstra< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(
-            graph,
-            sources, targets,
-            only_cost, n_goals);
-
-    post_process(paths, only_cost, normal, n_goals, global);
-
-    return paths;
-}
+}  // namespace
 
 
-template < class G >
-std::deque< Path >
-pgr_dijkstra(
-        G &graph,
-        std::vector < II_t_rt > &combinations,
-        bool only_cost,
-        bool normal,
-        size_t n_goals,
-        bool global) {
-    pgrouting::Pgr_dijkstra< G > fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(
-            graph,
-            combinations,
-            only_cost, n_goals);
-
-    post_process(paths, only_cost, normal, n_goals, global);
-
-    return paths;
-}
-}  // namespace detail
-
-
-// CREATE OR REPLACE FUNCTION pgr_dijkstra(
-// sql text,
-// start_vids anyarray,
-// end_vids anyarray,
-// directed boolean default true,
 void
-do_pgr_many_to_many_dijkstra(
+do_dijkstra(
         Edge_t  *data_edges,
         size_t total_edges,
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+
+        II_t_rt  *combinations_arr,
+        size_t total_combinations,
+        int64_t  *starts_arr,
+        size_t size_starts_arr,
+        int64_t  *ends_arr,
+        size_t size_ends_arr,
+
         bool directed,
         bool only_cost,
         bool normal,
@@ -187,29 +135,29 @@ do_pgr_many_to_many_dijkstra(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::vector<int64_t>
-            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
+            : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
-        std::deque< Path >paths;
+        std::deque<Path>paths;
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            paths = detail::pgr_dijkstra(
+            paths = pgrouting::dijkstra(
                     digraph,
-                    start_vertices, end_vertices,
-                    only_cost, normal, n, global);
+                    combinations,
+                    only_cost, n);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            paths = detail::pgr_dijkstra(
+            paths = pgrouting::dijkstra(
                     undigraph,
-                    start_vertices, end_vertices,
-                    only_cost, normal, n, global);
+                    combinations,
+                    only_cost, n);
         }
+        post_process(paths, only_cost, normal, n, global);
 
         size_t count(0);
         count = count_tuples(paths);
@@ -252,106 +200,3 @@ do_pgr_many_to_many_dijkstra(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-
-// CREATE OR REPLACE FUNCTION pgr_dijkstra(
-// sql text,
-// combinations sql text,
-// directed boolean default true,
-void
-do_pgr_combinations_dijkstra(
-        Edge_t  *data_edges,
-        size_t total_edges,
-        II_t_rt *combinations,
-        size_t total_combinations,
-        bool directed,
-        bool only_cost,
-        bool normal,
-        int64_t n_goals,
-        bool global,
-
-        Path_rt **return_tuples,
-        size_t *return_count,
-        char ** log_msg,
-        char ** notice_msg,
-        char ** err_msg) {
-    std::ostringstream log;
-    std::ostringstream err;
-    std::ostringstream notice;
-
-    try {
-        pgassert(total_edges != 0);
-        pgassert(total_combinations != 0);
-        pgassert(!(*log_msg));
-        pgassert(!(*notice_msg));
-        pgassert(!(*err_msg));
-        pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
-
-        graphType gType = directed? DIRECTED: UNDIRECTED;
-
-
-        std::vector<II_t_rt>
-                combinations_vector(combinations, combinations + total_combinations);
-
-        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
-
-        std::deque< Path >paths;
-        if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            paths = detail::pgr_dijkstra(
-                    digraph,
-                    combinations_vector,
-                    only_cost, normal, n, global);
-        } else {
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            paths = detail::pgr_dijkstra(
-                    undigraph,
-                    combinations_vector,
-                    only_cost, normal, n, global);
-        }
-        combinations_vector.clear();
-        size_t count(0);
-        count = count_tuples(paths);
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice << "No paths found";
-            *log_msg = pgr_msg(notice.str().c_str());
-            return;
-        }
-
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = (collapse_paths(return_tuples, paths));
-
-        *log_msg = log.str().empty()?
-                   *log_msg :
-                   pgr_msg(log.str().c_str());
-        *notice_msg = notice.str().empty()?
-                      *notice_msg :
-                      pgr_msg(notice.str().c_str());
-    } catch (AssertFailedException &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
-        err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
-    } catch (std::exception &except) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
-        err << except.what();
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
-    } catch(...) {
-        (*return_tuples) = pgr_free(*return_tuples);
-        (*return_count) = 0;
-        err << "Caught unknown exception!";
-        *err_msg = pgr_msg(err.str().c_str());
-        *log_msg = pgr_msg(log.str().c_str());
-    }
-}
-
-
