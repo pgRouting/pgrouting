@@ -31,13 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "dijkstra/pgr_dijkstraVia.hpp"
+#include "dijkstra/dijkstraVia.hpp"
 #include "c_types/routes_t.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 
-static
+namespace {
+
 void
 get_path(
         int route_id,
@@ -65,12 +66,10 @@ get_path(
     }
 }
 
-
-static
 size_t
 get_route(
         Routes_t **ret_path,
-        std::deque< Path > &paths) {
+        std::deque<Path> &paths) {
     size_t sequence = 0;
     int path_id = 1;
     int route_id = 1;
@@ -85,15 +84,16 @@ get_route(
     }
     return sequence;
 }
+}  // namespace
 
 void
 do_pgr_dijkstraVia(
-        Edge_t* data_edges,    size_t total_edges,
-        int64_t* via_vidsArr,     size_t size_via_vidsArr,
+        Edge_t* data_edges, size_t total_edges,
+        int64_t* via_vidsArr, size_t size_via_vidsArr,
         bool directed,
         bool strict,
         bool U_turn_on_edge,
-        Routes_t** return_tuples,   size_t* return_count,
+        Routes_t** return_tuples, size_t* return_count,
 
         char** log_msg,
         char** notice_msg,
@@ -112,16 +112,14 @@ do_pgr_dijkstraVia(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
-        log << "\nInserting vertices into a c++ vector structure";
-        std::vector< int64_t > via_vertices(
+        std::deque<Path> paths;
+        std::vector<int64_t> via_vertices(
                 via_vidsArr, via_vidsArr + size_via_vidsArr);
 
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     digraph,
                     via_vertices,
                     paths,
@@ -129,10 +127,9 @@ do_pgr_dijkstraVia(
                     U_turn_on_edge,
                     log);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            pgrouting::pgr_dijkstraVia(
+            pgrouting::dijkstraVia(
                     undigraph,
                     via_vertices,
                     paths,
@@ -154,7 +151,6 @@ do_pgr_dijkstraVia(
 
         // get the space required to store all the paths
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;
 
@@ -184,5 +180,3 @@ do_pgr_dijkstraVia(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-
