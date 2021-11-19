@@ -3,6 +3,7 @@
 File: combinations.h
 
 Copyright (c) 2021 Celia Virginia Vergara Castillo
+Mail: vicky at georepublic.de
 
 ------
 

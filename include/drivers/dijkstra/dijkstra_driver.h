@@ -54,9 +54,11 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-    void do_pgr_many_to_many_dijkstra(
+    void do_dijkstra(
             Edge_t  *data_edges,
             size_t total_tuples,
+            II_t_rt  *combinations,
+            size_t total_combinations,
             int64_t  *start_vidsArr,
             size_t size_start_vidsArr,
             int64_t  *end_vidsArr,
@@ -74,28 +76,6 @@ extern "C" {
             char** notice_msg,
             char** err_msg);
 
-
-    //  CREATE OR REPLACE FUNCTION pgr_dijkstra(
-    //  sql text,
-    //  combinations_sql text,
-    //  directed boolean default true,
-    void do_pgr_combinations_dijkstra(
-            Edge_t  *data_edges,
-            size_t total_tuples,
-            II_t_rt  *combinations,
-            size_t total_combinations,
-            bool directed,
-            bool only_cost,
-            bool normal,
-            int64_t n_goals,
-            bool global,
-
-            Path_rt **return_tuples,
-            size_t *return_count,
-
-            char** log_msg,
-            char** notice_msg,
-            char** err_msg);
 #ifdef __cplusplus
     }
 #endif
