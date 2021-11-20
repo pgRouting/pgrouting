@@ -1,6 +1,7 @@
 add_library(trsp OBJECT
     # keeping these for backwards compatibility
     trsp.c
+    withpointstrsp.c
     trsp_core.cpp
     GraphDefinition.cpp
 
