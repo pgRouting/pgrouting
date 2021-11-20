@@ -7,7 +7,7 @@ SELECT  582877, 408918, 5556, 458.09, 458.09 UNION ALL
 SELECT  582876, 318255, 408918, 3.89, 3.89 UNION ALL
 SELECT  585280, 5556, 454424, 54.84, 54.84;
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
-FROM pgr_trsp(
+FROM pgr_withpointstrsp(
     'select * from maptest',
     582877,     -- edge_id for start
     0,          -- ini_offset
@@ -19,7 +19,7 @@ FROM pgr_trsp(
 ) PG ;
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
-FROM pgr_trsp(
+FROM pgr_withpointstrsp(
     'select * from maptest',
     582877,     -- edge_id for start
     0.0000000001,          -- ini_offset
@@ -31,7 +31,7 @@ FROM pgr_trsp(
 ) PG ;
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
-FROM pgr_trsp(
+FROM pgr_withpointstrsp(
     'select * from maptest',
     582877,     -- edge_id for start
     0,         -- ini_offset
@@ -43,7 +43,7 @@ FROM pgr_trsp(
 ) PG ;
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
-FROM pgr_trsp(
+FROM pgr_withpointstrsp(
     'select * from maptest',
     582877,     -- edge_id for start
     0.0000000001,          -- ini_offset
@@ -55,7 +55,7 @@ FROM pgr_trsp(
 ) PG ;
 
 SELECT seq, id1 AS node, id2 AS edge, cost::numeric(11,4)
-FROM pgr_trsp(
+FROM pgr_withpointstrsp(
     'select * from maptest',
     582877,     -- edge_id for start
     0,          -- ini_offset

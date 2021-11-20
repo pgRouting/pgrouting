@@ -15,7 +15,7 @@ INSERT INTO  restrictions2 (rid, to_cost, teid, feid, via) VALUES
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
-select * from pgr_trsp(
+select * from pgr_withpointstrsp(
     'select id::integer, source::integer, target::integer,cost, reverse_cost from edge_table ORDER BY ID',
     1,    -- edge_id for start
     0.5,  -- midpoint of edge

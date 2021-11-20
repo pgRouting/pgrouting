@@ -47,7 +47,7 @@ SELECT * FROM pgr_trsp(
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 56 at RAISE
 /* --place6 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -64,7 +64,7 @@ SELECT * FROM pgr_trsp(
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 53 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 56 at RAISE
 /* --place8 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -91,7 +91,7 @@ SELECT * FROM pgr_trsp(
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did't return 'reverse_cost' column
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 24 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 25 at RAISE
 /* --place10 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -107,7 +107,7 @@ SELECT * FROM pgr_trsp(
 (4 rows)
 
 /* --place11 */
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true
 );
@@ -123,7 +123,7 @@ SELECT * FROM _pgr_trsp(
 );
 ERROR:  Error computing path: Path Not Found
 /* --place13 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true
 );
@@ -134,7 +134,7 @@ SELECT * FROM pgr_TRSP(
 (2 rows)
 
 /* --place14 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
@@ -145,7 +145,7 @@ SELECT * FROM pgr_TRSP(
 (1 row)
 
 /* --place15 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
 );
@@ -156,7 +156,7 @@ SELECT * FROM pgr_TRSP(
 (2 rows)
 
 /* --place16 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
@@ -167,15 +167,15 @@ SELECT * FROM pgr_TRSP(
 (1 row)
 
 /* --place17 */
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
     1, 0.5, 1, 0.8, false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did't return 'reverse_cost' column
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 36 at RAISE
+CONTEXT:  PL/pgSQL function pgr_withpointstrsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 36 at RAISE
 /* --place18 */
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 0.5, 1, 0.8, false, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
@@ -199,7 +199,7 @@ SELECT * FROM pointsOfInterest;
 (6 rows)
 
 /* --place20 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
@@ -228,7 +228,7 @@ SELECT * FROM pgr_withPoints(
 (3 rows)
 
 /* --place22 */
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     8, 1,
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
@@ -244,7 +244,7 @@ SELECT * FROM pgr_trsp(
 (3 rows)
 
 /* --place23 */
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     11, 0,
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),

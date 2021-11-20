@@ -12,7 +12,7 @@ INSERT INTO four_edges (id, source, target, cost, reverse_cost) VALUES
 ( 718 ,  52220 ,  52222 , 961.000001 ,   961.000001),
 ( 716 , -21019 ,  52220 , 992.000001 ,   992.000001);
 
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
   $$SELECT
     id::int, source::int, target::int, cost::float, reverse_cost::float
   FROM
@@ -42,7 +42,7 @@ SELECT * FROM pgr_trsp(
   true, true, NULL);
 
 
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
   $$SELECT
     id::int, source::int, target::int, cost::float, reverse_cost::float
   FROM four_edges$$,
@@ -68,7 +68,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* Comparing withPoints and trsp*/
 
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
   $$SELECT
     id::int, source::int, target::int, cost::float, reverse_cost::float
   FROM four_edges$$,
@@ -97,7 +97,7 @@ SELECT * FROM pgr_withPoints(
   -1, -2,
   true);
 
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
   $$SELECT
     id::int, source::int, target::int, cost::float, reverse_cost::float
   FROM four_edges$$,
@@ -126,7 +126,7 @@ SELECT * FROM pgr_withPoints(
   -1, -2,
   true);
 
-SELECT * FROM pgr_trsp(
+SELECT * FROM pgr_withpointstrsp(
   $$SELECT
     id::int, source::int, target::int, cost::float, reverse_cost::float
   FROM four_edges$$,
