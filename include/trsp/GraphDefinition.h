@@ -100,29 +100,33 @@ class GraphDefinition {
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra3(std::vector<Edge_t> &edges, size_t edge_count,
-                    int64_t start_vertex, int64_t end_vertex,
-                    bool directed, bool has_reverse_cost,
-                    path_element_tt **path, size_t *path_count,
-                    char **err_msg);
+    int my_dijkstra3(
+            std::vector<Edge_t> &edges,
+            int64_t start_vertex, int64_t end_vertex,
+            bool directed, bool has_reverse_cost,
+            path_element_tt **path, size_t *path_count,
+            char **err_msg);
 
-    int my_dijkstra2(std::vector<Edge_t> &edges, size_t edge_count,
-                    int64_t start_vertex, int64_t end_vertex,
-                    bool directed, bool has_reverse_cost,
-                    path_element_tt **path, size_t *path_count,
-                    char **err_msg,
-                    std::vector<PDVI> &ruleList);
+    int my_dijkstra2(
+            std::vector<Edge_t> &edges,
+            int64_t start_vertex, int64_t end_vertex,
+            bool directed, bool has_reverse_cost,
+            path_element_tt **path, size_t *path_count,
+            char **err_msg,
+            std::vector<PDVI> &ruleList);
 
-    int my_dijkstra1(std::vector<Edge_t> &edges, size_t edge_count,
-                    int64_t start_edge, double start_part,
-                    int64_t end_edge, double end_part,
-                    bool directed, bool has_reverse_cost,
-                    path_element_tt **path, size_t *path_count,
-                    char **err_msg,
-                    std::vector<PDVI> &ruleList);
+    int my_dijkstra1(
+            std::vector<Edge_t> &edges,
+            int64_t start_edge, double start_part,
+            int64_t end_edge, double end_part,
+            bool directed, bool has_reverse_cost,
+            path_element_tt **path, size_t *path_count,
+            char **err_msg,
+            std::vector<PDVI> &ruleList);
 
-    bool construct_graph(std::vector<Edge_t> &edges, size_t edge_count,
-                         bool has_reverse_cost, bool directed);
+    bool construct_graph(
+            std::vector<Edge_t> &edges,
+            bool has_reverse_cost, bool directed);
 
 
  private:
@@ -159,6 +163,7 @@ class GraphDefinition {
     RuleTable m_ruleTable;
     bool m_bIsturnRestrictOn;
     bool m_bIsGraphConstructed;
+    size_t m_edge_count = 0;
 };
 
 #endif  // INCLUDE_TRSP_GRAPHDEFINITION_H_

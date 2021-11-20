@@ -205,7 +205,7 @@ void GraphDefinition::explore(
 
 // -------------------------------------------------------------------------
 int GraphDefinition::my_dijkstra1(
-        std::vector<Edge_t> &edges, size_t edge_count,
+        std::vector<Edge_t> &edges,
         int64_t start_edge_id, double start_part,
         int64_t end_edge_id, double end_part,
         bool directed, bool has_reverse_cost,
@@ -214,11 +214,14 @@ int GraphDefinition::my_dijkstra1(
         size_t *path_count,
         char **err_msg,
         std::vector<PDVI> &ruleList) {
+    m_edge_count = edges.size();
+
     if (!m_bIsGraphConstructed) {
-            init();
-            construct_graph(edges, edge_count, has_reverse_cost, directed);
-            m_bIsGraphConstructed = true;
-        }
+        init();
+        construct_graph(edges, has_reverse_cost, directed);
+        m_bIsGraphConstructed = true;
+    }
+
         GraphEdgeInfo* start_edge_info =
         m_vecEdgeVector[static_cast<size_t>(m_mapEdgeId2Index[static_cast<int64_t>(start_edge_id)])];
         Edge_t start_edge;
@@ -245,7 +248,7 @@ int GraphDefinition::my_dijkstra1(
                 start_edge.target = start_edge_info->m_lEndNode;
                 start_edge.cost = (1.0 - start_part) * start_edge_info->m_dCost;
                 addEdge(start_edge);
-                edge_count++;
+                m_edge_count++;
             }
             if (start_edge_info->m_dReverseCost >= 0.0) {
                 start_edge.id = max_edge_id + 1;
@@ -253,7 +256,7 @@ int GraphDefinition::my_dijkstra1(
                 start_edge.target = start_edge_info->m_lStartNode;
                 start_edge.cost = start_part * start_edge_info->m_dReverseCost;
                 addEdge(start_edge);
-                edge_count++;
+                m_edge_count++;
             }
         }
 
@@ -278,19 +281,19 @@ int GraphDefinition::my_dijkstra1(
             end_edge.source = end_edge_info->m_lStartNode;
             end_edge.cost = end_part * end_edge_info->m_dCost;
             addEdge(end_edge);
-            edge_count++;
+            m_edge_count++;
         }
         if (end_edge_info->m_dReverseCost >= 0.0) {
             end_edge.source = end_edge_info->m_lEndNode;
             end_edge.id = max_edge_id + 1;
             end_edge.cost = (1.0 - end_part) * end_edge_info->m_dReverseCost;
             addEdge(end_edge);
-            edge_count++;
+            m_edge_count++;
         }
     }
 
     return(my_dijkstra2(
-                edges, edge_count,
+                edges,
                 start_vertex, end_vertex,
                 directed, has_reverse_cost,
 
@@ -302,7 +305,7 @@ int GraphDefinition::my_dijkstra1(
 
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra2(
-        std::vector<Edge_t> &edges, size_t edge_count,
+        std::vector<Edge_t> &edges,
     int64_t start_vertex, int64_t end_vertex,
     bool directed, bool has_reverse_cost,
 
@@ -355,7 +358,7 @@ int GraphDefinition:: my_dijkstra2(
     }
     m_bIsturnRestrictOn = true;
     return(my_dijkstra3(
-                edges, edge_count,
+                edges,
                 start_vertex, end_vertex,
                 directed, has_reverse_cost,
                 path, path_count, err_msg));
@@ -364,24 +367,23 @@ int GraphDefinition:: my_dijkstra2(
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra3(
         std::vector<Edge_t> &edges,
-        size_t edge_count,
         int64_t start_vertex, int64_t end_vertex,
         bool directed, bool has_reverse_cost,
         path_element_tt **path, size_t *path_count, char **err_msg
         ) {
     if (!m_bIsGraphConstructed) {
         init();
-        construct_graph(edges, edge_count, has_reverse_cost, directed);
+        construct_graph(edges, has_reverse_cost, directed);
         m_bIsGraphConstructed = true;
     }
 
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
-    parent = new Parent_path[edge_count + 1];
-    m_dCost = new CostHolder[edge_count + 1];
+    parent = new Parent_path[m_edge_count + 1];
+    m_dCost = new CostHolder[m_edge_count + 1];
     m_vecPath.clear();
 
     unsigned int i;
-    for (i = 0; i <= edge_count; i++) {
+    for (i = 0; i <= m_edge_count; i++) {
         m_dCost[i].startCost = 1e15;
         m_dCost[i].endCost = 1e15;
     }
@@ -539,9 +541,9 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_tt **path,
 
 // -------------------------------------------------------------------------
 bool GraphDefinition::construct_graph(
-        std::vector<Edge_t> &edges, size_t edge_count,
+        std::vector<Edge_t> &edges,
     bool has_reverse_cost, bool directed) {
-    for (size_t i = 0; i < edge_count; i++) {
+    for (size_t i = 0; i < m_edge_count; i++) {
         if (!has_reverse_cost) {
             if (directed) {
                 edges[i].reverse_cost = -1.0;
