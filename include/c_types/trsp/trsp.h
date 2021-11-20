@@ -29,25 +29,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define MAX_RULE_LENGTH 5
 
 
-/* for int64_t */
 #ifdef __cplusplus
 #   include <cstdint>
-typedef int64_t int64;
-typedef double float8;
 #else
 #   include <stdint.h>
 #endif
 
 struct restrict_t {
-    int target_id;
-    float8 to_cost;
-    int via[MAX_RULE_LENGTH];
+    int64_t target_id;
+    double to_cost;
+    int64_t via[MAX_RULE_LENGTH];
 };
 
 struct path_element_tt {
-    int64 vertex_id;
-    int64 edge_id;
-    float8 cost;
+    int64_t vertex_id;
+    int64_t edge_id;
+    double cost;
 };
 
 
