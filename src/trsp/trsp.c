@@ -43,6 +43,7 @@ typedef struct path_element_tt path_element_tt;
 PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);
 
 
+#if 0
 typedef struct edge_columns {
   int id;
   int source;
@@ -50,6 +51,7 @@ typedef struct edge_columns {
   int cost;
   int reverse_cost;
 } edge_columns_t;
+#endif
 
 typedef struct restrict_columns {
   int target_id;
