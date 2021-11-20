@@ -53,7 +53,7 @@ typedef std::pair<double, std::vector<int64_t> > PDVI;
 typedef struct {
     int64_t ed_ind[2];
     int64_t v_pos[2];
-} PARENT_PATH;
+} Parent_path;
 
 typedef struct Rule {
     double cost;
@@ -100,20 +100,20 @@ class GraphDefinition {
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra3(Edge_t *edges, size_t edge_count,
+    int my_dijkstra3(std::vector<Edge_t> &edges, size_t edge_count,
                     int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
-    int my_dijkstra2(Edge_t *edges, size_t edge_count,
+    int my_dijkstra2(std::vector<Edge_t> &edges, size_t edge_count,
                     int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    int my_dijkstra1(Edge_t *edges, size_t edge_count,
+    int my_dijkstra1(std::vector<Edge_t> &edges, size_t edge_count,
                     int64_t start_edge, double start_part,
                     int64_t end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
@@ -121,7 +121,7 @@ class GraphDefinition {
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    bool construct_graph(Edge_t *edges, size_t edge_count,
+    bool construct_graph(std::vector<Edge_t> &edges, size_t edge_count,
                          bool has_reverse_cost, bool directed);
 
 
@@ -154,7 +154,7 @@ class GraphDefinition {
     bool isEndVirtual;
 
     std::vector <path_element_tt> m_vecPath;
-    PARENT_PATH *parent;
+    Parent_path *parent;
     CostHolder *m_dCost;
     RuleTable m_ruleTable;
     bool m_bIsturnRestrictOn;

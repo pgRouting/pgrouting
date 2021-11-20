@@ -34,25 +34,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <utility>
 #include "trsp/GraphDefinition.h"
+#include "c_types/edge_t.h"
 
 
 int trsp_edge_wrapper(
-    Edge_t *edges,
-    size_t edge_count,
-    restrict_t *restricts,
-    size_t restrict_count,
-    int64_t start_edge,
-    double start_pos,
-    int64_t end_edge,
-    double end_pos,
-    bool directed,
-    bool has_reverse_cost,
-    path_element_tt **path,
-    size_t *path_count,
-    char **err_msg
-    ) {
+        Edge_t *data_edges,
+        size_t edge_count,
+        restrict_t *restricts,
+        size_t restrict_count,
+        int64_t start_edge,
+        double start_pos,
+        int64_t end_edge,
+        double end_pos,
+        bool directed,
+        bool has_reverse_cost,
+        path_element_tt **path,
+        size_t *path_count,
+        char **err_msg
+        ) {
     try {
         std::vector<PDVI> ruleTable;
+        std::vector<Edge_t> edges(data_edges, data_edges + edge_count);
 
         size_t i, j;
         ruleTable.clear();
@@ -68,8 +70,8 @@ int trsp_edge_wrapper(
 
         GraphDefinition gdef;
         auto res = gdef.my_dijkstra1(edges, edge_count, start_edge, start_pos,
-            end_edge, end_pos, directed, has_reverse_cost, path, path_count,
-            err_msg, ruleTable);
+                end_edge, end_pos, directed, has_reverse_cost, path, path_count,
+                err_msg, ruleTable);
 
 
         if (res < 0)

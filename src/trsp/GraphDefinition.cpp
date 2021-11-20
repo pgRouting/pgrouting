@@ -205,7 +205,7 @@ void GraphDefinition::explore(
 
 // -------------------------------------------------------------------------
 int GraphDefinition::my_dijkstra1(
-        Edge_t *edges, size_t edge_count,
+        std::vector<Edge_t> &edges, size_t edge_count,
         int64_t start_edge_id, double start_part,
         int64_t end_edge_id, double end_part,
         bool directed, bool has_reverse_cost,
@@ -302,7 +302,7 @@ int GraphDefinition::my_dijkstra1(
 
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra2(
-        Edge_t *edges, size_t edge_count,
+        std::vector<Edge_t> &edges, size_t edge_count,
     int64_t start_vertex, int64_t end_vertex,
     bool directed, bool has_reverse_cost,
 
@@ -363,11 +363,12 @@ int GraphDefinition:: my_dijkstra2(
 
 // -------------------------------------------------------------------------
 int GraphDefinition:: my_dijkstra3(
-        Edge_t *edges, size_t edge_count,
-    int64_t start_vertex, int64_t end_vertex,
-    bool directed, bool has_reverse_cost,
-    path_element_tt **path, size_t *path_count, char **err_msg
-    ) {
+        std::vector<Edge_t> &edges,
+        size_t edge_count,
+        int64_t start_vertex, int64_t end_vertex,
+        bool directed, bool has_reverse_cost,
+        path_element_tt **path, size_t *path_count, char **err_msg
+        ) {
     if (!m_bIsGraphConstructed) {
         init();
         construct_graph(edges, edge_count, has_reverse_cost, directed);
@@ -375,7 +376,7 @@ int GraphDefinition:: my_dijkstra3(
     }
 
     std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > que;
-    parent = new PARENT_PATH[edge_count + 1];
+    parent = new Parent_path[edge_count + 1];
     m_dCost = new CostHolder[edge_count + 1];
     m_vecPath.clear();
 
@@ -537,7 +538,8 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_tt **path,
 
 
 // -------------------------------------------------------------------------
-bool GraphDefinition::construct_graph(Edge_t* edges, size_t edge_count,
+bool GraphDefinition::construct_graph(
+        std::vector<Edge_t> &edges, size_t edge_count,
     bool has_reverse_cost, bool directed) {
     for (size_t i = 0; i < edge_count; i++) {
         if (!has_reverse_cost) {
