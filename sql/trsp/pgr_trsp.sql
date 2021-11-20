@@ -65,6 +65,7 @@ restrictions_query TEXT;
 trsp_sql TEXT;
 BEGIN
   /* TODO if the user add the column is because he wants to use it */
+  /*
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
@@ -79,6 +80,7 @@ BEGIN
             USING ERRCODE := 'XX000';
         END IF;
     END IF;
+    */
 
     /*
     TODO This should be handled by C code
@@ -108,7 +110,7 @@ BEGIN
 
     RETURN query
         SELECT (a.seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
-        FROM _pgr_trsp(new_sql, restrictions_query, start_vid, end_vid, directed) AS a;
+        FROM _pgr_trsp($1, restrictions_query, start_vid, end_vid, directed) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;
