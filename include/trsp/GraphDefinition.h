@@ -44,36 +44,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // using namespace std;
 
 using Edge_t = struct Edge_t;
-typedef std::vector<int64> LongVector;
+typedef std::vector<int64_t> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
-typedef std::pair<int64, bool> PIB;
+typedef std::pair<int64_t, bool> PIB;
 typedef std::pair<double, PIB> PDP;
-typedef std::pair<double, std::vector<int64> > PDVI;
+typedef std::pair<double, std::vector<int64_t> > PDVI;
 
 typedef struct {
-    int64 ed_ind[2];
-    int64 v_pos[2];
+    int64_t ed_ind[2];
+    int64_t v_pos[2];
 } PARENT_PATH;
 
 typedef struct Rule {
     double cost;
-    std::vector<int64> precedencelist;
-    Rule(double c, std::vector<int64> p) : cost(c), precedencelist(p) { }
+    std::vector<int64_t> precedencelist;
+    Rule(double c, std::vector<int64_t> p) : cost(c), precedencelist(p) { }
 }Rule;
 
 typedef struct {
     double startCost, endCost;
 } CostHolder;
 
-typedef std::map<int64, std::vector<Rule> > RuleTable;
+typedef std::map<int64_t, std::vector<Rule> > RuleTable;
 
 
 
 class GraphEdgeInfo {
  public:
-    int64 m_lEdgeID;
-    int64 m_lEdgeIndex;
-    int64 m_sDirection;
+    int64_t m_lEdgeID;
+    int64_t m_lEdgeIndex;
+    int64_t m_sDirection;
     double m_dCost;
     double m_dReverseCost;
     LongVector m_vecStartConnectedEdge;
@@ -81,16 +81,16 @@ class GraphEdgeInfo {
     bool m_bIsLeadingRestrictedEdge;
     VectorOfLongVector m_vecRestrictedEdge;
 
-    int64 m_lStartNode;
-    int64 m_lEndNode;
+    int64_t m_lStartNode;
+    int64_t m_lEndNode;
 };
 
 
 
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
-typedef std::map<int64, LongVector> Long2LongVectorMap;
-typedef std::map<int64, int64> Long2LongMap;
+typedef std::map<int64_t, LongVector> Long2LongVectorMap;
+typedef std::map<int64_t, int64_t> Long2LongMap;
 
 
 
@@ -101,21 +101,21 @@ class GraphDefinition {
     ~GraphDefinition(void);
 
     int my_dijkstra3(Edge_t *edges, size_t edge_count,
-                    int64 start_vertex, int64 end_vertex,
+                    int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg);
 
     int my_dijkstra2(Edge_t *edges, size_t edge_count,
-                    int64 start_vertex, int64 end_vertex,
+                    int64_t start_vertex, int64_t end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
     int my_dijkstra1(Edge_t *edges, size_t edge_count,
-                    int64 start_edge, double start_part,
-                    int64 end_edge, double end_part,
+                    int64_t start_edge, double start_part,
+                    int64_t end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
                     path_element_tt **path, size_t *path_count,
                     char **err_msg,
@@ -126,11 +126,11 @@ class GraphDefinition {
 
 
  private:
-    double construct_path(int64 ed_id, int64 v_pos);
-    void explore(int64 cur_node, GraphEdgeInfo& cur_edge, bool isStart,
+    double construct_path(int64_t ed_id, int64_t v_pos);
+    void explore(int64_t cur_node, GraphEdgeInfo& cur_edge, bool isStart,
                  LongVector &vecIndex, std::priority_queue<PDP,
                  std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(int64 cur_node, GraphEdgeInfo& new_edge,
+    double getRestrictionCost(int64_t cur_node, GraphEdgeInfo& new_edge,
                               bool isStart);
     bool addEdge(Edge_t edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge,
@@ -144,10 +144,10 @@ class GraphDefinition {
     GraphEdgeVector m_vecEdgeVector;
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
-    int64 max_node_id;
-    int64 max_edge_id;
-    int64 m_lStartEdgeId;
-    int64 m_lEndEdgeId;
+    int64_t max_node_id;
+    int64_t max_edge_id;
+    int64_t m_lStartEdgeId;
+    int64_t m_lEndEdgeId;
     double m_dStartpart;
     double m_dEndPart;
     bool isStartVirtual;
