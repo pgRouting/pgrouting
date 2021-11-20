@@ -29,6 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    - put all data costs in one cost column and
    - a call is made to trsp without only the positive values
 */
+
+
+/* TODO
+* The restrictions sql should be the second parameter
+* remove has_rcost
+*/
 --v3.0
 CREATE FUNCTION pgr_trsp(
     TEXT, -- edges SQL (required)
@@ -58,6 +64,7 @@ new_sql TEXT;
 restrictions_query TEXT;
 trsp_sql TEXT;
 BEGIN
+  /* TODO if the user add the column is because he wants to use it */
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
@@ -73,6 +80,9 @@ BEGIN
         END IF;
     END IF;
 
+    /*
+    TODO This should be handled by C code
+    */
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
         RETURN query SELECT a.seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, a.cost
@@ -81,6 +91,9 @@ BEGIN
     END IF;
 
 
+    /*
+    TODO Should use the new restrictions
+    */
     restrictions_query = $$
         WITH old_restrictions AS ( $$ ||
             $6 || $$
@@ -115,6 +128,16 @@ ROWS 1000;
 
     - with restrictions
       - calls original trsp code
+*/
+
+/* TODO
+
+* This one should be:
+* pgr_withPointsTRSP
+
+* The restrictions sql should be the second parameter
+*
+
 */
 --v3.0
 CREATE FUNCTION pgr_trsp(

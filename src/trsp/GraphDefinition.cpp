@@ -540,9 +540,22 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_tt **path,
 
 
 // -------------------------------------------------------------------------
+/*
+ * TODO Autodetection. Basically the data comes out correct if
+ * the function that reads edges is been used
+ *
+ * task: has_reverse_cost must be removed
+ *
+ * Because the graph is not using boost graph:
+ * data: id, source, target, cost, reverse_cost
+ * When directed and cost < 0: swap source and target and cost and reverse_cost
+ * When undirected and cost or reverse_cost is missing, fill them with the other value
+ *
+ */
 bool GraphDefinition::construct_graph(
         std::vector<Edge_t> &edges,
-    bool has_reverse_cost, bool directed) {
+        bool has_reverse_cost,
+        bool directed) {
     for (size_t i = 0; i < m_edge_count; i++) {
         if (!has_reverse_cost) {
             if (directed) {
