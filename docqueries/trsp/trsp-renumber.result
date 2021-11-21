@@ -6,6 +6,7 @@ SELECT * FROM pgr_trsp(
     'SELECT id::INTEGER, (source+10)::INTEGER AS source, (target+10)::INTEGER AS target, cost::FLOAT FROM edge_table',
     17, 22, false, false
 );
+WARNING:  Executing pgr_dijkstra
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  17 |   6 |    1

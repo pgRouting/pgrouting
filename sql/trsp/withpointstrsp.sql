@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* TODO
 
-* This one should be:
+* This one should be
 * pgr_withPointsTRSP
 
 * The restrictions sql should be the second parameter
@@ -82,6 +82,7 @@ BEGIN
     IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
         RETURN;
     END IF;
+    /*
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
 
     new_sql := sql;
@@ -97,6 +98,7 @@ BEGIN
             USING ERRCODE := 'XX000';
         END IF;
     END IF;
+    */
 
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a withPoints or dijkstra
@@ -104,11 +106,12 @@ BEGIN
             source_sql = '(SELECT source FROM (' || sql || ') b WHERE id = ' ||  source_eid || ')';
         ELSE IF source_pos = 1 THEN
             source_sql = '(SELECT target FROM (' || sql || ') b WHERE id = ' || source_eid || ')';
-        ELSE
-            source_sql = '-1';
-            union_sql1 =  '(SELECT 1 as pid, ' || source_eid || ' as edge_id, ' || source_pos || '::float8 as fraction)';
+          ELSE
+              source_sql = '-1';
+              union_sql1 =  '(SELECT 1 as pid, ' || source_eid || ' as edge_id, ' || source_pos || '::float8 as fraction)';
+          END IF;
         END IF;
-        END IF;
+
         -- raise notice 'source_sql %', source_sql;
         -- raise notice 'union_sql1 %', union_sql1;
 
@@ -138,8 +141,9 @@ BEGIN
 
         IF union_sql IS NULL THEN
             -- no points then its a dijkstra
+            RAISE WARNING 'executing pgr_dijkstra';
             final_sql = 'WITH final_sql AS (
-                 SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_dijkstra($$' || new_sql || '$$
+                 SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_dijkstra($$' || $1 || '$$
                 ,' || source_sql || '
                 ,' || target_sql || '
                 , directed := ' || directed || '
@@ -147,8 +151,9 @@ BEGIN
             SELECT seq, id1, id2, cost  FROM final_sql ORDER BY seq';
         ELSE
             -- points then its a withPoints
+            RAISE WARNING 'executing pgr_withpoints';
             final_sql = 'WITH final_sql AS (
-                SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_withpoints($$' || new_sql || '$$
+                SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_withpoints($$' || $1 || '$$
                 , $$' || union_sql || '$$
                 ,' || source_sql || '
                 ,' || target_sql || '
@@ -169,7 +174,7 @@ BEGIN
     END IF;
 
     -- with restrictions calls the original code
-    RETURN query SELECT * FROM _pgr_withpointstrsp(new_sql, source_eid, source_pos, target_eid, target_pos, directed, has_reverse_cost, turn_restrict_sql);
+    RETURN query SELECT * FROM _pgr_withpointstrsp($1, source_eid, source_pos, target_eid, target_pos, directed, has_reverse_cost, turn_restrict_sql);
     RETURN;
 
 END

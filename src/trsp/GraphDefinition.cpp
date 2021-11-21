@@ -557,6 +557,24 @@ bool GraphDefinition::construct_graph(
         bool has_reverse_cost,
         bool directed) {
     for (size_t i = 0; i < m_edge_count; i++) {
+#if 0
+        if (!directed) {
+            edges[i].reverse_cost =  edges[i].reverse_cost < 0 ?  edges[i].cost :  edges[i].reverse_cost;
+        }
+#endif
+#if 1
+        if (!directed) {
+            edges[i].reverse_cost =  edges[i].reverse_cost < 0 ?  edges[i].cost :  edges[i].reverse_cost;
+            edges[i].cost =  edges[i].cost < 0 ?  edges[i].reverse_cost :  edges[i].cost;
+            if (edges[i].cost >= 0) {
+                edges[i].cost = std::min(edges[i].reverse_cost, edges[i].cost);
+                edges[i].reverse_cost = edges[i].cost;
+            }
+        }
+#endif
+
+#if 0
+        // This is the original
         if (!has_reverse_cost) {
             if (directed) {
                 edges[i].reverse_cost = -1.0;
@@ -564,6 +582,7 @@ bool GraphDefinition::construct_graph(
                 edges[i].reverse_cost = edges[i].cost;
             }
         }
+#endif
         addEdge(edges[i]);
     }
     m_bIsGraphConstructed = true;

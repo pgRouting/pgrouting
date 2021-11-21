@@ -20,6 +20,7 @@ FROM pgr_withpointstrsp(
     true,
     null
 ) PG ;
+WARNING:  executing pgr_withpoints
  seq |  node  |  edge  |   cost
 -----+--------+--------+----------
    0 | 408918 | 582877 | 229.0450
@@ -37,6 +38,7 @@ FROM pgr_withpointstrsp(
     true,
     null
 ) PG ;
+WARNING:  executing pgr_withpoints
  seq | node |  edge  |   cost
 -----+------+--------+----------
    0 |   -1 | 582877 | 229.0450
@@ -85,6 +87,7 @@ FROM pgr_withpointstrsp(
     true,
     true
 );
+WARNING:  executing pgr_dijkstra
  seq |  node  |  edge  |   cost
 -----+--------+--------+----------
    0 | 408918 | 582877 | 458.0900

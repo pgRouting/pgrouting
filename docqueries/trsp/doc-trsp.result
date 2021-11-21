@@ -7,6 +7,7 @@ SET
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         7, 12, false, false
     );
+WARNING:  Executing pgr_dijkstra
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   7 |   6 |    1
