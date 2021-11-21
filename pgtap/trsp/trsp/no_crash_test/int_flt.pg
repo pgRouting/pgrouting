@@ -28,7 +28,7 @@ BEGIN
         END IF;
 
         q1 := format($$
-            SELECT * FROM pgr_trsp(
+            SELECT * FROM pgr_withpointstrsp(
                 %1$L, %2$s, %3$s, %4$s, %5$s, %6$s, %7$s
             )
             $$,

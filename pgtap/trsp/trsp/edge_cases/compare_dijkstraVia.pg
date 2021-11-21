@@ -50,11 +50,6 @@ BEGIN
 
 
   RETURN QUERY SELECT is_empty('q1', '1: Directed: No path from 1 to 1');
-
-  -- TODO trsp should accept ANY-INTEGER and ANY-NUMERICAL
-  IF NOT min_version('4.0.1') THEN
-    PERFORM todo(1, 'Function does not accept ANY-INTEGER and ANY-NUMERICAL');
-  END IF;
   RETURN QUERY SELECT lives_ok('q2', 'ANY_INTEGER and ANY_NUMERICAL are accepted');
 
   RETURN QUERY SELECT set_eq('q21','q22','3: Directed: without retrictions returns the same as pgr_dijkstra');
