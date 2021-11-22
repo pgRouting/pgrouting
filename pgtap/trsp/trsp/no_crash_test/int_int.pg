@@ -1,7 +1,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(38) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(32) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
@@ -67,21 +67,18 @@ BEGIN
   params = ARRAY['$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$',
   '1',
   '2',
-  'true',
   'true'
   ]::TEXT[];
   subs = ARRAY[
   'NULL',
   '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
   '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  'NULL',
   'NULL'
   ]::TEXT[];
 
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
 
   subs = ARRAY[
-  'NULL',
   'NULL',
   'NULL',
   'NULL',
@@ -92,7 +89,6 @@ BEGIN
   params = ARRAY['$$edges$$',
   '1',
   '2',
-  'true',
   'true'
   ]::TEXT[];
   RETURN query SELECT no_crash_test('pgr_trsp', params, subs);

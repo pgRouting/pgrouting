@@ -22,7 +22,7 @@ BEGIN
   no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
 
   FOR i IN 1.. cant LOOP
-    trsp_sql := 'SELECT * from pgr_trsp( ' || with_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ', true)';
+    trsp_sql := 'SELECT * from pgr_trsp( ' || with_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ')';
     msg := k || ' ' || directed || ', with reverse_cost and saying we use it: from '  || i || ' to ' || i;
     BEGIN
       execute trsp_sql;
@@ -37,7 +37,7 @@ BEGIN
     k := k + 1;
 
 
-    trsp_sql := 'SELECT * from pgr_trsp( ' || with_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ', false)';
+    trsp_sql := 'SELECT * from pgr_trsp( ' || with_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ')';
     msg := k || ' ' || directed || ', with reverse_cost and saying we dont use it: from '  || i || ' to ' || i;
     BEGIN
       execute trsp_sql;
@@ -51,7 +51,7 @@ BEGIN
     END;
     k := k + 1;
 
-    trsp_sql := 'SELECT * from pgr_trsp( ' || no_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ', false)';
+    trsp_sql := 'SELECT * from pgr_trsp( ' || no_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ')';
     msg := k || ' ' || directed || ', No reverse_cost and saying we dont use it: from '  || i || ' to ' || i;
     BEGIN
       execute trsp_sql;
@@ -66,7 +66,7 @@ BEGIN
     k := k + 1;
 
     /* Ignoring has_rcost flag */
-    trsp_sql := 'SELECT * from pgr_trsp( ' || no_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ', true)';
+    trsp_sql := 'SELECT * from pgr_trsp( ' || no_reverse_cost || ', ' || i || ', ' || i || ', ' || flag || ')';
     msg := k || ' ' || directed || ', No reverse_cost and saying we use it: from '  || i || ' to ' || i;
     BEGIN
       execute trsp_sql;

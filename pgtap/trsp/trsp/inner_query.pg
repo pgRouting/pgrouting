@@ -19,7 +19,7 @@ BEGIN
     -- Basically this is a TODO
     -- but has more fails than ok
 
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, true)');
+    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false)');
 /*
     RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, true, NULL)');
     RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, true, ' || restriction);

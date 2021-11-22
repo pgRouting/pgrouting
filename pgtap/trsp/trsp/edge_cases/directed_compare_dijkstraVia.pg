@@ -9,24 +9,24 @@ PREPARE q1 AS
 SELECT * from pgr_trsp(
     'select id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost from edge_table',
     1, 1,
-    true, true);
+    true);
 
 PREPARE q21 AS
 SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
     'select id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost from edge_table',
     3, 4,
-    true, true);
+    true);
 
 PREPARE q22 AS
 SELECT seq-1, node::INTEGER, edge::INTEGER, round(cost::numeric, 12) from pgr_dijkstra(
     'select id, source, target, cost, reverse_cost from edge_table',
-    3, 4, true);
+    3, 4);
 
 PREPARE q31 AS
 SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
     'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
     3, 4,
-    true, true,
+    true,
     'select 9::INTEGER as target_id, ''5''::TEXT as via_path,  100.2::FLOAT to_cost');
 
 PREPARE q32 AS
