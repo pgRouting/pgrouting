@@ -119,7 +119,7 @@ BEGIN
 
         IF union_sql IS NULL THEN
             -- no points then its a dijkstra
-            RAISE WARNING 'executing pgr_dijkstra';
+            -- RAISE WARNING 'executing pgr_dijkstra';
             final_sql = 'WITH final_sql AS (
                  SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_dijkstra($$' || $1 || '$$
                 ,' || source_sql || '
@@ -129,7 +129,7 @@ BEGIN
             SELECT seq, id1, id2, cost  FROM final_sql ORDER BY seq';
         ELSE
             -- points then its a withPoints
-            RAISE WARNING 'executing pgr_withpoints';
+            -- RAISE WARNING 'executing pgr_withpoints';
             final_sql = 'WITH final_sql AS (
                 SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_withpoints($$' || $1 || '$$
                 , $$' || union_sql || '$$

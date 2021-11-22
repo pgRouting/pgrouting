@@ -30,7 +30,6 @@ SELECT * FROM pgr_withpointstrsp(
   719, 0,
   718, 0,
   true, NULL);
-WARNING:  executing pgr_dijkstra
  seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 | 52163 | 717 | 977.000001
@@ -51,7 +50,6 @@ SELECT * FROM pgr_trsp(
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
   true, true, NULL);
-WARNING:  Executing pgr_dijkstra
  seq |  id1  | id2 | cost
 -----+-------+-----+------
    0 | 52163 | 717 |  977
@@ -66,7 +64,6 @@ SELECT * FROM pgr_withpointstrsp(
   719, 0,
   718, 0,
   true, NULL);
-WARNING:  executing pgr_dijkstra
  seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 | 52163 | 717 | 977.000001
@@ -110,7 +107,6 @@ SELECT * FROM pgr_withpointstrsp(
   719, 0.5,
   718, 0,
   true, NULL);
-WARNING:  executing pgr_withpoints
  seq |  id1  | id2 |    cost
 -----+-------+-----+------------
    0 |    -1 | 719 | 89.7000005
@@ -157,7 +153,6 @@ SELECT * FROM pgr_withpointstrsp(
   719, 0,
   718, 0.5,
   true, NULL);
-WARNING:  executing pgr_withpoints
  seq |  id1  | id2 |    cost
 -----+-------+-----+-------------
    0 | 52163 | 717 |  977.000001
@@ -202,7 +197,6 @@ SELECT * FROM pgr_withpointstrsp(
   719, 0.5,
   718, 0.5,
   true, NULL);
-WARNING:  executing pgr_withpoints
  seq |  id1  | id2 |    cost
 -----+-------+-----+-------------
    0 |    -1 | 719 |  89.7000005

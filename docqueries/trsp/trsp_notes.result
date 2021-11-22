@@ -27,7 +27,6 @@ SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
 );
-WARNING:  Executing pgr_dijkstra
  seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
@@ -54,7 +53,6 @@ SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  true, true
 );
-WARNING:  Executing pgr_dijkstra
  seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
@@ -117,7 +115,6 @@ SELECT * FROM pgr_withpointstrsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true
 );
-WARNING:  executing pgr_withpoints
  seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
@@ -134,7 +131,6 @@ SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true
 );
-WARNING:  executing pgr_withpoints
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
@@ -157,7 +153,6 @@ SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true
 );
-WARNING:  executing pgr_withpoints
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
@@ -395,8 +390,6 @@ SELECT * FROM pgr_trspViaEdges(
     ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
     false, true
 );
-WARNING:  executing pgr_withpoints
-WARNING:  executing pgr_withpoints
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |     |     |     |
@@ -475,8 +468,6 @@ SELECT * FROM pgr_trspViaEdges(
     false,
     true
 );
-WARNING:  executing pgr_withpoints
-WARNING:  executing pgr_withpoints
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.6
