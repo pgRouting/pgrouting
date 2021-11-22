@@ -208,7 +208,7 @@ int GraphDefinition::my_dijkstra1(
         std::vector<Edge_t> &edges,
         int64_t start_edge_id, double start_part,
         int64_t end_edge_id, double end_part,
-        bool directed, bool has_reverse_cost,
+        bool directed,
 
         path_element_tt **path,
         size_t *path_count,
@@ -218,7 +218,7 @@ int GraphDefinition::my_dijkstra1(
 
     if (!m_bIsGraphConstructed) {
         init();
-        construct_graph(edges, has_reverse_cost, directed);
+        construct_graph(edges, directed);
         m_bIsGraphConstructed = true;
     }
 
@@ -295,7 +295,7 @@ int GraphDefinition::my_dijkstra1(
     return(my_dijkstra2(
                 edges,
                 start_vertex, end_vertex,
-                directed, has_reverse_cost,
+                directed,
 
                 path, path_count, err_msg,
 
@@ -307,7 +307,7 @@ int GraphDefinition::my_dijkstra1(
 int GraphDefinition:: my_dijkstra2(
         std::vector<Edge_t> &edges,
     int64_t start_vertex, int64_t end_vertex,
-    bool directed, bool has_reverse_cost,
+    bool directed,
 
     path_element_tt **path, size_t *path_count,
     char **err_msg,
@@ -360,7 +360,7 @@ int GraphDefinition:: my_dijkstra2(
     return(my_dijkstra3(
                 edges,
                 start_vertex, end_vertex,
-                directed, has_reverse_cost,
+                directed,
                 path, path_count, err_msg));
 }
 
@@ -368,12 +368,12 @@ int GraphDefinition:: my_dijkstra2(
 int GraphDefinition:: my_dijkstra3(
         std::vector<Edge_t> &edges,
         int64_t start_vertex, int64_t end_vertex,
-        bool directed, bool has_reverse_cost,
+        bool directed,
         path_element_tt **path, size_t *path_count, char **err_msg
         ) {
     if (!m_bIsGraphConstructed) {
         init();
-        construct_graph(edges, has_reverse_cost, directed);
+        construct_graph(edges, directed);
         m_bIsGraphConstructed = true;
     }
 
@@ -544,8 +544,6 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_tt **path,
  * TODO Autodetection. Basically the data comes out correct if
  * the function that reads edges is been used
  *
- * task: has_reverse_cost must be removed
- *
  * Because the graph is not using boost graph:
  * data: id, source, target, cost, reverse_cost
  * When directed and cost < 0: swap source and target and cost and reverse_cost
@@ -554,15 +552,8 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_tt **path,
  */
 bool GraphDefinition::construct_graph(
         std::vector<Edge_t> &edges,
-        bool has_reverse_cost,
         bool directed) {
     for (size_t i = 0; i < m_edge_count; i++) {
-#if 0
-        if (!directed) {
-            edges[i].reverse_cost =  edges[i].reverse_cost < 0 ?  edges[i].cost :  edges[i].reverse_cost;
-        }
-#endif
-#if 1
         if (!directed) {
             edges[i].reverse_cost =  edges[i].reverse_cost < 0 ?  edges[i].cost :  edges[i].reverse_cost;
             edges[i].cost =  edges[i].cost < 0 ?  edges[i].reverse_cost :  edges[i].cost;
@@ -571,18 +562,6 @@ bool GraphDefinition::construct_graph(
                 edges[i].reverse_cost = edges[i].cost;
             }
         }
-#endif
-
-#if 0
-        // This is the original
-        if (!has_reverse_cost) {
-            if (directed) {
-                edges[i].reverse_cost = -1.0;
-            } else {
-                edges[i].reverse_cost = edges[i].cost;
-            }
-        }
-#endif
         addEdge(edges[i]);
     }
     m_bIsGraphConstructed = true;

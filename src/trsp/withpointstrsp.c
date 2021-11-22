@@ -144,7 +144,7 @@ static int compute_trsp(
         int64_t end_id,
         double end_pos,
         bool directed,
-        bool has_reverse_cost,
+
         char* restrict_sql,
         path_element_tt **path,
         size_t *path_count) {
@@ -301,7 +301,7 @@ static int compute_trsp(
       ret = trsp_edge_wrapper(edges, total_tuples,
                         restricts, total_restrict_tuples,
                         start_id, start_pos, end_id, end_pos,
-                        directed, has_reverse_cost,
+                        directed,
                         path, path_count, &err_msg);
 
   PGR_DBG("Message received from inside:");
@@ -392,7 +392,7 @@ _pgr_withpointstrsp(PG_FUNCTION_ARGS) {
                                    PG_GETARG_INT32(3),
                                    e_pos,
                                    PG_GETARG_BOOL(5),
-                                   PG_GETARG_BOOL(6),
+
                                    sql,
                                    &path, &path_count);
 
