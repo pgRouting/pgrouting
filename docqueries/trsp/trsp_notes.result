@@ -120,12 +120,13 @@ SELECT * FROM pgr_withpointstrsp(
 (0 rows)
 
 /* --place12 */
+/* OLD CODE is not reachable any more
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
-ERROR:  Error computing path: Path Not Found
+*/
 /* --place13 */
 SELECT * FROM pgr_withpointsTRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,

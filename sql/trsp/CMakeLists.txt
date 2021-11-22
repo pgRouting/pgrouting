@@ -2,7 +2,7 @@
 SET(LOCAL_FILES
     _trsp.sql
     trsp.sql
-    _pgr_trsp.sql
+
     _array_reverse.sql
     pgr_trsp.sql
     _withpointstrsp.sql
@@ -12,6 +12,7 @@ SET(LOCAL_FILES
     pgr_trspViaVertices.sql
 
     pgr_trspViaEdges.sql
+
     )
 
 foreach (f ${LOCAL_FILES})
