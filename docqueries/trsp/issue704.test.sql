@@ -14,7 +14,6 @@ FROM pgr_withpointstrsp(
     582877,     -- edge_id of route end
     0.5,        -- end_offset
     true,        -- directed graph?
-    true,      -- has_reverse_cost?
     null -- include the turn restrictions
 ) PG ;
 
@@ -26,7 +25,6 @@ FROM pgr_withpointstrsp(
     582877,     -- edge_id of route end
     0.5,        -- end_offset
     true,        -- directed graph?
-    true,      -- has_reverse_cost?
     null -- include the turn restrictions
 ) PG ;
 
@@ -38,7 +36,6 @@ FROM pgr_withpointstrsp(
     582877,     -- edge_id of route end
     0.5,        -- end_offset
     true,        -- directed graph?
-    true,      -- has_reverse_cost?
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
 
@@ -50,7 +47,6 @@ FROM pgr_withpointstrsp(
     582877,     -- edge_id of route end
     0.5,        -- end_offset
     true,        -- directed graph?
-    true,      -- has_reverse_cost?
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
 
@@ -61,7 +57,6 @@ FROM pgr_withpointstrsp(
     0,          -- ini_offset
     582877,     -- edge_id of route end
     1,        -- end_offset
-    true,        -- directed graph?
-    true      -- has_reverse_cost?
+    true        -- directed graph?
 );
 

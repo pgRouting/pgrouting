@@ -17,7 +17,6 @@ FROM pgr_withpointstrsp(
     582877,
     0.5,
     true,
-    true,
     null
 ) PG ;
 WARNING:  executing pgr_withpoints
@@ -34,7 +33,6 @@ FROM pgr_withpointstrsp(
     0.0000000001,
     582877,
     0.5,
-    true,
     true,
     null
 ) PG ;
@@ -53,7 +51,6 @@ FROM pgr_withpointstrsp(
     582877,
     0.5,
     true,
-    true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
  seq | node |  edge  |   cost
@@ -69,7 +66,6 @@ FROM pgr_withpointstrsp(
     582877,
     0.5,
     true,
-    true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 ) PG ;
  seq | node |  edge  |   cost
@@ -84,7 +80,6 @@ FROM pgr_withpointstrsp(
     0,
     582877,
     1,
-    true,
     true
 );
 WARNING:  executing pgr_dijkstra

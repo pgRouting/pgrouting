@@ -24,7 +24,7 @@ SELECT * FROM pgr_withpointstrsp(
     ) AS t (id, source, target, cost, reverse_cost)$$,
   719, 0,
   718, 0,
-  true, true, NULL);
+  true, NULL);
 
 
 SELECT * FROM pgr_trsp(
@@ -48,7 +48,7 @@ SELECT * FROM pgr_withpointstrsp(
   FROM four_edges$$,
   719, 0,
   718, 0,
-  true, true, NULL);
+  true, NULL);
 
 SELECT * FROM pgr_dijkstra(
   $$SELECT
@@ -74,7 +74,7 @@ SELECT * FROM pgr_withpointstrsp(
   FROM four_edges$$,
   719, 0.5,
   718, 0,
-  true, true, NULL);
+  true, NULL);
 
 SELECT * FROM pgr_withPoints(
   $$SELECT
@@ -103,7 +103,7 @@ SELECT * FROM pgr_withpointstrsp(
   FROM four_edges$$,
   719, 0,
   718, 0.5,
-  true, true, NULL);
+  true, NULL);
 
 SELECT * FROM pgr_withPoints(
   $$SELECT
@@ -132,7 +132,7 @@ SELECT * FROM pgr_withpointstrsp(
   FROM four_edges$$,
   719, 0.5,
   718, 0.5,
-  true, true, NULL);
+  true, NULL);
 
 SELECT * FROM pgr_withPoints(
   $$SELECT

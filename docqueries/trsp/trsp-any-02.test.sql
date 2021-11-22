@@ -22,6 +22,5 @@ select * from pgr_withpointstrsp(
     6,    -- edge_id of route end
     0.5,  -- midpoint of edge
     true, -- directed graph?
-    true, -- has_reverse_cost?
     -- include the turn restrictions
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');

@@ -26,7 +26,6 @@ select * from pgr_withpointstrsp(
     6,
     0.5,
     true,
-    true,
 
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
  seq | id1 | id2 |  cost

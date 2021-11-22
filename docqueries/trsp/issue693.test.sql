@@ -9,6 +9,6 @@
 
     SELECT pgr_withpointstrsp(
           'SELECT gid as id, source::int4, target::int4, length::float8 as cost, length::float8 as reverse_cost FROM routing',
-          1, 0.1, 1, 0.9, false, true
+          1, 0.1, 1, 0.9, false
     );
 
