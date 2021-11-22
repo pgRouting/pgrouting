@@ -39,7 +39,7 @@ SELECT * FROM pgr_trsp(
     ) AS t (id, source, target, cost, reverse_cost)$$,
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
-  true, true, NULL);
+  true, NULL);
 
 
 SELECT * FROM pgr_withpointstrsp(

@@ -9,7 +9,7 @@
 /* --q1 */
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        7, 12, false, false
+        7, 12, false
     );
 
 /* --q2 */
@@ -17,14 +17,14 @@
 /* --q3 */
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        2, 7, false, false,
+        2, 7, false,
         'SELECT to_cost, target_id::int4,
         from_edge || coalesce('','' || via_path, '''') AS via_path
         FROM restrictions'
     );
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        7, 11, false, false,
+        7, 11, false,
         'SELECT to_cost, target_id::int4,
         from_edge || coalesce('','' || via_path, '''') AS via_path
         FROM restrictions'

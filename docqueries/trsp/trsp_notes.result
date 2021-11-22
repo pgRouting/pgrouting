@@ -25,7 +25,7 @@ SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] 
 /* --place3 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15, true, true
+    1, 15, true
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -43,15 +43,15 @@ SELECT * FROM pgr_dijkstra(
 /* --place5 */
 SELECT * FROM pgr_trsp(
      $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-     1, 15, true, true,
+     1, 15, true,
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 44 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,text) line 40 at RAISE
 /* --place6 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  true, true
+    1, 1,  true
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -60,15 +60,15 @@ SELECT * FROM pgr_trsp(
 /* --place7 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    14, 14, true, true,
+    14, 14, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 44 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,text) line 40 at RAISE
 /* --place8 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1, true, true,
+    1, 1, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | cost
@@ -87,7 +87,7 @@ SELECT * FROM pgr_trsp(
 /* --place9 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-    2, 3, false, true,
+    2, 3, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | cost
@@ -100,15 +100,17 @@ SELECT * FROM pgr_trsp(
 
 /* --place10 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    2, 3, false, false,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
+    2, 3, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
-   0 |   2 |   2 |    1
-   1 |   3 |  -1 |    0
-(2 rows)
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   5 |    1
+   3 |   3 |  -1 |    0
+(4 rows)
 
 /* --place11 */
 SELECT * FROM pgr_withpointstrsp(

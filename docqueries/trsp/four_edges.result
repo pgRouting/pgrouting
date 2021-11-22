@@ -49,7 +49,7 @@ SELECT * FROM pgr_trsp(
     ) AS t (id, source, target, cost, reverse_cost)$$,
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
-  true, true, NULL);
+  true, NULL);
  seq |  id1  | id2 | cost
 -----+-------+-----+------
    0 | 52163 | 717 |  977
