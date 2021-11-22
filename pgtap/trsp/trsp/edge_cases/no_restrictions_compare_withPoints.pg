@@ -11,7 +11,6 @@ SELECT seq, id1, id2, cost::TEXT FROM pgr_withpointstrsp(
     6,     -- edge_id of route end
     0.5,   -- midpoint of edge
     true,  -- directed graph?
-    true,  -- has_reverse_cost?
     null); -- no turn restrictions
 
 
