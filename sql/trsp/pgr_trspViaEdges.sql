@@ -102,11 +102,10 @@ begin
     for i in 1 .. array_length(eids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_withpointstrsp(edges_sql,
+                    from pgr_withPointsTRSP(edges_sql,
                                   eids[i], pcts[i],
                                   eids[i+1], pcts[i+1],
                                   directed,
-                                  has_rcost,
                                   turn_restrict_sql) as a loop
             -- combine intermediate via costs when cost is split across
             -- two parts of a segment because it stops it and

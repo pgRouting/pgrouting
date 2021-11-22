@@ -27,19 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --v4.0
 CREATE FUNCTION _pgr_withPointsTRSP(
-    sql text,
-    source_eid integer,
-    source_pos float8,
-    target_eid integer,
-    target_pos float8,
-    directed boolean,
-    has_reverse_cost boolean,
-    turn_restrict_sql text DEFAULT null,
+  sql text,
+  source_eid integer,
+  source_pos float8,
+  target_eid integer,
+  target_pos float8,
+  directed boolean,
+  turn_restrict_sql text DEFAULT null,
 
-    OUT seq INTEGER,
-    OUT id1 INTEGER,
-    OUT id2 INTEGER,
-    OUT cost FLOAT
+  OUT seq INTEGER,
+  OUT id1 INTEGER,
+  OUT id2 INTEGER,
+  OUT cost FLOAT
 )
 RETURNS SETOF record
 AS 'MODULE_PATHNAME'
@@ -48,5 +47,5 @@ LANGUAGE 'c' IMMUTABLE;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION _pgr_withPointsTRSP(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
+COMMENT ON FUNCTION _pgr_withPointsTRSP(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, TEXT)
 IS 'pgRouting internal function';

@@ -48,7 +48,6 @@ CREATE FUNCTION pgr_withPointsTRSP(
     INTEGER, -- target_eid (required)
     FLOAT,   -- target_pos (required)
     BOOLEAN, -- directed (required)
-    BOOLEAN, -- has_reverse_cost (required)
 
     turn_restrict_sql text DEFAULT null,
 
@@ -60,45 +59,24 @@ CREATE FUNCTION pgr_withPointsTRSP(
 RETURNS SETOF record AS
 $BODY$
 DECLARE
-    sql TEXT                 := $1;
-    source_eid INTEGER       := $2;
-    source_pos FLOAT         := $3;
-    target_eid INTEGER       := $4;
-    target_pos FLOAT         := $5;
-    directed BOOLEAN         := $6;
-    has_reverse_cost BOOLEAN := $7;
+  sql TEXT                 := $1;
+  source_eid INTEGER       := $2;
+  source_pos FLOAT         := $3;
+  target_eid INTEGER       := $4;
+  target_pos FLOAT         := $5;
+  directed BOOLEAN         := $6;
 
-has_reverse BOOLEAN;
-new_sql TEXT;
-trsp_sql TEXT;
-source_sql TEXT;
-target_sql TEXT;
-union_sql TEXT;
-union_sql1 TEXT;
-union_sql2 TEXT;
-final_sql TEXT;
+  source_sql TEXT;
+  target_sql TEXT;
+  union_sql TEXT;
+  union_sql1 TEXT;
+  union_sql2 TEXT;
+  final_sql TEXT;
 
 BEGIN
     IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
         RETURN;
     END IF;
-    /*
-    has_reverse =_pgr_parameter_check('dijkstra', sql, false);
-
-    new_sql := sql;
-    IF (has_reverse != has_reverse_cost) THEN  -- user contradiction
-        IF (has_reverse) THEN
-            -- it has reverse_cost but user don't want it.
-            -- to be on the safe side because it reads the data wrong, sending only postitive values
-            new_sql :=
-            'WITH old_sql AS (' || sql || ')' ||
-            '   SELECT id, source, target, cost FROM old_sql';
-        ELSE -- it does not have reverse_cost but user wants it
-            RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
-            USING ERRCODE := 'XX000';
-        END IF;
-    END IF;
-    */
 
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a withPoints or dijkstra
@@ -174,7 +152,7 @@ BEGIN
     END IF;
 
     -- with restrictions calls the original code
-    RETURN query SELECT * FROM _pgr_withpointstrsp($1, source_eid, source_pos, target_eid, target_pos, directed, has_reverse_cost, turn_restrict_sql);
+    RETURN query SELECT * FROM _pgr_withpointstrsp($1, source_eid, source_pos, target_eid, target_pos, directed, turn_restrict_sql);
     RETURN;
 
 END
@@ -185,7 +163,7 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_withPointsTRSP(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
+COMMENT ON FUNCTION pgr_withPointsTRSP(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, TEXT)
 IS 'pgr_withPointsTRSP
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]

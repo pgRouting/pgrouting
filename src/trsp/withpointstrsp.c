@@ -43,16 +43,6 @@ typedef struct path_element_tt path_element_tt;
 PGDLLEXPORT Datum _pgr_withpointstrsp(PG_FUNCTION_ARGS);
 
 
-#if 0
-typedef struct edge_columns {
-  int id;
-  int source;
-  int target;
-  int cost;
-  int reverse_cost;
-} edge_columns_t;
-#endif
-
 typedef struct restrict_columns {
   int target_id;
   int via_path;
@@ -353,7 +343,7 @@ _pgr_withpointstrsp(PG_FUNCTION_ARGS) {
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
       // verify that the first 5 args are not NULL
-      for (i = 0; i < 7; i++) {
+      for (i = 0; i < 6; i++) {
         if (i == 2 || i == 4) continue;
         if (PG_ARGISNULL(i)) {
             elog(ERROR, "turn_restrict_shortest_path(): "
@@ -377,10 +367,10 @@ _pgr_withpointstrsp(PG_FUNCTION_ARGS) {
         if (e_pos > 1.0) e_pos = 0.5;
       }
 
-      if (PG_ARGISNULL(7)) {
+      if (PG_ARGISNULL(6)) {
         sql = NULL;
       } else {
-        sql = text_to_cstring(PG_GETARG_TEXT_P(7));
+        sql = text_to_cstring(PG_GETARG_TEXT_P(6));
       }
 
       PGR_DBG("Calling compute_trsp");
