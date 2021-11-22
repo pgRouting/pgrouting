@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/edges_input.h"
 
-#include "trsp/trsp_core.h"
+#include "drivers/trsp/withpointstrsp_driver.h"
 typedef struct restrict_t restrict_t;
 typedef struct Edge_t Edge_t;
 typedef struct path_element_tt path_element_tt;

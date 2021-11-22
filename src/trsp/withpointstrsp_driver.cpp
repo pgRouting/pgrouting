@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "trsp/trsp_core.h"
+#include "drivers/trsp/withpointstrsp_driver.h"
 
 #ifdef __MINGW32__
 #include <winsock2.h>
