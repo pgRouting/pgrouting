@@ -61,7 +61,7 @@ BEGIN
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
         -- RAISE WARNING 'Executing pgr_dijkstra';
-        RETURN query SELECT a.seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, a.cost
+        RETURN query SELECT a.seq - 1 AS seq, a.node::INTEGER, a.edge::INTEGER, a.cost
         FROM pgr_dijkstra(edges_sql, start_vid, end_vid, directed) a;
         RETURN;
     END IF;

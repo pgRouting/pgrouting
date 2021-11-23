@@ -13,7 +13,7 @@ SELECT * from pgr_trsp(
     true);
 
 PREPARE q21 AS
-SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
+SELECT seq, node, edge, round(cost::numeric, 12) from pgr_trsp(
     'select id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost from edge_table',
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     3, 4,
@@ -25,7 +25,7 @@ SELECT seq-1, node::INTEGER, edge::INTEGER, round(cost::numeric, 12) from pgr_di
     3, 4);
 
 PREPARE q31 AS
-SELECT seq, id1, id2, round(cost::numeric, 12) from pgr_trsp(
+SELECT seq, node, edge, round(cost::numeric, 12) from pgr_trsp(
     'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
     'select 9::INTEGER as target_id, ''5''::TEXT as via_path,  100.2::FLOAT to_cost',
     3, 4,

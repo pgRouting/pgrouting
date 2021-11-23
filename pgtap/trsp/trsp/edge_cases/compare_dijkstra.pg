@@ -4,7 +4,7 @@ BEGIN;
     UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
     prepare q1 AS
-    SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
+    SELECT seq, node, edge, cost::TEXT FROM pgr_trsp(
         'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
         $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
         1,     -- node_id of start
