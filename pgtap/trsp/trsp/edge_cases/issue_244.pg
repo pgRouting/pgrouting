@@ -45,7 +45,6 @@ ELSE '' END;
 SELECT pgr_createTopology('edge_table_i244',0.001);
 
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(1);
 
 PREPARE q1 AS
@@ -55,10 +54,10 @@ SELECT seq, node, edge, cost::text FROM pgr_trsp(
   7, 12, false);
 
 PREPARE q2 AS
-(SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
+(SELECT seq, node, edge, cost::text
     FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table_i244 order by id',7, 12, FALSE))
-UNION ALL
-(SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text
+UNION
+(SELECT seq, node, edge, cost::text
     FROM pgr_dijkstra('SELECT id, source, target, cost FROM edge_table_i244 order by source',7, 12, FALSE));
 
 SELECT bag_has('q2', 'q1', 'path found');

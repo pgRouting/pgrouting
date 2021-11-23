@@ -12,7 +12,7 @@ BEGIN;
         true);  -- directed graph?
 
     prepare q2 AS
-    SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_dijkstra(
+    SELECT seq, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_dijkstra(
         'select id, source, target, cost, reverse_cost from edge_table',
         1, 5);
 

@@ -30,7 +30,7 @@ BEGIN
 
       -- test when there is reverse cost and its marked as being used
       -- VS dijkstra autodetected has reverse cost
-      dijkstra_sql := 'SELECT seq-1, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
+      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
         || with_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
       trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
         || with_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
@@ -42,7 +42,7 @@ BEGIN
       --   autodetected is found
       -- VS dijkstra autodetected
       -- Flag is ignored
-      dijkstra_sql := 'SELECT seq-1, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
+      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
         || with_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
       trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
         || with_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
@@ -51,7 +51,7 @@ BEGIN
 
       -- test when there is NO reverse cost and its marked NOT being used
       -- VS dijkstra autodetected DOES NOT have reverse cost
-      dijkstra_sql := 'SELECT seq-1, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
+      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
         || no_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
       trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
         || no_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
@@ -60,7 +60,7 @@ BEGIN
 
       -- test when there is NO reverse cost and its marked  AS being used
       -- Uncomparable with dijkstra because dijstra uses what is given as input
-      dijkstra_sql := 'SELECT seq-1, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
+      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
         || no_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
       trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
         || no_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';

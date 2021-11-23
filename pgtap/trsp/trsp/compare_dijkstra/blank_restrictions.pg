@@ -31,14 +31,14 @@ BEGIN
 
         FOR i IN 1.. cant LOOP
             FOR j IN 1..cant LOOP
-                dijkstra_sql := 'SELECT seq-1, node::integer, edge::integer, cost
+                dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost
                 FROM pgr_dijkstra( ' || inner_sql1 || ', ' || i || ', ' || j || ', ' || flag || ')';
                 turnRestricted_sql := 'SELECT * from pgr_trsp( ' || inner_sql1 || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
                 msg := k || ' ' || directed || ', with reverse_cost: from '  || i || ' to ' || j;
                 RETURN query SELECT set_eq(dijkstra_sql, turnRestricted_sql, msg);
 
                 k := k + 1;
-                dijkstra_sql := 'SELECT seq-1, node::integer, edge::integer, cost
+                dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost
                 FROM pgr_dijkstra( ' || inner_sql2 || ', ' || i || ', ' || j || ', ' || flag || ')';
                 turnRestricted_sql := 'SELECT * from pgr_trsp( ' || inner_sql2 || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
                 msg := k || ' ' || directed || ', no reverse_cost: from '  || i || ' to ' || j;
