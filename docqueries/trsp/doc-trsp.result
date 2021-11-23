@@ -3,11 +3,42 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* --q1 */
-    SELECT * FROM pgr_trsp(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
-        7, 12, false
-    );
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT * FROM new_restrictions$$,
+  7, 12, false
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         7 |      12 |    7 |    6 |    1 |        0
+   2 |        2 |         7 |      12 |    8 |    7 |    1 |        1
+   3 |        3 |         7 |      12 |    5 |    8 |    1 |        2
+   4 |        4 |         7 |      12 |    6 |   11 |  101 |        3
+   5 |        5 |         7 |      12 |   11 |   13 |    1 |      104
+   6 |        6 |         7 |      12 |   12 |   -1 |    0 |      105
+(6 rows)
+
+/* On a directed graph by default */
+SELECT * FROM pgr_trsp(
+  'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+  $$SELECT * FROM new_restrictions$$,
+  7, 12
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         7 |      12 |    7 |    6 |    1 |        0
+   2 |        2 |         7 |      12 |    8 |    7 |    1 |        1
+   3 |        3 |         7 |      12 |    5 |    8 |    1 |        2
+   4 |        4 |         7 |      12 |    6 |   11 |  101 |        3
+   5 |        5 |         7 |      12 |   11 |   13 |    1 |      104
+   6 |        6 |         7 |      12 |   12 |   -1 |    0 |      105
+(6 rows)
+
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
+  7, 12, false
+);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         7 |      12 |    7 |    6 |    1 |        0
@@ -18,12 +49,41 @@ SET
    6 |        6 |         7 |      12 |   12 |   -1 |    0 |        5
 (6 rows)
 
-/* On a directed graph by default */
-    SELECT * FROM pgr_trsp(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
-        7, 12
-    );
+SELECT * FROM pgr_trsp(
+  'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+  $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
+  7, 12
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         7 |      12 |    7 |    6 |    1 |        0
+   2 |        2 |         7 |      12 |    8 |    7 |    1 |        1
+   3 |        3 |         7 |      12 |    5 |    8 |    1 |        2
+   4 |        4 |         7 |      12 |    6 |   11 |    1 |        3
+   5 |        5 |         7 |      12 |   11 |   13 |    1 |        4
+   6 |        6 |         7 |      12 |   12 |   -1 |    0 |        5
+(6 rows)
+
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  NULL::TEXT,
+  7, 12, false
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         7 |      12 |    7 |    6 |    1 |        0
+   2 |        2 |         7 |      12 |    8 |    7 |    1 |        1
+   3 |        3 |         7 |      12 |    5 |    8 |    1 |        2
+   4 |        4 |         7 |      12 |    6 |    9 |    1 |        3
+   5 |        5 |         7 |      12 |    9 |   15 |    1 |        4
+   6 |        6 |         7 |      12 |   12 |   -1 |    0 |        5
+(6 rows)
+
+SELECT * FROM pgr_trsp(
+  'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+  NULL::TEXT,
+  7, 12
+);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         7 |      12 |    7 |    6 |    1 |        0
@@ -36,50 +96,54 @@ SET
 
 /* --q2 */
 /* --q3 */
-    SELECT * FROM pgr_trsp(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        'SELECT to_cost, target_id::int4,
-        from_edge || coalesce('','' || via_path, '''') AS via_path
-        FROM restrictions',
-        2, 7, false
-    );
+SELECT * FROM pgr_trsp(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
+  $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
+  2, 7, false
+);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         2 |       7 |    2 |    4 |    1 |        0
-   2 |        2 |         2 |       7 |    5 |   10 |    1 |        1
-   3 |        3 |         2 |       7 |   10 |   12 |    1 |        2
-   4 |        4 |         2 |       7 |   11 |   11 |    1 |        3
-   5 |        5 |         2 |       7 |    6 |    8 |    1 |        4
-   6 |        6 |         2 |       7 |    5 |    7 |    1 |        5
-   7 |        7 |         2 |       7 |    8 |    6 |    1 |        6
-   8 |        8 |         2 |       7 |    7 |   -1 |    0 |        7
-(8 rows)
+   2 |        2 |         2 |       7 |    5 |    7 |    1 |        1
+   3 |        3 |         2 |       7 |    8 |    6 |    1 |        2
+   4 |        4 |         2 |       7 |    7 |   -1 |    0 |        3
+(4 rows)
 
 SELECT * FROM pgr_trsp(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        'SELECT to_cost, target_id::int4,
-        from_edge || coalesce('','' || via_path, '''') AS via_path
-        FROM restrictions',
-        7, 11, false
-    );
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
+  $$SELECT * FROM new_restrictions$$,
+  7, 11, false
+);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         7 |      11 |    7 |    6 |    1 |        0
    2 |        2 |         7 |      11 |    8 |    7 |    1 |        1
    3 |        3 |         7 |      11 |    5 |    8 |    1 |        2
-   4 |        4 |         7 |      11 |    6 |    9 |    1 |        3
-   5 |        5 |         7 |      11 |    9 |   15 |    1 |        4
-   6 |        6 |         7 |      11 |   12 |   13 |    1 |        5
-   7 |        7 |         7 |      11 |   11 |   -1 |    0 |        6
-(7 rows)
+   4 |        4 |         7 |      11 |    6 |   11 |  101 |        3
+   5 |        5 |         7 |      11 |   11 |   -1 |    0 |      104
+(5 rows)
+
+SELECT * FROM pgr_trsp(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
+  NULL::TEXT,
+  7, 11, false
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         7 |      11 |    7 |    6 |    1 |        0
+   2 |        2 |         7 |      11 |    8 |    7 |    1 |        1
+   3 |        3 |         7 |      11 |    5 |   10 |    1 |        2
+   4 |        4 |         7 |      11 |   10 |   12 |    1 |        3
+   5 |        5 |         7 |      11 |   11 |   -1 |    0 |        4
+(5 rows)
 
 /* --q4 */
-    SELECT * FROM pgr_trspViaVertices(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        ARRAY[2,7,11]::INTEGER[],
-        false,  false,
-        'SELECT to_cost, target_id::int4, from_edge ||
-        coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+SELECT * FROM pgr_trspViaVertices(
+  'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+  ARRAY[2,7,11]::INTEGER[],
+  false,  false,
+  'SELECT to_cost, target_id::int4, from_edge ||
+  coalesce('',''||via_path,'''') AS via_path FROM restrictions');
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
@@ -99,15 +163,15 @@ SELECT * FROM pgr_trsp(
 (14 rows)
 
 /* --q5 */
-    SELECT * FROM pgr_trspViaEdges(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,
-        reverse_cost FROM edge_table',
-        ARRAY[2,7,11]::INTEGER[],
-        ARRAY[0.5, 0.5, 0.5]::FLOAT[],
-        true,
-        true,
-        'SELECT to_cost, target_id::int4, FROM_edge ||
-        coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+SELECT * FROM pgr_trspViaEdges(
+  'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,
+  reverse_cost FROM edge_table',
+  ARRAY[2,7,11]::INTEGER[],
+  ARRAY[0.5, 0.5, 0.5]::FLOAT[],
+  true,
+  true,
+  'SELECT to_cost, target_id::int4, FROM_edge ||
+  coalesce('',''||via_path,'''') AS via_path FROM restrictions');
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   2 |  0.5

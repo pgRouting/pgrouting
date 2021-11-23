@@ -47,7 +47,7 @@ SELECT * FROM pgr_trsp(
       (718, 52220, 52222, 961.00000, 961.00000),
       (716, -21019, 52220, 992.00000, 992.00000)
     ) AS t (id, source, target, cost, reverse_cost)$$,
-   $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
+  $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
   true);
