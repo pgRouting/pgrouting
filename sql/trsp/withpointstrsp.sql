@@ -37,8 +37,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 * pgr_withPointsTRSP
 
 * The restrictions sql should be the second parameter
+* the vids should be BIGINT
+* return meaningful names of columns
+* return more columns (like dijkstra)
+* directed should be optional (DEFAULT true)
+* Function should be STRICT (aka no NULLS allowed)
+* have a points query in the future
 *
-
 */
 --v3.0
 CREATE FUNCTION pgr_withPointsTRSP(
