@@ -9,6 +9,7 @@
 /* --q1 */
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+        $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
         7, 12, false
     );
 
@@ -17,17 +18,17 @@
 /* --q3 */
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        2, 7, false,
         'SELECT to_cost, target_id::int4,
         from_edge || coalesce('','' || via_path, '''') AS via_path
-        FROM restrictions'
+        FROM restrictions',
+        2, 7, false
     );
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-        7, 11, false,
         'SELECT to_cost, target_id::int4,
         from_edge || coalesce('','' || via_path, '''') AS via_path
-        FROM restrictions'
+        FROM restrictions',
+        7, 11, false
     );
 
 
