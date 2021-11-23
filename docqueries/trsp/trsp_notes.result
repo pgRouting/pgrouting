@@ -53,17 +53,17 @@ SELECT * FROM pgr_trsp(
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     1, 1,  true
   );
- seq | node | edge | cost
------+------+------+------
-   1 |    1 |    1 |    1
-   2 |    2 |    4 |    1
-   3 |    5 |    8 |    1
-   4 |    6 |    9 |    1
-   5 |    9 |   16 |    1
-   6 |    4 |    3 |    1
-   7 |    3 |    2 |    1
-   8 |    2 |    1 |    1
-   9 |    1 |   -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |       1 |    1 |    1 |    1 |        0
+   2 |        2 |         1 |       1 |    2 |    4 |    1 |        1
+   3 |        3 |         1 |       1 |    5 |    8 |    1 |        2
+   4 |        4 |         1 |       1 |    6 |    9 |    1 |        3
+   5 |        5 |         1 |       1 |    9 |   16 |    1 |        4
+   6 |        6 |         1 |       1 |    4 |    3 |    1 |        5
+   7 |        7 |         1 |       1 |    3 |    2 |    1 |        6
+   8 |        8 |         1 |       1 |    2 |    1 |    1 |        7
+   9 |        9 |         1 |       1 |    1 |   -1 |    0 |        8
 (9 rows)
 
 /* --place7 */
@@ -80,17 +80,17 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,text,bigint,bigint,boolean) line 40 at
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     1, 1, true
   );
- seq | node | edge | cost
------+------+------+------
-   1 |    1 |    1 |    1
-   2 |    2 |    4 |    1
-   3 |    5 |    8 |    1
-   4 |    6 |    9 |    1
-   5 |    9 |   16 |    1
-   6 |    4 |    3 |    1
-   7 |    3 |    2 |    1
-   8 |    2 |    1 |    1
-   9 |    1 |   -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |       1 |    1 |    1 |    1 |        0
+   2 |        2 |         1 |       1 |    2 |    4 |    1 |        1
+   3 |        3 |         1 |       1 |    5 |    8 |    1 |        2
+   4 |        4 |         1 |       1 |    6 |    9 |    1 |        3
+   5 |        5 |         1 |       1 |    9 |   16 |    1 |        4
+   6 |        6 |         1 |       1 |    4 |    3 |    1 |        5
+   7 |        7 |         1 |       1 |    3 |    2 |    1 |        6
+   8 |        8 |         1 |       1 |    2 |    1 |    1 |        7
+   9 |        9 |         1 |       1 |    1 |   -1 |    0 |        8
 (9 rows)
 
 /* --place9 */
@@ -99,12 +99,12 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,text,bigint,bigint,boolean) line 40 at
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     2, 3, false
   );
- seq | node | edge | cost
------+------+------+------
-   1 |    2 |    4 |    1
-   2 |    5 |    8 |    1
-   3 |    6 |    5 |    1
-   4 |    3 |   -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         2 |       3 |    2 |    4 |    1 |        0
+   2 |        2 |         2 |       3 |    5 |    8 |    1 |        1
+   3 |        3 |         2 |       3 |    6 |    5 |    1 |        2
+   4 |        4 |         2 |       3 |    3 |   -1 |    0 |        3
 (4 rows)
 
 /* --place10 */
@@ -113,12 +113,12 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,text,bigint,bigint,boolean) line 40 at
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     2, 3, false
   );
- seq | node | edge | cost
------+------+------+------
-   1 |    2 |    4 |    1
-   2 |    5 |    8 |    1
-   3 |    6 |    5 |    1
-   4 |    3 |   -1 |    0
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         2 |       3 |    2 |    4 |    1 |        0
+   2 |        2 |         2 |       3 |    5 |    8 |    1 |        1
+   3 |        3 |         2 |       3 |    6 |    5 |    1 |        2
+   4 |        4 |         2 |       3 |    3 |   -1 |    0 |        3
 (4 rows)
 
 /* --place11 */
