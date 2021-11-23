@@ -25,11 +25,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* TODO
 * Should also work for combinations
 * Should read the new style for restrictions
-* seq should start from 1 (DOING)
-* return types should be bigint (DOING)
-* return more columns (like dijkstra)
+* return more columns (like dijkstra) (DOING)
 * directed should be optional (DEFAULT true)
 * Function should be STRICT (aka no NULLS allowed)
+* Dont Throw instead return empty set
 */
 --v3.0
 CREATE FUNCTION pgr_trsp(
@@ -40,9 +39,13 @@ CREATE FUNCTION pgr_trsp(
     BOOLEAN, -- directed (required)
 
     OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
-    OUT cost FLOAT
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT
 )
 RETURNS SETOF record AS
 $BODY$
@@ -85,7 +88,7 @@ BEGIN
 
 
     RETURN query
-        SELECT a.seq, a.node, a.edge, a.cost
+        SELECT *
         FROM _pgr_trsp(edges_sql, restrictions_query, start_vid, end_vid, directed) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';

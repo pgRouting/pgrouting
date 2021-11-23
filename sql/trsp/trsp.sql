@@ -39,14 +39,15 @@ CREATE FUNCTION _pgr_trsp(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
-
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
         FROM _trsp(
             _pgr_get_statement($1),
             _pgr_get_statement($2),
@@ -70,6 +71,7 @@ CREATE FUNCTION _pgr_trsp(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -78,7 +80,7 @@ CREATE FUNCTION _pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
         FROM _trsp(
             _pgr_get_statement($1),
             _pgr_get_statement($2),
@@ -103,6 +105,7 @@ CREATE FUNCTION _pgr_trsp(
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -110,7 +113,7 @@ CREATE FUNCTION _pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
         FROM _trsp(
             _pgr_get_statement($1),
             _pgr_get_statement($2),
@@ -143,7 +146,7 @@ CREATE FUNCTION _pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT *
         FROM _trsp(
             _pgr_get_statement($1),
             _pgr_get_statement($2),
