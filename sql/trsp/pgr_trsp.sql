@@ -25,9 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* TODO
 * Should also work for combinations
 * Should read the new style for restrictions
-* directed should be optional (DEFAULT true) (DOING)
 * Function should be STRICT (aka no NULLS allowed)
-* Dont Throw instead return empty set
+* Dont Throw instead return empty set (DOING)
 */
 --v3.0
 CREATE FUNCTION pgr_trsp(
@@ -89,9 +88,6 @@ BEGIN
     RETURN query
         SELECT *
         FROM _pgr_trsp(edges_sql, restrictions_query, start_vid, end_vid, directed) AS a;
-    IF NOT FOUND THEN
-        RAISE EXCEPTION 'Error computing path: Path Not Found';
-    END IF;
 
 END
 $BODY$
