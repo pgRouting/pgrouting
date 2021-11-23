@@ -12,6 +12,12 @@
         $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
         7, 12, false
     );
+    /* On a directed graph by default */
+    SELECT * FROM pgr_trsp(
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
+        $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
+        7, 12
+    );
 
 /* --q2 */
 

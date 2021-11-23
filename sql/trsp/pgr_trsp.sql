@@ -25,8 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* TODO
 * Should also work for combinations
 * Should read the new style for restrictions
-* return more columns (like dijkstra) (DOING)
-* directed should be optional (DEFAULT true)
+* directed should be optional (DEFAULT true) (DOING)
 * Function should be STRICT (aka no NULLS allowed)
 * Dont Throw instead return empty set
 */
@@ -36,7 +35,7 @@ CREATE FUNCTION pgr_trsp(
     TEXT, -- restrictions sql (required)
     BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
-    BOOLEAN, -- directed (required)
+    directed BOOLEAN DEFAULT true, -- directed (required)
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
