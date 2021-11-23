@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 /* TODO
-* the vids should be BIGINT
-* return meaningful names of columns
+* return meaningful names of columns(DOING)
+* return types should be bigint
 * return more columns (like dijkstra)
 * directed should be optional (DEFAULT true)
 * Function should be STRICT (aka no NULLS allowed)
@@ -38,8 +38,8 @@ CREATE FUNCTION pgr_trsp(
     BOOLEAN, -- directed (required)
 
     OUT seq INTEGER,
-    OUT id1 INTEGER,
-    OUT id2 INTEGER,
+    OUT node INTEGER,
+    OUT edge INTEGER,
     OUT cost FLOAT
 )
 RETURNS SETOF record AS

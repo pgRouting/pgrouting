@@ -51,11 +51,11 @@ SELECT * FROM pgr_trsp(
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
   true);
- seq |  id1  | id2 | cost
------+-------+-----+------
-   0 | 52163 | 717 |  977
-   1 | 52222 | 718 |  961
-   2 | 52220 |  -1 |    0
+ seq | node  | edge | cost
+-----+-------+------+------
+   0 | 52163 |  717 |  977
+   1 | 52222 |  718 |  961
+   2 | 52220 |   -1 |    0
 (3 rows)
 
 SELECT * FROM pgr_withpointstrsp(
