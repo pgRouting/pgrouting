@@ -115,6 +115,10 @@ class Pgr_trspHandler {
             const int64_t end_vertex);
 
     std::deque<Path> process(
+            const std::map<int64_t, std::set<int64_t>> &combinations
+            );
+
+    std::deque<Path> process(
             const std::vector<int64_t> sources,
             const std::vector<int64_t> targets);
 

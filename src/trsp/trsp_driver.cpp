@@ -83,38 +83,13 @@ do_trsp(
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
         }
 
-        /*
-         * Inserting vertices into a c++ vector structure
-         */
-        std::vector<int64_t>
-            sources(starts_arr, starts_arr + size_starts_arr);
-        std::vector< int64_t >
-            targets(ends_arr, ends_arr + size_ends_arr);
-
-        /*
-         * ordering and removing duplicates
-         */
-        std::sort(sources.begin(), sources.end());
-        sources.erase(
-                std::unique(sources.begin(), sources.end()),
-                sources.end());
-
-        std::sort(targets.begin(), targets.end());
-        targets.erase(
-                std::unique(targets.begin(), targets.end()),
-                targets.end());
-
-
-
         pgrouting::trsp::Pgr_trspHandler gdef(
                 edges,
                 total_edges,
                 directed,
                 ruleList);
 
-        auto paths = gdef.process(
-                sources,
-                targets);
+        auto paths = gdef.process(combinations);
 
 
         size_t count(0);

@@ -278,10 +278,24 @@ Pgr_trspHandler::process(
     return process_trsp(m_edges.size());
 }
 
+/** process
+ *
+ * does the processisng
+ *
+ */
+std::deque<Path>
+Pgr_trspHandler::process(
+        const std::map<int64_t, std::set<int64_t>> &combinations
+        ) {
+    std::deque<Path> paths;
+    for(const auto c : combinations) {
+        for(const auto target : c.second) {
+            paths.push_back(process(c.first, target));
+        }
+    }
 
-
-
-
+    return paths;
+}
 
 /** process
  *
@@ -309,9 +323,6 @@ Pgr_trspHandler::process(
             });
     return paths;
 }
-
-
-
 
 
 void  Pgr_trspHandler::add_to_que(
