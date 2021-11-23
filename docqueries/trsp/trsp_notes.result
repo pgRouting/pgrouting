@@ -29,7 +29,7 @@ SELECT * FROM pgr_trsp(
     1, 15, true
 );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,text,integer,integer,boolean) line 40 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,text,bigint,bigint,boolean) line 40 at RAISE
 /* --place4 */
 SELECT * FROM pgr_dijkstra(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -46,7 +46,7 @@ SELECT * FROM pgr_trsp(
      1, 15, true
 );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,text,integer,integer,boolean) line 40 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,text,bigint,bigint,boolean) line 40 at RAISE
 /* --place6 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -73,7 +73,7 @@ SELECT * FROM pgr_trsp(
     14, 14, true
   );
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,text,integer,integer,boolean) line 40 at RAISE
+CONTEXT:  PL/pgSQL function pgr_trsp(text,text,bigint,bigint,boolean) line 40 at RAISE
 /* --place8 */
   SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,

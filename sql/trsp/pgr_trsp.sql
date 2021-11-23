@@ -23,7 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 /* TODO
-* The restrictions sql should be the second parameter(DOING)
 * the vids should be BIGINT
 * return meaningful names of columns
 * return more columns (like dijkstra)
@@ -34,8 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE FUNCTION pgr_trsp(
     TEXT, -- edges SQL (required)
     TEXT, -- restrictions sql (required)
-    INTEGER, -- from_vid (required)
-    INTEGER, -- to_vid (required)
+    BIGINT, -- from_vid (required)
+    BIGINT, -- to_vid (required)
     BOOLEAN, -- directed (required)
 
     OUT seq INTEGER,
@@ -99,7 +98,7 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, INTEGER, INTEGER, BOOLEAN)
+COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]
