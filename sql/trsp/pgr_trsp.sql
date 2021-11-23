@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 /* TODO
-* The restrictions sql should be the second parameter
+* The restrictions sql should be the second parameter(DOING)
 * the vids should be BIGINT
 * return meaningful names of columns
 * return more columns (like dijkstra)
@@ -33,10 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --v3.0
 CREATE FUNCTION pgr_trsp(
     TEXT, -- edges SQL (required)
+    TEXT, -- restrictions sql (required)
     INTEGER, -- from_vid (required)
     INTEGER, -- to_vid (required)
     BOOLEAN, -- directed (required)
-    restrictions_sql TEXT DEFAULT NULL,
 
     OUT seq INTEGER,
     OUT id1 INTEGER,
@@ -46,15 +46,15 @@ CREATE FUNCTION pgr_trsp(
 RETURNS SETOF record AS
 $BODY$
 DECLARE
-    edges_sql TEXT    := $1;
-    start_vid INTEGER := $2;
-    end_vid INTEGER   := $3;
-    directed BOOLEAN  := $4;
+    edges_sql ALIAS FOR $1;
+    restrictions_sql ALIAS FOR $2;
+    start_vid ALIAS FOR $3;
+    end_vid   ALIAS FOR $4;
+    directed  ALIAS FOR $5;
 
-has_reverse BOOLEAN;
-new_sql TEXT;
-restrictions_query TEXT;
-trsp_sql TEXT;
+    restrictions_query TEXT;
+    trsp_sql TEXT;
+
 BEGIN
     /*
     TODO This should be handled by C code
@@ -63,7 +63,7 @@ BEGIN
         -- no restrictions then its a dijkstra
         -- RAISE WARNING 'Executing pgr_dijkstra';
         RETURN query SELECT a.seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, a.cost
-        FROM pgr_dijkstra($1, start_vid, end_vid, directed) a;
+        FROM pgr_dijkstra(edges_sql, start_vid, end_vid, directed) a;
         RETURN;
     END IF;
 
@@ -73,7 +73,7 @@ BEGIN
     */
     restrictions_query = $$
         WITH old_restrictions AS ( $$ ||
-            $5 || $$
+            restrictions_sql || $$
         )
         SELECT ROW_NUMBER() OVER() AS id,
             _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path::text, ',')::INTEGER[])) AS path,
@@ -85,7 +85,7 @@ BEGIN
 
     RETURN query
         SELECT (a.seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
-        FROM _pgr_trsp($1, restrictions_query, start_vid, end_vid, directed) AS a;
+        FROM _pgr_trsp(edges_sql, restrictions_query, start_vid, end_vid, directed) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;
@@ -99,7 +99,7 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, INTEGER, BOOLEAN, TEXT)
+COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, INTEGER, INTEGER, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]
