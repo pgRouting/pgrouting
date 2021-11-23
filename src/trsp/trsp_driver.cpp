@@ -34,7 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/rule.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/combinations.h"
 #include "c_types/restriction_t.h"
+#include "c_types/ii_t_rt.h"
 
 
 
@@ -46,11 +48,14 @@ do_trsp(
         Restriction_t *restrictions,
         size_t restrictions_size,
 
-        int64_t  *start_vidsArr,
-        size_t size_start_vidsArr,
+        II_t_rt  *combinations_arr,
+        size_t total_combinations,
 
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+        int64_t  *starts_arr,
+        size_t size_starts_arr,
+
+        int64_t  *ends_arr,
+        size_t size_ends_arr,
 
         bool directed,
 
@@ -69,6 +74,10 @@ do_trsp(
         pgassert(*notice_msg == NULL);
         pgassert(*err_msg == NULL);
 
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
+            : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
+
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++i) {
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
@@ -78,9 +87,9 @@ do_trsp(
          * Inserting vertices into a c++ vector structure
          */
         std::vector<int64_t>
-            sources(start_vidsArr, start_vidsArr + size_start_vidsArr);
+            sources(starts_arr, starts_arr + size_starts_arr);
         std::vector< int64_t >
-            targets(end_vidsArr, end_vidsArr + size_end_vidsArr);
+            targets(ends_arr, ends_arr + size_ends_arr);
 
         /*
          * ordering and removing duplicates

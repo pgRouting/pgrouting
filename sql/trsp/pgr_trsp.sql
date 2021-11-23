@@ -23,7 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 /* TODO
-* return meaningful names of columns(DOING)
+* Should also work for combinations
+* Should read the new style for restrictions
 * return types should be bigint
 * return more columns (like dijkstra)
 * directed should be optional (DEFAULT true)

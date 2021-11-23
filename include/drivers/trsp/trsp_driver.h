@@ -34,12 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 using Restriction_t = struct Restriction_t;
 using Path_rt = struct Path_rt;
 using Edge_t = struct Edge_t;
+using II_t_rt = struct II_t_rt;
 #else
 #  include <stddef.h>
 #  include <stdint.h>
 typedef struct Restriction_t Restriction_t;
 typedef struct Path_rt Path_rt;
 typedef struct Edge_t Edge_t;
+typedef struct II_t_rt II_t_rt;
 #endif
 
 
@@ -54,11 +56,14 @@ extern "C" {
             Restriction_t *restrictions,
             size_t restrictions_size,
 
-            int64_t  *start_vidsArr,
-            size_t size_start_vidsArr,
+            II_t_rt  *combinations_arr,
+            size_t total_combination,
 
-            int64_t  *end_vidsArr,
-            size_t size_end_vidsArr,
+            int64_t  *starts_arr,
+            size_t size_starts_arr,
+
+            int64_t  *ends_arr,
+            size_t size_ends_arr,
 
             bool directed,
 

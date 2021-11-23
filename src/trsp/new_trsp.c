@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/restrictions_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 
 PGDLLEXPORT Datum _trsp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_trsp);
@@ -50,6 +51,7 @@ static
 void compute_trsp(
         char* edges_sql,
         char* restrictions_sql,
+        char* combinations_sql,
 
         ArrayType *starts,
         ArrayType *ends,
@@ -60,34 +62,49 @@ void compute_trsp(
         size_t *result_count) {
     pgr_SPI_connect();
 
+    size_t size_start_vidsArr = 0;
+    int64_t* start_vidsArr = NULL;
+
+    size_t size_end_vidsArr = 0;
+    int64_t* end_vidsArr = NULL;
+
+    II_t_rt *combinations = NULL;
+    size_t total_combinations = 0;
+
     Edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
 
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
+
+    pgr_get_edges(edges_sql, &edges, &total_edges);
     pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+    if (starts && ends) {
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+    }
 
-    size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    if (total_edges == 0) {
+        if (end_vidsArr) pfree(end_vidsArr);
+        if (start_vidsArr) pfree(start_vidsArr);
+        if (restrictions) pfree(restrictions);
+        pgr_SPI_finish();
+        return;
+    }
 
-    size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
     do_trsp(
-            edges,
-            total_edges,
-
-            restrictions,
-            total_restrictions,
+            edges, total_edges,
+            restrictions, total_restrictions,
+            combinations, total_combinations,
 
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
@@ -99,7 +116,7 @@ void compute_trsp(
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg("processing _pgr_trsp", start_t, clock());
+    time_msg("processing pgr_trsp", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -132,6 +149,7 @@ _trsp(PG_FUNCTION_ARGS) {
         compute_trsp(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_ARRAYTYPE_P(3),
                 PG_GETARG_BOOL(4),
