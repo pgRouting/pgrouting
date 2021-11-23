@@ -14,28 +14,14 @@ DECLARE
   restriction TEXT;
 BEGIN
 
-  restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$)';
+  restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$';
 
-    -- Basically this is a TODO
-    -- but has more fails than ok
+  /* TODO NULL should not be accepted */
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', NULL, 2, 9, false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', NULL, 2, 9, true)');
 
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false)');
-/*
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, true, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, true, ' || restriction);
-
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, true, true)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, true, true, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, true, true, ' || restriction);
-
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, false)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, false, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, false, false, ' || restriction);
-
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, true, false)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, true, false, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', 2, 9, true, false, ' || restriction);
-*/
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || restriction || ', 2, 9, false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || restriction || ', 2, 9, true)');
 
 END;
 $BODY$

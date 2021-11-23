@@ -49,7 +49,10 @@ UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(1);
 
 PREPARE q1 AS
-SELECT seq, id1, id2, cost::text FROM pgr_trsp('SELECT id, source, target, cost FROM edge_table_i244',7, 12, false);
+SELECT seq, id1, id2, cost::text FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table_i244$$,
+  NULL::TEXT,
+  7, 12, false);
 
 PREPARE q2 AS
 (SELECT seq-1, node::INTEGER, edge::INTEGER, cost::text

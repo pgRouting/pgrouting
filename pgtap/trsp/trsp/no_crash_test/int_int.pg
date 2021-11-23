@@ -1,7 +1,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(32) ELSE plan(1) END;
+SELECT CASE WHEN min_version('4.0.0') THEN plan(38) ELSE plan(1) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
@@ -37,7 +37,7 @@ BEGIN
 
 
         RETURN query SELECT * FROM lives_ok(q1, 'i = ' || i || ' lives_ok: ' || q1);
-        IF i IN (0,5) THEN
+        IF i IN (0,2) THEN
           RETURN query SELECT * FROM isnt_empty(q1, 'i = ' || i || ' isnt_empty: ' || q1);
         ELSE
           RETURN query SELECT * FROM is_empty(q1, 'i = ' || i || ' is_empty: ' || q1);
@@ -64,12 +64,17 @@ BEGIN
   RETURN QUERY SELECT isnt_empty('edges', 'Should not be empty to tests be meaningful');
   RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
 
-  params = ARRAY['$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$',
+  -- 'SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path'
+
+  params = ARRAY[
+  '$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$',
+  'NULL',
   '1',
   '2',
   'true'
   ]::TEXT[];
   subs = ARRAY[
+  'NULL',
   'NULL',
   '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
   '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
@@ -79,6 +84,7 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
 
   subs = ARRAY[
+  'NULL',
   'NULL',
   'NULL',
   'NULL',
@@ -87,6 +93,7 @@ BEGIN
   RETURN query SELECT * FROM no_crash_test('pgr_trsp', params, subs);
 
   params = ARRAY['$$edges$$',
+  'NULL',
   '1',
   '2',
   'true'
