@@ -78,7 +78,10 @@ void compute_trsp(
     size_t total_restrictions = 0;
 
     pgr_get_edges(edges_sql, &edges, &total_edges);
-    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+    if (restrictions_sql) {
+        pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+    }
+
     if (starts && ends) {
         start_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_start_vidsArr, starts);

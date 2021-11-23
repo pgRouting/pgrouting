@@ -24,9 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* TODO
 * Should also work for combinations
-* Should read the new style for restrictions
+* Should also work for one to many, many to one, many to many
+* Should read the new style for restrictions (DOING)
 * Function should be STRICT (aka no NULLS allowed)
-* Dont Throw instead return empty set (DOING)
 */
 --v3.0
 CREATE FUNCTION pgr_trsp(
@@ -87,7 +87,7 @@ BEGIN
 
     RETURN query
         SELECT *
-        FROM _pgr_trsp(edges_sql, restrictions_query, start_vid, end_vid, directed) AS a;
+        FROM _pgr_trsp(edges_sql, restrictions_sql, start_vid, end_vid, directed) AS a;
 
 END
 $BODY$
