@@ -53,9 +53,9 @@ SELECT * FROM pgr_trsp(
   true);
  seq | node  | edge | cost
 -----+-------+------+------
-   0 | 52163 |  717 |  977
-   1 | 52222 |  718 |  961
-   2 | 52220 |   -1 |    0
+   1 | 52163 |  717 |  977
+   2 | 52222 |  718 |  961
+   3 | 52220 |   -1 |    0
 (3 rows)
 
 SELECT * FROM pgr_withpointstrsp(
