@@ -37,12 +37,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/combinations.h"
 #include "c_types/restriction_t.h"
 #include "c_types/ii_t_rt.h"
+#include "drivers/dijkstra/dijkstra_driver.h"
 
 
 
 void
 do_trsp(
-        Edge_t *edges,
+        Edge_t *data_edges,
         size_t total_edges,
 
         Restriction_t *restrictions,
@@ -74,17 +75,46 @@ do_trsp(
         pgassert(*notice_msg == NULL);
         pgassert(*err_msg == NULL);
 
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
-            : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
-
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++i) {
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
         }
 
+        if (ruleList.empty()) {
+                    /* TODO if all the edges on the ruleList
+                     * are not on the edges set, then the dijkstra
+                     * has to be done also */
+            do_dijkstra(
+                    data_edges,
+                    total_edges,
+
+                    combinations_arr,
+                    total_combinations,
+                    starts_arr,
+                    size_starts_arr,
+                    ends_arr,
+                    size_ends_arr,
+
+                    directed,
+                    false,  // only_cost,
+                    true,   // normal,
+                    0,      //n_goals,
+                    false,  //global,
+
+                    return_tuples,
+                    return_count,
+                    log_msg,
+                    notice_msg,
+                    err_msg);
+            return;
+        }
+
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
+            : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
+
         pgrouting::trsp::Pgr_trspHandler gdef(
-                edges,
+                data_edges,
                 total_edges,
                 directed,
                 ruleList);

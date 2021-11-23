@@ -25,7 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* TODO
 * Should also work for combinations
 * Should read the new style for restrictions
-* return types should be bigint
+* seq should start from 1 (DOING)
+* return types should be bigint (DOING)
 * return more columns (like dijkstra)
 * directed should be optional (DEFAULT true)
 * Function should be STRICT (aka no NULLS allowed)
@@ -39,8 +40,8 @@ CREATE FUNCTION pgr_trsp(
     BOOLEAN, -- directed (required)
 
     OUT seq INTEGER,
-    OUT node INTEGER,
-    OUT edge INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
     OUT cost FLOAT
 )
 RETURNS SETOF record AS
@@ -62,7 +63,7 @@ BEGIN
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
         -- RAISE WARNING 'Executing pgr_dijkstra';
-        RETURN query SELECT a.seq - 1 AS seq, a.node::INTEGER, a.edge::INTEGER, a.cost
+        RETURN query SELECT a.seq, a.node, a.edge, a.cost
         FROM pgr_dijkstra(edges_sql, start_vid, end_vid, directed) a;
         RETURN;
     END IF;
@@ -84,7 +85,7 @@ BEGIN
 
 
     RETURN query
-        SELECT (a.seq - 1)::INTEGER, a.node::INTEGER, a.edge::INTEGER, a.cost
+        SELECT a.seq, a.node, a.edge, a.cost
         FROM _pgr_trsp(edges_sql, restrictions_query, start_vid, end_vid, directed) AS a;
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
