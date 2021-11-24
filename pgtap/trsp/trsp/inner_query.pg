@@ -5,7 +5,7 @@ BEGIN;
 -- Adjust style_dijkstra_trsp -> style_dijkstra when that happens
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(324);
+SELECT plan(216);
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
@@ -14,7 +14,7 @@ DECLARE
   restriction TEXT;
 BEGIN
 
-  restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$';
+  restriction := '$$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$';
 
   /* TODO NULL should not be accepted */
   RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', NULL, 2, 9, false)');

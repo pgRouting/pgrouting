@@ -8,14 +8,14 @@ UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(r
 PREPARE q1 AS
 SELECT * from pgr_trsp(
     'select id, source, target,cost, reverse_cost from edge_table',
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     1, 1,
     true);
 
 PREPARE q21 AS
 SELECT seq, node, edge, round(cost::numeric, 12) from pgr_trsp(
     'select id, source, target,cost, reverse_cost from edge_table',
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
+    $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     3, 4,
     true);
 
@@ -27,7 +27,7 @@ SELECT seq, node, edge, round(cost::numeric, 12) from pgr_dijkstra(
 PREPARE q31 AS
 SELECT node, edge, round(cost::numeric, 12) from pgr_trsp(
     'select id, source, target, cost, reverse_cost from edge_table',
-    'select 9::INTEGER as target_id, ''5''::TEXT as via_path,  100.2::FLOAT to_cost',
+    $$SELECT 1 AS id, 100.2::float AS cost, ARRAY[5,9] AS path$$,
     3, 4,
     true);
 
