@@ -12,13 +12,14 @@ RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
   restriction TEXT;
+  empty_restriction TEXT;
 BEGIN
 
   restriction := '$$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$';
+  empty_restriction := '$$SELECT * FROM new_restrictions WHERE id > 7$$';
 
-  /* TODO NULL should not be accepted */
-  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', NULL, 2, 9, false)');
-  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', NULL, 2, 9, true)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || empty_restriction || ', 2, 9, false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || empty_restriction || ', 2, 9, true)');
 
   RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || restriction || ', 2, 9, false)');
   RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || restriction || ', 2, 9, true)');

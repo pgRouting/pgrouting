@@ -25,9 +25,7 @@ BEGIN
         k := 1;
         inner_sql1 = quote_literal('SELECT id, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
         inner_sql2 = quote_literal('SELECT id, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
-        -- TODO function should not accept null query
-        restrictions_sql = quote_literal('SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path');
-        restrictions_sql = 'NULL::TEXT';
+        restrictions_sql = quote_literal('SELECT * FROM new_restrictions WHERE id > 7');
 
         FOR i IN 1.. cant LOOP
             FOR j IN 1..cant LOOP

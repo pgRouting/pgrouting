@@ -1,11 +1,13 @@
 
-CREATE OR REPLACE FUNCTION compare_trsp_dijkstra(cant INTEGER default 18, flag boolean default true )
+CREATE OR REPLACE FUNCTION compare_trsp_dijkstra(cant INTEGER default 18, flag boolean default true, k INTEGER DEFAULT 1)
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
 dijkstra_sql TEXT;
 trsp_sql TEXT;
 restrictions_sql TEXT;
+empty_restrictions TEXT;
+unrelated_restrictions TEXT;
 with_reverse_cost TEXT;
 no_reverse_cost TEXT;
 k integer;
@@ -15,15 +17,18 @@ BEGIN
   directed = 'Undirected';
   IF flag THEN directed = 'Directed'; END IF;
 
-  k := 1;
   with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
   no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
-  -- TODO function should not accept null query
-  restrictions_sql = quote_literal('SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path');
-  restrictions_sql = 'NULL::TEXT';
+  empty_restrictions = quote_literal('SELECT * FROM new_restrictions WHERE id > 7');
+  unrelated_restrictions = quote_literal('SELECT 1 AS id, 100::float AS cost, ARRAY[33, 32, 25] AS path');
 
   FOR i IN 1.. cant BY 2 LOOP
     FOR j IN 1..cant LOOP
+      IF k = 1 THEN
+        restrictions_sql := empty_restrictions;
+      ELSE
+        restrictions_sql := unrelated_restrictions;
+      END IF;
 
       -- this special case is tested on the other test
       CONTINUE WHEN i = j;
