@@ -71,8 +71,7 @@ BEGIN
 
 
     /*
-    TODO Should use the new restrictions
-    */
+    TODO Remove unused code
     restrictions_query = $$
         WITH old_restrictions AS ( $$ ||
             restrictions_sql || $$
@@ -82,6 +81,7 @@ BEGIN
             to_cost AS cost
         FROM old_restrictions;
     $$;
+    */
 
 
 
