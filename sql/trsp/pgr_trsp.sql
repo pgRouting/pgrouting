@@ -25,8 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* TODO
 * Should also work for combinations
 * Should also work for one to many, many to one, many to many
-* Should read the new style for restrictions (DOING)
-* Function should be STRICT (aka no NULLS allowed)
+* Function should be STRICT (aka no NULLS allowed) (DOING)
 */
 --v3.0
 CREATE FUNCTION pgr_trsp(
@@ -75,7 +74,7 @@ BEGIN
 
 END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;
 
