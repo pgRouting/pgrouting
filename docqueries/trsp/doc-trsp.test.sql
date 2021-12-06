@@ -30,12 +30,12 @@ SELECT * FROM pgr_trsp(
 );
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost FROM edge_table$$,
-  NULL::TEXT,
+  $$SELECT * FROM new_restrictions WHERE id > 7$$,
   7, 12, false
 );
 SELECT * FROM pgr_trsp(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-  NULL::TEXT,
+  $$SELECT * FROM new_restrictions WHERE id > 7$$,
   7, 12
 );
 
@@ -54,7 +54,7 @@ SELECT * FROM pgr_trsp(
 );
 SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-  NULL::TEXT,
+  $$SELECT * FROM new_restrictions WHERE id > 7$$,
   7, 11, false
 );
 
