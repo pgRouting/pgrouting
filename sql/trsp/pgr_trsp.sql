@@ -69,22 +69,6 @@ BEGIN
         RETURN;
     END IF;
 
-
-    /*
-    TODO Remove unused code
-    restrictions_query = $$
-        WITH old_restrictions AS ( $$ ||
-            restrictions_sql || $$
-        )
-        SELECT ROW_NUMBER() OVER() AS id,
-            _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path::text, ',')::INTEGER[])) AS path,
-            to_cost AS cost
-        FROM old_restrictions;
-    $$;
-    */
-
-
-
     RETURN query
         SELECT *
         FROM _pgr_trsp(edges_sql, restrictions_sql, start_vid, end_vid, directed) AS a;
@@ -102,12 +86,11 @@ COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]
+    - restrictions SQL with columns: id, cost, path
     - from vertex identifier
     - to vertex identifier
-    - directed
-    - has reverse cost
 - Optional parameters
-    - restrictions_sql := NULL
+    - directed
 - Documentation:
     - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
