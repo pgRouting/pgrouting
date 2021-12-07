@@ -48,7 +48,7 @@ PG_FUNCTION_INFO_V1(_trsp);
 
 
 static
-void compute_trsp(
+void process(
         char* edges_sql,
         char* restrictions_sql,
         char* combinations_sql,
@@ -142,14 +142,12 @@ _trsp(PG_FUNCTION_ARGS) {
     size_t result_count             = 0;
     Path_rt  *result_tuples   = NULL;
 
-    // stuff done only on the first call of the function
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        PGR_DBG("Calling compute_trsp");
-        compute_trsp(
+        process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 NULL,
@@ -158,15 +156,9 @@ _trsp(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples, &result_count);
 
-        //-----------------------------------------------
-
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
-
         funcctx->user_fctx = result_tuples;
+
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
@@ -223,4 +215,3 @@ _trsp(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
