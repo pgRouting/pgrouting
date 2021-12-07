@@ -112,6 +112,7 @@ process(
     char* err_msg = NULL;
     do_dijkstra(
             edges, total_edges,
+            NULL, 0,
             combinations, total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
