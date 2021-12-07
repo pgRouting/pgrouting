@@ -113,6 +113,10 @@ void process(
             end_vidsArr, size_end_vidsArr,
 
             directed,
+            false,
+            true,
+            0,
+            false,
 
             result_tuples,
             result_count,

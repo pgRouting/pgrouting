@@ -29,7 +29,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cstdint>
 #include <sstream>
+#include <deque>
+#include <vector>
 #include <algorithm>
+#include <limits>
+
 #include "trsp/pgr_trspHandler.h"
 #include "cpp_common/rule.h"
 #include "cpp_common/pgr_assert.h"
@@ -110,6 +114,10 @@ do_trsp(
         size_t size_ends_arr,
 
         bool directed,
+        bool only_cost,
+        bool normal,
+        int64_t n_goals,
+        bool global,
 
         Path_rt **return_tuples,
         size_t *return_count,
@@ -120,11 +128,13 @@ do_trsp(
     std::ostringstream err;
     std::ostringstream notice;
     try {
-        pgassert(*return_tuples == NULL);
+        pgassert(total_edges != 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
-        pgassert(*log_msg == NULL);
-        pgassert(*notice_msg == NULL);
-        pgassert(*err_msg == NULL);
+
 
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++i) {
@@ -142,7 +152,7 @@ do_trsp(
             pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
             : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
 
-        size_t n = (std::numeric_limits<size_t>::max)();
+        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
         std::deque<Path> paths;
         if (directed) {
@@ -151,18 +161,18 @@ do_trsp(
             paths = pgrouting::dijkstra(
                     digraph,
                     combinations,
-                    false, n);
+                    only_cost, n);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             paths = pgrouting::dijkstra(
                     undigraph,
                     combinations,
-                    false, n);
+                    only_cost, n);
         }
 
 
-        post_process(paths, false, true, n, false);
+        post_process(paths, only_cost, normal, n, global);
         size_t count(0);
         count = count_tuples(paths);
         if (ruleList.empty() || count == 0) {

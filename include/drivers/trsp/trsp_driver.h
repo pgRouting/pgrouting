@@ -66,6 +66,10 @@ extern "C" {
             size_t size_ends_arr,
 
             bool directed,
+            bool only_cost,
+            bool normal,
+            int64_t n_goals,
+            bool global,
 
             Path_rt **return_tuples,
             size_t *return_count,
