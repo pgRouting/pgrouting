@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cstdint>
 #include <sstream>
 #include <deque>
-#include <vector>
 #include <algorithm>
 #include <limits>
 

@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <algorithm>
 #include <deque>
+#include <map>
+#include <set>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -288,8 +290,8 @@ Pgr_trspHandler::process(
         const std::map<int64_t, std::set<int64_t>> &combinations
         ) {
     std::deque<Path> paths;
-    for(const auto c : combinations) {
-        for(const auto target : c.second) {
+    for (const auto c : combinations) {
+        for (const auto target : c.second) {
             paths.push_back(process(c.first, target));
         }
     }

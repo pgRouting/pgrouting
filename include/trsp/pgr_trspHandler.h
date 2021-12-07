@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <functional>
 #include <limits>
+#include <set>
 
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -115,8 +116,8 @@ class Pgr_trspHandler {
             const int64_t end_vertex);
 
     std::deque<Path> process(
-            const std::map<int64_t, std::set<int64_t>> &combinations
-            );
+            const std::map<int64_t,
+            std::set<int64_t>> &combinations);
 
     std::deque<Path> process(
             const std::vector<int64_t> sources,

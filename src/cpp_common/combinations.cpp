@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <set>
 #include <deque>
+#include <vector>
 #include "cpp_common/basePath_SSEC.hpp"
 
 
@@ -97,7 +98,6 @@ get_combinations(
                 new_combinations[p.start_id()].insert(p.end_id());
                 p.clear();
             }
-
         }
     }
     return new_combinations;

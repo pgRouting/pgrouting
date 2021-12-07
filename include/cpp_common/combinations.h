@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <set>
 #include <deque>
+#include <vector>
 
 #include "c_types/ii_t_rt.h"
 #include "cpp_common/basePath_SSEC.hpp"
