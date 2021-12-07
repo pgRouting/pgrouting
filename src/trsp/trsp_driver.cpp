@@ -37,8 +37,60 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/combinations.h"
 #include "c_types/restriction_t.h"
 #include "c_types/ii_t_rt.h"
-#include "drivers/dijkstra/dijkstra_driver.h"
+#include "dijkstra/dijkstra.hpp"
 
+
+namespace {
+
+void
+post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
+    paths.erase(std::remove_if(paths.begin(), paths.end(),
+                [](const Path &p) {
+                    return p.size() == 0;
+                }),
+                paths.end());
+    using difference_type = std::deque<double>::difference_type;
+
+    if (!normal) {
+        for (auto &path : paths) path.reverse();
+    }
+
+    if (!only_cost) {
+        for (auto &p : paths) {
+            p.recalculate_agg_cost();
+        }
+    }
+
+    if (n_goals != (std::numeric_limits<size_t>::max)()) {
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.end_id() < e2.end_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.start_id() < e2.start_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.tot_cost() < e2.tot_cost();
+                });
+        if (global && n_goals < paths.size()) {
+            paths.erase(paths.begin() + static_cast<difference_type>(n_goals), paths.end());
+        }
+    } else {
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.end_id() < e2.end_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.start_id() < e2.start_id();
+                });
+    }
+}
+
+
+}  // namespace
 
 
 void
@@ -81,42 +133,51 @@ do_trsp(
         }
 
         /* TODO
-         * make a dijkstra,
+         * make a dijkstra, if there are no paths then return (DOING)
          * get set of paths that use a restriction
          * use the trsp algorithm to get an alternate path
          */
-        if (ruleList.empty()) {
-                    /* TODO if all the edges on the ruleList
-                     * are not on the edges set, then the dijkstra
-                     * has to be done also */
-            do_dijkstra(
-                    data_edges,
-                    total_edges,
-
-                    combinations_arr,
-                    total_combinations,
-                    starts_arr,
-                    size_starts_arr,
-                    ends_arr,
-                    size_ends_arr,
-
-                    directed,
-                    false,  // only_cost,
-                    true,   // normal,
-                    0,      //n_goals,
-                    false,  //global,
-
-                    return_tuples,
-                    return_count,
-                    log_msg,
-                    notice_msg,
-                    err_msg);
-            return;
-        }
+        graphType gType = directed? DIRECTED: UNDIRECTED;
 
         auto combinations = total_combinations?
             pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
             : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
+
+        size_t n = (std::numeric_limits<size_t>::max)();
+
+        std::deque<Path> paths;
+        if (directed) {
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_edges);
+            paths = pgrouting::dijkstra(
+                    digraph,
+                    combinations,
+                    false, n);
+        } else {
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_edges);
+            paths = pgrouting::dijkstra(
+                    undigraph,
+                    combinations,
+                    false, n);
+        }
+
+        post_process(paths, false, true, n, false);
+        size_t count(0);
+        count = count_tuples(paths);
+        if (ruleList.empty() || count == 0) {
+            if (count == 0) {
+                (*return_tuples) = NULL;
+                (*return_count) = 0;
+                notice <<
+                    "No paths found";
+                *log_msg = pgr_msg(notice.str().c_str());
+                return;
+            }
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (collapse_paths(return_tuples, paths));
+            return;
+        }
 
         pgrouting::trsp::Pgr_trspHandler gdef(
                 data_edges,
@@ -124,10 +185,9 @@ do_trsp(
                 directed,
                 ruleList);
 
-        auto paths = gdef.process(combinations);
+        paths = gdef.process(combinations);
 
 
-        size_t count(0);
         count = count_tuples(paths);
 
         if (count == 0) {
