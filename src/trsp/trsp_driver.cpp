@@ -89,7 +89,6 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
     }
 }
 
-
 }  // namespace
 
 
@@ -162,6 +161,7 @@ do_trsp(
                     false, n);
         }
 
+
         post_process(paths, false, true, n, false);
         size_t count(0);
         count = count_tuples(paths);
@@ -179,36 +179,7 @@ do_trsp(
             return;
         }
 
-        std::map<int64_t, std::set<int64_t>> new_combinations;
-
-        for (auto &p : paths) {
-            std::deque<int64_t> edgesList(p.size());
-            for (const auto &row : p) {
-                edgesList.push_back(row.edge);
-            }
-            for (const auto &r : ruleList) {
-                auto ptr = std::find(edgesList.begin(), edgesList.end(), r.precedences().front());
-                if (ptr == edgesList.end()) continue;
-                /*
-                 * And edge on the begining of a rule list was found
-                 * Checking if the complete rule applies
-                 */
-
-                /*
-                 * Suppose the rule is used
-                 */
-                bool rule_breaker = true;
-                for (const auto &e : r.precedences()) {
-                    if (*ptr != e) {rule_breaker = false; break;}
-                    ++ptr;
-                }
-                if (rule_breaker) {
-                    new_combinations[p.start_id()].insert(p.end_id());
-                    p.clear();
-                }
-
-            }
-        }
+        auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
         pgrouting::trsp::Pgr_trspHandler gdef(
                 data_edges,

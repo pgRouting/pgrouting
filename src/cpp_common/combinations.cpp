@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <map>
 #include <set>
+#include <deque>
+#include "cpp_common/basePath_SSEC.hpp"
 
 
 namespace pgrouting {
@@ -62,6 +64,43 @@ get_combinations(
         }
     }
     return result;
+}
+
+std::map<int64_t, std::set<int64_t>>
+get_combinations(
+        std::deque<Path> &paths,
+        const std::vector<pgrouting::trsp::Rule> &ruleList) {
+    std::map<int64_t, std::set<int64_t>> new_combinations;
+
+    for (auto &p : paths) {
+        std::deque<int64_t> edgesList(p.size());
+        for (const auto &row : p) {
+            edgesList.push_back(row.edge);
+        }
+        for (const auto &r : ruleList) {
+            auto ptr = std::find(edgesList.begin(), edgesList.end(), r.precedences().front());
+            if (ptr == edgesList.end()) continue;
+            /*
+             * And edge on the begining of a rule list was found
+             * Checking if the complete rule applies
+             */
+
+            /*
+             * Suppose the rule is used
+             */
+            bool rule_breaker = true;
+            for (const auto &e : r.precedences()) {
+                if (*ptr != e) {rule_breaker = false; break;}
+                ++ptr;
+            }
+            if (rule_breaker) {
+                new_combinations[p.start_id()].insert(p.end_id());
+                p.clear();
+            }
+
+        }
+    }
+    return new_combinations;
 }
 
 }  // namespace utilities
