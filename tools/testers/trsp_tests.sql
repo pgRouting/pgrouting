@@ -5,71 +5,39 @@ $BODY$
 DECLARE
 dijkstra_sql TEXT;
 trsp_sql TEXT;
-restrictions_sql TEXT;
-empty_restrictions TEXT;
-unrelated_restrictions TEXT;
-with_reverse_cost TEXT;
-no_reverse_cost TEXT;
-k integer;
 directed TEXT;
 msg TEXT;
 BEGIN
   directed = 'Undirected';
   IF flag THEN directed = 'Directed'; END IF;
 
-  with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
-  no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
-  empty_restrictions = quote_literal('SELECT * FROM new_restrictions WHERE id > 7');
-  unrelated_restrictions = quote_literal('SELECT 1 AS id, 100::float AS cost, ARRAY[33, 32, 25] AS path');
+  PREPARE with_reverse_cost AS SELECT id, source, target, cost, reverse_cost from edge_table ORDER BY id;
+  PREPARE no_reverse_cost AS SELECT id, source, target, cost from edge_table ORDER BY id;
+
+  IF k = 1 THEN
+    PREPARE restrictions_sql AS SELECT * FROM new_restrictions WHERE id > 7;
+  ELSE
+    PREPARE restrictions_sql AS SELECT 1 AS id, 100::float AS cost, ARRAY[33, 32, 25] AS path;
+  END IF;
 
   FOR i IN 1.. cant BY 2 LOOP
     FOR j IN 1..cant LOOP
-      IF k = 1 THEN
-        restrictions_sql := empty_restrictions;
-      ELSE
-        restrictions_sql := unrelated_restrictions;
-      END IF;
-
       -- this special case is tested on the other test
+      -- TODO this should return empty set
       CONTINUE WHEN i = j;
 
-      -- test when there is reverse cost and its marked as being used
-      -- VS dijkstra autodetected has reverse cost
-      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
-        || with_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
-      trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
-        || with_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
-      msg := k || '-1 ' || directed || ', with reverse_cost, marked as being used: from '  || i || ' to ' || j;
-
+      dijkstra_sql := 'SELECT seq, node, edge::integer, cost::text FROM pgr_dijkstra($$with_reverse_cost$$, '
+        || i || ', ' || j || ', ' || flag || ')';
+      trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp($$with_reverse_cost$$, $$restrictions_sql$$, '
+        || i || ', ' || j || ', ' || flag || ')';
+      msg := k || '-1 ' || directed || ', with reverse_cost from '  || i || ' to ' || j;
       RETURN QUERY SELECT set_eq(trsp_sql, dijkstra_sql, msg);
 
-      -- test when there is reverse cost and its marked NOT being used
-      --   autodetected is found
-      -- VS dijkstra autodetected
-      -- Flag is ignored
-      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
-        || with_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
-      trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
-        || with_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
-      msg := k || '-2 ' || directed || ', with reverse_cost, marked as NOT being used: from '  || i || ' to ' || j;
-      RETURN QUERY SELECT set_eq(trsp_sql, dijkstra_sql, msg);
-
-      -- test when there is NO reverse cost and its marked NOT being used
-      -- VS dijkstra autodetected DOES NOT have reverse cost
-      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
-        || no_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
-      trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
-        || no_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
-      msg := k || '-3 ' || directed || ', NO reverse_cost, marked as NOT being used: from '  || i || ' to ' || j;
-      RETURN QUERY SELECT set_eq(trsp_sql, dijkstra_sql, msg);
-
-      -- test when there is NO reverse cost and its marked  AS being used
-      -- Uncomparable with dijkstra because dijstra uses what is given as input
-      dijkstra_sql := 'SELECT seq, node::integer, edge::integer, cost::text FROM pgr_dijkstra( '
-        || no_reverse_cost || ', ' || i || ', ' || j || ', ' || flag || ')';
-      trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp( '
-        || no_reverse_cost || ', ' || restrictions_sql || ', ' || i || ', ' || j || ', ' || flag || ')';
-      msg := k || '-4 ' || directed || ', NO reverse_cost, marked as NOT being used: from '  || i || ' to ' || j;
+      dijkstra_sql := 'SELECT seq, node, edge::integer, cost::text FROM pgr_dijkstra($$no_reverse_cost$$, '
+        || i || ', ' || j || ', ' || flag || ')';
+      trsp_sql := 'SELECT seq, node, edge, cost::text from pgr_trsp($$no_reverse_cost$$, $$restrictions_sql$$, '
+        || i || ', ' || j || ', ' || flag || ')';
+      msg := k || '-4 ' || directed || ', NO reverse_cost from '  || i || ' to ' || j;
       RETURN QUERY SELECT set_eq(trsp_sql, dijkstra_sql, msg);
 
       k := k + 1;
