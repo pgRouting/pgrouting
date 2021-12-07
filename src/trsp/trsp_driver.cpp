@@ -133,8 +133,8 @@ do_trsp(
         }
 
         /* TODO
-         * make a dijkstra, if there are no paths then return (DOING)
-         * get set of paths that use a restriction
+         * make a dijkstra, if there are no paths then return (DONE)
+         * get set of paths that use a restriction (DOING)
          * use the trsp algorithm to get an alternate path
          */
         graphType gType = directed? DIRECTED: UNDIRECTED;
@@ -179,13 +179,46 @@ do_trsp(
             return;
         }
 
+        std::map<int64_t, std::set<int64_t>> new_combinations;
+
+        for (auto &p : paths) {
+            std::deque<int64_t> edgesList(p.size());
+            for (const auto &row : p) {
+                edgesList.push_back(row.edge);
+            }
+            for (const auto &r : ruleList) {
+                auto ptr = std::find(edgesList.begin(), edgesList.end(), r.precedences().front());
+                if (ptr == edgesList.end()) continue;
+                /*
+                 * And edge on the begining of a rule list was found
+                 * Checking if the complete rule applies
+                 */
+
+                /*
+                 * Suppose the rule is used
+                 */
+                bool rule_breaker = true;
+                for (const auto &e : r.precedences()) {
+                    if (*ptr != e) {rule_breaker = false; break;}
+                    ++ptr;
+                }
+                if (rule_breaker) {
+                    new_combinations[p.start_id()].insert(p.end_id());
+                    p.clear();
+                }
+
+            }
+        }
+
         pgrouting::trsp::Pgr_trspHandler gdef(
                 data_edges,
                 total_edges,
                 directed,
                 ruleList);
 
-        paths = gdef.process(combinations);
+        auto new_paths = gdef.process(new_combinations);
+        paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+        post_process(paths, false, true, n, false);
 
 
         count = count_tuples(paths);
@@ -228,4 +261,3 @@ do_trsp(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
