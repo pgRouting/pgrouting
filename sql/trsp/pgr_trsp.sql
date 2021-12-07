@@ -32,7 +32,7 @@ CREATE FUNCTION pgr_trsp(
     TEXT, -- restrictions sql (required)
     BIGINT, -- from_vid (required)
     BIGINT, -- to_vid (required)
-    directed BOOLEAN DEFAULT true, -- directed (required)
+    directed BOOLEAN DEFAULT true,
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -56,16 +56,6 @@ DECLARE
     trsp_sql TEXT;
 
 BEGIN
-    /*
-    TODO This should be handled by C code
-    IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
-        -- no restrictions then its a dijkstra
-        -- RAISE WARNING 'Executing pgr_dijkstra';
-        RETURN query SELECT a.seq, a.path_seq, $3, $4, a.node, a.edge, a.cost, a.agg_cost
-        FROM pgr_dijkstra(edges_sql, start_vid, end_vid, directed) a;
-        RETURN;
-    END IF;
-    */
 
     RETURN query
         SELECT *
