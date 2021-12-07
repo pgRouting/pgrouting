@@ -48,6 +48,7 @@ class Rule {
     }
 
     const std::vector<int64_t> precedencelist() const;
+    const std::vector<int64_t> precedences() const;
 
     constiterator begin() const { return m_all.begin(); }
     constiterator end() const { return m_all.end(); }
