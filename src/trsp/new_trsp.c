@@ -104,7 +104,7 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_trsp(
+    do_dijkstra(
             edges, total_edges,
             restrictions, total_restrictions,
             combinations, total_combinations,
