@@ -25,7 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /* TODO
 * Should also work for combinations
 * Should also work for one to many, many to one, many to many
-* Function should be STRICT (aka no NULLS allowed) (DOING)
 */
 --v3.0
 CREATE FUNCTION pgr_trsp(
@@ -59,7 +58,6 @@ DECLARE
 BEGIN
     /*
     TODO This should be handled by C code
-    */
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
         -- RAISE WARNING 'Executing pgr_dijkstra';
@@ -67,10 +65,11 @@ BEGIN
         FROM pgr_dijkstra(edges_sql, start_vid, end_vid, directed) a;
         RETURN;
     END IF;
+    */
 
     RETURN query
         SELECT *
-        FROM _pgr_trsp(edges_sql, restrictions_sql, start_vid, end_vid, directed) AS a;
+        FROM _pgr_trsp(_pgr_get_statement($1), _pgr_get_statement($2), start_vid, end_vid, directed) AS a;
 
 END
 $BODY$
