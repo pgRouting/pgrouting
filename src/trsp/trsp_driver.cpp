@@ -80,6 +80,11 @@ do_trsp(
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
         }
 
+        /* TODO
+         * make a dijkstra,
+         * get set of paths that use a restriction
+         * use the trsp algorithm to get an alternate path
+         */
         if (ruleList.empty()) {
                     /* TODO if all the edges on the ruleList
                      * are not on the edges set, then the dijkstra
