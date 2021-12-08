@@ -89,6 +89,17 @@ SELECT * FROM pgr_trsp(
   22 |        6 |        12 |       7 |    7 |   -1 |    0 |        5
 (22 rows)
 
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT * FROM combinations_table$$
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         1 |       2 |    1 |    1 |    1 |        0
+   2 |        2 |         1 |       2 |    2 |   -1 |    0 |        1
+(2 rows)
+
 /* On a directed graph by default */
 SELECT * FROM pgr_trsp(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
