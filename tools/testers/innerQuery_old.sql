@@ -27,10 +27,10 @@ BEGIN
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     IF NOT min_version('3.3.0') THEN PERFORM todo(1, 'Bug fix on 3.3.0'); END IF;
-    RETURN query SELECT lives_ok(query);
+    RETURN query SELECT lives_ok(query,query);
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
-    RETURN query SELECT throws_ok(query);
+    RETURN query SELECT throws_ok(query, 'XX000', $$Error, columns 'source', 'target' must be of type int4, 'cost' must be of type float8$$, query);
 
     query := start_sql || parameter || '::REAL ' || end_sql;
     RETURN query SELECT throws_ok(query);
