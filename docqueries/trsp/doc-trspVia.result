@@ -5,10 +5,12 @@ SET
 /* --q1 */
 SELECT * FROM pgr_trspVia(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-  ARRAY[2,7,11]::INTEGER[],
-  false,  false,
   'SELECT to_cost, target_id::int4, from_edge ||
-  coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+  coalesce('',''||via_path,'''') AS via_path FROM restrictions',
+  ARRAY[2,7,11]::INTEGER[],
+  false,  false)
+/* --q2 */
+ROLLBACK;
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
@@ -27,6 +29,3 @@ SELECT * FROM pgr_trspVia(
   14 |   2 |  11 |  -1 |    0
 (14 rows)
 
-/* --q2 */
-ROLLBACK;
-ROLLBACK

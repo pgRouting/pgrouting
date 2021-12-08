@@ -4,6 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 SELECT * FROM pgr_trspVia(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+  NULL,
   ARRAY[2, 7, 11]::INTEGER[],
   true,
   true
@@ -22,6 +23,7 @@ SELECT * FROM pgr_trspVia(
 
 SELECT * FROM pgr_trspVia(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+  NULL,
   ARRAY[2, 7, 11]::INTEGER[],
   true,
   false
@@ -32,6 +34,7 @@ SELECT * FROM pgr_trspVia(
 
 SELECT * FROM pgr_trspVia(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+  NULL,
   ARRAY[2, 7, 11]::INTEGER[],
   false,
   true
@@ -50,6 +53,7 @@ SELECT * FROM pgr_trspVia(
 
 SELECT * FROM pgr_trspVia(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+  NULL,
   ARRAY[2, 7, 11]::INTEGER[],
   false,
   false

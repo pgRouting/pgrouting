@@ -169,6 +169,7 @@ SELECT * FROM pgr_withPoints(
 SET LOG_ERROR_VERBOSITY TO terse;
 SELECT * FROM _pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    NULL,
     ARRAY[1, 15, 2],
     false, true
 );
@@ -179,6 +180,7 @@ SET LOG_ERROR_VERBOSITY TO terse;
 -- '\`\`\`'
 SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    NULL,
     ARRAY[2, 3, 2],
     false, true
 );
@@ -204,6 +206,7 @@ SELECT * FROM pgr_dijkstraVia(
 -- '\`\`\`'
 SELECT * FROM pgr_TRSPVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    NULL,
     ARRAY[1, 1, 2],
     false, true
 );
@@ -214,9 +217,9 @@ SELECT * FROM pgr_TRSPVia(
 -- '\`\`\`'
 SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     ARRAY[1, 1, 2],
-    false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    false, true
 );
 -- '\`\`\`'
 
