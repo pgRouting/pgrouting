@@ -296,16 +296,16 @@ SELECT * FROM pgr_withPoints(
 
 SET LOG_ERROR_VERBOSITY TO terse;
 SET
-SELECT * FROM _pgr_trspViaVertices(
+SELECT * FROM _pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2],
     false, true
 );
 ERROR:  Restrictions Missing
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 14 at RAISE
+CONTEXT:  PL/pgSQL function _pgr_trspvia(text,integer[],boolean,boolean,text) line 14 at RAISE
 SET LOG_ERROR_VERBOSITY TO terse;
 SET
-SELECT * FROM pgr_trspViaVertices(
+SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[2, 3, 2],
     false, true
@@ -330,7 +330,7 @@ SELECT * FROM pgr_dijkstraVia(
    4 |       2 |        2 |         3 |       2 |    2 |   -2 |    0 |        1 |              2
 (4 rows)
 
-SELECT * FROM pgr_TRSPViaVertices(
+SELECT * FROM pgr_TRSPVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
     false, true
@@ -339,7 +339,7 @@ SELECT * FROM pgr_TRSPViaVertices(
 -----+-----+-----+-----+------
 (0 rows)
 
-SELECT * FROM pgr_trspViaVertices(
+SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
     false, true,

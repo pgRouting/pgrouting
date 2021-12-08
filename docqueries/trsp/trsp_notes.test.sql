@@ -152,11 +152,11 @@ SELECT * FROM pgr_withPoints(
 /* --place25 */
 
 
--- # pgr_trspViaVertices
+-- # pgr_trspVia
 ------------------
--- ## pgr_trspViaVertices No path representation differences
+-- ## pgr_trspVia No path representation differences
 
--- pgr_trspViaVertices uses:
+-- pgr_trspVia uses:
 -- "* When there are restrictions: `_pgr_trsp(one to one)`"
 -- "* When there are no restrictions: `pgr_dijkstraVia`"
 -- **PLEASE: Use pgr_dijstraVia when there are no restrictions**
@@ -167,7 +167,7 @@ SELECT * FROM pgr_withPoints(
 -- Calls to the original function of is no longer allowed without restrictions
 -- '\`\`\`'
 SET LOG_ERROR_VERBOSITY TO terse;
-SELECT * FROM _pgr_trspViaVertices(
+SELECT * FROM _pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2],
     false, true
@@ -177,7 +177,7 @@ SET LOG_ERROR_VERBOSITY TO terse;
 
 -- Calls to the wrapper function allowed without restrictions
 -- '\`\`\`'
-SELECT * FROM pgr_trspViaVertices(
+SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[2, 3, 2],
     false, true
@@ -202,7 +202,7 @@ SELECT * FROM pgr_dijkstraVia(
 -- therefore the expected result is EMPTY SET to represent no route was found
 -- "* without restrictions"
 -- '\`\`\`'
-SELECT * FROM pgr_TRSPViaVertices(
+SELECT * FROM pgr_TRSPVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
     false, true
@@ -212,7 +212,7 @@ SELECT * FROM pgr_TRSPViaVertices(
 -- "* with restrictions"
 -- Restrictions on the wrapper function, is the last parameter and its the old style:
 -- '\`\`\`'
-SELECT * FROM pgr_trspViaVertices(
+SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
     false, true,
