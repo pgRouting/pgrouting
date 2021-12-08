@@ -24,7 +24,7 @@ BEGIN
         END IF;
 
         q1 := format($$
-            SELECT * FROM pgr_trspViaVertices(
+            SELECT * FROM pgr_trspVia(
                 %1$L, %2$s, %3$s, %4$s
             )
             $$,
@@ -67,7 +67,7 @@ BEGIN
     'NULL'
     ]::TEXT[];
 
-    RETURN query SELECT * FROM no_crash_test('pgr_trspViaVertices', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_trspVia', params, subs);
 
     subs = ARRAY[
     'NULL',
@@ -75,7 +75,7 @@ BEGIN
     'NULL',
     'NULL'
     ]::TEXT[];
-    RETURN query SELECT * FROM no_crash_test('pgr_trspViaVertices', params, subs);
+    RETURN query SELECT * FROM no_crash_test('pgr_trspVia', params, subs);
 
   ELSE
 
@@ -101,7 +101,7 @@ BEGIN
     ]::TEXT[];
     RETURN query SELECT * FROM test(params, subs);
 
-    RETURN QUERY SELECT skip(1, 'pgr_trspViaVertices Has some crashes');
+    RETURN QUERY SELECT skip(1, 'pgr_trspVia Has some crashes');
 
   END IF;
 
