@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 --v3.0
-CREATE FUNCTION _pgr_trspViaVertices
+CREATE FUNCTION _pgr_trspVia
     (sql text,
     vids integer[],
     directed boolean,
@@ -121,5 +121,5 @@ rows 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_trspViaVertices(TEXT, INTEGER [], BOOLEAN, BOOLEAN, TEXT)
+COMMENT ON FUNCTION _pgr_trspVia(TEXT, INTEGER [], BOOLEAN, BOOLEAN, TEXT)
 IS 'pgRouting internal function';

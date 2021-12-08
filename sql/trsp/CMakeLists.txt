@@ -3,12 +3,13 @@ SET(LOCAL_FILES
     _trsp.sql
     trsp.sql
 
+    _trspVia.sql
+    trspVia.sql
+
     _array_reverse.sql
     _withpointstrsp.sql
     withpointstrsp.sql
 
-    _pgr_trspViaVertices.sql
-    pgr_trspViaVertices.sql
 
     pgr_trspViaEdges.sql
 

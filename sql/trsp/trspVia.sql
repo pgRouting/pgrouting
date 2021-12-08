@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/* pgr_trspVia Vertices
+/* pgr_trspVia
  - if size of restrictions_sql  is Zero or no restrictions_sql are given
      then call to pgr_dijkstra is made
 
@@ -31,13 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 TODO
 - rename to pgr_trspVia
 - restrictions sql should be the second parameter
+- restrictions sql should be the new restrictions
 - has_rcost should be removed
 - Results columns with meaningful names
 - Results columns more like pgr_dijkstraVia
 - Perform the via on the C/C++ code instead of on the SQL code
 */
 --v3.0
-CREATE FUNCTION pgr_trspViaVertices(
+CREATE FUNCTION pgr_trspVia(
     TEXT, -- edges SQL (required)
     ANYARRAY,  -- via vids (required)
     BOOLEAN, -- directed (required)
@@ -87,7 +88,7 @@ BEGIN
 
 
     -- make the call without contradiction from part of the user
-    RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
+    RETURN query SELECT * FROM _pgr_trspVia(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;
@@ -99,8 +100,8 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_trspViaVertices(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
-IS 'pgr_trspViaVertices
+COMMENT ON FUNCTION pgr_trspVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
+IS 'pgr_trspVia
 - PROTOTYPE
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]
@@ -110,5 +111,5 @@ IS 'pgr_trspViaVertices
 - Optional parameters
     - restrictions_sql := NULL
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+    - ${PROJECT_DOC_LINK}/pgr_trspVia.html
 ';
