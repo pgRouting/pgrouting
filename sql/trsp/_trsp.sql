@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 --v2.6
-CREATE FUNCTION _trsp(
+CREATE FUNCTION _pgr_trsp(
     TEXT, -- edges_sql
     TEXT, -- restrictions_sql
     ANYARRAY,
@@ -57,5 +57,5 @@ LANGUAGE 'c' VOLATILE;
 -- COMMENTS
 
 
-COMMENT ON FUNCTION _trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgRouting internal function';

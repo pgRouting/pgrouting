@@ -43,8 +43,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/arrays_input.h"
 #include "c_common/combinations_input.h"
 
-PGDLLEXPORT Datum _trsp(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(_trsp);
+PGDLLEXPORT Datum _pgr_trsp(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_pgr_trsp);
 
 
 static
@@ -139,7 +139,7 @@ void process(
 
 
 PGDLLEXPORT Datum
-_trsp(PG_FUNCTION_ARGS) {
+_pgr_trsp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
