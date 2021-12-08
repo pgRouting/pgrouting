@@ -1,10 +1,9 @@
 
 SET(LOCAL_FILES
     _trsp.sql
-    trsp.sql
+    pgr_trsp.sql
 
     _array_reverse.sql
-    pgr_trsp.sql
     _withpointstrsp.sql
     withpointstrsp.sql
 

@@ -45,25 +45,16 @@ CREATE FUNCTION pgr_trsp(
 )
 RETURNS SETOF record AS
 $BODY$
-DECLARE
-    edges_sql ALIAS FOR $1;
-    restrictions_sql ALIAS FOR $2;
-    start_vid ALIAS FOR $3;
-    end_vid   ALIAS FOR $4;
-    directed  ALIAS FOR $5;
 
-    restrictions_query TEXT;
-    trsp_sql TEXT;
+  SELECT * FROM _pgr_trsp(
+    _pgr_get_statement($1),
+    _pgr_get_statement($2),
+    ARRAY[$3]::BIGINT[],
+    ARRAY[$4]::BIGINT[],
+    directed) AS a;
 
-BEGIN
-
-    RETURN query
-        SELECT *
-        FROM _pgr_trsp(_pgr_get_statement($1), _pgr_get_statement($2), start_vid, end_vid, directed) AS a;
-
-END
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
