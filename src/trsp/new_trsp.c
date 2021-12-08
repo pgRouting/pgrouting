@@ -151,14 +151,25 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        process(
-                text_to_cstring(PG_GETARG_TEXT_P(0)),
-                text_to_cstring(PG_GETARG_TEXT_P(1)),
-                NULL,
-                PG_GETARG_ARRAYTYPE_P(2),
-                PG_GETARG_ARRAYTYPE_P(3),
-                PG_GETARG_BOOL(4),
-                &result_tuples, &result_count);
+        if (PG_NARGS() == 5) {
+            process(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    NULL,
+                    PG_GETARG_ARRAYTYPE_P(2),
+                    PG_GETARG_ARRAYTYPE_P(3),
+                    PG_GETARG_BOOL(4),
+                    &result_tuples, &result_count);
+        } else /* (PG_NARGS() == 4) */ {
+            process(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    text_to_cstring(PG_GETARG_TEXT_P(2)),
+                    NULL,
+                    NULL,
+                    PG_GETARG_BOOL(3),
+                    &result_tuples, &result_count);
+        }
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
@@ -181,7 +192,6 @@ _pgr_trsp(PG_FUNCTION_ARGS) {
     result_tuples = (Path_rt *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        // do when there is more left to send
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
