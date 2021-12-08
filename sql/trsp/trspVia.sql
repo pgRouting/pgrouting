@@ -29,22 +29,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    - put all data costs in one cost column and
    - a call is made to original code in _pgr_trspViaVertices without only the positive values
 TODO
-- rename to pgr_trspVia
-- restrictions sql should be the second parameter
+- rename to pgr_trspVia (DONE)
+- restrictions sql should be the second parameter (DOING)
 - restrictions sql should be the new restrictions
 - has_rcost should be removed
 - Results columns with meaningful names
 - Results columns more like pgr_dijkstraVia
 - Perform the via on the C/C++ code instead of on the SQL code
+- function should be STRICT
 */
 --v3.0
 CREATE FUNCTION pgr_trspVia(
     TEXT, -- edges SQL (required)
+    TEXT, -- restrictions SQL
     ANYARRAY,  -- via vids (required)
     BOOLEAN, -- directed (required)
     BOOLEAN, -- has_rcost (required)
 
-    restrictions_sql TEXT DEFAULT NULL,
 
     OUT seq INTEGER,
     OUT id1 INTEGER,
@@ -57,9 +58,10 @@ RETURNS SETOF RECORD AS
 $BODY$
 DECLARE
     edges_sql TEXT     := $1;
-    via_vids INTEGER[] := $2;
-    directed BOOLEAN   := $3;
-    has_rcost BOOLEAN  := $4;
+    restrictions_sql TEXT     := $2;
+    via_vids INTEGER[] := $3;
+    directed BOOLEAN   := $4;
+    has_rcost BOOLEAN  := $5;
 
 has_reverse BOOLEAN;
 new_sql TEXT;
@@ -88,7 +90,7 @@ BEGIN
 
 
     -- make the call without contradiction from part of the user
-    RETURN query SELECT * FROM _pgr_trspVia(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
+    RETURN query SELECT * FROM _pgr_trspVia(new_sql, restrictions_sql, via_vids::INTEGER[], directed, has_rcost);
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;
@@ -100,7 +102,7 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_trspVia(TEXT, ANYARRAY, BOOLEAN, BOOLEAN, TEXT)
+COMMENT ON FUNCTION pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN)
 IS 'pgr_trspVia
 - PROTOTYPE
 - Parameters

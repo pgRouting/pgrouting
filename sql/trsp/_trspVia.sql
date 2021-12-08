@@ -22,17 +22,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 -----------------------
--- _pgr_trspViaVertices
+-- _pgr_trspVia
 -----------------------
 
 
---v3.0
-CREATE FUNCTION _pgr_trspVia
-    (sql text,
+--v4.0
+CREATE FUNCTION _pgr_trspVia (
+    sql text,
+    turn_restrict_sql text,
     vids integer[],
     directed boolean,
     has_rcost boolean,
-    turn_restrict_sql text DEFAULT NULL,
 
     OUT seq INTEGER,
     OUT id1 INTEGER,
@@ -66,7 +66,7 @@ begin
 
     restrictions_query = $$
     WITH old_restrictions AS ( $$ ||
-        $5 || $$
+        $2 || $$
     )
     SELECT ROW_NUMBER() OVER() AS id,
     _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path, ',')::INTEGER[])) AS path,
@@ -121,5 +121,5 @@ rows 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_trspVia(TEXT, INTEGER [], BOOLEAN, BOOLEAN, TEXT)
+COMMENT ON FUNCTION _pgr_trspVia(TEXT, TEXT, INTEGER [], BOOLEAN, BOOLEAN)
 IS 'pgRouting internal function';
