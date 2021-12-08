@@ -28,6 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  - because it reads the data wrong, when there is a reverse_cost column:
    - put all data costs in one cost column and
    - a call is made to original code in _pgr_trspViaVertices without only the positive values
+TODO
+- rename to pgr_trspVia
+- restrictions sql should be the second parameter
+- has_rcost should be removed
+- Results columns with meaningful names
+- Results columns more like pgr_dijkstraVia
+- Perform the via on the C/C++ code instead of on the SQL code
 */
 --v3.0
 CREATE FUNCTION pgr_trspViaVertices(
