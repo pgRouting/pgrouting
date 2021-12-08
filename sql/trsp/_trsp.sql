@@ -1,8 +1,14 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2017 pgRouting developers
+Copyright (c) 2021 pgRouting developers
 Mail: project@pgrouting.org
 
+Copyright (c) 2021 Vicky Vergara
+Mail: vicky at georepublic dot de
+
+2021:
+- Complete rewrite of one to one
+- New: one to many, many to one, many to many, combinations
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -26,12 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- trsp
 --------------
 --------------
-
-
---------------
--- _trsp
---------------
-
 
 --v4.0
 CREATE FUNCTION _pgr_trsp(
