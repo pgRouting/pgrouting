@@ -12,6 +12,21 @@ SELECT * FROM pgr_trsp(
   $$SELECT * FROM new_restrictions$$,
   7, 12, false
 );
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT * FROM new_restrictions$$,
+  7, ARRAY[12,3], false
+);
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT * FROM new_restrictions$$,
+  ARRAY[12,3], 7, false
+);
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT * FROM new_restrictions$$,
+  ARRAY[12,3]::BIGINT[], ARRAY[7,1]::BIGINT[], false
+);
 /* On a directed graph by default */
 SELECT * FROM pgr_trsp(
   'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
