@@ -1,30 +1,63 @@
-
 BEGIN;
 
-SELECT plan(7);
+SELECT CASE WHEN NOT min_version('4.0.0') THEN plan(1) ELSE plan(13) END;
 
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('4.0.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function completely rewriten on 4.0.0');
+  RETURN;
+END IF;
+
+RETURN QUERY
 SELECT has_function('pgr_trsp');
 
-SELECT has_function('pgr_trsp', ARRAY['text','integer','integer','boolean','boolean','text']);
-SELECT has_function('pgr_trsp', ARRAY['text','integer','double precision','integer','double precision','boolean','boolean','text']);
+RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','bigint','bigint','boolean']);
+RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','bigint','anyarray','boolean']);
+RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','anyarray','bigint','boolean']);
+RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','anyarray','anyarray','boolean']);
+RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','text','boolean']);
 
-SELECT function_returns('pgr_trsp', ARRAY['text','integer','integer','boolean','boolean','text'],'setof record');
-SELECT function_returns('pgr_trsp', ARRAY['text','integer','double precision','integer','double precision','boolean','boolean','text'],'setof record');
+RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','bigint','bigint','boolean'],'setof record');
+RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','bigint','anyarray','boolean'],'setof record');
+RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','anyarray','bigint','boolean'],'setof record');
+RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','anyarray','anyarray','boolean'],'setof record');
+RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','text','boolean'],'setof record');
 
-
+RETURN QUERY
 SELECT set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_trsp'$$,
-      $$VALUES
-      ('{"","","","","","restrictions_sql","seq","id1","id2","cost"}'::TEXT[]),
-      ('{"","","","","","","","turn_restrict_sql","seq","id1","id2","cost"}'::TEXT[])
-      $$);
+  $$SELECT  proargnames from pg_proc where proname = 'pgr_trsp'$$,
+  $$VALUES
+    ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]);
+  $$
+);
 
+RETURN QUERY
 SELECT set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trsp'$$,
-      $$VALUES
-      ('{25,23,23,16,16,25,23,23,23,701}'::OID[]),
-      ('{25,23,701,23,701,16,16,25,23,23,23,701}'::OID[])
-      $$);
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trsp'$$,
+  $$VALUES
+  ('{25,25,25,16,23,23,20,20,20,20,701,701}'::OID[]),
+  ('{25,25,20,20,16,23,23,20,20,20,20,701,701}'::OID[]),
+  ('{25,25,20,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
+  ('{25,25,2277,20,16,23,23,20,20,20,20,701,701}'::OID[]),
+  ('{25,25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]);
+  $$
+);
 
-SELECT finish();
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT types_check();
+
+
+SELECT * FROM finish();
 ROLLBACK;
