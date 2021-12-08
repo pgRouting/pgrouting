@@ -33,29 +33,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------
 
 
---v2.6
+--v4.0
 CREATE FUNCTION _pgr_trsp(
-    TEXT, -- edges_sql
-    TEXT, -- restrictions_sql
-    ANYARRAY,
-    ANYARRAY,
-    directed BOOLEAN DEFAULT true,
+  TEXT, -- edges sql
+  TEXT, -- restrictions sql
+  ANYARRAY,
+  ANYARRAY,
+  directed BOOLEAN,
 
-    OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT start_vid BIGINT,
-    OUT end_vid BIGINT,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
+  OUT seq INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE 'c' VOLATILE;
+
+
+--v4.0
+CREATE FUNCTION _pgr_trsp(
+  TEXT, -- edges sql
+  TEXT, -- restrictions sql
+  TEXT, -- combinations sql
+  directed BOOLEAN,
+
+  OUT seq INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE 'c' VOLATILE;
 
 
 -- COMMENTS
-
-
 COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+COMMENT ON FUNCTION _pgr_trsp(TEXT, TEXT, TEXT, BOOLEAN)
 IS 'pgRouting internal function';
