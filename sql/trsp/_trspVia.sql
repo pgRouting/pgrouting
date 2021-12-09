@@ -32,7 +32,6 @@ CREATE FUNCTION _pgr_trspVia (
     turn_restrict_sql text,
     vids integer[],
     directed boolean,
-    has_rcost boolean,
 
     OUT seq INTEGER,
     OUT id1 INTEGER,
@@ -123,5 +122,5 @@ rows 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_trspVia(TEXT, TEXT, INTEGER [], BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_trspVia(TEXT, TEXT, INTEGER [], BOOLEAN)
 IS 'pgRouting internal function';

@@ -30,9 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    - a call is made to original code in _pgr_trspViaVertices without only the positive values
 TODO
 - rename to pgr_trspVia (DONE)
-- restrictions sql should be the second parameter (DOING)
-- Do not accept NULL restrictions (DOING)
-- has_rcost should be removed
+- restrictions sql should be the second parameter (DONE)
+- Do not accept NULL restrictions (DONE)
+- has_rcost should be removed (DOING)
 - Results when empty restrictions or unrelated restrictions should be same a dijskstra
 - restrictions sql should be the new restrictions
 - Directed flag should be optional
@@ -47,7 +47,6 @@ CREATE FUNCTION pgr_trspVia(
     TEXT, -- restrictions SQL
     ANYARRAY,  -- via vids (required)
     BOOLEAN, -- directed (required)
-    BOOLEAN, -- has_rcost (required)
 
 
     OUT seq INTEGER,
@@ -64,15 +63,13 @@ DECLARE
     restrictions_sql TEXT     := $2;
     via_vids INTEGER[] := $3;
     directed BOOLEAN   := $4;
-    has_rcost BOOLEAN  := $5;
 
-has_reverse BOOLEAN;
-new_sql TEXT;
 BEGIN
     IF (restrictions_sql IS NULL) THEN
         RETURN;
     END IF;
 
+    /*
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
@@ -86,17 +83,18 @@ BEGIN
             USING ERRCODE := 'XX000';
         END IF;
     END IF;
+*/
 
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
             (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, a.cost
-            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) AS a WHERE edge != -1;
+            FROM pgr_dijkstraVia(edges_sql, via_vids, directed, strict:=true) AS a WHERE edge != -1;
         RETURN;
     END IF;
 
 
     -- make the call without contradiction from part of the user
-    RETURN query SELECT * FROM _pgr_trspVia(new_sql, restrictions_sql, via_vids::INTEGER[], directed, has_rcost);
+    RETURN query SELECT * FROM _pgr_trspVia(edges_sql, restrictions_sql, via_vids::INTEGER[], directed);
     /*
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
@@ -110,7 +108,7 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN)
 IS 'pgr_trspVia
 - PROTOTYPE
 - Parameters
