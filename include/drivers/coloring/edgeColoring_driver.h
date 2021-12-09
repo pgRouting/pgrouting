@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: bipartite_driver.h
+File: edgeColoring_driver.h
 
 Generated with Template by:
 Copyright (c) 2021 pgRouting developers
