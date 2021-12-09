@@ -88,7 +88,7 @@ BEGIN
 
       trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
         || with_reverse_cost || ','
-        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
 
       msg := '-1- ' || directed || ', with reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j || msg_end;
       PERFORM todo(4, 'Something is wrong');
@@ -102,7 +102,7 @@ BEGIN
 
       trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
         || with_reverse_cost || ','
-        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
 
       msg := '-2- ' || directed || ', with reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j || msg_end;
       RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
@@ -115,7 +115,7 @@ BEGIN
 
       trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
         || no_reverse_cost || ','
-        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
 
       msg := '-3- ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j || msg_end;
       RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
@@ -128,15 +128,10 @@ BEGIN
 
       trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
         || no_reverse_cost || ','
-        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
 
       msg := '-4- ' || directed || ', NO reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j || msg_end;
-      -- TODO should be fixed
-      IF NOT min_version('4.0.1') THEN
-        RETURN QUERY SELECT skip(1, 'has_rcost flag should be ignored, Currently No compare can be done');
-      ELSE
-        RETURN QUERY SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
-      END IF;
+      RETURN QUERY SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
       k := k + 1;
 

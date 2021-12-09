@@ -5,7 +5,7 @@ BEGIN;
 -- Adjust style_dijkstra_trsp -> style_dijkstra when that happens
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(324);
+SELECT plan(108);
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
@@ -16,21 +16,10 @@ BEGIN
 
   restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$)';
 
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, true)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, true, NULL)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, true, ' || restriction, TRUE);
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, true)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, true, NULL)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, true, ' || restriction, TRUE);
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, false)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, false, NULL)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, false, ' || restriction, FALSE);
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, false)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, false, NULL)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, false, ' || restriction, FALSE);
+  RETURN QUERY SELECT style_dijkstra_trspViaEdges('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, true, ' || restriction, TRUE);
+  RETURN QUERY SELECT style_dijkstra_trspViaEdges('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, true, ' || restriction, TRUE);
+  RETURN QUERY SELECT style_dijkstra_trspViaEdges('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], true, false, ' || restriction, FALSE);
+  RETURN QUERY SELECT style_dijkstra_trspViaEdges('pgr_trspViaEdges', ', ARRAY[4,9,15]::INTEGER[], ARRAY[0.5, 0.5, 0.5]::FLOAT[], false, false, ' || restriction, FALSE);
 
 END;
 $BODY$

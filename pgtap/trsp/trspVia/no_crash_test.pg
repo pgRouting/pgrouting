@@ -1,7 +1,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') AND FALSE THEN plan(1) ELSE plan(22) END;
+SELECT CASE WHEN min_version('4.0.0') AND FALSE THEN plan(1) ELSE plan(20) END;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
@@ -28,18 +28,14 @@ BEGIN
 
         q1 := format($$
             SELECT * FROM pgr_trspVia(
-                %1$L, %2$s, %3$s, %4$s, %5$s
+                %1$L, %2$s, %3$s, %4$s
             )
             $$,
-            mp[1], mp[2], mp[3], mp[4], mp[5]
+            mp[1], mp[2], mp[3], mp[4]
         );
 
-        if i IN (1) THEN
-            RETURN query SELECT * FROM throws_ok(q1);
-        ELSE
-            RETURN query SELECT * FROM lives_ok(q1,  'should live i = ' || i);
-            RETURN query SELECT * FROM is_empty(q1,  'should be empty i = ' || i);
-        END IF;
+        RETURN query SELECT * FROM lives_ok(q1,  'should live i = ' || i);
+        RETURN query SELECT * FROM is_empty(q1,  'should be empty i = ' || i);
     END LOOP;
 
 END
@@ -86,14 +82,12 @@ BEGIN
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edge_table',
     '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$',
     'ARRAY[1]',
-    'true',
     'true'
     ]::TEXT[];
     subs = ARRAY[
     'NULL',
     'NULL::TEXT',
     '(SELECT array_agg(id)::INTEGER[] FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    'NULL',
     'NULL'
     ]::TEXT[];
 
@@ -103,7 +97,6 @@ BEGIN
     'NULL',
     'NULL::TEXT',
     'NULL::INTEGER[]',
-    'NULL',
     'NULL'
     ]::TEXT[];
     RETURN query SELECT * FROM test(params, subs);
