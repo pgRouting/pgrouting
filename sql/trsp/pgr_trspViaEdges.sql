@@ -164,7 +164,7 @@ begin
     return;
 end;
 $body$
-language plpgsql stable
+language plpgsql VOLATILE STRICT
 cost 100
 rows 1000;
 
