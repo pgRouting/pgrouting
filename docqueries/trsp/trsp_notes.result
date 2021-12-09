@@ -298,17 +298,19 @@ SET LOG_ERROR_VERBOSITY TO terse;
 SET
 SELECT * FROM _pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    NULL,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     ARRAY[1, 15, 2],
     false, true
 );
-ERROR:  Restrictions Missing
-CONTEXT:  PL/pgSQL function _pgr_trspvia(text,text,integer[],boolean,boolean) line 14 at RAISE
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+(0 rows)
+
 SET LOG_ERROR_VERBOSITY TO terse;
 SET
 SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    NULL,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     ARRAY[2, 3, 2],
     false, true
 );
@@ -334,13 +336,15 @@ SELECT * FROM pgr_dijkstraVia(
 
 SELECT * FROM pgr_TRSPVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    NULL,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$,
     ARRAY[1, 1, 2],
     false, true
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
-(0 rows)
+   1 |   2 |   1 |   1 |    1
+   2 |   2 |   2 |  -1 |    0
+(2 rows)
 
 SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
