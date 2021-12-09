@@ -31,8 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 TODO
 - rename to pgr_trspVia (DONE)
 - restrictions sql should be the second parameter (DOING)
-- restrictions sql should be the new restrictions
+- Do not accept NULL restrictions (DOING)
 - has_rcost should be removed
+- Results when empty restrictions or unrelated restrictions should be same a dijskstra
+- restrictions sql should be the new restrictions
+- Directed flag should be optional
 - Results columns with meaningful names
 - Results columns more like pgr_dijkstraVia
 - Perform the via on the C/C++ code instead of on the SQL code
@@ -66,6 +69,9 @@ DECLARE
 has_reverse BOOLEAN;
 new_sql TEXT;
 BEGIN
+    IF (restrictions_sql IS NULL) THEN
+        RETURN;
+    END IF;
 
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
@@ -91,9 +97,11 @@ BEGIN
 
     -- make the call without contradiction from part of the user
     RETURN query SELECT * FROM _pgr_trspVia(new_sql, restrictions_sql, via_vids::INTEGER[], directed, has_rcost);
+    /*
     IF NOT FOUND THEN
         RAISE EXCEPTION 'Error computing path: Path Not Found';
     END IF;
+*/
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
