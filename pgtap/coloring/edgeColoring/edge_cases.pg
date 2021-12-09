@@ -1,7 +1,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.3.0') THEN plan(1) ELSE plan(27) END;
+SELECT CASE WHEN NOT min_version('3.3.0') THEN plan(1) ELSE plan(29) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -128,10 +128,34 @@ SELECT set_eq('q6',
 PREPARE edgeColoring6 AS
 SELECT * FROM pgr_edgeColoring('q6');
 
---TODO sometimes it returns 2, sometimes it returns 3, the expected value is to
--- somewhere there is a problem (our code or on boost code)
 RETURN QUERY
-SELECT cmp_ok((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q6')), '<=', 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q6')), 3, 'Three colors are expected');
+
+-- changing the order of the edges will change the number of colors expected
+
+-- 4 vertices length
+
+PREPARE q7 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (8, 10, 11, 12) ORDER BY id DESC;
+
+RETURN QUERY
+SELECT set_eq('q7',
+    $$VALUES
+        (12, 10, 11, 1, -1),
+        (11, 6, 11, 1, -1),
+        (10, 5, 10, 1, 1),
+        (8, 5, 6, 1, 1)
+    $$,
+    'Graph with four vertices 5, 6, 10 and 11 (cyclic)'
+);
+
+PREPARE edgeColoring7 AS
+SELECT * FROM pgr_edgeColoring('q7');
+
+RETURN QUERY
+SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q7')), 2, 'Two colors are expected');
 
 
 -- odd length cycle test
@@ -151,12 +175,12 @@ INSERT INTO three_vertices_table (source, target, cost, reverse_cost) VALUES
     (3, 8, 10, -10),
     (6, 8, -1, 12);
 
-PREPARE q7 AS
+PREPARE q8 AS
 SELECT id, source, target, cost, reverse_cost
 FROM three_vertices_table;
 
 RETURN QUERY
-SELECT set_eq('q7',
+SELECT set_eq('q8',
     $$VALUES
         (1, 3, 6, 20, 15),
         (2, 3, 8, 10, -10),
@@ -165,11 +189,11 @@ SELECT set_eq('q7',
     'Cyclic Graph with three vertices 3, 6 and 8'
 );
 
-PREPARE edgeColoring7 AS
-SELECT * FROM pgr_edgeColoring('q7');
+PREPARE edgeColoring8 AS
+SELECT * FROM pgr_edgeColoring('q8');
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q7')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q8')), 3, 'Three colors are expected');
 
 
 -- 5 vertices cyclic
@@ -189,12 +213,12 @@ INSERT INTO five_vertices_table (source, target, cost, reverse_cost) VALUES
     (4, 5, 1, 1),
     (5, 1, 1, -1);
 
-PREPARE q8 AS
+PREPARE q9 AS
 SELECT id, source, target, cost, reverse_cost
 FROM five_vertices_table;
 
 RETURN QUERY
-SELECT set_eq('q8',
+SELECT set_eq('q9',
     $$VALUES
         (1, 1, 2, 1, 1),
         (2, 2, 3, 1, 1),
@@ -205,11 +229,11 @@ SELECT set_eq('q8',
     'Cyclic Graph with five vertices 1, 2, 3, 4 and 5'
 );
 
-PREPARE edgeColoring8 AS
-SELECT * FROM pgr_edgeColoring('q8');
+PREPARE edgeColoring9 AS
+SELECT * FROM pgr_edgeColoring('q9');
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q8')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q9')), 3, 'Three colors are expected');
 
 
 -- self loop test
@@ -227,23 +251,23 @@ CREATE TABLE one_vertex_table (
 INSERT INTO one_vertex_table (source, target, cost, reverse_cost) VALUES
     (1, 1, 1, 1);
 
-PREPARE q9 AS
+PREPARE q10 AS
 SELECT id, source, target, cost, reverse_cost
 FROM one_vertex_table;
 
 RETURN QUERY
-SELECT set_eq('q9',
+SELECT set_eq('q10',
     $$VALUES
         (1, 1, 1, 1, 1)
     $$,
     'Self loop Graph with one vertex 1'
 );
 
-PREPARE edgeColoring9 AS
-SELECT * FROM pgr_edgeColoring('q9');
+PREPARE edgeColoring10 AS
+SELECT * FROM pgr_edgeColoring('q10');
 
 RETURN QUERY
-SELECT is_empty('edgeColoring9', 'One vertex self-loop graph can not be edgeColored -> Empty row is returned');
+SELECT is_empty('edgeColoring10', 'One vertex self-loop graph can not be edgeColored -> Empty row is returned');
 
 
 -- 2 vertex self loop
@@ -260,12 +284,12 @@ INSERT INTO two_vertices_table (source, target, cost, reverse_cost) VALUES
     (1, 2, 1, 1),
     (2, 2, 1, 1);
 
-PREPARE q10 AS
+PREPARE q11 AS
 SELECT id, source, target, cost, reverse_cost
 FROM two_vertices_table;
 
 RETURN QUERY
-SELECT set_eq('q10',
+SELECT set_eq('q11',
     $$VALUES
         (1, 1, 2, 1, 1),
         (2, 2, 2, 1, 1)
@@ -273,11 +297,11 @@ SELECT set_eq('q10',
     'Self loop Graph with two vertices 1 and 2'
 );
 
-PREPARE edgeColoring10 AS
-SELECT * FROM pgr_edgeColoring('q10');
+PREPARE edgeColoring11 AS
+SELECT * FROM pgr_edgeColoring('q11');
 
 RETURN QUERY
-SELECT set_eq('edgeColoring10', $$VALUES (1, 1)$$, 'One color is required');
+SELECT set_eq('edgeColoring11', $$VALUES (1, 1)$$, 'One color is required');
 
 
 -- 7 vertices tree
@@ -298,12 +322,12 @@ INSERT INTO seven_vertices_table (source, target, cost, reverse_cost) VALUES
     (4, 6, 1, 1),
     (4, 7, 1, 1);
 
-PREPARE q11 AS
+PREPARE q12 AS
 SELECT id, source, target, cost, reverse_cost
 FROM seven_vertices_table;
 
 RETURN QUERY
-SELECT set_eq('q11',
+SELECT set_eq('q12',
     $$VALUES
     (1, 1, 2, 1, 1),
     (2, 1, 4, 1, 1),
@@ -315,11 +339,11 @@ SELECT set_eq('q11',
     'A tree Graph with seven vertices 1, 2, 3, 4, 5, 6 and 7'
 );
 
-PREPARE edgeColoring11 AS
-SELECT * FROM pgr_edgeColoring('q11');
+PREPARE edgeColoring12 AS
+SELECT * FROM pgr_edgeColoring('q12');
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q11')), 3, 'Three colors are expected');
+SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q12')), 3, 'Three colors are expected');
 
 
 -- 3 vertices multiple edge
@@ -337,12 +361,12 @@ INSERT INTO multiple_edge_table (source, target, cost, reverse_cost) VALUES
     (2, 3, 1, 1),
     (3, 2, 1, 1);
 
-PREPARE q12 AS
+PREPARE q13 AS
 SELECT id, source, target, cost, reverse_cost
 FROM multiple_edge_table;
 
 RETURN QUERY
-SELECT set_eq('q12',
+SELECT set_eq('q13',
     $$VALUES
         (1, 1, 2, 1, 1),
         (2, 2, 3, 1, 1),
@@ -351,11 +375,11 @@ SELECT set_eq('q12',
     'Multiple edge Graph with three vertices 1, 2 and 3'
 );
 
-PREPARE edgeColoring12 AS
-SELECT * FROM pgr_edgeColoring('q12');
+PREPARE edgeColoring13 AS
+SELECT * FROM pgr_edgeColoring('q13');
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q12')), 2, 'Two colors are expected');
+SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q13')), 2, 'Two colors are expected');
 
 
 -- 2 vertices multiple edge
@@ -372,12 +396,12 @@ INSERT INTO two_vertices_multiple_edge_table (source, target, cost, reverse_cost
     (1, 2, 1, 1),
     (2, 1, 1, 1);
 
-PREPARE q13 AS
+PREPARE q14 AS
 SELECT id, source, target, cost, reverse_cost
 FROM two_vertices_multiple_edge_table;
 
 RETURN QUERY
-SELECT set_eq('q13',
+SELECT set_eq('q14',
     $$VALUES
         (1, 1, 2, 1, 1),
         (2, 2, 1, 1, 1)
@@ -385,11 +409,11 @@ SELECT set_eq('q13',
     'Multiple edge Graph with two vertices 1 and 2'
 );
 
-PREPARE edgeColoring13 AS
-SELECT * FROM pgr_edgeColoring('q13');
+PREPARE edgeColoring14 AS
+SELECT * FROM pgr_edgeColoring('q14');
 
 RETURN QUERY
-SELECT set_eq('edgeColoring13', $$VALUES (1, 1)$$, 'One color is required');
+SELECT set_eq('edgeColoring14', $$VALUES (1, 1)$$, 'One color is required');
 
 
 -- 4 vertices disconnected graph
@@ -406,12 +430,12 @@ INSERT INTO disconnected_graph_table (source, target, cost, reverse_cost) VALUES
     (1, 2, 1, 1),
     (3, 4, 1, 1);
 
-PREPARE q14 AS
+PREPARE q15 AS
 SELECT id, source, target, cost, reverse_cost
 FROM disconnected_graph_table;
 
 RETURN QUERY
-SELECT set_eq('q14',
+SELECT set_eq('q15',
     $$VALUES
         (1, 1, 2, 1, 1),
         (2, 3, 4, 1, 1)
@@ -419,11 +443,11 @@ SELECT set_eq('q14',
     'Disconnected Graph with four vertices 1, 2, 3 and 4'
 );
 
-PREPARE edgeColoring14 AS
-SELECT count(DISTINCT color_id) FROM pgr_edgeColoring('q14');
+PREPARE edgeColoring15 AS
+SELECT count(DISTINCT color_id) FROM pgr_edgeColoring('q15');
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q14')), 1, 'One color is required');
+SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q15')), 1, 'One color is required');
 
 
 END;
