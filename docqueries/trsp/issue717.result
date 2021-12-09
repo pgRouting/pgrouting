@@ -37,240 +37,206 @@ SELECT * FROM pgr_trspViaEdges(
     ARRAY[4,6,11]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     true,
-    true
+    true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
    2 |   1 |   5 |   7 |    1
-   3 |   1 |   8 |   6 |  0.5
-   4 |   1 |  -2 |  -1 |    0
-   5 |   2 |  -2 |   6 |  0.5
-   6 |   2 |   8 |   7 |    1
-   7 |   2 |   5 |   8 |    1
-   8 |   2 |   6 |  11 |  0.5
-   9 |   2 |  -3 |  -2 |    0
-(9 rows)
+   3 |   1 |   8 |   6 |    1
+   4 |   2 |   8 |   7 |    1
+   5 |   2 |   5 |   8 |    1
+   6 |   2 |   6 |  11 |  0.5
+(6 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     true,
-    true
+    true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  11 |  0.5
-   7 |   2 |  11 |  13 |    1
-   8 |   2 |  12 |  15 |    1
-   9 |   2 |   9 |   9 |    1
-  10 |   2 |   6 |   8 |    1
-  11 |   2 |   5 |   7 |    1
-  12 |   2 |   8 |   6 |  0.5
-  13 |   2 |  -3 |  -2 |    0
-(13 rows)
+   4 |   1 |   6 |  11 |    1
+   5 |   2 |  11 |  13 |    1
+   6 |   2 |  12 |  15 |    1
+   7 |   2 |   9 |   9 |    1
+   8 |   2 |   6 |   8 |    1
+   9 |   2 |   5 |   7 |    1
+  10 |   2 |   8 |   6 |  0.5
+(10 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     true,
-    true
+    true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  11 |  0.5
-   7 |   2 |  11 |  13 |    1
-   8 |   2 |  12 |  15 |    1
-   9 |   2 |   9 |   9 |    1
-  10 |   2 |   6 |   8 |    1
-  11 |   2 |   5 |   7 |    1
-  12 |   2 |   8 |   6 |  0.5
-  13 |   2 |  -3 |  -2 |    0
-(13 rows)
+   4 |   1 |   6 |  11 |    1
+   5 |   2 |  11 |  13 |    1
+   6 |   2 |  12 |  15 |    1
+   7 |   2 |   9 |   9 |    1
+   8 |   2 |   6 |   8 |    1
+   9 |   2 |   5 |   7 |    1
+  10 |   2 |   8 |   6 |  0.5
+(10 rows)
+
+/*
+SELECT * FROM pgr_trspViaEdges(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    ARRAY[4,6,11]::INTEGER[],           -- array of eids
+    ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
+    true,  -- directed graph?
+    false,  -- has_reverse_cost?
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[4,6,11]::INTEGER[],
-    ARRAY[0.5, 0.5, 0.5]::float8[],
-    true,
-    false
+    ARRAY[1,11,6]::INTEGER[],           -- array of eids
+    ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
+    true,  -- directed graph?
+    false,  -- has_reverse_cost?
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | id3 | cost
------+-----+-----+-----+------
-   1 |   2 |  -2 |   6 |  0.5
-   2 |   2 |   8 |   7 |    1
-   3 |   2 |   5 |   8 |    1
-   4 |   2 |   6 |  11 |  0.5
-   5 |   2 |  -3 |  -2 |    0
-(5 rows)
+
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],
-    ARRAY[0.5, 0.5, 0.5]::float8[],
-    true,
-    false
+    ARRAY[1,11,6]::INTEGER[],           -- array of eids
+    ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
+    true,  -- directed graph?
+    false,  -- has_reverse_cost?
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
- seq | id1 | id2 | id3 | cost
------+-----+-----+-----+------
-   1 |   1 |  -1 |   1 |  0.5
-   2 |   1 |   2 |   4 |    1
-   3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -2 |    0
-(5 rows)
+*/
 
-SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[1,11,6]::INTEGER[],
-    ARRAY[0.5, 0.5, 0.5]::float8[],
-    true,
-    false
-);
- seq | id1 | id2 | id3 | cost
------+-----+-----+-----+------
-   1 |   1 |  -1 |   1 |  0.5
-   2 |   1 |   2 |   4 |    1
-   3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -2 |    0
-(5 rows)
+
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     false,
-    true
+    true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
    2 |   1 |   5 |   7 |    1
-   3 |   1 |   8 |   6 |  0.5
-   4 |   1 |  -2 |  -1 |    0
-   5 |   2 |  -2 |   6 |  0.5
-   6 |   2 |   8 |   7 |    1
-   7 |   2 |   5 |   8 |    1
-   8 |   2 |   6 |  11 |  0.5
-   9 |   2 |  -3 |  -2 |    0
-(9 rows)
+   3 |   1 |   8 |   6 |    1
+   4 |   2 |   8 |   7 |    1
+   5 |   2 |   5 |   8 |    1
+   6 |   2 |   6 |  11 |  0.5
+(6 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     false,
-    true
+    true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   2 |    1
    3 |   1 |   3 |   5 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  11 |  0.5
-   7 |   2 |   6 |   8 |    1
-   8 |   2 |   5 |   7 |    1
-   9 |   2 |   8 |   6 |  0.5
-  10 |   2 |  -3 |  -2 |    0
-(10 rows)
+   4 |   1 |   6 |  11 |    1
+   5 |   2 |   6 |   8 |    1
+   6 |   2 |   5 |   7 |    1
+   7 |   2 |   8 |   6 |  0.5
+(7 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     false,
-    true
+    true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   2 |    1
    3 |   1 |   3 |   5 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  11 |  0.5
-   7 |   2 |   6 |   8 |    1
-   8 |   2 |   5 |   7 |    1
-   9 |   2 |   8 |   6 |  0.5
-  10 |   2 |  -3 |  -2 |    0
-(10 rows)
+   4 |   1 |   6 |  11 |    1
+   5 |   2 |   6 |   8 |    1
+   6 |   2 |   5 |   7 |    1
+   7 |   2 |   8 |   6 |  0.5
+(7 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[4,6,11]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     false,
-    false
+    false,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   4 |  0.5
    2 |   1 |   5 |   7 |    1
-   3 |   1 |   8 |   6 |  0.5
-   4 |   1 |  -2 |  -1 |    0
-   5 |   2 |  -2 |   6 |  0.5
-   6 |   2 |   8 |   7 |    1
-   7 |   2 |   5 |   8 |    1
-   8 |   2 |   6 |  11 |  0.5
-   9 |   2 |  -3 |  -2 |    0
-(9 rows)
+   3 |   1 |   8 |   6 |    1
+   4 |   2 |   8 |   7 |    1
+   5 |   2 |   5 |   8 |    1
+   6 |   2 |   6 |  11 |  0.5
+(6 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     false,
-    false
+    false,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  11 |  0.5
-   7 |   2 |   6 |   8 |    1
-   8 |   2 |   5 |   7 |    1
-   9 |   2 |   8 |   6 |  0.5
-  10 |   2 |  -3 |  -2 |    0
-(10 rows)
+   4 |   1 |   6 |  11 |    1
+   5 |   2 |   6 |   8 |    1
+   6 |   2 |   5 |   7 |    1
+   7 |   2 |   8 |   6 |  0.5
+(7 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     ARRAY[1,11,6]::INTEGER[],
     ARRAY[0.5, 0.5, 0.5]::float8[],
     false,
-    false
+    false,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.5
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |   8 |    1
-   4 |   1 |   6 |  11 |  0.5
-   5 |   1 |  -2 |  -1 |    0
-   6 |   2 |  -2 |  11 |  0.5
-   7 |   2 |   6 |   8 |    1
-   8 |   2 |   5 |   7 |    1
-   9 |   2 |   8 |   6 |  0.5
-  10 |   2 |  -3 |  -2 |    0
-(10 rows)
+   4 |   1 |   6 |  11 |    1
+   5 |   2 |   6 |   8 |    1
+   6 |   2 |   5 |   7 |    1
+   7 |   2 |   8 |   6 |  0.5
+(7 rows)
 
 ROLLBACK;
 ROLLBACK

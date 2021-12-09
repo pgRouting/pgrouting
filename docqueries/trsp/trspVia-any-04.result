@@ -7,7 +7,6 @@ SELECT * FROM pgr_trspVia(
 
   'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions',
   ARRAY[2, 7, 11]::INTEGER[],
-  true,
   true
 );
  seq | id1 | id2 | id3 | cost
