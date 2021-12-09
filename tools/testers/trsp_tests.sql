@@ -60,9 +60,11 @@ dijkstraVia_sql TEXT;
 trsp_sql TEXT;
 with_reverse_cost TEXT;
 no_reverse_cost TEXT;
+empty_restrictions TEXT;
 k INTEGER;
 directed TEXT;
 msg TEXT;
+msg_end TEXT;
 BEGIN
   directed = 'Undirected';
   IF flag THEN directed = 'Directed'; END IF;
@@ -70,18 +72,26 @@ BEGIN
   k := 1;
   with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
   no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
+  empty_restrictions =  quote_literal('SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path');
+  msg_end = E'\n' || trsp_sql || E'\n' || dijkstraVia_sql;
+  msg_end = ' ';
+
   FOR i IN 1.. cant LOOP
-    FOR j IN 1..cant LOOP
+    FOR j IN 1.. cant LOOP
 
       -- test when there is reverse cost and its marked as being used
       -- VS dijkstraVia autodetected has reverse cost
-      dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
-      (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-      FROM pgr_dijkstraVia( ' || with_reverse_cost || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
+      dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,'
+        || '(CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text'
+        || ' FROM pgr_dijkstraVia( ' || with_reverse_cost
+        || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
 
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia( ' || with_reverse_cost || ', NULL, ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
+      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
+        || with_reverse_cost || ','
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
 
-      msg := k || '-1 ' || directed || ', with reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j;
+      msg := '-1- ' || directed || ', with reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j || msg_end;
+      PERFORM todo(4, 'Something is wrong');
       RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
       -- test when there is reverse cost and its marked NOT being used
@@ -89,9 +99,12 @@ BEGIN
       dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
       (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
       FROM pgr_dijkstraVia( ' || with_reverse_cost || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia( ' || with_reverse_cost || ', NULL, ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
-      msg := k || '-2 ' || directed || ', with reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
-      IF NOT min_version('4.0.1') THEN PERFORM todo(1, 'has_rcost flag should be ignored'); END IF;
+
+      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
+        || with_reverse_cost || ','
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
+
+      msg := '-2- ' || directed || ', with reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j || msg_end;
       RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
       -- test when there is NO reverse cost and its marked NOT being used
@@ -99,8 +112,12 @@ BEGIN
       dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
       (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
       FROM pgr_dijkstraVia( ' || no_reverse_cost || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia( ' || no_reverse_cost || ', NULL, ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
-      msg := k || '-3 ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
+
+      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
+        || no_reverse_cost || ','
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', FALSE)';
+
+      msg := '-3- ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j || msg_end;
       RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
       -- test when there is NO reverse cost and its marked  AS being used
@@ -108,8 +125,12 @@ BEGIN
       dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
       (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
       FROM pgr_dijkstraVia( ' || no_reverse_cost || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia( ' || no_reverse_cost || ', NULL, ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
-      msg := k || '-4 ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j;
+
+      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
+        || no_reverse_cost || ','
+        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
+
+      msg := '-4- ' || directed || ', NO reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j || msg_end;
       -- TODO should be fixed
       IF NOT min_version('4.0.1') THEN
         RETURN QUERY SELECT skip(1, 'has_rcost flag should be ignored, Currently No compare can be done');
