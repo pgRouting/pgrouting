@@ -32,8 +32,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "dijkstra/dijkstraVia.hpp"
+#include "trsp/pgr_trspHandler.h"
 
 #include "cpp_common/rule.h"
+#include "cpp_common/combinations.h"
 #include "c_types/edge_t.h"
 #include "c_types/restriction_t.h"
 #include "c_types/routes_t.h"
@@ -94,7 +96,7 @@ get_route(
 void
 do_trspVia(
         Edge_t* data_edges, size_t total_edges,
-        Restriction_t* data_restrictions, size_t total_restrictions,
+        Restriction_t* restrictions, size_t total_restrictions,
         int64_t* via_vidsArr, size_t size_via_vidsArr,
         bool directed,
         bool strict,
@@ -110,11 +112,11 @@ do_trspVia(
 
     try {
         pgassert(total_edges != 0);
+        pgassert(*return_count == 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
-        pgassert(*return_count == 0);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -149,13 +151,56 @@ do_trspVia(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
-        // get the space required to store all the paths
+        if (total_restrictions == 0) {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (get_route(return_tuples, paths));
+            (*return_tuples)[count - 1].edge = -2;
+            return;
+        }
+
+        /*
+         * When there are turn restrictions
+         */
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < total_restrictions; ++i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
+        auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
+        std::deque<Path> new_paths;
+        if (!new_combinations.empty()) {
+            pgrouting::trsp::Pgr_trspHandler gdef(
+                    data_edges,
+                    total_edges,
+                    directed,
+                    ruleList);
+
+            auto new_paths = gdef.process(new_combinations);
+            paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+            /*
+             * order the path based on the vias
+             */
+            std::deque<Path> orderedPaths;
+            auto prev_stop = via_vertices[0];
+            for (const auto &stop : via_vertices) {
+                if (stop == via_vertices[0]) continue;
+                /*
+                 * prev_stop, stop
+                 */
+                auto ptr = std::find_if(
+                        paths.begin(), paths.end(),
+                        [prev_stop, stop](const Path &p)
+                        {return prev_stop == p.start_id() && stop == p.end_id();});
+                if (ptr != paths.end()) orderedPaths.push_back(*ptr);
+                prev_stop = stop;
+            }
+        }
+
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;
