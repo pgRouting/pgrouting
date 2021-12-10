@@ -32,14 +32,14 @@ TODO
 - rename to pgr_trspVia (DONE)
 - restrictions sql should be the second parameter (DONE)
 - Do not accept NULL restrictions (DONE)
-- has_rcost should be removed (DOING)
+- has_rcost should be removed (DONE)
 - Results when empty restrictions or unrelated restrictions should be same a dijskstra
 - restrictions sql should be the new restrictions
 - Directed flag should be optional
 - Results columns with meaningful names
 - Results columns more like pgr_dijkstraVia
 - Perform the via on the C/C++ code instead of on the SQL code
-- function should be STRICT
+- function should be STRICT (DOING)
 */
 --v3.0
 CREATE FUNCTION pgr_trspVia(
@@ -65,9 +65,11 @@ DECLARE
     directed BOOLEAN   := $4;
 
 BEGIN
+  /*
     IF (restrictions_sql IS NULL) THEN
         RETURN;
     END IF;
+*/
 
     /*
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
@@ -85,12 +87,14 @@ BEGIN
     END IF;
 */
 
+/*
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
             (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, a.cost
             FROM pgr_dijkstraVia(edges_sql, via_vids, directed, strict:=true) AS a WHERE edge != -1;
         RETURN;
     END IF;
+*/
 
 
     -- make the call without contradiction from part of the user
@@ -102,7 +106,7 @@ BEGIN
 */
 END
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE plpgsql VOLATILE STRICT
 COST 100
 ROWS 1000;
 

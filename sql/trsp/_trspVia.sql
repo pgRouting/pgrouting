@@ -59,11 +59,13 @@ declare
     restrictions_query TEXT;
 
 begin
+  /*
     IF (turn_restrict_sql IS NULL) THEN
         RAISE EXCEPTION 'Restrictions Missing';
     END IF;
     IF (array_length(vids, 1) = 0) THEN RETURN; END IF;
     IF (vids IS NULL) THEN RETURN; END IF;
+*/
 
     restrictions_query = $$
     WITH old_restrictions AS ( $$ ||
@@ -116,7 +118,7 @@ begin
     return;
 end;
 $body$
-language plpgsql stable
+LANGUAGE plpgsql VOLATILE STRICT
 cost 100
 rows 1000;
 
