@@ -40,7 +40,6 @@ FROM pgr_dijkstraVia(
     true) where edge != -1;
 
 
-SELECT todo('C code should take care of calling dijkstra',1);
 SELECT is_empty('q1', '1: No path from 1 to 1');
 SELECT set_eq('q21','q22','2: without retrictions returns the same as pgr_dijkstra');
 SELECT set_eq('q31','q32','3: with retrictions returns expected path');

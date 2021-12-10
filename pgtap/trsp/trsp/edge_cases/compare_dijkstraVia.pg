@@ -52,7 +52,6 @@ BEGIN
     true) where edge != -1;
 
 
-  PERFORM todo('C code should take care of calling dijkstra',1);
   RETURN QUERY SELECT is_empty('q1', '1: Directed: No path from 1 to 1');
   RETURN QUERY SELECT lives_ok('q2', '2: ANY_INTEGER and ANY_NUMERICAL are accepted');
 
@@ -97,7 +96,6 @@ BEGIN
     FALSE) where edge != -1;
 
 
-  PERFORM todo('C code should take care of calling dijkstra',1);
   RETURN QUERY SELECT is_empty('q41', '5: Undirected: No path from 1 to 1');
   RETURN QUERY SELECT set_eq('q51','q52','6: Undirected: without retrictions returns the same as pgr_dijkstra');
 
