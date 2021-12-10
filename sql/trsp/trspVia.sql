@@ -21,28 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/* pgr_trspVia
- - if size of restrictions_sql  is Zero or no restrictions_sql are given
-     then call to pgr_dijkstra is made
-
- - because it reads the data wrong, when there is a reverse_cost column:
-   - put all data costs in one cost column and
-   - a call is made to original code in _pgr_trspViaVertices without only the positive values
-TODO
-- rename to pgr_trspVia (DONE)
-- restrictions sql should be the second parameter (DONE)
-- Do not accept NULL restrictions (DONE)
-- has_rcost should be removed (DONE)
-- Results when empty restrictions or unrelated restrictions should be same a dijskstra (DOING)
-- restrictions sql should be the new restrictions (DONE)
-- Directed flag should be optional (DONE)
-- Results columns with meaningful names (DOING)
-- Results columns more like pgr_dijkstraVia (DOING)
-- Perform the via on the C/C++ code instead of on the SQL code
-- function should be STRICT (DONE)
-- must accept prepared statements (DONE)
-*/
---v3.0
+--v4.0
 CREATE FUNCTION pgr_trspVia(
   TEXT, -- edges SQL (required)
   TEXT, -- restrictions SQL
