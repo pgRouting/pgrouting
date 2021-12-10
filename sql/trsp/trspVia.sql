@@ -34,13 +34,13 @@ TODO
 - Do not accept NULL restrictions (DONE)
 - has_rcost should be removed (DONE)
 - Results when empty restrictions or unrelated restrictions should be same a dijskstra
-- restrictions sql should be the new restrictions
-- Directed flag should be optional
+- restrictions sql should be the new restrictions (DOING)
+- Directed flag should be optional (DONE)
 - Results columns with meaningful names
 - Results columns more like pgr_dijkstraVia
 - Perform the via on the C/C++ code instead of on the SQL code
-- function should be STRICT (DOING)
-- must accept prepared statements (DOING)
+- function should be STRICT (DONE)
+- must accept prepared statements (DONE)
 */
 --v3.0
 CREATE FUNCTION pgr_trspVia(
