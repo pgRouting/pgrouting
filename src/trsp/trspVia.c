@@ -55,6 +55,8 @@ void process(
         ArrayType *via_vertices,
 
         bool directed,
+        bool strict,
+        bool allow_u_turn,
 
         Routes_t **result_tuples,
         size_t *result_count) {
@@ -96,8 +98,8 @@ void process(
             restrictions, total_restrictions,
             via_arr, size_via_arr,
             directed,
-            true,  // strict
-            true,  // U_turn_on_edge
+            strict,
+            allow_u_turn,
 
             result_tuples,
             result_count,
@@ -137,6 +139,8 @@ _pgr_trspvia(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(4),
+                PG_GETARG_BOOL(5),
                 &result_tuples, &result_count);
 
         funcctx->max_calls = result_count;

@@ -151,8 +151,6 @@ do_trspVia(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            notice << "No paths found";
-            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
@@ -199,6 +197,12 @@ do_trspVia(
                 if (ptr != paths.end()) orderedPaths.push_back(*ptr);
                 prev_stop = stop;
             }
+        }
+
+        if (strict && paths.size() < via_vertices.size() -1) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
