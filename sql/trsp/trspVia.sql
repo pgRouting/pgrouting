@@ -48,6 +48,8 @@ CREATE FUNCTION pgr_trspVia(
   TEXT, -- restrictions SQL
   ANYARRAY,  -- via vids (required)
   directed BOOLEAN DEFAULT true,
+  strict BOOLEAN DEFAULT false,
+  U_turn_on_edge BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
   OUT path_id INTEGER,
@@ -70,7 +72,7 @@ BEGIN
   FROM _pgr_trspVia(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
-    $3, $4);
+    $3, $4, $5, $6);
 
 END;
 $BODY$
@@ -80,7 +82,7 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN)
+COMMENT ON FUNCTION pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN)
 IS 'pgr_trspVia
 - PROTOTYPE
 - Parameters
