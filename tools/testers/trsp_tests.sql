@@ -72,7 +72,7 @@ BEGIN
   k := 1;
   with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
   no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
-  empty_restrictions =  quote_literal('SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path');
+  empty_restrictions =  quote_literal('SELECT * FROM new_restrictions WHERE id > 7');
   msg_end = E'\n' || trsp_sql || E'\n' || dijkstraVia_sql;
   msg_end = ' ';
 
