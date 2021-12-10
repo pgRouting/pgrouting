@@ -302,8 +302,8 @@ SELECT * FROM _pgr_trspVia(
     ARRAY[1, 15, 2],
     false
 );
- path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
----------+----------+-----------+---------+------+------+------+----------
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
 (0 rows)
 
 SET LOG_ERROR_VERBOSITY TO terse;
