@@ -34,8 +34,8 @@ TODO
 - Do not accept NULL restrictions (DONE)
 - has_rcost should be removed (DONE)
 - Results when empty restrictions or unrelated restrictions should be same a dijskstra
-- restrictions sql should be the new restrictions (DOING)
-- Directed flag should be optional (DONE)
+- restrictions sql should be the new restrictions
+- Directed flag should be optional (DOING)
 - Results columns with meaningful names
 - Results columns more like pgr_dijkstraVia
 - Perform the via on the C/C++ code instead of on the SQL code
@@ -47,7 +47,7 @@ CREATE FUNCTION pgr_trspVia(
     TEXT, -- edges SQL (required)
     TEXT, -- restrictions SQL
     ANYARRAY,  -- via vids (required)
-    BOOLEAN, -- directed (required)
+    directed BOOLEAN DEFAULT true,
 
     OUT seq INTEGER,
     OUT id1 INTEGER,
@@ -59,7 +59,7 @@ RETURNS SETOF RECORD AS
 
 $BODY$
 
-  RETURN query SELECT * FROM _pgr_trspVia(
+  SELECT * FROM _pgr_trspVia(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3, $4);
