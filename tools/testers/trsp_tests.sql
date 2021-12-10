@@ -73,65 +73,34 @@ BEGIN
   with_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table ORDER BY id');
   no_reverse_cost = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost from edge_table ORDER BY id');
   empty_restrictions =  quote_literal('SELECT * FROM new_restrictions WHERE id > 7');
-  msg_end = E'\n' || trsp_sql || E'\n' || dijkstraVia_sql;
+  --msg_end = E'\n' || trsp_sql || E'\n' || dijkstraVia_sql;
   msg_end = ' ';
 
   FOR i IN 1.. cant LOOP
     FOR j IN 1.. cant LOOP
 
-      -- test when there is reverse cost and its marked as being used
-      -- VS dijkstraVia autodetected has reverse cost
-      dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,'
-        || '(CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text'
-        || ' FROM pgr_dijkstraVia( ' || with_reverse_cost
-        || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
+      dijkstraVia_sql := 'SELECT * FROM pgr_dijkstraVia( '
+        || with_reverse_cost
+        || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
 
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
-        || with_reverse_cost || ','
+      trsp_sql := 'SELECT * FROM pgr_trspVia('
+        || with_reverse_cost  || ','
         || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
 
-      msg := '-1- ' || directed || ', with reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j || msg_end;
-      PERFORM todo(4, 'Something is wrong');
+      msg := '-1- ' || directed || ', with reverse_cost: from 1 to '  || i || ' to ' || j || msg_end;
       RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
-      -- test when there is reverse cost and its marked NOT being used
-      -- VS dijkstraVia autodetected DOES NOT have reverse cost
-      dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
-      (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-      FROM pgr_dijkstraVia( ' || with_reverse_cost || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
+      dijkstraVia_sql := 'SELECT * FROM pgr_dijkstraVia( '
+        || no_reverse_cost
+        || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE)';
 
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
-        || with_reverse_cost || ','
+      trsp_sql := 'SELECT * FROM pgr_trspVia('
+        || no_reverse_cost  || ','
         || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
 
-      msg := '-2- ' || directed || ', with reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j || msg_end;
+      msg := '-1- ' || directed || ', no reverse_cost: from 1 to '  || i || ' to ' || j || msg_end;
       RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
-      -- test when there is NO reverse cost and its marked NOT being used
-      -- VS dijkstraVia autodetected DOES NOT have reverse cost (same as previous)
-      dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
-      (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-      FROM pgr_dijkstraVia( ' || no_reverse_cost || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
-
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
-        || no_reverse_cost || ','
-        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
-
-      msg := '-3- ' || directed || ', NO reverse_cost, marked as NOT being used: from 1 to '  || i || ' to ' || j || msg_end;
-      RETURN query SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
-
-      -- test when there is NO reverse cost and its marked  AS being used
-      -- Uncomparable with dijkstraViaViaVertex because dijstra uses what is given as input
-      dijkstraVia_sql := 'SELECT (row_number() over())::INTEGER, path_id::INTEGER, node::INTEGER,
-      (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost::text
-      FROM pgr_dijkstraVia( ' || no_reverse_cost || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ', TRUE) WHERE edge != -1';
-
-      trsp_sql := 'SELECT seq, id1, id2, id3, cost::text from pgr_trspVia('
-        || no_reverse_cost || ','
-        || empty_restrictions || ', ARRAY[1, ' || i || ', ' || j || '], ' || flag || ')';
-
-      msg := '-4- ' || directed || ', NO reverse_cost, marked as being used: from 1 to '  || i || ' to ' || j || msg_end;
-      RETURN QUERY SELECT set_eq(trsp_sql, dijkstraVia_sql, msg);
 
       k := k + 1;
 
