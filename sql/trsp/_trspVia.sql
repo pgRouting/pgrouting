@@ -26,6 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -----------------------
 
 
+-- TODO
+-- add strict flag
+-- add U_turn_in_edge flag
 --v4.0
 CREATE FUNCTION _pgr_trspVia (
   TEXT,
@@ -33,6 +36,7 @@ CREATE FUNCTION _pgr_trspVia (
   ANYARRAY,
   BOOLEAN,
 
+  OUT seq INTEGER,
   OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
@@ -40,28 +44,12 @@ CREATE FUNCTION _pgr_trspVia (
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
-  OUT agg_cost FLOAT
+  OUT agg_cost FLOAT,
+  OUT route_agg_cost FLOAT
 )
 RETURNS SETOF RECORD AS
-$BODY$
-DECLARE
-    i integer;
-begin
-
-    FOR i IN 1 .. array_length($3, 1) - 1
-    LOOP
-        RETURN QUERY
-        SELECT i, a.seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-        FROM pgr_trsp($1, $2, $3[i], $3[i+1], $4) AS a;
-    END LOOP;
-
-end;
-$BODY$
-LANGUAGE plpgsql VOLATILE STRICT
-cost 100
-rows 1000;
-
--- COMMENTS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE;
 
 COMMENT ON FUNCTION _pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN)
 IS 'pgRouting internal function';

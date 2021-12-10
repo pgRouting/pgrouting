@@ -66,28 +66,11 @@ $BODY$
 BEGIN
 
   RETURN QUERY
-  WITH
-  the_results AS (
-    SELECT ROW_NUMBER() OVER()::INTEGER AS seq, *, lag(a.cost) OVER()
-    FROM _pgr_trspVia(
-        _pgr_get_statement($1),
-        _pgr_get_statement($2),
-        $3, $4) AS a
-  ),
-  the_results1 AS (
-    SELECT *, sum(a.lag) OVER(ORDER BY a.path_id, a.path_seq) AS route_agg_cost
-    FROM the_results AS a
-  ),
-  path_id_is_complete AS (
-    SELECT count(distinct the_results.path_id) = array_length($3, 1) - 1 AS is_ok,
-      max(the_results.seq) AS last_row
-    FROM the_results
-  )
-  SELECT r.seq, r.path_id, r.path_seq, r.start_vid, r.end_vid, r.node,
-    CASE WHEN r.seq = last_row THEN -2 ELSE r.edge END,
-    r.cost, r.agg_cost, coalesce(r.route_agg_cost,0)
-  FROM path_id_is_complete, the_results1 AS r WHERE is_ok;
-
+  SELECT *
+  FROM _pgr_trspVia(
+    _pgr_get_statement($1),
+    _pgr_get_statement($2),
+    $3, $4);
 
 END;
 $BODY$
