@@ -68,8 +68,9 @@ process(char* edges_sql,
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_pgr_dijkstraVia(
+    do_dijkstraVia(
             edges, total_edges,
+            NULL, 0,
             via_vidsArr, size_via_vidsArr,
             directed,
             strict,

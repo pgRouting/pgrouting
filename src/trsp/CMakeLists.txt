@@ -2,7 +2,6 @@ add_library(trsp OBJECT
     new_trsp.c
 
     trspVia.c
-    trspVia_driver.cpp
 
     GraphDefinition.cpp
     withpointstrsp.c

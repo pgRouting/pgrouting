@@ -36,6 +36,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "trsp/pgr_trspHandler.h"
+#include "cpp_common/rule.h"
+#include "cpp_common/combinations.h"
+#include "c_types/edge_t.h"
+#include "c_types/restriction_t.h"
+
 
 namespace {
 
@@ -87,8 +93,9 @@ get_route(
 }  // namespace
 
 void
-do_pgr_dijkstraVia(
+do_dijkstraVia(
         Edge_t* data_edges, size_t total_edges,
+        Restriction_t* restrictions, size_t total_restrictions,
         int64_t* via_vidsArr, size_t size_via_vidsArr,
         bool directed,
         bool strict,
@@ -149,7 +156,57 @@ do_pgr_dijkstraVia(
             return;
         }
 
-        // get the space required to store all the paths
+        if (total_restrictions == 0) {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (get_route(return_tuples, paths));
+            (*return_tuples)[count - 1].edge = -2;
+            return;
+        }
+
+        /*
+         * When there are turn restrictions
+         */
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < total_restrictions; ++i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
+        auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
+        std::deque<Path> new_paths;
+        if (!new_combinations.empty()) {
+            pgrouting::trsp::Pgr_trspHandler gdef(
+                    data_edges,
+                    total_edges,
+                    directed,
+                    ruleList);
+
+            auto new_paths = gdef.process(new_combinations);
+            paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+            /*
+             * order the path based on the vias
+             */
+            std::deque<Path> orderedPaths;
+            auto prev_stop = via_vertices[0];
+            for (const auto &stop : via_vertices) {
+                if (stop == via_vertices[0]) continue;
+                /*
+                 * prev_stop, stop
+                 */
+                auto ptr = std::find_if(
+                        paths.begin(), paths.end(),
+                        [prev_stop, stop](const Path &p)
+                        {return prev_stop == p.start_id() && stop == p.end_id();});
+                if (ptr != paths.end()) orderedPaths.push_back(*ptr);
+                prev_stop = stop;
+            }
+        }
+
+        if (strict && paths.size() < via_vertices.size() -1) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            return;
+        }
+
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;

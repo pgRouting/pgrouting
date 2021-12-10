@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 
-#include "drivers/trsp/trspVia_driver.h"
+#include "drivers/dijkstra/dijkstraVia_driver.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
@@ -93,7 +93,7 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_trspVia(
+    do_dijkstraVia(
             edges, total_edges,
             restrictions, total_restrictions,
             via_arr, size_via_arr,
