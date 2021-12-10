@@ -58,20 +58,14 @@ CREATE FUNCTION pgr_trspVia(
 RETURNS SETOF RECORD AS
 
 $BODY$
-DECLARE
-    edges_sql TEXT     := $1;
-    restrictions_sql TEXT     := $2;
-    via_vids INTEGER[] := $3;
-    directed BOOLEAN   := $4;
 
-BEGIN
   RETURN query SELECT * FROM _pgr_trspVia(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3, $4);
-END
+
 $BODY$
-LANGUAGE plpgsql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
