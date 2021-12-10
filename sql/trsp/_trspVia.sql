@@ -48,11 +48,11 @@ DECLARE
     i integer;
 begin
 
-    FOR i IN 1 .. array_length(vids, 1) - 1
+    FOR i IN 1 .. array_length($3, 1) - 1
     LOOP
         RETURN QUERY
         SELECT i, a.seq, a.start_vid, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
-        FROM pgr_trsp($1, $2, vids[i], vids[i+1], $4) AS a;
+        FROM pgr_trsp($1, $2, $3[i], $3[i+1], $4) AS a;
     END LOOP;
 
 end;
