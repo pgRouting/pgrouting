@@ -64,8 +64,9 @@ void process(
     int64_t* via_arr = (int64_t*) pgr_get_bigIntArray(&size_via_arr, via_vertices);
 
     if (size_via_arr < 2) {
-        if (via_arr) {pfree(via_arr); via_arr = NULL;};
+        if (via_arr) {pfree(via_arr); via_arr = NULL;}
         elog(WARNING, "Not enough via points");
+        pgr_SPI_finish();
         return;
     }
 
@@ -74,7 +75,7 @@ void process(
     pgr_get_edges(edges_sql, &edges, &total_edges);
 
     if (total_edges == 0) {
-        if (via_arr) {pfree(via_arr); via_arr = NULL;};
+        if (via_arr) {pfree(via_arr); via_arr = NULL;}
         elog(WARNING, "No graph data found");
         pgr_SPI_finish();
         return;
@@ -95,7 +96,7 @@ void process(
             restrictions, total_restrictions,
             via_arr, size_via_arr,
             directed,
-            true,  //strict
+            true,  // strict
             true,  // U_turn_on_edge
 
             result_tuples,
