@@ -26,7 +26,6 @@ BEGIN
     RETURN query SELECT throws_ok(query);
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
-    IF NOT min_version('3.3.0') THEN PERFORM todo(1, 'Bug fix on 3.3.0'); END IF;
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
