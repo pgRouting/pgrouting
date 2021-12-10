@@ -300,7 +300,7 @@ SELECT * FROM _pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     ARRAY[1, 15, 2],
-    false
+    false, false, true
 );
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
@@ -343,7 +343,9 @@ SELECT * FROM pgr_TRSPVia(
 );
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-(0 rows)
+   1 |       2 |        1 |         1 |       2 |    1 |    1 |    1 |        0 |              0
+   2 |       2 |        2 |         1 |       2 |    2 |   -2 |    0 |        1 |              1
+(2 rows)
 
 SELECT * FROM pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -353,7 +355,9 @@ SELECT * FROM pgr_trspVia(
 );
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-(0 rows)
+   1 |       2 |        1 |         1 |       2 |    1 |    1 |    1 |        0 |              0
+   2 |       2 |        2 |         1 |       2 |    2 |   -2 |    0 |        1 |              1
+(2 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,

@@ -171,7 +171,7 @@ SELECT * FROM _pgr_trspVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
     ARRAY[1, 15, 2],
-    false
+    false, false, true
 );
 SET LOG_ERROR_VERBOSITY TO terse;
 -- '\`\`\`'
