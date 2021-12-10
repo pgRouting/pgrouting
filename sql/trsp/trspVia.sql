@@ -65,45 +65,7 @@ DECLARE
     directed BOOLEAN   := $4;
 
 BEGIN
-  /*
-    IF (restrictions_sql IS NULL) THEN
-        RETURN;
-    END IF;
-*/
-
-    /*
-    has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
-
-    new_sql := edges_sql;
-    IF (has_reverse != has_rcost) THEN  -- user contradiction
-        IF (has_reverse) THEN  -- it has reverse_cost but user don't want it.
-            new_sql :=
-               'WITH old_sql AS (' || edges_sql || ')' ||
-                '   SELECT id, source, target, cost FROM old_sql';
-        ELSE -- it does not have reverse_cost but user wants it
-            RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
-            USING ERRCODE := 'XX000';
-        END IF;
-    END IF;
-*/
-
-/*
-    IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
-        RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
-            (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, a.cost
-            FROM pgr_dijkstraVia(edges_sql, via_vids, directed, strict:=true) AS a WHERE edge != -1;
-        RETURN;
-    END IF;
-*/
-
-
-    -- make the call without contradiction from part of the user
     RETURN query SELECT * FROM _pgr_trspVia(edges_sql, restrictions_sql, via_vids::INTEGER[], directed);
-    /*
-    IF NOT FOUND THEN
-        RAISE EXCEPTION 'Error computing path: Path Not Found';
-    END IF;
-*/
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT
