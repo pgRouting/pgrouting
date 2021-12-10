@@ -40,6 +40,7 @@ TODO
 - Results columns more like pgr_dijkstraVia
 - Perform the via on the C/C++ code instead of on the SQL code
 - function should be STRICT (DOING)
+- must accept prepared statements (DOING)
 */
 --v3.0
 CREATE FUNCTION pgr_trspVia(
@@ -47,7 +48,6 @@ CREATE FUNCTION pgr_trspVia(
     TEXT, -- restrictions SQL
     ANYARRAY,  -- via vids (required)
     BOOLEAN, -- directed (required)
-
 
     OUT seq INTEGER,
     OUT id1 INTEGER,
@@ -65,7 +65,10 @@ DECLARE
     directed BOOLEAN   := $4;
 
 BEGIN
-    RETURN query SELECT * FROM _pgr_trspVia(edges_sql, restrictions_sql, via_vids::INTEGER[], directed);
+  RETURN query SELECT * FROM _pgr_trspVia(
+    _pgr_get_statement($1),
+    _pgr_get_statement($2),
+    $3, $4);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT

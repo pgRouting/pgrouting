@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE FUNCTION _pgr_trspVia (
     sql text,
     turn_restrict_sql text,
-    vids integer[],
+    vids ANYARRAY,
     directed boolean,
 
     OUT seq INTEGER,
@@ -117,5 +117,5 @@ rows 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION _pgr_trspVia(TEXT, TEXT, INTEGER [], BOOLEAN)
+COMMENT ON FUNCTION _pgr_trspVia(TEXT, TEXT, ANYARRAY, BOOLEAN)
 IS 'pgRouting internal function';
