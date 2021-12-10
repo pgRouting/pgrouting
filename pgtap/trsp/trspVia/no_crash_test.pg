@@ -35,7 +35,11 @@ BEGIN
         );
 
         RETURN query SELECT * FROM lives_ok(q1,  'should live i = ' || i);
-        RETURN query SELECT * FROM is_empty(q1,  'should be empty i = ' || i);
+        IF (i = 2) THEN
+          RETURN query SELECT * FROM is_empty(q1,  'should be empty i = ' || i);
+        ELSE
+          RETURN query SELECT * FROM is_empty(q1,  'should be empty i = ' || i);
+        END IF;
     END LOOP;
 
 END
