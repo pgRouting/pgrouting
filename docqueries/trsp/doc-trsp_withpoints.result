@@ -1,0 +1,127 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+SET extra_float_digits=-3;
+SET
+/* --e1 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  7, 12);
+ seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --e2 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  7, ARRAY[12,3],
+
+  details := true);
+ seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --e3 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  ARRAY[12,3], 7);
+ seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --e4 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  ARRAY[12,3]::BIGINT[], ARRAY[7,1]::BIGINT[]);
+ seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --e5 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  $$SELECT * FROM conmbinations_table$$,
+  driving_side => $$r$$,
+  details => true);
+ seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --q1 */
+SELECT
+  ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
+  CASE WHEN edge = -1 THEN $$ visits$$
+  ELSE ' passes in front of'
+  END as status,
+  CASE WHEN node < 0 THEN $$Point$$ ELSE $$Vertex$$ END as is_a,
+  abs(node) as id
+  FROM pgr_trsp_withPoints(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+    $$SELECT * FROM new_restrictions$$,
+    $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+    ARRAY[1,-1], ARRAY[-2,-3,-6,3,6],
+    driving_side := $$r$$,
+    details := true)
+  WHERE node IN (-6,6);
+ path_at | status | is_a | id
+---------+--------+------+----
+(0 rows)
+
+/* --q2 */
+SELECT
+  ('(' || start_pid || ' => ' || end_pid ||') at ' || path_seq || 'th step:')::TEXT AS path_at,
+  CASE WHEN edge = -1 THEN $$ visits$$
+  ELSE $$ passes in front of$$
+  END as status,
+  CASE WHEN node < 0 THEN $$Point$$ ELSE $$Vertex$$ END as is_a,
+  abs(node) as id
+FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  ARRAY[1,-1], ARRAY[-2,-3,-6,3,6],
+  driving_side := $$l$$,
+  details := true)
+WHERE node IN (-6,6);
+ path_at | status | is_a | id
+---------+--------+------+----
+(0 rows)
+
+/* --q3 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  ARRAY[-1,2], ARRAY[-3,7],
+  directed := false,
+  details := true);
+ seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --q4 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  $$SELECT * FROM ( VALUES (-1, 3), (2, -3) ) AS t(source, target)$$,
+  driving_side => $$r$$,
+  details => true);
+ seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --q5 */
+ROLLBACK;
+ROLLBACK
