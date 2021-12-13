@@ -44,6 +44,8 @@ CREATE FUNCTION pgr_trsp_withPoints(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_pid BIGINT,
+    OUT end_pid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -77,6 +79,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
+    OUT start_pid BIGINT,
     OUT end_pid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -112,6 +115,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_pid BIGINT,
+    OUT end_pid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,

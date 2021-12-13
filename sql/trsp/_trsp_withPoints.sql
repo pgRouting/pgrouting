@@ -42,7 +42,6 @@ CREATE FUNCTION _pgr_trsp_withPoints(
     only_cost BOOLEAN DEFAULT false, -- gets path
     normal BOOLEAN DEFAULT true, -- false for many to onu
 
-
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_pid BIGINT,
