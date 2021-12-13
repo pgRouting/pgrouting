@@ -42,10 +42,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "dijkstra/dijkstra.hpp"
 #include "withPoints/pgr_withPoints.hpp"
 
+#include "cpp_common/rule.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/combinations.h"
 #include "c_types/restriction_t.h"
+#include "trsp/pgr_trspHandler.h"
+
+namespace {
 
 template < class G >
 std::deque< Path >
@@ -70,6 +74,7 @@ pgr_dijkstra(
     return paths;
 }
 
+}  // namespace
 
 void
 do_trsp_withPoints(
@@ -184,8 +189,45 @@ do_trsp_withPoints(
             return;
         }
 
+        if (restrictions_size == 0) {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (collapse_paths(return_tuples, paths));
+            return;
+        }
+
+        /*
+         * When there are turn restrictions
+         */
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < restrictions_size; ++i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
+        auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
+
+        std::deque<Path> new_paths;
+        if (!new_combinations.empty()) {
+            pgrouting::trsp::Pgr_trspHandler gdef(
+                    edges,
+                    total_edges,
+                    directed,
+                    ruleList);
+            auto new_paths = gdef.process(new_combinations);
+            paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+            /*
+             * order paths based on the start_pid, end_pid
+             */
+            std::sort(paths.begin(), paths.end(),
+                    [](const Path &a, const Path &b)
+                    -> bool {
+                    if (b.start_id() != a.start_id()) {
+                    return a.start_id() < b.start_id();
+                    }
+                    return a.end_id() < b.end_id();
+                    });
+        }
+
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         log << "************************************************";
