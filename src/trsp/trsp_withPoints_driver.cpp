@@ -161,35 +161,35 @@ do_trsp_withPoints(
                     only_cost, normal);
         }
 
-        if (!details) {
-            for (auto &path : paths) {
-                path = pg_graph.eliminate_details(path);
-            }
-        }
-
-        /*
-         * order paths based on the start_pid, end_pid
-         */
-        std::sort(paths.begin(), paths.end(),
-                [](const Path &a, const Path &b)
-                -> bool {
-                if (b.start_id() != a.start_id()) {
-                return a.start_id() < b.start_id();
-                }
-                return a.end_id() < b.end_id();
-                });
-
-        size_t count(0);
-        count = count_tuples(paths);
-
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            return;
-        }
-
         if (restrictions_size == 0) {
+            if (!details) {
+                for (auto &path : paths) {
+                    path = pg_graph.eliminate_details(path);
+                }
+            }
+
+            /*
+             * order paths based on the start_pid, end_pid
+             */
+            std::sort(paths.begin(), paths.end(),
+                    [](const Path &a, const Path &b)
+                    -> bool {
+                    if (b.start_id() != a.start_id()) {
+                    return a.start_id() < b.start_id();
+                    }
+                    return a.end_id() < b.end_id();
+                    });
+
+            size_t count(0);
+            count = count_tuples(paths);
+
+
+            if (count == 0) {
+                (*return_tuples) = NULL;
+                (*return_count) = 0;
+                return;
+            }
+
             (*return_tuples) = pgr_alloc(count, (*return_tuples));
             (*return_count) = (collapse_paths(return_tuples, paths));
             return;
@@ -210,22 +210,26 @@ do_trsp_withPoints(
             pgrouting::trsp::Pgr_trspHandler gdef(
                     edges,
                     total_edges,
+                    pg_graph.new_edges(),
                     directed,
                     ruleList);
             auto new_paths = gdef.process(new_combinations);
             paths.insert(paths.end(), new_paths.begin(), new_paths.end());
-            /*
-             * order paths based on the start_pid, end_pid
-             */
-            std::sort(paths.begin(), paths.end(),
-                    [](const Path &a, const Path &b)
-                    -> bool {
-                    if (b.start_id() != a.start_id()) {
-                    return a.start_id() < b.start_id();
-                    }
-                    return a.end_id() < b.end_id();
-                    });
         }
+        /*
+         * order paths based on the start_pid, end_pid
+         */
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &a, const Path &b)
+                -> bool {
+                if (b.start_id() != a.start_id()) {
+                return a.start_id() < b.start_id();
+                }
+                return a.end_id() < b.end_id();
+                });
+
+        size_t count(0);
+        count = count_tuples(paths);
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         (*return_count) = (collapse_paths(return_tuples, paths));
@@ -259,4 +263,4 @@ do_trsp_withPoints(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-}
+        }

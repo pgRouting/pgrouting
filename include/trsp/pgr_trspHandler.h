@@ -106,6 +106,13 @@ class Pgr_trspHandler {
             const size_t edge_count,
             const bool directed,
             const std::vector<Rule> &ruleList);
+    Pgr_trspHandler(
+            Edge_t *edges,
+            const size_t edge_count,
+            const std::vector<Edge_t> &new_edges,
+            const bool directed,
+            const std::vector<Rule> &ruleList);
+
 
     Pgr_trspHandler(void) = delete;
     ~Pgr_trspHandler(void) = default;
@@ -132,6 +139,10 @@ class Pgr_trspHandler {
             const size_t edge_count,
             const bool directed);
 
+    void add_point_edges(
+        const std::vector<Edge_t> &new_edges,
+        const bool directed);
+
     int initialize_restrictions(
             const std::vector<Rule> &ruleList);
 
@@ -141,7 +152,6 @@ class Pgr_trspHandler {
             size_t edge_count);
 
     EdgeInfo dijkstra_exploration();
-
 
 
     void explore(

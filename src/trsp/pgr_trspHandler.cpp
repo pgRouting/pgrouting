@@ -58,10 +58,28 @@ Pgr_trspHandler::Pgr_trspHandler(
             directed);
 }
 
+Pgr_trspHandler::Pgr_trspHandler(
+        Edge_t *edges,
+        const size_t edge_count,
+        const std::vector<Edge_t> &new_edges,
+        const bool directed,
+        const std::vector<Rule> &ruleList) :
+    m_ruleTable() {
+    initialize_restrictions(ruleList);
+
+    m_min_id = renumber_edges(edges, edge_count);
+
+    construct_graph(
+            edges,
+            edge_count,
+            directed);
+}
+
 
 
 // -------------------------------------------------------------------------
-int64_t Pgr_trspHandler::renumber_edges(
+int64_t
+Pgr_trspHandler::renumber_edges(
         Edge_t *edges,
         size_t total_edges) const {
         int64_t v_min_id = INT64_MAX;
@@ -466,6 +484,29 @@ void Pgr_trspHandler::construct_graph(
             }
         }
         addEdge(*current_edge);
+    }
+    m_mapEdgeId2Index.clear();
+}
+
+void Pgr_trspHandler::add_point_edges(
+        const std::vector<Edge_t> &new_edges,
+        const bool directed) {
+    for (auto current_edge : new_edges) {
+
+        /*
+         * making all "cost" > 0
+         */
+        if (current_edge.cost < 0 && current_edge.reverse_cost > 0) {
+            std::swap(current_edge.cost, current_edge.reverse_cost);
+            std::swap(current_edge.source, current_edge.target);
+        }
+
+        if (!directed) {
+            if (current_edge.reverse_cost < 0) {
+                current_edge.reverse_cost = current_edge.cost;
+            }
+        }
+        addEdge(current_edge);
     }
     m_mapEdgeId2Index.clear();
 }
