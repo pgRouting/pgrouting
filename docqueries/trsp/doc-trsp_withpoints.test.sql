@@ -6,11 +6,31 @@ SELECT * FROM pgr_trsp_withPoints(
   $$SELECT * FROM new_restrictions$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
   7, 12);
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions WHERE id > 7$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  7, 12);
 SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
   7, 12);
-  -- -1, -3);
+
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, -3);
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT * FROM new_restrictions WHERE id > 7$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, -3);
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT pid, edge_id, fraction, side from pointsOfInterest$$,
+  -1, -3);
+
 /* --e2 */
 SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
