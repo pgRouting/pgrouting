@@ -226,7 +226,7 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        if (PG_NARGS() == 9) {
+        if (PG_NARGS() == 10) {
             /*
              * many to many
              */
@@ -246,7 +246,7 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        } else if (PG_NARGS() == 7) {
+        } else if (PG_NARGS() == 9) {
             /*
              * Combinations
              */
