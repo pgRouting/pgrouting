@@ -47,11 +47,9 @@ class EdgeInfo {
      inline size_t idx() const {return m_edgeIndex;}
 
      inline int64_t startNode() const {
-         pgassert(m_edge.source >= 0);
          return m_edge.source;
      }
      inline int64_t endNode() const {
-         pgassert(m_edge.target >= 0);
          return m_edge.target;}
 
      inline int64_t edgeID() const {return m_edge.id;}
