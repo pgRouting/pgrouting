@@ -10,7 +10,6 @@ SET(LOCAL_FILES
   trsp_withPoints.sql
 
   _array_reverse.sql
-  _withpointstrsp.sql
   withpointstrsp.sql
 
 
