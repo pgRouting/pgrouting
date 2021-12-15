@@ -146,7 +146,8 @@ SELECT * FROM pgr_withpointsTRSP(
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
-(1 row)
+   1 |  -2 |  -1 |    0
+(2 rows)
 
 /* --place15 */
 SELECT * FROM pgr_withpointsTRSP(
@@ -168,7 +169,8 @@ SELECT * FROM pgr_withpointsTRSP(
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
-(1 row)
+   1 |  -2 |  -1 |    0
+(2 rows)
 
 /* --place17 */
 SELECT * FROM pgr_withpointstrsp(
@@ -179,7 +181,8 @@ SELECT * FROM pgr_withpointstrsp(
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
-(1 row)
+   1 |  -2 |  -1 |    0
+(2 rows)
 
 /* --place18 */
 SELECT * FROM pgr_withpointstrsp(
@@ -190,7 +193,8 @@ SELECT * FROM pgr_withpointstrsp(
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
-(1 row)
+   1 |  -2 |  -1 |    0
+(2 rows)
 
 /* --place19 */
 
@@ -219,7 +223,8 @@ SELECT * FROM pgr_withpointsTRSP(
 -----+-----+-----+------
    0 |  -1 |   1 |  0.6
    1 |   2 |   4 |  0.7
-(2 rows)
+   2 |  -2 |  -1 |    0
+(3 rows)
 
 /* --place21 */
 SELECT * FROM pgr_withPoints(
@@ -245,10 +250,11 @@ SELECT * FROM pgr_withpointstrsp(
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
-   0 |   6 |   8 |    1
+   0 |  -1 |   8 |    1
    1 |   5 |   4 |    1
    2 |   2 |   1 |  0.6
-(3 rows)
+   3 |  -2 |  -1 |    0
+(4 rows)
 
 /* --place23 */
 SELECT * FROM pgr_withpointstrsp(
@@ -264,7 +270,8 @@ SELECT * FROM pgr_withpointstrsp(
    0 |   6 |   8 |    1
    1 |   5 |   4 |    1
    2 |   2 |   1 |  0.6
-(3 rows)
+   3 |  -2 |  -1 |    0
+(4 rows)
 
 /* --place24 */
 SELECT * FROM pgr_withPoints(
@@ -368,9 +375,11 @@ SELECT * FROM pgr_trspViaEdges(
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.9
-   2 |   1 |   2 |   2 |    1
-   3 |   2 |   2 |   1 |  0.5
-(3 rows)
+   2 |   1 |   2 |   2 |  0.5
+   3 |   2 |  -1 |   2 |  0.5
+   4 |   2 |   2 |   1 |  0.5
+   5 |   2 |  -2 |  -1 |    0
+(5 rows)
 
 SELECT * FROM _pgr_withPointsVia(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -441,10 +450,12 @@ SELECT * FROM pgr_trspViaEdges(
    1 |   1 |  -1 |   1 |  0.6
    2 |   1 |   2 |   4 |    1
    3 |   1 |   5 |  10 |    1
-   4 |   1 |  10 |  12 |  1.2
-   5 |   2 |  10 |  10 |    1
-   6 |   2 |   5 |   4 |  0.3
-(6 rows)
+   4 |   1 |  10 |  12 |  0.6
+   5 |   2 |  -1 |  12 |  0.6
+   6 |   2 |  10 |  10 |    1
+   7 |   2 |   5 |   4 |  0.3
+   8 |   2 |  -2 |  -1 |    0
+(8 rows)
 
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,

@@ -28,19 +28,9 @@ select * from pgr_withpointstrsp(
     true,
 
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
- seq | id1 | id2 |  cost
------+-----+-----+--------
-   0 |  -1 |   1 | 0.5005
-   1 |   2 |   4 |  1.016
-   2 |   5 |   8 |  1.064
-   3 |   6 |   9 |  1.081
-   4 |   9 |  16 |  1.256
-   5 |   4 |   3 |  1.009
-   6 |   3 |   5 |  1.025
-   7 |   6 |   8 |  1.064
-   8 |   5 |   7 |  1.049
-   9 |   8 |   6 |  0.518
-(10 rows)
+ seq | id1 | id2 | cost
+-----+-----+-----+------
+(0 rows)
 
 ROLLBACK;
 ROLLBACK
