@@ -471,22 +471,7 @@ void Pgr_trspHandler::construct_graph(
         const size_t edge_count,
         const bool directed) {
     for (size_t i = 0; i < edge_count; i++) {
-        auto current_edge = &edges[i];
-
-        /*
-         * making all costs > 0
-         */
-        if (current_edge->cost < 0 && current_edge->reverse_cost > 0) {
-            std::swap(current_edge->cost, current_edge->reverse_cost);
-            std::swap(current_edge->source, current_edge->target);
-        }
-
-        if (!directed) {
-            if (current_edge->reverse_cost < 0) {
-                current_edge->reverse_cost = current_edge->cost;
-            }
-        }
-        addEdge(*current_edge);
+        addEdge(edges[i], directed);
     }
     m_mapEdgeId2Index.clear();
 }
@@ -495,21 +480,7 @@ void Pgr_trspHandler::add_point_edges(
         const std::vector<Edge_t> &new_edges,
         const bool directed) {
     for (auto current_edge : new_edges) {
-
-        /*
-         * making all "cost" > 0
-         */
-        if (current_edge.cost < 0 && current_edge.reverse_cost > 0) {
-            std::swap(current_edge.cost, current_edge.reverse_cost);
-            std::swap(current_edge.source, current_edge.target);
-        }
-
-        if (!directed) {
-            if (current_edge.reverse_cost < 0) {
-                current_edge.reverse_cost = current_edge.cost;
-            }
-        }
-        addEdge(current_edge);
+        addEdge(current_edge, directed);
     }
     m_mapEdgeId2Index.clear();
 }
@@ -562,7 +533,21 @@ void Pgr_trspHandler::connectEndEdge(
 
 
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::addEdge(const Edge_t edgeIn) {
+bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
+    /*
+     * making all "cost" > 0
+     */
+    if (edgeIn.cost < 0 && edgeIn.reverse_cost > 0) {
+        std::swap(edgeIn.cost, edgeIn.reverse_cost);
+        std::swap(edgeIn.source, edgeIn.target);
+    }
+
+    if (!directed) {
+        if (edgeIn.reverse_cost < 0) {
+            edgeIn.reverse_cost = edgeIn.cost;
+        }
+    }
+
     /*
      * The edge was already inserted
      *
@@ -570,6 +555,7 @@ bool Pgr_trspHandler::addEdge(const Edge_t edgeIn) {
      *
      * When changing to boost graph, the additional edges are to be added
      */
+
     if (m_mapEdgeId2Index.find(edgeIn.id) != m_mapEdgeId2Index.end()) {
         return false;
     }

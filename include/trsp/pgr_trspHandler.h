@@ -163,7 +163,7 @@ class Pgr_trspHandler {
             int64_t cur_node,
             const EdgeInfo &new_edge,
             bool isStart);
-    bool addEdge(const Edge_t edgeIn);
+    bool addEdge(Edge_t edgeIn, bool);
 
     void connectStartEdge(
             size_t firstEdge_idx,
