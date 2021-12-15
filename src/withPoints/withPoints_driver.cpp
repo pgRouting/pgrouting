@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: one_to_many_withPoints_driver.cpp
+File: trsp_withPoints_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -45,6 +45,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/combinations.h"
+#include "cpp_common/rule.h"
+#include "c_types/restriction_t.h"
+#include "trsp/pgr_trspHandler.h"
+
+namespace {
 
 template < class G >
 std::deque< Path >
@@ -69,17 +74,12 @@ pgr_dijkstra(
     return paths;
 }
 
-
-// CREATE OR REPLACE FUNCTION pgr_withPoint(
-// edges_sql TEXT,
-// points_sql TEXT,
-// start_pid ANYARRAY,
-// end_pid BIGINT,
-// directed BOOLEAN DEFAULT true
+}  // namespace
 
 void
-do_pgr_withPoints(
+do_withPoints(
         Edge_t *edges, size_t total_edges,
+        Restriction_t *restrictions, size_t restrictions_size,
         Point_on_edge_t *points_p, size_t total_points,
         Edge_t *edges_of_points, size_t total_edges_of_points,
 
@@ -161,12 +161,61 @@ do_pgr_withPoints(
                     only_cost, normal);
         }
 
-        if (!details) {
-            for (auto &path : paths) {
-                path = pg_graph.eliminate_details(path);
+        if (restrictions_size == 0) {
+            if (!details) {
+                for (auto &path : paths) {
+                    path = pg_graph.eliminate_details(path);
+                }
             }
+
+            /*
+             * order paths based on the start_pid, end_pid
+             */
+            std::sort(paths.begin(), paths.end(),
+                    [](const Path &a, const Path &b)
+                    -> bool {
+                    if (b.start_id() != a.start_id()) {
+                    return a.start_id() < b.start_id();
+                    }
+                    return a.end_id() < b.end_id();
+                    });
+
+            size_t count(0);
+            count = count_tuples(paths);
+
+
+            if (count == 0) {
+                (*return_tuples) = NULL;
+                (*return_count) = 0;
+                return;
+            }
+
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (collapse_paths(return_tuples, paths));
+            return;
         }
 
+        /*
+         * When there are turn restrictions
+         */
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < restrictions_size; ++i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
+        auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
+
+        std::deque<Path> new_paths;
+        if (!new_combinations.empty()) {
+            pgrouting::trsp::Pgr_trspHandler gdef(
+                    edges,
+                    total_edges,
+                    pg_graph.new_edges(),
+                    directed,
+                    ruleList);
+            auto new_paths = gdef.process(new_combinations);
+            paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+        }
         /*
          * order paths based on the start_pid, end_pid
          */
@@ -182,15 +231,7 @@ do_pgr_withPoints(
         size_t count(0);
         count = count_tuples(paths);
 
-
-        if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            return;
-        }
-
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
         log << "************************************************";
@@ -222,4 +263,4 @@ do_pgr_withPoints(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-}
+        }

@@ -147,8 +147,9 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_pgr_withPoints(
+    do_withPoints(
             edges, total_edges,
+            NULL, 0,
             points, total_points,
             edges_of_points, total_edges_of_points,
 

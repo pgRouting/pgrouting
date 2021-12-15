@@ -6,7 +6,6 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
 
 ------
 
@@ -34,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstddef>
 #   include <cstdint>
+using Restriction_t = struct Restriction_t;
 using Point_on_edge_t = struct Point_on_edge_t;
 using Edge_t = struct Edge_t;
 using Path_rt = struct Path_rt;
@@ -41,6 +41,7 @@ using II_t_rt = struct II_t_rt;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
+typedef struct Restriction_t Restriction_t;
 typedef struct Point_on_edge_t Point_on_edge_t;
 typedef struct Edge_t Edge_t;
 typedef struct Path_rt Path_rt;
@@ -51,9 +52,12 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
-    void do_pgr_withPoints(
+ void do_withPoints(
             Edge_t *edges,
             size_t total_edges,
+
+            Restriction_t *restrictions,
+            size_t restrictions_size,
 
             Point_on_edge_t *points,
             size_t total_points,
