@@ -77,14 +77,13 @@ DECLARE
   union_sql1 TEXT;
   union_sql2 TEXT;
   final_sql TEXT;
+  restrictions_query TEXT;
 
 BEGIN
     IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
         RETURN;
     END IF;
 
-    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
-        -- no restrictions then its a withPoints or dijkstra
         IF source_pos = 0 THEN
             source_sql = '(SELECT source FROM (' || sql || ') b WHERE id = ' ||  source_eid || ')';
         ELSE IF source_pos = 1 THEN
@@ -97,7 +96,6 @@ BEGIN
 
         -- raise notice 'source_sql %', source_sql;
         -- raise notice 'union_sql1 %', union_sql1;
-
 
         IF target_pos = 0 THEN
             target_sql = '(SELECT source FROM (' || sql || ') c WHERE id = ' ||  target_eid || ')';
@@ -122,8 +120,8 @@ BEGIN
         END IF;
         END IF;
 
-        IF union_sql IS NULL THEN
-            -- no points then its a dijkstra
+        IF union_sql IS NULL AND turn_restrict_sql IS NULL THEN
+            -- no points no restrictions then its a dijkstra
             -- RAISE WARNING 'executing pgr_dijkstra';
             final_sql = 'WITH final_sql AS (
                  SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_dijkstra($$' || $1 || '$$
@@ -132,8 +130,10 @@ BEGIN
                 , directed := ' || directed || '
             ) a )
             SELECT seq, id1, id2, cost  FROM final_sql ORDER BY seq';
-        ELSE
-            -- points then its a withPoints
+            RETURN QUERY EXECUTE final_sql;
+            RETURN;
+          ELSIF union_sql IS NOT NULL AND turn_restrict_sql IS NULL THEN
+            -- has points no restrictions then its a withPoints
             -- RAISE WARNING 'executing pgr_withpoints';
             final_sql = 'WITH final_sql AS (
                 SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_withpoints($$' || $1 || '$$
@@ -147,18 +147,44 @@ BEGIN
                              WHEN id2 = -1 AND ' || target_pos || '=0 THEN id1
                              WHEN id2 = -1 AND ' || target_pos || '!=0 THEN id1
                              ELSE id1 END AS id1, id2, cost  FROM final_sql ORDER BY seq';
-        END IF;
-
-
         -- raise notice 'final_sql %', final_sql;
         RETURN QUERY EXECUTE final_sql;
         RETURN;
+        END IF;
 
-    END IF;
+  -- points & restrictions calls the pgr_trsp_withpoints
+  restrictions_query = $$
+  WITH old_restrictions AS ( $$ ||
+    turn_restrict_sql || $$
+  )
+  SELECT ROW_NUMBER() OVER() AS id,
+  _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path::text, ',')::INTEGER[])) AS path,
+  to_cost AS cost
+  FROM old_restrictions;
+  $$;
 
-    -- with restrictions calls the original code
-    RETURN query SELECT * FROM _pgr_withpointstrsp($1, source_eid, source_pos, target_eid, target_pos, directed, turn_restrict_sql);
-    RETURN;
+  final_sql = format(
+    $$
+    WITH final_sql AS (
+      SELECT  seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_trsp_withpoints(
+        $q$%1$s$q$,
+        $q$%2$s$q$,
+        $q$%3$s$q$,
+        %4$s,
+        %5$s,
+        directed => $q$%6$s$q$,
+        driving_side => $q$b$q$, details => false))
+    SELECT seq, CASE
+      WHEN seq = 0 AND %7$s=0 THEN id1
+      WHEN seq = 0 AND %7$s !=0 THEN -1
+      WHEN id2 = -1 AND %8$s =0 THEN id1
+      WHEN id2 = -1 AND %8$s !=0 THEN id1
+      ELSE id1 END AS id1, id2, cost  FROM final_sql ORDER BY seq
+    $$,
+    $1, restrictions_query, union_sql, source_sql, target_sql,
+    directed, source_pos, target_pos);
+  RETURN QUERY EXECUTE final_sql;
+  RETURN;
 
 END
 $BODY$
