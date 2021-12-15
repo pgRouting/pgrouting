@@ -73,6 +73,9 @@ Pgr_trspHandler::Pgr_trspHandler(
             edges,
             edge_count,
             directed);
+    add_point_edges(
+            new_edges,
+            directed);
 }
 
 
