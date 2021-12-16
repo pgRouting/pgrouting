@@ -58,10 +58,6 @@ declare
     has_rcost BOOLEAN := $5;
 
     i integer;
-    rr RECORD;
-    lrr RECORD;
-    first boolean := true;
-    seq1 integer := 0;
     seq2 integer :=0;
     has_reverse BOOLEAN;
     point_is_vertex BOOLEAN := false;
@@ -71,7 +67,6 @@ declare
 begin
 
 
-    SELECT 0::INTEGER AS seq, NULL::INTEGER AS id1, NULL::INTEGER AS id2, NULL::INTEGER AS id3, NULL::FLOAT AS cost INTO lrr;
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
     IF (has_reverse != has_rcost) THEN
@@ -112,72 +107,6 @@ begin
           turn_restrict_sql) AS a;
     END LOOP;
 
-    /*
-    -- loop through each pair of vids and compute the path
-    for i in 1 .. array_length(eids, 1)-1 loop
-        seq2 := seq2 + 1;
-        for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_withPointsTRSP(edges_sql,
-                                  eids[i], pcts[i],
-                                  eids[i+1], pcts[i+1],
-                                  directed,
-                                  turn_restrict_sql) as a loop
-            -- combine intermediate via costs when cost is split across
-            -- two parts of a segment because it stops it and
-            -- restarts the next leg also on it
-            -- we might not want to do this so we can know where the via points are in the path result
-            -- but this needs more thought
-            --
-            -- there are multiple condition we have to deal with
-            -- between the end of one leg and start of the next
-            -- 1. same vertex_id. edge_id=-1; drop record with edge_id=-1
-            -- means: path ends on vertex
-            -- NOTICE:  rr: (19,1,44570022,-1,0)
-            -- NOTICE:  rr: (0,2,44570022,1768045,2.89691196717448)
-            -- 2. vertex_id=-1; sum cost components
-            -- means: path end/starts with the segment
-            -- NOTICE:  rr: (11,2,44569628,1775909,9.32885885148532)
-            -- NOTICE:  rr: (0,3,-1,1775909,0.771386350984395)
-
-            --raise notice 'rr: %', rr;
-            if first then
-                lrr := rr;
-                first := false;
-            else
-                if lrr.id3 = -1 then
-                    lrr := rr;
-                elsif lrr.id3 = rr.id3 then
-                    lrr.cost := lrr.cost + rr.cost;
-                    if rr.id2 = -1 then
-                        rr.id2 := lrr.id2;
-                    end if;
-                else
-                    seq1 := seq1 + 1;
-                    lrr.seq := seq1;
-
-                    seq := lrr.seq;
-                    id1 := lrr.id1;
-                    id2 := lrr.id2;
-                    id3 := lrr.id3;
-                    cost := lrr.cost;
-                    return next;
-                    lrr := rr;
-                end if;
-            end if;
-        end loop;
-    end loop;
-
-    seq1 := seq1 + 1;
-    lrr.seq := seq1;
-
-    seq := lrr.seq;
-    id1 := lrr.id1;
-    id2 := lrr.id2;
-    id3 := lrr.id3;
-    cost := lrr.cost;
-    return next;
-    return;
-*/
 end;
 $body$
 language plpgsql VOLATILE STRICT
