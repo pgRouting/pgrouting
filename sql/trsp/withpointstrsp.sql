@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 *
 */
 --v3.0
-CREATE FUNCTION pgr_withPointsTRSP(
+CREATE FUNCTION _pgr_withPointsTRSP(
     TEXT,    -- sql (required)
     INTEGER, -- source_eid (required)
     FLOAT,   -- source_pos (required)
@@ -194,7 +194,7 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_withPointsTRSP(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, TEXT)
+COMMENT ON FUNCTION _pgr_withPointsTRSP(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, TEXT)
 IS 'pgr_withPointsTRSP
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]

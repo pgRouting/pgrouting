@@ -69,6 +69,8 @@ declare
     f float;
 
 begin
+
+
     SELECT 0::INTEGER AS seq, NULL::INTEGER AS id1, NULL::INTEGER AS id2, NULL::INTEGER AS id3, NULL::FLOAT AS cost INTO lrr;
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
@@ -94,10 +96,23 @@ begin
         RETURN;
     END IF;
 
+
     if array_length(eids, 1) != array_length(pcts, 1) then
         raise exception 'The length of arrays eids and pcts must be the same!';
     end if;
 
+    FOR i IN 1 .. array_length(eids, 1) - 1
+    LOOP
+        RETURN QUERY
+        SELECT a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
+        FROM _pgr_withPointsTRSP(edges_sql,
+          eids[i], pcts[i],
+          eids[i+1], pcts[i+1],
+          directed,
+          turn_restrict_sql) AS a;
+    END LOOP;
+
+    /*
     -- loop through each pair of vids and compute the path
     for i in 1 .. array_length(eids, 1)-1 loop
         seq2 := seq2 + 1;
@@ -162,6 +177,7 @@ begin
     cost := lrr.cost;
     return next;
     return;
+*/
 end;
 $body$
 language plpgsql VOLATILE STRICT
