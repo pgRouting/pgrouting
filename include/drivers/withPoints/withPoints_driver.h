@@ -52,7 +52,7 @@ typedef struct II_t_rt II_t_rt;
 extern "C" {
 #endif
 
- void do_withPoints(
+void do_withPoints(
             Edge_t *edges,
             size_t total_edges,
 
