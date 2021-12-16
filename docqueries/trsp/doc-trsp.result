@@ -233,6 +233,5 @@ SELECT * FROM pgr_trspViaEdges(
 -----+-----+-----+-----+------
 (0 rows)
 
-/* --q6 */
 ROLLBACK;
 ROLLBACK
