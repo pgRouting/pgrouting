@@ -12,135 +12,134 @@ INSERT INTO four_edges (id, source, target, cost, reverse_cost) VALUES
 ( 718 ,  52220 ,  52222 , 961.000001 ,   961.000001),
 ( 716 , -21019 ,  52220 , 992.000001 ,   992.000001);
 
-SELECT * FROM pgr_withpointstrsp(
-  $$SELECT
-    id::int, source::int, target::int, cost::float, reverse_cost::float
-  FROM
+----
+
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT * FROM
     (VALUES
       (719, 52163, -56570, 179.400001, 179.400001),
       (717, 52222, 52163, 977.000001, 977.000001),
       (718, 52220, 52222, 961.000001, 961.000001),
       (716, -21019, 52220, 992.000001, 992.000001)
     ) AS t (id, source, target, cost, reverse_cost)$$,
-  719, 0,
-  718, 0,
-  true, NULL);
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
+  $$(SELECT 1 AS pid, 719 AS edge_id, 0::float  AS fraction)
+  UNION
+  (SELECT 2, 718, 0.5)$$,
+  (SELECT source  FROM four_edges WHERE id = 719),
+  (SELECT source  FROM four_edges WHERE id = 718),
+  true);
+
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT * FROM four_edges$$,
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
+  $$(SELECT 1 AS pid, 719 AS edge_id, 0::float  AS fraction)
+  UNION
+  (SELECT 2, 718, 0.5)$$,
+  (SELECT source  FROM four_edges WHERE id = 719),
+  (SELECT source  FROM four_edges WHERE id = 718),
+  true);
 
 
 SELECT * FROM pgr_trsp(
-  $$SELECT
-    id::int, source::int, target::int, cost::float, reverse_cost::float
-  FROM
+  $$SELECT * FROM four_edges$$,
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
+  (SELECT source  FROM four_edges WHERE id = 719),
+  (SELECT source  FROM four_edges WHERE id = 718),
+  true);
+
+SELECT * FROM pgr_trsp(
+  $$SELECT * FROM
     (VALUES
       (719, 52163, -56570, 179.40000, 179.40000),
       (717, 52222, 52163, 977.00000, 977.00000),
       (718, 52220, 52222, 961.00000, 961.00000),
       (716, -21019, 52220, 992.00000, 992.00000)
     ) AS t (id, source, target, cost, reverse_cost)$$,
-  $$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$,
-  (SELECT source::int  FROM four_edges WHERE id = 719),
-  (SELECT source::int  FROM four_edges WHERE id = 718),
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
+  (SELECT source  FROM four_edges WHERE id = 719),
+  (SELECT source  FROM four_edges WHERE id = 718),
   true);
 
-SELECT * FROM pgr_withpointstrsp(
-  $$SELECT
-    id::int, source::int, target::int, cost::float, reverse_cost::float
-  FROM four_edges$$,
-  719, 0,
-  718, 0,
-  true, NULL);
-
 SELECT * FROM pgr_dijkstra(
-  $$SELECT
-    id::int, source::int, target::int, cost::float, reverse_cost::float
-  FROM four_edges$$,
+  $$SELECT * FROM four_edges$$,
   52163,
   52220,
-  false);
+  true);
 
 SELECT * FROM pgr_dijkstra(
-  $$SELECT
-    id, source, target, cost, reverse_cost
-  FROM four_edges$$,
+  $$SELECT * FROM four_edges$$,
   (SELECT source  FROM four_edges WHERE id = 719),
   (SELECT source  FROM four_edges WHERE id = 718),
   true);
 
-/* Comparing withPoints and trsp*/
+----
 
-SELECT * FROM pgr_withpointstrsp(
-  $$SELECT
-    id::int, source::int, target::int, cost::float, reverse_cost::float
-  FROM four_edges$$,
-  719, 0.5,
-  718, 0,
-  true, NULL);
-
-SELECT * FROM pgr_withPoints(
-  $$SELECT
-    id, source, target, cost, reverse_cost
-  FROM four_edges$$,
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT * FROM four_edges$$,
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
   $$SELECT 719 AS edge_id, 0.5::float AS fraction$$,
-  -1,
-  /* selecting source because we have 0 */
+  -1::BIGINT,
   (SELECT source  FROM four_edges WHERE id = 718),
   true);
 
-/* TODO should give result more or less the same as above*/
 SELECT * FROM pgr_withPoints(
-  $$SELECT
-    id, source, target, cost, reverse_cost
-  FROM four_edges$$,
-  $$(SELECT 719 AS edge_id, 0.5::float AS fraction)
+  $$SELECT * FROM four_edges$$,
+  $$SELECT 719 AS edge_id, 0.5::float AS fraction$$,
+  -1::BIGINT,
+  (SELECT source  FROM four_edges WHERE id = 718),
+  true);
+
+----
+
+SELECT * FROM pgr_withPoints(
+  $$SELECT * FROM four_edges$$,
+  $$(SELECT 1 AS pid, 719 AS edge_id, 0.5::float AS fraction)
     UNION
-  (SELECT 718, 0)$$,
-  -1, -2,
-  true);
+    (SELECT 2, 718, 0)$$,
+  -1, -2, true);
 
-SELECT * FROM pgr_withpointstrsp(
-  $$SELECT
-    id::int, source::int, target::int, cost::float, reverse_cost::float
-  FROM four_edges$$,
-  719, 0,
-  718, 0.5,
-  true, NULL);
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT * FROM four_edges$$,
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
+  $$(SELECT 1 AS pid, 719 AS edge_id, 0::float  AS fraction)
+    UNION
+    (SELECT 2, 718, 0.5)$$,
+  -1, -2, true);
+
+----
 
 SELECT * FROM pgr_withPoints(
-  $$SELECT
-    id, source, target, cost, reverse_cost
-  FROM four_edges$$,
+  $$SELECT * FROM four_edges$$,
   $$SELECT 718 AS edge_id, 0.5::float AS fraction$$,
-  /* selecting source because we have 0 */
   (SELECT source  FROM four_edges WHERE id = 719),
-  -1,
+  -1::BIGINT,
   true);
 
-/* TODO should give result more or less the same as above*/
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT * FROM four_edges$$,
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
+  $$SELECT 718 AS edge_id, 0.5::float AS fraction$$,
+  (SELECT source  FROM four_edges WHERE id = 719),
+  -1::BIGINT,
+  true);
+
+
+----
+
 SELECT * FROM pgr_withPoints(
-  $$SELECT
-    id, source, target, cost, reverse_cost
-  FROM four_edges$$,
+  $$SELECT * FROM four_edges$$,
   $$(SELECT 719 AS edge_id, 0::float AS fraction)
     UNION
   (SELECT 718, 0.5)$$,
   -1, -2,
   true);
 
-SELECT * FROM pgr_withpointstrsp(
-  $$SELECT
-    id::int, source::int, target::int, cost::float, reverse_cost::float
-  FROM four_edges$$,
-  719, 0.5,
-  718, 0.5,
-  true, NULL);
-
-SELECT * FROM pgr_withPoints(
-  $$SELECT
-    id, source, target, cost, reverse_cost
-  FROM four_edges$$,
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT * FROM four_edges$$,
+  $$SELECT * FROM new_restrictions WHERE id > 9$$,
   $$(SELECT 719 AS edge_id, 0.5::float AS fraction)
     UNION
   (SELECT 718, 0.5)$$,
   -1, -2,
   true);
-
