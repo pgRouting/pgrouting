@@ -231,8 +231,7 @@ SELECT * FROM pgr_trspViaEdges(
   coalesce('',''||via_path,'''') AS via_path FROM restrictions');
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
-   1 |     |     |     |
-(1 row)
+(0 rows)
 
 /* --q6 */
 ROLLBACK;
