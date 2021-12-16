@@ -1,0 +1,217 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
+
+
+--v3.0
+--v3.0
+CREATE FUNCTION pgr_trspViaEdges(
+    text,      -- SQL (required)
+    integer[], -- eids (required)
+    FLOAT[],   -- pcts (required)
+    BOOLEAN,   -- directed (required)
+    BOOLEAN,   -- has_rcost (requierd)
+
+    turn_restrict_sql text DEFAULT NULL::text,
+
+    OUT seq INTEGER,
+    OUT id1 INTEGER,
+    OUT id2 INTEGER,
+    OUT id3 INTEGER,
+    OUT cost FLOAT
+)
+RETURNS SETOF RECORD AS
+$body$
+DECLARE
+  sql TEXT          := $1;
+  eids INTEGER[]    := $2;
+  pcts FLOAT[]      := $3;
+  directed BOOLEAN  := $4;
+  has_rcost BOOLEAN := $5;
+
+  rec1 RECORD;
+  source_sql TEXT;
+  target_sql TEXT;
+  union_sql TEXT;
+  union_sql1 TEXT;
+  union_sql2 TEXT;
+  final_sql TEXT;
+  restrictions_query TEXT;
+  i integer;
+  rr RECORD;
+  first boolean := true;
+  seq1 integer := 0;
+  seq2 integer :=0;
+  has_reverse BOOLEAN;
+  point_is_vertex BOOLEAN := false;
+  edges_sql TEXT;
+  f float;
+
+BEGIN
+  IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
+      RETURN;
+  END IF;
+
+  BEGIN
+    EXECUTE 'WITH a AS (SELECT reverse_cost FROM (' || sql || ') AS __b__ LIMIT 1) SELECT * FROM a' INTO rec1;
+    has_reverse := true;
+    EXCEPTION
+        WHEN OTHERS THEN
+          has_reverse = false;
+  END;
+
+  IF (has_reverse != has_rcost) THEN
+      IF (NOT has_rcost) THEN
+          -- user does not want to use reverse cost column
+          edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
+      ELSE
+          raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
+      END IF;
+  END IF;
+
+  IF array_length(eids, 1) != array_length(pcts, 1) THEN
+      raise exception 'The length of arrays eids and pcts must be the same!';
+  END IF;
+
+  FOREACH i IN ARRAY pcts LOOP
+      IF i in (0,1) THEN
+         point_is_vertex := true;
+      END IF;
+  END LOOP;
+
+  restrictions_query = $$
+  WITH old_restrictions AS ( $$ ||
+    turn_restrict_sql || $$
+  )
+  SELECT ROW_NUMBER() OVER() AS id,
+    _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path::text, ',')::INTEGER[])) AS path,
+    to_cost AS cost
+  FROM old_restrictions
+  $$;
+
+  FOR i IN 1 .. array_length(eids, 1) - 1
+  LOOP
+    IF pcts[i] = 0 THEN
+      source_sql = '(SELECT source FROM (' || sql || ') b WHERE id = ' ||  eids[i] || ')';
+    ELSIF pcts[i] = 1 THEN
+      source_sql = '(SELECT target FROM (' || sql || ') b WHERE id = ' || eids[i] || ')';
+    ELSE
+      source_sql = '-1';
+      union_sql1 =  '(SELECT 1 as pid, ' || eids[i] || ' as edge_id, ' || pcts[i] || '::float8 as fraction)';
+    END IF;
+
+    IF pcts[i+1] = 0 THEN
+        target_sql = '(SELECT source FROM (' || sql || ') c WHERE id = ' ||  eids[i+1] || ')';
+    ELSIF pcts[i+1] = 1 THEN
+        target_sql = '(SELECT target FROM (' || sql || ') c WHERE id = ' ||  eids[i+1] || ')';
+    ELSE
+        target_sql = '-2';
+        union_sql2 =  ' (SELECT 2 as pid, ' || eids[i] || ' as edge_id, ' || pcts[i+1] || '::float8 as fraction)';
+    END IF;
+
+    IF union_sql1 IS NOT NULL AND union_sql2 IS NOT NULL THEN
+      union_sql = union_sql1 || ' UNION ' || union_sql2;
+    ELSIF union_sql1 IS NOT NULL AND union_sql2 IS NULL THEN
+      union_sql = union_sql1;
+    ELSIF union_sql1 IS NULL AND union_sql2 IS NOT NULL THEN
+      union_sql = union_sql2;
+    END IF;
+
+    IF union_sql IS NULL AND turn_restrict_sql IS NULL THEN
+      -- no points no restrictions then its a dijkstra
+      -- RAISE WARNING 'executing pgr_dijkstra';
+      final_sql = 'WITH final_sql AS (
+        SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_dijkstra($$' || $1 || '$$
+          ,' || source_sql || '
+          ,' || target_sql || '
+          , directed := ' || directed || '
+        ) a )
+        SELECT seq, id1, id2, cost  FROM final_sql ORDER BY seq';
+      RETURN QUERY EXECUTE final_sql;
+    ELSIF union_sql IS NOT NULL AND turn_restrict_sql IS NULL THEN
+      -- has points no restrictions then its a withPoints
+      -- RAISE WARNING 'executing pgr_withpoints';
+      final_sql = 'WITH final_sql AS (
+        SELECT  a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost FROM pgr_withpoints($$' || $1 || '$$
+          , $$' || union_sql || '$$
+          ,' || source_sql || '
+          ,' || target_sql || '
+          , directed := ' || directed || '
+          ) a )
+        SELECT seq, CASE WHEN seq = 0 AND ' || source_pos || '=0 THEN id1
+          WHEN seq = 0 AND ' || source_pos || '!=0 THEN -1
+          WHEN id2 = -1 AND ' || target_pos || '=0 THEN id1
+          WHEN id2 = -1 AND ' || target_pos || '!=0 THEN id1
+        ELSE id1 END AS id1, id2, cost  FROM final_sql ORDER BY seq';
+        -- raise notice 'final_sql %', final_sql;
+        RETURN QUERY EXECUTE final_sql;
+    ELSE
+      final_sql = format(
+        $$
+        WITH final_sql AS (
+          SELECT  seq-1::INTEGER AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost::FLOAT FROM pgr_trsp_withpoints(
+            $q$%1$s$q$,
+            $q$%2$s$q$,
+            $q$%3$s$q$,
+            %4$s,
+            %5$s,
+            directed => $q$%6$s$q$,
+            driving_side => $q$b$q$, details => false))
+        SELECT %9$s, seq::INTEGER, CASE
+          WHEN seq = 0 AND %7$s=0 THEN id1
+          WHEN seq = 0 AND %7$s !=0 THEN -1
+          WHEN id2 = -1 AND %8$s =0 THEN id1
+          WHEN id2 = -1 AND %8$s !=0 THEN id1
+          ELSE id1 END::INTEGER AS id1, id2::INTEGER, cost::FLOAT FROM final_sql ORDER BY seq
+        $$,
+        $1, restrictions_query, union_sql, source_sql, target_sql,
+        directed,  pcts[i], pcts[i+1], i);
+    END IF;
+    RETURN QUERY EXECUTE final_sql;
+  END LOOP;
+
+  EXCEPTION
+      WHEN OTHERS THEN
+        RAISE EXCEPTION '%', SQLERRM USING HINT = final_sql;
+end;
+$body$
+language plpgsql VOLATILE STRICT
+cost 100
+rows 1000;
+
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_trspViaEdges(TEXT, INTEGER[], FLOAT[], BOOLEAN, BOOLEAN, TEXT)
+IS 'pgr_trspViaEdges
+- PROTOTYPE
+- Parameters
+  - edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - ARRAY[Via edge identifiers]
+  - ARRAY[fraction position on via edges]
+  - directed
+  - has reverse cost
+- Optional parameters
+  - turn_restrict_sql := NULL
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
+';

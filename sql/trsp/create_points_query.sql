@@ -22,7 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
---v4.0
+--v3.0
+--v3.0
 CREATE FUNCTION pgr_trspViaEdges(
     text,      -- SQL (required)
     integer[], -- eids (required)
@@ -56,24 +57,30 @@ declare
     directed BOOLEAN  := $4;
     has_rcost BOOLEAN := $5;
 
-    i integer;
+    i INTEGER;
     j INTEGER := 1;
+    edge INTEGER;
+    fraction FLOAT;
+
+    union_sql1 TEXT;
+    union_sql TEXT := '';
+    combination INTEGER[][];
+    from_v INTEGER;
+    to_v INTEGER;
+    rr RECORD;
+    lrr RECORD;
+    first boolean := true;
+    seq1 integer := 0;
     seq2 integer :=0;
     has_reverse BOOLEAN;
     point_is_vertex BOOLEAN := false;
     edges_sql TEXT;
     f float;
-    point_q TEXT;
-    points_sql TEXT := '';
-    from_v INTEGER;
-    to_v INTEGER;
-    word TEXT := '';
-    combinations TEXT := '';
-    x INTEGER[];
-    restrictions_query TEXT;
-    vertices INTEGER[];
 
 begin
+
+
+    SELECT 0::INTEGER AS seq, NULL::INTEGER AS id1, NULL::INTEGER AS id2, NULL::INTEGER AS id3, NULL::FLOAT AS cost INTO lrr;
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
     IF (has_reverse != has_rcost) THEN
@@ -85,9 +92,35 @@ begin
         END IF;
     END IF;
 
-    if array_length(eids, 1) != array_length(pcts, 1) then
-        raise exception 'The length of arrays eids and pcts must be the same!';
-    end if;
+    FOR i IN 1 .. array_length(eids, 1) - 1 LOOP
+      union_sql1 := NULL;
+      IF pcts[i] = 0 THEN
+        EXECUTE '(SELECT source FROM (' || sql || ') b WHERE id = ' ||  eids[i] || ')' INTO from_v;
+      ELSIF pcts[i] = 1 THEN
+        EXECUTE '(SELECT target FROM (' || sql || ') b WHERE id = ' || eids[i] || ')' INTO from_v;
+      ELSE
+        from_v = -j;
+        union_sql1 =  '(SELECT '|| j ||' as pid, ' || eids[i] || ' as edge_id, ' || pcts[i] || '::float8 as fraction)';
+        j := j + 1
+      END IF;
+      IF union_sql1 IS NOT NULL THEN union_sql = union_sql1 || ' UNION ' || union_sql; END IF;
+
+      union_sql1 := NULL;
+      IF pcts[i+1] = 0 THEN
+          EXECUTE '(SELECT source FROM (' || sql || ') c WHERE id = ' ||  eids[i+1] || ')' INTO to_v;
+      ELSIF pcts[i+1] = 1 THEN
+          EXECUTE '(SELECT target FROM (' || sql || ') c WHERE id = ' ||  eids[i+1] || ')' INTO to_v;
+      ELSE
+        to_v = -j;
+        union_sql1 =  '(SELECT '|| j ||' as pid, ' || eids[i+1] || ' as edge_id, ' || pcts[i+1] || '::float8 as fraction)';
+        j := j + 1
+      END IF;
+
+      IF union_sql1 IS NOT NULL THEN union_sql = union_sql1 || ' UNION ' || union_sql; END IF;
+      RAISE WARNING '%->%', from_v, to_v;
+    END LOOP;
+
+    RAISE WARNING '%', union_sql;
 
     FOREACH f IN ARRAY pcts LOOP
         IF f in (0,1) THEN
@@ -103,53 +136,20 @@ begin
     END IF;
 
 
-  FOR i IN 1 .. array_length(eids, 1) LOOP
-    point_q := NULL;
-    if (j != 1) THEN word = ' UNION '; ELSE word = ''; END IF;
-    IF pcts[i] = 0 THEN
-      EXECUTE '(SELECT source FROM (' || sql || ') b WHERE id = ' ||  eids[i] || ')' INTO from_v;
-    ELSIF pcts[i] = 1 THEN
-      EXECUTE '(SELECT target FROM (' || sql || ') b WHERE id = ' || eids[i] || ')' INTO from_v;
-    ELSE
-      from_v = -j;
-      point_q =  '(SELECT '|| j ||' as pid, ' || eids[i] || ' as edge_id, ' || pcts[i] || '::float8 as fraction)';
-      j := j + 1;
-    END IF;
-    IF point_q IS NOT NULL THEN points_sql = point_q || word || points_sql; END IF;
+    if array_length(eids, 1) != array_length(pcts, 1) then
+        raise exception 'The length of arrays eids and pcts must be the same!';
+    end if;
 
-    vertices := vertices || from_v;
-
-  END LOOP;
-
-  FOR i IN 1 .. array_length(vertices, 1) - 1 LOOP
-    if (i != 1) THEN word = ' UNION '; ELSE word = ''; END IF;
-    combinations := combinations || word || '(' || vertices[i] || ' AS source, ' || vertices[i+1] || ' AS target)';
-  END LOOP;
-
-  -- RAISE WARNING '%', points_sql;
-  -- RAISE WARNING '%', vertices;
-  -- RAISE WARNING '%', combinations;
-
-  restrictions_query = $$
-  WITH old_restrictions AS ( $$ ||
-    turn_restrict_sql || $$
-  )
-  SELECT ROW_NUMBER() OVER() AS id,
-  _pgr_array_reverse(array_prepend(target_id, string_to_array(via_path::text, ',')::INTEGER[])) AS path,
-  to_cost AS cost
-  FROM old_restrictions;
-  $$;
-
-  FOR i IN 1 .. array_length(vertices, 1) - 1 LOOP
-    RETURN QUERY
-    SELECT  a.seq-1 AS seq, i AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, a.cost FROM pgr_trsp_withpoints(
-      sql,
-      restrictions_query,
-      points_sql,
-      vertices[i], vertices[i+1],
-      directed
-      ) AS a;
-  END LOOP;
+    FOR i IN 1 .. array_length(eids, 1) - 1
+    LOOP
+        RETURN QUERY
+        SELECT a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
+        FROM _pgr_withPointsTRSP(edges_sql,
+          eids[i], pcts[i],
+          eids[i+1], pcts[i+1],
+          directed,
+          turn_restrict_sql) AS a;
+    END LOOP;
 
 end;
 $body$
