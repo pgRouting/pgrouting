@@ -1,7 +1,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(28);
+SELECT plan(30);
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
@@ -28,24 +28,20 @@ BEGIN
         END IF;
 
         q1 := format($$
-            SELECT * FROM pgr_withpointstrsp(
-                %1$L, %2$s, %3$s, %4$s, %5$s, %6$s
+            SELECT * FROM pgr_trsp_withpoints(
+                %1$L, %2$L, %3$L, %4$s, %5$s, %6$s
             )
             $$,
             mp[1], mp[2], mp[3], mp[4], mp[5], mp[6]
         );
 
 
-        IF i IN (1) THEN
-            RETURN query SELECT * FROM throws_ok(q1);
-        ELSE
             RETURN query SELECT * FROM lives_ok(q1, 'should live i ' || i);
             IF i IN (0,7) THEN
                 RETURN query SELECT * FROM isnt_empty(q1,  'should not be empty i' || i);
             ELSE
                 RETURN query SELECT * FROM is_empty(q1,  'should be empty i' || i);
             END IF;
-        END IF;
 
 
     END LOOP;
@@ -61,19 +57,20 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    params = ARRAY['SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT, reverse_cost::FLOAT  FROM edge_table',
-    '1',
-    '0.5::FLOAT',
-    '2',
-    '0.5::FLOAT',
+    params = ARRAY[
+    'SELECT *  FROM edge_table',
+    'SELECT * FROM new_restrictions WHERE id > 7',
+    'SELECT * FROM pointsofinterest',
+    '-1',
+    '3',
     'true'
     ]::TEXT[];
     subs = ARRAY[
     NULL,
+    NULL,
+    NULL,
     '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    'NULL',
     '(SELECT id::INTEGER FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-    'NULL',
     'NULL'
     ]::TEXT[];
 
@@ -82,10 +79,10 @@ BEGIN
 
     subs = ARRAY[
     NULL,
-    'NULL',
-    'NULL',
-    'NULL',
-    'NULL',
+    NULL,
+    NULL,
+    'NULL::INTEGER',
+    'NULL::INTEGER',
     'NULL'
     ]::TEXT[];
     RETURN query SELECT * FROM test(params, subs);

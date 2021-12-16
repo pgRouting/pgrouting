@@ -4,14 +4,13 @@ SELECT plan(1);
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
 PREPARE q1 AS
-SELECT * FROM pgr_trsp_withpoints(
+SELECT seq, path_seq, node, edge, cost, agg_cost FROM pgr_trsp_withpoints(
     $$SELECT * FROM edge_table$$,
     $$SELECT * FROM new_restrictions WHERE id > 9$$,
     $$(SELECT 1 AS pid, 1 AS edge_id, 0.5::float  AS fraction)
     UNION
     (SELECT 2, 6, 0.5)$$,
     -1, -2);
-
 
 PREPARE q2 AS
 SELECT * FROM pgr_withPoints(
