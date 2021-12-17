@@ -24,8 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --v4.0
 CREATE FUNCTION pgr_trspViaEdges(
-    text,      -- SQL (required)
-    integer[], -- eids (required)
+    TEXT,      -- SQL (required)
+    INTEGER[], -- eids (required)
     FLOAT[],   -- pcts (required)
     BOOLEAN,   -- directed (required)
     BOOLEAN,   -- has_rcost (requierd)
@@ -39,7 +39,7 @@ CREATE FUNCTION pgr_trspViaEdges(
     OUT cost FLOAT
 )
 RETURNS SETOF RECORD AS
-$body$
+$BODY$
 /*
  *  pgr_trsp(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
  *
@@ -49,7 +49,7 @@ $body$
  *  NOTE: this is a prototype function, we can gain a lot of efficiencies by implementing this in C/C++
  *
 */
-declare
+DECLARE
     sql TEXT          := $1;
     eids INTEGER[]    := $2;
     pcts FLOAT[]      := $3;
@@ -73,34 +73,38 @@ declare
     restrictions_query TEXT;
     vertices INTEGER[];
 
-begin
-    has_reverse =_pgr_parameter_check('dijkstra', sql, false);
-    edges_sql := sql;
-    IF (has_reverse != has_rcost) THEN
-        IF (NOT has_rcost) THEN
-            -- user does not want to use reverse cost column
-            edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
-        ELSE
-            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-        END IF;
-    END IF;
+BEGIN
+  IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
+      RETURN;
+  END IF;
 
-    if array_length(eids, 1) != array_length(pcts, 1) then
-        raise exception 'The length of arrays eids and pcts must be the same!';
-    end if;
+  has_reverse =_pgr_parameter_check('dijkstra', sql, false);
+  edges_sql := sql;
+  IF (has_reverse != has_rcost) THEN
+      IF (NOT has_rcost) THEN
+          -- user does not want to use reverse cost column
+          edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
+      ELSE
+          raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
+      END IF;
+  END IF;
 
-    FOREACH f IN ARRAY pcts LOOP
-        IF f in (0,1) THEN
-           point_is_vertex := true;
-        END IF;
-    END LOOP;
+  if array_length(eids, 1) != array_length(pcts, 1) then
+      raise exception 'The length of arrays eids and pcts must be the same!';
+  end if;
 
-    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) AND NOT point_is_vertex THEN
-        -- no restrictions then its a _pgr_withPointsVia
-        RETURN query SELECT a.seq::INTEGER, path_id::INTEGER AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, a.cost
-        FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed) a;
-        RETURN;
-    END IF;
+  FOREACH f IN ARRAY pcts LOOP
+      IF f in (0,1) THEN
+         point_is_vertex := true;
+      END IF;
+  END LOOP;
+
+  IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) AND NOT point_is_vertex THEN
+      -- no restrictions then its a _pgr_withPointsVia
+      RETURN query SELECT a.seq::INTEGER, path_id::INTEGER AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, a.cost
+      FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed) a;
+      RETURN;
+  END IF;
 
 
   FOR i IN 1 .. array_length(eids, 1) LOOP
@@ -151,9 +155,9 @@ begin
       ) AS a;
   END LOOP;
 
-end;
-$body$
-language plpgsql VOLATILE STRICT
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT
 cost 100
 rows 1000;
 
