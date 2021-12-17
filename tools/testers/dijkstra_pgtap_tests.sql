@@ -134,71 +134,40 @@ LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION dijkstra_types_check(fn TEXT) RETURNS SETOF TEXT AS
 $BODY$
-DECLARE
-the_version TEXT = '3.2.0';
 BEGIN
-  IF fn = 'pgr_dijkstra' THEN
-    the_version = '3.1.0';
-  END IF;
-
   RETURN QUERY SELECT has_function(fn);
 
   RETURN QUERY SELECT has_function(fn, ARRAY['text','bigint','bigint','boolean']);
   RETURN QUERY SELECT has_function(fn, ARRAY['text','bigint','anyarray','boolean']);
   RETURN QUERY SELECT has_function(fn, ARRAY['text','anyarray','bigint','boolean']);
   RETURN QUERY SELECT has_function(fn, ARRAY['text','anyarray','anyarray','boolean']);
+  RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
 
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','bigint','bigint','boolean'],'setof record');
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','bigint','anyarray','boolean'],'setof record');
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','bigint','boolean'],'setof record');
   RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','anyarray','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');
 
-  IF min_version(the_version) THEN
-    RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
-    RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');
-  ELSE
-    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.1.0');
-  END IF;
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
+    $$VALUES
+    ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
+    $$);
 
-  IF min_version(the_version) THEN
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
-      $$VALUES
-      ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$);
-
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
-      $$VALUES
-      ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,16,23,23,20,20,20,20,701,701}'::OID[])
-      $$);
-  ELSE
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
-      $$VALUES
-      ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$);
-
-    RETURN QUERY SELECT set_eq(
-      format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
-      $$VALUES
-      ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[])
-      $$);
-  END IF;
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
+    $$VALUES
+    ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
+    ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
+    ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
+    ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
+    ('{25,25,16,23,23,20,20,20,20,701,701}'::OID[])
+    $$);
 
 END
 $BODY$
