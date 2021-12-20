@@ -1,0 +1,77 @@
+
+BEGIN;
+
+SET client_min_messages TO WARNING;
+
+SELECT plan(13);
+
+SELECT has_function('pgr_astarcost');
+
+
+SELECT has_function('pgr_astarcost', ARRAY['text','bigint','bigint','boolean','integer','double precision','double precision']);
+SELECT has_function('pgr_astarcost', ARRAY['text','bigint','anyarray','boolean','integer','double precision','double precision']);
+SELECT has_function('pgr_astarcost', ARRAY['text','anyarray','bigint','boolean','integer','double precision','double precision']);
+SELECT has_function('pgr_astarcost', ARRAY['text','anyarray','anyarray','boolean','integer','double precision','double precision']);
+
+SELECT function_returns('pgr_astarcost', ARRAY['text','bigint','bigint','boolean','integer','double precision','double precision'],'setof record');
+SELECT function_returns('pgr_astarcost', ARRAY['text','bigint','anyarray','boolean','integer','double precision','double precision'],'setof record');
+SELECT function_returns('pgr_astarcost', ARRAY['text','anyarray','bigint','boolean','integer','double precision','double precision'],'setof record');
+SELECT function_returns('pgr_astarcost', ARRAY['text','anyarray','anyarray','boolean','integer','double precision','double precision'],'setof record');
+
+SELECT CASE
+WHEN min_version('3.2.0') THEN
+  collect_tap(
+    has_function('pgr_astarcost', ARRAY['text','text','boolean','integer','double precision','double precision']),
+    function_returns('pgr_astarcost', ARRAY['text','text','boolean','integer','double precision','double precision'],'setof record')
+  )
+ELSE
+  skip(2, 'Combinations signature added on 3.2.0')
+END;
+
+SELECT CASE
+WHEN min_version('3.2.0') THEN
+  collect_tap(
+    set_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_astarcost'$$,
+      $$VALUES
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
+      ('{"","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[])
+      $$),
+
+    set_eq(
+      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_astarcost'$$,
+      $$VALUES
+      ('{25,20,20,16,23,701,701,20,20,701}'::OID[]),
+      ('{25,20,2277,16,23,701,701,20,20,701}'::OID[]),
+      ('{25,2277,20,16,23,701,701,20,20,701}'::OID[]),
+      ('{25,2277,2277,16,23,701,701,20,20,701}'::OID[]),
+      ('{25,25,16,23,701,701,20,20,701}'::OID[])
+      $$)
+  )
+ELSE
+  collect_tap(
+    set_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_astarcost'$$,
+      $$VALUES
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[])
+      $$),
+
+    set_eq(
+      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_astarcost'$$,
+      $$VALUES
+      ('{25,20,20,16,23,701,701,20,20,701}'::OID[]),
+      ('{25,20,2277,16,23,701,701,20,20,701}'::OID[]),
+      ('{25,2277,20,16,23,701,701,20,20,701}'::OID[]),
+      ('{25,2277,2277,16,23,701,701,20,20,701}'::OID[])
+      $$)
+  )
+END;
+
+SELECT finish();
+ROLLBACK;
