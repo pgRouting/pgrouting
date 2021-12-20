@@ -24,7 +24,7 @@ indent_size = 8
 
 
 # SQL files want space indentation
-[*.sql]
+[*.{sql,pg}]
 indent_style = space
 indent_size = 2
 
