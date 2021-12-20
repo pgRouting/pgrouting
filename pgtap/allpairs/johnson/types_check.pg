@@ -1,0 +1,22 @@
+BEGIN;
+
+SELECT plan(5);
+
+SELECT has_function('pgr_johnson');
+SELECT has_function('pgr_johnson', ARRAY['text','boolean']);
+SELECT function_returns('pgr_johnson', ARRAY['text','boolean'],'setof record');
+
+SELECT set_eq(
+  $$SELECT  proargnames from pg_proc where proname = 'pgr_johnson'$$,
+  $$VALUES
+  ('{"","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
+  $$);
+
+SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_johnson'$$,
+  $$VALUES
+  ('{25,16,20,20,701}'::OID[])
+  $$);
+
+SELECT finish();
+ROLLBACK;
