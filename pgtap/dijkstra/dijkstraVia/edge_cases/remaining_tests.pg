@@ -4,13 +4,9 @@ BEGIN;
 SET client_min_messages TO WARNING;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(33);
+SELECT plan(30);
 
-SELECT can(ARRAY['pgr_dijkstravia']);
 
---V2.2+
-SELECT has_function('pgr_dijkstravia', ARRAY['text','anyarray','boolean','boolean','boolean']);
-SELECT function_returns('pgr_dijkstravia', ARRAY['text','anyarray','boolean','boolean','boolean'],'setof record');
 
 PREPARE v21q30 AS
 SELECT pg_typeof(seq)::text AS t1, pg_typeof(path_id)::text AS path_id, pg_typeof(path_seq)::text AS t2,

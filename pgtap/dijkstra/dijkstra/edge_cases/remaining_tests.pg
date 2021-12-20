@@ -4,29 +4,7 @@ BEGIN;
 SET client_min_messages TO WARNING;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(45);
-
-SELECT can(ARRAY['pgr_dijkstra']);
-
-
-SELECT hasnt_function('pgr_dijkstra', ARRAY['text','bigint','integer','boolean','boolean']);
-SELECT hasnt_function('pgr_dijkstra', ARRAY['text','integer','bigint','boolean','boolean']);
-SELECT hasnt_function('pgr_dijkstra', ARRAY['text','bigint','bigint','boolean','boolean']);
-
-
-
-
-
---V2.1+
-SELECT has_function('pgr_dijkstra', ARRAY['text','bigint','bigint','boolean']);
-SELECT has_function('pgr_dijkstra', ARRAY['text','bigint','anyarray','boolean']);
-SELECT has_function('pgr_dijkstra', ARRAY['text','anyarray','bigint','boolean']);
-SELECT has_function('pgr_dijkstra', ARRAY['text','anyarray','anyarray','boolean']);
-
-SELECT function_returns('pgr_dijkstra', ARRAY['text','bigint','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstra', ARRAY['text','bigint','anyarray','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstra', ARRAY['text','anyarray','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstra', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
+SELECT plan(33);
 
 -- testing for the 4 signatures that they return the correct names & columns
 -- Preparing
