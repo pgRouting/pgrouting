@@ -1,0 +1,27 @@
+
+BEGIN;
+
+SET client_min_messages TO WARNING;
+
+SELECT plan(5);
+
+SELECT has_function('pgr_dijkstravia');
+
+
+SELECT has_function('pgr_dijkstravia', ARRAY['text','anyarray','boolean','boolean','boolean']);
+SELECT function_returns('pgr_dijkstravia', ARRAY['text','anyarray','boolean','boolean','boolean'], 'setof record');
+
+SELECT set_eq(
+  $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstravia'$$,
+  $$VALUES
+  ('{"","",directed,strict,u_turn_on_edge,seq,path_id,path_seq,start_vid,end_vid,node,edge,cost,agg_cost,route_agg_cost}'::TEXT[])
+  $$);
+
+SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstravia'$$,
+  $$VALUES
+  ('{25,2277,16,16,16,23,23,23,20,20,20,20,701,701,701}'::OID[])
+  $$);
+
+SELECT finish();
+ROLLBACK;
