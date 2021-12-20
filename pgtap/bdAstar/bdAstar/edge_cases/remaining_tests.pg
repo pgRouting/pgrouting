@@ -2,14 +2,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(8);
-
-
-SELECT has_function('pgr_bdastar',
-    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric']);
-SELECT function_returns('pgr_bdastar',
-    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric'],
-    'setof record','Returns set record');
+SELECT plan(6);
 
 
 SELECT throws_ok(
