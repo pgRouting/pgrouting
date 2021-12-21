@@ -1,32 +1,34 @@
 BEGIN;
 
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(4);
 
 PREPARE t1 AS
-SELECT * FROM pgr_edmondskarp(
+SELECT * FROM pgr_maxflow(
   'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
   3, 5
 );
 PREPARE t2 AS
-SELECT * FROM pgr_edmondskarp(
+SELECT * FROM pgr_maxflow(
   'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
   3, ARRAY[5]
 );
 PREPARE t3 AS
-SELECT * FROM pgr_edmondskarp(
+SELECT * FROM pgr_maxflow(
   'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
   ARRAY[3], 5
 );
 PREPARE t4 AS
-SELECT * FROM pgr_edmondskarp(
+SELECT * FROM pgr_maxflow(
   'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
   ARRAY[3], ARRAY[5]
 );
 
-SELECT lives_ok('t1','pgr_pgr_edmondskarp(one to one)');
-SELECT lives_ok('t2','pgr_pgr_edmondskarp(one to many)');
-SELECT lives_ok('t3','pgr_pgr_edmondskarp(many to one)');
-SELECT lives_ok('t4','pgr_pgr_edmondskarp(many to many)');
+SELECT lives_ok('t1','pgr_pgr_maxflow(one to one)');
+SELECT lives_ok('t2','pgr_pgr_maxflow(one to many)');
+SELECT lives_ok('t3','pgr_pgr_maxflow(many to one)');
+SELECT lives_ok('t4','pgr_pgr_maxflow(many to many)');
 
-SELECT * FROM finish();
+
+SELECT finish();
 ROLLBACK;
