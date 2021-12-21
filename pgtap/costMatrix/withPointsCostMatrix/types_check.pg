@@ -1,0 +1,22 @@
+BEGIN;
+
+SELECT plan(5);
+
+SELECT has_function('pgr_withpointscostmatrix');
+SELECT has_function('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character']);
+SELECT function_returns('pgr_withpointscostmatrix', ARRAY['text','text','anyarray','boolean','character'],'setof record');
+
+SELECT set_eq(
+  $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointscostmatrix'$$,
+  $$VALUES
+  ('{"","","","directed","driving_side","start_vid","end_vid","agg_cost"}'::TEXT[])
+  $$);
+
+SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointscostmatrix'$$,
+  $$VALUES
+  ('{25,25,2277,16,1042,20,20,701}'::OID[])
+  $$);
+
+SELECT finish();
+ROLLBACK;

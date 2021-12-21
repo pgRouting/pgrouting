@@ -1,0 +1,22 @@
+BEGIN;
+
+SELECT plan(5);
+
+SELECT has_function('pgr_astarcostmatrix');
+SELECT has_function('pgr_astarcostmatrix', ARRAY['text','anyarray','boolean','integer','double precision','double precision']);
+SELECT function_returns('pgr_astarcostmatrix', ARRAY['text','anyarray','boolean','integer','double precision','double precision'],'setof record');
+
+SELECT set_eq(
+  $$SELECT  proargnames from pg_proc where proname = 'pgr_astarcostmatrix'$$,
+  $$VALUES
+  ('{"","","directed","heuristic","factor","epsilon","start_vid","end_vid","agg_cost"}'::TEXT[])
+  $$);
+
+SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_astarcostmatrix'$$,
+  $$VALUES
+  ('{25,2277,16,23,701,701,20,20,701}'::OID[])
+  $$);
+
+SELECT finish();
+ROLLBACK;
