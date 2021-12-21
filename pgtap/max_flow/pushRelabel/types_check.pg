@@ -1,0 +1,8 @@
+BEGIN;
+
+SELECT plan(13);
+
+SELECT flow_types_check('pgr_pushrelabel');
+
+SELECT * FROM finish();
+ROLLBACK;

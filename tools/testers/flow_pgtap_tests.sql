@@ -148,3 +148,79 @@ END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
 
+
+CREATE OR REPLACE FUNCTION flow_types_check(fn_name TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  RETURN QUERY SELECT has_function(fn_name);
+
+  RETURN QUERY SELECT has_function(fn_name, ARRAY[ 'text', 'bigint', 'bigint' ]);
+  RETURN QUERY SELECT has_function(fn_name, ARRAY[ 'text', 'anyarray', 'bigint' ]);
+  RETURN QUERY SELECT has_function(fn_name, ARRAY[ 'text', 'bigint', 'anyarray' ]);
+  RETURN QUERY SELECT has_function(fn_name, ARRAY[ 'text', 'anyarray', 'anyarray' ]);
+
+  RETURN QUERY SELECT function_returns(fn_name, ARRAY[ 'text', 'bigint', 'bigint' ], 'setof record');
+  RETURN QUERY SELECT function_returns(fn_name, ARRAY[ 'text', 'bigint', 'anyarray' ], 'setof record');
+  RETURN QUERY SELECT function_returns(fn_name, ARRAY[ 'text', 'anyarray', 'bigint' ], 'setof record');
+  RETURN QUERY SELECT function_returns(fn_name, ARRAY[ 'text', 'anyarray', 'anyarray' ], 'setof record');
+
+
+  RETURN QUERY SELECT CASE
+  WHEN min_version('3.2.0') THEN
+    collect_tap(
+      has_function(fn_name, ARRAY[ 'text', 'text']),
+      function_returns(fn_name, ARRAY[ 'text', 'text'], 'setof record')
+    )
+  ELSE
+    skip(2, 'Combinations signature added on version 3.2.0')
+  END;
+
+  RETURN QUERY SELECT CASE
+  WHEN min_version('3.2.0') THEN
+    collect_tap(
+      set_eq(
+        format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, fn_name),
+        $$VALUES
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
+        ('{"","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[])
+        $$),
+
+      set_eq(
+        format($$SELECT proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn_name),
+        $$VALUES
+        ('{25,20,20,23,20,20,20,20,20}'::OID[]),
+        ('{25,20,2277,23,20,20,20,20,20}'::OID[]),
+        ('{25,2277,20,23,20,20,20,20,20}'::OID[]),
+        ('{25,2277,2277,23,20,20,20,20,20}'::OID[]),
+        ('{25,25,23,20,20,20,20,20}'::OID[])
+        $$)
+    )
+  ELSE
+    collect_tap(
+      set_eq(
+        format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, fn_name),
+        $$VALUES
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[]),
+        ('{"","","","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[])
+        $$),
+
+      set_eq(
+        format($$SELECT proallargtypes FROM pg_proc WHERE proname = %1$L$$, fn_name),
+        $$VALUES
+        ('{25,20,20,23,20,20,20,20,20}'::OID[]),
+        ('{25,20,2277,23,20,20,20,20,20}'::OID[]),
+        ('{25,2277,20,23,20,20,20,20,20}'::OID[]),
+        ('{25,2277,2277,23,20,20,20,20,20}'::OID[])
+        $$)
+    )
+END;
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
