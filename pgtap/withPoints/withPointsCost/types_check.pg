@@ -1,0 +1,76 @@
+
+BEGIN;
+
+SET client_min_messages TO WARNING;
+
+SELECT plan(13);
+
+SELECT has_function('pgr_withpointscost');
+
+
+SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','bigint','boolean','character']);
+SELECT has_function('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','boolean','character']);
+SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','boolean','character']);
+SELECT has_function('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','boolean','character']);
+
+SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','bigint','boolean','character'],'setof record');
+SELECT function_returns('pgr_withpointscost', ARRAY['text','text','bigint','anyarray','boolean','character'],'setof record');
+SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','bigint','boolean','character'],'setof record');
+SELECT function_returns('pgr_withpointscost', ARRAY['text','text','anyarray','anyarray','boolean','character'],'setof record');
+
+SELECT CASE
+WHEN min_version('3.2.0') THEN
+  collect_tap(
+    has_function('pgr_withpointscost', ARRAY['text','text','text','boolean','character']),
+    function_returns('pgr_withpointscost', ARRAY['text','text','text','boolean','character'],'setof record')
+  )
+ELSE
+  skip(2, 'Combinations signature added on 3.1.0')
+END;
+
+
+SELECT CASE
+WHEN min_version('3.2.0') THEN
+  collect_tap(
+    set_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointscost'$$,
+      $$VALUES
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[])
+      $$),
+    set_eq(
+      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointscost'$$,
+      $$VALUES
+      ('{25,25,25,16,1042,20,20,701}'::OID[]),
+      ('{25,25,20,20,16,1042,20,20,701}'::OID[]),
+      ('{25,25,20,2277,16,1042,20,20,701}'::OID[]),
+      ('{25,25,2277,20,16,1042,20,20,701}'::OID[]),
+      ('{25,25,2277,2277,16,1042,20,20,701}'::OID[])
+      $$)
+  )
+ELSE
+  collect_tap(
+    set_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_withpointscost'$$,
+      $$VALUES
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","start_pid","end_pid","agg_cost"}'::TEXT[])
+      $$),
+    set_eq(
+      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpointscost'$$,
+      $$VALUES
+      ('{25,25,20,20,16,1042,20,20,701}'::OID[]),
+      ('{25,25,20,2277,16,1042,20,20,701}'::OID[]),
+      ('{25,25,2277,20,16,1042,20,20,701}'::OID[]),
+      ('{25,25,2277,2277,16,1042,20,20,701}'::OID[])
+      $$)
+  )
+END;
+
+SELECT finish();
+ROLLBACK;
