@@ -21,13 +21,12 @@ QUIET="-v"
 QUIET="-q"
 
 PGDATABASE="___pgr___test___"
-#PGRVERSION="3.3.0 3.2.1 3.2.0 3.1.3 3.1.2 3.1.1 3.1.0 3.0.5 3.0.4 3.0.3 3.0.2 3.0.1 3.0.0"
-PGRVERSION="3.3.0"
+PGRVERSION="3.4.0 3.3.0 3.2.0 3.1.0 3.0.0"
 
-cd tools/testers/
 
 for v in ${PGRVERSION}
 do
+    pushd tools/testers/
     echo "--------------------------"
     echo " Running with version ${v}"
     echo "--------------------------"
@@ -37,6 +36,8 @@ do
 
     psql "$PGFLAGS" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
         -c "CREATE EXTENSION IF NOT EXISTS pgtap; CREATE EXTENSION IF NOT EXISTS pgrouting WITH VERSION '${v}' CASCADE;"
+
+    psql "${PGFLAGS}" -d "$PGDATABASE" -c "SELECT * FROM pgr_full_version();"
 
     psql "${PGFLAGS}" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
         -f sampledata.sql \
@@ -55,8 +56,12 @@ do
         -f tmp_net.sql \
         -f flow_pgtap_tests.sql \
         -f trsp_tests.sql \
+        -f spanningtree.sql \
         -f tsp_pgtap_tests.sql
 
-    pg_prove "$QUIET" --normalize --directive --recurse "${PGFLAGS}"  -d "${PGDATABASE}" "../../pgtap/${DIR}"
+
+    popd
+    pg_prove "$QUIET" --normalize --directives --recurse "${PGFLAGS}"  -d "${PGDATABASE}" "pgtap/${DIR}"
+    #pg_prove "$QUIET" --normalize --directive --recurse "${PGFLAGS}"  -d "${PGDATABASE}" "../../pgtap/"
     #dropdb --if-exists "${PGFLAGS}" "${PGDATABASE}"
 done
