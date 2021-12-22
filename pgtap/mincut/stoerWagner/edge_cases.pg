@@ -1,0 +1,20 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(2);
+
+SELECT lives_ok(
+    'SELECT * FROM pgr_stoerWagner(
+        ''SELECT id, source, target, cost, reverse_cost FROM edge_table''
+    )',
+    '4: Documentation says works with no flags');
+
+SELECT throws_ok(
+    'SELECT * FROM pgr_stoerWagner(
+        ''SELECT id, source, target, cost, reverse_cost FROM edge_table id < 17'',
+        3
+    )','42883','function pgr_stoerwagner(unknown, integer) does not exist',
+    '6: Documentation says it does not work with 1 flags');
+
+SELECT finish();
+ROLLBACK;
