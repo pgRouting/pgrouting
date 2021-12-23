@@ -1,0 +1,26 @@
+BEGIN;
+
+SELECT plan(6);
+
+SELECT has_function('pgr_createverticestable');
+SELECT has_function('pgr_createverticestable',ARRAY['text','text','text','text','text']);
+SELECT function_returns('pgr_createverticestable',ARRAY['text','text','text','text','text'],'text');
+
+SELECT set_eq(
+  $$SELECT proargnames from pg_proc where proname = 'pgr_createverticestable'$$,
+  $$SELECT '{"","the_geom","source","target","rows_where"}'::TEXT[]$$
+);
+
+SELECT set_eq(
+  $$SELECT proargtypes from pg_proc where proname = 'pgr_createverticestable'$$,
+  $$SELECT '[0:4]={25,25,25,25,25}'::OID[]$$
+);
+
+SELECT set_eq(
+  $$SELECT prorettype FROM pg_proc WHERE proname = 'pgr_createverticestable'$$,
+  $$VALUES ('25'::oid )$$
+);
+
+
+SELECT  finish();
+ROLLBACK;
