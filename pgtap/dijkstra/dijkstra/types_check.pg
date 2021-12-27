@@ -5,73 +5,7 @@ SET client_min_messages TO WARNING;
 
 SELECT plan(13);
 
-SELECT has_function('pgr_dijkstra');
-
-
-SELECT has_function('pgr_dijkstra', ARRAY['text','bigint','bigint','boolean']);
-SELECT has_function('pgr_dijkstra', ARRAY['text','bigint','anyarray','boolean']);
-SELECT has_function('pgr_dijkstra', ARRAY['text','anyarray','bigint','boolean']);
-SELECT has_function('pgr_dijkstra', ARRAY['text','anyarray','anyarray','boolean']);
-
-SELECT function_returns('pgr_dijkstra', ARRAY['text','bigint','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstra', ARRAY['text','bigint','anyarray','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstra', ARRAY['text','anyarray','bigint','boolean'],'setof record');
-SELECT function_returns('pgr_dijkstra', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
-
-SELECT CASE
-WHEN min_version('3.1.0') THEN
-  collect_tap(
-    has_function('pgr_dijkstra', ARRAY['text','text','boolean']),
-    function_returns('pgr_dijkstra', ARRAY['text','text','boolean'],'setof record')
-  )
-ELSE
-  skip(2, 'Combinations signature added on 3.1.0')
-END;
-
-SELECT CASE
-WHEN min_version('3.1.0') THEN
-  collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstra'$$,
-      $$VALUES
-      ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstra'$$,
-      $$VALUES
-      ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,16,23,23,20,20,20,20,701,701}'::OID[])
-      $$)
-  )
-ELSE
-  collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstra'$$,
-      $$VALUES
-      ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstra'$$,
-      $$VALUES
-      ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[])
-      $$)
-  )
-END;
+SELECT dijkstra_types_check('pgr_dijkstra');
 
 SELECT finish();
 ROLLBACK;
