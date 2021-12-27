@@ -5,73 +5,7 @@ SET client_min_messages TO WARNING;
 
 SELECT plan(13);
 
-SELECT has_function('pgr_bdastar');
-
-
-SELECT has_function('pgr_bdastar', ARRAY['text','bigint','bigint','boolean','integer','numeric','numeric']);
-SELECT has_function('pgr_bdastar', ARRAY['text','bigint','anyarray','boolean','integer','numeric','numeric']);
-SELECT has_function('pgr_bdastar', ARRAY['text','anyarray','bigint','boolean','integer','numeric','numeric']);
-SELECT has_function('pgr_bdastar', ARRAY['text','anyarray','anyarray','boolean','integer','numeric','numeric']);
-
-SELECT function_returns('pgr_bdastar', ARRAY['text','bigint','bigint','boolean','integer','numeric','numeric'],'setof record');
-SELECT function_returns('pgr_bdastar', ARRAY['text','bigint','anyarray','boolean','integer','numeric','numeric'],'setof record');
-SELECT function_returns('pgr_bdastar', ARRAY['text','anyarray','bigint','boolean','integer','numeric','numeric'],'setof record');
-SELECT function_returns('pgr_bdastar', ARRAY['text','anyarray','anyarray','boolean','integer','numeric','numeric'],'setof record');
-
-SELECT CASE
-WHEN min_version('3.2.0') THEN
-  collect_tap(
-    has_function('pgr_bdastar', ARRAY['text','text','boolean','integer','numeric','numeric']),
-    function_returns('pgr_bdastar', ARRAY['text','text','boolean','integer','numeric','numeric'],'setof record')
-  )
-ELSE
-  skip(2, 'Combinations signature added on 3.2.0')
-END;
-
-SELECT CASE
-WHEN min_version('3.2.0') THEN
-  collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_bdastar'$$,
-      $$VALUES
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_bdastar'$$,
-      $$VALUES
-      ('{25,20,20,16,23,1700,1700,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,1700,1700,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,1700,1700,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,1700,1700,23,23,20,20,20,20,701,701}'::OID[]),
-      ('{25,25,16,23,1700,1700,23,23,20,20,20,20,701,701}'::OID[])
-      $$)
-  )
-ELSE
-  collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_bdastar'$$,
-      $$VALUES
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","heuristic","factor","epsilon","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-      $$),
-
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_bdastar'$$,
-      $$VALUES
-      ('{25,20,20,16,23,1700,1700,23,23,20,20,701,701}'::OID[]),
-      ('{25,20,2277,16,23,1700,1700,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,20,16,23,1700,1700,23,23,20,20,20,701,701}'::OID[]),
-      ('{25,2277,2277,16,23,1700,1700,23,23,20,20,20,20,701,701}'::OID[])
-      $$)
-  )
-END;
+SELECT astar_types_check('pgr_bdastar');
 
 SELECT finish();
 ROLLBACK;
