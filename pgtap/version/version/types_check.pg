@@ -2,7 +2,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(5);
+SELECT plan(6);
 
 
 SELECT has_function('pgr_version');
@@ -14,12 +14,15 @@ SELECT set_eq(
     $$SELECT  NULL::TEXT[] $$
 );
 
--- parameter types
 SELECT set_eq(
     $$SELECT  proallargtypes from pg_proc where proname = 'pgr_version'$$,
     $$SELECT  NULL::OID[] $$
 );
 
+SELECT set_eq(
+    $$SELECT  prorettype from pg_proc where proname = 'pgr_version'$$,
+    $$VALUES ('25'::OID)$$
+);
 
 SELECT finish();
 ROLLBACK;
