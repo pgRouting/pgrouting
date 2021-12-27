@@ -28,14 +28,14 @@ BEGIN
 
   -- one to one
   params = ARRAY[
-  '$$RETURN QUERY SELECT id, source, target, cost, reverse_cost  FROM edge_table$$'
+  '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$'
   ,'1::BIGINT',
   '2::BIGINT'
   ]::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(RETURN QUERY SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(RETURN QUERY SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN QUERY SELECT * FROM no_crash_test(fn_name, params, subs);
@@ -51,8 +51,8 @@ BEGIN
   params = ARRAY['$$edges$$','1', 'ARRAY[2,5]::BIGINT[]']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(RETURN QUERY SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(RETURN QUERY SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN QUERY SELECT * FROM no_crash_test(fn_name, params, subs);
@@ -68,8 +68,8 @@ BEGIN
   params = ARRAY['$$edges$$', 'ARRAY[2,5]::BIGINT[]', '1']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(RETURN QUERY SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(RETURN QUERY SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT id FROM edge_table_vertices_pgr  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN QUERY SELECT * FROM no_crash_test(fn_name, params, subs);
@@ -85,8 +85,8 @@ BEGIN
   params = ARRAY['$$edges$$','ARRAY[1]::BIGINT[]', 'ARRAY[2,5]::BIGINT[]']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '(RETURN QUERY SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
-  '(RETURN QUERY SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
+  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))',
+  '(SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1))'
   ]::TEXT[];
 
   RETURN QUERY SELECT * FROM no_crash_test(fn_name, params, subs);
@@ -117,7 +117,7 @@ BEGIN
   params = ARRAY['$$edges$$','$$combinations$$']::TEXT[];
   subs = ARRAY[
   'NULL',
-  '$$(RETURN QUERY SELECT source, target FROM combinations_table WHERE false )$$'
+  '$$(SELECT source, target FROM combinations_table WHERE false )$$'
   ]::TEXT[];
   RETURN QUERY SELECT * FROM no_crash_test(fn_name, params, subs);
 
