@@ -15,19 +15,12 @@ IF NOT min_version('3.2.0') THEN
 END IF;
 
 
-RETURN QUERY
-SELECT has_function('pgr_depthfirstsearch');
-RETURN QUERY
-SELECT has_function('pgr_depthfirstsearch', ARRAY['text','bigint','boolean','bigint']);
-RETURN QUERY
-SELECT has_function('pgr_depthfirstsearch', ARRAY['text','anyarray','boolean','bigint']);
-RETURN QUERY
-SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','bigint','boolean','bigint'],  'setof record');
-RETURN QUERY
-SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','anyarray','boolean','bigint'],  'setof record');
+RETURN QUERY SELECT has_function('pgr_depthfirstsearch');
+RETURN QUERY SELECT has_function('pgr_depthfirstsearch', ARRAY['text','bigint','boolean','bigint']);
+RETURN QUERY SELECT has_function('pgr_depthfirstsearch', ARRAY['text','anyarray','boolean','bigint']);
+RETURN QUERY SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','bigint','boolean','bigint'],  'setof record');
+RETURN QUERY SELECT function_returns('pgr_depthfirstsearch', ARRAY['text','anyarray','boolean','bigint'],  'setof record');
 
--- pgr_depthfirstsearch
--- parameter names
 RETURN QUERY
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_depthfirstsearch'$$,
@@ -49,6 +42,5 @@ LANGUAGE plpgsql;
 
 SELECT types_check();
 
-
-SELECT * FROM finish();
+SELECT finish();
 ROLLBACK;
