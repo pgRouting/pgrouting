@@ -54,6 +54,53 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION innerquery_points(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  -- with pid
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['pid', 'edge_id','fraction','side'],
+    'pid','pointsofinterest');
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['pid', 'edge_id','fraction','side'],
+    'edge_id','pointsofinterest');
+
+  RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['pid', 'edge_id','fraction','side'],
+    'fraction','pointsofinterest');
+
+  -- withiout pid
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['edge_id','fraction','side'],
+    'edge_id','pointsofinterest');
+
+  RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['edge_id','fraction','side'],
+    'fraction','pointsofinterest');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION innerquery_restrictions(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'path', 'cost'],
+    'id','new_restrictions');
+RETURN QUERY SELECT test_anyIntegerArr(fn, rest_sql,
+    ARRAY['id', 'path', 'cost'],
+    'path','new_restrictions');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'path', 'cost'],
+    'cost','new_restrictions');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION style_dijkstra_no_id(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
@@ -229,17 +276,6 @@ RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
 RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
-
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION style_withpoints(fn TEXT, rest_sql TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
-RETURN QUERY SELECT style_dijkstra(fn,  $$, 'SELECT * from pointsOfInterest' $$ || rest_sql);
 
 END;
 $BODY$
