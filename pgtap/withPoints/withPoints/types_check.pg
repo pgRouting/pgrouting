@@ -1,0 +1,77 @@
+
+BEGIN;
+
+SET client_min_messages TO WARNING;
+
+SELECT plan(13);
+
+SELECT has_function('pgr_withpoints');
+
+
+SELECT has_function('pgr_withpoints', ARRAY['text','text','bigint','bigint','boolean','character','boolean']);
+SELECT has_function('pgr_withpoints', ARRAY['text','text','bigint','anyarray','boolean','character','boolean']);
+SELECT has_function('pgr_withpoints', ARRAY['text','text','anyarray','bigint','boolean','character','boolean']);
+SELECT has_function('pgr_withpoints', ARRAY['text','text','anyarray','anyarray','boolean','character','boolean']);
+
+SELECT function_returns('pgr_withpoints', ARRAY['text','text','bigint','bigint','boolean','character','boolean'],'setof record');
+SELECT function_returns('pgr_withpoints', ARRAY['text','text','bigint','anyarray','boolean','character','boolean'],'setof record');
+SELECT function_returns('pgr_withpoints', ARRAY['text','text','anyarray','bigint','boolean','character','boolean'],'setof record');
+SELECT function_returns('pgr_withpoints', ARRAY['text','text','anyarray','anyarray','boolean','character','boolean'],'setof record');
+
+SELECT CASE
+WHEN min_version('3.2.0') THEN
+  collect_tap(
+    has_function('pgr_withpoints', ARRAY['text','text','text','boolean','character','boolean']),
+    function_returns('pgr_withpoints', ARRAY['text','text','text','boolean','character','boolean'],'setof record')
+  )
+ELSE
+  skip(2, 'Combinations signature added on 3.2.0')
+END;
+
+SELECT CASE
+WHEN min_version('3.2.0') THEN
+  collect_tap(
+    set_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_withpoints'$$,
+      $$VALUES
+      ('{"","","","","directed","driving_side","details","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","details","seq","path_seq","end_pid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[])
+      $$),
+
+    set_eq(
+      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpoints'$$,
+      $$VALUES
+      ('{25,25,20,20,16,1042,16,23,23,20,20,701,701}'::OID[]),
+      ('{25,25,20,2277,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,25,2277,20,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,25,2277,2277,16,1042,16,23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,25,25,16,1042,16,23,23,20,20,20,20,701,701}'::OID[])
+      $$)
+  )
+ELSE
+  collect_tap(
+    set_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_withpoints'$$,
+      $$VALUES
+      ('{"","","","","directed","driving_side","details","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","details","seq","path_seq","end_pid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","","directed","driving_side","details","seq","path_seq","start_pid","end_pid","node","edge","cost","agg_cost"}'::TEXT[])
+      $$),
+
+    set_eq(
+      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_withpoints'$$,
+      $$VALUES
+      ('{25,25,20,20,16,1042,16,23,23,20,20,701,701}'::OID[]),
+      ('{25,25,20,2277,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,25,2277,20,16,1042,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,25,2277,2277,16,1042,16,23,23,20,20,20,20,701,701}'::OID[])
+      $$)
+  )
+END;
+
+SELECT finish();
+ROLLBACK;

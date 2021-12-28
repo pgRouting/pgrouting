@@ -1,0 +1,26 @@
+BEGIN;
+
+SELECT plan(6);
+
+SELECT has_function('pgr_createtopology');
+SELECT has_function('pgr_createtopology',ARRAY['text','double precision','text','text','text','text','text','boolean']);
+SELECT function_returns('pgr_createtopology',ARRAY['text','double precision','text','text','text','text','text','boolean'],'character varying');
+
+SELECT set_eq(
+  $$SELECT proargnames from pg_proc where proname = 'pgr_createtopology'$$,
+  $$SELECT '{"","","the_geom","id","source","target","rows_where","clean"}'::TEXT[]$$
+);
+
+SELECT set_eq(
+  $$SELECT proargtypes from pg_proc where proname = 'pgr_createtopology'$$,
+  $$SELECT '[0:7]={25,701,25,25,25,25,25,16}'::OID[]$$
+);
+
+SELECT set_eq(
+  $$SELECT prorettype FROM pg_proc WHERE proname = 'pgr_createtopology'$$,
+  $$VALUES ('1043'::oid )$$
+);
+
+
+SELECT  finish();
+ROLLBACK;

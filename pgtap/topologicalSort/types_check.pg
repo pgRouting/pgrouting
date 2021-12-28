@@ -1,0 +1,35 @@
+BEGIN;
+
+SELECT plan(5);
+
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT has_function('pgr_topologicalsort');
+  RETURN QUERY SELECT has_function('pgr_topologicalsort', ARRAY['text']);
+  RETURN QUERY SELECT function_returns('pgr_topologicalsort', ARRAY['text'],  'setof record');
+
+  RETURN QUERY
+  SELECT bag_has(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_topologicalsort'$$,
+    $$SELECT  '{"","seq","sorted_v"}'::TEXT[] $$
+  );
+
+  RETURN QUERY
+  SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_topologicalsort'$$,
+    $$VALUES
+    ('{25,23,20}'::OID[])
+    $$
+  );
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT types_check();
+
+SELECT * FROM finish();
+ROLLBACK;

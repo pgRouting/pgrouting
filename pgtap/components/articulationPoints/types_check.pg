@@ -1,0 +1,21 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(5);
+
+SELECT has_function('pgr_articulationpoints');
+SELECT has_function('pgr_articulationpoints',    ARRAY['text']);
+SELECT function_returns('pgr_articulationpoints', ARRAY['text'], 'setof bigint');
+
+SELECT set_eq(
+  $$SELECT proargnames from pg_proc where proname = 'pgr_articulationpoints'$$,
+  $$SELECT '{"", "node"}'::TEXT[] $$
+);
+
+SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_articulationpoints'$$,
+  $$SELECT  '{25,20}'::OID[] $$
+);
+
+SELECT * FROM finish();
+ROLLBACK;

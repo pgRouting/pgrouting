@@ -1,0 +1,26 @@
+
+BEGIN;
+
+SELECT plan(5);
+
+SELECT has_function('pgr_trspviaedges');
+
+SELECT has_function('pgr_trspviaedges', ARRAY['text','integer[]','double precision[]','boolean','boolean','text']);
+
+SELECT function_returns('pgr_trspviaedges', ARRAY['text','integer[]','double precision[]','boolean','boolean','text'],'setof record');
+
+
+SELECT set_eq(
+      $$SELECT  proargnames from pg_proc where proname = 'pgr_trspviaedges'$$,
+      $$VALUES
+      ('{"","","","","","turn_restrict_sql","seq","id1","id2","id3","cost"}'::TEXT[])
+      $$);
+
+SELECT set_eq(
+      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trspviaedges'$$,
+      $$VALUES
+      ('{25,1007,1022,16,16,25,23,23,23,23,701}'::OID[])
+      $$);
+
+SELECT finish();
+ROLLBACK;

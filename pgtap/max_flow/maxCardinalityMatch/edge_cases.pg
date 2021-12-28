@@ -1,0 +1,21 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(2);
+
+PREPARE mcm_dir AS
+SELECT * FROM pgr_maxCardinalityMatch(
+  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table'
+);
+
+PREPARE mcm_undir AS
+SELECT * FROM pgr_maxCardinalityMatch(
+  'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+  directed := false
+);
+
+SELECT lives_ok('mcm_dir','directed');
+SELECT lives_ok('mcm_undir','undirected');
+
+SELECT finish();
+ROLLBACK;

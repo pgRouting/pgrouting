@@ -1,7 +1,6 @@
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.2.0') THEN plan (4) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.2.0') THEN plan (5) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION types_check()
 RETURNS SETOF TEXT AS
@@ -14,12 +13,9 @@ IF NOT min_version('3.2.0') THEN
   RETURN;
 END IF;
 
--- 0 edge, 0 vertex tests
-RETURN QUERY
-SELECT has_function('pgr_isplanar');
-
-RETURN QUERY
-SELECT function_returns('pgr_isplanar', ARRAY['text'], 'boolean');
+RETURN QUERY SELECT has_function('pgr_isplanar');
+RETURN QUERY SELECT has_function('pgr_isplanar', ARRAY['text']);
+RETURN QUERY SELECT function_returns('pgr_isplanar', ARRAY['text'], 'boolean');
 
 RETURN QUERY
 SELECT bag_has(

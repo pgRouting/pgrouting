@@ -1,0 +1,21 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(5);
+
+SELECT has_function('pgr_bridges');
+SELECT has_function('pgr_bridges',    ARRAY['text']);
+SELECT function_returns('pgr_bridges', ARRAY['text'], 'setof bigint');
+
+SELECT set_eq(
+  $$SELECT proargnames from pg_proc where proname = 'pgr_bridges'$$,
+  $$SELECT '{"", "edge"}'::TEXT[] $$
+);
+
+SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_bridges'$$,
+  $$SELECT  '{25,20}'::OID[] $$
+);
+
+SELECT * FROM finish();
+ROLLBACK;

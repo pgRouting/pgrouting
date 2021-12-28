@@ -1,0 +1,35 @@
+BEGIN;
+
+SELECT plan(5);
+
+CREATE OR REPLACE FUNCTION types_check()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT has_function('pgr_transitiveclosure');
+  RETURN QUERY SELECT has_function('pgr_transitiveclosure', ARRAY['text']);
+  RETURN QUERY SELECT function_returns('pgr_transitiveclosure', ARRAY['text'],  'setof record');
+
+  RETURN QUERY
+  SELECT bag_has(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_transitiveclosure'$$,
+    $$SELECT  '{"","seq","vid","target_array"}'::TEXT[] $$
+  );
+
+  RETURN QUERY
+  SELECT set_eq(
+    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_transitiveclosure'$$,
+    $$VALUES
+    ('{25,23,20,1016}'::OID[])
+    $$
+  );
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT types_check();
+
+SELECT * FROM finish();
+ROLLBACK;

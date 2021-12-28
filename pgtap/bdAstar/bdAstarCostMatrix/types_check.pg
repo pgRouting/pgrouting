@@ -1,0 +1,11 @@
+
+BEGIN;
+
+SET client_min_messages TO WARNING;
+
+SELECT plan(5);
+
+SELECT astarcostmatrix_types_check('pgr_bdastarcostmatrix');
+
+SELECT finish();
+ROLLBACK;

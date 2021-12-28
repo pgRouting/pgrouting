@@ -1,0 +1,8 @@
+BEGIN;
+
+SELECT plan(5);
+
+SELECT astarcostmatrix_types_check('pgr_astarcostmatrix');
+
+SELECT finish();
+ROLLBACK;

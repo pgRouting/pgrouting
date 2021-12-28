@@ -1,0 +1,26 @@
+BEGIN;
+
+SELECT plan(6);
+
+SELECT has_function('pgr_analyzegraph');
+SELECT has_function('pgr_analyzegraph',ARRAY['text','double precision','text','text','text','text','text']);
+SELECT function_returns('pgr_analyzegraph',ARRAY['text','double precision','text','text','text','text','text'],'character varying');
+
+SELECT set_eq(
+  $$SELECT proargnames from pg_proc where proname = 'pgr_analyzegraph'$$,
+  $$SELECT '{"","","the_geom","id","source","target","rows_where"}'::TEXT[]$$
+);
+
+SELECT set_eq(
+  $$SELECT proargtypes from pg_proc where proname = 'pgr_analyzegraph'$$,
+  $$SELECT '[0:6]={25,701,25,25,25,25,25}'::OID[]$$
+);
+
+SELECT set_eq(
+  $$SELECT prorettype FROM pg_proc WHERE proname = 'pgr_analyzegraph'$$,
+  $$VALUES ('1043'::oid )$$
+);
+
+
+SELECT  finish();
+ROLLBACK;

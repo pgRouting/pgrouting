@@ -28,4 +28,6 @@ psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_E
     -f tmp_net.sql \
     -f flow_pgtap_tests.sql \
     -f trsp_tests.sql \
-    -f tsp_pgtap_tests.sql
+    -f tsp_pgtap_tests.sql \
+    -f astar_pgtap_tests.sql \
+    -f spanningtree.sql

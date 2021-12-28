@@ -1,13 +1,20 @@
+BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(3);
+SELECT plan(5);
 
 SELECT has_function('pgr_linegraphfull');
+SELECT has_function('pgr_linegraphfull',ARRAY['text']);
+SELECT function_returns('pgr_linegraphfull',ARRAY['text'],'setof record');
 
-SELECT function_returns('pgr_linegraphfull','setof record');
-
--- testing column names
-SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_linegraphfull'$$,
+SELECT set_eq(
+    $$SELECT  proargnames FROM pg_proc WHERE proname = 'pgr_linegraphfull'$$,
     $$SELECT  '{"","seq","source","target","cost","edge"}'::TEXT[] $$
 );
+
+SELECT set_eq(
+  $$SELECT proallargtypes FROM pg_proc WHERE proname = 'pgr_linegraphfull'$$,
+  $$SELECT '{25,23,20,20,701,20}'::OID[] $$
+);
+
+SELECT finish();
+ROLLBACK;

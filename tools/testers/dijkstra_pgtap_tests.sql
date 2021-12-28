@@ -19,14 +19,11 @@ BEGIN
   PREPARE null_ret_arr AS
   SELECT array_agg(id) FROM edge_table_vertices_pgr  WHERE id IN (-1);
 
-  RETURN QUERY
-  SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
+  RETURN QUERY SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
 
-  RETURN QUERY
-  SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
+  RETURN QUERY SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
 
-  RETURN QUERY
-  SELECT set_eq('null_ret_arr', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
+  RETURN QUERY SELECT set_eq('null_ret_arr', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
 
 
   -- one to one
@@ -102,8 +99,7 @@ BEGIN
   RETURN QUERY SELECT * FROM no_crash_test(fn_name, params, subs);
 
   IF NOT min_version('3.1.0') THEN
-    RETURN QUERY
-    SELECT skip (1, 'Combinations signature was added on 3.1.0');
+    RETURN QUERY SELECT skip (1, 'Combinations signature was added on 3.1.0');
     RETURN;
   END IF;
 
@@ -113,11 +109,9 @@ BEGIN
   PREPARE null_combinations AS
   SELECT source, target FROM combinations_table WHERE false;
 
-  RETURN QUERY
-  SELECT isnt_empty('combinations', 'Should be not empty to tests be meaningful');
+  RETURN QUERY SELECT isnt_empty('combinations', 'Should be not empty to tests be meaningful');
 
-  RETURN QUERY
-  SELECT is_empty('null_combinations', 'Should be empty to tests be meaningful');
+  RETURN QUERY SELECT is_empty('null_combinations', 'Should be empty to tests be meaningful');
 
   -- Combinations SQL
   params = ARRAY['$$edges$$','$$combinations$$']::TEXT[];
@@ -132,6 +126,79 @@ BEGIN
   'NULL::TEXT'
   ]::TEXT[];
   RETURN QUERY SELECT * FROM no_crash_test(fn_name, params, subs);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+CREATE OR REPLACE FUNCTION dijkstra_types_check(fn TEXT) RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+the_version TEXT = '3.2.0';
+BEGIN
+  IF fn = 'pgr_dijkstra' THEN
+    the_version = '3.1.0';
+  END IF;
+
+  RETURN QUERY SELECT has_function(fn);
+
+  RETURN QUERY SELECT has_function(fn, ARRAY['text','bigint','bigint','boolean']);
+  RETURN QUERY SELECT has_function(fn, ARRAY['text','bigint','anyarray','boolean']);
+  RETURN QUERY SELECT has_function(fn, ARRAY['text','anyarray','bigint','boolean']);
+  RETURN QUERY SELECT has_function(fn, ARRAY['text','anyarray','anyarray','boolean']);
+
+  RETURN QUERY SELECT function_returns(fn, ARRAY['text','bigint','bigint','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns(fn, ARRAY['text','bigint','anyarray','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','bigint','boolean'],'setof record');
+  RETURN QUERY SELECT function_returns(fn, ARRAY['text','anyarray','anyarray','boolean'],'setof record');
+
+  IF min_version(the_version) THEN
+    RETURN QUERY SELECT has_function(fn, ARRAY['text','text','boolean']);
+    RETURN QUERY SELECT function_returns(fn, ARRAY['text','text','boolean'],'setof record');
+  ELSE
+    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.1.0');
+  END IF;
+
+  IF min_version(the_version) THEN
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
+      $$VALUES
+      ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
+      $$);
+
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
+      $$VALUES
+      ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
+      ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
+      ('{25,25,16,23,23,20,20,20,20,701,701}'::OID[])
+      $$);
+  ELSE
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proargnames from pg_proc where proname = %1$L$$,fn),
+      $$VALUES
+      ('{"","","","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[]),
+      ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
+      $$);
+
+    RETURN QUERY SELECT set_eq(
+      format($$SELECT  proallargtypes from pg_proc where proname = %1$L$$,fn),
+      $$VALUES
+      ('{25,20,20,16,23,23,20,20,701,701}'::OID[]),
+      ('{25,20,2277,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,2277,20,16,23,23,20,20,20,701,701}'::OID[]),
+      ('{25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[])
+      $$);
+  END IF;
 
 END
 $BODY$

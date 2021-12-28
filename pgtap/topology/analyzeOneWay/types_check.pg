@@ -1,0 +1,26 @@
+BEGIN;
+
+SELECT plan(6);
+
+SELECT has_function('pgr_analyzeoneway');
+SELECT has_function('pgr_analyzeoneway',ARRAY['text','text[]','text[]','text[]','text[]','boolean','text','text','text']);
+SELECT function_returns('pgr_analyzeoneway',ARRAY['text','text[]','text[]','text[]','text[]','boolean','text','text','text'],'text');
+
+SELECT set_eq(
+  $$SELECT proargnames from pg_proc where proname = 'pgr_analyzeoneway'$$,
+  $$SELECT '{"","","","","","two_way_if_null","oneway","source","target"}'::TEXT[]$$
+);
+
+SELECT set_eq(
+  $$SELECT proargtypes from pg_proc where proname = 'pgr_analyzeoneway'$$,
+  $$SELECT '[0:8]={25,1009,1009,1009,1009,16,25,25,25}'::OID[]$$
+);
+
+SELECT set_eq(
+  $$SELECT prorettype FROM pg_proc WHERE proname = 'pgr_analyzeoneway'$$,
+  $$VALUES ('25'::oid )$$
+);
+
+
+SELECT  finish();
+ROLLBACK;
