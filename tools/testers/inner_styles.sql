@@ -39,6 +39,21 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION innerquery_combinations(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['source', 'target'],
+    'source','combinations_table');
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['source', 'target'],
+    'target','combinations_table');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION style_dijkstra_no_id(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
