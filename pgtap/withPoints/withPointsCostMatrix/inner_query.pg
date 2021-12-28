@@ -1,20 +1,12 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(56);
+SELECT plan(84);
 
 
-SELECT has_function('pgr_withpointscostmatrix',
-    ARRAY['text', 'text', 'anyarray', 'boolean', 'character']);
-
-SELECT function_returns('pgr_withpointscostmatrix',
-    ARRAY['text', 'text', 'anyarray', 'boolean', 'character'],
-    'setof record');
-
-
-SELECT style_withpoints('pgr_withpointscostmatrix', ', ARRAY[2, 3], true)');
-
-
+-- ONE MATRIX
+SELECT style_dijkstra('pgr_withPointsCostMatrix(', ', $$SELECT * from pointsOfInterest$$, ARRAY[1,2,3,4], true)');
+SELECT innerquery_points('pgr_withPointsCostMatrix($$SELECT * FROM edge_table$$,', ', ARRAY[1,2,3,4], true)');
 
 SELECT finish();
 ROLLBACK;
