@@ -1,7 +1,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(56) END;
+SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(54) END;
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
@@ -15,13 +15,7 @@ IF NOT min_version('3.2.0') THEN
 END IF;
 
 RETURN QUERY
-SELECT has_function('pgr_makeconnected');
-
-RETURN QUERY
-SELECT function_returns('pgr_makeconnected',ARRAY['text'],'setof record');
-
-RETURN QUERY
-SELECT style_dijkstra('pgr_makeconnected', ')');
+SELECT style_dijkstra('pgr_makeconnected(', ')');
 END;
 $BODY$
 LANGUAGE plpgsql;
