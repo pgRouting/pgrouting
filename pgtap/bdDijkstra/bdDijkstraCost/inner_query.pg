@@ -1,48 +1,33 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.2.0') THEN plan(658) ELSE plan(657) END;
-
-SELECT has_function('pgr_bddijkstracost', ARRAY['text', 'bigint', 'bigint', 'boolean']);
-SELECT has_function('pgr_bddijkstracost', ARRAY['text', 'anyarray', 'bigint', 'boolean']);
-SELECT has_function('pgr_bddijkstracost', ARRAY['text', 'bigint', 'anyarray', 'boolean']);
-SELECT has_function('pgr_bddijkstracost', ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
-
-SELECT function_returns('pgr_bddijkstracost', ARRAY['text', 'bigint', 'bigint', 'boolean'],
-    'setof record');
-SELECT function_returns('pgr_bddijkstracost', ARRAY['text', 'bigint', 'anyarray', 'boolean'],
-    'setof record');
-SELECT function_returns('pgr_bddijkstracost', ARRAY['text', 'anyarray', 'bigint', 'boolean'],
-    'setof record');
-SELECT function_returns('pgr_bddijkstracost', ARRAY['text', 'anyarray', 'anyarray', 'boolean'],
-    'setof record');
-
--- new signature on 3.2
-SELECT CASE
-WHEN NOT min_version('3.2.0') THEN
-  skip(1, 'Combinations signature added on 3.2.0')
-ELSE
-  collect_tap(
-    has_function('pgr_bddijkstracost', ARRAY['text', 'text', 'boolean']),
-    function_returns('pgr_bddijkstracost', ARRAY['text', 'text', 'boolean'], 'setof record')
-  )
-END;
+SELECT CASE WHEN min_version('3.2.0') THEN plan(282) ELSE plan(218) END;
 
 
-SELECT style_dijkstra('pgr_bddijkstracost', ', 2, 3, true)');
-SELECT style_dijkstra('pgr_bddijkstracost', ', 2, ARRAY[3], true)');
-SELECT style_dijkstra('pgr_bddijkstracost', ',  2, ARRAY[3], true)');
-SELECT style_dijkstra('pgr_bddijkstracost', ',  ARRAY[2], ARRAY[3], true)');
+-- ONE TO ONE
+SELECT style_dijkstra('pgr_bddijkstraCost(', ', 2, 3, true)');
+-- ONE TO MANY
+SELECT style_dijkstra('pgr_bddijkstraCost(', ', 2, ARRAY[3], true)');
+-- MANY TO ONE
+SELECT style_dijkstra('pgr_bddijkstraCost(', ', ARRAY[2], 3, true)');
+-- MANY TO MANY
+SELECT style_dijkstra('pgr_bddijkstraCost(', ', ARRAY[2], ARRAY[3], true)');
 
-SELECT style_dijkstra('pgr_bddijkstracost', ', 2, 3)');
-SELECT style_dijkstra('pgr_bddijkstracost', ', 2, ARRAY[3])');
-SELECT style_dijkstra('pgr_bddijkstracost', ',  2, ARRAY[3])');
-SELECT style_dijkstra('pgr_bddijkstracost', ',  ARRAY[2], ARRAY[3])');
+-- COMBINATIONS
+CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF min_version('3.2.0') THEN
+    RETURN QUERY SELECT style_dijkstra('pgr_bddijkstraCost(', ', $$SELECT * FROM combinations_table$$, true)');
+    RETURN QUERY SELECT innerquery_combinations('pgr_bddijkstraCost($$SELECT * FROM edge_table$$,',', true)');
+  ELSE
+    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
+  END IF;
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
 
-SELECT style_dijkstra('pgr_bddijkstracost', ', 2, 3, false)');
-SELECT style_dijkstra('pgr_bddijkstracost', ', 2, ARRAY[3], false)');
-SELECT style_dijkstra('pgr_bddijkstracost', ',  2, ARRAY[3], false)');
-SELECT style_dijkstra('pgr_bddijkstracost', ',  ARRAY[2], ARRAY[3], false)');
+SELECT inner_query();
 
 SELECT finish();
 ROLLBACK;
