@@ -15,7 +15,7 @@ IF NOT min_version('3.2.0') THEN
 END IF;
 
 RETURN QUERY
-SELECT style_dijkstra('pgr_bipartite', ')');
+SELECT style_dijkstra('pgr_bipartite(', ')');
 
 END;
 $BODY$
