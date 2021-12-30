@@ -11,6 +11,8 @@ start_sql TEXT;
 end_sql TEXT;
 query TEXT;
 p TEXT;
+code TEXT = 'XX000';
+msg TEXT = $$Unexpected Column '$$ || parameter || $$' type. Expected ANY-INTEGER$$;
 BEGIN
   start_sql = 'SELECT * FROM ' || begin_sql || '$$ SELECT ';
   FOREACH  p IN ARRAY params LOOP
@@ -19,6 +21,11 @@ BEGIN
       start_sql = start_sql || p || ', ';
   END LOOP;
   end_sql = ' FROM ' || tbl || ' $$' || rest_sql;
+
+  IF (begin_sql = 'pgr_extractVertices(') THEN
+    code = 'P0001';
+    msg = 'Expected type of column "'|| parameter|| '" is ANY-INTEGER';
+  END IF;
 
   query := start_sql || parameter || '::SMALLINT ' || end_sql;
   RETURN query SELECT lives_ok(query, 'TEST '|| parameter || ' with SMALLINT: ' || query);
@@ -30,13 +37,13 @@ BEGIN
   RETURN query SELECT lives_ok(query, 'TEST '|| parameter || ' with BIGINT: ' || query);
 
   query := start_sql || parameter || '::REAL ' || end_sql;
-  RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$ || parameter || $$' type. Expected ANY-INTEGER$$, 'TEST '|| parameter || ' with REAL: ' || query);
+  RETURN query SELECT throws_ok(query, code, msg, 'TEST '|| parameter || ' with REAL: ' || query);
 
   query := start_sql || parameter || '::FLOAT8 ' || end_sql;
-  RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$ || parameter || $$' type. Expected ANY-INTEGER$$, 'TEST '|| parameter || ' with FLOAT8: ' || query);
+  RETURN query SELECT throws_ok(query, code, msg, 'TEST '|| parameter || ' with FLOAT8: ' || query);
 
   query := start_sql || parameter || '::NUMERIC ' || end_sql;
-  RETURN query SELECT throws_ok(query,'XX000',$$Unexpected Column '$$ || parameter || $$' type. Expected ANY-INTEGER$$, 'TEST '|| parameter || ' with NUMERIC: ' || query);
+  RETURN query SELECT throws_ok(query, code, msg, 'TEST '|| parameter || ' with NUMERIC: ' || query);
 END;
 $BODY$ LANGUAGE plpgsql;
 

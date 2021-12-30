@@ -76,8 +76,8 @@ $BODY$
 LANGUAGE plpgsql;
 
 
-SELECT style_extract_normal('pgr_extractVertices', ')');
-SELECT style_extract_dryrun('pgr_extractVertices', ', true)');
+SELECT style_extract_normal('pgr_extractVertices(', ')');
+SELECT style_extract_dryrun('pgr_extractVertices(', ', true)');
 
 SELECT finish();
 ROLLBACK;
