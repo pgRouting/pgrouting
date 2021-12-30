@@ -60,6 +60,7 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
+/*
 CREATE OR REPLACE FUNCTION style_matrix()
 RETURNS SETOF TEXT AS
 $BODY$
@@ -79,7 +80,7 @@ BEGIN
 
 END;
 $BODY$ LANGUAGE plpgsql;
-
+*/
 CREATE OR REPLACE FUNCTION style_vehicles()
 RETURNS SETOF TEXT AS
 $BODY$
@@ -126,7 +127,7 @@ $BODY$ LANGUAGE plpgsql;
 
 
 SELECT style_jobs();
-SELECT style_matrix();
+SELECT style_matrix('pgr_pickdeliver($$SELECT * FROM orders$$, $$ SELECT * from vehicles$$,',')');
 SELECT style_vehicles();
 
 SELECT finish();

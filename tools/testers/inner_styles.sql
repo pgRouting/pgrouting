@@ -102,6 +102,26 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION style_matrix(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'start_vid', 'matrix');
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'end_vid', 'matrix');
+
+  RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'agg_cost', 'matrix');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION style_dijkstra_no_id(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
