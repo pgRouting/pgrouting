@@ -2,12 +2,10 @@ BEGIN;
 
 -- This test is prepared for when:
 -- Tentatively trsp will accepts ANY-INTEGER and ANY-NUMERICAL on 4.0.0
--- Adjust the version when that happens
-
-
+-- Adjust style_dijkstra_trsp -> style_dijkstra when that happens
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('4.0.0') THEN plan(162) ELSE plan(324) END;
+SELECT plan(324);
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
@@ -17,29 +15,6 @@ DECLARE
 BEGIN
 
   restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$)';
-
-  IF min_version('4.0.0') THEN
-    -- Basically this is a TODO
-    -- but has more fails than ok
-
-
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, true)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, true, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, true, ' || restriction);
-
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, true)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, true, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, true, ' || restriction);
-
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, false)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, false, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, false, ' || restriction);
-
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, false)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, false, NULL)');
-    RETURN QUERY SELECT style_dijkstra('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, false, ' || restriction);
-
-  ELSE
 
     RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, true)', TRUE);
     RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], true, true, NULL)', TRUE);
@@ -56,8 +31,6 @@ BEGIN
     RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, false)', FALSE);
     RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, false, NULL)', FALSE);
     RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspViaVertices', ', ARRAY[2,9,12]::INTEGER[], false, false, ' || restriction, FALSE);
-
-  END IF;
 
 END;
 $BODY$
