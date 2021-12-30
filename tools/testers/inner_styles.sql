@@ -45,11 +45,11 @@ $BODY$
 BEGIN
   RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
     ARRAY['source', 'target'],
-    'source','combinations_table');
+    'source','combinations_table WHERE target NOT IN (1,2)');
 
   RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
     ARRAY['source', 'target'],
-    'target','combinations_table');
+    'target','combinations_table WHERE target NOT IN (1,2)');
 END;
 $BODY$
 LANGUAGE plpgsql;
