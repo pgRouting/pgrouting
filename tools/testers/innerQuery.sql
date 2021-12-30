@@ -27,6 +27,20 @@ BEGIN
     msg = 'Expected type of column "'|| parameter|| '" is ANY-INTEGER';
   END IF;
 
+  IF (tbl = 'vrp_vehicles') THEN
+    IF (parameter = 'vehicle_id') THEN
+      msg = $$Unexpected Column 'id' type. Expected ANY-INTEGER$$;
+    END IF;
+  END IF;
+  IF (tbl = 'vrp_distance') THEN
+    IF (parameter = 'src_id') THEN
+      msg = $$Unexpected Column 'start_vid' type. Expected ANY-INTEGER$$;
+    ELSIF (parameter = 'dest_id') THEN
+      msg = $$Unexpected Column 'end_vid' type. Expected ANY-INTEGER$$;
+    END IF;
+  END IF;
+
+
   query := start_sql || parameter || '::SMALLINT ' || end_sql;
   RETURN query SELECT lives_ok(query, 'TEST '|| parameter || ' with SMALLINT: ' || query);
 

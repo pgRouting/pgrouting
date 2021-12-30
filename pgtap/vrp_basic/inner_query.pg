@@ -1,0 +1,92 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(91);
+
+SELECT lives_ok(
+  $q$
+  SELECT * FROM pgr_vrpOneDepot(
+    $$SELECT * FROM solomon_100_RC_101$$,
+    $$SELECT * FROM vrp_vehicles$$,
+    $$SELECT * from vrp_distance$$,1)$q$,'Basic call works');
+
+
+CREATE OR REPLACE FUNCTION style_jobs()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger('pgr_vrpOneDepot(',',$$SELECT * FROM vrp_vehicles $$,  $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['id', 'x', 'y', 'order_unit', 'open_time', 'close_time', 'service_time'],
+    'id','solomon_100_RC_101');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot(',',$$SELECT * FROM vrp_vehicles $$,  $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['id', 'x', 'y', 'order_unit', 'open_time', 'close_time', 'service_time'],
+    'x','solomon_100_RC_101');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot(',',$$SELECT * FROM vrp_vehicles $$,  $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['id', 'x', 'y', 'order_unit', 'open_time', 'close_time', 'service_time'],
+    'y','solomon_100_RC_101');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot(',',$$SELECT * FROM vrp_vehicles $$,  $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['id', 'x', 'y', 'order_unit', 'open_time', 'close_time', 'service_time'],
+    'order_unit','solomon_100_RC_101');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot(',',$$SELECT * FROM vrp_vehicles $$,  $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['id', 'x', 'y', 'order_unit', 'open_time', 'close_time', 'service_time'],
+    'open_time','solomon_100_RC_101');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot(',',$$SELECT * FROM vrp_vehicles $$,  $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['id', 'x', 'y', 'order_unit', 'open_time', 'close_time', 'service_time'],
+    'close_time','solomon_100_RC_101');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot(',',$$SELECT * FROM vrp_vehicles $$,  $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['id', 'x', 'y', 'order_unit', 'open_time', 'close_time', 'service_time'],
+    'service_time','solomon_100_RC_101');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION style_distances()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$, $$ SELECT * from vrp_vehicles$$,',',1)',
+    ARRAY['src_id', 'dest_id', 'cost','distance','traveltime'],
+    'src_id', 'vrp_distance');
+  RETURN QUERY SELECT test_anyInteger('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$, $$ SELECT * from vrp_vehicles$$,',',1)',
+    ARRAY['src_id', 'dest_id', 'cost','distance','traveltime'],
+    'dest_id', 'vrp_distance');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$, $$ SELECT * from vrp_vehicles$$,',',1)',
+    ARRAY['src_id', 'dest_id', 'cost','distance','traveltime'],
+    'cost', 'vrp_distance');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$, $$ SELECT * from vrp_vehicles$$,',',1)',
+    ARRAY['src_id', 'dest_id', 'cost','distance','traveltime'],
+    'distance', 'vrp_distance');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$, $$ SELECT * from vrp_vehicles$$,',',1)',
+    ARRAY['src_id', 'dest_id', 'cost','distance','traveltime'],
+    'traveltime', 'vrp_distance');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION style_vehicles()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$,',', $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['vehicle_id', 'capacity', 'case_no'],
+    'vehicle_id','vrp_vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$,',', $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['vehicle_id', 'capacity', 'case_no'],
+    'capacity','vrp_vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_vrpOneDepot($$SELECT * FROM solomon_100_RC_101$$,',', $$ SELECT * from vrp_distance$$,1)',
+    ARRAY['vehicle_id', 'capacity', 'case_no'],
+    'case_no','vrp_vehicles');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+
+SELECT style_jobs();
+SELECT style_distances();
+SELECT style_vehicles();
+
+SELECT finish();
+ROLLBACK;
