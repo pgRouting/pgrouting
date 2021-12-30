@@ -4,7 +4,7 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-  IF (fn != 'pgr_dagshortestpath(') THEN
+  IF (fn NOT IN ('pgr_dagshortestpath(','pgr_topologicalsort(')) THEN
     --with reverse cost
     RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
       ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
