@@ -16,7 +16,7 @@ IF NOT min_version('3.2.0') THEN
 END IF;
 
 RETURN QUERY
-SELECT style_dijkstra('pgr_lengauerTarjanDominatorTree', ',1)');
+SELECT style_dijkstra('pgr_lengauerTarjanDominatorTree(', ',1)');
 
 END;
 $BODY$
