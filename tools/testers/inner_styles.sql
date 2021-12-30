@@ -4,23 +4,24 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
---with reverse cost
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'cost');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'reverse_cost');
-
+  IF (fn != 'pgr_dagshortestpath(') THEN
+    --with reverse cost
+    RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'id');
+    RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'source');
+    RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'target');
+    RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'cost');
+    RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'reverse_cost');
+  END IF;
 
 --without reverse cost
 RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
