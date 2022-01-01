@@ -1,0 +1,29 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.2.0') THEN plan (108) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('3.2.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'Function is new on 3.2.0');
+    RETURN;
+  END IF;
+
+  -- SINGLE VERTEX
+  RETURN QUERY SELECT style_dijkstra('pgr_depthFirstSearch(', ', 2)');
+  -- MULTIPLE VERTEX
+  RETURN QUERY SELECT style_dijkstra('pgr_depthFirstSearch(', ', ARRAY[2,3])');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT inner_query();
+
+SELECT finish();
+ROLLBACK;

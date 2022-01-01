@@ -1,0 +1,14 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(168);
+
+-- SINGLE VERTEX
+SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, 2, 3.8, true)');
+SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', 2, 3.8, true)');
+-- MULTIPLE VERTEX
+SELECT style_dijkstra('pgr_withPointsDD(', ', $$SELECT * from pointsOfInterest$$, ARRAY[2,3], 3.8, true)');
+SELECT innerquery_points('pgr_withPointsDD($$SELECT * FROM edge_table$$,', ', ARRAY[2,3], 3.8, true)');
+
+SELECT finish();
+ROLLBACK;

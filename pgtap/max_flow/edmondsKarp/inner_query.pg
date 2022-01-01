@@ -1,0 +1,32 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.2.0') THEN plan(282) ELSE plan(218) END;
+
+-- ONE TO ONE
+SELECT style_max_flow('pgr_edmondskarp(', ', 2, 3)');
+-- ONE TO MANY
+SELECT style_max_flow('pgr_edmondskarp(', ', 2, ARRAY[3])');
+-- MANY TO ONE
+SELECT style_max_flow('pgr_edmondskarp(', ', ARRAY[2], 3)');
+-- MANY TO MANY
+SELECT style_max_flow('pgr_edmondskarp(', ', ARRAY[2], ARRAY[3])');
+
+-- COMBINATIONS
+CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF min_version('3.2.0') THEN
+    RETURN QUERY SELECT style_max_flow('pgr_edmondskarp(', ', $$SELECT * FROM combinations_table WHERE target NOT IN (1,2)$$)');
+    RETURN QUERY SELECT innerquery_combinations('pgr_edmondskarp($$SELECT * FROM edge_table$$,',')');
+  ELSE
+    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.2.0');
+  END IF;
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT inner_query();
+
+SELECT finish();
+ROLLBACK;

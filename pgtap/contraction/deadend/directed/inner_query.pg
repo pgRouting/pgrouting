@@ -1,0 +1,9 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(54);
+
+SELECT style_dijkstra('pgr_contraction(', ', ARRAY[1]::BIGINT[], 1, ARRAY[3]::BIGINT[], true)');
+
+SELECT finish();
+ROLLBACK;

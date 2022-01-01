@@ -4,23 +4,24 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
---with reverse cost
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'cost');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'reverse_cost');
-
+  IF (fn NOT IN ('pgr_dagshortestpath(','pgr_topologicalsort(')) THEN
+    --with reverse cost
+    RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'id');
+    RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'source');
+    RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'target');
+    RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'cost');
+    RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+      ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
+      'reverse_cost');
+  END IF;
 
 --without reverse cost
 RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
@@ -38,6 +39,88 @@ RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
 END;
 $BODY$
 LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION innerquery_combinations(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['source', 'target'],
+    'source','combinations_table WHERE target NOT IN (1,2)');
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['source', 'target'],
+    'target','combinations_table WHERE target NOT IN (1,2)');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION innerquery_points(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  -- with pid
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['pid', 'edge_id','fraction','side'],
+    'pid','pointsofinterest');
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['pid', 'edge_id','fraction','side'],
+    'edge_id','pointsofinterest');
+
+  RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['pid', 'edge_id','fraction','side'],
+    'fraction','pointsofinterest');
+
+  -- withiout pid
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['edge_id','fraction','side'],
+    'edge_id','pointsofinterest');
+
+  RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['edge_id','fraction','side'],
+    'fraction','pointsofinterest');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION innerquery_restrictions(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'path', 'cost'],
+    'id','new_restrictions');
+RETURN QUERY SELECT test_anyIntegerArr(fn, rest_sql,
+    ARRAY['id', 'path', 'cost'],
+    'path','new_restrictions');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'path', 'cost'],
+    'cost','new_restrictions');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION style_matrix(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'start_vid', 'matrix');
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'end_vid', 'matrix');
+
+  RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'agg_cost', 'matrix');
+
+END;
+$BODY$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION style_dijkstra_no_id(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
@@ -72,87 +155,6 @@ RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
 END;
 $BODY$
 LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION style_dijkstraTR(fn TEXT, rest_sql TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
---with reverse cost
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'cost');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'reverse_cost');
-
-
---without reverse cost
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'cost');
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION style_lineGraph(fn TEXT, rest_sql TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
---with reverse cost
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'cost');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'reverse_cost');
-
-
---without reverse cost
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'id');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'source');
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'target');
-RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'cost');
-END;
-$BODY$
-LANGUAGE plpgsql;
-
 
 CREATE OR REPLACE FUNCTION style_astar(fn TEXT, rest_sql TEXT)
 RETURNS SETOF TEXT AS
@@ -214,17 +216,6 @@ RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
 RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
-
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION style_withpoints(fn TEXT, rest_sql TEXT)
-RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-
-RETURN QUERY SELECT style_dijkstra(fn,  $$, 'SELECT * from pointsOfInterest' $$ || rest_sql);
 
 END;
 $BODY$

@@ -1,0 +1,11 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(72);
+
+-- ONE TO ONE
+SELECT style_dijkstra('pgr_turnRestrictedPath(', ', $$SELECT * FROM new_restrictions$$, 2, 3, 2, true)');
+SELECT innerquery_restrictions('pgr_turnRestrictedPath($$SELECT * FROM edge_table$$, ', ', 2, 3, 2, true)');
+
+SELECT finish();
+ROLLBACK;

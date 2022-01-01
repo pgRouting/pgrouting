@@ -1,0 +1,16 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(108);
+
+
+-- ONE SOURCE
+SELECT style_dijkstra('pgr_drivingdistance(', ',2, 1, true)');
+
+-- MANY SOURCES
+SELECT style_dijkstra('pgr_drivingdistance(', ',ARRAY[2,3], 1, true)');
+
+
+
+SELECT finish();
+ROLLBACK;

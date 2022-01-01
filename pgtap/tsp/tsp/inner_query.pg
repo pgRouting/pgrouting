@@ -1,0 +1,17 @@
+BEGIN;
+SET client_min_messages TO WARNING;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(18);
+
+CREATE TEMP TABLE matrix AS
+SELECT * FROM pgr_dijkstraCostMatrix(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE ID < 14),
+    directed:= false
+);
+
+SELECT style_matrix('pgr_tsp(',')');
+
+SELECT finish();
+ROLLBACK;

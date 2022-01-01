@@ -166,12 +166,12 @@ SELECT lives_ok('vehiles4',
 PREPARE vehiles5 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
-    $$SELECT *, 10 AS end_close FROM vehicles$$);
+    $$SELECT id, capacity, speed, start_x,start_y, start_open, start_close, start_service, end_node_id, end_close, end_service FROM vehicles$$);
 
 PREPARE vehiles6 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
-    $$SELECT *, 10 AS end_open FROM vehicles$$);
+    $$SELECT id, capacity, speed, start_x,start_y, start_open, start_close, start_service, end_node_id, end_open, end_service FROM vehicles$$);
 
 -- end_x and end_y should exist together or not at all
 
@@ -183,7 +183,7 @@ SELECT * FROM _pgr_pickDeliverEuclidean(
 PREPARE vehiles8 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
-    $$SELECT *, 10 AS end_open FROM vehicles$$);
+    $$SELECT *, 10 AS end_y FROM vehicles$$);
 
 SELECT throws_ok('vehiles5',
     'XX000',
@@ -202,7 +202,7 @@ SELECT throws_ok('vehiles7',
 
 SELECT throws_ok('vehiles8',
     'XX000',
-    $$Column 'end_close' not Found$$,
+    $$Column 'end_x' not Found$$,
     'vehiles8, Should throw: end_y found, but not end_x');
 
 ---------------------
@@ -228,7 +228,7 @@ UPDATE vehicles SET start_open = 0, start_close = 50 WHERE id = 1;
 PREPARE vehicles10 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
-    $$SELECT *, 5 AS end_open, 4 AS end_close FROM vehicles$$);
+    $$SELECT id, capacity, speed, start_x,start_y, start_open, start_close, start_service, end_node_id, 5 AS end_open, 4 AS end_close, end_service FROM vehicles$$);
 
 SELECT throws_ok('vehicles10',
     'XX000',

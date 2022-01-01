@@ -1,0 +1,134 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(145);
+
+CREATE TABLE matrix AS
+SELECT * from pgr_dijkstraCostMatrix($$SELECT * FROM edge_table$$,
+  (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
+      UNION
+      SELECT d_node_id FROM orders
+      UNION
+      SELECT start_node_id FROM vehicles) a));
+
+SELECT lives_ok(
+  $q$
+  SELECT * FROM pgr_pickdeliver(
+    $$SELECT * FROM orders$$,
+    $$SELECT * FROM vehicles$$,
+    $$SELECT * from matrix$$)$q$,'Basic call works');
+
+
+CREATE OR REPLACE FUNCTION style_jobs()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'id','orders');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'demand','orders');
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'p_node_id','orders');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'p_open','orders');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'p_close','orders');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'p_service','orders');
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'd_node_id','orders');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'd_open','orders');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'd_close','orders');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver(',',$$SELECT * FROM vehicles $$,  $$ SELECT * from matrix$$)',
+    ARRAY['id', 'demand', 'p_node_id', 'p_open', 'p_close', 'p_service', 'd_node_id', 'd_open', 'd_close', 'd_service'],
+    'd_service','orders');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+/*
+CREATE OR REPLACE FUNCTION style_matrix()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver($$SELECT * FROM orders$$, $$ SELECT * from vehicles$$,',')',
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'start_vid', 'matrix');
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver($$SELECT * FROM orders$$, $$ SELECT * from vehicles$$,',')',
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'end_vid', 'matrix');
+
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$, $$ SELECT * from vehicles$$,',')',
+    ARRAY['start_vid', 'end_vid', 'agg_cost'],
+    'agg_cost', 'matrix');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+*/
+CREATE OR REPLACE FUNCTION style_vehicles()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'id','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'speed','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'capacity','vehicles');
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'start_node_id','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'start_open','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'start_close','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'start_service','vehicles');
+
+  RETURN QUERY SELECT test_anyInteger('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'end_node_id','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'end_open','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'end_close','vehicles');
+  RETURN QUERY SELECT test_anyNumerical('pgr_pickdeliver($$SELECT * FROM orders$$,',', $$ SELECT * from matrix$$)',
+    ARRAY['id', 'capacity', 'speed','start_node_id','start_open', 'start_close', 'start_service', 'end_node_id','end_open', 'end_close', 'end_service'],
+    'end_service','vehicles');
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+
+SELECT style_jobs();
+SELECT style_matrix('pgr_pickdeliver($$SELECT * FROM orders$$, $$ SELECT * from vehicles$$,',')');
+SELECT style_vehicles();
+
+SELECT finish();
+ROLLBACK;

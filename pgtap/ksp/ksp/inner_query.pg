@@ -1,0 +1,10 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(54);
+
+-- ONE TO ONE
+SELECT style_dijkstra('pgr_ksp(', ', 2, 3, 2, true)');
+
+SELECT finish();
+ROLLBACK;

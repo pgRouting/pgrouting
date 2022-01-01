@@ -1,0 +1,12 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(108);
+
+-- SINGLE VERTEX
+SELECT style_dijkstra('pgr_breadthFirstSearch(', ', 2)');
+-- MULTIPLE VERTEX
+SELECT style_dijkstra('pgr_breadthFirstSearch(', ', ARRAY[2,3])');
+
+SELECT finish();
+ROLLBACK;

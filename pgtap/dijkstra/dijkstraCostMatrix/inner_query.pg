@@ -1,0 +1,10 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT plan(54);
+
+-- ONE MATRIX
+SELECT style_dijkstra('pgr_dijkstraCostMatrix(', ', ARRAY[1,2,3,4], true)');
+
+SELECT finish();
+ROLLBACK;
