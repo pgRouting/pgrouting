@@ -15,7 +15,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          old_pgr: [3.4.0, 3.3.0, 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.6, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.2.0, 3.2.1, 3.2.1]
+          old_pgr: [3.3.0, 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.6, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.2.0, 3.2.1, 3.2.1]
 
     steps:
       - uses: actions/checkout@v2
@@ -70,18 +70,6 @@ jobs:
           cmake -DPOSTGRESQL_VERSION=${PGVER} -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
           make -j 4
           sudo make install
-          sudo service postgresql start
-          sudo -u postgres createdb -p 5432  ___pgr___test___
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "CREATE EXTENSION pgrouting CASCADE;"
-
-      - name: Test old version before update with current tests
-        run: |
-          sudo service postgresql start
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          DIR=$(git rev-parse --show-toplevel)
-          pushd "${DIR}/tools/testers" > /dev/null || exit 1
-          sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
-          sudo -u postgres pg_prove  -Q -f --normalize --directives --recurse --ext .sql -d ___pgr___test___ "../../pgtap"
 
       - name: Build current version
         run: |
@@ -92,34 +80,14 @@ jobs:
           make -j 4
           sudo make install
 
-      - name: Test old version with currrent tests after installing current
+      - name: Update old version and test with current tests
         run: |
           sudo service postgresql start
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          DIR=$(git rev-parse --show-toplevel)
-          pushd "${DIR}/tools/testers" > /dev/null || exit 1
-          sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
-          sudo -u postgres pg_prove  -Q -f --normalize --directives --recurse --ext .sql -d ___pgr___test___ "../../pgtap"
-
-      - name: Test old version with current tests after update
-        run: |
-          sudo service postgresql start
-          sudo -u postgres dropdb -p 5432  ___pgr___test___
           sudo -u postgres createdb -p 5432  ___pgr___test___
           DIR=$(git rev-parse --show-toplevel)
           pushd "${DIR}/tools/testers" > /dev/null || exit 1
           sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
+          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "ALTER EXTENSION pgrouting UPDATE  TO '4.0.0';"
-          sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
-          sudo -u postgres pg_prove -Q -f --normalize --directives --recurse --ext .sql -d ___pgr___test___ "../../pgtap"
-
-      - name: Test old version with current tests before update
-        run: |
-          sudo service postgresql start
-          sudo -u postgres dropdb -p 5432  ___pgr___test___
-          sudo -u postgres createdb -p 5432  ___pgr___test___
-          DIR=$(git rev-parse --show-toplevel)
-          pushd "${DIR}/tools/testers" > /dev/null || exit 1
-          sudo -u postgres bash setup_db.sh 5432 ___pgr___test___ postgres "${{ matrix.old_pgr }}"
           sudo -u postgres psql -p 5432  -d ___pgr___test___ -c "SELECT * FROM pgr_full_version();"
           sudo -u postgres pg_prove -Q -f --normalize --directives --recurse --ext .sql -d ___pgr___test___ "../../pgtap"
