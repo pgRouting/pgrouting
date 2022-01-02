@@ -1,9 +1,7 @@
 
 BEGIN;
 
-SET client_min_messages TO WARNING;
-
-SELECT plan(13);
+SELECT CASE WHEN min_version('3.2.0') THEN plan(13) ELSE PLAN(11) END;
 
 SELECT dijkstra_types_check('pgr_bddijkstra');
 
