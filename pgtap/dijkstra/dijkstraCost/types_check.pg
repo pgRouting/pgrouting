@@ -1,76 +1,39 @@
-
 BEGIN;
-
-SET client_min_messages TO WARNING;
 
 SELECT plan(13);
 
 SELECT has_function('pgr_dijkstracost');
 
-
 SELECT has_function('pgr_dijkstracost', ARRAY['text','bigint','bigint','boolean']);
 SELECT has_function('pgr_dijkstracost', ARRAY['text','bigint','anyarray','boolean']);
 SELECT has_function('pgr_dijkstracost', ARRAY['text','anyarray','bigint','boolean']);
 SELECT has_function('pgr_dijkstracost', ARRAY['text','anyarray','anyarray','boolean']);
+SELECT has_function('pgr_dijkstracost', ARRAY['text','text','boolean']);
 
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','bigint','bigint','boolean'],'setof record');
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','bigint','anyarray','boolean'],'setof record');
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','bigint','boolean'],'setof record');
 SELECT function_returns('pgr_dijkstracost', ARRAY['text','anyarray','anyarray','boolean'],'setof record');
+SELECT function_returns('pgr_dijkstracost', ARRAY['text','text','boolean'],'setof record');
 
-SELECT CASE
-WHEN min_version('3.1.0') THEN
-  collect_tap(
-    has_function('pgr_dijkstracost', ARRAY['text','text','boolean']),
-    function_returns('pgr_dijkstracost', ARRAY['text','text','boolean'],'setof record')
-  )
-ELSE
-  skip(2, 'Combinations signature added on 3.1.0')
-END;
-
-
-SELECT CASE
-WHEN min_version('3.1.0') THEN
-  collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstracost'$$,
-      $$VALUES
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
-      $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstracost'$$,
-      $$VALUES
-      ('{25,25,16,20,20,701}'::OID[]),
-      ('{25,20,20,16,20,20,701}'::OID[]),
-      ('{25,20,2277,16,20,20,701}'::OID[]),
-      ('{25,2277,20,16,20,20,701}'::OID[]),
-      ('{25,2277,2277,16,20,20,701}'::OID[])
-      $$)
-  )
-ELSE
-  collect_tap(
-    set_eq(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstracost'$$,
-      $$VALUES
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
-      ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
-      $$),
-    set_eq(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstracost'$$,
-      $$VALUES
-      ('{25,20,20,16,20,20,701}'::OID[]),
-      ('{25,20,2277,16,20,20,701}'::OID[]),
-      ('{25,2277,20,16,20,20,701}'::OID[]),
-      ('{25,2277,2277,16,20,20,701}'::OID[])
-      $$)
-  )
-END;
+SELECT set_eq(
+  $$SELECT  proargnames from pg_proc where proname = 'pgr_dijkstracost'$$,
+  $$VALUES
+  ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
+  ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
+  ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
+  ('{"","","","directed","start_vid","end_vid","agg_cost"}'::TEXT[]),
+  ('{"","","directed","start_vid","end_vid","agg_cost"}'::TEXT[])
+  $$);
+SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_dijkstracost'$$,
+  $$VALUES
+  ('{25,25,16,20,20,701}'::OID[]),
+  ('{25,20,20,16,20,20,701}'::OID[]),
+  ('{25,20,2277,16,20,20,701}'::OID[]),
+  ('{25,2277,20,16,20,20,701}'::OID[]),
+  ('{25,2277,2277,16,20,20,701}'::OID[])
+  $$);
 
 SELECT finish();
 ROLLBACK;

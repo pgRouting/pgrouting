@@ -1,9 +1,7 @@
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(126) END;
+SELECT plan(126);
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-
-
 
 CREATE OR REPLACE FUNCTION test_function()
 RETURNS SETOF TEXT AS
@@ -14,12 +12,6 @@ params2 TEXT[];
 subs1 TEXT[];
 subs2 TEXT[];
 BEGIN
-  IF NOT min_version('3.2.0') THEN
-    RETURN QUERY
-    SELECT skip(1, 'Function is new on 3.2.0');
-    RETURN;
-  END IF;
-
   PREPARE edges AS
   SELECT id, source, target, cost, reverse_cost  FROM edge_table;
 

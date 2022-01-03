@@ -1,8 +1,7 @@
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(142) END;
+SELECT plan(142);
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
-
 
 
 CREATE TABLE expected AS
@@ -65,14 +64,7 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-IF NOT min_version('3.2.0') THEN
-  RETURN QUERY
-  SELECT skip(1, 'Function is new on 3.2.0');
-  RETURN;
-END IF;
-
 -- Initial tables are good to work
-
 RETURN QUERY
 SELECT isnt_empty($$SELECT id, source, target, cost, reverse_cost FROM edge_table$$);
 RETURN QUERY
