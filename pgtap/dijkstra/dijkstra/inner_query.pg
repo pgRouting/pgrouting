@@ -1,7 +1,6 @@
 BEGIN;
 
-UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.1.0') THEN plan(282) ELSE plan(218) END;
+SELECT plan(282);
 
 
 -- ONE TO ONE
@@ -12,22 +11,9 @@ SELECT style_dijkstra('pgr_dijkstra(', ', 2, ARRAY[3], true)');
 SELECT style_dijkstra('pgr_dijkstra(', ', ARRAY[2], 3, true)');
 -- MANY TO MANY
 SELECT style_dijkstra('pgr_dijkstra(', ', ARRAY[2], ARRAY[3], true)');
-
 -- COMBINATIONS
-CREATE OR REPLACE FUNCTION inner_query() RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-  IF min_version('3.1.0') THEN
-    RETURN QUERY SELECT style_dijkstra('pgr_dijkstra(', ', $$SELECT * FROM combinations_table$$, true)');
-    RETURN QUERY SELECT innerquery_combinations('pgr_dijkstra($$SELECT * FROM edge_table$$,',', true)');
-  ELSE
-    RETURN QUERY SELECT skip(2, 'Combinations signature added on 3.1.0');
-  END IF;
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE;
-
-SELECT inner_query();
+SELECT style_dijkstra('pgr_dijkstra(', ', $$SELECT * FROM combinations_table$$, true)');
+SELECT innerquery_combinations('pgr_dijkstra($$SELECT * FROM edge_table$$,',', true)');
 
 SELECT finish();
 ROLLBACK;

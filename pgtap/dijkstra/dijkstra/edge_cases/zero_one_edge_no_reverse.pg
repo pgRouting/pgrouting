@@ -1,7 +1,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.1.0') THEN plan(130) ELSE plan(104) END;
+SELECT plan(130);
 
 CREATE OR REPLACE FUNCTION do_test(TEXT, BIGINT, BIGINT)
 RETURNS SETOF TEXT AS
@@ -16,6 +16,8 @@ BEGIN
   SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, %2$s, ARRAY[%3$s])$$,$1,$2,$3), 'D. Many to one- ' || $1);
   RETURN QUERY
   SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, ARRAY[%2$s], ARRAY[%3$s])$$,$1,$2,$3), 'D. Many to Many- ' || $1);
+  RETURN QUERY
+  SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, 'combination')$$,$1), 'D. Combinations- ' || $1);
 
   -- undirected graph
   RETURN QUERY
@@ -26,11 +28,8 @@ BEGIN
   SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, %2$s, ARRAY[%3$s], false)$$,$1,$2,$3), 'D. Many to one- ' || $1);
   RETURN QUERY
   SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, ARRAY[%2$s], ARRAY[%3$s], false)$$,$1,$2,$3), 'D. Many to Many- ' || $1);
-
-  IF min_version('3.1.0') THEN
-    RETURN QUERY SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, 'combination', false)$$,$1), 'D. Combinations- ' || $1);
-    RETURN QUERY SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, 'combination')$$,$1), 'D. Combinations- ' || $1);
-  END IF;
+  RETURN QUERY
+  SELECT is_empty(format($$SELECT * from pgr_dijkstra(%1$L, 'combination', false)$$,$1), 'D. Combinations- ' || $1);
 
 END;
 $BODY$
@@ -82,20 +81,14 @@ SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 5, 6)$$, 'D. One to o
 SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', ARRAY[5], 6)$$, 'D. One to many- edge_5_6 -> no result');
 SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 5, ARRAY[6])$$, 'D. Many to one- edge_5_6 -> no result');
 SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', ARRAY[5], ARRAY[6])$$, 'D. Many to Many- edge_5_6 -> no result');
+SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 'combination')$$, 'D. Combinations- edge_5_6 -> no result');
 
 -- undirected graph
 SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 5, 6, false)$$, 'U. One to one- edge_5_6 -> no result');
 SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', ARRAY[5], 6, false)$$, 'U. One to many- edge_5_6 -> no result');
 SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 5, ARRAY[6], false)$$, 'U. Many to one- edge_5_6 -> no result');
 SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', ARRAY[5], ARRAY[6], false)$$, 'U. Many to Many- edge_5_6 -> no result');
-
-SELECT CASE
-WHEN min_version('3.1.0') THEN
-  collect_tap(
-    isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 'combination')$$, 'D. Combinations- edge_5_6 -> no result'),
-    isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 'combination', false)$$, 'U. Combinations- edge_5_6 -> no result')
-  )
-END;
+SELECT isnt_empty($$SELECT * from pgr_dijkstra('edge_5_6', 'combination', false)$$, 'U. Combinations- edge_5_6 -> no result');
 
 SELECT * FROM finish();
 ROLLBACK;

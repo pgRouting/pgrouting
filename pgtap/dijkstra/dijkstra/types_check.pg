@@ -1,7 +1,6 @@
-
 BEGIN;
 
-SELECT CASE WHEN min_version('3.1.0') THEN plan(13) ELSE PLAN(11) END;
+SELECT plan(13);
 
 SELECT dijkstra_types_check('pgr_dijkstra');
 

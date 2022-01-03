@@ -1,9 +1,8 @@
 BEGIN;
 
-SELECT CASE WHEN NOT min_version('3.2.0') THEN plan(1) ELSE plan(122) END;
+SELECT plan(122);
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-
 
 
 CREATE TABLE expected AS
@@ -80,12 +79,6 @@ CREATE OR REPLACE FUNCTION compare()
 RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
-
-IF NOT min_version('3.2.0') THEN
-  RETURN QUERY
-  SELECT skip(1, 'Function is new on 3.2.0');
-  RETURN;
-END IF;
 
 RETURN QUERY
 SELECT is_empty($$SELECT distinct cost FROM edge_table WHERE cost != 1 AND cost != -1$$);
