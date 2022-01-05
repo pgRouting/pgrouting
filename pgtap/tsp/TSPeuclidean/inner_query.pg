@@ -7,15 +7,15 @@ CREATE TEMP TABLE data AS
 SELECT id, ST_X(the_geom) AS x, ST_Y(the_geom) AS y
 FROM edge_table_vertices_pgr;
 
-SELECT tsp_anyInteger('pgr_tspeuclidean',
+SELECT test_anyInteger('pgr_tspeuclidean(',')',
     ARRAY['id', 'x', 'y'],
-    'id');
-SELECT tsp_anyNumerical('pgr_tspeuclidean',
+    'id','data');
+SELECT test_anyNumerical('pgr_tspeuclidean(',')',
     ARRAY['id', 'x', 'y'],
-    'x');
-SELECT tsp_anyNumerical('pgr_tspeuclidean',
+    'x','data');
+SELECT test_anyNumerical('pgr_tspeuclidean(',')',
     ARRAY['id', 'x', 'y'],
-    'y');
+    'y','data');
 
 SELECT finish();
 ROLLBACK;
