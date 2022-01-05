@@ -1,10 +1,9 @@
 BEGIN;
-SET client_min_messages TO WARNING;
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(56) ELSE plan(18) END;
+SELECT plan(56);
 
-CREATE TEMP TABLE data AS
+CREATE TEMP TABLE data_undirected AS
 SELECT * FROM pgr_withPointsCostMatrix(
   'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
   'SELECT pid, edge_id, fraction from pointsOfInterest',
@@ -21,13 +20,6 @@ CREATE FUNCTION tsp_edge_cases(tbl regclass)
 RETURNS SETOF TEXT AS
 $code$
 BEGIN
-  IF NOT min_lib_version('3.2.1') AND tbl::TEXT = 'data_directed' THEN
-    RETURN QUERY
-    SELECT skip(1, 'Annaeling complains about non symetric matrix');
-    RETURN;
-  END IF;
-
-  IF min_lib_version('3.2.1') THEN
 
     RETURN QUERY
     SELECT throws_ok(format($$
@@ -126,13 +118,6 @@ BEGIN
       AS t (seq, node, cost, agg_cost)
       $q$,
       'The cost from 6 to 12 is 3');
-
-  ELSE
-
-    RETURN QUERY
-    SELECT skip(1, 'Checks added on 3.2.1');
-
-  END IF;
 
 
   RETURN QUERY
@@ -238,7 +223,7 @@ END;
 $code$
 language plpgsql;
 
-SELECT tsp_edge_cases('data');
+SELECT tsp_edge_cases('data_undirected');
 SELECT tsp_edge_cases('data_directed');
 
 SELECT finish();

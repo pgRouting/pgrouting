@@ -1,6 +1,4 @@
 BEGIN;
-SET client_min_messages TO WARNING;
-
 -- NAME : wi29
 -- COMMENT : 29 locations in Western Sahara
 -- COMMENT : Derived from National Imagery and Mapping Agency data
@@ -43,6 +41,6 @@ INSERT INTO wi29 (id, x, y) VALUES
 
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
 
-SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(29) ELSE plan(1) END;
+SELECT plan(29);
 SELECT tsp_performance('wi29', 29, 95345, 2);
 SELECT finish();

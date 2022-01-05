@@ -1,6 +1,4 @@
 BEGIN;
-SET client_min_messages TO WARNING;
-
 -- NAME : qa194
 -- COMMENT : 194 locations in Qatar
 -- COMMENT : Derived from National Imagery and Mapping Agency data
@@ -209,6 +207,6 @@ INSERT INTO qa194 (id, x, y) VALUES
 
 UPDATE qa194 SET the_geom = ST_makePoint(x,y);
 
-SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(5) ELSE plan(1) END;
+SELECT plan(5);
 SELECT tsp_performance('qa194', 5, 9352, 2);
 SELECT finish();
