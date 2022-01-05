@@ -37,16 +37,21 @@ pgr_TSP
 
 .. rubric:: Availability:
 
+* Version 4.0.0
+
+  * Deprecated signatures that include annaeling parameters are removed
+  * New default parameter: max_cycles with default value `1`
+
 * Version 3.2.1
 
-  * Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+  * Metric Algorithm from `Boost library
+    <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
   * Simulated Annealing Algorithm no longer supported
 
     * The Simulated Annealing Algorithm related parameters are ignored:
-      max_processing_time, tries_per_temperature,
-      max_changes_per_temperature, max_consecutive_non_changes,
-      initial_temperature, final_temperature, cooling_factor,
-      randomize
+      max_processing_time, tries_per_temperature, max_changes_per_temperature,
+      max_consecutive_non_changes, initial_temperature, final_temperature,
+      cooling_factor, randomize
 
 * Version 2.3.0
 
@@ -73,7 +78,8 @@ Description
 Characteristics
 ...............................................................................
 
-- Can be Used with :doc:`costMatrix-category` functions preferably with `directed => false`.
+- Can be Used with :doc:`costMatrix-category` functions preferably with
+  `directed => false`.
 
   - With ``directed => false``
 
@@ -102,15 +108,19 @@ Characteristics
 
       - is directed
       - is fully connected (As long as the graph has one component)
-      - some (or all) traveling costs on edges might not obey the triangle inequality.
+      - some (or all) traveling costs on edges might not obey the triangle
+        inequality.
 
-    - As an undirected graph is required, the directed graph is transformed as follows:
+    - As an **undirected** graph is required, the directed graph is transformed
+      as follows:
 
-      - edges `(u, v)` and `(v, u)` is considered to be the same edge (denoted `(u, v)`
+      - edges `(u, v)` and `(v, u)` is considered to be the same edge, denoted
+        `(u, v)`
       - if ``agg_cost`` differs between one or more instances of edge `(u, v)`
       - The minimum value of the ``agg_cost`` all instances of edge `(u, v)`
         is going to be considered as the ``agg_cost`` of edge  `(u, v)`
-      - Some (or all) traveling costs on edges will still might not obey the triangle inequality.
+      - Some (or all) traveling costs on edges will still might not obey the
+        triangle inequality.
 
 - When the data is incomplete, but it is a connected graph,
   the missing values will be calculated with dijkstra algorithm.
@@ -118,19 +128,18 @@ Characteristics
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. index::
     single: TSP
 
-.. code-block:: none
+.. rubric:: Summary
 
-    pgr_TSP(Matrix SQL, [start_id], [end_id])
-    RETURNS SETOF (seq, node, cost, agg_cost)
+.. literalinclude:: ../sql/tsp/TSP.sql
+   :start-after: start summary
+   :end-before: end summary
 
-.. rubric:: Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information
+.. rubric:: Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix
 
-* **Line 5** Vertices 15 to 18 are not included because they are not connected.
+* **Line 5** Vertices 14 to 17 are not included because they are not connected.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q1
@@ -140,19 +149,27 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-=============== ===========  ============  =================================================
-Parameter          Type         Default       Description
-=============== ===========  ============  =================================================
-**Matrix SQL**   ``TEXT``                   An SQL query, described in the `Matrix SQL`_ section.
-**start_vid**    ``BIGINT``    ``0``        The first visiting vertex
+=============== ===========  =======  ==========================================
+Parameter          Type      Default  Description
+=============== ===========  =======  ==========================================
+**Matrix SQL**   ``TEXT``             An SQL query, described in the `Matrix
+                                      SQL`_ section.
+**start_vid**    ``BIGINT``  ``0``    The first visiting vertex
 
-                                            * When `0` any vertex can become the first visiting vertex.
+                                      * When ``0`` any vertex can become the
+                                        first visiting vertex.
 
-**end_vid**      ``BIGINT``    ``0``        Last visiting vertex before returning to ``start_vid``.
+**end_vid**      ``BIGINT``  ``0``    Last visiting vertex before returning to
+                                      ``start_vid``.
 
-                                            * When ``0`` any vertex can become the last visiting vertex before returning to ``start_vid``.
-                                            * When ``NOT 0`` and ``start_vid = 0`` then it is the first and last vertex
-=============== ===========  ============  =================================================
+                                      * When ``0`` any vertex can become the
+                                        last visiting vertex before returning
+                                        to ``start_vid``.
+                                      * When ``NOT 0`` and ``start_vid = 0``
+                                        then it is the first and last vertex
+
+**max_cycles**  ``INTEGER``  ``1``    Number of cycles to process the algorithm
+=============== ===========  =======  ==========================================
 
 
 Inner query
@@ -187,11 +204,14 @@ Additional Examples
 
 To generate an asymmetric matrix:
 
-* **Line 5** The ``side`` information of pointsOfInterset is ignored by not including it in the query
+* **Line 5** The ``side`` information of pointsOfInterset is ignored by not
+  including it in the query
 * **Line 7** Generating an asymetric matrix with ``directed => true``
 
-  * :math:`min(agg\_cost(u, v), agg\_cost(v, u))` is going to be considered as the ``agg_cost``
-  * The solution that can be larger than *twice as long as the optimal tour* because:
+  * :math:`min(agg\_cost(u, v), agg\_cost(v, u))` is going to be considered as
+    the ``agg_cost``
+  * The solution that can be larger than *twice as long as the optimal tour*
+    because:
 
     * Triangle inequality might not be satisfied.
     * ``start_id != 0 AND end_id != 0``
@@ -203,14 +223,16 @@ To generate an asymmetric matrix:
 
 :Example: Connected incomplete data
 
-Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is connected
+Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is
+connected
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q4
    :end-before: -- q5
    :linenos:
 
-Edge `(5,12)` does not exist on the initial data, but it is calculated internally.
+Edge `(6, 12)` does not exist on the initial data, but it is calculated
+internally.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q5
@@ -222,10 +244,15 @@ The queries use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+.. rubric:: References
+
 * :doc:`TSP-family`
-* Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
-* `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
-* `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
+* :doc:`sampledata` network.
+* Boost library: `Metric Algorithm from
+  <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
+* Wikipedia: `Traveling Salesman Problem
+  <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
 
 .. rubric:: Indices and tables
 

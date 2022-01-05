@@ -33,9 +33,15 @@ pgr_TSPeuclidean
 
 .. rubric:: Availability:
 
+* Version 4.0.0
+
+  * Deprecated signatures that include annaeling parameters are removed
+  * New default parameter: max_cycles with default value `1`
+
 * Version 3.2.1
 
-  * Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+  * Metric Algorithm from `Boost library
+    <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
   * Simulated Annealing Algorithm no longer supported
 
     * The Simulated Annealing Algorithm related parameters are ignored:
@@ -88,15 +94,14 @@ Characteristics
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. index::
     single: TSPeuclidean
 
-.. code-block:: none
+.. rubric:: Summary
 
-    pgr_TSPeuclidean(Coordinates SQL, [start_id], [end_id])
-    RETURNS SETOF (seq, node, cost, agg_cost)
+.. literalinclude:: ../sql/tsp/TSPeuclidean.sql
+   :start-after: start summary
+   :end-before: end summary
 
 :Example: With default values
 
@@ -107,19 +112,29 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ===========  ============  =================================================
-Parameter           Type         Default       Description
-=================== ===========  ============  =================================================
-**Coordinates SQL** ``TEXT``                   An SQL query, described in the `Coordinates SQL`_ section
-**start_vid**       ``BIGINT``    ``0``        The first visiting vertex
+=================== ===========  ========  =====================================
+Parameter           Type         Default   Description
+=================== ===========  ========  =====================================
+**Coordinates SQL** ``TEXT``               An SQL query, described in the
+                                           `Coordinates SQL`_ section
+**start_vid**       ``BIGINT``    ``0``    The first visiting vertex
 
-                                               * When `0` any vertex can become the first visiting vertex.
+                                           * When ``0`` any vertex can become the
+                                             first visiting vertex.
 
-**end_vid**         ``BIGINT``    ``0``        Last visiting vertex before returning to ``start_vid``.
+**end_vid**         ``BIGINT``    ``0``    Last visiting vertex before
+                                           returning to ``start_vid``.
 
-                                               * When ``0`` any vertex can become the last visiting vertex before returning to ``start_vid``.
-                                               * When ``NOT 0`` and ``start_vid = 0`` then it is the first and last vertex
-=================== ===========  ============  =================================================
+                                           * When ``0`` any vertex can become
+                                             the last visiting vertex before
+                                             returning to ``start_vid``.
+                                           * When ``NOT 0`` and ``start_vid =
+                                             0`` then it is the first and last
+                                             vertex
+
+**max_cycles**      ``INTEGER``   ``1``    Number of cycles to process the
+                                           algorithm
+=================== ===========  ========  =====================================
 
 Inner query
 -------------------------------------------------------------------------------
@@ -140,9 +155,10 @@ Additional Examples
 
 :Example: Test 29 cities of Western Sahara
 
-This example shows how to make performance tests using University of Waterloo's `example data
-<https://www.math.uwaterloo.ca/tsp/world/countries.html>`__ using the 29 cities of `Western Sahara
-dataset <https://www.math.uwaterloo.ca/tsp/world/wi29.tsp>`__
+This example shows how to make performance tests using University of Waterloo's
+`example data <https://www.math.uwaterloo.ca/tsp/world/countries.html>`__ using
+the 29 cities of `Western Sahara dataset
+<https://www.math.uwaterloo.ca/tsp/world/wi29.tsp>`__
 
 Creating a table for the data and storing the data
 
@@ -155,7 +171,8 @@ Adding a geometry (for visual purposes)
 .. literalinclude:: wi29.queries
    :start-after: -- data end
 
-Getting a total cost of the tour, compare the value with the length of an optimal tour is 27603, given on the dataset
+Getting a total cost of the tour, compare the value with the length of an
+optimal tour is 27603, given on the dataset
 
 .. literalinclude:: doc-pgr_TSPeuclidean.queries
    :start-after: -- q2
@@ -163,14 +180,13 @@ Getting a total cost of the tour, compare the value with the length of an optima
 
 Getting a geometry of the tour
 
-
 .. literalinclude:: doc-pgr_TSPeuclidean.queries
    :start-after: -- q3
    :end-before: -- q4
 
-Visualy, The first image is the `optimal solution <https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and
-the second image is the solution obtained with ``pgr_TSPeuclidean``.
-
+Visualy, The first image is the `optimal solution
+<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and the second image
+is the solution obtained with ``pgr_TSPeuclidean``.
 
 .. image:: images/wi29optimal.png
    :scale: 50%
@@ -178,17 +194,18 @@ the second image is the solution obtained with ``pgr_TSPeuclidean``.
 .. image:: images/wi29Solution.png
    :scale: 50%
 
-
-
-
 See Also
 -------------------------------------------------------------------------------
 
+.. rubric:: References
+
 * :doc:`TSP-family`
 * :doc:`sampledata` network.
-* Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
+* Boost library: `Metric Algorithm from
+  <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__
-* `Wikipedia: Traveling Salesman Problem <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
+* Wikipedia: `Traveling Salesman Problem
+  <https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__
 
 .. rubric:: Indices and tables
 
