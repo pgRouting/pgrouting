@@ -18,7 +18,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SET client_min_messages TO WARNING;
 
 -- NAME: dj38
 -- COMMENT : 38 locations in Djibouti
@@ -74,7 +73,7 @@ INSERT INTO dj38 (id, x, y) VALUES
 
 UPDATE dj38 SET the_geom = ST_makePoint(x,y);
 
-SELECT CASE WHEN min_lib_version('3.2.1') THEN plan(38) ELSE plan(1) END;
+SELECT plan(38);
 
 SELECT tsp_performance('dj38', 38, 6656.0, 2.0);
 SELECT finish();
