@@ -34,12 +34,11 @@ SELECT * FROM pgr_TSP(
 );
 /* -- q4 */
 SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
-FROM edge_table WHERE id IN (2,4,5,8, 9, 15);
+FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15);
 /* -- q5 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
-  FROM edge_table
-  WHERE id IN (2,4,5,8,9,15)
+  FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15)
   $$);
 /* -- q6 */
