@@ -18,10 +18,24 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 BEGIN;
-SET client_min_messages TO WARNING;
 
 SELECT plan(5);
-SELECT tsp_types_check('pgr_tspeuclidean');
+
+SELECT has_function('pgr_tspeuclidean');
+
+SELECT has_function('pgr_tspeuclidean', ARRAY['text', 'bigint', 'bigint','integer']);
+SELECT function_returns('pgr_tspeuclidean', ARRAY['text', 'bigint', 'bigint','integer'], 'setof record');
+
+SELECT bag_has(
+  format($$SELECT proargnames FROM pg_proc WHERE proname = %1$L$$, 'pgr_tspeuclidean'),
+  $$SELECT '{"","start_id","end_id","max_cycles","seq","node","cost","agg_cost"}'::TEXT[]$$,
+  'parameter names'
+);
+
+SELECT set_eq(
+  format($$SELECT proallargtypes FROM pg_proc WHERE proname = %1$L$$, 'pgr_tspeuclidean'),
+  $$SELECT '{25,20,20,23,23,20,701,701}'::OID[]$$, 'parameter types'
+);
 
 SELECT finish();
 ROLLBACK;
