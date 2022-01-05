@@ -120,20 +120,11 @@ _pgr_tspeuclidean(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        ereport(NOTICE,
-                (errmsg("pgr_TSPeuclidean no longer solving with simulated annaeling"),
-                 errhint("Ignoring annaeling parameters")));
-
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
-                /*
-                 * TODO(vicky) version 4.0.0
-                 * Get parameter for max_cycles
-                 * PG_GETARG_INT32(3),
-                 */
-                1,
+                PG_GETARG_INT32(3),
 
                 &result_tuples,
                 &result_count);
