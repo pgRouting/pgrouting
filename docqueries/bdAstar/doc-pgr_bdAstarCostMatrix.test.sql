@@ -21,7 +21,6 @@ SELECT * FROM pgr_TSP(
         (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
         false
     )
-    $$,
-    randomize := false
+    $$
 );
 /* -- bdAstar q4 */

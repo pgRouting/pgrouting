@@ -21,7 +21,6 @@ SELECT * FROM pgr_TSP(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction from pointsOfInterest',
         array[-1, 3, 6, -6], directed := false);
-    $$,
-    randomize := false
+    $$
 );
 /* -- withPoints q4 */
