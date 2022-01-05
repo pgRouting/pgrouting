@@ -24,39 +24,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+/*
+start summary
+pgr_TSPeuclidean(Coordinates SQL, [start_id], [end_id], [max_cycles])
+RETURNS SETOF (seq, node, cost, agg_cost)
+end summary
+ */
 
---------------------
--- pgr_TSPeuclidean
---------------------
-
-
---v3.0
+--v4.0
 CREATE FUNCTION pgr_TSPeuclidean(
-    TEXT, -- coordinates_sql (required)
+  TEXT,
+  start_id BIGINT DEFAULT 0,
+  end_id BIGINT DEFAULT 0,
+  max_cycles INTEGER DEFAULT 1,
 
-    start_id BIGINT DEFAULT 0,
-    end_id BIGINT DEFAULT 0,
-
-    max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
-
-    tries_per_temperature INTEGER DEFAULT 500,
-    max_changes_per_temperature INTEGER DEFAULT 60,
-    max_consecutive_non_changes INTEGER DEFAULT 100,
-
-    initial_temperature FLOAT DEFAULT 100,
-    final_temperature FLOAT DEFAULT 0.1,
-    cooling_factor FLOAT DEFAULT 0.9,
-
-    randomize BOOLEAN DEFAULT true,
-
-    OUT seq integer,
-    OUT node BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
+  OUT seq integer,
+  OUT node BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
-    SELECT *
-    FROM _pgr_TSPeuclidean(_pgr_get_statement($1), $2,$3, $4, $5,$6,$7, $8,$9,$10, $11);
+SELECT *
+FROM _pgr_TSPeuclidean(_pgr_get_statement($1), $2, $3, $4);
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
@@ -65,26 +54,15 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_TSPeuclidean(TEXT, BIGINT, BIGINT, FLOAT, INTEGER, INTEGER, INTEGER, FLOAT, FLOAT, FLOAT, BOOLEAN)
+COMMENT ON FUNCTION pgr_TSPeuclidean(TEXT, BIGINT, BIGINT, INTEGER)
 IS 'pgr_TSPeuclidean
 - Parameters
-   - coordinates SQL with columns: id, x, y
+  - coordinates SQL with columns: id, x, y
 - Optional parameters
-    - start_id := 0
-    - end_id := 0
-
-    - max_processing_time := ''+infinity''::FLOAT
-
-    - tries_per_temperature := 500
-    - max_changes_per_temperature :=  60
-    - max_consecutive_non_changes :=  100
-
-    - initial_temperature FLOAT := 100
-    - final_temperature := 0.1
-    - cooling_factor := 0.9
-
-    - randomize := true
+  - start_id := 0
+  - end_id := 0
+  - max_cycles := 1
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_TSPeuclidean.html
+  - ${PROJECT_DOC_LINK}/pgr_TSPeuclidean.html
 ';
 
