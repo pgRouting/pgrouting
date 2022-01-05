@@ -550,7 +550,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </dl>
 <p>Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is connected</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">end_vid</span><span class="p">,</span> <span class="mi">1</span> <span class="n">AS</span> <span class="n">agg_cost</span>
-<span class="linenos"> 2</span><span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
+<span class="linenos"> 2</span><span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
 <span class="linenos"> 3</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="linenos"> 4</span><span class="o">-----------+---------+----------</span>
 <span class="linenos"> 5</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
@@ -567,20 +567,19 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$
 <span class="linenos"> 3</span>  SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
-<span class="linenos"> 4</span>  FROM edge_table
-<span class="linenos"> 5</span>  WHERE id IN (2,4,5,8,9,15)
-<span class="linenos"> 6</span>  $$);
-<span class="linenos"> 7</span> seq | node | cost | agg_cost
-<span class="linenos"> 8</span>-----+------+------+----------
-<span class="linenos"> 9</span>   1 |    2 |    0 |        0
-<span class="linenos">10</span>   2 |    3 |    1 |        1
-<span class="linenos">11</span>   3 |    6 |    1 |        2
-<span class="linenos">12</span>   4 |   12 |    1 |        3
-<span class="linenos">13</span>   5 |    9 |    1 |        4
-<span class="linenos">14</span>   6 |    5 |    1 |        5
-<span class="linenos">15</span>   7 |    2 |    1 |        6
-<span class="linenos">16</span>(7 rows)
-<span class="linenos">17</span>
+<span class="linenos"> 4</span>  FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15)
+<span class="linenos"> 5</span>  $$);
+<span class="linenos"> 6</span> seq | node | cost | agg_cost
+<span class="linenos"> 7</span>-----+------+------+----------
+<span class="linenos"> 8</span>   1 |    2 |    0 |        0
+<span class="linenos"> 9</span>   2 |    3 |    1 |        1
+<span class="linenos">10</span>   3 |    6 |    1 |        2
+<span class="linenos">11</span>   4 |   12 |    1 |        3
+<span class="linenos">12</span>   5 |    9 |    1 |        4
+<span class="linenos">13</span>   6 |    5 |    1 |        5
+<span class="linenos">14</span>   7 |    2 |    1 |        6
+<span class="linenos">15</span>(7 rows)
+<span class="linenos">16</span>
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
@@ -614,7 +613,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jan 03, 2022.<br/>
+      Last updated on Jan 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
     </p>
   </div>
