@@ -499,8 +499,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
         (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5),
         false
     )
-    $$,
-    randomize := false
+    $$
 );
  seq | node | cost | agg_cost
 -----+------+------+----------
@@ -545,8 +544,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0.<br/>
-      Actualizado por última vez en dic. 09, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.1.<br/>
+      Actualizado por última vez en ene. 05, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
     </p>
   </div>
 </footer>

@@ -214,13 +214,13 @@ git checkout v3.3.0
 <span id="install-enable-db"></span><h2>Habilitación y actualización en la base de datos<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Habilitación de la base de datos</p>
 <p>pgRouting es una extensión y depende de postGIS. Habilitar de postGIS antes de habilitar pgRouting en la base de datos</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">postgis</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">pgrouting</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p class="rubric">Actualización de la base de datos</p>
 <p>Para actualizar pgRouting en la base de datos a la versión 3.3.0 utilice el siguiente comando:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;3.3.0&quot;</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">pgrouting</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="ss">&quot;3.3.0&quot;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Puede hallar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
@@ -417,8 +417,8 @@ dropdb  -U &lt;user&gt; ___pgr___test___
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.0.<br/>
-      Actualizado por última vez en dic. 09, 2021.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.1.<br/>
+      Actualizado por última vez en ene. 05, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
     </p>
   </div>
 </footer>
