@@ -24,8 +24,8 @@ SELECT * FROM pgr_trsp_withPoints(
   UNION
   (SELECT 2, 6, 0.5)$$,
   -1, -2, true);
- seq | path_seq | start_pid | end_pid | node | edge | cost | agg_cost
------+----------+-----------+---------+------+------+------+----------
+ seq | path_seq | departure | destination | node | edge | cost | agg_cost
+-----+----------+-----------+-------------+------+------+------+----------
 (0 rows)
 
 ROLLBACK;
