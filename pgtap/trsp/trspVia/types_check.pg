@@ -24,7 +24,7 @@ RETURN QUERY
 SELECT set_eq(
   $$SELECT  proargnames from pg_proc where proname = 'pgr_trspvia'$$,
   $$VALUES
-    ('{"","","","directed","strict","u_turn_on_edge","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost","route_agg_cost"}'::TEXT[])
+    ('{"","","","directed","strict","u_turn_on_edge","seq","path_id","path_seq","departure","destination","node","edge","cost","agg_cost","route_agg_cost"}'::TEXT[])
   $$
 );
 
