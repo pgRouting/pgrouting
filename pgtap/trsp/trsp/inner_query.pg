@@ -17,8 +17,8 @@ BEGIN
   RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || empty_restriction || ', 2, 9, false)');
   RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || empty_restriction || ', 2, 9, true)');
 
-  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || unrelated_restriction || ', 2, 9, false)');
-  RETURN QUERY SELECT style_dijkstra('pgr_trsp', ', ' || unrelated_restriction || ', 2, 9, true)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || unrelated_restriction || ', 2, 9, false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || unrelated_restriction || ', 2, 9, true)');
 
 END;
 $BODY$
