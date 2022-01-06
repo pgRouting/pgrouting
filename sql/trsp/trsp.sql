@@ -30,10 +30,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- ONE to ONE
 --v4.0
 CREATE FUNCTION pgr_trsp(
-  TEXT, -- edges SQL (required)
-  TEXT, -- restrictions sql (required)
-  BIGINT, -- from_vid (required)
-  BIGINT, -- to_vid (required)
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  BIGINT, -- departure
+  BIGINT, -- destination
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
@@ -63,10 +63,10 @@ ROWS 1000;
 -- ONE to MANY
 --v4.0
 CREATE FUNCTION pgr_trsp(
-  TEXT, -- edges sql
-  TEXT, -- restrictions sql
-  BIGINT, -- start_vid
-  ANYARRAY, -- end_vids
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  BIGINT, -- departure
+  ANYARRAY, -- destinations
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
@@ -87,17 +87,17 @@ $BODY$
     $4::bigint[],
     directed) AS a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
 -- MANY to ONE
 --v4.0
 CREATE FUNCTION pgr_trsp(
-  TEXT, -- edges sql
-  TEXT, -- restrictions sql
-  ANYARRAY, -- start_vids
-  BIGINT, -- end_vid
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  ANYARRAY, -- departures
+  BIGINT, -- destination
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
@@ -118,17 +118,17 @@ $BODY$
     ARRAY[$4]::BIGINT[],
     $5) AS a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
 -- MANY to MANY
 --v4.0
 CREATE FUNCTION pgr_trsp(
-  TEXT, -- edges sql
-  TEXT, -- restrictions sql
-  ANYARRAY, -- start_vids
-  ANYARRAY, -- end_vids
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  ANYARRAY, -- departures
+  ANYARRAY, -- destinations
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
@@ -149,16 +149,16 @@ $BODY$
     $4::bigint[],
     $5) AS a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
 -- COMBINATIONS
 --v4.0
 CREATE FUNCTION pgr_trsp(
-  TEXT, -- edges sql
-  TEXT, -- restrictions sql
-  TEXT, -- combinations sql
+  TEXT, -- Edges SQL
+  TEXT, -- Restrictions SQL
+  TEXT, -- Combinations SQL
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
@@ -178,7 +178,7 @@ $BODY$
     _pgr_get_statement($3),
     $4) AS a;
 $BODY$
-LANGUAGE sql VOLATILE STRICT
+LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
@@ -188,63 +188,63 @@ ROWS 1000;
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, BIGINT, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - restrictions SQL with columns: id, cost, path
-    - from vertex identifier
-    - to vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Departure vertex identifier
+  - Destination vertex identifier
 - Optional parameters
-    - directed
+  - directed
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, BIGINT, ANYARRAY, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - restrictions SQL with columns: id, cost, path
-    - from vertex identifier
-    - to array of vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Departure vertex identifier
+  - Destinations ARRAY[vertices identifier]
 - Optional parameters
-    - directed := true
+  - directed := true
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, ANYARRAY, BIGINT, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - restrictions SQL with columns: id, cost, path
-    - from array of vertex identifier
-    - to vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Departures ARRAY[vertices identifier]
+  - Destination vertex identifier
 - Optional parameters
-    - directed := true
+  - directed := true
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - restrictions SQL with columns: id, cost, path
-    - from array of vertex identifier
-    - to array of vertex identifier
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Departures ARRAY[vertices identifier]
+  - Destinations ARRAY[vertices identifier]
 - Optional parameters
-    - directed := true
+  - directed := true
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, TEXT, TEXT, BOOLEAN)
 IS 'pgr_trsp
 - Parameters
-    - edges SQL with columns: id, source, target, cost [,reverse_cost]
-    - restrictions SQL with columns: id, cost, path
-    - combinations SQL with columns: source, target
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Restrictions SQL with columns: id, cost, path
+  - Combinations SQL with columns: source, target
 - Optional parameters
-    - directed := true
+  - directed := true
 - Documentation:
-    - ${PROJECT_DOC_LINK}/pgr_trsp.html
+  - ${PROJECT_DOC_LINK}/pgr_trsp.html
 ';
