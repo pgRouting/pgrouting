@@ -43,8 +43,8 @@ CREATE FUNCTION _pgr_trsp(
 
   OUT seq INTEGER,
   OUT path_seq INTEGER,
-  OUT start_vid BIGINT,
-  OUT end_vid BIGINT,
+  OUT departure BIGINT,
+  OUT destination BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
@@ -63,8 +63,8 @@ CREATE FUNCTION _pgr_trsp(
 
   OUT seq INTEGER,
   OUT path_seq INTEGER,
-  OUT start_vid BIGINT,
-  OUT end_vid BIGINT,
+  OUT departure BIGINT,
+  OUT destination BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
