@@ -1,31 +1,24 @@
 BEGIN;
 
--- This test is prepared for when:
--- Tentatively trsp will accepts ANY-INTEGER and ANY-NUMERICAL on 4.0.0
--- Adjust style_dijkstra_trsp -> style_dijkstra when that happens
-
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(324);
+SELECT plan(216);
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
-  restriction TEXT;
+  unrelated_restriction TEXT;
+  empty_restriction TEXT;
 BEGIN
 
+  unrelated_restriction := '$$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$';
+  empty_restriction := '$$SELECT * FROM new_restrictions WHERE id > 7$$';
 
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], false, true)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], false, true, NULL)', TRUE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], false, true, ' || restriction, TRUE);
+  RETURN QUERY SELECT style_dijkstra('pgr_trspVia(', ', ' || empty_restriction || ', ARRAY[2,9,12], false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trspVia(', ', ' || empty_restriction || ', ARRAY[2,9,12], true)');
 
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], true, false)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], true, false, NULL)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], true, false, ' || restriction, FALSE);
-
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], false, false)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], false, false, NULL)', FALSE);
-    RETURN QUERY SELECT style_dijkstra_trsp('pgr_trspVia', ', ARRAY[2,9,12]::INTEGER[], false, false, ' || restriction, FALSE);
+  RETURN QUERY SELECT style_dijkstra('pgr_trspVia(', ', ' || unrelated_restriction || ', ARRAY[2,9,12], false)');
+  RETURN QUERY SELECT style_dijkstra('pgr_trspVia(', ', ' || unrelated_restriction || ', ARRAY[2,9,12], true)');
 
 END;
 $BODY$
