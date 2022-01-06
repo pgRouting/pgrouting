@@ -32,11 +32,11 @@ RETURN QUERY
 SELECT set_eq(
   $$SELECT  proargnames from pg_proc where proname = 'pgr_trsp'$$,
   $$VALUES
-    ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]);
+    ('{"","","","directed","seq","path_seq","departure","destination","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","departure","destination","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","departure","destination","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","departure","destination","node","edge","cost","agg_cost"}'::TEXT[]),
+    ('{"","","","","directed","seq","path_seq","departure","destination","node","edge","cost","agg_cost"}'::TEXT[]);
   $$
 );
 
