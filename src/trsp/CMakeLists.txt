@@ -7,4 +7,8 @@ add_library(trsp OBJECT
 
   edgeInfo.cpp
   pgr_trspHandler.cpp
+
+	trsp_withPointsVia.c
+	trsp_withPointsVia_driver.cpp
+
   )

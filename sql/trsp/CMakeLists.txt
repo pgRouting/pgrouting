@@ -9,6 +9,9 @@ SET(LOCAL_FILES
   _trsp_withPoints.sql
   trsp_withPoints.sql
 
+  _trsp_withPointsVia.sql
+  trsp_withPointsVia.sql
+
   _array_reverse.sql
   pgr_trspViaEdges.sql
 
