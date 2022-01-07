@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 #include "drivers/withPoints/get_new_queries.h"
-#include "drivers/trsp/trsp_withPointsVia_driver.h"
+#include "drivers/dijkstra/vias_driver.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"

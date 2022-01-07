@@ -9,6 +9,4 @@ add_library(trsp OBJECT
   pgr_trspHandler.cpp
 
 	trsp_withPointsVia.c
-	trsp_withPointsVia_driver.cpp
-
   )
