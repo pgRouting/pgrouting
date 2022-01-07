@@ -27,8 +27,9 @@ CREATE FUNCTION pgr_trspVia(
   TEXT, -- restrictions SQL
   ANYARRAY,  -- via vids (required)
   directed BOOLEAN DEFAULT true,
+
   strict BOOLEAN DEFAULT false,
-  U_turn_on_edge BOOLEAN DEFAULT true,
+  allow_u_turn BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
   OUT path_id INTEGER,
