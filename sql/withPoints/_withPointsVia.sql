@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: trsp_withPointsVia.sql
+File: _withPointsVia.sql
 
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
