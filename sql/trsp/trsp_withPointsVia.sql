@@ -34,7 +34,7 @@ CREATE FUNCTION pgr_trsp_withPointsVia(
   directed BOOLEAN DEFAULT true,
 
   strict BOOLEAN DEFAULT false,
-  U_turn_on_edge BOOLEAN DEFAULT true,
+  allow_u_turn BOOLEAN DEFAULT true,
 
   details BOOLEAN DEFAULT false,
   driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
