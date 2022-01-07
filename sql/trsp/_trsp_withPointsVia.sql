@@ -31,11 +31,14 @@ CREATE FUNCTION _pgr_trsp_withPointsVia (
   TEXT, -- Restrictions SQL
   TEXT, -- Points SQL
   ANYARRAY, -- Via
+
   BOOLEAN, -- directed
-  CHAR, -- driving side
-  BOOLEAN, -- details
-  BOOLEAN, -- allow U turn
+
   BOOLEAN, -- strict
+  BOOLEAN, -- allow U turn
+
+  BOOLEAN, -- details
+  CHAR, -- driving side
 
   OUT seq INTEGER,
   OUT path_id INTEGER,
@@ -52,5 +55,5 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE C VOLATILE;
 
-COMMENT ON FUNCTION _pgr_trsp_withPointsVia(TEXT, TEXT, TEXT, ANYARRAY, BOOLEAN, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION _pgr_trsp_withPointsVia(TEXT, TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN, CHAR)
 IS 'pgRouting internal function';

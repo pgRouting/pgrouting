@@ -30,11 +30,14 @@ CREATE FUNCTION pgr_trsp_withPointsVia(
   TEXT, -- Restrictions SQL
   TEXT, -- Points SQL
   ANYARRAY,  -- Via vids
+
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
-  details BOOLEAN DEFAULT false,
-  U_turn_on_edge BOOLEAN DEFAULT true,
+
   strict BOOLEAN DEFAULT false,
+  U_turn_on_edge BOOLEAN DEFAULT true,
+
+  details BOOLEAN DEFAULT false,
+  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
   OUT seq INTEGER,
   OUT path_id INTEGER,
@@ -67,7 +70,7 @@ COST 100
 ROWS 1000;
 
 -- COMMENTS
-COMMENT ON FUNCTION pgr_trsp_withPointsVia(TEXT, TEXT, TEXT, ANYARRAY, BOOLEAN, CHAR, BOOLEAN, BOOLEAN, BOOLEAN)
+COMMENT ON FUNCTION pgr_trsp_withPointsVia(TEXT, TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN, CHAR)
 IS 'pgr_trspVia
 - PROPOSED
 - Parameters:
