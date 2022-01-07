@@ -167,3 +167,59 @@ BEGIN
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION types_check_via(fn TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  params_types_words TEXT[] = ARRAY['text'];
+  params_names TEXT[] = ARRAY[''];
+  params_numbers OID[] = ARRAY[25];
+
+  optional_params_types_words TEXT[] = ARRAY['boolean','boolean','boolean'];
+  optional_params_names TEXT[] = ARRAY['directed','strict','allow_u_turn'];
+  optional_params_numbers OID[] = ARRAY[16,16,16];
+
+  return_params_names TEXT[] = ARRAY['seq','path_id','path_seq','departure','destination','node','edge','cost','agg_cost','route_agg_cost'];
+  return_params_numbers OID[] = ARRAY[23,23,23,20,20,20,20,701,701,701];
+
+BEGIN
+  -- edges, restrictions, points, vias
+  IF fn LIKE '%trsp%' THEN
+    params_types_words := params_types_words || 'text'::TEXT;
+    params_names := params_names || ARRAY[''];
+    params_numbers := params_numbers || ARRAY[25::OID];
+  END IF;
+
+  IF fn LIKE '%withpoints%' THEN
+    params_types_words := params_types_words || 'text'::TEXT;
+    params_names := params_names || ARRAY[''];
+    params_numbers := params_numbers || ARRAY[25::OID];
+    optional_params_types_words := optional_params_types_words || ARRAY['boolean','character'];
+    optional_params_names := optional_params_names || ARRAY['details','driving_side'];
+    optional_params_numbers := optional_params_numbers || ARRAY[16::OID, 1042::OID];
+  END IF;
+
+  params_types_words := params_types_words || 'anyarray'::TEXT;
+  params_names := params_names || ARRAY[''];
+  params_numbers := params_numbers || ARRAY[2277::OID];
+
+  RETURN QUERY SELECT has_function(fn);
+
+  RETURN QUERY SELECT has_function(fn, params_types_words || optional_params_types_words);
+  RETURN QUERY SELECT function_returns(fn, params_types_words || optional_params_types_words, 'setof record');
+
+  RETURN QUERY
+  SELECT set_eq(
+    format($$SELECT proargnames from pg_proc where proname = %1$L$$, fn),
+    format('VALUES (%1$L::TEXT[])', '{"' || array_to_string(params_names || optional_params_names || return_params_names,'","') || '"}')
+  );
+
+  RETURN QUERY
+  SELECT set_eq(
+    format($$SELECT proallargtypes from pg_proc where proname = %1$L$$, fn),
+    format('VALUES (%1$L::OID[])', '{' || array_to_string(params_numbers || optional_params_numbers || return_params_numbers,',') || '}')
+  );
+END;
+$BODY$
+LANGUAGE plpgsql;
