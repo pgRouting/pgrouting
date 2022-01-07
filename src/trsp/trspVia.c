@@ -62,6 +62,7 @@ void process(
         size_t *result_count) {
     pgr_SPI_connect();
 
+    /* Managing Via */
     size_t size_via_arr = 0;
     int64_t* via_arr = (int64_t*) pgr_get_bigIntArray(&size_via_arr, via_vertices);
 
@@ -72,6 +73,7 @@ void process(
         return;
     }
 
+    /* Managing the edges */
     Edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_sql, &edges, &total_edges);
@@ -83,6 +85,7 @@ void process(
         return;
     }
 
+    /* Managing restrictions */
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
     pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
@@ -106,7 +109,7 @@ void process(
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg("processing pgr_trsp", start_t, clock());
+    time_msg("processing pgr_trsp_withPointsVia", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -116,6 +119,12 @@ void process(
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
+    /* TODO free everything */
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (via_arr) pfree(via_arr);
     pgr_SPI_finish();
 }
 
