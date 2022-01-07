@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 
-#include "drivers/dijkstra/dijkstraVia_driver.h"
+#include "drivers/dijkstra/vias_driver.h"
 
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
@@ -96,16 +96,21 @@ void process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_dijkstraVia(
+    do_dijkstra_vias(
             edges, total_edges,
             restrictions, total_restrictions,
+            NULL, 0,  // points
+            NULL, 0,  // edges of points
             via_arr, size_via_arr,
+
+            'b',  // driving side
+
             directed,
             strict,
             allow_u_turn,
 
-            result_tuples,
-            result_count,
+            result_tuples, result_count,
+
             &log_msg,
             &notice_msg,
             &err_msg);

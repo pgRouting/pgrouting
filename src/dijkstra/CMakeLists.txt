@@ -3,6 +3,5 @@ ADD_LIBRARY(dijkstra OBJECT
   dijkstraVia.c
 
   dijkstra_driver.cpp
-  dijkstraVia_driver.cpp
   vias_driver.cpp
   )
