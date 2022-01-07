@@ -27,7 +27,7 @@ SELECT ((row_number() over())) AS seq, path_id, path_seq, start_vid, end_vid, no
 FROM data ORDER BY path_id, path_seq;
 
 PREPARE q2 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost FROM pgr_dijkstraVia(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -35,7 +35,7 @@ CASE WHEN edge = -2 THEN -1 ELSE edge END,
     );
 
 PREPARE q3 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost FROM pgr_dijkstraVia(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -72,7 +72,7 @@ FROM data ORDER BY path_id, path_seq;
 
 
 PREPARE q12 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost FROM pgr_dijkstraVia(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -105,7 +105,7 @@ FROM data ORDER BY path_id, path_seq;
 
 
 PREPARE q22 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost FROM pgr_dijkstraVia(
         'SELECT id, source, target, cost FROM edge_table',
@@ -113,7 +113,7 @@ CASE WHEN edge = -2 THEN -1 ELSE edge END,
     );
 
 PREPARE q23 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost FROM pgr_dijkstraVia(
         'SELECT id, source, target, cost FROM edge_table',
@@ -150,7 +150,7 @@ FROM data ORDER BY path_id, path_seq;
 
 
 PREPARE q32 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost
     FROM pgr_dijkstraVia(
@@ -181,7 +181,7 @@ FROM data ORDER BY path_id, path_seq;
 
 
 PREPARE q42 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost
     FROM pgr_dijkstraVia(
@@ -190,7 +190,7 @@ CASE WHEN edge = -2 THEN -1 ELSE edge END,
     );
 
 PREPARE q43 AS
-SELECT seq, path_id, path_seq, start_vid, end_vid, node,
+SELECT seq, path_id, path_seq, departure, destination, node,
 CASE WHEN edge = -2 THEN -1 ELSE edge END,
     cost, agg_cost
     FROM pgr_dijkstraVia(
