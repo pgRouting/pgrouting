@@ -63,7 +63,6 @@ void process(
 
         Routes_t **result_tuples,
         size_t *result_count) {
-
     pgr_SPI_connect();
 
     PGR_DBG("directed %d", directed);

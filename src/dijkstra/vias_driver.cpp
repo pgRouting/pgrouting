@@ -220,7 +220,8 @@ do_dijkstra_vias(
              * order the path based on the vias
              */
             std::deque<Path> orderedPaths;
-            log << "Quantity of via Vertices: " << via_vertices.size() << " Quantity of Paths: " << paths.size() << "\n";
+            log << "Quantity of via Vertices: " << via_vertices.size()
+                << " Quantity of Paths: " << paths.size() << "\n";
             auto prev_stop = via_vertices[0];
             for (const auto &stop : via_vertices) {
                 if (stop == via_vertices[0]) continue;

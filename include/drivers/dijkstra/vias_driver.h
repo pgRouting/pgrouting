@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_TRSP_TRSP_WITHPOINTSVIA_DRIVER_H_
-#define INCLUDE_DRIVERS_TRSP_TRSP_WITHPOINTSVIA_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_DIJKSTRA_VIAS_DRIVER_H_
+#define INCLUDE_DRIVERS_DIJKSTRA_VIAS_DRIVER_H_
 #pragma once
 
 #ifdef __cplusplus
@@ -69,4 +69,4 @@ void do_dijkstra_vias(
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_TRSP_TRSP_WITHPOINTSVIA_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_DIJKSTRA_VIAS_DRIVER_H_
