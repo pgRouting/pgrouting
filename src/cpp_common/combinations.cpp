@@ -74,6 +74,10 @@ get_combinations(
     std::map<int64_t, std::set<int64_t>> new_combinations;
 
     for (auto &p : paths) {
+        if (p.empty()) {
+            new_combinations[p.start_id()].insert(p.end_id());
+            continue;
+        }
         std::deque<int64_t> edgesList(p.size());
         for (const auto &row : p) {
             edgesList.push_back(row.edge);
@@ -100,6 +104,11 @@ get_combinations(
             }
         }
     }
+    paths.erase(std::remove_if(paths.begin(), paths.end(),
+                [](const Path &p) {
+                    return p.size() == 0;
+                }),
+                paths.end());
     return new_combinations;
 }
 
