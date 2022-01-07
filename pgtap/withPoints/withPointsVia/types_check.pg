@@ -1,0 +1,8 @@
+BEGIN;
+
+SELECT plan(5);
+
+SELECT types_check_via('pgr_withpointsvia');
+
+SELECT * FROM finish();
+ROLLBACK;
