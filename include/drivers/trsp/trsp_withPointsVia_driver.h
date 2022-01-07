@@ -29,12 +29,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __cplusplus
 #   include <cstdint>
 #   include <cstddef>
+using Point_on_edge_t = struct Point_on_edge_t;
 using Edge_t = struct Edge_t;
 using Routes_t = struct Routes_t;
 using Restriction_t = struct Restriction_t;
 #else
 #   include <stddef.h>
 #   include <stdint.h>
+typedef struct Point_on_edge_t Point_on_edge_t;
 typedef struct Edge_t Edge_t;
 typedef struct Routes_t Routes_t;
 typedef struct Restriction_t Restriction_t;
@@ -48,7 +50,12 @@ extern "C" {
 void do_trsp_withpointsvia(
         Edge_t*,  size_t,
         Restriction_t*, size_t,
+        Point_on_edge_t *, size_t ,
+        Edge_t*,  size_t,
+
         int64_t*, size_t,
+
+        char,
         bool,
         bool,
         bool,

@@ -25,60 +25,126 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdbool.h>
 #include "c_common/postgres_connection.h"
 #include "utils/array.h"
-#include "c_types/routes_t.h"
+
+#include "drivers/withPoints/get_new_queries.h"
+#include "drivers/trsp/trsp_withPointsVia_driver.h"
+
 #include "c_common/debug_macro.h"
 #include "c_common/e_report.h"
 #include "c_common/time_msg.h"
+
+#include "c_types/edge_t.h"
+#include "c_types/restriction_t.h"
+#include "c_types/routes_t.h"
+
 #include "c_common/edges_input.h"
+#include "c_common/restrictions_input.h"
 #include "c_common/arrays_input.h"
-#include "drivers/trsp/trsp_withPointsVia_driver.h"
+#include "c_common/combinations_input.h"
+#include "c_common/points_input.h"
 
 PGDLLEXPORT Datum _pgr_trsp_withpointsvia(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_trsp_withpointsvia);
 
 static
-void
-process(
+void process(
         char* edges_sql,
         char* restrictions_sql,
         char* points_sql,
-        ArrayType *vias,
+
+        ArrayType *via_vertices,
+
         bool directed,
-        char *driving_side,
-        bool details,
-        bool allow_u_turns,
+
         bool strict,
+        bool allow_u_turn,
+
+        bool details,
+        char *driving_side,
+
         Routes_t **result_tuples,
         size_t *result_count) {
+
     pgr_SPI_connect();
 
-    size_t size_via_vidsArr = 0;
-    int64_t* via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, vias);
+    PGR_DBG("directed %d", directed);
+    PGR_DBG("strict %d", strict);
+    PGR_DBG("allow_u_turn %d", allow_u_turn);
+    PGR_DBG("details %d", details);
+    PGR_DBG("driving_side %s", driving_side);
 
-    Edge_t* edges = NULL;
-    size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    /* Managing Points */
+    driving_side[0] = estimate_drivingSide(driving_side[0]);
+    Point_on_edge_t *points = NULL;
+    size_t total_points = 0;
+    pgr_get_points(points_sql, &points, &total_points);
 
-    if (total_edges == 0) {
-        if (via_vidsArr) pfree(via_vidsArr);
+    char *edges_of_points_query = NULL;
+    char *edges_no_points_query = NULL;
+    get_new_queries(
+            edges_sql, points_sql,
+            &edges_of_points_query,
+            &edges_no_points_query);
+
+    /* Managing Via */
+    size_t size_via_arr = 0;
+    int64_t* via_arr = (int64_t*) pgr_get_bigIntArray(&size_via_arr, via_vertices);
+
+    if (size_via_arr < 2) {
+        if (via_arr) {pfree(via_arr); via_arr = NULL;}
+        elog(WARNING, "Not enough via points");
         pgr_SPI_finish();
         return;
     }
 
-    PGR_DBG("Starting timer");
+    /* Managing the edges */
+    Edge_t *edges = NULL;
+    size_t total_edges = 0;
+
+    Edge_t *edges_of_points = NULL;
+    size_t total_edges_of_points = 0;
+
+
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
+
+    /* Cleanup of no longer needed memory */
+    pfree(edges_of_points_query);
+    pfree(edges_no_points_query);
+    edges_of_points_query = NULL;
+    edges_no_points_query = NULL;
+
+    if ((total_edges + total_edges_of_points) == 0) {
+        pgr_SPI_finish();
+        return;
+    }
+
+    /* Managing restrictions */
+    Restriction_t * restrictions = NULL;
+    size_t total_restrictions = 0;
+    pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
+
+
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
     do_trsp_withpointsvia(
             edges, total_edges,
-            NULL, 0,
-            via_vidsArr, size_via_vidsArr,
+            restrictions, total_restrictions,
+            points, total_points,
+            edges_of_points, total_edges_of_points,
+
+            via_arr, size_via_arr,
+            driving_side[0],
+
             directed,
             strict,
-            allow_u_turns,
+            allow_u_turn,
+
             result_tuples,
             result_count,
+
             &log_msg,
             &notice_msg,
             &err_msg);
@@ -92,11 +158,12 @@ process(
 
     pgr_global_report(log_msg, notice_msg, err_msg);
 
+    /* TODO free everything */
     if (log_msg) pfree(log_msg);
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
-    if (via_vidsArr) pfree(via_vidsArr);
+    if (via_arr) pfree(via_arr);
     pgr_SPI_finish();
 }
 
@@ -131,10 +198,10 @@ _pgr_trsp_withpointsvia(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(2)),
                 PG_GETARG_ARRAYTYPE_P(3),
                 PG_GETARG_BOOL(4),
-                text_to_cstring(PG_GETARG_TEXT_P(5)),
-                PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(7),
-                PG_GETARG_BOOL(8),
+                PG_GETARG_BOOL(6),
+                text_to_cstring(PG_GETARG_TEXT_P(8)),
                 &result_tuples,
                 &result_count);
 
@@ -144,11 +211,12 @@ _pgr_trsp_withpointsvia(PG_FUNCTION_ARGS) {
 
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
