@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/time_msg.h"
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
-#include "drivers/dijkstra/dijkstraVia_driver.h"
+#include "drivers/dijkstra/vias_driver.h"
 
 PGDLLEXPORT Datum _pgr_dijkstravia(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_dijkstravia);
@@ -68,15 +68,21 @@ process(char* edges_sql,
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_dijkstraVia(
+    do_dijkstra_vias(
             edges, total_edges,
-            NULL, 0,
+            NULL, 0,  // Restrictions
+            NULL, 0,  // Points
+            NULL, 0,  // Edges of Points
             via_vidsArr, size_via_vidsArr,
+
+            'b',  // driving side
+
             directed,
             strict,
             U_turn_on_edge,
-            result_tuples,
-            result_count,
+
+            result_tuples, result_count,
+
             &log_msg,
             &notice_msg,
             &err_msg);

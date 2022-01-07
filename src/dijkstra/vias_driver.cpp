@@ -94,18 +94,19 @@ get_route(
 }  // namespace
 
 void
-do_trsp_withpointsvia(
+do_dijkstra_vias(
         Edge_t* data_edges, size_t total_edges,
         Restriction_t* restrictions, size_t total_restrictions,
         Point_on_edge_t *points_p, size_t total_points,
         Edge_t *edges_of_points, size_t total_edges_of_points,
-
         int64_t* via_vidsArr, size_t size_via_vidsArr,
+
         char driving_side,
 
         bool directed,
         bool strict,
         bool U_turn_on_edge,
+
         Routes_t** return_tuples, size_t* return_count,
 
         char** log_msg,
@@ -116,7 +117,7 @@ do_trsp_withpointsvia(
     std::ostringstream notice;
 
     try {
-        pgassert(total_edges != 0);
+        pgassert((total_edges + total_edges_of_points) != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));

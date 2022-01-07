@@ -129,7 +129,7 @@ void process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_trsp_withpointsvia(
+    do_dijkstra_vias(
             edges, total_edges,
             restrictions, total_restrictions,
             points, total_points,

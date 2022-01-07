@@ -47,7 +47,7 @@ typedef struct Restriction_t Restriction_t;
 extern "C" {
 #endif
 
-void do_trsp_withpointsvia(
+void do_dijkstra_vias(
         Edge_t*,  size_t,
         Restriction_t*, size_t,
         Point_on_edge_t *, size_t ,
