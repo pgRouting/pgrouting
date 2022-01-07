@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/points_input.h"
 #include "c_common/combinations_input.h"
 #include "c_common/restrictions_input.h"
+
 #include "drivers/withPoints/get_new_queries.h"
 #include "drivers/withPoints/withPoints_driver.h"
 
@@ -74,6 +75,7 @@ process(
 
     pgr_SPI_connect();
 
+    /* Managing restrictions */
     Restriction_t * restrictions = NULL;
     size_t restrictions_size = 0;
 
@@ -90,16 +92,11 @@ process(
     II_t_rt *combinations = NULL;
     size_t total_combinations = 0;
 
+    /* Managing Points */
     Point_on_edge_t *points = NULL;
     size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
 
-#ifndef NDEBUG
-    size_t i;
-    for (i = 0; i< total_points; i++) {
-        PGR_DBG("%ld ", points[i].pid);
-    }
-#endif
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(
