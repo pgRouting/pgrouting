@@ -7,7 +7,7 @@ SELECT * FROM pgr_dijkstraVia(
 /* -- q0 */
 SELECT * FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
-    ARRAY[1, 3, 9], false, strict:=true, U_turn_on_edge:=false
+    ARRAY[1, 3, 9], false, strict:=true, allow_u_turn => false
 );
 
 /* -- q1 */
