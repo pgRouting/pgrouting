@@ -6,6 +6,7 @@ Copyright (c) 2022 Celia Virginia Vergara Castillo
 
 Copyright (c) 2022 pgRouting developers
 Mail: project@pgrouting.org
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -25,18 +26,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 --v4.0
-CREATE FUNCTION pgr_withPointsVia(
+CREATE FUNCTION _pgr_withPointsVia (
   TEXT, -- Edges SQL
   TEXT, -- Points SQL
-  ANYARRAY,  -- Via vids
+  ANYARRAY, -- Via
 
-  directed BOOLEAN DEFAULT true,
+  BOOLEAN, -- directed
 
-  strict BOOLEAN DEFAULT false,
-  allow_u_turn BOOLEAN DEFAULT true,
+  BOOLEAN, -- strict
+  BOOLEAN, -- allow U turn
 
-  details BOOLEAN DEFAULT false,
-  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
+  BOOLEAN, -- details
+  CHAR, -- driving side
 
   OUT seq INTEGER,
   OUT path_id INTEGER,
@@ -50,38 +51,8 @@ CREATE FUNCTION pgr_withPointsVia(
   OUT route_agg_cost FLOAT
 )
 RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE C VOLATILE;
 
-$BODY$
-BEGIN
-
-  RETURN QUERY
-  SELECT *
-  FROM _pgr_withPointsVia(
-    _pgr_get_statement($1),
-    _pgr_get_statement($2),
-    $3, $4, $5, $6, $7, $8);
-
-END;
-$BODY$
-LANGUAGE plpgsql VOLATILE STRICT
-COST 100
-ROWS 1000;
-
--- COMMENTS
-COMMENT ON FUNCTION pgr_withPointsVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN, CHAR)
-IS 'pgrVia
-- PROPOSED
-- Parameters:
-  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - Restrictions SQL with columns: id, cost, path
-  - Points SQL with columns: [pid], edge_id, fraction [,side]
-  - Via ARRAY[ordered vertices/points identifiers]
-- Optional Parameters:
-  - directed := ''true''
-  - driving_side := ''b''
-  - details := ''false''
-  - U_turn_on_edge := ''true''
-  - strict := ''false''
-- Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_withPointsVia.html
-';
+COMMENT ON FUNCTION _pgr_withPointsVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, BOOLEAN, CHAR)
+IS 'pgRouting internal function';
