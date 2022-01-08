@@ -29,12 +29,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE FUNCTION _pgr_withPointsVia (
   TEXT, -- Edges SQL
   TEXT, -- Points SQL
-  ANYARRAY, -- Via
+  ANYARRAY, -- Via vids
 
   BOOLEAN, -- directed
 
   BOOLEAN, -- strict
-  BOOLEAN, -- allow U turn
+  BOOLEAN, -- U turn on edge
 
   BOOLEAN, -- details
   CHAR, -- driving side
@@ -42,8 +42,8 @@ CREATE FUNCTION _pgr_withPointsVia (
   OUT seq INTEGER,
   OUT path_id INTEGER,
   OUT path_seq INTEGER,
-  OUT departure BIGINT,
-  OUT destination BIGINT,
+  OUT start_pid BIGINT,
+  OUT end_pid BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,

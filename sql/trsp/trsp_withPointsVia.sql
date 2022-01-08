@@ -29,12 +29,12 @@ CREATE FUNCTION pgr_trsp_withPointsVia(
   TEXT, -- Edges SQL
   TEXT, -- Restrictions SQL
   TEXT, -- Points SQL
-  ANYARRAY,  -- Via vids
+  ANYARRAY,  -- via vids
 
   directed BOOLEAN DEFAULT true,
 
   strict BOOLEAN DEFAULT false,
-  allow_u_turn BOOLEAN DEFAULT true,
+  U_turn_on_edge BOOLEAN DEFAULT true,
 
   details BOOLEAN DEFAULT false,
   driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
@@ -42,8 +42,8 @@ CREATE FUNCTION pgr_trsp_withPointsVia(
   OUT seq INTEGER,
   OUT path_id INTEGER,
   OUT path_seq INTEGER,
-  OUT departure BIGINT,
-  OUT destination BIGINT,
+  OUT start_pid BIGINT,
+  OUT end_pid BIGINT,
   OUT node BIGINT,
   OUT edge BIGINT,
   OUT cost FLOAT,
