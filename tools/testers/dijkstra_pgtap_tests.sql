@@ -177,10 +177,10 @@ DECLARE
   params_numbers OID[] = ARRAY[25];
 
   optional_params_types_words TEXT[] = ARRAY['boolean','boolean','boolean'];
-  optional_params_names TEXT[] = ARRAY['directed','strict','allow_u_turn'];
+  optional_params_names TEXT[] = ARRAY['directed','strict','u_turn_on_edge'];
   optional_params_numbers OID[] = ARRAY[16,16,16];
 
-  return_params_names TEXT[] = ARRAY['seq','path_id','path_seq','departure','destination','node','edge','cost','agg_cost','route_agg_cost'];
+  return_params_names TEXT[] = ARRAY['seq','path_id','path_seq'];
   return_params_numbers OID[] = ARRAY[23,23,23,20,20,20,20,701,701,701];
 
 BEGIN
@@ -198,11 +198,15 @@ BEGIN
     optional_params_types_words := optional_params_types_words || ARRAY['boolean','character'];
     optional_params_names := optional_params_names || ARRAY['details','driving_side'];
     optional_params_numbers := optional_params_numbers || ARRAY[16::OID, 1042::OID];
+    return_params_names = return_params_names || ARRAY['start_pid','end_pid'];
+  ELSE
+    return_params_names = return_params_names || ARRAY['start_vid','end_vid'];
   END IF;
 
   params_types_words := params_types_words || 'anyarray'::TEXT;
   params_names := params_names || ARRAY[''];
   params_numbers := params_numbers || ARRAY[2277::OID];
+  return_params_names = return_params_names || ARRAY['node','edge','cost','agg_cost','route_agg_cost'];
 
   RETURN QUERY SELECT has_function(fn);
 
