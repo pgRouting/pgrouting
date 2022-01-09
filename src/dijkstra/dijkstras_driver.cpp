@@ -234,7 +234,6 @@ do_dijkstras(
 
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
-        std::deque<Path> new_paths;
         if (!new_combinations.empty()) {
             pgrouting::trsp::Pgr_trspHandler gdef(
                     edges,
@@ -245,17 +244,7 @@ do_dijkstras(
             auto new_paths = gdef.process(new_combinations);
             paths.insert(paths.end(), new_paths.begin(), new_paths.end());
         }
-        /*
-         * order paths based on the start_pid, end_pid
-         */
-        std::sort(paths.begin(), paths.end(),
-                [](const Path &a, const Path &b)
-                -> bool {
-                if (b.start_id() != a.start_id()) {
-                return a.start_id() < b.start_id();
-                }
-                return a.end_id() < b.end_id();
-                });
+        post_process(paths, false, true, n, false);
 
         count = count_tuples(paths);
 

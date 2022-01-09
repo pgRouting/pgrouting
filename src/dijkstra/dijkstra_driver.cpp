@@ -202,6 +202,9 @@ do_dijkstra(
             return;
         }
 
+        /*
+         * When there are turn restrictions
+         */
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++i) {
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
@@ -209,16 +212,17 @@ do_dijkstra(
 
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
-        pgrouting::trsp::Pgr_trspHandler gdef(
-                edges,
-                total_edges,
-                directed,
-                ruleList);
-
-        auto new_paths = gdef.process(new_combinations);
-        paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+        if (!new_combinations.empty()) {
+            pgrouting::trsp::Pgr_trspHandler gdef(
+                    edges,
+                    total_edges,
+                    pg_graph.new_edges(),
+                    directed,
+                    ruleList);
+            auto new_paths = gdef.process(new_combinations);
+            paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+        }
         post_process(paths, false, true, n, false);
-
 
         count = count_tuples(paths);
 
