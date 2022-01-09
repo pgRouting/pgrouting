@@ -98,29 +98,6 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
     }
 }
 
-template < class G >
-std::deque< Path >
-pgr_dijkstra(
-        G &graph,
-        std::map<int64_t , std::set<int64_t>> &combinations,
-        bool only_cost,
-        bool normal) {
-    size_t n_goals = (std::numeric_limits<size_t>::max)();
-    auto paths = pgrouting::dijkstra(graph, combinations, only_cost, n_goals);
-
-    if (!normal) {
-        for (auto &path : paths) {
-            path.reverse();
-        }
-    }
-    if (!only_cost) {
-        for (auto &p : paths) {
-            p.recalculate_agg_cost();
-        }
-    }
-    return paths;
-}
-
 }  // namespace
 
 void
@@ -189,26 +166,29 @@ do_dijkstras(
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
 
-        std::deque< Path > paths;
+        std::deque<Path> paths;
         if (directed) {
             pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
 
-            paths = pgr_dijkstra(
+            paths = pgrouting::dijkstra(
                     digraph,
                     combinations,
-                    only_cost, normal);
+                    only_cost, n);
         } else {
             pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
 
-            paths = pgr_dijkstra(
+            paths = pgrouting::dijkstra(
                     undigraph,
                     combinations,
-                    only_cost, normal);
+                    only_cost, n);
         }
+        post_process(paths, only_cost, normal, n, global);
+        size_t count(0);
+        count = count_tuples(paths);
 
         if (restrictions_size == 0) {
             if (!details) {
@@ -277,7 +257,6 @@ do_dijkstras(
                 return a.end_id() < b.end_id();
                 });
 
-        size_t count(0);
         count = count_tuples(paths);
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
