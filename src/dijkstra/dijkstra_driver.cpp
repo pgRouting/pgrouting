@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
 #include "drivers/dijkstra/dijkstra_driver.h"
+
 #include <utility>
 #include <vector>
 #include <cstdint>
@@ -32,6 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <algorithm>
 #include <limits>
+#include <set>
+#include <map>
+#include <cassert>
 
 #include "trsp/pgr_trspHandler.h"
 #include "cpp_common/rule.h"
