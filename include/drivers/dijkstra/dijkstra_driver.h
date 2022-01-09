@@ -27,57 +27,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
 #define INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRA_DRIVER_H_
 
-/* for size_t and int64_t */
 #ifdef __cplusplus
-#  include <cstddef>
-#  include <cstdint>
+#include <cstddef>
+#include <cstdint>
 using Restriction_t = struct Restriction_t;
 using Path_rt = struct Path_rt;
 using Edge_t = struct Edge_t;
 using II_t_rt = struct II_t_rt;
 #else
-#  include <stddef.h>
-#  include <stdint.h>
+#include <stddef.h>
+#include <stdint.h>
 typedef struct Restriction_t Restriction_t;
 typedef struct Path_rt Path_rt;
 typedef struct Edge_t Edge_t;
 typedef struct II_t_rt II_t_rt;
 #endif
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void do_dijkstra(
-            Edge_t *edges,
-            size_t edge_count,
+void do_dijkstra(
+        Edge_t *, size_t, // edges
+        Restriction_t *, size_t, // restrictions
 
-            Restriction_t *restrictions,
-            size_t restrictions_size,
+        II_t_rt *, size_t, // combinations
+        int64_t *, size_t,  // starts
+        int64_t *, size_t,  // ends
 
-            II_t_rt  *combinations_arr,
-            size_t total_combination,
+        bool,  // directed
+        bool,  // only_cost
+        bool,  // normal
+        int64_t,  // n_goals
+        bool,  // global
 
-            int64_t  *starts_arr,
-            size_t size_starts_arr,
+        Path_rt **, size_t *, // tuples
 
-            int64_t  *ends_arr,
-            size_t size_ends_arr,
-
-            bool directed,
-            bool only_cost,
-            bool normal,
-            int64_t n_goals,
-            bool global,
-
-            Path_rt **return_tuples,
-            size_t *return_count,
-
-            char **log_msg,
-            char **notice_msg,
-            char **err_msg);
-
+        char**,  // log
+        char**,  //notice
+        char**); // err
 
 #ifdef __cplusplus
 }
