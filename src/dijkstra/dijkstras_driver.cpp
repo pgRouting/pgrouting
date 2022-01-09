@@ -77,14 +77,13 @@ pgr_dijkstra(
 }  // namespace
 
 void
-do_withPoints(
+do_dijkstras(
         Edge_t *edges, size_t total_edges,
         Restriction_t *restrictions, size_t restrictions_size,
         Point_on_edge_t *points_p, size_t total_points,
         Edge_t *edges_of_points, size_t total_edges_of_points,
 
         II_t_rt *combinations_arr, size_t total_combinations,
-
         int64_t *start_pidsArr, size_t size_start_pidsArr,
         int64_t *end_pidsArr, size_t size_end_pidsArr,
 
@@ -93,6 +92,8 @@ do_withPoints(
         bool directed,
         bool only_cost,
         bool normal,
+        int64_t n_goals,
+        bool global,
 
         Path_rt **return_tuples, size_t *return_count,
 
@@ -138,10 +139,9 @@ do_withPoints(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
+        size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
         std::deque< Path > paths;
-
         if (directed) {
-            log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
@@ -151,7 +151,6 @@ do_withPoints(
                     combinations,
                     only_cost, normal);
         } else {
-            log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());

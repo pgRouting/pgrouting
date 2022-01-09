@@ -147,7 +147,7 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_withPoints(
+    do_dijkstras(
             edges, total_edges,
             NULL, 0,
             points, total_points,
@@ -163,6 +163,8 @@ process(
             directed,
             only_cost,
             normal,
+            0,  // n_goals
+            true,  // global
 
             result_tuples, result_count,
             &log_msg,

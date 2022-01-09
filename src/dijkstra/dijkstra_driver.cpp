@@ -97,32 +97,28 @@ post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goal
 
 void
 do_dijkstra(
-        Edge_t *data_edges,
-        size_t total_edges,
+        Edge_t *edges, size_t total_edges,
+        Restriction_t *restrictions, size_t restrictions_size,
+        Point_on_edge_t *points_p, size_t total_points,
+        Edge_t *edges_of_points, size_t total_edges_of_points,
 
-        Restriction_t *restrictions,
-        size_t restrictions_size,
+        II_t_rt *combinations_arr, size_t total_combinations,
+        int64_t *starts_arr, size_t size_starts_arr,
+        int64_t *ends_arr, size_t size_ends_arr,
 
-        II_t_rt  *combinations_arr,
-        size_t total_combinations,
-
-        int64_t  *starts_arr,
-        size_t size_starts_arr,
-
-        int64_t  *ends_arr,
-        size_t size_ends_arr,
-
+        char driving_side,
+        bool details,
         bool directed,
         bool only_cost,
         bool normal,
         int64_t n_goals,
         bool global,
 
-        Path_rt **return_tuples,
-        size_t *return_count,
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg) {
+        Path_rt **return_tuples, size_t *return_count,
+
+        char** log_msg,
+        char** notice_msg,
+        char** err_msg) {
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -135,10 +131,6 @@ do_dijkstra(
         pgassert(*return_count == 0);
 
 
-        std::vector<pgrouting::trsp::Rule> ruleList;
-        for (size_t i = 0; i < restrictions_size; ++i) {
-            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
-        }
 
         /* TODO
          * make a dijkstra, if there are no paths then return (DONE)
@@ -156,14 +148,14 @@ do_dijkstra(
         std::deque<Path> paths;
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
+            digraph.insert_edges(edges, total_edges);
             paths = pgrouting::dijkstra(
                     digraph,
                     combinations,
                     only_cost, n);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
+            undigraph.insert_edges(edges, total_edges);
             paths = pgrouting::dijkstra(
                     undigraph,
                     combinations,
@@ -174,7 +166,7 @@ do_dijkstra(
         post_process(paths, only_cost, normal, n, global);
         size_t count(0);
         count = count_tuples(paths);
-        if (ruleList.empty() || count == 0) {
+        if ((restrictions_size == 0) || (count == 0)) {
             if (count == 0) {
                 (*return_tuples) = NULL;
                 (*return_count) = 0;
@@ -188,10 +180,15 @@ do_dijkstra(
             return;
         }
 
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < restrictions_size; ++i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 
         pgrouting::trsp::Pgr_trspHandler gdef(
-                data_edges,
+                edges,
                 total_edges,
                 directed,
                 ruleList);

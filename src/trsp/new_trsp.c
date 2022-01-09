@@ -107,19 +107,22 @@ void process(
     do_dijkstra(
             edges, total_edges,
             restrictions, total_restrictions,
-            combinations, total_combinations,
+            NULL, 0,  // points
+            NULL, 0,  // edges of points
 
+            combinations, total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
+            'b',  // driving side
+            true,  // details
             directed,
-            false,
-            true,
-            0,
-            false,
+            false,  // only cost
+            true,  // normal
+            0,  // n_goals
+            false,  //global
 
-            result_tuples,
-            result_count,
+            result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);

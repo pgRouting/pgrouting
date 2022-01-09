@@ -34,6 +34,7 @@ using Restriction_t = struct Restriction_t;
 using Path_rt = struct Path_rt;
 using Edge_t = struct Edge_t;
 using II_t_rt = struct II_t_rt;
+using Point_on_edge_t = struct Point_on_edge_t;
 #else
 #include <stddef.h>
 #include <stdint.h>
@@ -41,6 +42,7 @@ typedef struct Restriction_t Restriction_t;
 typedef struct Path_rt Path_rt;
 typedef struct Edge_t Edge_t;
 typedef struct II_t_rt II_t_rt;
+typedef struct Point_on_edge_t Point_on_edge_t;
 #endif
 
 #ifdef __cplusplus
@@ -50,11 +52,15 @@ extern "C" {
 void do_dijkstra(
         Edge_t *, size_t, // edges
         Restriction_t *, size_t, // restrictions
+        Point_on_edge_t *, size_t, // points
+        Edge_t *, size_t, // edges of points
 
         II_t_rt *, size_t, // combinations
         int64_t *, size_t,  // starts
         int64_t *, size_t,  // ends
 
+        char,  // driving_side
+        bool,  // details
         bool,  // directed
         bool,  // only_cost
         bool,  // normal

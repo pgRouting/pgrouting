@@ -112,11 +112,16 @@ process(
     char* err_msg = NULL;
     do_dijkstra(
             edges, total_edges,
-            NULL, 0,
+            NULL, 0,  // restrictions
+            NULL, 0,  // points
+            NULL, 0,  // edges of points
+
             combinations, total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
+            'b',  // driving side
+            true,  // details
             directed,
             only_cost,
             normal,
