@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/arrays_input.h"
 #include "c_common/combinations_input.h"
-#include "drivers/dijkstra/dijkstra_driver.h"
+#include "drivers/dijkstra/dijkstras_driver.h"
 
 PG_MODULE_MAGIC;
 
@@ -110,7 +110,7 @@ process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
-    do_dijkstra(
+    do_dijkstras(
             edges, total_edges,
             NULL, 0,  // restrictions
             NULL, 0,  // points
