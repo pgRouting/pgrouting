@@ -186,9 +186,16 @@ do_dijkstras(
                     combinations,
                     only_cost, n);
         }
+
         post_process(paths, only_cost, normal, n, global);
         size_t count(0);
         count = count_tuples(paths);
+
+        if (count == 0) {
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
+        }
 
         if (restrictions_size == 0) {
             if (!details) {
@@ -209,9 +216,7 @@ do_dijkstras(
                     return a.end_id() < b.end_id();
                     });
 
-            size_t count(0);
             count = count_tuples(paths);
-
 
             if (count == 0) {
                 (*return_tuples) = NULL;
@@ -282,4 +287,4 @@ do_dijkstras(
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
     }
-        }
+}

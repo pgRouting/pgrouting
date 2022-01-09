@@ -188,15 +188,40 @@ do_dijkstra(
         post_process(paths, only_cost, normal, n, global);
         size_t count(0);
         count = count_tuples(paths);
-        if ((restrictions_size == 0) || (count == 0)) {
+
+        if (count == 0) {
+            notice << "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
+        }
+
+        if (restrictions_size == 0) {
+            if (!details) {
+                for (auto &path : paths) {
+                    path = pg_graph.eliminate_details(path);
+                }
+            }
+
+            /*
+             * order paths based on the start_pid, end_pid
+             */
+            std::sort(paths.begin(), paths.end(),
+                    [](const Path &a, const Path &b)
+                    -> bool {
+                    if (b.start_id() != a.start_id()) {
+                    return a.start_id() < b.start_id();
+                    }
+                    return a.end_id() < b.end_id();
+                    });
+
+            count = count_tuples(paths);
+
             if (count == 0) {
                 (*return_tuples) = NULL;
                 (*return_count) = 0;
-                notice <<
-                    "No paths found";
-                *log_msg = pgr_msg(notice.str().c_str());
                 return;
             }
+
             (*return_tuples) = pgr_alloc(count, (*return_tuples));
             (*return_count) = (collapse_paths(return_tuples, paths));
             return;
