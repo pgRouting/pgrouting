@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/restriction_t.h"
 #include "c_types/ii_t_rt.h"
 #include "dijkstra/dijkstra.hpp"
+#include "withPoints/pgr_withPoints.hpp"
 
 
 namespace {
@@ -123,24 +124,40 @@ do_dijkstra(
         char** notice_msg,
         char** err_msg) {
     std::ostringstream log;
-    std::ostringstream err;
     std::ostringstream notice;
+    std::ostringstream err;
     try {
-        pgassert(total_edges != 0);
+        pgassert(edges || edges_of_points);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
-
-
-        /* TODO
-         * make a dijkstra, if there are no paths then return (DONE)
-         * get set of paths that use a restriction (DOING)
-         * use the trsp algorithm to get an alternate path
-         */
         graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        /* Dealing with points */
+        pgrouting::Pg_points_graph pg_graph(
+                std::vector<Point_on_edge_t>(
+                    points_p,
+                    points_p + total_points),
+                std::vector< Edge_t >(
+                    edges_of_points,
+                    edges_of_points + total_edges_of_points),
+                normal,
+                driving_side,
+                directed);
+
+        if (pg_graph.has_error()) {
+            log << pg_graph.get_log();
+            err << pg_graph.get_error();
+            *log_msg = pgr_msg(log.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
+            return;
+        }
+
+        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
         auto combinations = total_combinations?
             pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
@@ -150,21 +167,24 @@ do_dijkstra(
 
         std::deque<Path> paths;
         if (directed) {
-            pgrouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(pg_graph.new_edges());
+
             paths = pgrouting::dijkstra(
                     digraph,
                     combinations,
                     only_cost, n);
         } else {
-            pgrouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(pg_graph.new_edges());
+
             paths = pgrouting::dijkstra(
                     undigraph,
                     combinations,
                     only_cost, n);
         }
-
 
         post_process(paths, only_cost, normal, n, global);
         size_t count(0);

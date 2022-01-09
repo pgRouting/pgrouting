@@ -51,6 +51,53 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace {
 
+void
+post_process(std::deque<Path> &paths, bool only_cost, bool normal, size_t n_goals, bool global) {
+    paths.erase(std::remove_if(paths.begin(), paths.end(),
+                [](const Path &p) {
+                    return p.size() == 0;
+                }),
+                paths.end());
+    using difference_type = std::deque<double>::difference_type;
+
+    if (!normal) {
+        for (auto &path : paths) path.reverse();
+    }
+
+    if (!only_cost) {
+        for (auto &p : paths) {
+            p.recalculate_agg_cost();
+        }
+    }
+
+    if (n_goals != (std::numeric_limits<size_t>::max)()) {
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.end_id() < e2.end_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.start_id() < e2.start_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.tot_cost() < e2.tot_cost();
+                });
+        if (global && n_goals < paths.size()) {
+            paths.erase(paths.begin() + static_cast<difference_type>(n_goals), paths.end());
+        }
+    } else {
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.end_id() < e2.end_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                    return e1.start_id() < e2.start_id();
+                });
+    }
+}
+
 template < class G >
 std::deque< Path >
 pgr_dijkstra(
@@ -84,8 +131,8 @@ do_dijkstras(
         Edge_t *edges_of_points, size_t total_edges_of_points,
 
         II_t_rt *combinations_arr, size_t total_combinations,
-        int64_t *start_pidsArr, size_t size_start_pidsArr,
-        int64_t *end_pidsArr, size_t size_end_pidsArr,
+        int64_t *starts_arr, size_t size_starts_arr,
+        int64_t *ends_arr, size_t size_ends_arr,
 
         char driving_side,
         bool details,
@@ -104,13 +151,16 @@ do_dijkstras(
     std::ostringstream notice;
     std::ostringstream err;
     try {
+        pgassert(edges || edges_of_points);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
-        pgassert((*return_count) == 0);
-        pgassert(edges || edges_of_points);
+        pgassert(*return_count == 0);
 
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        /* Dealing with points */
         pgrouting::Pg_points_graph pg_graph(
                 std::vector<Point_on_edge_t>(
                     points_p,
@@ -130,16 +180,15 @@ do_dijkstras(
             return;
         }
 
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
-            : pgrouting::utilities::get_combinations(start_pidsArr, size_start_pidsArr, end_pidsArr, size_end_pidsArr);
-
         auto vertices(pgrouting::extract_vertices(edges, total_edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
-        graphType gType = directed? DIRECTED: UNDIRECTED;
+        auto combinations = total_combinations?
+            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
+            : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
 
         size_t n = n_goals <= 0? (std::numeric_limits<size_t>::max)() : static_cast<size_t>(n_goals);
+
         std::deque< Path > paths;
         if (directed) {
             pgrouting::DirectedGraph digraph(vertices, gType);
@@ -154,6 +203,7 @@ do_dijkstras(
             pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
+
             paths = pgr_dijkstra(
                     undigraph,
                     combinations,
