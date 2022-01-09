@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/restrictions_input.h"
 
 #include "drivers/withPoints/get_new_queries.h"
-#include "drivers/withPoints/withPoints_driver.h"
+#include "drivers/dijkstra/dijkstras_driver.h"
 
 PGDLLEXPORT Datum _pgr_trsp_withpoints(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_pgr_trsp_withpoints);
