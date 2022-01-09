@@ -259,12 +259,14 @@ do_dijkstras(
 
         count = count_tuples(paths);
 
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = (collapse_paths(return_tuples, paths));
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            return;
+        }
 
-        log << "************************************************";
-        log << pg_graph.get_log();
-        log << "************************************************";
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        (*return_count) = collapse_paths(return_tuples, paths);
 
         *log_msg = log.str().empty()?
             *log_msg :
