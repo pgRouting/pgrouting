@@ -187,17 +187,10 @@ SELECT seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, cost::FLO
         RETURN;
     END IF;
 
-  final_query := format($$
-    SELECT seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, cost::FLOAT FROM pgr_trsp_withPointsVia(
-    %1$L,
-    %2$L,
-    %3$L,
-    %4$L::INTEGER[],
-    %5$L::BOOLEAN)
-    $$, edges_sql, restrictions_query, points_sql, vertices, directed
-  );
+    RETURN QUERY
+    SELECT a.seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, a.cost::FLOAT FROM
+    pgr_trsp_withPointsVia(edges_sql, restrictions_query, points_sql, vertices, directed) AS a;
  --RAISE WARNING '%', final_query;
-  RETURN QUERY EXECUTE final_query;
 
 
 
