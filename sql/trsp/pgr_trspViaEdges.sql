@@ -47,18 +47,8 @@ declare
     directed BOOLEAN  := $4;
     has_rcost BOOLEAN := $5;
 
-    /*
-    rr RECORD;
-    lrr RECORD;
-    first boolean := true;
-    seq1 integer := 0;
-*/
-
     i integer;
     j INTEGER := 1;
-    /*
-    seq2 integer :=0;
-*/
     has_reverse BOOLEAN;
     point_is_vertex BOOLEAN := false;
     edges_sql TEXT;
@@ -69,13 +59,7 @@ declare
     to_v INTEGER;
     word TEXT := '';
     combinations TEXT := '';
-    /*
-    x INTEGER[];
-*/
     restrictions_query TEXT;
-    /*
-    final_query TEXT;
-*/
     vertices INTEGER[];
 
 
@@ -83,9 +67,6 @@ begin
   IF $1 IS NULL OR $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL THEN RETURN; END IF;
 
 
-    /*
-    SELECT 0::INTEGER AS seq, NULL::INTEGER AS id1, NULL::INTEGER AS id2, NULL::INTEGER AS id3, NULL::FLOAT AS cost INTO lrr;
-*/
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
     IF (has_reverse != has_rcost) THEN
