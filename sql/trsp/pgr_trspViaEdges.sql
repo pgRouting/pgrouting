@@ -64,9 +64,15 @@ DECLARE
   vertices INTEGER[];
 
 BEGIN
+  /*
+  Because is not STRICT check for nulls on compulsory parameters
+  */
   IF $1 IS NULL OR $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL THEN RETURN; END IF;
 
 
+  /*
+  Check for user contradiction and creating corresponding query
+  */
   has_reverse =_pgr_parameter_check('dijkstra', sql, false);
   edges_sql := sql;
   IF (has_reverse != has_rcost) THEN
@@ -78,10 +84,17 @@ BEGIN
     END IF;
   END IF;
 
+  /*
+  Check for arrays of equal length
+  */
   IF array_length(eids, 1) != array_length(pcts, 1) THEN
     raise exception 'The length of arrays eids and pcts must be the same!';
   END IF;
 
+  /*
+  Process to create the points query and the via vertices
+  TODO see what happens when the pcts[i] is 0 or 1
+   */
   FOR i IN 1 .. array_length(eids, 1) i
   LOOP
     point_q := NULL;
@@ -99,12 +112,18 @@ BEGIN
     vertices := vertices || from_v;
   END LOOP;
 
+  /*
+  TODO is this been used?
+  */
   FOR i IN 1 .. array_length(vertices, 1) - 1
   LOOP
     IF (i != 1) THEN word = ' UNION '; ELSE word = ''; END IF;
     combinations := combinations || word || '(' || vertices[i] || ' AS source, ' || vertices[i+1] || ' AS target)';
   END LOOP;
 
+  /*
+  Creating the restrictions query
+  */
   restrictions_query := format($$
     WITH
       o_restrictions AS (%1$s),
@@ -118,13 +137,18 @@ BEGIN
     FROM the_values GROUP BY _id, to_cost;
     $$, turn_restrict_sql);
 
+  /*
+  No restrictions then its a pgr_withPointsVia
+  */
   IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
-    -- no restrictions then its a pgr_withPointsVia
     RETURN query SELECT a.seq::INTEGER, path_id::INTEGER AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, a.cost
     FROM pgr_withPointsVia(edges_sql, points_sql, vertices, directed) a;
     RETURN;
   END IF;
 
+  /*
+  With restrictions then its a pgr_trsp_withPointsVia
+  */
   RETURN QUERY
   SELECT a.seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, a.cost::FLOAT FROM
   pgr_trsp_withPointsVia(edges_sql, restrictions_query, points_sql, vertices, directed) AS a;
