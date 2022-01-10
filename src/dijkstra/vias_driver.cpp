@@ -200,6 +200,17 @@ do_dijkstra_vias(
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
         }
 
+#if 0
+        /*
+         * TODO Rules with one edge Remove them?
+         */
+        ruleList.erase(std::remove_if(ruleList.begin(), ruleList.end(),
+                    [](const pgrouting::trsp::Rule &r) {
+                    return r.precedences().size() < 2;
+                    }),
+                ruleList.end());
+#endif
+
         log << " Quantity of Paths before get_combinations: " << paths.size() << "\n";
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
         log << " Quantity of Paths after get_combinations: " << paths.size() << "\n";

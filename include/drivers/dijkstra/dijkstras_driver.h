@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef INCLUDE_DRIVERS_WITHPOINTS_WITHPOINTS_DRIVER_H_
-#define INCLUDE_DRIVERS_WITHPOINTS_WITHPOINTS_DRIVER_H_
+#ifndef INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRAS_DRIVER_H_
+#define INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRAS_DRIVER_H_
 #pragma once
 
 #ifdef __cplusplus
@@ -52,12 +52,12 @@ extern "C" {
 #endif
 
 void do_dijkstras(
-        Edge_t *, size_t, // edges
-        Restriction_t *, size_t, // restrictions
-        Point_on_edge_t *, size_t, // points
-        Edge_t *, size_t, // edges of points
+        Edge_t *, size_t,           // edges
+        Restriction_t *, size_t,    // restrictions
+        Point_on_edge_t *, size_t,  // points
+        Edge_t *, size_t,           // edges of points
 
-        II_t_rt *, size_t, // combinations
+        II_t_rt *, size_t,  // combinations
         int64_t *, size_t,  // starts
         int64_t *, size_t,  // ends
 
@@ -69,14 +69,14 @@ void do_dijkstras(
         int64_t,  // n_goals
         bool,  // global
 
-        Path_rt **, size_t *, // tuples
+        Path_rt **, size_t *,  // tuples
 
-        char**,  // log
-        char**,  //notice
-        char**); // err
+        char**,   // log
+        char**,   //notice
+        char**);  // err
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // INCLUDE_DRIVERS_WITHPOINTS_WITHPOINTS_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_DIJKSTRA_DIJKSTRAS_DRIVER_H_
