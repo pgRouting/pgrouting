@@ -72,7 +72,7 @@ void do_dijkstras(
         Path_rt **, size_t *,  // tuples
 
         char**,   // log
-        char**,   //notice
+        char**,   // notice
         char**);  // err
 
 #ifdef __cplusplus
