@@ -120,7 +120,7 @@ void process(
             false,  // only cost
             true,  // normal
             0,  // n_goals
-            false,  //global
+            false,  // global
 
             result_tuples, result_count,
             &log_msg,

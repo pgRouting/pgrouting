@@ -1,5 +1,5 @@
 add_library(trsp OBJECT
-  new_trsp.c
+  trsp.c
   trspVia.c
 
   trsp_withPoints.c
