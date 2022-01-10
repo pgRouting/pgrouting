@@ -59,7 +59,9 @@ DECLARE
   from_v INTEGER;
   to_v INTEGER;
   word TEXT := '';
+  /*
   combinations TEXT := '';
+*/
   restrictions_query TEXT;
   vertices INTEGER[];
 
@@ -114,12 +116,12 @@ BEGIN
 
   /*
   TODO is this been used?
-  */
   FOR i IN 1 .. array_length(vertices, 1) - 1
   LOOP
     IF (i != 1) THEN word = ' UNION '; ELSE word = ''; END IF;
     combinations := combinations || word || '(' || vertices[i] || ' AS source, ' || vertices[i+1] || ' AS target)';
   END LOOP;
+  */
 
   /*
   Creating the restrictions query
