@@ -435,7 +435,6 @@ SELECT * FROM pgr_trspViaEdges(
     ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
     false, true
 );
-NOTICE:  Using pgr_withPointsVia
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
@@ -446,7 +445,6 @@ SELECT * FROM pgr_trspViaEdges(
     false,
     true
 );
-NOTICE:  Using pgr_withPointsVia
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
@@ -464,7 +462,6 @@ SELECT * FROM pgr_trspViaEdges(
     false,
     true
 );
-NOTICE:  Using pgr_withPointsVia
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.6
@@ -519,7 +516,6 @@ SELECT * FROM pgr_trspViaEdges(
     false,
     true
 );
-NOTICE:  Using pgr_withPointsVia
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.6
