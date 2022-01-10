@@ -40,15 +40,6 @@ CREATE FUNCTION pgr_trspViaEdges(
 )
 RETURNS SETOF RECORD AS
 $body$
-/*
- *  pgr_trsp(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
- *
- *  Compute TRSP with edge_ids and pposition along edge. We compute the path between eids[i], pcts[i] and eids[i+1], pcts[i+1]
- *  and chain the results together.
- *
- *  NOTE: this is a prototype function, we can gain a lot of efficiencies by implementing this in C/C++
- *
-*/
 declare
     sql TEXT          := $1;
     eids INTEGER[]    := $2;
@@ -137,48 +128,6 @@ begin
   SELECT _id AS id, to_cost AS cost, array_agg(value ORDER BY subscript DESC) AS path FROM the_values GROUP BY _id, to_cost;
   $$, turn_restrict_sql);
 
-  /*
-  RAISE WARNING '%', points_sql;
-  RAISE WARNING '%', vertices;
-  RAISE WARNING '%', combinations;
-  RAISE WARNING '%', restrictions_query;
-
-  SELECT pgr_trsp_withPointsVia(
-    $$SELECT * FROM edge_table$$,
-    $$
-    WITH
-      o_restrictions AS (SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions),
-      old_restrictions AS (SELECT row_number() over () AS _id, to_cost, string_to_array(via_path,',')::INTEGER[] AS via_path FROM o_restrictions),
-      the_values  AS (SELECT _id, to_cost, via_path AS array, s AS subscript, via_path[s] AS value
-        FROM (SELECT generate_subscripts(via_path,1) AS s, _id, to_cost, via_path FROM old_restrictions) foo)
-    SELECT _id AS id, to_cost AS cost, array_agg(value ORDER BY subscript DESC)  AS path
-    FROM the_values GROUP BY _id, to_cost
-    $$,
-    $$(SELECT 3 as pid, 6 as edge_id, 0.5::float8 as fraction)
-    UNION
-    (SELECT 2 as pid, 11 as edge_id, 0.5::float8 as fraction)
-    UNION
-    (SELECT 1 as pid, 1 as edge_id, 0.5::float8 as fraction)
-    $$,
-  '{-1,-2,-3}'::BIGINT[],
-  false);
-*/
-
-/*
-SELECT seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, cost::FLOAT FROM pgr_trsp_withPointsVia(
-  $query$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$query$,
-  $query$
-  WITH o_restrictions AS (SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path),
-  old_restrictions AS (SELECT row_number() over () AS _id, to_cost, string_to_array(via_path,',')::INTEGER[] AS via_path FROM o_restrictions),
-  the_values  AS (SELECT _id, to_cost, via_path AS array, s AS subscript, via_path[s] AS value
-    FROM (SELECT generate_subscripts(via_path,1) AS s, _id, to_cost, via_path FROM old_restrictions) foo)
-  SELECT _id AS id, to_cost AS cost, array_agg(value ORDER BY subscript DESC) AS path FROM the_values GROUP BY _id, to_cost;
-  $query$,
-  $query$(SELECT 3 as pid, 1 as edge_id, 0.5::float8 as fraction) UNION (SELECT 2 as pid, 2 as edge_id, 0.5::float8 as fraction) UNION (SELECT 1 as pid, 1 as edge_id, 0.1::float8 as fraction)$query$,
-  '{-1,-2,-3}'::INTEGER[],
-  $bool$f$bool$::BOOLEAN)
-*/
-
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a pgr_withPointsVia
         RAISE NOTICE 'Using pgr_withPointsVia';
@@ -190,79 +139,7 @@ SELECT seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, cost::FLO
     RETURN QUERY
     SELECT a.seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, a.cost::FLOAT FROM
     pgr_trsp_withPointsVia(edges_sql, restrictions_query, points_sql, vertices, directed) AS a;
-    /*
- --RAISE WARNING '%', final_query;
 
-
-
-  RETURN;
-
-    -- loop through each pair of vids and compute the path
-    for i in 1 .. array_length(eids, 1)-1 loop
-        seq2 := seq2 + 1;
-        for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_trsp(edges_sql,
-                                  eids[i], pcts[i],
-                                  eids[i+1], pcts[i+1],
-                                  directed,
-                                  has_rcost,
-                                  turn_restrict_sql) as a loop
-            -- combine intermediate via costs when cost is split across
-            -- two parts of a segment because it stops it and
-            -- restarts the next leg also on it
-            -- we might not want to do this so we can know where the via points are in the path result
-            -- but this needs more thought
-            --
-            -- there are multiple condition we have to deal with
-            -- between the end of one leg and start of the next
-            -- 1. same vertex_id. edge_id=-1; drop record with edge_id=-1
-            -- means: path ends on vertex
-            -- NOTICE:  rr: (19,1,44570022,-1,0)
-            -- NOTICE:  rr: (0,2,44570022,1768045,2.89691196717448)
-            -- 2. vertex_id=-1; sum cost components
-            -- means: path end/starts with the segment
-            -- NOTICE:  rr: (11,2,44569628,1775909,9.32885885148532)
-            -- NOTICE:  rr: (0,3,-1,1775909,0.771386350984395)
-
-            --raise notice 'rr: %', rr;
-            if first then
-                lrr := rr;
-                first := false;
-            else
-                if lrr.id3 = -1 then
-                    lrr := rr;
-                elsif lrr.id3 = rr.id3 then
-                    lrr.cost := lrr.cost + rr.cost;
-                    if rr.id2 = -1 then
-                        rr.id2 := lrr.id2;
-                    end if;
-                else
-                    seq1 := seq1 + 1;
-                    lrr.seq := seq1;
-
-                    seq := lrr.seq;
-                    id1 := lrr.id1;
-                    id2 := lrr.id2;
-                    id3 := lrr.id3;
-                    cost := lrr.cost;
-                    return next;
-                    lrr := rr;
-                end if;
-            end if;
-        end loop;
-    end loop;
-
-    seq1 := seq1 + 1;
-    lrr.seq := seq1;
-
-    seq := lrr.seq;
-    id1 := lrr.id1;
-    id2 := lrr.id2;
-    id3 := lrr.id3;
-    cost := lrr.cost;
-    return next;
-    return;
-    */
 end;
 $body$
 language plpgsql VOLATILE
