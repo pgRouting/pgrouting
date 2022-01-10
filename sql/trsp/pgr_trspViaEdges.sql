@@ -53,9 +53,7 @@ DECLARE
   i integer;
   j INTEGER := 1;
   has_reverse BOOLEAN;
-  -- point_is_vertex BOOLEAN := false;
   edges_sql TEXT;
-  -- f FLOAT;
   point_q TEXT;
   points_sql TEXT := '';
   from_v INTEGER;
@@ -83,14 +81,6 @@ BEGIN
   IF array_length(eids, 1) != array_length(pcts, 1) THEN
     raise exception 'The length of arrays eids and pcts must be the same!';
   END IF;
-
-  /*
-  FOREACH f IN ARRAY pcts LOOP
-    IF f in (0,1) THEN
-      point_is_vertex := true;
-    END IF;
-  END LOOP;
-*/
 
   FOR i IN 1 .. array_length(eids, 1) i
   LOOP
