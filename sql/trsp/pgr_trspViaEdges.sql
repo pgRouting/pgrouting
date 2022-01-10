@@ -190,6 +190,7 @@ SELECT seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, cost::FLO
     RETURN QUERY
     SELECT a.seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, a.cost::FLOAT FROM
     pgr_trsp_withPointsVia(edges_sql, restrictions_query, points_sql, vertices, directed) AS a;
+    /*
  --RAISE WARNING '%', final_query;
 
 
@@ -261,6 +262,7 @@ SELECT seq-1::INTEGER, path_id::INTEGER, node::INTEGER, edge::INTEGER, cost::FLO
     cost := lrr.cost;
     return next;
     return;
+    */
 end;
 $body$
 language plpgsql VOLATILE
