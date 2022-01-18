@@ -2,8 +2,11 @@ BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(1296);
+SET client_min_messages TO ERROR;
 
 
+-- TEST of deprecated signature
+-- This test does not make sense on new signatures due to the fact that the functions are STRICT (aka no nulls)
 create or REPLACE FUNCTION foo(cant INTEGER default 18, flag boolean default true )
 RETURNS SETOF TEXT AS
 $BODY$

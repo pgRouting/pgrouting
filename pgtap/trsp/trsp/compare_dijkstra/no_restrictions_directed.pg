@@ -1,15 +1,12 @@
 BEGIN;
 
-
 SELECT plan(612);
-
+SET extra_float_digits = -3;
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+SET client_min_messages TO ERROR;
 
-
+-- TEST of deprecated signature
 SELECT compare_trsp_dijkstra(18, true);
 
-
--- Finish the tests and clean up.
 SELECT * FROM finish();
 ROLLBACK;
-
