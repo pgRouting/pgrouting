@@ -4,6 +4,9 @@ File: new_trsp.c
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
+Copyright (c) 2022 Vicky Vergara
+* Handle combinations
+
 
 ------
 
@@ -41,15 +44,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_common/edges_input.h"
 #include "c_common/restrictions_input.h"
 #include "c_common/arrays_input.h"
+#include "c_common/combinations_input.h"
 
 PGDLLEXPORT Datum _trsp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_trsp);
 
 
 static
-void compute_trsp(
+void process(
         char* edges_sql,
         char* restrictions_sql,
+        char* combinations_sql,
 
         ArrayType *starts,
         ArrayType *ends,
@@ -60,46 +65,58 @@ void compute_trsp(
         size_t *result_count) {
     pgr_SPI_connect();
 
+    size_t size_start_vidsArr = 0;
+    int64_t* start_vidsArr = NULL;
+
+    size_t size_end_vidsArr = 0;
+    int64_t* end_vidsArr = NULL;
+
+    II_t_rt *combinations = NULL;
+    size_t total_combinations = 0;
+
     Edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
 
     Restriction_t * restrictions = NULL;
     size_t total_restrictions = 0;
+
+    pgr_get_edges(edges_sql, &edges, &total_edges);
+
+    if (total_edges == 0) {
+        pgr_SPI_finish();
+        return;
+    }
     pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
 
-    size_t size_start_vidsArr = 0;
-    int64_t* start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    if (starts && ends) {
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else if (combinations_sql) {
+        pgr_get_combinations(combinations_sql, &combinations, &total_combinations);
+    }
 
-    size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-
-    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
     do_trsp(
-            edges,
-            total_edges,
+            edges, total_edges,
+            restrictions, total_restrictions,
 
-            restrictions,
-            total_restrictions,
-
+            combinations, total_combinations,
             start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
 
             directed,
 
-            result_tuples,
-            result_count,
+            result_tuples, result_count,
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg("processing _pgr_trsp", start_t, clock());
+    time_msg("processing pgr_trsp", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -108,6 +125,14 @@ void compute_trsp(
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
+    if (edges) {pfree(edges); edges=NULL;}
+    if (restrictions) {pfree(restrictions); restrictions=NULL;}
+    if (combinations) {pfree(combinations); combinations=NULL;}
+    if (start_vidsArr) {pfree(start_vidsArr); start_vidsArr=NULL;}
+    if (end_vidsArr) {pfree(end_vidsArr); end_vidsArr=NULL;}
+    if (log_msg) {pfree(log_msg); log_msg=NULL;}
+    if (notice_msg) {pfree(notice_msg); notice_msg=NULL;}
+    if (err_msg) {pfree(err_msg); err_msg=NULL;}
 
     pgr_SPI_finish();
 }
@@ -122,30 +147,34 @@ _trsp(PG_FUNCTION_ARGS) {
     size_t result_count             = 0;
     Path_rt  *result_tuples   = NULL;
 
-    // stuff done only on the first call of the function
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        PGR_DBG("Calling compute_trsp");
-        compute_trsp(
-                text_to_cstring(PG_GETARG_TEXT_P(0)),
-                text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_ARRAYTYPE_P(2),
-                PG_GETARG_ARRAYTYPE_P(3),
-                PG_GETARG_BOOL(4),
-                &result_tuples, &result_count);
+        if (PG_NARGS() == 5) {
+            process(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    NULL,
+                    PG_GETARG_ARRAYTYPE_P(2),
+                    PG_GETARG_ARRAYTYPE_P(3),
+                    PG_GETARG_BOOL(4),
+                    &result_tuples, &result_count);
+        } else /* (PG_NARGS() == 4) */ {
+            process(
+                    text_to_cstring(PG_GETARG_TEXT_P(0)),
+                    text_to_cstring(PG_GETARG_TEXT_P(1)),
+                    text_to_cstring(PG_GETARG_TEXT_P(2)),
+                    NULL,
+                    NULL,
+                    PG_GETARG_BOOL(3),
+                    &result_tuples, &result_count);
+        }
 
-        //-----------------------------------------------
-
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
-
         funcctx->user_fctx = result_tuples;
+
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
@@ -164,7 +193,6 @@ _trsp(PG_FUNCTION_ARGS) {
     result_tuples = (Path_rt *) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
-        // do when there is more left to send
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
@@ -202,4 +230,3 @@ _trsp(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <functional>
 #include <limits>
+#include <set>
 
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -105,6 +106,13 @@ class Pgr_trspHandler {
             const size_t edge_count,
             const bool directed,
             const std::vector<Rule> &ruleList);
+    Pgr_trspHandler(
+            Edge_t *edges,
+            const size_t edge_count,
+            const std::vector<Edge_t> &new_edges,
+            const bool directed,
+            const std::vector<Rule> &ruleList);
+
 
     Pgr_trspHandler(void) = delete;
     ~Pgr_trspHandler(void) = default;
@@ -113,6 +121,10 @@ class Pgr_trspHandler {
     Path process(
             const int64_t start_vertex,
             const int64_t end_vertex);
+
+    std::deque<Path> process(
+            const std::map<int64_t,
+            std::set<int64_t>> &combinations);
 
     std::deque<Path> process(
             const std::vector<int64_t> sources,
@@ -127,6 +139,10 @@ class Pgr_trspHandler {
             const size_t edge_count,
             const bool directed);
 
+    void add_point_edges(
+        const std::vector<Edge_t> &new_edges,
+        const bool directed);
+
     int initialize_restrictions(
             const std::vector<Rule> &ruleList);
 
@@ -138,7 +154,6 @@ class Pgr_trspHandler {
     EdgeInfo dijkstra_exploration();
 
 
-
     void explore(
             int64_t cur_node,
             const EdgeInfo cur_edge,
@@ -148,7 +163,7 @@ class Pgr_trspHandler {
             int64_t cur_node,
             const EdgeInfo &new_edge,
             bool isStart);
-    bool addEdge(const Edge_t edgeIn);
+    bool addEdge(Edge_t edgeIn, bool);
 
     void connectStartEdge(
             size_t firstEdge_idx,

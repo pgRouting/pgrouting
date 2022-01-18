@@ -4,4 +4,5 @@ ADD_LIBRARY(cpp_common OBJECT
     rule.cpp
     bpoint.cpp
     pgr_messages.cpp
+    combinations.cpp
     )

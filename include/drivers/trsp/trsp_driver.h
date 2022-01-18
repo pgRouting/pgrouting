@@ -1,12 +1,13 @@
 /*PGR-GNU*****************************************************************
 File: trsp_driver.h
 
-Shortest path with turn restrictions algorithm for PostgreSQL
-
-Copyright (c) 2017 pgRouting developers
 Copyright (c) 2011 Stephen Woodbridge
+Copyright (c) 2017 Vicky Vergara
+* Rewrite for cleanup
+Copyright (c) 2022 Vicky Vergara
+* Rewrite for new signatures
 
--------------
+------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,49 +27,43 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
 #define INCLUDE_DRIVERS_TRSP_TRSP_DRIVER_H_
+#pragma once
 
-/* for size_t and int64_t */
 #ifdef __cplusplus
-#  include <cstddef>
-#  include <cstdint>
+#include <cstddef>
+#include <cstdint>
 using Restriction_t = struct Restriction_t;
 using Path_rt = struct Path_rt;
 using Edge_t = struct Edge_t;
+using II_t_rt = struct II_t_rt;
 #else
-#  include <stddef.h>
-#  include <stdint.h>
+#include <stddef.h>
+#include <stdint.h>
 typedef struct Restriction_t Restriction_t;
 typedef struct Path_rt Path_rt;
 typedef struct Edge_t Edge_t;
+typedef struct II_t_rt II_t_rt;
 #endif
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void do_trsp(
-            Edge_t *edges,
-            size_t edge_count,
+void do_trsp(
+        Edge_t *, size_t,           // edges
+        Restriction_t *, size_t,    // restrictions
 
-            Restriction_t *restrictions,
-            size_t restrictions_size,
+        II_t_rt *, size_t,  // combinations
+        int64_t *, size_t,  // starts
+        int64_t *, size_t,  // ends
 
-            int64_t  *start_vidsArr,
-            size_t size_start_vidsArr,
+        bool,  // directed
 
-            int64_t  *end_vidsArr,
-            size_t size_end_vidsArr,
+        Path_rt **, size_t *,  // tuples
 
-            bool directed,
-
-            Path_rt **return_tuples,
-            size_t *return_count,
-
-            char **log_msg,
-            char **notice_msg,
-            char **err_msg);
-
+        char**,   // log
+        char**,   // notice
+        char**);  // err
 
 #ifdef __cplusplus
 }
