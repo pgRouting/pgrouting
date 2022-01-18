@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
    - put all data costs in one cost column and
    - a call is made to trsp without only the positive values
 */
---v3.0
+--v3.4
 CREATE FUNCTION pgr_trsp(
     TEXT, -- edges SQL (required)
     INTEGER, -- from_vid (required)
@@ -58,6 +58,7 @@ new_sql TEXT;
 restrictions_query TEXT;
 trsp_sql TEXT;
 BEGIN
+  RAISE WARNING 'This signature is been deprecated';
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
@@ -258,6 +259,7 @@ ROWS 1000;
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trsp
+- DEPRECATED
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]
     - from vertex identifier

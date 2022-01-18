@@ -2,6 +2,8 @@
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
+Copyright (c) 2022 Vicky Vergara
+* Added combinations internal function
 
 ------
 
@@ -35,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 --v2.6
 CREATE FUNCTION _trsp(
-    TEXT, -- edges_sql
-    TEXT, -- restrictions_sql
+    TEXT, -- edges SQL
+    TEXT, -- restrictions SQL
     ANYARRAY,
     ANYARRAY,
     directed BOOLEAN DEFAULT true,
@@ -53,9 +55,28 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE 'c' VOLATILE;
 
+--v3.4
+CREATE FUNCTION _trsp(
+    TEXT, -- edges SQL
+    TEXT, -- restrictions SQL
+    TEXT, -- combinations SQL
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE 'c' VOLATILE;
 
 -- COMMENTS
-
-
 COMMENT ON FUNCTION _trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _trsp(TEXT, TEXT, TEXT, BOOLEAN)
 IS 'pgRouting internal function';
