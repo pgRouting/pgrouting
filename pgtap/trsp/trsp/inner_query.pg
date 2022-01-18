@@ -1,20 +1,32 @@
 BEGIN;
 
--- This test is prepared for when:
--- Tentatively trsp will accepts ANY-INTEGER and ANY-NUMERICAL on 4.0.0
--- Adjust style_dijkstra_trsp -> style_dijkstra when that happens
-
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(324);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(540) ELSE plan(324) END;
+SET client_min_messages TO ERROR;
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS
 $BODY$
 DECLARE
   restriction TEXT;
+  unrelated_restriction TEXT;
+  empty_restriction TEXT;
 BEGIN
 
-  restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$)';
+  IF min_version('3.4.0') THEN
+
+    unrelated_restriction := '$$SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path$$';
+    empty_restriction := '$$SELECT * FROM new_restrictions WHERE id > 7$$';
+
+    RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || empty_restriction || ', 2, 9, false)');
+    RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || empty_restriction || ', 2, 9, true)');
+
+    RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || unrelated_restriction || ', 2, 9, false)');
+    RETURN QUERY SELECT style_dijkstra('pgr_trsp(', ', ' || unrelated_restriction || ', 2, 9, true)');
+
+  END IF;
+
+    restriction := '$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, ''32, 33''::TEXT AS via_path$$)';
 
 
     RETURN QUERY SELECT style_dijkstra_trsp('pgr_trsp', ', 2, 9, false, true)', TRUE);

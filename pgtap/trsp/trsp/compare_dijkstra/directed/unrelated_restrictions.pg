@@ -1,0 +1,16 @@
+BEGIN;
+
+SELECT CASE WHEN min_version('3.4.0') THEN plan(648) ELSE plan(2) END;
+SET extra_float_digits = -3;
+UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+
+PREPARE with_reverse_cost AS SELECT id, source, target, cost, reverse_cost from edge_table ORDER BY id;
+PREPARE no_reverse_cost AS SELECT id, source, target, cost from edge_table ORDER BY id;
+PREPARE unrelated1 AS SELECT * FROM new_restrictions WHERE id > 7;
+PREPARE unrelated2 AS SELECT 1 AS id, 100::float AS cost, ARRAY[33, 32, 25] AS path;
+
+SELECT compare_trsp_dijkstra_new(18, true, 'unrelated1');
+SELECT compare_trsp_dijkstra_new(18, true, 'unrelated2');
+
+SELECT * FROM finish();
+ROLLBACK;
