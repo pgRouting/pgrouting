@@ -5,41 +5,42 @@ SET extra_float_digits=-3;
 /* --place1 */
 SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
 /* --place2 */
-SELECT 1 AS id, 100::float AS cost, 25::INTEGER AS target_id, ARRAY[33, 32, 25] AS path;
+SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path;
 /* --place3 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15, true, true
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 15, true, true
 );
 /* --place4 */
-SELECT * FROM pgr_dijkstra(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15
-);
-/* --place5 */
 SELECT * FROM pgr_trsp(
-     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-     1, 15, true, true,
-     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 15, true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 
+/* --place5 */
+SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  1, 15
+);
 /* --place6 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  true, true
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  1, 15
 );
 /* --place7 */
-SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    14, 14, true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  1, 1
 );
 /* --place8 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1, true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  1, 1
 );
+
 /* --place9 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
@@ -51,6 +52,17 @@ SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     2, 3, false, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+/* --place10.1 */
+SELECT * FROM pgr_dijkstra(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  2, 3, false
+);
+/* --place10.2 */
+SELECT * FROM pgr_trsp(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  2, 3, false
 );
 /* --place11 */
 SELECT * FROM pgr_trsp(
