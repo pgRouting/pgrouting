@@ -48,6 +48,10 @@ namespace trsp {
         return m_precedencelist;
     }
 
+    const std::vector<int64_t>
+    Rule::precedences() const {
+        return m_all;
+    }
 
     std::ostream& operator<<(std::ostream& log, const Rule &r) {
         log << "(";
