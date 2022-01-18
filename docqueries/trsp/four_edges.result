@@ -50,6 +50,7 @@ SELECT * FROM pgr_trsp(
   (SELECT source::int  FROM four_edges WHERE id = 719),
   (SELECT source::int  FROM four_edges WHERE id = 718),
   true, true, NULL);
+WARNING:  This signature is been deprecated
  seq |  id1  | id2 | cost
 -----+-------+-----+------
    0 | 52163 | 717 |  977

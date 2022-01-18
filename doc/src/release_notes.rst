@@ -37,7 +37,26 @@ To see the full list of changes check the list of `Git commits <https://github.c
 pgRouting 3.4.0 Release Notes
 -------------------------------------------------------------------------------
 
-No Changes Yet
+.. rubric:: New proposed functions
+
+* Turn Restrictions
+
+  * pgr_trsp
+
+    * pgr_trsp(One to One)
+    * pgr_trsp(One to Many)
+    * pgr_trsp(Many to One)
+    * pgr_trsp(Many to Many)
+    * pgr_trsp(Combinations)
+
+.. rubric:: Deprecated functions
+
+* Turn Restrictions
+
+  * pgr_trsp(sql text, source integer, target integer,
+         directed boolean, has_rcost boolean [,restrict_sql text])
+
+
 
 pgRouting 3.3.0 Release Notes
 -------------------------------------------------------------------------------
