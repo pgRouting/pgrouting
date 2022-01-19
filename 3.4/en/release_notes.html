@@ -268,7 +268,34 @@
 </div>
 <section id="pgrouting-3-4-0-release-notes">
 <h2><a class="toc-backref" href="#id1">pgRouting 3.4.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-4-0-release-notes" title="Permalink to this headline">¶</a></h2>
-<p>No Changes Yet</p>
+<p class="rubric">New proposed functions</p>
+<ul class="simple">
+<li><p>Turn Restrictions</p>
+<ul>
+<li><p>pgr_trsp</p>
+<ul>
+<li><p>pgr_trsp(One to One)</p></li>
+<li><p>pgr_trsp(One to Many)</p></li>
+<li><p>pgr_trsp(Many to One)</p></li>
+<li><p>pgr_trsp(Many to Many)</p></li>
+<li><p>pgr_trsp(Combinations)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Deprecated functions</p>
+<ul class="simple">
+<li><p>Turn Restrictions</p>
+<ul>
+<li><dl class="simple">
+<dt>pgr_trsp(sql text, source integer, target integer,</dt><dd><p>directed boolean, has_rcost boolean [,restrict_sql text])</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="pgrouting-3-3-0-release-notes">
 <h2><a class="toc-backref" href="#id2">pgRouting 3.3.0 Release Notes</a><a class="headerlink" href="#pgrouting-3-3-0-release-notes" title="Permalink to this headline">¶</a></h2>
@@ -1391,8 +1418,8 @@ The following release notes have been copied from the previous <code class="docu
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jan 05, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
+      Last updated on Jan 19, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
 </footer>
