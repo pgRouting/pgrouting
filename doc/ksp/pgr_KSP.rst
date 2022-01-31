@@ -111,6 +111,8 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
+.. ksp results start
+
 Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``
 
 ============== =========== =================================================
@@ -124,6 +126,8 @@ Column         Type        Description
 **cost**       ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
 **agg_cost**   ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
 ============== =========== =================================================
+
+.. ksp results end
 
 Additional Examples
 ------------------------------------------------------------------------------------------

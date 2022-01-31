@@ -83,6 +83,12 @@ Experimental Functions
    :start-after: index experimental from here
    :end-before: index experimental to here
 
+:doc:`TRSP-family`
+
+.. include:: TRSP-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 .. toctree::
    :hidden:
 
@@ -115,7 +121,6 @@ Experimental Functions
 - :doc:`pgr_stoerWagner`
 - :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
-- :doc:`pgr_turnRestrictedPath`
 - :doc:`pgr_lengauerTarjanDominatorTree`
 
 .. toctree::
@@ -130,7 +135,6 @@ Experimental Functions
   pgr_stoerWagner
   pgr_topologicalSort
   pgr_transitiveClosure
-  pgr_turnRestrictedPath
   pgr_lengauerTarjanDominatorTree
 
 

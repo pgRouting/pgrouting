@@ -36,13 +36,13 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 
   * New **Proposed** signatures
 
-    * trsp(one to one)
-    * trsp(one to many)
-    * trsp(many to one)
-    * trsp(many to many)
-    * trsp(combinations)
+    * pgr_trsp(one to one)
+    * pgr_trsp(one to many)
+    * pgr_trsp(many to one)
+    * pgr_trsp(many to many)
+    * pgr_trsp(combinations)
 
-  * Signature `pgr_trsp(text,integer,integer,boolean,boolean)` is deprecated
+  * Signature ``pgr_trsp(text,integer,integer,boolean,boolean)`` is deprecated
 
 * Version 2.1.0
 
@@ -61,7 +61,7 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 Description
 -------------------------------------------------------------------------------
 
-Turn restricted shorthest path (TRSP) is an algorithm that recives
+Turn restricted shorthest path (TRSP) is an algorithm that receives
 turn restrictions in form of a query like those found in
 real world navigable road networks.
 
@@ -70,6 +70,16 @@ The main characteristics are:
 * Automatic detection of `reverse_cost` column
 * Accepts ANY-INTEGER and ANY-NUMERICAL on input columns
 * All variations give as result the same columns
+* It does no guarantee the shortest path as it might contain restriction paths
+
+The general algorithm is as follows:
+
+* Execute a dijkstra
+* If the solution passes thru a restriction then
+
+  * Execute the TRSP algorithm with restrictions
+
+
 
 
 Signatures
@@ -77,21 +87,35 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. include:: proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
-   pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vid  [, directed]) -- Proposed on v3.4
-   pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vids [, directed]) -- Proposed on v3.4
-   pgr_trsp(Edges SQL, Restrictions SQL, start vids, end vid  [, directed]) -- Proposed on v3.4
-   pgr_trsp(Edges SQL, Restrictions SQL, start vids, end vids [, directed]) -- Proposed on v3.4
-   pgr_trsp(Edges SQL, Restrictions SQL, Combinations SQL [, directed]) -- Proposed on v3.4
+.. parsed-literal::
+
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid  [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid  [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [, directed]) -- Proposed on v3.4
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-   pgr_trsp(sql text, source integer, target integer,
-            directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
    pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
-            directed boolean, has_rcost boolean [,restrict_sql text])
+            directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
    RETURNS SETOF (seq, id1, id2, cost)
+
+.. rubric:: deprecated
+
+.. code-block:: none
+
+   pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
+            directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
+   RETURNS SETOF (seq, id1, id2, cost)
+
+.. rubric:: prototype
+
+.. code-block:: none
 
    pgr_trspViaVertices(sql text, vids integer[],
             directed boolean, has_rcost boolean [, restrictions_sql text]) -- Prototype on v2.1
@@ -105,11 +129,11 @@ Signatures
 One to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vid  [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid  [, directed]) -- Proposed on v3.4
+   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
 
@@ -123,13 +147,13 @@ One to One
 One to many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vids [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids [, directed]) -- Proposed on v3.4
+   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertex :math:`2` to vertices :math:`\{3, 7\}` on an **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q3
@@ -141,13 +165,13 @@ One to many
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_trsp(Edges SQL, Restrictions SQL, start vids,  end vid [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid  [, directed]) -- Proposed on v3.4
+   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
+:Example: From vertices :math:`\{2, 7\}` to vertex :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q4
@@ -159,13 +183,13 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_trsp(Edges SQL, Restrictions SQL, start vids,  end vids [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids [, directed]) -- Proposed on v3.4
+   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 10\}` on an **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q5
@@ -177,11 +201,11 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_trsp(Edges SQL, Restrictions SQL, Combinations SQL [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [, directed]) -- Proposed on v3.4
+   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
 
@@ -224,23 +248,9 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-.. restrictions_columns_start
-
-========= =================  ===============================================================================
-Column             Type      Description
-========= =================  ===============================================================================
-**id**    ``ANY-INTEGER``    Identifier of the restriction
-**path**  ``ARRAY[BIGINT]``  Sequence of Edges identifiers that form a path that is not allowed to be taken
-**Cost**  ``ANY-NUMERICAL``  Cost of taking the forbidden path
-========= =================  ===============================================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
-.. restrictions_columns_end
-
+.. include:: TRSP-family.rst
+   :start-after: restrictions_columns_start
+   :end-before: restrictions_columns_end
 
 
 Combinations SQL
@@ -481,7 +491,7 @@ The following signature
   pgr_trsp(sql text, source integer, target integer,
            directed boolean, has_rcost boolean [,restrict_sql text]);
 
-is substitued with :doc:`pgr_dijkstra` when there are no restrictions,
+is substituted with :doc:`pgr_dijkstra` when there are no restrictions,
 and with pgr_trsp(`One to One`_) when there are restrictions.
 
 
@@ -649,7 +659,7 @@ reach the destination, its already there. Therefore is expected to return an
    :start-after: --place15
    :end-before: --place16
 
-pgr_trsp calls :doc:`pgr_withPoints` setting the first :math:`(edge, position)` with a differenct point id
+pgr_trsp calls :doc:`pgr_withPoints` setting the first :math:`(edge, position)` with a different point id
 from the second :math:`(edge, position)` making them different points. But the cost using the edge, is :math:`0`.
 
 
@@ -707,7 +717,7 @@ Given a set of points of interest:
 On *pgr_trsp*, to be able to use the table information:
 
 * Each parameter has to be extracted explicitly from the table
-* Regardles of the point pid original value
+* Regardless of the point pid original value
 
   * will always be -1 for the first point
   * will always be -2 for the second point

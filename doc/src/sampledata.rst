@@ -79,11 +79,17 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Restrictions
 
-- Used with the :doc:`pgr_trsp` functions.
+- Used with the :doc:`TRSP-family` functions.
 
 .. literalinclude:: ../../tools/testers/sampledata.sql
    :start-after: --RESTRICTIONS CREATE start
    :end-before: --RESTRICTIONS CREATE end
+
+- Used with the :doc:`pgr_trsp` deprecated and prototype functions.
+
+.. literalinclude:: ../../tools/testers/sampledata.sql
+   :start-after: --RESTRICTIONS OLD CREATE start
+   :end-before: --RESTRICTIONS OLD CREATE end
 
 Images
 ----------------

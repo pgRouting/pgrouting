@@ -161,7 +161,6 @@ Functions by categories
     TSP-family
     spanningTree-family
     KSP-category
-    pgr_trsp
 
 .. toctree::
     :hidden:

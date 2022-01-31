@@ -53,8 +53,7 @@ pgRouting 3.4.0 Release Notes
 
 * Turn Restrictions
 
-  * pgr_trsp(sql text, source integer, target integer,
-         directed boolean, has_rcost boolean [,restrict_sql text])
+  * pgr_trsp(text, integer, integer, boolean, boolean, text)
 
 
 

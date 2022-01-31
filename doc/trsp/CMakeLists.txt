@@ -1,5 +1,6 @@
 
 SET(LOCAL_FILES
+    TRSP-family.rst
     pgr_trsp.rst
     pgr_turnRestrictedPath.rst
     )
