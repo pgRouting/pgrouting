@@ -58,7 +58,7 @@ new_sql TEXT;
 restrictions_query TEXT;
 trsp_sql TEXT;
 BEGIN
-  RAISE WARNING 'This signature is been deprecated';
+  RAISE WARNING 'pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated';
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
 
     new_sql := edges_sql;
