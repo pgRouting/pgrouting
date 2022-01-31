@@ -89,15 +89,12 @@ RETURNS SETOF TEXT AS
 $BODY$
 BEGIN
 
-RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
-    ARRAY['id', 'path', 'cost'],
-    'id','new_restrictions');
 RETURN QUERY SELECT test_anyIntegerArr(fn, rest_sql,
     ARRAY['id', 'path', 'cost'],
-    'path','new_restrictions');
+    'path','restrictions');
 RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
     ARRAY['id', 'path', 'cost'],
-    'cost','new_restrictions');
+    'cost','restrictions');
 END;
 $BODY$
 LANGUAGE plpgsql;
