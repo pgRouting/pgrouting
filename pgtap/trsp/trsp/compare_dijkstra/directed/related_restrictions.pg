@@ -6,7 +6,7 @@ UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(r
 
 PREPARE with_reverse_cost AS SELECT id, source, target, cost, reverse_cost from edge_table ORDER BY id;
 PREPARE no_reverse_cost AS SELECT id, source, target, cost from edge_table ORDER BY id;
-PREPARE related AS SELECT * FROM new_restrictions;
+PREPARE related AS SELECT * FROM restrictions;
 
 SELECT compare_trsp_dijkstra_new(18, true, 'related');
 
