@@ -39,24 +39,15 @@ void fetch_restriction(
         Column_info_t info[3],
         Restriction_t *restriction) {
     /*
-     * reading the restriction id
-     */
-    restriction->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-
-    /*
      * reading the cost
      */
-    if (column_found(info[1].colNumber)) {
-        restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
-    } else {
-        restriction->cost = -1;
-    }
+    restriction->cost = pgr_SPI_getFloat8(tuple, tupdesc, info[0]);
 
     restriction->via = NULL;
     restriction->via_size = 0;
 
     restriction->via = pgr_SPI_getBigIntArr(
-            tuple, tupdesc, info[2], &restriction->via_size);
+            tuple, tupdesc, info[1], &restriction->via_size);
 }
 
 
@@ -71,26 +62,22 @@ pgr_get_restrictions(
     PGR_DBG("pgr_get_restrictions");
     PGR_DBG("%s", restrictions_sql);
 
-    Column_info_t info[3];
+    Column_info_t info[2];
 
     int i;
-    for (i = 0; i < 3; ++i) {
+    for (i = 0; i < 2; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
     }
 
     /* restriction id */
-    info[0].name = "id";
-    info[1].name = "cost";
+    info[0].name = "cost";
     /* array of edges */
-    info[2].name = "path";
+    info[1].name = "path";
 
-    info[0].eType = ANY_INTEGER;
-    info[1].eType = ANY_NUMERICAL;
-    info[2].eType = ANY_INTEGER_ARRAY;
-
-    info[1].strict = false;
+    info[0].eType = ANY_NUMERICAL;
+    info[1].eType = ANY_INTEGER_ARRAY;
 
     size_t total_tuples;
 
@@ -108,7 +95,7 @@ pgr_get_restrictions(
     while (moredata == true) {
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0) {
-            pgr_fetch_column_info(info, 3);
+            pgr_fetch_column_info(info, 2);
         }
         size_t ntuples = SPI_processed;
         total_tuples += ntuples;
