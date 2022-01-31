@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
 
     SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
     SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
         ARRAY[1,11,6]::INTEGER[],           -- array of eids
@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
     SELECT * FROM pgr_trspViaEdges(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
         ARRAY[1,11,6]::INTEGER[],           -- array of eids
@@ -54,4 +54,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
-        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+        'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');

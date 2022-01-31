@@ -14,7 +14,7 @@ SELECT * FROM _pgr_trsp(
 
 SELECT * FROM _pgr_trsp(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
-    $$ SELECT * FROM new_restrictions $$,
+    $$ SELECT * FROM restrictions $$,
     2, 7, false
 );
 
@@ -24,7 +24,7 @@ SELECT * FROM pgr_trsp(
     2, 7, false, false,
     'SELECT to_cost, target_id::int4,
     from_edge || coalesce('','' || via_path, '''') AS via_path
-    FROM restrictions'
+    FROM old_restrictions'
 );
 
 
