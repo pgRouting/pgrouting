@@ -55,6 +55,17 @@ Proposed Functions
    :start-after: index proposed from here
    :end-before: index proposed to here
 
+:doc:`TRSP-family`
+
+.. include:: TRSP-family.rst
+   :start-after: index proposed from here
+   :end-before: index proposed to here
+
+.. toctree::
+   :hidden:
+
+   TRSP-family
+
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst

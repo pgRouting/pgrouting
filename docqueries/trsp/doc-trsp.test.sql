@@ -1,40 +1,35 @@
-/* -- q1 */
-SELECT * FROM pgr_trsp(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
-  2, 3
-);
 /* -- q2 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
+  $$SELECT path, cost FROM restrictions$$,
   2, 3,
   false
 );
 /* -- q3 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
-  2, ARRAY[3,5],
+  $$SELECT * FROM restrictions$$,
+  2, ARRAY[3,7],
   false
 );
 /* -- q4 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
-  ARRAY[2,11], 5
+  $$SELECT path, cost FROM restrictions$$,
+  ARRAY[2,7], 10
 );
 /* -- q5 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
-  ARRAY[2,11], ARRAY[3,5],
+  $$SELECT path, cost FROM restrictions$$,
+  ARRAY[2,7], ARRAY[3,10],
   false
 );
 /* -- q6 */
-SELECT * FROM pgr_dijkstra(
+SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)$$
+  $$SELECT path, cost FROM restrictions$$,
+  $$SELECT * FROM (VALUES (2, 3), (2, 7), (2, 10), (7, 10)) AS combinations (source, target)$$
 );
 /* -- q7 */
 
@@ -52,14 +47,14 @@ SELECT * FROM pgr_dijkstra(
         2, 7, false, false,
         'SELECT to_cost, target_id::int4,
         from_edge || coalesce('','' || via_path, '''') AS via_path
-        FROM restrictions'
+        FROM old_restrictions'
     );
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         7, 11, false, false,
         'SELECT to_cost, target_id::int4,
         from_edge || coalesce('','' || via_path, '''') AS via_path
-        FROM restrictions'
+        FROM old_restrictions'
     );
 
 
@@ -69,7 +64,7 @@ SELECT * FROM pgr_dijkstra(
         ARRAY[2,7,11]::INTEGER[],
         false,  false,
         'SELECT to_cost, target_id::int4, from_edge ||
-        coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+        coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
 
 
 /* --q5 */
@@ -81,6 +76,6 @@ SELECT * FROM pgr_dijkstra(
         true,
         true,
         'SELECT to_cost, target_id::int4, FROM_edge ||
-        coalesce('',''||via_path,'''') AS via_path FROM restrictions');
+        coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
 
 /* --q6 */

@@ -10,8 +10,8 @@ SET client_min_messages = WARNING;
 DROP TABLE IF EXISTS edge_table;
 DROP TABLE IF EXISTS edge_table_vertices_pgr;
 DROP table if exists pointsOfInterest;
+DROP TABLE IF EXISTS old_restrictions;
 DROP TABLE IF EXISTS restrictions;
-DROP TABLE IF EXISTS new_restrictions;
 DROP TABLE IF EXISTS retrict;
 DROP TABLE IF EXISTS combinations_table;
 DROP TABLE IF EXISTS vertex_table;
@@ -105,8 +105,8 @@ UPDATE pointsOfInterest
     FROM edge_table AS e WHERE edge_id = id;
 --POINTS CREATE end
 
---RESTRICTIONS CREATE start
-CREATE TABLE restrictions (
+--RESTRICTIONS OLD CREATE start
+CREATE TABLE old_restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
     target_id BIGINT,
@@ -114,27 +114,27 @@ CREATE TABLE restrictions (
     via_path TEXT
 );
 
-INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
+INSERT INTO old_restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
 (1, 100,  7,  4, NULL),
 (1, 100, 11,  8, NULL),
 (1, 100, 10,  7, NULL),
-(2,   4,  8,  3, 5),
+(2,   4,  9,  3, 5),
 (3, 100,  9, 16, NULL);
+--RESTRICTIONS OLD CREATE end
 
-CREATE TABLE new_restrictions (
+--RESTRICTIONS CREATE start
+CREATE TABLE restrictions (
     id SERIAL PRIMARY KEY,
     path BIGINT[],
-    cost float
+    cost FLOAT
 );
 
-INSERT INTO new_restrictions (path, cost) VALUES
+INSERT INTO restrictions (path, cost) VALUES
 (ARRAY[4, 7], 100),
 (ARRAY[8, 11], 100),
-(ARRAY[4, 8], 100),
-(ARRAY[5, 9], 100),
-(ARRAY[10, 12], 100),
-(ARRAY[9, 15], 100),
-(ARRAY[3, 5, 8], 100);
+(ARRAY[7, 10], 100),
+(ARRAY[3, 5, 9], 100),
+(ARRAY[9, 16], 100);
 --RESTRICTIONS CREATE end
 
 
@@ -212,7 +212,7 @@ CREATE TABLE combinations_table (
 INSERT INTO combinations_table (
     source, target) VALUES
 (1, 2),
-(1, 4),
+(1, 3),
 (2, 1),
 (2, 4),
 (2, 17);

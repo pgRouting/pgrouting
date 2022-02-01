@@ -10,7 +10,7 @@ BEGIN
     PREPARE q1 AS
       SELECT seq, node, edge, cost::text FROM pgr_trsp(
         $$SELECT id, source, target, cost FROM edge_table$$,
-        $$SELECT * FROM new_restrictions WHERE id > 10$$,
+        $$SELECT * FROM restrictions WHERE id > 10$$,
         7, 12, false);
     PREPARE q2 AS
       (SELECT seq, node, edge, cost::text

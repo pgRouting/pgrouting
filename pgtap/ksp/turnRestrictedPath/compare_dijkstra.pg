@@ -18,7 +18,7 @@ dijkstra_sql TEXT;
 dijkstratr_sql TEXT;
 BEGIN
 
-    restricted_sql := 'SELECT * FROM new_restrictions WHERE id > 10';
+    restricted_sql := 'SELECT * FROM restrictions WHERE id > 10';
 
     -- DIRECTED with reverse cost
     inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';

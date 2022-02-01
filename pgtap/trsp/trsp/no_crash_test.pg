@@ -11,10 +11,10 @@ PREPARE empty_edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id > 20;
 
 PREPARE all_restrictions AS
-SELECT * FROM new_restrictions;
+SELECT * FROM restrictions;
 
 PREPARE empty_restrictions AS
-SELECT * FROM new_restrictions WHERE id > 7;
+SELECT * FROM restrictions WHERE id > 7;
 
 PREPARE all_combinations AS
 SELECT * FROM combinations_table;
@@ -99,7 +99,7 @@ BEGIN
 
   params = ARRAY[
   '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
-  '$$SELECT * FROM new_restrictions$$',
+  '$$SELECT * FROM restrictions$$',
   '1',
   '2',
   'true'
@@ -130,7 +130,7 @@ BEGIN
 
   params = ARRAY[
   '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
-  '$$SELECT * FROM new_restrictions$$',
+  '$$SELECT * FROM restrictions$$',
   '1',
   'ARRAY[2,3]',
   'true'
@@ -161,7 +161,7 @@ BEGIN
 
   params = ARRAY[
   '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
-  '$$SELECT * FROM new_restrictions$$',
+  '$$SELECT * FROM restrictions$$',
   'ARRAY[2,3]',
   '1',
   'true'
@@ -192,7 +192,7 @@ BEGIN
 
   params = ARRAY[
   '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
-  '$$SELECT * FROM new_restrictions$$',
+  '$$SELECT * FROM restrictions$$',
   'ARRAY[2,3]::BIGINT[]',
   'ARRAY[1,10]::BIGINT[]',
   'true'
@@ -218,7 +218,7 @@ BEGIN
 
   params = ARRAY[
   '$$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$',
-  '$$SELECT * FROM new_restrictions$$',
+  '$$SELECT * FROM restrictions$$',
   '$$SELECT * FROM combinations_table$$',
   'true'
   ]::TEXT[];
