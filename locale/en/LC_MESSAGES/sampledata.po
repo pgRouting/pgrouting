@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-02-01 17:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,82 +100,86 @@ msgid "Restrictions"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:82
-msgid "Used with the :doc:`pgr_trsp` functions."
+msgid "Used with the :doc:`TRSP-family` functions."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:89
+#: ../../build/doc/sampledata.rst:88
+msgid "Used with the :doc:`pgr_trsp` deprecated and prototype functions."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:95
 msgid "Images"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:91
+#: ../../build/doc/sampledata.rst:97
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:92
+#: ../../build/doc/sampledata.rst:98
 msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:93
+#: ../../build/doc/sampledata.rst:99
 msgid "Points are outside the graph."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:94
+#: ../../build/doc/sampledata.rst:100
 msgid "Click on the graph to enlarge."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:99
+#: ../../build/doc/sampledata.rst:105
 msgid ""
 "Network for queries marked as ``directed`` and ``cost`` and "
 "``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:101
+#: ../../build/doc/sampledata.rst:107
 msgid ""
 "When working with city networks, this is recommended for point of view of"
 " vehicles."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:106
+#: ../../build/doc/sampledata.rst:112
 msgid "**Graph 1: Directed, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:111
+#: ../../build/doc/sampledata.rst:117
 msgid ""
 "Network for queries marked as ``undirected`` and ``cost`` and "
 "``reverse_cost`` columns are used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:113
+#: ../../build/doc/sampledata.rst:119
 msgid ""
 "When working with city networks, this is recommended for point of view of"
 " pedestrians."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:119
+#: ../../build/doc/sampledata.rst:125
 msgid "**Graph 2: Undirected, with cost and reverse cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:124
+#: ../../build/doc/sampledata.rst:130
 msgid ""
 "Network for queries marked as ``directed`` and only ``cost`` column is "
 "used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:131
+#: ../../build/doc/sampledata.rst:137
 msgid "**Graph 3: Directed, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:136
+#: ../../build/doc/sampledata.rst:142
 msgid ""
 "Network for queries marked as ``undirected`` and only ``cost`` column is "
 "used"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:142
+#: ../../build/doc/sampledata.rst:148
 msgid "**Graph 4: Undirected, with cost**"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:149
+#: ../../build/doc/sampledata.rst:155
 msgid "Pick & Deliver Data"
 msgstr ""
 
