@@ -87,6 +87,8 @@ Signatures
 
 .. rubric:: Summary
 
+.. rubric:: Proposed
+
 .. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
@@ -105,15 +107,7 @@ Signatures
             directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
    RETURNS SETOF (seq, id1, id2, cost)
 
-.. rubric:: deprecated
-
-.. code-block:: none
-
-   pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
-            directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
-   RETURNS SETOF (seq, id1, id2, cost)
-
-.. rubric:: prototype
+.. rubric:: Prototype
 
 .. code-block:: none
 
@@ -122,6 +116,14 @@ Signatures
    pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
             directed boolean, has_rcost boolean [, turn_restrict_sql text]) -- Prototype on v2.1
    RETURNS SETOF (seq, id1, id2, id3, cost)
+
+.. rubric:: Deprecated
+
+.. code-block:: none
+
+   pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
+            directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
+   RETURNS SETOF (seq, id1, id2, cost)
 
 .. index::
     single: trsp(One to Many) -- Proposed on v3.4

@@ -78,12 +78,6 @@ Proposed Functions
    :start-after: index from here
    :end-before: index to here
 
-:doc:`TRSP-family`
-
-.. include:: TRSP-family.rst
-   :start-after: index proposed from here
-   :end-before: index proposed to here
-
 :doc:`coloring-family`
 
 .. include:: coloring-family.rst
