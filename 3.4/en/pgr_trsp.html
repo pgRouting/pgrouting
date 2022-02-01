@@ -18,8 +18,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Cost - Category" href="cost-category.html" />
-    <link rel="prev" title="K shortest paths - Category" href="KSP-category.html" />
+    <link rel="next" title="pgr_turnRestrictedPath - Experimental" href="pgr_turnRestrictedPath.html" />
+    <link rel="prev" title="TRSP - Family of functions" href="TRSP-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -72,11 +72,11 @@
 <li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
-</ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Proposed Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="experimental.html">Experimental Functions</a></li>
 </ul>
 <ul>
@@ -147,11 +147,11 @@
               
                 
   <li>
-    <a href="KSP-category.html" title="Previous Chapter: K shortest paths - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; K shortest pa...</span>
+    <a href="TRSP-family.html" title="Previous Chapter: TRSP - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; TRSP - Family...</span>
     </a>
   </li>
   <li>
-    <a href="cost-category.html" title="Next Chapter: Cost - Category"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Cost - Category &raquo;</span>
+    <a href="pgr_turnRestrictedPath.html" title="Next Chapter: pgr_turnRestrictedPath - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_turnRestr... &raquo;</span>
     </a>
   </li>
               
@@ -207,14 +207,14 @@
 <ul>
 <li><p>New <strong>Proposed</strong> signatures</p>
 <ul>
-<li><p>trsp(one to one)</p></li>
-<li><p>trsp(one to many)</p></li>
-<li><p>trsp(many to one)</p></li>
-<li><p>trsp(many to many)</p></li>
-<li><p>trsp(combinations)</p></li>
+<li><p>pgr_trsp(one to one)</p></li>
+<li><p>pgr_trsp(one to many)</p></li>
+<li><p>pgr_trsp(many to one)</p></li>
+<li><p>pgr_trsp(many to many)</p></li>
+<li><p>pgr_trsp(combinations)</p></li>
 </ul>
 </li>
-<li><p>Signature <cite>pgr_trsp(text,integer,integer,boolean,boolean)</cite> is deprecated</p></li>
+<li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean)</span></code> is deprecated</p></li>
 </ul>
 </li>
 <li><p>Version 2.1.0</p>
@@ -290,7 +290,7 @@
 </div>
 <section id="description">
 <h2><a class="toc-backref" href="#id4">Description</a><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Turn restricted shorthest path (TRSP) is an algorithm that recives
+<p>Turn restricted shorthest path (TRSP) is an algorithm that receives
 turn restrictions in form of a query like those found in
 real world navigable road networks.</p>
 <p>The main characteristics are:</p>
@@ -298,39 +298,69 @@ real world navigable road networks.</p>
 <li><p>Automatic detection of <cite>reverse_cost</cite> column</p></li>
 <li><p>Accepts ANY-INTEGER and ANY-NUMERICAL on input columns</p></li>
 <li><p>All variations give as result the same columns</p></li>
+<li><p>It does no guarantee the shortest path as it might contain restriction paths</p></li>
+</ul>
+<p>The general algorithm is as follows:</p>
+<ul class="simple">
+<li><p>Execute a dijkstra</p></li>
+<li><p>If the solution passes thru a restriction then</p>
+<ul>
+<li><p>Execute the TRSP algorithm with restrictions</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="signatures">
 <h2><a class="toc-backref" href="#id5">Signatures</a><a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vid  [, directed]) -- Proposed on v3.4
-pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vids [, directed]) -- Proposed on v3.4
-pgr_trsp(Edges SQL, Restrictions SQL, start vids, end vid  [, directed]) -- Proposed on v3.4
-pgr_trsp(Edges SQL, Restrictions SQL, start vids, end vids [, directed]) -- Proposed on v3.4
-pgr_trsp(Edges SQL, Restrictions SQL, Combinations SQL [, directed]) -- Proposed on v3.4
+<p class="rubric">Proposed</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Proposed functions for next mayor release.</p>
+<ul class="simple">
+<li><p>They are not officially in the current release.</p></li>
+<li><p>They will likely officially be part of the next mayor release:</p>
+<ul>
+<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
+<li><p>Name might not change. (But still can)</p></li>
+<li><p>Signature might not change. (But still can)</p></li>
+<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>pgTap tests have being done. But might need more.</p></li>
+<li><p>Documentation might need refinement.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<pre class="literal-block">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vid,  end vid  [, directed]) -- Proposed on v3.4
+pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vid,  end vids [, directed]) -- Proposed on v3.4
+pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vids, end vid  [, directed]) -- Proposed on v3.4
+pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vids, end vids [, directed]) -- Proposed on v3.4
+pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [, directed]) -- Proposed on v3.4
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET
 
-pgr_trsp(sql text, source integer, target integer,
-         directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
 pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
-         directed boolean, has_rcost boolean [,restrict_sql text])
-RETURNS SETOF (seq, id1, id2, cost)
-
-pgr_trspViaVertices(sql text, vids integer[],
+         directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
+RETURNS SETOF (seq, id1, id2, cost)</pre>
+<p class="rubric">Prototype</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trspViaVertices(sql text, vids integer[],
          directed boolean, has_rcost boolean [, restrictions_sql text]) -- Prototype on v2.1
 pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
          directed boolean, has_rcost boolean [, turn_restrict_sql text]) -- Prototype on v2.1
 RETURNS SETOF (seq, id1, id2, id3, cost)
 </pre></div>
 </div>
-<section id="one-to-one">
-<span id="index-0"></span><h3><a class="toc-backref" href="#id6">One to One</a><a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vid  [, directed])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
+<p class="rubric">Deprecated</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
+         directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
+RETURNS SETOF (seq, id1, id2, cost)
 </pre></div>
 </div>
+<section id="one-to-one">
+<span id="index-0"></span><h3><a class="toc-backref" href="#id6">One to One</a><a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
+<pre class="literal-block">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vid,  end vid  [, directed]) -- Proposed on v3.4
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex  <span class="math notranslate nohighlight">\(3\)</span> on an <strong>undirected</strong> graph</p>
@@ -338,7 +368,7 @@ OR EMPTY SET
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
+  $$SELECT path, cost FROM restrictions$$,
   2, 3,
   false
 );
@@ -353,61 +383,63 @@ OR EMPTY SET
 </section>
 <section id="one-to-many">
 <span id="index-1"></span><h3><a class="toc-backref" href="#id7">One to many</a><a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(Edges SQL, Restrictions SQL, start vid,  end vids [, directed])
+<pre class="literal-block">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vid,  end vids [, directed]) -- Proposed on v3.4
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 5\}\)</span> on an <strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 7\}\)</span> on an <strong>undirected</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
-  2, ARRAY[3,5],
+  $$SELECT * FROM restrictions$$,
+  2, ARRAY[3,7],
   false
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         2 |       3 |    2 |    4 |    1 |        0
-   2 |        2 |         2 |       3 |    5 |    8 |  101 |        1
-   3 |        3 |         2 |       3 |    6 |    5 |    1 |      102
-   4 |        4 |         2 |       3 |    3 |   -1 |    0 |      103
-   5 |        1 |         2 |       5 |    2 |    4 |    1 |        0
-   6 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
-(6 rows)
+   2 |        2 |         2 |       3 |    5 |    8 |    1 |        1
+   3 |        3 |         2 |       3 |    6 |    5 |    1 |        2
+   4 |        4 |         2 |       3 |    3 |   -1 |    0 |        3
+   5 |        1 |         2 |       7 |    2 |    4 |    1 |        0
+   6 |        2 |         2 |       7 |    5 |   10 |    1 |        1
+   7 |        3 |         2 |       7 |   10 |   12 |    1 |        2
+   8 |        4 |         2 |       7 |   11 |   11 |    1 |        3
+   9 |        5 |         2 |       7 |    6 |    8 |    1 |        4
+  10 |        6 |         2 |       7 |    5 |    7 |    1 |        5
+  11 |        7 |         2 |       7 |    8 |    6 |    1 |        6
+  12 |        8 |         2 |       7 |    7 |   -1 |    0 |        7
+(12 rows)
 
 </pre></div>
 </div>
 </section>
 <section id="many-to-one">
 <span id="index-2"></span><h3><a class="toc-backref" href="#id8">Many to One</a><a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(Edges SQL, Restrictions SQL, start vids,  end vid [, directed])
+<pre class="literal-block">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vids, end vid  [, directed]) -- Proposed on v3.4
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 11\}\)</span> to vertex <span class="math notranslate nohighlight">\(5\)</span> on a <strong>directed</strong> graph</p>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> on a <strong>directed</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
-  ARRAY[2,11], 5
+  $$SELECT path, cost FROM restrictions$$,
+  ARRAY[2,7], 10
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
-   1 |        1 |         2 |       5 |    2 |    4 |    1 |        0
-   2 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
-   3 |        1 |        11 |       5 |   11 |   13 |    1 |        0
-   4 |        2 |        11 |       5 |   12 |   15 |    1 |        1
-   5 |        3 |        11 |       5 |    9 |    9 |    1 |        2
-   6 |        4 |        11 |       5 |    6 |    8 |    1 |        3
-   7 |        5 |        11 |       5 |    5 |   -1 |    0 |        4
+   1 |        1 |         2 |      10 |    2 |    4 |    1 |        0
+   2 |        2 |         2 |      10 |    5 |   10 |    1 |        1
+   3 |        3 |         2 |      10 |   10 |   -1 |    0 |        2
+   4 |        1 |         7 |      10 |    7 |    6 |    1 |        0
+   5 |        2 |         7 |      10 |    8 |    7 |    1 |        1
+   6 |        3 |         7 |      10 |    5 |   10 |  101 |        2
+   7 |        4 |         7 |      10 |   10 |   -1 |    0 |      103
 (7 rows)
 
 </pre></div>
@@ -415,76 +447,88 @@ OR EMPTY SET
 </section>
 <section id="many-to-many">
 <span id="index-3"></span><h3><a class="toc-backref" href="#id9">Many to Many</a><a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(Edges SQL, Restrictions SQL, start vids,  end vids [, directed])
+<pre class="literal-block">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vids, end vids [, directed]) -- Proposed on v3.4
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 11\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 5\}\)</span> on an <strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 10\}\)</span> on an <strong>undirected</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT id, path, cost FROM new_restrictions$$,
-  ARRAY[2,11], ARRAY[3,5],
+  $$SELECT path, cost FROM restrictions$$,
+  ARRAY[2,7], ARRAY[3,10],
   false
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         2 |       3 |    2 |    2 |    1 |        0
    2 |        2 |         2 |       3 |    3 |   -1 |    0 |        1
-   3 |        1 |         2 |       5 |    2 |    4 |    1 |        0
-   4 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
-   5 |        1 |        11 |       3 |   11 |   11 |    1 |        0
-   6 |        2 |        11 |       3 |    6 |    5 |    1 |        1
-   7 |        3 |        11 |       3 |    3 |   -1 |    0 |        2
-   8 |        1 |        11 |       5 |   11 |   11 |    1 |        0
-   9 |        2 |        11 |       5 |    6 |    8 |    1 |        1
-  10 |        3 |        11 |       5 |    5 |   -1 |    0 |        2
-(10 rows)
+   3 |        1 |         2 |      10 |    2 |    4 |    1 |        0
+   4 |        2 |         2 |      10 |    5 |   10 |    1 |        1
+   5 |        3 |         2 |      10 |   10 |   -1 |    0 |        2
+   6 |        1 |         7 |       3 |    7 |    6 |    1 |        0
+   7 |        2 |         7 |       3 |    8 |    7 |    1 |        1
+   8 |        3 |         7 |       3 |    5 |    4 |    1 |        2
+   9 |        4 |         7 |       3 |    2 |    2 |    1 |        3
+  10 |        5 |         7 |       3 |    3 |   -1 |    0 |        4
+  11 |        1 |         7 |      10 |    7 |    6 |    1 |        0
+  12 |        2 |         7 |      10 |    8 |    7 |    1 |        1
+  13 |        3 |         7 |      10 |    5 |    8 |    1 |        2
+  14 |        4 |         7 |      10 |    6 |    5 |    1 |        3
+  15 |        5 |         7 |      10 |    3 |    2 |    1 |        4
+  16 |        6 |         7 |      10 |    2 |    4 |    1 |        5
+  17 |        7 |         7 |      10 |    5 |   10 |    1 |        6
+  18 |        8 |         7 |      10 |   10 |   -1 |    0 |        7
+(18 rows)
 
 </pre></div>
 </div>
 </section>
 <section id="combinations">
 <span id="index-4"></span><h3><a class="toc-backref" href="#id10">Combinations</a><a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(Edges SQL, Restrictions SQL, Combinations SQL [, directed])
+<pre class="literal-block">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [, directed]) -- Proposed on v3.4
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>Using a combinations table on an <strong>undirected</strong> graph</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)$$
+  $$SELECT path, cost FROM restrictions$$,
+  $$SELECT * FROM (VALUES (2, 3), (2, 7), (2, 10), (7, 10)) AS combinations (source, target)$$
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         2 |       3 |    2 |    4 |    1 |        0
-   2 |        2 |         2 |       3 |    5 |    8 |    1 |        1
-   3 |        3 |         2 |       3 |    6 |    9 |    1 |        2
-   4 |        4 |         2 |       3 |    9 |   16 |    1 |        3
-   5 |        5 |         2 |       3 |    4 |    3 |    1 |        4
-   6 |        6 |         2 |       3 |    3 |   -1 |    0 |        5
-   7 |        1 |         2 |       5 |    2 |    4 |    1 |        0
-   8 |        2 |         2 |       5 |    5 |   -1 |    0 |        1
-   9 |        1 |        11 |       3 |   11 |   13 |    1 |        0
-  10 |        2 |        11 |       3 |   12 |   15 |    1 |        1
-  11 |        3 |        11 |       3 |    9 |   16 |    1 |        2
-  12 |        4 |        11 |       3 |    4 |    3 |    1 |        3
-  13 |        5 |        11 |       3 |    3 |   -1 |    0 |        4
-  14 |        1 |        11 |       5 |   11 |   13 |    1 |        0
-  15 |        2 |        11 |       5 |   12 |   15 |    1 |        1
-  16 |        3 |        11 |       5 |    9 |    9 |    1 |        2
-  17 |        4 |        11 |       5 |    6 |    8 |    1 |        3
-  18 |        5 |        11 |       5 |    5 |   -1 |    0 |        4
-(18 rows)
+   2 |        2 |         2 |       3 |    5 |   10 |    1 |        1
+   3 |        3 |         2 |       3 |   10 |   12 |    1 |        2
+   4 |        4 |         2 |       3 |   11 |   13 |    1 |        3
+   5 |        5 |         2 |       3 |   12 |   15 |    1 |        4
+   6 |        6 |         2 |       3 |    9 |   16 |    1 |        5
+   7 |        7 |         2 |       3 |    4 |    3 |    1 |        6
+   8 |        8 |         2 |       3 |    3 |   -1 |    0 |        7
+   9 |        1 |         2 |       7 |    2 |    4 |    1 |        0
+  10 |        2 |         2 |       7 |    5 |   10 |    1 |        1
+  11 |        3 |         2 |       7 |   10 |   12 |    1 |        2
+  12 |        4 |         2 |       7 |   11 |   13 |    1 |        3
+  13 |        5 |         2 |       7 |   12 |   15 |    1 |        4
+  14 |        6 |         2 |       7 |    9 |    9 |    1 |        5
+  15 |        7 |         2 |       7 |    6 |    8 |    1 |        6
+  16 |        8 |         2 |       7 |    5 |    7 |    1 |        7
+  17 |        9 |         2 |       7 |    8 |    6 |    1 |        8
+  18 |       10 |         2 |       7 |    7 |   -1 |    0 |        9
+  19 |        1 |         2 |      10 |    2 |    4 |    1 |        0
+  20 |        2 |         2 |      10 |    5 |   10 |    1 |        1
+  21 |        3 |         2 |      10 |   10 |   -1 |    0 |        2
+  22 |        1 |         7 |      10 |    7 |    6 |    1 |        0
+  23 |        2 |         7 |      10 |    8 |    7 |    1 |        1
+  24 |        3 |         7 |      10 |    5 |   10 |  101 |        2
+  25 |        4 |         7 |      10 |   10 |   -1 |    0 |      103
+(25 rows)
 
 </pre></div>
 </div>
@@ -563,7 +607,7 @@ OR EMPTY SET
 <col style="width: 12%" />
 <col style="width: 14%" />
 <col style="width: 6%" />
-<col style="width: 69%" />
+<col style="width: 68%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -622,9 +666,9 @@ OR EMPTY SET
 <h3><a class="toc-backref" href="#id14">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 9%" />
-<col style="width: 16%" />
-<col style="width: 75%" />
+<col style="width: 8%" />
+<col style="width: 19%" />
+<col style="width: 73%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -633,15 +677,11 @@ OR EMPTY SET
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identifier of the restriction</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>path</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<tr class="row-even"><td><p><strong>path</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANYINTEGER]</span></code></p></td>
 <td><p>Sequence of Edges identifiers that form a path that is not allowed to be taken</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Cost</strong></p></td>
+<tr class="row-odd"><td><p><strong>Cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
 <td><p>Cost of taking the forbidden path</p></td>
 </tr>
@@ -971,7 +1011,7 @@ Returned when multiple ending vertices are in the query.</p>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
         <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span>
     <span class="p">);</span>
-<span class="n">WARNING</span><span class="p">:</span>  <span class="n">This</span> <span class="n">signature</span> <span class="ow">is</span> <span class="n">been</span> <span class="n">deprecated</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_trsp</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">integer</span><span class="p">,</span><span class="n">integer</span><span class="p">,</span><span class="n">boolean</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="ow">is</span> <span class="n">been</span> <span class="n">deprecated</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="o">-----+-----+-----+------</span>
    <span class="mi">0</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
@@ -995,9 +1035,9 @@ Returned when multiple ending vertices are in the query.</p>
         <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4,</span>
         <span class="n">from_edge</span> <span class="o">||</span> <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span> <span class="o">||</span> <span class="n">via_path</span><span class="p">,</span> <span class="s1">&#39;&#39;&#39;&#39;) AS via_path</span>
-<span class="s1">        FROM restrictions&#39;</span>
+<span class="s1">        FROM old_restrictions&#39;</span>
 <span class="s1">    );</span>
-<span class="s1">WARNING:  This signature is been deprecated</span>
+<span class="s1">WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated</span>
 <span class="s1"> seq | id1 | id2 | cost</span>
 <span class="s1">-----+-----+-----+------</span>
 <span class="s1">   0 |   2 |   4 |    1</span>
@@ -1015,9 +1055,9 @@ Returned when multiple ending vertices are in the query.</p>
 <span class="s1">        7, 11, false, false,</span>
 <span class="s1">        &#39;SELECT to_cost, target_id::int4,</span>
 <span class="s1">        from_edge || coalesce(&#39;&#39;,&#39;&#39; || via_path, &#39;&#39;&#39;&#39;) AS via_path</span>
-        <span class="n">FROM</span> <span class="n">restrictions</span><span class="s1">&#39;</span>
+        <span class="n">FROM</span> <span class="n">old_restrictions</span><span class="s1">&#39;</span>
     <span class="p">);</span>
-<span class="n">WARNING</span><span class="p">:</span>  <span class="n">This</span> <span class="n">signature</span> <span class="ow">is</span> <span class="n">been</span> <span class="n">deprecated</span>
+<span class="n">WARNING</span><span class="p">:</span>  <span class="n">pgr_trsp</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">integer</span><span class="p">,</span><span class="n">integer</span><span class="p">,</span><span class="n">boolean</span><span class="p">,</span><span class="n">boolean</span><span class="p">)</span> <span class="ow">is</span> <span class="n">been</span> <span class="n">deprecated</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="o">-----+-----+-----+------</span>
    <span class="mi">0</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
@@ -1037,7 +1077,7 @@ Returned when multiple ending vertices are in the query.</p>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]::</span><span class="n">INTEGER</span><span class="p">[],</span>
         <span class="n">false</span><span class="p">,</span>  <span class="n">false</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4, from_edge ||</span>
-        <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);</span>
+        <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM old_restrictions&#39;);</span>
 <span class="s1"> seq | id1 | id2 | id3 | cost</span>
 <span class="s1">-----+-----+-----+-----+------</span>
 <span class="s1">   1 |   1 |   2 |   4 |    1</span>
@@ -1067,7 +1107,7 @@ Returned when multiple ending vertices are in the query.</p>
         <span class="n">true</span><span class="p">,</span>
         <span class="n">true</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4, FROM_edge ||</span>
-        <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);</span>
+        <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM old_restrictions&#39;);</span>
 <span class="s1"> seq | id1 | id2 | id3 | cost</span>
 <span class="s1">-----+-----+-----+-----+------</span>
 <span class="s1">   1 |   1 |  -1 |   2 |  0.5</span>
@@ -1150,7 +1190,7 @@ taken the cost is 100.</p>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>is substitued with <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> when there are no restrictions,
+<p>is substituted with <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> when there are no restrictions,
 and with pgr_trsp(<a class="reference internal" href="#one-to-one">One to One</a>) when there are restrictions.</p>
 <section id="different-ways-to-represent-no-path-found">
 <h4><a class="toc-backref" href="#id24">Different ways to represent ‘no path found`</a><a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this headline">¶</a></h4>
@@ -1164,7 +1204,7 @@ and with pgr_trsp(<a class="reference internal" href="#one-to-one">One to One</a
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
   1, 15, true, true
 );
-WARNING:  This signature is been deprecated
+WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
@@ -1178,7 +1218,7 @@ WARNING:  This signature is been deprecated
   1, 15, true, true,
   $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
-WARNING:  This signature is been deprecated
+WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 ERROR:  Error computing path: Path Not Found
 CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 54 at RAISE
 </pre></div>
@@ -1254,7 +1294,7 @@ has <code class="docutils literal notranslate"><span class="pre">has_rcost</span
     2, 3, false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
-WARNING:  This signature is been deprecated
+WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
 CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 25 at RAISE
 </pre></div>
@@ -1266,7 +1306,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
     2, 3, false, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
-WARNING:  This signature is been deprecated
+WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   2 |   4 |    1
@@ -1404,7 +1444,7 @@ reach the destination, its already there. Therefore is expected to return an
 
 </pre></div>
 </div>
-<p>pgr_trsp calls <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> setting the first <span class="math notranslate nohighlight">\((edge, position)\)</span> with a differenct point id
+<p>pgr_trsp calls <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> setting the first <span class="math notranslate nohighlight">\((edge, position)\)</span> with a different point id
 from the second <span class="math notranslate nohighlight">\((edge, position)\)</span> making them different points. But the cost using the edge, is <span class="math notranslate nohighlight">\(0\)</span>.</p>
 <p class="rubric">A path with 1 vertices and edge cost 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
@@ -1495,7 +1535,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <p>On <em>pgr_trsp</em>, to be able to use the table information:</p>
 <ul class="simple">
 <li><p>Each parameter has to be extracted explicitly from the table</p></li>
-<li><p>Regardles of the point pid original value</p>
+<li><p>Regardless of the point pid original value</p>
 <ul>
 <li><p>will always be -1 for the first point</p></li>
 <li><p>will always be -2 for the second point</p>
@@ -1628,7 +1668,7 @@ When there are no restrictions and have a routing “via” problem with vertice
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jan 19, 2022.<br/>
+      Last updated on Feb 01, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
