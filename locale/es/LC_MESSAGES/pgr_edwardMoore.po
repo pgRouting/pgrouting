@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
 "PO-Revision-Date: 2022-02-03 16:52+0000\n"
-"Last-Translator: cvvergara <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edwardmoore/es/>\n"
 "Language: es\n"
@@ -114,7 +114,7 @@ msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
-msgstr "Puede depender de una función propuesta de pgRouting."
+msgstr "Puede depender de una función propuesta de pgRouting"
 
 #: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
@@ -299,8 +299,8 @@ msgid ""
 "From vertices :math:`\\{2, 11\\}` to vertices :math:`\\{3, 5\\}` on an "
 "**undirected** graph"
 msgstr ""
-"De los vértices​ :math:`\\{2, 11\\}`  a los vértices :math:`\\{3, 5\\}` en "
-"un grafo **no dirigido**"
+"De los vértices :math:`\\{2, 11\\}` a los vértices :math:`\\{3, 5\\}` en un "
+"grafo **no dirigido**"
 
 #: ../../build/doc/pgr_edwardMoore.rst:177
 msgid "Combinations"
@@ -598,7 +598,7 @@ msgstr "`Many to One`_"
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "`Many to Many`_"
-msgstr "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid ""
@@ -693,8 +693,8 @@ msgid ""
 "For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` "
 "columns"
 msgstr ""
-"Para consultas marcadas como  ``undirected`` con columnas ``cost`` y "
-"``reverse_cost`` "
+"Para consultas marcadas como ``undirected`` con columnas ``cost`` y "
+"``reverse_cost``"
 
 #: ../../build/doc/pgr_edwardMoore.rst:254
 msgid "The examples in this section use the following :ref:`fig2`"
