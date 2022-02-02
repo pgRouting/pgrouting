@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
 "PO-Revision-Date: 2022-02-03 16:52+0000\n"
-"Last-Translator: cvvergara <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_maxflowmincost/es/>\n"
 "Language: es\n"
@@ -121,7 +121,7 @@ msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
-msgstr "Puede depender de una función propuesta de pgRouting."
+msgstr "Puede depender de una función propuesta de pgRouting"
 
 #: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
