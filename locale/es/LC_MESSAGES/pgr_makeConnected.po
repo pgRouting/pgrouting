@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
 "PO-Revision-Date: 2022-02-03 16:52+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"Last-Translator: cvvergara <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_makeconnected/es/>\n"
 "Language: es\n"
@@ -377,7 +377,7 @@ msgstr "https://www.boost.org/libs/graph/doc/make_connected.html"
 
 #: ../../build/doc/pgr_makeConnected.rst:128
 msgid "The queries use the :doc:`sampledata` network."
-msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_makeConnected.rst:131
 msgid "Indices and tables"
