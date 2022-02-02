@@ -8,21 +8,22 @@
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2020-11-04 18:30+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-02-03 16:52+0000\n"
+"Last-Translator: cvvergara <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_withpointsksp/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10.1\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:12
 msgid ""
@@ -166,7 +167,7 @@ msgid ""
 "The driving side is set as **b** both. So arriving/departing to/from the "
 "point(s) can be in any direction."
 msgstr ""
-"Ambos lados de conducción se establecen como **b**. Así que llegar/partir  "
+"Ambos lados de conducción se establecen como **b**. Así que llegar/partir "
 "hacia/desde el o los puntos, puede ser en cualquier dirección."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:73
@@ -334,7 +335,7 @@ msgstr "Si no importa con 'b' o NULL."
 #: ../../build/doc/pgRouting-concepts.rst:21
 #: ../../build/doc/pgr_withPointsKSP.rst:112
 msgid "If column not present 'b' is considered."
-msgstr "Si  la columna no presente 'b' es considerada"
+msgstr "Si la columna 'b' no presente es considerada."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:114
 msgid "**details**"
@@ -428,8 +429,8 @@ msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not "
 "part of the graph."
 msgstr ""
-"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
-"es parte del grafo."
+"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
+"parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 #: ../../build/doc/pgRouting-concepts.rst:25
@@ -634,7 +635,7 @@ msgid ""
 ":math:`2` cycles, with details"
 msgstr ""
 "Topología de conducción del lado izquierdo desde el punto :math:`1` a punto "
-":math:`2` en :math:`2`  ciclos, con detalles"
+":math:`2` en :math:`2` ciclos, con detalles"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:161
 msgid ""
@@ -642,11 +643,11 @@ msgid ""
 ":math:`2` cycles, with heap paths and details"
 msgstr ""
 "Topología de conducción del lado derecho desde el punto :math:`1` al punto "
-":math:`2` en :math:`2` ciclos, con montones de rutas  y detalles"
+":math:`2` en :math:`2` ciclos, con montones de rutas y detalles"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:167
 msgid "The queries use the :doc:`sampledata` network."
-msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:170
 msgid "See Also"
