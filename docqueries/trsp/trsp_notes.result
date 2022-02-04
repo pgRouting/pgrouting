@@ -16,10 +16,10 @@ SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_pa
 (1 row)
 
 /* --place2 */
-SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path;
- id | cost |    path
-----+------+------------
-  1 |  100 | {33,32,25}
+SELECT 100 AS cost, ARRAY[33, 32, 25] AS path;
+ cost |    path
+------+------------
+  100 | {33,32,25}
 (1 row)
 
 /* --place3 */
@@ -117,7 +117,7 @@ SELECT * FROM pgr_dijkstra(
 /* --place10.2 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost FROM edge_table$$,
-  $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   2, 3, false
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -133,22 +133,51 @@ SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
 
 /* --place12 */
-SELECT * FROM _pgr_trsp(
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 113 at RETURN QUERY
 /* --place13 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
+/* --place13.1 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+/* --place13.2 */
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
@@ -156,21 +185,52 @@ SELECT * FROM pgr_TRSP(
 (2 rows)
 
 /* --place14 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
 (1 row)
 
+/* --place14.1 */
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |  0.3 |        0
+   2 |        2 |   -2 |   -1 |    0 |      0.3
+(2 rows)
+
+/* --place14.2 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -2 |   -1 |    1 |  0.3 |        0
+   2 |        2 |        -1 |      -2 |   -2 |   -1 |    0 |      0.3
+(2 rows)
+
 /* --place15 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
@@ -183,53 +243,114 @@ SELECT * FROM pgr_TRSP(
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
 (1 row)
 
+/* --place16.1 */
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |    0 |        0
+   2 |        2 |   -2 |   -1 |    0 |        0
+(2 rows)
+
+/* --place16.2 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -2 |   -1 |    1 |    0 |        0
+   2 |        2 |        -1 |      -2 |   -2 |   -1 |    0 |        0
+(2 rows)
+
 /* --place17 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
     1, 0.5, 1, 0.8, false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
-ERROR:  Error, reverse_cost is used, but query did't return 'reverse_cost' column
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 36 at RAISE
+ERROR:  syntax error at or near ")"
+LINE 5: );
+        ^
 /* --place18 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 0.5, 1, 0.8, false, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
 (1 row)
 
 /* --place19 */
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |  0.3 |        0
+   2 |        2 |   -2 |   -1 |    0 |      0.3
+(2 rows)
 
-SELECT * FROM pointsOfInterest;
- pid |  x  |  y  | edge_id | side | fraction |                  the_geom                  |                  newpoint
------+-----+-----+---------+------+----------+--------------------------------------------+--------------------------------------------
-   1 | 1.8 | 0.4 |       1 | l    |      0.4 | 0101000000CDCCCCCCCCCCFC3F9A9999999999D93F | 010100000000000000000000409A9999999999D93F
-   2 | 4.2 | 2.4 |      15 | r    |      0.4 | 0101000000CDCCCCCCCCCC10403333333333330340 | 010100000000000000000010403333333333330340
-   3 | 2.6 | 3.2 |      12 | l    |      0.6 | 0101000000CDCCCCCCCCCC04409A99999999990940 | 0101000000CDCCCCCCCCCC04400000000000000840
-   4 | 0.3 | 1.8 |       6 | r    |      0.3 | 0101000000333333333333D33FCDCCCCCCCCCCFC3F | 0101000000333333333333D33F0000000000000040
-   5 | 2.9 | 1.8 |       5 | l    |      0.8 | 01010000003333333333330740CDCCCCCCCCCCFC3F | 01010000000000000000000840CDCCCCCCCCCCFC3F
-   6 | 2.2 | 1.7 |       4 | b    |      0.7 | 01010000009A99999999990140333333333333FB3F | 01010000000000000000000040333333333333FB3F
+/* --place19.1 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -2 |   -1 |    1 |    0 |        0
+   2 |        2 |        -1 |      -2 |   -2 |   -1 |    0 |        0
+(2 rows)
+
+/* --place19.2 */
+
+SELECT pid, edge_id, side, fraction FROM pointsOfInterest;
+ pid | edge_id | side | fraction
+-----+---------+------+----------
+   1 |       1 | l    |      0.4
+   2 |      15 | r    |      0.4
+   3 |      12 | l    |      0.6
+   4 |       6 | r    |      0.3
+   5 |       5 | l    |      0.8
+   6 |       4 | b    |      0.7
 (6 rows)
 
 /* --place20 */
 SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
+  true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.6
@@ -238,9 +359,9 @@ SELECT * FROM pgr_TRSP(
 
 /* --place21 */
 SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-    -1, -6
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  -1, -6
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -249,31 +370,47 @@ SELECT * FROM pgr_withPoints(
    3 |        3 |   -6 |   -1 |    0 |      1.3
 (3 rows)
 
+/* --place21.1 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  -1, -6
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -6 |   -1 |    1 |  0.6 |        0
+   2 |        2 |        -1 |      -6 |    2 |    4 |  0.7 |      0.6
+   3 |        3 |        -1 |      -6 |   -6 |   -1 |    0 |      1.3
+(3 rows)
+
 /* --place22 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    8, 1,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  8, 1,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
-   0 |   6 |   8 |    1
+   0 |  -1 |   8 |    1
    1 |   5 |   4 |    1
    2 |   2 |   1 |  0.6
-(3 rows)
+   3 |  -2 |  -1 |    0
+(4 rows)
 
 /* --place23 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    11, 0,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  11, 0,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   6 |   8 |    1
@@ -283,9 +420,9 @@ SELECT * FROM pgr_trsp(
 
 /* --place24 */
 SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-    6, -1
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  6, -1
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -296,6 +433,22 @@ SELECT * FROM pgr_withPoints(
 (4 rows)
 
 /* --place25 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  6, -1
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         6 |      -1 |    6 |    8 |    1 |        0
+   2 |        2 |         6 |      -1 |    5 |    4 |  0.3 |        1
+   3 |        3 |         6 |      -1 |   -6 |    4 |  0.7 |      1.3
+   4 |        4 |         6 |      -1 |    2 |    1 |  0.6 |        2
+   5 |        5 |         6 |      -1 |   -1 |   -1 |    0 |      2.6
+(5 rows)
+
+/* --place26 */
 
 
 
@@ -372,6 +525,8 @@ SELECT * FROM pgr_trspViaEdges(
     false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.9
@@ -404,6 +559,8 @@ SELECT * FROM pgr_trspViaEdges(
     ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
     false, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |     |     |     |
@@ -459,6 +616,8 @@ SELECT * FROM pgr_trspViaEdges(
     false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.6
@@ -485,6 +644,8 @@ SELECT * FROM pgr_trspViaEdges(
     false,
     true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   1 |  0.6
