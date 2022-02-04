@@ -212,6 +212,8 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
         true,
         'SELECT to_cost, target_id::int4, FROM_edge ||
         coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |  -1 |   2 |  0.5
