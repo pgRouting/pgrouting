@@ -52,8 +52,6 @@ Signatures
       [, directed] [,heap_paths] [, stop_on_first] [,strict])
     RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
-
-
 One to One
 ...............................................................................
 
@@ -69,10 +67,6 @@ One to One
    :start-after: -- q1
    :end-before: -- q2
 
-.. index::
-    single: turnRestrictedPath(One to Many) -- Proposed on v3.4
-
-
 Parameters
 -------------------------------------------------------------------------------
 
@@ -81,20 +75,20 @@ Parameters
 ===================== ================== ========== ==========================================================
 Parameter             Type               Default     Description
 ===================== ================== ========== ==========================================================
-**Edges SQL**         ``TEXT``                      `Edges SQL`_ as described below
-**Restrictions SQL**  ``TEXT``                      `Restrictions SQL`_ as described below
+`Edges SQL`_          ``TEXT``                      `Edges SQL`_ as described below
+`Restrictions SQL`_   ``TEXT``                      `Restrictions SQL`_ as described below
 **start vid**         ``BIGINT``                    Identifier of the starting vertex of the path.
 **end vid**           ``BIGINT``                    Identifier of the ending vertex of the path.
-**directed**          ``BOOLEAN``         ``true``  - When ``true`` Graph is considered `Directed`
+``directed``          ``BOOLEAN``         ``true``  - When ``true`` Graph is considered `Directed`
                                                     - When ``false`` the graph is considered as `Undirected`.
 
-**heap_paths**        ``BOOLEAN``         ``false`` - When ``true`` returns all the paths stored in the process heap.
+``heap_paths``        ``BOOLEAN``         ``false`` - When ``true`` returns all the paths stored in the process heap.
                                                     - When ``false`` only returns ``k`` paths.
 
-**stop on first**     ``BOOLEAN``         ``true``  - When ``true`` stops on first path found that dos not violate restrictions
+``stop on first``     ``BOOLEAN``         ``true``  - When ``true`` stops on first path found that dos not violate restrictions
                                                     - When ``false`` continues work
 
-**strict**            ``BOOLEAN``         ``false`` - When ``true`` returns only paths that do not violate restrictions
+``strict``            ``BOOLEAN``         ``false`` - When ``true`` returns only paths that do not violate restrictions
                                                     - When ``false`` returns all paths found
 ===================== ================== ========== ==========================================================
 

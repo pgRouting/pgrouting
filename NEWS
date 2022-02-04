@@ -7,17 +7,26 @@ pgRouting 3.4.0 Release Notes
 
   * pgr_trsp
 
-    * pgr_trsp(One to One)
-    * pgr_trsp(One to Many)
-    * pgr_trsp(Many to One)
-    * pgr_trsp(Many to Many)
-    * pgr_trsp(Combinations)
+    * ``pgr_trsp`` (One to One)
+    * ``pgr_trsp`` (One to Many)
+    * ``pgr_trsp`` (Many to One)
+    * ``pgr_trsp`` (Many to Many)
+    * ``pgr_trsp`` (Combinations)
+
+  * pgr_trsp_withPoints
+
+    * ``pgr_trsp_withPoints`` (One to One)
+    * ``pgr_trsp_withPoints`` (One to Many)
+    * ``pgr_trsp_withPoints`` (Many to One)
+    * ``pgr_trsp_withPoints`` (Many to Many)
+    * ``pgr_trsp_withPoints`` (Combinations)
 
 **Deprecated functions**
 
 * Turn Restrictions
 
-  * pgr_trsp(text, integer, integer, boolean, boolean, text)
+  * ``pgr_trsp(text, integer, integer, boolean, boolean, text)``
+  * ``pgr_trsp(text, integer, float8, integer, float8, boolean, boolean, text)``
 
 
 

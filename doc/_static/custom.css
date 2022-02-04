@@ -13,3 +13,8 @@ div.content-wrapper {
 div.topic {
         border: none;
 }
+
+code.literal {
+    color: #404040;
+    background-color: #fbfbfb;
+}
