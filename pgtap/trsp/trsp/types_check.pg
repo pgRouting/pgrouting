@@ -1,7 +1,7 @@
 
 BEGIN;
 
-SELECT CASE WHEN min_version('3.4.0') THEN plan(19) ELSE plan(7) END;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(20) ELSE plan(8) END;
 
 SELECT has_function('pgr_trsp');
 
@@ -25,48 +25,7 @@ SELECT bag_has(
       ('{25,23,701,23,701,16,16,25,23,23,23,701}'::OID[])
       $$);
 
-CREATE OR REPLACE FUNCTION types_check() RETURNS SETOF TEXT AS
-$BODY$
-BEGIN
-  IF NOT min_version('3.4.0') THEN RETURN; END IF;
-
-  RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','bigint','bigint','boolean']);
-  RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','bigint','anyarray','boolean']);
-  RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','anyarray','bigint','boolean']);
-  RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','anyarray','anyarray','boolean']);
-  RETURN QUERY SELECT has_function('pgr_trsp', ARRAY['text','text','text','boolean']);
-
-  RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','bigint','bigint','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','bigint','anyarray','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','anyarray','bigint','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','anyarray','anyarray','boolean'],'setof record');
-  RETURN QUERY SELECT function_returns('pgr_trsp', ARRAY['text','text','text','boolean'],'setof record');
-
-  RETURN QUERY SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_trsp'$$,
-    $$VALUES
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[]),
-    ('{"","","","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[])
-    $$);
-
-  RETURN QUERY SELECT bag_has(
-    $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trsp'$$,
-    $$VALUES
-    ('{25,25,20,20,16,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,20,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,2277,20,16,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,2277,2277,16,23,23,20,20,20,20,701,701}'::OID[]),
-    ('{25,25,25,16,23,23,20,20,20,20,701,701}'::OID[])
-    $$);
-
-END;
-$BODY$
-LANGUAGE plpgsql;
-
-SELECT types_check();
+SELECT types_check_general('pgr_trsp_withpoints');
 
 SELECT finish();
 ROLLBACK;
