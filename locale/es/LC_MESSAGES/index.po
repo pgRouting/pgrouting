@@ -2,11 +2,11 @@
 # Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
@@ -26,28 +26,25 @@ msgstr ""
 
 #: ../../build/doc/index.rst:12
 msgid ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/index.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/index.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/en/index.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/index.html>`__"
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/index."
+"html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/en/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"index.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/index"
-".html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__) `3.2 "
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"index.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__) `3.2 "
 "<https://docs.pgrouting.org/3.2/es/index.html>`__ `3.1 <https://docs."
 "pgrouting.org/3.1/es/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
 "index.html>`__"
 
 #: ../../build/doc/index.rst:18
 msgid ""
-"**Unsupported versions:** `2.6 "
-"<https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
-"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 "
-"<https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 "
-"<https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/index."
+"html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs."
+"pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/"
+"index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
 "<https://docs.pgrouting.org/2.0/en/index.html>`__"
 msgstr ""
 "**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en/index."
@@ -63,9 +60,9 @@ msgstr "Contenido"
 
 #: ../../build/doc/index.rst:31
 msgid ""
-"pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL "
-"<https://www.postgresql.org>`__ geospatial database to provide geospatial "
-"routing and other network analysis functionality."
+"pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://"
+"www.postgresql.org>`__ geospatial database to provide geospatial routing and "
+"other network analysis functionality."
 msgstr ""
 "pgRouting extiende la base de datos geospacial de `PostGIS <https://postgis."
 "net>`__/`PostgreSQL <https://www.postgresql.org>`__ para proporcionar "
@@ -75,21 +72,22 @@ msgstr ""
 msgid "This is the manual for pgRouting |release|."
 msgstr "Este es el manual para pgRouting |release|."
 
+#: ../../build/doc/index.rst:None
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
 msgstr "Licencia de Creative Commons Attribution-Share Alike 3.0 "
 
 #: ../../build/doc/index.rst:40
 msgid ""
-"The pgRouting Manual is licensed under a `Creative Commons Attribution-Share"
-" Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel"
-" free to use this material any way you like, but we ask that you attribute "
+"The pgRouting Manual is licensed under a `Creative Commons Attribution-Share "
+"Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel "
+"free to use this material any way you like, but we ask that you attribute "
 "credit to the pgRouting Project and wherever possible, a link back to "
-"https://pgrouting.org. For other licenses used in pgRouting see the "
-":ref:`license` page."
+"https://pgrouting.org. For other licenses used in pgRouting see the :ref:"
+"`license` page."
 msgstr ""
 "El Manual de pgRouting está bajo licencia `Creative Commons Attribution-"
-"Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`"
-"_.  Siéntase libre de usar este material de la manera que desee, pero le "
+"Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/"
+">`_.  Siéntase libre de usar este material de la manera que desee, pero le "
 "pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, "
 "siempre que sea posible, visite https://pgrouting.org. Para otras licencias "
 "utilizadas en pgRouting, consulte la página :ref:`license` ."
@@ -149,8 +147,7 @@ msgstr ""
 ":doc:`pgr_aStarCost` - Obtenga el costo agregado de las rutas más cortas."
 
 #: ../../build/doc/aStar-family.rst:5
-msgid ""
-":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
+msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
 msgstr ""
 ":doc:`pgr_aStarCostMatrix` - Obtenga la matriz de costos de las rutas más "
 "cortas."
@@ -165,8 +162,8 @@ msgstr ":doc:`pgr_bdAstar` -  Algoritmo bidireccional A* para obtener rutas."
 
 #: ../../build/doc/bdAstar-family.rst:4
 msgid ""
-":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of"
-" the paths."
+":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of "
+"the paths."
 msgstr ""
 ":doc:`pgr_bdAstarCost` - Algoritmo bidireccional A* para calcular el coste "
 "de las rutas."
@@ -213,8 +210,7 @@ msgstr ":doc:`components-family`"
 
 #: ../../build/doc/components-family.rst:3
 msgid ""
-":doc:`pgr_connectedComponents` - Connected components of an undirected "
-"graph."
+":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
 msgstr ""
 ":doc:`pgr_connectedComponents`  - Componentes conectados de un grafo no "
 "dirigido."
@@ -263,8 +259,7 @@ msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
 msgstr ":doc:`pgr_dijkstra` - Algoritmo de Dijkstra para las rutas más cortas."
 
 #: ../../build/doc/dijkstra-family.rst:4
-msgid ""
-":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
+msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 ":doc:`pgr_dijkstraCost` - Obtenga el costo agrgado de las rutas más cortas."
 
