@@ -159,6 +159,7 @@ BEGIN
     IF $2 IS NULL OR $3 IS NULL OR $4 IS NULL OR $5 IS NULL OR $6 IS NULL THEN
         RETURN;
     END IF;
+  RAISE WARNING 'pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated';
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
 
     new_sql := sql;
@@ -275,6 +276,7 @@ IS 'pgr_trsp
 
 COMMENT ON FUNCTION pgr_trsp(TEXT, INTEGER, FLOAT, INTEGER, FLOAT, BOOLEAN, BOOLEAN, TEXT)
 IS 'pgr_trsp
+- DEPRECATED
 - Parameters
     - edges SQL with columns: id, source, target, cost [,reverse_cost]
     - source edge identifier

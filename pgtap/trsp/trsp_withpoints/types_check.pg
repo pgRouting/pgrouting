@@ -1,0 +1,9 @@
+BEGIN;
+
+
+SELECT CASE WHEN min_version('3.4.0') THEN plan(13) ELSE plan(1) END;
+
+SELECT types_check_general('pgr_trsp_withpoints');
+
+SELECT finish();
+ROLLBACK;

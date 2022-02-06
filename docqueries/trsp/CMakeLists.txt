@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     doc-trsp
     trsp_notes
+    trsp_withPoints
     )
 
 foreach (f ${LOCAL_FILES})

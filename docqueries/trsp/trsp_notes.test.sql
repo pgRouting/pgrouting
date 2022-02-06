@@ -1,11 +1,11 @@
 ROLLBACK;
-set LOG_ERROR_VERBOSITY TO terse;
+\set VERBOSITY terse
 SET extra_float_digits=-3;
 
 /* --place1 */
 SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path;
 /* --place2 */
-SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path;
+SELECT 100 AS cost, ARRAY[33, 32, 25] AS path;
 /* --place3 */
 SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -61,7 +61,7 @@ SELECT * FROM pgr_dijkstra(
 /* --place10.2 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost FROM edge_table$$,
-  $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   2, 3, false
 );
 /* --place11 */
@@ -70,25 +70,59 @@ SELECT * FROM pgr_trsp(
     1, 0.5, 17, 0.5, true, true
 );
 /* --place12 */
-SELECT * FROM _pgr_trsp(
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 
 /* --place13 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+/* --place13.1 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+/* --place13.2 */
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true
 );
 /* --place14 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+/* --place14.1 */
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+/* --place14.2 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
 /* --place15 */
-SELECT * FROM pgr_TRSP(
+SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
 );
@@ -98,11 +132,27 @@ SELECT * FROM pgr_TRSP(
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+/* --place16.1 */
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+/* --place16.2 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
 /* --place17 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-    1, 0.5, 1, 0.8, false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+    1, 0.5, 1, 0.8, false, true
 );
 /* --place18 */
 SELECT * FROM pgr_trsp(
@@ -111,52 +161,79 @@ SELECT * FROM pgr_trsp(
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 /* --place19 */
-
+SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+/* --place19.1 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+/* --place19.2 */
 -- using a points of interest table
-SELECT * FROM pointsOfInterest;
+SELECT pid, edge_id, side, fraction FROM pointsOfInterest;
 /* --place20 */
 SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
+  true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 /* --place21 */
 SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-    -1, -6
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  -1, -6
 );
-
--- vertex to point
+/* --place21.1 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  -1, -6
+);
 /* --place22 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    8, 1,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  8, 1,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  true, true
 );
 /* --place23 */
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    11, 0,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  11, 0,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 /* --place24 */
 SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-    6, -1
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  6, -1
 );
 /* --place25 */
+SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  6, -1
+);
+/* --place26 */
 
 
 -- # pgr_trspViaVertices

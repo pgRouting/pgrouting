@@ -57,6 +57,7 @@ do
         -f flow_pgtap_tests.sql \
         -f trsp_tests.sql \
         -f spanningtree.sql \
+        -f types_check.sql \
         -f tsp_pgtap_tests.sql
 
 

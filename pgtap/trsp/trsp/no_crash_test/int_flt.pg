@@ -2,6 +2,7 @@ BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(32);
+SET client_min_messages TO ERROR;
 
 PREPARE edges AS
 SELECT id, source, target, cost, reverse_cost FROM edge_table;

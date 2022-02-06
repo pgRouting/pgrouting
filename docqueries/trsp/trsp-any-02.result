@@ -29,6 +29,7 @@ select * from pgr_trsp(
     true,
 
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 |  cost
 -----+-----+-----+--------
    0 |  -1 |   1 | 0.5005

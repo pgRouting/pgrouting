@@ -27,6 +27,7 @@ When points are also given as input:
 .. index proposed from here
 
 - :doc:`pgr_trsp` - Routing with restrictions.
+- :doc:`pgr_trsp_withPoints` - Routing points with restrictions.
 
 .. index proposed to here
 
@@ -46,9 +47,8 @@ When points are also given as input:
     :hidden:
 
     pgr_trsp
+    pgr_trsp_withPoints
     pgr_turnRestrictedPath
-
-
 
 Introduction
 -------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ Restrictions
 On road networks, there are restrictions such as left or right turn restrictions,
 no U turn restrictions.
 
-A restriction is a sequence of edges, called `path` and that `path` is to be avoided.
+A restriction is a sequence of edges, called **path** and that **path** is to be avoided.
 
 .. figure:: /images/with_restrictions.png
    :scale: 50%
@@ -80,17 +80,17 @@ Restrictions SQL
 
 .. restrictions_columns_start
 
-========= =====================  =================================================================================
-Column             Type          Description
-========= =====================  =================================================================================
-**path**  ``ARRAY[ANYINTEGER]``  Sequence of Edges identifiers that form a path that is not allowed to be taken
-**Cost**  ``ANY-NUMERICAL``      Cost of taking the forbidden path
-========= =====================  =================================================================================
+========= ===============================  =================================================================================
+Column             Type                    Description
+========= ===============================  =================================================================================
+``path``  ``ARRAY[`` **ANYINTEGER** ``]``  Sequence of Edges identifiers that form a path that is not allowed to be taken
+``Cost``  **ANY-NUMERICAL**                Cost of taking the forbidden path
+========= ===============================  =================================================================================
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. restrictions_columns_end
 

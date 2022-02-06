@@ -6,6 +6,7 @@ BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(324);
+SET client_min_messages TO ERROR;
 
 CREATE OR REPLACE FUNCTION inner_query()
 RETURNS SETOF TEXT AS

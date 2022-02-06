@@ -36,20 +36,21 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 
   * New **Proposed** signatures
 
-    * pgr_trsp(one to one)
-    * pgr_trsp(one to many)
-    * pgr_trsp(many to one)
-    * pgr_trsp(many to many)
-    * pgr_trsp(combinations)
+    * ``pgr_trsp`` (`One to One`_)
+    * ``pgr_trsp`` (`One to Many`_)
+    * ``pgr_trsp`` (`Many to One`_)
+    * ``pgr_trsp`` (`Many to Many`_)
+    * ``pgr_trsp`` (`Combinations`_)
 
   * Signature ``pgr_trsp(text,integer,integer,boolean,boolean)`` is deprecated
+  * Signature ``pgr_trsp(text,integer,float,integer,float,boolean,boolean)`` is deprecated
 
 * Version 2.1.0
 
   * New *Via* **prototypes**
 
-    * pgr_trspViaVertices
-    * pgr_trspViaEdges
+    * ``pgr_trspViaVertices``
+    * ``pgr_trspViaEdges``
 
 * Version 2.0.0
 
@@ -61,20 +62,20 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 Description
 -------------------------------------------------------------------------------
 
-Turn restricted shorthest path (TRSP) is an algorithm that receives
+Turn restricted shortest path (TRSP) is an algorithm that receives
 turn restrictions in form of a query like those found in
 real world navigable road networks.
 
 The main characteristics are:
 
-* Automatic detection of `reverse_cost` column
-* Accepts ANY-INTEGER and ANY-NUMERICAL on input columns
+* Automatic detection of ``reverse_cost`` column
+* Accepts **ANY-INTEGER** and **ANY-NUMERICAL** on input columns
 * All variations give as result the same columns
 * It does no guarantee the shortest path as it might contain restriction paths
 
 The general algorithm is as follows:
 
-* Execute a dijkstra
+* Execute a Dijkstra
 * If the solution passes thru a restriction then
 
   * Execute the TRSP algorithm with restrictions
@@ -103,9 +104,6 @@ Signatures
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-   pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
-            directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
-   RETURNS SETOF (seq, id1, id2, cost)
 
 .. rubric:: Prototype
 
@@ -121,12 +119,14 @@ Signatures
 
 .. code-block:: none
 
+   pgr_trsp(sql text, source integer, target integer,
+            directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
    pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
             directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
    RETURNS SETOF (seq, id1, id2, cost)
 
 .. index::
-    single: trsp(One to Many) -- Proposed on v3.4
+    single: trsp(One to One) -- Proposed on v3.4
 
 One to One
 ...............................................................................
@@ -224,14 +224,14 @@ Parameters
 ===================== ================== ========= ==========================================================
 Parameter             Type               Default     Description
 ===================== ================== ========= ==========================================================
-**Edges SQL**         ``TEXT``                     `Edges SQL`_ as described below
-**Restrictions SQL**  ``TEXT``                     `Restrictions SQL`_ as described below
-**Combinations SQL**  ``TEXT``                     `Combinations SQL`_ as described below
+`Edges SQL`_          ``TEXT``                     `Edges SQL`_ as described below
+`Restrictions SQL`_   ``TEXT``                     `Restrictions SQL`_ as described below
+`Combinations SQL`_   ``TEXT``                     `Combinations SQL`_ as described below
 **start vid**         ``BIGINT``                   Identifier of the starting vertex of the path.
 **start vids**        ``ARRAY[BIGINT]``            Array of identifiers of starting vertices.
 **end vid**           ``BIGINT``                   Identifier of the ending vertex of the path.
 **end vids**          ``ARRAY[BIGINT]``            Array of identifiers of ending vertices.
-**directed**          ``BOOLEAN``         ``true`` - When ``true`` Graph is considered `Directed`
+``directed``          ``BOOLEAN``         ``true`` - When ``true`` Graph is considered `Directed`
                                                    - When ``false`` the graph is considered as `Undirected`.
 ===================== ================== ========= ==========================================================
 
@@ -254,7 +254,6 @@ Restrictions SQL
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
-
 Combinations SQL
 ...............................................................................
 
@@ -269,15 +268,14 @@ Return Columns
     :start-after: return_path_start
     :end-before: return_path_end
 
-
 Version 2.1 signatures
 -------------------------------------------------------------------------------
 
 .. index::
-	single: trsp(text,integer,integer,boolean,boolean) -- deprecated on v3.4
-	single: trsp(text,integer,integer,boolean,boolean,text)
-	single: trspViaVertices - Prototype
-	single: trspViaEdges - Prototype
+	single: pgr_trsp(text,integer,integer,boolean,boolean,text) -- deprecated on v3.4
+	single: pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text) -- deprecated on v3.4
+	single: pgr_trspViaVertices - Prototype
+	single: pgr_trspViaEdges - Prototype
 
 .. code-block:: sql
 
@@ -427,7 +425,7 @@ An example query using vertex ids and via points:
    :start-after: --q4
    :end-before: --q5
 
-An example query using edge ids and vias:
+An example query using edge ids and via:
 
 .. literalinclude:: doc-trsp.queries
    :start-after: --q5
@@ -435,22 +433,13 @@ An example query using edge ids and vias:
 
 The queries use the :doc:`sampledata` network.
 
-Known Issues
+Known Issues of version 2.1 functions
 -------------------------------------------------------------------------------
 Introduction
 .........................................................................
-pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to **hide** the issues, not to fix them.
+``pgr_trsp`` code has issues that are not being fixed yet, but as time passes and new functionality is added to
+pgRouting with wrappers to **hide** the issues, not to fix them.
 
-For clarity on the queries:
-
-* _pgr_trsp (internal_function) is the original code
-* pgr_trsp (lower case) represents the wrapper calling the original code
-* pgr_TRSP (upper case) represents the wrapper calling the replacement function, depending on the function, it can be:
-
-  * pgr_dijkstra
-  * pgr_dijkstraVia
-  * pgr_withPoints
-  * _pgr_withPointsVia (internal function)
 
 The restrictions
 .........................................................................
@@ -459,6 +448,8 @@ The restriction used in the examples does not have to do anything with the graph
 
 * No vertex has id: 25, 32 or 33
 * No edge has id: 25, 32 or 33
+
+Therefore the shortest path expected are as if there was no restriction involved.
 
 For these notes, the restriction is that the sequence of edges 33 -> 32 -> 25 can not be taken in that sequence, and if
 taken the cost is 100.
@@ -470,9 +461,10 @@ The restriction on the V2.1 signatures are:
    :end-before: --place2
 
 Note that:
+
 * `via_path` column is text
-* in `via_path` the ordering of the edges is reversed from what is the intention
-* target_id is the last edge of the restriction
+* In `via_path` the ordering of the edges is reversed from what is the intention
+* `target_id` is the last edge of the restriction
 
 
 The same restriction on the new proposed functions is:
@@ -481,29 +473,27 @@ The same restriction on the new proposed functions is:
    :start-after: --place2
    :end-before: --place3
 
-therefore the shortest path expected are as if there was no restriction involved
 
 The "Vertices" signature version -- deprecated on v3.4
 .........................................................................
 
-The following signature
+The following signature is substituted with :doc:`pgr_dijkstra` when there are no restrictions, and with ``pgr_trsp``
+(`One to One`_) when there are restrictions.
 
 .. code-block:: sql
 
   pgr_trsp(sql text, source integer, target integer,
            directed boolean, has_rcost boolean [,restrict_sql text]);
 
-is substituted with :doc:`pgr_dijkstra` when there are no restrictions,
-and with pgr_trsp(`One to One`_) when there are restrictions.
 
 
-Different ways to represent 'no path found`
+Different ways to represent `no path found`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-* Sometimes represents with EMPTY SET a no path found
-* Sometimes represents with Error a no path found
+* Sometimes represents with **EMPTY SET** a no path found
+* Sometimes represents with **EXCEPTION** a no path found
 
-.. rubric:: Returning EMPTY SET to represent no path found
+.. rubric:: Returning **EMPTY SET** to represent no path found
 
 There is no restrictions query.
 
@@ -511,7 +501,7 @@ There is no restrictions query.
    :start-after: --place3
    :end-before: --place4
 
-.. rubric:: Throwing EXCEPTION to represent no path found
+.. rubric:: Throwing **EXCEPTION** to represent no path found
 
 There is a restrictions query, even when the restrictions have nothing to do with the graph.
 
@@ -527,7 +517,7 @@ When there are no restrictions :doc:`pgr_dijkstra` should be used.
    :start-after: --place5
    :end-before: --place6
 
-When there are restrictions the proposed pgr_trsp(`One to One`_) should be used.
+When there are restrictions the proposed ``pgr_trsp`` (`One to One`_) should be used.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place6
@@ -548,21 +538,21 @@ When there are restrictions the proposed pgr_trsp(`One to One`_) should be used.
 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of ``reverse_cost`` column. Therefor it
+``pgr_trsp`` unlike other pgRouting functions does not autodetect the existence of ``reverse_cost`` column. Therefore it
 has ``has_rcost`` parameter to check the existence of ``reverse_cost`` column. Contradictions happen:
 
 - When the ``reverse_cost`` is missing, and the flag ``has_rcost`` is set to true
 - When the ``reverse_cost`` exists, and the flag ``has_rcost`` is set to false
 
-.. rubric:: In an undirected graph, when ``reverse_cost`` is missing, and the flag ``has_rcost`` is set to true.
+.. rubric:: When ``reverse_cost`` is missing, and the flag ``has_rcost`` is set to true.
 
-An EXCEPTION is thrown as the contradiction can not be solved.
+An **EXCEPTION** is thrown as the contradiction can not be solved.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place9
    :end-before: --place10
 
-.. rubric:: In an undirected graph, when the ``reverse_cost`` exists, and the flag ``has_rcost`` is set to false
+.. rubric:: When the ``reverse_cost`` exists, and the flag ``has_rcost`` is set to false
 
 The ``reverse_cost`` column will be effectively removed and take execution time
 
@@ -573,13 +563,13 @@ The ``reverse_cost`` column will be effectively removed and take execution time
 
 .. rubric:: Solving the problem.
 
-In an undirected graph, with the ``reverse_cost`` column.
+When there are no restrictions :doc:`pgr_withPoints` should be used.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place10.1
    :end-before: --place10.2
 
-In an undirected graph, without the ``reverse_cost`` column.
+When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be used.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place10.2
@@ -595,65 +585,82 @@ The "Edges" signature version
            target_edge integer, target_pos float8,
            directed boolean, has_rcost boolean [,restrict_sql text]);
 
-Different ways to represent 'no path found`
+Different ways to represent `no path found`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-* Sometimes represents with EMPTY SET a no path found
-* Sometimes represents with EXCEPTION a no path found
+* Sometimes represents with **EMPTY SET** a no path found
+* Sometimes represents with **EXCEPTION** a no path found
 
-.. rubric:: Returning EMPTY SET to represent no path found
+.. rubric:: Returning **EMPTY SET** to represent no path found
+
+There is no restrictions query.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place11
    :end-before: --place12
 
-pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which returns
-`EMPTY SET` when a path is not found
+.. rubric:: Throwing **EXCEPTION** to represent no path found
 
-.. rubric:: Throwing EXCEPTION to represent no path found
+There is a restrictions query, even when the restrictions have nothing to do with the graph.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place12
    :end-before: --place13
 
-pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
-which will throw an EXCEPTION to represent no path found.
+.. rubric:: Solving the problem.
+
+When there are no restrictions :doc:`pgr_withPoints` should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place13
+   :end-before: --place13.1
+
+When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place13.1
+   :end-before: --place13.2
 
 Paths with equal number of vertices and edges
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-A path is made of `N` vertices and `N - 1` edges.
+A path is made of :math:`N` vertices and :math:`N - 1` edges.
 
-* Sometimes returns `N` vertices and `N - 1` edges.
-* Sometimes returns `N - 1` vertices and `N - 1` edges.
+* Sometimes returns :math:`N` vertices and :math:`N - 1` edges.
+* Sometimes returns :math:`N - 1` vertices and :math:`N - 1` edges.
 
-.. rubric:: Returning `N` vertices and `N - 1` edges.
+.. rubric:: Returning :math:`N` vertices and :math:`N - 1` edges.
 
 .. literalinclude:: trsp_notes.queries
-   :start-after: --place13
+   :start-after: --place13.2
    :end-before: --place14
 
-pgr_trsp calls :doc:`pgr_withPoints` when there are no restrictions which returns
-the correct number of rows that will include all the vertices. The last row will have a ``-1``
-on the edge column to indicate the edge number is invalidu for that row.
-
-
-.. rubric:: Returning `N - 1` vertices and `N - 1` edges.
+.. rubric:: Returning :math:`N - 1` vertices and :math:`N - 1` edges.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place14
-   :end-before: --place15
+   :end-before: --place14.1
 
-pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
-and will not return the last vertex of the path.
+.. rubric:: Solving the problem.
+
+When there are no restrictions :doc:`pgr_withPoints` should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place14.1
+   :end-before: --place14.2
+
+When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place14.2
+   :end-before: --place15
 
 Routing from/to same location
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 When routing from the same edge and position to the same edge and position, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
-`EMPTY SET` or an `EXCEPTION` depending on the parameters, non of which is happening.
-
+**EMPTY SET** or an **EXCEPTION** depending on the parameters, non of which is happening.
 
 .. rubric:: A path with 2 vertices and edge cost 0
 
@@ -661,45 +668,65 @@ reach the destination, its already there. Therefore is expected to return an
    :start-after: --place15
    :end-before: --place16
 
-pgr_trsp calls :doc:`pgr_withPoints` setting the first :math:`(edge, position)` with a different point id
-from the second :math:`(edge, position)` making them different points. But the cost using the edge, is :math:`0`.
-
-
 .. rubric:: A path with 1 vertices and edge cost 0
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place16
+   :end-before: --place16.1
+
+.. rubric:: Solving the problem.
+
+When there are no restrictions :doc:`pgr_withPoints` should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place16.1
+   :end-before: --place16.2
+
+When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place16.2
    :end-before: --place17
-
-pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
-and will not have the row for the vertex :math:`-2`.
-
 
 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of
-``reverse_cost`` column. Therefor it has ``has_rcost`` parameter to check the existence
-of ``reverse_cost`` column. Contradictions happen:
+``pgr_trsp`` unlike other pgRouting functions does not autodetect the existence of ``reverse_cost`` column. Therefore it
+has ``has_rcost`` parameter to check the existence of ``reverse_cost`` column. Contradictions happen:
 
-- When the reverse_cost is missing, and the flag `has_rcost` is set to true
-- When the reverse_cost exists, and the flag `has_rcost` is set to false
+- When the ``reverse_cost`` is missing, and the flag ``has_rcost`` is set to true
+- When the ``reverse_cost`` exists, and the flag ``has_rcost`` is set to false
 
-.. rubric:: When the reverse_cost is missing, and the flag `has_rcost` is set to true.
+.. rubric:: When ``reverse_cost`` is missing, and the flag ``has_rcost`` is set to true.
+
+An **EXCEPTION** is thrown as the contradiction can not be solved.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place17
    :end-before: --place18
 
-An EXCEPTION is thrown.
+.. rubric:: When the ``reverse_cost`` exists, and the flag ``has_rcost`` is set to false
 
-.. rubric:: When the reverse_cost exists, and the flag `has_rcost` is set to false
+The ``reverse_cost`` column will be effectively removed and take execution time
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place18
    :end-before: --place19
 
-The ``reverse_cost`` column will be effectively removed and will cost execution time
+.. rubric:: Solving the problem.
+
+When there are no restrictions :doc:`pgr_withPoints` should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place19
+   :end-before: --place19.1
+
+When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place19.1
+   :end-before: --place19.2
+
 
 Using a points of interest table
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -707,80 +734,78 @@ Using a points of interest table
 Given a set of points of interest:
 
 .. literalinclude:: trsp_notes.queries
-   :start-after: --place19
+   :start-after: --place19.2
    :end-before: --place20
 
-.. rubric:: Using pgr_trsp
-
-.. literalinclude:: trsp_notes.queries
-   :start-after: --place20
-   :end-before: --place21
-
-On *pgr_trsp*, to be able to use the table information:
+On ``pgr_trsp``, to be able to use the table information:
 
 * Each parameter has to be extracted explicitly from the table
-* Regardless of the point pid original value
+* Regardless of the point ``pid`` original value
 
   * will always be -1 for the first point
   * will always be -2 for the second point
 
     * the row reaching point -2 will not be shown
 
-.. rubric:: Using :doc:`pgr_withPoints`
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place20
+   :end-before: --place21
+
+
+.. rubric:: Solving the problem.
+
+When there are no restrictions :doc:`pgr_withPoints` should be used.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place21
+   :end-before: --place21.1
+
+When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place21.1
    :end-before: --place22
-
-Suggestion: use :doc:`pgr_withPoints` when there are no turn restrictions:
-
-* Results are more complete
-* Column names are meaningful
 
 Routing from a vertex to a point
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Solving a shortest path from vertex :math:`6` to pid 1 using a points of interest table
+Solving a shortest path from vertex :math:`6` to ``pid`` 1 using a points of interest table
 
-.. rubric:: Using pgr_trsp
+:Example: Vertex 6 is on edge 8 at 1 fraction
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place22
    :end-before: --place23
 
-* Vertex 6 is on edge 8 at 1 fraction
-
+:Example: Vertex 6 is also edge 11 at 0 fraction
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place23
    :end-before: --place24
 
-* Vertex 6 is also edge 11 at 0 fraction
+.. rubric:: Solving the problem.
 
-.. rubric:: Using :doc:`pgr_withPoints`
+When there are no restrictions :doc:`pgr_withPoints` should be used.
 
 .. literalinclude:: trsp_notes.queries
    :start-after: --place24
    :end-before: --place25
 
-Suggestion: use :doc:`pgr_withPoints` when there are no turn restrictions:
+When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be used.
 
-* No need to choose where the vertex is located.
-* Results are more complete
-* Column names are meaningful
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place25
+   :end-before: --place26
 
-
-prototypes
+Prototypes
 .........................................................................
 
 ``pgr_trspViaVertices`` and ``pgr_trspViaEdges`` were added to pgRouting as prototypes
 
-These functions use the pgr_trsp functions inheriting all the problems mentioned above.
+These functions use the ``pgr_trsp`` functions from version 2.1 inheriting all the problems mentioned above.
 When there are no restrictions and have a routing "via" problem with vertices:
 
-* :doc:`pgr_dijkstraVia`
-
-
+* Use :doc:`pgr_dijkstraVia` when there are no restrictions and no points on edges involved.
 
 See Also
 -------------------------------------------------------------------------------
