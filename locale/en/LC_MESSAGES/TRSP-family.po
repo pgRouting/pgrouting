@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 17:14+0000\n"
+"POT-Creation-Date: 2022-02-06 15:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,7 +76,11 @@ msgstr ""
 msgid ":doc:`pgr_trsp` - Routing with restrictions."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:34
+#: ../../build/doc/TRSP-family.rst:30
+msgid ":doc:`pgr_trsp_withPoints` - Routing points with restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:35
 msgid "Experimental"
 msgstr ""
 
@@ -148,7 +152,7 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:41
+#: ../../build/doc/TRSP-family.rst:42
 msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
 msgstr ""
 
@@ -168,8 +172,8 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:62
 msgid ""
-"A restriction is a sequence of edges, called `path` and that `path` is to"
-" be avoided."
+"A restriction is a sequence of edges, called **path** and that **path** "
+"is to be avoided."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:67
@@ -204,11 +208,11 @@ msgid "Description"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:86
-msgid "**path**"
+msgid "``path``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:86
-msgid "``ARRAY[ANYINTEGER]``"
+msgid "``ARRAY[`` **ANYINTEGER** ``]``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:86
@@ -218,11 +222,11 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:87
-msgid "**Cost**"
+msgid "``Cost``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:87
-msgid "``ANY-NUMERICAL``"
+msgid "**ANY-NUMERICAL**"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:87
@@ -238,7 +242,7 @@ msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:92
-msgid "SMALLINT, INTEGER, BIGINT"
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst
@@ -246,7 +250,7 @@ msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:93
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:99

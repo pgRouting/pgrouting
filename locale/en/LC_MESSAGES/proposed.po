@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 17:14+0000\n"
+"POT-Creation-Date: 2022-02-06 15:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,6 +127,10 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:3
 msgid ":doc:`pgr_trsp` - Routing with restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:4
+msgid ":doc:`pgr_trsp_withPoints` - Routing points with restrictions."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:69
