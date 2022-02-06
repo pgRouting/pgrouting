@@ -20,15 +20,15 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Traversal - Familia de funciones" href="traversal-family.html" />
-    <link rel="prev" title="pgr_trsp - Camino más corto con giros restringidos (TRSP)" href="pgr_trsp.html" />
+    <link rel="prev" title="pgr_trsp_withPoints - Proposed" href="pgr_trsp_withPoints.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -121,7 +121,7 @@
               
                 
   <li>
-    <a href="pgr_trsp.html" title="Previous Chapter: pgr_trsp - Camino más corto con giros restringidos (TRSP)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_trsp - Ca...</span>
+    <a href="pgr_trsp_withPoints.html" title="Previous Chapter: pgr_trsp_withPoints - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_trsp_with...</span>
     </a>
   </li>
   <li>
@@ -266,7 +266,7 @@ OR EMPTY SET
 </section>
 </section>
 <section id="parameters">
-<span id="index-1"></span><h2><a class="toc-backref" href="#id5">Parámetros</a><a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Parámetros</a><a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -282,12 +282,12 @@ OR EMPTY SET
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Restrictions SQL</strong></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a> as described below</p></td>
@@ -302,7 +302,7 @@ OR EMPTY SET
 <td></td>
 <td><p>Identifier of the ending vertex of the path.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>directed</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -311,7 +311,7 @@ OR EMPTY SET
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>heap_paths</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">heap_paths</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
@@ -320,7 +320,7 @@ OR EMPTY SET
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>stop on first</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">on</span> <span class="pre">first</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -329,7 +329,7 @@ OR EMPTY SET
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>strict</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">strict</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
@@ -409,9 +409,9 @@ OR EMPTY SET
 <h3><a class="toc-backref" href="#id8">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 8%" />
-<col style="width: 19%" />
-<col style="width: 73%" />
+<col style="width: 7%" />
+<col style="width: 26%" />
+<col style="width: 67%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -420,12 +420,12 @@ OR EMPTY SET
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>path</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANYINTEGER]</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANYINTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Sequence of Edges identifiers that form a path that is not allowed to be taken</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Cost</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>Cost of taking the forbidden path</p></td>
 </tr>
 </tbody>
@@ -433,10 +433,10 @@ OR EMPTY SET
 <p>Where:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER</dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">ANY-NUMERICAL</dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
@@ -589,7 +589,7 @@ OR EMPTY SET
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en feb. 01, 2022.<br/>
+      Actualizado por última vez en feb. 06, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>

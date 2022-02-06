@@ -19,16 +19,16 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_turnRestrictedPath - Experimental" href="pgr_turnRestrictedPath.html" />
+    <link rel="next" title="pgr_trsp_withPoints - Proposed" href="pgr_trsp_withPoints.html" />
     <link rel="prev" title="TRSP - Family of functions" href="TRSP-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
   </head><body>
 
@@ -116,16 +116,16 @@
 <li><a class="reference internal" href="#version-2-1-signatures">Version 2.1 signatures</a></li>
 <li><a class="reference internal" href="#support-for-vias">Soporte para Vias</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
-<li><a class="reference internal" href="#known-issues">Problemas conocidos</a><ul>
+<li><a class="reference internal" href="#known-issues-of-version-2-1-functions">Known Issues of version 2.1 functions</a><ul>
 <li><a class="reference internal" href="#introduction">Introducción</a></li>
 <li><a class="reference internal" href="#the-restrictions">Las restricciones</a></li>
 <li><a class="reference internal" href="#the-vertices-signature-version-deprecated-on-v3-4">The «Vertices» signature version – deprecated on v3.4</a><ul>
-<li><a class="reference internal" href="#different-ways-to-represent-no-path-found">Diferentes formas de representar “ninguna ruta encontrada”</a></li>
+<li><a class="reference internal" href="#different-ways-to-represent-no-path-found">Different ways to represent <cite>no path found</cite></a></li>
 <li><a class="reference internal" href="#user-contradictions">Contradicciones de usuarios</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-edges-signature-version">La versión de firma «Edges»</a><ul>
-<li><a class="reference internal" href="#id1">Diferentes formas de representar “ninguna ruta encontrada”</a></li>
+<li><a class="reference internal" href="#id1">Different ways to represent <cite>no path found</cite></a></li>
 <li><a class="reference internal" href="#paths-with-equal-number-of-vertices-and-edges">Rutas con igual número de vértices y aristas</a></li>
 <li><a class="reference internal" href="#routing-from-to-same-location">Ruteo desde/hacia la misma ubicación</a></li>
 <li><a class="reference internal" href="#id2">Contradicciones de usuarios</a></li>
@@ -133,7 +133,7 @@
 <li><a class="reference internal" href="#routing-from-a-vertex-to-a-point">Ruteo desde un vértice a un punto</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#prototypes">Prototipos</a></li>
+<li><a class="reference internal" href="#prototypes">Prototypes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -152,7 +152,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_turnRestrictedPath.html" title="Next Chapter: pgr_turnRestrictedPath - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_turnRestr... &raquo;</span>
+    <a href="pgr_trsp_withPoints.html" title="Next Chapter: pgr_trsp_withPoints - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_trsp_with... &raquo;</span>
     </a>
   </li>
               
@@ -196,22 +196,23 @@
 <ul>
 <li><p>New <strong>Proposed</strong> signatures</p>
 <ul>
-<li><p>pgr_trsp(one to one)</p></li>
-<li><p>pgr_trsp(one to many)</p></li>
-<li><p>pgr_trsp(many to one)</p></li>
-<li><p>pgr_trsp(many to many)</p></li>
-<li><p>pgr_trsp(combinations)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
 </li>
 <li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean)</span></code> is deprecated</p></li>
+<li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,float,integer,float,boolean,boolean)</span></code> is deprecated</p></li>
 </ul>
 </li>
 <li><p>Versión 2.1.0</p>
 <ul>
 <li><p>Nuevo <em>Via</em> <strong>prototypes</strong></p>
 <ul>
-<li><p>pgr_trspViaVertices</p></li>
-<li><p>pgr_trspViaEdges</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -249,19 +250,19 @@
 <li><p><a class="reference internal" href="#version-2-1-signatures" id="id17">Version 2.1 signatures</a></p></li>
 <li><p><a class="reference internal" href="#support-for-vias" id="id18">Soporte para Vias</a></p></li>
 <li><p><a class="reference internal" href="#additional-examples" id="id19">Ejemplos Adicionales</a></p></li>
-<li><p><a class="reference internal" href="#known-issues" id="id20">Problemas conocidos</a></p>
+<li><p><a class="reference internal" href="#known-issues-of-version-2-1-functions" id="id20">Known Issues of version 2.1 functions</a></p>
 <ul>
 <li><p><a class="reference internal" href="#introduction" id="id21">Introducción</a></p></li>
 <li><p><a class="reference internal" href="#the-restrictions" id="id22">Las restricciones</a></p></li>
 <li><p><a class="reference internal" href="#the-vertices-signature-version-deprecated-on-v3-4" id="id23">The «Vertices» signature version – deprecated on v3.4</a></p>
 <ul>
-<li><p><a class="reference internal" href="#different-ways-to-represent-no-path-found" id="id24">Diferentes formas de representar “ninguna ruta encontrada”</a></p></li>
+<li><p><a class="reference internal" href="#different-ways-to-represent-no-path-found" id="id24">Different ways to represent <cite>no path found</cite></a></p></li>
 <li><p><a class="reference internal" href="#user-contradictions" id="id25">Contradicciones de usuarios</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#the-edges-signature-version" id="id26">La versión de firma «Edges»</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id27">Diferentes formas de representar “ninguna ruta encontrada”</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id27">Different ways to represent <cite>no path found</cite></a></p></li>
 <li><p><a class="reference internal" href="#paths-with-equal-number-of-vertices-and-edges" id="id28">Rutas con igual número de vértices y aristas</a></p></li>
 <li><p><a class="reference internal" href="#routing-from-to-same-location" id="id29">Ruteo desde/hacia la misma ubicación</a></p></li>
 <li><p><a class="reference internal" href="#id2" id="id30">Contradicciones de usuarios</a></p></li>
@@ -269,7 +270,7 @@
 <li><p><a class="reference internal" href="#routing-from-a-vertex-to-a-point" id="id32">Ruteo desde un vértice a un punto</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#prototypes" id="id33">Prototipos</a></p></li>
+<li><p><a class="reference internal" href="#prototypes" id="id33">Prototypes</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#see-also" id="id34">Ver también</a></p></li>
@@ -279,19 +280,19 @@
 </div>
 <section id="description">
 <h2><a class="toc-backref" href="#id4">Descripción</a><a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Turn restricted shorthest path (TRSP) is an algorithm that receives
+<p>Turn restricted shortest path (TRSP) is an algorithm that receives
 turn restrictions in form of a query like those found in
 real world navigable road networks.</p>
 <p>The main characteristics are:</p>
 <ul class="simple">
-<li><p>Automatic detection of <cite>reverse_cost</cite> column</p></li>
-<li><p>Accepts ANY-INTEGER and ANY-NUMERICAL on input columns</p></li>
+<li><p>Automatic detection of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column</p></li>
+<li><p>Accepts <strong>ANY-INTEGER</strong> and <strong>ANY-NUMERICAL</strong> on input columns</p></li>
 <li><p>All variations give as result the same columns</p></li>
 <li><p>It does no guarantee the shortest path as it might contain restriction paths</p></li>
 </ul>
 <p>The general algorithm is as follows:</p>
 <ul class="simple">
-<li><p>Execute a dijkstra</p></li>
+<li><p>Execute a Dijkstra</p></li>
 <li><p>If the solution passes thru a restriction then</p>
 <ul>
 <li><p>Execute the TRSP algorithm with restrictions</p></li>
@@ -326,11 +327,7 @@ pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class
 pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, start vids, end vids [, directed]) -- Proposed on v3.4
 pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>, [, directed]) -- Proposed on v3.4
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-
-pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
-         directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
-RETURNS SETOF (seq, id1, id2, cost)</pre>
+OR EMPTY SET</pre>
 <p class="rubric">Prototype</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trspViaVertices(sql text, vids integer[],
          directed boolean, has_rcost boolean [, restrictions_sql text]) -- Prototype on v2.1
@@ -340,7 +337,9 @@ RETURNS SETOF (seq, id1, id2, id3, cost)
 </pre></div>
 </div>
 <p class="rubric">Deprecated</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trsp(sql text, source integer, target integer,
+         directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
+pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
          directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
 RETURNS SETOF (seq, id1, id2, cost)
 </pre></div>
@@ -540,17 +539,17 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Restrictions SQL</strong></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a> as described below</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Combinations SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
@@ -575,7 +574,7 @@ OR EMPTY SET</pre>
 <td></td>
 <td><p>Array of identifiers of ending vertices.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>directed</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -655,9 +654,9 @@ OR EMPTY SET</pre>
 <h3><a class="toc-backref" href="#id14">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 8%" />
-<col style="width: 19%" />
-<col style="width: 73%" />
+<col style="width: 7%" />
+<col style="width: 26%" />
+<col style="width: 67%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -666,12 +665,12 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>path</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANYINTEGER]</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANYINTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Sequence of Edges identifiers that form a path that is not allowed to be taken</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Cost</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>Cost of taking the forbidden path</p></td>
 </tr>
 </tbody>
@@ -679,10 +678,10 @@ OR EMPTY SET</pre>
 <p>Where:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER</dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">ANY-NUMERICAL</dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
@@ -1087,7 +1086,7 @@ Returned when multiple ending vertices are in the query.</p>
 
 </pre></div>
 </div>
-<p>Una consulta de ejemplo mediante identificadores de borde y vias:</p>
+<p>An example query using edge ids and via:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,</span>
         <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
@@ -1097,6 +1096,8 @@ Returned when multiple ending vertices are in the query.</p>
         <span class="n">true</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4, FROM_edge ||</span>
         <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM old_restrictions&#39;);</span>
+<span class="s1">WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated</span>
+<span class="s1">WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated</span>
 <span class="s1"> seq | id1 | id2 | id3 | cost</span>
 <span class="s1">-----+-----+-----+-----+------</span>
 <span class="s1">   1 |   1 |  -1 |   2 |  0.5</span>
@@ -1120,24 +1121,12 @@ Returned when multiple ending vertices are in the query.</p>
 </div>
 <p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
 </section>
-<section id="known-issues">
-<h2><a class="toc-backref" href="#id20">Problemas conocidos</a><a class="headerlink" href="#known-issues" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="known-issues-of-version-2-1-functions">
+<h2><a class="toc-backref" href="#id20">Known Issues of version 2.1 functions</a><a class="headerlink" href="#known-issues-of-version-2-1-functions" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="introduction">
 <h3><a class="toc-backref" href="#id21">Introducción</a><a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>el código pgr_trsp tiene problemas que aún no se están solucionando, pero a medida que pasa el tiempo y se agrega nueva funcionalidad a pgRouting, hay contenedores para <strong>ocultar</strong> los problemas, no para solucionarlos.</p>
-<p>Para mayor claridad en las consultas:</p>
-<ul class="simple">
-<li><p>_pgr_trsp (internal_function) es el código original</p></li>
-<li><p>pgr_trsp (minúscula) representa el contenedor que convoca al código original</p></li>
-<li><p>pgr_TRSP (mayúsculas) representa el contenedor que convoca a la función de reemplazo. Dependiendo de esa función, puede ser:</p>
-<ul>
-<li><p>pgr_dijkstra</p></li>
-<li><p>pgr_dijkstraVia</p></li>
-<li><p>pgr_withPoints</p></li>
-<li><p>_pgr_withPointsVia (función interna)</p></li>
-</ul>
-</li>
-</ul>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> code has issues that are not being fixed yet, but as time passes and new functionality is added to
+pgRouting with wrappers to <strong>hide</strong> the issues, not to fix them.</p>
 </section>
 <section id="the-restrictions">
 <h3><a class="toc-backref" href="#id22">Las restricciones</a><a class="headerlink" href="#the-restrictions" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -1146,6 +1135,7 @@ Returned when multiple ending vertices are in the query.</p>
 <li><p>Ningún vértice tiene id: 25, 32 o 33</p></li>
 <li><p>Ninguna arista tiene id: 25, 32 o 33</p></li>
 </ul>
+<p>Therefore the shortest path expected are as if there was no restriction involved.</p>
 <p>For these notes, the restriction is that the sequence of edges 33 -&gt; 32 -&gt; 25 can not be taken in that sequence, and if
 taken the cost is 100.</p>
 <p>The restriction on the V2.1 signatures are:</p>
@@ -1157,37 +1147,37 @@ taken the cost is 100.</p>
 
 </pre></div>
 </div>
-<p>Note that:
-* <cite>via_path</cite> column is text
-* in <cite>via_path</cite> the ordering of the edges is reversed from what is the intention
-* target_id is the last edge of the restriction</p>
+<p>Note that:</p>
+<ul class="simple">
+<li><p><cite>via_path</cite> column is text</p></li>
+<li><p>In <cite>via_path</cite> the ordering of the edges is reversed from what is the intention</p></li>
+<li><p><cite>target_id</cite> is the last edge of the restriction</p></li>
+</ul>
 <p>The same restriction on the new proposed functions is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="mi">1</span> <span class="n">AS</span> <span class="nb">id</span><span class="p">,</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span> <span class="n">AS</span> <span class="n">path</span><span class="p">;</span>
- <span class="nb">id</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span>    <span class="n">path</span>
-<span class="o">----+------+------------</span>
-  <span class="mi">1</span> <span class="o">|</span>  <span class="mi">100</span> <span class="o">|</span> <span class="p">{</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">25</span><span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span> <span class="n">AS</span> <span class="n">path</span><span class="p">;</span>
+ <span class="n">cost</span> <span class="o">|</span>    <span class="n">path</span>
+<span class="o">------+------------</span>
+  <span class="mi">100</span> <span class="o">|</span> <span class="p">{</span><span class="mi">33</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">25</span><span class="p">}</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
 </div>
-<p>por lo tanto, la ruta más corta esperado es como si no hubiera ninguna restricción involucrada</p>
 </section>
 <section id="the-vertices-signature-version-deprecated-on-v3-4">
 <h3><a class="toc-backref" href="#id23">The «Vertices» signature version – deprecated on v3.4</a><a class="headerlink" href="#the-vertices-signature-version-deprecated-on-v3-4" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>The following signature</p>
+<p>The following signature is substituted with <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> when there are no restrictions, and with <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code>
+(<a class="reference internal" href="#one-to-one">One to One</a>) when there are restrictions.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>is substituted with <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> when there are no restrictions,
-and with pgr_trsp(<a class="reference internal" href="#one-to-one">One to One</a>) when there are restrictions.</p>
 <section id="different-ways-to-represent-no-path-found">
-<h4><a class="toc-backref" href="#id24">Diferentes formas de representar “ninguna ruta encontrada”</a><a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id24">Different ways to represent <cite>no path found</cite></a><a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Enlazar permanentemente con este título">¶</a></h4>
 <ul class="simple">
-<li><p>A veces se representa con EMPTY SET ninguna ruta encontrada</p></li>
-<li><p>A veces representa con ERROR ninguna ruta encontrada</p></li>
+<li><p>Sometimes represents with <strong>EMPTY SET</strong> a no path found</p></li>
+<li><p>Sometimes represents with <strong>EXCEPTION</strong> a no path found</p></li>
 </ul>
-<p class="rubric">Se devuelve EMPTY SET para representar ninguna ruta encontrada</p>
+<p class="rubric">Returning <strong>EMPTY SET</strong> to represent no path found</p>
 <p>There is no restrictions query.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -1200,7 +1190,7 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 
 </pre></div>
 </div>
-<p class="rubric">Se producirá una  EXCEPCIÓN para representar ninguna ruta encontrada</p>
+<p class="rubric">Throwing <strong>EXCEPTION</strong> to represent no path found</p>
 <p>There is a restrictions query, even when the restrictions have nothing to do with the graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -1209,7 +1199,6 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 );
 WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 54 at RAISE
 </pre></div>
 </div>
 <p class="rubric">Solving the problem.</p>
@@ -1224,7 +1213,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 
 </pre></div>
 </div>
-<p>When there are restrictions the proposed pgr_trsp(<a class="reference internal" href="#one-to-one">One to One</a>) should be used.</p>
+<p>When there are restrictions the proposed <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>) should be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
@@ -1270,13 +1259,14 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 </section>
 <section id="user-contradictions">
 <h4><a class="toc-backref" href="#id25">Contradicciones de usuarios</a><a class="headerlink" href="#user-contradictions" title="Enlazar permanentemente con este título">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> a diferencia de otras funciones de pgRouting no detecta automáticamente la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Por lo tanto, tiene el parámetro <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> para verificar la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Las contradicciones suceden:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodetect the existence of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefore it
+has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
 <ul class="simple">
 <li><p>When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is missing, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to true</p></li>
 <li><p>When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> exists, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to false</p></li>
 </ul>
-<p class="rubric">In an undirected graph, when <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is missing, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to true.</p>
-<p>An EXCEPTION is thrown as the contradiction can not be solved.</p>
+<p class="rubric">When <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is missing, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to true.</p>
+<p>An <strong>EXCEPTION</strong> is thrown as the contradiction can not be solved.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
     2, 3, false, true,
@@ -1284,10 +1274,9 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 );
 WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 25 at RAISE
 </pre></div>
 </div>
-<p class="rubric">In an undirected graph, when the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> exists, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to false</p>
+<p class="rubric">When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> exists, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to false</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and take execution time</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -1306,7 +1295,7 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 </pre></div>
 </div>
 <p class="rubric">Solving the problem.</p>
-<p>In an undirected graph, with the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column.</p>
+<p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> should be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   2, 3, false
@@ -1319,10 +1308,10 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 
 </pre></div>
 </div>
-<p>In an undirected graph, without the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column.</p>
+<p>When there are restrictions <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) should be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost FROM edge_table$$,
-  $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   2, 3, false
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -1345,46 +1334,79 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 </pre></div>
 </div>
 <section id="id1">
-<h4><a class="toc-backref" href="#id27">Diferentes formas de representar “ninguna ruta encontrada”</a><a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id27">Different ways to represent <cite>no path found</cite></a><a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h4>
 <ul class="simple">
-<li><p>A veces se representa con EMPTY SET ninguna ruta encontrada</p></li>
-<li><p>A veces se representa con EXCEPCIÓN ninguna ruta encontrada</p></li>
+<li><p>Sometimes represents with <strong>EMPTY SET</strong> a no path found</p></li>
+<li><p>Sometimes represents with <strong>EXCEPTION</strong> a no path found</p></li>
 </ul>
-<p class="rubric">Se devuelve EMPTY SET para representar ninguna ruta encontrada</p>
+<p class="rubric">Returning <strong>EMPTY SET</strong> to represent no path found</p>
+<p>There is no restrictions query.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
 (0 rows)
 
 </pre></div>
 </div>
-<p>pgr_trsp invoca <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> cuando no hay restricciones que devuelvan <cite>EMPTY SET</cite> cuando no se encuentra una ruta</p>
-<p class="rubric">Se producirá una  EXCEPCIÓN para representar ninguna ruta encontrada</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM _pgr_trsp(
+<p class="rubric">Throwing <strong>EXCEPTION</strong> to represent no path found</p>
+<p>There is a restrictions query, even when the restrictions have nothing to do with the graph.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 ERROR:  Error computing path: Path Not Found
 </pre></div>
 </div>
-<p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, lo que producirá una EXCEPCIÓN para representar ninguna ruta encontrada.</p>
+<p class="rubric">Solving the problem.</p>
+<p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
+</pre></div>
+</div>
+<p>When there are restrictions <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+(0 rows)
+
+</pre></div>
+</div>
 </section>
 <section id="paths-with-equal-number-of-vertices-and-edges">
 <h4><a class="toc-backref" href="#id28">Rutas con igual número de vértices y aristas</a><a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Enlazar permanentemente con este título">¶</a></h4>
-<p>Una ruta se conforma por <cite>N</cite> vértices y <cite>N - 1</cite> aristas.</p>
+<p>A path is made of <span class="math notranslate nohighlight">\(N\)</span> vertices and <span class="math notranslate nohighlight">\(N - 1\)</span> edges.</p>
 <ul class="simple">
-<li><p>A veces devuelve <cite>N</cite> vértices y <cite>N - 1</cite> aristas.</p></li>
-<li><p>A veces se devuelven <cite>N - 1</cite> vértices y <cite>N - 1</cite> aristas.</p></li>
+<li><p>Sometimes returns <span class="math notranslate nohighlight">\(N\)</span> vertices and <span class="math notranslate nohighlight">\(N - 1\)</span> edges.</p></li>
+<li><p>Sometimes returns <span class="math notranslate nohighlight">\(N - 1\)</span> vertices and <span class="math notranslate nohighlight">\(N - 1\)</span> edges.</p></li>
 </ul>
-<p class="rubric">Retorno de <cite>N</cite> vértices y <cite>N - 1</cite> aristas.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
+<p class="rubric">Returning <span class="math notranslate nohighlight">\(N\)</span> vertices and <span class="math notranslate nohighlight">\(N - 1\)</span> edges.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
@@ -1393,13 +1415,13 @@ ERROR:  Error computing path: Path Not Found
 
 </pre></div>
 </div>
-<p>pgr_trsp convoca a <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> cuando no hay restricciones que devuelvan el número correcto de filas que incluirán todos los vértices. La última fila tendrá un <code class="docutils literal notranslate"><span class="pre">-1</span></code> en la columna de aristas para indicar que el número de arista es inválido para esa fila.</p>
-<p class="rubric">Retorno de <cite>N - 1</cite> vrtices’y <cite>N - 1</cite> aristas.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
+<p class="rubric">Returning <span class="math notranslate nohighlight">\(N - 1\)</span> vertices and <span class="math notranslate nohighlight">\(N - 1\)</span> edges.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.8, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
@@ -1407,16 +1429,52 @@ ERROR:  Error computing path: Path Not Found
 
 </pre></div>
 </div>
-<p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, y no devolverán el último vértice de la ruta.</p>
+<p class="rubric">Solving the problem.</p>
+<p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |  0.3 |        0
+   2 |        2 |   -2 |   -1 |    0 |      0.3
+(2 rows)
+
+</pre></div>
+</div>
+<p>When there are restrictions <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -2 |   -1 |    1 |  0.3 |        0
+   2 |        2 |        -1 |      -2 |   -2 |   -1 |    0 |      0.3
+(2 rows)
+
+</pre></div>
+</div>
 </section>
 <section id="routing-from-to-same-location">
 <h4><a class="toc-backref" href="#id29">Ruteo desde/hacia la misma ubicación</a><a class="headerlink" href="#routing-from-to-same-location" title="Enlazar permanentemente con este título">¶</a></h4>
-<p>Al enrutar desde la misma arista y posición a la misma arista y posición, no se necesita ninguna ruta para llegar al destino, pues ya está allí. Por lo tanto, se espera que devuelva un <cite>EMPTY SET</cite> o una <cite>EXCEPTION</cite> dependiendo de los parámetros, ninguno de los cuales está sucediendo.</p>
+<p>When routing from the same edge and position to the same edge and position, no path is needed to
+reach the destination, its already there. Therefore is expected to return an
+<strong>EMPTY SET</strong> or an <strong>EXCEPTION</strong> depending on the parameters, non of which is happening.</p>
 <p class="rubric">Una ruta con 2 vértices y coste de arista 0</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
@@ -1425,14 +1483,13 @@ ERROR:  Error computing path: Path Not Found
 
 </pre></div>
 </div>
-<p>pgr_trsp calls <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> setting the first <span class="math notranslate nohighlight">\((edge, position)\)</span> with a different point id
-from the second <span class="math notranslate nohighlight">\((edge, position)\)</span> making them different points. But the cost using the edge, is <span class="math notranslate nohighlight">\(0\)</span>.</p>
 <p class="rubric">Una ruta con 1 vértice y coste de arista 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |    0
@@ -1440,32 +1497,67 @@ from the second <span class="math notranslate nohighlight">\((edge, position)\)<
 
 </pre></div>
 </div>
-<p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, y no tendrán la fila para el vértice <span class="math notranslate nohighlight">\(-2\)</span>.</p>
+<p class="rubric">Solving the problem.</p>
+<p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |    0 |        0
+   2 |        2 |   -2 |   -1 |    0 |        0
+(2 rows)
+
+</pre></div>
+</div>
+<p>When there are restrictions <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -2 |   -1 |    1 |    0 |        0
+   2 |        2 |        -1 |      -2 |   -2 |   -1 |    0 |        0
+(2 rows)
+
+</pre></div>
+</div>
 </section>
 <section id="id2">
 <h4><a class="toc-backref" href="#id30">Contradicciones de usuarios</a><a class="headerlink" href="#id2" title="Enlazar permanentemente con este título">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> a diferencia de otras funciones de pgRouting no detecta automáticamente la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Por lo tanto, tiene el parámetro <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> para verificar la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Las contradicciones suceden:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodetect the existence of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefore it
+has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
 <ul class="simple">
-<li><p>Cuando falta reverse_cost, y la marca <cite>has_rcost</cite> se establece como verdadera</p></li>
-<li><p>Cuando el reverse_cost existe, y el indicador <cite>has_rcost</cite> se establece en false</p></li>
+<li><p>When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is missing, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to true</p></li>
+<li><p>When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> exists, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to false</p></li>
 </ul>
-<p class="rubric">Cuando falta reverse_cost y el indicador <cite>has_rcost</cite> se configura como verdadero.</p>
+<p class="rubric">When <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is missing, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to true.</p>
+<p>An <strong>EXCEPTION</strong> is thrown as the contradiction can not be solved.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-    1, 0.5, 1, 0.8, false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
+    1, 0.5, 1, 0.8, false, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 36 at RAISE
 </pre></div>
 </div>
-<p>Se produce una EXCEPCIÓN.</p>
-<p class="rubric">Cuando el reverse_cost existe, y el indicador <cite>has_rcost</cite> se establece en false</p>
+<p class="rubric">When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> exists, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to false</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and take execution time</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 0.5, 1, 0.8, false, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.3
@@ -1473,47 +1565,62 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 
 </pre></div>
 </div>
-<p>La columna de <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> será eliminada efectivamente y costará tiempo de ejecución</p>
+<p class="rubric">Solving the problem.</p>
+<p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
+  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |  0.3 |        0
+   2 |        2 |   -2 |   -1 |    0 |      0.3
+(2 rows)
+
+</pre></div>
+</div>
+<p>When there are restrictions <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
+    UNION
+    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -2 |   -1 |    1 |    0 |        0
+   2 |        2 |        -1 |      -2 |   -2 |   -1 |    0 |        0
+(2 rows)
+
+</pre></div>
+</div>
 </section>
 <section id="using-a-points-of-interest-table">
 <h4><a class="toc-backref" href="#id31">Uso de una tabla de puntos de interés</a><a class="headerlink" href="#using-a-points-of-interest-table" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Dado un conjunto de puntos de interés:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
- <span class="n">pid</span> <span class="o">|</span>  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span>                  <span class="n">the_geom</span>                  <span class="o">|</span>                  <span class="n">newpoint</span>
-<span class="o">-----+-----+-----+---------+------+----------+--------------------------------------------+--------------------------------------------</span>
-   <span class="mi">1</span> <span class="o">|</span> <span class="mf">1.8</span> <span class="o">|</span> <span class="mf">0.4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="mi">0101000000</span><span class="n">CDCCCCCCCCCCFC3F9A9999999999D93F</span> <span class="o">|</span> <span class="mi">010100000000000000000000409</span><span class="n">A9999999999D93F</span>
-   <span class="mi">2</span> <span class="o">|</span> <span class="mf">4.2</span> <span class="o">|</span> <span class="mf">2.4</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="n">r</span>    <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="mi">0101000000</span><span class="n">CDCCCCCCCCCC10403333333333330340</span> <span class="o">|</span> <span class="mi">010100000000000000000010403333333333330340</span>
-   <span class="mi">3</span> <span class="o">|</span> <span class="mf">2.6</span> <span class="o">|</span> <span class="mf">3.2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="mi">0101000000</span><span class="n">CDCCCCCCCCCC04409A99999999990940</span> <span class="o">|</span> <span class="mi">0101000000</span><span class="n">CDCCCCCCCCCC04400000000000000840</span>
-   <span class="mi">4</span> <span class="o">|</span> <span class="mf">0.3</span> <span class="o">|</span> <span class="mf">1.8</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span> <span class="n">r</span>    <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="mi">0101000000333333333333</span><span class="n">D33FCDCCCCCCCCCCFC3F</span> <span class="o">|</span> <span class="mi">0101000000333333333333</span><span class="n">D33F0000000000000040</span>
-   <span class="mi">5</span> <span class="o">|</span> <span class="mf">2.9</span> <span class="o">|</span> <span class="mf">1.8</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.8</span> <span class="o">|</span> <span class="mi">01010000003333333333330740</span><span class="n">CDCCCCCCCCCCFC3F</span> <span class="o">|</span> <span class="mi">01010000000000000000000840</span><span class="n">CDCCCCCCCCCCFC3F</span>
-   <span class="mi">6</span> <span class="o">|</span> <span class="mf">2.2</span> <span class="o">|</span> <span class="mf">1.7</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span> <span class="n">b</span>    <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="mi">01010000009</span><span class="n">A99999999990140333333333333FB3F</span> <span class="o">|</span> <span class="mi">01010000000000000000000040333333333333</span><span class="n">FB3F</span>
+<span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">fraction</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span> <span class="n">fraction</span>
+<span class="o">-----+---------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.4</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="n">r</span>    <span class="o">|</span>      <span class="mf">0.4</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.6</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span> <span class="n">r</span>    <span class="o">|</span>      <span class="mf">0.3</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.8</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span> <span class="n">b</span>    <span class="o">|</span>      <span class="mf">0.7</span>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
-<p class="rubric">Uso de pgr_trsp</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
- seq | id1 | id2 | cost
------+-----+-----+------
-   0 |  -1 |   1 |  0.6
-   1 |   2 |   4 |  0.7
-(2 rows)
-
-</pre></div>
-</div>
-<p>En <em>pgr_trsp</em>, para poder utilizar la información de la tabla:</p>
+<p>On <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code>, to be able to use the table information:</p>
 <ul class="simple">
 <li><p>Cada parámetro debe extraerse explícitamente de la tabla</p></li>
-<li><p>Regardless of the point pid original value</p>
+<li><p>Regardless of the point <code class="docutils literal notranslate"><span class="pre">pid</span></code> original value</p>
 <ul>
 <li><p>siempre será -1 para el primer punto</p></li>
 <li><p>siempre será -2 para el segundo punto</p>
@@ -1524,11 +1631,30 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </ul>
 </li>
 </ul>
-<p class="rubric">Uso de <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
+  true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
+);
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+ seq | id1 | id2 | cost
+-----+-----+-----+------
+   0 |  -1 |   1 |  0.6
+   1 |   2 |   4 |  0.7
+(2 rows)
+
+</pre></div>
+</div>
+<p class="rubric">Solving the problem.</p>
+<p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> should be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-    -1, -6
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  -1, -6
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -1539,24 +1665,63 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 
 </pre></div>
 </div>
-<p>Sugerencia: use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> cuando no hay restricciones de giro:</p>
-<ul class="simple">
-<li><p>Los resultados son más completos</p></li>
-<li><p>Los nombres de columna son significativos</p></li>
-</ul>
+<p>When there are restrictions <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  -1, -6
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |        -1 |      -6 |   -1 |    1 |  0.6 |        0
+   2 |        2 |        -1 |      -6 |    2 |    4 |  0.7 |      0.6
+   3 |        3 |        -1 |      -6 |   -6 |   -1 |    0 |      1.3
+(3 rows)
+
+</pre></div>
+</div>
 </section>
 <section id="routing-from-a-vertex-to-a-point">
 <h4><a class="toc-backref" href="#id32">Ruteo desde un vértice a un punto</a><a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Enlazar permanentemente con este título">¶</a></h4>
-<p>Resolver una ruta más corta desde el vértice <span class="math notranslate nohighlight">\(6\)</span> a pid 1 usando una tabla de puntos de interés</p>
-<p class="rubric">Uso de pgr_trsp</p>
+<p>Solving a shortest path from vertex <span class="math notranslate nohighlight">\(6\)</span> to <code class="docutils literal notranslate"><span class="pre">pid</span></code> 1 using a points of interest table</p>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>El vértice 6 está en el borde 8 en 1 fracción</p>
+</dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    8, 1,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  8, 1,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  true, true
 );
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
+ seq | id1 | id2 | cost
+-----+-----+-----+------
+   0 |  -1 |   8 |    1
+   1 |   5 |   4 |    1
+   2 |   2 |   1 |  0.6
+   3 |  -2 |  -1 |    0
+(4 rows)
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>El vértice 6 es también borde 11 en 0 fracción</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  11, 0,
+  (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+  (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+  true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
+);
+WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |   6 |   8 |    1
@@ -1566,34 +1731,12 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>El vértice 6 está en el borde 8 en 1 fracción</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    11, 0,
-    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
-    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-    true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
- seq | id1 | id2 | cost
------+-----+-----+------
-   0 |   6 |   8 |    1
-   1 |   5 |   4 |    1
-   2 |   2 |   1 |  0.6
-(3 rows)
-
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>El vértice 6 es también borde 11 en 0 fracción</p></li>
-</ul>
-<p class="rubric">Uso de <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a></p>
+<p class="rubric">Solving the problem.</p>
+<p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> should be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-    6, -1
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  6, -1
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -1605,20 +1748,33 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 
 </pre></div>
 </div>
-<p>Sugerencia: use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> cuando no hay restricciones de giro:</p>
-<ul class="simple">
-<li><p>No es necesario elegir dónde se encuentra el vértice.</p></li>
-<li><p>Los resultados son más completos</p></li>
-<li><p>Los nombres de columna son significativos</p></li>
-</ul>
+<p>When there are restrictions <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+  6, -1
+);
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
+-----+----------+-----------+---------+------+------+------+----------
+   1 |        1 |         6 |      -1 |    6 |    8 |    1 |        0
+   2 |        2 |         6 |      -1 |    5 |    4 |  0.3 |        1
+   3 |        3 |         6 |      -1 |   -6 |    4 |  0.7 |      1.3
+   4 |        4 |         6 |      -1 |    2 |    1 |  0.6 |        2
+   5 |        5 |         6 |      -1 |   -1 |   -1 |    0 |      2.6
+(5 rows)
+
+</pre></div>
+</div>
 </section>
 </section>
 <section id="prototypes">
-<h3><a class="toc-backref" href="#id33">Prototipos</a><a class="headerlink" href="#prototypes" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id33">Prototypes</a><a class="headerlink" href="#prototypes" title="Enlazar permanentemente con este título">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> y <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> fueron añadidas como prototipos</p>
-<p>Estas funciones utilizan las funciones pgr_trsp heredando todos los problemas mencionados anteriormente. Cuando no hay restricciones y tienen un problema de ruteo «vía» con vértices:</p>
+<p>These functions use the <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> functions from version 2.1 inheriting all the problems mentioned above.
+When there are no restrictions and have a routing «via» problem with vertices:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a></p></li>
+<li><p>Use <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> when there are no restrictions and no points on edges involved.</p></li>
 </ul>
 </section>
 </section>
@@ -1645,7 +1801,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en feb. 01, 2022.<br/>
+      Actualizado por última vez en feb. 06, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
