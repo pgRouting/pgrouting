@@ -1,5 +1,5 @@
 ROLLBACK;
-set LOG_ERROR_VERBOSITY TO terse;
+\set VERBOSITY terse
 SET extra_float_digits=-3;
 
 /* --place1 */
@@ -152,7 +152,7 @@ SELECT * FROM pgr_trsp_withPoints(
 /* --place17 */
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-    1, 0.5, 1, 0.8, false, true,
+    1, 0.5, 1, 0.8, false, true
 );
 /* --place18 */
 SELECT * FROM pgr_trsp(
