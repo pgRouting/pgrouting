@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/pgr_assert.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 
 template <class G>
 void
@@ -119,6 +119,6 @@ pgr_dijkstraVia(
 }
 
 
-}  // namespace pgRouting
+}  // namespace pgrouting
 
 #endif  // INCLUDE_DIJKSTRA_PGR_DIJKSTRAVIA_HPP_

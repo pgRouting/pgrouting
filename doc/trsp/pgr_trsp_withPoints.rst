@@ -16,7 +16,7 @@
 pgr_trsp_withPoints - Proposed
 ===============================================================================
 
-``pgr_trsp_withPoints`` - TBD
+``pgr_trsp_withPoints``: Vertex/Point - Vertex/Point routing with restrictions.
 
 .. include:: proposed.rst
    :start-after: begin-warning

@@ -26,8 +26,9 @@ When points are also given as input:
 
 .. index proposed from here
 
-- :doc:`pgr_trsp` - Routing with restrictions.
-- :doc:`pgr_trsp_withPoints` - Routing points with restrictions.
+- :doc:`pgr_trsp` - Vertex - Vertex routing with restrictions.
+- :doc:`pgr_trspVia` - Via Vertices routing with restrictions.
+- :doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with restrictions.
 
 .. index proposed to here
 
@@ -47,6 +48,7 @@ When points are also given as input:
     :hidden:
 
     pgr_trsp
+    pgr_trspVia
     pgr_trsp_withPoints
     pgr_turnRestrictedPath
 

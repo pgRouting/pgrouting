@@ -58,7 +58,7 @@ Signatures
 .. rubric:: Summary
 
 .. index::
-    single: dijkstraVia - Proposed
+    single: dijkstraVia - Proposed on 2.2
 
 .. code-block:: none
 
@@ -82,7 +82,7 @@ Signatures
     :start-after: -- q00
     :end-before: -- q0
 
-Complete Signature
+One Via
 ...............................................................................
 
 .. code-block:: none
@@ -112,22 +112,29 @@ Inner query
 Return Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(start_vid, end_vid, agg_cost)``
+.. via result columns start
+
+Returns set of ``(seq, path_pid, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)``
 
 ================== ============= =================================================
 Column             Type          Description
 ================== ============= =================================================
-**seq**            ``BIGINT``    Sequential value starting from 1.
-**path_pid**       ``BIGINT``    Identifier of the path.
-**path_seq**       ``BIGINT``    Sequential value starting from 1 for the path.
-**start_vid**      ``BIGINT``    Identifier of the starting vertex of the path.
-**end_vid**        ``BIGINT``    Identifier of the ending vertex of the path.
-**node**           ``BIGINT``    Identifier of the node in the path from start_vid to end_vid.
-**edge**           ``BIGINT``    Identifier of the edge used to go from node to the next node in the path sequence. -1 for the last node of the path. -2 for the last node of the route.
-**cost**           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
-**agg_cost**       ``FLOAT``     Total cost from ``start_vid`` to ``end_vid`` of the path.
-**route_agg_cost** ``FLOAT``     Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the current ``path_pid`` .
+``seq``            ``BIGINT``    Sequential value starting from 1.
+``path_pid``       ``BIGINT``    Identifier of the path.
+``path_seq``       ``BIGINT``    Sequential value starting from 1 for the path.
+``start_vid``      ``BIGINT``    Identifier of the starting vertex of the path.
+``end_vid``        ``BIGINT``    Identifier of the ending vertex of the path.
+``node``           ``BIGINT``    Identifier of the node in the path from start_vid to end_vid.
+``edge``           ``BIGINT``    Identifier of the edge used to go from node to the next node in the path sequence.
+                                 * -1 for the last node of the path.
+                                 * -2 for the last node of the route.
+
+``cost``           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
+``agg_cost``       ``FLOAT``     Total cost from ``start_vid`` to ``end_vid`` of the path.
+``route_agg_cost`` ``FLOAT``     Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the current ``path_pid`` .
 ================== ============= =================================================
+
+.. via result columns end
 
 Additional Examples
 -------------------------------------------------------------------------------

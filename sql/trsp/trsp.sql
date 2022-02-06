@@ -188,7 +188,7 @@ IS 'pgr_trsp(one to one)
 - PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - Restrictions SQL with columns: id, cost, path
+  - Restrictions SQL with columns: cost, path
   - Departure vertex identifier
   - Destination vertex identifier
 - Optional parameters
@@ -202,7 +202,7 @@ IS 'pgr_trsp(one to many)
 - PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - Restrictions SQL with columns: id, cost, path
+  - Restrictions SQL with columns: cost, path
   - Departure vertex identifier
   - Destinations ARRAY[vertices identifier]
 - Optional parameters
@@ -216,7 +216,7 @@ IS 'pgr_trsp(many to one)
 - PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - Restrictions SQL with columns: id, cost, path
+  - Restrictions SQL with columns: cost, path
   - Departures ARRAY[vertices identifier]
   - Destination vertex identifier
 - Optional parameters
@@ -230,7 +230,7 @@ IS 'pgr_trsp(many to many)
 - PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - Restrictions SQL with columns: id, cost, path
+  - Restrictions SQL with columns: cost, path
   - Departures ARRAY[vertices identifier]
   - Destinations ARRAY[vertices identifier]
 - Optional parameters
@@ -244,7 +244,7 @@ IS 'pgr_trsp(combinations)
 - PROPOSED
 - Parameters
   - Edges SQL with columns: id, source, target, cost [,reverse_cost]
-  - Restrictions SQL with columns: id, cost, path
+  - Restrictions SQL with columns: cost, path
   - Combinations SQL with columns: source, target
 - Optional parameters
   - directed := true
