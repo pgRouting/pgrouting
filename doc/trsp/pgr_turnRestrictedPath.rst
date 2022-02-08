@@ -19,7 +19,7 @@
 pgr_turnRestrictedPath - Experimental
 ===============================================================================
 
-``pgr_turnRestrictedPath``: Using Yen's algorithm Vertex -Vertex routing with restrictions
+``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with restrictions
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr

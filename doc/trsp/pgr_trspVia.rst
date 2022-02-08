@@ -16,7 +16,7 @@
 pgr_trspVia - Proposed
 ===============================================================================
 
-``pgr_trspVia``: Via Vertices routing with restrictions.
+``pgr_trspVia`` Via vertices routing with restrictions.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -31,16 +31,14 @@ pgr_trspVia - Proposed
 
 * Version 3.4.0
 
-  * New **proposed** function
-
-    * ``pgr_trspVia`` (`One Via`_)
+  * New **proposed** function ``pgr_trspVia`` (`One Via`_)
 
 
 Description
 -------------------------------------------------------------------------------
 
 Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i`
-and :math:`vertex_{i+1}` for all :math:`i < size\_of(vertex_via)` trying not to use restricted paths.
+and :math:`vertex_{i+1}` for all :math:`i < size\_of(via\;vertices)` trying not to use restricted paths.
 
 The paths represents the sections of the route.
 
@@ -61,7 +59,7 @@ Signatures
 One Via
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
     pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices** [, directed] [, strict] [, U_turn_on_edge])
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,

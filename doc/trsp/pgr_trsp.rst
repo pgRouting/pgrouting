@@ -28,7 +28,7 @@ pgr_trsp - Proposed
 ===============================================================================
 
 
-``pgr_trsp``: Vertex - Vertex routing with restrictions.
+``pgr_trsp`` Vertex - Vertex routing with restrictions.
 
 .. rubric:: Availability
 
