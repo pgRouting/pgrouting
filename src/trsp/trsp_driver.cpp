@@ -154,12 +154,6 @@ do_trsp(
         }
 
         if (restrictions_size == 0) {
-            if (count == 0) {
-                (*return_tuples) = NULL;
-                (*return_count) = 0;
-                return;
-            }
-
             (*return_tuples) = pgr_alloc(count, (*return_tuples));
             (*return_count) = (collapse_paths(return_tuples, paths));
             return;

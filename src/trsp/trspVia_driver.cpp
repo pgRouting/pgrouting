@@ -27,15 +27,55 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
 
 #include "dijkstra/pgr_dijkstraVia.hpp"
 #include "c_types/routes_t.h"
 #include "c_types/restriction_t.h"
+#include "cpp_common/rule.h"
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "trsp/pgr_trspHandler.h"
+
 
 namespace {
+
+/** @brief Orders results in terms of the via information */
+void
+post_process_trspvia(std::deque<Path> &paths, std::vector<int64_t> via) {
+    for (auto &p : paths) {
+        p.recalculate_agg_cost();
+    }
+
+    std::deque<Path> ordered_paths;
+    auto u = via.front();
+    bool skip = true;
+    for (const auto &v : via) {
+        if (skip) {skip = false; continue;}
+        /*
+         * look for the path (u,v)
+         */
+        auto path_ptr = std::find_if(
+                paths.begin(), paths.end(),
+                [&](const Path &path)
+                {return (u == path.start_id()) && (v == path.end_id());});
+
+        if (path_ptr == paths.end()) {
+            /*
+             * TODO path not found
+             */
+        } else {
+            /* path was found */
+            ordered_paths.push_back(*path_ptr);
+            paths.erase(path_ptr);
+        }
+        u = v;
+    }
+
+    paths = ordered_paths;
+}
 
 void
 get_path(
@@ -87,8 +127,9 @@ get_route(
 void
 do_trspVia(
         Edge_t* data_edges, size_t total_edges,
-        Restriction_t* , size_t ,
+        Restriction_t *restrictions, size_t restrictions_size,
         int64_t* via_vidsArr, size_t size_via_vidsArr,
+
         bool directed,
         bool strict,
         bool U_turn_on_edge,
@@ -140,15 +181,58 @@ do_trspVia(
         size_t count(count_tuples(paths));
 
         if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
-        // get the space required to store all the paths
+        if (restrictions_size == 0) {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (get_route(return_tuples, paths));
+            (*return_tuples)[count - 1].edge = -2;
+            return;
+        }
+
+        /*
+         * When there are turn restrictions
+         */
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < restrictions_size; ++i) {
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
+#if 0
+        /*
+         * TODO Rules with one edge Remove them?
+         */
+        ruleList.erase(std::remove_if(ruleList.begin(), ruleList.end(),
+                    [](const pgrouting::trsp::Rule &r) {
+                    return r.precedences().size() < 2;
+                    }),
+                ruleList.end());
+#endif
+
+        auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
+
+        if (!new_combinations.empty()) {
+            pgrouting::trsp::Pgr_trspHandler gdef(
+                    data_edges,
+                    total_edges,
+                    directed,
+                    ruleList);
+            auto new_paths = gdef.process(new_combinations);
+            paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+        }
+        post_process_trspvia(paths, via_vertices);
+
+        count = count_tuples(paths);
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            return;
+        }
+
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;
