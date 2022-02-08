@@ -105,6 +105,9 @@ One Via
 Inner query
 -------------------------------------------------------------------------------
 
+Edges SQL
+...............................................................................
+
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end

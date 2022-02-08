@@ -66,7 +66,7 @@ One Via
         node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}` in that order on an **undirected** graph, avoiding U-turns when possible
+:Example: Find the route that visits the vertices :math:`\{ 1, 7, 10\}` in that order on an **directed** graph.
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q0
@@ -103,7 +103,7 @@ Return Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{1, 5, 3, 9, 4\}` in that order
+:Example 1: Find the route that visits the vertices :math:`\{1, 5, 7, 10, 4\}` in that order
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q1
@@ -137,6 +137,7 @@ Additional Examples
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q6
+    :end-before: -- q7
 
 See Also
 -------------------------------------------------------------------------------

@@ -1,17 +1,10 @@
 -- documentation queries
-/* -- q00 */
+/* -- q0 */
 SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[1, 7, 10]
 );
-/* -- q0 */
-SELECT * FROM pgr_trspVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
-  $$SELECT path, cost FROM restrictions$$,
-  ARRAY[1, 7, 10], false, strict:=true, U_turn_on_edge:=false
-);
-
 /* -- q1 */
 SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
@@ -66,4 +59,5 @@ FROM  pgr_trspVia(
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[1, 5, 7, 10, 4])
 WHERE node = 9 and (agg_cost  <> 0 or seq = 1);
+/* -- q7 */
 

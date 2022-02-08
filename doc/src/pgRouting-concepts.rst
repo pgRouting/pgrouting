@@ -257,23 +257,24 @@ Where:
 
 .. where_definition_ends
 
+Edges SQL
+...............................................................................
 
 Description of the edges_sql query for dijkstra like functions
-...............................................................................
 
 .. basic_edges_sql_start
 
 ================= =================== ======== =================================================
 Column            Type                 Default  Description
 ================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``              Identifier of the edge.
-**source**        ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``            Weight of the edge  `(source, target)`
+``id``            **ANY-INTEGER**              Identifier of the edge.
+``source``        **ANY-INTEGER**              Identifier of the first end point vertex of the edge.
+``target``        **ANY-INTEGER**              Identifier of the second end point vertex of the edge.
+``cost``          **ANY-NUMERICAL**            Weight of the edge  `(source, target)`
 
                                                - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
 
-**reverse_cost**  ``ANY-NUMERICAL``       -1   Weight of the edge `(target, source)`,
+``reverse_cost``  **ANY-NUMERICAL**       -1   Weight of the edge `(target, source)`,
 
                                                - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
 
@@ -322,18 +323,23 @@ Where:
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== ========= =========================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =========================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
-**via_vertices**    ``ARRAY[ANY-INTEGER]``           Array of ordered vertices identifiers that are going to be visited.
-**directed**        ``BOOLEAN``            ``true``  - When ``true`` Graph is considered `Directed`
-                                                     - When ``false`` the graph is considered as Undirected.
-**strict**          ``BOOLEAN``            ``false`` - When ``false`` ignores missing paths returning all paths found
-                                                     - When ``true`` if a path is missing stops and returns `EMPTY SET`
-**U_turn_on_edge**  ``BOOLEAN``            ``true``  - When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is allowed.
-                                                     - When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is used when no other path is found.
-=================== ====================== ========= =========================================
+=================== ================================ ========= =========================================
+Parameter           Type                             Default   Description
+=================== ================================ ========= =========================================
+`Edges SQL`_        ``TEXT``                                   SQL query as described.
+**via vertices**    ``ARRAY[`` **ANY-INTEGER** ``]``           Array of ordered vertices identifiers that are going to be visited.
+``directed``        ``BOOLEAN``                      ``true``  - When ``true`` Graph is considered `Directed`
+                                                               - When ``false`` the graph is considered as Undirected.
+``strict``          ``BOOLEAN``                      ``false`` - When ``false`` ignores missing paths returning all paths found
+                                                               - When ``true`` if a path is missing stops and returns **EMPTY SET**
+``U_turn_on_edge``  ``BOOLEAN``                      ``true``  - When ``true`` departing from a visited vertex will not try to
+                                                                 avoid using the edge used to reach it.  In other words,
+                                                                 U turn using the edge with same identifier is allowed.
+                                                               - When ``false`` when a departing from a visited vertex
+                                                                 tries to avoid using the edge used to reach it.  In
+                                                                 other words, U turn using the edge with same identifier
+                                                                 is used when no other path is found.
+=================== ================================ ========= =========================================
 
 .. pgr_dijkstra_via_parameters_end
 
