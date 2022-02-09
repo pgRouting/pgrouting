@@ -2,7 +2,7 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(10) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(11) ELSE plan(1) END;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
@@ -87,6 +87,30 @@ BEGIN
     $$Same as dijkstraVia$$
   );
 
+  -- test expected results
+
+  PREPARE algorithm_simulation AS
+  SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
+    $$SELECT path, cost FROM restrictions$$,
+    2,8
+  ) WHERE edge > 0
+  UNION
+  SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_dijkstra(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
+    ARRAY[8],ARRAY[2]) WHERE edge > 0;
+
+  PREPARE algorithm AS
+  SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trspVia(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
+    $$SELECT path, cost FROM restrictions$$,
+    ARRAY[2,8,2]
+  ) WHERE edge > 0;
+
+  RETURN QUERY SELECT set_eq(
+    $$algorithm_simulation$$,
+    $$algorithm$$,
+    $$simulation same results$$);
 
 END;
 $BODY$

@@ -131,5 +131,21 @@ WHERE node = 9 and (agg_cost  <> 0 or seq = 1);
 (1 row)
 
 /* -- q7 */
+SELECT * FROM  pgr_trsp(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
+  $$SELECT path, cost FROM restrictions$$,
+  ARRAY[2, 5]
+);
+ERROR:  function pgr_trsp(unknown, unknown, integer[]) does not exist
+LINE 2: SELECT * FROM  pgr_trsp(
+                       ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+/* -- q8 */
+SELECT * FROM  pgr_trsp(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
+  $$SELECT path, cost FROM restrictions$$,
+  ARRAY[5,2]
+);
+ERROR:  current transaction is aborted, commands ignored until end of transaction block
 ROLLBACK;
 ROLLBACK

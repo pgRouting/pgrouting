@@ -148,10 +148,17 @@ Additional Examples
     :start-after: -- q6
     :end-before: -- q7
 
+:Example 7: When original sub-path passes thru a restriction, ``U_turn_on_edge`` flag is ignored.
+:Example 8: Simulation of how algorithm works
+
+.. literalinclude:: trspVia.queries
+    :start-after: -- q7
+    :end-before: -- q8
+
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :doc:`pgr_dijkstraVia`
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
