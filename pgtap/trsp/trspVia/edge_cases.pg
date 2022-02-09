@@ -1,0 +1,98 @@
+
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(10) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+   IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, $$Signature added on 3.4.0$$);
+    RETURN;
+  END IF;
+
+  -- ONE VIA
+  PREPARE q1 AS
+  SELECT * FROM pgr_trspvia(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    $$SELECT * FROM restrictions$$,
+    ARRAY[2,7,18]);
+  PREPARE q2 AS
+  SELECT * FROM pgr_trspvia(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    $$SELECT * FROM restrictions$$,
+    ARRAY[2,7,18], strict => true);
+
+  RETURN QUERY SELECT lives_ok($$q1$$,$$default flags$$);
+  RETURN QUERY SELECT lives_ok($$q2$$,$$strict true$$);
+  RETURN QUERY SELECT isnt_empty($$q1$$,$$default flags$$);
+  RETURN QUERY SELECT is_empty($$q2$$,$$strict true$$);
+
+  PREPARE q3 AS
+  SELECT * FROM pgr_trspvia(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    $$SELECT * FROM restrictions WHERE id>10$$,
+    ARRAY[2,5,2]);
+  PREPARE q4 AS
+  SELECT * FROM pgr_trspvia(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    $$SELECT * FROM restrictions WHERE id>10$$,
+    ARRAY[2,5,2], u_turn_on_edge := false);
+  PREPARE q54 AS
+  SELECT * FROM pgr_trspvia(
+    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    $$SELECT * FROM restrictions$$,
+    ARRAY[2,5,2], u_turn_on_edge := false);
+
+  RETURN QUERY SELECT lives_ok($$q3$$, $$default flags$$);
+  RETURN QUERY SELECT lives_ok($$q4$$, $$u_turn_on_edge := false$$);
+
+  RETURN QUERY SELECT set_eq($q$
+    SELECT edge, count(edge) FROM pgr_dijkstravia(
+      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+      ARRAY[2,5,2]) WHERE edge > 0 GROUP BY edge
+    $q$,
+    $$VALUES(4, 2)$$,
+    $$Expecting 4 twice in dijkstraVia$$
+  );
+  RETURN QUERY SELECT set_eq(
+    $q$
+    SELECT edge, count(edge) FROM pgr_trspvia(
+      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+      $$SELECT * FROM restrictions WHERE id>10$$,
+      ARRAY[2,5,2]) WHERE edge > 0 GROUP BY edge
+    $q$,
+    $$VALUES(4, 2)$$,
+    $$Expecting 4 twice empty restrictions$$
+  );
+  RETURN QUERY SELECT set_eq(
+    $q$
+    SELECT edge, count(edge) FROM pgr_trspvia(
+      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+      $$SELECT * FROM restrictions$$,
+      ARRAY[2,5,2]) WHERE edge > 0 GROUP BY edge
+    $q$,
+    $$VALUES(4, 2)$$,
+    $$Expecting 4 twice with restrictions$$
+  );
+  RETURN QUERY SELECT set_eq(
+    $$q3$$,
+    $q$
+      SELECT * FROM pgr_dijkstravia(
+      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+      ARRAY[2,5,2])
+    $q$,
+    $$Same as dijkstraVia$$
+  );
+
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT finish();
+ROLLBACK;

@@ -42,6 +42,15 @@ and :math:`vertex_{i+1}` for all :math:`i < size\_of(via\;vertices)` trying not 
 
 The paths represents the sections of the route.
 
+The general algorithm is as follows:
+
+* Execute a DijkstraVia.
+* If a sub-path of solution passes thru a restriction then
+
+  * Execute the TRSP algorithm with restrictions for the sub-path.
+  * **NOTE** when this is done, ``U_turn_on_edge`` flag is ignored.
+
+
 Signatures
 -------------------------------------------------------------------------------
 
