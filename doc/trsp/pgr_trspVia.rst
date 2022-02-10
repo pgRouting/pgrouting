@@ -148,12 +148,37 @@ Additional Examples
     :start-after: -- q6
     :end-before: -- q7
 
-:Example 7: When original sub-path passes thru a restriction, ``U_turn_on_edge`` flag is ignored.
-:Example 8: Simulation of how algorithm works
+:Example 7: Simulation of how algorithm works
+
+The algorithm performs a :doc:`pgr_dijkstraVia`
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q7
     :end-before: -- q8
+
+Detects which of the subpaths pass thru a restriction in this case is for the ``path_id = 1`` from ``2`` to ``8``
+because the path :math:`4 \rightarrow 7` is restricted.
+
+Executes the :doc:`pgr_trsp` algorithm for the conflicting paths.
+
+.. literalinclude:: trspVia.queries
+    :start-after: -- q8
+    :end-before: -- q9
+
+From the :doc:`pgr_dijkstraVia` result it removes the conflicting paths and builds the solution with the results of the
+:doc:`pgr_trsp` algorithm:
+
+.. literalinclude:: trspVia.queries
+    :start-after: -- q9
+    :end-before: -- q10
+
+Getting the same result as ``pgr_trspVia``:
+
+.. literalinclude:: trspVia.queries
+    :start-after: -- q10
+    :end-before: -- q11
+
+:Example 8: When original sub-path passes thru a restriction, ``U_turn_on_edge`` flag is ignored.
 
 See Also
 -------------------------------------------------------------------------------
