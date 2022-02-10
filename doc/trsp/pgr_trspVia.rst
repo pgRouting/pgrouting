@@ -44,10 +44,10 @@ The paths represents the sections of the route.
 
 The general algorithm is as follows:
 
-* Execute a DijkstraVia.
-* If a sub-path of solution passes thru a restriction then
+* Execute a :doc:`pgr_dijkstraVia`.
+* For the set of subpaths of the solution that pass through a restriction then
 
-  * Execute the TRSP algorithm with restrictions for the sub-path.
+  * Execute the :doc:`pgr_trsp` algorithm with restrictions for the subpaths.
   * **NOTE** when this is done, ``U_turn_on_edge`` flag is ignored.
 
 
@@ -156,7 +156,7 @@ The algorithm performs a :doc:`pgr_dijkstraVia`
     :start-after: -- q7
     :end-before: -- q8
 
-Detects which of the subpaths pass thru a restriction in this case is for the ``path_id = 1`` from ``2`` to ``8``
+Detects which of the subpaths pass through a restriction in this case is for the ``path_id = 1`` from ``2`` to ``8``
 because the path :math:`4 \rightarrow 7` is restricted.
 
 Executes the :doc:`pgr_trsp` algorithm for the conflicting paths.
@@ -178,7 +178,26 @@ Getting the same result as ``pgr_trspVia``:
     :start-after: -- q10
     :end-before: -- q11
 
-:Example 8: When original sub-path passes thru a restriction, ``U_turn_on_edge`` flag is ignored.
+:Example 8: Sometimes ``U_turn_on_edge`` flag is ignored when is set to ``false``.
+
+The first step, doing a :doc:`pgr_dijkstraVia` does consider not making a U turn on the same edge. But the path :math:`9
+\rightarrow 16` is restricted and the result is using it.
+
+.. literalinclude:: trspVia.queries
+    :start-after: -- q11
+    :end-before: -- q12
+
+When executing the :doc:`pgr_trsp` algorithm for the conflicting path, there is no ``U_turn_on_edge`` flag.
+
+.. literalinclude:: trspVia.queries
+    :start-after: -- q12
+    :end-before: -- q13
+
+Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``false``.
+
+.. literalinclude:: trspVia.queries
+    :start-after: -- q13
+    :end-before: -- q14
 
 See Also
 -------------------------------------------------------------------------------

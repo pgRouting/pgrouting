@@ -38,6 +38,7 @@ SELECT * FROM pgr_trspViaVertices(
     true,
     true
 );
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
@@ -124,6 +125,7 @@ SELECT * FROM pgr_trspViaVertices(
     true,
     false
 );
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
@@ -182,6 +184,7 @@ SELECT * FROM pgr_trspViaVertices(
     false,
     true
 );
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1
@@ -262,6 +265,7 @@ SELECT * FROM pgr_trspViaVertices(
     false,
     false
 );
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   4 |    1

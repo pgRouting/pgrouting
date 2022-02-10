@@ -471,6 +471,7 @@ SELECT * FROM pgr_trspViaVertices(
     ARRAY[2, 3, 2],
     false, true
 );
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   1 |   2 |   2 |    1
@@ -496,6 +497,7 @@ SELECT * FROM pgr_TRSPViaVertices(
     ARRAY[1, 1, 2],
     false, true
 );
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
 (0 rows)
@@ -506,6 +508,7 @@ SELECT * FROM pgr_trspViaVertices(
     false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
  seq | id1 | id2 | id3 | cost
 -----+-----+-----+-----+------
    1 |   2 |   1 |   1 |    1

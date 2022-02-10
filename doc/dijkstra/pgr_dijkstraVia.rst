@@ -80,7 +80,7 @@ Signatures
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q00
-    :end-before: -- q0
+    :end-before: -- q01
 
 One Via
 ...............................................................................
@@ -95,7 +95,7 @@ One Via
 :Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}` in that order on an **undirected** graph, avoiding U-turns when possible
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
-    :start-after: -- q0
+    :start-after: -- q01
     :end-before: -- q1
 
 .. include:: pgRouting-concepts.rst

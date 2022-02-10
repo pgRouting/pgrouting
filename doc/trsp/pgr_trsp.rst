@@ -42,8 +42,9 @@ pgr_trsp - Proposed
     * ``pgr_trsp`` (`Many to Many`_)
     * ``pgr_trsp`` (`Combinations`_)
 
-  * Signature ``pgr_trsp(text,integer,integer,boolean,boolean)`` is deprecated
-  * Signature ``pgr_trsp(text,integer,float,integer,float,boolean,boolean)`` is deprecated
+  * Signature ``pgr_trsp(text,integer,integer,boolean,boolean,text)`` is deprecated
+  * Signature ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)`` is deprecated
+  * Signature ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)`` is deprecated
 
 * Version 2.1.0
 
@@ -109,8 +110,6 @@ Signatures
 
 .. code-block:: none
 
-   pgr_trspViaVertices(sql text, vids integer[],
-            directed boolean, has_rcost boolean [, restrictions_sql text]) -- Prototype on v2.1
    pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
             directed boolean, has_rcost boolean [, turn_restrict_sql text]) -- Prototype on v2.1
    RETURNS SETOF (seq, id1, id2, id3, cost)
@@ -124,6 +123,10 @@ Signatures
    pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
             directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
    RETURNS SETOF (seq, id1, id2, cost)
+
+   pgr_trspViaVertices(sql text, vids integer[],
+            directed boolean, has_rcost boolean [, restrictions_sql text]) -- Deprecated on v3.4
+   RETURNS SETOF (seq, id1, id2, id3, cost)
 
 .. index::
     single: trsp(One to One) -- Proposed on v3.4
@@ -274,7 +277,7 @@ Version 2.1 signatures
 .. index::
 	single: pgr_trsp(text,integer,integer,boolean,boolean,text) -- deprecated on v3.4
 	single: pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text) -- deprecated on v3.4
-	single: pgr_trspViaVertices - Prototype
+	single: pgr_trspViaVertices - deprecated on v3.4
 	single: pgr_trspViaEdges - Prototype
 
 .. code-block:: sql
