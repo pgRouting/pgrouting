@@ -804,11 +804,30 @@ Prototypes
 .........................................................................
 
 ``pgr_trspViaVertices`` and ``pgr_trspViaEdges`` were added to pgRouting as prototypes
-
 These functions use the ``pgr_trsp`` functions from version 2.1 inheriting all the problems mentioned above.
-When there are no restrictions and have a routing "via" problem with vertices:
 
-* Use :doc:`pgr_dijkstraVia` when there are no restrictions and no points on edges involved.
+Moving from ``pgr_trspViaVertices``
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+When there are no restrictions :doc:`pgr_dijkstraVia` should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place26
+   :end-before: --place27
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place27
+   :end-before: --place28
+
+When there are restrictions :doc:`pgr_trspVia` (One Via) should be used.
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place28
+   :end-before: --place29
+
+.. literalinclude:: trsp_notes.queries
+   :start-after: --place29
+   :end-before: --place30
 
 See Also
 -------------------------------------------------------------------------------
