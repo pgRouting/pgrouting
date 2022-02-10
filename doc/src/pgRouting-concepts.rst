@@ -264,21 +264,37 @@ Description of the edges_sql query for dijkstra like functions
 
 .. basic_edges_sql_start
 
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-``id``            **ANY-INTEGER**              Identifier of the edge.
-``source``        **ANY-INTEGER**              Identifier of the first end point vertex of the edge.
-``target``        **ANY-INTEGER**              Identifier of the second end point vertex of the edge.
-``cost``          **ANY-NUMERICAL**            Weight of the edge  `(source, target)`
+.. list-table::
+   :width: 81
+   :widths: 14 14 7 44
+   :header-rows: 1
 
-                                               - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the edge.
+   * - ``source``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the second end point vertex of the edge.
+   * - ``cost``
+     - **ANY-NUMERICAL**
+     -
+     - Weight of the edge  `(source, target)`
+   * - ``reverse_cost``
+     - **ANY-NUMERICAL**
+     - -1
+     - Weight of the edge `(target, source)`
 
-``reverse_cost``  **ANY-NUMERICAL**       -1   Weight of the edge `(target, source)`,
-
-                                               - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-================= =================== ======== =================================================
+       - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
 
 Where:
 
