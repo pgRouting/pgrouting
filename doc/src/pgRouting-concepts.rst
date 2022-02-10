@@ -317,29 +317,47 @@ Where:
 .. no_id_edges_sql_end
 
 
-
-.. pgr_dijkstra_via_parameters_start
-
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ================================ ========= =========================================
-Parameter           Type                             Default   Description
-=================== ================================ ========= =========================================
-`Edges SQL`_        ``TEXT``                                   SQL query as described.
-**via vertices**    ``ARRAY[`` **ANY-INTEGER** ``]``           Array of ordered vertices identifiers that are going to be visited.
-``directed``        ``BOOLEAN``                      ``true``  - When ``true`` Graph is considered `Directed`
-                                                               - When ``false`` the graph is considered as Undirected.
-``strict``          ``BOOLEAN``                      ``false`` - When ``false`` ignores missing paths returning all paths found
-                                                               - When ``true`` if a path is missing stops and returns **EMPTY SET**
-``U_turn_on_edge``  ``BOOLEAN``                      ``true``  - When ``true`` departing from a visited vertex will not try to
-                                                                 avoid using the edge used to reach it.  In other words,
-                                                                 U turn using the edge with same identifier is allowed.
-                                                               - When ``false`` when a departing from a visited vertex
-                                                                 tries to avoid using the edge used to reach it.  In
-                                                                 other words, U turn using the edge with same identifier
-                                                                 is used when no other path is found.
-=================== ================================ ========= =========================================
+
+.. pgr_dijkstra_via_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 20 7 40
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - **via vertices**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     -
+     - Array of ordered vertices identifiers that are going to be visited.
+   * - ``directed``
+     - ``BOOLEAN``
+     - ``true``
+     - - When ``true`` Graph is considered `Directed`
+       - When ``false`` the graph is considered as Undirected.
+   * - ``strict``
+     - ``BOOLEAN``
+     - ``false``
+     - * When ``true`` if a path is missing stops and returns **EMPTY SET**
+       * When ``false`` ignores missing paths returning all paths found
+   * - ``U_turn_on_edge``
+     - ``BOOLEAN``
+     - ``true``
+     - * When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other
+         words, U turn using the edge with same identifier is allowed.
+       * When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other
+         words, U turn using the edge with same identifier is used when no other path is found.
+
 
 .. pgr_dijkstra_via_parameters_end
 
