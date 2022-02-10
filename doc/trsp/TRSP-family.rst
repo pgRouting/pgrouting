@@ -82,12 +82,20 @@ Restrictions SQL
 
 .. restrictions_columns_start
 
-========= ===============================  =================================================================================
-Column             Type                    Description
-========= ===============================  =================================================================================
-``path``  ``ARRAY[`` **ANYINTEGER** ``]``  Sequence of Edges identifiers that form a path that is not allowed to be taken
-``Cost``  **ANY-NUMERICAL**                Cost of taking the forbidden path
-========= ===============================  =================================================================================
+.. list-table::
+   :width: 81
+   :widths: 7 17 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``path``
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Sequence of Edges identifiers that form a path that is not allowed to be taken.
+   * - ``Cost``
+     - **ANY-NUMERICAL**
+     - Cost of taking the forbidden path.
 
 Where:
 
