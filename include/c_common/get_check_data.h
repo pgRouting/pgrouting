@@ -139,28 +139,14 @@ char pgr_SPI_getChar(
         bool strict,
         char default_value);
 
-/*!
-@brief Function returns the values of specified columns in array.
-
-@param[in]  tuple    input row to be examined.
-@param[in]  tupdesc  input row description.
-@param[in]  info     contain column information.
-@param[out] the_size number of element in array.
-
-@throw ERROR No elements found in ARRAY.
-@throw ERROR Unexpected Column type. Expected column type is ANY-INTEGER-ARRAY.
-@throw ERROR NULL value found in Array.
-
-@return Array of columns value is returned.
-
- */
+/*! @brief Function returns the values of specified columns in array.  */
 
 int64_t*
 pgr_SPI_getBigIntArr(
-        HeapTuple *tuple,
-        TupleDesc *tupdesc,
-        Column_info_t info,
-        uint64_t *the_size);
+        HeapTuple*,
+        TupleDesc*,
+        Column_info_t,
+        uint64_t*);
 
 /*!
 @brief Function returns the value of specified column in integer type.

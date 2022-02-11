@@ -199,19 +199,9 @@ do_trsp_withPoints(
          */
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++i) {
+            if (restrictions[i].via_size == 0) continue;
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
         }
-
-#if 0
-        /*
-         * TODO Rules with one edge Remove them?
-         */
-        ruleList.erase(std::remove_if(ruleList.begin(), ruleList.end(),
-                    [](const pgrouting::trsp::Rule &r) {
-                    return r.precedences().size() < 2;
-                    }),
-                ruleList.end());
-#endif
 
         auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
 

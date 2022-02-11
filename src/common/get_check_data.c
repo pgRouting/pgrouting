@@ -192,7 +192,16 @@ pgr_SPI_getChar(
 
 
 
+/*
+@param[in]  tuple    input row to be examined.
+@param[in]  tupdesc  input row description.
+@param[in]  info     contain column information.
+@param[in,out]  the_size     size of the array
+@param[out] the_size number of element in array.
 
+@returns NULL on NULL input
+@returns C Array.
+*/
 int64_t*
 pgr_SPI_getBigIntArr(
         HeapTuple *tuple,
@@ -202,13 +211,16 @@ pgr_SPI_getBigIntArr(
     bool is_null = false;
 
     Datum raw_array = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &is_null);
+
+    *the_size = 0;
+    if (is_null) return (int64_t*)NULL;
     /*
     * [DatumGetArrayTypeP](https://doxygen.postgresql.org/array_8h.html#aa1b8e77c103863862e06a7b7c07ec532)
     * [pgr_get_bigIntArray](http://docs.pgrouting.org/doxy/2.2/arrays__input_8c_source.html)
     */
     ArrayType *pg_array = DatumGetArrayTypeP(raw_array);
 
-    return pgr_get_bigIntArray((size_t*)the_size, pg_array);
+    return pgr_get_bigIntArray_allowEmpty((size_t*)the_size, pg_array);
 }
 
 
