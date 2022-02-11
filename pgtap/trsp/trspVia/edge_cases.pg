@@ -1,122 +1,61 @@
-
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN min_version('3.4.0') THEN plan(11) ELSE plan(1) END;
+SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(1) END;
+SET client_min_messages TO ERROR;
 
 CREATE OR REPLACE FUNCTION edge_cases()
 RETURNS SETOF TEXT AS
 $BODY$
+DECLARE
+  restriction TEXT;
+  unrelated_restriction TEXT;
+  empty_restriction TEXT;
 BEGIN
-   IF NOT min_version('3.4.0') THEN
-    RETURN QUERY SELECT skip(1, $$Signature added on 3.4.0$$);
+
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'New function on 3.4');
     RETURN;
   END IF;
 
-  -- ONE VIA
-  PREPARE q1 AS
-  SELECT * FROM pgr_trspvia(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-    $$SELECT * FROM restrictions$$,
-    ARRAY[2,7,18]);
-  PREPARE q2 AS
-  SELECT * FROM pgr_trspvia(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-    $$SELECT * FROM restrictions$$,
-    ARRAY[2,7,18], strict => true);
+  RETURN QUERY SELECT lives_ok($q$
+  SELECT * FROM pgr_trspVia(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
+  ARRAY[2,3])$q$, $q$empty restriction path lives$q$);
 
-  RETURN QUERY SELECT lives_ok($$q1$$,$$default flags$$);
-  RETURN QUERY SELECT lives_ok($$q2$$,$$strict true$$);
-  RETURN QUERY SELECT isnt_empty($$q1$$,$$default flags$$);
-  RETURN QUERY SELECT is_empty($$q2$$,$$strict true$$);
+  RETURN QUERY SELECT isnt_empty($q$
+  SELECT * FROM pgr_trspVia(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
+  ARRAY[2,3])$q$, $q$empty restriction path gives non empty result$q$);
 
-  PREPARE q3 AS
-  SELECT * FROM pgr_trspvia(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-    $$SELECT * FROM restrictions WHERE id>10$$,
-    ARRAY[2,5,2]);
-  PREPARE q4 AS
-  SELECT * FROM pgr_trspvia(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-    $$SELECT * FROM restrictions WHERE id>10$$,
-    ARRAY[2,5,2], u_turn_on_edge := false);
-  PREPARE q54 AS
-  SELECT * FROM pgr_trspvia(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-    $$SELECT * FROM restrictions$$,
-    ARRAY[2,5,2], u_turn_on_edge := false);
+  RETURN QUERY SELECT lives_ok($q$
+  SELECT * FROM pgr_trspVia(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
+  ARRAY[2,3])$q$, $q$null restriction path lives$q$);
 
-  RETURN QUERY SELECT lives_ok($$q3$$, $$default flags$$);
-  RETURN QUERY SELECT lives_ok($$q4$$, $$u_turn_on_edge := false$$);
+  RETURN QUERY SELECT isnt_empty($q$
+  SELECT * FROM pgr_trspVia(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
+  ARRAY[2,3])$q$, $q$null restriction path gives non empty result$q$);
 
-  RETURN QUERY SELECT set_eq($q$
-    SELECT edge, count(edge) FROM pgr_dijkstravia(
-      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-      ARRAY[2,5,2]) WHERE edge > 0 GROUP BY edge
-    $q$,
-    $$VALUES(4, 2)$$,
-    $$Expecting 4 twice in dijkstraVia$$
-  );
-  RETURN QUERY SELECT set_eq(
-    $q$
-    SELECT edge, count(edge) FROM pgr_trspvia(
-      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-      $$SELECT * FROM restrictions WHERE id>10$$,
-      ARRAY[2,5,2]) WHERE edge > 0 GROUP BY edge
-    $q$,
-    $$VALUES(4, 2)$$,
-    $$Expecting 4 twice empty restrictions$$
-  );
-  RETURN QUERY SELECT set_eq(
-    $q$
-    SELECT edge, count(edge) FROM pgr_trspvia(
-      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-      $$SELECT * FROM restrictions$$,
-      ARRAY[2,5,2]) WHERE edge > 0 GROUP BY edge
-    $q$,
-    $$VALUES(4, 2)$$,
-    $$Expecting 4 twice with restrictions$$
-  );
-  RETURN QUERY SELECT set_eq(
-    $$q3$$,
-    $q$
-      SELECT * FROM pgr_dijkstravia(
-      $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-      ARRAY[2,5,2])
-    $q$,
-    $$Same as dijkstraVia$$
-  );
-
-  -- test expected results
-
-  PREPARE algorithm_simulation AS
-  SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
-    $$SELECT path, cost FROM restrictions$$,
-    2,8
-  ) WHERE edge > 0
-  UNION
-  SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_dijkstra(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
-    ARRAY[8],ARRAY[2]) WHERE edge > 0;
-
-  PREPARE algorithm AS
-  SELECT path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trspVia(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
-    $$SELECT path, cost FROM restrictions$$,
-    ARRAY[2,8,2]
-  ) WHERE edge > 0;
-
-  RETURN QUERY SELECT set_eq(
-    $$algorithm_simulation$$,
-    $$algorithm$$,
-    $$simulation same results$$);
+  RETURN QUERY SELECT throws_ok($q$
+  SELECT * FROM pgr_trspVia(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[NULL]::BIGINT[] AS path$$,
+  ARRAY[2,3])$q$,
+  $$XX000$$,$$NULL value found in Array!$$,
+$q$array containing a null path throws$q$);
 
 END;
 $BODY$
 LANGUAGE plpgsql;
 
 SELECT edge_cases();
+
 
 SELECT finish();
 ROLLBACK;

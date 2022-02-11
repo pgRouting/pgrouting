@@ -92,7 +92,9 @@ Restrictions SQL
      - Description
    * - ``path``
      - ``ARRAY[`` **ANY-INTEGER** ``]``
-     - Sequence of Edges identifiers that form a path that is not allowed to be taken.
+     - Sequence of edge identifiers that form a path that is not allowed to be taken.
+       - Empty arrays or ``NULL`` arrays are ignored.
+       - Arrays that have a ``NULL`` element will raise an exception.
    * - ``Cost``
      - **ANY-NUMERICAL**
      - Cost of taking the forbidden path.
@@ -101,6 +103,8 @@ Where:
 
 :ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
 :ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+
 
 .. restrictions_columns_end
 

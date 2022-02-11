@@ -13,7 +13,7 @@
   `Latest <https://docs.pgrouting.org/latest/en/pgr_trspVia.html>`__
   (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trspVia.html>`__)
 
-pgr_trspVia - Proposed
+``pgr_trspVia`` - Proposed
 ===============================================================================
 
 ``pgr_trspVia`` Via vertices routing with restrictions.
@@ -45,9 +45,9 @@ The paths represents the sections of the route.
 The general algorithm is as follows:
 
 * Execute a :doc:`pgr_dijkstraVia`.
-* For the set of subpaths of the solution that pass through a restriction then
+* For the set of sub paths of the solution that pass through a restriction then
 
-  * Execute the :doc:`pgr_trsp` algorithm with restrictions for the subpaths.
+  * Execute the :doc:`pgr_trsp` algorithm with restrictions for the sub paths.
   * **NOTE** when this is done, ``U_turn_on_edge`` flag is ignored.
 
 
@@ -159,7 +159,7 @@ The algorithm performs a :doc:`pgr_dijkstraVia`
     :start-after: -- q7
     :end-before: -- q8
 
-Detects which of the subpaths pass through a restriction in this case is for the ``path_id = 1`` from ``2`` to ``8``
+Detects which of the sub paths pass through a restriction in this case is for the ``path_id = 1`` from ``2`` to ``8``
 because the path :math:`4 \rightarrow 7` is restricted.
 
 Executes the :doc:`pgr_trsp` algorithm for the conflicting paths.
