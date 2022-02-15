@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 05:06+0000\n"
+"POT-Creation-Date: 2022-02-15 17:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,9 @@ msgid "pgr_trsp_withPoints - Proposed"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:19
-msgid "``pgr_trsp_withPoints`` - TBD"
+msgid ""
+"``pgr_trsp_withPoints`` Vertex/Point - Vertex/Point routing with "
+"restrictions."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -104,7 +106,7 @@ msgstr ""
 msgid "``pgr_trsp_withPoints`` (`Combinations`_)"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/TRSP-family.rst:10 ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgr_trsp_withPoints.rst:43
 #: ../../build/doc/pgr_trsp_withPoints.rst:193
@@ -240,7 +242,7 @@ msgstr ""
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/TRSP-family.rst:9 ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_trsp_withPoints.rst:193
 #: ../../build/doc/pgr_trsp_withPoints.rst:249
 msgid "Type"
@@ -311,6 +313,7 @@ msgstr ""
 msgid "**start vids**"
 msgstr ""
 
+#: ../../build/doc/TRSP-family.rst:12
 #: ../../build/doc/pgr_trsp_withPoints.rst:200
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
@@ -398,7 +401,7 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/TRSP-family.rst:8 ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_trsp_withPoints.rst:249
 msgid "Column"
 msgstr ""
@@ -434,7 +437,7 @@ msgstr ""
 msgid "``cost``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:7 ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/TRSP-family.rst:17 ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
 msgstr ""
@@ -461,7 +464,7 @@ msgid ""
 "it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:10 ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/TRSP-family.rst:20 ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "Where:"
@@ -471,7 +474,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:12 ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/TRSP-family.rst:22 ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
 #: ../../build/doc/pgRouting-concepts.rst:40
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
@@ -481,7 +484,7 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:13 ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/TRSP-family.rst:23 ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/pgRouting-concepts.rst:41
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
@@ -490,26 +493,23 @@ msgstr ""
 msgid "Restrictions SQL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:6
+#: ../../build/doc/TRSP-family.rst:11
 msgid "``path``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:6
-msgid "``ARRAY[`` **ANYINTEGER** ``]``"
-msgstr ""
-
-#: ../../build/doc/TRSP-family.rst:6
+#: ../../build/doc/TRSP-family.rst:13
 msgid ""
-"Sequence of Edges identifiers that form a path that is not allowed to be "
-"taken"
+"Sequence of edge identifiers that form a path that is not allowed to be "
+"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have "
+"a ``NULL`` element will raise an exception."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:7
+#: ../../build/doc/TRSP-family.rst:16
 msgid "``Cost``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:7
-msgid "Cost of taking the forbidden path"
+#: ../../build/doc/TRSP-family.rst:18
+msgid "Cost of taking the forbidden path."
 msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:232

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:48+0000\n"
+"POT-Creation-Date: 2022-02-15 17:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,14 +73,20 @@ msgid "Documentation might need refinement."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:29
-msgid ":doc:`pgr_trsp` - Routing with restrictions."
+msgid ":doc:`pgr_trsp` - Vertex - Vertex routing with restrictions."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:30
-msgid ":doc:`pgr_trsp_withPoints` - Routing points with restrictions."
+msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:35
+#: ../../build/doc/TRSP-family.rst:31
+msgid ""
+":doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with "
+"restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:36
 msgid "Experimental"
 msgstr ""
 
@@ -152,88 +158,89 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:42
+#: ../../build/doc/TRSP-family.rst:43
 msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:54
+#: ../../build/doc/TRSP-family.rst:56
 msgid "Introduction"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:57
+#: ../../build/doc/TRSP-family.rst:59
 msgid "Restrictions"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:59
+#: ../../build/doc/TRSP-family.rst:61
 msgid ""
 "On road networks, there are restrictions such as left or right turn "
 "restrictions, no U turn restrictions."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:62
+#: ../../build/doc/TRSP-family.rst:64
 msgid ""
 "A restriction is a sequence of edges, called **path** and that **path** "
 "is to be avoided."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:67
+#: ../../build/doc/TRSP-family.rst:69
 msgid "**Restrictions on the road network**"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:69
+#: ../../build/doc/TRSP-family.rst:71
 msgid "These restrictions are represented on a table as follows:"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:75
+#: ../../build/doc/TRSP-family.rst:77
 msgid ""
 "The table has an identifier, which maybe is needed for the administration"
 " of the restrictions, but the algorithms do not need that information. If"
 " given it will be ignored."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:79
+#: ../../build/doc/TRSP-family.rst:81
 msgid "Restrictions SQL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:84
+#: ../../build/doc/TRSP-family.rst:90
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:84
+#: ../../build/doc/TRSP-family.rst:91
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:84
+#: ../../build/doc/TRSP-family.rst:92
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:86
+#: ../../build/doc/TRSP-family.rst:93
 msgid "``path``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:86
-msgid "``ARRAY[`` **ANYINTEGER** ``]``"
+#: ../../build/doc/TRSP-family.rst:94
+msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:86
+#: ../../build/doc/TRSP-family.rst:95
 msgid ""
-"Sequence of Edges identifiers that form a path that is not allowed to be "
-"taken"
+"Sequence of edge identifiers that form a path that is not allowed to be "
+"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have "
+"a ``NULL`` element will raise an exception."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:87
+#: ../../build/doc/TRSP-family.rst:98
 msgid "``Cost``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:87
+#: ../../build/doc/TRSP-family.rst:99
 msgid "**ANY-NUMERICAL**"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:87
-msgid "Cost of taking the forbidden path"
+#: ../../build/doc/TRSP-family.rst:100
+msgid "Cost of taking the forbidden path."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:90
+#: ../../build/doc/TRSP-family.rst:102
 msgid "Where:"
 msgstr ""
 
@@ -241,7 +248,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:92
+#: ../../build/doc/TRSP-family.rst:104
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
@@ -249,23 +256,23 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:93
+#: ../../build/doc/TRSP-family.rst:105
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:99
+#: ../../build/doc/TRSP-family.rst:113
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:102
+#: ../../build/doc/TRSP-family.rst:116
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:103
+#: ../../build/doc/TRSP-family.rst:117
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:104
+#: ../../build/doc/TRSP-family.rst:118
 msgid ":ref:`search`"
 msgstr ""
 

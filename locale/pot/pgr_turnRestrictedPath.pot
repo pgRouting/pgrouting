@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 05:06+0000\n"
+"POT-Creation-Date: 2022-02-15 17:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "pgr_turnRestrictedPath - Experimental"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:22
-msgid "``pgr_turnRestrictedPath`` — Using Yen's algorithm returns the shortest path with turn restrictions."
+msgid "``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with restrictions"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:3
@@ -115,7 +115,7 @@ msgstr ""
 #: ../../build/doc/pgr_turnRestrictedPath.rst:37
 #: ../../build/doc/pgr_turnRestrictedPath.rst:76
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/TRSP-family.rst:4
+#: ../../build/doc/TRSP-family.rst:10
 #: ../../build/doc/pgr_KSP.rst:6
 msgid "Description"
 msgstr ""
@@ -153,7 +153,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:76
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/TRSP-family.rst:4
+#: ../../build/doc/TRSP-family.rst:9
 #: ../../build/doc/pgr_KSP.rst:6
 msgid "Type"
 msgstr ""
@@ -282,7 +282,7 @@ msgid "Edges SQL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/TRSP-family.rst:4
+#: ../../build/doc/TRSP-family.rst:8
 #: ../../build/doc/pgr_KSP.rst:6
 msgid "Column"
 msgstr ""
@@ -323,7 +323,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/TRSP-family.rst:7
+#: ../../build/doc/TRSP-family.rst:17
 msgid "**ANY-NUMERICAL**"
 msgstr ""
 
@@ -348,7 +348,7 @@ msgid "When negative: edge (``target``, ``source``) does not exist, therefore it
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/TRSP-family.rst:10
+#: ../../build/doc/TRSP-family.rst:20
 msgid "Where:"
 msgstr ""
 
@@ -358,7 +358,7 @@ msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:38
-#: ../../build/doc/TRSP-family.rst:12
+#: ../../build/doc/TRSP-family.rst:22
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
@@ -368,7 +368,7 @@ msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:39
-#: ../../build/doc/TRSP-family.rst:13
+#: ../../build/doc/TRSP-family.rst:23
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
@@ -376,24 +376,24 @@ msgstr ""
 msgid "Restrictions SQL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:6
+#: ../../build/doc/TRSP-family.rst:11
 msgid "``path``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:6
-msgid "``ARRAY[`` **ANYINTEGER** ``]``"
+#: ../../build/doc/TRSP-family.rst:12
+msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:6
-msgid "Sequence of Edges identifiers that form a path that is not allowed to be taken"
+#: ../../build/doc/TRSP-family.rst:13
+msgid "Sequence of edge identifiers that form a path that is not allowed to be taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a ``NULL`` element will raise an exception."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:7
+#: ../../build/doc/TRSP-family.rst:16
 msgid "``Cost``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:7
-msgid "Cost of taking the forbidden path"
+#: ../../build/doc/TRSP-family.rst:18
+msgid "Cost of taking the forbidden path."
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:116
