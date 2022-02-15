@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 15:48+0000\n"
+"POT-Creation-Date: 2022-02-15 05:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "Contents"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgr_KSP.rst:6 ../../build/doc/pgr_turnRestrictedPath.rst:37
 #: ../../build/doc/pgr_turnRestrictedPath.rst:76
 msgid "Description"
@@ -157,12 +157,12 @@ msgstr ""
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_KSP.rst:6 ../../build/doc/pgr_turnRestrictedPath.rst:76
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgr_turnRestrictedPath.rst:76
 msgid "Default"
 msgstr ""
@@ -283,79 +283,73 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/TRSP-family.rst:4 ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_KSP.rst:6
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**id**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "Identifier of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**target**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:13
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Weight of the edge  `(source, target)`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "-1"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "Weight of the edge `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
-msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:10 ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``cost``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:7 ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:10 ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
@@ -363,16 +357,16 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/TRSP-family.rst:12 ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/TRSP-family.rst:13 ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:108
@@ -398,19 +392,7 @@ msgid "``Cost``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:7
-msgid "**ANY-NUMERICAL**"
-msgstr ""
-
-#: ../../build/doc/TRSP-family.rst:7
 msgid "Cost of taking the forbidden path"
-msgstr ""
-
-#: ../../build/doc/TRSP-family.rst:12
-msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
-
-#: ../../build/doc/TRSP-family.rst:13
-msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:116
@@ -469,6 +451,10 @@ msgstr ""
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. ``-1`` for the last node of the route."
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:13
+msgid "**cost**"
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:13 ../../build/doc/pgr_KSP.rst:14

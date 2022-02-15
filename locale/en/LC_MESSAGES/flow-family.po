@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-11 13:15+0000\n"
+"POT-Creation-Date: 2022-02-15 05:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -234,24 +234,25 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:101 ../../build/doc/flow-family.rst:123
 #: ../../build/doc/flow-family.rst:151 ../../build/doc/flow-family.rst:195
-#: ../../build/doc/flow-family.rst:212 ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/flow-family.rst:212
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:101 ../../build/doc/flow-family.rst:123
 #: ../../build/doc/flow-family.rst:151 ../../build/doc/flow-family.rst:195
-#: ../../build/doc/flow-family.rst:212 ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/flow-family.rst:212 ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:101 ../../build/doc/flow-family.rst:123
-#: ../../build/doc/flow-family.rst:151 ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/flow-family.rst:151
 msgid "Default"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:101 ../../build/doc/flow-family.rst:123
 #: ../../build/doc/flow-family.rst:151 ../../build/doc/flow-family.rst:195
-#: ../../build/doc/flow-family.rst:212 ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/flow-family.rst:212
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Description"
 msgstr ""
 
@@ -277,7 +278,6 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:105 ../../build/doc/flow-family.rst:126
 #: ../../build/doc/flow-family.rst:154 ../../build/doc/flow-family.rst:216
-#: ../../build/doc/pgRouting-concepts.rst:6
 msgid "**source**"
 msgstr ""
 
@@ -308,7 +308,6 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:107 ../../build/doc/flow-family.rst:127
 #: ../../build/doc/flow-family.rst:155 ../../build/doc/flow-family.rst:217
-#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "**target**"
 msgstr ""
 
@@ -353,8 +352,6 @@ msgstr ""
 #: ../../build/doc/flow-family.rst:132 ../../build/doc/flow-family.rst:153
 #: ../../build/doc/flow-family.rst:154 ../../build/doc/flow-family.rst:155
 #: ../../build/doc/flow-family.rst:156 ../../build/doc/flow-family.rst:159
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "``ANY-INTEGER``"
 msgstr ""
 
@@ -364,13 +361,11 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:126 ../../build/doc/flow-family.rst:154
 #: ../../build/doc/flow-family.rst:199 ../../build/doc/flow-family.rst:216
-#: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:127 ../../build/doc/flow-family.rst:155
 #: ../../build/doc/flow-family.rst:200 ../../build/doc/flow-family.rst:217
-#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
@@ -408,7 +403,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:138 ../../build/doc/flow-family.rst:166
 #: ../../build/doc/flow-family.rst:277
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Where:"
 msgstr ""
 
@@ -417,7 +412,6 @@ msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:140 ../../build/doc/flow-family.rst:168
-#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
@@ -480,6 +474,35 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:177
 msgid "an SQL query which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "``source``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "``target``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:183

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-02-15 05:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,9 +71,9 @@ msgstr ""
 #: ../../build/doc/pgr_aStarCost.rst:51
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Description"
 msgstr ""
 
@@ -241,14 +241,16 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgr_aStar.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:4
 #: ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Type"
 msgstr ""
 
@@ -279,11 +281,6 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:8
 #: ../../build/doc/pgr_aStar.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
 msgid "``ANY-INTEGER``"
 msgstr ""
 
@@ -345,8 +342,7 @@ msgid "Optional Parameters"
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
 
@@ -416,7 +412,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:18
 #: ../../build/doc/pgr_aStar.rst:19
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``FLOAT``"
 msgstr ""
 
@@ -445,119 +441,111 @@ msgstr ""
 msgid "Edges query"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
-msgid "edges_sql"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:3
-msgid "an SQL query, which should return a set of rows with the following columns:"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "Column"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**id**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Identifier of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**target**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:15
-#: ../../build/doc/pgRouting-concepts.rst:19
-#: ../../build/doc/pgRouting-concepts.rst:20
-#: ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid "Weight of the edge  `(source, target)`"
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-msgid "When negative: edge `(source, target)` does not exist, therefore it's not part of the graph."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:15
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:15
-msgid "-1"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:15
-msgid "Weight of the edge `(target, source)`,"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst:17
-msgid "When negative: edge `(target, source)` does not exist, therefore it's not part of the graph."
+#: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "``source``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
-msgid "**x1**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:19
-msgid "X coordinate of `source` vertex."
+msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-msgid "**y1**"
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "``target``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:20
-msgid "Y coordinate of `source` vertex."
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "**x2**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "X coordinate of `target` vertex."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "**y2**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "Y coordinate of `target` vertex."
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``cost``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:32
+#: ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/pgRouting-concepts.rst:43
+#: ../../build/doc/pgRouting-concepts.rst:47
+#: ../../build/doc/pgRouting-concepts.rst:51
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "When negative: edge (``source``, ``target``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "``reverse_cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:34
+msgid "Weight of the edge (``target``, ``source``),"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``x1``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:41
+msgid "X coordinate of ``source`` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:42
+msgid "``y1``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:45
+msgid "Y coordinate of ``source`` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:46
+msgid "``x2``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:49
+msgid "X coordinate of ``target`` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:50
+msgid "``y2``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:53
+msgid "Y coordinate of ``target`` vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:55
+#: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Where:"
 msgstr ""
 
@@ -566,21 +554,29 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:27
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:57
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:28
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:58
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst:213
 msgid "Combinations query"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Identifier of the arrival vertex."
 msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst:220
@@ -588,35 +584,39 @@ msgid "Result Columns"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:3
-msgid "Returns SET OF ``(start_vid, end_vid, agg_cost)``"
+msgid "Set of ``(start_vid, end_vid, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**start_vid**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the starting vertex."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:16
 msgid "**end_vid**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 

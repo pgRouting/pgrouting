@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-02-15 05:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,8 +75,8 @@ msgstr ""
 msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:52
-#: ../../build/doc/pgr_KSP.rst:92 ../../build/doc/pgr_KSP.rst:117
+#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/pgr_KSP.rst:52
+#: ../../build/doc/pgr_KSP.rst:92 ../../build/doc/pgr_KSP.rst:119
 msgid "Description"
 msgstr ""
 
@@ -114,13 +114,13 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:92
-#: ../../build/doc/pgr_KSP.rst:117
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_KSP.rst:92
+#: ../../build/doc/pgr_KSP.rst:119
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_KSP.rst:92
-#: ../../build/doc/pgr_KSP.rst:117
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:92
+#: ../../build/doc/pgr_KSP.rst:119
 msgid "Type"
 msgstr ""
 
@@ -141,8 +141,8 @@ msgid "**start_vid**"
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:95 ../../build/doc/pgr_KSP.rst:96
-#: ../../build/doc/pgr_KSP.rst:121 ../../build/doc/pgr_KSP.rst:122
-#: ../../build/doc/pgr_KSP.rst:123
+#: ../../build/doc/pgr_KSP.rst:123 ../../build/doc/pgr_KSP.rst:124
+#: ../../build/doc/pgr_KSP.rst:125
 msgid "``BIGINT``"
 msgstr ""
 
@@ -162,8 +162,8 @@ msgstr ""
 msgid "**k**"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:97 ../../build/doc/pgr_KSP.rst:119
-#: ../../build/doc/pgr_KSP.rst:120
+#: ../../build/doc/pgr_KSP.rst:97 ../../build/doc/pgr_KSP.rst:121
+#: ../../build/doc/pgr_KSP.rst:122
 msgid "``INTEGER``"
 msgstr ""
 
@@ -205,78 +205,72 @@ msgstr ""
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**id**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "Identifier of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**target**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:124
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Weight of the edge  `(source, target)`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "-1"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "Weight of the edge `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
-msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
@@ -284,103 +278,107 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:112
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:114
+#: ../../build/doc/pgr_KSP.rst:116
 msgid "Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:119
+#: ../../build/doc/pgr_KSP.rst:121
 msgid "**seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:119
+#: ../../build/doc/pgr_KSP.rst:121
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:120
+#: ../../build/doc/pgr_KSP.rst:122
 msgid "**path_seq**"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:120
+#: ../../build/doc/pgr_KSP.rst:122
 msgid ""
 "Relative position in the path of ``node`` and ``edge``. Has value **1** "
 "for the beginning of a path."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:121
+#: ../../build/doc/pgr_KSP.rst:123
 msgid "**path_id**"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:121
+#: ../../build/doc/pgr_KSP.rst:123
 msgid ""
 "Path identifier. The ordering of the paths For two paths i, j if i < j "
 "then agg_cost(i) <= agg_cost(j)."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:122
+#: ../../build/doc/pgr_KSP.rst:124
 msgid "**node**"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:122
+#: ../../build/doc/pgr_KSP.rst:124
 msgid "Identifier of the node in the path."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:123
+#: ../../build/doc/pgr_KSP.rst:125
 msgid "**edge**"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:123
+#: ../../build/doc/pgr_KSP.rst:125
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. ``-1`` for the last node of the route."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:124 ../../build/doc/pgr_KSP.rst:125
+#: ../../build/doc/pgr_KSP.rst:126
+msgid "**cost**"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:126 ../../build/doc/pgr_KSP.rst:127
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:124
+#: ../../build/doc/pgr_KSP.rst:126
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:125
+#: ../../build/doc/pgr_KSP.rst:127
 msgid "**agg_cost**"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:125
+#: ../../build/doc/pgr_KSP.rst:127
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:129
+#: ../../build/doc/pgr_KSP.rst:133
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:131
+#: ../../build/doc/pgr_KSP.rst:135
 msgid "To handle the one flag to choose signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:133 ../../build/doc/pgr_KSP.rst:141
+#: ../../build/doc/pgr_KSP.rst:137 ../../build/doc/pgr_KSP.rst:145
 msgid "The examples in this section use the following :ref:`fig1`"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:139
+#: ../../build/doc/pgr_KSP.rst:143
 msgid ""
 "For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` "
 "columns"
@@ -390,53 +388,53 @@ msgstr ""
 msgid "Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:147
+#: ../../build/doc/pgr_KSP.rst:151
 msgid ""
 "For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` "
 "columns"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:149
+#: ../../build/doc/pgr_KSP.rst:153
 msgid "The examples in this section use the following :ref:`fig2`"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:155
+#: ../../build/doc/pgr_KSP.rst:159
 msgid "For queries marked as ``directed`` with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:157
+#: ../../build/doc/pgr_KSP.rst:161
 msgid "The examples in this section use the following :ref:`fig3`"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:163
+#: ../../build/doc/pgr_KSP.rst:167
 msgid "For queries marked as ``undirected`` with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:165
+#: ../../build/doc/pgr_KSP.rst:169
 msgid "The examples in this section use the following :ref:`fig4`"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:172
+#: ../../build/doc/pgr_KSP.rst:176
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:174
+#: ../../build/doc/pgr_KSP.rst:178
 msgid "https://en.wikipedia.org/wiki/K_shortest_path_routing"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:175
+#: ../../build/doc/pgr_KSP.rst:179
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:178
+#: ../../build/doc/pgr_KSP.rst:182
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:179
+#: ../../build/doc/pgr_KSP.rst:183
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:180
+#: ../../build/doc/pgr_KSP.rst:184
 msgid ":ref:`search`"
 msgstr ""
 
