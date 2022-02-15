@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_trsp - Turn Restriction Shortest Path (TRSP) &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_trsp - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pgr_trsp_withPoints - Proposed" href="pgr_trsp_withPoints.html" />
+    <link rel="next" title="pgr_trspVia - Proposed" href="pgr_trspVia.html" />
     <link rel="prev" title="TRSP - Family of functions" href="TRSP-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -94,7 +94,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a><ul>
+<li><a class="reference internal" href="#">pgr_trsp - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
@@ -132,7 +132,10 @@
 <li><a class="reference internal" href="#routing-from-a-vertex-to-a-point">Routing from a vertex to a point</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#prototypes">Prototypes</a></li>
+<li><a class="reference internal" href="#prototypes">Prototypes</a><ul>
+<li><a class="reference internal" href="#moving-from-pgr-trspviavertices">Moving from <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
@@ -151,7 +154,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_trsp_withPoints.html" title="Next Chapter: pgr_trsp_withPoints - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_trsp_with... &raquo;</span>
+    <a href="pgr_trspVia.html" title="Next Chapter: pgr_trspVia - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_trspVia -... &raquo;</span>
     </a>
   </li>
               
@@ -198,9 +201,9 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html">2.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html">2.0</a></p></li>
 </ul>
-<section id="pgr-trsp-turn-restriction-shortest-path-trsp">
-<h1><a class="toc-backref" href="#id3">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a><a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> — Returns the shortest path with support for turn restrictions.</p>
+<section id="pgr-trsp-proposed">
+<h1><a class="toc-backref" href="#id3">pgr_trsp - Proposed</a><a class="headerlink" href="#pgr-trsp-proposed" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> Vertex - Vertex routing with restrictions.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
 <li><p>Version 3.4.0</p>
@@ -214,8 +217,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
 </li>
-<li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean)</span></code> is deprecated</p></li>
-<li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,float,integer,float,boolean,boolean)</span></code> is deprecated</p></li>
+<li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean,text)</span></code> is deprecated</p></li>
+<li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)</span></code> is deprecated</p></li>
+<li><p>Signature <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</span></code> is deprecated</p></li>
 </ul>
 </li>
 <li><p>Version 2.1.0</p>
@@ -237,7 +241,7 @@
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgr-trsp-turn-restriction-shortest-path-trsp" id="id3">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a></p>
+<li><p><a class="reference internal" href="#pgr-trsp-proposed" id="id3">pgr_trsp - Proposed</a></p>
 <ul>
 <li><p><a class="reference internal" href="#description" id="id4">Description</a></p></li>
 <li><p><a class="reference internal" href="#signatures" id="id5">Signatures</a></p>
@@ -281,10 +285,14 @@
 <li><p><a class="reference internal" href="#routing-from-a-vertex-to-a-point" id="id32">Routing from a vertex to a point</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#prototypes" id="id33">Prototypes</a></p></li>
+<li><p><a class="reference internal" href="#prototypes" id="id33">Prototypes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#moving-from-pgr-trspviavertices" id="id34">Moving from <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#see-also" id="id34">See Also</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also" id="id35">See Also</a></p></li>
 </ul>
 </li>
 </ul>
@@ -340,9 +348,7 @@ pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <p class="rubric">Prototype</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trspViaVertices(sql text, vids integer[],
-         directed boolean, has_rcost boolean [, restrictions_sql text]) -- Prototype on v2.1
-pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
          directed boolean, has_rcost boolean [, turn_restrict_sql text]) -- Prototype on v2.1
 RETURNS SETOF (seq, id1, id2, id3, cost)
 </pre></div>
@@ -353,6 +359,10 @@ RETURNS SETOF (seq, id1, id2, id3, cost)
 pgr_trsp(sql text, source_edge integer, source_pos float8, target_edge integer, target_pos float8,
          directed boolean, has_rcost boolean [,restrict_sql text]) -- deprecated on v3.4
 RETURNS SETOF (seq, id1, id2, cost)
+
+pgr_trspViaVertices(sql text, vids integer[],
+         directed boolean, has_rcost boolean [, restrictions_sql text]) -- Deprecated on v3.4
+RETURNS SETOF (seq, id1, id2, id3, cost)
 </pre></div>
 </div>
 <section id="one-to-one">
@@ -660,11 +670,11 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="restrictions-sql">
 <h3><a class="toc-backref" href="#id14">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Permalink to this headline">¶</a></h3>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 7%" />
-<col style="width: 26%" />
-<col style="width: 67%" />
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 65%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -674,12 +684,14 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANYINTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of Edges identifiers that form a path that is not allowed to be taken</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Sequence of edge identifiers that form a path that is not allowed to be taken.
+- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
+- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td><p>Cost of taking the forbidden path</p></td>
+<td><p>Cost of taking the forbidden path.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1077,6 +1089,7 @@ path sequence.</p></td>
         <span class="n">false</span><span class="p">,</span>  <span class="n">false</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4, from_edge ||</span>
         <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM old_restrictions&#39;);</span>
+<span class="s1">WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated</span>
 <span class="s1"> seq | id1 | id2 | id3 | cost</span>
 <span class="s1">-----+-----+-----+-----+------</span>
 <span class="s1">   1 |   1 |   2 |   4 |    1</span>
@@ -1192,8 +1205,7 @@ taken the cost is 100.</p>
 <p>There is no restrictions query.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-  1, 15, true, true
-);
+  1, 15, true, true);
 WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1206,8 +1218,7 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
   1, 15, true, true,
-  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 ERROR:  Error computing path: Path Not Found
 </pre></div>
@@ -1216,8 +1227,7 @@ ERROR:  Error computing path: Path Not Found
 <p>When there are no restrictions <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> should be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  1, 15
-);
+  1, 15);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
@@ -1228,8 +1238,7 @@ ERROR:  Error computing path: Path Not Found
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
-  1, 15
-);
+  1, 15);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
 (0 rows)
@@ -1243,8 +1252,7 @@ ERROR:  Error computing path: Path Not Found
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  1, 1
-);
+  1, 1);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
@@ -1259,8 +1267,7 @@ ERROR:  Error computing path: Path Not Found
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT 1 AS id, 100 AS cost, ARRAY[33, 32, 25] AS path$$,
-  1, 1
-);
+  1, 1);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
 (0 rows)
@@ -1279,10 +1286,9 @@ has <code class="docutils literal notranslate"><span class="pre">has_rcost</span
 <p class="rubric">When <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is missing, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to true.</p>
 <p>An <strong>EXCEPTION</strong> is thrown as the contradiction can not be solved.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-    2, 3, false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
+  2, 3, false, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
 </pre></div>
@@ -1290,10 +1296,9 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
 <p class="rubric">When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> exists, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to false</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and take execution time</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    2, 3, false, false,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  2, 3, false, false,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1309,8 +1314,7 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 <p>When there are no restrictions <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> should be used.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  2, 3, false
-);
+  2, 3, false);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    2 |    2 |    1 |        0
@@ -1323,8 +1327,7 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost FROM edge_table$$,
   $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
-  2, 3, false
-);
+  2, 3, false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         2 |       3 |    2 |    4 |    1 |        0
@@ -1353,9 +1356,8 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 <p class="rubric">Returning <strong>EMPTY SET</strong> to represent no path found</p>
 <p>There is no restrictions query.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 17, 0.5, true, true
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 0.5, 17, 0.5, true, true);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1366,10 +1368,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <p class="rubric">Throwing <strong>EXCEPTION</strong> to represent no path found</p>
 <p>There is a restrictions query, even when the restrictions have nothing to do with the graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 17, 0.5, true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 0.5, 17, 0.5, true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 ERROR:  Error computing path: Path Not Found
 </pre></div>
@@ -1379,10 +1380,9 @@ ERROR:  Error computing path: Path Not Found
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
 (0 rows)
@@ -1394,10 +1394,9 @@ ERROR:  Error computing path: Path Not Found
   $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
   $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 17 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
 (0 rows)
@@ -1414,9 +1413,8 @@ ERROR:  Error computing path: Path Not Found
 </ul>
 <p class="rubric">Returning <span class="math notranslate nohighlight">\(N\)</span> vertices and <span class="math notranslate nohighlight">\(N - 1\)</span> edges.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 1, 0.8, true, true
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 0.5, 1, 0.8, true, true);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1428,10 +1426,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 </div>
 <p class="rubric">Returning <span class="math notranslate nohighlight">\(N - 1\)</span> vertices and <span class="math notranslate nohighlight">\(N - 1\)</span> edges.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 1, 0.8, true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 0.5, 1, 0.8, true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1445,10 +1442,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.3 |        0
@@ -1462,10 +1458,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
   $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
   $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -1 |      -2 |   -1 |    1 |  0.3 |        0
@@ -1482,9 +1477,8 @@ reach the destination, its already there. Therefore is expected to return an
 <strong>EMPTY SET</strong> or an <strong>EXCEPTION</strong> depending on the parameters, non of which is happening.</p>
 <p class="rubric">A path with 2 vertices and edge cost 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 1, 0.5, true, true
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 0.5, 1, 0.5, true, true);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1496,10 +1490,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 </div>
 <p class="rubric">A path with 1 vertices and edge cost 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 1, 0.5, true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+  1, 0.5, 1, 0.5, true, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1513,10 +1506,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |    0 |        0
@@ -1530,10 +1522,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
   $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
   $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -1 |      -2 |   -1 |    1 |    0 |        0
@@ -1554,9 +1545,8 @@ has <code class="docutils literal notranslate"><span class="pre">has_rcost</span
 <p class="rubric">When <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is missing, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to true.</p>
 <p>An <strong>EXCEPTION</strong> is thrown as the contradiction can not be solved.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-    1, 0.5, 1, 0.8, false, true
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
+  1, 0.5, 1, 0.8, false, true);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
 </pre></div>
@@ -1564,10 +1554,9 @@ ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cos
 <p class="rubric">When the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> exists, and the flag <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> is set to false</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and take execution time</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 0.5, 1, 0.8, false, false,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  1, 0.5, 1, 0.8, false, false,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1581,10 +1570,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost FROM edge_table$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 1 AS edge_id, 0.8 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.3 |        0
@@ -1598,10 +1586,9 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
   $$SELECT id, source, target, cost, reverse_cost  FROM edge_table$$,
   $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   $$(SELECT 1 AS pid, 1 AS edge_id, 0.5 AS fraction)
-    UNION
-    (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
-  -1, -2, true
-);
+  UNION
+  (SELECT 2 AS pid, 1 AS edge_id, 0.5 AS fraction)$$,
+  -1, -2, true);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |        -1 |      -2 |   -1 |    1 |    0 |        0
@@ -1649,8 +1636,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
   (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
   (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
   true, true,
-  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1665,8 +1651,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-  -1, -6
-);
+  -1, -6);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.6 |        0
@@ -1706,8 +1691,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
   8, 1,
   (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
   (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
-  true, true
-);
+  true, true);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1730,8 +1714,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
   (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
   (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
   true, true,
-  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
-);
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -1747,8 +1730,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-  6, -1
-);
+  6, -1);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    6 |    8 |    1 |        0
@@ -1764,8 +1746,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
   $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-  6, -1
-);
+  6, -1);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         6 |      -1 |    6 |    8 |    1 |        0
@@ -1781,16 +1762,83 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 </section>
 <section id="prototypes">
 <h3><a class="toc-backref" href="#id33">Prototypes</a><a class="headerlink" href="#prototypes" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> were added to pgRouting as prototypes</p>
-<p>These functions use the <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> functions from version 2.1 inheriting all the problems mentioned above.
-When there are no restrictions and have a routing “via” problem with vertices:</p>
-<ul class="simple">
-<li><p>Use <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> when there are no restrictions and no points on edges involved.</p></li>
-</ul>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> were added to pgRouting as prototypes
+These functions use the <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> functions from version 2.1 inheriting all the problems mentioned above.</p>
+<section id="moving-from-pgr-trspviavertices">
+<h4><a class="toc-backref" href="#id34">Moving from <code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code></a><a class="headerlink" href="#moving-from-pgr-trspviavertices" title="Permalink to this headline">¶</a></h4>
+<p>When there are no restrictions <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaVertices(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  ARRAY[2, 8, 2],
+  false, true);
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |   7 |    1
+   3 |   2 |   8 |   7 |    1
+   4 |   2 |   5 |   4 |    1
+   5 |   2 |   2 |  -1 |    0
+(5 rows)
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  ARRAY[2, 8, 2],
+  false);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+   1 |       1 |        1 |         2 |       8 |    2 |    4 |    1 |        0 |              0
+   2 |       1 |        2 |         2 |       8 |    5 |    7 |    1 |        1 |              1
+   3 |       1 |        3 |         2 |       8 |    8 |   -1 |    0 |        2 |              2
+   4 |       2 |        1 |         8 |       2 |    8 |    7 |    1 |        0 |              2
+   5 |       2 |        2 |         8 |       2 |    5 |    4 |    1 |        1 |              3
+   6 |       2 |        3 |         8 |       2 |    2 |   -2 |    0 |        2 |              4
+(6 rows)
+
+</pre></div>
+</div>
+<p>When there are restrictions <a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> (One Via) should be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspViaVertices(
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  ARRAY[2, 8, 2],
+  false, true,
+  $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$);
+WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
+ seq | id1 | id2 | id3 | cost
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |   7 |    1
+   3 |   2 |   8 |   7 |    1
+   4 |   2 |   5 |   4 |    1
+   5 |   2 |   2 |  -1 |    0
+(5 rows)
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia(
+  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT 100 AS cost, ARRAY[33, 32, 25] AS path$$,
+  ARRAY[2, 8, 2],
+  false);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+   1 |       1 |        1 |         2 |       8 |    2 |    4 |    1 |        0 |              0
+   2 |       1 |        2 |         2 |       8 |    5 |    7 |    1 |        1 |              1
+   3 |       1 |        3 |         2 |       8 |    8 |   -1 |    0 |        2 |              2
+   4 |       2 |        1 |         8 |       2 |    8 |    7 |    1 |        0 |              2
+   5 |       2 |        2 |         8 |       2 |    5 |    4 |    1 |        1 |              3
+   6 |       2 |        3 |         8 |       2 |    2 |   -2 |    0 |        2 |              4
+(6 rows)
+
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id34">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id35">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>

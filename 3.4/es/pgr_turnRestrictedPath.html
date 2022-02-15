@@ -161,7 +161,7 @@
 </ul>
 <section id="pgr-turnrestrictedpath-experimental">
 <h1><a class="toc-backref" href="#id1">pgr_turnRestrictedPath - Experimental</a><a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> — Using Yen’s algorithm returns the shortest path with turn restrictions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> Using Yen’s algorithm Vertex -Vertex routing with restrictions</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -404,11 +404,11 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="restrictions-sql">
 <h3><a class="toc-backref" href="#id8">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 7%" />
-<col style="width: 26%" />
-<col style="width: 67%" />
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 65%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -418,12 +418,14 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANYINTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of Edges identifiers that form a path that is not allowed to be taken</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Sequence of edge identifiers that form a path that is not allowed to be taken.
+- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
+- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td><p>Cost of taking the forbidden path</p></td>
+<td><p>Cost of taking the forbidden path.</p></td>
 </tr>
 </tbody>
 </table>

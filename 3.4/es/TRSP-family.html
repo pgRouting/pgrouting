@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_trsp - Camino más corto con giros restringidos (TRSP)" href="pgr_trsp.html" />
+    <link rel="next" title="pgr_trsp - Proposed" href="pgr_trsp.html" />
     <link rel="prev" title="Funciones propuestas" href="proposed.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -118,7 +118,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_trsp.html" title="Next Chapter: pgr_trsp - Camino más corto con giros restringidos (TRSP)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_trsp - Ca... &raquo;</span>
+    <a href="pgr_trsp.html" title="Next Chapter: pgr_trsp - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_trsp - Proposed &raquo;</span>
     </a>
   </li>
               
@@ -176,8 +176,9 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Camino más corto con giros restringidos (TRSP)</span></a> - Routing with restrictions.</p></li>
-<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Routing points with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Vertex - Vertex routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> - Via Vertices routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point - Vertex/Point routing with restrictions.</p></li>
 </ul>
 <p class="rubric">Experimental</p>
 <div class="admonition warning">
@@ -250,11 +251,11 @@ algorithms do not need that information. If given it will be ignored.</p>
 </div>
 <section id="restrictions-sql">
 <h4>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h4>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 7%" />
-<col style="width: 26%" />
-<col style="width: 67%" />
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 65%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -264,12 +265,14 @@ algorithms do not need that information. If given it will be ignored.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANYINTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of Edges identifiers that form a path that is not allowed to be taken</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Sequence of edge identifiers that form a path that is not allowed to be taken.
+- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
+- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td><p>Cost of taking the forbidden path</p></td>
+<td><p>Cost of taking the forbidden path.</p></td>
 </tr>
 </tbody>
 </table>
