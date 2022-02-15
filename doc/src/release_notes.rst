@@ -41,6 +41,10 @@ pgRouting 3.4.0 Release Notes
 
 * Turn Restrictions
 
+  * pgr_trspVia
+
+    * ``pgr_trspVia`` (One Via)
+
   * pgr_trsp
 
     * ``pgr_trsp`` (One to One)
@@ -63,6 +67,7 @@ pgRouting 3.4.0 Release Notes
 
   * ``pgr_trsp(text, integer, integer, boolean, boolean, text)``
   * ``pgr_trsp(text, integer, float8, integer, float8, boolean, boolean, text)``
+  * ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
 
 
 
