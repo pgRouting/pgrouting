@@ -4,7 +4,7 @@ SELECT * FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
     ARRAY[1, 3, 9]
 );
-/* -- q0 */
+/* -- q01 */
 SELECT * FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
     ARRAY[1, 3, 9], false, strict:=true, U_turn_on_edge:=false
