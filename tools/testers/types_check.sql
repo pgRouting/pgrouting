@@ -1,4 +1,3 @@
-
 CREATE OR REPLACE FUNCTION types_check_general(fn TEXT)
 RETURNS SETOF TEXT AS
 $BODY$
@@ -188,6 +187,79 @@ BEGIN
         params_numbers || 25::OID || optional_params_numbers || return_params_numbers,',')
       || '}'
     ),'proallargtypes ' || fn);
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION types_check_via(fn TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  -- edges sql
+  params_types_words TEXT[] = ARRAY['text'];
+  params_names TEXT[] = ARRAY[''];
+  params_numbers OID[] = ARRAY[25];
+
+  optional_params_types_words TEXT[] = ARRAY['boolean','boolean','boolean'];
+  optional_params_names TEXT[] = ARRAY['directed','strict','u_turn_on_edge'];
+  optional_params_numbers OID[] = ARRAY[16,16,16];
+
+  return_params_names TEXT[] = ARRAY['seq','path_id','path_seq','start_vid','end_vid','node','edge','cost','agg_cost','route_agg_cost'];
+  return_params_numbers OID[] = ARRAY[23,23,23,20,20,20,20,701,701,701];
+
+BEGIN
+  IF fn IN ('pgr_trspvia') AND NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
+    RETURN;
+  END IF;
+
+  IF fn LIKE '%trsp%' THEN
+    -- restrictions sql
+    params_types_words := params_types_words || 'text'::TEXT;
+    params_names := params_names || ARRAY[''];
+    params_numbers := params_numbers || ARRAY[25::OID];
+  END IF;
+
+  IF fn LIKE '%withpoints%' THEN
+    -- points sql
+    params_types_words := params_types_words || 'text'::TEXT;
+    params_names := params_names || ARRAY[''];
+    params_numbers := params_numbers || ARRAY[25::OID];
+    -- points optionals
+    optional_params_types_words := optional_params_types_words || ARRAY['character','boolean'];
+    optional_params_names := optional_params_names || ARRAY['driving_side','details'];
+    optional_params_numbers := optional_params_numbers || ARRAY[1042::OID, 16::OID];
+  END IF;
+
+  -- vias
+  params_types_words := params_types_words || 'anyarray'::TEXT;
+  params_names := params_names || ARRAY[''];
+  params_numbers := params_numbers || ARRAY[2277::OID];
+
+  RETURN QUERY SELECT has_function(fn);
+  RETURN QUERY SELECT has_function(fn, params_types_words || optional_params_types_words);
+  RETURN QUERY SELECT function_returns(fn, params_types_words || optional_params_types_words,'setof record');
+
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT proargnames from pg_proc where proname = %1$L$$, fn),
+    format(
+      $$VALUES (%1$L::TEXT[])$$,
+      -- one via
+      '{"' || array_to_string(
+        params_names || optional_params_names || return_params_names,'","')
+      || '"}'),
+    'proargnames ' || fn);
+
+  RETURN QUERY SELECT set_eq(
+    format($$SELECT proallargtypes from pg_proc where proname = %1$L$$, fn),
+    format(
+      $$VALUES (%1$L::OID[])$$,
+      -- one via
+      '{"' || array_to_string(
+        params_numbers || optional_params_numbers || return_params_numbers,'","')
+      || '"}'),
+    'proargnames ' || fn);
 
 END;
 $BODY$
