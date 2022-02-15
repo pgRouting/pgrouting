@@ -24,14 +24,14 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html>`__
 
-.. _pgrouting_concepts:
+|
 
 pgRouting Concepts
 ===============================================================================
 
 .. contents::
 
-.. _Getting_started:
+|
 
 Getting Started
 -------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ with pgRouting. In this guide we will cover:
     :local:
 
 
-.. _create_database:
+|
 
 Create a routing Database
 ...............................................................................
@@ -62,7 +62,7 @@ For Postgresql 9.2 and later versions
 	psql mydatabase -c "create extension postgis"
 	psql mydatabase -c "create extension pgrouting"
 
-.. _load_data:
+|
 
 Load Data
 ...............................................................................
@@ -87,7 +87,7 @@ you may then load that data into your database as a table of some kind. At this
 point you need to know a little about your data structure and content. One easy
 way to browse your new data table is with pgAdmin or phpPgAdmin.
 
-.. _build_topology:
+|
 
 Build a Routing Topology
 ...............................................................................
@@ -108,7 +108,7 @@ where you should replace 'myroads' with the name of your table storing the edges
 
 * :doc:`pgr_createTopology`
 
-.. _check_graph:
+|
 
 Check the Routing Topology
 ...............................................................................
@@ -140,7 +140,7 @@ where you should replace 'myroads' with the name of your table storing the edges
 * :doc:`pgr_nodeNetwork`
 
 
-.. _compute_path:
+|
 
 Compute a Path
 ...............................................................................
@@ -177,6 +177,8 @@ to get more information about each step in the path.
 
 * :doc:`pgr_dijkstra`
 
+|
+
 Group of Functions
 -------------------------------------------------------------------------------
 
@@ -192,6 +194,8 @@ Across this documentation, to indicate which overload we use the following terms
 Depending on the overload are the parameters used, keeping consistency across
 all functions.
 
+|
+
 One to One
 ...............................................................................
 
@@ -199,6 +203,8 @@ When routing from:
 
 * From **one** starting vertex
 * to **one** ending vertex
+
+|
 
 One to Many
 ...............................................................................
@@ -208,6 +214,8 @@ When routing from:
 * From **one** starting vertex
 * to **many** ending vertices
 
+|
+
 Many to One
 ...............................................................................
 
@@ -216,6 +224,8 @@ When routing from:
 * From **many** starting vertices
 * to **one** ending vertex
 
+|
+
 Many to Many
 ...............................................................................
 
@@ -223,6 +233,8 @@ When routing from:
 
 * From **many** starting vertices
 * to **many** ending vertices
+
+|
 
 Combinations
 ...............................................................................
@@ -234,9 +246,7 @@ When routing from:
 * Every tuple specifies a pair of a start vertex and an end vertex
 * Users can define the combinations as desired.
 
-
-
-.. _inner_queries:
+|
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -246,7 +256,7 @@ Inner Queries
 
 There are several kinds of valid inner queries and also the columns returned are depending of the function.
 Which kind of inner query will depend on the function(s) requirements.
-To simplify variety of types, ``ANY-INTEGER`` and ``ANY-NUMERICAL`` is used.
+To simplify variety of types, **ANY-INTEGER** and **ANY-NUMERICAL** is used.
 
 .. where_definition_starts
 
@@ -257,191 +267,327 @@ Where:
 
 .. where_definition_ends
 
+|
 
-Description of the edges_sql query for dijkstra like functions
+Edges SQL
 ...............................................................................
+
+.. rubric:: Edges SQL for
+
+* :doc:`dijkstra-family`
+* :doc:`withPoints-family`
+* :doc:`bdDijkstra-family`
+* :doc:`components-family`
+* :doc:`kruskal-family`
+* :doc:`prim-family`
+* Some uncategorized functions
 
 .. basic_edges_sql_start
 
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``              Identifier of the edge.
-**source**        ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``            Weight of the edge  `(source, target)`
+.. list-table::
+   :width: 81
+   :widths: 14 14 7 44
+   :header-rows: 1
 
-                                               - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the edge.
+   * - ``source``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the second end point vertex of the edge.
+   * - ``cost``
+     - **ANY-NUMERICAL**
+     -
+     - Weight of the edge  (``source``, ``target``)
+   * - ``reverse_cost``
+     - **ANY-NUMERICAL**
+     - -1
+     - Weight of the edge (``target``, ``source``)
 
-**reverse_cost**  ``ANY-NUMERICAL``       -1   Weight of the edge `(target, source)`,
-
-                                               - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-================= =================== ======== =================================================
+       - When negative: edge (``target``, ``source``) does not exist, therefore
+         it's not part of the graph.
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. basic_edges_sql_end
 
+.. rubric:: Edges SQL for
+
+* :doc:`allpairs-family`
 
 .. no_id_edges_sql_start
 
-.. rubric:: Description of the edges_sql query (id is not necessary)
+.. list-table::
+   :width: 81
+   :widths: 14 14 7 44
+   :header-rows: 1
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``source``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the second end point vertex of the edge.
+   * - ``cost``
+     - **ANY-NUMERICAL**
+     -
+     - Weight of the edge  (``source``, ``target``)
+   * - ``reverse_cost``
+     - **ANY-NUMERICAL**
+     - -1
+     - Weight of the edge (``target``, ``source``)
 
-================  ===================   ======== =================================================
-Column            Type                  Default  Description
-================  ===================   ======== =================================================
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-
-                                                 * When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-================  ===================   ======== =================================================
+       - When negative: edge (``target``, ``source``) does not exist, therefore
+         it's not part of the graph.
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. no_id_edges_sql_end
 
+.. rubric:: Edges SQL for
 
-
-.. pgr_dijkstra_via_parameters_start
-
-Parameters
--------------------------------------------------------------------------------
-
-=================== ====================== ========= =========================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =========================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
-**via_vertices**    ``ARRAY[ANY-INTEGER]``           Array of ordered vertices identifiers that are going to be visited.
-**directed**        ``BOOLEAN``            ``true``  - When ``true`` Graph is considered `Directed`
-                                                     - When ``false`` the graph is considered as Undirected.
-**strict**          ``BOOLEAN``            ``false`` - When ``false`` ignores missing paths returning all paths found
-                                                     - When ``true`` if a path is missing stops and returns `EMPTY SET`
-**U_turn_on_edge**  ``BOOLEAN``            ``true``  - When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is allowed.
-                                                     - When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same `id` is used when no other path is found.
-=================== ====================== ========= =========================================
-
-.. pgr_dijkstra_via_parameters_end
-
-
-
-edges_sql query for :doc:`aStar-family` and :doc:`aStar-family` functions
-.............................................................................................
+* :doc:`aStar-family`
+* :doc:`bdAstar-family`
 
 .. xy_edges_sql_start
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+.. list-table::
+   :width: 81
+   :widths: 12 14 7 44
+   :header-rows: 1
 
-================  ===================   ======== =================================================
-Column            Type                  Default  Description
-================  ===================   ======== =================================================
-**id**            ``ANY-INTEGER``                Identifier of the edge.
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the edge.
+   * - ``source``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the second end point vertex of the edge.
+   * - ``cost``
+     - **ANY-NUMERICAL**
+     -
+     - Weight of the edge  (``source``, ``target``)
 
-                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+       * When negative: edge (``source``, ``target``) does not exist, therefore
+         it's not part of the graph.
+   * - ``reverse_cost``
+     - **ANY-NUMERICAL**
+     - -1
+     - Weight of the edge (``target``, ``source``),
 
-**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-**x1**            ``ANY-NUMERICAL``              X coordinate of `source` vertex.
-**y1**            ``ANY-NUMERICAL``              Y coordinate of `source` vertex.
-**x2**            ``ANY-NUMERICAL``              X coordinate of `target` vertex.
-**y2**            ``ANY-NUMERICAL``              Y coordinate of `target` vertex.
-================  ===================   ======== =================================================
+       * When negative: edge (``target``, ``source``) does not exist, therefore
+         it's not part of the graph.
+   * - ``x1``
+     - **ANY-NUMERICAL**
+     -
+     - X coordinate of ``source`` vertex.
+   * - ``y1``
+     - **ANY-NUMERICAL**
+     -
+     - Y coordinate of ``source`` vertex.
+   * - ``x2``
+     - **ANY-NUMERICAL**
+     -
+     - X coordinate of ``target`` vertex.
+   * - ``y2``
+     - **ANY-NUMERICAL**
+     -
+     - Y coordinate of ``target`` vertex.
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. xy_edges_sql_end
 
 
-.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
+.. rubric:: Edges SQL for
+
+* :doc:`flow-family`
 
 .. include:: flow-family.rst
    :start-after: flow_edges_sql_start
    :end-before: flow_edges_sql_end
 
-.. rubric:: For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:
+.. rubric:: Edges SQL for the following functions of :doc:`flow-family`
+
+* :doc:`pgr_maxFlowMinCost`
+* :doc:`pgr_maxFlowMinCost_Cost`
 
 .. include:: flow-family.rst
    :start-after: costFlow_edges_sql_start
    :end-before: costFlow_edges_sql_end
 
+|
 
-.. points_sql_start
-
-.. rubric:: Description of the Points SQL query
-
-:points_sql: an SQL query, which should return a set of rows with the following columns:
-
-============ ================= =================================================
-Column            Type              Description
-============ ================= =================================================
-**pid**      ``ANY-INTEGER``   (optional) Identifier of the point.
-
-                               - If column present, it can not be NULL.
-                               - If column not present, a sequential identifier will be given automatically.
-
-**edge_id**  ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in <0,1> that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-
-                               - In the right, left of the edge or
-                               - If it doesn't matter with 'b' or NULL.
-                               - If column not present 'b' is considered.
-
-============ ================= =================================================
-
-Where:
-
-:ANY-INTEGER: smallint, int, bigint
-:ANY-NUMERICAL: smallint, int, bigint, real, float
-
-.. points_sql_end
-
-Description of the combinations_sql query for dijkstra like functions
+Combinations SQL
 ...............................................................................
+
+.. rubric:: Used on combination signatures
 
 .. basic_combinations_sql_start
 
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
 
-================= =================== ======== =================================================
+   * - Parameter
+     - Type
+     - Description
+   * - ``source``
+     - **ANY-INTEGER**
+     - Identifier of the departure vertex.
+   * - ``target``
+     - **ANY-INTEGER**
+     - Identifier of the arrival vertex.
 
 Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
 
 .. basic_combinations_sql_end
 
 
-.. _return_values:
+|
 
-Return columns & values
+Points SQL
+...............................................................................
+
+.. rubric:: Points SQL for
+
+* :doc:`withPoints-family`
+
+.. points_sql_start
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 7 44
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``pid``
+     - **ANY-INTEGER**
+     - **value**
+     - (optional) Identifier of the point.
+
+       * If column present, it can not be NULL.
+       * If column not present, a sequential negative **value** will be given
+         automatically.
+   * - ``edge_id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the "closest" edge to the point.
+   * - ``fraction``
+     - **ANY-NUMERICAL**
+     -
+     - Value in <0,1> that indicates the relative postition from the first end
+       point of the edge.
+   * - ``side``
+     - ``CHAR``
+     - ``b``
+     - Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:
+
+       * In the right ``r``,
+       * In the left ``l``,
+       * In both ``b``
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+.. points_sql_end
+
+|
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. rubric:: Parameters for the Via functions
+
+* :doc:`pgr_dijkstraVia`
+
+.. pgr_dijkstra_via_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 20 7 40
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - **via vertices**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     -
+     - Array of ordered vertices identifiers that are going to be visited.
+   * - ``directed``
+     - ``BOOLEAN``
+     - ``true``
+     - - When ``true`` Graph is considered `Directed`
+       - When ``false`` the graph is considered as Undirected.
+   * - ``strict``
+     - ``BOOLEAN``
+     - ``false``
+     - * When ``true`` if a path is missing stops and returns **EMPTY SET**
+       * When ``false`` ignores missing paths returning all paths found
+   * - ``U_turn_on_edge``
+     - ``BOOLEAN``
+     - ``true``
+     - * When ``true`` departing from a visited vertex will not try to avoid
+         using the edge used to reach it.  In other words, U turn using the edge
+         with same identifier is allowed.
+       * When ``false`` when a departing from a visited vertex tries to avoid
+         using the edge used to reach it.  In other words, U turn using the edge
+         with same identifier is used when no other path is found.
+
+
+.. pgr_dijkstra_via_parameters_end
+
+|
+
+Return columns
 --------------------------------------------------------------------------------
 
 .. contents::
@@ -449,103 +595,176 @@ Return columns & values
 
 There are several kinds of columns returned are depending of the function.
 
-Return values for a path
+|
+
+Return columns for a path
 ...............................................................................
+
+.. rubric:: Used on functions that return one path solution
 
 .. return_path_short_start
 
-Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
+Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost,
+agg_cost)``
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
-**start_vid**  ``BIGINT`` Identifier of the starting vertex.
-                          Returned when multiple starting vetrices are in the query.
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
 
-                          * `Many to One`_
-                          * `Many to Many`_
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex.
+       Returned when multiple starting vetrices are in the query.
 
-**end_vid**    ``BIGINT`` Identifier of the ending vertex.
-                          Returned when multiple ending vertices are in the query.
+       * `Many to One`_
+       * `Many to Many`_
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex.
+       Returned when multiple ending vertices are in the query.
 
-                          * `One to Many`_
-                          * `Many to Many`_
-
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
-============== ========== =================================================
+       * `One to Many`_
+       * `Many to Many`_
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence. **-1** for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
 
 .. return_path_short_end
 
+|
 
-Return values for multiple paths from the same source and destination
+Return columns for multiple paths
 ...............................................................................
+
+.. rubric:: Used on functions that return many paths solutions
 
 .. return_path_start
 
-Returns set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
+Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, cost,
+agg_cost)``
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_id**    ``INT``    Path identifier. Has value **1** for the first of a path. Used when there are multiple paths for the same ``start_vid`` to ``end_vid`` combination.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
-**start_vid**  ``BIGINT`` Identifier of the starting vertex.
-                          Returned when multiple starting vetrices are in the query.
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
 
-                          * `Many to One`_
-                          * `Many to Many`_
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_id``
+     - ``INTEGER``
+     - Path identifier.
 
+       * Has value **1** for the first of a path from ``start_vid`` to ``end_vid``.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex.
+       Returned when multiple starting vetrices are in the query.
 
-**end_vid**    ``BIGINT`` Identifier of the ending vertex.
-                          Returned when multiple ending vertices are in the query.
+       * `Many to One`_
+       * `Many to Many`_
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex.
+       Returned when multiple ending vertices are in the query.
 
-                          * `One to Many`_
-                          * `Many to Many`_
-
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
-============== ========== =================================================
+       * `One to Many`_
+       * `Many to Many`_
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence. **-1** for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
 
 .. return_path_end
 
+|
 
-Description of the return values for a :doc:`costMatrix-category` function
+Return columns for cost functions
 ...............................................................................
+
+.. rubric:: Used in the following
+
+* Cost functions
+* :doc:`costMatrix-category`
 
 .. return_cost_start
 
-Returns SET OF ``(start_vid, end_vid, agg_cost)``
+Set of ``(start_vid, end_vid, agg_cost)``
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**start_vid**  ``BIGINT`` Identifier of the starting vertex.
-**end_vid**    ``BIGINT`` Identifier of the ending vertex.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_vid`` to ``end_vid``.
-============== ========== =================================================
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - **start_vid**
+     - ``BIGINT``
+     - Identifier of the starting vertex.
+   * - **end_vid**
+     - ``BIGINT``
+     - Identifier of the ending vertex.
+   * - **agg_cost**
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``end_vid``.
 
 .. return_cost_end
 
 
+|
 
-Description of the Return Values
+Return columns for flow functions
 .....................................................................
 
-.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
+.. rubric:: Edges SQL for the following
+
+* :doc:`flow-family`
 
 .. include:: flow-family.rst
     :start-after: result_flow_start
     :end-before: result_flow_end
 
-.. rubric:: For :doc:`pgr_maxFlowMinCost`
+.. rubric:: Edges SQL for the following functions of :doc:`flow-family`
+
+* :doc:`pgr_maxFlowMinCost`
 
 .. include:: flow-family.rst
     :start-after: result_costFlow_start
