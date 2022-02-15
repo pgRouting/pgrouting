@@ -30,17 +30,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "c_common/time_msg.h"
 #include "c_common/debug_macro.h"
-/** 
+/**
  * Function for array input
- * @details This function generates the array inputs according to their type 
+ * @details This function generates the array inputs according to their type
  * received through @a ArrayType *v parameter and store them in @a c_array. It
  * can be empty also if received @a allow_empty true. The cases of failure are:-
- * 1. When @a ndim is not equal to one dimension. 
- * 2. When no element is found i.e. nitems is zero or negative. 
+ * 1. When @a ndim is not equal to one dimension.
+ * 2. When no element is found i.e. nitems is zero or negative.
  * 3. If the element type doesn't lie in switch cases, give the error of expected array of any integer type
- * 4. When size of @a c_array is out of range or memory. 
- * 5. When null value is found in the array. 
- * 
+ * 4. When size of @a c_array is out of range or memory.
+ * 5. When null value is found in the array.
+ *
  * All these failures are represented as error through @a elog.
  * @param[in] v The type of element to be processed.
  * @param[out] arrlen The length of the array (To be determined in this function).
@@ -69,7 +69,7 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
 
     if (allow_empty && (ndim == 0 || nitems <= 0)) {
-        PGR_DBG("ndim %i nitems % i", ndim, nitems);
+        PGR_DBG("ndim %d nitems %d", ndim, nitems);
         return (int64_t*)NULL;
     }
     /* the array is not empty*/
@@ -137,7 +137,7 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
     return c_array;
 }
 
-/** 
+/**
  * @param[out] arrlen Length of the array
  * @param[in] input Input type of the array
  * @returns Returns the output of @a pgr_get_bitIntArray when @a allow_empty is set to false.
@@ -147,7 +147,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     return pgr_get_bigIntArr(input, arrlen, false);
 }
 
-/** 
+/**
  * @param[out] arrlen Length of the array
  * @param[in] input Input type of the array
  * @returns Returns the output of @a pgr_get_bitIntArray when @a allow_empty is set to true.

@@ -121,7 +121,7 @@ do_pgr_dijkstraVia(
             log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            pgRouting::pgr_dijkstraVia(
+            pgrouting::pgr_dijkstraVia(
                     digraph,
                     via_vertices,
                     paths,
@@ -132,7 +132,7 @@ do_pgr_dijkstraVia(
             log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            pgRouting::pgr_dijkstraVia(
+            pgrouting::pgr_dijkstraVia(
                     undigraph,
                     via_vertices,
                     paths,
