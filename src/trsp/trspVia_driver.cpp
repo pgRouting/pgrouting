@@ -1,11 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: dijkstraViaVertex_driver.cpp
-
-Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+File: trspVia_driver.cpp
 
 Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2022 Celia Virginia Vergara Castillo
 
 ------
 
@@ -25,19 +22,61 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/dijkstra/dijkstraVia_driver.h"
+#include "drivers/trsp/trspVia_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
 
 #include "dijkstra/pgr_dijkstraVia.hpp"
 #include "c_types/routes_t.h"
+#include "c_types/restriction_t.h"
+#include "cpp_common/rule.h"
+#include "cpp_common/combinations.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
+#include "trsp/pgr_trspHandler.h"
 
-static
+
+namespace {
+
+/** @brief Orders results in terms of the via information */
+void
+post_process_trspvia(std::deque<Path> &paths, std::vector<int64_t> via) {
+    for (auto &p : paths) {
+        p.recalculate_agg_cost();
+    }
+
+    std::deque<Path> ordered_paths;
+    auto u = via.front();
+    bool skip = true;
+    for (const auto &v : via) {
+        if (skip) {skip = false; continue;}
+        /*
+         * look for the path (u,v)
+         */
+        auto path_ptr = std::find_if(
+                paths.begin(), paths.end(),
+                [&](const Path &path)
+                {return (u == path.start_id()) && (v == path.end_id());});
+
+        if (path_ptr == paths.end()) {
+            /*
+             * TODO path not found
+             */
+        } else {
+            /* path was found */
+            ordered_paths.push_back(*path_ptr);
+            paths.erase(path_ptr);
+        }
+        u = v;
+    }
+
+    paths = ordered_paths;
+}
+
 void
 get_path(
         int route_id,
@@ -65,12 +104,10 @@ get_path(
     }
 }
 
-
-static
 size_t
 get_route(
         Routes_t **ret_path,
-        std::deque< Path > &paths) {
+        std::deque<Path> &paths) {
     size_t sequence = 0;
     int path_id = 1;
     int route_id = 1;
@@ -85,15 +122,18 @@ get_route(
     }
     return sequence;
 }
+}  // namespace
 
 void
-do_pgr_dijkstraVia(
-        Edge_t* data_edges,    size_t total_edges,
-        int64_t* via_vidsArr,     size_t size_via_vidsArr,
+do_trspVia(
+        Edge_t* data_edges, size_t total_edges,
+        Restriction_t *restrictions, size_t restrictions_size,
+        int64_t* via_vidsArr, size_t size_via_vidsArr,
+
         bool directed,
         bool strict,
         bool U_turn_on_edge,
-        Routes_t** return_tuples,   size_t* return_count,
+        Routes_t** return_tuples, size_t* return_count,
 
         char** log_msg,
         char** notice_msg,
@@ -112,13 +152,11 @@ do_pgr_dijkstraVia(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
-        log << "\nInserting vertices into a c++ vector structure";
-        std::vector< int64_t > via_vertices(
+        std::deque<Path> paths;
+        std::vector<int64_t> via_vertices(
                 via_vidsArr, via_vidsArr + size_via_vidsArr);
 
         if (directed) {
-            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             pgrouting::pgr_dijkstraVia(
@@ -129,7 +167,6 @@ do_pgr_dijkstraVia(
                     U_turn_on_edge,
                     log);
         } else {
-            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             pgrouting::pgr_dijkstraVia(
@@ -144,17 +181,49 @@ do_pgr_dijkstraVia(
         size_t count(count_tuples(paths));
 
         if (count == 0) {
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            notice <<
-                "No paths found";
+            notice << "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
-        // get the space required to store all the paths
+        if (restrictions_size == 0) {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            (*return_count) = (get_route(return_tuples, paths));
+            (*return_tuples)[count - 1].edge = -2;
+            return;
+        }
+
+        /*
+         * When there are turn restrictions
+         */
+        std::vector<pgrouting::trsp::Rule> ruleList;
+        for (size_t i = 0; i < restrictions_size; ++i) {
+            if (restrictions[i].via_size == 0) continue;
+            ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
+        }
+
+        auto new_combinations = pgrouting::utilities::get_combinations(paths, ruleList);
+
+        if (!new_combinations.empty()) {
+            pgrouting::trsp::Pgr_trspHandler gdef(
+                    data_edges,
+                    total_edges,
+                    directed,
+                    ruleList);
+            auto new_paths = gdef.process(new_combinations);
+            paths.insert(paths.end(), new_paths.begin(), new_paths.end());
+        }
+        post_process_trspvia(paths, via_vertices);
+
+        count = count_tuples(paths);
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            return;
+        }
+
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;
 
@@ -184,5 +253,3 @@ do_pgr_dijkstraVia(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-

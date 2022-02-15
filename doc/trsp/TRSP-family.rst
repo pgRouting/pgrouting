@@ -26,8 +26,9 @@ When points are also given as input:
 
 .. index proposed from here
 
-- :doc:`pgr_trsp` - Routing with restrictions.
-- :doc:`pgr_trsp_withPoints` - Routing points with restrictions.
+- :doc:`pgr_trsp` - Vertex - Vertex routing with restrictions.
+- :doc:`pgr_trspVia` - Via Vertices routing with restrictions.
+- :doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with restrictions.
 
 .. index proposed to here
 
@@ -47,6 +48,7 @@ When points are also given as input:
     :hidden:
 
     pgr_trsp
+    pgr_trspVia
     pgr_trsp_withPoints
     pgr_turnRestrictedPath
 
@@ -80,17 +82,29 @@ Restrictions SQL
 
 .. restrictions_columns_start
 
-========= ===============================  =================================================================================
-Column             Type                    Description
-========= ===============================  =================================================================================
-``path``  ``ARRAY[`` **ANYINTEGER** ``]``  Sequence of Edges identifiers that form a path that is not allowed to be taken
-``Cost``  **ANY-NUMERICAL**                Cost of taking the forbidden path
-========= ===============================  =================================================================================
+.. list-table::
+   :width: 81
+   :widths: 7 17 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``path``
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Sequence of edge identifiers that form a path that is not allowed to be taken.
+       - Empty arrays or ``NULL`` arrays are ignored.
+       - Arrays that have a ``NULL`` element will raise an exception.
+   * - ``Cost``
+     - **ANY-NUMERICAL**
+     - Cost of taking the forbidden path.
 
 Where:
 
 :ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
 :ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+
 
 .. restrictions_columns_end
 

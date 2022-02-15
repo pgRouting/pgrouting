@@ -58,7 +58,7 @@ Signatures
 .. rubric:: Summary
 
 .. index::
-    single: dijkstraVia - Proposed
+    single: dijkstraVia - Proposed on 2.2
 
 .. code-block:: none
 
@@ -80,9 +80,9 @@ Signatures
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q00
-    :end-before: -- q0
+    :end-before: -- q01
 
-Complete Signature
+One Via
 ...............................................................................
 
 .. code-block:: none
@@ -95,8 +95,11 @@ Complete Signature
 :Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}` in that order on an **undirected** graph, avoiding U-turns when possible
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
-    :start-after: -- q0
+    :start-after: -- q01
     :end-before: -- q1
+
+Parameters
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: pgr_dijkstra_via_parameters_start
@@ -115,22 +118,30 @@ Edges SQL
 Return Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(start_vid, end_vid, agg_cost)``
+.. via result columns start
+
+Returns set of ``(seq, path_pid, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)``
 
 ================== ============= =================================================
 Column             Type          Description
 ================== ============= =================================================
-**seq**            ``BIGINT``    Sequential value starting from 1.
-**path_pid**       ``BIGINT``    Identifier of the path.
-**path_seq**       ``BIGINT``    Sequential value starting from 1 for the path.
-**start_vid**      ``BIGINT``    Identifier of the starting vertex of the path.
-**end_vid**        ``BIGINT``    Identifier of the ending vertex of the path.
-**node**           ``BIGINT``    Identifier of the node in the path from start_vid to end_vid.
-**edge**           ``BIGINT``    Identifier of the edge used to go from node to the next node in the path sequence. -1 for the last node of the path. -2 for the last node of the route.
-**cost**           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
-**agg_cost**       ``FLOAT``     Total cost from ``start_vid`` to ``end_vid`` of the path.
-**route_agg_cost** ``FLOAT``     Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the current ``path_pid`` .
+``seq``            ``BIGINT``    Sequential value starting from 1.
+``path_pid``       ``BIGINT``    Identifier of the path.
+``path_seq``       ``BIGINT``    Sequential value starting from 1 for the path.
+``start_vid``      ``BIGINT``    Identifier of the starting vertex of the path.
+``end_vid``        ``BIGINT``    Identifier of the ending vertex of the path.
+``node``           ``BIGINT``    Identifier of the node in the path from start_vid to end_vid.
+``edge``           ``BIGINT``    Identifier of the edge used to go from node to the next node in the path sequence.
+
+                                 * -1 for the last node of the path.
+                                 * -2 for the last node of the route.
+
+``cost``           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
+``agg_cost``       ``FLOAT``     Total cost from ``start_vid`` to ``end_vid`` of the path.
+``route_agg_cost`` ``FLOAT``     Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``.
 ================== ============= =================================================
+
+.. via result columns end
 
 Additional Examples
 -------------------------------------------------------------------------------
