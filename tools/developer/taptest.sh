@@ -58,6 +58,7 @@ do
         -f trsp_tests.sql \
         -f spanningtree.sql \
         -f types_check.sql \
+        -f via_compare.sql \
         -f tsp_pgtap_tests.sql
 
 
