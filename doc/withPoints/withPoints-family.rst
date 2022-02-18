@@ -38,6 +38,7 @@ When points are also given as input:
 - :doc:`pgr_withPointsCostMatrix` - Costs of the shortest paths.
 - :doc:`pgr_withPointsKSP` - K shortest paths.
 - :doc:`pgr_withPointsDD` - Driving distance.
+- :doc:`pgr_withPointsVia` - Driving distance.
 
 .. index proposed to here
 
@@ -49,6 +50,7 @@ When points are also given as input:
     pgr_withPointsCostMatrix
     pgr_withPointsKSP
     pgr_withPointsDD
+    pgr_withPointsVia
 
 
 Images
