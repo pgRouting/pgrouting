@@ -6,8 +6,8 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
+Copyright (c) 2022 Celia Virginia Vergara Castillo
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
 
 ------
 
@@ -27,11 +27,57 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+--v3.4
+CREATE FUNCTION pgr_withPointsVia(
+  TEXT,     -- edges SQL
+  TEXT,     -- points SQL
+  ANYARRAY, -- via vids
 
-----------------------
--- _pgr_withPointsVia
-----------------------
+  directed BOOLEAN DEFAULT true,
 
+  -- via parameters
+  strict BOOLEAN DEFAULT false,
+  U_turn_on_edge BOOLEAN DEFAULT true,
+
+  -- withPoints parameters
+  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
+  details BOOLEAN DEFAULT false,
+
+  OUT seq INTEGER,
+  OUT path_id INTEGER,
+  OUT path_seq INTEGER,
+  OUT start_vid BIGINT,
+  OUT end_vid BIGINT,
+  OUT node BIGINT,
+  OUT edge BIGINT,
+  OUT cost FLOAT,
+  OUT agg_cost FLOAT,
+  OUT route_agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+$BODY$
+  SELECT *
+  FROM _pgr_withPointsVia( _pgr_get_statement($1), _pgr_get_statement($2), $3, $4, $5, $6, $7, $8);
+$BODY$
+LANGUAGE SQL VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+COMMENT ON FUNCTION pgr_withPointsVia(TEXT, TEXT, ANYARRAY, BOOLEAN, BOOLEAN, BOOLEAN, CHAR, BOOLEAN)
+IS 'pgr_withPointsVia
+- PROPOSED
+- Parameters:
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
+  - Points SQL with columns: [pid], edge_id, fraction [,side]
+  - ARRAY[via vertices identifiers]
+- Optional Parameters
+  - directed := true
+  - strict := false
+  - U_turn_on_edge := true
+  - driving_side := ''b''
+  - details := ''false''
+- Documentation:
+  - ${PROJECT_DOC_LINK}/pgr_withPointsVia.html
+';
 
 --v2.6
 CREATE FUNCTION  _pgr_withPointsVia(
@@ -178,4 +224,4 @@ CREATE FUNCTION  _pgr_withPointsVia(
 
 
 COMMENT ON FUNCTION _pgr_withPointsVia(TEXT, BIGINT[], FLOAT[], BOOLEAN)
-IS 'pgRouting internal function';
+IS 'pgRouting deprecated internal function';
