@@ -95,11 +95,6 @@ locale_dirs = ['@CMAKE_SOURCE_DIR@/locale/']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = [
-    'doc/build',
-    'pgr_withPointsVia.rst',
-    'maxFlowApplications.rst',
-    '*/notUsed',
-    'tools/template'
     ]
 
 #    'src/pickDeliver/doc/pgr_withPointsVia.rst',
@@ -321,7 +316,8 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/TRSP-family.html',
     'https://docs.pgrouting.org/latest/en/pgr_trsp_withPoints.html',
     'https://docs.pgrouting.org/latest/en/pgr_trspVia.html',
-    'https://docs.pgrouting.org/3.4/en/pgr_trspVia.html',
+    'https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html',
+    'https://docs.pgrouting.org/3.4/en/pgr_withPointsVia.html',
 
 
 

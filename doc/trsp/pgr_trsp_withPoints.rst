@@ -202,7 +202,7 @@ Parameter              Type                               Default   Description
 ``directed``           ``BOOLEAN``                        ``true``  - When ``true`` the graph is considered as directed.
                                                                     - When ``false`` the graph is considred as undirected.
 
-``driving_side``       ``CHAR``                                     ``b``     Value in :math:`{b,r,l}` indicating if the driving side is:
+``driving_side``       ``CHAR``                           ``b``     Value in :math:`{b,r,l}` indicating if the driving side is:
                                                                     - ``r`` for right driving side
                                                                     - ``l`` for left driving side
                                                                     - ``b`` for both, or ignore driving side
