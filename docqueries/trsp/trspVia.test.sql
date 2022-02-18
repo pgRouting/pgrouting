@@ -49,7 +49,7 @@ FROM  pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[1, 5, 7, 10, 4])
-WHERE node = 9 and (agg_cost  <> 0 or seq = 1);
+WHERE agg_cost  <> 0 or seq = 1;
 /* -- q7 */
 SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,

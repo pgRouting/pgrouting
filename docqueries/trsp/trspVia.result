@@ -124,11 +124,22 @@ FROM  pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[1, 5, 7, 10, 4])
-WHERE node = 9 and (agg_cost  <> 0 or seq = 1);
+WHERE agg_cost  <> 0 or seq = 1;
  seq | route_agg_cost | node | agg_cost |     status
 -----+----------------+------+----------+-----------------
+   1 |              0 |    1 |        0 | passes in front
+   2 |              1 |    2 |        1 | passes in front
+   3 |              2 |    5 |        2 | visits
+   5 |              3 |    8 |        1 | passes in front
+   6 |              4 |    7 |        2 | visits
+   8 |              5 |    8 |        1 | passes in front
+   9 |              6 |    5 |        2 | passes in front
+  10 |            107 |   10 |      103 | visits
+  12 |            108 |   11 |        1 | passes in front
+  13 |            109 |   12 |        2 | passes in front
   14 |            110 |    9 |        3 | passes in front
-(1 row)
+  15 |            111 |    4 |        4 | passes in front
+(12 rows)
 
 /* -- q7 */
 SELECT * FROM pgr_dijkstraVia(
