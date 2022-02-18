@@ -1,0 +1,10 @@
+BEGIN;
+
+SELECT CASE WHEN min_version('3.4.0') THEN plan(2048) ELSE plan(1) END;
+SET extra_float_digits = -3;
+UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
+
+SELECT withPointsVia_VS_dijstraVia(16, false);
+
+SELECT * FROM finish();
+ROLLBACK;
