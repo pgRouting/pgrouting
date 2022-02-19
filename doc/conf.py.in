@@ -317,7 +317,9 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/pgr_trsp_withPoints.html',
     'https://docs.pgrouting.org/latest/en/pgr_trspVia.html',
     'https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html',
+    'https://docs.pgrouting.org/latest/en/via-category.html',
     'https://docs.pgrouting.org/3.4/en/pgr_withPointsVia.html',
+    'https://docs.pgrouting.org/3.4/en/via-category.html',
 
 
 
