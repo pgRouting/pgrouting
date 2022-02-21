@@ -597,10 +597,12 @@ it’s not part of the graph.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p><strong>value</strong></p></td>
-<td><p>(opcional) Identificador del punto.</p>
+<td><p>Identifier of the point.</p>
 <ul class="simple">
-<li><p>Si la columna está presente, no puede ser NULL.</p></li>
-<li><p>If column not present, a sequential negative <strong>value</strong> will be given
+<li><p>Use with positive value, as internally will be converted to negative
+value</p></li>
+<li><p>If column is present, it can not be NULL.</p></li>
+<li><p>If column is not present, a sequential negative <strong>value</strong> will be given
 automatically.</p></li>
 </ul>
 </td>
@@ -901,7 +903,7 @@ automatically.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en feb. 15, 2022.<br/>
+      Actualizado por última vez en feb. 21, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
