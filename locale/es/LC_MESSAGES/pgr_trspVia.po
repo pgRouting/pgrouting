@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 17:07+0000\n"
+"POT-Creation-Date: 2022-02-21 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,7 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/pgr_trspVia.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_trspVia.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trspVia.html>`__)"
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
+"pgr_trspVia.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trspVia."
+"html>`__)"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:17
@@ -80,51 +83,55 @@ msgstr ""
 msgid "New **proposed** function ``pgr_trspVia`` (`One Via`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:38
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/TRSP-family.rst:10
-#: ../../build/doc/pgr_dijkstraVia.rst:6
+#: ../../build/doc/pgr_trspVia.rst:39 ../../build/doc/pgr_dijkstraVia.rst:11
+#: ../../build/doc/via-category.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/TRSP-family.rst:10
+#: ../../build/doc/via-category.rst:10
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:40
-msgid "Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\\_of(via\\;vertices)` trying not to use restricted paths."
-msgstr ""
-
-#: ../../build/doc/pgr_trspVia.rst:43
-msgid "The paths represents the sections of the route."
+#: ../../build/doc/pgr_trspVia.rst:41
+msgid ""
+"Given a list of vertices and a graph, this function is equivalent to finding "
+"the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :"
+"math:`i < size\\_of(via\\;vertices)` trying not to use restricted paths."
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:45
-msgid "The general algorithm is as follows:"
+msgid "The paths represents the sections of the route."
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:47
+msgid "The general algorithm is as follows:"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia.rst:49
 msgid "Execute a :doc:`pgr_dijkstraVia`."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:48
-msgid "For the set of sub paths of the solution that pass through a restriction then"
-msgstr ""
-
 #: ../../build/doc/pgr_trspVia.rst:50
-msgid "Execute the :doc:`pgr_trsp` algorithm with restrictions for the sub paths."
+msgid ""
+"For the set of sub paths of the solution that pass through a restriction then"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:51
+#: ../../build/doc/pgr_trspVia.rst:52
+msgid ""
+"Execute the :doc:`pgr_trsp` algorithm with restrictions for the sub paths."
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia.rst:53
 msgid "**NOTE** when this is done, ``U_turn_on_edge`` flag is ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:55
+#: ../../build/doc/pgr_trspVia.rst:59
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:58
+#: ../../build/doc/pgr_trspVia.rst:62
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:69
+#: ../../build/doc/pgr_trspVia.rst:77
 msgid "One Via"
 msgstr ""
 
@@ -132,117 +139,113 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:78
-msgid "Find the route that visits the vertices :math:`\\{ 1, 7, 10\\}` in that order on an **directed** graph."
+#: ../../build/doc/pgr_trspVia.rst:87
+msgid ""
+"Find the route that visits the vertices :math:`\\{ 1, 7, 10\\}` in that "
+"order on an **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:85
+#: ../../build/doc/pgr_trspVia.rst:97
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_dijkstraVia.rst:8 ../../build/doc/via-category.rst:8
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/TRSP-family.rst:9
-#: ../../build/doc/pgr_dijkstraVia.rst:6
+#: ../../build/doc/pgr_dijkstraVia.rst:9 ../../build/doc/via-category.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/TRSP-family.rst:9
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgr_dijkstraVia.rst:10 ../../build/doc/via-category.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgr_dijkstraVia.rst:12
 msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgr_dijkstraVia.rst:13
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgr_dijkstraVia.rst:15
 msgid "SQL query as described."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgr_dijkstraVia.rst:16
 msgid "**via vertices**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:17
-#: ../../build/doc/TRSP-family.rst:12
+#: ../../build/doc/pgr_dijkstraVia.rst:17 ../../build/doc/TRSP-family.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgr_dijkstraVia.rst:19
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgr_dijkstraVia.rst:20
 msgid "``directed``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/pgRouting-concepts.rst:26
-#: ../../build/doc/pgRouting-concepts.rst:31
+#: ../../build/doc/pgr_dijkstraVia.rst:21 ../../build/doc/via-category.rst:13
+#: ../../build/doc/via-category.rst:18
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-#: ../../build/doc/pgRouting-concepts.rst:32
+#: ../../build/doc/pgr_dijkstraVia.rst:22 ../../build/doc/via-category.rst:19
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/pgr_dijkstraVia.rst:23
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgr_dijkstraVia.rst:24
 msgid "When ``false`` the graph is considered as Undirected."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgr_trspVia.rst:106
+msgid "Via optional parameters"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:12
 msgid "``strict``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:27
+#: ../../build/doc/via-category.rst:14
 msgid "``false``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/via-category.rst:15
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/via-category.rst:16
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/via-category.rst:17
 msgid "``U_turn_on_edge``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:33
-msgid "When ``true`` departing from a visited vertex will not try to avoid using the edge used to reach it.  In other words, U turn using the edge with same identifier is allowed."
+#: ../../build/doc/via-category.rst:20
+msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:36
-msgid "When ``false`` when a departing from a visited vertex tries to avoid using the edge used to reach it.  In other words, U turn using the edge with same identifier is used when no other path is found."
-msgstr ""
-
-#: ../../build/doc/pgr_trspVia.rst:92
+#: ../../build/doc/pgr_trspVia.rst:115
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:95
+#: ../../build/doc/pgr_trspVia.rst:120
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/TRSP-family.rst:8
-#: ../../build/doc/pgr_dijkstraVia.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/TRSP-family.rst:8
+#: ../../build/doc/via-category.rst:8
 msgid "Column"
 msgstr ""
 
@@ -277,13 +280,12 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgr_dijkstraVia.rst:19
+#: ../../build/doc/via-category.rst:36
 msgid "``cost``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/TRSP-family.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:29 ../../build/doc/TRSP-family.rst:17
 msgid "**ANY-NUMERICAL**"
 msgstr ""
 
@@ -304,35 +306,32 @@ msgid "Weight of the edge (``target``, ``source``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:33
-msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore it's "
+"not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/TRSP-family.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:36 ../../build/doc/TRSP-family.rst:20
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/TRSP-family.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/TRSP-family.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:38
-#: ../../build/doc/TRSP-family.rst:22
+#: ../../build/doc/pgRouting-concepts.rst:38 ../../build/doc/TRSP-family.rst:22
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/TRSP-family.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/TRSP-family.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:39
-#: ../../build/doc/TRSP-family.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:39 ../../build/doc/TRSP-family.rst:23
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:102
+#: ../../build/doc/pgr_trspVia.rst:129
 msgid "Restrictions SQL"
 msgstr ""
 
@@ -341,7 +340,10 @@ msgid "``path``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:13
-msgid "Sequence of edge identifiers that form a path that is not allowed to be taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a ``NULL`` element will raise an exception."
+msgid ""
+"Sequence of edge identifiers that form a path that is not allowed to be "
+"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a "
+"``NULL`` element will raise an exception."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:16
@@ -352,115 +354,117 @@ msgstr ""
 msgid "Cost of taking the forbidden path."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:109
+#: ../../build/doc/pgr_trspVia.rst:138
 msgid "Return Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:3
-msgid "Returns set of ``(seq, path_pid, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)``"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst:8
+#: ../../build/doc/via-category.rst:11
 msgid "``seq``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:8
-#: ../../build/doc/pgr_dijkstraVia.rst:9
-#: ../../build/doc/pgr_dijkstraVia.rst:10
-#: ../../build/doc/pgr_dijkstraVia.rst:11
-#: ../../build/doc/pgr_dijkstraVia.rst:12
-#: ../../build/doc/pgr_dijkstraVia.rst:13
-#: ../../build/doc/pgr_dijkstraVia.rst:14
-msgid "``BIGINT``"
+#: ../../build/doc/via-category.rst:12 ../../build/doc/via-category.rst:15
+#: ../../build/doc/via-category.rst:18
+msgid "``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:8
-msgid "Sequential value starting from 1."
+#: ../../build/doc/via-category.rst:13
+msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:9
-msgid "``path_pid``"
+#: ../../build/doc/via-category.rst:14
+msgid "``path_id``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:9
-msgid "Identifier of the path."
+#: ../../build/doc/via-category.rst:16
+msgid "Identifier of a path. Has value **1** for the first path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:10
+#: ../../build/doc/via-category.rst:17
 msgid "``path_seq``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:10
-msgid "Sequential value starting from 1 for the path."
+#: ../../build/doc/via-category.rst:19
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:11
+#: ../../build/doc/via-category.rst:20
 msgid "``start_vid``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:11
+#: ../../build/doc/via-category.rst:21 ../../build/doc/via-category.rst:24
+#: ../../build/doc/via-category.rst:27 ../../build/doc/via-category.rst:30
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:22
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:12
+#: ../../build/doc/via-category.rst:23
 msgid "``end_vid``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:12
+#: ../../build/doc/via-category.rst:25
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:13
+#: ../../build/doc/via-category.rst:26
 msgid "``node``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:13
-msgid "Identifier of the node in the path from start_vid to end_vid."
+#: ../../build/doc/via-category.rst:28
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:14
+#: ../../build/doc/via-category.rst:29
 msgid "``edge``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:14
-msgid "Identifier of the edge used to go from node to the next node in the path sequence."
+#: ../../build/doc/via-category.rst:31
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the path "
+"sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:16
+#: ../../build/doc/via-category.rst:34
 msgid "-1 for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:17
+#: ../../build/doc/via-category.rst:35
 msgid "-2 for the last node of the route."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:19
-#: ../../build/doc/pgr_dijkstraVia.rst:20
-#: ../../build/doc/pgr_dijkstraVia.rst:21
+#: ../../build/doc/via-category.rst:37 ../../build/doc/via-category.rst:41
+#: ../../build/doc/via-category.rst:44
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:19
-msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence."
+#: ../../build/doc/via-category.rst:38
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:20
+#: ../../build/doc/via-category.rst:40
 msgid "``agg_cost``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:20
-msgid "Total cost from ``start_vid`` to ``end_vid`` of the path."
+#: ../../build/doc/via-category.rst:42
+msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:21
+#: ../../build/doc/via-category.rst:43
 msgid "``route_agg_cost``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:21
-msgid "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``."
+#: ../../build/doc/via-category.rst:45
+msgid ""
+"Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current "
+"``seq``."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:116
+#: ../../build/doc/pgr_trspVia.rst:147
 msgid "Additional Examples"
 msgstr ""
 
@@ -468,15 +472,17 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:118
-msgid "Find the route that visits the vertices :math:`\\{1, 5, 7, 10, 4\\}` in that order"
+#: ../../build/doc/pgr_trspVia.rst:149
+msgid ""
+"Find the route that visits the vertices :math:`\\{1, 5, 7, 10, 4\\}` in that "
+"order"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:124
+#: ../../build/doc/pgr_trspVia.rst:156
 msgid "What's the aggregate cost of the third path?"
 msgstr ""
 
@@ -484,15 +490,16 @@ msgstr ""
 msgid "Example 3"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:130
-msgid "What's the route's aggregate cost of the route at the end of the third path?"
+#: ../../build/doc/pgr_trspVia.rst:162
+msgid ""
+"What's the route's aggregate cost of the route at the end of the third path?"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 4"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:136
+#: ../../build/doc/pgr_trspVia.rst:169
 msgid "How are the nodes visited in the route?"
 msgstr ""
 
@@ -500,43 +507,52 @@ msgstr ""
 msgid "Example 5"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:142
-msgid "What are the aggregate costs of the route when the visited vertices are reached?"
+#: ../../build/doc/pgr_trspVia.rst:175
+msgid ""
+"What are the aggregate costs of the route when the visited vertices are "
+"reached?"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 6"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:148
-msgid "Show the route's seq and aggregate cost and a status of \"passes in front\" or \"visits\" node :math:`9`"
+#: ../../build/doc/pgr_trspVia.rst:182
+msgid ""
+"Show the route's seq and aggregate cost and a status of \"passes in front\" "
+"or \"visits\""
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 7"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:154
+#: ../../build/doc/pgr_trspVia.rst:189
 msgid "Simulation of how algorithm works"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:156
+#: ../../build/doc/pgr_trspVia.rst:191
 msgid "The algorithm performs a :doc:`pgr_dijkstraVia`"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:162
-msgid "Detects which of the sub paths pass through a restriction in this case is for the ``path_id = 1`` from ``2`` to ``8`` because the path :math:`4 \\rightarrow 7` is restricted."
+#: ../../build/doc/pgr_trspVia.rst:197
+msgid ""
+"Detects which of the sub paths pass through a restriction in this case is "
+"for the ``path_id = 1`` from ``2`` to ``8`` because the path :math:`4 "
+"\\rightarrow 7` is restricted."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:165
+#: ../../build/doc/pgr_trspVia.rst:201
 msgid "Executes the :doc:`pgr_trsp` algorithm for the conflicting paths."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:171
-msgid "From the :doc:`pgr_dijkstraVia` result it removes the conflicting paths and builds the solution with the results of the :doc:`pgr_trsp` algorithm:"
+#: ../../build/doc/pgr_trspVia.rst:207
+msgid ""
+"From the :doc:`pgr_dijkstraVia` result it removes the conflicting paths and "
+"builds the solution with the results of the :doc:`pgr_trsp` algorithm:"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:178
+#: ../../build/doc/pgr_trspVia.rst:214
 msgid "Getting the same result as ``pgr_trspVia``:"
 msgstr ""
 
@@ -544,42 +560,49 @@ msgstr ""
 msgid "Example 8"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:184
+#: ../../build/doc/pgr_trspVia.rst:220
 msgid "Sometimes ``U_turn_on_edge`` flag is ignored when is set to ``false``."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:186
-msgid "The first step, doing a :doc:`pgr_dijkstraVia` does consider not making a U turn on the same edge. But the path :math:`9 \\rightarrow 16` is restricted and the result is using it."
+#: ../../build/doc/pgr_trspVia.rst:223
+msgid ""
+"The first step, doing a :doc:`pgr_dijkstraVia` does consider not making a U "
+"turn on the same edge. But the path :math:`9 \\rightarrow 16` (Rows 4 and 5) "
+"is restricted and the result is using it."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:193
-msgid "When executing the :doc:`pgr_trsp` algorithm for the conflicting path, there is no ``U_turn_on_edge`` flag."
+#: ../../build/doc/pgr_trspVia.rst:231
+msgid ""
+"When executing the :doc:`pgr_trsp` algorithm for the conflicting path, there "
+"is no ``U_turn_on_edge`` flag."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:199
-msgid "Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``false``."
+#: ../../build/doc/pgr_trspVia.rst:238
+msgid ""
+"Therefore the result ignores the ``U_turn_on_edge`` flag when set to "
+"``false``."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:206
+#: ../../build/doc/pgr_trspVia.rst:245
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:208
-msgid ":doc:`pgr_dijkstraVia`"
+#: ../../build/doc/pgr_trspVia.rst:247
+msgid ":doc:`via-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:209
+#: ../../build/doc/pgr_trspVia.rst:248
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:212
+#: ../../build/doc/pgr_trspVia.rst:251
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:213
+#: ../../build/doc/pgr_trspVia.rst:252
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:214
+#: ../../build/doc/pgr_trspVia.rst:253
 msgid ":ref:`search`"
 msgstr ""
