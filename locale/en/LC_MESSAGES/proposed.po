@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 17:07+0000\n"
+"POT-Creation-Date: 2022-02-21 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,6 +121,10 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ""
 
+#: ../../build/doc/withPoints-family.rst:8
+msgid ":doc:`pgr_withPointsVia` - Driving distance."
+msgstr ""
+
 #: ../../build/doc/proposed.rst:58
 msgid ":doc:`TRSP-family`"
 msgstr ""
@@ -203,23 +207,35 @@ msgstr ""
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:125
-msgid "See Also"
+#: ../../build/doc/proposed.rst:118
+msgid ":doc:`via-category`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:127
-msgid ":doc:`experimental`"
+#: ../../build/doc/via-category.rst:3
+msgid ":doc:`pgr_trspVia`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:130
-msgid "Indices and tables"
+#: ../../build/doc/via-category.rst:4
+msgid ":doc:`pgr_withPointsVia`"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:131
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:133
+msgid ":doc:`experimental`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:136
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:137
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:132
+#: ../../build/doc/proposed.rst:138
 msgid ":ref:`search`"
 msgstr ""
 

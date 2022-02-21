@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-02-21 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,11 +102,15 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:55
-msgid "Images"
+#: ../../build/doc/withPoints-family.rst:41
+msgid ":doc:`pgr_withPointsVia` - Driving distance."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:57
+msgid "Images"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:59
 msgid ""
 "The squared vertices are the temporary vertices, The temporary vertices "
 "are added according to the driving side, The following images visually "
@@ -114,35 +118,35 @@ msgid ""
 "interpreted."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:61
+#: ../../build/doc/withPoints-family.rst:63
 msgid "Right driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:66
+#: ../../build/doc/withPoints-family.rst:68
 msgid "Left driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:71
+#: ../../build/doc/withPoints-family.rst:73
 msgid "doesn't matter the driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:76
+#: ../../build/doc/withPoints-family.rst:78
 msgid "Introduction"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:78
+#: ../../build/doc/withPoints-family.rst:80
 msgid ""
 "This family of functions was thought for routing vehicles, but might as "
 "well work for some other application that we can not think of."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:81
+#: ../../build/doc/withPoints-family.rst:83
 msgid ""
 "The with points family of function give you the ability to route between "
 "arbitrary points located outside the original graph."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:84
+#: ../../build/doc/withPoints-family.rst:86
 msgid ""
 "When given a point identified with a `pid` that its being mapped to and "
 "edge with an identifier `edge_id`, with a `fraction` along that edge "
@@ -152,231 +156,231 @@ msgid ""
 "networks,"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:95
+#: ../../build/doc/withPoints-family.rst:97
 msgid ""
 "I talk about a family of functions because it includes different "
 "functionalities."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:92
+#: ../../build/doc/withPoints-family.rst:94
 msgid "pgr_withPoints is pgr_dijkstra based"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:93
+#: ../../build/doc/withPoints-family.rst:95
 msgid "pgr_withPointsCost is pgr_dijkstraCost based"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:94
+#: ../../build/doc/withPoints-family.rst:96
 msgid "pgr_withPointsKSP is pgr_ksp based"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:95
+#: ../../build/doc/withPoints-family.rst:97
 msgid "pgr_withPointsDD is pgr_drivingDistance based"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:97
+#: ../../build/doc/withPoints-family.rst:99
 msgid "In all this functions we have to take care of as many aspects as possible:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:99
+#: ../../build/doc/withPoints-family.rst:101
 msgid "Must work for routing:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:101
+#: ../../build/doc/withPoints-family.rst:103
 msgid "Cars (directed graph)"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:102
+#: ../../build/doc/withPoints-family.rst:104
 msgid "Pedestrians (undirected graph)"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:104
+#: ../../build/doc/withPoints-family.rst:106
 msgid "Arriving at the point:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:106
+#: ../../build/doc/withPoints-family.rst:108
 msgid "In either side of the street."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:107
+#: ../../build/doc/withPoints-family.rst:109
 msgid "Compulsory arrival on the side of the street where the point is located."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:109
+#: ../../build/doc/withPoints-family.rst:111
 msgid "Countries with:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:111
+#: ../../build/doc/withPoints-family.rst:113
 msgid "Right side driving"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:112
+#: ../../build/doc/withPoints-family.rst:114
 msgid "Left side driving"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:114
+#: ../../build/doc/withPoints-family.rst:116
 msgid "Some points are:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:116
+#: ../../build/doc/withPoints-family.rst:118
 msgid ""
 "Permanent, for example the set of points of clients stored in a table in "
 "the data base"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:117
+#: ../../build/doc/withPoints-family.rst:119
 msgid "Temporal, for example points given through a web application"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:119
+#: ../../build/doc/withPoints-family.rst:121
 msgid "The numbering of the points are handled with negative sign."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:121
+#: ../../build/doc/withPoints-family.rst:123
 msgid "Original point identifiers are to be positive."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:122
+#: ../../build/doc/withPoints-family.rst:124
 msgid "Transformation to negative is done internally."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:123
+#: ../../build/doc/withPoints-family.rst:125
 msgid "For results for involving vertices identifiers"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:125
+#: ../../build/doc/withPoints-family.rst:127
 msgid "positive sign is a vertex of the original graph"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:126
+#: ../../build/doc/withPoints-family.rst:128
 msgid "negative sign is a point of the temporary points"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:128
+#: ../../build/doc/withPoints-family.rst:130
 msgid ""
 "The reason for doing this is to avoid confusion when there is a vertex "
 "with the same number as identifier as the points identifier."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:131
+#: ../../build/doc/withPoints-family.rst:133
 msgid "Graph & edges"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:133
+#: ../../build/doc/withPoints-family.rst:135
 msgid ""
 "Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E`"
 " is the set of edges be the original directed graph."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:135
+#: ../../build/doc/withPoints-family.rst:137
 msgid ""
 "An edge of the original `edges_sql` is :math:`(id, source, target, cost, "
 "reverse\\_cost)` will generate internally"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:137
+#: ../../build/doc/withPoints-family.rst:139
 msgid ":math:`(id, source, target, cost)`"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:138
+#: ../../build/doc/withPoints-family.rst:140
 msgid ":math:`(id, target, source, reverse\\_cost)`"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:141
+#: ../../build/doc/withPoints-family.rst:143
 msgid "Point Definition"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:143
+#: ../../build/doc/withPoints-family.rst:145
 msgid "A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:145
+#: ../../build/doc/withPoints-family.rst:147
 msgid "**pid** is the point identifier"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:146
+#: ../../build/doc/withPoints-family.rst:148
 msgid "**eid** is an edge id of the `edges_sql`"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:147
+#: ../../build/doc/withPoints-family.rst:149
 msgid "**fraction** represents where the edge `eid` will be cut."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:148
+#: ../../build/doc/withPoints-family.rst:150
 msgid "**side** Indicates the side of the edge where the point is located."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:152
+#: ../../build/doc/withPoints-family.rst:154
 msgid "Creating Temporary Vertices in the Graph"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:154
+#: ../../build/doc/withPoints-family.rst:156
 msgid "For edge (15,  9,12  10, 20), & lets insert point (2, 12, 0.3, r)"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:157
+#: ../../build/doc/withPoints-family.rst:159
 msgid "On a right hand side driving network"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:158
+#: ../../build/doc/withPoints-family.rst:160
 msgid "From first image above:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:160
+#: ../../build/doc/withPoints-family.rst:162
 msgid "We can arrive to the point only via vertex 9."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:161
+#: ../../build/doc/withPoints-family.rst:163
 msgid "It only affects the edge (15, 9,12, 10) so that edge is removed."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:162
+#: ../../build/doc/withPoints-family.rst:164
 msgid "Edge (15, 12,9, 20) is kept."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:163
-#: ../../build/doc/withPoints-family.rst:175
-#: ../../build/doc/withPoints-family.rst:190
+#: ../../build/doc/withPoints-family.rst:165
+#: ../../build/doc/withPoints-family.rst:177
+#: ../../build/doc/withPoints-family.rst:192
 msgid "Create new edges:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:165
-#: ../../build/doc/withPoints-family.rst:194
+#: ../../build/doc/withPoints-family.rst:167
+#: ../../build/doc/withPoints-family.rst:196
 msgid "(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:166
-#: ../../build/doc/withPoints-family.rst:195
+#: ../../build/doc/withPoints-family.rst:168
+#: ../../build/doc/withPoints-family.rst:197
 msgid "(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:169
+#: ../../build/doc/withPoints-family.rst:171
 msgid "On a left hand side driving network"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:170
+#: ../../build/doc/withPoints-family.rst:172
 msgid "From second image above:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:172
+#: ../../build/doc/withPoints-family.rst:174
 msgid "We can arrive to the point only via vertex 12."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:173
+#: ../../build/doc/withPoints-family.rst:175
 msgid "It only affects the edge (15, 12,9 20) so that edge is removed."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:174
+#: ../../build/doc/withPoints-family.rst:176
 msgid "Edge (15, 9,12, 10) is kept."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:177
-#: ../../build/doc/withPoints-family.rst:192
+#: ../../build/doc/withPoints-family.rst:179
+#: ../../build/doc/withPoints-family.rst:194
 msgid "(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:178
-#: ../../build/doc/withPoints-family.rst:193
+#: ../../build/doc/withPoints-family.rst:180
+#: ../../build/doc/withPoints-family.rst:195
 msgid "(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6"
 msgstr ""
 
@@ -384,43 +388,43 @@ msgstr ""
 msgid "Remember"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:180
+#: ../../build/doc/withPoints-family.rst:182
 msgid "that fraction is from vertex 9 to vertex 12"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:184
+#: ../../build/doc/withPoints-family.rst:186
 msgid "When driving side does not matter"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:185
+#: ../../build/doc/withPoints-family.rst:187
 msgid "From third image above:"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:187
+#: ../../build/doc/withPoints-family.rst:189
 msgid "We can arrive to the point either via vertex 12 or via vertex 9"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:188
+#: ../../build/doc/withPoints-family.rst:190
 msgid "Edge (15, 12,9 20) is removed."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:189
+#: ../../build/doc/withPoints-family.rst:191
 msgid "Edge (15, 9,12, 10) is removed."
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:198
+#: ../../build/doc/withPoints-family.rst:200
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:201
+#: ../../build/doc/withPoints-family.rst:203
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:202
+#: ../../build/doc/withPoints-family.rst:204
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/withPoints-family.rst:203
+#: ../../build/doc/withPoints-family.rst:205
 msgid ":ref:`search`"
 msgstr ""
 

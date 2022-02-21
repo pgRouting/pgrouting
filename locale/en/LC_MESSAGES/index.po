@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-02-21 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -427,6 +427,14 @@ msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:108
 msgid ":doc:`spanningTree-family`"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:114
+msgid ":doc:`via-category`"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:3
+msgid ":doc:`pgr_dijkstraVia`"
 msgstr ""
 
 #: ../../build/doc/index.rst:100

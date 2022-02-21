@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 05:06+0000\n"
+"POT-Creation-Date: 2022-02-21 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,7 +231,7 @@ msgid "**driving_side**"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:130
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:32
 msgid "``CHAR``"
 msgstr ""
 
@@ -289,7 +289,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 #: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "**ANY-INTEGER**"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "**ANY-NUMERICAL**"
 msgstr ""
 
@@ -344,7 +344,7 @@ msgid "When negative: edge (``target``, ``source``) does not exist, therefore it
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/pgRouting-concepts.rst:40
 msgid "Where:"
 msgstr ""
 
@@ -354,7 +354,7 @@ msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:38
-#: ../../build/doc/pgRouting-concepts.rst:40
+#: ../../build/doc/pgRouting-concepts.rst:42
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
@@ -364,7 +364,7 @@ msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:39
-#: ../../build/doc/pgRouting-concepts.rst:41
+#: ../../build/doc/pgRouting-concepts.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
@@ -377,54 +377,58 @@ msgid "**value**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
-msgid "(optional) Identifier of the point."
+msgid "Identifier of the point."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
-msgid "If column present, it can not be NULL."
+msgid "Use with positive value, as internally will be converted to negative value"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
-msgid "If column not present, a sequential negative **value** will be given automatically."
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "If column is present, it can not be NULL."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
+msgid "If column is not present, a sequential negative **value** will be given automatically."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "``edge_id``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:26
 msgid "``fraction``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:27
+#: ../../build/doc/pgRouting-concepts.rst:29
 msgid "Value in <0,1> that indicates the relative postition from the first end point of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:31
 msgid "``side``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:31
+#: ../../build/doc/pgRouting-concepts.rst:33
 msgid "``b``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:32
+#: ../../build/doc/pgRouting-concepts.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:34
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "In the right ``r``,"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:35
+#: ../../build/doc/pgRouting-concepts.rst:37
 msgid "In the left ``l``,"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgRouting-concepts.rst:38
 msgid "In both ``b``"
 msgstr ""
 
