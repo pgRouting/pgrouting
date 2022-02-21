@@ -22,7 +22,7 @@ DECLARE
   startend_v TEXT[] = ARRAY[start_v,end_v];
 
 BEGIN
-  IF fn IN ('pgr_trsp', 'pgr_trsp_withpoints') AND NOT min_version('3.4.0') THEN
+  IF fn IN ('pgr_trsp', 'pgr_trsp_withpoints', 'pgr_withpointsvia') AND NOT min_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
     RETURN;
   END IF;
@@ -43,7 +43,7 @@ BEGIN
     return_params_numbers = return_params_numbers || ARRAY[20,20]::OID[];
   END IF;
   return_params_names = return_params_names || return_params_names_end;
-    return_params_numbers = return_params_numbers || return_params_numbers_end;
+  return_params_numbers = return_params_numbers || return_params_numbers_end;
 
   IF fn LIKE '%withpoints%' THEN
     params_types_words := params_types_words || 'text'::TEXT;

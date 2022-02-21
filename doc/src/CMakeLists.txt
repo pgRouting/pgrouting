@@ -12,6 +12,7 @@ SET(LOCAL_FILES
     support.rst
     cost-category.rst
     costMatrix-category.rst
+    via-category.rst
     )
 
 foreach (f ${LOCAL_FILES})

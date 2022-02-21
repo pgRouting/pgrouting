@@ -115,6 +115,12 @@ Proposed Functions
    :start-after: index proposed from here
    :end-before: index proposed to here
 
+:doc:`via-category`
+
+.. include:: via-category.rst
+   :start-after: proposed start
+   :end-before: proposed end
+
 .. toctree::
     :hidden:
 

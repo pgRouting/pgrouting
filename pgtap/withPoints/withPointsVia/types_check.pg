@@ -1,0 +1,8 @@
+BEGIN;
+
+SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(1) END;
+
+SELECT types_check_via('pgr_withpointsvia');
+
+SELECT * FROM finish();
+ROLLBACK;

@@ -1,0 +1,26 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(84) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION inner_query()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+   IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
+    RETURN;
+  END IF;
+
+  -- ONE VIA
+  RETURN QUERY SELECT style_dijkstra('pgr_withPointsVia(', ', $$SELECT * FROM pointsOfInterest$$, ARRAY[2,9,12])');
+  RETURN QUERY SELECT innerquery_points('pgr_withPointsVia($$SELECT * FROM edge_table$$,', ', ARRAY[2,9,12])');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT inner_query();
+
+SELECT finish();
+ROLLBACK;

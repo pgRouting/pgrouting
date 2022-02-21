@@ -504,10 +504,12 @@ Points SQL
    * - ``pid``
      - **ANY-INTEGER**
      - **value**
-     - (optional) Identifier of the point.
+     - Identifier of the point.
 
-       * If column present, it can not be NULL.
-       * If column not present, a sequential negative **value** will be given
+       * Use with positive value, as internally will be converted to negative
+         value
+       * If column is present, it can not be NULL.
+       * If column is not present, a sequential negative **value** will be given
          automatically.
    * - ``edge_id``
      - **ANY-INTEGER**
@@ -584,6 +586,11 @@ Parameters
 
 
 .. pgr_dijkstra_via_parameters_end
+
+.. rubric:: Parameters for the Via functions:
+
+* :doc:`pgr_withPointsVia`
+
 
 |
 

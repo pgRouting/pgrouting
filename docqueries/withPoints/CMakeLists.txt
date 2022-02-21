@@ -6,6 +6,7 @@ SET(LOCAL_FILES
     doc-pgr_withPointsKSP-cygwin
     doc-pgr_withPointsKSP
     doc-pgr_withPoints
+    withPointsVia
     )
 
 foreach (f ${LOCAL_FILES})
