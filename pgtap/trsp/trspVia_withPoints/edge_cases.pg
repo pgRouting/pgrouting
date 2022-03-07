@@ -1,0 +1,66 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(1) END;
+SET client_min_messages TO ERROR;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  restriction TEXT;
+  unrelated_restriction TEXT;
+  empty_restriction TEXT;
+BEGIN
+
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'New function on 3.4');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT lives_ok($q$
+  SELECT * FROM pgr_trspVia_withPoints(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
+  $$SELECT * FROM pointsOfInterest$$,
+  ARRAY[2,3])$q$, $q$empty restriction path lives$q$);
+
+  RETURN QUERY SELECT isnt_empty($q$
+  SELECT * FROM pgr_trspVia_withPoints(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[]::BIGINT[] AS path$$,
+  $$SELECT * FROM pointsOfInterest$$,
+  ARRAY[2,3])$q$, $q$empty restriction path gives non empty result$q$);
+
+  RETURN QUERY SELECT lives_ok($q$
+  SELECT * FROM pgr_trspVia_withPoints(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
+  $$SELECT * FROM pointsOfInterest$$,
+  ARRAY[2,3])$q$, $q$null restriction path lives$q$);
+
+  RETURN QUERY SELECT isnt_empty($q$
+  SELECT * FROM pgr_trspVia_withPoints(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, NULL::BIGINT[] AS path$$,
+  $$SELECT * FROM pointsOfInterest$$,
+  ARRAY[2,3])$q$, $q$null restriction path gives non empty result$q$);
+
+  RETURN QUERY SELECT throws_ok($q$
+  SELECT * FROM pgr_trspVia_withPoints(
+  $$SELECT * FROM edge_table$$,
+  $$SELECT 100::FLOAT AS cost, ARRAY[NULL]::BIGINT[] AS path$$,
+  $$SELECT * FROM pointsOfInterest$$,
+  ARRAY[2,3])$q$,
+  $$XX000$$,$$NULL value found in Array!$$,
+$q$array containing a null path throws$q$);
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+
+SELECT finish();
+ROLLBACK;
