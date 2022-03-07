@@ -159,7 +159,7 @@ SELECT * FROM pgr_dijkstraVia(
 SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT path, cost FROM restrictions$$,
-  2,8);
+  2, 8);
  path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 ---------+----------+-----------+---------+------+------+------+----------
        1 |        1 |         2 |       8 |    2 |    4 |    1 |        0
@@ -183,7 +183,7 @@ solutions AS (
   SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     $$SELECT path, cost FROM restrictions$$,
-    2,8)),
+    2, 8)),
 with_seq AS (
   SELECT row_number() over(ORDER BY path_id, path_seq) AS seq, *
   FROM solutions),
@@ -210,7 +210,7 @@ FROM with_seq LEFT JOIN aggregation ON (with_seq.seq = aggregation.seq + 1);
 SELECT * FROM  pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
   $$SELECT path, cost FROM restrictions$$,
-  ARRAY[2,8,2]);
+  ARRAY[2, 8, 2]);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |         2 |       8 |    2 |    4 |    1 |        0 |              0
@@ -230,7 +230,7 @@ SELECT * FROM  pgr_trspVia(
 /* -- q11 */
 SELECT * FROM  pgr_dijkstraVia(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
-    ARRAY[2,5,2], U_turn_on_edge := false);
+    ARRAY[2, 5, 2], U_turn_on_edge => false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |         2 |       5 |    2 |    4 |    1 |        0 |              0
@@ -247,7 +247,7 @@ SELECT * FROM  pgr_dijkstraVia(
 SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT path, cost FROM restrictions$$,
-  5,2);
+  5, 2);
  path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 ---------+----------+-----------+---------+------+------+------+----------
        1 |        1 |         5 |       2 |    5 |    4 |    1 |        0
@@ -258,7 +258,7 @@ SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FR
 SELECT * FROM  pgr_trspVia(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
     $$SELECT path, cost FROM restrictions$$,
-    ARRAY[2,5,2], U_turn_on_edge := false);
+    ARRAY[2, 5, 2], U_turn_on_edge => false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |         2 |       5 |    2 |    4 |    1 |        0 |              0
