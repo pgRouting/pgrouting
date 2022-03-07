@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <map>
 
 #include "c_types/path_rt.h"
 #include "cpp_common/path_t.h"
@@ -77,6 +78,7 @@ class Path {
     const Path_t& operator[](size_t i) const {return path[i];}
     Path_t& operator[](size_t i) {return path[i];}
     Path& renumber_vertices(int64_t value);
+    Path& renumber_vertices(const std::map<int64_t, int64_t>&);
 
     pthIt begin() {return path.begin();}
     pthIt end() {return path.end();}

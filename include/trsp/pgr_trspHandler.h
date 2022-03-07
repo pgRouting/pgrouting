@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/basePath_SSEC.hpp"
 #include "trsp/edgeInfo.h"
 #include "cpp_common/rule.h"
+#include "cpp_common/pgr_messages.h"
 
 namespace pgrouting {
 namespace trsp {
@@ -50,7 +51,7 @@ namespace trsp {
 
 
 
-class Pgr_trspHandler {
+class Pgr_trspHandler : public pgrouting::Pgr_messages {
     /**
      * Used in the priority queue
      */
@@ -175,10 +176,8 @@ class Pgr_trspHandler {
 
     double construct_path(int64_t ed_id, Position pos);
 
-
-    int64_t renumber_edges(
-            Edge_t *edges,
-            const size_t edge_count) const;
+    void renumber_edges(Edge_t*, const size_t);
+    void renumber_edges(Edge_t*, const size_t, std::vector<Edge_t>&);
 
     void  add_to_que(
             double cost,
@@ -195,7 +194,8 @@ class Pgr_trspHandler {
 
     /**
      * Used only to veryfy that there are no reppetitions inserted
-     * the way it orks, repeating edges id is not allowed
+     * the way it works, repeating edges id is not allowed
+     * TODO when using points edges id are repeated
      */
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
 
@@ -204,6 +204,10 @@ class Pgr_trspHandler {
      */
     std::map<int64_t, std::vector<size_t>> m_adjacency;
 
+    /* id -> idx */
+    std::map<int64_t, int64_t> m_id_to_idx;
+    /* idx -> id */
+    std::map<int64_t, int64_t> m_idx_to_id;
 
     int64_t m_start_vertex;
     int64_t m_end_vertex;
@@ -212,8 +216,6 @@ class Pgr_trspHandler {
      * Used in dijkstra_exploration
      */
     int64_t current_node;
-
-    int64_t m_min_id;
 
     Path m_path;
 

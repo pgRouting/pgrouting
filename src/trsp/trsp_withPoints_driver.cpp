@@ -129,6 +129,7 @@ do_trsp_withPoints(
                 true,
                 driving_side,
                 directed);
+        log << pg_graph.get_log();
 
         if (pg_graph.has_error()) {
             log << pg_graph.get_log();
@@ -165,6 +166,10 @@ do_trsp_withPoints(
         }
 
         post_process_trsp(paths);
+        if (!details) {
+            for (auto &path : paths) path = pg_graph.eliminate_details(path);
+        }
+
         size_t count(0);
         count = count_tuples(paths);
 
@@ -216,6 +221,10 @@ do_trsp_withPoints(
             paths.insert(paths.end(), new_paths.begin(), new_paths.end());
         }
         post_process_trsp(paths);
+        if (!details) {
+            for (auto &path : paths) path = pg_graph.eliminate_details(path);
+        }
+
 
         count = count_tuples(paths);
 
