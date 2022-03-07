@@ -28,7 +28,7 @@ pgr_trsp - Proposed
 ===============================================================================
 
 
-``pgr_trsp`` Vertex - Vertex routing with restrictions.
+``pgr_trsp`` - routing vertices with restrictions.
 
 .. rubric:: Availability
 
@@ -45,6 +45,7 @@ pgr_trsp - Proposed
   * Signature ``pgr_trsp(text,integer,integer,boolean,boolean,text)`` is deprecated
   * Signature ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)`` is deprecated
   * Signature ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)`` is deprecated
+  * Signature ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)`` is deprecated
 
 * Version 2.1.0
 
@@ -79,7 +80,7 @@ The general algorithm is as follows:
 * Execute a Dijkstra
 * If the solution passes thru a restriction then
 
-  * Execute the TRSP algorithm with restrictions
+  * Execute the **TRSP** algorithm with restrictions
 
 
 
@@ -106,14 +107,6 @@ Signatures
    OR EMPTY SET
 
 
-.. rubric:: Prototype
-
-.. code-block:: none
-
-   pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
-            directed boolean, has_rcost boolean [, turn_restrict_sql text]) -- Prototype on v2.1
-   RETURNS SETOF (seq, id1, id2, id3, cost)
-
 .. rubric:: Deprecated
 
 .. code-block:: none
@@ -125,6 +118,8 @@ Signatures
    RETURNS SETOF (seq, id1, id2, cost)
 
    pgr_trspViaVertices(sql text, vids integer[],
+            directed boolean, has_rcost boolean [, restrictions_sql text]) -- Deprecated on v3.4
+   pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
             directed boolean, has_rcost boolean [, restrictions_sql text]) -- Deprecated on v3.4
    RETURNS SETOF (seq, id1, id2, id3, cost)
 
@@ -490,8 +485,8 @@ The following signature is substituted with :doc:`pgr_dijkstra` when there are n
 
 
 
-Different ways to represent `no path found`
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Different ways to represent `no path found` on ``pgr_trsp`` (**vertices**)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Sometimes represents with **EMPTY SET** a no path found
 * Sometimes represents with **EXCEPTION** a no path found
@@ -538,7 +533,7 @@ When there are restrictions the proposed ``pgr_trsp`` (`One to One`_) should be 
    :start-after: --place8
    :end-before: --place9
 
-User contradictions
+User contradictions ``pgr_trsp`` (**vertices**)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ``pgr_trsp`` unlike other pgRouting functions does not autodetect the existence of ``reverse_cost`` column. Therefore it
@@ -588,7 +583,7 @@ The "Edges" signature version
            target_edge integer, target_pos float8,
            directed boolean, has_rcost boolean [,restrict_sql text]);
 
-Different ways to represent `no path found`
+Different ways to represent `no path found ``pgr_trsp`` (**edges**)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Sometimes represents with **EMPTY SET** a no path found
@@ -691,11 +686,12 @@ When there are restrictions :doc:`pgr_trsp_withPoints` (One to One) should be us
    :start-after: --place16.2
    :end-before: --place17
 
-User contradictions
+User contradictions ``pgr_trsp`` (**edges**)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-``pgr_trsp`` unlike other pgRouting functions does not autodetect the existence of ``reverse_cost`` column. Therefore it
-has ``has_rcost`` parameter to check the existence of ``reverse_cost`` column. Contradictions happen:
+``pgr_trsp`` unlike other pgRouting functions does not autodetect the existence
+of ``reverse_cost`` column. Therefore it has ``has_rcost`` parameter to check
+the existence of ``reverse_cost`` column. Contradictions happen:
 
 - When the ``reverse_cost`` is missing, and the flag ``has_rcost`` is set to true
 - When the ``reverse_cost`` exists, and the flag ``has_rcost`` is set to false

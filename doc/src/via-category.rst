@@ -16,13 +16,6 @@
 Via - Category
 ===============================================================================
 
-.. from here
-
-* :doc:`pgr_dijkstraVia`
-
-.. to here
-
-
 .. rubric:: proposed
 
 .. include:: proposed.rst
@@ -31,8 +24,10 @@ Via - Category
 
 .. proposed start
 
-* :doc:`pgr_trspVia`
+* :doc:`pgr_dijkstraVia`
 * :doc:`pgr_withPointsVia`
+* :doc:`pgr_trspVia`
+* :doc:`pgr_trspVia_withPoints`
 
 .. proposed end
 

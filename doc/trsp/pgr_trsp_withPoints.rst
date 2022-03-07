@@ -16,7 +16,7 @@
 pgr_trsp_withPoints - Proposed
 ===============================================================================
 
-``pgr_trsp_withPoints`` Vertex/Point - Vertex/Point routing with restrictions.
+``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions.
 
 .. include:: proposed.rst
    :start-after: begin-warning
@@ -48,6 +48,7 @@ Using Dijkstra algorithm, find the shortest path(s)
 **The main characteristics are:**
 
 - Process is done only on edges with positive costs.
+- Driving side can not be `b` (**both**)
 - Vertices of the graph are:
 
   - **positive** when it belongs to the `Edges SQL`_
@@ -59,11 +60,13 @@ Using Dijkstra algorithm, find the shortest path(s)
 
     - The agg_cost the non included values (v, v) is 0
 
-  - When the starting vertex and ending vertex are the different and there is no path:
+  - When the starting vertex and ending vertex are the different and there is no
+    path:
 
     - The agg_cost the non included values (u, v) is ∞
 
-- For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.
+- For optimization purposes, any duplicated value in the start_vids or end_vids
+  are ignored.
 - The returned values are ordered:
   - start_vid ascending
   - end_vid ascending
@@ -98,16 +101,17 @@ One to One
 
 .. parsed-literal::
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vid,  end vids
+   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vid,  end vid
                              [, directed], [, driving_side] [, details]) -- Proposed on v3.4
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` to vertex :math:`3` with details of passing points
+:Example: From point :math:`1` to vertex :math:`3` with details on a **left**
+          driving side configuration on a **directed** graph with **details**.
 
 .. literalinclude:: trsp_withPoints.queries
-   :start-after: --e2
-   :end-before: --e3
+   :start-after: --e1
+   :end-before: --e2
 
 .. index::
     single: trsp_withPoints(One to Many) - Proposed on v3.4
@@ -122,11 +126,11 @@ One to Many
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` to point :math:`3` and vertex :math:`5`
+:Example: From point :math:`1` to point :math:`3` and vertex :math:`5`.
 
 .. literalinclude:: trsp_withPoints.queries
-   :start-after: --e3
-   :end-before: --e4
+   :start-after: --e2
+   :end-before: --e3
 
 .. index::
     single: trsp_withPoints(Many to One) - Proposed on v3.4
@@ -141,11 +145,11 @@ Many to One
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3`
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3`.
 
 .. literalinclude:: trsp_withPoints.queries
-   :start-after: --e4
-   :end-before: --e5
+   :start-after: --e3
+   :end-before: --e4
 
 .. index::
     single: trsp_withPoints(Many to Many) - Proposed on v3.4
@@ -160,11 +164,12 @@ Many to Many
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` and vertex :math:`2`  to point :math:`3` and vertex :math:`7`
+:Example: From point :math:`1` and vertex :math:`2`  to point :math:`3` and
+          vertex :math:`7`.
 
 .. literalinclude:: trsp_withPoints.queries
-   :start-after: --e5
-   :end-before: --q2
+   :start-after: --e4
+   :end-before: --e5
 
 .. index::
     single: trsp_withPoints(Combinations) - Proposed on v3.4
@@ -178,38 +183,93 @@ Combinations
                              [, directed], [, driving_side] [, details]) -- Proposed on v3.4
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
-:Example: Two (source, target) combinations: (from point :math:`1` to vertex :math:`3`), and (from vertex :math:`2` to
-          point :math:`3`) with **right** side driving topology.
-
+:Example: From point :math:`1` to vertex :math:`3` and from vertex :math:`2` to
+          point :math:`3` with **right** side driving configuration.
 
 .. literalinclude:: trsp_withPoints.queries
-   :start-after: --q5
-   :end-before: --q6
+   :start-after: --e5
+   :end-before: --q1
 
 Parameters
 -------------------------------------------------------------------------------
 
-====================== ================================== ========= ==========================================
-Parameter              Type                               Default   Description
-====================== ================================== ========= ==========================================
-`Edges SQL`_           ``TEXT``                                     `Edges SQL`_ as described below.
-`Points SQL`_          ``TEXT``                                     `Points SQL`_ as described below.
-`Combinations SQL`_    ``TEXT``                                     `Combinations SQL`_ as described below.
-**start vid**          **ANY-INTEGER**                              Starting vertex identifier. When negative: is a point's identifier.
-**end vid**            **ANY-INTEGER**                              Ending vertex identifier. When negative: is a point's identifier.
-**start vids**         ``ARRAY[`` **ANY-INTEGER** ``]``             Array of identifiers of starting vertices. When negative: is a point's identifier.
-**end vids**           ``ARRAY[`` **ANY-INTEGER]** ``]``            Array of identifiers of ending vertices. When negative: is a point's identifier.
-``directed``           ``BOOLEAN``                        ``true``  - When ``true`` the graph is considered as directed.
-                                                                    - When ``false`` the graph is considred as undirected.
+.. parameters_start
 
-``driving_side``       ``CHAR``                           ``b``     Value in :math:`{b,r,l}` indicating if the driving side is:
-                                                                    - ``r`` for right driving side
-                                                                    - ``l`` for left driving side
-                                                                    - ``b`` for both, or ignore driving side
+.. list-table::
+   :width: 81
+   :widths: 14 22 7 44
+   :header-rows: 1
 
-``details``            ``BOOLEAN``                        ``false`` - When ``true`` the results will include the points in `Points SQL`_ that are in the path.
-                                                                    - When ``false`` ignores other points of the `Points SQL`_.
-====================== ================================== ========= ==========================================
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - `Restrictions SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - `Points SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - **start vid**
+     - **ANY-INTEGER**
+     -
+     - Identifier of the departure vertex.
+   * - **start vids**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     -
+     - Array of identifieris of destination vertices.
+   * - **end vid**
+     - **ANY-INTEGER**
+     -
+     - Identifier of the departure vertex.
+   * - **end vids**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     -
+     - Array of identifiers of destination vertices.
+   * - ``directed``
+     - ``BOOLEAN``
+     - ``true``
+     - - When ``true`` Graph is considered `Directed`
+       - When ``false`` the graph is considered as Undirected.
+
+With points optional parameters
+...............................................................................
+
+.. withPoints_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 7 7 60
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``driving_side``
+     - ``CHAR``
+     - ``r``
+     - Value in [``r``, ``l``] indicating if the driving side is:
+
+       - ``r`` for right driving side
+       - ``l`` for left driving side
+       - Any other value will be considered as ``r``
+   * - ``details``
+     - ``BOOLEAN``
+     - ``false``
+     - - When ``true`` the results will include the points that are in the path.
+       - When ``false`` the results will not include the points that are in the
+         path.
+
+.. withPoints_parameters_end
+
+|
 
 Inner query
 -------------------------------------------------------------------------------
@@ -242,62 +302,79 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Result Columns
+Return Columns
 -------------------------------------------------------------------------------
 
-============= =========== =================================================
-Column           Type              Description
-============= =========== =================================================
-``seq``       ``INTEGER`` Row sequence.
-``path_seq``  ``INTEGER`` Path sequence that indicates the relative position on the path.
-``start_vid`` ``BIGINT``  Identifier of the starting vertex. When negative: is a point's identifier.
-``end_vid``   ``BIGINT``  Identifier of the ending vertex. When negative: is a point's identifier.
-``node``      ``BIGINT``  Identifier of the node:
-                            - A positive value indicates the node is a vertex from `Edges SQL`_.
-                            - A negative value indicates the node is a point from `Points SQL`_.
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
 
-``edge``      ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence.
-                            - ``-1`` for the last row in the path sequence.
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex of the path.
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex of the path.
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence.
 
-``cost``      ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence.
-                            - ``0`` for the last row in the path sequence.
+       * -1 for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
 
-``agg_cost``  ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
-                            - ``0`` for the first row in the path sequence.
+       - ``0`` for the last row in the path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
 
-============= =========== =================================================
+       - ``0`` for the first row in the path sequence.
+
+.. result columns end
+
+|
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Which path (if any) passes in front of point :math:`6` or vertex :math:`6` with **right** side driving
-          topology.
+:Example: Which path (if any) passes in front of point :math:`6` or vertex
+          :math:`6` with **right** side driving topology.
+
+.. literalinclude:: trsp_withPoints.queries
+   :start-after: --q1
+   :end-before: --q2
+
+
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex
+          :math:`7` on an **undirected** graph, with details.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --q2
    :end-before: --q3
-
-:Example: Which path (if any) passes in front of point :math:`6` or vertex :math:`6` with **left** side driving
-          topology.
-
-.. literalinclude:: trsp_withPoints.queries
-   :start-after: --q3
-   :end-before: --q4
-
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex :math:`7` on an **undirected** graph,
-          with details.
-
-.. literalinclude:: trsp_withPoints.queries
-   :start-after: --q4
-   :end-before: --q5
-
-The queries use the :doc:`sampledata` network
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TRSP-family`
 * :doc:`withPoints-family`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

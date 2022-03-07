@@ -49,7 +49,7 @@ The general algorithm is as follows:
 * Execute a :doc:`pgr_dijkstraVia`.
 * For the set of sub paths of the solution that pass through a restriction then
 
-  * Execute the :doc:`pgr_trsp` algorithm with restrictions for the sub paths.
+  * Execute the **TRSP** algorithm with restrictions for the paths.
   * **NOTE** when this is done, ``U_turn_on_edge`` flag is ignored.
 
 

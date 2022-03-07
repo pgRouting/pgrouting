@@ -69,24 +69,23 @@ Contributors
 This Release Contributors
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Individuals (in alphabetical order)
+Individuals in this release (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ashish Kumar,
 Cayetano Benavent,
 Daniel Kastl,
-Himanshu Raj,
-Martha Vergara,
+Rajat Shinde,
 Regina Obe,
-Veenit Kumar,
+Swapnil Joshi,
 Virginia Vergara
 
 
 And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
-in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer.
+in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop.
 
 
-Corporate Sponsors (in alphabetical order)
+Corporate Sponsors in this release (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These are corporate entities that have contributed developer time, hosting, or direct monetary funding to the pgRouting project:
@@ -117,9 +116,10 @@ Jay Mahadeokar, Jinfu Leng,
 Kai Behncke, Kishore Kumar, Ko Nagase,
 Mahmoud Sakr,
 Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya,
+Rajat Shinde,
 Razequl Islam,
 Regina Obe, Rohith Reddy,
-Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche,
+Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche,
 Veenit Kumar, Vidhan Jain, Virginia Vergara
 
 Corporate Sponsors (in alphabetical order)
