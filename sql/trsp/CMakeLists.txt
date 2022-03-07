@@ -15,6 +15,9 @@ SET(LOCAL_FILES
 
     trspVia.sql
     _trspVia.sql
+
+    trspVia_withPoints.sql
+    _trspVia_withPoints.sql
     )
 
 foreach (f ${LOCAL_FILES})
