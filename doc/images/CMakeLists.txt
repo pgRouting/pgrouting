@@ -9,6 +9,7 @@ SET(LOCAL_FILES
     test1.png
     trsp-test-image.png
     with_restrictions.png
+    restrictions.png
     )
 
 foreach (f ${LOCAL_FILES})
