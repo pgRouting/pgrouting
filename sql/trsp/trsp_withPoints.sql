@@ -34,7 +34,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   BIGINT, -- end_vid
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'
+  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -69,7 +69,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   ANYARRAY, -- end_vids
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'
+  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -103,7 +103,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   BIGINT, -- end_vid
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'
+  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -137,7 +137,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   ANYARRAY, -- end_vids
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'
+  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -171,7 +171,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   TEXT, -- combinations SQL
 
   directed BOOLEAN DEFAULT true,
-  driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'
+  driving_side CHAR DEFAULT 'r', -- 'r'/'l'
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
@@ -208,7 +208,7 @@ IS 'pgr_trsp_withPoints (One to One)
   - Destination vertex/point identifier
 - Optional Parameters:
   - directed := ''true''
-  - driving_side := ''b''
+  - driving_side := ''r''
   - details := ''false''
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
@@ -226,7 +226,7 @@ IS 'pgr_trsp_withPoints(One to Many)
   - Destinations ARRAY[vertices/Points identifier]
 - Optional Parameters:
   - directed := ''true''
-  - driving_side := ''b''
+  - driving_side := ''r''
   - details := ''false''
 - Documentation:
   - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
@@ -243,7 +243,7 @@ IS 'pgr_trsp_withPoints(Many to One)
   - Destination vertex/point identifier
 - Optional Parameters:
   - directed := ''true''
-  - driving_side := ''b''
+  - driving_side := ''r''
   - details := ''false''
 - Documentation:
 - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
@@ -260,7 +260,7 @@ IS 'pgr_trsp_withPoints(Many to Many)
   - Destinations ARRAY[vertices/Points identifier]
 - Optional Parameters:
   - directed := ''true''
-  - driving_side := ''b''
+  - driving_side := ''r''
   - details := ''false''
 - Documentation:
 - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
@@ -275,7 +275,7 @@ IS 'pgr_trsp_withPoints(Combinations)
   - Combinations SQL with columns: source, target
 - Optional Parameters:
   - directed := ''true''
-  - driving_side := ''b''
+  - driving_side := ''r''
   - details := ''false''
 - Documentation:
 - ${PROJECT_DOC_LINK}/pgr_trsp_withPoints.html
