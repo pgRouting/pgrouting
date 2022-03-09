@@ -93,7 +93,7 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 1, 7, 10\}` in that
+:Example: Find the route that visits the vertices :math:`\{ -6, 4, -5\}` in that
           order on an **directed** graph.
 
 .. literalinclude:: trspVia_withPoints.queries

@@ -6,22 +6,6 @@ SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
   ARRAY[-6, 4, -5]);
-SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
-  $$SELECT path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  -6, 4);
-SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
-  $$SELECT path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  2, 4);
-SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
-  $$SELECT path, cost FROM restrictions$$,
-  $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  5, 4);
-
 /* -- q1 */
 SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,

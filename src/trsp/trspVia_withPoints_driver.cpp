@@ -151,7 +151,7 @@ do_trspVia_withPoints(
     std::ostringstream notice;
 
     try {
-        pgassert(total_edges != 0);
+        pgassert((total_edges + total_edges_of_points) != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
