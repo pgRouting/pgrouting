@@ -126,6 +126,7 @@ Proposed Functions
 
     withPoints-family
     KSP-category
+    via-category
 
 See Also
 -------------------------------------------------------------------------------

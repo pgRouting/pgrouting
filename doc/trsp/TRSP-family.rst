@@ -28,7 +28,9 @@ When points are also given as input:
 
 - :doc:`pgr_trsp` - Vertex - Vertex routing with restrictions.
 - :doc:`pgr_trspVia` - Via Vertices routing with restrictions.
-- :doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with restrictions.
+- :doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with
+  restrictions.
+- :doc:`pgr_trspVia_withPoints` - Via Vertices/point routing with restrictions.
 
 .. index proposed to here
 
@@ -50,10 +52,32 @@ When points are also given as input:
     pgr_trsp
     pgr_trspVia
     pgr_trsp_withPoints
+    pgr_trspVia_withPoints
     pgr_turnRestrictedPath
 
 Introduction
 -------------------------------------------------------------------------------
+
+Road restrictions are a sequence of road segments that can not be taken in a
+sequential manner.
+Some restrictions are implicit on a directed graph, for example, one way roads
+where the wrong way edge is not even inserted on the graph.
+But normally on turns like **left turn** or **right turn**, hence the name turn
+restrictions, there are sometimes restrictions.
+
+.. image:: images/restrictions.png
+
+
+|
+
+TRSP algorithm
+...............................................................................
+
+The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in
+order to find out if the attempted path has a restriction. This allows the
+algorithm to pass twice on the same vertex.
+
+|
 
 Restrictions
 ...............................................................................
@@ -61,7 +85,8 @@ Restrictions
 On road networks, there are restrictions such as left or right turn restrictions,
 no U turn restrictions.
 
-A restriction is a sequence of edges, called **path** and that **path** is to be avoided.
+A restriction is a sequence of edges, called **path** and that **path** is to be
+avoided.
 
 .. figure:: /images/with_restrictions.png
    :scale: 50%
@@ -74,8 +99,11 @@ These restrictions are represented on a table as follows:
    :start-after: --RESTRICTIONS CREATE start
    :end-before: --RESTRICTIONS CREATE end
 
-.. note:: The table has an identifier, which maybe is needed for the administration of the restrictions, but the
-   algorithms do not need that information. If given it will be ignored.
+.. note:: The table has an identifier, which maybe is needed for the
+   administration of the restrictions, but the algorithms do not need that
+   information. If given it will be ignored.
+
+|
 
 Restrictions SQL
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -92,7 +120,8 @@ Restrictions SQL
      - Description
    * - ``path``
      - ``ARRAY[`` **ANY-INTEGER** ``]``
-     - Sequence of edge identifiers that form a path that is not allowed to be taken.
+     - Sequence of edge identifiers that form a path that is not allowed to be
+       taken.
        - Empty arrays or ``NULL`` arrays are ignored.
        - Arrays that have a ``NULL`` element will raise an exception.
    * - ``Cost``

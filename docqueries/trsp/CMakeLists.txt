@@ -4,6 +4,7 @@ SET(LOCAL_FILES
     trsp_notes
     trsp_withPoints
     trspVia
+    trspVia_withPoints
     )
 
 foreach (f ${LOCAL_FILES})

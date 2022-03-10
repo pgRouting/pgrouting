@@ -62,6 +62,7 @@ SELECT * FROM pgr_trspViaEdges(
         true,
 
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
+WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost
@@ -92,6 +93,7 @@ SELECT * FROM pgr_trspViaEdges(
         true,
 
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
+WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost
@@ -120,6 +122,7 @@ SELECT * FROM pgr_trspViaEdges(
         true,
 
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
+WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
  seq | id1 | id2 | id3 | cost

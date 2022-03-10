@@ -70,6 +70,9 @@ process(
         Path_rt **result_tuples,
         size_t *result_count) {
     driving_side[0] = estimate_drivingSide(driving_side[0]);
+    if (driving_side[0] != 'r' && driving_side[0] != 'l') {
+        driving_side[0] = 'l';
+    }
 
     pgr_SPI_connect();
 

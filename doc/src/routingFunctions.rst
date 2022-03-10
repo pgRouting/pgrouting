@@ -142,12 +142,6 @@ Functions by categories
    :start-after: index from here
    :end-before: index to here
 
-:doc:`via-category`
-
-.. include:: via-category.rst
-   :start-after: from here
-   :end-before: to here
-
 ..  to-here
 
 .. toctree::
@@ -175,7 +169,6 @@ Functions by categories
     costMatrix-category
     drivingDistance-category
     spanningTree-family
-    via-category
 
 See Also
 -------------------------------------------------------------------------------

@@ -3,7 +3,7 @@ SET extra_float_digits=-3;
 SELECT * FROM pgr_withPointsVia(
   'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
-  ARRAY[-1, -3, 9], false);
+  ARRAY[-6, 4, -5]);
 /* -- q1 */
 SELECT * FROM pgr_withPointsVia(
   'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',

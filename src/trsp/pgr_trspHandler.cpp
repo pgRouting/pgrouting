@@ -52,7 +52,10 @@ Pgr_trspHandler::Pgr_trspHandler(
     m_ruleTable() {
     initialize_restrictions(ruleList);
 
-    m_min_id = renumber_edges(edges, edge_count);
+    renumber_edges(edges, edge_count);
+    for (const auto& id :  m_id_to_idx) {
+        m_idx_to_id[id.second] = id.first;
+    }
 
     construct_graph(
             edges,
@@ -69,42 +72,75 @@ Pgr_trspHandler::Pgr_trspHandler(
     m_ruleTable() {
     initialize_restrictions(ruleList);
 
-    m_min_id = renumber_edges(edges, edge_count);
+    auto point_edges = new_edges;
+    renumber_edges(edges, edge_count, point_edges);
+
+    for (const auto& id :  m_id_to_idx) {
+        m_idx_to_id[id.second] = id.first;
+    }
 
     construct_graph(
             edges,
             edge_count,
             directed);
     add_point_edges(
-            new_edges,
+            point_edges,
             directed);
 }
 
 
 
 // -------------------------------------------------------------------------
-int64_t
+void
 Pgr_trspHandler::renumber_edges(
         Edge_t *edges,
-        size_t total_edges) const {
-        int64_t v_min_id = INT64_MAX;
-        size_t z;
-        for (z = 0; z < total_edges; z++) {
-            if (edges[z].source < v_min_id)
-                v_min_id = edges[z].source;
-
-            if (edges[z].target < v_min_id)
-                v_min_id = edges[z].target;
+        size_t total_edges) {
+    int64_t idx(0);
+    for (size_t i = 0; i < total_edges; ++i) {
+        if (m_id_to_idx.find(edges[i].source) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].source] = idx;
+            ++idx;
         }
-
-        for (z = 0; z < total_edges; z++) {
-            edges[z].source -= v_min_id;
-            edges[z].target -= v_min_id;
+        if (m_id_to_idx.find(edges[i].target) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].target] = idx;
+            ++idx;
         }
-
-        return v_min_id;
+        edges[i].source = m_id_to_idx.at(edges[i].source);
+        edges[i].target = m_id_to_idx.at(edges[i].target);
+    }
 }
 
+void
+Pgr_trspHandler::renumber_edges(
+        Edge_t *edges,
+        size_t total_edges,
+        std::vector<Edge_t>& new_edges) {
+    int64_t idx(0);
+    for (size_t i = 0; i < total_edges; ++i) {
+        if (m_id_to_idx.find(edges[i].source) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].source] = idx;
+            ++idx;
+        }
+        if (m_id_to_idx.find(edges[i].target) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].target] = idx;
+            ++idx;
+        }
+        edges[i].source = m_id_to_idx.at(edges[i].source);
+        edges[i].target = m_id_to_idx.at(edges[i].target);
+    }
+    for (auto &e : new_edges) {
+        if (m_id_to_idx.find(e.source) == m_id_to_idx.end()) {
+            m_id_to_idx[e.source] = idx;
+            ++idx;
+        }
+        if (m_id_to_idx.find(e.target) == m_id_to_idx.end()) {
+            m_id_to_idx[e.target] = idx;
+            ++idx;
+        }
+        e.source = m_id_to_idx.at(e.source);
+        e.target = m_id_to_idx.at(e.target);
+    }
+}
 
 
 
@@ -285,9 +321,13 @@ Pgr_trspHandler::process(
         const int64_t start_vertex,
         const int64_t end_vertex) {
     clear();
+    pgassert(m_id_to_idx.find(start_vertex) != m_id_to_idx.end());
+    pgassert(m_id_to_idx.find(end_vertex) != m_id_to_idx.end());
 
-    m_start_vertex = start_vertex - m_min_id;
-    m_end_vertex = end_vertex - m_min_id;
+    m_start_vertex = m_id_to_idx.at(start_vertex);
+    m_end_vertex = m_id_to_idx.at(end_vertex);
+    pgassert(m_idx_to_id.at(m_start_vertex) == start_vertex);
+    pgassert(m_idx_to_id.at(m_end_vertex) == end_vertex);
 
     Path tmp(m_start_vertex, m_end_vertex);
     m_path = tmp;
@@ -442,7 +482,7 @@ Pgr_trspHandler::process_trsp(
     pgassert(m_path.start_id() == m_start_vertex);
     if (current_node != m_end_vertex) {
         Path result(m_start_vertex, m_end_vertex);
-        return result.renumber_vertices(m_min_id);;
+        return result.renumber_vertices(m_idx_to_id);;
     }
 
     pgassert(m_path.start_id() == m_start_vertex);
@@ -460,7 +500,7 @@ Pgr_trspHandler::process_trsp(
     m_path.push_back(pelement);
 
     m_path.Path::recalculate_agg_cost();
-    return m_path.renumber_vertices(m_min_id);
+    return m_path.renumber_vertices(m_idx_to_id);
 }
 
 
@@ -550,6 +590,7 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
         }
     }
 
+#if 0
     /*
      * The edge was already inserted
      *
@@ -561,7 +602,7 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
     if (m_mapEdgeId2Index.find(edgeIn.id) != m_mapEdgeId2Index.end()) {
         return false;
     }
-
+#endif
 
     /*
      * the index of this new edge in the edges container is
@@ -569,11 +610,13 @@ bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
      */
     EdgeInfo edge(edgeIn, m_edges.size());
 
+#if 0
     // Adding edge to the list
     m_mapEdgeId2Index.insert(
             std::make_pair(
                 edge.edgeID(),
                 m_edges.size()));
+#endif
 
     m_edges.push_back(edge);
 

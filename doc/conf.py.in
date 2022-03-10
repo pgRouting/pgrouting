@@ -53,7 +53,9 @@ extensions = [
         'sphinx.ext.todo',
         'sphinx.ext.mathjax',
         'sphinx.ext.graphviz',
+        'sphinx.ext.autosectionlabel',
         ]
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -318,10 +320,8 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/pgr_trspVia.html',
     'https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html',
     'https://docs.pgrouting.org/latest/en/via-category.html',
-    'https://docs.pgrouting.org/3.4/en/pgr_withPointsVia.html',
-    'https://docs.pgrouting.org/3.4/en/via-category.html',
-
-
+    'https://docs.pgrouting.org/latest/en/pgr_trspVia_withPoints.html',
+    'https://docs.pgrouting.org/3.4/en/pgr_trspVia_withPoints.html',
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)

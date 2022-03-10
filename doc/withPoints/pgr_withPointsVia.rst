@@ -39,16 +39,24 @@
 Description
 -------------------------------------------------------------------------------
 
-Given a list of vertices and a graph, this function is equivalent to finding the
-shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i
-< size\_of(via\;vertices)` when vertices can be points.
+Given a graph, a set of points on the graphs edges and a list of vertices, this
+function is equivalent to finding the shortest path between :math:`vertex_i` and
+:math:`vertex_{i+1}` (where :math:`vertex` can be a vertex or a point on the
+graph) for all :math:`i < size\_of(via\;vertices)`.
 
-The paths represents the sections of the route.
+:Route: is a sequence of paths
+:Path: is a section of the route.
 
 The general algorithm is as follows:
 
-* Add the additional points to the graph
+* Build the Graph with the new points.
+
+  * The points identifiers will be converted to negative values.
+  * The vertices identifiers will remain positive.
+
 * Execute a :doc:`pgr_dijkstraVia`.
+
+.. Note:: Do not use negative values on identifiers of the inner queries.
 
 |
 
@@ -81,8 +89,8 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ -1, -3, 9\}` in that
-          order on an **undirected** graph.
+:Example: Find the route that visits the vertices :math:`\{ -6, 4, -5\}` in that
+          order on a **directed** graph.
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q0

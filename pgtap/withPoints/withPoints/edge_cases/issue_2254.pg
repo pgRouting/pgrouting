@@ -1,0 +1,37 @@
+BEGIN;
+
+SELECT plan(5);
+
+CREATE TABLE e_table (id integer, source integer, target integer, cost float);
+INSERT INTO e_table VALUES (1, 10, 11, 10.0);
+
+CREATE TABLE poi_table (pid integer, edge_id integer, fraction float);
+INSERT INTO poi_table VALUES (20, 1, 0.6);
+
+PREPARE q1 AS
+SELECT * FROM   pgr_withPoints(
+'SELECT id, source, target, cost FROM e_table',
+'SELECT pid, edge_id, fraction FROM poi_table',
+    10,
+    11,
+    false);
+
+SELECT * FROM lives_ok('q1');
+SELECT * FROM isnt_empty('q1');
+
+PREPARE q2 AS
+SELECT *
+FROM   pgr_withPoints(
+'SELECT id, source, target, cost FROM e_table',
+'SELECT pid, edge_id, fraction FROM poi_table WHERE pid != 20',
+    10,
+    11,
+    false);
+
+SELECT * FROM lives_ok('q2');
+SELECT * FROM isnt_empty('q2');
+
+SELECT * FROM set_eq('q1','q2');
+
+SELECT finish();
+ROLLBACK;

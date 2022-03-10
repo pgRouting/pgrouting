@@ -14,4 +14,7 @@ add_library(trsp OBJECT
 
     trspVia.c
     trspVia_driver.cpp
+
+    trspVia_withPoints.c
+    trspVia_withPoints_driver.cpp
     )

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: trsp_withPoints_driver.cpp
+File: trspVia_withPoints_driver.cpp
 
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
@@ -22,103 +22,154 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "drivers/trsp/trsp_withPoints_driver.h"
+#include "drivers/trsp/trspVia_withPoints_driver.h"
 
-#include <utility>
-#include <vector>
-#include <cstdint>
 #include <sstream>
 #include <deque>
+#include <vector>
 #include <algorithm>
-#include <limits>
-#include <set>
-#include <map>
+
+#include "dijkstra/pgr_dijkstraVia.hpp"
+#include "withPoints/pgr_withPoints.hpp"
+#include "c_types/routes_t.h"
+#include "c_types/restriction_t.h"
+#include "cpp_common/rule.h"
+#include "cpp_common/combinations.h"
+#include "cpp_common/pgr_alloc.hpp"
+#include "cpp_common/pgr_assert.h"
 
 #include "trsp/pgr_trspHandler.h"
-#include "cpp_common/rule.h"
-#include "cpp_common/pgr_assert.h"
-#include "cpp_common/pgr_alloc.hpp"
-#include "cpp_common/combinations.h"
-#include "c_types/restriction_t.h"
-#include "c_types/ii_t_rt.h"
-#include "dijkstra/pgr_dijkstra.hpp"
-#include "withPoints/pgr_withPoints.hpp"
 
 
 namespace {
 
+/** @brief Orders results in terms of the via information */
 void
-post_process_trsp(std::deque<Path> &paths) {
-    paths.erase(std::remove_if(paths.begin(), paths.end(),
-                [](const Path &p) {
-                return p.size() == 0;
-                }),
-            paths.end());
+post_process_trspvia(std::deque<Path> &paths, std::vector<int64_t> via) {
     for (auto &p : paths) {
         p.recalculate_agg_cost();
     }
 
-    std::sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.end_id() < e2.end_id();
-            });
-    std::stable_sort(paths.begin(), paths.end(),
-            [](const Path &e1, const Path &e2)->bool {
-            return e1.start_id() < e2.start_id();
-            });
+    std::deque<Path> ordered_paths;
+    auto u = via.front();
+    bool skip = true;
+    for (const auto &v : via) {
+        if (skip) {skip = false; continue;}
+        /*
+         * look for the path (u,v)
+         */
+        auto path_ptr = std::find_if(
+                paths.begin(), paths.end(),
+                [&](const Path &path)
+                {return (u == path.start_id()) && (v == path.end_id());});
+
+        if (path_ptr == paths.end()) {
+            /*
+             * TODO path not found
+             */
+        } else {
+            /* path was found */
+            ordered_paths.push_back(*path_ptr);
+            paths.erase(path_ptr);
+        }
+        u = v;
+    }
+
+    paths = ordered_paths;
 }
 
-template <class G>
-std::deque<Path>
-pgr_dijkstra(
-        G &graph,
-        std::map<int64_t, std::set<int64_t>> &combinations
-        ) {
-    pgrouting::Pgr_dijkstra<G> fn_dijkstra;
-    auto paths = fn_dijkstra.dijkstra(
-            graph,
-            combinations,
-            false, (std::numeric_limits<size_t>::max)());
-
-    return paths;
+void
+get_path(
+        int route_id,
+        int path_id,
+        const Path &path,
+        Routes_t **postgres_data,
+        double &route_cost,
+        size_t &sequence) {
+    size_t i = 0;
+    for (const auto e : path) {
+        (*postgres_data)[sequence] = {
+            route_id,
+            path_id,
+            static_cast<int>(i),
+            path.start_id(),
+            path.end_id(),
+            e.node,
+            e.edge,
+            e.cost,
+            e.agg_cost,
+            route_cost};
+        route_cost += path[i].cost;
+        ++i;
+        ++sequence;
+    }
 }
 
+size_t
+get_route(
+        Routes_t **ret_path,
+        std::deque<Path> &paths) {
+    size_t sequence = 0;
+    int path_id = 1;
+    int route_id = 1;
+    double route_cost = 0;  // routes_agg_cost
+    for (auto &p : paths) {
+        p.recalculate_agg_cost();
+    }
+    for (const Path &path : paths) {
+        if (path.size() > 0)
+            get_path(route_id, path_id, path, ret_path, route_cost, sequence);
+        ++path_id;
+    }
+    return sequence;
+}
 }  // namespace
 
 void
-do_trsp_withPoints(
-        Edge_t *edges, size_t total_edges,
+do_trspVia_withPoints(
+        Edge_t* edges, size_t total_edges,
         Restriction_t *restrictions, size_t restrictions_size,
         Point_on_edge_t *points_p, size_t total_points,
         Edge_t *edges_of_points, size_t total_edges_of_points,
-
-        II_t_rt *combinations_arr, size_t total_combinations,
-        int64_t *starts_arr, size_t size_starts_arr,
-        int64_t *ends_arr, size_t size_ends_arr,
+        int64_t* via_vidsArr, size_t size_via_vidsArr,
 
         bool directed,
+
         char driving_side,
         bool details,
 
-        Path_rt **return_tuples, size_t *return_count,
+        bool strict,
+        bool U_turn_on_edge,
+
+        Routes_t** return_tuples, size_t* return_count,
 
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
     std::ostringstream log;
-    std::ostringstream notice;
     std::ostringstream err;
+    std::ostringstream notice;
+
     try {
-        pgassert(edges || edges_of_points);
+        pgassert((total_edges + total_edges_of_points) != 0);
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
 
+        std::deque<Path>paths;
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        /* Dealing with points */
+        /*
+         * processing via
+         */
+        std::vector<int64_t> via_vertices(via_vidsArr, via_vidsArr + size_via_vidsArr);
+
+        /*
+         * processing points
+         */
         pgrouting::Pg_points_graph pg_graph(
                 std::vector<Point_on_edge_t>(
                     points_p,
@@ -129,7 +180,6 @@ do_trsp_withPoints(
                 true,
                 driving_side,
                 directed);
-        log << pg_graph.get_log();
 
         if (pg_graph.has_error()) {
             log << pg_graph.get_log();
@@ -142,36 +192,35 @@ do_trsp_withPoints(
         auto vertices(pgrouting::extract_vertices(edges, total_edges));
         vertices = pgrouting::extract_vertices(vertices, pg_graph.new_edges());
 
-        auto combinations = total_combinations?
-            pgrouting::utilities::get_combinations(combinations_arr, total_combinations)
-            : pgrouting::utilities::get_combinations(starts_arr, size_starts_arr, ends_arr, size_ends_arr);
-
-        std::deque<Path> paths;
         if (directed) {
             pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(pg_graph.new_edges());
-
-            paths = pgr_dijkstra(
+            pgrouting::pgr_dijkstraVia(
                     digraph,
-                    combinations);
+                    via_vertices,
+                    paths,
+                    strict,
+                    U_turn_on_edge,
+                    log);
         } else {
             pgrouting::UndirectedGraph undigraph(vertices, gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(pg_graph.new_edges());
-
-            paths = pgr_dijkstra(
+            pgrouting::pgr_dijkstraVia(
                     undigraph,
-                    combinations);
+                    via_vertices,
+                    paths,
+                    strict,
+                    U_turn_on_edge,
+                    log);
         }
 
-        post_process_trsp(paths);
         if (!details) {
             for (auto &path : paths) path = pg_graph.eliminate_details(path);
         }
 
-        size_t count(0);
-        count = count_tuples(paths);
+        size_t count(count_tuples(paths));
 
         if (count == 0) {
             notice << "No paths found";
@@ -180,22 +229,9 @@ do_trsp_withPoints(
         }
 
         if (restrictions_size == 0) {
-            if (!details) {
-                for (auto &path : paths) {
-                    path = pg_graph.eliminate_details(path);
-                }
-            }
-
-            count = count_tuples(paths);
-
-            if (count == 0) {
-                (*return_tuples) = NULL;
-                (*return_count) = 0;
-                return;
-            }
-
             (*return_tuples) = pgr_alloc(count, (*return_tuples));
-            (*return_count) = (collapse_paths(return_tuples, paths));
+            (*return_count) = (get_route(return_tuples, paths));
+            (*return_tuples)[count - 1].edge = -2;
             return;
         }
 
@@ -220,7 +256,7 @@ do_trsp_withPoints(
             auto new_paths = gdef.process(new_combinations);
             paths.insert(paths.end(), new_paths.begin(), new_paths.end());
         }
-        post_process_trsp(paths);
+        post_process_trspvia(paths, via_vertices);
         if (!details) {
             for (auto &path : paths) path = pg_graph.eliminate_details(path);
         }
@@ -235,7 +271,8 @@ do_trsp_withPoints(
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        (*return_count) = collapse_paths(return_tuples, paths);
+        (*return_count) = (get_route(return_tuples, paths));
+        (*return_tuples)[count - 1].edge = -2;
 
         *log_msg = log.str().empty()?
             *log_msg :

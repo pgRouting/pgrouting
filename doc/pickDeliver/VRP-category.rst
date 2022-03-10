@@ -299,10 +299,11 @@ Results
     OUT service_time FLOAT,
     OUT departure_time FLOAT
 
-.. _return_vrp_matrix_start:
 
 Description of the result (TODO Disussion: Euclidean & Matrix)
 .........................................................................................
+
+.. _return_vrp_matrix_start:
 
 .. todo:: fix when everything below is fixed
 
