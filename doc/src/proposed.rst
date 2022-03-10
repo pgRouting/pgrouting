@@ -121,12 +121,19 @@ Proposed Functions
    :start-after: proposed start
    :end-before: proposed end
 
+:doc:`withPoints-category`
+
+.. include:: withPoints-category.rst
+   :start-after: proposed start
+   :end-before: proposed end
+
 .. toctree::
     :hidden:
 
     withPoints-family
     KSP-category
     via-category
+    withPoints-category
 
 See Also
 -------------------------------------------------------------------------------
