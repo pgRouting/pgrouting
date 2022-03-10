@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-21 15:49+0000\n"
+"POT-Creation-Date: 2022-03-10 02:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,6 +128,10 @@ msgstr ""
 msgid ":doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with restrictions."
 msgstr ""
 
+#: ../../build/doc/TRSP-family.rst:7
+msgid ":doc:`pgr_trspVia_withPoints` - Via Vertices/point routing with restrictions."
+msgstr ""
+
 #: ../../build/doc/proposed.rst:69
 msgid ":doc:`topology-functions`"
 msgstr ""
@@ -193,29 +197,37 @@ msgid ":doc:`via-category`"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:3
-msgid ":doc:`pgr_trspVia`"
+msgid ":doc:`pgr_dijkstraVia`"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:4
 msgid ":doc:`pgr_withPointsVia`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:131
+#: ../../build/doc/via-category.rst:5
+msgid ":doc:`pgr_trspVia`"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:6
+msgid ":doc:`pgr_trspVia_withPoints`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:132
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:133
+#: ../../build/doc/proposed.rst:134
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:136
+#: ../../build/doc/proposed.rst:137
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:137
+#: ../../build/doc/proposed.rst:138
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:138
+#: ../../build/doc/proposed.rst:139
 msgid ":ref:`search`"
 msgstr ""

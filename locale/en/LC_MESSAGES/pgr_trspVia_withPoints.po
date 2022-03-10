@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../build/doc/pgr_trspVia.rst:12
+#: ../../build/doc/pgr_trspVia_withPoints.rst:12
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_trspVia.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/en/pgr_trspVia.html>`__)"
+"<https://docs.pgrouting.org/latest/en/pgr_trspVia_withPoints.html>`__ "
+"(`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trspVia_withPoints.html>`__)"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:17
-msgid "``pgr_trspVia`` - Proposed"
+#: ../../build/doc/pgr_trspVia_withPoints.rst:17
+msgid "``pgr_trspVia_withPoints`` - Proposed"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:19
-msgid "``pgr_trspVia`` Via vertices routing with restrictions."
+#: ../../build/doc/pgr_trspVia_withPoints.rst:19
+msgid "``pgr_trspVia_withPoints`` Via vertices/points routing with restrictions."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -68,148 +68,206 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:28
+#: ../../build/doc/pgr_trspVia_withPoints.rst:28
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:31
+#: ../../build/doc/pgr_trspVia_withPoints.rst:31
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:32
+#: ../../build/doc/pgr_trspVia_withPoints.rst:32
 msgid "Version 3.4.0"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:34
-msgid "New **proposed** function ``pgr_trspVia`` (`One Via`_)"
+#: ../../build/doc/pgr_trspVia_withPoints.rst:34
+msgid "New **proposed** function ``pgr_trspVia_withPoints`` (`One Via`_)"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:10 ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_dijkstraVia.rst:11 ../../build/doc/pgr_trspVia.rst:39
+#: ../../build/doc/pgr_trspVia_withPoints.rst:39
+#: ../../build/doc/pgr_trspVia_withPoints.rst:116
+#: ../../build/doc/pgr_trsp_withPoints.rst:11
 #: ../../build/doc/via-category.rst:10 ../../build/doc/via-category.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:41
+#: ../../build/doc/pgr_trspVia_withPoints.rst:41
 msgid ""
-"Given a list of vertices and a graph, this function is equivalent to "
-"finding the shortest path between :math:`vertex_i` and "
-":math:`vertex_{i+1}` for all :math:`i < size\\_of(via\\;vertices)` trying"
-" not to use restricted paths."
+"Given a graph, a set of restriction on the graph edges, a set of points "
+"on the graphs edges and a list of vertices, this function is equivalent "
+"to finding the shortest path between :math:`vertex_i` and "
+":math:`vertex_{i+1}` (where :math:`vertex` can be a vertex or a point on "
+"the graph) for all :math:`i < size\\_of(via\\;vertices)` trying not to "
+"use restricted paths."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:45
-msgid "The paths represents the sections of the route."
+#: ../../build/doc/pgr_trspVia_withPoints.rst
+msgid "Route"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:47
+#: ../../build/doc/pgr_trspVia_withPoints.rst:47
+msgid "is a sequence of paths"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst
+msgid "Path"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:48
+msgid "is a section of the route."
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:50
 msgid "The general algorithm is as follows:"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:49
-msgid "Execute a :doc:`pgr_dijkstraVia`."
+#: ../../build/doc/pgr_trspVia_withPoints.rst:52
+msgid "Build the Graph with the new points."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:50
-msgid ""
-"For the set of sub paths of the solution that pass through a restriction "
-"then"
+#: ../../build/doc/pgr_trspVia_withPoints.rst:54
+msgid "The points identifiers will be converted to negative values."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:52
-msgid "Execute the **TRSP** algorithm with restrictions for the paths."
+#: ../../build/doc/pgr_trspVia_withPoints.rst:55
+msgid "The vertices identifiers will remain positive."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:53
+#: ../../build/doc/pgr_trspVia_withPoints.rst:57
+msgid "Execute a :doc:`pgr_withPointsVia`."
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:58
+msgid "For the set of paths of the solution that pass through a restriction then"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:60
+msgid "Execute the **TRSP** algorithm with restrictions for the path."
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:61
 msgid "**NOTE** when this is done, ``U_turn_on_edge`` flag is ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:59
+#: ../../build/doc/pgr_trspVia_withPoints.rst:63
+msgid "Do not use negative values on identifiers of the inner queries."
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:68
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:62
+#: ../../build/doc/pgr_trspVia_withPoints.rst:71
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:77
+#: ../../build/doc/pgr_trspVia_withPoints.rst:86
 msgid "One Via"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:87
+#: ../../build/doc/pgr_trspVia_withPoints.rst:96
 msgid ""
-"Find the route that visits the vertices :math:`\\{ 1, 7, 10\\}` in that "
+"Find the route that visits the vertices :math:`\\{ -6, 4, -5\\}` in that "
 "order on an **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:97
+#: ../../build/doc/pgr_trspVia_withPoints.rst:106
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:8 ../../build/doc/via-category.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_trspVia_withPoints.rst:113
+#: ../../build/doc/pgr_trsp_withPoints.rst:8 ../../build/doc/via-category.rst:8
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:9 ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_dijkstraVia.rst:9 ../../build/doc/via-category.rst:9
+#: ../../build/doc/pgr_trspVia_withPoints.rst:114
+#: ../../build/doc/pgr_trsp_withPoints.rst:9 ../../build/doc/via-category.rst:9
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgr_dijkstraVia.rst:10 ../../build/doc/via-category.rst:10
+#: ../../build/doc/pgr_trspVia_withPoints.rst:115
+#: ../../build/doc/pgr_trsp_withPoints.rst:10
+#: ../../build/doc/via-category.rst:10
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:12
+#: ../../build/doc/pgr_trspVia_withPoints.rst:117
 msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:13
+#: ../../build/doc/pgr_trspVia_withPoints.rst:118
+#: ../../build/doc/pgr_trspVia_withPoints.rst:122
+#: ../../build/doc/pgr_trspVia_withPoints.rst:126
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:15
+#: ../../build/doc/pgr_trspVia_withPoints.rst:120
+#: ../../build/doc/pgr_trspVia_withPoints.rst:124
+#: ../../build/doc/pgr_trspVia_withPoints.rst:128
 msgid "SQL query as described."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:16
+#: ../../build/doc/pgr_trspVia_withPoints.rst:121
+msgid "`Restrictions SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:125
+msgid "`Points SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:129
 msgid "**via vertices**"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:12 ../../build/doc/pgr_dijkstraVia.rst:17
+#: ../../build/doc/TRSP-family.rst:12
+#: ../../build/doc/pgr_trspVia_withPoints.rst:130
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:19
+#: ../../build/doc/pgr_trspVia_withPoints.rst:132
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:20
+#: ../../build/doc/pgr_trspVia_withPoints.rst:134
+msgid "When positive it is considered a vertex identifier"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:135
+msgid "When negative it is considered a point identifier"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:136
 msgid "``directed``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:21 ../../build/doc/via-category.rst:13
-#: ../../build/doc/via-category.rst:18
+#: ../../build/doc/pgr_trspVia_withPoints.rst:137
+#: ../../build/doc/pgr_trsp_withPoints.rst:21
+#: ../../build/doc/via-category.rst:13 ../../build/doc/via-category.rst:18
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:22 ../../build/doc/via-category.rst:19
+#: ../../build/doc/pgr_trspVia_withPoints.rst:138
+#: ../../build/doc/via-category.rst:19
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:23
+#: ../../build/doc/pgr_trspVia_withPoints.rst:139
 msgid "When ``true`` Graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:24
+#: ../../build/doc/pgr_trspVia_withPoints.rst:140
 msgid "When ``false`` the graph is considered as Undirected."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:106
+#: ../../build/doc/pgr_trspVia_withPoints.rst:145
 msgid "Via optional parameters"
 msgstr ""
 
@@ -217,6 +275,7 @@ msgstr ""
 msgid "``strict``"
 msgstr ""
 
+#: ../../build/doc/pgr_trsp_withPoints.rst:22
 #: ../../build/doc/via-category.rst:14
 msgid "``false``"
 msgstr ""
@@ -237,11 +296,58 @@ msgstr ""
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:115
+#: ../../build/doc/pgr_trspVia_withPoints.rst:154
+msgid "With points optional parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:12
+msgid "``driving_side``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:32
+#: ../../build/doc/pgr_trsp_withPoints.rst:13
+msgid "``CHAR``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:14
+msgid "``r``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:15
+msgid "Value in [``r``, ``l``] indicating if the driving side is:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:17
+msgid "``r`` for right driving side"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:18
+msgid "``l`` for left driving side"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:19
+msgid "Any other value will be considered as ``r``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:20
+msgid "``details``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:23
+msgid "When ``true`` the results will include the points that are in the path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:24
+msgid ""
+"When ``false`` the results will not include the points that are in the "
+"path."
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:163
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:120
+#: ../../build/doc/pgr_trspVia_withPoints.rst:168
 msgid "Edges SQL"
 msgstr ""
 
@@ -257,6 +363,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "**ANY-INTEGER**"
 msgstr ""
 
@@ -286,6 +393,7 @@ msgid "``cost``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:18 ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:27
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
 msgstr ""
@@ -313,6 +421,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:21 ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgRouting-concepts.rst:40
 msgid "Where:"
 msgstr ""
 
@@ -321,6 +430,7 @@ msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:23 ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/pgRouting-concepts.rst:42
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
@@ -329,10 +439,11 @@ msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:24 ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/pgRouting-concepts.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:129
+#: ../../build/doc/pgr_trspVia_withPoints.rst:177
 msgid "Restrictions SQL"
 msgstr ""
 
@@ -355,7 +466,79 @@ msgstr ""
 msgid "Cost of taking the forbidden path."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:138
+#: ../../build/doc/pgr_trspVia_withPoints.rst:186
+msgid "Points SQL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``pid``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "**value**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "Identifier of the point."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "Use with positive value, as internally will be converted to negative value"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "If column is present, it can not be NULL."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid ""
+"If column is not present, a sequential negative **value** will be given "
+"automatically."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "``edge_id``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:26
+msgid "``fraction``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid ""
+"Value in <0,1> that indicates the relative postition from the first end "
+"point of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "``side``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid "``b``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:34
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36
+msgid "In the right ``r``,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:37
+msgid "In the left ``l``,"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "In both ``b``"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:195
 msgid "Return Columns"
 msgstr ""
 
@@ -466,148 +649,152 @@ msgid ""
 "current ``seq``."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:147
+#: ../../build/doc/pgr_trspVia_withPoints.rst:204
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:149
+#: ../../build/doc/pgr_trspVia_withPoints.rst:206
 msgid ""
 "Find the route that visits the vertices :math:`\\{1, 5, 7, 10, 4\\}` in "
 "that order"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:156
+#: ../../build/doc/pgr_trspVia_withPoints.rst:213
 msgid "What's the aggregate cost of the third path?"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 3"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:162
+#: ../../build/doc/pgr_trspVia_withPoints.rst:219
 msgid ""
 "What's the route's aggregate cost of the route at the end of the third "
 "path?"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 4"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:169
+#: ../../build/doc/pgr_trspVia_withPoints.rst:226
 msgid "How are the nodes visited in the route?"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 5"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:175
+#: ../../build/doc/pgr_trspVia_withPoints.rst:232
 msgid ""
 "What are the aggregate costs of the route when the visited vertices are "
 "reached?"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 6"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:182
+#: ../../build/doc/pgr_trspVia_withPoints.rst:239
 msgid ""
 "Show the route's seq and aggregate cost and a status of \"passes in "
 "front\" or \"visits\""
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 7"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:189
+#: ../../build/doc/pgr_trspVia_withPoints.rst:246
 msgid "Simulation of how algorithm works"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:191
-msgid "The algorithm performs a :doc:`pgr_dijkstraVia`"
+#: ../../build/doc/pgr_trspVia_withPoints.rst:248
+msgid "The algorithm performs a :doc:`pgr_withPointsVia`"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:197
+#: ../../build/doc/pgr_trspVia_withPoints.rst:254
 msgid ""
-"Detects which of the sub paths pass through a restriction in this case is"
-" for the ``path_id = 1`` from ``2`` to ``8`` because the path :math:`4 "
-"\\rightarrow 7` is restricted."
+"Detects which of the paths pass through a restriction in this case is for"
+" the ``path_id = 1`` from ``-6`` to ``4`` because the path :math:`9 "
+"\\rightarrow 16` is restricted."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:201
-msgid "Executes the :doc:`pgr_trsp` algorithm for the conflicting paths."
+#: ../../build/doc/pgr_trspVia_withPoints.rst:258
+msgid "Executes the :ref:`TRSP-family:TRSP algorithm` for the conflicting paths."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:207
+#: ../../build/doc/pgr_trspVia_withPoints.rst:264
 msgid ""
 "From the :doc:`pgr_dijkstraVia` result it removes the conflicting paths "
 "and builds the solution with the results of the :doc:`pgr_trsp` "
 "algorithm:"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:214
-msgid "Getting the same result as ``pgr_trspVia``:"
+#: ../../build/doc/pgr_trspVia_withPoints.rst:271
+msgid "Getting the same result as ``pgr_trspVia_withPoints``:"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst
+#: ../../build/doc/pgr_trspVia_withPoints.rst
 msgid "Example 8"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:220
+#: ../../build/doc/pgr_trspVia_withPoints.rst:277
 msgid "Sometimes ``U_turn_on_edge`` flag is ignored when is set to ``false``."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:223
+#: ../../build/doc/pgr_trspVia_withPoints.rst:280
 msgid ""
 "The first step, doing a :doc:`pgr_dijkstraVia` does consider not making a"
 " U turn on the same edge. But the path :math:`9 \\rightarrow 16` (Rows 4 "
 "and 5) is restricted and the result is using it."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:231
+#: ../../build/doc/pgr_trspVia_withPoints.rst:288
 msgid ""
-"When executing the :doc:`pgr_trsp` algorithm for the conflicting path, "
-"there is no ``U_turn_on_edge`` flag."
+"When executing the :doc:`pgr_trsp_withPoints` algorithm for the "
+"conflicting path, there is no ``U_turn_on_edge`` flag."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:238
+#: ../../build/doc/pgr_trspVia_withPoints.rst:295
 msgid ""
 "Therefore the result ignores the ``U_turn_on_edge`` flag when set to "
 "``false``."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:245
+#: ../../build/doc/pgr_trspVia_withPoints.rst:302
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:247
+#: ../../build/doc/pgr_trspVia_withPoints.rst:304
+msgid ":doc:`TRSP-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_trspVia_withPoints.rst:305
 msgid ":doc:`via-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:248
+#: ../../build/doc/pgr_trspVia_withPoints.rst:306
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:251
+#: ../../build/doc/pgr_trspVia_withPoints.rst:309
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:252
+#: ../../build/doc/pgr_trspVia_withPoints.rst:310
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:253
+#: ../../build/doc/pgr_trspVia_withPoints.rst:311
 msgid ":ref:`search`"
 msgstr ""
 

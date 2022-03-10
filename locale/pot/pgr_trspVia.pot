@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-21 15:49+0000\n"
+"POT-Creation-Date: 2022-03-10 02:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,7 +110,7 @@ msgid "For the set of sub paths of the solution that pass through a restriction 
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:52
-msgid "Execute the :doc:`pgr_trsp` algorithm with restrictions for the sub paths."
+msgid "Execute the **TRSP** algorithm with restrictions for the paths."
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:53
@@ -287,7 +287,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/TRSP-family.rst:17
+#: ../../build/doc/TRSP-family.rst:18
 msgid "**ANY-NUMERICAL**"
 msgstr ""
 
@@ -312,7 +312,7 @@ msgid "When negative: edge (``target``, ``source``) does not exist, therefore it
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/TRSP-family.rst:20
+#: ../../build/doc/TRSP-family.rst:21
 msgid "Where:"
 msgstr ""
 
@@ -322,7 +322,7 @@ msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:38
-#: ../../build/doc/TRSP-family.rst:22
+#: ../../build/doc/TRSP-family.rst:23
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
@@ -332,7 +332,7 @@ msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:39
-#: ../../build/doc/TRSP-family.rst:23
+#: ../../build/doc/TRSP-family.rst:24
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
@@ -348,11 +348,11 @@ msgstr ""
 msgid "Sequence of edge identifiers that form a path that is not allowed to be taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a ``NULL`` element will raise an exception."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:16
+#: ../../build/doc/TRSP-family.rst:17
 msgid "``Cost``"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:18
+#: ../../build/doc/TRSP-family.rst:19
 msgid "Cost of taking the forbidden path."
 msgstr ""
 
