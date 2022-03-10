@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-21 15:49+0000\n"
+"POT-Creation-Date: 2022-03-10 02:12+0000\n"
 "PO-Revision-Date: 2022-02-15 20:31+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
@@ -508,18 +508,6 @@ msgstr ":doc:`pgr_KSP` - Algoritmo de Yen basado en pgr_dijkstra"
 msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
-#: ../../build/doc/routingFunctions.rst:114
-#, fuzzy
-#| msgid ":doc:`KSP-category`"
-msgid ":doc:`via-category`"
-msgstr ":doc:`KSP-category`"
-
-#: ../../build/doc/via-category.rst:3
-#, fuzzy
-#| msgid ":doc:`pgr_dijkstraCost`"
-msgid ":doc:`pgr_dijkstraVia`"
-msgstr ":doc:`pgr_dijkstraCost`"
-
 #: ../../build/doc/index.rst:100
 msgid "Available Functions but not official pgRouting functions"
 msgstr "Funciones disponibles pero no funciones oficiales pgRouting"
@@ -547,3 +535,13 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/index.rst:125
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#, fuzzy
+#~| msgid ":doc:`KSP-category`"
+#~ msgid ":doc:`via-category`"
+#~ msgstr ":doc:`KSP-category`"
+
+#, fuzzy
+#~| msgid ":doc:`pgr_dijkstraCost`"
+#~ msgid ":doc:`pgr_dijkstraVia`"
+#~ msgstr ":doc:`pgr_dijkstraCost`"
