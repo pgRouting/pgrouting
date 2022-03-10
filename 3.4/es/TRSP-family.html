@@ -96,6 +96,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">TRSP - Family of functions</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#trsp-algorithm">TRSP algorithm</a></li>
 <li><a class="reference internal" href="#restrictions">Restrictions</a><ul>
 <li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
 </ul>
@@ -178,7 +179,9 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Vertex - Vertex routing with restrictions.</p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> - Via Vertices routing with restrictions.</p></li>
-<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point - Vertex/Point routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point - Vertex/Point routing with
+restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Vertices/point routing with restrictions.</p></li>
 </ul>
 <p class="rubric">Experimental</p>
 <div class="admonition warning">
@@ -218,11 +221,31 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Road restrictions are a sequence of road segments that can not be taken in a
+sequential manner.
+Some restrictions are implicit on a directed graph, for example, one way roads
+where the wrong way edge is not even inserted on the graph.
+But normally on turns like <strong>left turn</strong> or <strong>right turn</strong>, hence the name turn
+restrictions, there are sometimes restrictions.</p>
+<img alt="_images/restrictions.png" src="_images/restrictions.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="trsp-algorithm">
+<h3>TRSP algorithm<a class="headerlink" href="#trsp-algorithm" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in
+order to find out if the attempted path has a restriction. This allows the
+algorithm to pass twice on the same vertex.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 <section id="restrictions">
 <h3>Restrictions<a class="headerlink" href="#restrictions" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>On road networks, there are restrictions such as left or right turn restrictions,
 no U turn restrictions.</p>
-<p>A restriction is a sequence of edges, called <strong>path</strong> and that <strong>path</strong> is to be avoided.</p>
+<p>A restriction is a sequence of edges, called <strong>path</strong> and that <strong>path</strong> is to be
+avoided.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" src="_images/with_restrictions.png" style="width: 439.0px; height: 423.5px;" /></a>
 <figcaption>
@@ -246,8 +269,12 @@ no U turn restrictions.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>The table has an identifier, which maybe is needed for the administration of the restrictions, but the
-algorithms do not need that information. If given it will be ignored.</p>
+<p>The table has an identifier, which maybe is needed for the
+administration of the restrictions, but the algorithms do not need that
+information. If given it will be ignored.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <section id="restrictions-sql">
 <h4>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h4>
@@ -266,7 +293,8 @@ algorithms do not need that information. If given it will be ignored.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of edge identifiers that form a path that is not allowed to be taken.
+<td><p>Sequence of edge identifiers that form a path that is not allowed to be
+taken.
 - Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
 - Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
 </tr>
@@ -311,7 +339,7 @@ algorithms do not need that information. If given it will be ignored.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en feb. 21, 2022.<br/>
+      Actualizado por última vez en mar. 10, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>

@@ -277,9 +277,10 @@
 </li>
 <li><p>Turn Restrictions</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code></p>
+<li><p>Via with turn restrictions</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia</span></code> (One Via)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> (One Via)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code></p>
@@ -307,9 +308,10 @@
 <ul class="simple">
 <li><p>Turn Restrictions</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,</span> <span class="pre">integer,</span> <span class="pre">integer,</span> <span class="pre">boolean,</span> <span class="pre">boolean,</span> <span class="pre">text)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,</span> <span class="pre">integer,</span> <span class="pre">float8,</span> <span class="pre">integer,</span> <span class="pre">float8,</span> <span class="pre">boolean,</span> <span class="pre">boolean,</span> <span class="pre">text)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,integer,boolean,boolean,text)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trsp(text,integer,float8,integer,float8,boolean,boolean,text)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices(text,anyarray,boolean,boolean,text)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -1435,7 +1437,7 @@ The following release notes have been copied from the previous <code class="docu
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Feb 21, 2022.<br/>
+      Last updated on Mar 10, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>

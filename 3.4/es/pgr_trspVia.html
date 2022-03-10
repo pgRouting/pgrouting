@@ -212,7 +212,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <li><p>Execute a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
 <li><p>For the set of sub paths of the solution that pass through a restriction then</p>
 <ul>
-<li><p>Execute the <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> algorithm with restrictions for the sub paths.</p></li>
+<li><p>Execute the <strong>TRSP</strong> algorithm with restrictions for the paths.</p></li>
 <li><p><strong>NOTE</strong> when this is done, <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</span></code> flag is ignored.</p></li>
 </ul>
 </li>
@@ -442,7 +442,8 @@ it’s not part of the graph.</p></li>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of edge identifiers that form a path that is not allowed to be taken.
+<td><p>Sequence of edge identifiers that form a path that is not allowed to be
+taken.
 - Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
 - Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
 </tr>
@@ -718,7 +719,7 @@ is restricted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT path, cost FROM restrictions$$,
-  2,8);
+  2, 8);
  path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 ---------+----------+-----------+---------+------+------+------+----------
        1 |        1 |         2 |       8 |    2 |    4 |    1 |        0
@@ -745,7 +746,7 @@ solutions AS (
   SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     $$SELECT path, cost FROM restrictions$$,
-    2,8)),
+    2, 8)),
 with_seq AS (
   SELECT row_number() over(ORDER BY path_id, path_seq) AS seq, *
   FROM solutions),
@@ -774,7 +775,7 @@ FROM with_seq LEFT JOIN aggregation ON (with_seq.seq = aggregation.seq + 1);
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
   $$SELECT path, cost FROM restrictions$$,
-  ARRAY[2,8,2]);
+  ARRAY[2, 8, 2]);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |         2 |       8 |    2 |    4 |    1 |        0 |              0
@@ -804,7 +805,7 @@ on the same edge. But the path <span class="math notranslate nohighlight">\(9 \r
 restricted and the result is using it.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_dijkstraVia(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
-    ARRAY[2,5,2], U_turn_on_edge := false);
+    ARRAY[2, 5, 2], U_turn_on_edge =&gt; false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |         2 |       5 |    2 |    4 |    1 |        0 |              0
@@ -824,7 +825,7 @@ no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost FROM  pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT path, cost FROM restrictions$$,
-  5,2);
+  5, 2);
  path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 ---------+----------+-----------+---------+------+------+------+----------
        1 |        1 |         5 |       2 |    5 |    4 |    1 |        0
@@ -837,7 +838,7 @@ no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_trspVia(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
     $$SELECT path, cost FROM restrictions$$,
-    ARRAY[2,5,2], U_turn_on_edge := false);
+    ARRAY[2, 5, 2], U_turn_on_edge =&gt; false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
    1 |       1 |        1 |         2 |       5 |    2 |    4 |    1 |        0 |              0
@@ -876,7 +877,7 @@ no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en feb. 21, 2022.<br/>
+      Actualizado por última vez en mar. 10, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
