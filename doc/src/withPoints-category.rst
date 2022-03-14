@@ -171,9 +171,51 @@ In the the folowwing images:
 Points SQL
 ...............................................................................
 
-.. include:: pgRouting-concepts.rst
-   :start-after: points_sql_start
-   :end-before: points_sql_end
+.. points_sql_start
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 7 44
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``pid``
+     - **ANY-INTEGER**
+     - **value**
+     - Identifier of the point.
+
+       * Use with positive value, as internally will be converted to negative
+         value
+       * If column is present, it can not be NULL.
+       * If column is not present, a sequential negative **value** will be given
+         automatically.
+   * - ``edge_id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the "closest" edge to the point.
+   * - ``fraction``
+     - **ANY-NUMERICAL**
+     -
+     - Value in <0,1> that indicates the relative postition from the first end
+       point of the edge.
+   * - ``side``
+     - ``CHAR``
+     - ``b``
+     - Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:
+
+       * In the right ``r``,
+       * In the left ``l``,
+       * In both ``b``
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+.. points_sql_end
 
 Creating temporary vertices
 -------------------------------------------------------------------------------

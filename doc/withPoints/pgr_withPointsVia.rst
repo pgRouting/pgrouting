@@ -168,7 +168,7 @@ Edges SQL
 Points SQL
 ...............................................................................
 
-.. include:: pgRouting-concepts.rst
+.. include:: withPoints-category.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
