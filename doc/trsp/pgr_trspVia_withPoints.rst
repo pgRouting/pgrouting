@@ -203,7 +203,7 @@ Return Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{1, 5, 7, 10, 4\}`
+:Example 1: Find the route that visits the vertices :math:`\{-6, 5, -4, 10, -2\}`
             in that order
 
 .. literalinclude:: trspVia_withPoints.queries
@@ -261,7 +261,7 @@ Executes the :ref:`TRSP-family:TRSP algorithm` for the conflicting paths.
     :start-after: -- q8
     :end-before: -- q9
 
-From the :doc:`pgr_dijkstraVia` result it removes the conflicting paths and
+From the :doc:`pgr_withPointsVia` result it removes the conflicting paths and
 builds the solution with the results of the :doc:`pgr_trsp` algorithm:
 
 .. literalinclude:: trspVia_withPoints.queries
@@ -277,7 +277,7 @@ Getting the same result as ``pgr_trspVia_withPoints``:
 :Example 8: Sometimes ``U_turn_on_edge`` flag is ignored when is set to
             ``false``.
 
-The first step, doing a :doc:`pgr_dijkstraVia` does consider not making a U turn
+The first step, doing a :doc:`pgr_withPointsVia` does consider not making a U turn
 on the same edge. But the path :math:`9 \rightarrow 16` (Rows 4 and 5) is
 restricted and the result is using it.
 
@@ -293,6 +293,9 @@ path, there is no ``U_turn_on_edge`` flag.
     :end-before: -- q13
 
 Therefore the result ignores the ``U_turn_on_edge`` flag when set to ``false``.
+From the :doc:`pgr_withPointsVia` result it removes the conflicting paths and
+builds the solution with the results of the :doc:`pgr_trsp` algorithm.
+In this case a U turn is been done using the same edge.
 
 .. literalinclude:: trspVia_withPoints.queries
     :start-after: -- q13

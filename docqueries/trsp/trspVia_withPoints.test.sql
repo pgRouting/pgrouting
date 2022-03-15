@@ -11,14 +11,14 @@ SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[1, 5, 7, 10, 4]
+  ARRAY[-6, 5, -4, 10, -2]
 );
 /* -- q2 */
 SELECT agg_cost FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[1, 5, 7, 10, 4]
+  ARRAY[-6, 5, -4, 10, -2]
 )
 WHERE path_id = 3 AND edge <0;
 /* -- q3 */
@@ -26,7 +26,7 @@ SELECT route_agg_cost FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[1, 5, 7, 10, 4]
+  ARRAY[-6, 5, -4, 10, -2]
 )
 WHERE path_id = 3 AND edge < 0;
 /* -- q4 */
@@ -35,7 +35,7 @@ FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[1, 5, 7, 10, 4]
+  ARRAY[-6, 5, -4, 10, -2]
 )
 WHERE edge <> -1 ORDER BY seq;
 /* -- q5 */
@@ -43,7 +43,7 @@ SELECT path_id, route_agg_cost FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[1, 5, 7, 10, 4]
+  ARRAY[-6, 5, -4, 10, -2]
 )
 WHERE edge < 0;
 /* -- q6 */
@@ -55,7 +55,7 @@ FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[1, 5, 7, 10, 4])
+  ARRAY[-6, 5, -4, 10, -2])
 WHERE agg_cost  <> 0 or seq = 1;
 /* -- q7 */
 SELECT * FROM pgr_withPointsVia(
