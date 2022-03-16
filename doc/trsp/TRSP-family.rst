@@ -28,9 +28,8 @@ When points are also given as input:
 
 - :doc:`pgr_trsp` - Vertex - Vertex routing with restrictions.
 - :doc:`pgr_trspVia` - Via Vertices routing with restrictions.
-- :doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with
-  restrictions.
-- :doc:`pgr_trspVia_withPoints` - Via Vertices/point routing with restrictions.
+- :doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions.
+- :doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions.
 
 .. index proposed to here
 

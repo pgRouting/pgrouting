@@ -147,7 +147,7 @@ Inner query
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: pgRouting-concepts.rst
+.. include:: withPoints-category.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
