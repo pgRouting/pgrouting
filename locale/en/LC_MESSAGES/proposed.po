@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 02:12+0000\n"
+"POT-Creation-Date: 2022-03-16 15:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:8
-msgid ":doc:`pgr_withPointsVia` - Driving distance."
+msgid ":doc:`pgr_withPointsVia` - Via routing"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:58
@@ -137,15 +137,13 @@ msgstr ""
 msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:5
-msgid ""
-":doc:`pgr_trsp_withPoints` - Vertex/Point - Vertex/Point routing with "
-"restrictions."
+#: ../../build/doc/TRSP-family.rst:5 ../../build/doc/withPoints-category.rst:6
+msgid ":doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions."
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:7
+#: ../../build/doc/TRSP-family.rst:6 ../../build/doc/withPoints-category.rst:7
 msgid ""
-":doc:`pgr_trspVia_withPoints` - Via Vertices/point routing with "
+":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with "
 "restrictions."
 msgstr ""
 
@@ -233,23 +231,35 @@ msgstr ""
 msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:132
-msgid "See Also"
+#: ../../build/doc/proposed.rst:124
+msgid ":doc:`withPoints-category`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:134
-msgid ":doc:`experimental`"
+#: ../../build/doc/withPoints-category.rst:3
+msgid ":doc:`withPoints-family` - Functions based on dijkstra algorithms."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:137
-msgid "Indices and tables"
-msgstr ""
-
-#: ../../build/doc/proposed.rst:138
-msgid ":ref:`genindex`"
+#: ../../build/doc/withPoints-category.rst:4
+msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:139
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:141
+msgid ":doc:`experimental`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:144
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:145
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:146
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 02:12+0000\n"
+"POT-Creation-Date: 2022-03-16 15:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,6 +110,7 @@ msgstr ""
 #: ../../build/doc/pgr_trsp_withPoints.rst:206
 #: ../../build/doc/pgr_trsp_withPoints.rst:254
 #: ../../build/doc/pgr_trsp_withPoints.rst:315
+#: ../../build/doc/withPoints-category.rst:11
 msgid "Description"
 msgstr ""
 
@@ -251,12 +252,14 @@ msgstr ""
 #: ../../build/doc/pgr_trsp_withPoints.rst:204
 #: ../../build/doc/pgr_trsp_withPoints.rst:252
 #: ../../build/doc/pgr_trsp_withPoints.rst:314
+#: ../../build/doc/withPoints-category.rst:9
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgr_trsp_withPoints.rst:205
 #: ../../build/doc/pgr_trsp_withPoints.rst:253
+#: ../../build/doc/withPoints-category.rst:10
 msgid "Default"
 msgstr ""
 
@@ -293,9 +296,10 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgr_trsp_withPoints.rst:220
 #: ../../build/doc/pgr_trsp_withPoints.rst:228
+#: ../../build/doc/withPoints-category.rst:13
+#: ../../build/doc/withPoints-category.rst:23
 msgid "**ANY-INTEGER**"
 msgstr ""
 
@@ -358,6 +362,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_trsp_withPoints.rst:251
+#: ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
 msgstr ""
 
@@ -365,8 +370,8 @@ msgstr ""
 msgid "``driving_side``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:32
 #: ../../build/doc/pgr_trsp_withPoints.rst:256
+#: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
 msgstr ""
 
@@ -448,8 +453,8 @@ msgid "``cost``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:18 ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgRouting-concepts.rst:27
 #: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/withPoints-category.rst:27
 msgid "**ANY-NUMERICAL**"
 msgstr ""
 
@@ -477,26 +482,28 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:21 ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/pgRouting-concepts.rst:40
+#: ../../build/doc/withPoints-category.rst:40
 msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst ../../build/doc/pgRouting-concepts.rst
+#: ../../build/doc/withPoints-category.rst
 msgid "ANY-INTEGER"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:23 ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
-#: ../../build/doc/pgRouting-concepts.rst:42
+#: ../../build/doc/withPoints-category.rst:42
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst ../../build/doc/pgRouting-concepts.rst
+#: ../../build/doc/withPoints-category.rst
 msgid "ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:24 ../../build/doc/pgRouting-concepts.rst:39
-#: ../../build/doc/pgRouting-concepts.rst:43
+#: ../../build/doc/withPoints-category.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
@@ -527,72 +534,72 @@ msgstr ""
 msgid "Points SQL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/withPoints-category.rst:14
 msgid "**value**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/withPoints-category.rst:15
 msgid "Identifier of the point."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/withPoints-category.rst:17
 msgid "Use with positive value, as internally will be converted to negative value"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/withPoints-category.rst:19
 msgid "If column is present, it can not be NULL."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/withPoints-category.rst:20
 msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
+#: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/withPoints-category.rst:29
 msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:31
+#: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:33
+#: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:34
+#: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:37
+#: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:38
-msgid "In both ``b``"
+#: ../../build/doc/withPoints-category.rst:38
+msgid "In both ``b``, ``NULL``"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:299
