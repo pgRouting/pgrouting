@@ -119,6 +119,11 @@ Available Functions but not official pgRouting functions
     release_notes
 
 
+.. toctree::
+    :hidden:
+
+    trsp_migration
+
 .. rubric:: Indices and tables
 
 * :ref:`genindex`

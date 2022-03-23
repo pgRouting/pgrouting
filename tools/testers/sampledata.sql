@@ -110,16 +110,15 @@ CREATE TABLE old_restrictions (
     rid BIGINT NOT NULL,
     to_cost FLOAT,
     target_id BIGINT,
-    from_edge BIGINT,
     via_path TEXT
 );
 
-INSERT INTO old_restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
-(1, 100,  7,  4, NULL),
-(1, 100, 11,  8, NULL),
-(1, 100, 10,  7, NULL),
-(2,   4,  9,  3, 5),
-(3, 100,  9, 16, NULL);
+INSERT INTO old_restrictions (rid, to_cost, target_id, via_path) VALUES
+(1, 100,  7,  '4'),
+(1, 100, 11,  '8'),
+(1, 100, 10,  '7'),
+(2,   4,  9,  '5, 3'),
+(3, 100,  9, '16');
 --RESTRICTIONS OLD CREATE end
 
 --RESTRICTIONS CREATE start
@@ -133,7 +132,7 @@ INSERT INTO restrictions (path, cost) VALUES
 (ARRAY[4, 7], 100),
 (ARRAY[8, 11], 100),
 (ARRAY[7, 10], 100),
-(ARRAY[3, 5, 9], 100),
+(ARRAY[3, 5, 9], 4),
 (ARRAY[9, 16], 100);
 --RESTRICTIONS CREATE end
 

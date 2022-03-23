@@ -46,14 +46,14 @@ SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         2, 7, false, false,
         'SELECT to_cost, target_id::int4,
-        from_edge || coalesce('','' || via_path, '''') AS via_path
+        via_path
         FROM old_restrictions'
     );
     SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         7, 11, false, false,
         'SELECT to_cost, target_id::int4,
-        from_edge || coalesce('','' || via_path, '''') AS via_path
+        via_path
         FROM old_restrictions'
     );
 
@@ -63,8 +63,8 @@ SELECT * FROM pgr_trsp(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
         ARRAY[2,7,11]::INTEGER[],
         false,  false,
-        'SELECT to_cost, target_id::int4, from_edge ||
-        coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
+        'SELECT to_cost, target_id::int4,
+        via_path FROM old_restrictions');
 
 
 /* --q5 */
@@ -75,7 +75,7 @@ SELECT * FROM pgr_trsp(
         ARRAY[0.5, 0.5, 0.5]::FLOAT[],
         true,
         true,
-        'SELECT to_cost, target_id::int4, FROM_edge ||
-        coalesce('',''||via_path,'''') AS via_path FROM old_restrictions');
+        'SELECT to_cost, target_id::int4,
+        via_path FROM old_restrictions');
 
 /* --q6 */
