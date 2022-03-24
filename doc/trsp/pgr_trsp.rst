@@ -250,36 +250,6 @@ Return Columns
     :end-before: return_path_end
 
 
-Additional Examples
--------------------------------------------------------------------------------
-
-:Example: Without turn restrictions
-
-.. literalinclude:: doc-trsp.queries
-   :start-after: --q1
-   :end-before: --q2
-
-:Example: With turn restrictions
-
-Then a query with turn restrictions is created as:
-
-.. literalinclude:: doc-trsp.queries
-   :start-after: --q3
-   :end-before: --q4
-
-An example query using vertex ids and via points:
-
-.. literalinclude:: doc-trsp.queries
-   :start-after: --q4
-   :end-before: --q5
-
-An example query using edge ids and via:
-
-.. literalinclude:: doc-trsp.queries
-   :start-after: --q5
-   :end-before: --q6
-
-The queries use the :doc:`sampledata` network.
 
 See Also
 -------------------------------------------------------------------------------
@@ -287,6 +257,7 @@ See Also
 * :doc:`TRSP-family`
 * `Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_
 * :doc:`trsp_migration`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
