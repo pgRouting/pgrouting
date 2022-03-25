@@ -82,6 +82,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+</ul>
 </ul>
 </li>
               
@@ -283,7 +286,7 @@
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
-<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mi">100</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -294,16 +297,15 @@
     <span class="n">rid</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span>
     <span class="n">to_cost</span> <span class="n">FLOAT</span><span class="p">,</span>
     <span class="n">target_id</span> <span class="n">BIGINT</span><span class="p">,</span>
-    <span class="n">from_edge</span> <span class="n">BIGINT</span><span class="p">,</span>
     <span class="n">via_path</span> <span class="n">TEXT</span>
 <span class="p">);</span>
 
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">old_restrictions</span> <span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="n">to_cost</span><span class="p">,</span> <span class="n">target_id</span><span class="p">,</span> <span class="n">from_edge</span><span class="p">,</span> <span class="n">via_path</span><span class="p">)</span> <span class="n">VALUES</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="n">NULL</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span> <span class="n">NULL</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="n">NULL</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">2</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">old_restrictions</span> <span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="n">to_cost</span><span class="p">,</span> <span class="n">target_id</span><span class="p">,</span> <span class="n">via_path</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="s1">&#39;4&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span>  <span class="s1">&#39;8&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="s1">&#39;7&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span>   <span class="mi">4</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="s1">&#39;5, 3&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;16&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <section id="images">
@@ -497,7 +499,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 16, 2022.<br/>
+      Actualizado por última vez en mar. 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>

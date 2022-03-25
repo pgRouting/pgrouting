@@ -82,6 +82,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+</ul>
 </ul>
 </li>
               
@@ -182,6 +185,11 @@
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point routing with restrictions.</p></li>
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Vertex/point routing with restrictions.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Read the <a class="reference internal" href="trsp_migration.html"><span class="doc">pgr_trsp - Migration guide</span></a> about how to migrate from the
+deprecated TRSP functionality to the new signatures or replacement functions.</p>
+</div>
 <p class="rubric">Experimental</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -262,7 +270,7 @@ avoided.</p>
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
-<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+<span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="mi">4</span><span class="p">),</span>
 <span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mi">100</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -338,7 +346,7 @@ taken.
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 16, 2022.<br/>
+      Actualizado por última vez en mar. 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
     </p>
   </div>
