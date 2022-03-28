@@ -79,6 +79,7 @@ Characteristics
   * :math:`spoon\_radius = \sqrt alpha`
 
 * A Triangle area is considered part of the alpha shape when :math:`circumcenter\ radius < spoon\_radius`
+* The ``alpha`` parameter is the **spoon radius**
 * When the total number of points is less than 3, returns an EMPTY geometry
 
 
@@ -91,7 +92,7 @@ Signatures
 
 .. code-block:: none
 
-   pgr_alphaShape(geometry,   [spoon_radius])
+   pgr_alphaShape(geometry,   [alpha])
    RETURNS geometry
 
 
@@ -109,7 +110,7 @@ Parameters
 Parameter         Type               Default     Description
 ================= ================== ======== =================================================
 **geometry**      ``geometry``                Geometry with at least :math:`3` points
-**spoon_radius**  ``FLOAT``                   The radius of the spoon
+``alpha``         ``FLOAT``                   The radius of the spoon.
 ================= ================== ======== =================================================
 
 Return Value
