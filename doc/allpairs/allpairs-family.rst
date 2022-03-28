@@ -41,6 +41,81 @@ The following functions work on all vertices pair combinations
     pgr_floydWarshall
     pgr_johnson
 
+Introduction:
+...............................................................................
+
+.. characteristics_start
+
+The main characteristics are:
+
+- It does not return a path.
+- Returns the sum of the costs of the shortest path for each pair of nodes in
+  the graph.
+- Process is done only on edges with positive costs.
+- Boost returns a :math:`V \times V` matrix, where the infinity values.
+  Represent the distance between vertices for which there is no path.
+
+  - We return only the non infinity values in form of a set of `(start_vid,
+    end_vid, agg_cost)`.
+
+- Let be the case the values returned are stored in a table, so the unique index
+  would be the pair: `(start_vid, end_vid)`.
+
+- For the undirected graph, the results are symmetric.
+
+  - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+
+- When  `start_vid` = `end_vid`, the `agg_cost` = 0.
+
+- **Recommended, use a bounding box of no more than 3500 edges.**
+
+.. characteristics_end
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. edges_directed_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described below.
+   * - ``directed``
+     - ``BOOLEAN``
+     - ``true``
+     - * When ``true`` the graph is considered **directed**
+       * When ``false`` the graph is considered **undirected**
+
+.. edges_directed_end
+
+Inner query
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: no_id_edges_sql_start
+    :end-before: no_id_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+Returns set of ``(start_vid, end_vid, agg_cost)``
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
+
 
 Performance
 ------------------------------------------------------------------------------
