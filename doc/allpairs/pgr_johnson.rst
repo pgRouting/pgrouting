@@ -24,7 +24,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/apsp_johnson/doc/index.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/apsp_johnson/doc/index.html>`__
 
-pgr_johnson
+``pgr_johnson``
 ===============================================================================
 
 ``pgr_johnson`` - Returns the sum of the costs of the shortest path for each
@@ -46,8 +46,6 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
   * **Official** function
 
-|
-
 Description
 -------------------------------------------------------------------------------
 
@@ -58,8 +56,6 @@ It usees the Boost's implementation which runs in :math:`O(V E \log V)` time,
 .. include:: allpairs-family.rst
    :start-after: characteristics_start
    :end-before: characteristics_end
-
-|
 
 Signatures
 -------------------------------------------------------------------------------
@@ -78,21 +74,22 @@ Signatures
    :start-after: -- q2
    :end-before: -- q3
 
-|
-
 Parameters
 -------------------------------------------------------------------------------
 
 .. include:: allpairs-family.rst
-    :start-after: edges_directed_start
-    :end-before: edges_directed_end
+    :start-after: edges_start
+    :end-before: edges_end
 
-|
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
-
-|
 
 Edges SQL
 ...............................................................................
@@ -100,8 +97,6 @@ Edges SQL
 .. include:: pgRouting-concepts.rst
     :start-after: no_id_edges_sql_start
     :end-before: no_id_edges_sql_end
-
-|
 
 Result Columns
 -------------------------------------------------------------------------------
@@ -111,8 +106,6 @@ Returns set of ``(start_vid, end_vid, agg_cost)``
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
-
-|
 
 See Also
 -------------------------------------------------------------------------------

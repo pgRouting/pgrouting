@@ -41,8 +41,8 @@ The following functions work on all vertices pair combinations
     pgr_floydWarshall
     pgr_johnson
 
-Introduction:
-...............................................................................
+Introduction
+-------------------------------------------------------------------------------
 
 .. characteristics_start
 
@@ -74,7 +74,7 @@ The main characteristics are:
 Parameters
 -------------------------------------------------------------------------------
 
-.. edges_directed_start
+.. edges_start
 
 .. list-table::
    :width: 81
@@ -89,13 +89,15 @@ Parameters
      - ``TEXT``
      -
      - SQL query as described below.
-   * - ``directed``
-     - ``BOOLEAN``
-     - ``true``
-     - * When ``true`` the graph is considered **directed**
-       * When ``false`` the graph is considered **undirected**
 
-.. edges_directed_end
+.. edges_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
@@ -109,8 +111,6 @@ Edges SQL
 
 Result Columns
 -------------------------------------------------------------------------------
-
-Returns set of ``(start_vid, end_vid, agg_cost)``
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
