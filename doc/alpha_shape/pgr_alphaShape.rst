@@ -24,7 +24,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__
 
-pgr_alphaShape
+``pgr_alphaShape``
 ===============================================================================
 
 ``pgr_alphaShape`` — Polygon part of an alpha shape.
@@ -90,9 +90,9 @@ Signatures
 .. index::
     single: alphaShape
 
-.. code-block:: none
+.. parsed-literal::
 
-   pgr_alphaShape(geometry,   [alpha])
+   pgr_alphaShape(**geometry**,   [alpha])
    RETURNS geometry
 
 
@@ -110,7 +110,7 @@ Parameters
 Parameter         Type               Default     Description
 ================= ================== ======== =================================================
 **geometry**      ``geometry``                Geometry with at least :math:`3` points
-``alpha``         ``FLOAT``                   The radius of the spoon.
+``alpha``         ``FLOAT``          0        The radius of the spoon.
 ================= ================== ======== =================================================
 
 Return Value
