@@ -24,7 +24,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html>`__
 
-pgr_dijkstra
+``pgr_dijkstra``
 ===============================================================================
 
 ``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
