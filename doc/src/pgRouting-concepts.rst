@@ -617,6 +617,52 @@ agg_cost)``
 
 .. return_path_short_end
 
+
+.. rubric:: Used on functions the following:
+
+* :doc:`pgr_dijkstraNear`
+
+.. return_path_complete_start
+
+Returns set of ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex of the current path.
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex of the current path.
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence. **-1** for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
+
+.. return_path_complete_end
+
 |
 
 Return columns for multiple paths
