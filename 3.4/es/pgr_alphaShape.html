@@ -98,7 +98,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_alphaShape</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -155,7 +155,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html">2.0</a></p></li>
 </ul>
 <section id="pgr-alphashape">
-<h1>pgr_alphaShape<a class="headerlink" href="#pgr-alphashape" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code><a class="headerlink" href="#pgr-alphashape" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code> —Parte poligonal de una forma alfa.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
@@ -202,16 +202,15 @@
 </ul>
 </li>
 <li><p>Un área de triángulo se considera parte de la forma alfa cuando <span class="math notranslate nohighlight">\(circumcenter\ radius &lt; spoon\_radius\)</span></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter is the <strong>spoon radius</strong></p></li>
 <li><p>Cuando el número total de puntos es menor que 3, devuelve una geometría EMPTY</p></li>
 </ul>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_alphaShape(geometry,   [spoon_radius])
-RETURNS geometry
-</pre></div>
-</div>
+<pre class="literal-block">pgr_alphaShape(<strong>geometry</strong>,   [alpha])
+RETURNS geometry</pre>
 <p class="rubric">Ejemplo: pasar una colección de geometría con radio de cuchara :math:”1.5” usando la variable de retorno <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
  <span class="n">st_area</span>
@@ -244,10 +243,10 @@ RETURNS geometry
 <td></td>
 <td><p>Geometría con al menos <span class="math notranslate nohighlight">\(3\)</span> puntos</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>spoon_radius</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td></td>
-<td><p>El radio de la cuchara</p></td>
+<td><p>0</p></td>
+<td><p>The radius of the spoon.</p></td>
 </tr>
 </tbody>
 </table>
@@ -299,8 +298,8 @@ RETURNS geometry
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br/>
+      Actualizado por última vez en mar. 30, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
 </footer>
