@@ -155,7 +155,7 @@ Optional parameters
    * - ``directed``
      - ``BOOLEAN``
      - ``true``
-     - * When ``true`` Graph is considered `Directed`
+     - * When ``true`` the graph is considered `Directed`
        * When ``false`` the graph is considered as `Undirected`.
 
 .. dijkstra_optionals_end
