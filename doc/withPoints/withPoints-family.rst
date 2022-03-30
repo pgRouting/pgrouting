@@ -52,9 +52,6 @@ When points are also given as input:
     pgr_withPointsDD
     pgr_withPointsVia
 
-.. contents:: Contents
-   :local:
-
 Introduction
 -------------------------------------------------------------------------------
 
@@ -70,9 +67,81 @@ Depending on the name:
 - pgr_withPointsDD is pgr_drivingDistance **with points**
 - pgr_withPointsvia is pgr_dijkstraVia **with points**
 
+Parameters
+-------------------------------------------------------------------------------
+
 .. include:: withPoints-category.rst
-   :start-after: not involving vehicles
-   :end-before: See Also
+    :start-after: withPoints_parameters_start
+    :end-before: withPoints_parameters_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+With points optional parameters
+...............................................................................
+
+.. withPoints_optionals_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 7 7 60
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``driving_side``
+     - ``CHAR``
+     - ``b``
+     - Value in [``r``, ``l``, ``b``] indicating if the driving side is:
+
+       - ``r`` for right driving side.
+       - ``l`` for left driving side.
+       - ``b`` for both.
+   * - ``details``
+     - ``BOOLEAN``
+     - ``false``
+     - - When ``true`` the results will include the points that are in the path.
+       - When ``false`` the results will not include the points that are in the
+         path.
+
+.. withPoints_optionals_end
+
+Inner queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Points SQL
+...............................................................................
+
+.. include:: withPoints-category.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
+
+Advanced Documentation
+-------------------------------------------------------------------------------
+
+.. include:: withPoints-category.rst
+   :start-after: advanced_documentation_start
+   :end-before: advanced_documentation_end
 
 See Also
 -------------------------------------------------------------------------------

@@ -32,9 +32,6 @@ When points are added to the graph.
 
 .. proposed end
 
-.. contents:: Contents
-   :local:
-
 Introduction
 -------------------------------------------------------------------------------
 
@@ -91,82 +88,86 @@ All this functions consider as many traits from the "real world" as possible:
     - positive sign is a vertex of the original graph
     - negative sign is a point of the `Points SQL`_
 
-Details about points
+Parameters
 -------------------------------------------------------------------------------
 
-For this section the following city (see :doc:`sampledata`) some interesing
-points such as restaurant, supermarket, post office, etc. will be used as
-example.
+.. withPoints_parameters_start
 
-.. figure:: /images/Fig1-originalData.png
-   :scale: 50%
+.. list-table::
+   :width: 81
+   :widths: 14 14 44
+   :header-rows: 1
 
-- The graph is **directed**
-- Red arrows show the ``(source, target)`` of the edge on the edge table
-- Blue arrows show the ``(target, source)`` of the edge on the edge table
-- Each point location shows where it is located with relation of the edge
-  ``(source, target)``
+   * - Column
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - `Edges SQL`_ as described below
+   * - `Points SQL`_
+     - ``TEXT``
+     - `Points SQL`_ as described below
+   * - `Combinations SQL`_
+     - ``TEXT``
+     - `Combinations SQL`_ as described below
+   * - **start vid**
+     - ``BIGINT``
+     - Identifier of the starting vertex of the path. Negative value is for
+       point’s identifier.
+   * - **start vids**
+     - ``ARRAY[BIGINT]``
+     - Array of identifiers of starting vertices. Negative values are for
+       point’s identifiers.
+   * - **end vid**
+     - ``BIGINT``
+     - Identifier of the ending vertex of the path. Negative value is for point’s identifier.
+   * - **end vids**
+     - ``ARRAY[BIGINT]``
+     - Array of identifiers of ending vertices. Negative values are for point’s
+       identifiers.
 
-  - On the right for points **2** and **4**.
-  - On the left for points **1**, **3** and **5**.
-  - On both sides for point **6**.
+.. withPoints_parameters_end
 
-The representation on the data base follows the `Points SQL`_ description, and
-for this example:
-
-.. literalinclude:: withPoints-category.queries
-   :start-after: --q1
-   :end-before: --q2
-
-Driving side
+Optional parameters
 ...............................................................................
 
-In the the folowwing images:
+.. withPoints_optionals_start
 
-- The squared vertices are the temporary vertices,
-- The temporary vertices are added according to the driving side,
-- visually showing the differences on how depending on the driving side the data
-  is interpreted.
+.. list-table::
+   :width: 81
+   :widths: 14 7 7 60
+   :header-rows: 1
 
-.. rubric:: Right driving side
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``driving_side``
+     - ``CHAR``
+     - ``r``
+     - Value in [``r``, ``l``] indicating if the driving side is:
 
-.. image:: images/rightDrivingSide.png
-    :scale: 50%
+       - ``r`` for right driving side
+       - ``l`` for left driving side
+       - Any other value will be considered as ``r``
+   * - ``details``
+     - ``BOOLEAN``
+     - ``false``
+     - - When ``true`` the results will include the points that are in the path.
+       - When ``false`` the results will not include the points that are in the
+         path.
 
-- Point **1** located on edge ``(2, 1)``
-- Point **2** located on edge ``(9, 12)``
-- Point **3** located on edge ``(10, 11)``
-- Point **4** located on edge ``(7, 8)``
-- Point **5** located on edge ``(3, 6)``
-- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
+.. withPoints_optionals_end
 
-.. rubric:: Left driving side
+Inner queries
+-------------------------------------------------------------------------------
 
-.. image:: images/leftDrivingSide.png
-    :scale: 50%
+Edges SQL
+...............................................................................
 
-- Point **1** located on edge ``(1, 2)``
-- Point **2** located on edge ``(12, 9)``
-- Point **3** located on edge ``(10, 11)``
-- Point **4** located on edge ``(8, 7)``
-- Point **5** located on edge ``(3, 6)``
-- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
-
-.. rubric:: Both driving side (or does not matter)
-
-- Like having all points to be considered in both sides ``b``
-- Prefered usage on **undirected** graphs
-- On the :doc:`TRSP-family` this option is not valid
-
-.. image:: images/noMatterDrivingSide.png
-    :scale: 50%
-
-- Point **1** located on edges ``(1, 2)`` and ``(2, 1)``
-- Point **2** located on edges ``(12, 9)`` and ``(9, 12)``
-- Point **3** located on edge ``(10, 11)``
-- Point **4** located on edges ``(8, 7)`` and ``(7, 8)``
-- Point **5** located on edge ``(3, 6)``
-- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Points SQL
 ...............................................................................
@@ -208,7 +209,7 @@ Points SQL
 
        * In the right ``r``,
        * In the left ``l``,
-       * In both ``b``, ``NULL``
+       * In both sides ``b``, ``NULL``
 
 Where:
 
@@ -217,8 +218,104 @@ Where:
 
 .. points_sql_end
 
-Creating temporary vertices
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
+
+Advanced documentation
 -------------------------------------------------------------------------------
+
+.. advanced_documentation_start
+
+.. contents:: Contents
+   :local:
+
+About points
+...............................................................................
+
+For this section the following city (see :doc:`sampledata`) some interesing
+points such as restaurant, supermarket, post office, etc. will be used as
+example.
+
+.. figure:: /images/Fig1-originalData.png
+   :scale: 50%
+
+- The graph is **directed**
+- Red arrows show the ``(source, target)`` of the edge on the edge table
+- Blue arrows show the ``(target, source)`` of the edge on the edge table
+- Each point location shows where it is located with relation of the edge
+  ``(source, target)``
+
+  - On the right for points **2** and **4**.
+  - On the left for points **1**, **3** and **5**.
+  - On both sides for point **6**.
+
+The representation on the data base follows the `Points SQL`_ description, and
+for this example:
+
+.. literalinclude:: withPoints-category.queries
+   :start-after: --q1
+   :end-before: --q2
+
+Driving side
+...............................................................................
+
+In the the folowwing images:
+
+- The squared vertices are the temporary vertices,
+- The temporary vertices are added according to the driving side,
+- visually showing the differences on how depending on the driving side the data
+  is interpreted.
+
+Right driving side
+_______________________________________________________________________________
+
+.. image:: images/rightDrivingSide.png
+    :scale: 50%
+
+- Point **1** located on edge ``(2, 1)``
+- Point **2** located on edge ``(9, 12)``
+- Point **3** located on edge ``(10, 11)``
+- Point **4** located on edge ``(7, 8)``
+- Point **5** located on edge ``(3, 6)``
+- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
+
+Left driving side
+_______________________________________________________________________________
+
+.. image:: images/leftDrivingSide.png
+    :scale: 50%
+
+- Point **1** located on edge ``(1, 2)``
+- Point **2** located on edge ``(12, 9)``
+- Point **3** located on edge ``(10, 11)``
+- Point **4** located on edge ``(8, 7)``
+- Point **5** located on edge ``(3, 6)``
+- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
+
+Driving side does not matter
+_______________________________________________________________________________
+
+- Like having all points to be considered in both sides ``b``
+- Prefered usage on **undirected** graphs
+- On the :doc:`TRSP-family` this option is not valid
+
+.. image:: images/noMatterDrivingSide.png
+    :scale: 50%
+
+- Point **1** located on edges ``(1, 2)`` and ``(2, 1)``
+- Point **2** located on edges ``(12, 9)`` and ``(9, 12)``
+- Point **3** located on edge ``(10, 11)``
+- Point **4** located on edges ``(8, 7)`` and ``(7, 8)``
+- Point **5** located on edge ``(3, 6)``
+- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
+
+
+Creating temporary vertices
+...............................................................................
 
 This section will demonstrate how a temporary vertex is created internally on
 the graph.
@@ -238,7 +335,7 @@ insert point:
    :end-before: --q4
 
 On a right hand side driving network
-...............................................................................
+_______________________________________________________________________________
 
 .. rubric:: Right driving side
 
@@ -258,7 +355,7 @@ On a right hand side driving network
 - If more points are on the same edge, the process is repeated recursevly.
 
 On a left hand side driving network
-...............................................................................
+_______________________________________________________________________________
 
 .. rubric:: Left driving side
 
@@ -288,7 +385,7 @@ On a left hand side driving network
 - The total cost of the additional edges is equal to the original cost.
 
 When driving side does not matter
-...............................................................................
+_______________________________________________________________________________
 
 .. image:: images/noMatterDrivingSide.png
     :scale: 50%
@@ -314,10 +411,12 @@ When driving side does not matter
     - Edge ``(-2, 12)`` becomes ``(12, -2)`` with cost ``0.6`` and is added to
       the graph.
 
+.. advanced_documentation_end
+
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`withPoints-category`
+* :doc:`withPoints-family`
 
 .. rubric:: Indices and tables
 
