@@ -688,6 +688,7 @@ Return columns for cost functions
 
 * Cost functions
 * :doc:`costMatrix-category`
+* :doc:`allpairs-family`
 
 .. return_cost_start
 

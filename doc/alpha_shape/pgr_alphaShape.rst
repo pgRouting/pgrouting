@@ -24,7 +24,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html>`__
 
-pgr_alphaShape
+``pgr_alphaShape``
 ===============================================================================
 
 ``pgr_alphaShape`` — Polygon part of an alpha shape.
@@ -79,6 +79,7 @@ Characteristics
   * :math:`spoon\_radius = \sqrt alpha`
 
 * A Triangle area is considered part of the alpha shape when :math:`circumcenter\ radius < spoon\_radius`
+* The ``alpha`` parameter is the **spoon radius**
 * When the total number of points is less than 3, returns an EMPTY geometry
 
 
@@ -89,9 +90,9 @@ Signatures
 .. index::
     single: alphaShape
 
-.. code-block:: none
+.. parsed-literal::
 
-   pgr_alphaShape(geometry,   [spoon_radius])
+   pgr_alphaShape(**geometry**,   [alpha])
    RETURNS geometry
 
 
@@ -109,7 +110,7 @@ Parameters
 Parameter         Type               Default     Description
 ================= ================== ======== =================================================
 **geometry**      ``geometry``                Geometry with at least :math:`3` points
-**spoon_radius**  ``FLOAT``                   The radius of the spoon
+``alpha``         ``FLOAT``          0        The radius of the spoon.
 ================= ================== ======== =================================================
 
 Return Value
