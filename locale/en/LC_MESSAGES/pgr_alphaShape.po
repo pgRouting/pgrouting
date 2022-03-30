@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-03-30 15:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:28
-msgid "pgr_alphaShape"
+msgid "``pgr_alphaShape``"
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:30
@@ -113,8 +113,8 @@ msgid ""
 "<https://docs.pgrouting.org/3.0/en/pgr_alphaShape.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:69 ../../build/doc/pgr_alphaShape.rst:109
-#: ../../build/doc/pgr_alphaShape.rst:119
+#: ../../build/doc/pgr_alphaShape.rst:69 ../../build/doc/pgr_alphaShape.rst:110
+#: ../../build/doc/pgr_alphaShape.rst:120
 msgid "Description"
 msgstr ""
 
@@ -149,104 +149,112 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_alphaShape.rst:82
+msgid "The ``alpha`` parameter is the **spoon radius**"
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:83
 msgid "When the total number of points is less than 3, returns an EMPTY geometry"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:86
+#: ../../build/doc/pgr_alphaShape.rst:87
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:88
+#: ../../build/doc/pgr_alphaShape.rst:89
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:99
+#: ../../build/doc/pgr_alphaShape.rst:100
 msgid ""
 "Example: passing a geometry collection with spoon radius :math:`1.5` "
 "using the return variable ``geom``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:106
+#: ../../build/doc/pgr_alphaShape.rst:107
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:109
+#: ../../build/doc/pgr_alphaShape.rst:110
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:109
+#: ../../build/doc/pgr_alphaShape.rst:110
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:109
+#: ../../build/doc/pgr_alphaShape.rst:110
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:111
+#: ../../build/doc/pgr_alphaShape.rst:112
 msgid "**geometry**"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:111
+#: ../../build/doc/pgr_alphaShape.rst:112
 msgid "``geometry``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:111
+#: ../../build/doc/pgr_alphaShape.rst:112
 msgid "Geometry with at least :math:`3` points"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:112
-msgid "**spoon_radius**"
+#: ../../build/doc/pgr_alphaShape.rst:113
+msgid "``alpha``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:112
+#: ../../build/doc/pgr_alphaShape.rst:113
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:112
-msgid "The radius of the spoon"
+#: ../../build/doc/pgr_alphaShape.rst:113
+msgid "0"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:116
+#: ../../build/doc/pgr_alphaShape.rst:113
+msgid "The radius of the spoon."
+msgstr ""
+
+#: ../../build/doc/pgr_alphaShape.rst:117
 msgid "Return Value"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:119
+#: ../../build/doc/pgr_alphaShape.rst:120
 msgid "Kind of geometry"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:121
+#: ../../build/doc/pgr_alphaShape.rst:122
 msgid "GEOMETRY COLLECTION"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:121
+#: ../../build/doc/pgr_alphaShape.rst:122
 msgid "A Geometry collection of Polygons"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:129
+#: ../../build/doc/pgr_alphaShape.rst:130
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:131
+#: ../../build/doc/pgr_alphaShape.rst:132
 msgid ":doc:`pgr_drivingDistance`"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:132
+#: ../../build/doc/pgr_alphaShape.rst:133
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:133
+#: ../../build/doc/pgr_alphaShape.rst:134
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:136
+#: ../../build/doc/pgr_alphaShape.rst:137
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:137
+#: ../../build/doc/pgr_alphaShape.rst:138
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_alphaShape.rst:138
+#: ../../build/doc/pgr_alphaShape.rst:139
 msgid ":ref:`search`"
 msgstr ""
 
