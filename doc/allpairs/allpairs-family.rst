@@ -88,7 +88,7 @@ Parameters
    * - `Edges SQL`_
      - ``TEXT``
      -
-     - SQL query as described below.
+     - `Edges SQL`_ as described below.
 
 .. edges_end
 
