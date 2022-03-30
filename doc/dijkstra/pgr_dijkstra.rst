@@ -27,8 +27,7 @@
 ``pgr_dijkstra``
 ===============================================================================
 
-``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
+``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
@@ -75,33 +74,7 @@ Description
     :start-after: dijkstra_details_start
     :end-before: dijkstra_details_end
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
-1956.
-It is a graph search algorithm that solves the shortest path problem for a graph
-with non-negative edge path costs, producing a shortest path from a starting
-vertex (**start vid**) to an ending vertex (**end vid**).
-This implementation can be used with a directed graph and an undirected graph.
-
-The main characteristics are:
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
-
-    - When the starting vertex and ending vertex are the same, there is no path.
-
-      - The `agg_cost` the non included values `(v, v)` is `0`
-
-    - When the starting vertex and ending vertex are the different and there is no path:
-
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-  - For optimization purposes, any duplicated value in the `start vids` or `end vids` are ignored.
-
-  - The returned values are ordered:
-
-    - ``start_vid`` ascending
-    - ``end vid`` ascending
-
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
+- Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 Signatures
 -------------------------------------------------------------------------------
