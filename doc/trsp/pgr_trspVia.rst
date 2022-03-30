@@ -96,9 +96,9 @@ One Via
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstraVia.rst
-    :start-after: parameters_start
-    :end-before: parameters_end
+.. include:: via-category.rst
+    :start-after: via_parameters_start
+    :end-before: via_parameters_end
 
 |
 

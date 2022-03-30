@@ -22,11 +22,10 @@
   `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
   `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
 
-pgr_dijkstraVia - Proposed
+``pgr_dijkstraVia`` - Proposed
 ===============================================================================
 
-``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that goes through
-a list of vertices.
+``pgr_dijkstraVia`` — Find the route that goes through a list of vertices.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -98,32 +97,18 @@ One Via
 Parameters
 -------------------------------------------------------------------------------
 
-.. parameters_start
+.. include:: via-category.rst
+    :start-after: via_parameters_start
+    :end-before: via_parameters_end
 
-.. list-table::
-   :width: 81
-   :widths: 14 20 7 40
-   :header-rows: 1
+|
 
-   * - Parameter
-     - Type
-     - Default
-     - Description
-   * - `Edges SQL`_
-     - ``TEXT``
-     -
-     - SQL query as described.
-   * - **via vertices**
-     - ``ARRAY[`` **ANY-INTEGER** ``]``
-     -
-     - Array of ordered vertices identifiers that are going to be visited.
-   * - ``directed``
-     - ``BOOLEAN``
-     - ``true``
-     - - When ``true`` Graph is considered `Directed`
-       - When ``false`` the graph is considered as Undirected.
+Dijkstra optional parameters
+...............................................................................
 
-.. parameters_end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 |
 
@@ -200,11 +185,13 @@ Additional Examples
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q6
+    :end-before: -- q7
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`via-category`.
+* :doc:`dijkstra-family`.
 * :doc:`sampledata` network.
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
