@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 15:52+0000\n"
+"POT-Creation-Date: 2022-03-31 04:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,41 +41,36 @@ msgid "pgr_dijkstraCost"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:26
-msgid "``pgr_dijkstraCost``"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:28
 msgid ""
-"Using Dijkstra algorithm implemented by Boost.Graph, and extract only the"
-" aggregate cost of the shortest path(s) found, for the combination of "
-"vertices given."
+"``pgr_dijkstraCost`` - Total cost of the shortest path(s) using Dijkstra "
+"algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:34
+#: ../../build/doc/pgr_dijkstraCost.rst:31
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:37
+#: ../../build/doc/pgr_dijkstraCost.rst:34
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:38
+#: ../../build/doc/pgr_dijkstraCost.rst:35
 msgid "Version 3.1.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:40
+#: ../../build/doc/pgr_dijkstraCost.rst:37
 msgid "New **Proposed** functions:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:42
-msgid "pgr_dijkstraCost(combinations)"
+#: ../../build/doc/pgr_dijkstraCost.rst:39
+msgid "``pgr_dijkstra`` (`Combinations`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:44
+#: ../../build/doc/pgr_dijkstraCost.rst:41
 msgid "Version 2.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:46
+#: ../../build/doc/pgr_dijkstraCost.rst:43
 msgid "New **Official** function"
 msgstr ""
 
@@ -84,165 +79,180 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgr_dijkstraCost.rst:50
+#: ../../build/doc/pgr_dijkstraCost.rst:47
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:52
+#: ../../build/doc/pgr_dijkstraCost.rst:49
 msgid ""
-"The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum"
-" of the costs of the shortest path for a subset of pairs of nodes of the "
-"graph. We make use of the Boost's implementation of dijkstra which runs "
-"in :math:`O(V \\log V + E)` time."
+"The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest "
+"path(s)."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:87
+#: ../../build/doc/dijkstra-family.rst:3
+msgid ""
+"Dijkstra's algorithm, conceived by Dutch computer scientist Edsger "
+"Dijkstra in 1956. It is a graph search algorithm that solves the shortest"
+" path problem for a graph with non-negative edge path costs, producing a "
+"shortest path from a starting vertex to an ending vertex. This "
+"implementation can be used with a directed graph and an undirected graph."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:3
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:58
-msgid "It does not return a path."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:59
-msgid ""
-"Returns the sum of the costs of the shortest path for pair combination of"
-" nodes in the graph."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:60
+#: ../../build/doc/dijkstra-family.rst:5
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:61
+#: ../../build/doc/dijkstra-family.rst:7
+msgid ""
+"A negative value on a cost column is interpreted as the edge does not "
+"exist."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:9
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:63
+#: ../../build/doc/dijkstra-family.rst:10
+msgid "When there is no path:"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:12
+msgid "When the starting vertex and ending vertex :are the same."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "The **aggregate cost** the non included values :math:`(v, v)` is :math:`0`"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:16
 msgid ""
-"The returned values are in the form of a set of `(start_vid, end_vid, "
-"agg_cost)`."
+"When the starting vertex and ending vertex are the different and there is"
+" no path:"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:19
+msgid ""
+"The **aggregate cost** the non included values :math:`(u, v)` is "
+":math:`\\infty`"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:22
+msgid ""
+"For optimization purposes, any duplicated value in the starting vertices "
+"or on the ending vertices are ignored."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraCost.rst:59
+msgid "It does not return a path."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraCost.rst:60
+msgid ""
+"Returns the sum of the costs of the shortest path of each pair "
+"combination of nodes requested."
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraCost.rst:62
+msgid ""
+"Let be the case the values returned are stored in a table, so the unique "
+"index would be the pair: `(start_vid, end_vid)`"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:65
-msgid "When the starting vertex and ending vertex are the same, there is no path."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:67
-msgid "The `agg_cost` int the non included values `(v, v)` is `0`"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:69
-msgid ""
-"When the starting vertex and ending vertex are the different and there is"
-" no path."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:71
-msgid "The `agg_cost` in the non included values `(u, v)` is :math:`\\infty`"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:73
-msgid ""
-"Let be the case the values returned are stored in a table, so the unique "
-"index would be the pair: `(start_vid, end_vid)`."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:76
 msgid "For undirected graphs, the results are symmetric."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:78
+#: ../../build/doc/pgr_dijkstraCost.rst:67
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:80
-msgid "Any duplicated value in the `start_vids` or `end_vids` is ignored."
+#: ../../build/doc/pgr_dijkstraCost.rst:69
+msgid "The returned values are ordered in ascending order:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:82
-msgid "The returned values are ordered:"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:84
+#: ../../build/doc/pgr_dijkstraCost.rst:71
 msgid "`start_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:85
+#: ../../build/doc/pgr_dijkstraCost.rst:72
 msgid "`end_vid` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:87
+#: ../../build/doc/pgr_dijkstraCost.rst:74
 msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:90
+#: ../../build/doc/pgr_dijkstraCost.rst:77
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:93
+#: ../../build/doc/pgr_dijkstraCost.rst:80
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:105
-msgid "Using defaults"
+#: ../../build/doc/pgr_dijkstraCost.rst:95
+msgid "One to One"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:112
-msgid "From vertex :math:`2` to vertex  :math:`3` on a **directed** graph"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:122
-msgid "One to One"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraCost.rst:130
+#: ../../build/doc/pgr_dijkstraCost.rst:103
 msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:140
+#: ../../build/doc/pgr_dijkstraCost.rst:113
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:148
+#: ../../build/doc/pgr_dijkstraCost.rst:121
 msgid ""
 "From vertex :math:`2` to vertices :math:`\\{3, 11\\}` on a **directed** "
 "graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:158
+#: ../../build/doc/pgr_dijkstraCost.rst:132
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:166
+#: ../../build/doc/pgr_dijkstraCost.rst:140
 msgid ""
 "From vertices :math:`\\{2, 7\\}` to vertex :math:`3` on a **directed** "
 "graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:176
+#: ../../build/doc/pgr_dijkstraCost.rst:151
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:184
+#: ../../build/doc/pgr_dijkstraCost.rst:159
 msgid ""
 "From vertices :math:`\\{2, 7\\}` to vertices :math:`\\{3, 11\\}` on a "
 "**directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:194
+#: ../../build/doc/pgr_dijkstraCost.rst:170
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:202
+#: ../../build/doc/pgr_dijkstraCost.rst:178
 msgid "Using a combinations table on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:211
+#: ../../build/doc/pgr_dijkstraCost.rst:180
+msgid "The table contents:"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraCost.rst:186
+msgid "The query:"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraCost.rst:193
 msgid "Parameters"
 msgstr ""
 
@@ -323,7 +333,7 @@ msgstr ""
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:218
+#: ../../build/doc/pgr_dijkstraCost.rst:200
 msgid "Optional parameters"
 msgstr ""
 
@@ -344,18 +354,18 @@ msgid "``true``"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:15
-msgid "When ``true`` Graph is considered `Directed`"
+msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:225
+#: ../../build/doc/pgr_dijkstraCost.rst:207
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:228
+#: ../../build/doc/pgr_dijkstraCost.rst:210
 msgid "Edges SQL"
 msgstr ""
 
@@ -450,7 +460,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:235
+#: ../../build/doc/pgr_dijkstraCost.rst:217
 msgid "Combinations SQL"
 msgstr ""
 
@@ -466,7 +476,7 @@ msgstr ""
 msgid "Identifier of the arrival vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:242
+#: ../../build/doc/pgr_dijkstraCost.rst:224
 msgid "Return Columns"
 msgstr ""
 
@@ -502,7 +512,7 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:250
+#: ../../build/doc/pgr_dijkstraCost.rst:231
 msgid "Additional Examples"
 msgstr ""
 
@@ -510,7 +520,7 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:252
+#: ../../build/doc/pgr_dijkstraCost.rst:233
 msgid "Demonstration of repeated values are ignored, and result is sorted."
 msgstr ""
 
@@ -518,40 +528,40 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:258
-msgid "Making `start_vids` the same as `end_vids`"
+#: ../../build/doc/pgr_dijkstraCost.rst:239
+msgid "Making ``start_vids`` the same as ``end_vids``."
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst
 msgid "Example 3"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:264
-msgid "Four manually assigned (source, target) vertex combinations"
+#: ../../build/doc/pgr_dijkstraCost.rst:245
+msgid "Manually assigned vertex combinations."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:271
+#: ../../build/doc/pgr_dijkstraCost.rst:252
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:273
+#: ../../build/doc/pgr_dijkstraCost.rst:254
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:274
+#: ../../build/doc/pgr_dijkstraCost.rst:255
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:277
+#: ../../build/doc/pgr_dijkstraCost.rst:258
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:278
+#: ../../build/doc/pgr_dijkstraCost.rst:259
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCost.rst:279
+#: ../../build/doc/pgr_dijkstraCost.rst:260
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 15:52+0000\n"
+"POT-Creation-Date: 2022-03-31 04:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,72 +45,70 @@ msgid "``pgr_dijkstra``"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstra.rst:30
-msgid ""
-"``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm."
-" In particular, the Dijkstra algorithm implemented by Boost.Graph."
+msgid "``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:36
+#: ../../build/doc/pgr_dijkstra.rst:35
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:39
+#: ../../build/doc/pgr_dijkstra.rst:38
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:40
+#: ../../build/doc/pgr_dijkstra.rst:39
 msgid "Version 3.1.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:42
+#: ../../build/doc/pgr_dijkstra.rst:41
 msgid "New **Proposed** functions:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:44
+#: ../../build/doc/pgr_dijkstra.rst:43
 msgid "``pgr_dijkstra`` (`Combinations`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:46
+#: ../../build/doc/pgr_dijkstra.rst:45
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:48
+#: ../../build/doc/pgr_dijkstra.rst:47
 msgid "**Official** functions"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:50
+#: ../../build/doc/pgr_dijkstra.rst:49
 msgid "Version 2.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:52
+#: ../../build/doc/pgr_dijkstra.rst:51
 msgid "New **proposed** functions:"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:54
+#: ../../build/doc/pgr_dijkstra.rst:53
 msgid "``pgr_dijkstra`` (`One to Many`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:55
+#: ../../build/doc/pgr_dijkstra.rst:54
 msgid "``pgr_dijkstra`` (`Many to One`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:56
+#: ../../build/doc/pgr_dijkstra.rst:55
 msgid "``pgr_dijkstra`` (`Many to Many`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:58
+#: ../../build/doc/pgr_dijkstra.rst:57
 msgid "Version 2.1.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:60
+#: ../../build/doc/pgr_dijkstra.rst:59
 msgid "Signature change on ``pgr_dijkstra`` (`One to One`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:62
+#: ../../build/doc/pgr_dijkstra.rst:61
 msgid "Version 2.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:64
+#: ../../build/doc/pgr_dijkstra.rst:63
 msgid "**Official** ``pgr_dijkstra`` (`One to One`_)"
 msgstr ""
 
@@ -119,7 +117,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgr_dijkstra.rst:68
+#: ../../build/doc/pgr_dijkstra.rst:67
 msgid "Description"
 msgstr ""
 
@@ -132,101 +130,67 @@ msgid ""
 "implementation can be used with a directed graph and an undirected graph."
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:3 ../../build/doc/pgr_dijkstra.rst:104
+#: ../../build/doc/dijkstra-family.rst:3
 msgid "The main characteristics are:"
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:5 ../../build/doc/pgr_dijkstra.rst:86
+#: ../../build/doc/dijkstra-family.rst:5
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:6 ../../build/doc/pgr_dijkstra.rst:87
-msgid "Values are returned when there is a path."
-msgstr ""
-
 #: ../../build/doc/dijkstra-family.rst:7
-msgid "When there is no path:"
+msgid ""
+"A negative value on a cost column is interpreted as the edge does not "
+"exist."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:9
+msgid "Values are returned when there is a path."
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:10
+msgid "When there is no path:"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:12
 msgid "When the starting vertex and ending vertex :are the same."
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/dijkstra-family.rst:14
 msgid "The **aggregate cost** the non included values :math:`(v, v)` is :math:`0`"
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:13 ../../build/doc/pgr_dijkstra.rst:93
+#: ../../build/doc/dijkstra-family.rst:16
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path:"
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:16
+#: ../../build/doc/dijkstra-family.rst:19
 msgid ""
 "The **aggregate cost** the non included values :math:`(u, v)` is "
 ":math:`\\infty`"
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:19
+#: ../../build/doc/dijkstra-family.rst:22
 msgid ""
 "For optimization purposes, any duplicated value in the starting vertices "
 "or on the ending vertices are ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:78
-msgid ""
-"Dijkstra's algorithm, conceived by Dutch computer scientist Edsger "
-"Dijkstra in 1956. It is a graph search algorithm that solves the shortest"
-" path problem for a graph with non-negative edge path costs, producing a "
-"shortest path from a starting vertex (**start vid**) to an ending vertex "
-"(**end vid**). This implementation can be used with a directed graph and "
-"an undirected graph."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:89
-msgid "When the starting vertex and ending vertex are the same, there is no path."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:91
-msgid "The `agg_cost` the non included values `(v, v)` is `0`"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:95
-msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:97
-msgid ""
-"For optimization purposes, any duplicated value in the `start vids` or "
-"`end vids` are ignored."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:99
-msgid "The returned values are ordered:"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:101
-msgid "``start_vid`` ascending"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:102
-msgid "``end vid`` ascending"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstra.rst:104
+#: ../../build/doc/pgr_dijkstra.rst:77
 msgid "Running time: :math:`O(| start\\_vids | * (V \\log V + E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:107
+#: ../../build/doc/pgr_dijkstra.rst:80
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:110
+#: ../../build/doc/pgr_dijkstra.rst:83
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:125
+#: ../../build/doc/pgr_dijkstra.rst:98
 msgid "One to One"
 msgstr ""
 
@@ -234,49 +198,49 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:134
+#: ../../build/doc/pgr_dijkstra.rst:107
 msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:144
+#: ../../build/doc/pgr_dijkstra.rst:117
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:153
+#: ../../build/doc/pgr_dijkstra.rst:126
 msgid ""
 "From vertex :math:`2` to vertices :math:`\\{3, 5\\}` on an **undirected**"
 " graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:163
+#: ../../build/doc/pgr_dijkstra.rst:136
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:171
+#: ../../build/doc/pgr_dijkstra.rst:144
 msgid ""
 "From vertices :math:`\\{2, 11\\}` to vertex :math:`5` on a **directed** "
 "graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:181
+#: ../../build/doc/pgr_dijkstra.rst:154
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:189
+#: ../../build/doc/pgr_dijkstra.rst:162
 msgid ""
 "From vertices :math:`\\{2, 11\\}` to vertices :math:`\\{3, 5\\}` on an "
 "**undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:199
+#: ../../build/doc/pgr_dijkstra.rst:172
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:207
+#: ../../build/doc/pgr_dijkstra.rst:180
 msgid "Using a combinations table on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:215
+#: ../../build/doc/pgr_dijkstra.rst:188
 msgid "Parameters"
 msgstr ""
 
@@ -359,7 +323,7 @@ msgstr ""
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:222
+#: ../../build/doc/pgr_dijkstra.rst:195
 msgid "Optional parameters"
 msgstr ""
 
@@ -380,18 +344,18 @@ msgid "``true``"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:15
-msgid "When ``true`` Graph is considered `Directed`"
+msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:229
+#: ../../build/doc/pgr_dijkstra.rst:202
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:232
+#: ../../build/doc/pgr_dijkstra.rst:205
 msgid "Edges SQL"
 msgstr ""
 
@@ -487,7 +451,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:239
+#: ../../build/doc/pgr_dijkstra.rst:212
 msgid "Combinations SQL"
 msgstr ""
 
@@ -503,7 +467,7 @@ msgstr ""
 msgid "Identifier of the arrival vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:246
+#: ../../build/doc/pgr_dijkstra.rst:219
 msgid "Return Columns"
 msgstr ""
 
@@ -619,19 +583,19 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:254
+#: ../../build/doc/pgr_dijkstra.rst:227
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:256
+#: ../../build/doc/pgr_dijkstra.rst:229
 msgid "The examples of this section are based on the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:262
+#: ../../build/doc/pgr_dijkstra.rst:235
 msgid "For **directed** graphs with ``cost`` and ``reverse_cost`` columns"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:267
+#: ../../build/doc/pgr_dijkstra.rst:240
 msgid "Directed graph with cost and reverse cost columns"
 msgstr ""
 
@@ -639,8 +603,8 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:269 ../../build/doc/pgr_dijkstra.rst:333
-#: ../../build/doc/pgr_dijkstra.rst:397 ../../build/doc/pgr_dijkstra.rst:461
+#: ../../build/doc/pgr_dijkstra.rst:242 ../../build/doc/pgr_dijkstra.rst:306
+#: ../../build/doc/pgr_dijkstra.rst:370 ../../build/doc/pgr_dijkstra.rst:434
 msgid "Path from :math:`2` to :math:`3`"
 msgstr ""
 
@@ -648,8 +612,8 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:275 ../../build/doc/pgr_dijkstra.rst:339
-#: ../../build/doc/pgr_dijkstra.rst:403 ../../build/doc/pgr_dijkstra.rst:467
+#: ../../build/doc/pgr_dijkstra.rst:248 ../../build/doc/pgr_dijkstra.rst:312
+#: ../../build/doc/pgr_dijkstra.rst:376 ../../build/doc/pgr_dijkstra.rst:440
 msgid "Path from :math:`2` to :math:`5`"
 msgstr ""
 
@@ -657,8 +621,8 @@ msgstr ""
 msgid "Example 3"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:281 ../../build/doc/pgr_dijkstra.rst:345
-#: ../../build/doc/pgr_dijkstra.rst:409 ../../build/doc/pgr_dijkstra.rst:473
+#: ../../build/doc/pgr_dijkstra.rst:254 ../../build/doc/pgr_dijkstra.rst:318
+#: ../../build/doc/pgr_dijkstra.rst:382 ../../build/doc/pgr_dijkstra.rst:446
 msgid "Path from :math:`11` to :math:`3`"
 msgstr ""
 
@@ -666,8 +630,8 @@ msgstr ""
 msgid "Example 4"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:287 ../../build/doc/pgr_dijkstra.rst:351
-#: ../../build/doc/pgr_dijkstra.rst:415 ../../build/doc/pgr_dijkstra.rst:479
+#: ../../build/doc/pgr_dijkstra.rst:260 ../../build/doc/pgr_dijkstra.rst:324
+#: ../../build/doc/pgr_dijkstra.rst:388 ../../build/doc/pgr_dijkstra.rst:452
 msgid "Path from :math:`11` to :math:`5`"
 msgstr ""
 
@@ -675,12 +639,12 @@ msgstr ""
 msgid "Example 5"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:293
+#: ../../build/doc/pgr_dijkstra.rst:266
 msgid "Using `One to Many`_ to get the solution of examples 1 and 2"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:295 ../../build/doc/pgr_dijkstra.rst:359
-#: ../../build/doc/pgr_dijkstra.rst:423 ../../build/doc/pgr_dijkstra.rst:487
+#: ../../build/doc/pgr_dijkstra.rst:268 ../../build/doc/pgr_dijkstra.rst:332
+#: ../../build/doc/pgr_dijkstra.rst:396 ../../build/doc/pgr_dijkstra.rst:460
 msgid "Paths :math:`\\{2\\}\\rightarrow\\{3, 5\\}`"
 msgstr ""
 
@@ -688,12 +652,12 @@ msgstr ""
 msgid "Example 6"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:301
+#: ../../build/doc/pgr_dijkstra.rst:274
 msgid "Using `Many to One`_ to get the solution of examples 2 and 4"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:303 ../../build/doc/pgr_dijkstra.rst:367
-#: ../../build/doc/pgr_dijkstra.rst:431 ../../build/doc/pgr_dijkstra.rst:495
+#: ../../build/doc/pgr_dijkstra.rst:276 ../../build/doc/pgr_dijkstra.rst:340
+#: ../../build/doc/pgr_dijkstra.rst:404 ../../build/doc/pgr_dijkstra.rst:468
 msgid "Paths :math:`\\{2, 11\\}\\rightarrow\\{5\\}`"
 msgstr ""
 
@@ -701,12 +665,12 @@ msgstr ""
 msgid "Example 7"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:309
+#: ../../build/doc/pgr_dijkstra.rst:282
 msgid "Using `Many to Many`_ to get the solution of examples 1 to 4"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:311 ../../build/doc/pgr_dijkstra.rst:375
-#: ../../build/doc/pgr_dijkstra.rst:439 ../../build/doc/pgr_dijkstra.rst:503
+#: ../../build/doc/pgr_dijkstra.rst:284 ../../build/doc/pgr_dijkstra.rst:348
+#: ../../build/doc/pgr_dijkstra.rst:412 ../../build/doc/pgr_dijkstra.rst:476
 msgid "Paths :math:`\\{2, 11\\}\\rightarrow\\{3, 5\\}`"
 msgstr ""
 
@@ -714,22 +678,22 @@ msgstr ""
 msgid "Example 8"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:317
+#: ../../build/doc/pgr_dijkstra.rst:290
 msgid "Using `Combinations`_ to get the solution of examples 1 to 3"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:319 ../../build/doc/pgr_dijkstra.rst:383
-#: ../../build/doc/pgr_dijkstra.rst:447 ../../build/doc/pgr_dijkstra.rst:511
+#: ../../build/doc/pgr_dijkstra.rst:292 ../../build/doc/pgr_dijkstra.rst:356
+#: ../../build/doc/pgr_dijkstra.rst:420 ../../build/doc/pgr_dijkstra.rst:484
 msgid ""
 "Paths :math:`\\{2\\}\\rightarrow\\{3, "
 "5\\}\\cup\\{11\\}\\rightarrow\\{3\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:326
+#: ../../build/doc/pgr_dijkstra.rst:299
 msgid "For **undirected** graphs with ``cost`` and ``reverse_cost`` columns"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:331
+#: ../../build/doc/pgr_dijkstra.rst:304
 msgid "Undirected graph with cost and reverse cost columns"
 msgstr ""
 
@@ -753,7 +717,7 @@ msgstr ""
 msgid "Example 13"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:357
+#: ../../build/doc/pgr_dijkstra.rst:330
 msgid "Using `One to Many`_ to get the solution of examples 9 and 10"
 msgstr ""
 
@@ -761,7 +725,7 @@ msgstr ""
 msgid "Example 14"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:365
+#: ../../build/doc/pgr_dijkstra.rst:338
 msgid "Using `Many to One`_ to get the solution of examples 10 and 12"
 msgstr ""
 
@@ -769,7 +733,7 @@ msgstr ""
 msgid "Example 15"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:373
+#: ../../build/doc/pgr_dijkstra.rst:346
 msgid "Using `Many to Many`_ to get the solution of examples 9 to 12"
 msgstr ""
 
@@ -777,15 +741,15 @@ msgstr ""
 msgid "Example 16"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:381
+#: ../../build/doc/pgr_dijkstra.rst:354
 msgid "Using `Combinations`_ to get the solution of examples 9 to 11"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:390
+#: ../../build/doc/pgr_dijkstra.rst:363
 msgid "For **directed** graphs only with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:395
+#: ../../build/doc/pgr_dijkstra.rst:368
 msgid "Directed graph only with cost column"
 msgstr ""
 
@@ -809,7 +773,7 @@ msgstr ""
 msgid "Example 21"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:421 ../../build/doc/pgr_dijkstra.rst:485
+#: ../../build/doc/pgr_dijkstra.rst:394 ../../build/doc/pgr_dijkstra.rst:458
 msgid "Using `One to Many`_ to get the solution of examples 17 and 18"
 msgstr ""
 
@@ -817,7 +781,7 @@ msgstr ""
 msgid "Example 22"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:429 ../../build/doc/pgr_dijkstra.rst:493
+#: ../../build/doc/pgr_dijkstra.rst:402 ../../build/doc/pgr_dijkstra.rst:466
 msgid "Using `Many to One`_ to get the solution of examples 18 and 20"
 msgstr ""
 
@@ -825,7 +789,7 @@ msgstr ""
 msgid "Example 23"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:437 ../../build/doc/pgr_dijkstra.rst:501
+#: ../../build/doc/pgr_dijkstra.rst:410 ../../build/doc/pgr_dijkstra.rst:474
 msgid "Using `Many to Many`_ to get the solution of examples 17 to 20"
 msgstr ""
 
@@ -833,15 +797,15 @@ msgstr ""
 msgid "Example 24"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:445 ../../build/doc/pgr_dijkstra.rst:509
+#: ../../build/doc/pgr_dijkstra.rst:418 ../../build/doc/pgr_dijkstra.rst:482
 msgid "Using `Combinations`_ to get the solution of examples 17 to 19"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:454
+#: ../../build/doc/pgr_dijkstra.rst:427
 msgid "For **undirected** graphs only with ``cost`` column"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:459
+#: ../../build/doc/pgr_dijkstra.rst:432
 msgid "Undirected graph only with cost column"
 msgstr ""
 
@@ -877,11 +841,11 @@ msgstr ""
 msgid "Example 32"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:519
+#: ../../build/doc/pgr_dijkstra.rst:492
 msgid "Equvalences between signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:521
+#: ../../build/doc/pgr_dijkstra.rst:494
 msgid ""
 "The following examples find the path for "
 ":math:`\\{2\\}\\rightarrow\\{3\\}`"
@@ -891,7 +855,7 @@ msgstr ""
 msgid "Example 33"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:523
+#: ../../build/doc/pgr_dijkstra.rst:496
 msgid "Using `One to One`_"
 msgstr ""
 
@@ -899,7 +863,7 @@ msgstr ""
 msgid "Example 34"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:529
+#: ../../build/doc/pgr_dijkstra.rst:502
 msgid "Using `One to Many`_"
 msgstr ""
 
@@ -907,7 +871,7 @@ msgstr ""
 msgid "Example 35"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:535
+#: ../../build/doc/pgr_dijkstra.rst:508
 msgid "Using `Many to One`_"
 msgstr ""
 
@@ -915,7 +879,7 @@ msgstr ""
 msgid "Example 36"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:541
+#: ../../build/doc/pgr_dijkstra.rst:514
 msgid "Using `Many to Many`_"
 msgstr ""
 
@@ -923,32 +887,32 @@ msgstr ""
 msgid "Example 37"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:547
+#: ../../build/doc/pgr_dijkstra.rst:520
 msgid "Using `Combinations`_"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:554
+#: ../../build/doc/pgr_dijkstra.rst:527
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:556
+#: ../../build/doc/pgr_dijkstra.rst:529
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:557
+#: ../../build/doc/pgr_dijkstra.rst:530
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:560
+#: ../../build/doc/pgr_dijkstra.rst:533
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:561
+#: ../../build/doc/pgr_dijkstra.rst:534
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstra.rst:562
+#: ../../build/doc/pgr_dijkstra.rst:535
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 15:52+0000\n"
+"POT-Creation-Date: 2022-03-31 04:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -221,7 +221,7 @@ msgid "``true``"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:15
-msgid "When ``true`` Graph is considered `Directed`"
+msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:16
