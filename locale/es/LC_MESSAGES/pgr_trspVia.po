@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 02:12+0000\n"
+"POT-Creation-Date: 2022-03-31 04:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -83,8 +83,7 @@ msgstr ""
 msgid "New **proposed** function ``pgr_trspVia`` (`One Via`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_trspVia.rst:39 ../../build/doc/pgr_dijkstraVia.rst:11
-#: ../../build/doc/via-category.rst:11
+#: ../../build/doc/pgr_trspVia.rst:39 ../../build/doc/via-category.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/TRSP-family.rst:10
 #: ../../build/doc/via-category.rst:10
 msgid "Description"
@@ -148,63 +147,42 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:8 ../../build/doc/via-category.rst:8
+#: ../../build/doc/via-category.rst:8
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:9 ../../build/doc/via-category.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/TRSP-family.rst:9
+#: ../../build/doc/via-category.rst:9 ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/TRSP-family.rst:9
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:10 ../../build/doc/via-category.rst:10
+#: ../../build/doc/via-category.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:12
+#: ../../build/doc/via-category.rst:12
 msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:13
+#: ../../build/doc/via-category.rst:13
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:15
+#: ../../build/doc/via-category.rst:15
 msgid "SQL query as described."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:16
+#: ../../build/doc/via-category.rst:16
 msgid "**via vertices**"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:17 ../../build/doc/TRSP-family.rst:12
+#: ../../build/doc/via-category.rst:17 ../../build/doc/TRSP-family.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:19
+#: ../../build/doc/via-category.rst:19
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst:20
-msgid "``directed``"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst:21 ../../build/doc/via-category.rst:13
-#: ../../build/doc/via-category.rst:18
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst:22 ../../build/doc/via-category.rst:19
-msgid "``true``"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst:23
-msgid "When ``true`` Graph is considered `Directed`"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst:24
-msgid "When ``false`` the graph is considered as Undirected."
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:106
@@ -213,6 +191,10 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:12
 msgid "``strict``"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:13 ../../build/doc/via-category.rst:18
+msgid "``BOOLEAN``"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:14
@@ -229,6 +211,10 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:17
 msgid "``U_turn_on_edge``"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:19
+msgid "``true``"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:20
