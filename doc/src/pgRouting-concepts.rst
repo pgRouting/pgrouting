@@ -814,18 +814,51 @@ Set of ``(start_vid, end_vid, agg_cost)``
    * - Column
      - Type
      - Description
-   * - **start_vid**
+   * - ``start_vid``
      - ``BIGINT``
      - Identifier of the starting vertex.
-   * - **end_vid**
+   * - ``end_vid``
      - ``BIGINT``
      - Identifier of the ending vertex.
-   * - **agg_cost**
+   * - ``agg_cost``
      - ``FLOAT``
      - Aggregate cost from ``start_vid`` to ``end_vid``.
 
 .. return_cost_end
 
+.. rubric:: Used in the following
+
+* :doc:`pgr_withPointsCost`
+
+.. return_cost_withPoints_start
+
+Set of ``(start_vid, end_vid, agg_cost)``
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex or point.
+
+       * When positive: is a vertex’s identifier.
+       * When negative: is a point’s identifier.
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex or point.
+
+       * When positive: is a vertex’s identifier.
+       * When negative: is a point’s identifier.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``end_vid``.
+
+.. return_cost_withPoints_end
 
 |
 

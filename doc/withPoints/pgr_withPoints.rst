@@ -154,7 +154,8 @@ Many to Many
    pgr_withPoints(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` and vertex :math:`2`  to point :math:`3` and vertex :math:`7`
+:Example: From point :math:`1` and vertex :math:`2`  to point :math:`3` and
+          vertex :math:`7`
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e5
