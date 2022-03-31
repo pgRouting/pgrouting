@@ -14,7 +14,7 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__
 
-pgr_dijkstraNearCost - Proposed
+``pgr_dijkstraNearCost`` - Proposed
 ===============================================================================
 
 ``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads to
@@ -59,12 +59,12 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids  [, directed] [, cap])
-    pgr_dijkstraNearCost(Edges SQL, Start vids, End vid   [, directed] [, cap])
-    pgr_dijkstraNearCost(Edges SQL, Start vids, End vids  [, directed] [, cap], [global])
-    pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -74,9 +74,9 @@ Signatures
 One to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -103,9 +103,9 @@ The result shows that station at vertex :math:`6` is the nearest.
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNearCost(Edges SQL, Start vids, End vid  [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -131,9 +131,9 @@ is :math:`6`.
 Many to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNearCost(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -164,9 +164,9 @@ Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -206,34 +206,35 @@ From the results:
 Parameters
 -------------------------------------------------------------------------------
 
-====================== ================== ======== =================================================
-Parameter              Type               Default     Description
-====================== ================== ======== =================================================
-**Edges SQL**          ``TEXT``                    `Edges query`_ as described below
-**Combinations SQL**   ``TEXT`` 	  	               `Combinations query` as described below
-**Start vid**          ``BIGINT``                  Identifier of the starting vertex of the path.
-**Start vids**         ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**End vid**            ``BIGINT``                  Identifier of the ending vertex of the path.
-**End vids**           ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**           ``BOOLEAN``        ``true`` - When ``true`` the graph is considered `Directed`
-                                                   - When ``false`` the graph is considered as `Undirected`.
-**cap**                ``BIGINT``           1      Find at most ``cap`` number of nearest shortest paths
-**global**             ``BOOLEAN``        ``true`` - When ``true``: only ``cap`` limit results will be returned
-                                                   - When ``false``: ``cap`` limit per ``Start vid`` will be returned
-====================== ================== ======== =================================================
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
+Dijkstra optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Near optional parameters
+...............................................................................
+
+.. include:: pgr_dijkstraNear.rst
+    :start-after: near_optionals_start
+    :end-before: near_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-Edges query
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Combinations query
+Combinations SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
@@ -260,4 +261,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

@@ -52,6 +52,28 @@ given.
 Parameters
 -------------------------------------------------------------------------------
 
+.. via_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 20 7 40
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - **via vertices**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     -
+     - Array of ordered vertices identifiers that are going to be visited.
+
+.. via_parameters_end
+
 Besides the compulsory parameters each function has, there are optional
 parameters that exist due to the kind of function.
 
