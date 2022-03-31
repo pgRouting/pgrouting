@@ -218,6 +218,8 @@ Optional parameters
 With points optional parameters
 ...............................................................................
 
+.. withpoints_short_optionals_start
+
 .. list-table::
    :width: 81
    :widths: 14 7 7 60
@@ -235,6 +237,8 @@ With points optional parameters
        - ``r`` for right driving side.
        - ``l`` for left driving side.
        - ``b`` for both.
+
+.. withpoints_short_optionals_end
 
 Inner queries
 -------------------------------------------------------------------------------
