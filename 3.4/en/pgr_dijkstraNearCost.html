@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_dijkstraNearCost - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Description</a><ul>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 </ul>
@@ -109,10 +109,14 @@
 <li><a class="reference internal" href="#combinations">Combinations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#dijkstra-optional-parameters">Dijkstra optional parameters</a></li>
+<li><a class="reference internal" href="#near-optional-parameters">Near optional parameters</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-query">Edges query</a></li>
-<li><a class="reference internal" href="#combinations-query">Combinations query</a></li>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#return-columns">Return Columns</a></li>
@@ -170,7 +174,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html">3.2</a></p></li>
 </ul>
 <section id="pgr-dijkstranearcost-proposed">
-<h1>pgr_dijkstraNearCost - Proposed<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Proposed<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> — Using dijkstra algorithm, finds the route that leads to
 the nearest vertex.</p>
 <div class="admonition warning">
@@ -256,21 +260,17 @@ ending vertex.</p>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids  [, directed] [, cap])
-pgr_dijkstraNearCost(Edges SQL, Start vids, End vid   [, directed] [, cap])
-pgr_dijkstraNearCost(Edges SQL, Start vids, End vids  [, directed] [, cap], [global])
-pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, cap])
+pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, cap])
+pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, cap], [global])
+pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, cap] [, global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <section id="one-to-many">
 <span id="index-0"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids [, directed] [, cap])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>Departing on car from vertex <span class="math notranslate nohighlight">\(2\)</span> find the nearest subway station.</p>
@@ -301,11 +301,9 @@ OR EMPTY SET
 </section>
 <section id="many-to-one">
 <span id="index-1"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vids, End vid  [, directed] [, cap])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>Departing on a car from a subway station find the nearest <strong>two</strong>
@@ -337,11 +335,9 @@ is <span class="math notranslate nohighlight">\(6\)</span>.</p>
 </section>
 <section id="many-to-many">
 <span id="index-2"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, cap], [global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>Find the best pedestrian connection between two lines of buses</p>
@@ -377,11 +373,9 @@ first subway line and at vertex <span class="math notranslate nohighlight">\(4\)
 </section>
 <section id="combinations">
 <span id="index-3"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, cap] [, global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>Find the best car connection between all the stations of two subway lines</p>
@@ -440,12 +434,76 @@ cost. (lines: <cite>10</cite> and <cite>12</cite>)</p></li>
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>start vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex of the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of starting vertices.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex of the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of ending vertices.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="dijkstra-optional-parameters">
+<h3>Dijkstra optional parameters<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="near-optional-parameters">
+<h3>Near optional parameters<a class="headerlink" href="#near-optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
 <col style="width: 16%" />
-<col style="width: 7%" />
-<col style="width: 58%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 68%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -455,51 +513,12 @@ cost. (lines: <cite>10</cite> and <cite>12</cite>)</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p><a class="reference internal" href="#edges-query">Edges query</a> as described below</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Combinations SQL</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p><cite>Combinations query</cite> as described below</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Start vid</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cap</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Start vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td></td>
-<td><p>Array of identifiers of starting vertices.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>End vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>End vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td></td>
-<td><p>Array of identifiers of ending vertices.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>directed</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>cap</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Find at most <code class="docutils literal notranslate"><span class="pre">cap</span></code> number of nearest shortest paths</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>global</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">global</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -511,10 +530,11 @@ cost. (lines: <cite>10</cite> and <cite>12</cite>)</p></li>
 </tbody>
 </table>
 </section>
+</section>
 <section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<section id="edges-query">
-<h3>Edges query<a class="headerlink" href="#edges-query" title="Permalink to this headline">¶</a></h3>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -572,8 +592,8 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 </section>
-<section id="combinations-query">
-<h3>Combinations query<a class="headerlink" href="#combinations-query" title="Permalink to this headline">¶</a></h3>
+<section id="combinations-sql">
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -666,7 +686,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Mar 30, 2022.<br/>
+      Last updated on Mar 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

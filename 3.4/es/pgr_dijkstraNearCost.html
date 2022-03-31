@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_dijkstraNearCost - Propuesto &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_dijkstraNearCost - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -20,7 +20,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Flow - Familia de funciones." href="flow-family.html" />
-    <link rel="prev" title="pgr_dijkstraNear - Propuesto" href="pgr_dijkstraNear.html" />
+    <link rel="prev" title="pgr_dijkstraNear - Proposed" href="pgr_dijkstraNear.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -98,7 +98,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_dijkstraNearCost - Propuesto</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a><ul>
 <li><a class="reference internal" href="#characteristics">Características</a></li>
 </ul>
@@ -110,10 +110,14 @@
 <li><a class="reference internal" href="#combinations">Combinaciones</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#dijkstra-optional-parameters">Dijkstra optional parameters</a></li>
+<li><a class="reference internal" href="#near-optional-parameters">Near optional parameters</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
-<li><a class="reference internal" href="#edges-query">Consulta de aristas</a></li>
-<li><a class="reference internal" href="#combinations-query">Consulta de combinaciones</a></li>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#return-columns">Columnas de Devoluciones</a></li>
@@ -129,7 +133,7 @@
               
                 
   <li>
-    <a href="pgr_dijkstraNear.html" title="Previous Chapter: pgr_dijkstraNear - Propuesto"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
+    <a href="pgr_dijkstraNear.html" title="Previous Chapter: pgr_dijkstraNear - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
     </a>
   </li>
   <li>
@@ -168,7 +172,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_dijkstraNearCost.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dijkstraNearCost.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_dijkstraNearCost.html">3.2</a></p></li>
 </ul>
 <section id="pgr-dijkstranearcost-proposed">
-<h1>pgr_dijkstraNearCost - Propuesto<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Proposed<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> — Usando el algoritmo dijkstra, encuentra la ruta que conduce al vértice más cercano.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -251,21 +255,17 @@
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids  [, directed] [, cap])
-pgr_dijkstraNearCost(Edges SQL, Start vids, End vid   [, directed] [, cap])
-pgr_dijkstraNearCost(Edges SQL, Start vids, End vids  [, directed] [, cap], [global])
-pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, cap])
+pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, cap])
+pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, cap], [global])
+pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, cap] [, global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <section id="one-to-many">
 <span id="index-0"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vid,  End vids [, directed] [, cap])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Saliendo en coche desde el vértice  <span class="math notranslate nohighlight">\(2\)</span> encontrar la estación de metro más cercana.</p>
@@ -296,11 +296,9 @@ OR EMPTY SET
 </section>
 <section id="many-to-one">
 <span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vids, End vid  [, directed] [, cap])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Saliendo en coche desde una estación de metro encontrar las <strong>dos</strong> estaciones más cercanas al vértice <span class="math notranslate nohighlight">\(2\)</span></p>
@@ -330,11 +328,9 @@ OR EMPTY SET
 </section>
 <section id="many-to-many">
 <span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, cap], [global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Encuentra la mejor conexión peatonal entre dos líneas de autobuses</p>
@@ -369,11 +365,9 @@ OR EMPTY SET
 </section>
 <section id="combinations">
 <span id="index-3"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraNearCost(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
+<pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, cap] [, global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Encuentra la mejor conexión de coche entre todas las estaciones de dos líneas de metro</p>
@@ -428,12 +422,76 @@ OR EMPTY SET
 </section>
 <section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>start vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Arreglo de identificadores de vértices finales.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="dijkstra-optional-parameters">
+<h3>Dijkstra optional parameters<a class="headerlink" href="#dijkstra-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">true</span></code>, el grafo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="near-optional-parameters">
+<h3>Near optional parameters<a class="headerlink" href="#near-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
 <col style="width: 16%" />
-<col style="width: 7%" />
-<col style="width: 58%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 68%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -443,51 +501,12 @@ OR EMPTY SET
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p><a class="reference internal" href="#edges-query">Edges query</a> como se describe a continuación</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Combinaciones SQL</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p><cite>Consulta de combinaciones</cite> como se describe a continuación</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Start vid</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cap</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-<td><p>Identificador del vértice inicial de la ruta.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Start vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td></td>
-<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>End vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-<td><p>Identificador del vértice final de la ruta.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>End vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td></td>
-<td><p>Arreglo de identificadores de vértices finales.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>dirigido</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><ul class="simple">
-<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">true</span></code>, el grafo se considera <cite>Dirigido</cite></p></li>
-<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>cap</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Encuentra como máximo el número <code class="docutils literal notranslate"><span class="pre">cap</span></code> de los caminos más cortos y más cercanos</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>global</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">global</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
@@ -499,10 +518,11 @@ OR EMPTY SET
 </tbody>
 </table>
 </section>
+</section>
 <section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<section id="edges-query">
-<h3>Consulta de aristas<a class="headerlink" href="#edges-query" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -560,8 +580,8 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 </section>
-<section id="combinations-query">
-<h3>Consulta de combinaciones<a class="headerlink" href="#combinations-query" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="combinations-sql">
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -628,7 +648,7 @@ it’s not part of the graph.</p></li>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a></p></li>
 <li><p>Red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 <li><p>boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/table_of_contents.html">https://www.boost.org/libs/graph/doc/table_of_contents.html</a></p></li>
 <li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
@@ -654,7 +674,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 30, 2022.<br/>
+      Actualizado por última vez en mar. 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

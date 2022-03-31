@@ -859,7 +859,7 @@ WHERE edge != -1;
 </ul>
 <p>Migrate by using:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> when there are no restrictions,</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> when there are no restrictions,</p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> when there are restrictions.</p></li>
 </ul>
 <section id="migrating-pgr-trspviavertices-using-pgr-dijkstravia">
@@ -888,7 +888,7 @@ WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprec
 </ul>
 </li>
 </ul>
-<p>Use <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> instead.</p>
+<p>Use <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   ARRAY[2, 8, 2]);
@@ -906,7 +906,7 @@ WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprec
 </div>
 <ul class="simple">
 <li><p>The types casting has been removed.</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>:</p>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a>:</p>
 <ul>
 <li><p>Autodetects if <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column is in the edges
 SQL.</p></li>
@@ -1393,7 +1393,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 30, 2022.<br/>
+      Actualizado por última vez en mar. 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

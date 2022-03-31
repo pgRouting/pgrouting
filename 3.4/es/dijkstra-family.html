@@ -192,9 +192,9 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> - Obtener la ruta al vértice más cercano.</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a> - Get the cost to the nearest vertex.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a> - Obtener la ruta al vértice más cercano.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a> - Get the cost to the nearest vertex.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -208,7 +208,11 @@ vertex to an ending vertex.
 This implementation can be used with a directed graph and an undirected graph.</p>
 <p>The main characteristics are:</p>
 <ul class="simple">
-<li><p>Process is done only on edges with positive costs.</p></li>
+<li><p>Process is done only on edges with positive costs.</p>
+<ul>
+<li><p>A negative value on a cost column is interpreted as the edge does not exist.</p></li>
+</ul>
+</li>
 <li><p>Values are returned when there is a path.</p></li>
 <li><p>When there is no path:</p>
 <ul>
@@ -287,7 +291,7 @@ the ending vertices are ignored.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
 </td>
@@ -506,7 +510,7 @@ of nodes  and of edges,</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 30, 2022.<br/>
+      Actualizado por última vez en mar. 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

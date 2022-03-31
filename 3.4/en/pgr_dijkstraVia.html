@@ -97,13 +97,14 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_dijkstraVia - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-via">One Via</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#dijkstra-optional-parameters">Dijkstra optional parameters</a></li>
 <li><a class="reference internal" href="#via-optional-parameters">Via optional parameters</a></li>
 </ul>
 </li>
@@ -175,9 +176,8 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html">2.2</a></p></li>
 </ul>
 <section id="pgr-dijkstravia-proposed">
-<h1>pgr_dijkstraVia - Proposed<a class="headerlink" href="#pgr-dijkstravia-proposed" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> — Using dijkstra algorithm, it finds the route that goes through
-a list of vertices.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> - Proposed<a class="headerlink" href="#pgr-dijkstravia-proposed" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> — Find the route that goes through a list of vertices.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Proposed functions for next mayor release.</p>
@@ -247,9 +247,8 @@ order on an <strong>directed</strong> graph.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-<span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------+----------------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span>
@@ -297,12 +296,28 @@ order on an <strong>directed</strong> graph.</p>
 <td></td>
 <td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
 </tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="dijkstra-optional-parameters">
+<h3>Dijkstra optional parameters<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
 </td>
 </tr>
@@ -311,6 +326,7 @@ order on an <strong>directed</strong> graph.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+</section>
 <section id="via-optional-parameters">
 <h3>Via optional parameters<a class="headerlink" href="#via-optional-parameters" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
@@ -497,9 +513,8 @@ in that order</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_id</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
 <span class="o">-----+---------+----------+-----------+---------+------+------+------+----------+----------------</span>
    <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span> <span class="o">|</span>              <span class="mi">0</span>
@@ -526,10 +541,9 @@ in that order</p>
 <dd class="field-odd"><p>What’s the aggregate cost of the third path?</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">agg_cost</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">path_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">AND</span> <span class="n">edge</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">;</span>
  <span class="n">agg_cost</span>
 <span class="o">----------</span>
@@ -544,10 +558,9 @@ in that order</p>
 third path?</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">path_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">AND</span> <span class="n">edge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
  <span class="n">route_agg_cost</span>
 <span class="o">----------------</span>
@@ -563,9 +576,8 @@ third path?</p>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span> <span class="p">()</span> <span class="k">as</span> <span class="n">node_seq</span><span class="p">,</span> <span class="n">node</span>
 <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">)</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">&lt;&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">seq</span><span class="p">;</span>
  <span class="n">node_seq</span> <span class="o">|</span> <span class="n">node</span>
 <span class="o">----------+------</span>
@@ -592,9 +604,8 @@ are reached?</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">path_id</span><span class="p">,</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">)</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">edge</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
  <span class="n">path_id</span> <span class="o">|</span> <span class="n">route_agg_cost</span>
 <span class="o">---------+----------------</span>
@@ -613,12 +624,12 @@ front” or “visits”</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">route_agg_cost</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">agg_cost</span> <span class="p">,</span>
-<span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39;visits&#39;</span>
-<span class="n">ELSE</span> <span class="s1">&#39;passes in front&#39;</span>
-<span class="n">END</span> <span class="k">as</span> <span class="n">status</span>
+  <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39;visits&#39;</span>
+  <span class="n">ELSE</span> <span class="s1">&#39;passes in front&#39;</span>
+  <span class="n">END</span> <span class="k">as</span> <span class="n">status</span>
 <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table order by id&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">WHERE</span> <span class="n">agg_cost</span>  <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">seq</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">route_agg_cost</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">agg_cost</span> <span class="o">|</span>     <span class="n">status</span>
 <span class="o">-----+----------------+------+----------+-----------------</span>
@@ -636,8 +647,6 @@ front” or “visits”</p>
   <span class="mi">15</span> <span class="o">|</span>             <span class="mi">11</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span> <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span>
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
-<span class="n">ROLLBACK</span><span class="p">;</span>
-<span class="n">ROLLBACK</span>
 </pre></div>
 </div>
 </section>
@@ -645,6 +654,7 @@ front” or “visits”</p>
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="via-category.html"><span class="doc">Via - Category</span></a>.</p></li>
+<li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Family of functions</span></a>.</p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
 </ul>
@@ -669,7 +679,7 @@ front” or “visits”</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Mar 30, 2022.<br/>
+      Last updated on Mar 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

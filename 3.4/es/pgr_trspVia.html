@@ -212,7 +212,7 @@ shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</s
 <p>The paths represents the sections of the route.</p>
 <p>The general algorithm is as follows:</p>
 <ul class="simple">
-<li><p>Execute a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a>.</p></li>
+<li><p>Execute a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a>.</p></li>
 <li><p>For the set of sub paths of the solution that pass through a restriction then</p>
 <ul>
 <li><p>Execute the <strong>TRSP</strong> algorithm with restrictions for the paths.</p></li>
@@ -305,15 +305,6 @@ order on an <strong>directed</strong> graph.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
 <td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected.</p></li>
-</ul>
-</td>
 </tr>
 </tbody>
 </table>
@@ -699,7 +690,7 @@ WHERE agg_cost  &lt;&gt; 0 or seq = 1;
 <dd class="field-odd"><p>Simulation of how algorithm works</p>
 </dd>
 </dl>
-<p>The algorithm performs a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a></p>
+<p>The algorithm performs a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table order by id$$,
   ARRAY[2, 8, 2]);
@@ -738,7 +729,7 @@ is restricted.</p>
 
 </pre></div>
 </div>
-<p>From the <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> result it removes the conflicting paths and
+<p>From the <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> result it removes the conflicting paths and
 builds the solution with the results of the <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> algorithm:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 solutions AS (
@@ -803,7 +794,7 @@ FROM with_seq LEFT JOIN aggregation ON (with_seq.seq = aggregation.seq + 1);
 <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
 </dl>
-<p>The first step, doing a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> does consider not making a U turn
+<p>The first step, doing a <a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> does consider not making a U turn
 on the same edge. But the path <span class="math notranslate nohighlight">\(9 \rightarrow 16\)</span> (Rows 4 and 5) is
 restricted and the result is using it.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_dijkstraVia(
@@ -880,7 +871,7 @@ no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 30, 2022.<br/>
+      Actualizado por última vez en mar. 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

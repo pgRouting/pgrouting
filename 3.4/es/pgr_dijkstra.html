@@ -179,7 +179,7 @@
 </ul>
 <section id="pgr-dijkstra">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code><a class="headerlink" href="#pgr-dijkstra" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> — Devuelve la(s) rutas más cortas mediante el algoritmo Dijkstra. En particular, el algoritmo Dijkstra implementado por Boost.Graph.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> — Shortest path(s) using Dijkstra algorithm.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -234,7 +234,11 @@ vertex to an ending vertex.
 This implementation can be used with a directed graph and an undirected graph.</p>
 <p>Las principales características son:</p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
+<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p>
+<ul>
+<li><p>A negative value on a cost column is interpreted as the edge does not exist.</p></li>
+</ul>
+</li>
 <li><p>Valores son regresados cuando hay un camino.</p></li>
 <li><p>When there is no path:</p>
 <ul>
@@ -254,40 +258,9 @@ This implementation can be used with a directed graph and an undirected graph.</
 <li><p>For optimization purposes, any duplicated value in the starting vertices or on
 the ending vertices are ignored.</p></li>
 </ul>
-<p>Dijkstra’s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
-1956.
-It is a graph search algorithm that solves the shortest path problem for a graph
-with non-negative edge path costs, producing a shortest path from a starting
-vertex (<strong>start vid</strong>) to an ending vertex (<strong>end vid</strong>).
-This implementation can be used with a directed graph and an undirected graph.</p>
-<dl class="simple">
-<dt>Las principales características son:</dt><dd><ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
-<li><p>Valores son regresados cuando hay un camino.</p>
-<ul>
-<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
-<ul>
-<li><p>El <cite>agg_cost</cite> de los valores no incluídos <cite>(v, v)</cite> es <cite>0</cite></p></li>
-</ul>
-</li>
-<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
-<ul>
-<li><p>El  “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>For optimization purposes, any duplicated value in the <cite>start vids</cite> or <cite>end vids</cite> are ignored.</p></li>
-<li><p>Los valores regresados se ordenan:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascending</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">end</span> <span class="pre">vid</span></code> ascending</p></li>
-</ul>
-</li>
+<ul class="simple">
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
-</dd>
-</dl>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -502,7 +475,7 @@ OR EMPTY SET</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></p></li>
 </ul>
 </td>
@@ -1527,7 +1500,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 30, 2022.<br/>
+      Actualizado por última vez en mar. 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

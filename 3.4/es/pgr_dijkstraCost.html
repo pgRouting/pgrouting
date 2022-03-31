@@ -172,8 +172,7 @@
 </ul>
 <section id="pgr-dijkstracost">
 <h1>pgr_dijkstraCost<a class="headerlink" href="#pgr-dijkstracost" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code></p>
-<p>Usando el algoritmo Dijkstra implementado por Boost.Graph, extraiga solo el costo agregado de la(s) rutas más cortas encontradas, para la combinación de vértices dada.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> - Total cost of the shortest path(s) using Dijkstra algorithm.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -186,7 +185,7 @@
 <ul>
 <li><p>Nuevas funciones <strong>Propuestas</strong>:</p>
 <ul>
-<li><p>pgr_dijkstraCost(combinaciones)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -199,35 +198,52 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>El algoritmo <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> es una buena opción para calcular la suma de los costos de la ruta más corta para un subconjunto de pares de nodos del grafo. Hacemos uso de la implementación de dijkstra del Boost cuyo tiempo de ejecución es <span class="math notranslate nohighlight">\(O(V \log V + E)\)</span></p>
-<dl class="simple">
-<dt>Las principales características son:</dt><dd><ul class="simple">
+<p>The <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> function sumarizes of the cost of the shortest path(s).</p>
+<p>Dijkstra’s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
+1956.
+It is a graph search algorithm that solves the shortest path problem for a graph
+with non-negative edge path costs, producing a shortest path from a starting
+vertex to an ending vertex.
+This implementation can be used with a directed graph and an undirected graph.</p>
+<p>Las principales características son:</p>
+<ul class="simple">
+<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p>
+<ul>
+<li><p>A negative value on a cost column is interpreted as the edge does not exist.</p></li>
+</ul>
+</li>
+<li><p>Valores son regresados cuando hay un camino.</p></li>
+<li><p>When there is no path:</p>
+<ul>
+<li><p>When the starting vertex and ending vertex :are the same.</p>
+<ul>
+<li><p>The <strong>aggregate cost</strong> the non included values <span class="math notranslate nohighlight">\((v, v)\)</span> is <span class="math notranslate nohighlight">\(0\)</span></p></li>
+</ul>
+</li>
+<li><p>When the starting vertex and ending vertex are the different and there is
+no path:</p>
+<ul>
+<li><p>The <strong>aggregate cost</strong> the non included values <span class="math notranslate nohighlight">\((u, v)\)</span> is
+<span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>For optimization purposes, any duplicated value in the starting vertices or on
+the ending vertices are ignored.</p></li>
+</ul>
+<ul class="simple">
 <li><p>No devuelve una ruta.</p></li>
-<li><p>Devuelve la suma de los costos de la ruta más corta para la combinación de pares de nodos en el grafo.</p></li>
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
-<li><p>Valores son regresados cuando hay un camino.</p>
-<ul>
-<li><p>Los valores devueltos tienen la forma de un conjunto de <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
-<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
-<ul>
-<li><p>El <cite>agg_cost</cite> en los valores no incluidos <cite>(v, v)</cite> es <cite>0</cite></p></li>
-</ul>
-</li>
-<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay ninguna ruta.</p>
-<ul>
-<li><p>El <cite>agg_cost</cite> en los valores no incluidos <cite>(u, v)</cite> es <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Sea el caso, los valores devueltos se almacenan en una tabla, por lo que el índice único sería el par: “(start_vid, end_vid)”.</p></li>
+<li><p>Returns the sum of the costs of the shortest path of each pair combination of
+nodes requested.</p></li>
+<li><p>Let be the case the values returned are stored in a table, so the unique index
+would be the pair: <cite>(start_vid, end_vid)</cite></p></li>
 <li><p>Para grafos no dirigidos, los resultados son simétricos.</p>
 <ul>
 <li><p>El  <cite>agg_cost</cite> de <cite>(u, v)</cite>  es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Se omite cualquier valor duplicado en <cite>start_vids</cite> o <cite>end_vids</cite>.</p></li>
-<li><p>Los valores regresados se ordenan:</p>
+<li><p>The returned values are ordered in ascending order:</p>
 <ul>
 <li><p><cite>start_vid</cite> ascendente</p></li>
 <li><p><cite>end_vid</cite> ascendente</p></li>
@@ -235,57 +251,30 @@
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
-</dd>
-</dl>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
-pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
-pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
-pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
-pgr_dijkstraCost(edges_sql, combinations_sql   [, directed])
+<pre class="literal-block">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
+pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
+pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed])
+pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
+pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
-<p class="rubric">Uso de valores predeterminados</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraCost(edges_sql, from_vid,  to_vid)
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(2\)</span> al vértice <span class="math notranslate nohighlight">\(3\)</span> en un grafo <strong>dirigido</strong></p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraCost(edges_sql, from_vid,  to_vid  [, directed])
+<pre class="literal-block">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(2\)</span> al vértice <span class="math notranslate nohighlight">\(3\)</span> en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
+  <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
@@ -296,19 +285,17 @@ OR EMPTY SET
 </section>
 <section id="one-to-many">
 <span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraCost(edges_sql, from_vid,  to_vids [, directed])
+<pre class="literal-block">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(2\)</span> a los vértices <span class="math notranslate nohighlight">\(\{3, 11\}\)</span> en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
+  <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
@@ -320,19 +307,17 @@ OR EMPTY SET
 </section>
 <section id="many-to-one">
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraCost(edges_sql, from_vids, to_vid  [, directed])
+<pre class="literal-block">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> al vértice <span class="math notranslate nohighlight">\(3\)</span>  en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
@@ -344,19 +329,17 @@ OR EMPTY SET
 </section>
 <section id="many-to-many">
 <span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraCost(edges_sql, from_vids, to_vids [, directed])
+<pre class="literal-block">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>De los vértice​s <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> a los vértice​s <span class="math notranslate nohighlight">\(\{3, 11\}\)</span> en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
@@ -370,21 +353,32 @@ OR EMPTY SET
 </section>
 <section id="combinations">
 <span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_dijkstraCost(TEXT edges_sql, TEXT combination_sql, BOOLEAN directed:=true);
+<pre class="literal-block">pgr_dijkstraCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Uso de una tabla de combinaciones en un grafo <strong>no direccionado</strong></p>
 </dd>
 </dl>
+<p>The table contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="n">FROM</span> <span class="n">combinations_table</span><span class="p">;</span>
+ <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
+<span class="o">--------+--------</span>
+      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span>
+      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span>
+      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span>
+      <span class="mi">2</span> <span class="o">|</span>     <span class="mi">17</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The query:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT source, target FROM combinations_table&#39;</span><span class="p">,</span>
-    <span class="n">FALSE</span>
-<span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT source, target FROM combinations_table&#39;</span><span class="p">,</span>
+  <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
@@ -453,7 +447,7 @@ OR EMPTY SET
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></p></li>
 </ul>
 </td>
@@ -595,8 +589,8 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-        <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
@@ -611,12 +605,12 @@ it’s not part of the graph.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 2</dt>
-<dd class="field-odd"><p>Haciendo <cite>start_vids</cite> igual que <cite>end_vids</cite></p>
+<dd class="field-odd"><p>Making <code class="docutils literal notranslate"><span class="pre">start_vids</span></code> the same as <code class="docutils literal notranslate"><span class="pre">end_vids</span></code>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-        <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
+  <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
@@ -631,21 +625,18 @@ it’s not part of the graph.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 3</dt>
-<dd class="field-odd"><p>Cuatro combinaciones de vértices asignados manualmente (origen, destino)</p>
+<dd class="field-odd"><p>Manually assigned vertex combinations.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3), (11, 5)) AS combinations (source, target)&#39;</span><span class="p">,</span>
-    <span class="n">FALSE</span>
-<span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3)) AS combinations (source, target)&#39;</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
-        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">2</span>
-        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
-<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -677,7 +668,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 30, 2022.<br/>
+      Actualizado por última vez en mar. 31, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
