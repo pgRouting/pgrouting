@@ -102,7 +102,7 @@ One to One
    pgr_withPoints(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` to vertex :math:`3` with details of passing points
+:Example: From point :math:`1` to vertex :math:`3` with details
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e2
@@ -119,7 +119,8 @@ One to Many
    pgr_withPoints(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` to point :math:`3` and vertex :math:`5`
+:Example: From point :math:`1` to point :math:`3` and vertex :math:`5` on an
+          undirected graph
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e3
@@ -157,7 +158,7 @@ Many to Many
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --e5
-   :end-before: --q2
+   :end-before: --e6
 
 .. index::
     single: withPoints(Combinations) - Proposed on v3.2
@@ -170,14 +171,14 @@ Combinations
    pgr_withPoints(`Edges SQL`_, `Combinations SQL`_ [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
-:Example: Two (source, target) combinations
+:Example: Two combinations
 
 From point :math:`1` to vertex :math:`3`, and from vertex :math:`2` to point
-:math:`3` with **right** side driving topology.
+:math:`3` with **right** side driving.
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --q5
-   :end-before: --q6
+   :start-after: --e6
+   :end-before: --e7
 
 Parameters
 -------------------------------------------------------------------------------
@@ -234,26 +235,32 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
+:Example: Paths that passes in front or visits point :math:`6` or vertex
+          :math:`6` with **right** side driving.
+
+Traveling from point 1 and vertex 1 to points :math:`\{2, 3, 6\}` and vertices
+:math:`\{3, 6\}`
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: --q1
+   :end-before: --q2
+
 :Example: Which path (if any) passes in front of point :math:`6` or vertex
-          :math:`6` with **right** side driving topology.
+          :math:`6` with **left** side.
+
+Traveling from point 1 and vertex 1 to points :math:`\{2, 3, 6\}` and vertices
+:math:`\{3, 6\}`
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --q2
    :end-before: --q3
 
-:Example: Which path (if any) passes in front of point :math:`6` or vertex
-          :math:`6` with **left** side driving topology.
+:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` and to
+          vertex :math:`7` on an **undirected** graph, with details.
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: --q3
    :end-before: --q4
-
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex
-          :math:`7` on an **undirected** graph, with details.
-
-.. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --q4
-   :end-before: --q5
 
 The queries use the :doc:`sampledata` network
 
