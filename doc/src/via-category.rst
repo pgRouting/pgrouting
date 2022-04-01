@@ -42,15 +42,18 @@ This category intends to solve the general problem:
 In other words, find a continuos route that visits all the vertices in the order
 given.
 
-**path**
-   represents a section of a **route**.
-**route**
-   is a sequence of **paths**
+:path: represents a section of a **route**.
+:route: is a sequence of **paths**
 
 |
 
 Parameters
 -------------------------------------------------------------------------------
+
+**Used on:**
+
+* :doc:`pgr_dijkstraVia`
+* :doc:`pgr_trspVia`
 
 .. via_parameters_start
 
@@ -74,6 +77,42 @@ Parameters
 
 .. via_parameters_end
 
+**Used on:**
+
+* :doc:`pgr_withPointsVia`
+* :doc:`pgr_trspVia_withPoints`
+
+.. via_withPoints_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 20 7 40
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - `Points SQL`_
+     - ``TEXT``
+     -
+     - SQL query as described.
+   * - **via vertices**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     -
+     - Array of ordered vertices identifiers that are going to be visited.
+
+       * When positive it is considered a vertex identifier
+       * When negative it is considered a point identifier
+
+.. via_withPoints_parameters_end
+
+
+
 Besides the compulsory parameters each function has, there are optional
 parameters that exist due to the kind of function.
 
@@ -82,7 +121,7 @@ Via optional parameters
 
 .. rubric:: Used on all Via functions
 
-.. via_opt_parameters_start
+.. via_optionals_start
 
 .. list-table::
    :width: 81
@@ -103,7 +142,7 @@ Via optional parameters
      - ``true``
      - * When ``true`` departing from a visited vertex will not try to avoid
 
-.. via_opt_parameters_end
+.. via_optionals_end
 
 With points optional parameters
 ...............................................................................
@@ -112,7 +151,7 @@ Used on
 
 * :doc:`pgr_withPointsVia`
 
-.. withPoints_parameters_start
+.. via_withPoints_optionals_start
 
 .. list-table::
    :width: 81
@@ -137,16 +176,12 @@ Used on
      - - When ``true`` the results will include the points that are in the path.
        - When ``false`` the results will not include the points that are in the path.
 
-.. withPoints_parameters_end
-
-|
+.. via_withPoints_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
 
 Depending on the function one or more inner queries are needed.
-
-|
 
 Edges SQL
 ...............................................................................
@@ -156,7 +191,6 @@ Edges SQL
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
-|
 
 Restrictions SQL
 ...............................................................................
@@ -168,7 +202,6 @@ Used on
 .. include:: TRSP-family.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
-|
 
 Points SQL
 ...............................................................................
@@ -180,12 +213,16 @@ Used on
 .. include:: withPoints-category.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
-|
 
 Return Columns
 -------------------------------------------------------------------------------
 
-.. result columns start
+**Used on:**
+
+* :doc:`pgr_dijkstraVia`
+* :doc:`pgr_trspVia`
+
+.. result via start
 
 .. list-table::
    :width: 81
@@ -231,12 +268,78 @@ Return Columns
      - ``FLOAT``
      - Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``.
 
-.. result columns end
+.. result via end
+
+**Used on:**
+
+* :doc:`pgr_withPointsVia`
+* :doc:`pgr_trspVia_withPoints`
+
+.. result via withPoints start
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_id``
+     - ``INTEGER``
+     - Identifier of a path. Has value **1** for the first path.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex or point of the path.
+
+       * When positive it is a vertex identifier
+       * When negative it is a point identifier
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex or point of the path.
+
+       * When positive it is a vertex identifier
+       * When negative it is a point identifier
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+
+       * When positive it is a vertex identifier
+       * When negative it is a point identifier
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence.
+
+       * :math:`-1` for the last row of the path.
+       * :math:`-2` for the last row of the route.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
+
+       * :math:`0` on the first row of the path.
+   * - ``route_agg_cost``
+     - ``FLOAT``
+     - Total cost from the first row of the route up to the current node.
+
+       * :math:`0` on the first row of the route.
+
+.. result via withPoints end
 
 |
 
 See Also
-................
+-------------------------------------------------------------------------------
 
 * :doc:`pgr_dijkstraVia`
 * :doc:`pgr_trspVia`

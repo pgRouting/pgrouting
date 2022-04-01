@@ -16,7 +16,7 @@
 ``pgr_withPointsVia`` - Proposed
 ===============================================================================
 
-``pgr_withPointsVia`` Via points/vertices routing.
+``pgr_withPointsVia`` - Route that goes through a list of vertices and/or points.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -32,9 +32,6 @@
 * Version 3.4.0
 
   * New **proposed** function ``pgr_withPointsVia`` (`One Via`_)
-
-
-|
 
 Description
 -------------------------------------------------------------------------------
@@ -56,27 +53,11 @@ The general algorithm is as follows:
 
 * Execute a :doc:`pgr_dijkstraVia`.
 
-.. Note:: Do not use negative values on identifiers of the inner queries.
-
-|
-
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. index::
     single: withPointsVia - Proposed on v3.4
-
-.. parsed-literal::
-
-    pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge]) -- Proposed on v3.4
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                    node, edge, cost, agg_cost, route_agg_cost)
-    OR EMPTY SET
-
-|
 
 One Via
 ...............................................................................
@@ -96,65 +77,36 @@ One Via
     :start-after: -- q0
     :end-before: -- q1
 
-|
-
 Parameters
 -------------------------------------------------------------------------------
 
-.. list-table::
-   :width: 81
-   :widths: 14 20 7 40
-   :header-rows: 1
+.. include:: via-category.rst
+    :start-after: via_withPoints_parameters_start
+    :end-before: via_withPoints_parameters_end
 
-   * - Parameter
-     - Type
-     - Default
-     - Description
-   * - `Edges SQL`_
-     - ``TEXT``
-     -
-     - SQL query as described.
-   * - `Points SQL`_
-     - ``TEXT``
-     -
-     - SQL query as described.
-   * - **via vertices**
-     - ``ARRAY[`` **ANY-INTEGER** ``]``
-     -
-     - Array of ordered vertices identifiers that are going to be visited.
+Optional parameters
+...............................................................................
 
-       * When positive it is considered a vertex identifier
-       * When negative it is considered a point identifier
-   * - ``directed``
-     - ``BOOLEAN``
-     - ``true``
-     - - When ``true`` Graph is considered `Directed`
-       - When ``false`` the graph is considered as Undirected.
-
-|
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 Via optional parameters
 ...............................................................................
 
 .. include:: via-category.rst
-    :start-after: via_opt_parameters_start
-    :end-before: via_opt_parameters_end
-
-|
+    :start-after: via_optionals_start
+    :end-before: via_optionals_end
 
 With points optional parameters
 ...............................................................................
 
 .. include:: via-category.rst
-    :start-after: withPoints_parameters_start
-    :end-before: withPoints_parameters_end
-
-|
+    :start-after: via_withPoints_optionals_start
+    :end-before: via_withPoints_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
-
-|
 
 Edges SQL
 ...............................................................................
@@ -163,8 +115,6 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-|
-
 Points SQL
 ...............................................................................
 
@@ -172,18 +122,12 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-|
-
 Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
-    :start-after: result columns start
-    :end-before: result columns end
-
-.. Note:: When ``start_vid`` or ``end_vid`` is negative, then it is a point.
-
-|
+    :start-after: result via withPoints start
+    :end-before: result via withPoints end
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -231,6 +175,7 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`withPoints-family`
 * :doc:`via-category`
 * :doc:`sampledata` network.
 
