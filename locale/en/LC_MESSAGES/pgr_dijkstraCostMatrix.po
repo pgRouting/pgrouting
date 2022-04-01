@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 04:51+0000\n"
+"POT-Creation-Date: 2022-04-01 00:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,7 +397,7 @@ msgid "Set of ``(start_vid, end_vid, agg_cost)``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**start_vid**"
+msgid "``start_vid``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
@@ -410,7 +410,7 @@ msgid "Identifier of the starting vertex."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-msgid "**end_vid**"
+msgid "``end_vid``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -418,7 +418,7 @@ msgid "Identifier of the ending vertex."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
-msgid "**agg_cost**"
+msgid "``agg_cost``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20

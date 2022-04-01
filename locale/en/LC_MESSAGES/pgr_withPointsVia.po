@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 15:09+0000\n"
+"POT-Creation-Date: 2022-04-01 00:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,9 @@ msgid "``pgr_withPointsVia`` - Proposed"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsVia.rst:19
-msgid "``pgr_withPointsVia`` Via points/vertices routing."
+msgid ""
+"``pgr_withPointsVia`` - Route that goes through a list of vertices and/or"
+" points."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -84,15 +86,15 @@ msgstr ""
 msgid "New **proposed** function ``pgr_withPointsVia`` (`One Via`_)"
 msgstr ""
 
+#: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_withPointsVia.rst:40
-#: ../../build/doc/pgr_withPointsVia.rst:112
-#: ../../build/doc/via-category.rst:10 ../../build/doc/via-category.rst:11
+#: ../../build/doc/pgr_withPointsVia.rst:37 ../../build/doc/via-category.rst:10
+#: ../../build/doc/via-category.rst:11
 #: ../../build/doc/withPoints-category.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:42
+#: ../../build/doc/pgr_withPointsVia.rst:39
 msgid ""
 "Given a graph, a set of points on the graphs edges and a list of "
 "vertices, this function is equivalent to finding the shortest path "
@@ -105,7 +107,7 @@ msgstr ""
 msgid "Route"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:47
+#: ../../build/doc/pgr_withPointsVia.rst:44
 msgid "is a sequence of paths"
 msgstr ""
 
@@ -113,43 +115,35 @@ msgstr ""
 msgid "Path"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:48
+#: ../../build/doc/pgr_withPointsVia.rst:45
 msgid "is a section of the route."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:50
+#: ../../build/doc/pgr_withPointsVia.rst:47
 msgid "The general algorithm is as follows:"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:52
+#: ../../build/doc/pgr_withPointsVia.rst:49
 msgid "Build the Graph with the new points."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:54
+#: ../../build/doc/pgr_withPointsVia.rst:51
 msgid "The points identifiers will be converted to negative values."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:55
+#: ../../build/doc/pgr_withPointsVia.rst:52
 msgid "The vertices identifiers will remain positive."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:57
+#: ../../build/doc/pgr_withPointsVia.rst:54
 msgid "Execute a :doc:`pgr_dijkstraVia`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:59
-msgid "Do not use negative values on identifiers of the inner queries."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsVia.rst:64
+#: ../../build/doc/pgr_withPointsVia.rst:57
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:67
-msgid "Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsVia.rst:82
+#: ../../build/doc/pgr_withPointsVia.rst:63
 msgid "One Via"
 msgstr ""
 
@@ -157,96 +151,103 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:92
+#: ../../build/doc/pgr_withPointsVia.rst:73
 msgid ""
 "Find the route that visits the vertices :math:`\\{ -6, 4, -5\\}` in that "
 "order on a **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:102
+#: ../../build/doc/pgr_withPointsVia.rst:81
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:109 ../../build/doc/via-category.rst:8
-#: ../../build/doc/withPoints-category.rst:8
+#: ../../build/doc/via-category.rst:8 ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_withPointsVia.rst:110 ../../build/doc/via-category.rst:9
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/via-category.rst:9
 #: ../../build/doc/withPoints-category.rst:9
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgr_withPointsVia.rst:111
 #: ../../build/doc/via-category.rst:10
 #: ../../build/doc/withPoints-category.rst:10
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:113
+#: ../../build/doc/via-category.rst:12
 msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:114
-#: ../../build/doc/pgr_withPointsVia.rst:118
+#: ../../build/doc/via-category.rst:13 ../../build/doc/via-category.rst:17
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:116
-#: ../../build/doc/pgr_withPointsVia.rst:120
+#: ../../build/doc/via-category.rst:15 ../../build/doc/via-category.rst:19
 msgid "SQL query as described."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:117
+#: ../../build/doc/via-category.rst:16
 msgid "`Points SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:121
+#: ../../build/doc/via-category.rst:20
 msgid "**via vertices**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:122
+#: ../../build/doc/via-category.rst:21
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:124
+#: ../../build/doc/via-category.rst:23
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:126
+#: ../../build/doc/via-category.rst:25
 msgid "When positive it is considered a vertex identifier"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:127
+#: ../../build/doc/via-category.rst:26
 msgid "When negative it is considered a point identifier"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:128
+#: ../../build/doc/pgr_withPointsVia.rst:88
+msgid "Optional parameters"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/via-category.rst:8
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:10
+msgid "default"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:12
 msgid "``directed``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:129
-#: ../../build/doc/via-category.rst:13 ../../build/doc/via-category.rst:18
-#: ../../build/doc/via-category.rst:21
+#: ../../build/doc/dijkstra-family.rst:13 ../../build/doc/via-category.rst:13
+#: ../../build/doc/via-category.rst:18 ../../build/doc/via-category.rst:21
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:130
-#: ../../build/doc/via-category.rst:19
+#: ../../build/doc/dijkstra-family.rst:14 ../../build/doc/via-category.rst:19
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:131
-msgid "When ``true`` Graph is considered `Directed`"
+#: ../../build/doc/dijkstra-family.rst:15
+msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:132
-msgid "When ``false`` the graph is considered as Undirected."
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:137
+#: ../../build/doc/pgr_withPointsVia.rst:95
 msgid "Via optional parameters"
 msgstr ""
 
@@ -274,7 +275,7 @@ msgstr ""
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:146
+#: ../../build/doc/pgr_withPointsVia.rst:102
 msgid "With points optional parameters"
 msgstr ""
 
@@ -324,16 +325,12 @@ msgid ""
 "path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:155
+#: ../../build/doc/pgr_withPointsVia.rst:109
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:160
+#: ../../build/doc/pgr_withPointsVia.rst:112
 msgid "Edges SQL"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/via-category.rst:8
-msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -369,7 +366,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/via-category.rst:36
+#: ../../build/doc/via-category.rst:45
 msgid "``cost``"
 msgstr ""
 
@@ -426,7 +423,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:169
+#: ../../build/doc/pgr_withPointsVia.rst:119
 msgid "Points SQL"
 msgstr ""
 
@@ -491,10 +488,10 @@ msgid "In the left ``l``,"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:38
-msgid "In both ``b``, ``NULL``"
+msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:178
+#: ../../build/doc/pgr_withPointsVia.rst:126
 msgid "Return Columns"
 msgstr ""
 
@@ -533,83 +530,95 @@ msgstr ""
 msgid "``start_vid``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:21 ../../build/doc/via-category.rst:24
-#: ../../build/doc/via-category.rst:27 ../../build/doc/via-category.rst:30
+#: ../../build/doc/via-category.rst:21 ../../build/doc/via-category.rst:27
+#: ../../build/doc/via-category.rst:33 ../../build/doc/via-category.rst:39
 msgid "``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:22
-msgid "Identifier of the starting vertex of the path."
+msgid "Identifier of the starting vertex or point of the path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:23
-msgid "``end_vid``"
+#: ../../build/doc/via-category.rst:24 ../../build/doc/via-category.rst:30
+#: ../../build/doc/via-category.rst:36
+msgid "When positive it is a vertex identifier"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:25
-msgid "Identifier of the ending vertex of the path."
+#: ../../build/doc/via-category.rst:25 ../../build/doc/via-category.rst:31
+#: ../../build/doc/via-category.rst:37
+msgid "When negative it is a point identifier"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:26
-msgid "``node``"
+msgid "``end_vid``"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:28
+msgid "Identifier of the ending vertex or point of the path."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:32
+msgid "``node``"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:34
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:29
+#: ../../build/doc/via-category.rst:38
 msgid "``edge``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:31
+#: ../../build/doc/via-category.rst:40
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:34
-msgid "-1 for the last node of the path."
+#: ../../build/doc/via-category.rst:43
+msgid ":math:`-1` for the last row of the path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:35
-msgid "-2 for the last node of the route."
-msgstr ""
-
-#: ../../build/doc/via-category.rst:37 ../../build/doc/via-category.rst:41
 #: ../../build/doc/via-category.rst:44
+msgid ":math:`-2` for the last row of the route."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:46 ../../build/doc/via-category.rst:50
+#: ../../build/doc/via-category.rst:55
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:38
+#: ../../build/doc/via-category.rst:47
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:40
+#: ../../build/doc/via-category.rst:49
 msgid "``agg_cost``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:42
+#: ../../build/doc/via-category.rst:51
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:43
+#: ../../build/doc/via-category.rst:53
+msgid ":math:`0` on the first row of the path."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:54
 msgid "``route_agg_cost``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:45
-msgid ""
-"Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the "
-"current ``seq``."
+#: ../../build/doc/via-category.rst:56
+msgid "Total cost from the first row of the route up to the current node."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:184
-msgid "When ``start_vid`` or ``end_vid`` is negative, then it is a point."
+#: ../../build/doc/via-category.rst:58
+msgid ":math:`0` on the first row of the route."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:189
+#: ../../build/doc/pgr_withPointsVia.rst:133
 msgid "Additional Examples"
 msgstr ""
 
@@ -617,7 +626,7 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:191
+#: ../../build/doc/pgr_withPointsVia.rst:135
 msgid ""
 "Find the route that visits the vertices :math:`\\{-1, 5, -3, 9, 4\\}` in "
 "that order on a **directed** graph"
@@ -627,7 +636,7 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:198
+#: ../../build/doc/pgr_withPointsVia.rst:142
 msgid "What's the aggregate cost of the third path?"
 msgstr ""
 
@@ -635,7 +644,7 @@ msgstr ""
 msgid "Example 3"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:204
+#: ../../build/doc/pgr_withPointsVia.rst:148
 msgid ""
 "What's the route's aggregate cost of the route at the end of the third "
 "path?"
@@ -645,7 +654,7 @@ msgstr ""
 msgid "Example 4"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:211
+#: ../../build/doc/pgr_withPointsVia.rst:155
 msgid "How are the nodes visited in the route?"
 msgstr ""
 
@@ -653,7 +662,7 @@ msgstr ""
 msgid "Example 5"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:217
+#: ../../build/doc/pgr_withPointsVia.rst:161
 msgid ""
 "What are the aggregate costs of the route when the visited vertices are "
 "reached?"
@@ -663,33 +672,37 @@ msgstr ""
 msgid "Example 6"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:224
+#: ../../build/doc/pgr_withPointsVia.rst:168
 msgid ""
 "Show a status of \"passes in front\" or \"visits\" of the nodes and "
 "points."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:232
+#: ../../build/doc/pgr_withPointsVia.rst:176
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:234
+#: ../../build/doc/pgr_withPointsVia.rst:178
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsVia.rst:179
 msgid ":doc:`via-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:235
+#: ../../build/doc/pgr_withPointsVia.rst:180
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:238
+#: ../../build/doc/pgr_withPointsVia.rst:183
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:239
+#: ../../build/doc/pgr_withPointsVia.rst:184
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:240
+#: ../../build/doc/pgr_withPointsVia.rst:185
 msgid ":ref:`search`"
 msgstr ""
 

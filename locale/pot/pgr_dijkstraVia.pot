@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 04:51+0000\n"
+"POT-Creation-Date: 2022-04-01 00:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgid "``pgr_dijkstraVia`` - Proposed"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:28
-msgid "``pgr_dijkstraVia`` — Find the route that goes through a list of vertices."
+msgid "``pgr_dijkstraVia`` — Route that goes through a list of vertices."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -84,7 +84,7 @@ msgstr ""
 msgid "New **proposed** function"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:49
+#: ../../build/doc/pgr_dijkstraVia.rst:46
 #: ../../build/doc/via-category.rst:11
 #: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/via-category.rst:11
@@ -93,23 +93,19 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:51
+#: ../../build/doc/pgr_dijkstraVia.rst:48
 msgid "Given a list of vertices and a graph, this function is equivalent to finding the shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\\_of(vertex_via)`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:55
+#: ../../build/doc/pgr_dijkstraVia.rst:52
 msgid "The paths represents the sections of the route."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:60
+#: ../../build/doc/pgr_dijkstraVia.rst:55
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:63
-msgid "Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_dijkstraVia.rst:78
+#: ../../build/doc/pgr_dijkstraVia.rst:61
 msgid "One Via"
 msgstr ""
 
@@ -117,11 +113,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:88
+#: ../../build/doc/pgr_dijkstraVia.rst:71
 msgid "Find the route that visits the vertices :math:`\\{ 1, 7, 10\\}` in that order on an **directed** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:98
+#: ../../build/doc/pgr_dijkstraVia.rst:79
 msgid "Parameters"
 msgstr ""
 
@@ -168,8 +164,8 @@ msgstr ""
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:107
-msgid "Dijkstra optional parameters"
+#: ../../build/doc/pgr_dijkstraVia.rst:86
+msgid "Optional parameters"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:8
@@ -205,7 +201,7 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:116
+#: ../../build/doc/pgr_dijkstraVia.rst:93
 msgid "Via optional parameters"
 msgstr ""
 
@@ -233,11 +229,11 @@ msgstr ""
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:125
+#: ../../build/doc/pgr_dijkstraVia.rst:100
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:130
+#: ../../build/doc/pgr_dijkstraVia.rst:103
 msgid "Edges SQL"
 msgstr ""
 
@@ -321,7 +317,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:139
+#: ../../build/doc/pgr_dijkstraVia.rst:110
 msgid "Return Columns"
 msgstr ""
 
@@ -428,7 +424,7 @@ msgstr ""
 msgid "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:148
+#: ../../build/doc/pgr_dijkstraVia.rst:117
 msgid "Additional Examples"
 msgstr ""
 
@@ -436,7 +432,7 @@ msgstr ""
 msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:150
+#: ../../build/doc/pgr_dijkstraVia.rst:119
 msgid "Find the route that visits the vertices :math:`\\{1, 5, 7, 10, 4\\}` in that order"
 msgstr ""
 
@@ -444,7 +440,7 @@ msgstr ""
 msgid "Example 2"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:157
+#: ../../build/doc/pgr_dijkstraVia.rst:126
 msgid "What's the aggregate cost of the third path?"
 msgstr ""
 
@@ -452,7 +448,7 @@ msgstr ""
 msgid "Example 3"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:163
+#: ../../build/doc/pgr_dijkstraVia.rst:132
 msgid "What's the route's aggregate cost of the route at the end of the third path?"
 msgstr ""
 
@@ -460,7 +456,7 @@ msgstr ""
 msgid "Example 4"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:170
+#: ../../build/doc/pgr_dijkstraVia.rst:139
 msgid "How are the nodes visited in the route?"
 msgstr ""
 
@@ -468,7 +464,7 @@ msgstr ""
 msgid "Example 5"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:176
+#: ../../build/doc/pgr_dijkstraVia.rst:145
 msgid "What are the aggregate costs of the route when the visited vertices are reached?"
 msgstr ""
 
@@ -476,38 +472,38 @@ msgstr ""
 msgid "Example 6"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:183
+#: ../../build/doc/pgr_dijkstraVia.rst:152
 msgid "Show the route's seq and aggregate cost and a status of \"passes in front\" or \"visits\""
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:191
+#: ../../build/doc/pgr_dijkstraVia.rst:160
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:193
+#: ../../build/doc/pgr_dijkstraVia.rst:162
 msgid ":doc:`via-category`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:194
+#: ../../build/doc/pgr_dijkstraVia.rst:163
 msgid ":doc:`dijkstra-family`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:195
+#: ../../build/doc/pgr_dijkstraVia.rst:164
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:196
+#: ../../build/doc/pgr_dijkstraVia.rst:165
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:199
+#: ../../build/doc/pgr_dijkstraVia.rst:168
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:200
+#: ../../build/doc/pgr_dijkstraVia.rst:169
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraVia.rst:201
+#: ../../build/doc/pgr_dijkstraVia.rst:170
 msgid ":ref:`search`"
 msgstr ""

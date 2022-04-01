@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 04:51+0000\n"
+"POT-Creation-Date: 2022-04-01 00:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,21 +68,25 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:27 ../../build/doc/via-category.rst:241
+#: ../../build/doc/via-category.rst:27 ../../build/doc/via-category.rst:55
+#: ../../build/doc/via-category.rst:222 ../../build/doc/via-category.rst:344
 msgid ":doc:`pgr_dijkstraVia`"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:28 ../../build/doc/via-category.rst:113
-#: ../../build/doc/via-category.rst:178 ../../build/doc/via-category.rst:243
+#: ../../build/doc/via-category.rst:28 ../../build/doc/via-category.rst:82
+#: ../../build/doc/via-category.rst:152 ../../build/doc/via-category.rst:211
+#: ../../build/doc/via-category.rst:275 ../../build/doc/via-category.rst:346
 msgid ":doc:`pgr_withPointsVia`"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:29 ../../build/doc/via-category.rst:166
-#: ../../build/doc/via-category.rst:242
+#: ../../build/doc/via-category.rst:29 ../../build/doc/via-category.rst:56
+#: ../../build/doc/via-category.rst:200 ../../build/doc/via-category.rst:223
+#: ../../build/doc/via-category.rst:345
 msgid ":doc:`pgr_trspVia`"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:30
+#: ../../build/doc/via-category.rst:30 ../../build/doc/via-category.rst:83
+#: ../../build/doc/via-category.rst:276
 msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ""
 
@@ -106,193 +110,215 @@ msgid ""
 "the order given."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:45
-msgid "**path**"
+#: ../../build/doc/via-category.rst
+msgid "path"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:46
+#: ../../build/doc/via-category.rst:45
 msgid "represents a section of a **route**."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:48
-msgid "**route**"
+#: ../../build/doc/via-category.rst
+msgid "route"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:48
+#: ../../build/doc/via-category.rst:46
 msgid "is a sequence of **paths**"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:53
+#: ../../build/doc/via-category.rst:51
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:62 ../../build/doc/via-category.rst:92
-#: ../../build/doc/via-category.rst:122
+#: ../../build/doc/via-category.rst:53 ../../build/doc/via-category.rst:80
+#: ../../build/doc/via-category.rst:220 ../../build/doc/via-category.rst:273
+msgid "**Used on:**"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:65 ../../build/doc/via-category.rst:92
+#: ../../build/doc/via-category.rst:131 ../../build/doc/via-category.rst:161
 #: ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:9 ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/via-category.rst:63 ../../build/doc/via-category.rst:93
-#: ../../build/doc/via-category.rst:123 ../../build/doc/via-category.rst:196
+#: ../../build/doc/via-category.rst:66 ../../build/doc/via-category.rst:93
+#: ../../build/doc/via-category.rst:132 ../../build/doc/via-category.rst:162
+#: ../../build/doc/via-category.rst:233 ../../build/doc/via-category.rst:286
 #: ../../build/doc/withPoints-category.rst:9
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/via-category.rst:64 ../../build/doc/via-category.rst:94
-#: ../../build/doc/via-category.rst:124
+#: ../../build/doc/via-category.rst:67 ../../build/doc/via-category.rst:94
+#: ../../build/doc/via-category.rst:133 ../../build/doc/via-category.rst:163
 #: ../../build/doc/withPoints-category.rst:10
 msgid "Default"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:10 ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/via-category.rst:65 ../../build/doc/via-category.rst:95
-#: ../../build/doc/via-category.rst:125 ../../build/doc/via-category.rst:197
+#: ../../build/doc/via-category.rst:68 ../../build/doc/via-category.rst:95
+#: ../../build/doc/via-category.rst:134 ../../build/doc/via-category.rst:164
+#: ../../build/doc/via-category.rst:234 ../../build/doc/via-category.rst:287
 #: ../../build/doc/withPoints-category.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:66
+#: ../../build/doc/via-category.rst:69 ../../build/doc/via-category.rst:96
 msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:67
+#: ../../build/doc/via-category.rst:70 ../../build/doc/via-category.rst:97
+#: ../../build/doc/via-category.rst:101
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:69
+#: ../../build/doc/via-category.rst:72 ../../build/doc/via-category.rst:99
+#: ../../build/doc/via-category.rst:103
 msgid "SQL query as described."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:70
+#: ../../build/doc/via-category.rst:73 ../../build/doc/via-category.rst:104
 msgid "**via vertices**"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:12 ../../build/doc/via-category.rst:71
+#: ../../build/doc/TRSP-family.rst:12 ../../build/doc/via-category.rst:74
+#: ../../build/doc/via-category.rst:105
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:73
+#: ../../build/doc/via-category.rst:76 ../../build/doc/via-category.rst:107
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:77
+#: ../../build/doc/via-category.rst:100
+msgid "`Points SQL`_"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:109
+msgid "When positive it is considered a vertex identifier"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:110
+msgid "When negative it is considered a point identifier"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:116
 msgid ""
 "Besides the compulsory parameters each function has, there are optional "
 "parameters that exist due to the kind of function."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:81
+#: ../../build/doc/via-category.rst:120
 msgid "Via optional parameters"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:84 ../../build/doc/via-category.rst:155
+#: ../../build/doc/via-category.rst:123 ../../build/doc/via-category.rst:190
 msgid "Used on all Via functions"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:96
+#: ../../build/doc/via-category.rst:135
 msgid "``strict``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:97 ../../build/doc/via-category.rst:102
-#: ../../build/doc/via-category.rst:135
+#: ../../build/doc/via-category.rst:136 ../../build/doc/via-category.rst:141
+#: ../../build/doc/via-category.rst:174
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:98 ../../build/doc/via-category.rst:136
+#: ../../build/doc/via-category.rst:137 ../../build/doc/via-category.rst:175
 msgid "``false``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:99
+#: ../../build/doc/via-category.rst:138
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:100
+#: ../../build/doc/via-category.rst:139
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:101
+#: ../../build/doc/via-category.rst:140
 msgid "``U_turn_on_edge``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:103
+#: ../../build/doc/via-category.rst:142
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:104
+#: ../../build/doc/via-category.rst:143
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:109
+#: ../../build/doc/via-category.rst:148
 msgid "With points optional parameters"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:111 ../../build/doc/via-category.rst:164
-#: ../../build/doc/via-category.rst:176
+#: ../../build/doc/via-category.rst:150 ../../build/doc/via-category.rst:198
+#: ../../build/doc/via-category.rst:209
 msgid "Used on"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:126
+#: ../../build/doc/via-category.rst:165
 msgid "``driving_side``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:127
+#: ../../build/doc/via-category.rst:166
 #: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:128
+#: ../../build/doc/via-category.rst:167
 #: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:129
+#: ../../build/doc/via-category.rst:168
 msgid ""
 "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the driving side "
 "is:"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:131
+#: ../../build/doc/via-category.rst:170
 msgid "``r`` for right driving side"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:132
+#: ../../build/doc/via-category.rst:171
 msgid "``l`` for left driving side"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:133
+#: ../../build/doc/via-category.rst:172
 msgid "``b`` for both, or ignore driving side"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:134
+#: ../../build/doc/via-category.rst:173
 msgid "``details``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:137
+#: ../../build/doc/via-category.rst:176
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:138
+#: ../../build/doc/via-category.rst:177
 msgid ""
 "When ``false`` the results will not include the points that are in the "
 "path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:145
+#: ../../build/doc/via-category.rst:182
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:147
+#: ../../build/doc/via-category.rst:184
 msgid "Depending on the function one or more inner queries are needed."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:152
+#: ../../build/doc/via-category.rst:187
 msgid "Edges SQL"
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:8 ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/via-category.rst:195
+#: ../../build/doc/via-category.rst:232 ../../build/doc/via-category.rst:285
 msgid "Column"
 msgstr ""
 
@@ -329,7 +355,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/via-category.rst:223
+#: ../../build/doc/via-category.rst:260 ../../build/doc/via-category.rst:322
 msgid "``cost``"
 msgstr ""
 
@@ -386,7 +412,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:162
+#: ../../build/doc/via-category.rst:196
 msgid "Restrictions SQL"
 msgstr ""
 
@@ -409,7 +435,7 @@ msgstr ""
 msgid "Cost of taking the forbidden path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:174
+#: ../../build/doc/via-category.rst:207
 msgid "Points SQL"
 msgstr ""
 
@@ -474,133 +500,175 @@ msgid "In the left ``l``,"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:38
-msgid "In both ``b``, ``NULL``"
+msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:186
+#: ../../build/doc/via-category.rst:218
 msgid "Return Columns"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:198
+#: ../../build/doc/via-category.rst:235 ../../build/doc/via-category.rst:288
 msgid "``seq``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:199 ../../build/doc/via-category.rst:202
-#: ../../build/doc/via-category.rst:205
+#: ../../build/doc/via-category.rst:236 ../../build/doc/via-category.rst:239
+#: ../../build/doc/via-category.rst:242 ../../build/doc/via-category.rst:289
+#: ../../build/doc/via-category.rst:292 ../../build/doc/via-category.rst:295
 msgid "``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:200
+#: ../../build/doc/via-category.rst:237 ../../build/doc/via-category.rst:290
 msgid "Sequential value starting from **1**."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:201
+#: ../../build/doc/via-category.rst:238 ../../build/doc/via-category.rst:291
 msgid "``path_id``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:203
+#: ../../build/doc/via-category.rst:240 ../../build/doc/via-category.rst:293
 msgid "Identifier of a path. Has value **1** for the first path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:204
+#: ../../build/doc/via-category.rst:241 ../../build/doc/via-category.rst:294
 msgid "``path_seq``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:206
+#: ../../build/doc/via-category.rst:243 ../../build/doc/via-category.rst:296
 msgid ""
 "Relative position in the path. Has value **1** for the beginning of a "
 "path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:207
+#: ../../build/doc/via-category.rst:244 ../../build/doc/via-category.rst:297
 msgid "``start_vid``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:208 ../../build/doc/via-category.rst:211
-#: ../../build/doc/via-category.rst:214 ../../build/doc/via-category.rst:217
+#: ../../build/doc/via-category.rst:245 ../../build/doc/via-category.rst:248
+#: ../../build/doc/via-category.rst:251 ../../build/doc/via-category.rst:254
+#: ../../build/doc/via-category.rst:298 ../../build/doc/via-category.rst:304
+#: ../../build/doc/via-category.rst:310 ../../build/doc/via-category.rst:316
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:209
+#: ../../build/doc/via-category.rst:246
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:210
+#: ../../build/doc/via-category.rst:247 ../../build/doc/via-category.rst:303
 msgid "``end_vid``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:212
+#: ../../build/doc/via-category.rst:249
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:213
+#: ../../build/doc/via-category.rst:250 ../../build/doc/via-category.rst:309
 msgid "``node``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:215
+#: ../../build/doc/via-category.rst:252 ../../build/doc/via-category.rst:311
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:216
+#: ../../build/doc/via-category.rst:253 ../../build/doc/via-category.rst:315
 msgid "``edge``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:218
+#: ../../build/doc/via-category.rst:255 ../../build/doc/via-category.rst:317
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:221
+#: ../../build/doc/via-category.rst:258
 msgid "-1 for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:222
+#: ../../build/doc/via-category.rst:259
 msgid "-2 for the last node of the route."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:224 ../../build/doc/via-category.rst:228
-#: ../../build/doc/via-category.rst:231
+#: ../../build/doc/via-category.rst:261 ../../build/doc/via-category.rst:265
+#: ../../build/doc/via-category.rst:268 ../../build/doc/via-category.rst:323
+#: ../../build/doc/via-category.rst:327 ../../build/doc/via-category.rst:332
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:225
+#: ../../build/doc/via-category.rst:262 ../../build/doc/via-category.rst:324
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:227
+#: ../../build/doc/via-category.rst:264 ../../build/doc/via-category.rst:326
 msgid "``agg_cost``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:229
+#: ../../build/doc/via-category.rst:266 ../../build/doc/via-category.rst:328
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:230
+#: ../../build/doc/via-category.rst:267 ../../build/doc/via-category.rst:331
 msgid "``route_agg_cost``"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:232
+#: ../../build/doc/via-category.rst:269
 msgid ""
 "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the "
 "current ``seq``."
 msgstr ""
 
-#: ../../build/doc/via-category.rst:239
+#: ../../build/doc/via-category.rst:299
+msgid "Identifier of the starting vertex or point of the path."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:301 ../../build/doc/via-category.rst:307
+#: ../../build/doc/via-category.rst:313
+msgid "When positive it is a vertex identifier"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:302 ../../build/doc/via-category.rst:308
+#: ../../build/doc/via-category.rst:314
+msgid "When negative it is a point identifier"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:305
+msgid "Identifier of the ending vertex or point of the path."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:320
+msgid ":math:`-1` for the last row of the path."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:321
+msgid ":math:`-2` for the last row of the route."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:330
+msgid ":math:`0` on the first row of the path."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:333
+msgid "Total cost from the first row of the route up to the current node."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:335
+msgid ":math:`0` on the first row of the route."
+msgstr ""
+
+#: ../../build/doc/via-category.rst:342
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:246
+#: ../../build/doc/via-category.rst:349
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:247
+#: ../../build/doc/via-category.rst:350
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/via-category.rst:248
+#: ../../build/doc/via-category.rst:351
 msgid ":ref:`search`"
 msgstr ""
 
