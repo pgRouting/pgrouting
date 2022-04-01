@@ -105,6 +105,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
 <li><a class="reference internal" href="#via-optional-parameters">Via optional parameters</a></li>
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
@@ -171,7 +172,8 @@
 </ul>
 <section id="pgr-trspvia-withpoints-proposed">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> - Proposed<a class="headerlink" href="#pgr-trspvia-withpoints-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> Via vertices/points routing with restrictions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> - Route that goes through a list of vertices and/or
+points with restrictions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Proposed functions for next mayor release.</p>
@@ -203,9 +205,6 @@
 </ul>
 </li>
 </ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Given a graph, a set of restriction on the graph edges, a set of points on the
@@ -241,23 +240,11 @@ size\_of(via\;vertices)\)</span> trying not to use restricted paths.</p>
 <p class="admonition-title">Nota</p>
 <p>Do not use negative values on identifiers of the inner queries.</p>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<p class="rubric">Summary</p>
-<pre class="literal-block" id="index-0">pgr_trspVia_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong>
-           [, directed] [, strict] [, U_turn_on_edge]) -- Proposed on v3.4
-RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                node, edge, cost, agg_cost, route_agg_cost)
-OR EMPTY SET</pre>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="one-via">
-<h3>One Via<a class="headerlink" href="#one-via" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="index-0"></span><h3>One Via<a class="headerlink" href="#one-via" title="Enlazar permanentemente con este título">¶</a></h3>
 <pre class="literal-block">pgr_trspVia_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong>
            [, directed] [, strict] [, U_turn_on_edge]) -- Proposed on v3.4
 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
@@ -290,9 +277,6 @@ order on an <strong>directed</strong> graph.</p>
 
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 </section>
 <section id="parameters">
@@ -317,17 +301,12 @@ order on an <strong>directed</strong> graph.</p>
 <td></td>
 <td><p>SQL query as described.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>SQL query as described.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>SQL query as described.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
+<tr class="row-even"><td><p><strong>via vertices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
 <td><p>Array of ordered vertices identifiers that are going to be visited.</p>
@@ -337,20 +316,31 @@ order on an <strong>directed</strong> graph.</p>
 </ul>
 </td>
 </tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+</section>
 <section id="via-optional-parameters">
 <h3>Via optional parameters<a class="headerlink" href="#via-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
@@ -387,9 +377,6 @@ order on an <strong>directed</strong> graph.</p>
 </tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="with-points-optional-parameters">
 <h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -431,16 +418,10 @@ path.</p></li>
 </tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 </section>
 <section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="edges-sql">
 <h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
@@ -499,9 +480,6 @@ it’s not part of the graph.</p></li>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="restrictions-sql">
 <h3>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -540,9 +518,6 @@ taken.
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="points-sql">
 <h3>Points SQL<a class="headerlink" href="#points-sql" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -592,7 +567,7 @@ point of the edge.</p></td>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
-<li><p>In both <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -607,9 +582,6 @@ point of the edge.</p></td>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 </section>
 <section id="return-columns">
@@ -641,23 +613,38 @@ point of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identifier of the starting vertex or point of the path.</p>
+<ul class="simple">
+<li><p>When positive it is a vertex identifier</p></li>
+<li><p>When negative it is a point identifier</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identifier of the ending vertex or point of the path.</p>
+<ul class="simple">
+<li><p>When positive it is a vertex identifier</p></li>
+<li><p>When negative it is a point identifier</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p>
+<ul class="simple">
+<li><p>When positive it is a vertex identifier</p></li>
+<li><p>When negative it is a point identifier</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
 path sequence.</p>
 <ul class="simple">
-<li><p>-1 for the last node of the path.</p></li>
-<li><p>-2 for the last node of the route.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> for the last row of the path.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-2\)</span> for the last row of the route.</p></li>
 </ul>
 </td>
 </tr>
@@ -668,17 +655,22 @@ path sequence.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0\)</span> on the first row of the path.</p></li>
+</ul>
+</td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">route_agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Total cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> of <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> of the current <code class="docutils literal notranslate"><span class="pre">seq</span></code>.</p></td>
+<td><p>Total cost from the first row of the route up to the current node.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0\)</span> on the first row of the route.</p></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -1040,7 +1032,7 @@ In this case a U turn is been done using the same edge.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 31, 2022.<br/>
+      Actualizado por última vez en abr. 01, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

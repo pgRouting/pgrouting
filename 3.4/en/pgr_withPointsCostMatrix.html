@@ -97,14 +97,20 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_withPointsCostMatrix - proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - proposed</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#signatures">Signatures</a><ul>
-<li><a class="reference internal" href="#complete-signature">Complete Signature</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -167,8 +173,10 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html">2.3</a></p></li>
 </ul>
 <section id="pgr-withpointscostmatrix-proposed">
-<h1>pgr_withPointsCostMatrix - proposed<a class="headerlink" href="#pgr-withpointscostmatrix-proposed" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - proposed<a class="headerlink" href="#pgr-withpointscostmatrix-proposed" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - Calculates the shortest path and returns only the
+aggregate cost of the shortest path(s) found, for the combination of points
+given.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Proposed functions for next mayor release.</p>
@@ -209,63 +217,17 @@
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids [, directed] [, driving_side])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPointsCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>start vids</strong>, [, directed] [, driving_side])
+RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There is no <strong>details</strong> flag, unlike the other members of the withPoints family of functions.</p>
-</div>
-<p class="rubric">Using default</p>
-<dl class="simple">
-<dt>The minimal signature:</dt><dd><ul class="simple">
-<li><p>Is for a <strong>directed</strong> graph.</p></li>
-<li><p>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCostMatrix(edges_sql, points_sql, start_vid)
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
+<p>There is no <strong>details</strong> flag, unlike the other members of the
+withPoints family of functions.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Cost matrix for points <span class="math notranslate nohighlight">\(\{1, 6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{3, 6\}\)</span> on a <strong>directed</strong> graph</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCostMatrix</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">]);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-        <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.3</span>
-        <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">4.3</span>
-        <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">5.6</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">2.6</span>
-         <span class="mi">3</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.7</span>
-         <span class="mi">3</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
-         <span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">2.6</span>
-         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<section id="complete-signature">
-<span id="index-0"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids,
-    directed:=true, driving_side:=&#39;b&#39;)
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Cost matrix for points <span class="math notranslate nohighlight">\(\{1, 6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{3, 6\}\)</span> on an <strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>Cost matrix for points <span class="math notranslate nohighlight">\(\{1, 6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{3, 6\}\)</span>
+on an <strong>undirected</strong> graph</p>
 </dd>
 </dl>
 <ul class="simple">
@@ -274,9 +236,9 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <li><p>Using the default <strong>driving_side</strong> value</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCostMatrix</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span> <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.3</span>
@@ -296,59 +258,9 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 </section>
-</section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 14%" />
-<col style="width: 77%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Edges SQL query as described above.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>points_sql</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Points SQL query as described above.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>start_vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices. When negative: is a point’s pid.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>directed</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p>(optional). When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal notranslate"><span class="pre">true</span></code> which considers the graph as Directed.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>driving_side</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><dl class="simple">
-<dt>(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the driving side is:</dt><dd><ul class="simple">
-<li><p>In the right or left or</p></li>
-<li><p>If it doesn’t matter with ‘b’ or NULL.</p></li>
-<li><p>If column not present ‘b’ is considered.</p></li>
-</ul>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
-</colgroup>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -356,23 +268,79 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of starting vertices.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="with-points-optional-parameters">
+<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -429,6 +397,9 @@ it’s not part of the graph.</p></li>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
+</section>
+<section id="points-sql">
+<h3>Points SQL<a class="headerlink" href="#points-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -475,7 +446,7 @@ point of the edge.</p></td>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
-<li><p>In both <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -491,21 +462,67 @@ point of the edge.</p></td>
 </dd>
 </dl>
 </section>
+</section>
+<section id="return-columns">
+<h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
+<p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex or point.</p>
+<ul class="simple">
+<li><p>When positive: is a vertex’s identifier.</p></li>
+<li><p>When negative: is a point’s identifier.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex or point.</p>
+<ul class="simple">
+<li><p>When positive: is a vertex’s identifier.</p></li>
+<li><p>When negative: is a point’s identifier.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> for points <span class="math notranslate nohighlight">\(\{1, 6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{3, 6\}\)</span> on an <strong>undirected</strong> graph</p>
+<dd class="field-odd"><p><a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a> using <code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> for points
+<span class="math notranslate nohighlight">\(\{1, 6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{3, 6\}\)</span> on an <strong>undirected</strong>
+graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
-    $$
-    SELECT * FROM pgr_withPointsCostMatrix(
-        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
-        &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-        array[-1, 3, 6, -6], directed := false);
-    $$
+  $$
+  SELECT * FROM pgr_withPointsCostMatrix(
+    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
+    array[-1, 3, 6, -6], directed := false);
+  $$
 );
+NOTICE:  pgr_TSP no longer solving with simulated annaeling
+HINT:  Ignoring annaeling parameters
  seq | node | cost | agg_cost
 -----+------+------+----------
    1 |   -6 |    0 |        0
@@ -547,7 +564,7 @@ point of the edge.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Mar 31, 2022.<br/>
+      Last updated on Apr 01, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

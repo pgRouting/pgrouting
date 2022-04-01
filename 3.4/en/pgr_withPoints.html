@@ -97,21 +97,25 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_withPoints - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
 <li><a class="reference internal" href="#one-to-many">One to Many</a></li>
 <li><a class="reference internal" href="#many-to-one">Many to One</a></li>
 <li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
+<li><a class="reference internal" href="#combinations">Combinations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-query">Edges query</a></li>
-<li><a class="reference internal" href="#points-query">Points query</a></li>
-<li><a class="reference internal" href="#combinations-query">Combinations query</a></li>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
@@ -178,7 +182,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html">2.2</a></p></li>
 </ul>
 <section id="pgr-withpoints-proposed">
-<h1>pgr_withPoints - Proposed<a class="headerlink" href="#pgr-withpoints-proposed" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Proposed<a class="headerlink" href="#pgr-withpoints-proposed" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Returns the shortest path in a graph with additional temporary vertices.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -220,19 +224,6 @@
 </ul>
 </li>
 </ul>
-<p class="rubric">Support</p>
-<ul class="simple">
-<li><p><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_withPoints.html">3.2</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_withPoints.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_withPoints.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPoints.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPoints.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPoints.html">2.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html">2.2</a></p></li>
-</ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Modify the graph to include points defined by points_sql.
@@ -266,60 +257,26 @@ Using Dijkstra algorithm, find the shortest path(s)</p>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side] [, details])
-pgr_withPoints(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side] [, details])
-pgr_withPoints(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side] [, details])
-pgr_withPoints(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side] [, details])
-pgr_withPoints(Edges SQL, Points SQL, Combinations SQL [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
-</pre></div>
-</div>
-<p class="rubric">Using defaults</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid, to_vid)
-RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(3\)</span></p>
-<ul class="simple">
-<li><p>For a <strong>directed</strong> graph.</p></li>
-<li><p>The driving side is set as <strong>b</strong> both. So arriving/departing to/from the point(s) can be in any direction.</p></li>
-<li><p>No <strong>details</strong> are given about distance of other points of points_sql query.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----+----------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.6</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mf">1.6</span>
-   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>      <span class="mf">2.6</span>
-   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>      <span class="mf">3.2</span>
-<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed] [, driving_side] [, details])
+pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, driving_side] [, details])
+pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, driving_side] [, details])
+pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, driving_side] [, details])
+pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, driving_side] [, details])
+RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</pre>
 <section id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed] [, driving_side] [, details])
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> with details of passing points</p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> with details</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -337,19 +294,19 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </section>
 <section id="one-to-many">
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, driving_side] [, details])
+RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and vertex <span class="math notranslate nohighlight">\(5\)</span></p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and vertex <span class="math notranslate nohighlight">\(5\)</span> on an
+undirected graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -367,19 +324,17 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </section>
 <section id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, driving_side] [, details])
+RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(2\)</span> to point <span class="math notranslate nohighlight">\(3\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -398,19 +353,18 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </section>
 <section id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPoints(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, driving_side] [, details])
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(2\)</span>  to point <span class="math notranslate nohighlight">\(3\)</span> and vertex <span class="math notranslate nohighlight">\(7\)</span></p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(2\)</span>  to point <span class="math notranslate nohighlight">\(3\)</span> and
+vertex <span class="math notranslate nohighlight">\(7\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">]);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -436,23 +390,22 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 </section>
-<section id="combinations-sql">
-<span id="index-4"></span><h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPoints(Edges SQL, Points SQL, Combinations SQL [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<section id="combinations">
+<span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h3>
+<pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, driving_side] [, details])
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Two (source, target) combinations: (from point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span>), and (from vertex <span class="math notranslate nohighlight">\(2\)</span> to point <span class="math notranslate nohighlight">\(3\)</span>) with <strong>right</strong> side driving topology.</p>
+<dd class="field-odd"><p>Two combinations</p>
 </dd>
 </dl>
+<p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span>, and from vertex <span class="math notranslate nohighlight">\(2\)</span> to point
+<span class="math notranslate nohighlight">\(3\)</span> with <strong>right</strong> side driving.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT * FROM ( VALUES (-1, 3), (2, -3) ) AS t(source, target)&#39;</span><span class="p">,</span>
-    <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
-    <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT * FROM (VALUES (-1, 3), (2, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
+  <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.4</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -477,75 +430,121 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 74%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 61%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><cite>Edges query</cite> as described above.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Points SQL</strong></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><cite>Points query</cite> as described above.</p></td>
+<td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Combinations SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><cite>Combinations query</cite> as described below.</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Starting vertex identifier. When negative: is a point’s pid.</p></td>
+<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex of the path. Negative value is for
+point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Ending vertex identifier. When negative: is a point’s pid.</p></td>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of starting vertices. Negative values are for
+point’s identifiers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start_vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices. When negative: is a point’s pid.</p></td>
+<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex of the path. Negative value is for point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
-<td><p>Array of identifiers of ending vertices. When negative: is a point’s pid.</p></td>
+<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of ending vertices. Negative values are for point’s
+identifiers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>directed</strong></p></td>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p>(optional). When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as Undirected. Default is <code class="docutils literal notranslate"><span class="pre">true</span></code> which considers the graph as Directed.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>driving_side</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><dl class="simple">
-<dt>(optional) Value in [‘b’, ‘r’, ‘l’, NULL] indicating if the driving side is:</dt><dd><ul class="simple">
-<li><p>In the right or left or</p></li>
-<li><p>If it doesn’t matter with ‘b’ or NULL.</p></li>
-<li><p>If column not present ‘b’ is considered.</p></li>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
-</dd>
-</dl>
 </td>
-</tr>
-<tr class="row-odd"><td><p><strong>details</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p>(optional). When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the points in points_sql that are in the path.
-Default is <code class="docutils literal notranslate"><span class="pre">false</span></code> which ignores other points of the points_sql.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="with-points-optional-parameters">
+<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the points that are in the path.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the results will not include the points that are in the
+path.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<section id="edges-query">
-<h3>Edges query<a class="headerlink" href="#edges-query" title="Permalink to this headline">¶</a></h3>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -603,8 +602,8 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 </section>
-<section id="points-query">
-<h3>Points query<a class="headerlink" href="#points-query" title="Permalink to this headline">¶</a></h3>
+<section id="points-sql">
+<h3>Points SQL<a class="headerlink" href="#points-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -651,7 +650,7 @@ point of the edge.</p></td>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
-<li><p>In both <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -667,8 +666,8 @@ point of the edge.</p></td>
 </dd>
 </dl>
 </section>
-<section id="combinations-query">
-<h3>Combinations query<a class="headerlink" href="#combinations-query" title="Permalink to this headline">¶</a></h3>
+<section id="combinations-sql">
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -702,11 +701,13 @@ point of the edge.</p></td>
 </section>
 <section id="result-columns">
 <h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
+<span class="pre">agg_cost)</span></code></p>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 12%" />
-<col style="width: 10%" />
-<col style="width: 79%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -715,61 +716,71 @@ point of the edge.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Row sequence.</p></td>
+<td><p>Sequential value starting from <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>path_seq</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Path sequence that indicates the relative position on the path.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex. When negative: is a point’s pid.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex. When negative: is a point’s pid.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>node</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><dl class="simple">
-<dt>Identifier of the node:</dt><dd><ul class="simple">
-<li><p>A positive value indicates the node is a vertex of edges_sql.</p></li>
-<li><p>A negative value indicates the node is a point of points_sql.</p></li>
+<td><p>Relative position in the path.</p>
+<ul class="simple">
+<li><p><strong>1</strong> For the first row of the path.</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>edge</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_pid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><dl class="simple">
-<dt>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence.</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last row in the path sequence.</p></li>
+<td><p>Identifier of a starting vertex/point of the path.</p>
+<ul class="simple">
+<li><p>When positive is the identifier of the starting vertex.</p></li>
+<li><p>When negative is the identifier of the starting point.</p></li>
+<li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a>  and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_pid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of an ending vertex/point of the path.</p>
+<ul class="simple">
+<li><p>When positive is the identifier of the ending vertex.</p></li>
+<li><p>When negative is the identifier of the ending point.</p></li>
+<li><p>Returned on <a class="reference internal" href="#one-to-many">One to Many</a> and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
+<ul class="simple">
+<li><p>When positive is the identifier of the a vertex.</p></li>
+<li><p>When negative is the identifier of the a point.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
+path sequence.</p>
+<ul class="simple">
+<li><p><strong>-1</strong> for the last row of the path.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><dl class="simple">
-<dt>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next <code class="docutils literal notranslate"><span class="pre">node</span></code> in the path sequence.</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</p></li>
+<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the
+path sequence.</p>
+<ul class="simple">
+<li><p><strong>0</strong> For the first row of the path.</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><dl class="simple">
-<dt>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</p></li>
+<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<ul class="simple">
+<li><p><strong>0</strong> For the first row of the path.</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -779,99 +790,103 @@ point of the edge.</p></td>
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Which path (if any) passes in front of point <span class="math notranslate nohighlight">\(6\)</span> or vertex <span class="math notranslate nohighlight">\(6\)</span> with <strong>right</strong> side driving topology.</p>
+<dd class="field-odd"><p>Paths that passes in front or visits point <span class="math notranslate nohighlight">\(6\)</span> or vertex
+<span class="math notranslate nohighlight">\(6\)</span> with <strong>right</strong> side driving.</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="s1">&#39;(&#39;</span> <span class="o">||</span> <span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39;) at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step:&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
-            <span class="n">ELSE</span> <span class="s1">&#39; passes in front of&#39;</span>
-        <span class="n">END</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s1">&#39;Point&#39;</span>
-            <span class="n">ELSE</span> <span class="s1">&#39;Vertex&#39;</span>
-        <span class="n">END</span> <span class="k">as</span> <span class="n">is_a</span><span class="p">,</span>
-        <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">as</span> <span class="nb">id</span>
-    <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-        <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-        <span class="n">driving_side</span> <span class="o">:=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
-        <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">)</span>
-    <span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
-         <span class="n">path_at</span>         <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span>
-<span class="o">-------------------------+---------------------+--------+----</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+<p>Traveling from point 1 and vertex 1 to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and vertices
+<span class="math notranslate nohighlight">\(\{3, 6\}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; -&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
+  <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
+      <span class="n">ELSE</span> <span class="s1">&#39; passes in front of&#39;</span>
+  <span class="n">END</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
+  <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s1">&#39;Point&#39;</span>
+      <span class="n">ELSE</span> <span class="s1">&#39;Vertex&#39;</span>
+  <span class="n">END</span> <span class="k">as</span> <span class="n">is_a</span><span class="p">,</span>
+  <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">as</span> <span class="nb">id</span>
+<span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+       <span class="n">path_at</span>        <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span>
+<span class="o">----------------------+---------------------+--------+----</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">6</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">3</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">6</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">3</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
 <span class="p">(</span><span class="mi">16</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Which path (if any) passes in front of point <span class="math notranslate nohighlight">\(6\)</span> or vertex <span class="math notranslate nohighlight">\(6\)</span> with <strong>left</strong> side driving topology.</p>
+<dd class="field-odd"><p>Which path (if any) passes in front of point <span class="math notranslate nohighlight">\(6\)</span> or vertex
+<span class="math notranslate nohighlight">\(6\)</span> with <strong>left</strong> side.</p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="s1">&#39;(&#39;</span> <span class="o">||</span> <span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39;) at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step:&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
-            <span class="n">ELSE</span> <span class="s1">&#39; passes in front of&#39;</span>
-        <span class="n">END</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
-        <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s1">&#39;Point&#39;</span>
-            <span class="n">ELSE</span> <span class="s1">&#39;Vertex&#39;</span>
-        <span class="n">END</span> <span class="k">as</span> <span class="n">is_a</span><span class="p">,</span>
-        <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">as</span> <span class="nb">id</span>
-    <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-        <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
-        <span class="n">driving_side</span> <span class="o">:=</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span>
-        <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">)</span>
-    <span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
-         <span class="n">path_at</span>         <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span>
-<span class="o">-------------------------+---------------------+--------+----</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
- <span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span><span class="p">:</span>   <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+<p>Traveling from point 1 and vertex 1 to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and vertices
+<span class="math notranslate nohighlight">\(\{3, 6\}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
+  <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
+      <span class="n">ELSE</span> <span class="s1">&#39; passes in front of&#39;</span>
+  <span class="n">END</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
+  <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">node</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="s1">&#39;Point&#39;</span>
+        <span class="n">ELSE</span> <span class="s1">&#39;Vertex&#39;</span>
+    <span class="n">END</span> <span class="k">as</span> <span class="n">is_a</span><span class="p">,</span>
+    <span class="nb">abs</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">as</span> <span class="nb">id</span>
+<span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">node</span> <span class="n">IN</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+       <span class="n">path_at</span>        <span class="o">|</span>       <span class="n">status</span>        <span class="o">|</span>  <span class="n">is_a</span>  <span class="o">|</span> <span class="nb">id</span>
+<span class="o">----------------------+---------------------+--------+----</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">6</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">3</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span> <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">3</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">5</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">6</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">3</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span>  <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">3</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">4</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">passes</span> <span class="ow">in</span> <span class="n">front</span> <span class="n">of</span> <span class="o">|</span> <span class="n">Point</span>  <span class="o">|</span>  <span class="mi">6</span>
+ <span class="mi">1</span> <span class="o">=&gt;</span> <span class="mi">6</span> <span class="n">at</span> <span class="mi">6</span><span class="n">th</span> <span class="n">step</span>   <span class="o">|</span>  <span class="n">visits</span>             <span class="o">|</span> <span class="n">Vertex</span> <span class="o">|</span>  <span class="mi">6</span>
 <span class="p">(</span><span class="mi">16</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(2\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> to vertex <span class="math notranslate nohighlight">\(7\)</span> on an <strong>undirected</strong> graph, with details.</p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(2\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and to
+vertex <span class="math notranslate nohighlight">\(7\)</span> on an <strong>undirected</strong> graph, with details.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
-    <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">,</span>
-    <span class="n">details</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="n">details</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>  <span class="mf">0.6</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -908,6 +923,7 @@ point of the edge.</p></td>
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a></p></li>
+<li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Category</span></a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -930,7 +946,7 @@ point of the edge.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Mar 31, 2022.<br/>
+      Last updated on Apr 01, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

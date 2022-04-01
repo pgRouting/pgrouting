@@ -618,7 +618,7 @@ FROM pgr_trsp(
 </div>
 <p>Migrate by using:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> when there are no restrictions,</p></li>
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> when there are no restrictions,</p></li>
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) when there are restrictions.</p></li>
 </ul>
 <section id="migrating-pgr-trsp-edges-using-pgr-withpoints">
@@ -648,7 +648,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 </ul>
 </li>
 </ul>
-<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> instead.</p>
+<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4,3)$$,
@@ -668,7 +668,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <ul class="simple">
 <li><p>The types casting has been removed.</p></li>
 <li><p>Do not show details, as the deprecated function does not show details.</p></li>
-<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a>:</p>
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a>:</p>
 <ul>
 <li><p>Autodetects if <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column is in the edges
 SQL.</p></li>
@@ -1393,7 +1393,7 @@ FROM pgr_trspVia_withPoints(
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 31, 2022.<br/>
+      Actualizado por última vez en abr. 01, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

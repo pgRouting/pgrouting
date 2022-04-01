@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_withPointsCost - Propuesto &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_withPointsCost - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -20,7 +20,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="pgr_withPointsKSP - Propuesto" href="pgr_withPointsKSP.html" />
-    <link rel="prev" title="pgr_withPoints - Propuesto" href="pgr_withPoints.html" />
+    <link rel="prev" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -98,24 +98,28 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_withPointsCost - Propuesto</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Proposed</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
 <li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
 <li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
 <li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
+<li><a class="reference internal" href="#combinations">Combinations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
 <li><a class="reference internal" href="#combinations-sql">Combinaciones SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
-<li><a class="reference internal" href="#edges-query">Consulta de aristas</a></li>
-<li><a class="reference internal" href="#points-query">Consulta de puntos</a></li>
-<li><a class="reference internal" href="#combinations-query">Consulta de combinaciones</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -129,7 +133,7 @@
               
                 
   <li>
-    <a href="pgr_withPoints.html" title="Previous Chapter: pgr_withPoints - Propuesto"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
+    <a href="pgr_withPoints.html" title="Previous Chapter: pgr_withPoints - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPoint...</span>
     </a>
   </li>
   <li>
@@ -169,7 +173,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPointsCost.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPointsCost.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPointsCost.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsCost.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsCost.html">2.2</a></p></li>
 </ul>
 <section id="pgr-withpointscost-proposed">
-<h1>pgr_withPointsCost - Propuesto<a class="headerlink" href="#pgr-withpointscost-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Proposed<a class="headerlink" href="#pgr-withpointscost-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCost</span></code> - Calcula la ruta más corta y devuelve solo el costo agregado de la(s) rutas más cortas encontradas, para la combinación de puntos dados.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -261,62 +265,32 @@
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side])
-pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side])
-pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side])
-pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side])
-pgr_withPointsCost(Edges SQL, Points SQL, Combinations SQL  [, directed] [, driving_side] [, details])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed] [, driving_side])
+pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, driving_side])
+pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, driving_side])
+pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, driving_side])
+pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, driving_side])
+RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>No hay identificador de <strong>details</strong>, a diferencia de los otros miembros de la familia de funciones withPoints.</p>
 </div>
-<p class="rubric">Uso de valores predeterminados</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, start_vid, end_vid)
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Del punto <span class="math notranslate nohighlight">\(1\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span></p>
-</dd>
-</dl>
-<ul class="simple">
-<li><p>Para un grafo <strong>dirigido</strong>.</p></li>
-<li><p>Ambos lados de conducción se establecen como <strong>b</strong>. Así que llegar/partir  hacia/desde el o los puntos, puede ser en cualquier dirección.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
-</pre></div>
-</div>
 <section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vid  [, directed] [, driving_side])
-RETURNS SET OF (seq, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed] [, driving_side])
+RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> al vértice <span class="math notranslate nohighlight">\(3\)</span> en un grafo <strong>no dirigido</strong>.</p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> with defaults</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">1.6</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">5.6</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -324,19 +298,19 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </section>
 <section id="one-to-many">
 <span id="index-1"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vid,  to_vids [, directed] [, driving_side])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, driving_side])
+RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(5\)</span> en un grafo <strong>dirigido</strong>.</p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and vertex <span class="math notranslate nohighlight">\(5\)</span> on an
+undirected graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -348,19 +322,17 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </section>
 <section id="many-to-one">
 <span id="index-2"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vid  [, directed] [, driving_side])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, driving_side])
+RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(2\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> en un grafo <strong>dirigido</strong>.</p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(2\)</span> to point <span class="math notranslate nohighlight">\(3\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -372,19 +344,18 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </section>
 <section id="many-to-many">
 <span id="index-3"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(edges_sql, points_sql, from_vids, to_vids [, directed] [, driving_side])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, driving_side])
+RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(2\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(7\)</span> en un grafo <strong>dirigido</strong>.</p>
+<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(2\)</span>  to point <span class="math notranslate nohighlight">\(3\)</span> and
+vertex <span class="math notranslate nohighlight">\(7\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">]);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
@@ -396,22 +367,22 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 </section>
-<section id="combinations-sql">
-<span id="index-4"></span><h3>Combinaciones SQL<a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_withPointsCost(Edges SQL, Points SQL, Combinations SQL [, directed] [, driving_side] [, details])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<section id="combinations">
+<span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
+<pre class="literal-block">pgr_withPointsCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, driving_side])
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Dos combinaciones (origen, destino): (desde el punto <span class="math notranslate nohighlight">\(1\)</span> hasta el vértice <span class="math notranslate nohighlight">\(3\)</span>), y (desde el vértice <span class="math notranslate nohighlight">\(2\)</span> hasta el punto <span class="math notranslate nohighlight">\(3\)</span>) con la topología de conducción del lado <strong>derecho</strong>.</p>
+<dd class="field-odd"><p>Two combinations</p>
 </dd>
 </dl>
+<p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span>, and from vertex <span class="math notranslate nohighlight">\(2\)</span> to point
+<span class="math notranslate nohighlight">\(3\)</span> with <strong>right</strong> side driving.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT * FROM ( VALUES (-1, 3), (2, -3) ) AS t(source, target)&#39;</span><span class="p">,</span>
-    <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT * FROM (VALUES (-1, 3), (2, -3)) AS combinations(source, target)&#39;</span><span class="p">,</span>
+  <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">6.4</span>
@@ -424,70 +395,111 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </section>
 <section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 13%" />
-<col style="width: 74%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 61%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><cite>Consulta de bordes</cite> como se describió anteriormente.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Puntos SQL</strong></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><cite>Consulta de puntos</cite> como se ha descrito anteriormente.</p></td>
+<td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Combinaciones SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><cite>Consulta de combinaciones</cite> como se describe a continuación.</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identificador de vértice inicial. Cuando es negativo: es el pid de un punto.</p></td>
+<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex of the path. Negative value is for
+point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identificador de vértice final. Cuando es negativo: es el pid de un punto.</p></td>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of starting vertices. Negative values are for
+point’s identifiers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start_vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
-<td><p>Arreglo de identificadores de vértices iniciales. Cuando es negativo: es el pid de un punto.</p></td>
+<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex of the path. Negative value is for point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
-<td><p>Arreglo de identificadores de vértices finales. Cuando es negativo: es el pid de un punto.</p></td>
+<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of ending vertices. Negative values are for point’s
+identifiers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>dirigido</strong></p></td>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p>(opcional). En caso de <code class="docutils literal notranslate"><span class="pre">false</span></code> el grafo se considera como No Dirigido. El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> que considera el grafo como Dirigido.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>driving_side</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
-<td><dl class="simple">
-<dt>(opcional) Valor en [“b”, “r”, “l”, NULL] que indica si el lado de conducción es:</dt><dd><ul class="simple">
-<li><p>A la derecha o a la izquierda o</p></li>
-<li><p>Si no importa con “b” o NULL.</p></li>
-<li><p>Si  la columna no presente “b” es considerada</p></li>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="inner-query">
-<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<section id="edges-query">
-<h3>Consulta de aristas<a class="headerlink" href="#edges-query" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="with-points-optional-parameters">
+<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -545,8 +557,8 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 </section>
-<section id="points-query">
-<h3>Consulta de puntos<a class="headerlink" href="#points-query" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="points-sql">
+<h3>Points SQL<a class="headerlink" href="#points-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -592,7 +604,7 @@ automatically.</p></li>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
-<li><p>In both <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -608,8 +620,8 @@ automatically.</p></li>
 </dd>
 </dl>
 </section>
-<section id="combinations-query">
-<h3>Consulta de combinaciones<a class="headerlink" href="#combinations-query" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="combinations-sql">
+<h3>Combinaciones SQL<a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -641,13 +653,14 @@ automatically.</p></li>
 </dl>
 </section>
 </section>
-<section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="docutils align-default">
+<section id="return-columns">
+<h2>Return Columns<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
-<col style="width: 12%" />
-<col style="width: 74%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -656,15 +669,25 @@ automatically.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice inicial. Cuando es negativo: es el pid de un punto.</p></td>
+<td><p>Identifier of the starting vertex or point.</p>
+<ul class="simple">
+<li><p>When positive: is a vertex’s identifier.</p></li>
+<li><p>When negative: is a point’s identifier.</p></li>
+</ul>
+</td>
 </tr>
-<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del punto final. Cuando es negativo: es el pid de un punto.</p></td>
+<td><p>Identifier of the ending vertex or point.</p>
+<ul class="simple">
+<li><p>When positive: is a vertex’s identifier.</p></li>
+<li><p>When negative: is a point’s identifier.</p></li>
+</ul>
+</td>
 </tr>
-<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
@@ -675,61 +698,84 @@ automatically.</p></li>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(2\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(7\)</span>, con topología de conducción de lado <strong>derecho</strong></p>
+<dd class="field-odd"><p><strong>Right</strong> side driving topology</p>
 </dd>
 </dl>
+<p>Traveling from point 1 and vertex 1 to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and vertices
+<span class="math notranslate nohighlight">\(\{3, 6\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
-    <span class="n">driving_side</span> <span class="o">:=</span> <span class="s1">&#39;l&#39;</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>      <span class="mf">3.6</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">2.6</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(2\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(7\)</span>, con topología de conducción de lado <strong>izquierdo</strong>.</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
-    <span class="n">driving_side</span> <span class="o">:=</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
- <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">2.1</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>      <span class="mf">4.4</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">2.6</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mf">4.8</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">6.4</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">3.4</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.7</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.6</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mf">4.4</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">3</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(2\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(7\)</span>, sin importar el lado de conducción.</p>
+<dd class="field-odd"><p><strong>Left</strong> side driving topology</p>
 </dd>
 </dl>
+<p>Traveling from point 1 and vertex 1 to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and vertices
+<span class="math notranslate nohighlight">\(\{3, 6\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
-    <span class="n">driving_side</span> <span class="o">:=</span> <span class="s1">&#39;b&#39;</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="n">driving_side</span> <span class="o">=&gt;</span> <span class="s1">&#39;l&#39;</span><span class="p">);</span>
  <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
         <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
-        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>      <span class="mf">3.6</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">2.6</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mf">5.2</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">5.6</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">2.6</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.7</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.6</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mf">5.6</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">3</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Ejemplo</dt>
+<dd class="field-odd"><p>Does not matter driving side driving topology</p>
+</dd>
+</dl>
+<p>Traveling from point 1 and vertex 1 to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and vertices
+<span class="math notranslate nohighlight">\(\{3, 6\}\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]);</span>
+ <span class="n">start_pid</span> <span class="o">|</span> <span class="n">end_pid</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----------+---------+----------</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.3</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.2</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>        <span class="mi">4</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>      <span class="mf">5.6</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">2.6</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">6</span> <span class="o">|</span>      <span class="mf">1.7</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">3</span> <span class="o">|</span>      <span class="mf">3.6</span>
+         <span class="mi">1</span> <span class="o">|</span>      <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>      <span class="mf">4.4</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
+         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">3</span>
+<span class="p">(</span><span class="mi">10</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -761,7 +807,7 @@ automatically.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 31, 2022.<br/>
+      Actualizado por última vez en abr. 01, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

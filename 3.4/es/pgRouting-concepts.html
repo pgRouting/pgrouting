@@ -918,7 +918,7 @@ automatically.</p></li>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
-<li><p>In both <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -1088,6 +1088,93 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </table>
 <p class="rubric">Used on functions the following:</p>
 <ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a></p></li>
+</ul>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
+<span class="pre">agg_cost)</span></code></p>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Relative position in the path.</p>
+<ul class="simple">
+<li><p><strong>1</strong> For the first row of the path.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_pid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of a starting vertex/point of the path.</p>
+<ul class="simple">
+<li><p>When positive is the identifier of the starting vertex.</p></li>
+<li><p>When negative is the identifier of the starting point.</p></li>
+<li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a>  and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_pid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of an ending vertex/point of the path.</p>
+<ul class="simple">
+<li><p>When positive is the identifier of the ending vertex.</p></li>
+<li><p>When negative is the identifier of the ending point.</p></li>
+<li><p>Returned on <a class="reference internal" href="#one-to-many">One to Many</a> and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
+<ul class="simple">
+<li><p>When positive is the identifier of the a vertex.</p></li>
+<li><p>When negative is the identifier of the a point.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
+path sequence.</p>
+<ul class="simple">
+<li><p><strong>-1</strong> for the last row of the path.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p>
+<ul class="simple">
+<li><p><strong>0</strong> For the first row of the path.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<ul class="simple">
+<li><p><strong>0</strong> For the first row of the path.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Used on functions the following:</p>
+<ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a></p></li>
 </ul>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
@@ -1240,15 +1327,57 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice inicial.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice final.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Used in the following</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a></p></li>
+</ul>
+<p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex or point.</p>
+<ul class="simple">
+<li><p>When positive: is a vertex’s identifier.</p></li>
+<li><p>When negative: is a point’s identifier.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex or point.</p>
+<ul class="simple">
+<li><p>When positive: is a vertex’s identifier.</p></li>
+<li><p>When negative: is a point’s identifier.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
@@ -1624,7 +1753,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en mar. 31, 2022.<br/>
+      Actualizado por última vez en abr. 01, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
