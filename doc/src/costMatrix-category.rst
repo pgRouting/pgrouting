@@ -118,6 +118,14 @@ The main Characteristics are:
 
 .. costMatrix_details_end
 
+Parameters
+-------------------------------------------------------------------------------
+
+.. rubric:: Used in:
+
+* :doc:`pgr_aStarCostMatrix`
+* :doc:`pgr_dijkstraCostMatrix`
+
 .. costMatrix_parameters_start
 
 .. list-table::
@@ -137,6 +145,32 @@ The main Characteristics are:
 
 .. costMatrix_parameters_end
 
+.. rubric:: Used in:
+
+* :doc:`pgr_withPointsCostMatrix`
+
+.. costMatrix_withPoints_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - `Edges SQL`_ as described below
+   * - `Points SQL`_
+     - ``TEXT``
+     - `Points SQL`_ as described below
+   * - **start vids**
+     - ``ARRAY[BIGINT]``
+     -  Array of identifiers of starting vertices.
+
+.. costMatrix_withPoints_parameters_end
+
 Optional parameters
 ...............................................................................
 
@@ -150,9 +184,21 @@ Inner query
 Edges SQL
 ...............................................................................
 
+.. rubric:: Used in:
+
+* :doc:`pgr_withPointsCostMatrix`
+* :doc:`pgr_dijkstraCostMatrix`
+
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
+
+Points SQL
+...............................................................................
+
+.. include:: withPoints-category.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------
@@ -162,7 +208,7 @@ Return Columns
     :end-before: return_cost_end
 
 See Also
-................
+-------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
 

@@ -16,7 +16,7 @@
 ``pgr_trspVia`` - Proposed
 ===============================================================================
 
-``pgr_trspVia`` Via vertices routing with restrictions.
+``pgr_trspVia`` Route that goes through a list of vertices with restrictions.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -32,8 +32,6 @@
 * Version 3.4.0
 
   * New **proposed** function ``pgr_trspVia`` (`One Via`_)
-
-|
 
 Description
 -------------------------------------------------------------------------------
@@ -53,25 +51,11 @@ The general algorithm is as follows:
   * **NOTE** when this is done, ``U_turn_on_edge`` flag is ignored.
 
 
-|
-
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. index::
     single: trspVia - Proposed on v3.4
-
-.. parsed-literal::
-
-    pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge]) -- Proposed on v3.4
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                    node, edge, cost, agg_cost, route_agg_cost)
-    OR EMPTY SET
-
-|
 
 One Via
 ...............................................................................
@@ -79,7 +63,7 @@ One Via
 .. parsed-literal::
 
     pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge]) -- Proposed on v3.4
+               [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
@@ -91,8 +75,6 @@ One Via
     :start-after: -- q0
     :end-before: -- q1
 
-|
-
 Parameters
 -------------------------------------------------------------------------------
 
@@ -100,21 +82,22 @@ Parameters
     :start-after: via_parameters_start
     :end-before: via_parameters_end
 
-|
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 Via optional parameters
 ...............................................................................
 
 .. include:: via-category.rst
-    :start-after: via_opt_parameters_start
-    :end-before: via_opt_parameters_end
-
-|
+    :start-after: via_optionals_start
+    :end-before: via_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
-
-|
 
 Edges SQL
 ...............................................................................
@@ -123,8 +106,6 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-|
-
 Restrictions SQL
 ...............................................................................
 
@@ -132,16 +113,12 @@ Restrictions SQL
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
-|
-
 Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
-    :start-after: result columns start
-    :end-before: result columns end
-
-|
+    :start-after: result via start
+    :end-before: result via end
 
 Additional Examples
 -------------------------------------------------------------------------------

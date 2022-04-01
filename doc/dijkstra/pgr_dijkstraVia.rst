@@ -25,7 +25,7 @@
 ``pgr_dijkstraVia`` - Proposed
 ===============================================================================
 
-``pgr_dijkstraVia`` — Find the route that goes through a list of vertices.
+``pgr_dijkstraVia`` — Route that goes through a list of vertices.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -42,9 +42,6 @@
 
   * New **proposed** function
 
-
-|
-
 Description
 -------------------------------------------------------------------------------
 
@@ -54,25 +51,11 @@ shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i
 
 The paths represents the sections of the route.
 
-|
-
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. index::
     single: dijkstraVia - Proposed on 2.2
-
-.. parsed-literal::
-
-    pgr_dijkstraVia(`Edges SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge])
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                    node, edge, cost, agg_cost, route_agg_cost)
-    OR EMPTY SET
-
-|
 
 One Via
 ...............................................................................
@@ -80,7 +63,7 @@ One Via
 .. parsed-literal::
 
     pgr_dijkstraVia(`Edges SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge])
+               [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v2.2
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
@@ -92,8 +75,6 @@ One Via
     :start-after: -- q01
     :end-before: -- q1
 
-|
-
 Parameters
 -------------------------------------------------------------------------------
 
@@ -101,30 +82,22 @@ Parameters
     :start-after: via_parameters_start
     :end-before: via_parameters_end
 
-|
-
-Dijkstra optional parameters
+Optional parameters
 ...............................................................................
 
 .. include:: dijkstra-family.rst
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-|
-
 Via optional parameters
 ...............................................................................
 
 .. include:: via-category.rst
-    :start-after: via_opt_parameters_start
-    :end-before: via_opt_parameters_end
-
-|
+    :start-after: via_optionals_start
+    :end-before: via_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
-
-|
 
 Edges SQL
 ...............................................................................
@@ -133,16 +106,12 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-|
-
 Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
-    :start-after: result columns start
-    :end-before: result columns end
-
-|
+    :start-after: result via start
+    :end-before: result via end
 
 Additional Examples
 -------------------------------------------------------------------------------

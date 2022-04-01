@@ -21,10 +21,12 @@
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_withPointsCostMatrix.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__
 
-pgr_withPointsCostMatrix - proposed
+``pgr_withPointsCostMatrix`` - proposed
 ===============================================================================
 
-``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
+``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the
+aggregate cost of the shortest path(s) found, for the combination of points
+given.
 
 .. include:: proposed.rst
    :start-after: begin-warning
@@ -52,44 +54,16 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids [, directed] [, driving_side])
+    pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
+.. note:: There is no **details** flag, unlike the other members of the
+   withPoints family of functions.
 
-.. rubric:: Using default
-
-The minimal signature:
-    - Is for a **directed** graph.
-    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-
-.. code-block:: none
-
-    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vid)
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on a **directed** graph
-
-
-.. literalinclude:: doc-pgr_withPointsCostMatrix.queries
-   :start-after: -- withPoints q1
-   :end-before: -- withPoints q2
-
-.. index::
-    single: withPointsCostMatrix - Proposed on v2.2
-
-Complete Signature
-...............................................................................
-
-.. code-block:: none
-
-    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids,
-        directed:=true, driving_side:='b')
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected** graph
+:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}`
+          on an **undirected** graph
 
 * Returning a **symmetrical** cost matrix
 * Using the default **side** value on the **points_sql** query
@@ -102,42 +76,54 @@ Complete Signature
 Parameters
 -------------------------------------------------------------------------------
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as described above.
-**points_sql**   ``TEXT``               Points SQL query as described above.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
-**directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
-                                          - In the right or left or
-                                          - If it doesn't matter with 'b' or NULL.
-                                          - If column not present 'b' is considered.
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_withPoints_parameters_start
+    :end-before: costMatrix_withPoints_parameters_end
 
-================ ====================== =================================================
+Optional parameters
+...............................................................................
 
-.. include:: pgRouting-concepts.rst
-    :start-after: return_cost_start
-    :end-before: return_cost_end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+With points optional parameters
+...............................................................................
+
+.. include:: pgr_withPointsCost.rst
+    :start-after: withpoints_short_optionals_start
+    :end-before: withpoints_short_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-..
-    description of the sql queries
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
+Points SQL
+...............................................................................
+
 .. include:: withPoints-category.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
+Return Columns
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_cost_withPoints_start
+    :end-before: return_cost_withPoints_end
+
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: :doc:`pgr_TSP` using ``pgr_withPointsCostMatrix`` for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected** graph
+:Example: :doc:`pgr_TSP` using ``pgr_withPointsCostMatrix`` for points
+          :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected**
+          graph
 
 .. literalinclude:: doc-pgr_withPointsCostMatrix.queries
    :start-after: -- withPoints q3
