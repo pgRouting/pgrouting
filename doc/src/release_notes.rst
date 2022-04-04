@@ -33,7 +33,6 @@ To see the full list of changes check the list of `Git commits <https://github.c
    :local:
 
 
-
 pgRouting 3.4.0 Release Notes
 -------------------------------------------------------------------------------
 
@@ -76,6 +75,17 @@ pgRouting 3.4.0 Release Notes
   * ``pgr_trspViaEdges(text,integer[],float[],boolean,boolean,text)``
 
 
+pgRouting 3.3.1 Release Notes
+-------------------------------------------------------------------------------
+
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.3.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`_
+on Github.
+
+.. rubric:: Issue fixes
+
+* `#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings when using clang
 
 pgRouting 3.3.0 Release Notes
 -------------------------------------------------------------------------------

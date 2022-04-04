@@ -59,7 +59,7 @@ Pgr_edgeColoring::edgeColoring() {
     for (auto e_i : boost::make_iterator_range(boost::edges(graph))) {
         auto edge = get_edge_id(e_i);
         int64_t color = graph[e_i];
-        results.push_back({edge, (color + 1)});
+        results.push_back({{edge}, {(color + 1)}});
     }
     return results;
 }
