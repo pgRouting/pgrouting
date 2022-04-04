@@ -78,7 +78,7 @@ class Pgr_Bipartite : public pgrouting::Pgr_messages {
                     int64_t vid = graph[*v].id;
                     boost::get(partition_map, *v) ==
                         boost::color_traits <boost::default_color_type>::white() ?
-                        results.push_back({vid, 0}) :results.push_back({vid, 1});
+                        results.push_back({{vid}, {0}}) :results.push_back({{vid}, {1}});
                 }
                 return results;
             }

@@ -88,7 +88,7 @@ class Pgr_makeConnected : public pgrouting::Pgr_messages {
               int64_t tgt = graph[graph.target(*ei)].id;
               log<< "src:" << src<< "tgt:" << tgt <<"\n";
               if (newEdge >= edgeCount) {
-                   results[i] = {src, tgt};
+                   results[i] = {{src}, {tgt}};
                    i++;
               }
               newEdge++;
