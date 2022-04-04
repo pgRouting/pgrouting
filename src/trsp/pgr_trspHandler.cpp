@@ -353,7 +353,7 @@ Pgr_trspHandler::process(
         const std::map<int64_t, std::set<int64_t>> &combinations
         ) {
     std::deque<Path> paths;
-    for (const auto c : combinations) {
+    for (const auto &c : combinations) {
         for (const auto target : c.second) {
             paths.push_back(process(c.first, target));
         }
