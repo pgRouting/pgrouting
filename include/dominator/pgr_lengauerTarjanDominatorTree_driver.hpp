@@ -82,7 +82,7 @@ class Pgr_LTDTree : public pgrouting::Pgr_messages {
                 V_i v, vend;
                 for (boost::tie(v, vend) = vertices(graph.graph); v != vend; ++v) {
                     int64_t vid = graph[*v].id;
-                    results.push_back({vid, (idoms[*v] != -1 ? (idoms[*v]+1) : 0) });
+                    results.push_back({{vid}, {(idoms[*v] != -1 ? (idoms[*v]+1) : 0)}});
                 }
 
                  return results;

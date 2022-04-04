@@ -97,7 +97,7 @@ pgr_bdDijkstra(
                     return lhs.d1.source < rhs.d1.source;
                 });
 
-        II_t_rt previousCombination{0, 0};
+        II_t_rt previousCombination {{0}, {0}};
 
         for (const II_t_rt &comb : combinations) {
             fn_bdDijkstra.clear();

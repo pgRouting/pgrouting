@@ -48,7 +48,7 @@ componentsResult(
     for (const auto& component : components) {
         auto component_id = component[0];
         for (const auto edge_id : component) {
-            results.push_back({edge_id, component_id});
+            results.push_back({{edge_id}, {component_id}});
         }
     }
     return results;
