@@ -185,29 +185,35 @@ Combinations
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgr_aStar.rst
-   :start-after: aStar parameters start
-   :end-before: aStar parameters end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
-Optional Parameters
+Optional parameters
 ...............................................................................
 
-.. include:: pgr_aStar.rst
-   :start-after: aStar optional parameters start
-   :end-before: aStar optional parameters end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
+aStar optional Parameters
+...............................................................................
+
+.. include:: aStar-family.rst
+    :start-after: astar_optionals_start
+    :end-before: astar_optionals_end
 
 Inner queries
 -------------------------------------------------------------------------------
 
-Edges query
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
-Combinations query
+Combinations SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst

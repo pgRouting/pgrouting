@@ -40,7 +40,6 @@ pgr_aStarCostMatrix
 
   * New **proposed** function
 
-
 Description
 -------------------------------------------------------------------------------
 
@@ -63,41 +62,21 @@ Description
 
 * When the graph is **undirected** the cost matrix is symmetric
 
+.. index::
+    single: aStarCostMatrix
+
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_aStarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCostMatrix(`Edges SQL`_, vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_aStarCostMatrix(edges_sql, vids)
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
-
-.. literalinclude:: doc-aStarCostMatrix.queries
-   :start-after: -- astar q1
-   :end-before: -- astar q2
-
-.. index::
-    single: aStarCostMatrix
-
-Complete Signature
-...............................................................................
-
-.. code-block:: none
-
-    pgr_aStarCostMatrix(edges_sql, vids, [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph using heuristic :math:`2`
+:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
+          **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCostMatrix.queries
    :start-after: -- astar q2
@@ -109,22 +88,21 @@ Parameters
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               `edges_sql`_  inner query.
+`Edges SQL`_     ``TEXT``               `Edges SQL`_ as described below.
 **vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers.
 ================ ====================== =================================================
 
-Optional Parameters
+aStar optional Parameters
 ...............................................................................
 
-.. include:: pgr_aStar.rst
-   :start-after: aStar optional parameters start
-   :end-before: aStar optional parameters end
-
+.. include:: aStar-family.rst
+    :start-after: astar_optionals_start
+    :end-before: astar_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-edges_sql
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
@@ -160,4 +138,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

@@ -89,30 +89,16 @@ Signatures
 
 .. code-block:: none
 
-    pgr_aStar(Edges SQL, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(Edges SQL, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(Edges SQL, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(Edges SQL, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, `Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
-
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_aStar(Edges SQL, from_vid, to_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
-
-:Example: From vertex :math:`2` to vertex :math:`12` on a **directed** graph
-
-.. literalinclude:: doc-astar.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 .. index::
     single: aStar(One to One)
@@ -122,6 +108,7 @@ One to One
 
 .. code-block:: none
 
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -141,6 +128,7 @@ One to many
 
 .. code-block:: none
 
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vid,  to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -159,6 +147,7 @@ Many to One
 
 .. code-block:: none
 
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vids, to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -177,6 +166,7 @@ Many to Many
 
 .. code-block:: none
 
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(Edges SQL, from_vids, to_vids [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -195,12 +185,11 @@ Combinations
 
 .. code-block:: none
 
-    pgr_aStar(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, `Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Using a combinations table on a **directed** graph using heuristic :math:`2`.
-
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q6
@@ -209,74 +198,35 @@ Combinations
 Parameters
 -------------------------------------------------------------------------------
 
-.. aStar parameters start
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
-======================= ====================== =================================================
-Parameter               Type                   Description
-======================= ====================== =================================================
-**Edges SQL**           ``TEXT``               `Edges query` as described below.
-**Combinations SQL**    ``TEXT``               `Combinations query` as described below.
-**from_vid**            ``ANY-INTEGER``        Starting vertex identifier. Parameter in:
-
-                                               * `One to One`_
-                                               * `One to Many`_
-
-**from_vids**           ``ARRAY[ANY-INTEGER]`` Array of starting vertices identifiers. Parameter in:
-
-                                               * `Many to One`_
-                                               * `Many to Many`_
-
-**to_vid**              ``ANY-INTEGER``        Ending vertex identifier. Parameter in:
-
-                                               * `One to One`_
-                                               * `Many to One`_
-
-**to_vids**             ``ARRAY[ANY-INTEGER]`` Array of ending vertices identifiers. Parameter in:
-
-                                               * `One to Many`_
-                                               * `Many to Many`_
-
-======================= ====================== =================================================
-
-.. aStar parameters end
-
-Optional Parameters
+Optional parameters
 ...............................................................................
 
-.. aStar optional parameters start
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
-================ ====================== ======== =================================================
-Parameter        Type                   Default  Description
-================ ====================== ======== =================================================
-**directed**     ``BOOLEAN``            ``true`` - When ``true`` the graph is considered as Directed.
-                                                 - When ``false`` the graph is considered as Undirected.
+aStar optional Parameters
+...............................................................................
 
-**heuristic**    ``INTEGER``            ``5``    Heuristic number. Current valid values 0~5. Default ``5``
-
-                                                 - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
-                                                 - 1: h(v) abs(max(dx, dy))
-                                                 - 2: h(v) abs(min(dx, dy))
-                                                 - 3: h(v) = dx * dx + dy * dy
-                                                 - 4: h(v) = sqrt(dx * dx + dy * dy)
-                                                 - 5: h(v) = abs(dx) + abs(dy)
-
-**factor**       ``FLOAT``              ``1``    For units manipulation. :math:`factor > 0`.  See :ref:`astar_factor`
-**epsilon**      ``FLOAT``              ``1``    For less restricted results. :math:`epsilon >= 1`.
-================ ====================== ======== =================================================
-
-.. aStar optional parameters end
+.. include:: aStar-family.rst
+    :start-after: astar_optionals_start
+    :end-before: astar_optionals_end
 
 Inner queries
 -------------------------------------------------------------------------------
 
-Edges query
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
-Combinations query
+Combinations SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst

@@ -23,7 +23,9 @@
 aStar - Family of functions
 ===============================================================================
 
-The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.
+The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a
+heuristic that allow it to solve most shortest path problems by evaluation only
+a sub-set of the overall graph.
 
 .. index from here
 
@@ -39,7 +41,6 @@ The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a h
     pgr_aStar
     pgr_aStarCost
     pgr_aStarCostMatrix
-
 
 General Information
 --------------------------------------------------------------------------------
@@ -80,20 +81,88 @@ The main Characteristics are:
 
 .. astar general info end
 
+Parameters
+-------------------------------------------------------------------------------
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+aStar optional Parameters
+...............................................................................
+
+.. astar_optionals_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``heuristic``
+     - **INTEGER**
+     - 5
+     - Heuristic number. Current valid values 0~5.
+
+       * 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
+       * 1: h(v) abs(max(dx, dy))
+       * 2: h(v) abs(min(dx, dy))
+       * 3: h(v) = dx * dx + dy * dy
+       * 4: h(v) = sqrt(dx * dx + dy * dy)
+       * 5: h(v) = abs(dx) + abs(dy)
+   * - ``factor``
+     - ``FLOAT``
+     - ``1``
+     - For units manipulation. :math:`factor > 0`.  See :ref:`astar_factor`
+   * - ``epsilon``
+     - ``FLOAT``
+     - ``1``
+     - For less restricted results. :math:`epsilon >= 1`.
+
+.. astar_optionals_end
+
+Inner queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: xy_edges_sql_start
+    :end-before: xy_edges_sql_end
+
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
+
+
 Advanced documentation
------------------------------------------------
+--------------------------------------------------------------------------------
 
-The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic, that is an estimation of the remaining cost from the vertex to the goal,
-that allows to solve most shortest path problems by evaluation only a sub-set of the overall graph.
+The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a
+heuristic, that is an estimation of the remaining cost from the vertex to the
+goal, that allows to solve most shortest path problems by evaluation only a
+sub-set of the overall graph.
+
 Running time: :math:`O((E + V) * \log V)`
-
-
-
 
 .. _astar_heuristics:
 
 Heuristic
-..........
+................................................................................
 
 Currently the heuristic functions available are:
 
@@ -105,7 +174,6 @@ Currently the heuristic functions available are:
 - 5: :math:`h(v) = abs(\Delta x) + abs(\Delta y)`
 
 where :math:`\Delta x = x_1 - x_0` and :math:`\Delta y = y_1 - y_0`
-
 
 .. _astar_factor:
 
@@ -141,8 +209,6 @@ Latitude  Conversion                                  Factor
 45       1 longitude degree is (78846.81m)/(25m/s)   3153 s
  0       1 longitude degree is (111319.46 m)/(25m/s) 4452 s
 ======== =========================================== ==========
-
-
 
 See Also
 -------------------------------------------------------------------------------
