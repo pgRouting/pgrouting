@@ -51,7 +51,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -DPOSTGRESQL_BIN=${{ env.POSTGRESQL_DIR }}\bin -DPOSTGRESQL_INCLUDE_DIR="${{ env.POSTGRESQL_DIR }}\include;${{ env.POSTGRESQL_DIR }}\include\server" -G"Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
+          cmake -DPOSTGRESQL_BIN=${{ env.POSTGRESQL_DIR }}\bin -DPOSTGRESQL_INCLUDE_DIR="${{ env.POSTGRESQL_DIR }}\include;${{ env.POSTGRESQL_DIR }}\include\server" -G"Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=Release -DWITH_DOC=OFF ..
         env:
           BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
 
