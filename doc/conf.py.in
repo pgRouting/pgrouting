@@ -322,8 +322,10 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/via-category.html',
     'https://docs.pgrouting.org/latest/en/pgr_trspVia_withPoints.html',
     'https://docs.pgrouting.org/latest/en/withPoints-category.html',
-    'https://docs.pgrouting.org/latest/en/trsp-migration.html',
-    'https://docs.pgrouting.org/3.4/en/trsp-migration.html',
+    'https://docs.pgrouting.org/latest/en/trsp_migration.html',
+
+    # link failing used in contraction-family
+    'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
