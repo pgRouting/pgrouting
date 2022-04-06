@@ -320,7 +320,8 @@ pdf_style_path = ['.', '_styles']
 linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/pgr_edgeColoring.html',
 
-
+    # link failing used in contraction-family
+    'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
