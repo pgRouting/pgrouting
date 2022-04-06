@@ -68,6 +68,12 @@ void compute_trsp(
     size_t total_restrictions = 0;
     pgr_get_restrictions(restrictions_sql, &restrictions, &total_restrictions);
 
+
+    if (total_edges == 0) {
+        pgr_SPI_finish();
+        return;
+    }
+
     size_t size_start_vidsArr = 0;
     int64_t* start_vidsArr = (int64_t*)
         pgr_get_bigIntArray(&size_start_vidsArr, starts);
@@ -137,15 +143,9 @@ _trsp(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples, &result_count);
 
-        //-----------------------------------------------
-
-#if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
-#else
-        funcctx->max_calls = (uint32_t)result_count;
-#endif
-
         funcctx->user_fctx = result_tuples;
+
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,

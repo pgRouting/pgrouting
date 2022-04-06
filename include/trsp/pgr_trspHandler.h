@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <functional>
 #include <limits>
+#include <set>
 
 
 #include "cpp_common/basePath_SSEC.hpp"
@@ -115,6 +116,10 @@ class Pgr_trspHandler {
             const int64_t end_vertex);
 
     std::deque<Path> process(
+            const std::map<int64_t,
+            std::set<int64_t>> &combinations);
+
+    std::deque<Path> process(
             const std::vector<int64_t> sources,
             const std::vector<int64_t> targets);
 
@@ -127,6 +132,10 @@ class Pgr_trspHandler {
             const size_t edge_count,
             const bool directed);
 
+    void add_point_edges(
+        const std::vector<Edge_t> &new_edges,
+        const bool directed);
+
     int initialize_restrictions(
             const std::vector<Rule> &ruleList);
 
@@ -138,7 +147,6 @@ class Pgr_trspHandler {
     EdgeInfo dijkstra_exploration();
 
 
-
     void explore(
             int64_t cur_node,
             const EdgeInfo cur_edge,
@@ -148,7 +156,7 @@ class Pgr_trspHandler {
             int64_t cur_node,
             const EdgeInfo &new_edge,
             bool isStart);
-    bool addEdge(const Edge_t edgeIn);
+    bool addEdge(Edge_t edgeIn, bool);
 
     void connectStartEdge(
             size_t firstEdge_idx,
@@ -160,10 +168,8 @@ class Pgr_trspHandler {
 
     double construct_path(int64_t ed_id, Position pos);
 
-
-    int64_t renumber_edges(
-            Edge_t *edges,
-            const size_t edge_count) const;
+    void renumber_edges(Edge_t*, const size_t);
+    void renumber_edges(Edge_t*, const size_t, std::vector<Edge_t>&);
 
     void  add_to_que(
             double cost,
@@ -180,7 +186,8 @@ class Pgr_trspHandler {
 
     /**
      * Used only to veryfy that there are no reppetitions inserted
-     * the way it orks, repeating edges id is not allowed
+     * the way it works, repeating edges id is not allowed
+     * TODO when using points edges id are repeated
      */
     std::map<int64_t, int64_t> m_mapEdgeId2Index;
 
@@ -189,6 +196,10 @@ class Pgr_trspHandler {
      */
     std::map<int64_t, std::vector<size_t>> m_adjacency;
 
+    /* id -> idx */
+    std::map<int64_t, int64_t> m_id_to_idx;
+    /* idx -> id */
+    std::map<int64_t, int64_t> m_idx_to_id;
 
     int64_t m_start_vertex;
     int64_t m_end_vertex;
@@ -197,8 +208,6 @@ class Pgr_trspHandler {
      * Used in dijkstra_exploration
      */
     int64_t current_node;
-
-    int64_t m_min_id;
 
     Path m_path;
 

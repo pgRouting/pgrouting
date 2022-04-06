@@ -30,10 +30,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include <algorithm>
 #include <utility>
+#include <map>
 
 #include "c_types/path_rt.h"
 #include "cpp_common/pgr_assert.h"
 
+Path& Path::renumber_vertices(const std::map<int64_t, int64_t>& idx_to_id) {
+    for (auto &r : path) {
+        r.node = idx_to_id.at(r.node);
+    }
+    m_start_id = idx_to_id.at(m_start_id);
+    m_end_id = idx_to_id.at(m_end_id);
+    return *this;
+}
 
 Path& Path::renumber_vertices(int64_t value) {
     for (auto &r : path) {
