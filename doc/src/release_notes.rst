@@ -86,6 +86,8 @@ on Github.
 .. rubric:: Issue fixes
 
 * `#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings when using clang
+* `#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error processing restrictions
+
 
 pgRouting 3.3.0 Release Notes
 -------------------------------------------------------------------------------
