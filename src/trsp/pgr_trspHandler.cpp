@@ -4,6 +4,8 @@ File: pgr_trspHandler.cpp
 
 Copyright (c) 2011 pgRouting developers
 Mail: project@pgrouting.org
+Copyright (c) 2022 Vicky Vergara
+* Added functionality to handle map of combinations
 
 ------
 
@@ -32,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <algorithm>
 #include <deque>
+#include <map>
+#include <set>
 
 #include "cpp_common/basePath_SSEC.hpp"
 #include "cpp_common/pgr_assert.h"
@@ -48,7 +52,10 @@ Pgr_trspHandler::Pgr_trspHandler(
     m_ruleTable() {
     initialize_restrictions(ruleList);
 
-    m_min_id = renumber_edges(edges, edge_count);
+    renumber_edges(edges, edge_count);
+    for (const auto& id :  m_id_to_idx) {
+        m_idx_to_id[id.second] = id.first;
+    }
 
     construct_graph(
             edges,
@@ -56,30 +63,57 @@ Pgr_trspHandler::Pgr_trspHandler(
             directed);
 }
 
-
-
 // -------------------------------------------------------------------------
-int64_t Pgr_trspHandler::renumber_edges(
+void
+Pgr_trspHandler::renumber_edges(
         Edge_t *edges,
-        size_t total_edges) const {
-        int64_t v_min_id = INT64_MAX;
-        size_t z;
-        for (z = 0; z < total_edges; z++) {
-            if (edges[z].source < v_min_id)
-                v_min_id = edges[z].source;
-
-            if (edges[z].target < v_min_id)
-                v_min_id = edges[z].target;
+        size_t total_edges) {
+    int64_t idx(0);
+    for (size_t i = 0; i < total_edges; ++i) {
+        if (m_id_to_idx.find(edges[i].source) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].source] = idx;
+            ++idx;
         }
-
-        for (z = 0; z < total_edges; z++) {
-            edges[z].source -= v_min_id;
-            edges[z].target -= v_min_id;
+        if (m_id_to_idx.find(edges[i].target) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].target] = idx;
+            ++idx;
         }
-
-        return v_min_id;
+        edges[i].source = m_id_to_idx.at(edges[i].source);
+        edges[i].target = m_id_to_idx.at(edges[i].target);
+    }
 }
 
+void
+Pgr_trspHandler::renumber_edges(
+        Edge_t *edges,
+        size_t total_edges,
+        std::vector<Edge_t>& new_edges) {
+    int64_t idx(0);
+    for (size_t i = 0; i < total_edges; ++i) {
+        if (m_id_to_idx.find(edges[i].source) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].source] = idx;
+            ++idx;
+        }
+        if (m_id_to_idx.find(edges[i].target) == m_id_to_idx.end()) {
+            m_id_to_idx[edges[i].target] = idx;
+            ++idx;
+        }
+        edges[i].source = m_id_to_idx.at(edges[i].source);
+        edges[i].target = m_id_to_idx.at(edges[i].target);
+    }
+    for (auto &e : new_edges) {
+        if (m_id_to_idx.find(e.source) == m_id_to_idx.end()) {
+            m_id_to_idx[e.source] = idx;
+            ++idx;
+        }
+        if (m_id_to_idx.find(e.target) == m_id_to_idx.end()) {
+            m_id_to_idx[e.target] = idx;
+            ++idx;
+        }
+        e.source = m_id_to_idx.at(e.source);
+        e.target = m_id_to_idx.at(e.target);
+    }
+}
 
 
 
@@ -260,9 +294,13 @@ Pgr_trspHandler::process(
         const int64_t start_vertex,
         const int64_t end_vertex) {
     clear();
+    pgassert(m_id_to_idx.find(start_vertex) != m_id_to_idx.end());
+    pgassert(m_id_to_idx.find(end_vertex) != m_id_to_idx.end());
 
-    m_start_vertex = start_vertex - m_min_id;
-    m_end_vertex = end_vertex - m_min_id;
+    m_start_vertex = m_id_to_idx.at(start_vertex);
+    m_end_vertex = m_id_to_idx.at(end_vertex);
+    pgassert(m_idx_to_id.at(m_start_vertex) == start_vertex);
+    pgassert(m_idx_to_id.at(m_end_vertex) == end_vertex);
 
     Path tmp(m_start_vertex, m_end_vertex);
     m_path = tmp;
@@ -278,10 +316,24 @@ Pgr_trspHandler::process(
     return process_trsp(m_edges.size());
 }
 
+/** process
+ *
+ * does the processisng
+ *
+ */
+std::deque<Path>
+Pgr_trspHandler::process(
+        const std::map<int64_t, std::set<int64_t>> &combinations
+        ) {
+    std::deque<Path> paths;
+    for (const auto &c : combinations) {
+        for (const auto target : c.second) {
+            paths.push_back(process(c.first, target));
+        }
+    }
 
-
-
-
+    return paths;
+}
 
 /** process
  *
@@ -309,9 +361,6 @@ Pgr_trspHandler::process(
             });
     return paths;
 }
-
-
-
 
 
 void  Pgr_trspHandler::add_to_que(
@@ -406,7 +455,7 @@ Pgr_trspHandler::process_trsp(
     pgassert(m_path.start_id() == m_start_vertex);
     if (current_node != m_end_vertex) {
         Path result(m_start_vertex, m_end_vertex);
-        return result.renumber_vertices(m_min_id);;
+        return result.renumber_vertices(m_idx_to_id);;
     }
 
     pgassert(m_path.start_id() == m_start_vertex);
@@ -424,7 +473,7 @@ Pgr_trspHandler::process_trsp(
     m_path.push_back(pelement);
 
     m_path.Path::recalculate_agg_cost();
-    return m_path.renumber_vertices(m_min_id);
+    return m_path.renumber_vertices(m_idx_to_id);
 }
 
 
@@ -437,22 +486,16 @@ void Pgr_trspHandler::construct_graph(
         const size_t edge_count,
         const bool directed) {
     for (size_t i = 0; i < edge_count; i++) {
-        auto current_edge = &edges[i];
+        addEdge(edges[i], directed);
+    }
+    m_mapEdgeId2Index.clear();
+}
 
-        /*
-         * making all costs > 0
-         */
-        if (current_edge->cost < 0 && current_edge->reverse_cost > 0) {
-            std::swap(current_edge->cost, current_edge->reverse_cost);
-            std::swap(current_edge->source, current_edge->target);
-        }
-
-        if (!directed) {
-            if (current_edge->reverse_cost < 0) {
-                current_edge->reverse_cost = current_edge->cost;
-            }
-        }
-        addEdge(*current_edge);
+void Pgr_trspHandler::add_point_edges(
+        const std::vector<Edge_t> &new_edges,
+        const bool directed) {
+    for (auto current_edge : new_edges) {
+        addEdge(current_edge, directed);
     }
     m_mapEdgeId2Index.clear();
 }
@@ -505,7 +548,22 @@ void Pgr_trspHandler::connectEndEdge(
 
 
 // -------------------------------------------------------------------------
-bool Pgr_trspHandler::addEdge(const Edge_t edgeIn) {
+bool Pgr_trspHandler::addEdge(Edge_t edgeIn, bool directed) {
+    /*
+     * making all "cost" > 0
+     */
+    if (edgeIn.cost < 0 && edgeIn.reverse_cost > 0) {
+        std::swap(edgeIn.cost, edgeIn.reverse_cost);
+        std::swap(edgeIn.source, edgeIn.target);
+    }
+
+    if (!directed) {
+        if (edgeIn.reverse_cost < 0) {
+            edgeIn.reverse_cost = edgeIn.cost;
+        }
+    }
+
+#if 0
     /*
      * The edge was already inserted
      *
@@ -513,10 +571,11 @@ bool Pgr_trspHandler::addEdge(const Edge_t edgeIn) {
      *
      * When changing to boost graph, the additional edges are to be added
      */
+
     if (m_mapEdgeId2Index.find(edgeIn.id) != m_mapEdgeId2Index.end()) {
         return false;
     }
-
+#endif
 
     /*
      * the index of this new edge in the edges container is
@@ -524,11 +583,13 @@ bool Pgr_trspHandler::addEdge(const Edge_t edgeIn) {
      */
     EdgeInfo edge(edgeIn, m_edges.size());
 
+#if 0
     // Adding edge to the list
     m_mapEdgeId2Index.insert(
             std::make_pair(
                 edge.edgeID(),
                 m_edges.size()));
+#endif
 
     m_edges.push_back(edge);
 

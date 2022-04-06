@@ -1,9 +1,11 @@
 /*PGR-GNU*****************************************************************
-
 File: trsp_driver.cpp
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
+
+Copyright (c) 2022 Celia Virginia Vergara Castillo
+* Added combinations functionality
 
 ------
 
@@ -23,20 +25,48 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
 #include "drivers/trsp/trsp_driver.h"
-#include <utility>
+
 #include <vector>
 #include <cstdint>
 #include <sstream>
+#include <deque>
 #include <algorithm>
+#include <set>
+#include <map>
+
 #include "trsp/pgr_trspHandler.h"
 #include "cpp_common/rule.h"
 #include "cpp_common/pgr_assert.h"
 #include "cpp_common/pgr_alloc.hpp"
 #include "c_types/restriction_t.h"
 
+namespace {
 
+void
+post_process_trsp(std::deque<Path> &paths, bool sort) {
+    paths.erase(std::remove_if(paths.begin(), paths.end(),
+                [](const Path &p) {
+                return p.size() == 0;
+                }),
+            paths.end());
+    for (auto &p : paths) {
+        p.recalculate_agg_cost();
+    }
+
+    if (sort) {
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                return e1.end_id() < e2.end_id();
+                });
+        std::stable_sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                return e1.start_id() < e2.start_id();
+                });
+    }
+}
+
+}  // namespace
 
 void
 do_trsp(
@@ -63,53 +93,39 @@ do_trsp(
     std::ostringstream err;
     std::ostringstream notice;
     try {
+        pgassert(edges);
         pgassert(*return_tuples == NULL);
         pgassert(*return_count == 0);
         pgassert(*log_msg == NULL);
         pgassert(*notice_msg == NULL);
         pgassert(*err_msg == NULL);
 
+        /*
+         * When there are turn restrictions
+         */
         std::vector<pgrouting::trsp::Rule> ruleList;
         for (size_t i = 0; i < restrictions_size; ++i) {
+            if (restrictions[i].via_size == 0) continue;
             ruleList.push_back(pgrouting::trsp::Rule(*(restrictions + i)));
         }
 
-        /*
-         * Inserting vertices into a c++ vector structure
-         */
-        std::vector<int64_t>
-            sources(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::vector< int64_t >
-            targets(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::map<int64_t, std::set<int64_t>> combinations;
 
-        /*
-         * ordering and removing duplicates
-         */
-        std::sort(sources.begin(), sources.end());
-        sources.erase(
-                std::unique(sources.begin(), sources.end()),
-                sources.end());
-
-        std::sort(targets.begin(), targets.end());
-        targets.erase(
-                std::unique(targets.begin(), targets.end()),
-                targets.end());
-
-
+        for (size_t i = 0; i < size_start_vidsArr; ++i) {
+            for (size_t j = 0; j < size_end_vidsArr; ++j) {
+                combinations[start_vidsArr[i]].insert(end_vidsArr[j]);
+            }
+        }
 
         pgrouting::trsp::Pgr_trspHandler gdef(
                 edges,
                 total_edges,
                 directed,
                 ruleList);
+        auto paths = gdef.process(combinations);
+        post_process_trsp(paths, true);
 
-        auto paths = gdef.process(
-                sources,
-                targets);
-
-
-        size_t count(0);
-        count = count_tuples(paths);
+        auto count = count_tuples(paths);
 
         if (count == 0) {
             (*return_tuples) = NULL;
@@ -120,15 +136,12 @@ do_trsp(
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         (*return_count) = collapse_paths(return_tuples, paths);
 
-
         *log_msg = log.str().empty()?
             *log_msg :
             pgr_msg(log.str().c_str());
         *notice_msg = notice.str().empty()?
             *notice_msg :
             pgr_msg(notice.str().c_str());
-
-        return;
     } catch (AssertFailedException &except) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
@@ -149,4 +162,3 @@ do_trsp(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
