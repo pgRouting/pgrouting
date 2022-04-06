@@ -114,12 +114,12 @@ Parameter        Type                   Description
 **vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers.
 ================ ====================== =================================================
 
-Optional Parameters
+aStar optional Parameters
 ...............................................................................
 
-.. include:: pgr_aStar.rst
-   :start-after: aStar optional parameters start
-   :end-before: aStar optional parameters end
+.. include:: aStar-family.rst
+    :start-after: astar_optionals_start
+    :end-before: astar_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------

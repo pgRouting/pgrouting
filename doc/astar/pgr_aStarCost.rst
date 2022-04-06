@@ -68,30 +68,15 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_aStarCost(`Edges SQL`_, **from_vid**,  to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStarCost(`Edges SQL`_, **from_vid**,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStarCost(`Edges SQL`_, **from_vids**, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStarCost(`Edges SQL`_, **from_vids**, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, **start vids**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_  [, directed] [, heuristic] [, factor] [, epsilon])
-
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
-
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_aStarCost(Edges SQL, start_vid, end_vid)
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
-
-:Example: From vertex :math:`2` to vertex  :math:`12` on a **directed** graph
-
-.. literalinclude:: doc-aStarCost.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 .. index::
     single: aStarCost(One to One)
@@ -99,8 +84,9 @@ Optional parameters are `named parameters` and have a default value.
 One to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
+    pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStarCost(Edges SQL, from_vid,  to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
@@ -117,9 +103,9 @@ One to One
 One to many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_aStarCost(Edges SQL, from_vid,  to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -135,9 +121,9 @@ One to many
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_aStarCost(Edges SQL, from_vids, to_vid   [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -153,9 +139,9 @@ Many to One
 Many to Many
 ..............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_aStarCost(Edges SQL, from_vids, to_vids  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -171,9 +157,9 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_aStarCost(Edges SQL, Combinations SQL  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_  [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
