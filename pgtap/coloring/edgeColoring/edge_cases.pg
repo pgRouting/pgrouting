@@ -129,7 +129,7 @@ PREPARE edgeColoring6 AS
 SELECT * FROM pgr_edgeColoring('q6');
 
 RETURN QUERY
-SELECT is((SELECT count(DISTINCT color_id)::INTEGER FROM pgr_edgeColoring('q6')), 3, 'Three colors are expected');
+SELECT ok((SELECT count(DISTINCT color_id) <= 3 FROM pgr_edgeColoring('q6')), 'At most three colors are expected');
 
 -- changing the order of the edges will change the number of colors expected
 
