@@ -1,23 +1,19 @@
-/* -- q1 */
-SELECT * FROM pgr_dijkstraCost(
-  'select id, source, target, cost, reverse_cost from edge_table',
-  2, 3);
 /* -- q2 */
 SELECT * FROM pgr_dijkstraCost(
   'select id, source, target, cost, reverse_cost from edge_table',
-  2, 3, false);
+  2, 12, true);
 /* -- q3 */
 SELECT * FROM pgr_dijkstraCost(
   'select id, source, target, cost, reverse_cost from edge_table',
-  ARRAY[2, 7], 3);
+  2, ARRAY[3, 12]);
 /* -- q4 */
 SELECT * FROM pgr_dijkstraCost(
   'select id, source, target, cost, reverse_cost from edge_table',
-  2, ARRAY[3, 11]);
+  ARRAY[2, 7], 12);
 /* -- q5 */
 SELECT * FROM pgr_dijkstraCost(
   'select id, source, target, cost, reverse_cost from edge_table',
-  ARRAY[2, 7], ARRAY[3, 11]);
+  ARRAY[2, 7], ARRAY[3, 12]);
 /* -- q51 */
 SELECT source, target FROM combinations_table;
 /* -- q52 */
