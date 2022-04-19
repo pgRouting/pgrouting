@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-11 13:15+0000\n"
-"PO-Revision-Date: 2022-02-03 16:52+0000\n"
-"Last-Translator: cvvergara <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-04-20 17:55+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bddijkstra/es/>\n"
 "Language: es\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:12
@@ -34,12 +34,12 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstra.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstra.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_bdDijkstra.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_bdDijkstra.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_bdDijkstra.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_bdDijkstra.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_bdDijkstra.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_bdDijkstra.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_bdDijkstra.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_bdDijkstra.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_bdDijkstra.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_bdDijkstra.html>`__"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:18
 msgid ""
@@ -181,7 +181,7 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:12
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
-msgstr "El  'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
+msgstr "El 'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
 
 #: ../../build/doc/bdDijkstra-family.rst:14
 msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
@@ -248,7 +248,7 @@ msgstr "Muchos a Uno"
 msgid ""
 "From vertices :math:`\\{2, 7\\}` to vertex :math:`3` on a **directed** graph"
 msgstr ""
-"De los vértices :math:`\\{2, 7\\}` al vértice :math:`3`  en un grafo "
+"De los vértices :math:`\\{2, 7\\}` al vértice :math:`3` en un grafo "
 "**dirigido**"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:165
@@ -377,7 +377,7 @@ msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:212
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_bdDijkstra.rst:218
 msgid "Inner queries"
