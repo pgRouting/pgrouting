@@ -38,7 +38,7 @@
 
 * Version 3.2.0
 
-  * New **proposed** function:
+  * New **proposed** signature:
 
     * ``pgr_aStar`` (`Combinations`_)
 
@@ -56,7 +56,7 @@
 
 * Version 2.3.0
 
-  * Signature change on pgr_astar(One to One)
+  * Signature change on ``pgr_astar`` (`One to One`_)
 
     * Old signature no longer supported
 
@@ -152,7 +152,7 @@ Many to One
     OR EMPTY SET
 
 :Example: From vertices :math:`\{2, 10\}` to vertex :math:`3` on an
-          **undirected** graph using heuristic :math:`4`
+          **undirected** graph with heuristic :math:`4`
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q4
