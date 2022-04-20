@@ -100,8 +100,8 @@ One to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph
-          using heuristic :math:`2`
+:Example: From vertex :math:`2` to vertex :math:`11` on a **directed** graph
+          with heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCost.queries
     :start-after: -- q2
@@ -119,8 +119,8 @@ One to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
-          graph using heuristic :math:`2`
+:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed**
+          graph with heuristic :math:`3` and factor :math:`3.5`
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: -- q3
@@ -138,8 +138,8 @@ Many to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
-          graph using heuristic :math:`0`
+:Example: From vertices :math:`\{2, 10\}` to vertex :math:`3` on an
+          **undirected** graph with heuristic :math:`4`
 
 .. literalinclude:: doc-aStarCost.queries
     :start-after: -- q4
@@ -157,8 +157,8 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on a
-          **directed** graph using heuristic :math:`2`
+:Example: From vertices :math:`\{2, 10\}` to vertices :math:`\{3, 11\}` on a
+          **directed** graph with factor :math:`0.5`
 
 .. literalinclude:: doc-aStarCost.queries
     :start-after: -- q5
@@ -176,8 +176,8 @@ Combinations
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: Using a combinations table on an **undirected** graph using heuristic
-          :math:`2`.
+:Example: Using a combinations table on a **directed** graph with factor
+          :math:`0.5`.
 
 The combinations table:
 
