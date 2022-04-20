@@ -24,10 +24,10 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/astar/doc/index.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__
 
-pgr_aStar
+``pgr_aStar``
 ===============================================================================
 
-``pgr_aStar`` — Shortest path using A* algorithm.
+``pgr_aStar`` — Shortest path using the A* algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/astar_search.html
@@ -40,7 +40,7 @@ pgr_aStar
 
   * New **proposed** function:
 
-    * pgr_aStar(Combinations)
+    * ``pgr_aStar`` (`Combinations`_)
 
 * Version 3.0.0
 
@@ -48,11 +48,11 @@ pgr_aStar
 
 * Version 2.4.0
 
-  * New **Proposed** functions:
+  * New **Proposed** signatures:
 
-    * pgr_aStar(One to Many)
-    * pgr_aStar(Many to One)
-    * pgr_aStar(Many to Many)
+    * ``pgr_aStar`` (`One to Many`_)
+    * ``pgr_aStar`` (`Many to One`_)
+    * ``pgr_aStar`` (`Many to Many`_)
 
 * Version 2.3.0
 
@@ -62,8 +62,7 @@ pgr_aStar
 
 * Version 2.0.0
 
-  * **Official** pgr_aStar(One to One)
-
+  * **Official** ``pgr_aStar`` (`One to One`_)
 
 Description
 -------------------------------------------------------------------------------
@@ -74,20 +73,22 @@ Description
    :start-after: astar general info start
    :end-before: astar general info end
 
-* The results are equivalent to the union of the results of the `pgr_aStar(` `One to One`_ `)` on the:
+* The results are equivalent to the union of the results of the `pgr_aStar(`
+  `One to One`_ `)` on the:
 
   * `pgr_aStar(` `One to Many`_ `)`
   * `pgr_aStar(` `Many to One`_ `)`
   * `pgr_aStar(` `Many to Many`_ `)`
 
-* ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
+* ``start_vid`` and ``end_vid`` in the result is used to distinguish to which
+  path it belongs.
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
     pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
     pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
@@ -108,12 +109,12 @@ One to One
 .. parsed-literal::
 
     pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(Edges SQL, from_vid,  to_vid  [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`12` on an **undirected** graph using heuristic :math:`2`
+:Example: From vertex :math:`2` to vertex :math:`11` on a **directed** graph
+          using heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q2
@@ -125,14 +126,14 @@ One to One
 One to many
 ...............................................................................
 
-.. code-block:: none
 .. parsed-literal::
 
     pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
+:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed**
+          graph using heuristic :math:`3` and factor :math:`3.5`
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q3
@@ -150,7 +151,8 @@ Many to One
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{7, 2\}` to vertex :math:`12` on a **directed** graph using heuristic  :math:`0`
+:Example: From vertices :math:`\{2, 10\}` to vertex :math:`3` on an
+          **undirected** graph using heuristic :math:`4`
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q4
@@ -168,7 +170,8 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{7, 2\}` to vertices :math:`\{3, 12\}` on a **directed** graph using heuristic :math:`2`
+:Example: From vertices :math:`\{2, 10\}` to vertices :math:`\{3, 11\}` on a
+          **directed** graph with factor :math:`0.5`
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q5
@@ -186,7 +189,8 @@ Combinations
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Using a combinations table on a **directed** graph using heuristic :math:`2`.
+:Example: Using a combinations table on a **directed** graph with factor
+          :math:`0.5`.
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q6
@@ -241,6 +245,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`aStar-family`
+* :doc:`bdAstar-family`
 * :doc:`sampledata`
 * https://www.boost.org/libs/graph/doc/astar_search.html
 * https://en.wikipedia.org/wiki/A*_search_algorithm
