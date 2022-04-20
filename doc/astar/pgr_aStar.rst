@@ -114,7 +114,7 @@ One to One
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertex :math:`11` on a **directed** graph
-          using heuristic :math:`2`
+          with heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q2
@@ -133,7 +133,7 @@ One to many
     OR EMPTY SET
 
 :Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed**
-          graph using heuristic :math:`3` and factor :math:`3.5`
+          graph with heuristic :math:`3` and factor :math:`3.5`
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q3
@@ -175,10 +175,10 @@ Many to Many
 
 .. literalinclude:: doc-astar.queries
    :start-after: -- q5
-   :end-before: -- q6
+   :end-before: -- q51
 
 .. index::
-    single: aStar(Combinations) - Proposed on v3.2
+    single: aStarCost(Combinations) - Proposed on v3.2
 
 Combinations
 ...............................................................................
@@ -192,9 +192,17 @@ Combinations
 :Example: Using a combinations table on a **directed** graph with factor
           :math:`0.5`.
 
+The combinations table:
+
 .. literalinclude:: doc-astar.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q51
+   :end-before: -- q52
+
+The query:
+
+.. literalinclude:: doc-astar.queries
+   :start-after: -- q52
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -240,6 +248,27 @@ Result Columns
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_short_start
     :end-before: return_path_short_end
+
+Additional Examples
+-------------------------------------------------------------------------------
+
+:Example 1: Demonstration of repeated values are ignored, and result is sorted.
+
+.. literalinclude:: doc-astar.queries
+    :start-after: -- q6
+    :end-before: -- q7
+
+:Example 2: Making ``start_vids`` the same as ``end_vids``.
+
+.. literalinclude:: doc-astar.queries
+    :start-after: -- q7
+    :end-before: -- q8
+
+:Example 3: Manually assigned vertex combinations.
+
+.. literalinclude:: doc-astar.queries
+   :start-after: -- q8
+   :end-before: -- q9
 
 See Also
 -------------------------------------------------------------------------------

@@ -36,7 +36,7 @@ pgr_aStarCost
 
   * New **proposed** signature:
 
-    * pgr_aStarCost(`Combinations`_)
+    * ``pgr_aStarCost`` (`Combinations`_)
 
 * Version 3.0.0
 
@@ -162,7 +162,7 @@ Many to Many
 
 .. literalinclude:: doc-aStarCost.queries
     :start-after: -- q5
-    :end-before: -- q6
+    :end-before: -- q51
 
 .. index::
     single: aStarCost(Combinations) - Proposed on v3.2
