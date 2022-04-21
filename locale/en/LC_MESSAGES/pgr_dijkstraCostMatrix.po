@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 00:16+0000\n"
+"POT-Creation-Date: 2022-04-21 13:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.1\n"
 
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:12
 msgid ""
@@ -74,11 +74,11 @@ msgstr ""
 #: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:47
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:46
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:49
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:48
 msgid "Using Dijkstra algorithm, calculate and return a cost matrix."
 msgstr ""
 
@@ -207,11 +207,11 @@ msgstr ""
 msgid "``end_vid`` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:60
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:62
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:66
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:65
 msgid "Summary"
 msgstr ""
 
@@ -219,13 +219,13 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:72
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:71
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on an "
 "**undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:80
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:79
 msgid "Parameters"
 msgstr ""
 
@@ -267,7 +267,7 @@ msgstr ""
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:87
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:86
 msgid "Optional parameters"
 msgstr ""
 
@@ -295,11 +295,11 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:94
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:97
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:96
 msgid "Edges SQL"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:104
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:103
 msgid "Return Columns"
 msgstr ""
 
@@ -429,43 +429,43 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:111
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:110
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:113
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:112
 msgid "Use with :doc:`pgr_TSP`."
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:120
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:119
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:122
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:121
 msgid ":doc:`dijkstra-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:123
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:122
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:124
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:123
 msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:125
-msgid "The queries use the :doc:`sampledata` network."
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:124
+msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:128
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:127
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:129
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:128
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_dijkstraCostMatrix.rst:130
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:129
 msgid ":ref:`search`"
 msgstr ""
 

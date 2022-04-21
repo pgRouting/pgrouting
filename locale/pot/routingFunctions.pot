@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 02:12+0000\n"
+"POT-Creation-Date: 2022-04-21 13:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,6 +283,14 @@ msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:4
+msgid ":doc:`pgr_bdAstarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:5
+msgid ":doc:`pgr_bdDijkstraCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:6
 msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgstr ""
 
