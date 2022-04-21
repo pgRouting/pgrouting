@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 02:12+0000\n"
+"POT-Creation-Date: 2022-04-21 13:40+0000\n"
 "PO-Revision-Date: 2022-02-15 20:31+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
@@ -465,6 +465,18 @@ msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ":doc:`pgr_aStarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:4
+#, fuzzy
+#| msgid ":doc:`pgr_aStarCostMatrix`"
+msgid ":doc:`pgr_bdAstarCostMatrix`"
+msgstr ":doc:`pgr_aStarCostMatrix`"
+
+#: ../../build/doc/costMatrix-category.rst:5
+#, fuzzy
+#| msgid ":doc:`pgr_dijkstraCostMatrix`"
+msgid ":doc:`pgr_bdDijkstraCostMatrix`"
+msgstr ":doc:`pgr_dijkstraCostMatrix`"
+
+#: ../../build/doc/costMatrix-category.rst:6
 msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgstr ":doc:`pgr_dijkstraCostMatrix`"
 
@@ -524,15 +536,15 @@ msgstr ":doc:`experimental`"
 msgid ":doc:`release_notes`"
 msgstr ":doc:`release_notes`"
 
-#: ../../build/doc/index.rst:123
+#: ../../build/doc/index.rst:128
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/index.rst:124
+#: ../../build/doc/index.rst:129
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/index.rst:125
+#: ../../build/doc/index.rst:130
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 

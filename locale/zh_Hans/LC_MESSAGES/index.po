@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 02:12+0000\n"
+"POT-Creation-Date: 2022-04-21 13:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,11 +17,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/index.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/index.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/index.html>`__"
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/index."
+"html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__) `3.2 "
+"<https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/en/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/"
+"index.html>`__"
 msgstr ""
 
 #: ../../build/doc/index.rst:18
-msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/index.html>`__"
+msgid ""
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/index."
+"html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 "
+"<https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs."
+"pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/"
+"index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 "
+"<https://docs.pgrouting.org/2.0/en/index.html>`__"
 msgstr ""
 
 #: ../../build/doc/index.rst:29
@@ -29,7 +40,10 @@ msgid "Table of Contents"
 msgstr ""
 
 #: ../../build/doc/index.rst:31
-msgid "pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://www.postgresql.org>`__ geospatial database to provide geospatial routing and other network analysis functionality."
+msgid ""
+"pgRouting extends the `PostGIS <https://postgis.net>`__/`PostgreSQL <https://"
+"www.postgresql.org>`__ geospatial database to provide geospatial routing and "
+"other network analysis functionality."
 msgstr ""
 
 #: ../../build/doc/index.rst:34
@@ -41,7 +55,13 @@ msgid "Creative Commons Attribution-Share Alike 3.0 License"
 msgstr ""
 
 #: ../../build/doc/index.rst:40
-msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to https://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
+msgid ""
+"The pgRouting Manual is licensed under a `Creative Commons Attribution-Share "
+"Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel "
+"free to use this material any way you like, but we ask that you attribute "
+"credit to the pgRouting Project and wherever possible, a link back to "
+"https://pgrouting.org. For other licenses used in pgRouting see the :ref:"
+"`license` page."
 msgstr ""
 
 #: ../../build/doc/index.rst:47
@@ -109,11 +129,15 @@ msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
 msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:4
-msgid ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths."
+msgid ""
+":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of "
+"the paths."
 msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:5
-msgid ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
+msgid ""
+":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
+"cost matrix of paths."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:23
@@ -121,15 +145,21 @@ msgid ":doc:`bdDijkstra-family`"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:3
-msgid ":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths."
+msgid ""
+":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest "
+"paths."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:4
-msgid ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths"
+msgid ""
+":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
+"the shortest paths"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:5
-msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths."
+msgid ""
+":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to "
+"create a matrix of costs of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:29
@@ -137,19 +167,25 @@ msgid ":doc:`components-family`"
 msgstr ""
 
 #: ../../build/doc/components-family.rst:3
-msgid ":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
+msgid ""
+":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:4
-msgid ":doc:`pgr_strongComponents` - Strongly connected components of a directed graph."
+msgid ""
+":doc:`pgr_strongComponents` - Strongly connected components of a directed "
+"graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:5
-msgid ":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph."
+msgid ""
+":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected "
+"graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:6
-msgid ":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
+msgid ""
+":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
 msgstr ""
 
 #: ../../build/doc/components-family.rst:7
@@ -177,15 +213,20 @@ msgid ":doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:5
-msgid ":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
+msgid ""
+":doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:6
-msgid ":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information."
+msgid ""
+":doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament "
+"information."
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:7
-msgid ":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths."
+msgid ""
+":doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest "
+"paths."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:47
@@ -193,19 +234,27 @@ msgid ":doc:`flow-family`"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:3
-msgid ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm."
+msgid ""
+":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
+"algorithm."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:4
-msgid ":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges."
+msgid ""
+":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:5
-msgid ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on edges."
+msgid ""
+":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:6
-msgid ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on edges."
+msgid ""
+":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on "
+"edges."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:7
@@ -213,11 +262,15 @@ msgid "Applications"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:9
-msgid ":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices."
+msgid ""
+":doc:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two "
+"groups of vertices."
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:10
-msgid ":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph."
+msgid ""
+":doc:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching "
+"in a graph."
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:53
@@ -267,15 +320,20 @@ msgid ":doc:`topology-functions`"
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:3
-msgid ":doc:`pgr_createTopology` -  to create a topology based on the geometry."
+msgid ""
+":doc:`pgr_createTopology` -  to create a topology based on the geometry."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:4
-msgid ":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on the source and target information."
+msgid ""
+":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on "
+"the source and target information."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:5
-msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
+msgid ""
+":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge "
+"table."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:6
@@ -327,6 +385,14 @@ msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:4
+msgid ":doc:`pgr_bdAstarCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:5
+msgid ":doc:`pgr_bdDijkstraCostMatrix`"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:6
 msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgstr ""
 
@@ -335,7 +401,8 @@ msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:3
-msgid ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
+msgid ""
+":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:4
@@ -382,14 +449,14 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
-#: ../../build/doc/index.rst:123
+#: ../../build/doc/index.rst:128
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/index.rst:124
+#: ../../build/doc/index.rst:129
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/index.rst:125
+#: ../../build/doc/index.rst:130
 msgid ":ref:`search`"
 msgstr ""
