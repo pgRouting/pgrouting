@@ -42,7 +42,6 @@ pgr_dijkstraCostMatrix
 
   * New **proposed** function
 
-
 Description
 -------------------------------------------------------------------------------
 
@@ -56,11 +55,11 @@ Using Dijkstra algorithm, calculate and return a cost matrix.
     :start-after: costMatrix_details_start
     :end-before: costMatrix_details_end
 
-Signatures
--------------------------------------------------------------------------------
-
 .. index::
     single: dijkstraCostMatrix
+
+Signatures
+-------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
@@ -73,8 +72,8 @@ Signatures
           **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
-   :start-after: -- dijkstra q2
-   :end-before: -- dijkstra q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 Parameters
 -------------------------------------------------------------------------------
@@ -113,8 +112,8 @@ Additional Examples
 :Example: Use with :doc:`pgr_TSP`.
 
 .. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
-   :start-after: -- dijkstra q3
-   :end-before: -- dijkstra q4
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
@@ -122,7 +121,7 @@ See Also
 * :doc:`dijkstra-family`
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

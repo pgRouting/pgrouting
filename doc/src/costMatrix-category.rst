@@ -26,6 +26,8 @@ Cost Matrix - Category
 .. index from here
 
 * :doc:`pgr_aStarCostMatrix`
+* :doc:`pgr_bdAstarCostMatrix`
+* :doc:`pgr_bdDijkstraCostMatrix`
 * :doc:`pgr_dijkstraCostMatrix`
 
 .. index to here
@@ -42,14 +44,6 @@ Cost Matrix - Category
 * :doc:`pgr_withPointsCostMatrix`
 
 .. index proposed to here
-
-.. toctree::
-    :hidden:
-
-    pgr_bdAstarCostMatrix
-    pgr_bdDijkstraCostMatrix
-    pgr_withPointsCostMatrix
-
 
 General Information
 -------------------------------------------------------------------------------

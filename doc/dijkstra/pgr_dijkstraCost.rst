@@ -10,7 +10,10 @@
 |
 
 * **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html>`__)
+  `Latest <https://docs.pgrouting.org/latest/en/pgr_aStarCost.html>`__
+  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraCost.html>`__)
+  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraCost.html>`__
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html>`__
 * **Unsupported versions:**
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html>`__
@@ -34,7 +37,7 @@ pgr_dijkstraCost
 
 * Version 3.1.0
 
-  * New **Proposed** functions:
+  * New **proposed** signature:
 
     * ``pgr_dijkstra`` (`Combinations`_)
 
@@ -46,7 +49,8 @@ pgr_dijkstraCost
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path(s).
+The ``pgr_dijkstraCost`` function sumarizes of the cost of the shortest path(s)
+using Dijkstra Algorithm.
 
 .. include:: dijkstra-family.rst
     :start-after: dijkstra_description_start
@@ -118,12 +122,12 @@ One to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed**
+:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
 	single: dijkstraCost(Many to One)
@@ -137,12 +141,12 @@ Many to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`3` on a **directed**
+:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-    :start-after: -- q3
-    :end-before: -- q4
+    :start-after: -- q4
+    :end-before: -- q5
 
 .. index::
 	single: dijkstraCost(Many to Many)
@@ -156,7 +160,7 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 11\}` on a
+:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on a
           **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
@@ -177,7 +181,7 @@ Combinations
 
 :Example: Using a combinations table on an **undirected** graph
 
-The table contents:
+The combinations table:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: -- q51
@@ -203,7 +207,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges SQL
