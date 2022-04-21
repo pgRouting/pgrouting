@@ -20,7 +20,7 @@
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_aStarCostMatrix.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_aStarCostMatrix.html>`__
 
-pgr_aStarCostMatrix
+``pgr_aStarCostMatrix``
 ===============================================================================
 
 ``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
@@ -72,25 +72,29 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_aStarCostMatrix(`Edges SQL`_, vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCostMatrix(`Edges SQL`_, **vids** [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 :Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
           **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCostMatrix.queries
-   :start-after: -- astar q2
-   :end-before: -- astar q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 Parameters
 -------------------------------------------------------------------------------
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-`Edges SQL`_     ``TEXT``               `Edges SQL`_ as described below.
-**vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers.
-================ ====================== =================================================
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_parameters_start
+    :end-before: costMatrix_parameters_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 aStar optional Parameters
 ...............................................................................
@@ -110,7 +114,7 @@ Edges SQL
     :end-before: xy_edges_sql_end
 
 Result Columns
---------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
@@ -122,17 +126,16 @@ Additional Examples
 :Example: Use with :doc:`pgr_TSP`
 
 .. literalinclude:: doc-aStarCostMatrix.queries
-   :start-after: -- astar q3
-   :end-before: -- astar q4
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`aStar-family`
-* :doc:`cost-category`
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

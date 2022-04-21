@@ -19,13 +19,13 @@
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html>`__
 
-pgr_bdAstarCostMatrix
+``pgr_bdAstarCostMatrix``
 ===============================================================================
 
 ``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_aStar`.
 
 .. figure:: images/boost-inside.jpeg
-   :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
+   :target: https://www.boost.org//libs/graph/doc/astar_search.html
 
    Boost Graph Inside
 
@@ -37,8 +37,7 @@ pgr_bdAstarCostMatrix
 
 * Version 2.5.0
 
-  * New **Proposed** function
-
+  * New **proposed** function
 
 Description
 -------------------------------------------------------------------------------
@@ -62,57 +61,39 @@ Description
 
 * When the graph is **undirected** the cost matrix is symmetric
 
+.. index::
+    single: bdAstarCostMatrix
+
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_bdAstarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCostMatrix(`Edges SQL`_, **vids** [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_bdAstarCostMatrix(edges_sql, vids)
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
+:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
+          **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-pgr_bdAstarCostMatrix.queries
-   :start-after: -- bdAstar q1
-   :end-before: -- bdAstar q2
-
-
-.. index::
-    single: bdaStarCostMatrix
-
-Complete Signature
-...............................................................................
-
-.. code-block:: none
-
-    pgr_bdAstarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph using heuristic :math:`2`
-
-.. literalinclude:: doc-pgr_bdAstarCostMatrix.queries
-   :start-after: -- bdAstar q2
-   :end-before: -- bdAstar q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 Parameters
 -------------------------------------------------------------------------------
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               `edges_sql`_  inner query.
-**vids**         ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers.
-================ ====================== =================================================
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_parameters_start
+    :end-before: costMatrix_parameters_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 aStar optional Parameters
 ...............................................................................
@@ -124,7 +105,7 @@ aStar optional Parameters
 Inner query
 -------------------------------------------------------------------------------
 
-edges_sql
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
@@ -144,21 +125,18 @@ Additional Examples
 :Example: Use with :doc:`pgr_TSP`
 
 .. literalinclude:: doc-pgr_bdAstarCostMatrix.queries
-   :start-after: -- bdAstar q3
-   :end-before: -- bdAstar q4
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`aStar-family`
 * :doc:`bdAstar-family`
-* :doc:`cost-category`
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
