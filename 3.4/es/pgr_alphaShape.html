@@ -209,7 +209,7 @@
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<pre class="literal-block">pgr_alphaShape(<strong>geometry</strong>,   [alpha])
+<pre class="literal-block" id="index-0">pgr_alphaShape(<strong>geometry</strong>,   [alpha])
 RETURNS geometry</pre>
 <p class="rubric">Ejemplo: pasar una colección de geometría con radio de cuchara :math:”1.5” usando la variable de retorno <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
@@ -298,7 +298,7 @@ RETURNS geometry</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr. 06, 2022.<br/>
+      Actualizado por última vez en abr 21, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

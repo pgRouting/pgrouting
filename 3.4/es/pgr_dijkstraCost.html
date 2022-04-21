@@ -112,7 +112,7 @@
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 <li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
@@ -167,7 +167,12 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> actual(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_aStarCost.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraCost.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraCost.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dijkstraCost.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dijkstraCost.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost">2.3</a></p></li>
 </ul>
 <section id="pgr-dijkstracost">
@@ -183,7 +188,7 @@
 <ul class="simple">
 <li><p>Versión 3.1.0</p>
 <ul>
-<li><p>Nuevas funciones <strong>Propuestas</strong>:</p>
+<li><p>New <strong>proposed</strong> signature:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
@@ -198,7 +203,8 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> function sumarizes of the cost of the shortest path(s).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> function sumarizes of the cost of the shortest path(s)
+using Dijkstra Algorithm.</p>
 <p>Dijkstra’s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
 1956.
 It is a graph search algorithm that solves the shortest path problem for a graph
@@ -274,10 +280,10 @@ OR EMPTY SET</pre>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-  <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+  <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -290,16 +296,17 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(2\)</span> a los vértices <span class="math notranslate nohighlight">\(\{3, 11\}\)</span> en un grafo <strong>dirigido</strong></p>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a <strong>directed</strong>
+graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-  <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
+  <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -312,16 +319,17 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> al vértice <span class="math notranslate nohighlight">\(3\)</span>  en un grafo <strong>dirigido</strong></p>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong>
+graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -334,18 +342,19 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>De los vértice​s <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> a los vértice​s <span class="math notranslate nohighlight">\(\{3, 11\}\)</span> en un grafo <strong>dirigido</strong></p>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a
+<strong>directed</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">]);</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
          <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
-         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">7</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -361,7 +370,7 @@ OR EMPTY SET</pre>
 <dd class="field-odd"><p>Uso de una tabla de combinaciones en un grafo <strong>no direccionado</strong></p>
 </dd>
 </dl>
-<p>The table contents:</p>
+<p>The combinations table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="n">FROM</span> <span class="n">combinations_table</span><span class="p">;</span>
  <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
 <span class="o">--------+--------</span>
@@ -456,8 +465,8 @@ OR EMPTY SET</pre>
 </table>
 </section>
 </section>
-<section id="inner-query">
-<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="inner-queries">
+<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="edges-sql">
 <h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
@@ -668,7 +677,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr. 06, 2022.<br/>
+      Actualizado por última vez en abr 21, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

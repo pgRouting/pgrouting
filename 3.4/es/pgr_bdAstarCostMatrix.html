@@ -98,18 +98,16 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_bdAstarCostMatrix</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCostMatrix</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#signatures">Firmas</a><ul>
-<li><a class="reference internal" href="#complete-signature">Firma completa</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#astar-optional-parameters">aStar optional Parameters</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
-<li><a class="reference internal" href="#edges-sql">edges_sql</a></li>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -166,10 +164,10 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_bdAstarCostMatrix.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html">2.5</a></p></li>
 </ul>
 <section id="pgr-bdastarcostmatrix">
-<h1>pgr_bdAstarCostMatrix<a class="headerlink" href="#pgr-bdastarcostmatrix" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCostMatrix</span></code><a class="headerlink" href="#pgr-bdastarcostmatrix" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCostMatrix</span></code> - Calcula la matriz de costes utilizando <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a>.</p>
 <figure class="align-default" id="id1">
-<a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="https://www.boost.org//libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
 <p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
@@ -183,7 +181,7 @@
 </li>
 <li><p>Versión 2.5.0</p>
 <ul>
-<li><p>Nueva función <strong>Propuesta</strong></p></li>
+<li><p>New <strong>proposed</strong> function</p></li>
 </ul>
 </li>
 </ul>
@@ -214,59 +212,19 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
-<p class="rubric">Uso de valores predeterminados</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids)
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Costo de la matriz para los vértices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> en un grafo <strong>no directed</strong></p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCostMatrix</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
-<span class="p">);</span>
- <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="o">-----------+---------+----------</span>
-         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
-         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<section id="complete-signature">
-<span id="index-0"></span><h3>Firma completa<a class="headerlink" href="#complete-signature" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bdAstarCostMatrix(edges_sql, vids [, directed] [, heuristic] [, factor] [, epsilon])
-RETURNS SET OF (start_vid, end_vid, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_bdAstarCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>vids</strong> [, directed] [, heuristic] [, factor] [, epsilon])
+RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Matriz de costes simetrica para los vértices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> en un grafo <strong>no dirigido</strong> usando la  heurística <span class="math notranslate nohighlight">\(2\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCostMatrix</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
-    <span class="n">false</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
+  <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">2</span>
 <span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
@@ -287,41 +245,52 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </pre></div>
 </div>
 </section>
-</section>
 <section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 25%" />
-<col style="width: 56%" />
-</colgroup>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">edges_sql</a>  consulta interna.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vids</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
-<td><p>Arreglo de identificadores de vértices.</p></td>
+<tr class="row-odd"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of starting vertices.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 19%" />
-<col style="width: 7%" />
-<col style="width: 60%" />
-</colgroup>
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="astar-optional-parameters">
+<h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -330,19 +299,10 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>dirigido</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
-<td><ul class="simple">
-<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">true</span></code> el grafo se considera como Dirigido.</p></li>
-<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfico se considera como No Dirigido</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>heuristic</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
-<td><p>Número heurístico. Valores actuales válidos 0~5. Default <code class="docutils literal notranslate"><span class="pre">5</span></code></p>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heuristic</span></code></p></td>
+<td><p><strong>INTEGER</strong></p></td>
+<td><p>5</p></td>
+<td><p>Heuristic number. Current valid values 0~5.</p>
 <ul class="simple">
 <li><p>0: h(v) = 0 (utilizar este valor para comparar con pgr_dijkstra)</p></li>
 <li><p>1: h(v) abs(max(dx, dy))</p></li>
@@ -353,12 +313,12 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>factor</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Para la manipulación de unidades. math:<cite>factor &gt; 0</cite>. Ver <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>epsilon</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">epsilon</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>Para resultados menos restringidos. <span class="math notranslate nohighlight">\(epsilon &gt;= 1\)</span>.</p></td>
@@ -370,7 +330,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="edges-sql">
-<h3>edges_sql<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -493,14 +453,17 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
-    $$
-    SELECT * FROM pgr_bdAstarCostMatrix(
-        &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
-        (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5),
-        false
-    )
-    $$
+  $$
+  SELECT * FROM pgr_bdAstarCostMatrix(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5),
+    directed=&gt; false, heuristic =&gt; 2
+  )
+  $$,
+  randomize =&gt; false
 );
+NOTICE:  pgr_TSP no longer solving with simulated annaeling
+HINT:  Ignoring annaeling parameters
  seq | node | cost | agg_cost
 -----+------+------+----------
    1 |    1 |    0 |        0
@@ -516,12 +479,10 @@ it’s not part of the graph.</p></li>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
-<li><p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
-<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -544,7 +505,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr. 06, 2022.<br/>
+      Actualizado por última vez en abr 21, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
