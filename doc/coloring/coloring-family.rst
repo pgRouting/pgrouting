@@ -52,30 +52,6 @@ Coloring - Family of functions
     pgr_edgeColoring
 
 
-Parameters
--------------------------------------------------------------------------------
-
-.. parameters start
-
-=================== ====================== =================================================
-Parameter           Type                   Description
-=================== ====================== =================================================
-**Edges SQL**       ``TEXT``               Inner query as described below.
-=================== ====================== =================================================
-
-.. parameters end
-
-Inner query
--------------------------------------------------------------------------------
-
-:Edges SQL: an SQL query of an **undirected** graph, which should return
-            a set of rows with the following columns:
-
-.. include:: traversal-family.rst
-   :start-after: edges_sql_start
-   :end-before: edges_sql_end
-
-
 Result Columns
 -------------------------------------------------------------------------------
 
