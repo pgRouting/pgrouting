@@ -29,6 +29,11 @@ Traversal - Family of functions
 
 .. index to here
 
+Aditionaly there are 2 categories under this family
+
+* :doc:`BFS-category`
+* :doc:`DFS-category`
+
 
 .. toctree::
     :hidden:
@@ -36,42 +41,8 @@ Traversal - Family of functions
     pgr_depthFirstSearch
 
 
-Inner query
--------------------------------------------------------------------------------
-
-.. rubric:: Edges SQL
-
-.. edges_sql_start
-
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``                Identifier of the edge.
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              - When positive: edge `(source, target)` exist on the graph.
-                                                 - When negative: edge `(source, target)` does not exist on the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     - When positive: edge `(target, source)` exist on the graph.
-                                                 - When negative: edge `(target, source)` does not exist on the graph.
-
-================= =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
-.. edges_sql_end
-
-
 See Also
 -------------------------------------------------------------------------------
-
-.. include:: pgr_depthFirstSearch.rst
-    :start-after: see also start
-    :end-before: see also end
-
 
 .. rubric:: Indices and tables
 
