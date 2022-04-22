@@ -16,11 +16,11 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalBFS.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalBFS.html>`__
 
-pgr_kruskalBFS
+``pgr_kruskalBFS``
 ===============================================================================
 
-``pgr_kruskalBFS`` — Prim algorithm for Minimum Spanning Tree with Depth First
-Search ordering.
+``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with breadth
+First Search ordering.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
@@ -38,7 +38,7 @@ Description
 -------------------------------------------------------------------------------
 
 Visits and extracts the nodes information in Breath First Search ordering
-of the Minimum Spanning Tree created using Prims's algorithm.
+of the Minimum Spanning Tree created using Kruskal's algorithm.
 
 **The main Characteristics are:**
 
@@ -52,11 +52,10 @@ of the Minimum Spanning Tree created using Prims's algorithm.
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_kruskalBFS(Edges SQL, Root vid [, max_depth])
-    pgr_kruskalBFS(Edges SQL, Root vids [, max_depth])
-
+    pgr_kruskalBFS(`Edges SQL`_, **Root vid** [, max_depth])
+    pgr_kruskalBFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
@@ -65,10 +64,9 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_kruskalBFS(Edges SQL, Root vid [, max_depth])
-
+    pgr_kruskalBFS(`Edges SQL`_, **Root vid** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 :Example: The Minimum Spanning Tree having as root vertex :math:`2`
@@ -83,33 +81,59 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_kruskalBFS(Edges SQL, Root vids [, max_depth])
-
+    pgr_kruskalBFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with :math:`depth <= 3`
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with
+          :math:`depth <= 3`
 
 .. literalinclude:: doc-pgr_kruskalBFS.queries
    :start-after: --q2
    :end-before: --q3
 
-.. Parameters, Inner query & result columns
+Parameters
+-------------------------------------------------------------------------------
 
-.. include:: pgr_kruskalDFS.rst
-   :start-after: mstfs-information-start
-   :end-before: mstfs-information-end
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-params_start
+   :end-before: mst-bfs-dfs-params_end
 
+BFS optional parameters
+...............................................................................
+
+.. include:: BFS-category.rst
+   :start-after: max-depth-optional-start
+   :end-before: max-depth-optional-end
+
+Inner queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-dd-result-columns-start
+   :end-before: mst-bfs-dfs-dd-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-family`
 * :doc:`kruskal-family`
-* The queries use the :doc:`sampledata` network.
-* `Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-* `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
+* :doc:`sampledata`
+* `Boost: Kruskal's algorithm documentation
+  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's algorithm
+  <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables
 
