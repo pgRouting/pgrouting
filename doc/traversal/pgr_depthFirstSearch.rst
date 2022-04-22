@@ -14,7 +14,7 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__
 
-pgr_depthFirstSearch - Proposed
+``pgr_depthFirstSearch`` - Proposed
 ===============================================================================
 
 ``pgr_depthFirstSearch`` — Returns a depth first search traversal of the graph.
@@ -67,20 +67,11 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
-    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
-
+    pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, max_depth])
+    pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-
-.. rubric:: Using defaults
-
-:Example: From root vertex :math:`2` on a **directed** graph
-
-.. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 .. index::
     single: depthFirstSearch(Single vertex) - Proposed on v3.3
@@ -88,14 +79,13 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_depthFirstSearch(Edges SQL, Root vid [, directed] [, max_depth])
-
+    pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 :Example: From root vertex :math:`2` on an **undirected** graph,
-          with :math:`depth <= 2`
+          with **depth** :math:`<= 2`
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q2
@@ -107,77 +97,60 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_depthFirstSearch(Edges SQL, Root vids [, directed] [, max_depth])
-
+    pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 :Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph
-          with :math:`depth <= 2`
+          with **depth** :math:`<= 2` and edges in ascending order
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q3
    :end-before: -- q4
 
-.. Parameters, Inner query & result columns
-
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== =================================================
-Parameter           Type                   Description
-=================== ====================== =================================================
-**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
-**Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-params_start
+   :end-before: mst-bfs-dfs-params_end
 
-                                           - Used on `Single Vertex`_.
-
-**Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
-
-                                           - Used on `Multiple Vertices`_.
-                                           - For optimization purposes, any duplicated value is ignored.
-=================== ====================== =================================================
-
-Optional Parameters
+Optional parameters
 ...............................................................................
 
-=================== =========== =========================== =================================================
-Parameter           Type        Default                     Description
-=================== =========== =========================== =================================================
-**directed**        ``BOOLEAN`` ``true``                    - When ``true`` Graph is `Directed`
-                                                            - When ``false`` the graph is `Undirected`.
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
-**max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for the depth of traversal
+DFS optional parameters
+...............................................................................
 
-                                                            - When value is ``Negative`` then **throws error**
-=================== =========== =========================== =================================================
+.. include:: BFS-category.rst
+   :start-after: max-depth-optional-start
+   :end-before: max-depth-optional-end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
-.. rubric:: Edges SQL
+Edges SQL
+...............................................................................
 
-.. include:: traversal-family.rst
-   :start-after: edges_sql_start
-   :end-before: edges_sql_end
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: pgr_kruskalDD.rst
-   :start-after: result columns start
-   :end-before: result columns end
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-dd-result-columns-start
+   :end-before: mst-bfs-dfs-dd-result-columns-end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-The examples of this section are based on the :doc:`sampledata` network.
-
-**Example: No internal ordering on traversal**
-
-In the following query, the inner query of the example: "Using defaults" is modified
-so that the data is entered into the algorithm is given in the reverse ordering of the id.
+:Example: Same as `Single vertex`_ but with edges in descending order.
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
    :start-after: -- q4
@@ -185,8 +158,8 @@ so that the data is entered into the algorithm is given in the reverse ordering 
 
 The resulting traversal is different.
 
-The left image shows the result with ascending order of ids and the right image shows
-with descending order of ids:
+The left image shows the result with ascending order of ids and the right image
+shows with descending order of the edge identifiers.
 
 |ascending| |descending|
 
@@ -199,15 +172,14 @@ with descending order of ids:
 See Also
 -------------------------------------------------------------------------------
 
-* The queries use the :doc:`sampledata` network.
-
-.. see also start
-
-* `Boost: Depth First Search algorithm documentation <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__
-* `Boost: Undirected DFS algorithm documentation <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__
-* `Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__
-
-.. see also end
+* :doc:`DFS-category`
+* :doc:`sampledata`
+* `Boost: Depth First Search algorithm documentation
+  <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__
+* `Boost: Undirected DFS algorithm documentation
+  <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__
+* `Wikipedia: Depth First Search algorithm
+  <https://en.wikipedia.org/wiki/Depth-first_search>`__
 
 .. rubric:: Indices and tables
 
