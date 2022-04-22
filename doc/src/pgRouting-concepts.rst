@@ -108,8 +108,6 @@ where you should replace 'myroads' with the name of your table storing the edges
 
 * :doc:`pgr_createTopology`
 
-|
-
 Check the Routing Topology
 ...............................................................................
 
@@ -138,9 +136,6 @@ where you should replace 'myroads' with the name of your table storing the edges
 * :doc:`pgr_analyzeGraph`
 * :doc:`pgr_analyzeOneWay`
 * :doc:`pgr_nodeNetwork`
-
-
-|
 
 Compute a Path
 ...............................................................................
@@ -177,8 +172,6 @@ to get more information about each step in the path.
 
 * :doc:`pgr_dijkstra`
 
-|
-
 Group of Functions
 -------------------------------------------------------------------------------
 
@@ -194,8 +187,6 @@ Across this documentation, to indicate which overload we use the following terms
 Depending on the overload are the parameters used, keeping consistency across
 all functions.
 
-|
-
 One to One
 ...............................................................................
 
@@ -203,8 +194,6 @@ When routing from:
 
 * From **one** starting vertex
 * to **one** ending vertex
-
-|
 
 One to Many
 ...............................................................................
@@ -214,8 +203,6 @@ When routing from:
 * From **one** starting vertex
 * to **many** ending vertices
 
-|
-
 Many to One
 ...............................................................................
 
@@ -223,8 +210,6 @@ When routing from:
 
 * From **many** starting vertices
 * to **one** ending vertex
-
-|
 
 Many to Many
 ...............................................................................
@@ -494,10 +479,33 @@ Points SQL
    :start-after: points_sql_start
    :end-before: points_sql_end
 
-|
-
 Parameters
 -------------------------------------------------------------------------------
+
+The main parameter of the majority of the pgRouting functions is a query that
+selects the edges of the graph.
+
+.. only_edge_param_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - `Edges SQL`_ as described below.
+
+.. only_edge_param_end
+
+Depending on the family or category of a function it will have additional
+parameters, some of them are compulsory and some are optional.
+
+The compulsory parameters are nameless and must be given in the required order.
+The optional parameters are named parameters and will have a default value.
 
 .. rubric:: Parameters for the Via functions
 
@@ -544,13 +552,6 @@ Parameters
 
 
 .. pgr_dijkstra_via_parameters_end
-
-.. rubric:: Parameters for the Via functions:
-
-* :doc:`pgr_withPointsVia`
-
-
-|
 
 Return columns
 --------------------------------------------------------------------------------
@@ -881,8 +882,35 @@ Return columns for flow functions
     :start-after: result_costFlow_start
     :end-before: result_costFlow_end
 
+Return columns for spanning tree functions
+.....................................................................
 
-.. _advanced_topics:
+
+.. rubric:: Edges SQL for the following
+
+* :doc:`pgr_prim`
+* :doc:`pgr_kruskal`
+
+.. r-edge-cost-start
+
+Returns SET OF ``(edge, cost)``
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse the edge.
+
+.. r-edge-cost-end
 
 Advanced Topics
 -------------------------------------------------------------------------------
