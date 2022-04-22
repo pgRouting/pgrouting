@@ -2,12 +2,11 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-/* -- q1 */
+/* -- q2 */
 SELECT * FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    ORDER BY id',
-    2
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table
+  ORDER BY id',
+  2);
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
    1 |     0 |         2 |    2 |   -1 |    0 |        0
@@ -25,30 +24,11 @@ SELECT * FROM pgr_depthFirstSearch(
   13 |     3 |         2 |   13 |   14 |    1 |        3
 (13 rows)
 
-/* -- q2 */
-SELECT * FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    ORDER BY id',
-    2, directed => false, max_depth => 2
-);
- seq | depth | start_vid | node | edge | cost | agg_cost
------+-------+-----------+------+------+------+----------
-   1 |     0 |         2 |    2 |   -1 |    0 |        0
-   2 |     1 |         2 |    1 |    1 |    1 |        1
-   3 |     1 |         2 |    3 |    2 |    1 |        1
-   4 |     2 |         2 |    4 |    3 |    1 |        2
-   5 |     2 |         2 |    6 |    5 |    1 |        2
-   6 |     1 |         2 |    5 |    4 |    1 |        1
-   7 |     2 |         2 |    8 |    7 |    1 |        2
-   8 |     2 |         2 |   10 |   10 |    1 |        2
-(8 rows)
-
 /* -- q3 */
 SELECT * FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    ORDER BY id',
-    ARRAY[11, 2], directed => false, max_depth => 2
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table
+  ORDER BY id',
+  ARRAY[11, 2], directed => false, max_depth => 2);
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
    1 |     0 |         2 |    2 |   -1 |    0 |        0
@@ -71,10 +51,9 @@ SELECT * FROM pgr_depthFirstSearch(
 
 /* -- q4 */
 SELECT * FROM pgr_depthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table
-    ORDER BY id DESC',
-    2
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table
+  ORDER BY id DESC',
+  2);
  seq | depth | start_vid | node | edge | cost | agg_cost
 -----+-------+-----------+------+------+------+----------
    1 |     0 |         2 |    2 |   -1 |    0 |        0
