@@ -173,7 +173,7 @@
 <p>Estos algoritmos encuentran el bosque de expansión mínimo en un grafo posiblemente desconectado; en cambio, la forma más básica del algoritmo de Prim sólo encuentra árboles de expansión mínimos en los grafos conectados. Sin embargo, al ejecutar el algoritmo de Prim por separado para cada componente conectado del grafo, se denomina bosque de expansión mínimo.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>Su implementación solo está en <strong>grafo no dirigido</strong>.</p></li>
+<li><p>It’s implementation is only on <strong>undirected</strong> graph.</p></li>
 <li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
 <li><p>Cuando el grafo está conectado</p>
 <ul>
@@ -186,7 +186,9 @@
 <li><p>Las aristas resultantes conforman un bosque.</p></li>
 </ul>
 </li>
-<li><p>Tiempo de ejecución de Prim:  <span class="math notranslate nohighlight">\(O(E*log V)\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>Prim’s running time: <span class="math notranslate nohighlight">\(O(E * log V)\)</span></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -256,7 +258,7 @@ it’s not part of the graph.</p></li>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Wikipedia: algoritmo de Prim</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -280,7 +282,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr 21, 2022.<br/>
+      Actualizado por última vez en abr 26, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

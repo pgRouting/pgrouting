@@ -98,7 +98,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_primBFS</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#single-vertex">Un solo vértice</a></li>
@@ -106,10 +106,13 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#bfs-optional-parameters">BFS optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -162,7 +165,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_primBFS.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_primBFS.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_primBFS.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_primBFS.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_primBFS.html">3.0</a></p></li>
 </ul>
 <section id="pgr-primbfs">
-<h1>pgr_primBFS<a class="headerlink" href="#pgr-primbfs" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code><a class="headerlink" href="#pgr-primbfs" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> —  Algoritmo de Prim para el árbol de expansión mínimo con orden de primera búsqueda de profundidad.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -183,7 +186,7 @@
 <p>Visita y extrae la información de los nodos en el orden de búsqueda de Primera Búsqueda de Respiración del Árbol de Expansión Mínimo creado con el algoritmo de Prim.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>Su implementación solo está en <strong>grafo no dirigido</strong>.</p></li>
+<li><p>It’s implementation is only on <strong>undirected</strong> graph.</p></li>
 <li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
 <li><p>Cuando el grafo está conectado</p>
 <ul>
@@ -196,7 +199,9 @@
 <li><p>Las aristas resultantes conforman un bosque.</p></li>
 </ul>
 </li>
-<li><p>Tiempo de ejecución de Prim:  <span class="math notranslate nohighlight">\(O(E*log V)\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>Prim’s running time: <span class="math notranslate nohighlight">\(O(E * log V)\)</span></p></li>
 </ul>
 <ul class="simple">
 <li><p>Los nodos de árbol devueltos desde un vértice raíz están en orden de la Primera Búsqueda de Anchura</p></li>
@@ -205,19 +210,13 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_primBFS(Edges SQL, Root vid [, max_depth])
-pgr_primBFS(Edges SQL, Root vids [, max_depth])
-
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth])
+pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Un solo vértice<a class="headerlink" href="#single-vertex" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_primBFS(Edges SQL, Root vid [, max_depth])
-
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>El Árbol de Expansión Mínimo que tiene como vértice raíz <span class="math notranslate nohighlight">\(2\)</span></p>
@@ -249,11 +248,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </section>
 <section id="multiple-vertices">
 <span id="index-1"></span><h3>Múltiples Vértices<a class="headerlink" href="#multiple-vertices" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_primBFS(Edges SQL, Root vids [, max_depth])
-
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>El Árbol de Expansión Mínimo que comienza en los vértices <span class="math notranslate nohighlight">\(\{13, 2\}\)</span> con <span class="math notranslate nohighlight">\(depth &lt;= 3\)</span></p>
@@ -290,11 +286,11 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </section>
 <section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 22%" />
-<col style="width: 60%" />
+<col style="width: 13%" />
+<col style="width: 21%" />
+<col style="width: 66%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -303,15 +299,14 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Consulta SQL descrita en <a class="reference internal" href="#inner-query">Inner query</a>.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice raíz del árbol.</p>
 <ul class="simple">
-<li><p>Se utiliza en <a class="reference internal" href="#single-vertex">Vértice único</a></p></li>
 <li><p>Cuando el valor es <span class="math notranslate nohighlight">\(0\)</span> se obtiene el bosque de expansión que comienza en nodos aleatorios para cada árbol del bosque.</p></li>
 </ul>
 </td>
@@ -320,7 +315,6 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
 <td><p>Arreglo de identificadores de los vértices raíz.</p>
 <ul class="simple">
-<li><p>Utilizado en <a class="reference internal" href="#multiple-vertices">Múltiples Vértices</a></p></li>
 <li><p>los valores <span class="math notranslate nohighlight">\(0\)</span> son ignorados</p></li>
 <li><p>Para fines de optimización, se omite cualquier valor duplicado.</p></li>
 </ul>
@@ -328,15 +322,18 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </tr>
 </tbody>
 </table>
-<section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 25%" />
-<col style="width: 47%" />
-</colgroup>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERIC</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
+</dd>
+</dl>
+<section id="bfs-optional-parameters">
+<h3>BFS optional parameters<a class="headerlink" href="#bfs-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -348,9 +345,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 <tr class="row-even"><td><p><strong>max_depth</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(9223372036854775807\)</span></p></td>
-<td><p>Límite superior para la profundidad del nodo en el árbol</p>
+<td><p>Upper limit of the depth of the tree.</p>
 <ul class="simple">
-<li><p>Cuando el valor es <code class="docutils literal notranslate"><span class="pre">Negativo</span></code> entonces <strong>produce error</strong></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">Negative</span></code> <strong>throws</strong> an error.</p></li>
 </ul>
 </td>
 </tr>
@@ -358,8 +355,10 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </table>
 </section>
 </section>
-<section id="inner-query">
-<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="inner-queries">
+<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -417,27 +416,23 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 </section>
+</section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>devuelve el conjunto SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 13%" />
-<col style="width: 69%" />
-</colgroup>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
-<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Valor secuencial a partir de <span class="math notranslate nohighlight">\(1\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>profundidad</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">depth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Profundidad del <code class="docutils literal notranslate"><span class="pre">nodo</span></code>.</p>
 <ul class="simple">
@@ -445,19 +440,15 @@ it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice raíz.</p>
-<ul class="simple">
-<li><p>En <a class="reference internal" href="#multiple-vertices">Múltiples Vértices</a> los resultados están en orden ascendente.</p></li>
-</ul>
-</td>
+<td><p>Identificador del vértice raíz.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">node</span></code> alcanzado usando <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>edge</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del “”edge”” utilizado para llegar a “”node””.</p>
 <ul class="simple">
@@ -465,16 +456,25 @@ it’s not part of the graph.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo para atravesar <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER</dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERIC</dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
+</dd>
+</dl>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -506,7 +506,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr 21, 2022.<br/>
+      Actualizado por última vez en abr 26, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

@@ -164,11 +164,29 @@ of G with the minimum possible number of edges.</p>
 consisting of a spanning tree of each connected component.</p>
 <div class="toctree-wrapper compound">
 </div>
+<p>Characteristics:</p>
+<ul class="simple">
+<li><p>It’s implementation is only on <strong>undirected</strong> graph.</p></li>
+<li><p>Process is done only on edges with positive costs.</p></li>
+<li><p>When the graph is connected</p>
+<ul>
+<li><p>The resulting edges make up a tree</p></li>
+</ul>
+</li>
+<li><p>When the graph is not connected,</p>
+<ul>
+<li><p>Finds a minimum spanning tree for each connected component.</p></li>
+<li><p>The resulting edges make up a forest.</p></li>
+</ul>
+</li>
+</ul>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html">Boost: Kruskal’s algorithm</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Wikipedia: Prim’s algorithm</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kruskal's_algorithm">Wikipedia: Kruskal’s algorithm</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -191,7 +209,7 @@ consisting of a spanning tree of each connected component.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Apr 21, 2022.<br/>
+      Last updated on Apr 26, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
