@@ -19,10 +19,11 @@
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__
 
-pgr_bdDijkstraCostMatrix
+``pgr_bdDijkstraCostMatrix``
 ===============================================================================
 
-``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using :doc:`pgr_bdDijkstra`.
+``pgr_bdDijkstraCostMatrix`` - Calculates a cost matrix using
+:doc:`pgr_bdDijkstra`.
 
 
 .. figure:: images/boost-inside.jpeg
@@ -30,7 +31,7 @@ pgr_bdDijkstraCostMatrix
 
    Boost Graph Inside
 
-.. rubric:: Availability:
+.. rubric:: Availability
 
 * Version 3.0.0
 
@@ -40,77 +41,64 @@ pgr_bdDijkstraCostMatrix
 
   * New **proposed** function
 
-
 Description
 -------------------------------------------------------------------------------
 
-**The main characteristics are:**
+Using bidirectional Dijkstra algorithm, calculate and return a cost matrix.
 
 .. include:: bdDijkstra-family.rst
-   :start-after: description start
-   :end-before: description end
+    :start-after: description start
+    :end-before: description end
 
-* Returns a cost matrix.
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_details_start
+    :end-before: costMatrix_details_end
+
+.. index::
+    single: bdDijkstraCostMatrix
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
+    pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids** [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. index::
-    single: bdDijkstraCostMatrix
-
-.. rubric:: Using default
-
-.. code-block:: none
-
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vid)
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
+:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
-   :start-after: -- bdDijkstra q1
-   :end-before: -- bdDijkstra q2
-
-Complete Signature
-...............................................................................
-
-.. code-block:: none
-
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
-
-.. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
-   :start-after: -- bdDijkstra q2
-   :end-before: -- bdDijkstra q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 Parameters
 -------------------------------------------------------------------------------
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as described above.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of the vertices.
-**directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-================ ====================== =================================================
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_parameters_start
+    :end-before: costMatrix_parameters_end
 
-Inner query
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Inner queries
 -------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Result Columns
+Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -120,22 +108,21 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Use with tsp
+:Example: Use with :doc:`pgr_TSP`.
 
 .. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
-   :start-after: -- bdDijkstra q3
-   :end-before: -- bdDijkstra q4
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`pgr_bdDijkstra`
+* :doc:`bdDijkstra-family`
 * :doc:`costMatrix-category`
-* :doc:`pgr_TSP`
-* The queries use the :doc:`sampledata` network.
+* :doc:`TSP-family`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

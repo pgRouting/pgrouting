@@ -21,11 +21,10 @@
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__
 
-pgr_dijkstraCostMatrix
+``pgr_dijkstraCostMatrix``
 ===============================================================================
 
-``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using
-:doc:`pgr_dijkstra`.
+``pgr_dijkstraCostMatrix`` - Calculates a cost matrix using :doc:`pgr_dijkstra`.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
@@ -89,7 +88,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -127,4 +126,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-
