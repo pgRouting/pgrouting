@@ -33,7 +33,6 @@ Kruskal - Family of functions
 
    Boost Graph Inside
 
-
 .. toctree::
     :hidden:
 
@@ -41,7 +40,6 @@ Kruskal - Family of functions
     pgr_kruskalBFS
     pgr_kruskalDD
     pgr_kruskalDFS
-
 
 Description
 -------------------------------------------------------------------------------
@@ -54,18 +52,11 @@ two trees in the forest.
 
 .. kruskal-description-start
 
-- It's implementation is only on **undirected** graph.
-- Process is done only on edges with positive costs.
+.. include:: spanningTree-family.rst
+   :start-after: spanntree_traits_start
+   :end-before: spanntree_traits_end
+
 - The total weight of all the edges in the tree or forest is minimized.
-- When the graph is connected
-
-  - The resulting edges make up a tree
-
-- When the graph is not connected,
-
-  - Finds a minimum spanning tree for each connected component.
-  - The resulting edges make up a forest.
-
 - Kruskal's running time: :math:`O(E * log E)`
 
 .. kruskal-description-end
@@ -77,12 +68,11 @@ Inner query
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-family`
-* `Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
 * `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables

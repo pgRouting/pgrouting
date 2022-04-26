@@ -10,35 +10,30 @@
 |
 
 * **Supported versions:**
-  `Latest <https://docs.pgrouting.org/latest/en/spanningTree-family.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/spanningTree-family.html>`__)
-  `3.2 <https://docs.pgrouting.org/3.2/en/spanningTree-family.html>`__
-  `3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__
-  `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__
+  `Latest <https://docs.pgrouting.org/latest/en/DFS-category.html>`__
+  (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category.html>`__)
 
-Spanning Tree - Category
+DFS - Category
 ===============================================================================
+
+Traversal using Depth First Search.
 
 .. index from here
 
-* :doc:`kruskal-family`
-* :doc:`prim-family`
+* :doc:`pgr_kruskalDFS`
+* :doc:`pgr_primDFS`
 
 .. index to here
 
-A spanning tree of an undirected graph is a tree that includes all the vertices
-of G with the minimum possible number of edges.
 
-For a disconnected graph, there there is no single tree, but a spanning forest,
-consisting of a spanning tree of each connected component.
+.. rubric:: Proposed
 
-.. toctree::
-    :hidden:
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
 
-    kruskal-family
-    prim-family
+* :doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph.
 
-Characteristics:
 
 .. spanntree_traits_start
 
@@ -54,6 +49,37 @@ Characteristics:
   * The resulting edges make up a forest.
 
 .. spanntree_traits_end
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-params_start
+   :end-before: mst-bfs-dfs-params_end
+
+DFS optional parameters
+...............................................................................
+
+.. include:: BFS-category.rst
+   :start-after: max-depth-optional-start
+   :end-before: max-depth-optional-end
+
+Inner queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-dd-result-columns-start
+   :end-before: mst-bfs-dfs-dd-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------

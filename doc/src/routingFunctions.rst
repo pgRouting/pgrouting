@@ -142,6 +142,18 @@ Functions by categories
    :start-after: index from here
    :end-before: index to here
 
+:doc:`BFS-category`
+
+.. include:: BFS-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`DFS-category`
+
+.. include:: DFS-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
 ..  to-here
 
 .. toctree::
@@ -169,6 +181,7 @@ Functions by categories
     costMatrix-category
     drivingDistance-category
     spanningTree-family
+    BFS-category
 
 See Also
 -------------------------------------------------------------------------------

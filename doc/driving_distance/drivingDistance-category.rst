@@ -52,6 +52,70 @@ Driving Distance - Category
     pgr_alphaShape.rst
 
 
+Calculate nodes that are within a distance.
+
+.. dd_traits_start
+
+*  Extracts all the nodes that have costs less than or equal to the value distance.
+*  The edges extracted will conform to the corresponding spanning tree.
+   Edge
+* Edge :math:`(u, v)` will not be included when:
+
+  * The distance from the **root** to :math:`u` > limit distance.
+  * The distance from the **root** to :math:`v` > limit distance.
+  * No new nodes are created on the graph, so when is within the limit and is
+    not within the limit, the edge is not included.
+
+.. dd_traits_end
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. mst-dd-params_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 20 46
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - Edges SQL as described below.
+   * - Root vid
+     - ``BIGINT``
+     - Identifier of the root vertex of the tree.
+   * - Root vids
+     - ``ARRAY[ANY-INTEGER]``
+     - Array of identifiers of the root vertices.
+
+       - :math:`0` values are ignored
+       - For optimization purposes, any duplicated value is ignored.
+   * - distance
+     - ``FLOAT``
+     - Upper limit for the inclusion of a node in the result.
+
+       - When the value is Negative **throws** error
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERIC: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``, ``NUMERIC``
+
+.. mst-dd-params_end
+
+Inner queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+..............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
 See Also
 -------------------------------------------------------------------------------
 

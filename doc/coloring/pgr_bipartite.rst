@@ -71,26 +71,22 @@ Signatures
    :start-after: --q1
    :end-before: --q2
 
-
-
-.. Parameters, Inner query & result columns
-
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: coloring-family.rst
-    :start-after: parameters start
-    :end-before: parameters end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
-:Edges SQL: an SQL query of an **undirected** graph, which should return
-            a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
-.. include:: traversal-family.rst
-   :start-after: edges_sql_start
-   :end-before: edges_sql_end
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
