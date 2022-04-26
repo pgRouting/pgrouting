@@ -323,6 +323,11 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/pgr_trspVia_withPoints.html',
     'https://docs.pgrouting.org/latest/en/withPoints-category.html',
     'https://docs.pgrouting.org/latest/en/trsp_migration.html',
+    'https://docs.pgrouting.org/latest/en/BFS-category.html',
+    'https://docs.pgrouting.org/latest/en/DFS-category.html',
+
+    'https://docs.pgrouting.org/3.4/en/BFS-category.html',
+    'https://docs.pgrouting.org/3.4/en/DFS-category.html',
 
     # link failing used in contraction-family
     'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'
