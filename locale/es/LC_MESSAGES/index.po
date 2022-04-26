@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 13:40+0000\n"
+"POT-Creation-Date: 2022-04-26 12:02+0000\n"
 "PO-Revision-Date: 2022-02-15 20:31+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
@@ -351,7 +351,7 @@ msgstr ":doc:`kruskal-family`"
 msgid ":doc:`pgr_kruskal`"
 msgstr ":doc:`pgr_kruskal`"
 
-#: ../../build/doc/kruskal-family.rst:4
+#: ../../build/doc/kruskal-family.rst:4 ../../build/doc/BFS-category.rst:3
 msgid ":doc:`pgr_kruskalBFS`"
 msgstr ":doc:`pgr_kruskalBFS`"
 
@@ -359,7 +359,7 @@ msgstr ":doc:`pgr_kruskalBFS`"
 msgid ":doc:`pgr_kruskalDD`"
 msgstr ":doc:`pgr_kruskalDD`"
 
-#: ../../build/doc/kruskal-family.rst:6
+#: ../../build/doc/kruskal-family.rst:6 ../../build/doc/DFS-category.rst:3
 msgid ":doc:`pgr_kruskalDFS`"
 msgstr ":doc:`pgr_kruskalDFS`"
 
@@ -372,7 +372,7 @@ msgstr ":doc:`prim-family`"
 msgid ":doc:`pgr_prim`"
 msgstr ":doc:`pgr_prim`"
 
-#: ../../build/doc/prim-family.rst:4
+#: ../../build/doc/prim-family.rst:4 ../../build/doc/BFS-category.rst:4
 msgid ":doc:`pgr_primBFS`"
 msgstr ":doc:`pgr_primBFS`"
 
@@ -380,7 +380,7 @@ msgstr ":doc:`pgr_primBFS`"
 msgid ":doc:`pgr_primDD`"
 msgstr ":doc:`pgr_primDD`"
 
-#: ../../build/doc/prim-family.rst:6
+#: ../../build/doc/prim-family.rst:6 ../../build/doc/DFS-category.rst:4
 msgid ":doc:`pgr_primDFS`"
 msgstr ":doc:`pgr_primDFS`"
 
@@ -519,6 +519,18 @@ msgstr ":doc:`pgr_KSP` - Algoritmo de Yen basado en pgr_dijkstra"
 #: ../../build/doc/routingFunctions.rst:108
 msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
+
+#: ../../build/doc/routingFunctions.rst:114
+#, fuzzy
+#| msgid ":doc:`KSP-category`"
+msgid ":doc:`BFS-category`"
+msgstr ":doc:`KSP-category`"
+
+#: ../../build/doc/routingFunctions.rst:120
+#, fuzzy
+#| msgid ":doc:`KSP-category`"
+msgid ":doc:`DFS-category`"
+msgstr ":doc:`KSP-category`"
 
 #: ../../build/doc/index.rst:100
 msgid "Available Functions but not official pgRouting functions"

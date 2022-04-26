@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 13:40+0000\n"
+"POT-Creation-Date: 2022-04-26 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -282,7 +282,7 @@ msgstr ""
 msgid ":doc:`pgr_kruskal`"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:4
+#: ../../build/doc/kruskal-family.rst:4 ../../build/doc/BFS-category.rst:3
 msgid ":doc:`pgr_kruskalBFS`"
 msgstr ""
 
@@ -290,7 +290,7 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDD`"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:6
+#: ../../build/doc/kruskal-family.rst:6 ../../build/doc/DFS-category.rst:3
 msgid ":doc:`pgr_kruskalDFS`"
 msgstr ""
 
@@ -303,7 +303,7 @@ msgstr ""
 msgid ":doc:`pgr_prim`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:4
+#: ../../build/doc/prim-family.rst:4 ../../build/doc/BFS-category.rst:4
 msgid ":doc:`pgr_primBFS`"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgstr ""
 msgid ":doc:`pgr_primDD`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:6
+#: ../../build/doc/prim-family.rst:6 ../../build/doc/DFS-category.rst:4
 msgid ":doc:`pgr_primDFS`"
 msgstr ""
 
@@ -431,6 +431,14 @@ msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:108
 msgid ":doc:`spanningTree-family`"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:114
+msgid ":doc:`BFS-category`"
+msgstr ""
+
+#: ../../build/doc/routingFunctions.rst:120
+msgid ":doc:`DFS-category`"
 msgstr ""
 
 #: ../../build/doc/index.rst:100
