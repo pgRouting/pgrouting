@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 05:06+0000\n"
+"POT-Creation-Date: 2022-04-26 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.1\n"
 
 #: ../../build/doc/kruskal-family.rst:12
 msgid ""
@@ -51,28 +51,48 @@ msgstr ""
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:47
+#: ../../build/doc/kruskal-family.rst:45
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:49
+#: ../../build/doc/kruskal-family.rst:47
 msgid ""
 "Kruskal's algorithm is a greedy minimum spanning tree algorithm that in "
 "each cycle finds and adds the edge of the least possible weight that "
 "connects any two trees in the forest."
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:53
+#: ../../build/doc/kruskal-family.rst:51
 msgid "**The main Characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:57
+#: ../../build/doc/spanningTree-family.rst:3
 msgid "It's implementation is only on **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:58
+#: ../../build/doc/spanningTree-family.rst:4
 msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+#: ../../build/doc/spanningTree-family.rst:5
+msgid "When the graph is connected"
+msgstr ""
+
+#: ../../build/doc/spanningTree-family.rst:7
+msgid "The resulting edges make up a tree"
+msgstr ""
+
+#: ../../build/doc/spanningTree-family.rst:9
+msgid "When the graph is not connected,"
+msgstr ""
+
+#: ../../build/doc/spanningTree-family.rst:11
+msgid "Finds a minimum spanning tree for each connected component."
+msgstr ""
+
+#: ../../build/doc/spanningTree-family.rst:12
+msgid "The resulting edges make up a forest."
 msgstr ""
 
 #: ../../build/doc/kruskal-family.rst:59
@@ -80,30 +100,10 @@ msgid "The total weight of all the edges in the tree or forest is minimized."
 msgstr ""
 
 #: ../../build/doc/kruskal-family.rst:60
-msgid "When the graph is connected"
-msgstr ""
-
-#: ../../build/doc/kruskal-family.rst:62
-msgid "The resulting edges make up a tree"
-msgstr ""
-
-#: ../../build/doc/kruskal-family.rst:64
-msgid "When the graph is not connected,"
-msgstr ""
-
-#: ../../build/doc/kruskal-family.rst:66
-msgid "Finds a minimum spanning tree for each connected component."
-msgstr ""
-
-#: ../../build/doc/kruskal-family.rst:67
-msgid "The resulting edges make up a forest."
-msgstr ""
-
-#: ../../build/doc/kruskal-family.rst:69
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:74
+#: ../../build/doc/kruskal-family.rst:65
 msgid "Inner query"
 msgstr ""
 
@@ -200,35 +200,35 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:82
+#: ../../build/doc/kruskal-family.rst:72
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:84
+#: ../../build/doc/kruskal-family.rst:74
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:85
+#: ../../build/doc/kruskal-family.rst:75
 msgid ""
-"`Boost: Kruskal's algorithm documentation "
+"`Boost: Kruskal's algorithm "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:86
+#: ../../build/doc/kruskal-family.rst:76
 msgid ""
 "`Wikipedia: Kruskal's algorithm "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:89
+#: ../../build/doc/kruskal-family.rst:79
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:90
+#: ../../build/doc/kruskal-family.rst:80
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:91
+#: ../../build/doc/kruskal-family.rst:81
 msgid ":ref:`search`"
 msgstr ""
 

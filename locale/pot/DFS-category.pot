@@ -16,120 +16,99 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../build/doc/pgr_kruskalDFS.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_kruskalDFS.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_kruskalDFS.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskalDFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalDFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalDFS.html>`__"
+#: ../../build/doc/DFS-category.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category.html>`__)"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:20
-msgid "``pgr_kruskalDFS``"
+#: ../../build/doc/DFS-category.rst:17
+msgid "DFS - Category"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:22
-msgid "``pgr_kruskalDFS`` — Kruskal's algorithm for Minimum Spanning Tree with Depth First Search ordering."
+#: ../../build/doc/DFS-category.rst:19
+msgid "Traversal using Depth First Search."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:28
-msgid "Boost Graph Inside"
+#: ../../build/doc/DFS-category.rst:23
+msgid ":doc:`pgr_kruskalDFS`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:31
-msgid "Availability"
+#: ../../build/doc/DFS-category.rst:24
+msgid ":doc:`pgr_primDFS`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:32
-msgid "Version 3.0.0"
+#: ../../build/doc/DFS-category.rst:30
+msgid "Proposed"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:34
-msgid "New **Official** function"
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:38
-#: ../../build/doc/BFS-category.rst:10
-#: ../../build/doc/BFS-category.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/BFS-category.rst:12
-msgid "Description"
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:40
-msgid "Visits and extracts the nodes information in Depth First Search ordering of the Minimum Spanning Tree created using Kruskal's algorithm."
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:43
-msgid "**The main Characteristics are:**"
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:3
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/DFS-category.rst:35
+msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
+msgstr ""
+
+#: ../../build/doc/DFS-category.rst:40
 msgid "It's implementation is only on **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:4
+#: ../../build/doc/DFS-category.rst:41
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:5
+#: ../../build/doc/DFS-category.rst:42
 msgid "When the graph is connected"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:7
+#: ../../build/doc/DFS-category.rst:44
 msgid "The resulting edges make up a tree"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:9
+#: ../../build/doc/DFS-category.rst:46
 msgid "When the graph is not connected,"
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:11
+#: ../../build/doc/DFS-category.rst:48
 msgid "Finds a minimum spanning tree for each connected component."
 msgstr ""
 
-#: ../../build/doc/spanningTree-family.rst:12
+#: ../../build/doc/DFS-category.rst:49
 msgid "The resulting edges make up a forest."
 msgstr ""
 
-#: ../../build/doc/kruskal-family.rst:7
-msgid "The total weight of all the edges in the tree or forest is minimized."
-msgstr ""
-
-#: ../../build/doc/kruskal-family.rst:8
-msgid "Kruskal's running time: :math:`O(E * log E)`"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:49
-msgid "Returned tree nodes from a root vertex are on Depth First Search order"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:50
-msgid "Depth First Search Running time: :math:`O(E + V)`"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:53
-msgid "Signatures"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:65
-msgid "Single vertex"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:0
-#: ../../build/doc/pgr_kruskalDFS.rst:0
-msgid "Example"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:72
-msgid "The Minimum Spanning Tree having as root vertex :math:`2`"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:82
-msgid "Multiple vertices"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:89
-msgid "The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with :math:`depth <= 3`"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:97
+#: ../../build/doc/DFS-category.rst:54
 msgid "Parameters"
 msgstr ""
 
@@ -144,6 +123,13 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/BFS-category.rst:11
 msgid "Type"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:10
+#: ../../build/doc/BFS-category.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/BFS-category.rst:12
+msgid "Description"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:11
@@ -227,7 +213,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:104
+#: ../../build/doc/DFS-category.rst:61
 msgid "DFS optional parameters"
 msgstr ""
 
@@ -252,11 +238,11 @@ msgstr ""
 msgid "When ``Negative`` **throws** an error."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:111
+#: ../../build/doc/DFS-category.rst:68
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:114
+#: ../../build/doc/DFS-category.rst:71
 msgid "Edges SQL"
 msgstr ""
 
@@ -336,7 +322,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:121
+#: ../../build/doc/DFS-category.rst:78
 msgid "Result Columns"
 msgstr ""
 
@@ -409,38 +395,34 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:128
+#: ../../build/doc/DFS-category.rst:85
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:130
-msgid ":doc:`spanningTree-family`"
+#: ../../build/doc/DFS-category.rst:87
+msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:131
-msgid ":doc:`kruskal-family`"
+#: ../../build/doc/DFS-category.rst:89
+msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:132
-msgid ":doc:`sampledata`"
+#: ../../build/doc/DFS-category.rst:91
+msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:133
-msgid "`Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
-msgstr ""
-
-#: ../../build/doc/pgr_kruskalDFS.rst:135
+#: ../../build/doc/DFS-category.rst:93
 msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:139
+#: ../../build/doc/DFS-category.rst:97
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:140
+#: ../../build/doc/DFS-category.rst:98
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalDFS.rst:141
+#: ../../build/doc/DFS-category.rst:99
 msgid ":ref:`search`"
 msgstr ""

@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 15:58+0000\n"
+"POT-Creation-Date: 2022-04-26 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,8 +89,8 @@ msgid "New **experimental** function"
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:44
-#: ../../build/doc/coloring-family.rst:4
-#: ../../build/doc/traversal-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/coloring-family.rst:6
 msgid "Description"
 msgstr ""
@@ -151,7 +151,7 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:77
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:80
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr ""
 
@@ -159,130 +159,122 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:4
-#: ../../build/doc/traversal-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/coloring-family.rst:6
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:6
-msgid "**Edges SQL**"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:6
-msgid "Inner query as described below."
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "`Edges SQL`_ as described below."
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:96
-msgid "Inner query"
+msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:0
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:99
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:98
-msgid "an SQL query of an **undirected** graph, which should return a set of rows with the following columns:"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/coloring-family.rst:6
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:6
-msgid "**id**"
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:6
-#: ../../build/doc/traversal-family.rst:7
-#: ../../build/doc/traversal-family.rst:8
-msgid "``ANY-INTEGER``"
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:7
-msgid "**source**"
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:8
-msgid "**target**"
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:9
-msgid "**cost**"
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``cost``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:9
-#: ../../build/doc/traversal-family.rst:12
-msgid "``ANY-NUMERICAL``"
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:9
-msgid "When positive: edge `(source, target)` exist on the graph."
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge  (``source``, ``target``)"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:10
-msgid "When negative: edge `(source, target)` does not exist on the graph."
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:12
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:12
-msgid "When positive: edge `(target, source)` exist on the graph."
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:13
-msgid "When negative: edge `(target, source)` does not exist on the graph."
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:19
-msgid "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:20
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:106

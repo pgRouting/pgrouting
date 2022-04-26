@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.2.0-dev\n"
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -17,26 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.1\n"
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:12
+#: ../../build/doc/DFS-category.rst:12
 msgid ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html>`__ (`3.3"
-" <https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__"
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/DFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-"
+"category.html>`__)"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:18
-msgid "``pgr_depthFirstSearch`` - Proposed"
+#: ../../build/doc/DFS-category.rst:17
+msgid "DFS - Category"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:20
-msgid ""
-"``pgr_depthFirstSearch`` — Returns a depth first search traversal of the "
-"graph. The graph can be directed or undirected."
+#: ../../build/doc/DFS-category.rst:19
+msgid "Traversal using Depth First Search."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:26
-msgid "Boost Graph Inside"
+#: ../../build/doc/DFS-category.rst:23
+msgid ":doc:`pgr_kruskalDFS`"
+msgstr ""
+
+#: ../../build/doc/DFS-category.rst:24
+msgid ":doc:`pgr_primDFS`"
+msgstr ""
+
+#: ../../build/doc/DFS-category.rst:30
+msgid "Proposed"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -75,119 +80,39 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:33
-msgid "Availability"
+#: ../../build/doc/DFS-category.rst:35
+msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:34
-msgid "Version 3.3.0"
+#: ../../build/doc/DFS-category.rst:40
+msgid "It's implementation is only on **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:36
-msgid "Promoted to **proposed** function"
+#: ../../build/doc/DFS-category.rst:41
+msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:38
-msgid "Version 3.2.0"
+#: ../../build/doc/DFS-category.rst:42
+msgid "When the graph is connected"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:40
-msgid "New **experimental** function"
+#: ../../build/doc/DFS-category.rst:44
+msgid "The resulting edges make up a tree"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:10 ../../build/doc/BFS-category.rst:11
-#: ../../build/doc/BFS-category.rst:12 ../../build/doc/dijkstra-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_depthFirstSearch.rst:44
-msgid "Description"
+#: ../../build/doc/DFS-category.rst:46
+msgid "When the graph is not connected,"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:46
-msgid ""
-"Depth First Search algorithm is a traversal algorithm which starts from a"
-" root vertex, goes as deep as possible, and backtracks once a vertex is "
-"reached with no adjacent vertices or with all visited adjacent vertices. "
-"The traversal continues until all the vertices reachable from the root "
-"vertex are visited."
+#: ../../build/doc/DFS-category.rst:48
+msgid "Finds a minimum spanning tree for each connected component."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:51
-msgid "**The main Characteristics are:**"
+#: ../../build/doc/DFS-category.rst:49
+msgid "The resulting edges make up a forest."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:53
-msgid "The implementation works for both **directed** and **undirected** graphs."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:54
-msgid ""
-"Provides the Depth First Search traversal order from a root vertex or "
-"from a set of root vertices."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:56
-msgid ""
-"An optional non-negative maximum depth parameter to limit the results up "
-"to a particular depth."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:58
-msgid ""
-"For optimization purposes, any duplicated values in the `Root vids` are "
-"ignored."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:60
-msgid ""
-"It does not produce the shortest path from a root vertex to a target "
-"vertex."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:61
-msgid "The aggregate cost of traversal is not guaranteed to be minimal."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:62
-msgid "The returned values are ordered in ascending order of `start_vid`."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:63
-msgid "Depth First Search Running time: :math:`O(E + V)`"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:66
-msgid "Signatures"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:69
-msgid "Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:80
-msgid "Single vertex"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst
-msgid "Example"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:87
-msgid ""
-"From root vertex :math:`2` on an **undirected** graph, with **depth** "
-":math:`<= 2`"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:98
-msgid "Multiple vertices"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:105
-msgid ""
-"From root vertices :math:`\\{11, 2\\}` on an **undirected** graph with "
-"**depth** :math:`<= 2` and edges in ascending order"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:113
+#: ../../build/doc/DFS-category.rst:54
 msgid "Parameters"
 msgstr ""
 
@@ -196,9 +121,14 @@ msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:9 ../../build/doc/BFS-category.rst:11
-#: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:10 ../../build/doc/BFS-category.rst:11
+#: ../../build/doc/BFS-category.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Description"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:11
@@ -275,40 +205,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:120
-msgid "Optional parameters"
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Column"
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:10
-msgid "default"
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:12
-msgid "``directed``"
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:13
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:14
-msgid "``true``"
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:15
-msgid "When ``true`` the graph is considered `Directed`"
-msgstr ""
-
-#: ../../build/doc/dijkstra-family.rst:16
-msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:127
+#: ../../build/doc/DFS-category.rst:61
 msgid "DFS optional parameters"
 msgstr ""
 
@@ -333,12 +230,16 @@ msgstr ""
 msgid "When ``Negative`` **throws** an error."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:134
+#: ../../build/doc/DFS-category.rst:68
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:137
+#: ../../build/doc/DFS-category.rst:71
 msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -415,7 +316,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:144
+#: ../../build/doc/DFS-category.rst:78
 msgid "Result Columns"
 msgstr ""
 
@@ -487,75 +388,44 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:151
-msgid "Additional Examples"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:153
-msgid "Same as `Single vertex`_ but with edges in descending order."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:159
-msgid "The resulting traversal is different."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:161
-msgid ""
-"The left image shows the result with ascending order of ids and the right"
-" image shows with descending order of the edge identifiers."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:164
-msgid "|ascending| |descending|"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:166
-msgid "ascending"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:169
-msgid "descending"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:173
+#: ../../build/doc/DFS-category.rst:85
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:175
-msgid ":doc:`DFS-category`"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:176
-msgid ":doc:`sampledata`"
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:177
+#: ../../build/doc/DFS-category.rst:87
 msgid ""
-"`Boost: Depth First Search algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
+"`Boost: Prim's algorithm "
+"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:179
+#: ../../build/doc/DFS-category.rst:89
 msgid ""
-"`Boost: Undirected DFS algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__"
+"`Boost: Kruskal's algorithm "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:181
+#: ../../build/doc/DFS-category.rst:91
+#, python-format
 msgid ""
-"`Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki"
-"/Depth-first_search>`__"
+"`Wikipedia: Prim's algorithm "
+"<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:185
+#: ../../build/doc/DFS-category.rst:93
+msgid ""
+"`Wikipedia: Kruskal's algorithm "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+msgstr ""
+
+#: ../../build/doc/DFS-category.rst:97
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:186
+#: ../../build/doc/DFS-category.rst:98
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:187
+#: ../../build/doc/DFS-category.rst:99
 msgid ":ref:`search`"
 msgstr ""
 
