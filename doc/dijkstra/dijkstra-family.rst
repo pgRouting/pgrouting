@@ -79,6 +79,7 @@ This implementation can be used with a directed graph and an undirected graph.
 The main characteristics are:
 
 .. dijkstra_details_start
+
 - Process is done only on edges with positive costs.
 
   - A negative value on a cost column is interpreted as the edge does not exist.
