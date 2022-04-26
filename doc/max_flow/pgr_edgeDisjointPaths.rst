@@ -193,21 +193,28 @@ Combinations
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: pgr_bdDijkstra.rst
-    :start-after: bdDijkstra_parameters_start
-    :end-before: bdDijkstra_parameters_end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 Inner queries
 -------------------------------------------------------------------------------
 
-Edges query
+Edges SQL
 ...............................................................................
 
 .. include::  pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Combinations query
+Combinations SQL
 ...............................................................................
 
 .. include:: flow-family.rst
