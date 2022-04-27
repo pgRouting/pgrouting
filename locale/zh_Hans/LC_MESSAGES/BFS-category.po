@@ -1,0 +1,384 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/BFS-category.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/BFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/BFS-category.html>`__)"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:17
+msgid "BFS - Category"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:21
+msgid ":doc:`pgr_kruskalBFS`"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:22
+msgid ":doc:`pgr_primBFS`"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:26
+msgid "Traversal using breadth first search."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:30
+msgid "It's implementation is only on **undirected** graph."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:31
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:32
+msgid "When the graph is connected"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:34
+msgid "The resulting edges make up a tree"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:36
+msgid "When the graph is not connected,"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:38
+msgid "Finds a minimum spanning tree for each connected component."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:39
+msgid "The resulting edges make up a forest."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:44
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:53
+#: ../../build/doc/BFS-category.rst:90
+#: ../../build/doc/BFS-category.rst:125
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:54
+#: ../../build/doc/BFS-category.rst:91
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/BFS-category.rst:126
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:55
+#: ../../build/doc/BFS-category.rst:93
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/BFS-category.rst:127
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:56
+msgid "`Edges SQL`_"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:57
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:58
+msgid "`Edges SQL`_ as described below."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:59
+msgid "**Root vid**"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:60
+#: ../../build/doc/BFS-category.rst:95
+#: ../../build/doc/BFS-category.rst:129
+#: ../../build/doc/BFS-category.rst:132
+#: ../../build/doc/BFS-category.rst:138
+#: ../../build/doc/BFS-category.rst:142
+#: ../../build/doc/BFS-category.rst:145
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:61
+msgid "Identifier of the root vertex of the tree."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:63
+msgid "When value is :math:`0` then gets the spanning forest starting in aleatory nodes for each tree in the forest."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:66
+msgid "**Root vids**"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:67
+msgid "``ARRAY[ANY-INTEGER]``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:68
+msgid "Array of identifiers of the root vertices."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:70
+msgid ":math:`0` values are ignored"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:71
+msgid "For optimization purposes, any duplicated value is ignored."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:73
+#: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/BFS-category.rst:157
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/BFS-category.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:75
+#: ../../build/doc/BFS-category.rst:159
+msgid "SMALLINT, INTEGER, BIGINT"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:0
+#: ../../build/doc/BFS-category.rst:0
+msgid "ANY-NUMERIC"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:76
+#: ../../build/doc/BFS-category.rst:160
+msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:81
+msgid "BFS optional parameters"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:92
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:94
+msgid "**max_depth**"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:96
+msgid ":math:`9223372036854775807`"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:97
+msgid "Upper limit of the depth of the tree."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:99
+msgid "When ``Negative`` **throws** an error."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:104
+msgid "Inner queries"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:107
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/BFS-category.rst:150
+msgid "``cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:114
+msgid "Result Columns"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:118
+msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:128
+msgid "``seq``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:130
+msgid "Sequential value starting from :math:`1`."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:131
+msgid "``depth``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:133
+msgid "Depth of the ``node``."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:135
+msgid ":math:`0`  when ``node`` = ``start_vid``."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:137
+msgid "``start_vid``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:139
+msgid "Identifier of the root vertex."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:141
+msgid "``node``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:143
+msgid "Identifier of ``node`` reached using ``edge``."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:144
+msgid "``edge``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:146
+msgid "Identifier of the ``edge`` used to arrive to ``node``."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:148
+msgid ":math:`-1`  when ``node`` = ``start_vid``."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:151
+#: ../../build/doc/BFS-category.rst:154
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:152
+msgid "Cost to traverse ``edge``."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:153
+msgid "``agg_cost``"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:155
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:165
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:167
+msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:169
+msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:171
+msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:173
+msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:177
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:178
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/BFS-category.rst:179
+msgid ":ref:`search`"
+msgstr ""
