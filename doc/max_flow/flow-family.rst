@@ -158,17 +158,12 @@ Where:
 
 For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :doc:`pgr_edgeDisjointPaths <pgr_edgeDisjointPaths>`, :doc:`pgr_maxFlowMinCost <pgr_maxFlowMinCost>` and :doc:`pgr_maxFlowMinCost_Cost <pgr_maxFlowMinCost_Cost>` :
 
-.. flow_combinations_sql_start
-
-:Combinations SQL: an SQL query which should return a set of rows with the following columns:
+Combinations SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
-
-The function aggregates the sources and the targets, removes the duplicates, and then it calculates the result from the resultant source vertices to the target vertices.
-
-.. flow_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

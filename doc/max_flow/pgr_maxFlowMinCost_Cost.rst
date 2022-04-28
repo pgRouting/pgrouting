@@ -175,9 +175,12 @@ Inner queries
     :start-after: costFlow_edges_sql_start
     :end-before: costFlow_edges_sql_end
 
-.. include:: flow-family.rst
-    :start-after: flow_combinations_sql_start
-    :end-before: flow_combinations_sql_end
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
