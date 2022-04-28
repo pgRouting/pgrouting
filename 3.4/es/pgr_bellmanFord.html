@@ -282,7 +282,7 @@ OR EMPTY SET</pre>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="p">);</span>
@@ -309,7 +309,7 @@ OR EMPTY SET</pre>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
@@ -334,7 +334,7 @@ OR EMPTY SET</pre>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
@@ -361,7 +361,7 @@ OR EMPTY SET</pre>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="mi">5</span>
 <span class="p">);</span>
@@ -391,7 +391,7 @@ OR EMPTY SET</pre>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">);</span>
@@ -445,11 +445,11 @@ OR EMPTY SET</pre>
 </div>
 <p>The query:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
     <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="s1">&#39;SELECT * FROM combinations_table&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
