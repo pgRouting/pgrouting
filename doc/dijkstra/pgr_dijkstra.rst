@@ -104,11 +104,11 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
+:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q2
-   :end-before: -- q3
+    :start-after: -- q2
+    :end-before: -- q3
 
 .. index::
     single: dijkstra(One to Many)
@@ -123,7 +123,7 @@ One to many
     RETURNS SET OF (seq, path_seq, end vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q3
@@ -141,7 +141,8 @@ Many to One
     RETURNS SET OF (seq, path_seq, start vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
+:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
+          graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q4
@@ -159,11 +160,12 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q5
-   :end-before: -- q6
+   :end-before: -- q51
 
 .. index::
     single: dijkstra(Combinations) - Proposed on v3.1
@@ -179,9 +181,17 @@ Combinations
 
 :Example: Using a combinations table on an **undirected** graph
 
+The combinations table:
+
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q6
-   :end-before: -- q61
+    :start-after: -- q51
+    :end-before: -- q52
+
+The query:
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+    :start-after: -- q52
+    :end-before: -- q6
 
 
 Parameters
@@ -219,12 +229,30 @@ Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
-
+    :start-after: return_path_short_start
+    :end-before: return_path_short_end
 
 Additional Examples
 -------------------------------------------------------------------------------
+
+:Example: Demonstration of repeated values are ignored, and result is sorted.
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+    :start-after: -- q6
+    :end-before: -- q7
+
+:Example: Making ``start_vids`` the same as ``end_vids``.
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+    :start-after: -- q7
+    :end-before: -- q8
+
+:Example: Manually assigned vertex combinations.
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+    :start-after: -- q8
+    :end-before: -- q9
+
 
 The examples of this section are based on the :doc:`sampledata` network.
 
@@ -242,7 +270,7 @@ For **directed** graphs with ``cost`` and ``reverse_cost`` columns
 :Example 1: Path from :math:`2` to :math:`3`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q7
+   :start-after: -- q70
    :end-before: -- q71
 
 :Example 2: Path from :math:`2` to :math:`5`
@@ -293,7 +321,7 @@ Paths :math:`\{2\}\rightarrow\{3, 5\}\cup\{11\}\rightarrow\{3\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q77
-   :end-before: -- q8
+   :end-before: -- q80
 
 For **undirected** graphs with ``cost`` and ``reverse_cost`` columns
 ...............................................................................
@@ -306,7 +334,7 @@ For **undirected** graphs with ``cost`` and ``reverse_cost`` columns
 :Example 9: Path from :math:`2` to :math:`3`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q9
+   :start-after: -- q90
    :end-before: -- q91
 
 :Example 10: Path from :math:`2` to :math:`5`

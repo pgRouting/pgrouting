@@ -29,6 +29,7 @@ Cost Matrix - Category
 * :doc:`pgr_bdAstarCostMatrix`
 * :doc:`pgr_bdDijkstraCostMatrix`
 * :doc:`pgr_dijkstraCostMatrix`
+* :doc:`pgr_bdDijkstraCostMatrix`
 
 .. index to here
 

@@ -5,10 +5,10 @@ SET
 /* -- q2 */
 SELECT * FROM pgr_dijkstraCost(
   'select id, source, target, cost, reverse_cost from edge_table',
-  2, 12, true);
+  2, 3, true);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |      12 |        4
+         2 |       3 |        5
 (1 row)
 
 /* -- q3 */
@@ -34,12 +34,13 @@ SELECT * FROM pgr_dijkstraCost(
 /* -- q5 */
 SELECT * FROM pgr_dijkstraCost(
   'select id, source, target, cost, reverse_cost from edge_table',
-  ARRAY[2, 7], ARRAY[3, 12]);
+  ARRAY[2, 7], ARRAY[3, 12],
+  directed => false);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
+         2 |       3 |        1
          2 |      12 |        4
-         7 |       3 |        6
+         7 |       3 |        4
          7 |      12 |        5
 (4 rows)
 

@@ -23,7 +23,7 @@
   `2.3 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost>`__
 
 
-pgr_dijkstraCost
+``pgr_dijkstraCost``
 ===============================================================================
 
 ``pgr_dijkstraCost`` - Total cost of the shortest path(s) using Dijkstra algorithm.
@@ -39,7 +39,7 @@ pgr_dijkstraCost
 
   * New **proposed** signature:
 
-    * ``pgr_dijkstra`` (`Combinations`_)
+    * ``pgr_dijkstraCost`` (`Combinations`_)
 
 * Version 2.2.0
 
@@ -60,22 +60,9 @@ using Dijkstra Algorithm.
     :start-after: dijkstra_details_start
     :end-before: dijkstra_details_end
 
-- It does not return a path.
-- Returns the sum of the costs of the shortest path of each pair combination of
-  nodes requested.
-- Let be the case the values returned are stored in a table, so the unique index
-  would be the pair: `(start_vid, end_vid)`
-
-- For undirected graphs, the results are symmetric.
-
-  - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
-
-- The returned values are ordered in ascending order:
-
-  - `start_vid` ascending
-  - `end_vid` ascending
-
-- Running time: :math:`O(| start\_vids | * (V \log V + E))`
+.. include:: cost-category.rst
+    :start-after: cost_traits_start
+    :end-before: cost_traits_end
 
 Signatures
 -------------------------------------------------------------------------------
@@ -84,16 +71,16 @@ Signatures
 
 .. parsed-literal::
 
-  pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-  pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids** [, directed])
-  pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-  pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids** [, directed])
-  pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_ [, directed])
-  RETURNS SET OF (start_vid, end_vid, agg_cost)
-  OR EMPTY SET
+    pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vid**  [, directed])
+    pgr_dijkstraCost(`Edges SQL`_, **start vid**, **end vids** [, directed])
+    pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vid**  [, directed])
+    pgr_dijkstraCost(`Edges SQL`_, **start vids**, **end vids** [, directed])
+    pgr_dijkstraCost(`Edges SQL`_, `Combinations SQL`_ [, directed])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
 
 .. index::
-	single: dijkstraCost(One to One)
+    single: dijkstraCost(One to One)
 
 One to One
 ...............................................................................
@@ -104,7 +91,7 @@ One to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
+:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: -- q2
@@ -126,11 +113,11 @@ One to Many
           graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q3
-   :end-before: -- q4
+    :start-after: -- q3
+    :end-before: -- q4
 
 .. index::
-	single: dijkstraCost(Many to One)
+    single: dijkstraCost(Many to One)
 
 Many to One
 ...............................................................................
@@ -149,7 +136,7 @@ Many to One
     :end-before: -- q5
 
 .. index::
-	single: dijkstraCost(Many to Many)
+    single: dijkstraCost(Many to Many)
 
 Many to Many
 ...............................................................................
@@ -160,12 +147,12 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on a
-          **directed** graph
+:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q5
-   :end-before: -- q51
+    :start-after: -- q5
+    :end-before: -- q51
 
 .. index::
     single: dijkstraCost(Combinations) - Proposed on v3.1
@@ -184,14 +171,14 @@ Combinations
 The combinations table:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q51
-   :end-before: -- q52
+    :start-after: -- q51
+    :end-before: -- q52
 
 The query:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q52
-   :end-before: -- q6
+    :start-after: -- q52
+    :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -249,14 +236,15 @@ Additional Examples
 :Example 3: Manually assigned vertex combinations.
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
-   :start-after: -- q8
-   :end-before: -- q9
+    :start-after: -- q8
+    :end-before: -- q9
 
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`dijkstra-family`
+* :doc:`sampledata`
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-* :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

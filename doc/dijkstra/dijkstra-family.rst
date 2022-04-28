@@ -76,9 +76,9 @@ This implementation can be used with a directed graph and an undirected graph.
 
 .. dijkstra_description_end
 
-.. dijkstra_details_start
-
 The main characteristics are:
+
+.. dijkstra_details_start
 
 - Process is done only on edges with positive costs.
 
@@ -87,9 +87,10 @@ The main characteristics are:
 - Values are returned when there is a path.
 - When there is no path:
 
-  - When the starting vertex and ending vertex :are the same.
+  - When the starting vertex and ending vertex are the same.
 
-    - The **aggregate cost** the non included values :math:`(v, v)` is :math:`0`
+    - The **aggregate cost** of the non included values :math:`(v, v)` is
+      :math:`0`
 
   - When the starting vertex and ending vertex are the different and there is
     no path:
@@ -99,6 +100,8 @@ The main characteristics are:
 
 - For optimization purposes, any duplicated value in the starting vertices or on
   the ending vertices are ignored.
+
+- Running time: :math:`O(| start\ vids | * (V \log V + E))`
 
 .. dijkstra_details_end
 
