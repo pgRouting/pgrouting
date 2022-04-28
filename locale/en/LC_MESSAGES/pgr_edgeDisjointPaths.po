@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 05:06+0000\n"
+"POT-Creation-Date: 2022-04-28 01:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.1\n"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:12
 msgid ""
@@ -90,10 +90,11 @@ msgstr ""
 msgid "New **Experimental** function"
 msgstr ""
 
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgr_bdDijkstra.rst:4
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:57
 msgid "Description"
 msgstr ""
@@ -203,117 +204,123 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
+#: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_bdDijkstra.rst:4
-msgid "Parameter"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Column"
 msgstr ""
 
+#: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgr_bdDijkstra.rst:4
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgr_bdDijkstra.rst:4
-msgid "Default"
+#: ../../build/doc/dijkstra-family.rst:11
+msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:6
-msgid "**Edges SQL**"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:6 ../../build/doc/pgr_bdDijkstra.rst:7
+#: ../../build/doc/dijkstra-family.rst:12
+#: ../../build/doc/dijkstra-family.rst:15
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:6
-msgid "`Edges query` as described below"
+#: ../../build/doc/dijkstra-family.rst:13
+msgid "`Edges SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:7
-msgid "**Combinations SQL**"
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "`Combinations SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:7
-msgid "`Combinations query` as described below"
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "`Combinations SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:8
-msgid "**start_vid**"
+#: ../../build/doc/dijkstra-family.rst:17
+msgid "**start vid**"
 msgstr ""
 
+#: ../../build/doc/dijkstra-family.rst:18
+#: ../../build/doc/dijkstra-family.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:26
 #: ../../build/doc/pgRouting-concepts.rst:33
 #: ../../build/doc/pgRouting-concepts.rst:40
 #: ../../build/doc/pgRouting-concepts.rst:43
-#: ../../build/doc/pgr_bdDijkstra.rst:8 ../../build/doc/pgr_bdDijkstra.rst:10
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:8
+#: ../../build/doc/dijkstra-family.rst:19
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:9
-msgid "**start_vids**"
+#: ../../build/doc/dijkstra-family.rst:20
+msgid "**start vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:9 ../../build/doc/pgr_bdDijkstra.rst:11
+#: ../../build/doc/dijkstra-family.rst:21
+#: ../../build/doc/dijkstra-family.rst:27
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:9
+#: ../../build/doc/dijkstra-family.rst:22
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:10
-msgid "**end_vid**"
+#: ../../build/doc/dijkstra-family.rst:23
+msgid "**end vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:10
+#: ../../build/doc/dijkstra-family.rst:25
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:11
-msgid "**end_vids**"
+#: ../../build/doc/dijkstra-family.rst:26
+msgid "**end vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:11
+#: ../../build/doc/dijkstra-family.rst:28
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:12
-msgid "**directed**"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:201
+msgid "Optional parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:12
+#: ../../build/doc/dijkstra-family.rst:10
+msgid "default"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:12
+msgid "``directed``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:13
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:12
+#: ../../build/doc/dijkstra-family.rst:14
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:12
-msgid "When ``true`` Graph is considered `Directed`"
+#: ../../build/doc/dijkstra-family.rst:15
+msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:13
+#: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:201
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:208
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:204
-msgid "Edges query"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:211
+msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid "Column"
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -404,16 +411,17 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:211
-msgid "Combinations query"
-msgstr ""
-
 #: ../../build/doc/flow-family.rst
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:218
 msgid "Combinations SQL"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:3
 msgid "an SQL query which should return a set of rows with the following columns:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -431,7 +439,7 @@ msgid ""
 "vertices to the target vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:218
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:225
 msgid "Return Columns"
 msgstr ""
 
@@ -547,23 +555,23 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:225
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:232
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:227
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:234
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:230
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:237
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:231
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:238
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:232
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:239
 msgid ":ref:`search`"
 msgstr ""
 

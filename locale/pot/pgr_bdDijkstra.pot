@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 05:06+0000\n"
+"POT-Creation-Date: 2022-04-28 01:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bdD
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:28
-msgid "pgr_bdDijkstra"
+msgid "``pgr_bdDijkstra``"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:30
@@ -45,11 +45,11 @@ msgid "Version 3.2.0"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:41
-msgid "New **proposed** function:"
+msgid "New **proposed** signature:"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:43
-msgid "pgr_bdDijkstra(Combinations)"
+msgid "pgr_bdDijkstra(`Combinations`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:45
@@ -69,15 +69,15 @@ msgid "New **Proposed** functions:"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:53
-msgid "pgr_bdDijkstra(One to Many)"
+msgid "``pgr_bdDijkstra`` (`One to Many`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:54
-msgid "pgr_bdDijkstra(Many to One)"
+msgid "``pgr_bdDijkstra`` (`Many to One`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:55
-msgid "pgr_bdDijkstra(Many to Many)"
+msgid "``pgr_bdDijkstra`` (`Many to Many`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:57
@@ -85,7 +85,7 @@ msgid "Version 2.4.0"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:59
-msgid "Signature change on pgr_bdDijsktra(One to One)"
+msgid "Signature change on ``pgr_bdDijsktra`` (`One to One`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:61
@@ -97,11 +97,12 @@ msgid "Version 2.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:65
-msgid "**Official** pgr_bdDijkstra(One to One)"
+msgid "**Official** ``pgr_bdDijkstra`` (`One to One`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:69
-#: ../../build/doc/pgr_bdDijkstra.rst:203
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -116,35 +117,47 @@ msgstr ""
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:4
+#: ../../build/doc/bdDijkstra-family.rst:5
+msgid "A negative value on a cost column is interpreted as the edge does not exist."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:7
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:6
-msgid "When the starting vertex and ending vertex are the same, there is no path."
-msgstr ""
-
 #: ../../build/doc/bdDijkstra-family.rst:8
-msgid "The `agg_cost` the non included values `(v, v)` is `0`"
+msgid "When there is no path:"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:10
-msgid "When the starting vertex and ending vertex are the different and there is no path:"
+msgid "When the starting vertex and ending vertex are the same."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:12
-msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
-msgstr ""
-
-#: ../../build/doc/bdDijkstra-family.rst:14
-msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+msgid "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:15
+msgid "When the starting vertex and ending vertex are the different and there is no path:"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:18
+msgid "The **aggregate cost** the non included values :math:`(u, v)` is :math:`\\infty`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:21
+msgid "For optimization purposes, any duplicated value in the starting vertices or on the ending vertices are ignored."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:23
+msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:24
 msgid "For large graphs where there is a path bewtween the starting vertex and ending vertex:"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:17
+#: ../../build/doc/bdDijkstra-family.rst:27
 msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr ""
 
@@ -156,11 +169,10 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:94
-msgid "Using defaults"
+#: ../../build/doc/pgr_bdDijkstra.rst:96
+msgid "One to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:0
 #: ../../build/doc/pgr_bdDijkstra.rst:0
 #: ../../build/doc/pgr_bdDijkstra.rst:0
 #: ../../build/doc/pgr_bdDijkstra.rst:0
@@ -169,169 +181,174 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:101
-msgid "From vertex :math:`2` to vertex  :math:`3`"
+#: ../../build/doc/pgr_bdDijkstra.rst:104
+msgid "From vertex :math:`2` to vertex  :math:`3` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:111
-msgid "One to One"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:119
-msgid "From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:129
+#: ../../build/doc/pgr_bdDijkstra.rst:114
 msgid "One to many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:137
-msgid "From vertex :math:`2` to vertices :math:`\\{3, 11\\}` on a **directed** graph"
+#: ../../build/doc/pgr_bdDijkstra.rst:122
+msgid "From vertex :math:`2` to vertices :math:`\\{3, 12\\}` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:147
+#: ../../build/doc/pgr_bdDijkstra.rst:133
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:155
-msgid "From vertices :math:`\\{2, 7\\}` to vertex :math:`3` on a **directed** graph"
+#: ../../build/doc/pgr_bdDijkstra.rst:141
+msgid "From vertices :math:`\\{2, 7\\}` to vertex :math:`12` on a **directed** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:165
+#: ../../build/doc/pgr_bdDijkstra.rst:152
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:173
-msgid "From vertices :math:`\\{2, 7\\}` to vertices :math:`\\{3, 11\\}` on a **directed** graph"
+#: ../../build/doc/pgr_bdDijkstra.rst:160
+msgid "From vertices :math:`\\{2, 7\\}` to vertices :math:`\\{3, 12\\}` on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:183
+#: ../../build/doc/pgr_bdDijkstra.rst:171
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:191
-msgid "Using a combinations table on a **directed** graph."
+#: ../../build/doc/pgr_bdDijkstra.rst:179
+msgid "Using a combinations table on an **undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:198
+#: ../../build/doc/pgr_bdDijkstra.rst:181
+msgid "The combinations table:"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:187
+msgid "The query:"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:194
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:203
+#: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Parameter"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:203
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:203
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "Default"
+#: ../../build/doc/dijkstra-family.rst:11
+msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:205
-msgid "**Edges SQL**"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstra.rst:205
-#: ../../build/doc/pgr_bdDijkstra.rst:206
+#: ../../build/doc/dijkstra-family.rst:12
+#: ../../build/doc/dijkstra-family.rst:15
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:205
-msgid "`Edges query` as described below"
+#: ../../build/doc/dijkstra-family.rst:13
+msgid "`Edges SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:206
-msgid "**Combinations SQL**"
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "`Combinations SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:206
-msgid "`Combinations query` as described below"
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "`Combinations SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:207
-msgid "**start_vid**"
+#: ../../build/doc/dijkstra-family.rst:17
+msgid "**start vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:207
-#: ../../build/doc/pgr_bdDijkstra.rst:209
-#: ../../build/doc/pgRouting-concepts.rst:26
-#: ../../build/doc/pgRouting-concepts.rst:33
-#: ../../build/doc/pgRouting-concepts.rst:40
-#: ../../build/doc/pgRouting-concepts.rst:43
+#: ../../build/doc/dijkstra-family.rst:18
+#: ../../build/doc/dijkstra-family.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:35
+#: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:207
+#: ../../build/doc/dijkstra-family.rst:19
 msgid "Identifier of the starting vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:208
-msgid "**start_vids**"
+#: ../../build/doc/dijkstra-family.rst:20
+msgid "**start vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:208
-#: ../../build/doc/pgr_bdDijkstra.rst:210
+#: ../../build/doc/dijkstra-family.rst:21
+#: ../../build/doc/dijkstra-family.rst:27
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:208
+#: ../../build/doc/dijkstra-family.rst:22
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:209
-msgid "**end_vid**"
+#: ../../build/doc/dijkstra-family.rst:23
+msgid "**end vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:209
+#: ../../build/doc/dijkstra-family.rst:25
 msgid "Identifier of the ending vertex of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:210
-msgid "**end_vids**"
+#: ../../build/doc/dijkstra-family.rst:26
+msgid "**end vids**"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:210
+#: ../../build/doc/dijkstra-family.rst:28
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:211
-msgid "**directed**"
+#: ../../build/doc/pgr_bdDijkstra.rst:201
+msgid "Optional parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:211
+#: ../../build/doc/dijkstra-family.rst:10
+msgid "default"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:12
+msgid "``directed``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:13
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:211
+#: ../../build/doc/dijkstra-family.rst:14
 msgid "``true``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:211
-msgid "When ``true`` Graph is considered `Directed`"
+#: ../../build/doc/dijkstra-family.rst:15
+msgid "When ``true`` the graph is considered `Directed`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:212
+#: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:218
+#: ../../build/doc/pgr_bdDijkstra.rst:208
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:221
-msgid "Edges query"
+#: ../../build/doc/pgr_bdDijkstra.rst:211
+msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid "Column"
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -369,7 +386,7 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:46
+#: ../../build/doc/pgRouting-concepts.rst:41
 msgid "``cost``"
 msgstr ""
 
@@ -421,8 +438,12 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:228
-msgid "Combinations query"
+#: ../../build/doc/pgr_bdDijkstra.rst:218
+msgid "Combinations SQL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -433,12 +454,12 @@ msgstr ""
 msgid "Identifier of the arrival vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:235
-msgid "Result Columns"
+#: ../../build/doc/pgr_bdDijkstra.rst:225
+msgid "Return Columns"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:3
-msgid "Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``"
+msgid "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
@@ -447,7 +468,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "``INTEGER``"
 msgstr ""
 
@@ -456,115 +476,131 @@ msgid "Sequential value starting from **1**."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
-msgid "``path_id``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:19
-msgid "Path identifier."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "``path_seq``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``start_vid``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:27
+#: ../../build/doc/pgRouting-concepts.rst:22
 msgid "Identifier of the starting vertex. Returned when multiple starting vetrices are in the query."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:30
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid "`Many to One`_"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:31
-#: ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:33
 msgid "`Many to Many`_"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:32
+#: ../../build/doc/pgRouting-concepts.rst:27
 msgid "``end_vid``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:34
+#: ../../build/doc/pgRouting-concepts.rst:29
 msgid "Identifier of the ending vertex. Returned when multiple ending vertices are in the query."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:37
+#: ../../build/doc/pgRouting-concepts.rst:32
 msgid "`One to Many`_"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/pgRouting-concepts.rst:34
 msgid "``node``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:41
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:42
+#: ../../build/doc/pgRouting-concepts.rst:37
 msgid "``edge``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:44
+#: ../../build/doc/pgRouting-concepts.rst:39
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. **-1** for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:47
-#: ../../build/doc/pgRouting-concepts.rst:51
+#: ../../build/doc/pgRouting-concepts.rst:42
+#: ../../build/doc/pgRouting-concepts.rst:46
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:48
+#: ../../build/doc/pgRouting-concepts.rst:43
 msgid "Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:50
+#: ../../build/doc/pgRouting-concepts.rst:45
 msgid "``agg_cost``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:52
+#: ../../build/doc/pgRouting-concepts.rst:47
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:242
-msgid "See Also"
+#: ../../build/doc/pgr_bdDijkstra.rst:232
+msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:244
-msgid "The queries use the :doc:`sampledata` network."
+#: ../../build/doc/pgr_bdDijkstra.rst:0
+msgid "Example 1"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:245
-msgid ":doc:`bdDijkstra-family`"
+#: ../../build/doc/pgr_bdDijkstra.rst:234
+msgid "Demonstration of repeated values are ignored, and result is sorted."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:0
+msgid "Example 2"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:240
+msgid "Making ``start_vids`` the same as ``end_vids``."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:0
+msgid "Example 3"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstra.rst:246
+msgid "Manually assigned vertex combinations."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:253
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:255
+msgid ":doc:`bdDijkstra-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:256
+msgid ":doc:`sampledata`"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstra.rst:257
 msgid "https://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:247
+#: ../../build/doc/pgr_bdDijkstra.rst:258
 msgid "https://en.wikipedia.org/wiki/Bidirectional_search"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:250
+#: ../../build/doc/pgr_bdDijkstra.rst:261
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:251
+#: ../../build/doc/pgr_bdDijkstra.rst:262
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstra.rst:252
+#: ../../build/doc/pgr_bdDijkstra.rst:263
 msgid ":ref:`search`"
 msgstr ""

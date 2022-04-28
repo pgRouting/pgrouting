@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-04-28 01:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,13 +153,13 @@ msgid ""
 " paths."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:4
+#: ../../build/doc/bdDijkstra-family.rst:5
 msgid ""
 ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost "
 "of the shortest paths"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:5
+#: ../../build/doc/bdDijkstra-family.rst:7
 msgid ""
 ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to "
 "create a matrix of costs of the shortest paths."
@@ -376,7 +376,19 @@ msgid ":doc:`pgr_aStarCost`"
 msgstr ""
 
 #: ../../build/doc/cost-category.rst:4
+msgid ":doc:`pgr_bdAstarCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:5
 msgid ":doc:`pgr_dijkstraCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:6
+msgid ":doc:`pgr_bdDijkstraCost`"
+msgstr ""
+
+#: ../../build/doc/cost-category.rst:7
+msgid ":doc:`pgr_dijkstraNearCost`"
 msgstr ""
 
 #: ../../build/doc/routingFunctions.rst:89
@@ -392,6 +404,7 @@ msgid ":doc:`pgr_bdAstarCostMatrix`"
 msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:5
+#: ../../build/doc/costMatrix-category.rst:7
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
 msgstr ""
 

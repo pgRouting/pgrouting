@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 00:16+0000\n"
+"POT-Creation-Date: 2022-04-28 01:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.1\n"
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:12
 msgid ""
@@ -37,183 +37,317 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:23
-msgid "pgr_bdDijkstraCostMatrix"
+msgid "``pgr_bdDijkstraCostMatrix``"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:25
 msgid ""
-"``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using "
+"``pgr_bdDijkstraCostMatrix`` - Calculates a cost matrix using "
 ":doc:`pgr_bdDijkstra`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:31
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:32
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:34
-msgid "Availability:"
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:35
+msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:35
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:36
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:37
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:38
 msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:39
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:40
 msgid "Version 2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:41
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:42
 msgid "New **proposed** function"
 msgstr ""
 
+#: ../../build/doc/costMatrix-category.rst:10
+#: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:45
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:99
 msgid "Description"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:47
-msgid "**The main characteristics are:**"
+msgid ""
+"Using bidirectional Dijkstra algorithm, calculate and return a cost "
+"matrix."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:3
+#: ../../build/doc/costMatrix-category.rst:24
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:4
+#: ../../build/doc/bdDijkstra-family.rst:5
+msgid ""
+"A negative value on a cost column is interpreted as the edge does not "
+"exist."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:7
+#: ../../build/doc/costMatrix-category.rst:25
 msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:6
-msgid "When the starting vertex and ending vertex are the same, there is no path."
-msgstr ""
-
 #: ../../build/doc/bdDijkstra-family.rst:8
-msgid "The `agg_cost` the non included values `(v, v)` is `0`"
+msgid "When there is no path:"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:10
+msgid "When the starting vertex and ending vertex are the same."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:12
+msgid ""
+"The **aggregate cost** of the non included values :math:`(v, v)` is "
+":math:`0`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:15
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path:"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:12
-msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
+#: ../../build/doc/bdDijkstra-family.rst:18
+msgid ""
+"The **aggregate cost** the non included values :math:`(u, v)` is "
+":math:`\\infty`"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:14
+#: ../../build/doc/bdDijkstra-family.rst:21
+msgid ""
+"For optimization purposes, any duplicated value in the starting vertices "
+"or on the ending vertices are ignored."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:23
 msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:15
+#: ../../build/doc/bdDijkstra-family.rst:24
 msgid ""
 "For large graphs where there is a path bewtween the starting vertex and "
 "ending vertex:"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:17
+#: ../../build/doc/bdDijkstra-family.rst:27
 msgid "It is expected to terminate faster than pgr_dijkstra"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:53
-msgid "Returns a cost matrix."
+#: ../../build/doc/costMatrix-category.rst:3
+msgid "The main Characteristics are:"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:56
+#: ../../build/doc/costMatrix-category.rst:5
+msgid "Can be used as input to :doc:`pgr_TSP`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:7
+msgid ""
+"Use directly when the resulting matrix is symmetric and there is no "
+":math:`\\infty` value."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:9
+msgid "It will be the users responsibility to make the matrix symmetric."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:11
+msgid "By using geometric or harmonic average of the non symmetric values."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:12
+msgid "By using max or min the non symmetric values."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:13
+msgid ""
+"By setting the upper triangle to be the mirror image of the lower "
+"triangle."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:15
+msgid ""
+"By setting the lower triangle to be the mirror image of the upper "
+"triangle."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:18
+msgid "It is also the users responsibility to fix an :math:`\\infty` value."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:20
+msgid "Each function works as part of the family it belongs to."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:21
+msgid "It does not return a path."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:22
+msgid ""
+"Returns the sum of the costs of the shortest path for pair combination of"
+" nodes in the graph."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:27
+msgid "When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:29
+msgid "The aggregate cost in the non included values `(v, v)` is `0`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:31
+msgid ""
+"When the starting vertex and ending vertex are the different and there is"
+" no path."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:34
+msgid "The aggregate cost in the non included values `(u, v)` is :math:`\\infty`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:36
+msgid "Let be the case the values returned are stored in a table:"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:38
+msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:40
+msgid ""
+"Depending on the function and its parameters, the results can be "
+"symmetric."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:42
+msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:44
+msgid "Any duplicated value in the **start vids** are ignored."
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:46
+msgid "The returned values are ordered:"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:48
+msgid "``start_vid`` ascending"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:49
+msgid "``end_vid`` ascending"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:61
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:59
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:64
 msgid "Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:69
-msgid "Using default"
 msgstr ""
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:75
-msgid "Cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on a **directed** graph"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:82
-msgid "Complete Signature"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:89
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:70
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on an "
 "**undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:96
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:78
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:99
-msgid "Parameter"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:99
-msgid "Type"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:101
-msgid "**edges_sql**"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:101
-msgid "``TEXT``"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:101
-msgid "Edges SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:102
-msgid "**start_vids**"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:102
-msgid "``ARRAY[ANY-INTEGER]``"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:102
-msgid "Array of identifiers of the vertices."
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:103
-msgid "**directed**"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:103
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:103
-msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default"
-" is ``true`` which considers the graph as Directed."
-msgstr ""
-
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:107
-msgid "Inner query"
-msgstr ""
-
+#: ../../build/doc/costMatrix-category.rst:8
+#: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Column"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:9
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:11
+msgid "`Edges SQL`_"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:12
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:13
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:14
+msgid "**start vids**"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:15
+msgid "``ARRAY[BIGINT]``"
+msgstr ""
+
+#: ../../build/doc/costMatrix-category.rst:16
+msgid "Array of identifiers of starting vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:85
+msgid "Optional parameters"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:10
+msgid "default"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:12
+msgid "``directed``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:13
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "``true``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:15
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:92
+msgid "Inner queries"
+msgstr ""
+
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:95
+msgid "Edges SQL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -301,8 +435,8 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:114
-msgid "Result Columns"
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:102
+msgid "Return Columns"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:3
@@ -342,43 +476,43 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:121
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:109
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:123
-msgid "Use with tsp"
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:111
+msgid "Use with :doc:`pgr_TSP`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:130
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:118
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:132
-msgid ":doc:`pgr_bdDijkstra`"
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:120
+msgid ":doc:`bdDijkstra-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:133
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:121
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:134
-msgid ":doc:`pgr_TSP`"
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:122
+msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:135
-msgid "The queries use the :doc:`sampledata` network."
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:123
+msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:138
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:126
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:139
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:127
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:140
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:128
 msgid ":ref:`search`"
 msgstr ""
 
