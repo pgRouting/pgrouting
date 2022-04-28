@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_bellmanFord(
-    'SELECT id, source, target, cost, reverse_cost 
+    'SELECT id, source, target, cost, reverse_cost
     FROM edge_table',
     2, 3
 );
@@ -20,7 +20,7 @@ SELECT * FROM pgr_bellmanFord(
 
 /* -- q2 */
 SELECT * FROM pgr_bellmanFord(
-    'SELECT id, source, target, cost, reverse_cost 
+    'SELECT id, source, target, cost, reverse_cost
     FROM edge_table',
     2, 3,
     FALSE
@@ -33,7 +33,7 @@ SELECT * FROM pgr_bellmanFord(
 
 /* -- q3 */
 SELECT * FROM pgr_bellmanFord(
-    'SELECT id, source, target, cost, reverse_cost 
+    'SELECT id, source, target, cost, reverse_cost
     FROM edge_table',
     2, ARRAY[3,5],
     FALSE
@@ -48,7 +48,7 @@ SELECT * FROM pgr_bellmanFord(
 
 /* -- q4 */
 SELECT * FROM pgr_bellmanFord(
-    'SELECT id, source, target, cost, reverse_cost 
+    'SELECT id, source, target, cost, reverse_cost
     FROM edge_table',
     ARRAY[2,11], 5
 );
@@ -65,7 +65,7 @@ SELECT * FROM pgr_bellmanFord(
 
 /* -- q5 */
 SELECT * FROM pgr_bellmanFord(
-    'SELECT id, source, target, cost, reverse_cost 
+    'SELECT id, source, target, cost, reverse_cost
     FROM edge_table',
     ARRAY[2,11], ARRAY[3,5]
 );
@@ -104,11 +104,11 @@ SELECT * FROM combinations_table;
 
 /* -- q6 */
 SELECT * FROM pgr_bellmanFord(
-    'SELECT id, source, target, cost, reverse_cost 
+    'SELECT id, source, target, cost, reverse_cost
     FROM edge_table',
     'SELECT * FROM combinations_table'
 );
- seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost 
+ seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
    1 |        1 |         1 |       2 |    1 |    1 |    1 |        0
    2 |        2 |         1 |       2 |    2 |   -1 |    0 |        1
