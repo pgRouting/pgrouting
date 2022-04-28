@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-04-28 01:33+0000\n"
 "PO-Revision-Date: 2022-02-15 20:31+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
@@ -188,7 +188,7 @@ msgstr ""
 ":doc:`pgr_bdDijkstra` - Algoritmo Dijkstra bidireccional para las rutas más "
 "cortas."
 
-#: ../../build/doc/bdDijkstra-family.rst:4
+#: ../../build/doc/bdDijkstra-family.rst:5
 msgid ""
 ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of "
 "the shortest paths"
@@ -196,7 +196,7 @@ msgstr ""
 ":doc:`pgr_bdDijkstraCost` - Dijkstra bidireccional para calcular el costo de "
 "las rutas más cortas"
 
-#: ../../build/doc/bdDijkstra-family.rst:5
+#: ../../build/doc/bdDijkstra-family.rst:7
 msgid ""
 ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to "
 "create a matrix of costs of the shortest paths."
@@ -453,7 +453,25 @@ msgid ":doc:`pgr_aStarCost`"
 msgstr ":doc:`pgr_aStarCost`"
 
 #: ../../build/doc/cost-category.rst:4
+#, fuzzy
+#| msgid ":doc:`pgr_aStarCostMatrix`"
+msgid ":doc:`pgr_bdAstarCost`"
+msgstr ":doc:`pgr_aStarCostMatrix`"
+
+#: ../../build/doc/cost-category.rst:5
 msgid ":doc:`pgr_dijkstraCost`"
+msgstr ":doc:`pgr_dijkstraCost`"
+
+#: ../../build/doc/cost-category.rst:6
+#, fuzzy
+#| msgid ":doc:`pgr_dijkstraCost`"
+msgid ":doc:`pgr_bdDijkstraCost`"
+msgstr ":doc:`pgr_dijkstraCost`"
+
+#: ../../build/doc/cost-category.rst:7
+#, fuzzy
+#| msgid ":doc:`pgr_dijkstraCost`"
+msgid ":doc:`pgr_dijkstraNearCost`"
 msgstr ":doc:`pgr_dijkstraCost`"
 
 #: ../../build/doc/routingFunctions.rst:89
@@ -471,6 +489,7 @@ msgid ":doc:`pgr_bdAstarCostMatrix`"
 msgstr ":doc:`pgr_aStarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:5
+#: ../../build/doc/costMatrix-category.rst:7
 #, fuzzy
 #| msgid ":doc:`pgr_dijkstraCostMatrix`"
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
