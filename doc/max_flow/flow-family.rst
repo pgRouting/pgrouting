@@ -113,33 +113,19 @@ Column                Type               Default     Description
 Inner queries
 -------------------------------------------------------------------------------
 
-.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
+Edges SQL
+...............................................................................
 
-.. flow_edges_sql_start
+.. rubric:: Edges SQL for
 
-:Edges SQL: an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:
+* :doc:`pgr_pushRelabel`
+* :doc:`pgr_edmondsKarp`
+* :doc:`pgr_boykovKolmogorov`
 
-==================== =================== ======== =================================================
-Column               Type                Default  Description
-==================== =================== ======== =================================================
-**id**               ``ANY-INTEGER``              Identifier of the edge.
-**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**capacity**         ``ANY-INTEGER``              Weight of the edge  `(source, target)`
+.. include:: pgRouting-concepts.rst
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
 
-                                                  - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_capacity** ``ANY-INTEGER``       -1     Weight of the edge `(target, source)`,
-
-                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-==================== =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-
-.. flow_edges_sql_end
 
 For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:
 
