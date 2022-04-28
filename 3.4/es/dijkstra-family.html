@@ -216,9 +216,10 @@ This implementation can be used with a directed graph and an undirected graph.</
 <li><p>Values are returned when there is a path.</p></li>
 <li><p>When there is no path:</p>
 <ul>
-<li><p>When the starting vertex and ending vertex :are the same.</p>
+<li><p>When the starting vertex and ending vertex are the same.</p>
 <ul>
-<li><p>The <strong>aggregate cost</strong> the non included values <span class="math notranslate nohighlight">\((v, v)\)</span> is <span class="math notranslate nohighlight">\(0\)</span></p></li>
+<li><p>The <strong>aggregate cost</strong> of the non included values <span class="math notranslate nohighlight">\((v, v)\)</span> is
+<span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
 <li><p>When the starting vertex and ending vertex are the different and there is
@@ -232,6 +233,7 @@ no path:</p>
 </li>
 <li><p>For optimization purposes, any duplicated value in the starting vertices or on
 the ending vertices are ignored.</p></li>
+<li><p>Running time: <span class="math notranslate nohighlight">\(O(| start\ vids | * (V \log V + E))\)</span></p></li>
 </ul>
 <p>The Dijkstra family functions are based on the Dijkstra algorithm.</p>
 </section>
@@ -510,7 +512,7 @@ of nodes  and of edges,</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr 26, 2022.<br/>
+      Actualizado por última vez en abr 28, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

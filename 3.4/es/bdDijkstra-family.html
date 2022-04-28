@@ -164,24 +164,40 @@
 </div>
 <section id="synopsis">
 <h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Basada en el algoritmo  Dijkstra, la búsqueda bidireccional encuentra una ruta más corta: de un vértice inicial (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) a un vértice final (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>). Ejecuta dos búsquedas simultáneas: una adelante de la fuente y uno hacia atrás del objetivo, deteniéndose cuando los dos se encuentran en el medio. Esta implementación puede utilizarse con un gráfico dirigido y uno no dirigido.</p>
+<p>Based on Dijkstra’s algorithm, the bidirectional search finds a shortest path
+a starting vertex to an ending vertex.</p>
+<p>It runs two simultaneous searches: one forward from the source, and one backward
+from the target, stopping when the two meet in the middle.</p>
+<p>This implementation can be used with a directed graph and an undirected graph.</p>
 </section>
 <section id="characteristics">
 <h2>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Las características principales son:</p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
-<li><p>Valores son regresados cuando hay un camino.</p></li>
-<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
+<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p>
 <ul>
-<li><p>El <cite>agg_cost</cite> de los valores no incluídos <cite>(v, v)</cite> es <cite>0</cite></p></li>
+<li><p>A negative value on a cost column is interpreted as the edge does not exist.</p></li>
+</ul>
+</li>
+<li><p>Valores son regresados cuando hay un camino.</p></li>
+<li><p>When there is no path:</p>
+<ul>
+<li><p>When the starting vertex and ending vertex are the same.</p>
+<ul>
+<li><p>The <strong>aggregate cost</strong> of the non included values <span class="math notranslate nohighlight">\((v, v)\)</span> is
+<span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
 <li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
 <ul>
-<li><p>El  “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></p></li>
+<li><p>The <strong>aggregate cost</strong> the non included values <span class="math notranslate nohighlight">\((u, v)\)</span> is
+<span class="math notranslate nohighlight">\(\infty\)</span></p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>For optimization purposes, any duplicated value in the starting vertices or on
+the ending vertices are ignored.</p></li>
 <li><p>Tiempo de ejecución (peor de los casos): <span class="math notranslate nohighlight">\(O((V \log V + E))\)</span></p></li>
 <li><p>Para grandes gráficos donde hay un camino entre el vértice inicial y el vértice final:</p>
 <ul>
@@ -213,7 +229,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr 26, 2022.<br/>
+      Actualizado por última vez en abr 28, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

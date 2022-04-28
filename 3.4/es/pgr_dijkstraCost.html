@@ -98,7 +98,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_dijkstraCost</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
@@ -176,7 +176,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraCost.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraCost.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstraCost.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost">2.3</a></p></li>
 </ul>
 <section id="pgr-dijkstracost">
-<h1>pgr_dijkstraCost<a class="headerlink" href="#pgr-dijkstracost" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code><a class="headerlink" href="#pgr-dijkstracost" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> - Total cost of the shortest path(s) using Dijkstra algorithm.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -190,7 +190,7 @@
 <ul>
 <li><p>New <strong>proposed</strong> signature:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -211,7 +211,6 @@ It is a graph search algorithm that solves the shortest path problem for a graph
 with non-negative edge path costs, producing a shortest path from a starting
 vertex to an ending vertex.
 This implementation can be used with a directed graph and an undirected graph.</p>
-<p>Las principales características son:</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en las aristas con costos positivos.</p>
 <ul>
@@ -221,9 +220,10 @@ This implementation can be used with a directed graph and an undirected graph.</
 <li><p>Valores son regresados cuando hay un camino.</p></li>
 <li><p>When there is no path:</p>
 <ul>
-<li><p>When the starting vertex and ending vertex :are the same.</p>
+<li><p>When the starting vertex and ending vertex are the same.</p>
 <ul>
-<li><p>The <strong>aggregate cost</strong> the non included values <span class="math notranslate nohighlight">\((v, v)\)</span> is <span class="math notranslate nohighlight">\(0\)</span></p></li>
+<li><p>The <strong>aggregate cost</strong> of the non included values <span class="math notranslate nohighlight">\((v, v)\)</span> is
+<span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
 <li><p>When the starting vertex and ending vertex are the different and there is
@@ -237,25 +237,26 @@ no path:</p>
 </li>
 <li><p>For optimization purposes, any duplicated value in the starting vertices or on
 the ending vertices are ignored.</p></li>
+<li><p>Running time: <span class="math notranslate nohighlight">\(O(| start\ vids | * (V \log V + E))\)</span></p></li>
 </ul>
 <ul class="simple">
 <li><p>No devuelve una ruta.</p></li>
 <li><p>Returns the sum of the costs of the shortest path of each pair combination of
 nodes requested.</p></li>
 <li><p>Let be the case the values returned are stored in a table, so the unique index
-would be the pair: <cite>(start_vid, end_vid)</cite></p></li>
-<li><p>Para grafos no dirigidos, los resultados son simétricos.</p>
+would be the pair: <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>.</p></li>
+<li><p>Depending on the function and its parameters, the results can be symmetric.</p>
 <ul>
-<li><p>El  <cite>agg_cost</cite> de <cite>(u, v)</cite>  es el mismo que para <cite>(v, u)</cite>.</p></li>
+<li><p>The  <strong>aggregate cost</strong> of <span class="math notranslate nohighlight">\((u, v)\)</span> is the same as for <span class="math notranslate nohighlight">\((v, u)\)</span>.</p></li>
 </ul>
 </li>
-<li><p>The returned values are ordered in ascending order:</p>
+<li><p>Any duplicated value in the start or end vertex identifiers are ignored.</p></li>
+<li><p>Los valores regresados se ordenan:</p>
 <ul>
-<li><p><cite>start_vid</cite> ascendente</p></li>
-<li><p><cite>end_vid</cite> ascendente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascending</p></li>
 </ul>
 </li>
-<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
 </section>
 <section id="signatures">
@@ -275,15 +276,15 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(2\)</span> al vértice <span class="math notranslate nohighlight">\(3\)</span> en un grafo <strong>no dirigido</strong></p>
+<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(2\)</span> al vértice <span class="math notranslate nohighlight">\(3\)</span> en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-  <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+  <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -342,18 +343,19 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on a
-<strong>directed</strong> graph</p>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 7\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 12\}\)</span> on an
+<strong>undirected</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
   <span class="s1">&#39;select id, source, target, cost, reverse_cost from edge_table&#39;</span><span class="p">,</span>
-  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]);</span>
+  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">5</span>
+         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
          <span class="mi">2</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">4</span>
-         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">6</span>
+         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">4</span>
          <span class="mi">7</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">5</span>
 <span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
 
@@ -653,8 +655,9 @@ it’s not part of the graph.</p></li>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
+<li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
-<li><p>Red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -677,7 +680,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr 26, 2022.<br/>
+      Actualizado por última vez en abr 28, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

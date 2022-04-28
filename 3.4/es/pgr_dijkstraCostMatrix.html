@@ -98,14 +98,14 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_dijkstraCostMatrix</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCostMatrix</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 </ul>
 </li>
@@ -163,9 +163,8 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraCostMatrix.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraCostMatrix.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html">2.3</a></p></li>
 </ul>
 <section id="pgr-dijkstracostmatrix">
-<h1>pgr_dijkstraCostMatrix<a class="headerlink" href="#pgr-dijkstracostmatrix" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCostMatrix</span></code> - Calculates the a cost matrix using
-<a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCostMatrix</span></code><a class="headerlink" href="#pgr-dijkstracostmatrix" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCostMatrix</span></code> - Calculates a cost matrix using <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a>.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -265,8 +264,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCostMatrix</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
   <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
-  <span class="n">false</span>
-<span class="p">);</span>
+  <span class="n">false</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
@@ -330,8 +328,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </table>
 </section>
 </section>
-<section id="inner-query">
-<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="inner-queries">
+<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="edges-sql">
 <h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
@@ -435,10 +433,8 @@ it’s not part of the graph.</p></li>
   SELECT * FROM pgr_dijkstraCostMatrix(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
     (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5),
-    false
-  )
-  $$
-);
+    false)
+  $$);
 NOTICE:  pgr_TSP no longer solving with simulated annaeling
 HINT:  Ignoring annaeling parameters
  seq | node | cost | agg_cost
@@ -482,7 +478,7 @@ HINT:  Ignoring annaeling parameters
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en abr 26, 2022.<br/>
+      Actualizado por última vez en abr 28, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>

@@ -100,9 +100,9 @@
 <li><a class="reference internal" href="#">Cost - Category</a><ul>
 <li><a class="reference internal" href="#general-information">General Information</a><ul>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -165,7 +165,10 @@
 <h1>Cost - Category<a class="headerlink" href="#cost-category" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a></p></li>
 </ul>
 <p class="rubric">Proposed</p>
 <div class="admonition warning">
@@ -192,50 +195,36 @@
 <h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
 <section id="characteristics">
 <h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<p>Each function works as part of the family it belongs to.</p>
 <p>The main Characteristics are:</p>
 <ul class="simple">
-<li><p>Each function works as part of the family it belongs to.</p></li>
 <li><p>It does not return a path.</p></li>
-<li><p>Returns the sum of the costs of the resulting path(s) for pair combination of nodes in the graph.</p></li>
-<li><p>Process is done only on edges with positive costs.</p></li>
-<li><p>Values are returned when there is a path.</p>
-<ul>
-<li><p>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
-<li><p>When the starting vertex and ending vertex are the same, there is no path.</p>
-<ul>
-<li><p>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite>.</p></li>
-</ul>
-</li>
-<li><p>When the starting vertex and ending vertex are the different and there is no path.</p>
-<ul>
-<li><p>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Let be the case the values returned are stored in a table, so the unique index would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
+<li><p>Returns the sum of the costs of the shortest path of each pair combination of
+nodes requested.</p></li>
+<li><p>Let be the case the values returned are stored in a table, so the unique index
+would be the pair: <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>.</p></li>
 <li><p>Depending on the function and its parameters, the results can be symmetric.</p>
 <ul>
-<li><p>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</p></li>
+<li><p>The  <strong>aggregate cost</strong> of <span class="math notranslate nohighlight">\((u, v)\)</span> is the same as for <span class="math notranslate nohighlight">\((v, u)\)</span>.</p></li>
 </ul>
 </li>
-<li><p>Any duplicated value in the <cite>start_vids</cite> or in <cite>end_vids</cite> are ignored.</p></li>
+<li><p>Any duplicated value in the start or end vertex identifiers are ignored.</p></li>
 <li><p>The returned values are ordered:</p>
 <ul>
-<li><p><cite>start_vid</cite> ascending</p></li>
-<li><p><cite>end_vid</cite> ascending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascending</p></li>
 </ul>
 </li>
 </ul>
 </section>
+</section>
 <section id="see-also">
-<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</section>
 </section>
 </section>
 
@@ -252,7 +241,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Apr 26, 2022.<br/>
+      Last updated on Apr 28, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
