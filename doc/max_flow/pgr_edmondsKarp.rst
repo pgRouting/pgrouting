@@ -178,6 +178,9 @@ Parameters
 Inner queries
 -------------------------------------------------------------------------------
 
+Edges SQL
+...............................................................................
+
 .. include:: pgRouting-concepts.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end

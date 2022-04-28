@@ -99,6 +99,9 @@ Parameter         Type            Default       Description
 Inner query
 -------------------------------------------------------------------------------
 
+Edges SQL
+...............................................................................
+
 :Edges SQL: an SQL query, which should return a set of rows with the following columns:
 
 ====================  ===================   =================================================

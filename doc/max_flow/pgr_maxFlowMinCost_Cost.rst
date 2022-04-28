@@ -171,6 +171,9 @@ Parameters
 Inner queries
 -------------------------------------------------------------------------------
 
+Edges SQL
+...............................................................................
+
 .. include:: flow-family.rst
     :start-after: costFlow_edges_sql_start
     :end-before: costFlow_edges_sql_end
