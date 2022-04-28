@@ -97,7 +97,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_bellmanFord - Experimental</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span> <span class="pre">-</span> <span class="pre">Experimental</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a><ul>
 <li><a class="reference internal" href="#one-to-one">One to One</a></li>
@@ -108,9 +108,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
 <li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-query">Edges query</a></li>
-<li><a class="reference internal" href="#combinations-query">Combinations query</a></li>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#results-columns">Results Columns</a></li>
@@ -170,9 +171,8 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html">3.0</a></p></li>
 </ul>
 <section id="pgr-bellmanford-experimental">
-<h1>pgr_bellmanFord - Experimental<a class="headerlink" href="#pgr-bellmanford-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> — Returns the shortest path(s) using Bellman-Ford algorithm.
-In particular, the Bellman-Ford algorithm implemented by Boost.Graph.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span> <span class="pre">-</span> <span class="pre">Experimental</span></code><a class="headerlink" href="#pgr-bellmanford-experimental" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> — Shortest path(s) using Bellman-Ford algorithm.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -213,37 +213,54 @@ In particular, the Bellman-Ford algorithm implemented by Boost.Graph.</p>
 <ul class="simple">
 <li><p>Version 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> function:</p>
+<li><p>New <strong>experimental</strong> signature:</p>
 <ul>
-<li><p>pgr_bellmanFord(Combinations)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Version 3.0.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> function</p></li>
+<li><p>New <strong>experimental</strong> signatures:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Bellman-Ford’s algorithm, is named after Richard Bellman and Lester Ford, who first published it in 1958 and 1956, respectively.
-It is a graph search algorithm that computes shortest paths from
-a starting vertex (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) to an ending vertex (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>) in a graph where some of the edge weights may be negative number. Though it is more versatile, it is slower than Dijkstra’s algorithm/
-This implementation can be used with a directed graph and an undirected graph.</p>
+<p>Bellman-Ford’s algorithm, is named after Richard Bellman and Lester Ford, who
+first published it in 1958 and 1956, respectively.It is a graph search algorithm
+that computes shortest paths from a starting vertex (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) to an ending
+vertex (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>) in a graph where some of the edge weights may be negative.
+Though it is more versatile, it is slower than Dijkstra’s algorithm.This
+implementation can be used with a directed graph and an undirected graph.</p>
 <dl class="simple">
-<dt>The main characteristics are:</dt><dd><ul class="simple">
+<dt><strong>The main characteristics are:</strong></dt><dd><ul class="simple">
 <li><p>Process is valid for edges with both positive and negative edge weights.</p></li>
 <li><p>Values are returned when there is a path.</p>
 <ul>
-<li><p>When the start vertex and the end vertex are the same, there is no path. The agg_cost would be 0.</p></li>
-<li><p>When the start vertex and the end vertex are different, and there exists a path between them without having a <em>negative cycle</em>. The agg_cost would be some finite value denoting the shortest distance between them.</p></li>
-<li><p>When the start vertex and the end vertex are different, and there exists a path between them, but it contains a <em>negative cycle</em>. In such case, agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost can’t be defined for them.</p></li>
-<li><p>When the start vertex and the end vertex are different, and there is no path. The agg_cost is <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
+<li><p>When the start vertex and the end vertex are the same, there is no path.
+The agg_cost would be <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p>When the start vertex and the end vertex are different, and there exists
+a path between them without having a <em>negative cycle</em>. The agg_cost would
+be some finite value denoting the shortest distance between them.</p></li>
+<li><p>When the start vertex and the end vertex are different, and there exists
+a path between them, but it contains a <em>negative cycle</em>. In such case,
+agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost
+can’t be defined for them.</p></li>
+<li><p>When the start vertex and the end vertex are different, and there is no path.
+The agg_cost is <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
 </ul>
 </li>
-<li><p>For optimization purposes, any duplicated value in the <cite>start_vids</cite> or <cite>end_vids</cite> are ignored.</p></li>
+<li><p>For optimization purposes, any duplicated value in the <cite>start_vids</cite> or
+<cite>end_vids</cite> are ignored.</p></li>
 <li><p>The returned values are ordered:</p>
 <ul>
 <li><p><cite>start_vid</cite> ascending</p></li>
@@ -258,29 +275,26 @@ This implementation can be used with a directed graph and an undirected graph.</
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bellmanFord(Edges SQL, from_vid,  to_vid  [, directed])
-pgr_bellmanFord(Edges SQL, from_vid,  to_vids [, directed])
-pgr_bellmanFord(Edges SQL, from_vids, to_vid  [, directed])
-pgr_bellmanFord(Edges SQL, from_vids, to_vids [, directed])
-pgr_bellmanFord(Edges SQL, Combinations SQL [, directed])
+<pre class="literal-block">pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, directed])
+pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed])
+pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed])
+pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
+pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
 
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <p class="rubric">Using defaults</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bellmanFord(Edges SQL, start_vid, end_vid)
+<pre class="literal-block">pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> on a <strong>directed</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -297,18 +311,17 @@ OR EMPTY SET
 </div>
 <section id="one-to-one">
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bellmanFord(Edges SQL, from_vid,  to_vid  [, directed])
+<pre class="literal-block">pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vid</strong>  [, directed])
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertex <span class="math notranslate nohighlight">\(3\)</span> on an <strong>undirected</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -323,18 +336,18 @@ OR EMPTY SET
 </section>
 <section id="one-to-many">
 <span id="index-1"></span><h3>One to many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bellmanFord(Edges SQL, from_vid,  to_vids [, directed])
+<pre class="literal-block">pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vids</strong> [, directed])
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertices <span class="math notranslate nohighlight">\(\{ 3, 5\}\)</span> on an <strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(2\)</span> to vertices <span class="math notranslate nohighlight">\(\{ 3, 5\}\)</span> on an <strong>undirected</strong>
+graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
     <span class="n">FALSE</span>
 <span class="p">);</span>
@@ -351,18 +364,18 @@ OR EMPTY SET
 </section>
 <section id="many-to-one">
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bellmanFord(Edges SQL, from_vids, to_vid  [, directed])
+<pre class="literal-block">pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed])
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 11\}\)</span> to vertex <span class="math notranslate nohighlight">\(5\)</span> on a <strong>directed</strong> graph</p>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 11\}\)</span> to vertex <span class="math notranslate nohighlight">\(5\)</span> on a <strong>directed</strong>
+graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="mi">5</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -381,18 +394,18 @@ OR EMPTY SET
 </section>
 <section id="many-to-many">
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bellmanFord(Edges SQL, from_vids, to_vids [, directed])
+<pre class="literal-block">pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed])
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 11\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 5\}\)</span> on an <strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{2, 11\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{3, 5\}\)</span> on an
+<strong>directed</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
     <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -422,34 +435,52 @@ OR EMPTY SET
 </section>
 <section id="combinations">
 <span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_bellmanFord(Edges SQL, Combinations SQL [, directed])
+<pre class="literal-block">pgr_bellmanFord(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed])
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Using a combinations table on an <strong>undirected</strong> graph.</p>
+<dd class="field-odd"><p>Using a combinations table on an <strong>directed</strong> graph.</p>
 </dd>
 </dl>
+<p>The combinations table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">combinations_table</span><span class="p">;</span>
+ <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
+<span class="o">--------+--------</span>
+      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span>
+      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span>
+      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span>
+      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span>
+      <span class="mi">2</span> <span class="o">|</span>     <span class="mi">17</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The query:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;SELECT * FROM ( VALUES (2, 3), (11, 5) ) AS t(source, target)&#39;</span>
+    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost </span>
+    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+    <span class="s1">&#39;SELECT * FROM combinations_table&#39;</span>
 <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span> 
 <span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
-   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
-   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">5</span>
-   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>   <span class="mi">12</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
-<span class="p">(</span><span class="mi">11</span> <span class="n">rows</span><span class="p">)</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">4</span>
+   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">5</span>
+   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">6</span>
+  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+  <span class="mi">12</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+  <span class="mi">13</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+  <span class="mi">14</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+  <span class="mi">15</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+  <span class="mi">16</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="p">(</span><span class="mi">16</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -457,57 +488,62 @@ OR EMPTY SET
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Description of the parameters of the signatures</p>
-<table class="docutils align-default">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 17%" />
-<col style="width: 8%" />
-<col style="width: 55%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 61%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>Edges query as described below.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Combinations SQL</strong></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>Combinations query as described below.</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<tr class="row-even"><td><p><strong>start vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
 <td><p>Identifier of the starting vertex of the path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start_vids</strong></p></td>
+<tr class="row-odd"><td><p><strong>start vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td></td>
 <td><p>Array of identifiers of starting vertices.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
+<tr class="row-even"><td><p><strong>end vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
 <td><p>Identifier of the ending vertex of the path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end_vids</strong></p></td>
+<tr class="row-odd"><td><p><strong>end vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td></td>
 <td><p>Array of identifiers of ending vertices.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>directed</strong></p></td>
+</tbody>
+</table>
+</section>
+<section id="optional-parameters">
+<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
 </td>
@@ -517,8 +553,8 @@ OR EMPTY SET
 </section>
 <section id="inner-queries">
 <h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
-<section id="edges-query">
-<h3>Edges query<a class="headerlink" href="#edges-query" title="Permalink to this headline">¶</a></h3>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -576,8 +612,8 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 </section>
-<section id="combinations-query">
-<h3>Combinations query<a class="headerlink" href="#combinations-query" title="Permalink to this headline">¶</a></h3>
+<section id="combinations-sql">
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -679,7 +715,7 @@ path sequence.</p></td>
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm</a></p></li>
-<li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
