@@ -1,8 +1,3 @@
-/* -- q1 */
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, 3
-);
 /* -- q2 */
 SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -26,10 +21,12 @@ SELECT * FROM pgr_edwardMoore(
     ARRAY[2,11], ARRAY[3,5],
     FALSE
 );
+/* -- q51 */
+SELECT * FROM combinations_table;
 /* -- q6 */
 SELECT * FROM pgr_edwardMoore(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * FROM ( VALUES (2, 3), (11, 5) ) AS t(source, target)',
+    'SELECT * FROM combinations_table',
     FALSE
 );
 /* -- q7 */
