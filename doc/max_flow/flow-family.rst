@@ -92,24 +92,6 @@ Flow Functions General Information
 
 :doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
 
-Parameters
--------------------------------------------------------------------------------
-
-.. pgr_flow_parameters_start
-
-===================== ================== ======== =================================================
-Column                Type               Default     Description
-===================== ================== ======== =================================================
-**Edges SQL**         ``TEXT``                    Edges query as described in `Inner Queries`_.
-**Combinations SQL**  ``TEXT``                    Combinations query as described in `Inner Queries`_.
-**source**            ``BIGINT``                  Identifier of the starting vertex of the flow.
-**sources**           ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
-**target**            ``BIGINT``                  Identifier of the ending vertex of the flow.
-**targets**           ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
-===================== ================== ======== =================================================
-
-.. pgr_flow_parameters_end
-
 Inner queries
 -------------------------------------------------------------------------------
 

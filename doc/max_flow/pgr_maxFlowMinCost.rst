@@ -171,9 +171,9 @@ Combinations
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: flow-family.rst
-    :start-after: pgr_flow_parameters_start
-    :end-before: pgr_flow_parameters_end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
 Inner queries
 -------------------------------------------------------------------------------
