@@ -4,14 +4,9 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_maxFlow(
-    'SELECT id,
-            source,
-            target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
-    , 6, 11
-);
+  'SELECT id, source, target, capacity, reverse_capacity
+  FROM edge_table',
+  6, 11);
  pgr_maxflow
 -------------
          230
@@ -19,14 +14,9 @@ SELECT * FROM pgr_maxFlow(
 
 /* -- q2 */
 SELECT * FROM pgr_maxFlow(
-    'SELECT id,
-            source,
-            target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
-    , 6, ARRAY[11, 1, 13]
-);
+  'SELECT id, source, target, capacity, reverse_capacity
+  FROM edge_table'
+  , 6, ARRAY[1, 3, 11]);
  pgr_maxflow
 -------------
          340
@@ -34,14 +24,9 @@ SELECT * FROM pgr_maxFlow(
 
 /* -- q3 */
 SELECT * FROM pgr_maxFlow(
-    'SELECT id,
-            source,
-            target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
-    , ARRAY[6, 8, 12], 11
-);
+  'SELECT id, source, target, capacity, reverse_capacity
+  FROM edge_table'
+  , ARRAY[6, 8, 12], 11);
  pgr_maxflow
 -------------
          230
@@ -49,34 +34,45 @@ SELECT * FROM pgr_maxFlow(
 
 /* -- q4 */
 SELECT * FROM pgr_maxFlow(
-    'SELECT id,
-            source,
-            target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
-    , ARRAY[6, 8, 12], ARRAY[1, 3, 11]
-);
+  'SELECT id, source, target, capacity, reverse_capacity
+  FROM edge_table'
+  , ARRAY[6, 8, 12], ARRAY[1, 3, 11]);
  pgr_maxflow
 -------------
          360
 (1 row)
 
 /* -- q5 */
+SELECT source, target FROM combinations_table
+WHERE target NOT IN (1, 2);
+ source | target
+--------+--------
+      1 |      3
+      2 |      4
+      2 |     17
+(3 rows)
+
+/* -- q51 */
 SELECT * FROM pgr_maxFlow(
-    'SELECT id,
-            source,
-            target,
-            capacity,
-            reverse_capacity
-    FROM edge_table',
-    'SELECT * FROM ( VALUES (6, 1), (8, 3), (12, 11), (8, 1) ) AS t(source, target)'
-);
+  'SELECT id, source, target, capacity, reverse_capacity
+  FROM edge_table',
+  'SELECT * FROM combinations_table
+   WHERE target NOT IN (1, 2)');
  pgr_maxflow
 -------------
-         360
+          80
 (1 row)
 
 /* -- q6 */
+SELECT * FROM pgr_maxFlow(
+  'SELECT id, source, target, capacity, reverse_capacity
+  FROM edge_table',
+  'SELECT * FROM (VALUES (1, 3), (2, 4), (2, 17)) AS t(source, target)');
+ pgr_maxflow
+-------------
+          80
+(1 row)
+
+/* -- q7 */
 ROLLBACK;
 ROLLBACK
