@@ -116,7 +116,7 @@ Inner queries
 Edges SQL
 ...............................................................................
 
-.. rubric:: Edges SQL for
+.. rubric:: Capacity edges
 
 * :doc:`pgr_pushRelabel`
 * :doc:`pgr_edmondsKarp`
@@ -126,37 +126,22 @@ Edges SQL
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
+.. rubric:: Capacity-Cost edges
 
-For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:
+* :doc:`pgr_maxFlowMinCost`
+* :doc:`pgr_maxFlowMinCost_Cost`
 
-.. costFlow_edges_sql_start
+.. include:: pgRouting-concepts.rst
+    :start-after: costFlow_edges_sql_start
+    :end-before: costFlow_edges_sql_end
 
-:Edges SQL: an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:
+.. rubric:: Cost edges
 
-==================== =================== ======== =================================================
-Column               Type                Default  Description
-==================== =================== ======== =================================================
-**id**               ``ANY-INTEGER``              Identifier of the edge.
-**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**capacity**         ``ANY-INTEGER``              Capacity of the edge  `(source, target)`
+* :doc:`pgr_edgeDisjointPaths`
 
-                                                  * When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_capacity** ``ANY-INTEGER``       -1     Capacity of the edge `(target, source)`,
-
-                                                  * When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-**cost**             ``ANY-NUMERICAL``            Weight of the edge  `(source, target)` if it exists.
-**reverse_cost**     ``ANY-NUMERICAL``     0      Weight of the edge `(target, source)` if it exists.
-==================== =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: smallint, int, bigint, real, float
-
-.. costFlow_edges_sql_end
-
-For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :doc:`pgr_edgeDisjointPaths <pgr_edgeDisjointPaths>`, :doc:`pgr_maxFlowMinCost <pgr_maxFlowMinCost>` and :doc:`pgr_maxFlowMinCost_Cost <pgr_maxFlowMinCost_Cost>` :
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Combinations SQL
 ...............................................................................
