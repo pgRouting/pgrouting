@@ -15,8 +15,8 @@ SELECT * FROM pgr_maxFlow(
 /* -- q2 */
 SELECT * FROM pgr_maxFlow(
   'SELECT id, source, target, capacity, reverse_capacity
-  FROM edge_table'
-  , 6, ARRAY[1, 3, 11]);
+  FROM edge_table',
+  6, ARRAY[1, 3, 11]);
  pgr_maxflow
 -------------
          340
@@ -25,8 +25,8 @@ SELECT * FROM pgr_maxFlow(
 /* -- q3 */
 SELECT * FROM pgr_maxFlow(
   'SELECT id, source, target, capacity, reverse_capacity
-  FROM edge_table'
-  , ARRAY[6, 8, 12], 11);
+  FROM edge_table',
+  ARRAY[6, 8, 12], 11);
  pgr_maxflow
 -------------
          230
@@ -35,8 +35,8 @@ SELECT * FROM pgr_maxFlow(
 /* -- q4 */
 SELECT * FROM pgr_maxFlow(
   'SELECT id, source, target, capacity, reverse_capacity
-  FROM edge_table'
-  , ARRAY[6, 8, 12], ARRAY[1, 3, 11]);
+  FROM edge_table',
+  ARRAY[6, 8, 12], ARRAY[1, 3, 11]);
  pgr_maxflow
 -------------
          360

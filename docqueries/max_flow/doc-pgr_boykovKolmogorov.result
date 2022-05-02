@@ -18,8 +18,8 @@ SELECT * FROM pgr_boykovKolmogorov(
 /* -- q2 */
 SELECT * FROM pgr_boykovKolmogorov(
   'SELECT id, source, target, capacity, reverse_capacity
-  FROM edge_table'
-  , 6, ARRAY[1, 3, 11]);
+  FROM edge_table',
+  6, ARRAY[1, 3, 11]);
  seq | edge | start_vid | end_vid | flow | residual_capacity
 -----+------+-----------+---------+------+-------------------
    1 |    1 |         2 |       1 |   50 |                80
@@ -36,8 +36,8 @@ SELECT * FROM pgr_boykovKolmogorov(
 /* -- q3 */
 SELECT * FROM pgr_boykovKolmogorov(
   'SELECT id, source, target, capacity, reverse_capacity
-  FROM edge_table'
-  , ARRAY[6, 8, 12], 11);
+  FROM edge_table',
+  ARRAY[6, 8, 12], 11);
  seq | edge | start_vid | end_vid | flow | residual_capacity
 -----+------+-----------+---------+------+-------------------
    1 |   10 |         5 |      10 |  100 |                30
@@ -49,8 +49,8 @@ SELECT * FROM pgr_boykovKolmogorov(
 /* -- q4 */
 SELECT * FROM pgr_boykovKolmogorov(
   'SELECT id, source, target, capacity, reverse_capacity
-  FROM edge_table'
-  , ARRAY[6, 8, 12], ARRAY[1, 3, 11]);
+  FROM edge_table',
+  ARRAY[6, 8, 12], ARRAY[1, 3, 11]);
  seq | edge | start_vid | end_vid | flow | residual_capacity
 -----+------+-----------+---------+------+-------------------
    1 |    1 |         2 |       1 |   50 |                80
