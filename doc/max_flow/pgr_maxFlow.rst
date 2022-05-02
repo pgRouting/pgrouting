@@ -106,7 +106,7 @@ One to Many
     pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**)
     RETURNS BIGINT
 
-:Example: From vertex :math:`6` to vertices :math:`\{11, 1, 13\}`
+:Example: From vertex :math:`6` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_maxFlow.queries
    :start-after: -- q2

@@ -108,7 +108,7 @@ One to Many
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{11, 1, 13\}`
+:Example: From vertex :math:`6` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_pushRelabel.queries
    :start-after: -- q2
