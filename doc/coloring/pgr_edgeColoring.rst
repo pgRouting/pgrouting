@@ -16,7 +16,8 @@
 pgr_edgeColoring - Experimental
 ===============================================================================
 
-``pgr_edgeColoring`` — Returns the edge coloring of an undirected and loop-free (i.e *no self-loops and no parallel edges*) graph.
+``pgr_edgeColoring`` — Returns the edge coloring of an undirected and loop-free
+(i.e *no self-loops and no parallel edges*) graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/edge_coloring.html
@@ -31,27 +32,34 @@ pgr_edgeColoring - Experimental
 
 * Version 3.3.0
 
-  * New **experimental** function
+  * New **experimental** signature
 
 
 Description
 -------------------------------------------------------------------------------
 
-Edge Coloring is an algorithm used for coloring of the edges for the vertices in the graph. It
-is an assignment of colors to the edges of the graph so that no two adjacent edges have the same
-color.
+Edge Coloring is an algorithm used for coloring of the edges for the vertices
+in the graph. It is an assignment of colors to the edges of the graph so that
+no two adjacent edges have the same color.
 
 **The main Characteristics are:**
 
-- The implementation is applicable only for **undirected** and **loop-free** (i.e *no self-loops and no parallel edges*) graphs.
+- The implementation is applicable only for **undirected** and **loop-free**
+  (i.e *no self-loops and no parallel edges*) graphs.
 - Provides the color to be assigned to all the edges present in the graph.
-- At most **Δ + 1** colors are used, where **Δ** is the degree of the graph. This is optimal for some graphs, and by Vizing's theorem it uses at most one color more than the optimal for all others.
-- It can tell us whether a graph is **Bipartite**. If in a graph, the chromatic number **χ′(G)** i.e. minimum number of colors needed for proper edge coloring of graph is equal to degree **Δ** of the graph, (i.e. **χ′(G) = Δ**) then graph is said to be Bipartite. But, the vice-versa is not always true.
+- At most **Δ + 1** colors are used, where **Δ** is the degree of the graph.
+  This is optimal for some graphs, and by Vizing's theorem it uses at most one
+  color more than the optimal for all others.
+- It can tell us whether a graph is **Bipartite**. If in a graph, the chromatic 
+  number **χ′(G)** i.e. minimum number of colors needed for proper edge coloring 
+  of graph is equal to degree **Δ** of the graph, (i.e. **χ′(G) = Δ**) then 
+  graph is said to be Bipartite. But, the vice-versa is not always true.
 - The algorithm tries to assign the least possible color to every edge.
 - Efficient graph coloring is an NP-Hard problem, and therefore, this algorithm
   does not always produce optimal coloring.
 - The returned rows are ordered in ascending order of the edge value.
-- This algorithm is the fastest known almost-optimal algorithm for edge coloring.
+- This algorithm is the fastest known almost-optimal algorithm for edge 
+  coloring.
 - Edge Coloring Running Time: :math:`O(|E||V|)`
 
   - where :math:`|E|` is the number of edges in the graph,
@@ -63,11 +71,11 @@ Signatures
 .. index::
     single: edgeColoring - Experimental on v3.3
 
-.. code-block:: sql
+.. parsed-literal::
 
-    pgr_edgeColoring(Edges SQL)
+    pgr_edgeColoring(`Edges SQL`_)
 
-    RETURNS SET OF (edge_id, color_id)
+    RETURNS SET OF (id, color_id)
     OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
@@ -110,8 +118,10 @@ See Also
 
 .. see also start
 
-* `Boost: Edge Coloring Algorithm documentation <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__
-* `Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
+* `Boost: Edge Coloring Algorithm documentation 
+  <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__
+* `Wikipedia: Graph Coloring 
+  <https://en.wikipedia.org/wiki/Graph_coloring>`__
 
 .. see also end
 
