@@ -26,10 +26,12 @@ SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
   FROM edge_table',
   'SELECT * FROM combinations_table
-   WHERE target NOT IN (1, 2)');
+   WHERE target NOT IN (1, 2)',
+  directed => false);
 /* -- q6 */
 SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
   FROM edge_table',
-  'SELECT * FROM (VALUES (1, 3), (2, 4), (2, 17)) AS t(source, target)');
+  'SELECT * FROM (VALUES (1, 3), (2, 4), (2, 17)) AS t(source, target)',
+  directed => false);
 /* -- q7 */

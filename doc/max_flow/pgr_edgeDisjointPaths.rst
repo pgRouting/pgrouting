@@ -131,8 +131,6 @@ Many to One
     OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
-          graph
-
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q3
@@ -151,8 +149,6 @@ Many to Many
     OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
-          on an **undirected** graph
-
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q4
