@@ -33,6 +33,12 @@ To see the full list of changes check the list of `Git commits <https://github.c
    :local:
 
 
+
+pgRouting 3.3.2 Release Notes
+-------------------------------------------------------------------------------
+
+No Changes Yet
+
 pgRouting 3.3.1 Release Notes
 -------------------------------------------------------------------------------
 
