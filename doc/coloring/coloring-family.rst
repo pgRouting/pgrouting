@@ -73,12 +73,12 @@ Column           Type        Description
 
 .. result columns start edgeColoring
 
-Returns SET OF ``(edge_id, color_id)``
+Returns SET OF ``(id, color_id)``
 
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
-**edge_id**      ``BIGINT``  Identifier of the edge.
+**id**           ``BIGINT``  Identifier of the edge.
 **color_id**     ``BIGINT``  Identifier of the color of the edge.
 
                              - The minimum value of color is 1.
@@ -86,9 +86,6 @@ Column           Type        Description
 ===============  =========== ====================================================
 
 .. result columns end edgeColoring
-
-
-
 
 See Also
 -------------------------------------------------------------------------------
