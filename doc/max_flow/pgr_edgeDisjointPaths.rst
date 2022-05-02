@@ -184,7 +184,7 @@ Combinations
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Using a combinations table, equivalent to calculating result from vertices :math:`\{3, 6\}` to vertices :math:`\{4, 5, 10\}` on a **directed** graph.
+:Example: Manually selecting combinations to be processed
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q6
