@@ -210,8 +210,8 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        int path_id = 1;
-        int seq = 1;
+        int64_t path_id = 1;
+        int64_t seq = 1;
         if (funcctx->call_cntr != 0) {
             if (result_tuples[funcctx->call_cntr - 1].edge == -1) {
                 path_id = result_tuples[funcctx->call_cntr - 1].start_id + 1;

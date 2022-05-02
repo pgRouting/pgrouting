@@ -35,41 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "max_flow/pgr_maxflow.hpp"
 
+#include "cpp_common/combinations.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 #include "c_types/ii_t_rt.h"
 
-
-static
-std::map<int64_t , std::set<int64_t>>
-get_combinations(const II_t_rt *combinations, size_t total) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    for (size_t i = 0; i < total; i++) {
-        auto row = combinations[i];
-        result[row.d1.source].insert(row.d2.target);
-    }
-    return result;
-}
-
-static
-std::map<int64_t , std::set<int64_t>>
-get_combinations(
-        int64_t  *start_arr,
-        size_t size_start_arr,
-        int64_t  *end_arr,
-        size_t size_end_arr) {
-    std::map<int64_t, std::set<int64_t>> result;
-
-    for (size_t i = 0; i < size_start_arr; ++i) {
-        for (size_t j = 0; j < size_end_arr; ++j) {
-            result[start_arr[i]].insert(end_arr[j]);
-        }
-    }
-    return result;
-}
 
 static
 std::vector<Path_rt>
@@ -124,8 +96,8 @@ do_pgr_edge_disjoint_paths(
         pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
 
         auto combinations_data = total_combinations?
-            get_combinations(combinations, total_combinations)
-            : get_combinations(sources, size_source_verticesArr, sinks, size_sink_verticesArr);
+            pgrouting::utilities::get_combinations(combinations, total_combinations)
+            : pgrouting::utilities::get_combinations(sources, size_source_verticesArr, sinks, size_sink_verticesArr);
 
         std::vector<Edge_t> edges(
                 data_edges, data_edges + total_edges);
