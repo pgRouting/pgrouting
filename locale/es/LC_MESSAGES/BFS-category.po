@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-26 12:02+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"bfs-category/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11.2\n"
 
 #: ../../build/doc/BFS-category.rst:12
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/BFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/BFS-category.html>`__)"
@@ -42,7 +45,7 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:31
 msgid "Process is done only on edges with positive costs."
-msgstr ""
+msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
 #: ../../build/doc/BFS-category.rst:32
 msgid "When the graph is connected"
@@ -72,7 +75,7 @@ msgstr ""
 #: ../../build/doc/BFS-category.rst:90
 #: ../../build/doc/BFS-category.rst:125
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/BFS-category.rst:54
 #: ../../build/doc/BFS-category.rst:91
@@ -112,7 +115,7 @@ msgstr ""
 #: ../../build/doc/BFS-category.rst:142
 #: ../../build/doc/BFS-category.rst:145
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/BFS-category.rst:61
 msgid "Identifier of the root vertex of the tree."
@@ -308,7 +311,7 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:137
 msgid "``start_vid``"
-msgstr ""
+msgstr "``start_vid``"
 
 #: ../../build/doc/BFS-category.rst:139
 msgid "Identifier of the root vertex."
@@ -316,15 +319,16 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:141
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/BFS-category.rst:143
 msgid "Identifier of ``node`` reached using ``edge``."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:144
+#, fuzzy
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/BFS-category.rst:146
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
@@ -337,7 +341,7 @@ msgstr ""
 #: ../../build/doc/BFS-category.rst:151
 #: ../../build/doc/BFS-category.rst:154
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/BFS-category.rst:152
 msgid "Cost to traverse ``edge``."
@@ -345,15 +349,15 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:153
 msgid "``agg_cost``"
-msgstr ""
+msgstr "``agg_cost``"
 
 #: ../../build/doc/BFS-category.rst:155
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr ""
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/BFS-category.rst:165
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/BFS-category.rst:167
 msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
@@ -373,12 +377,14 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:177
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/BFS-category.rst:178
+#, fuzzy
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/BFS-category.rst:179
+#, fuzzy
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
