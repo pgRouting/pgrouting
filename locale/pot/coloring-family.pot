@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-05-03 17:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,7 +172,7 @@ msgid "Description"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:65
-msgid "**vertex_id**"
+msgid "``vertex_id``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:65
@@ -188,7 +188,7 @@ msgstr ""
 
 #: ../../build/doc/coloring-family.rst:66
 #: ../../build/doc/coloring-family.rst:82
-msgid "**color_id**"
+msgid "``color_id``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:66
@@ -205,7 +205,7 @@ msgid "Returns SET OF ``(edge_id, color_id)``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:81
-msgid "**edge_id**"
+msgid "``edge_id``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:81
@@ -216,7 +216,7 @@ msgstr ""
 msgid "Identifier of the color of the edge."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:94
+#: ../../build/doc/coloring-family.rst:91
 msgid "See Also"
 msgstr ""
 
@@ -224,7 +224,7 @@ msgstr ""
 msgid "`Boost: Sequential Vertex Coloring algorithm documentation <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:4
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:5
 msgid "`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 msgid "`Boost: is_bipartite algorithm documentation <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:4
+#: ../../build/doc/pgr_bipartite.rst:5
 msgid "`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr ""
 
@@ -240,18 +240,18 @@ msgstr ""
 msgid "`Boost: Edge Coloring Algorithm documentation <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:4
+#: ../../build/doc/pgr_edgeColoring.rst:5
 msgid "`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:110
+#: ../../build/doc/coloring-family.rst:107
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:111
+#: ../../build/doc/coloring-family.rst:108
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:112
+#: ../../build/doc/coloring-family.rst:109
 msgid ":ref:`search`"
 msgstr ""

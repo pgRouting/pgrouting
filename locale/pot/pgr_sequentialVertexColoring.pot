@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-05-03 17:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgid "Version 3.3.0"
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:36
-msgid "Promoted to **proposed** function"
+msgid "Promoted to **proposed** signature"
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:38
@@ -85,7 +85,7 @@ msgid "Version 3.2.0"
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:40
-msgid "New **experimental** function"
+msgid "New **experimental** signature"
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:44
@@ -286,7 +286,7 @@ msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:8
-msgid "**vertex_id**"
+msgid "``vertex_id``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:8
@@ -299,7 +299,7 @@ msgid "Identifier of the vertex."
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:9
-msgid "**color_id**"
+msgid "``color_id``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:9
@@ -322,18 +322,18 @@ msgstr ""
 msgid "`Boost: Sequential Vertex Coloring algorithm documentation <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:121
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:122
 msgid "`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:126
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:127
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:127
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:128
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:128
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:129
 msgid ":ref:`search`"
 msgstr ""

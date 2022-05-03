@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-05-03 17:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,10 +33,11 @@ msgstr ""
 msgid ""
 "``pgr_bipartite`` — If graph is bipartite then function returns the "
 "vertex id along with color (0 and 1) else it will return an empty set. In"
-" particular, the is_bipartite() algorithm implemented by Boost.Graph."
+" particular, the is_bipartite() algorithm is implemented using Boost "
+"Graph Library."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:26
+#: ../../build/doc/pgr_bipartite.rst:27
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -108,26 +109,26 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:33
+#: ../../build/doc/pgr_bipartite.rst:34
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:34
+#: ../../build/doc/pgr_bipartite.rst:35
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:36
-msgid "New **experimental** function"
+#: ../../build/doc/pgr_bipartite.rst:37
+msgid "New **experimental** signature"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_bipartite.rst:40
+#: ../../build/doc/pgr_bipartite.rst:41
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:41
+#: ../../build/doc/pgr_bipartite.rst:42
 msgid ""
 "A bipartite graph is a graph with two sets of vertices which are "
 "connected to each other, but not within themselves. A bipartite graph is "
@@ -135,34 +136,34 @@ msgid ""
 "vertices in a set are colored with the same color."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:44
+#: ../../build/doc/pgr_bipartite.rst:47
 msgid "**The main Characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:46
+#: ../../build/doc/pgr_bipartite.rst:49
 msgid "The algorithm works in undirected graph only."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:47
+#: ../../build/doc/pgr_bipartite.rst:50
 msgid "The returned values are not ordered."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:48
+#: ../../build/doc/pgr_bipartite.rst:51
 msgid ""
 "The algorithm checks graph is bipartite or not. If it is bipartite then "
-"it returns the node along with two colors `0` and `1` which represents "
-"two different sets."
+"it returns the node along with two    colors `0` and `1` which represents"
+" two different sets."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:49
+#: ../../build/doc/pgr_bipartite.rst:54
 msgid "If graph is not bipartite then algorithm returns empty set."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:50
+#: ../../build/doc/pgr_bipartite.rst:55
 msgid "Running time: :math:`O(V + E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:53
+#: ../../build/doc/pgr_bipartite.rst:58
 msgid "Signatures"
 msgstr ""
 
@@ -170,13 +171,13 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:68
+#: ../../build/doc/pgr_bipartite.rst:71
 msgid ""
-"The pgr_bipartite algorithm with and edge_sql as a parameter when graph "
-"is bipartite:"
+"The pgr_bipartite algorithm with and `Edges SQL`_ as a parameter when "
+"graph is bipartite"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:75
+#: ../../build/doc/pgr_bipartite.rst:79
 msgid "Parameters"
 msgstr ""
 
@@ -201,11 +202,11 @@ msgstr ""
 msgid "`Edges SQL`_ as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:82
+#: ../../build/doc/pgr_bipartite.rst:86
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:85
+#: ../../build/doc/pgr_bipartite.rst:89
 msgid "Edges SQL"
 msgstr ""
 
@@ -299,7 +300,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:92
+#: ../../build/doc/pgr_bipartite.rst:96
 msgid "Result Columns"
 msgstr ""
 
@@ -308,7 +309,7 @@ msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:8
-msgid "**vertex_id**"
+msgid "``vertex_id``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:8 ../../build/doc/coloring-family.rst:9
@@ -320,7 +321,7 @@ msgid "Identifier of the vertex."
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:9
-msgid "**color_id**"
+msgid "``color_id``"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:9
@@ -331,31 +332,27 @@ msgstr ""
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:100
+#: ../../build/doc/pgr_bipartite.rst:103
 msgid "Additional Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:102
-msgid "The odd length cyclic graph can not be bipartite."
-msgstr ""
-
-#: ../../build/doc/pgr_bipartite.rst:104
+#: ../../build/doc/pgr_bipartite.rst:105
 msgid ""
-"The following edge will make subgraph with vertices {1, 2, 5, 7, 8} an "
-"odd length cyclic graph."
+"The odd length cyclic graph can not be bipartite. The following edge will"
+" make subgraph with vertices {1, 2, 5, 7, 8} an odd length cyclic graph."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:111
+#: ../../build/doc/pgr_bipartite.rst:114
 msgid ""
 "The new graph is not bipartite because it has a odd length cycle of 5 "
 "vertices. Edges in blue represent odd length cycle."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:126
+#: ../../build/doc/pgr_bipartite.rst:125
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:130
+#: ../../build/doc/pgr_bipartite.rst:129
 msgid ""
 "`Boost: is_bipartite algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
@@ -367,19 +364,19 @@ msgid ""
 "<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:135
+#: ../../build/doc/pgr_bipartite.rst:136
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:138
+#: ../../build/doc/pgr_bipartite.rst:139
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:139
+#: ../../build/doc/pgr_bipartite.rst:140
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:140
+#: ../../build/doc/pgr_bipartite.rst:141
 msgid ":ref:`search`"
 msgstr ""
 
