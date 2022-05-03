@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-01 00:16+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"withpoints-category/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11.2\n"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid ""
@@ -272,7 +275,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:114
 #: ../../build/doc/withPoints-category.rst:122
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/withPoints-category.rst:115
 msgid ""
@@ -323,7 +326,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:182
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/withPoints-category.rst:143
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -868,7 +871,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:417
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/withPoints-category.rst:419
 msgid ":doc:`withPoints-family`"
@@ -876,12 +879,14 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:422
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/withPoints-category.rst:423
+#, fuzzy
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/withPoints-category.rst:424
+#, fuzzy
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
