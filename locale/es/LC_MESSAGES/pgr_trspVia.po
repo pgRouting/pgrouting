@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-01 00:16+0000\n"
-"PO-Revision-Date: 2022-04-20 17:55+0000\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trspvia/es/>\n"
@@ -150,7 +150,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:8
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/via-category.rst:9 ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/TRSP-family.rst:9
@@ -377,153 +377,168 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:13
 msgid "Sequential value starting from **1**."
-msgstr ""
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/via-category.rst:14
+#, fuzzy
 msgid "``path_id``"
-msgstr ""
+msgstr "``path_id``"
 
 #: ../../build/doc/via-category.rst:16
 msgid "Identifier of a path. Has value **1** for the first path."
-msgstr ""
+msgstr "Identificador del camino. Tiene valor **1** para el primer camino."
 
 #: ../../build/doc/via-category.rst:17
+#, fuzzy
 msgid "``path_seq``"
-msgstr ""
+msgstr "``path_seq``"
 
 #: ../../build/doc/via-category.rst:19
 msgid ""
 "Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el principio de una "
+"ruta."
 
 #: ../../build/doc/via-category.rst:20
 msgid "``start_vid``"
-msgstr ""
+msgstr "``start_vid``"
 
 #: ../../build/doc/via-category.rst:21 ../../build/doc/via-category.rst:24
 #: ../../build/doc/via-category.rst:27 ../../build/doc/via-category.rst:30
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/via-category.rst:22
 msgid "Identifier of the starting vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/via-category.rst:23
 msgid "``end_vid``"
-msgstr ""
+msgstr "``end_vid``"
 
 #: ../../build/doc/via-category.rst:25
 msgid "Identifier of the ending vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/via-category.rst:26
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/via-category.rst:28
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
-msgstr ""
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/via-category.rst:29
+#, fuzzy
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/via-category.rst:31
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path "
 "sequence."
 msgstr ""
+"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
+"la secuencia de ruta."
 
 #: ../../build/doc/via-category.rst:34
 msgid "-1 for the last node of the path."
-msgstr ""
+msgstr "-1 para el último nodo de la ruta"
 
 #: ../../build/doc/via-category.rst:35
 msgid "-2 for the last node of the route."
-msgstr ""
+msgstr "-2 para el último nodo de la ruta"
 
 #: ../../build/doc/via-category.rst:37 ../../build/doc/via-category.rst:41
 #: ../../build/doc/via-category.rst:44
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/via-category.rst:38
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
+"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"nodo en la secuencia de ruta."
 
 #: ../../build/doc/via-category.rst:40
 msgid "``agg_cost``"
-msgstr ""
+msgstr "``agg_cost``"
 
 #: ../../build/doc/via-category.rst:42
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr ""
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/via-category.rst:43
 msgid "``route_agg_cost``"
-msgstr ""
+msgstr "``route_agg_cost``"
 
 #: ../../build/doc/via-category.rst:45
 msgid ""
 "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current "
 "``seq``."
 msgstr ""
+"Costo total desde ``start_vid`` en ``seq = 1`` hasta ``end_vid`` del ``seq`` "
+"actual."
 
 #: ../../build/doc/pgr_trspVia.rst:124
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 1"
-msgstr ""
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_trspVia.rst:126
 msgid ""
 "Find the route that visits the vertices :math:`\\{1, 5, 7, 10, 4\\}` in that "
 "order"
 msgstr ""
+"Encontrar la ruta que visita los vértices :math:`\\{1, 5, 7, 10, 4\\}` en "
+"ese orden"
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 2"
-msgstr ""
+msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_trspVia.rst:133
 msgid "What's the aggregate cost of the third path?"
-msgstr ""
+msgstr "¿Cuál es el costo total de la tercera ruta?"
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 3"
-msgstr ""
+msgstr "Ejemplo 3"
 
 #: ../../build/doc/pgr_trspVia.rst:139
 msgid ""
 "What's the route's aggregate cost of the route at the end of the third path?"
-msgstr ""
+msgstr "¿Cuál es el costo agregado de la ruta al final de la tercera ruta?"
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 4"
-msgstr ""
+msgstr "Ejemplo 4"
 
 #: ../../build/doc/pgr_trspVia.rst:146
 msgid "How are the nodes visited in the route?"
-msgstr ""
+msgstr "¿Cómo se visitan los nodos en la ruta?"
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 5"
-msgstr ""
+msgstr "Ejemplo 5"
 
 #: ../../build/doc/pgr_trspVia.rst:152
 msgid ""
 "What are the aggregate costs of the route when the visited vertices are "
 "reached?"
 msgstr ""
+"¿Cuáles son los costos agregados de la ruta cuando se llega a los vértices "
+"visitados?"
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 6"
-msgstr ""
+msgstr "Ejemplo 6"
 
 #: ../../build/doc/pgr_trspVia.rst:159
 msgid ""
@@ -533,11 +548,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 7"
-msgstr ""
+msgstr "Ejemplo 7"
 
 #: ../../build/doc/pgr_trspVia.rst:166
 msgid "Simulation of how algorithm works"
-msgstr ""
+msgstr "Sumulación del functionamiento del algoritmo"
 
 #: ../../build/doc/pgr_trspVia.rst:168
 msgid "The algorithm performs a :doc:`pgr_dijkstraVia`"
@@ -566,7 +581,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:0
 msgid "Example 8"
-msgstr ""
+msgstr "Ejemplo 8"
 
 #: ../../build/doc/pgr_trspVia.rst:197
 msgid "Sometimes ``U_turn_on_edge`` flag is ignored when is set to ``false``."
@@ -593,11 +608,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:222
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/pgr_trspVia.rst:224
 msgid ":doc:`via-category`"
-msgstr ""
+msgstr ":doc:`via-category`"
 
 #: ../../build/doc/pgr_trspVia.rst:225
 msgid ":doc:`sampledata` network."
@@ -605,12 +620,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:228
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_trspVia.rst:229
+#, fuzzy
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_trspVia.rst:230
+#, fuzzy
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
