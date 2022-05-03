@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-01 00:16+0000\n"
-"PO-Revision-Date: 2022-04-20 17:55+0000\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsvia/es/>\n"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:8 ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/via-category.rst:9 ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -506,33 +506,37 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:13
 msgid "Sequential value starting from **1**."
-msgstr ""
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/via-category.rst:14
+#, fuzzy
 msgid "``path_id``"
-msgstr ""
+msgstr "``path_id``"
 
 #: ../../build/doc/via-category.rst:16
 msgid "Identifier of a path. Has value **1** for the first path."
-msgstr ""
+msgstr "Identificador del camino. Tiene valor **1** para el primer camino."
 
 #: ../../build/doc/via-category.rst:17
+#, fuzzy
 msgid "``path_seq``"
-msgstr ""
+msgstr "``path_seq``"
 
 #: ../../build/doc/via-category.rst:19
 msgid ""
 "Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el principio de una "
+"ruta."
 
 #: ../../build/doc/via-category.rst:20
 msgid "``start_vid``"
-msgstr ""
+msgstr "``start_vid``"
 
 #: ../../build/doc/via-category.rst:21 ../../build/doc/via-category.rst:27
 #: ../../build/doc/via-category.rst:33 ../../build/doc/via-category.rst:39
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/via-category.rst:22
 msgid "Identifier of the starting vertex or point of the path."
@@ -550,7 +554,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:26
 msgid "``end_vid``"
-msgstr ""
+msgstr "``end_vid``"
 
 #: ../../build/doc/via-category.rst:28
 msgid "Identifier of the ending vertex or point of the path."
@@ -558,21 +562,24 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:32
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/via-category.rst:34
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
-msgstr ""
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/via-category.rst:38
+#, fuzzy
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/via-category.rst:40
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path "
 "sequence."
 msgstr ""
+"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
+"la secuencia de ruta."
 
 #: ../../build/doc/via-category.rst:43
 msgid ":math:`-1` for the last row of the path."
@@ -585,21 +592,23 @@ msgstr ""
 #: ../../build/doc/via-category.rst:46 ../../build/doc/via-category.rst:50
 #: ../../build/doc/via-category.rst:55
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/via-category.rst:47
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
+"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"nodo en la secuencia de ruta."
 
 #: ../../build/doc/via-category.rst:49
 msgid "``agg_cost``"
-msgstr ""
+msgstr "``agg_cost``"
 
 #: ../../build/doc/via-category.rst:51
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr ""
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/via-category.rst:53
 msgid ":math:`0` on the first row of the path."
@@ -607,7 +616,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:54
 msgid "``route_agg_cost``"
-msgstr ""
+msgstr "``route_agg_cost``"
 
 #: ../../build/doc/via-category.rst:56
 msgid "Total cost from the first row of the route up to the current node."
@@ -619,11 +628,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsVia.rst:133
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_withPointsVia.rst:0
 msgid "Example 1"
-msgstr ""
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_withPointsVia.rst:135
 msgid ""
@@ -633,42 +642,44 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsVia.rst:0
 msgid "Example 2"
-msgstr ""
+msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_withPointsVia.rst:142
 msgid "What's the aggregate cost of the third path?"
-msgstr ""
+msgstr "¿Cuál es el costo total de la tercera ruta?"
 
 #: ../../build/doc/pgr_withPointsVia.rst:0
 msgid "Example 3"
-msgstr ""
+msgstr "Ejemplo 3"
 
 #: ../../build/doc/pgr_withPointsVia.rst:148
 msgid ""
 "What's the route's aggregate cost of the route at the end of the third path?"
-msgstr ""
+msgstr "¿Cuál es el costo agregado de la ruta al final de la tercera ruta?"
 
 #: ../../build/doc/pgr_withPointsVia.rst:0
 msgid "Example 4"
-msgstr ""
+msgstr "Ejemplo 4"
 
 #: ../../build/doc/pgr_withPointsVia.rst:155
 msgid "How are the nodes visited in the route?"
-msgstr ""
+msgstr "¿Cómo se visitan los nodos en la ruta?"
 
 #: ../../build/doc/pgr_withPointsVia.rst:0
 msgid "Example 5"
-msgstr ""
+msgstr "Ejemplo 5"
 
 #: ../../build/doc/pgr_withPointsVia.rst:161
 msgid ""
 "What are the aggregate costs of the route when the visited vertices are "
 "reached?"
 msgstr ""
+"¿Cuáles son los costos agregados de la ruta cuando se llega a los vértices "
+"visitados?"
 
 #: ../../build/doc/pgr_withPointsVia.rst:0
 msgid "Example 6"
-msgstr ""
+msgstr "Ejemplo 6"
 
 #: ../../build/doc/pgr_withPointsVia.rst:168
 msgid ""
@@ -677,7 +688,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsVia.rst:176
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/pgr_withPointsVia.rst:178
 msgid ":doc:`withPoints-family`"
@@ -685,7 +696,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsVia.rst:179
 msgid ":doc:`via-category`"
-msgstr ""
+msgstr ":doc:`via-category`"
 
 #: ../../build/doc/pgr_withPointsVia.rst:180
 msgid ":doc:`sampledata` network."
@@ -693,12 +704,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsVia.rst:183
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_withPointsVia.rst:184
+#, fuzzy
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_withPointsVia.rst:185
+#, fuzzy
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
