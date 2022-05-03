@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-10 16:45+0000\n"
-"PO-Revision-Date: 2022-02-03 16:52+0000\n"
-"Last-Translator: cvvergara <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_tsp/"
 "es/>\n"
 "Language: es\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_TSP.rst:12
@@ -644,9 +644,11 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_TSP.rst:232
+#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_TSP.rst:233
+#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
