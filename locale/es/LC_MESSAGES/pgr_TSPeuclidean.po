@@ -8,21 +8,22 @@
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-10 16:45+0000\n"
-"PO-Revision-Date: 2020-11-04 18:27+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_tspeuclidean/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11.2\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:12
 msgid ""
@@ -506,9 +507,11 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:195
+#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:196
+#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
