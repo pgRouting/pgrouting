@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 01:33+0000\n"
+"POT-Creation-Date: 2022-05-03 16:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,7 +175,7 @@ msgid "Combinations"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:187
-msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{3, 6\\}` to vertices :math:`\\{4, 5, 10\\}` on a **directed** graph."
+msgid "Manually selecting combinations to be processed"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:194
