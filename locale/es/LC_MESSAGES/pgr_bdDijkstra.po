@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-11 13:15+0000\n"
-"PO-Revision-Date: 2022-04-20 17:55+0000\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bddijkstra/es/>\n"
@@ -603,7 +603,7 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
-"Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
 "nodo en la secuencia de ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -642,9 +642,11 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:251
+#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:252
+#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
