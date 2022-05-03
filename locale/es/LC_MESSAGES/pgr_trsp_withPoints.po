@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-01 00:16+0000\n"
-"PO-Revision-Date: 2022-04-20 17:55+0000\n"
+"PO-Revision-Date: 2022-05-04 01:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
@@ -372,7 +372,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:255
 msgid "``driving_side``"
@@ -633,72 +633,80 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:318
 msgid "Sequential value starting from **1**."
-msgstr ""
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:319
+#, fuzzy
 msgid "``path_seq``"
-msgstr ""
+msgstr "``path_seq``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:321
 msgid ""
 "Relative position in the path. Has value **1** for the beginning of a path."
 msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el principio de una "
+"ruta."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:323
 msgid "``start_vid``"
-msgstr ""
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:324
 #: ../../build/doc/pgr_trsp_withPoints.rst:327
 #: ../../build/doc/pgr_trsp_withPoints.rst:330
 #: ../../build/doc/pgr_trsp_withPoints.rst:333
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:325
 msgid "Identifier of the starting vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:326
 msgid "``end_vid``"
-msgstr ""
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:328
 msgid "Identifier of the ending vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:329
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:331
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
-msgstr ""
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:332
+#, fuzzy
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:334
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path "
 "sequence."
 msgstr ""
+"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
+"la secuencia de ruta."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:337
 msgid "-1 for the last node of the path."
-msgstr ""
+msgstr "-1 para el último nodo de la ruta"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:339
 #: ../../build/doc/pgr_trsp_withPoints.rst:345
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:340
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
+"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"nodo en la secuencia de ruta."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:343
 msgid "``0`` for the last row in the path sequence."
@@ -706,11 +714,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:344
 msgid "``agg_cost``"
-msgstr ""
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:346
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr ""
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:348
 msgid "``0`` for the first row in the path sequence."
@@ -718,7 +726,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:355
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:357
 msgid ""
@@ -734,7 +742,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:373
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:375
 msgid ":doc:`TRSP-family`"
@@ -750,12 +758,14 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:380
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:381
+#, fuzzy
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:382
+#, fuzzy
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
