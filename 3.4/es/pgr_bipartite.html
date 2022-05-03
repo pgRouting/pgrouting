@@ -160,7 +160,9 @@
 </ul>
 <section id="pgr-bipartite-experimental">
 <h1>pgr_bipartite -Experimental<a class="headerlink" href="#pgr-bipartite-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_bipartite</span></code> — Si el grafo es bipartito, la función devuelve la identificación del vértice junto con el color (0 y 1); de lo contrario, devolverá un conjunto vacío. En particular, el algoritmo is_bipartite () implementado por Boost.Graph</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_bipartite</span></code> — If graph is bipartite then function returns the vertex id
+along with color (0 and 1) else it will return an empty set. In particular, the
+is_bipartite() algorithm is implemented using Boost Graph Library.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/is_bipartite.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -201,7 +203,7 @@
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>Nueva función <strong>experimental</strong></p></li>
+<li><p>New <strong>experimental</strong> signature</p></li>
 </ul>
 </li>
 </ul>
@@ -212,22 +214,23 @@
 <ul class="simple">
 <li><p>El algoritmo solo funciona en un grafo no dirigido.</p></li>
 <li><p>Los valores devueltos no están ordenados.</p></li>
-<li><p>El algoritmo comprueba si el gráfico es bipartito o no. Si es bipartito, devuelve el nodo junto con dos colores “0” y “1” que representa dos conjuntos diferentes.</p></li>
+<li><p>The algorithm checks graph is bipartite or not. If it is bipartite then it
+returns the node along with two    colors <cite>0</cite> and <cite>1</cite> which represents two
+different sets.</p></li>
 <li><p>Si el grafo no es bipartito, el algoritmo devuelve un conjunto vacío.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_bipartite</span><span class="p">(</span><span class="n">Edges</span><span class="w"> </span><span class="k">SQL</span><span class="p">)</span><span class="w"></span>
+<pre class="literal-block" id="index-0">pgr_bipartite(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 
-<span class="k">RETURNS</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="p">(</span><span class="n">vertex_id</span><span class="p">,</span><span class="w"> </span><span class="n">color_id</span><span class="p">)</span><span class="w"></span>
-<span class="k">OR</span><span class="w"> </span><span class="n">EMPTY</span><span class="w"> </span><span class="k">SET</span><span class="w"></span>
-</pre></div>
-</div>
+RETURNS SET OF (vertex_id, color_id)
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>El algoritmo pgr_bipartite con edge_sql como parámetro cuando el grafo es bipartito:</p>
+<dd class="field-odd"><p>The pgr_bipartite algorithm with and <a class="reference internal" href="#edges-sql">Edges SQL</a> as a parameter when
+graph is bipartite</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_bipartite(
@@ -352,11 +355,11 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>vertex_id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>color_id</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del color del vértice.</p>
 <ul class="simple">
@@ -371,10 +374,11 @@ it’s not part of the graph.</p></li>
 <h2>Ejemplo Adicional<a class="headerlink" href="#additional-example" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>El gráfico cíclico de longitud impar no puede ser bipartito.</p>
+<dd class="field-odd"><p>The odd length cyclic graph can not be bipartite. The following edge
+will make subgraph with vertices {1, 2, 5, 7, 8} an odd length cyclic
+graph.</p>
 </dd>
 </dl>
-<p>En el siguiente borde se hará de el subgrafo con vértices {1, 2, 5, 7, 8} un grafo cíclico de longitud impar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>

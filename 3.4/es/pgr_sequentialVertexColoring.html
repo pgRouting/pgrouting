@@ -187,12 +187,12 @@
 <ul class="simple">
 <li><p>Versión 3.3.0</p>
 <ul>
-<li><p>Promovido a función <strong>propuesta</strong></p></li>
+<li><p>Promoted to <strong>proposed</strong> signature</p></li>
 </ul>
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>Nueva función <strong>experimental</strong></p></li>
+<li><p>New <strong>experimental</strong> signature</p></li>
 </ul>
 </li>
 </ul>
@@ -218,12 +218,10 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_sequentialVertexColoring(Edges SQL)
+<pre class="literal-block" id="index-0">pgr_sequentialVertexColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 
 RETURNS SET OF (vertex_id, color_id)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Coloración de grafos de pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
@@ -352,11 +350,11 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>vertex_id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>color_id</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del color del vértice.</p>
 <ul class="simple">

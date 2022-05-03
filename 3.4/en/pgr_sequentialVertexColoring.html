@@ -161,8 +161,8 @@
 </ul>
 <section id="pgr-sequentialvertexcoloring-proposed">
 <h1>pgr_sequentialVertexColoring - Proposed<a class="headerlink" href="#pgr-sequentialvertexcoloring-proposed" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_sequentialVertexColoring</span></code> — Returns the vertex coloring of an undirected graph,
-using greedy approach.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_sequentialVertexColoring</span></code> — Returns the vertex coloring of an undirected
+graph, using greedy approach.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -190,19 +190,19 @@ using greedy approach.</p>
 <ul class="simple">
 <li><p>Version 3.3.0</p>
 <ul>
-<li><p>Promoted to <strong>proposed</strong> function</p></li>
+<li><p>Promoted to <strong>proposed</strong> signature</p></li>
 </ul>
 </li>
 <li><p>Version 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> function</p></li>
+<li><p>New <strong>experimental</strong> signature</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Sequential Vertex Coloring algorithm is a graph coloring algorithm in which color
-identifiers are assigned to the vertices of a graph in a sequential manner,
+<p>Sequential Vertex Coloring algorithm is a graph coloring algorithm in which
+color identifiers are assigned to the vertices of a graph in a sequential manner,
 such that no edge connects two identically colored vertices.</p>
 <p><strong>The main Characteristics are:</strong></p>
 <ul class="simple">
@@ -226,12 +226,10 @@ possible color that is not used by its neighbors, to each vertex.</p></li>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_sequentialVertexColoring(Edges SQL)
+<pre class="literal-block" id="index-0">pgr_sequentialVertexColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 
 RETURNS SET OF (vertex_id, color_id)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>Graph coloring of pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
@@ -360,11 +358,11 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>vertex_id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>color_id</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the color of the vertex.</p>
 <ul class="simple">

@@ -160,7 +160,8 @@
 </ul>
 <section id="pgr-edgecoloring-experimental">
 <h1>pgr_edgeColoring - Experimental<a class="headerlink" href="#pgr-edgecoloring-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_edgeColoring</span></code> — Returns the edge coloring of an undirected and loop-free (i.e <em>no self-loops and no parallel edges</em>) graph.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_edgeColoring</span></code> — Returns the edge coloring of an undirected and loop-free
+(i.e <em>no self-loops and no parallel edges</em>) graph.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/edge_coloring.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -201,26 +202,33 @@
 <ul class="simple">
 <li><p>Version 3.3.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> function</p></li>
+<li><p>New <strong>experimental</strong> signature</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>Edge Coloring is an algorithm used for coloring of the edges for the vertices in the graph. It
-is an assignment of colors to the edges of the graph so that no two adjacent edges have the same
-color.</p>
+<p>Edge Coloring is an algorithm used for coloring of the edges for the vertices
+in the graph. It is an assignment of colors to the edges of the graph so that
+no two adjacent edges have the same color.</p>
 <p><strong>The main Characteristics are:</strong></p>
 <ul class="simple">
-<li><p>The implementation is applicable only for <strong>undirected</strong> and <strong>loop-free</strong> (i.e <em>no self-loops and no parallel edges</em>) graphs.</p></li>
+<li><p>The implementation is applicable only for <strong>undirected</strong> and <strong>loop-free</strong>
+(i.e <em>no self-loops and no parallel edges</em>) graphs.</p></li>
 <li><p>Provides the color to be assigned to all the edges present in the graph.</p></li>
-<li><p>At most <strong>Δ + 1</strong> colors are used, where <strong>Δ</strong> is the degree of the graph. This is optimal for some graphs, and by Vizing’s theorem it uses at most one color more than the optimal for all others.</p></li>
-<li><p>It can tell us whether a graph is <strong>Bipartite</strong>. If in a graph, the chromatic number <strong>χ′(G)</strong> i.e. minimum number of colors needed for proper edge coloring of graph is equal to degree <strong>Δ</strong> of the graph, (i.e. <strong>χ′(G) = Δ</strong>) then graph is said to be Bipartite. But, the vice-versa is not always true.</p></li>
+<li><p>At most <strong>Δ + 1</strong> colors are used, where <strong>Δ</strong> is the degree of the graph.
+This is optimal for some graphs, and by Vizing’s theorem it uses at most one
+color more than the optimal for all others.</p></li>
+<li><p>It can tell us whether a graph is <strong>Bipartite</strong>. If in a graph, the chromatic
+number <strong>χ′(G)</strong> i.e. minimum number of colors needed for proper edge coloring
+of graph is equal to degree <strong>Δ</strong> of the graph, (i.e. <strong>χ′(G) = Δ</strong>) then
+graph is said to be Bipartite. But, the vice-versa is not always true.</p></li>
 <li><p>The algorithm tries to assign the least possible color to every edge.</p></li>
 <li><p>Efficient graph coloring is an NP-Hard problem, and therefore, this algorithm
 does not always produce optimal coloring.</p></li>
 <li><p>The returned rows are ordered in ascending order of the edge value.</p></li>
-<li><p>This algorithm is the fastest known almost-optimal algorithm for edge coloring.</p></li>
+<li><p>This algorithm is the fastest known almost-optimal algorithm for edge
+coloring.</p></li>
 <li><p>Edge Coloring Running Time: <span class="math notranslate nohighlight">\(O(|E||V|)\)</span></p>
 <ul>
 <li><p>where <span class="math notranslate nohighlight">\(|E|\)</span> is the number of edges in the graph,</p></li>
@@ -231,12 +239,10 @@ does not always produce optimal coloring.</p></li>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_edgeColoring</span><span class="p">(</span><span class="n">Edges</span><span class="w"> </span><span class="k">SQL</span><span class="p">)</span><span class="w"></span>
+<pre class="literal-block" id="index-0">pgr_edgeColoring(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 
-<span class="k">RETURNS</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="p">(</span><span class="n">edge_id</span><span class="p">,</span><span class="w"> </span><span class="n">color_id</span><span class="p">)</span><span class="w"></span>
-<span class="k">OR</span><span class="w"> </span><span class="n">EMPTY</span><span class="w"> </span><span class="k">SET</span><span class="w"></span>
-</pre></div>
-</div>
+RETURNS SET OF (edge_id, color_id)
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>Graph coloring of pgRouting <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p>
@@ -366,11 +372,11 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>edge_id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the edge.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>color_id</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the color of the edge.</p>
 <ul class="simple">

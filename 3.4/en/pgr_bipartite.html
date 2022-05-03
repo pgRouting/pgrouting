@@ -162,8 +162,9 @@
 </ul>
 <section id="pgr-bipartite-experimental">
 <h1>pgr_bipartite -Experimental<a class="headerlink" href="#pgr-bipartite-experimental" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_bipartite</span></code> — If graph is bipartite then function returns the vertex id along with color (0 and 1) else it will return an empty set.
-In particular, the is_bipartite() algorithm implemented by Boost.Graph.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_bipartite</span></code> — If graph is bipartite then function returns the vertex id
+along with color (0 and 1) else it will return an empty set. In particular, the
+is_bipartite() algorithm is implemented using Boost Graph Library.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/is_bipartite.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -204,34 +205,37 @@ In particular, the is_bipartite() algorithm implemented by Boost.Graph.</p>
 <ul class="simple">
 <li><p>Version 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> function</p></li>
+<li><p>New <strong>experimental</strong> signature</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>A bipartite graph is a graph with two sets of vertices which are connected to each other, but not within themselves.
-A bipartite graph is possible if the graph coloring is possible using two colors such that vertices in a set are colored with the same color.</p>
+<p>A bipartite graph is a graph with two sets of vertices which are connected to
+each other, but not within themselves. A bipartite graph is possible if the
+graph coloring is possible using two colors such that vertices in a set are
+colored with the same color.</p>
 <p><strong>The main Characteristics are:</strong></p>
 <ul class="simple">
 <li><p>The algorithm works in undirected graph only.</p></li>
 <li><p>The returned values are not ordered.</p></li>
-<li><p>The algorithm checks graph is bipartite or not. If it is bipartite then it returns the node along with two colors <cite>0</cite> and <cite>1</cite> which represents two different sets.</p></li>
+<li><p>The algorithm checks graph is bipartite or not. If it is bipartite then it
+returns the node along with two    colors <cite>0</cite> and <cite>1</cite> which represents two
+different sets.</p></li>
 <li><p>If graph is not bipartite then algorithm returns empty set.</p></li>
 <li><p>Running time: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_bipartite</span><span class="p">(</span><span class="n">Edges</span><span class="w"> </span><span class="k">SQL</span><span class="p">)</span><span class="w"></span>
+<pre class="literal-block" id="index-0">pgr_bipartite(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 
-<span class="k">RETURNS</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="p">(</span><span class="n">vertex_id</span><span class="p">,</span><span class="w"> </span><span class="n">color_id</span><span class="p">)</span><span class="w"></span>
-<span class="k">OR</span><span class="w"> </span><span class="n">EMPTY</span><span class="w"> </span><span class="k">SET</span><span class="w"></span>
-</pre></div>
-</div>
+RETURNS SET OF (vertex_id, color_id)
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>The pgr_bipartite algorithm with and edge_sql as a parameter when graph is bipartite:</p>
+<dd class="field-odd"><p>The pgr_bipartite algorithm with and <a class="reference internal" href="#edges-sql">Edges SQL</a> as a parameter when
+graph is bipartite</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_bipartite(
@@ -356,11 +360,11 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>vertex_id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vertex_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>color_id</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">color_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the color of the vertex.</p>
 <ul class="simple">
@@ -375,16 +379,18 @@ it’s not part of the graph.</p></li>
 <h2>Additional Example<a class="headerlink" href="#additional-example" title="Permalink to this headline">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>The odd length cyclic graph can not be bipartite.</p>
+<dd class="field-odd"><p>The odd length cyclic graph can not be bipartite. The following edge
+will make subgraph with vertices {1, 2, 5, 7, 8} an odd length cyclic
+graph.</p>
 </dd>
 </dl>
-<p>The following edge will make subgraph with vertices {1, 2, 5, 7, 8} an odd length cyclic graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edge_table</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>The new graph is not bipartite because it has a odd length cycle of 5 vertices. Edges in blue represent odd length cycle.</p>
+<p>The new graph is not bipartite because it has a odd length cycle of 5 vertices.
+Edges in blue represent odd length cycle.</p>
 <a class="reference internal image-reference" href="_images/bipartite.png"><img alt="_images/bipartite.png" src="_images/bipartite.png" style="width: 249.6px; height: 231.6px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_bipartite(
     $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
