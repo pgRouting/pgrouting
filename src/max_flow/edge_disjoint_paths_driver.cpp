@@ -35,11 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "max_flow/pgr_maxflow.hpp"
 
+#include "cpp_common/combinations.h"
 #include "cpp_common/identifiers.hpp"
 #include "cpp_common/pgr_alloc.hpp"
 #include "cpp_common/pgr_assert.h"
 
 #include "c_types/ii_t_rt.h"
+
 
 static
 std::vector<Path_rt>
@@ -93,32 +95,24 @@ do_pgr_edge_disjoint_paths(
         pgassert((sources && sinks) || combinations);
         pgassert((size_source_verticesArr && size_sink_verticesArr) || total_combinations);
 
-        std::set<int64_t> set_source_vertices(
-                sources, sources + size_source_verticesArr);
-        std::set<int64_t> set_sink_vertices(
-                sinks, sinks + size_sink_verticesArr);
-        std::vector< II_t_rt > combinations_vector(
-                combinations, combinations + total_combinations);
+        auto combinations_data = total_combinations?
+            pgrouting::utilities::get_combinations(combinations, total_combinations)
+            : pgrouting::utilities::get_combinations(sources, size_source_verticesArr, sinks, size_sink_verticesArr);
+
         std::vector<Edge_t> edges(
                 data_edges, data_edges + total_edges);
 
-        if (!combinations_vector.empty()) {
-            pgassert(set_source_vertices.empty());
-            pgassert(set_sink_vertices.empty());
-
-            for (const II_t_rt &comb : combinations_vector) {
-                set_source_vertices.insert(comb.d1.source);
-                set_sink_vertices.insert(comb.d2.target);
-            }
-        }
-
-
         std::vector<Path_rt> paths;
-        for (const auto &s : set_source_vertices) {
-            for (const auto &t : set_sink_vertices) {
+        for (const auto &c : combinations_data) {
+            for (const auto &t : c.second) {
+                /*
+                 * a source can not be a sink
+                 * aka there is no path
+                 */
+                if (c.first == t) continue;
                 auto path = single_execution(
                         edges,
-                        s,
+                        c.first,
                         t,
                         directed);
                 paths.insert(paths.end(), path.begin(), path.end());
@@ -165,16 +159,6 @@ do_pgr_edge_disjoint_paths(
             }
             prev = r;
         }
-
-        /*
-         * Numbering the paths
-         */
-        int path_id(0);
-        for (auto &r : paths) {
-            r.start_id = path_id;
-            if (r.edge == -1) ++path_id;
-        }
-
 
         (*return_tuples) = pgr_alloc(paths.size(), (*return_tuples));
         for (size_t i = 0; i < paths.size(); ++i) {

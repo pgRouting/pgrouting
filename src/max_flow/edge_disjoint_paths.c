@@ -210,16 +210,33 @@ _pgr_edgedisjointpaths(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
+        int64_t path_id = 1;
+        int64_t seq = 1;
+        if (funcctx->call_cntr != 0) {
+            if (result_tuples[funcctx->call_cntr - 1].edge == -1) {
+                path_id = result_tuples[funcctx->call_cntr - 1].start_id + 1;
+                seq = 1;
+            } else {
+                path_id = result_tuples[funcctx->call_cntr - 1].start_id;
+                seq = result_tuples[funcctx->call_cntr - 1].end_id + 1;
+            }
+        }
+
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(
-                result_tuples[funcctx->call_cntr].start_id + 1);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[1] = Int32GetDatum(path_id);
+        values[2] = Int32GetDatum(seq);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
         values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+
+        /*
+         * storing in the previous record values to use on the next record
+         */
+        result_tuples[funcctx->call_cntr].start_id = path_id;
+        result_tuples[funcctx->call_cntr].end_id = seq;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
