@@ -16,10 +16,11 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__
 
-pgr_breadthFirstSearch - Experimental
+``pgr_breadthFirstSearch - Experimental``
 ===============================================================================
 
-``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth First Search algorithm.
+``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth First
+Search algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/breadth_first_search.html
@@ -34,26 +35,31 @@ pgr_breadthFirstSearch - Experimental
 
 * Version 3.0.0
 
-  * New **experimental** function:
+  * New **experimental** signature:
+    
+    * ``pgr_breadthFirstSearch`` (`Single Vertex`_)
+    * ``pgr_breadthFirstSearch`` (`Multiple Vertices`_)
 
 Description
 -------------------------------------------------------------------------------
 
-Provides the Breadth First Search traversal order from a root vertex to a particular depth.
+Provides the Breadth First Search traversal order from a root vertex to a 
+particular depth.
 
 **The main Characteristics are:**
 
-- The implementation will work on any type of graph.
-- Provides the Breadth First Search traversal order from a source node to a target depth level
-- Breath First Search Running time: :math:`O(E + V)`
+* The implementation will work on any type of graph.
+* Provides the Breadth First Search traversal order from a source node to a target
+  depth level.
+* Running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: none
+.. parsed-literal:: 
 
-    pgr_breadthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
-    pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
+    pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
+    pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -63,13 +69,13 @@ Signatures
 Single Vertex
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_breadthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
+    pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Breadth First Search traversal with root vertex :math:`2`
+**Example:** The Breadth First Search traversal with root vertex :math:`2`
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q1
@@ -81,9 +87,9 @@ Single Vertex
 Multiple Vertices
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal:: 
 
-    pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
+    pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
 
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
@@ -133,7 +139,8 @@ Parameter           Type        Default                     Description
 Inner query
 -------------------------------------------------------------------------------
 
-.. rubric::Edges SQL
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
@@ -175,7 +182,8 @@ Additional Examples
 
 **Undirected Graph**
 
-:Example: The Breadth First Search traverls starting on vertices :math:`\{11, 12\}` with :math:`depth <= 2` as well as considering the graph to be undirected.
+**Example:** The Breadth First Search traverls starting on vertices :math:`\{11, 12\}`
+with :math:`depth <= 2` as well as considering the graph to be undirected.
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q3
@@ -184,7 +192,8 @@ Additional Examples
 
 **Vertex Out Of Graph**
 
-:Example: The output of the function when a vertex not present in the graph is passed as a parameter.
+**Example:** The output of the function when a vertex not present in the graph 
+is passed as a parameter.
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q4
@@ -195,7 +204,7 @@ Additional Examples
 See Also
 -------------------------------------------------------------------------------
 
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 * `Boost: Breadth First Search algorithm documentation <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__
 * `Wikipedia: Breadth First Search algorithm <https://en.wikipedia.org/wiki/Breadth-first_search>`__
 
