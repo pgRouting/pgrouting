@@ -75,7 +75,7 @@ Signatures
 
     pgr_edgeColoring(`Edges SQL`_)
 
-    RETURNS SET OF (id, color_id)
+    RETURNS SET OF (edge_id, color_id)
     OR EMPTY SET
 
 :Example: Graph coloring of pgRouting :doc:`sampledata`
