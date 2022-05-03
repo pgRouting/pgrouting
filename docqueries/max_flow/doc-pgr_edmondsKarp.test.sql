@@ -19,14 +19,12 @@ SELECT * FROM pgr_edmondsKarp(
   FROM edge_table',
   ARRAY[6, 8, 12], ARRAY[1, 3, 11]);
 /* -- q5 */
-SELECT source, target FROM combinations_table
-WHERE target NOT IN (1, 2);
+SELECT source, target FROM combinations_table;
 /* -- q51 */
 SELECT * FROM pgr_edmondsKarp(
   'SELECT id, source, target, capacity, reverse_capacity
    FROM edge_table',
-  'SELECT * FROM combinations_table
-   WHERE target NOT IN (1, 2)');
+  'SELECT * FROM combinations_table);
 /* -- q6 */
 SELECT * FROM pgr_edmondsKarp(
   'SELECT id, source, target, capacity, reverse_capacity
