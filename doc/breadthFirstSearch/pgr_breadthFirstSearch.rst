@@ -16,7 +16,7 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__
 
-``pgr_breadthFirstSearch - Experimental``
+``pgr_breadthFirstSearch`` - Experimental
 ===============================================================================
 
 ``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth First
@@ -60,7 +60,6 @@ Signatures
 
     pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
     pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
-
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
@@ -72,10 +71,9 @@ Single Vertex
 .. parsed-literal::
 
     pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
-
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-**Example:** The Breadth First Search traversal with root vertex :math:`2`
+:Example: The Breadth First Search traversal with root vertex :math:`2`
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q1
@@ -90,10 +88,10 @@ Multiple Vertices
 .. parsed-literal:: 
 
     pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
-
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Breadth First Search traverls starting on vertices :math:`\{11, 12\}` with :math:`depth <= 2`
+:Example: The Breadth First Search traverls starting on vertices :math:`\{11, 12\}`
+          with :math:`depth <= 2`
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q2
@@ -182,8 +180,8 @@ Additional Examples
 
 **Undirected Graph**
 
-**Example:** The Breadth First Search traverls starting on vertices :math:`\{11, 12\}`
-with :math:`depth <= 2` as well as considering the graph to be undirected.
+:Example: The Breadth First Search traverls starting on vertices :math:`\{11, 12\}`
+          with :math:`depth <= 2` as well as considering the graph to be undirected.
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q3
@@ -192,8 +190,8 @@ with :math:`depth <= 2` as well as considering the graph to be undirected.
 
 **Vertex Out Of Graph**
 
-**Example:** The output of the function when a vertex not present in the graph 
-is passed as a parameter.
+:Example: The output of the function when a vertex not present in the graph 
+          is passed as a parameter.
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: --q4

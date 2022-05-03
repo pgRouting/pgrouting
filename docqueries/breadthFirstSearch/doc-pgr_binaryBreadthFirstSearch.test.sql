@@ -36,60 +36,60 @@ INSERT INTO roadworks(
 
 /*  -- q1 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost 
-    FROM edge_table',
+    'select id, source, target, cost, reverse_cost 
+    from edge_table',
     2, 3
 );
 /* -- q3 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost 
-    FROM edge_table',
+    'select id, source, target, cost 
+    from edge_table',
     2, ARRAY[3,5],
-    FALSE
+    false
 );
 /* -- q4 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost 
-    FROM edge_table',
+    'select id, source, target, cost, reverse_cost 
+    from edge_table',
     ARRAY[2,11], 5
 );
 /* -- q5 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost 
-    FROM edge_table',
+    'select id, source, target, cost, reverse_cost 
+    from edge_table',
     ARRAY[2,11], ARRAY[3,5],
-    FALSE
+    false
 );
 /* -- q51 */
 SELECT * FROM combinations_table;
 /* -- q6 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost 
-    FROM edge_table',
-    'SELECT * FROM combinations_table',
-    FALSE
+    'select id, source, target, cost, reverse_cost 
+    from edge_table',
+    'select * from combinations_table',
+    false
 );
 /* -- q7 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost 
-    FROM roadworks',
+    'select id, source, target, road_work as cost, reverse_road_work as reverse_cost 
+    from roadworks',
     2, 3
 );
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost 
-    FROM roadworks',
+    'select id, source, target, road_work as cost 
+    from roadworks',
     2, ARRAY[3,5],
-    FALSE
+    false
 );
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost 
-    FROM roadworks',
+    'select id, source, target, road_work as cost, reverse_road_work as reverse_cost 
+    from roadworks',
     ARRAY[2,11], 5
 );
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost 
-    FROM roadworks',
+    'select id, source, target, road_work as cost, reverse_road_work as reverse_cost 
+    from roadworks',
     ARRAY[2,11], ARRAY[3,5],
-    FALSE
+    false
 );
 /* -- q8 */

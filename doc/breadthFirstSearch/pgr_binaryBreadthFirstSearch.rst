@@ -14,13 +14,17 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_binaryBreadthFirstSearch.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__
 
-``pgr_binaryBreadthFirstSearch - Experimental``
+``pgr_binaryBreadthFirstSearch`` - Experimental
 ===============================================================================
 
 ``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary graph.
 Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any 
 non-negative real integer, is termed as a 'binary graph'.
 
+.. figure:: images/boost-inside.jpeg
+   :target: https://www.boost.org/libs/graph/doc/breadth_first_search.html
+
+   Boost Graph Inside
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
@@ -62,16 +66,17 @@ of each edge belongs to the set {0,X}, where 'X' is any non-negative real intege
 
 
 **The main Characteristics are:**
-  * Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose 
-    edge-weights belongs to the set {0,X}, where 'X' is any non-negative real integer.)
-  * For optimization purposes, any duplicated value in the `start_vids` or `end_vids`
-    are ignored.
-  * The returned values are ordered:
 
-    * `start_vid` ascending
-    * `end_vid` ascending
+* Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose 
+  edge-weights belongs to the set {0,X}, where 'X' is any non-negative real integer.)
+* For optimization purposes, any duplicated value in the `start_vids` or `end_vids`
+  are ignored.
+* The returned values are ordered:
 
-  * Running time: :math:`O(| start\_vids | * |E|)`
+  * `start_vid` ascending
+  * `end_vid` ascending
+
+* Running time: :math:`O(| start\_vids | * |E|)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -260,7 +265,7 @@ The Additional Examples use the following tabel Data.
    :start-after: --data-start
    :end-before: --data-end
 
-**Examples:**
+:Examples:
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
    :start-after: -- q7

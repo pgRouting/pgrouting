@@ -38,8 +38,8 @@ INSERT 0 18
 /* --data-end */
 /*  -- q1 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'select id, source, target, cost, reverse_cost
+    from edge_table',
     2, 3
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -54,10 +54,10 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
 
 /* -- q3 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost
-    FROM edge_table',
+    'select id, source, target, cost
+    from edge_table',
     2, ARRAY[3,5],
-    FALSE
+    false
 );
  seq | path_seq | end_vid | node | edge | cost | agg_cost
 -----+----------+---------+------+------+------+----------
@@ -71,8 +71,8 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
 
 /* -- q4 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'select id, source, target, cost, reverse_cost
+    from edge_table',
     ARRAY[2,11], 5
 );
  seq | path_seq | start_vid | node | edge | cost | agg_cost
@@ -88,10 +88,10 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
 
 /* -- q5 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
+    'select id, source, target, cost, reverse_cost
+    from edge_table',
     ARRAY[2,11], ARRAY[3,5],
-    FALSE
+    false
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
@@ -120,10 +120,10 @@ SELECT * FROM combinations_table;
 
 /* -- q6 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, cost, reverse_cost
-    FROM edge_table',
-    'SELECT * FROM combinations_table',
-    FALSE
+    'select id, source, target, cost, reverse_cost
+    from edge_table',
+    'select * from combinations_table',
+    false
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
@@ -141,8 +141,8 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
 
 /* -- q7 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost
-    FROM roadworks',
+    'select id, source, target, road_work as cost, reverse_road_work as reverse_cost
+    from roadworks',
     2, 3
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -156,10 +156,10 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
 (6 rows)
 
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost
-    FROM roadworks',
+    'select id, source, target, road_work as cost
+    from roadworks',
     2, ARRAY[3,5],
-    FALSE
+    false
 );
  seq | path_seq | end_vid | node | edge | cost | agg_cost
 -----+----------+---------+------+------+------+----------
@@ -172,8 +172,8 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
 (6 rows)
 
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost
-    FROM roadworks',
+    'select id, source, target, road_work as cost, reverse_road_work as reverse_cost
+    from roadworks',
     ARRAY[2,11], 5
 );
  seq | path_seq | start_vid | node | edge | cost | agg_cost
@@ -190,10 +190,10 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
 (9 rows)
 
 SELECT * FROM pgr_binaryBreadthFirstSearch(
-    'SELECT id, source, target, road_work as cost, reverse_road_work as reverse_cost
-    FROM roadworks',
+    'select id, source, target, road_work as cost, reverse_road_work as reverse_cost
+    from roadworks',
     ARRAY[2,11], ARRAY[3,5],
-    FALSE
+    false
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
