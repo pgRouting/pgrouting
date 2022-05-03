@@ -62,8 +62,8 @@ Returns SET OF ``(vertex_id, color_id)``
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
-**vertex_id**    ``BIGINT``  Identifier of the vertex.
-**color_id**     ``BIGINT``  Identifier of the color of the vertex.
+``vertex_id``    ``BIGINT``  Identifier of the vertex.
+``color_id``     ``BIGINT``  Identifier of the color of the vertex.
 
                              - The minimum value of color is 1.
 
@@ -73,13 +73,13 @@ Column           Type        Description
 
 .. result columns start edgeColoring
 
-Returns SET OF ``(id, color_id)``
+Returns SET OF ``(edge_id, color_id)``
 
 ===============  =========== ====================================================
 Column           Type        Description
 ===============  =========== ====================================================
-**id**           ``BIGINT``  Identifier of the edge.
-**color_id**     ``BIGINT``  Identifier of the color of the edge.
+``edge_id``      ``BIGINT``  Identifier of the edge.
+``color_id``     ``BIGINT``  Identifier of the color of the edge.
 
                              - The minimum value of color is 1.
 
