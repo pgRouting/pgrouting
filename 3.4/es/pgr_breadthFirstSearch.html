@@ -98,7 +98,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_breadthFirstSearch - Experimental</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#single-vertex">Vértice Único</a></li>
@@ -109,7 +109,10 @@
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a><ul>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 </ul>
@@ -165,7 +168,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_breadthFirstSearch.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_breadthFirstSearch.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_breadthFirstSearch.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_breadthFirstSearch.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_breadthFirstSearch.html">3.0</a></p></li>
 </ul>
 <section id="pgr-breadthfirstsearch-experimental">
-<h1>pgr_breadthFirstSearch - Experimental<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> - Experimental<a class="headerlink" href="#pgr-breadthfirstsearch-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> — Devuelve los orden(es) transversales mediante el algoritmo Breadth First Search.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -207,7 +210,12 @@
 <ul class="simple">
 <li><p>Versión 3.0.0</p>
 <ul>
-<li><p>Nueva función <strong>experimental</strong>:</p></li>
+<li><p>New <strong>experimental</strong> signature:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> (<a class="reference internal" href="#single-vertex">Single Vertex</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_breadthFirstSearch</span></code> (<a class="reference internal" href="#multiple-vertices">Multiple Vertices</a>)</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -217,32 +225,28 @@
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>La implementación funcionará en cualquier tipo de grafo.</p></li>
-<li><p>Proporciona el orden transversal de Primera Búsqueda de Amplitud desde un nodo de origen a un nivel de profundidad del objetivo o destino</p></li>
-<li><p>Tiempo de ejecución de la Primera Búsqueda de Anchura: <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
+<li><p>Provides the Breadth First Search traversal order from a source node to a target
+depth level.</p></li>
+<li><p>Running time: <span class="math notranslate nohighlight">\(O(E + V)\)</span></p></li>
 </ul>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_breadthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
-pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
-
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
+pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth] [, directed])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <section id="single-vertex">
 <span id="index-0"></span><h3>Vértice Único<a class="headerlink" href="#single-vertex" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_breadthFirstSearch(Edges SQL, Root vid [, max_depth] [, directed])
-
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth] [, directed])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>La Primera Búsqueda de Amplitud transversal con vértice raíz <span class="math notranslate nohighlight">\(2\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;select id, source, target, cost, reverse_cost</span>
+    <span class="kn">from</span> <span class="nn">edge_table</span> <span class="n">order</span> <span class="n">by</span> <span class="nb">id</span><span class="s1">&#39;,</span>
     <span class="mi">2</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -267,19 +271,17 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </section>
 <section id="multiple-vertices">
 <span id="index-1"></span><h3>Múltiples Vértices<a class="headerlink" href="#multiple-vertices" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_breadthFirstSearch(Edges SQL, Root vids [, max_depth] [, directed])
-
-RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block">pgr_breadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth] [, directed])
+RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>La Primera Búsqueda de Amplitud tranversal comienza en vértices <span class="math notranslate nohighlight">\(\{11, 12\}\)</span> con profundidad <span class="math notranslate nohighlight">\(depth &lt;= 2\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">:=</span> <span class="mi">2</span>
+    <span class="s1">&#39;select id, source, target, cost, reverse_cost</span>
+    <span class="kn">from</span> <span class="nn">edge_table</span> <span class="n">order</span> <span class="n">by</span> <span class="nb">id</span><span class="s1">&#39;,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">=&gt;</span> <span class="mi">2</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+----------</span>
@@ -375,6 +377,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 </section>
 <section id="inner-query">
 <h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -431,6 +435,7 @@ it’s not part of the graph.</p></li>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
+</section>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -499,8 +504,9 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
-    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">:=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span> <span class="o">:=</span> <span class="n">false</span>
+    <span class="s1">&#39;select id, source, target, cost, reverse_cost</span>
+    <span class="kn">from</span> <span class="nn">edge_table</span> <span class="n">order</span> <span class="n">by</span> <span class="nb">id</span><span class="s1">&#39;,</span>
+    <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">max_depth</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+-------+-----------+------+------+------+----------</span>
@@ -529,7 +535,8 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_breadthFirstSearch</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;select id, source, target, cost, reverse_cost</span>
+    <span class="kn">from</span> <span class="nn">edge_table</span> <span class="n">order</span> <span class="n">by</span> <span class="nb">id</span><span class="s1">&#39;,</span>
     <span class="o">-</span><span class="mi">10</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">depth</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -543,7 +550,7 @@ it’s not part of the graph.</p></li>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html">Boost: Breadth First Search algorithm documentation</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">Wikipedia: Breadth First Search algorithm</a></p></li>
 </ul>
@@ -568,7 +575,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 03, 2022.<br/>
+      Actualizado por última vez en may 04, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
