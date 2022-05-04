@@ -72,22 +72,23 @@ Proposed Functions
    :start-after: topology_proposed_start
    :end-before: topology_proposed_end
 
-:doc:`traversal-family`
-
-.. include:: traversal-family.rst
-   :start-after: index from here
-   :end-before: index to here
-
 :doc:`coloring-family`
 
 .. include:: coloring-family.rst
    :start-after: index proposed from here
    :end-before: index proposed to here
 
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 .. toctree::
    :hidden:
 
    traversal-family
+   coloring-family
 
 .. rubric:: categories
 

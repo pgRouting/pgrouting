@@ -23,6 +23,7 @@ BFS - Category
 
 .. index to here
 
+
 Traversal using breadth first search.
 
 .. spanntree_traits_start

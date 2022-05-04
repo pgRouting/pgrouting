@@ -77,6 +77,12 @@ Experimental Functions
    :start-after: index from here
    :end-before: index to here
 
+:doc:`traversal-family`
+
+.. include:: traversal-family.rst
+   :start-after: index experimental from here
+   :end-before: index experimental to here
+
 :doc:`components-family`
 
 .. include:: components-family.rst
@@ -93,7 +99,6 @@ Experimental Functions
    :hidden:
 
    chinesePostmanProblem-family
-   coloring-family
    transformation-family
    components-family
 
@@ -113,8 +118,6 @@ Experimental Functions
 .. rubric:: Not classified
 
 - :doc:`pgr_bellmanFord`
-- :doc:`pgr_binaryBreadthFirstSearch`
-- :doc:`pgr_breadthFirstSearch`
 - :doc:`pgr_dagShortestPath`
 - :doc:`pgr_edwardMoore`
 - :doc:`pgr_isPlanar`
