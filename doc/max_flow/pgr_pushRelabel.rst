@@ -21,10 +21,11 @@
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maxFlowPushRelabel.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowPushRelabel.html>`__
 
-pgr_pushRelabel
+``pgr_pushRelabel``
 ===============================================================================
 
-``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm.
+``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes the
+flow from the sources to the targets using Push Relabel Algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
@@ -35,9 +36,9 @@ pgr_pushRelabel
 
 * Version 3.2.0
 
-  * New **proposed** function:
+  * New **proposed** signature
 
-    * pgr_pushRelabel(Combinations)
+    * ``pgr_pushRelabel`` (`Combinations`_)
 
 * Version 3.0.0
 
@@ -67,13 +68,13 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_pushRelabel(Edges SQL, source,  target)
-    pgr_pushRelabel(Edges SQL, sources, target)
-    pgr_pushRelabel(Edges SQL, source,  targets)
-    pgr_pushRelabel(Edges SQL, sources, targets)
-    pgr_pushRelabel(Edges SQL, Combinations SQL)
+    pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**)
+    pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**)
+    pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**)
+    pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)
+    pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -81,11 +82,11 @@ Signatures
     single: pushRelabel(One to One)
 
 One to One
-.....................................................................
+...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_pushRelabel(Edges SQL, source,  target)
+    pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vid**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -99,17 +100,15 @@ One to One
     single: pushRelabel(One to Many)
 
 One to Many
-.....................................................................
+...............................................................................
 
-Calculates the flow on the graph edges that maximizes the flow from the `source` to all of the `targets`.
+.. parsed-literal::
 
-.. code-block:: none
-
-    pgr_pushRelabel(Edges SQL, source,  targets)
+    pgr_pushRelabel(`Edges SQL`_, **start vid**, **end vids**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{11, 1, 13\}`
+:Example: From vertex :math:`6` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_pushRelabel.queries
    :start-after: -- q2
@@ -119,11 +118,11 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
     single: pushRelabel(Many to One)
 
 Many to One
-.....................................................................
+...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_pushRelabel(Edges SQL, sources,  target)
+    pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vid**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -137,11 +136,11 @@ Many to One
     single: pushRelabel(Many to Many)
 
 Many to Many
-.....................................................................
+...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_pushRelabel(Edges SQL, sources,  targets)
+    pgr_pushRelabel(`Edges SQL`_, **start vids**, **end vids**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -157,47 +156,75 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_pushRelabel(Edges SQL, Combinations SQL)
+    pgr_pushRelabel(`Edges SQL`_, `Combinations SQL`_)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
-:Example: Using a combinations table, equivalent to calculating result from vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`.
+:Example: Using a combinations table, equivalent to calculating result from
+          vertices :math:`\{1, 2\}` to vertices :math:`\{3, 4, 17\}`.
+
+The combinations table:
 
 .. literalinclude:: doc-pgr_pushRelabel.queries
    :start-after: -- q5
+   :end-before: -- q51
+
+The query:
+
+.. literalinclude:: doc-pgr_pushRelabel.queries
+   :start-after: -- q51
    :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: flow-family.rst
-    :start-after: pgr_flow_parameters_start
-    :end-before: pgr_flow_parameters_end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
 Inner queries
 -------------------------------------------------------------------------------
 
-.. include:: flow-family.rst
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
-.. include:: flow-family.rst
-    :start-after: flow_combinations_sql_start
-    :end-before: flow_combinations_sql_end
+Combinations SQL
+...............................................................................
 
-Result Columns
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
+
+Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: flow-family.rst
     :start-after: result_flow_start
     :end-before: result_flow_end
 
+Additional Examples
+-------------------------------------------------------------------------------
+
+:Example: Manually assigned vertex combinations.
+
+.. literalinclude:: doc-pgr_pushRelabel.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_edmondsKarp`
+* :doc:`flow-family`
+
+  * :doc:`pgr_boykovKolmogorov`
+  * :doc:`pgr_edmondsKarp`
+
 * https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 

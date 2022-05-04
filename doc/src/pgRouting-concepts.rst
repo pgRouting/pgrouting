@@ -257,6 +257,9 @@ Where:
 Edges SQL
 ...............................................................................
 
+General
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. rubric:: Edges SQL for
 
 * :doc:`dijkstra-family`
@@ -309,6 +312,9 @@ Where:
 
 .. basic_edges_sql_end
 
+General without ``id``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. rubric:: Edges SQL for
 
 * :doc:`allpairs-family`
@@ -350,6 +356,9 @@ Where:
 :ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. no_id_edges_sql_end
+
+General with (X,Y)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Edges SQL for
 
@@ -417,25 +426,116 @@ Where:
 
 .. xy_edges_sql_end
 
+Flow
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. rubric:: Edges SQL for :doc:`flow-family`
 
 .. rubric:: Edges SQL for
 
-* :doc:`flow-family`
+* :doc:`pgr_pushRelabel`
+* :doc:`pgr_edmondsKarp`
+* :doc:`pgr_boykovKolmogorov`
 
-.. include:: flow-family.rst
-   :start-after: flow_edges_sql_start
-   :end-before: flow_edges_sql_end
+.. flow_edges_sql_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 14 7 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the edge.
+   * - ``source``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the second end point vertex of the edge.
+   * - ``capacity``
+     - **ANY-INTEGER**
+     -
+     - Weight of the edge  (``source``, ``target``)
+   * - ``reverse_capacity``
+     - **ANY-INTEGER**
+     - -1
+     - Weight of the edge (``target``, ``source``)
+
+       - When negative: edge (``target``, ``source``) does not exist, therefore
+         it's not part of the graph.
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+.. flow_edges_sql_end
 
 .. rubric:: Edges SQL for the following functions of :doc:`flow-family`
 
 * :doc:`pgr_maxFlowMinCost`
 * :doc:`pgr_maxFlowMinCost_Cost`
 
-.. include:: flow-family.rst
-   :start-after: costFlow_edges_sql_start
-   :end-before: costFlow_edges_sql_end
+.. costFlow_edges_sql_start
 
-|
+.. list-table::
+   :width: 81
+   :widths: 14 14 7 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``id``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the edge.
+   * - ``source``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     -
+     - Identifier of the second end point vertex of the edge.
+   * - ``capacity``
+     - **ANY-INTEGER**
+     -
+     - Capacity of the edge  (``source``, ``target``)
+
+       - When negative: edge (``target``, ``source``) does not exist, therefore
+         it's not part of the graph.
+   * - ``reverse_capacity``
+     - **ANY-INTEGER**
+     - -1
+     - Capacity of the edge (``target``, ``source``)
+
+       - When negative: edge (``target``, ``source``) does not exist, therefore
+         it's not part of the graph.
+   * - ``cost``
+     - **ANY-NUMERICAL**
+     -
+     - Weight of the edge  (``source``, ``target``) if it exist
+   * - ``reverse_cost``
+     - **ANY-NUMERICAL**
+     - :math:`-1`
+     - Weight of the edge (``target``, ``source``) if it exist
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+.. costFlow_edges_sql_end
 
 Combinations SQL
 ...............................................................................

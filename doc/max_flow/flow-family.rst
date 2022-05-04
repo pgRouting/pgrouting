@@ -92,97 +92,45 @@ Flow Functions General Information
 
 :doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
 
-Parameters
--------------------------------------------------------------------------------
-
-.. pgr_flow_parameters_start
-
-===================== ================== ======== =================================================
-Column                Type               Default     Description
-===================== ================== ======== =================================================
-**Edges SQL**         ``TEXT``                    Edges query as described in `Inner Queries`_.
-**Combinations SQL**  ``TEXT``                    Combinations query as described in `Inner Queries`_.
-**source**            ``BIGINT``                  Identifier of the starting vertex of the flow.
-**sources**           ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
-**target**            ``BIGINT``                  Identifier of the ending vertex of the flow.
-**targets**           ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
-===================== ================== ======== =================================================
-
-.. pgr_flow_parameters_end
-
 Inner queries
 -------------------------------------------------------------------------------
 
-.. rubric:: For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>` :
+Edges SQL
+...............................................................................
 
-.. flow_edges_sql_start
+.. rubric:: Capacity edges
 
-:Edges SQL: an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:
+* :doc:`pgr_pushRelabel`
+* :doc:`pgr_edmondsKarp`
+* :doc:`pgr_boykovKolmogorov`
 
-==================== =================== ======== =================================================
-Column               Type                Default  Description
-==================== =================== ======== =================================================
-**id**               ``ANY-INTEGER``              Identifier of the edge.
-**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**capacity**         ``ANY-INTEGER``              Weight of the edge  `(source, target)`
+.. include:: pgRouting-concepts.rst
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
 
-                                                  - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+.. rubric:: Capacity-Cost edges
 
-**reverse_capacity** ``ANY-INTEGER``       -1     Weight of the edge `(target, source)`,
+* :doc:`pgr_maxFlowMinCost`
+* :doc:`pgr_maxFlowMinCost_Cost`
 
-                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+.. include:: pgRouting-concepts.rst
+    :start-after: costFlow_edges_sql_start
+    :end-before: costFlow_edges_sql_end
 
-==================== =================== ======== =================================================
+.. rubric:: Cost edges
 
-Where:
+* :doc:`pgr_edgeDisjointPaths`
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-.. flow_edges_sql_end
-
-For :doc:`pgr_maxFlowMinCost` and :doc:`pgr_maxFlowMinCost_Cost`:
-
-.. costFlow_edges_sql_start
-
-:Edges SQL: an SQL query of a directed graph of capacities, which should return a set of rows with the following columns:
-
-==================== =================== ======== =================================================
-Column               Type                Default  Description
-==================== =================== ======== =================================================
-**id**               ``ANY-INTEGER``              Identifier of the edge.
-**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
-**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
-**capacity**         ``ANY-INTEGER``              Capacity of the edge  `(source, target)`
-
-                                                  * When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_capacity** ``ANY-INTEGER``       -1     Capacity of the edge `(target, source)`,
-
-                                                  * When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-**cost**             ``ANY-NUMERICAL``            Weight of the edge  `(source, target)` if it exists.
-**reverse_cost**     ``ANY-NUMERICAL``     0      Weight of the edge `(target, source)` if it exists.
-==================== =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: smallint, int, bigint, real, float
-
-.. costFlow_edges_sql_end
-
-For :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :doc:`pgr_edgeDisjointPaths <pgr_edgeDisjointPaths>`, :doc:`pgr_maxFlowMinCost <pgr_maxFlowMinCost>` and :doc:`pgr_maxFlowMinCost_Cost <pgr_maxFlowMinCost_Cost>` :
-
-.. flow_combinations_sql_start
-
-:Combinations SQL: an SQL query which should return a set of rows with the following columns:
+Combinations SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
-
-The function aggregates the sources and the targets, removes the duplicates, and then it calculates the result from the resultant source vertices to the target vertices.
-
-.. flow_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------

@@ -21,8 +21,8 @@
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_edgeDisjointPaths.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_edgeDisjointPaths.html>`__
 
-pgr_edgeDisjointPaths
-==========================================
+``pgr_edgeDisjointPaths``
+===============================================================================
 
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
 
@@ -71,31 +71,15 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid)
-    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid [, directed])
-    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids [, directed])
-    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid [, directed])
-    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids [, directed])
-    pgr_edgeDisjointPaths(Edges SQL, Combinations SQL [, directed])
-
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**  [, directed])
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids** [, directed])
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**  [, directed])
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids** [, directed])
+    pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_ [, directed])
     RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET
-
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid)
-    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
-
-:Example: From vertex :math:`3` to vertex :math:`5` on a **directed** graph
-
-.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 .. index::
     single: edgeDisjointPaths(One to One)
@@ -103,17 +87,17 @@ Signatures
 One to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vid, directed)
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vid**  [, directed])
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`3` to vertex :math:`5` on an **undirected** graph
+:Example: From vertex :math:`6` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: edgeDisjointPaths(One to Many)
@@ -121,18 +105,18 @@ One to One
 One to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_edgeDisjointPaths(Edges SQL, start_vid, end_vids, directed)
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vid**, **end vids** [, directed])
     RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`3` to vertices :math:`\{4, 5, 10\}` on a **directed** graph
+:Example: From vertex :math:`6` to vertices :math:`\{1, 3, 11\}`
 
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: edgeDisjointPaths(Many to One)
@@ -140,18 +124,17 @@ One to Many
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vid, directed)
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vid**  [, directed])
     RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{3, 6\}` to vertex :math:`5` on a **directed** graph
-
+:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: edgeDisjointPaths(Many to Many)
@@ -159,18 +142,17 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_edgeDisjointPaths(Edges SQL, start_vids, end_vids, directed)
+    pgr_edgeDisjointPaths(`Edges SQL`_, **start vids**, **end vids** [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{3, 6\}` to vertices :math:`\{4, 5, 10\}` on a **directed** graph
-
+:Example: From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
-   :start-after: -- q5
-   :end-before: -- q6
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
     single: edgeDisjointPaths(Combinations) -- Proposed on v3.2
@@ -178,17 +160,27 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_edgeDisjointPaths(Edges SQL, Combinations SQL, directed)
+    pgr_edgeDisjointPaths(`Edges SQL`_, `Combinations SQL`_ [, directed])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Manually selecting combinations to be processed
+:Example: Using a combinations table, equivalent to calculating result from
+          vertices :math:`\{1, 2\}` to vertices :math:`\{3, 4, 17\}` on an
+          undirected graph.
+
+The combinations table:
 
 .. literalinclude:: doc-pgr_edgeDisjointPaths.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q5
+   :end-before: -- q51
+
+The query:
+
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
+   :start-after: -- q51
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -217,9 +209,9 @@ Edges SQL
 Combinations SQL
 ...............................................................................
 
-.. include:: flow-family.rst
-    :start-after: flow_combinations_sql_start
-    :end-before: flow_combinations_sql_end
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Return Columns
 -------------------------------------------------------------------------------
@@ -227,6 +219,15 @@ Return Columns
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
+
+Additional Examples
+-------------------------------------------------------------------------------
+
+:Example: Manually assigned vertex combinations on an undirected graph.
+
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
+   :start-after: -- q6
+   :end-before: -- q7
 
 See Also
 -------------------------------------------------------------------------------
@@ -237,4 +238,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-
