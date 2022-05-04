@@ -91,7 +91,7 @@ BFS optional parameters
      - Type
      - Default
      - Description
-   * - **max_depth**
+   * - ``max_depth``
      - ``BIGINT``
      - :math:`9223372036854775807`
      - Upper limit of the depth of the tree.

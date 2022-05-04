@@ -37,16 +37,18 @@ The graph can be directed or undirected.
 
 * Version 3.2.0
 
-  * New **experimental** function
+  * New **experimental** signatures:
 
+    * ``pgr_depthFirstSearch`` (`Single Vertex`_)
+    * ``pgr_depthFirstSearch`` (`Multiple Vertices`_)
 
 Description
 -------------------------------------------------------------------------------
 
-Depth First Search algorithm is a traversal algorithm which starts from a root vertex,
-goes as deep as possible, and backtracks once a vertex is reached with no adjacent vertices
-or with all visited adjacent vertices. The traversal continues until all the vertices
-reachable from the root vertex are visited.
+Depth First Search algorithm is a traversal algorithm which starts from a root
+vertex, goes as deep as possible, and backtracks once a vertex is reached with
+no adjacent vertices or with all visited adjacent vertices. The traversal
+continues until all the vertices reachable from the root vertex are visited.
 
 **The main Characteristics are:**
 
@@ -84,12 +86,12 @@ Single vertex
     pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertex :math:`2` on an **undirected** graph,
-          with **depth** :math:`<= 2`
+:Example: From root vertex :math:`2` on a **directed** graph with edges in
+          ascending order of ``id``
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: depthFirstSearch(Multiple vertices) - Proposed on v3.3
@@ -102,12 +104,12 @@ Multiple vertices
     pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph
-          with **depth** :math:`<= 2` and edges in ascending order
+:Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph with
+          **depth** :math:`<= 2` and edges in ascending order of ``id``
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 Parameters
 -------------------------------------------------------------------------------
@@ -140,7 +142,7 @@ Edges SQL
    :start-after: basic_edges_sql_start
    :end-before: basic_edges_sql_end
 
-Result Columns
+Return columns
 -------------------------------------------------------------------------------
 
 .. include:: BFS-category.rst
@@ -150,11 +152,11 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Same as `Single vertex`_ but with edges in descending order.
+:Example: Same as `Single vertex`_ but with edges in descending order of ``id``.
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: -- q3
+   :end-before: -- q4
 
 The resulting traversal is different.
 

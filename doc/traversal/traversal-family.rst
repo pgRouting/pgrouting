@@ -26,6 +26,7 @@ Traversal - Family of functions
 .. index from here
 
 * :doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph.
+* :doc:`pgr_breadthFirstSearch` - Breath first search traversal of the graph.
 
 .. index to here
 
