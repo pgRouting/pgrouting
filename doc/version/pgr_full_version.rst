@@ -16,7 +16,7 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__
 
-pgr_full_version
+``pgr_full_version``
 ===============================================================================
 
 ``pgr_full_version`` — Get the details of pgRouting version information.
@@ -39,7 +39,7 @@ Get complete details of pgRouting version information
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
+.. Parsed-literal::
 
    pgr_full_version()
    RETURNS RECORD OF (version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)
@@ -51,23 +51,22 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
-Result Columns
+Return columns
 -------------------------------------------------------------------------------
 
 ================  =========== ===============================
 Column             Type       Description
 ================  =========== ===============================
-**version**       ``TEXT``    pgRouting version
-**build_type**    ``TEXT``    The Build type
-**compile_date**  ``TEXT``    Compilation date
-**library**       ``TEXT``    Library name and version
-**system**        ``TEXT``    Operative system
-**postgreSQL**    ``TEXT``    pgsql used
-**compiler**      ``TEXT``    Compiler and version
-**boost**         ``TEXT``    Boost version
-**hash**          ``TEXT``    Git hash of pgRouting build
+``version``       ``TEXT``    pgRouting version
+``build_type``    ``TEXT``    The Build type
+``compile_date``  ``TEXT``    Compilation date
+``library``       ``TEXT``    Library name and version
+``system``        ``TEXT``    Operative system
+``postgreSQL``    ``TEXT``    pgsql used
+``compiler``      ``TEXT``    Compiler and version
+``boost``         ``TEXT``    Boost version
+``hash``          ``TEXT``    Git hash of pgRouting build
 ================  =========== ===============================
-
 
 See Also
 -------------------------------------------------------------------------------
