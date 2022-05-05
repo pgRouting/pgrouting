@@ -246,7 +246,22 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example:  With full output
+.. contents::
+   :local:
+
+
+Create a routing topology
+...............................................................................
+
+An alternate method to create a routing topology use :doc:`pgr_extractVertices`
+
+.. include:: pgr_extractVertices.rst
+   :start-after: create_routing_topology_start
+   :end-before: create_routing_topology_end
+
+
+With full output
+...............................................................................
 
 This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges.
 

@@ -19,7 +19,7 @@
 pgr_extractVertices -- Proposed
 ===============================================================================
 
-``pgr_extractVertices`` — Extracts the vertices information based on the source and target.
+``pgr_extractVertices`` — Extracts the vertices information
 
 
 .. include:: proposed.rst
@@ -30,7 +30,7 @@ pgr_extractVertices -- Proposed
 
 * Version 3.3.0
 
-  * Clasiffied as **proposed** function
+  * Classified as **proposed** function
 
 * Version 3.0.0
 
@@ -40,10 +40,11 @@ pgr_extractVertices -- Proposed
 Description
 -------------------------------------------------------------------------------
 
-This is an auxiliary function for extracting the vertex information of the set of
-edges of a graph.
+This is an auxiliary function for extracting the vertex information of the set
+of edges of a graph.
 
-* When the edge identifier is given, then it will also calculate the in and out edges
+* When the edge identifier is given, then it will also calculate the in and out
+  edges
 
 
 Signatures
@@ -52,9 +53,9 @@ Signatures
 .. index::
     single: pgr_extractVertices - Proposed on v3.3
 
-.. code-block:: sql
+.. parsed-literal::
 
-   pgr_extractVertices(Edges SQL [, dryrun])
+   pgr_extractVertices(`Edges SQL`_ [, dryrun])
    RETURNS SETOF (id, in_edges, out_edges, x, y, geom)
 
 :Example: Extracting the vertex information
@@ -67,26 +68,43 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-============== ==================  =================================================
-Parameter      Type                Description
-============== ==================  =================================================
-**Edges SQL**  ``TEXT``            The set of edges of the graph. It is an `Inner Query`_ as described below.
-**dryrun**     ``TEXT``            Don't process and get in a NOTICE the resulting query.
-============== ==================  =================================================
+============== ========  ================================
+Parameter      Type      Description
+============== ========  ================================
+`Edges SQL`_   ``TEXT``  `Edges SQL`_ as described below
+============== ========  ================================
 
-Inner Query
+Optional parameters
 -------------------------------------------------------------------------------
 
-.. rubric:: When line geometry is known
+=========== =============  ========== =======================================
+Parameter    Type          Default    Description
+=========== =============  ========== =======================================
+``dryrun``  ``BOOLEAN``    ``false``  * When true do not process and get in a
+                                        NOTICE the resulting query.
+=========== =============  ========== =======================================
 
-================= =================== =================================================
+Inner Queries
+-------------------------------------------------------------------------------
+
+.. contents::
+   :local:
+
+Edges SQL
+...............................................................................
+
+When line geometry is known
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+================= =================== ===================================
 Column            Type                Description
-================= =================== =================================================
-**id**            ``BIGINT``          (Optional) identifier of the edge.
-**geom**          ``LINESTRING``      LINESTRING geometry of the edge.
-================= =================== =================================================
+================= =================== ===================================
+``id``            ``BIGINT``          (Optional) identifier of the edge.
+``geom``          ``LINESTRING``      Geometry of the edge.
+================= =================== ===================================
 
-This inner query takes precedence over the next two inner query, therefore other columns are ignored when ``geom`` column appears.
+This inner query takes precedence over the next two inner query, therefore other
+columns are ignored when ``geom`` column appears.
 
 * Ignored columns:
 
@@ -95,127 +113,175 @@ This inner query takes precedence over the next two inner query, therefore other
   * ``source``
   * ``target``
 
+When vertex geometry is known
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+To use this inner query the column ``geom`` should not be part of the set of
+columns.
 
-.. rubric:: When vertex geometry is known
-
-To use this inner query the column ``geom`` should not be part of the set of columns.
-
-================= =================== =================================================
+================= =================== =======================================
 Column            Type                Description
-================= =================== =================================================
-**id**            ``BIGINT``          (Optional) identifier of the edge.
-**startpoint**    ``POINT``           POINT geometry of the starting vertex.
-**endpoint**      ``POINT``           POINT geometry of the ending vertex.
-================= =================== =================================================
+================= =================== =======================================
+``id``            ``BIGINT``          (Optional) identifier of the edge.
+``startpoint``    ``POINT``           POINT geometry of the starting vertex.
+``endpoint``      ``POINT``           POINT geometry of the ending vertex.
+================= =================== =======================================
 
-This inner query takes precedence over the next inner query,
-therefore other columns are ignored when ``startpoint`` and ``endpoint``  columns appears.
+This inner query takes precedence over the next inner query, therefore other
+columns are ignored when ``startpoint`` and ``endpoint`` columns appears.
 
 * Ignored columns:
 
   * ``source``
   * ``target``
 
-.. rubric:: When identifiers of vertices are known
+When identifiers of vertices are known
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-To use this inner query the columns ``geom``, ``startpoint`` and ``endpoint`` should not be part of the set of columns.
+To use this inner query the columns ``geom``, ``startpoint`` and ``endpoint``
+should not be part of the set of columns.
 
-================= =================== =================================================
-Column            Type                Description
-================= =================== =================================================
-**id**            ``BIGINT``          (Optional) identifier of the edge.
-**source**        ``ANY-INTEGER``     Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``     Identifier of the second end point vertex of the edge.
-================= =================== =================================================
+============= =============== ==========================================
+Column        Type            Description
+============= =============== ==========================================
+``id``        ``BIGINT``      (Optional) identifier of the edge.
+``source``    ``ANY-INTEGER`` Identifier of the first end point vertex
+                              of the edge.
+``target``    ``ANY-INTEGER`` Identifier of the second end point vertex
+                              of the edge.
+============= =============== ==========================================
 
 
 Result Columns
 -------------------------------------------------------------------------------
 
-Rreturns set of (id, in_edges, out_edges, x, y, geom)
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
-================= =============== =================================================
-Column            Type                Description
-================= =============== =================================================
-**id**            ``BIGINT``      Identifier of the first end point vertex of the edge.
-**in_edges**      ``BIGINT[]``    Array of identifiers of the edges that have the vertex ``id`` as *first end point*.
-                                   * ``NULL`` When the ``id`` is not part of the inner query
-**out_edges**     ``BIGINT[]``    Array of identifiers of the edges that have the vertex ``id`` as *second end point*.
-                                   * ``NULL`` When the ``id`` is not part of the inner query
-**x**             ``FLOAT``       X value of the POINT geometry
-                                   * ``NULL`` When no geometry is provided
-**y**             ``FLOAT``       Y value of the POINT geometry
-                                   * ``NULL`` When no geometry is provided
-**geom**          ``POINT``       Geometry of the POINT
-                                   * ``NULL`` When no geometry is provided
-================= =============== =================================================
+   * - Column
+     - Type
+     - Description
+   * - ``id``
+     - ``BIGINT``
+     - Identifier of the first end point vertex of the edge.
+   * - ``in_edges``
+     - ``BIGINT[]``
+     - Array of identifiers of the edges that have the vertex ``id`` as *first
+       end point*.
 
+       * ``NULL`` When the ``id`` is not part of the inner query
+   * - ``out_edges``
+     - ``BIGINT[]``
+     - Array of identifiers of the edges that have the vertex ``id`` as *second
+       end point*.
+
+       * ``NULL`` When the ``id`` is not part of the inner query
+   * - ``x``
+     - ``FLOAT``
+     - X value of the point geometry
+
+       * ``NULL`` When no geometry is provided
+   * - ``y``
+     - ``FLOAT``
+     - X value of the point geometry
+
+       * ``NULL`` When no geometry is provided
+   * - ``geom``
+     - ``POINT``
+     - Geometry of the point
+
+       * ``NULL`` When no geometry is provided
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Dryrun execution
+.. contents::
+   :local:
 
-To get the query generated used to get the vertex information, use ``dryrun := true``.
+Dryrun execution
+...............................................................................
 
-The results can be used as base code to make a refinement based on the backend development needs.
+To get the query generated used to get the vertex information, use ``dryrun :=
+true``.
+
+The results can be used as base code to make a refinement based on the backend
+development needs.
 
 .. literalinclude:: doc-pgr_extractVertices.queries
    :start-after: --q2
    :end-before: --q2.1
 
-:Example 2: Creating a routing topology
 
-#. Making sure the database does not have the ``vertices_table``
+Create a routing topology
+...............................................................................
 
-   .. literalinclude:: doc-pgr_extractVertices.queries
-      :start-after: --q3
-      :end-before: --q3.1
+.. create_routing_topology_start
 
-#. Cleaning up the columns of the rotuing topology to be created
+Make sure the database does not have the ``vertices_table``
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-   .. literalinclude:: doc-pgr_extractVertices.queries
-      :start-after: --q3.1
-      :end-before: --q3.2
+.. literalinclude:: doc-pgr_extractVertices.queries
+   :start-after: --q3
+   :end-before: --q3.1
 
-#. Creating the vertices table
+Clean up the columns of the routing topology to be created
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-   .. literalinclude:: doc-pgr_extractVertices.queries
-      :start-after: --q3.2
-      :end-before: --q3.3
+.. literalinclude:: doc-pgr_extractVertices.queries
+   :start-after: --q3.1
+   :end-before: --q3.2
 
-#. Inspection of the vertices table
+Create the vertices table
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-   .. literalinclude:: doc-pgr_extractVertices.queries
-      :start-after: --q3.3
-      :end-before: --q3.4
+* When the ``LINESTRING`` has a SRID then use ``geom::geometry(POINT, <SRID>)``
+* For big edge tables that are been prepared,
 
-#. Creating the routing topology on the edge table
+  * Create it as ``UNLOGGED`` and
+  * After the table is created ``ALTER TABLE .. SET LOGGED``
 
-   Updating the ``source`` information
+.. literalinclude:: doc-pgr_extractVertices.queries
+   :start-after: --q3.2
+   :end-before: --q3.3
 
-   .. literalinclude:: doc-pgr_extractVertices.queries
-      :start-after: --q3.4
-      :end-before: --q3.5
+Inspect the vertices table
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-   Updating the ``target`` information
+.. literalinclude:: doc-pgr_extractVertices.queries
+   :start-after: --q3.3
+   :end-before: --q3.4
 
-   .. literalinclude:: doc-pgr_extractVertices.queries
-      :start-after: --q3.5
-      :end-before: --q3.6
+Create the routing topology on the edge table
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#. Inspection of the routing topology
+Updating the ``source`` information
 
-   .. literalinclude:: doc-pgr_extractVertices.queries
-      :start-after: --q3.6
-      :end-before: --q3.7
+.. literalinclude:: doc-pgr_extractVertices.queries
+   :start-after: --q3.4
+   :end-before: --q3.5
+
+Updating the ``target`` information
+
+.. literalinclude:: doc-pgr_extractVertices.queries
+   :start-after: --q3.5
+   :end-before: --q3.6
+
+Inspect the routing topology
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_extractVertices.queries
+   :start-after: --q3.6
+   :end-before: --q3.7
+
+.. create_routing_topology_end
 
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`topology-functions`  for an overview of a topology for routing algorithms.
-* :doc:`pgr_createVerticesTable` to create a topology based on the geometry.
+* :doc:`topology-functions`
+* :doc:`pgr_createVerticesTable`
 
 .. rubric:: Indices and tables
 
