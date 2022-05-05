@@ -34,17 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 .. Coordinates SQL definition start
 
-Coordinates SQL
-.................................................................................
-
-**Coordinates SQL**: an SQL query, which should return a set of rows with the following columns:
-
 ========= ================= =================================================
 Column        Type               Description
 ========= ================= =================================================
-**id**    ``ANY-INTEGER``    Identifier of the starting vertex.
-**x**     ``ANY-NUMERICAL``  X value of the coordinate.
-**y**     ``ANY-NUMERICAL``  Y value of the coordinate.
+``id``    ``ANY-INTEGER``    Identifier of the starting vertex.
+``x``     ``ANY-NUMERICAL``  X value of the coordinate.
+``y``     ``ANY-NUMERICAL``  Y value of the coordinate.
 ========= ================= =================================================
 
 .. Coordinates SQL definition end

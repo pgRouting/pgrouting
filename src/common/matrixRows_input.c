@@ -40,17 +40,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 .. Matrix SQL definition start
 
-Matrix SQL
-.................................................................................
-
-**Matrix SQL**: an SQL query, which should return a set of rows with the following columns:
-
 ============= ================= =================================================
 Column        Type              Description
 ============= ================= =================================================
-**start_vid** ``ANY-INTEGER``   Identifier of the starting vertex.
-**end_vid**   ``ANY-INTEGER``   Identifier of the ending vertex.
-**agg_cost**  ``ANY-NUMERICAL`` Cost for going from start_vid to end_vid
+``start_vid`` ``ANY-INTEGER``   Identifier of the starting vertex.
+``end_vid``   ``ANY-INTEGER``   Identifier of the ending vertex.
+``agg_cost``  ``ANY-NUMERICAL`` Cost for going from start_vid to end_vid
 ============= ================= =================================================
 
 .. Matrix SQL definition end
