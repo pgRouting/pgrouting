@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="withPoints - Familia de funciones" href="withPoints-family.html" />
+    <link rel="next" title="pgr_breadthFirstSearch - Experimental" href="pgr_breadthFirstSearch.html" />
     <link rel="prev" title="Traversal - Familia de funciones" href="traversal-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -114,7 +114,7 @@
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#return-columns">Return columns</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -132,7 +132,7 @@
     </a>
   </li>
   <li>
-    <a href="withPoints-family.html" title="Next Chapter: withPoints - Familia de funciones"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">withPoints - ... &raquo;</span>
+    <a href="pgr_breadthFirstSearch.html" title="Next Chapter: pgr_breadthFirstSearch - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_breadthFi... &raquo;</span>
     </a>
   </li>
               
@@ -201,7 +201,12 @@
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>Nueva función <strong>experimental</strong></p></li>
+<li><p>New <strong>experimental</strong> signatures:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> (<a class="reference internal" href="#single-vertex">Single Vertex</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> (<a class="reference internal" href="#multiple-vertices">Multiple Vertices</a>)</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -232,8 +237,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>From root vertex <span class="math notranslate nohighlight">\(2\)</span> on an <strong>undirected</strong> graph,
-with <strong>depth</strong> <span class="math notranslate nohighlight">\(&lt;= 2\)</span></p>
+<dd class="field-odd"><p>From root vertex <span class="math notranslate nohighlight">\(2\)</span> on a <strong>directed</strong> graph with edges in
+ascending order of <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_depthFirstSearch</span><span class="p">(</span>
@@ -266,8 +271,8 @@ with <strong>depth</strong> <span class="math notranslate nohighlight">\(&lt;= 2
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>From root vertices <span class="math notranslate nohighlight">\(\{11, 2\}\)</span> on an <strong>undirected</strong> graph
-with <strong>depth</strong> <span class="math notranslate nohighlight">\(&lt;= 2\)</span> and edges in ascending order</p>
+<dd class="field-odd"><p>From root vertices <span class="math notranslate nohighlight">\(\{11, 2\}\)</span> on an <strong>undirected</strong> graph with
+<strong>depth</strong> <span class="math notranslate nohighlight">\(&lt;= 2\)</span> and edges in ascending order of <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_depthFirstSearch</span><span class="p">(</span>
@@ -380,7 +385,7 @@ aleatory nodes for each tree in the forest.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>max_depth</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(9223372036854775807\)</span></p></td>
 <td><p>Upper limit of the depth of the tree.</p>
@@ -455,8 +460,8 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 </section>
-<section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="return-columns">
+<h2>Return columns<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>devuelve el conjunto SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
@@ -518,7 +523,7 @@ it’s not part of the graph.</p></li>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Same as <a class="reference internal" href="#single-vertex">Single vertex</a> but with edges in descending order.</p>
+<dd class="field-odd"><p>Same as <a class="reference internal" href="#single-vertex">Single vertex</a> but with edges in descending order of <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_depthFirstSearch</span><span class="p">(</span>
@@ -579,7 +584,7 @@ shows with descending order of the edge identifiers.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 04, 2022.<br/>
+      Actualizado por última vez en may 05, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
