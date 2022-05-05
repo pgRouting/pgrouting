@@ -23,6 +23,7 @@ BFS - Category
 
 .. index to here
 
+
 Traversal using breadth first search.
 
 .. spanntree_traits_start
@@ -91,7 +92,7 @@ BFS optional parameters
      - Type
      - Default
      - Description
-   * - **max_depth**
+   * - ``max_depth``
      - ``BIGINT``
      - :math:`9223372036854775807`
      - Upper limit of the depth of the tree.

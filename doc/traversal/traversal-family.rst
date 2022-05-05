@@ -29,6 +29,19 @@ Traversal - Family of functions
 
 .. index to here
 
+.. rubric:: Experimental
+
+.. include:: experimental.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
+.. index experimental from here
+
+* :doc:`pgr_breadthFirstSearch` - Breath first search traversal of the graph.
+* :doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of the graph.
+
+.. index experimental to here
+
 Aditionaly there are 2 categories under this family
 
 * :doc:`BFS-category`
@@ -39,6 +52,8 @@ Aditionaly there are 2 categories under this family
     :hidden:
 
     pgr_depthFirstSearch
+    pgr_breadthFirstSearch
+    pgr_binaryBreadthFirstSearch
 
 
 See Also

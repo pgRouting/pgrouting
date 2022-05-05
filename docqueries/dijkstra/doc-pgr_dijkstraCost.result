@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q2 */
 SELECT * FROM pgr_dijkstraCost(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
   2, 3, true);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -13,7 +13,7 @@ SELECT * FROM pgr_dijkstraCost(
 
 /* -- q3 */
 SELECT * FROM pgr_dijkstraCost(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
   2, ARRAY[3, 12]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -23,7 +23,7 @@ SELECT * FROM pgr_dijkstraCost(
 
 /* -- q4 */
 SELECT * FROM pgr_dijkstraCost(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
   ARRAY[2, 7], 12);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -33,7 +33,7 @@ SELECT * FROM pgr_dijkstraCost(
 
 /* -- q5 */
 SELECT * FROM pgr_dijkstraCost(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
   ARRAY[2, 7], ARRAY[3, 12],
   directed => false);
  start_vid | end_vid | agg_cost
@@ -70,7 +70,7 @@ SELECT * FROM pgr_dijkstraCost(
 
 /* -- q6 */
 SELECT * FROM pgr_dijkstraCost(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
   ARRAY[5, 3, 4, 3, 3, 4], ARRAY[3, 5, 3, 4]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -84,7 +84,7 @@ SELECT * FROM pgr_dijkstraCost(
 
 /* -- q7 */
 SELECT * FROM pgr_dijkstraCost(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
   ARRAY[5, 3, 4], ARRAY[5, 3, 4]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
