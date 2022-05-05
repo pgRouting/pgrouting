@@ -11,7 +11,7 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/reference.html>`__
-  (`3.4 <https://docs.pgrouting.org/3.3/en/reference.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/reference.html>`__)
 
 Reference
 ===============================================================================

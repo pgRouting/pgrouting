@@ -325,9 +325,7 @@ linkcheck_ignore = [
     'https://docs.pgrouting.org/latest/en/trsp_migration.html',
     'https://docs.pgrouting.org/latest/en/BFS-category.html',
     'https://docs.pgrouting.org/latest/en/DFS-category.html',
-
-    'https://docs.pgrouting.org/3.4/en/BFS-category.html',
-    'https://docs.pgrouting.org/3.4/en/DFS-category.html',
+    'https://docs.pgrouting.org/latest/en/reference.html',
 
     # link failing used in contraction-family
     'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'
