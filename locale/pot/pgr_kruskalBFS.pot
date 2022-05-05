@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-05-05 14:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -237,7 +237,7 @@ msgid "Default"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:12
-msgid "**max_depth**"
+msgid "``max_depth``"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:14

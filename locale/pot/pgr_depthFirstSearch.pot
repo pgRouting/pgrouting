@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-05-05 14:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,10 +85,18 @@ msgid "Version 3.2.0"
 msgstr ""
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:40
-msgid "New **experimental** function"
+msgid "New **experimental** signatures:"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:44
+#: ../../build/doc/pgr_depthFirstSearch.rst:42
+msgid "``pgr_depthFirstSearch`` (`Single Vertex`_)"
+msgstr ""
+
+#: ../../build/doc/pgr_depthFirstSearch.rst:43
+msgid "``pgr_depthFirstSearch`` (`Multiple Vertices`_)"
+msgstr ""
+
+#: ../../build/doc/pgr_depthFirstSearch.rst:46
 #: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/BFS-category.rst:11
@@ -97,55 +105,55 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:46
+#: ../../build/doc/pgr_depthFirstSearch.rst:48
 msgid "Depth First Search algorithm is a traversal algorithm which starts from a root vertex, goes as deep as possible, and backtracks once a vertex is reached with no adjacent vertices or with all visited adjacent vertices. The traversal continues until all the vertices reachable from the root vertex are visited."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:51
+#: ../../build/doc/pgr_depthFirstSearch.rst:53
 msgid "**The main Characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:53
+#: ../../build/doc/pgr_depthFirstSearch.rst:55
 msgid "The implementation works for both **directed** and **undirected** graphs."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:54
+#: ../../build/doc/pgr_depthFirstSearch.rst:56
 msgid "Provides the Depth First Search traversal order from a root vertex or from a set of root vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:56
+#: ../../build/doc/pgr_depthFirstSearch.rst:58
 msgid "An optional non-negative maximum depth parameter to limit the results up to a particular depth."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:58
+#: ../../build/doc/pgr_depthFirstSearch.rst:60
 msgid "For optimization purposes, any duplicated values in the `Root vids` are ignored."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:60
+#: ../../build/doc/pgr_depthFirstSearch.rst:62
 msgid "It does not produce the shortest path from a root vertex to a target vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:61
+#: ../../build/doc/pgr_depthFirstSearch.rst:63
 msgid "The aggregate cost of traversal is not guaranteed to be minimal."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:62
+#: ../../build/doc/pgr_depthFirstSearch.rst:64
 msgid "The returned values are ordered in ascending order of `start_vid`."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:63
+#: ../../build/doc/pgr_depthFirstSearch.rst:65
 msgid "Depth First Search Running time: :math:`O(E + V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:66
+#: ../../build/doc/pgr_depthFirstSearch.rst:68
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:69
+#: ../../build/doc/pgr_depthFirstSearch.rst:71
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:80
+#: ../../build/doc/pgr_depthFirstSearch.rst:82
 msgid "Single vertex"
 msgstr ""
 
@@ -155,19 +163,19 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:87
-msgid "From root vertex :math:`2` on an **undirected** graph, with **depth** :math:`<= 2`"
+#: ../../build/doc/pgr_depthFirstSearch.rst:89
+msgid "From root vertex :math:`2` on a **directed** graph with edges in ascending order of ``id``"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:98
+#: ../../build/doc/pgr_depthFirstSearch.rst:100
 msgid "Multiple vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:105
-msgid "From root vertices :math:`\\{11, 2\\}` on an **undirected** graph with **depth** :math:`<= 2` and edges in ascending order"
+#: ../../build/doc/pgr_depthFirstSearch.rst:107
+msgid "From root vertices :math:`\\{11, 2\\}` on an **undirected** graph with **depth** :math:`<= 2` and edges in ascending order of ``id``"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:113
+#: ../../build/doc/pgr_depthFirstSearch.rst:115
 msgid "Parameters"
 msgstr ""
 
@@ -266,7 +274,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:120
+#: ../../build/doc/pgr_depthFirstSearch.rst:122
 msgid "Optional parameters"
 msgstr ""
 
@@ -299,7 +307,7 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:127
+#: ../../build/doc/pgr_depthFirstSearch.rst:129
 msgid "DFS optional parameters"
 msgstr ""
 
@@ -309,7 +317,7 @@ msgid "Default"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:12
-msgid "**max_depth**"
+msgid "``max_depth``"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:14
@@ -324,11 +332,11 @@ msgstr ""
 msgid "When ``Negative`` **throws** an error."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:134
+#: ../../build/doc/pgr_depthFirstSearch.rst:136
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:137
+#: ../../build/doc/pgr_depthFirstSearch.rst:139
 msgid "Edges SQL"
 msgstr ""
 
@@ -404,8 +412,8 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:144
-msgid "Result Columns"
+#: ../../build/doc/pgr_depthFirstSearch.rst:146
+msgid "Return columns"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:3
@@ -477,68 +485,68 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:151
+#: ../../build/doc/pgr_depthFirstSearch.rst:153
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:153
-msgid "Same as `Single vertex`_ but with edges in descending order."
-msgstr ""
-
-#: ../../build/doc/pgr_depthFirstSearch.rst:159
-msgid "The resulting traversal is different."
+#: ../../build/doc/pgr_depthFirstSearch.rst:155
+msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr ""
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:161
+msgid "The resulting traversal is different."
+msgstr ""
+
+#: ../../build/doc/pgr_depthFirstSearch.rst:163
 msgid "The left image shows the result with ascending order of ids and the right image shows with descending order of the edge identifiers."
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:164
+#: ../../build/doc/pgr_depthFirstSearch.rst:166
 msgid "|ascending| |descending|"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:166
-#: ../../build/doc/pgr_depthFirstSearch.rst:166
+#: ../../build/doc/pgr_depthFirstSearch.rst:168
+#: ../../build/doc/pgr_depthFirstSearch.rst:168
 msgid "ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:169
-#: ../../build/doc/pgr_depthFirstSearch.rst:169
+#: ../../build/doc/pgr_depthFirstSearch.rst:171
+#: ../../build/doc/pgr_depthFirstSearch.rst:171
 msgid "descending"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:173
+#: ../../build/doc/pgr_depthFirstSearch.rst:175
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:175
+#: ../../build/doc/pgr_depthFirstSearch.rst:177
 msgid ":doc:`DFS-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:176
+#: ../../build/doc/pgr_depthFirstSearch.rst:178
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:177
+#: ../../build/doc/pgr_depthFirstSearch.rst:179
 msgid "`Boost: Depth First Search algorithm documentation <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:179
+#: ../../build/doc/pgr_depthFirstSearch.rst:181
 msgid "`Boost: Undirected DFS algorithm documentation <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:181
+#: ../../build/doc/pgr_depthFirstSearch.rst:183
 msgid "`Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:185
+#: ../../build/doc/pgr_depthFirstSearch.rst:187
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:186
+#: ../../build/doc/pgr_depthFirstSearch.rst:188
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_depthFirstSearch.rst:187
+#: ../../build/doc/pgr_depthFirstSearch.rst:189
 msgid ":ref:`search`"
 msgstr ""
