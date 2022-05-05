@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 16:45+0000\n"
+"POT-Creation-Date: 2022-05-05 17:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.1\n"
 
 #: ../../build/doc/pgr_TSP.rst:12
 msgid ""
@@ -40,7 +40,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:28
-msgid "pgr_TSP"
+msgid "``pgr_TSP``"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:30
@@ -59,17 +59,17 @@ msgstr ""
 msgid "Version 3.2.1"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:42 ../../build/doc/pgr_TSP.rst:226
+#: ../../build/doc/pgr_TSP.rst:42
 msgid ""
 "Metric Algorithm from `Boost library "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:43
+#: ../../build/doc/pgr_TSP.rst:44
 msgid "Simulated Annealing Algorithm no longer supported"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:45
+#: ../../build/doc/pgr_TSP.rst:46
 msgid ""
 "The Simulated Annealing Algorithm related parameters are ignored: "
 "max_processing_time, tries_per_temperature, max_changes_per_temperature, "
@@ -77,28 +77,29 @@ msgid ""
 "cooling_factor, randomize"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:51
+#: ../../build/doc/pgr_TSP.rst:52
 msgid "Version 2.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:53
+#: ../../build/doc/pgr_TSP.rst:54
 msgid "Signature change"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:55
+#: ../../build/doc/pgr_TSP.rst:56
 msgid "Old signature no longer supported"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:57
+#: ../../build/doc/pgr_TSP.rst:58
 msgid "Version 2.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:59
+#: ../../build/doc/pgr_TSP.rst:60
 msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:63 ../../build/doc/pgr_TSP.rst:144
-#: ../../include/c_types/tsp_tour_rt.h:6 ../../src/common/matrixRows_input.c:9
+#: ../../build/doc/TSP-family.rst:11 ../../build/doc/pgr_TSP.rst:64
+#: ../../build/doc/pgr_TSP.rst:146 ../../include/c_types/tsp_tour_rt.h:6
+#: ../../src/common/matrixRows_input.c:4
 msgid "Description"
 msgstr ""
 
@@ -118,7 +119,7 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:4
-msgid "General Characteristics"
+msgid "Characteristics"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:6
@@ -135,110 +136,106 @@ msgid ""
 " tour in the worst case* when:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:10
+#: ../../build/doc/TSP-family.rst:11
 msgid "Graph is undirected"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:11
+#: ../../build/doc/TSP-family.rst:12
 msgid "Graph is fully connected"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:12
+#: ../../build/doc/TSP-family.rst:13
 msgid "Graph where traveling costs on edges obey the triangle inequality."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:14
+#: ../../build/doc/TSP-family.rst:15
 msgid "On an undirected graph:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:16
+#: ../../build/doc/TSP-family.rst:17
 msgid "The traveling costs are symmetric:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:17
+#: ../../build/doc/TSP-family.rst:18
 msgid ""
-"Traveling costs from ``u`` to ``v`` are just as much as traveling from  "
+"Traveling costs from ``u`` to ``v`` are just as much as traveling from "
 "``v`` to ``u``"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:74
-msgid "Characteristics"
-msgstr ""
-
-#: ../../build/doc/pgr_TSP.rst:76
 msgid ""
 "Can be Used with :doc:`costMatrix-category` functions preferably with "
 "`directed => false`."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:78
+#: ../../build/doc/pgr_TSP.rst:77
 msgid "With ``directed => false``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:80 ../../build/doc/pgr_TSP.rst:101
+#: ../../build/doc/pgr_TSP.rst:79 ../../build/doc/pgr_TSP.rst:100
 msgid "Will generate a graph that:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:82
+#: ../../build/doc/pgr_TSP.rst:81
 msgid "is undirected"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:83 ../../build/doc/pgr_TSP.rst:104
+#: ../../build/doc/pgr_TSP.rst:82 ../../build/doc/pgr_TSP.rst:103
 msgid "is fully connected (As long as the graph has one component)"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:84
+#: ../../build/doc/pgr_TSP.rst:83
 msgid "all traveling costs on edges obey the triangle inequality."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:86
+#: ../../build/doc/pgr_TSP.rst:85
 msgid "When ``start_vid = 0 OR end_vid = 0``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:88
+#: ../../build/doc/pgr_TSP.rst:87
 msgid ""
 "The solutions generated is garanteed to be *twice as long as the optimal "
 "tour in the worst case*"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:91
+#: ../../build/doc/pgr_TSP.rst:90
 msgid "When ``start_vid != 0 AND end_vid != 0 AND start_vid != end_vid``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:93
+#: ../../build/doc/pgr_TSP.rst:92
 msgid ""
 "It is **not garanteed** that the solution will be, in the worse case, "
 "twice as long as the optimal tour, due to the fact that `end_vid` is "
 "forced to be in a fixed position."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:97
+#: ../../build/doc/pgr_TSP.rst:96
 msgid "With ``directed => true``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:99
+#: ../../build/doc/pgr_TSP.rst:98
 msgid ""
 "It is **not garanteed** that the solution will be, in the worse case, "
 "twice as long as the optimal tour"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:103
+#: ../../build/doc/pgr_TSP.rst:102
 msgid "is directed"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:105
+#: ../../build/doc/pgr_TSP.rst:104
 msgid ""
 "some (or all) traveling costs on edges might not obey the triangle "
 "inequality."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:107
+#: ../../build/doc/pgr_TSP.rst:106
 msgid ""
 "As an undirected graph is required, the directed graph is transformed as "
 "follows:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:109
+#: ../../build/doc/pgr_TSP.rst:108
 msgid ""
 "edges `(u, v)` and `(v, u)` is considered to be the same edge (denoted "
 "`(u, v)`"
@@ -260,145 +257,153 @@ msgid ""
 "triangle inequality."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:115
-msgid ""
-"When the data is incomplete, but it is a connected graph, the missing "
-"values will be calculated with dijkstra algorithm."
+#: ../../build/doc/pgr_TSP.rst:116
+msgid "When the data is incomplete, but it is a connected graph:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:119
+#: ../../build/doc/pgr_TSP.rst:118
+msgid "the missing values will be calculated with dijkstra algorithm."
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:121
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:122
+#: ../../build/doc/pgr_TSP.rst:124
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:132
-msgid ""
-"Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix "
-"information"
+#: ../../build/doc/pgr_TSP.rst
+msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:133
+msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
+msgstr ""
+
+#: ../../build/doc/pgr_TSP.rst:135
 msgid ""
 "**Line 5** Vertices 15 to 18 are not included because they are not "
 "connected."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:141
+#: ../../build/doc/pgr_TSP.rst:143
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:144
+#: ../../build/doc/pgr_TSP.rst:146
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:144 ../../include/c_types/tsp_tour_rt.h:6
-#: ../../src/common/matrixRows_input.c:9
+#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSP.rst:146
+#: ../../include/c_types/tsp_tour_rt.h:6 ../../src/common/matrixRows_input.c:4
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:144
-msgid "Default"
+#: ../../build/doc/pgr_TSP.rst:148
+msgid "`Matrix SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:146
-msgid "**Matrix SQL**"
-msgstr ""
-
-#: ../../build/doc/pgr_TSP.rst:146
+#: ../../build/doc/pgr_TSP.rst:148
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:146
-msgid "An SQL query, described in the `Matrix SQL`_ section."
+#: ../../build/doc/pgr_TSP.rst:148
+msgid "`Matrix SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:147 ../../src/common/matrixRows_input.c:11
-msgid "**start_vid**"
+#: ../../build/doc/pgr_TSP.rst:152
+msgid "TSP optional parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:147 ../../build/doc/pgr_TSP.rst:151
-#: ../../include/c_types/tsp_tour_rt.h:9
-msgid "``BIGINT``"
+#: ../../build/doc/TSP-family.rst:8 ../../include/c_types/tsp_tour_rt.h:6
+#: ../../src/common/matrixRows_input.c:4
+msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:147 ../../build/doc/pgr_TSP.rst:151
+#: ../../build/doc/TSP-family.rst:10
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:12
+msgid "``start_id``"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:13 ../../build/doc/TSP-family.rst:20
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:14 ../../build/doc/TSP-family.rst:21
 msgid "``0``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:147
+#: ../../build/doc/TSP-family.rst:15
 msgid "The first visiting vertex"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:149
+#: ../../build/doc/TSP-family.rst:17
 msgid "When `0` any vertex can become the first visiting vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:151 ../../src/common/matrixRows_input.c:12
-msgid "**end_vid**"
+#: ../../build/doc/TSP-family.rst:19
+msgid "``end_id``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:151
+#: ../../build/doc/TSP-family.rst:22
 msgid "Last visiting vertex before returning to ``start_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:153
+#: ../../build/doc/TSP-family.rst:24
 msgid ""
 "When ``0`` any vertex can become the last visiting vertex before "
-"returning to ``start_vid``."
+"returning to ``start_id``."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:154
-msgid "When ``NOT 0`` and ``start_vid = 0`` then it is the first and last vertex"
+#: ../../build/doc/TSP-family.rst:26
+msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
 msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:159
-msgid "Inner query"
+msgid "Inner queries"
 msgstr ""
 
-#: ../../src/common/matrixRows_input.c:4
+#: ../../build/doc/pgr_TSP.rst:162
 msgid "Matrix SQL"
 msgstr ""
 
 #: ../../src/common/matrixRows_input.c:6
-msgid ""
-"**Matrix SQL**: an SQL query, which should return a set of rows with the "
-"following columns:"
+msgid "``start_vid``"
 msgstr ""
 
-#: ../../include/c_types/tsp_tour_rt.h:6 ../../src/common/matrixRows_input.c:9
-msgid "Column"
-msgstr ""
-
-#: ../../src/common/matrixRows_input.c:11
-#: ../../src/common/matrixRows_input.c:12
+#: ../../src/common/matrixRows_input.c:6 ../../src/common/matrixRows_input.c:7
 msgid "``ANY-INTEGER``"
 msgstr ""
 
-#: ../../src/common/matrixRows_input.c:11
+#: ../../src/common/matrixRows_input.c:6
 msgid "Identifier of the starting vertex."
 msgstr ""
 
-#: ../../src/common/matrixRows_input.c:12
+#: ../../src/common/matrixRows_input.c:7
+msgid "``end_vid``"
+msgstr ""
+
+#: ../../src/common/matrixRows_input.c:7
 msgid "Identifier of the ending vertex."
 msgstr ""
 
-#: ../../include/c_types/tsp_tour_rt.h:14
-#: ../../src/common/matrixRows_input.c:13
-msgid "**agg_cost**"
+#: ../../src/common/matrixRows_input.c:8
+msgid "``agg_cost``"
 msgstr ""
 
-#: ../../src/common/matrixRows_input.c:13
+#: ../../src/common/matrixRows_input.c:8
 msgid "``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../src/common/matrixRows_input.c:13
+#: ../../src/common/matrixRows_input.c:8
 msgid "Cost for going from start_vid to end_vid"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:168
+#: ../../build/doc/pgr_TSP.rst:169
 msgid "Result Columns"
 msgstr ""
 
@@ -420,6 +425,10 @@ msgstr ""
 
 #: ../../include/c_types/tsp_tour_rt.h:9
 msgid "**node**"
+msgstr ""
+
+#: ../../include/c_types/tsp_tour_rt.h:9
+msgid "``BIGINT``"
 msgstr ""
 
 #: ../../include/c_types/tsp_tour_rt.h:9
@@ -446,6 +455,10 @@ msgid "``0`` for the last row in the tour sequence."
 msgstr ""
 
 #: ../../include/c_types/tsp_tour_rt.h:14
+msgid "**agg_cost**"
+msgstr ""
+
+#: ../../include/c_types/tsp_tour_rt.h:14
 msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
 msgstr ""
 
@@ -453,109 +466,105 @@ msgstr ""
 msgid "``0`` for the first row in the tour sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:175
+#: ../../build/doc/pgr_TSP.rst:176
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst
-msgid "Example"
-msgstr ""
-
-#: ../../build/doc/pgr_TSP.rst:177
+#: ../../build/doc/pgr_TSP.rst:178
 msgid "Start from vertex :math:`7`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:179
+#: ../../build/doc/pgr_TSP.rst:180
 msgid "**Line 9** ``start_vid => 7``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:186
+#: ../../build/doc/pgr_TSP.rst:187
 msgid "Using points of interest to generate an asymetric matrix."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:188
+#: ../../build/doc/pgr_TSP.rst:189
 msgid "To generate an asymmetric matrix:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:190
+#: ../../build/doc/pgr_TSP.rst:191
 msgid ""
 "**Line 5** The ``side`` information of pointsOfInterset is ignored by not"
 " including it in the query"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:191
+#: ../../build/doc/pgr_TSP.rst:193
 msgid "**Line 7** Generating an asymetric matrix with ``directed => true``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:193
+#: ../../build/doc/pgr_TSP.rst:195
 msgid ""
 ":math:`min(agg\\_cost(u, v), agg\\_cost(v, u))` is going to be considered"
 " as the ``agg_cost``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:194
+#: ../../build/doc/pgr_TSP.rst:197
 msgid ""
 "The solution that can be larger than *twice as long as the optimal tour* "
 "because:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:196
+#: ../../build/doc/pgr_TSP.rst:200
 msgid "Triangle inequality might not be satisfied."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:197
+#: ../../build/doc/pgr_TSP.rst:201
 msgid "``start_id != 0 AND end_id != 0``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:204
+#: ../../build/doc/pgr_TSP.rst:208
 msgid "Connected incomplete data"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:206
+#: ../../build/doc/pgr_TSP.rst:210
 msgid ""
 "Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but "
 "it is connected"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:213
+#: ../../build/doc/pgr_TSP.rst:218
 msgid ""
 "Edge `(5,12)` does not exist on the initial data, but it is calculated "
 "internally."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:220
+#: ../../build/doc/pgr_TSP.rst:226
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:223
+#: ../../build/doc/pgr_TSP.rst:229
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:225
+#: ../../build/doc/pgr_TSP.rst:231
 msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:227
+#: ../../build/doc/pgr_TSP.rst:232
 msgid ""
-"`Boost library "
+"`Boost's metric appro's metric approximation "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:228
+#: ../../build/doc/pgr_TSP.rst:234
 msgid ""
 "`Wikipedia: Traveling Salesman Problem "
 "<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:231
+#: ../../build/doc/pgr_TSP.rst:238
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:232
+#: ../../build/doc/pgr_TSP.rst:239
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSP.rst:233
+#: ../../build/doc/pgr_TSP.rst:240
 msgid ":ref:`search`"
 msgstr ""
 
