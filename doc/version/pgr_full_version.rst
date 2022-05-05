@@ -31,7 +31,7 @@ pgr_full_version
 Description
 -------------------------------------------------------------------------------
 
-Get the details of pgRouting version information
+Get complete details of pgRouting version information
 
 .. index::
     single: full_version
@@ -41,7 +41,7 @@ Signatures
 
 .. code-block:: sql
 
-	pgr_full_version()
+   pgr_full_version()
    RETURNS RECORD OF (version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)
 
 
@@ -72,6 +72,7 @@ Column             Type       Description
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`reference`
 * :doc:`pgr_version`
 
 .. rubric:: Indices and tables

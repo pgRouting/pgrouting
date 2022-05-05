@@ -93,6 +93,12 @@ Function Families
       :start-after: index from here
       :end-before: index to here
 
+:doc:`reference`
+
+.. include:: reference.rst
+   :start-after: index from here
+   :end-before: index to here
+
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
@@ -169,6 +175,7 @@ Functions by categories
     flow-family
     kruskal-family
     prim-family
+    reference
     topology-functions
     TSP-family
     spanningTree-family
