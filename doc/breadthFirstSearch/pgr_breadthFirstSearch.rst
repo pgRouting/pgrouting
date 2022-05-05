@@ -147,6 +147,19 @@ Additional Examples
    :start-after: -- q3
    :end-before: -- q4
 
+The resulting traversal is different.
+
+The left image shows the result with ascending order of ids and the right image
+shows with descending order of the edge identifiers.
+
+|ascending| |descending|
+
+.. |ascending| image:: images/bfs-ascending.png
+   :scale: 50%
+
+.. |descending| image:: images/bfs-descending.png
+   :scale: 50%
+
 See Also
 -------------------------------------------------------------------------------
 
