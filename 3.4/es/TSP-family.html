@@ -98,10 +98,11 @@
 <li><a class="reference internal" href="#general-information">Información general</a><ul>
 <li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
 <li><a class="reference internal" href="#origin">Origen</a></li>
-<li><a class="reference internal" href="#general-characteristics">Características generales</a></li>
-<li><a class="reference internal" href="#see-also">Ver también</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
 </ul>
@@ -171,10 +172,11 @@
 <ul>
 <li><p><a class="reference internal" href="#problem-definition" id="id2">Definición del Problema</a></p></li>
 <li><p><a class="reference internal" href="#origin" id="id3">Origen</a></p></li>
-<li><p><a class="reference internal" href="#general-characteristics" id="id4">Características generales</a></p></li>
-<li><p><a class="reference internal" href="#see-also" id="id5">Ver también</a></p></li>
+<li><p><a class="reference internal" href="#characteristics" id="id4">Characteristics</a></p></li>
+<li><p><a class="reference internal" href="#tsp-optional-parameters" id="id5">TSP optional parameters</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#see-also" id="id6">Ver también</a></p></li>
 </ul>
 </div>
 <section id="general-information">
@@ -182,14 +184,14 @@
 <section id="problem-definition">
 <h3><a class="toc-backref" href="#id2">Definición del Problema</a><a class="headerlink" href="#problem-definition" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En el problema del vendedor viajante (TSP) hace la siguiente pregunta:</p>
-<p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
+<blockquote>
+<div><p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
+</div></blockquote>
 </section>
 <section id="origin">
 <h3><a class="toc-backref" href="#id3">Origen</a><a class="headerlink" href="#origin" title="Enlazar permanentemente con este título">¶</a></h3>
-<dl class="simple">
-<dt>El problema de los vendedores ambulantes fue estudiado en el siglo 18 por matemáticos</dt><dd><p><strong>Sir William Rowam Hamilton</strong> y <strong>Thomas Penyngton Kirkman</strong>.</p>
-</dd>
-</dl>
+<p>The traveling sales person problem was studied in the 18th century by
+mathematicians <strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Penyngton Kirkman</strong>.</p>
 <p>Una discusión sobre el trabajo de Hamilton &amp; Kirkman se puede encontrar en el libro <strong>Graph Theory (Biggs et al. 1976)</strong>.</p>
 <ul class="simple">
 <li><p>ISBN-13: 978-0198539162</p></li>
@@ -210,8 +212,8 @@
 </li>
 </ul>
 </section>
-<section id="general-characteristics">
-<h3><a class="toc-backref" href="#id4">Características generales</a><a class="headerlink" href="#general-characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="characteristics">
+<h3><a class="toc-backref" href="#id4">Characteristics</a><a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
 <li><p>Se utiliza el algoritmo métrico</p></li>
@@ -225,16 +227,59 @@
 <li><p>En un grafo no dirigido:</p>
 <ul>
 <li><p>Los costos del viaje son simétricos:</p></li>
-<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from
+<code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
 </section>
+<section id="tsp-optional-parameters">
+<h3><a class="toc-backref" href="#id5">TSP optional parameters</a><a class="headerlink" href="#tsp-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>The first visiting vertex</p>
+<ul class="simple">
+<li><p>When <cite>0</cite> any vertex can become the first visiting vertex.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before
+returning to <code class="docutils literal notranslate"><span class="pre">start_id</span></code>.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last
+vertex</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="see-also">
-<h3><a class="toc-backref" href="#id5">Ver también</a><a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h3>
+<h2><a class="toc-backref" href="#id6">Ver también</a><a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Referencias</p>
 <ul class="simple">
-<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>
@@ -243,7 +288,6 @@
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
 </ul>
-</section>
 </section>
 </section>
 

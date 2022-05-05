@@ -92,16 +92,18 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_TSPeuclidean</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a><ul>
 <li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
-<li><a class="reference internal" href="#general-characteristics">General Characteristics</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
 <li><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></li>
 </ul>
 </li>
@@ -167,7 +169,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP">2.3</a></p></li>
 </ul>
 <section id="pgr-tspeuclidean">
-<h1>pgr_TSPeuclidean<a class="headerlink" href="#pgr-tspeuclidean" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
@@ -185,10 +187,10 @@
 <li><p>Simulated Annealing Algorithm no longer supported</p>
 <ul>
 <li><p>The Simulated Annealing Algorithm related parameters are ignored:
-max_processing_time, tries_per_temperature,
-max_changes_per_temperature, max_consecutive_non_changes,
-initial_temperature, final_temperature, cooling_factor,
-randomize</p></li>
+<cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>,
+<cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>,
+<cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>,
+<cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
@@ -209,15 +211,19 @@ randomize</p></li>
 <section id="problem-definition">
 <h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
 <p>The travelling salesperson problem (TSP) asks the following question:</p>
-<p><em>Given a list of cities and the distances between each pair of cities, which is
-the shortest possible route that visits each city exactly once and returns to the origin city?</em></p>
+<blockquote>
+<div><p><em>Given a list of cities and the distances between each pair of cities, which
+is the shortest possible route that visits each city exactly once and returns
+to the origin city?</em></p>
+</div></blockquote>
 </section>
-<section id="general-characteristics">
-<h3>General Characteristics<a class="headerlink" href="#general-characteristics" title="Permalink to this headline">¶</a></h3>
+<section id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>This problem is an NP-hard optimization problem.</p></li>
 <li><p>Metric Algorithm is used</p></li>
-<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour in the worst case</em> when:</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em> when:</p>
 <ul>
 <li><p>Graph is undirected</p></li>
 <li><p>Graph is fully connected</p></li>
@@ -227,17 +233,18 @@ the shortest possible route that visits each city exactly once and returns to th
 <li><p>On an undirected graph:</p>
 <ul>
 <li><p>The traveling costs are symmetric:</p></li>
-<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from  <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from
+<code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
-</section>
-<section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>Duplicated identifiers with different coordinates are not allowed</p>
+<li><dl class="simple">
+<dt>Any duplicated identifier will be ignored. The coordinates that will be kept</dt><dd><p>is arbitrarly.</p>
+</dd>
+</dl>
 <ul>
-<li><p>The coordinates are quite the same for the same identifier, for example</p>
+<li><p>The coordinates are quite similar for the same identifier, for example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span>
 <span class="mi">1</span><span class="p">,</span> <span class="mf">3.499999999999</span> <span class="mf">0.9999999</span>
 </pre></div>
@@ -249,8 +256,6 @@ the shortest possible route that visits each city exactly once and returns to th
 </pre></div>
 </div>
 </li>
-<li><p>Any duplicated identifier will be ignored. The coordinates that will be kept
-is arbitrarly.</p></li>
 </ul>
 </li>
 </ul>
@@ -259,10 +264,8 @@ is arbitrarly.</p></li>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_TSPeuclidean(Coordinates SQL, [start_id], [end_id])
-RETURNS SETOF (seq, node, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block" id="index-0">pgr_TSPeuclidean(<a class="reference internal" href="#coordinates-sql">Coordinates SQL</a>, [start id], [end_id])
+RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p>With default values</p>
@@ -301,26 +304,42 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 8%" />
-<col style="width: 9%" />
-<col style="width: 69%" />
+<col style="width: 28%" />
+<col style="width: 16%" />
+<col style="width: 56%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a> as described below</p></td>
+</tr>
+</tbody>
+</table>
+<section id="tsp-optional-parameters">
+<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Coordinates SQL</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>An SQL query, described in the <a class="reference internal" href="#coordinates-sql">Coordinates SQL</a> section</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The first visiting vertex</p>
 <ul class="simple">
@@ -328,24 +347,26 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last vertex</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before
+returning to <code class="docutils literal notranslate"><span class="pre">start_id</span></code>.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last
+vertex</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="inner-query">
-<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="inner-queries">
+<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
 <section id="coordinates-sql">
 <h3>Coordinates SQL<a class="headerlink" href="#coordinates-sql" title="Permalink to this headline">¶</a></h3>
-<p><strong>Coordinates SQL</strong>: an SQL query, which should return a set of rows with the following columns:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 12%" />
@@ -359,15 +380,15 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identifier of the starting vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>x</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
 <td><p>X value of the coordinate.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>y</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
 <td><p>Y value of the coordinate.</p></td>
 </tr>
@@ -425,8 +446,9 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <dd class="field-odd"><p>Test 29 cities of Western Sahara</p>
 </dd>
 </dl>
-<p>This example shows how to make performance tests using University of Waterloo’s <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">example data</a> using the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Western Sahara
-dataset</a></p>
+<p>This example shows how to make performance tests using University of Waterloo’s
+<a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">example data</a> using
+the 29 cities of <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Western Sahara dataset</a></p>
 <p>Creating a table for the data and storing the data</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
@@ -465,7 +487,8 @@ dataset</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Getting a total cost of the tour, compare the value with the length of an optimal tour is 27603, given on the dataset</p>
+<p>Getting a total cost of the tour, compare the value with the length of an
+optimal tour is 27603, given on the dataset</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
 WHERE seq = 30;
@@ -487,8 +510,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 
 </pre></div>
 </div>
-<p>Visualy, The first image is the <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">optimal solution</a>  and
-the second image is the solution obtained with <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
+<p>Visualy, The first image is the <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">optimal solution</a>  and the second image
+is the solution obtained with <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
 <a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
 <a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" /></a>
 </section>
@@ -497,7 +520,7 @@ the second image is the solution obtained with <code class="docutils literal not
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">University of Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>

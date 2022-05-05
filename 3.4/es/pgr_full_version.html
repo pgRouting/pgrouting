@@ -93,10 +93,10 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_full_version</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_full_version</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
-<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#return-columns">Return columns</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -148,7 +148,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_full_version.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_full_version.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_full_version.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_full_version.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_full_version.html">3.0</a></p></li>
 </ul>
 <section id="pgr-full-version">
-<h1>pgr_full_version<a class="headerlink" href="#pgr-full-version" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_full_version</span></code><a class="headerlink" href="#pgr-full-version" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_full_version</span></code> — Obtener los detalles de la información de la versión de pgRouting.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
@@ -164,8 +164,8 @@
 </section>
 <section id="signatures">
 <span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_full_version</span><span class="p">()</span><span class="w"></span>
-<span class="k">RETURNS</span><span class="w"> </span><span class="n">RECORD</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="p">(</span><span class="k">version</span><span class="p">,</span><span class="w"> </span><span class="n">build_type</span><span class="p">,</span><span class="w"> </span><span class="n">compile_date</span><span class="p">,</span><span class="w"> </span><span class="n">library</span><span class="p">,</span><span class="w"> </span><span class="k">system</span><span class="p">,</span><span class="w"> </span><span class="n">PostgreSQL</span><span class="p">,</span><span class="w"> </span><span class="n">compiler</span><span class="p">,</span><span class="w"> </span><span class="n">boost</span><span class="p">,</span><span class="w"> </span><span class="n">hash</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_full_version</span><span class="p">()</span>
+<span class="n">RETURNS</span> <span class="n">RECORD</span> <span class="n">OF</span> <span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">build_type</span><span class="p">,</span> <span class="n">compile_date</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">system</span><span class="p">,</span> <span class="n">PostgreSQL</span><span class="p">,</span> <span class="n">compiler</span><span class="p">,</span> <span class="n">boost</span><span class="p">,</span> <span class="nb">hash</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -182,8 +182,8 @@
 </pre></div>
 </div>
 </section>
-<section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="return-columns">
+<h2>Return columns<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 28%" />
@@ -197,39 +197,39 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Versión de pgRouting</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>build_type</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">build_type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>El tipo de Compilación</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>compile_date</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">compile_date</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Fecha de compilación</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>library</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">library</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Nombre y versión de la biblioteca</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>system</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Sistema operativo</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>postgreSQL</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">postgreSQL</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>pgsql utilizado</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>compiler</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">compiler</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Compilador y versión</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>boost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">boost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Versión de Boost</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>hash</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hash</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Hash de Git de pgRouting</p></td>
 </tr>

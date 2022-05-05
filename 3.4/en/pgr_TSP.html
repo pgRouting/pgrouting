@@ -93,16 +93,18 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_TSP</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a><ul>
 <li><a class="reference internal" href="#problem-definition">Problem Definition</a></li>
-<li><a class="reference internal" href="#general-characteristics">General Characteristics</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
 <li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
 </ul>
 </li>
@@ -172,7 +174,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-tsp">
-<h1>pgr_TSP<a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
@@ -218,15 +220,19 @@ randomize</p></li>
 <section id="problem-definition">
 <h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
 <p>The travelling salesperson problem (TSP) asks the following question:</p>
-<p><em>Given a list of cities and the distances between each pair of cities, which is
-the shortest possible route that visits each city exactly once and returns to the origin city?</em></p>
+<blockquote>
+<div><p><em>Given a list of cities and the distances between each pair of cities, which
+is the shortest possible route that visits each city exactly once and returns
+to the origin city?</em></p>
+</div></blockquote>
 </section>
-<section id="general-characteristics">
-<h3>General Characteristics<a class="headerlink" href="#general-characteristics" title="Permalink to this headline">¶</a></h3>
+<section id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>This problem is an NP-hard optimization problem.</p></li>
 <li><p>Metric Algorithm is used</p></li>
-<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour in the worst case</em> when:</p>
+<li><p>Implementation generates solutions that <em>are twice as long as the optimal tour
+in the worst case</em> when:</p>
 <ul>
 <li><p>Graph is undirected</p></li>
 <li><p>Graph is fully connected</p></li>
@@ -236,15 +242,14 @@ the shortest possible route that visits each city exactly once and returns to th
 <li><p>On an undirected graph:</p>
 <ul>
 <li><p>The traveling costs are symmetric:</p></li>
-<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from  <code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from
+<code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
-</section>
-<section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Can be Used with <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> functions preferably with <cite>directed =&gt; false</cite>.</p>
+<li><p>Can be Used with <a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a> functions preferably with
+<cite>directed =&gt; false</cite>.</p>
 <ul>
 <li><p>With <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code></p>
 <ul>
@@ -283,30 +288,37 @@ twice as long as the optimal tour</p></li>
 </li>
 <li><p>As an undirected graph is required, the directed graph is transformed as follows:</p>
 <ul>
-<li><p>edges <cite>(u, v)</cite> and <cite>(v, u)</cite> is considered to be the same edge (denoted <cite>(u, v)</cite></p></li>
+<li><p>edges <cite>(u, v)</cite> and <cite>(v, u)</cite> is considered to be the same edge (denoted
+<cite>(u, v)</cite></p></li>
 <li><p>if <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> differs between one or more instances of edge <cite>(u, v)</cite></p></li>
 <li><p>The minimum value of the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> all instances of edge <cite>(u, v)</cite>
 is going to be considered as the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> of edge  <cite>(u, v)</cite></p></li>
-<li><p>Some (or all) traveling costs on edges will still might not obey the triangle inequality.</p></li>
+<li><p>Some (or all) traveling costs on edges will still might not obey the
+triangle inequality.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>When the data is incomplete, but it is a connected graph,
-the missing values will be calculated with dijkstra algorithm.</p></li>
+<li><p>When the data is incomplete, but it is a connected graph:</p>
+<ul>
+<li><p>the missing values will be calculated with dijkstra algorithm.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_TSP(Matrix SQL, [start_id], [end_id])
-RETURNS SETOF (seq, node, cost, agg_cost)
-</pre></div>
-</div>
-<p class="rubric">Example: Using <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> to generate the matrix information</p>
+<pre class="literal-block" id="index-0">pgr_TSP(<a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [start_id], [end_id])
+RETURNS SETOF (seq, node, cost, agg_cost)</pre>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Using <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> to generate the matrix information</p>
+</dd>
+</dl>
 <ul class="simple">
 <li><p><strong>Line 5</strong> Vertices 15 to 18 are not included because they are not connected.</p></li>
 </ul>
@@ -342,26 +354,42 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 8%" />
-<col style="width: 9%" />
-<col style="width: 71%" />
+<col style="width: 28%" />
+<col style="width: 16%" />
+<col style="width: 56%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#matrix-sql">Matrix SQL</a> as described below</p></td>
+</tr>
+</tbody>
+</table>
+<section id="tsp-optional-parameters">
+<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Matrix SQL</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>An SQL query, described in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a> section.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>The first visiting vertex</p>
 <ul class="simple">
@@ -369,24 +397,26 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last vertex</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before
+returning to <code class="docutils literal notranslate"><span class="pre">start_id</span></code>.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last
+vertex</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="inner-query">
-<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="inner-queries">
+<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
 <section id="matrix-sql">
 <h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Permalink to this headline">¶</a></h3>
-<p><strong>Matrix SQL</strong>: an SQL query, which should return a set of rows with the following columns:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
@@ -400,15 +430,15 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identifier of the starting vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identifier of the ending vertex.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
 <td><p>Cost for going from start_vid to end_vid</p></td>
 </tr>
@@ -506,11 +536,14 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </dl>
 <p>To generate an asymmetric matrix:</p>
 <ul class="simple">
-<li><p><strong>Line 5</strong> The <code class="docutils literal notranslate"><span class="pre">side</span></code> information of pointsOfInterset is ignored by not including it in the query</p></li>
+<li><p><strong>Line 5</strong> The <code class="docutils literal notranslate"><span class="pre">side</span></code> information of pointsOfInterset is ignored by not
+including it in the query</p></li>
 <li><p><strong>Line 7</strong> Generating an asymetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> is going to be considered as the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
-<li><p>The solution that can be larger than <em>twice as long as the optimal tour</em> because:</p>
+<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> is going to be considered as
+the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
+<li><p>The solution that can be larger than <em>twice as long as the optimal tour</em>
+because:</p>
 <ul>
 <li><p>Triangle inequality might not be satisfied.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">AND</span> <span class="pre">end_id</span> <span class="pre">!=</span> <span class="pre">0</span></code></p></li>
@@ -547,7 +580,8 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <dd class="field-odd"><p>Connected incomplete data</p>
 </dd>
 </dl>
-<p>Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is connected</p>
+<p>Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is
+connected</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">end_vid</span><span class="p">,</span> <span class="mi">1</span> <span class="n">AS</span> <span class="n">agg_cost</span>
 <span class="linenos"> 2</span><span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
 <span class="linenos"> 3</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -562,7 +596,8 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <span class="linenos">12</span>
 </pre></div>
 </div>
-<p>Edge <cite>(5,12)</cite> does not exist on the initial data, but it is calculated internally.</p>
+<p>Edge <cite>(5,12)</cite> does not exist on the initial data, but it is calculated
+internally.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$
 <span class="linenos"> 3</span>  SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
@@ -587,8 +622,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
