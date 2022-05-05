@@ -24,7 +24,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/utilities/version.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__
 
-pgr_version
+``pgr_version``
 ===============================================================================
 
 ``pgr_version`` — Query for pgRouting version information.
