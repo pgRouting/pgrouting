@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 12:02+0000\n"
+"POT-Creation-Date: 2022-05-05 14:39+0000\n"
 "PO-Revision-Date: 2022-05-04 01:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"dfs-category/es/>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/dfs-"
+"category/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,10 @@ msgstr ""
 "X-Generator: Weblate 4.11.2\n"
 
 #: ../../build/doc/DFS-category.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category.html>`__)"
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/DFS-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/DFS-category."
+"html>`__)"
 msgstr ""
 
 #: ../../build/doc/DFS-category.rst:17
@@ -80,7 +83,8 @@ msgid "Documentation might need refinement."
 msgstr ""
 
 #: ../../build/doc/DFS-category.rst:35
-msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
+msgid ""
+":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
 #: ../../build/doc/DFS-category.rst:40
@@ -115,21 +119,16 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:8
-#: ../../build/doc/BFS-category.rst:8
-#: ../../build/doc/BFS-category.rst:10
+#: ../../build/doc/BFS-category.rst:8 ../../build/doc/BFS-category.rst:10
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/BFS-category.rst:9
-#: ../../build/doc/BFS-category.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/BFS-category.rst:9 ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/BFS-category.rst:11
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:10
-#: ../../build/doc/BFS-category.rst:11
+#: ../../build/doc/BFS-category.rst:10 ../../build/doc/BFS-category.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/BFS-category.rst:12
 msgid "Description"
@@ -151,12 +150,9 @@ msgstr ""
 msgid "**Root vid**"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:15
-#: ../../build/doc/BFS-category.rst:13
-#: ../../build/doc/BFS-category.rst:14
-#: ../../build/doc/BFS-category.rst:17
-#: ../../build/doc/BFS-category.rst:23
-#: ../../build/doc/BFS-category.rst:27
+#: ../../build/doc/BFS-category.rst:15 ../../build/doc/BFS-category.rst:13
+#: ../../build/doc/BFS-category.rst:14 ../../build/doc/BFS-category.rst:17
+#: ../../build/doc/BFS-category.rst:23 ../../build/doc/BFS-category.rst:27
 #: ../../build/doc/BFS-category.rst:30
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
@@ -166,7 +162,9 @@ msgid "Identifier of the root vertex of the tree."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:18
-msgid "When value is :math:`0` then gets the spanning forest starting in aleatory nodes for each tree in the forest."
+msgid ""
+"When value is :math:`0` then gets the spanning forest starting in aleatory "
+"nodes for each tree in the forest."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:21
@@ -195,24 +193,19 @@ msgstr ""
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:0
-#: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/BFS-category.rst:0
+#: ../../build/doc/BFS-category.rst:0 ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:30
-#: ../../build/doc/BFS-category.rst:44
+#: ../../build/doc/BFS-category.rst:30 ../../build/doc/BFS-category.rst:44
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:0
-#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-NUMERIC"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:31
-#: ../../build/doc/BFS-category.rst:45
+#: ../../build/doc/BFS-category.rst:31 ../../build/doc/BFS-category.rst:45
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
@@ -226,7 +219,7 @@ msgid "Default"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:12
-msgid "**max_depth**"
+msgid "``max_depth``"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:14
@@ -310,7 +303,9 @@ msgid "Weight of the edge (``target``, ``source``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:33
-msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore it's "
+"not part of the graph."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:38
@@ -382,8 +377,7 @@ msgstr ""
 msgid ":math:`-1`  when ``node`` = ``start_vid``."
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:36
-#: ../../build/doc/BFS-category.rst:39
+#: ../../build/doc/BFS-category.rst:36 ../../build/doc/BFS-category.rst:39
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
@@ -404,19 +398,27 @@ msgid "See Also"
 msgstr "Ver también"
 
 #: ../../build/doc/DFS-category.rst:87
-msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid ""
+"`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/"
+"prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
 #: ../../build/doc/DFS-category.rst:89
-msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgid ""
+"`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/"
+"kruskal_min_spanning_tree.html>`__"
 msgstr ""
 
 #: ../../build/doc/DFS-category.rst:91
-msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
+msgid ""
+"`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
+"%27s_algorithm>`__"
 msgstr ""
 
 #: ../../build/doc/DFS-category.rst:93
-msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+msgid ""
+"`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/"
+"Kruskal's_algorithm>`__"
 msgstr ""
 
 #: ../../build/doc/DFS-category.rst:97
