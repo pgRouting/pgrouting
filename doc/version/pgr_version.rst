@@ -74,6 +74,7 @@ Result Columns
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`reference`
 * :doc:`pgr_full_version`
 
 .. rubric:: Indices and tables
