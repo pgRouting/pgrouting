@@ -97,9 +97,30 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
+<li><a class="reference internal" href="#when-line-geometry-is-known">Cuando se conoce la geometría de línea</a></li>
+<li><a class="reference internal" href="#when-vertex-geometry-is-known">Cuando se conoce la geometría de vértices</a></li>
+<li><a class="reference internal" href="#when-identifiers-of-vertices-are-known">Cuando se conocen identificadores de vértices</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#dryrun-execution">Ejecución de Dryrun</a></li>
+<li><a class="reference internal" href="#create-a-routing-topology">Create a routing topology</a><ul>
+<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
+<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Clean up the columns of the routing topology to be created</a></li>
+<li><a class="reference internal" href="#create-the-vertices-table">Create the vertices table</a></li>
+<li><a class="reference internal" href="#inspect-the-vertices-table">Inspect the vertices table</a></li>
+<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Create the routing topology on the edge table</a></li>
+<li><a class="reference internal" href="#inspect-the-routing-topology">Inspect the routing topology</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -152,7 +173,7 @@
 </ul>
 <section id="pgr-extractvertices-proposed">
 <h1>pgr_extractVertices – Propuesto<a class="headerlink" href="#pgr-extractvertices-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> — Extrae la información de vértices en función del origen y el destino.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> — Extracts the vertices information</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión.</p>
@@ -174,7 +195,7 @@
 <ul class="simple">
 <li><p>Versión 3.3.0</p>
 <ul>
-<li><p>Promovido a función <strong>propuesta</strong></p></li>
+<li><p>Classified as <strong>proposed</strong> function</p></li>
 </ul>
 </li>
 <li><p>Versión 3.0.0</p>
@@ -192,10 +213,8 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">pgr_extractVertices</span><span class="p">(</span><span class="n">Edges</span><span class="w"> </span><span class="k">SQL</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">dryrun</span><span class="p">])</span><span class="w"></span>
-<span class="k">RETURNS</span><span class="w"> </span><span class="k">SETOF</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">in_edges</span><span class="p">,</span><span class="w"> </span><span class="n">out_edges</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-</div>
+<pre class="literal-block" id="index-0">pgr_extractVertices(<a class="reference internal" href="#edges-sql">Edges SQL</a> [, dryrun])
+RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Extraer la información del vértice</p>
@@ -232,9 +251,9 @@
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 17%" />
-<col style="width: 70%" />
+<col style="width: 26%" />
+<col style="width: 15%" />
+<col style="width: 59%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -243,25 +262,64 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>El conjunto de aristas del grafo. Es una <a class="reference internal" href="#inner-query">Inner Query</a>  como se describe a continuación.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>dryrun</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>No procese y reciba un AVISO de la consulta resultante.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="inner-query">
-<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<p class="rubric">Cuando se conoce la geometría de línea</p>
+<section id="optional-parameters">
+<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 22%" />
-<col style="width: 58%" />
+<col style="width: 15%" />
+<col style="width: 18%" />
+<col style="width: 14%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dryrun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>When true do not process and get in a
+NOTICE the resulting query.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="contents local topic" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#edges-sql" id="id2">Edges SQL</a></p>
+<ul>
+<li><p><a class="reference internal" href="#when-line-geometry-is-known" id="id3">Cuando se conoce la geometría de línea</a></p></li>
+<li><p><a class="reference internal" href="#when-vertex-geometry-is-known" id="id4">Cuando se conoce la geometría de vértices</a></p></li>
+<li><p><a class="reference internal" href="#when-identifiers-of-vertices-are-known" id="id5">Cuando se conocen identificadores de vértices</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="edges-sql">
+<h3><a class="toc-backref" href="#id2">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="when-line-geometry-is-known">
+<h4><a class="toc-backref" href="#id3">Cuando se conoce la geometría de línea</a><a class="headerlink" href="#when-line-geometry-is-known" title="Enlazar permanentemente con este título">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 27%" />
+<col style="width: 49%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -270,13 +328,13 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>(Opcional) identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>geom</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code></p></td>
-<td><p>Geometría LINESTRING de la arista.</p></td>
+<td><p>Geometry of the edge.</p></td>
 </tr>
 </tbody>
 </table>
@@ -291,13 +349,15 @@
 </ul>
 </li>
 </ul>
-<p class="rubric">Cuando se conoce la geometría de vértices</p>
+</section>
+<section id="when-vertex-geometry-is-known">
+<h4><a class="toc-backref" href="#id4">Cuando se conoce la geometría de vértices</a><a class="headerlink" href="#when-vertex-geometry-is-known" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Para utilizar esta consulta interna, la columna <code class="docutils literal notranslate"><span class="pre">geom</span></code> no debe formar parte del conjunto de columnas.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 22%" />
-<col style="width: 58%" />
+<col style="width: 23%" />
+<col style="width: 25%" />
+<col style="width: 52%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -306,21 +366,22 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>(Opcional) identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>startpoint</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">startpoint</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
 <td><p>Geometría POINT del vértice inicial.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>endpoint</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">endpoint</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
 <td><p>Geometría POINT del vértice final.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Esta consulta interna tiene prioridad sobre la siguiente consulta interna, por lo que se omiten otras columnas cuando aparecen las columnas <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> y <code class="docutils literal notranslate"><span class="pre">endpoint</span></code>.</p>
+<p>This inner query takes precedence over the next inner query, therefore other
+columns are ignored when <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> and <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> columns appears.</p>
 <ul class="simple">
 <li><p>Columnas ignoradas:</p>
 <ul>
@@ -329,7 +390,9 @@
 </ul>
 </li>
 </ul>
-<p class="rubric">Cuando se conocen identificadores de vértices</p>
+</section>
+<section id="when-identifiers-of-vertices-are-known">
+<h4><a class="toc-backref" href="#id5">Cuando se conocen identificadores de vértices</a><a class="headerlink" href="#when-identifiers-of-vertices-are-known" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Para utilizar esta consulta interna, las columnas <code class="docutils literal notranslate"><span class="pre">geom</span></code>, <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> y <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> no deben formar parte del conjunto de columnas.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -344,30 +407,26 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>(Opcional) identificador de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>origen</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>objetivo</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
 <td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
+</section>
+</section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Devuelve un conjunto de (id, in_edges, out_edges, x, y, geom)</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 13%" />
-<col style="width: 72%" />
-</colgroup>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -375,58 +434,48 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>in_edges</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in_edges</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
-<td><dl class="simple">
-<dt>Arreglo de identificadores de las aristas que tienen el vértice  <code class="docutils literal notranslate"><span class="pre">id</span></code> como <em>primer punto final</em>.</dt><dd><ul class="simple">
+<td><p>Arreglo de identificadores de las aristas que tienen el vértice  <code class="docutils literal notranslate"><span class="pre">id</span></code> como <em>primer punto final</em>.</p>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> When the <code class="docutils literal notranslate"><span class="pre">id</span></code> no forma parte de la consulta interna</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>out_edges</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">out_edges</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
-<td><dl class="simple">
-<dt>Arreglo de identificadores de las aristas que tienen el vértice <code class="docutils literal notranslate"><span class="pre">id</span></code>  como <em>segundo punto final</em>.</dt><dd><ul class="simple">
+<td><p>Arreglo de identificadores de las aristas que tienen el vértice <code class="docutils literal notranslate"><span class="pre">id</span></code>  como <em>segundo punto final</em>.</p>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> When the <code class="docutils literal notranslate"><span class="pre">id</span></code> no forma parte de la consulta interna</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>x</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><dl class="simple">
-<dt>Valor X de la geometría POINT</dt><dd><ul class="simple">
+<td><p>X value of the point geometry</p>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> Cuando no se proporciona geometría</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>y</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><dl class="simple">
-<dt>Valor Y de la geometría POINT</dt><dd><ul class="simple">
+<td><p>X value of the point geometry</p>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> Cuando no se proporciona geometría</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>geom</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geom</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code></p></td>
-<td><dl class="simple">
-<dt>Geometría del PUNTO</dt><dd><ul class="simple">
+<td><p>Geometry of the point</p>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> Cuando no se proporciona geometría</p></li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -434,11 +483,23 @@
 </section>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 1</dt>
-<dd class="field-odd"><p>Ejecución de Dryrun</p>
-</dd>
-</dl>
+<div class="contents local topic" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#dryrun-execution" id="id6">Ejecución de Dryrun</a></p></li>
+<li><p><a class="reference internal" href="#create-a-routing-topology" id="id7">Create a routing topology</a></p>
+<ul>
+<li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id8">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
+<li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id9">Clean up the columns of the routing topology to be created</a></p></li>
+<li><p><a class="reference internal" href="#create-the-vertices-table" id="id10">Create the vertices table</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id11">Inspect the vertices table</a></p></li>
+<li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id12">Create the routing topology on the edge table</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id13">Inspect the routing topology</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="dryrun-execution">
+<h3><a class="toc-backref" href="#id6">Ejecución de Dryrun</a><a class="headerlink" href="#dryrun-execution" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para obtener la consulta generada que se usa para obtener la información de vértices, utilice <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">:=</span> <span class="pre">true</span></code>.</p>
 <p>Los resultados se pueden usar como código base para realizar un refinamiento basado en las necesidades de desarrollo de back-end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
@@ -487,20 +548,19 @@
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 2</dt>
-<dd class="field-odd"><p>Creación de una topología de ruteo</p>
-</dd>
-</dl>
-<ol class="arabic">
-<li><p>Asegurarse de que la base de datos no tiene el  <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></p>
+</section>
+<section id="create-a-routing-topology">
+<h3><a class="toc-backref" href="#id7">Create a routing topology</a><a class="headerlink" href="#create-a-routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="make-sure-the-database-does-not-have-the-vertices-table">
+<h4><a class="toc-backref" href="#id8">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
 </pre></div>
 </div>
-</li>
-<li><p>Limpieza de las columnas de la topología de ruteo que se creará</p>
+</section>
+<section id="clean-up-the-columns-of-the-routing-topology-to-be-created">
+<h4><a class="toc-backref" href="#id9">Clean up the columns of the routing topology to be created</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
    <span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
@@ -508,15 +568,26 @@
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
+</section>
+<section id="create-the-vertices-table">
+<h4><a class="toc-backref" href="#id10">Create the vertices table</a><a class="headerlink" href="#create-the-vertices-table" title="Enlazar permanentemente con este título">¶</a></h4>
+<ul class="simple">
+<li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
+<li><p>For big edge tables that are been prepared,</p>
+<ul>
+<li><p>Create it as <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> and</p></li>
+<li><p>After the table is created <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">..</span> <span class="pre">SET</span> <span class="pre">LOGGED</span></code></p></li>
+</ul>
 </li>
-<li><p>Creación de la tabla de vértices</p>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices_table</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, the_geom AS geom FROM edge_table&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
-</li>
-<li><p>Inspección de la tabla de vértices</p>
+</section>
+<section id="inspect-the-vertices-table">
+<h4><a class="toc-backref" href="#id11">Inspect the vertices table</a><a class="headerlink" href="#inspect-the-vertices-table" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
@@ -542,8 +613,9 @@
 
 </pre></div>
 </div>
-</li>
-<li><p>Creación de la topología de ruteo en la tabla de aristas</p>
+</section>
+<section id="create-the-routing-topology-on-the-edge-table">
+<h4><a class="toc-backref" href="#id12">Create the routing topology on the edge table</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Actualización de la información de <code class="docutils literal notranslate"><span class="pre">source</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
     <span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
@@ -568,8 +640,9 @@
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
-</li>
-<li><p>Inspección de la topología de ruteo</p>
+</section>
+<section id="inspect-the-routing-topology">
+<h4><a class="toc-backref" href="#id13">Inspect the routing topology</a><a class="headerlink" href="#inspect-the-routing-topology" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>
 <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">x1</span>  <span class="o">|</span> <span class="n">y1</span>  <span class="o">|</span>       <span class="n">x2</span>       <span class="o">|</span> <span class="n">y2</span>
@@ -596,14 +669,14 @@
 
 </pre></div>
 </div>
-</li>
-</ol>
+</section>
+</section>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de ruteo.</p></li>
-<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear una topología basada en la geometría.</p></li>
+<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -626,7 +699,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 05, 2022.<br/>
+      Actualizado por última vez en may 06, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
