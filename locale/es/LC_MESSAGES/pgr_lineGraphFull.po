@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-05-06 18:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_linegraphfull/es/>\n"
@@ -372,7 +372,7 @@ msgstr "Ejemplos Adicionales"
 #: ../../build/doc/pgr_lineGraphFull.rst:102
 msgid ""
 "The examples of this section are based on the :doc:`sampledata` network."
-msgstr "Los ejemplos de esta sección se basan en la red  :doc:`sampledata`."
+msgstr "Los ejemplos de esta sección se basan en la red :doc:`sampledata`."
 
 #: ../../build/doc/pgr_lineGraphFull.rst:104
 msgid ""
