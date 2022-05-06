@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskaldd/es/>\n"
@@ -88,7 +88,7 @@ msgstr "**Las características principales son:**"
 
 #: ../../build/doc/kruskal-family.rst:3
 msgid "It's implementation is only on **undirected** graph."
-msgstr "Su implementación solo está en el grafo **no direccionado**."
+msgstr "Su implementación solo para grafo **no direccionado**."
 
 #: ../../build/doc/kruskal-family.rst:4
 msgid "Process is done only on edges with positive costs."
@@ -100,7 +100,7 @@ msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
 
 #: ../../build/doc/kruskal-family.rst:6
 msgid "When the graph is connected"
-msgstr "Cuando el grafo está conectado"
+msgstr "Cuando el grafo es conectado"
 
 #: ../../build/doc/kruskal-family.rst:8
 msgid "The resulting edges make up a tree"
@@ -157,7 +157,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_kruskalDD.rst:85
 msgid "Multiple vertices"
-msgstr "Múltiples Vértices"
+msgstr "Múltiples vértices"
 
 #: ../../build/doc/pgr_kruskalDD.rst:93
 msgid ""
@@ -236,11 +236,11 @@ msgstr "Utilizado en `Múltiples Vértices`_"
 
 #: ../../build/doc/pgr_kruskalDD.rst:117
 msgid ":math:`0` values are ignored"
-msgstr "los valores :math:`0` son ignorados"
+msgstr "Valores :math:`0` son ignorados"
 
 #: ../../build/doc/pgr_kruskalDD.rst:118
 msgid "For optimization purposes, any duplicated value is ignored."
-msgstr "Para fines de optimización, se omite cualquier valor duplicado."
+msgstr "Con el propósito de optimización, valores duplicados son ignorados."
 
 #: ../../build/doc/pgr_kruskalDD.rst:120
 msgid "**Distance**"
@@ -291,7 +291,7 @@ msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "**id**"
@@ -313,7 +313,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -321,7 +321,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_kruskalDD.rst:163
@@ -379,9 +379,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_kruskalDD.rst:144
 msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
-msgstr ""
-"devuelve el conjunto SET OF ``(seq, depth, start_vid, node, edge, cost, "
-"agg_cost)``"
+msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:149
 msgid "**seq**"
@@ -397,11 +395,11 @@ msgstr "**profundidad**"
 
 #: ../../build/doc/pgr_kruskalDD.rst:150
 msgid "Depth of the ``node``."
-msgstr "Profundidad del ``nodo``."
+msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:152
 msgid ":math:`0`  when ``node`` = ``start_vid``."
-msgstr ":math:`0`  cuando ``node`` = ``start_vid``."
+msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:154
 msgid "**start_vid**"
@@ -429,7 +427,7 @@ msgstr "**edge**"
 
 #: ../../build/doc/pgr_kruskalDD.rst:159
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
-msgstr "Identificador del ``edge`` utilizado para llegar a ''node''."
+msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:161
 msgid ":math:`-1`  when ``node`` = ``start_vid``."
@@ -441,7 +439,7 @@ msgstr "``FLOAT``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:163
 msgid "Cost to traverse ``edge``."
-msgstr "Costo para atravesar ``edge``."
+msgstr "Costo por recorrer ``edge``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:164
 msgid "**agg_cost**"
@@ -480,19 +478,17 @@ msgid ""
 "`Wikipedia: Kruskal's algorithm "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 msgstr ""
-"`Wikipedia: algoritmo de Kruskal  "
-"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+"`Wikipedia: algoritmo de Kruskal <https://en.wikipedia.org/wiki/"
+"Kruskal's_algorithm>`__"
 
 #: ../../build/doc/pgr_kruskalDD.rst:181
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_kruskalDD.rst:182
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:183
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
