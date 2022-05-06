@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 00:16+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -439,7 +439,9 @@ msgid "**ANY-NUMERICAL**"
 msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-msgid "Weight of the edge  (``source``, ``target``)"
+#, fuzzy
+#| msgid "Weight of the edge  (``source``, ``target``)"
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
