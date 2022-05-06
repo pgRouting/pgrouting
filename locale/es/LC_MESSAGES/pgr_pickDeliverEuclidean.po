@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_pickdelivereuclidean/es/>\n"
@@ -293,7 +293,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
 #: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
@@ -922,11 +922,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:216
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:217
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
