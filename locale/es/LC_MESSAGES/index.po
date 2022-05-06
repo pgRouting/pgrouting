@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-06-25 18:22+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
 "Language: es\n"
@@ -26,7 +26,12 @@ msgstr ""
 
 #: ../../build/doc/index.rst:12
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/index.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/index.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/index.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/index.html>`__"
-msgstr "**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/index.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/index.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/index.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/index.html>`__"
+msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/index"
+".html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/index.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/index.html>`__ `3.2 <https://docs."
+"pgrouting.org/3.2/es/index.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"index.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/index.html>`__"
 
 #: ../../build/doc/index.rst:19
 msgid "**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/index.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/index.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/index.html>`__ `2.3 <https://docs.pgrouting.org/2.3/en/index.html>`__ `2.2 <https://docs.pgrouting.org/2.2/en/index.html>`__ `2.1 <https://docs.pgrouting.org/2.1/en/index.html>`__ `2.0 <https://docs.pgrouting.org/2.0/en/index.html>`__"
@@ -59,7 +64,13 @@ msgstr "Licencia de Creative Commons Attribution-Share Alike 3.0 "
 
 #: ../../build/doc/index.rst:42
 msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to https://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
-msgstr "El Manual de pgRouting está bajo licencia `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_.  Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite https://pgrouting.org. Para otras licencias utilizadas en pgRouting, consulte la página :ref:`license` ."
+msgstr ""
+"El Manual de pgRouting está bajo licencia `Creative Commons Attribution-"
+"Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`"
+"_.  Siéntase libre de usar este material de la manera que desee, pero le "
+"pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, "
+"siempre que sea posible, visite https://pgrouting.org. Para otras licencias "
+"utilizadas en pgRouting, consulte la página :ref:`license` ."
 
 #: ../../build/doc/index.rst:50
 msgid "General"
@@ -125,7 +136,9 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:6
 msgid ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
-msgstr ":doc:`pgr_bdAstarCostMatrix` - Algoritmo bidireccional A* para calcular una matriz de coste de rutas."
+msgstr ""
+":doc:`pgr_bdAstarCostMatrix` - Algoritmo bidireccional A* para calcular una "
+"matriz de coste de rutas."
 
 #: ../../build/doc/routingFunctions.rst:23
 msgid ":doc:`bdDijkstra-family`"
@@ -336,7 +349,9 @@ msgstr ""
 
 #: ../../build/doc/topology-functions.rst:7
 msgid ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on the source and target information."
-msgstr ":doc:`pgr_createVerticesTable` - reconstruir la tabla de vértices en base a la información de origen y destino."
+msgstr ""
+":doc:`pgr_createVerticesTable` - reconstruir la tabla de vértices en base a "
+"la información de origen y destino."
 
 #: ../../build/doc/topology-functions.rst:9
 msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
@@ -429,7 +444,9 @@ msgstr ":doc:`drivingDistance-category`"
 
 #: ../../build/doc/drivingDistance-category.rst:3
 msgid ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
-msgstr ":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo de Dijkstra."
+msgstr ""
+":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo de "
+"Dijkstra."
 
 #: ../../build/doc/drivingDistance-category.rst:4
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
@@ -437,7 +454,8 @@ msgstr ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 
 #: ../../build/doc/drivingDistance-category.rst:5
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
-msgstr ":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de Kruskal."
+msgstr ""
+":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de Kruskal."
 
 #: ../../build/doc/drivingDistance-category.rst:6
 msgid "Post pocessing"
