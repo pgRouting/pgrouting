@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 00:16+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -396,7 +396,7 @@ msgid "**ANY-NUMERICAL**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-msgid "Weight of the edge  (``source``, ``target``)"
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:28
