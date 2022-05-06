@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-11 13:15+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "traversal-family/es/>\n"
@@ -47,7 +47,7 @@ msgstr "Propuesto"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
-msgstr "Funciones propuestas para la próxima versión."
+msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
@@ -55,7 +55,7 @@ msgstr "No están oficialmente en la versión actual."
 
 #: ../../build/doc/proposed.rst:6
 msgid "They will likely officially be part of the next mayor release:"
-msgstr "Es probable que oficialmente formen parte de la próxima versión:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
@@ -75,7 +75,7 @@ msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
-msgstr "Se han hecho pruebas de pgTap. Pero tal vez se necesiten más."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
@@ -85,8 +85,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 msgid ""
 ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
-":doc:`pgr_depthFirstSearch` - Primera Búsqueda en Profundidad traversal del "
-"grafo."
+":doc:`pgr_depthFirstSearch` - Recorrido de búsqueda en profundidad del grafo."
 
 #: ../../build/doc/traversal-family.rst:40
 msgid "Inner query"
@@ -230,11 +229,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/traversal-family.rst:78
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/traversal-family.rst:79
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
