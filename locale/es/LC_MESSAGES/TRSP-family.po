@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-25 16:32+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "trsp-family/es/>\n"
@@ -39,43 +39,43 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:22
 msgid "Proposed"
-msgstr ""
+msgstr "Propuesto"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
-msgstr ""
+msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
-msgstr ""
+msgstr "No están oficialmente en la versión actual."
 
 #: ../../build/doc/proposed.rst:6
 msgid "They will likely officially be part of the next mayor release:"
-msgstr ""
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
+msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr ""
+msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
-msgstr ""
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr ""
+msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
-msgstr ""
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
-msgstr ""
+msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/TRSP-family.rst:29
 msgid ":doc:`pgr_trsp` - Vertex - Vertex routing with restrictions."
@@ -237,15 +237,15 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:120
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/TRSP-family.rst:121
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/TRSP-family.rst:122
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/TRSP-family.rst:123
 msgid "``path``"
@@ -268,7 +268,7 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:130
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/TRSP-family.rst:131
 msgid "Cost of taking the forbidden path."
@@ -276,23 +276,23 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:133
 msgid "Where:"
-msgstr ""
+msgstr "Donde:"
 
 #: ../../build/doc/TRSP-family.rst:0
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ANY-INTEGER"
 
 #: ../../build/doc/TRSP-family.rst:135
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/TRSP-family.rst:0
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "ANY-NUMERICAL"
 
 #: ../../build/doc/TRSP-family.rst:136
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/TRSP-family.rst:144
 msgid "See Also"
@@ -303,11 +303,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/TRSP-family.rst:148
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/TRSP-family.rst:149
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
