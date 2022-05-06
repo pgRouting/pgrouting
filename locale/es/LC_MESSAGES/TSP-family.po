@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-10 16:45+0000\n"
-"PO-Revision-Date: 2022-05-06 15:35+0000\n"
+"PO-Revision-Date: 2022-05-06 18:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "tsp-family/es/>\n"
@@ -45,10 +45,10 @@ msgid ""
 "`2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ `2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
 msgstr ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/TSP-"
-"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/TSP-family.html>`__ "
-"`2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en/TSP-"
+"family.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/TSP-family.html>`__ `"
+"2.4 <https://docs.pgrouting.org/2.4/en/TSP-family.html>`__ `2.3 <https://docs"
+".pgrouting.org/2.3/en/src/tsp/doc/tsp.html>`__"
 
 #: ../../build/doc/TSP-family.rst:25
 msgid "Traveling Sales Person - Family of functions"
@@ -136,7 +136,7 @@ msgstr ""
 "Kalr Menger en Viena y Harvard. El problema fue promovido más tarde por "
 "Hassler, Whitney & Merrill en Princeton. Una descripción detallada sobre la "
 "conexión entre Menger & Whitney, y el desarrollo del TSP se puede encontrar "
-"en  `On the history of combinatorial optimization (till 1960) "
+"en `On the history of combinatorial optimization (till 1960) "
 "<https://homepages.cwi.nl/~lex/files/histco.ps>`_"
 
 #: ../../build/doc/TSP-family.rst:77
@@ -151,7 +151,7 @@ msgstr "Dada una ciudad de partida,"
 
 #: ../../build/doc/TSP-family.rst:80
 msgid "There are :math:`n-1` choices for the second city,"
-msgstr "Hay  :math:`n-1` opción para la segunda ciudad,"
+msgstr "Hay :math:`n-1` opción para la segunda ciudad,"
 
 #: ../../build/doc/TSP-family.rst:81
 msgid "And  :math:`n-2` choices for the third city, etc."
@@ -253,8 +253,8 @@ msgid ""
 "`Wikipedia: Traveling Salesman Problem "
 "<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
-"`Wikipedia: Traveling Salesman Problem "
-"<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
+"`Wikipedia: Problema del viajante <https://es.wikipedia.org/wiki/"
+"Problema_del_viajante>`__"
 
 #: ../../build/doc/TSP-family.rst:120
 msgid "Indices and tables"
