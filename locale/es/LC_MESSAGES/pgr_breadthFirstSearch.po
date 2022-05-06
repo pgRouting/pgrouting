@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-10 15:33+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_breadthfirstsearch/es/>\n"
@@ -234,7 +234,7 @@ msgstr "Consulta SQL descrita en `Inner query`_."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:108
 msgid "**Root vid**"
-msgstr "**Root vid**"
+msgstr "**Raíz**"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:108
 #: ../../build/doc/pgr_breadthFirstSearch.rst:125
@@ -256,7 +256,7 @@ msgstr "Se utiliza en `Single Vertex`_."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:112
 msgid "**Root vids**"
-msgstr "**Root vids**"
+msgstr "**Raíces**"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:112
 msgid "``ARRAY[ANY-INTEGER]``"
@@ -272,7 +272,7 @@ msgstr "Se utiliza en `Multiple Vertices`_."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:115
 msgid "For optimization purposes, any duplicated value is ignored."
-msgstr "Para fines de optimización, se omite cualquier valor duplicado."
+msgstr "Con el propósito de optimización, valores duplicados son ignorados."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:119
 msgid "Optional Parameters"
@@ -281,7 +281,7 @@ msgstr "Parámetros opcionales"
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_breadthFirstSearch.rst:123
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:125
 msgid "**max_depth**"
@@ -348,7 +348,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -356,7 +356,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_breadthFirstSearch.rst:166
@@ -426,9 +426,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:147
 msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
-msgstr ""
-"devuelve el conjunto SET OF ``(seq, depth, start_vid, node, edge, cost, "
-"agg_cost)``"
+msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:152
 msgid "**seq**"
@@ -444,11 +442,11 @@ msgstr "**profundidad**"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:153
 msgid "Depth of the ``node``."
-msgstr "Profundidad del ``nodo``."
+msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:155
 msgid ":math:`0`  when ``node`` = ``start_vid``."
-msgstr ":math:`0`  cuando ``node`` = ``start_vid``."
+msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:157
 msgid "**start_vid**"
@@ -476,7 +474,7 @@ msgstr "**edge**"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:162
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
-msgstr "Identificador del ''edge'' utilizado para llegar a ''node''."
+msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:164
 msgid ":math:`-1`  when ``node`` = ``start_vid``."
@@ -489,7 +487,7 @@ msgstr "``FLOAT``"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:166
 msgid "Cost to traverse ``edge``."
-msgstr "Costo para atravesar ``edge``."
+msgstr "Costo por recorrer ``edge``."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:167
 msgid "**agg_cost**"
@@ -557,11 +555,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:204
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:205
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
