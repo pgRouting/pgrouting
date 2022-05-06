@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-05-06 18:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstra/es/>\n"
@@ -171,7 +171,7 @@ msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
 #: ../../build/doc/pgr_dijkstra.rst:78
 msgid "Values are returned when there is a path."
-msgstr "Valores son regresados cuando hay un camino."
+msgstr "Valores son regresados cuando hay una ruta."
 
 #: ../../build/doc/pgr_dijkstra.rst:80
 msgid ""
@@ -638,7 +638,7 @@ msgstr "Ejemplos Adicionales"
 #: ../../build/doc/pgr_dijkstra.rst:264
 msgid ""
 "The examples of this section are based on the :doc:`sampledata` network."
-msgstr "Los ejemplos de esta sección se basan en la red  :doc:`sampledata`."
+msgstr "Los ejemplos de esta sección se basan en la red :doc:`sampledata`."
 
 #: ../../build/doc/pgr_dijkstra.rst:266
 msgid ""
