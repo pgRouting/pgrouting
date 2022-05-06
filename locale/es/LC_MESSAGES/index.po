@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-05 15:01+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
@@ -114,7 +114,7 @@ msgstr ":doc:`allpairs-family`"
 
 #: ../../build/doc/allpairs-family.rst:3
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ":doc:`pgr_floydWarshall` - Algoritmo de Floyd-Warshall "
+msgstr ":doc:`pgr_floydWarshall` - Algoritmo de Floyd-Warshall."
 
 #: ../../build/doc/allpairs-family.rst:4
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
@@ -577,12 +577,10 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/index.rst:117
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/index.rst:118
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
