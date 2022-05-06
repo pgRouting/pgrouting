@@ -101,7 +101,19 @@
 <li><a class="reference internal" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values">Usage when the edge table’s columns DO NOT MATCH the default values:</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
+<li><a class="reference internal" href="#create-a-routing-topology">Create a routing topology</a><ul>
+<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
+<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Clean up the columns of the routing topology to be created</a></li>
+<li><a class="reference internal" href="#create-the-vertices-table">Create the vertices table</a></li>
+<li><a class="reference internal" href="#inspect-the-vertices-table">Inspect the vertices table</a></li>
+<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Create the routing topology on the edge table</a></li>
+<li><a class="reference internal" href="#inspect-the-routing-topology">Inspect the routing topology</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#with-full-output">With full output</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -531,11 +543,146 @@ The order of the parameters do not matter:</p>
 </section>
 <section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>With full output</p>
-</dd>
-</dl>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#create-a-routing-topology" id="id1">Create a routing topology</a></p>
+<ul>
+<li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id2">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
+<li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id3">Clean up the columns of the routing topology to be created</a></p></li>
+<li><p><a class="reference internal" href="#create-the-vertices-table" id="id4">Create the vertices table</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id5">Inspect the vertices table</a></p></li>
+<li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id6">Create the routing topology on the edge table</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id7">Inspect the routing topology</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#with-full-output" id="id8">With full output</a></p></li>
+</ul>
+</div>
+<section id="create-a-routing-topology">
+<h3><a class="toc-backref" href="#id1">Create a routing topology</a><a class="headerlink" href="#create-a-routing-topology" title="Permalink to this headline">¶</a></h3>
+<p>An alternate method to create a routing topology use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a></p>
+<section id="make-sure-the-database-does-not-have-the-vertices-table">
+<h4><a class="toc-backref" href="#id2">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
+<span class="n">DROP</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="clean-up-the-columns-of-the-routing-topology-to-be-created">
+<h4><a class="toc-backref" href="#id3">Clean up the columns of the routing topology to be created</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
+   <span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
+   <span class="n">x2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</section>
+<section id="create-the-vertices-table">
+<h4><a class="toc-backref" href="#id4">Create the vertices table</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
+<li><p>For big edge tables that are been prepared,</p>
+<ul>
+<li><p>Create it as <code class="docutils literal notranslate"><span class="pre">UNLOGGED</span></code> and</p></li>
+<li><p>After the table is created <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span> <span class="pre">..</span> <span class="pre">SET</span> <span class="pre">LOGGED</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices_table</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, the_geom AS geom FROM edge_table&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="mi">17</span>
+</pre></div>
+</div>
+</section>
+<section id="inspect-the-vertices-table">
+<h4><a class="toc-backref" href="#id5">Inspect the vertices table</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+<span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
+<span class="o">----+----------+-----------+----------------+-----+--------------------------------------------</span>
+  <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000000000000000000040</span>
+  <span class="mi">2</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">0101000000000000000000E03</span><span class="n">F0000000000000C40</span>
+  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">7</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">0101000000000000000000</span><span class="n">F03F0000000000000040</span>
+  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">17</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mi">010100000068</span><span class="n">EEFFFFFFFFFF3F0000000000000C40</span>
+  <span class="mi">5</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000000</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000040000000000000</span><span class="n">F03F</span>
+  <span class="mi">7</span> <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000040</span>
+  <span class="mi">8</span> <span class="o">|</span> <span class="p">{</span><span class="mi">10</span><span class="p">}</span>     <span class="o">|</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">}</span>   <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000000840</span>
+  <span class="mi">9</span> <span class="o">|</span> <span class="p">{</span><span class="mi">14</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">010100000000000000000000400000000000001040</span>
+ <span class="mi">10</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>     <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000000840000000000000</span><span class="n">F03F</span>
+ <span class="mi">11</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">11</span><span class="p">}</span>    <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000040</span>
+ <span class="mi">12</span> <span class="o">|</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">}</span>  <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000008400000000000000840</span>
+ <span class="mi">13</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>      <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C406666666666660240</span>
+ <span class="mi">14</span> <span class="o">|</span> <span class="p">{</span><span class="mi">18</span><span class="p">}</span>     <span class="o">|</span>           <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span> <span class="mi">01010000000000000000000</span><span class="n">C400000000000001040</span>
+ <span class="mi">15</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">16</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span> <span class="mi">01010000000000000000001040000000000000</span><span class="n">F03F</span>
+ <span class="mi">16</span> <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">}</span>   <span class="o">|</span> <span class="p">{</span><span class="mi">15</span><span class="p">}</span>      <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000040</span>
+ <span class="mi">17</span> <span class="o">|</span> <span class="p">{</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">}</span>  <span class="o">|</span>           <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span> <span class="mi">010100000000000000000010400000000000000840</span>
+<span class="p">(</span><span class="mi">17</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="create-the-routing-topology-on-the-edge-table">
+<h4><a class="toc-backref" href="#id6">Create the routing topology on the edge table</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this headline">¶</a></h4>
+<p>Updating the <code class="docutils literal notranslate"><span class="pre">source</span></code> information</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+    <span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
+        <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">out_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+        <span class="n">FROM</span> <span class="n">vertices_table</span>
+    <span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edge_table</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">out_going</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>Updating the <code class="docutils literal notranslate"><span class="pre">target</span></code> information</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+    <span class="n">in_coming</span> <span class="n">AS</span> <span class="p">(</span>
+        <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">in_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+        <span class="n">FROM</span> <span class="n">vertices_table</span>
+    <span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edge_table</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">FROM</span> <span class="n">in_coming</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</section>
+<section id="inspect-the-routing-topology">
+<h4><a class="toc-backref" href="#id7">Inspect the routing topology</a><a class="headerlink" href="#inspect-the-routing-topology" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>
+<span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">x1</span>  <span class="o">|</span> <span class="n">y1</span>  <span class="o">|</span>       <span class="n">x2</span>       <span class="o">|</span> <span class="n">y2</span>
+<span class="o">----+--------+--------+-----+-----+----------------+-----</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span>
+  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
+  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="with-full-output">
+<h3><a class="toc-backref" href="#id8">With full output</a><a class="headerlink" href="#with-full-output" title="Permalink to this headline">¶</a></h3>
 <p>This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -569,6 +716,7 @@ The order of the parameters do not matter:</p>
 </div>
 <p>The example uses the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
 </section>
+</section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -597,7 +745,7 @@ The order of the parameters do not matter:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on May 03, 2022.<br/>
+      Last updated on May 06, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
