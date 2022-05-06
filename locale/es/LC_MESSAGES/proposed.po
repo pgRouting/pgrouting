@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 15:58+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-05-06 18:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "proposed/es/>\n"
@@ -220,7 +220,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/proposed.rst:116
 msgid ":doc:`experimental`"
-msgstr ":doc:`experimental`"
+msgstr ""
 
 #: ../../build/doc/proposed.rst:119
 msgid "Indices and tables"
