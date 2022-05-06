@@ -340,7 +340,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><span class="math notranslate nohighlight">\(9223372036854775807\)</span></p></td>
 <td><p>Upper limit of the depth of the tree.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">Negative</span></code> <strong>throws</strong> an error.</p></li>
+<li><p>When negative throws an error.</p></li>
 </ul>
 </td>
 </tr>
@@ -385,7 +385,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -429,7 +429,7 @@ it’s not part of the graph.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Profundidad del <code class="docutils literal notranslate"><span class="pre">nodo</span></code>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span>  cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span> when <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
@@ -445,7 +445,7 @@ it’s not part of the graph.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del “”edge”” utilizado para llegar a “”node””.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(-1\)</span>  cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> when <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
@@ -475,7 +475,7 @@ it’s not part of the graph.</p></li>
 <li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html">Boost:  algoritmo de documentación de Kruskal</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html">Boost: Kruskal’s algorithm</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kruskal's_algorithm">Wikipedia: algoritmo de Kruskal</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
