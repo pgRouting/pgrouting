@@ -97,7 +97,7 @@ BFS optional parameters
      - :math:`9223372036854775807`
      - Upper limit of the depth of the tree.
 
-       * When ``Negative`` **throws** an error.
+       * When negative throws an error.
 
 .. max-depth-optional-end
 
@@ -133,7 +133,7 @@ Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
      - ``BIGINT``
      - Depth of the ``node``.
 
-       - :math:`0`  when ``node`` = ``start_vid``.
+       - :math:`0` when ``node`` = ``start_vid``.
 
    * - ``start_vid``
      - ``BIGINT``
@@ -146,7 +146,7 @@ Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``
      - ``BIGINT``
      - Identifier of the ``edge`` used to arrive to ``node``.
 
-       - :math:`-1`  when ``node`` = ``start_vid``.
+       - :math:`-1` when ``node`` = ``start_vid``.
 
    * - ``cost``
      - ``FLOAT``

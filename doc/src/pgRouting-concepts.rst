@@ -296,7 +296,7 @@ General
    * - ``cost``
      - **ANY-NUMERICAL**
      -
-     - Weight of the edge  (``source``, ``target``)
+     - Weight of the edge (``source``, ``target``)
    * - ``reverse_cost``
      - **ANY-NUMERICAL**
      - -1

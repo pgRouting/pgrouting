@@ -41,7 +41,7 @@
 * Version 3.0.0
 
   * New **experimental** signatures:
-  
+
     * ``pgr_bellmanFord`` (`One to One`_)
     * ``pgr_bellmanFord`` (`One to Many`_)
     * ``pgr_bellmanFord`` (`Many to One`_)
@@ -50,11 +50,11 @@
 Description
 -------------------------------------------------------------------------------
 
-Bellman-Ford's algorithm, is named after Richard Bellman and Lester Ford, who 
+Bellman-Ford's algorithm, is named after Richard Bellman and Lester Ford, who
 first published it in 1958 and 1956, respectively.It is a graph search algorithm
 that computes shortest paths from a starting vertex (``start_vid``) to an ending
 vertex (``end_vid``) in a graph where some of the edge weights may be negative.
-Though it is more versatile, it is slower than Dijkstra's algorithm.This 
+Though it is more versatile, it is slower than Dijkstra's algorithm.This
 implementation can be used with a directed graph and an undirected graph.
 
 **The main characteristics are:**
@@ -73,7 +73,7 @@ implementation can be used with a directed graph and an undirected graph.
     * When the start vertex and the end vertex are different, and there is no path.
       The agg_cost is :math:`\infty`.
 
-  * For optimization purposes, any duplicated value in the `start_vids` or 
+  * For optimization purposes, any duplicated value in the `start_vids` or
     `end_vids` are ignored.
 
   * The returned values are ordered:
@@ -135,7 +135,7 @@ One to One
 .. index::
     single: bellmanFord(One to Many) - Experimental on v3.0
 
-One to many
+One to Many
 ...............................................................................
 
 .. parsed-literal::
@@ -182,7 +182,7 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an 
+:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an
           **directed** graph
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
