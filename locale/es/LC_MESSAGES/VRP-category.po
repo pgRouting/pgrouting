@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 10:56-0600\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "vrp-category/es/>\n"
@@ -328,7 +328,7 @@ msgstr "Tipo"
 #: ../../build/doc/VRP-category.rst:229 ../../build/doc/VRP-category.rst:251
 #: ../../build/doc/VRP-category.rst:264
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
 #: ../../build/doc/VRP-category.rst:116 ../../build/doc/VRP-category.rst:137
@@ -1376,11 +1376,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/VRP-category.rst:487
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/VRP-category.rst:488
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
