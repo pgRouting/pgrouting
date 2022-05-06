@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-05 15:01+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-05-06 18:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
@@ -353,7 +353,7 @@ msgstr ":doc:`pgr_kruskalDFS`"
 #: ../../build/doc/routingFunctions.rst:59
 #: ../../build/doc/spanningTree-family.rst:4
 msgid ":doc:`prim-family`"
-msgstr ":doc:`prim-family`"
+msgstr ""
 
 #: ../../build/doc/prim-family.rst:3
 msgid ":doc:`pgr_prim`"
@@ -566,7 +566,7 @@ msgstr ":doc:`proposed`"
 
 #: ../../build/doc/index.rst:91
 msgid ":doc:`experimental`"
-msgstr ":doc:`experimental`"
+msgstr ""
 
 #: ../../build/doc/index.rst:102
 msgid ":doc:`release_notes`"
