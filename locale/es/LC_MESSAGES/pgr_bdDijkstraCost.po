@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:35+0000\n"
+"PO-Revision-Date: 2022-05-06 18:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bddijkstracost/es/>\n"
@@ -116,7 +116,7 @@ msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
 #: ../../build/doc/bdDijkstra-family.rst:4
 msgid "Values are returned when there is a path."
-msgstr "Valores son regresados cuando hay un camino."
+msgstr "Valores son regresados cuando hay una ruta."
 
 #: ../../build/doc/bdDijkstra-family.rst:6
 msgid ""
