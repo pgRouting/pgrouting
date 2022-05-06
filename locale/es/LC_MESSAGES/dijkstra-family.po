@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 14:40+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "dijkstra-family/es/>\n"
@@ -101,7 +101,7 @@ msgstr "Propuesto"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
-msgstr "Funciones propuestas para el próximo lanzamineto."
+msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
@@ -129,7 +129,7 @@ msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
-msgstr "Se han hecho pruebas de pgTap. Pero tal vez necesite más."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
@@ -397,11 +397,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/dijkstra-family.rst:175
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/dijkstra-family.rst:176
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
