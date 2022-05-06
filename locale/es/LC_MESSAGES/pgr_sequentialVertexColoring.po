@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 15:58+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_sequentialvertexcoloring/es/>\n"
@@ -60,7 +60,7 @@ msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
-msgstr "Funciones propuestas para la próxima versión."
+msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
@@ -68,7 +68,7 @@ msgstr "No están oficialmente en la versión actual."
 
 #: ../../build/doc/proposed.rst:6
 msgid "They will likely officially be part of the next mayor release:"
-msgstr "Es probable que oficialmente formen parte de la próxima versión:"
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
@@ -88,7 +88,7 @@ msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
-msgstr "Se han hecho pruebas de pgTap. Pero tal vez se necesiten más."
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
@@ -237,7 +237,7 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst
 msgid "Edges SQL"
-msgstr "Edges SQL"
+msgstr "SQL de aristas"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:98
 msgid ""
@@ -254,7 +254,7 @@ msgstr "Columna"
 
 #: ../../build/doc/traversal-family.rst:4
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/traversal-family.rst:6
 msgid "**id**"
@@ -276,7 +276,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/traversal-family.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/traversal-family.rst:8
 msgid "**target**"
@@ -284,7 +284,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/traversal-family.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/traversal-family.rst:9
 msgid "**cost**"
@@ -401,11 +401,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:127
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:128
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
