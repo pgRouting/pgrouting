@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-03 17:23+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgecoloring/es/>\n"
@@ -125,7 +125,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/coloring-family.rst:6
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/pgr_edgeColoring.rst:41
 msgid ""
@@ -136,7 +136,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:45
 msgid "**The main Characteristics are:**"
-msgstr ""
+msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_edgeColoring.rst:47
 msgid ""
@@ -211,7 +211,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:90
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
@@ -220,122 +220,124 @@ msgstr "Parámetro"
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/coloring-family.rst:6
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL de Aristas`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "`SQL de aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_edgeColoring.rst:97
 msgid "Inner queries"
-msgstr ""
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_edgeColoring.rst:100
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL de aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/coloring-family.rst:6
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
-msgstr ""
+msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ANY-INTEGER**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/coloring-family.rst:8
 msgid "Identifier of the edge."
-msgstr ""
+msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``source``"
-msgstr ""
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
-msgstr ""
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge  (``source``, ``target``)"
-msgstr ""
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "``reverse_cost``"
-msgstr ""
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr ""
+msgstr "Peso de la arsita (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore it's "
 "not part of the graph."
 msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
-msgstr ""
+msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ANY-INTEGER"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "ANY-NUMERICAL"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_edgeColoring.rst:107
 msgid "Result Columns"
-msgstr ""
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/coloring-family.rst:3
 msgid "Returns SET OF ``(edge_id, color_id)``"
@@ -385,11 +387,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_edgeColoring.rst:130
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_edgeColoring.rst:131
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
