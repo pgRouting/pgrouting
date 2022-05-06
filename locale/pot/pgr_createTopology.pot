@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-05-06 15:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -374,46 +374,98 @@ msgstr ""
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:0
-msgid "Example"
+#: ../../build/doc/pgr_createTopology.rst:254
+msgid "Create a routing topology"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:249
-msgid "With full output"
+#: ../../build/doc/pgr_createTopology.rst:256
+msgid "An alternate method to create a routing topology use :doc:`pgr_extractVertices`"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:251
-msgid "This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges."
+#: ../../build/doc/pgr_extractVertices.rst:4
+msgid "Make sure the database does not have the ``vertices_table``"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:257
-msgid "The example uses the :doc:`sampledata` network."
+#: ../../build/doc/pgr_extractVertices.rst:11
+msgid "Clean up the columns of the routing topology to be created"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:260
-msgid "See Also"
+#: ../../build/doc/pgr_extractVertices.rst:18
+msgid "Create the vertices table"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:262
-msgid ":doc:`topology-functions` for an overview of a topology for routing algorithms."
+#: ../../build/doc/pgr_extractVertices.rst:20
+msgid "When the ``LINESTRING`` has a SRID then use ``geom::geometry(POINT, <SRID>)``"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:263
-msgid ":doc:`pgr_createVerticesTable` to reconstruct the vertices table based on the source and target information."
+#: ../../build/doc/pgr_extractVertices.rst:21
+msgid "For big edge tables that are been prepared,"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:23
+msgid "Create it as ``UNLOGGED`` and"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:24
+msgid "After the table is created ``ALTER TABLE .. SET LOGGED``"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:31
+msgid "Inspect the vertices table"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:38
+msgid "Create the routing topology on the edge table"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:40
+msgid "Updating the ``source`` information"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:46
+msgid "Updating the ``target`` information"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:53
+msgid "Inspect the routing topology"
 msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:264
+msgid "With full output"
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:266
+msgid "This example start a clean topology, with 5 edges, and then its incremented to the rest of the edges."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:272
+msgid "The example uses the :doc:`sampledata` network."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:275
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:277
+msgid ":doc:`topology-functions` for an overview of a topology for routing algorithms."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:278
+msgid ":doc:`pgr_createVerticesTable` to reconstruct the vertices table based on the source and target information."
+msgstr ""
+
+#: ../../build/doc/pgr_createTopology.rst:279
 msgid ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:267
+#: ../../build/doc/pgr_createTopology.rst:282
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:268
+#: ../../build/doc/pgr_createTopology.rst:283
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_createTopology.rst:269
+#: ../../build/doc/pgr_createTopology.rst:284
 msgid ":ref:`search`"
 msgstr ""
