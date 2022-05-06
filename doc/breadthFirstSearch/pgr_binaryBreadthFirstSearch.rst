@@ -117,7 +117,7 @@ One to One
 .. index::
     single: binaryBreadthFirstSearch(One to Many) - Experimental on v3.0
 
-One to many
+One to Many
 ...............................................................................
 
 .. parsed-literal::

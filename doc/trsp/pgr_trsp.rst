@@ -127,7 +127,7 @@ One to One
 .. index::
     single: trsp(One to Many) -- Proposed on v3.4
 
-One to many
+One to Many
 ...............................................................................
 
 .. parsed-literal::

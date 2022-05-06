@@ -110,7 +110,7 @@ One to One
 .. index::
     single: bdDijkstra(One to Many)
 
-One to many
+One to Many
 ...............................................................................
 
 .. parsed-literal::

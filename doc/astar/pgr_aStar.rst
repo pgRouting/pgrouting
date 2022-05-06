@@ -123,7 +123,7 @@ One to One
 .. index::
     single: astar(One to Many)
 
-One to many
+One to Many
 ...............................................................................
 
 .. parsed-literal::

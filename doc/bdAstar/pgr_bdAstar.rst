@@ -121,7 +121,7 @@ One to One
 .. index::
     single: bdAstar(One to Many)
 
-One to many
+One to Many
 ...............................................................................
 
 .. parsed-literal::

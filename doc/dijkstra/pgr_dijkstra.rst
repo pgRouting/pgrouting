@@ -113,7 +113,7 @@ One to One
 .. index::
     single: dijkstra(One to Many)
 
-One to many
+One to Many
 ...............................................................................
 
 .. parsed-literal::
