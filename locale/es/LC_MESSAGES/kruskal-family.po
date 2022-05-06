@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "kruskal-family/es/>\n"
@@ -86,7 +86,7 @@ msgstr "**Las características principales son:**"
 
 #: ../../build/doc/kruskal-family.rst:57
 msgid "It's implementation is only on **undirected** graph."
-msgstr "Su implementación solo está en el grafo **no direccionado**."
+msgstr "Su implementación solo para grafo **no direccionado**."
 
 #: ../../build/doc/kruskal-family.rst:58
 msgid "Process is done only on edges with positive costs."
@@ -98,7 +98,7 @@ msgstr "Se minimiza el peso total de todos los bordes del árbol o bosque."
 
 #: ../../build/doc/kruskal-family.rst:60
 msgid "When the graph is connected"
-msgstr "Cuando el grafo está conectado"
+msgstr "Cuando el grafo es conectado"
 
 #: ../../build/doc/kruskal-family.rst:62
 msgid "The resulting edges make up a tree"
@@ -135,7 +135,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "**id**"
@@ -157,7 +157,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -165,7 +165,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**cost**"
@@ -249,19 +249,17 @@ msgid ""
 "`Wikipedia: Kruskal's algorithm "
 "<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 msgstr ""
-"`Wikipedia: algoritmo de Kruskal  "
-"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
+"`Wikipedia: algoritmo de Kruskal <https://en.wikipedia.org/wiki/"
+"Kruskal's_algorithm>`__"
 
 #: ../../build/doc/kruskal-family.rst:89
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/kruskal-family.rst:90
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/kruskal-family.rst:91
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
