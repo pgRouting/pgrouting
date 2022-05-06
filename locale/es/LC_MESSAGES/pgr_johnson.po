@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-11 13:15+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_johnson/es/>\n"
@@ -275,7 +275,7 @@ msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**source**"
@@ -288,7 +288,7 @@ msgstr "``ANY-INTEGER``"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**target**"
@@ -296,7 +296,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "**cost**"
@@ -426,11 +426,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_johnson.rst:156
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_johnson.rst:157
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
