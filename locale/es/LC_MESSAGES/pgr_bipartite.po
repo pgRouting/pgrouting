@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bipartite/es/>\n"
@@ -231,7 +231,7 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_bipartite.rst
 msgid "Edges SQL"
-msgstr "Edges SQL"
+msgstr "SQL de aristas"
 
 #: ../../build/doc/pgr_bipartite.rst:88
 msgid ""
@@ -248,7 +248,7 @@ msgstr "Columna"
 
 #: ../../build/doc/traversal-family.rst:4
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/traversal-family.rst:6
 msgid "**id**"
@@ -270,7 +270,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/traversal-family.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/traversal-family.rst:8
 msgid "**target**"
@@ -278,7 +278,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/traversal-family.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/traversal-family.rst:9
 msgid "**cost**"
@@ -420,11 +420,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_bipartite.rst:143
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_bipartite.rst:144
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
