@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 10:56-0600\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "allpairs-family/es/>\n"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:32
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ":doc:`pgr_floydWarshall` - Algoritmo de Floyd-Warshall "
+msgstr ":doc:`pgr_floydWarshall` - Algoritmo de Floyd-Warshall."
 
 #: ../../build/doc/allpairs-family.rst:33
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
@@ -147,7 +147,7 @@ msgstr "TAMAÑO"
 
 #: ../../build/doc/allpairs-family.rst:97
 msgid "is the number of edges given as input."
-msgstr "es el número de aristas entradas"
+msgstr "es la cantidad de aristas dadas como entradas."
 
 #: ../../build/doc/allpairs-family.rst ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:163
@@ -157,7 +157,7 @@ msgstr "ARISTAS"
 #: ../../build/doc/allpairs-family.rst:98
 #: ../../build/doc/allpairs-family.rst:155
 msgid "is the total number of records in the query."
-msgstr "es el numero de registros en la consulta"
+msgstr "es el número de registros en la consulta."
 
 #: ../../build/doc/allpairs-family.rst ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:163
@@ -1031,11 +1031,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/allpairs-family.rst:194
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/allpairs-family.rst:195
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
