@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-04 01:59+0000\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_vrponedepot/es/>\n"
@@ -203,11 +203,9 @@ msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_vrpOneDepot.rst:84
-#, fuzzy
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_vrpOneDepot.rst:85
-#, fuzzy
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
