@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-21 13:40+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,7 +228,7 @@ msgid "From vertex :math:`2` to vertex :math:`11` on a **directed** graph with h
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstar.rst:125
-msgid "One to many"
+msgid "One to Many"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstar.rst:133

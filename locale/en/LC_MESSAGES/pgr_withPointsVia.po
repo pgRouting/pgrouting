@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 00:16+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.1\n"
 
 #: ../../build/doc/pgr_withPointsVia.rst:12
 msgid ""
@@ -377,7 +377,7 @@ msgid "**ANY-NUMERICAL**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-msgid "Weight of the edge  (``source``, ``target``)"
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:28

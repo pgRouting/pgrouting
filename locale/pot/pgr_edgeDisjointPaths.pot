@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-04 15:00+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Calculates the edge disjoint paths between two groups of vertices. Utilizes underlying maximum flow algorithms to calculate the paths."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:67
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:66
 msgid "The main characterics are:"
 msgstr ""
 
@@ -106,22 +106,18 @@ msgid "The graph can be directed or undirected."
 msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:66
-msgid "One to many, many to one, many to many versions are also supported."
-msgstr ""
-
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:67
 msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:70
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:69
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:73
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:72
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:88
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:87
 msgid "One to One"
 msgstr ""
 
@@ -134,51 +130,51 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:96
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:95
 msgid "From vertex :math:`6` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:106
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:105
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:114
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:113
 msgid "From vertex :math:`6` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:125
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:124
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:133
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:132
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:143
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:142
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:151
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:150
 msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:161
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:160
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:169
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:168
 msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{1, 2\\}` to vertices :math:`\\{3, 4, 17\\}` on an undirected graph."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:173
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:172
 msgid "The combinations table:"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:179
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:178
 msgid "The query:"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:186
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:185
 msgid "Parameters"
 msgstr ""
 
@@ -264,7 +260,7 @@ msgstr ""
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:193
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:192
 msgid "Optional parameters"
 msgstr ""
 
@@ -292,11 +288,11 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:200
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:199
 msgid "Inner queries"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:203
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:202
 msgid "Edges SQL"
 msgstr ""
 
@@ -349,7 +345,7 @@ msgid "**ANY-NUMERICAL**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-msgid "Weight of the edge  (``source``, ``target``)"
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:28
@@ -391,7 +387,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:210
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:209
 msgid "Combinations SQL"
 msgstr ""
 
@@ -407,7 +403,7 @@ msgstr ""
 msgid "Identifier of the arrival vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:217
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:216
 msgid "Return Columns"
 msgstr ""
 
@@ -511,30 +507,30 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:224
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:223
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:226
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:225
 msgid "Manually assigned vertex combinations on an undirected graph."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:233
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:232
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:235
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:234
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:238
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:237
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:239
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:238
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:240
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:239
 msgid ":ref:`search`"
 msgstr ""

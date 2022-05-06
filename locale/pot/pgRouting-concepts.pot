@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-04 15:00+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -539,10 +539,7 @@ msgid "**ANY-NUMERICAL**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:299
-#: ../../build/doc/pgRouting-concepts.rst:344
-#: ../../build/doc/pgRouting-concepts.rst:394
-#: ../../build/doc/pgRouting-concepts.rst:466
-msgid "Weight of the edge  (``source``, ``target``)"
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:300
@@ -601,6 +598,12 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:320
 #: ../../build/doc/pgRouting-concepts.rst:904
 msgid ":doc:`allpairs-family`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:344
+#: ../../build/doc/pgRouting-concepts.rst:394
+#: ../../build/doc/pgRouting-concepts.rst:466
+msgid "Weight of the edge  (``source``, ``target``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:361
