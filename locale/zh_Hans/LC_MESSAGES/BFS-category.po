@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 14:39+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -185,7 +185,7 @@ msgid "Upper limit of the depth of the tree."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:100
-msgid "When ``Negative`` **throws** an error."
+msgid "When negative throws an error."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:105
@@ -241,7 +241,7 @@ msgid "**ANY-NUMERICAL**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-msgid "Weight of the edge  (``source``, ``target``)"
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:28
@@ -299,7 +299,7 @@ msgid "Depth of the ``node``."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:136
-msgid ":math:`0`  when ``node`` = ``start_vid``."
+msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:138
@@ -327,7 +327,7 @@ msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:149
-msgid ":math:`-1`  when ``node`` = ``start_vid``."
+msgid ":math:`-1` when ``node`` = ``start_vid``."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:152 ../../build/doc/BFS-category.rst:155

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 14:39+0000\n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
 "PO-Revision-Date: 2022-05-06 15:35+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"bfs-category/es/>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/bfs-"
+"category/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -193,7 +193,9 @@ msgid "Upper limit of the depth of the tree."
 msgstr "Límite superior de la profundidad del árbol."
 
 #: ../../build/doc/BFS-category.rst:100
-msgid "When ``Negative`` **throws** an error."
+#, fuzzy
+#| msgid "When ``Negative`` **throws** an error."
+msgid "When negative throws an error."
 msgstr "Cuando negativo arroja un error."
 
 #: ../../build/doc/BFS-category.rst:105
@@ -249,7 +251,9 @@ msgid "**ANY-NUMERICAL**"
 msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-msgid "Weight of the edge  (``source``, ``target``)"
+#, fuzzy
+#| msgid "Weight of the edge  (``source``, ``target``)"
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
@@ -309,7 +313,9 @@ msgid "Depth of the ``node``."
 msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/BFS-category.rst:136
-msgid ":math:`0`  when ``node`` = ``start_vid``."
+#, fuzzy
+#| msgid ":math:`0`  when ``node`` = ``start_vid``."
+msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/BFS-category.rst:138
@@ -337,7 +343,9 @@ msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/BFS-category.rst:149
-msgid ":math:`-1`  when ``node`` = ``start_vid``."
+#, fuzzy
+#| msgid ":math:`-1`  when ``node`` = ``start_vid``."
+msgid ":math:`-1` when ``node`` = ``start_vid``."
 msgstr ":math:`-1`  cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/BFS-category.rst:152 ../../build/doc/BFS-category.rst:155
@@ -381,8 +389,8 @@ msgid ""
 "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
 "%27s_algorithm>`__"
 msgstr ""
-"`Wikipedia: algoritmo de Prim <https://en.wikipedia.org/wiki/"
-"Prim%27s_algorithm>`__"
+"`Wikipedia: algoritmo de Prim <https://en.wikipedia.org/wiki/Prim"
+"%27s_algorithm>`__"
 
 #: ../../build/doc/BFS-category.rst:174
 msgid ""
