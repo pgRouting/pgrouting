@@ -17,7 +17,7 @@
   `3.0 <https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__
 
 Chinese Postman Problem - Family of functions (Experimental)
-=============================================================
+===============================================================================
 
 .. index from here
 
@@ -42,7 +42,7 @@ Description
 
 .. charactersistics-start
 
-The main characteristics are:
+**The main characteristics are:**
 
 - Process is done only on edges with **positive** costs.
 - Running time: :math:`O(E * (E + V * logV))`
@@ -55,27 +55,29 @@ Parameters
 
 .. parameters-start
 
-============== ================== ======== =================================================
-Column         Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    The edges SQL query as described in `Inner query`_.
-============== ================== ======== =================================================
+============== ============== ======== ===================================================
+Parameter        Type         Default  Description
+============== ============== ======== ===================================================
+`Edges SQL`_   ``TEXT``                `Edges SQL`_ as described below.
+============== ============== ======== ===================================================
 
 .. parameters-end
-
 
 Inner query
 -------------------------------------------------------------------------------
 
 .. inner_query-start
 
+Edges SQL
+...............................................................................
+
 An Edges SQL that represents a **directed** graph with the following columns
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
-.. inner_query-end
 
+.. inner_query-end
 
 See Also
 -------------------------------------------------------------------------------

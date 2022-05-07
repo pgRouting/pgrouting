@@ -16,8 +16,8 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostmanCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__
 
-pgr_chinesePostmanCost - Experimental
-============================================
+``pgr_chinesePostmanCost`` - Experimental
+===============================================================================
 
 ``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path which
 contains every edge in a directed graph and starts and ends on the same vertex.
@@ -30,7 +30,7 @@ contains every edge in a directed graph and starts and ends on the same vertex.
 
 * Version 3.0.0
 
-  * New **experimental** function
+  * New **experimental** signature
 
 
 Description
@@ -48,9 +48,9 @@ Signatures
 .. index::
     single: chinesePostmanCost - Experimental on v3.0
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_chinesePostmanCost(edges_sql)
+    pgr_chinesePostmanCost(`Edges SQL`_)
     RETURNS FLOAT
 
 :Example:
@@ -66,7 +66,6 @@ Parameters
     :start-after: parameters-start
     :end-before: parameters-end
 
-
 Inner query
 -------------------------------------------------------------------------------
 
@@ -74,20 +73,20 @@ Inner query
     :start-after: inner_query-start
     :end-before: inner_query-end
 
-
-Result Columns
+Return Columns
 -------------------------------------------------------------------------------
 
-====================== =================================================
-Type                   Description
-====================== =================================================
-``FLOAT``              Minimum costs of a circuit path.
-====================== =================================================
+=========================== ========== ==================================================
+Column                       Type      Description
+=========================== ========== ==================================================
+``pgr_chinesepostmancost``  ``FLOAT``  Minimum costs of a circuit path.
+=========================== ========== ==================================================
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`chinesePostmanProblem-family`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
