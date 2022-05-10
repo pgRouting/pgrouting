@@ -118,14 +118,21 @@ Enabling and upgrading in the database
 
 .. rubric:: Enabling the database
 
-pgRouting is a PostgreSQL extension and depends on PostGIS to provide functionalities to
-end user. Below given code demonstrates enabling PostGIS and pgRouting in the database.
+pgRouting is a PostgreSQL extension and depends on PostGIS to provide functionalities 
+to end user. Below given code demonstrates enabling PostGIS and pgRouting in the 
+database.
 
 .. code-block:: sql
 
-  CREATE EXTENSION postgis;
-  CREATE EXTENSION pgrouting;
+    CREATE EXTENSION postgis;
+    CREATE EXTENSION pgrouting;
 
+Checking PostGIS and pgRouting version after enabling them in the database.
+
+.. code-block:: sql
+
+    SELECT PostGIS_full_version();
+    SELECT * FROM pgr_version();
 
 .. rubric:: Upgrading the database
 
@@ -184,7 +191,7 @@ Installing the compilation dependencies
 
 .. rubric:: Database dependencies
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo apt install postgresql-14
     sudo apt install postgresql-server-dev-14
@@ -192,39 +199,53 @@ Installing the compilation dependencies
 
 .. rubric:: Configuring PostgreSQL
 
-Starting psql shell
+Entering psql console
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo systemctl start postgresql.service
     sudo -i -u postgres
     psql
 
-To exit psql shell
+To exit psql console
 
-.. code-block:: none
+.. code-block:: psql
 
     \q 
 
-Starting psql shell directly without switching roles can be done by the 
+Entering psql console directly without switching roles can be done by the 
 following commands
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo -u postgres psql
 
-Then use the above given method to exit out of the psql shell
+Then use the above given method to exit out of the psql console
+
+Checking PostgreSQL version
+
+.. code-block:: bash
+
+    psql --version
+
+or
+
+Enter the psql console using above given method and then enter
+
+.. code-block:: sql
+
+    SELECT VERSION();
 
 Creating PostgreSQL role
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo -i -u postgres
     createuser --interactive
 
 or
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo -u postgres createuser --interactive
 
@@ -236,7 +257,7 @@ you will succeed in creating PostgreSQL role successfully.
 To add password to the role or change previously created password of the
 role use the following commands
 
-.. code-block:: none
+.. code-block:: sql
 
     ALTER USER <role name> PASSWORD <password>
 
@@ -249,28 +270,28 @@ given command can be used
 
 Creating Database in PostgreSQL
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo -i -u postgres
     createdb <database name>
 
 or 
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo -u postgres createdb <database name>
     
 Connecting to a PostgreSQL Database
 
-Enter the psql shell and type the following commands
+Enter the psql console and type the following commands
 
-.. code-block:: none
+.. code-block:: psql
 
     \connect <database name>
 
 .. rubric:: Build dependencies
 
-.. code-block:: none
+.. code-block:: bash
 
     sudo apt install cmake
     sudo apt install g++
@@ -280,7 +301,7 @@ Enter the psql shell and type the following commands
 
 For documentation and testing
 
-.. code-block:: none
+.. code-block:: bash
 
     pip install sphinx
     pip install sphinx-bootstrap-theme
