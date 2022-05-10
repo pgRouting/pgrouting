@@ -259,6 +259,14 @@ or
 .. code-block:: none
 
     sudo -u postgres createdb <database name>
+    
+Connecting to a PostgreSQL Database
+
+Enter the psql shell and type the following commands
+
+.. code-block:: none
+
+    \connect <database name>
 
 .. rubric:: Build dependencies
 
