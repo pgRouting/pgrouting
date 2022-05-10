@@ -36,7 +36,6 @@ Chinese Postman Problem - Family of functions (Experimental)
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
 Description
 -------------------------------------------------------------------------------
 
@@ -53,15 +52,9 @@ Description
 Parameters
 -------------------------------------------------------------------------------
 
-.. parameters-start
-
-============== ============== ======== ===================================================
-Parameter        Type         Default  Description
-============== ============== ======== ===================================================
-`Edges SQL`_   ``TEXT``                `Edges SQL`_ as described below.
-============== ============== ======== ===================================================
-
-.. parameters-end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
 Inner query
 -------------------------------------------------------------------------------

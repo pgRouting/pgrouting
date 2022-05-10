@@ -32,13 +32,12 @@ contains every edge in a directed graph and starts and ends on the same vertex.
 
   * New **experimental** signature
 
-
 Description
 -------------------------------------------------------------------------------
 
 .. include:: chinesePostmanProblem-family.rst
-    :start-after: charactersistics-start
-    :end-before: charactersistics-end
+   :start-after: charactersistics-start
+   :end-before: charactersistics-end
 
 - [TBD] Return value when the graph if disconnected
 
@@ -62,25 +61,31 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: chinesePostmanProblem-family.rst
-    :start-after: parameters-start
-    :end-before: parameters-end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
 Inner query
 -------------------------------------------------------------------------------
 
 .. include:: chinesePostmanProblem-family.rst
-    :start-after: inner_query-start
-    :end-before: inner_query-end
+   :start-after: inner_query-start
+   :end-before: inner_query-end
 
 Return Columns
 -------------------------------------------------------------------------------
 
-=========================== ========== ==================================================
-Column                       Type      Description
-=========================== ========== ==================================================
-``pgr_chinesepostmancost``  ``FLOAT``  Minimum costs of a circuit path.
-=========================== ========== ==================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``pgr_chinesepostmancost``
+     - ``FLOAT``
+     - Minimum costs of a circuit path.
 
 See Also
 -------------------------------------------------------------------------------
@@ -92,4 +97,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-
