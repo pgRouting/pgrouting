@@ -8,6 +8,8 @@ SET(LOCAL_FILES
     pgr_parameter_check.sql
     utilities_pgr.sql
     createIndex.sql
+    _checkquery.sql
+    _checkcolumn.sql
     )
 
 foreach (f ${LOCAL_FILES})

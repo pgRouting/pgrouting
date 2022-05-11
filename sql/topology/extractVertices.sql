@@ -24,13 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
 --v3.0
 CREATE FUNCTION pgr_extractVertices(
     TEXT,  -- SQL inner query (required)
 
     dryrun BOOLEAN DEFAULT false,
-
 
     OUT id BIGINT,
     OUT in_edges BIGINT[],
@@ -49,99 +47,17 @@ DECLARE
     has_source BOOLEAN := TRUE;
     has_points BOOLEAN := TRUE;
     has_id BOOLEAN := TRUE;
-    fnName TEXT;
     rec RECORD;
 
 BEGIN
-    fnName = 'pgr_extractVertices';
+  edges_sql := _pgr_checkQuery($1);
+  has_id := _pgr_checkColumn(edges_sql, 'id', 'ANY-INTEGER', true, dryrun => $2);
+  has_source := _pgr_checkColumn(edges_sql, 'source', 'ANY-INTEGER', true, dryrun => $2)
+    AND _pgr_checkColumn(edges_sql, 'target', 'ANY-INTEGER', true, dryrun => $2);
 
-    -- get the query
-    BEGIN
-        quoted = '.*' || $1 || '\s*as';
-        query = format($$
-            SELECT regexp_replace(regexp_replace(statement, %1$L,'','i'),';$','') FROM pg_prepared_statements WHERE name = %2$L$$,
-            quoted, $1);
-        EXECUTE query INTO edges_SQL;
-
-        EXCEPTION WHEN OTHERS
-            THEN edges_sql := $1;
-    END;
-
-    IF edges_SQL IS NULL THEN
-        edges_SQL := $1;
-    END IF;
-
-    -- query is executable
-    BEGIN
-        query = 'SELECT * FROM ('||edges_sql||' ) AS __a__ limit 1';
-        EXECUTE query;
-
-        EXCEPTION WHEN OTHERS THEN
-            RAISE EXCEPTION '%', SQLERRM
-            USING HINT = 'Please check query: '|| $1;
-        RETURN;
-    END;
-
-    -- has edge identifier
-    BEGIN
-        query = 'SELECT id FROM ('||edges_sql||' ) AS __a__ limit 1';
-        EXECUTE query;
-
-        query = 'SELECT pg_typeof(id) FROM ('||edges_sql||' ) AS __a__ limit 1';
-        EXECUTE query INTO rec;
-
-        EXCEPTION WHEN OTHERS THEN
-            has_id := FALSE;
-    END;
-
-    IF NOT dryrun AND has_id THEN
-        IF  rec.pg_typeof NOT IN ('smallint','integer','bigint') THEN
-            RAISE EXCEPTION 'Expected type of column "id" is ANY-INTEGER'
-            USING HINT = 'Please check query: '|| $1;
-        END IF;
-    END IF;
-
-    -- has geometry?
-    BEGIN
-        query = 'SELECT geom FROM ('||edges_sql||' ) AS __a__ limit 1';
-        EXECUTE query;
-
-        EXCEPTION WHEN OTHERS THEN
-            has_geom := FALSE;
-    END;
-
-    -- has points?
-    BEGIN
-      query = 'SELECT startpoint, endpoint FROM ('||edges_sql||' ) AS __a__ limit 1';
-      EXECUTE query;
-
-      EXCEPTION WHEN OTHERS THEN
-            has_points := FALSE;
-    END;
-
-    -- has source-target?
-    BEGIN
-      query = 'SELECT source, target FROM ('||edges_sql||' ) AS __a__ limit 1';
-      EXECUTE query;
-
-      query = 'SELECT pg_typeof(source) s_t, pg_typeof(target) t_t  FROM ('||edges_sql||' ) AS __a__ limit 1';
-      EXECUTE query INTO rec;
-
-      EXCEPTION WHEN OTHERS THEN
-        has_source := FALSE;
-    END;
-
-    IF NOT dryrun AND has_source THEN
-        IF  rec.s_t NOT IN ('smallint','integer','bigint') THEN
-            RAISE EXCEPTION 'Expected type of column "source" is ANY-INTEGER'
-            USING HINT = 'Please check query: '|| $1;
-        END IF;
-
-        IF  rec.t_t NOT IN ('smallint','integer','bigint') THEN
-            RAISE EXCEPTION 'Expected type of column "target" is ANY-INTEGER'
-            USING HINT = 'Please check query: '|| $1;
-        END IF;
-    END IF;
+  has_geom := _pgr_checkColumn(edges_sql, 'geom', 'geometry', true, dryrun => $2);
+  has_points := _pgr_checkColumn(edges_sql, 'startpoint', 'geometry', true, dryrun => $2)
+    AND _pgr_checkColumn(edges_sql, 'endpoint', 'geometry', true, dryrun => $2);
 
     IF has_geom AND has_id THEN
       -- SELECT id, geom
