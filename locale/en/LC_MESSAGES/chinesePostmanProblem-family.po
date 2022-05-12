@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-05-12 14:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,67 +108,72 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:41
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
+#: ../../build/doc/chinesePostmanProblem-family.rst:40
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:45
-msgid "The main characteristics are:"
+#: ../../build/doc/chinesePostmanProblem-family.rst:44
+msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:47
+#: ../../build/doc/chinesePostmanProblem-family.rst:46
 msgid "Process is done only on edges with **positive** costs."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:48
+#: ../../build/doc/chinesePostmanProblem-family.rst:47
 msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:49
+#: ../../build/doc/chinesePostmanProblem-family.rst:48
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:54
+#: ../../build/doc/chinesePostmanProblem-family.rst:53
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
 #: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Column"
+msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "Default"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
-msgid "**edges_sql**"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
-msgid "The edges SQL query as described in `Inner query`_."
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "`Edges SQL`_ as described below."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:68
+#: ../../build/doc/chinesePostmanProblem-family.rst:60
 msgid "Inner query"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:72
+#: ../../build/doc/chinesePostmanProblem-family.rst:65
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:67
 msgid ""
 "An Edges SQL that represents a **directed** graph with the following "
 "columns"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -252,19 +257,19 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:81
+#: ../../build/doc/chinesePostmanProblem-family.rst:76
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:84
+#: ../../build/doc/chinesePostmanProblem-family.rst:79
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:85
+#: ../../build/doc/chinesePostmanProblem-family.rst:80
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:86
+#: ../../build/doc/chinesePostmanProblem-family.rst:81
 msgid ":ref:`search`"
 msgstr ""
 
