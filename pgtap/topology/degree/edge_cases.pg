@@ -1,0 +1,91 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(1) END;
+
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  the_q TEXT;
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+  PREPARE edges AS
+  SELECT id FROM edge_table;
+
+  CREATE TABLE vertices AS
+  SELECT id, in_edges, out_edges
+  FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table');
+
+  PREPARE edges1 AS
+  SELECT source FROM edge_table;
+
+  PREPARE query_1 AS
+  SELECT * FROM pgr_degree('edges', 'SELECT * FROM vertices');
+
+  PREPARE query_2 AS
+  SELECT * FROM pgr_degree('edges1','SELECT * FROM vertices');
+
+  PREPARE query_3 AS
+  SELECT * FROM pgr_degree('edges','SELECT id FROM vertices');
+
+  PREPARE query_4 AS
+  SELECT * FROM pgr_degree('edges','SELECT in_edges FROM vertices');
+
+  PREPARE query_5 AS
+  SELECT * FROM pgr_degree('edges','SELECT id, in_edges FROM vertices');
+
+  PREPARE query_6 AS
+  SELECT * FROM pgr_degree('edges','SELECT id, out_edges FROM vertices');
+
+  RETURN QUERY SELECT lives_ok('query_1', 'Good execution');
+  RETURN QUERY SELECT throws_ok('query_2', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT throws_ok('query_3', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT throws_ok('query_4', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT lives_ok('query_5', 'Missing column out_edges but usable');
+  RETURN QUERY SELECT lives_ok('query_5', 'Missing column in_edges but usable');
+
+  PREPARE subedges AS
+  SELECT id FROM edge_table WHERE id < 17;
+
+  PREPARE edges2 AS
+  SELECT source FROM edge_table WHERE id < 17;
+
+  PREPARE query_7 AS
+  SELECT * FROM pgr_degree('subedges', 'SELECT * FROM vertices');
+
+  PREPARE query_8 AS
+  SELECT * FROM pgr_degree('edges2','SELECT * FROM vertices');
+
+  PREPARE query_9 AS
+  SELECT * FROM pgr_degree('subedges','SELECT id FROM vertices');
+
+  PREPARE query_10 AS
+  SELECT * FROM pgr_degree('subedges','SELECT in_edges FROM vertices');
+
+  PREPARE query_11 AS
+  SELECT * FROM pgr_degree('subedges','SELECT id, in_edges FROM vertices');
+
+  PREPARE query_12 AS
+  SELECT * FROM pgr_degree('subedges','SELECT id, out_edges FROM vertices');
+
+  RETURN QUERY SELECT lives_ok('query_7', 'Good execution');
+  RETURN QUERY SELECT throws_ok('query_8', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT throws_ok('query_9', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT throws_ok('query_10', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT lives_ok('query_11', 'Missing column out_edges but usable');
+  RETURN QUERY SELECT lives_ok('query_12', 'Missing column in_edges but usable');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT finish();
+ROLLBACK;

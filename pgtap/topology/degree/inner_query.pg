@@ -1,0 +1,63 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(24) ELSE plan(2) END;
+
+
+CREATE OR REPLACE FUNCTION chk_edges_sql(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+  CREATE TABLE vert AS
+  SELECT id, in_edges, out_edges
+  FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table');
+
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id'],
+    'id');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION chk_vertices_sql(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'in_edges', 'out_edges'],
+    'id',
+    tbl => 'vert');
+  RETURN QUERY SELECT test_anyIntegerArr(fn, rest_sql,
+    ARRAY['id', 'in_edges', 'out_edges'],
+    'in_edges',
+    tbl => 'vert');
+  RETURN QUERY SELECT test_anyIntegerArr(fn, rest_sql,
+    ARRAY['id', 'in_edges', 'out_edges'],
+    'out_edges',
+    tbl => 'vert');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+SELECT chk_edges_sql('pgr_degree(', ', $q$ SELECT * FROM vert$q$)');
+SELECT chk_vertices_sql('pgr_degree($$SELECT id FROM edge_table$$,',')');
+
+SELECT finish();
+ROLLBACK;
