@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 15:38+0000\n"
+"POT-Creation-Date: 2022-05-12 14:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -426,25 +426,29 @@ msgid "Inspect the routing topology"
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:281
+msgid "**Generated topology**"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:286
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:283
+#: ../../build/doc/pgr_extractVertices.rst:288
 msgid ":doc:`topology-functions`"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:284
+#: ../../build/doc/pgr_extractVertices.rst:289
 msgid ":doc:`pgr_createVerticesTable`"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:287
+#: ../../build/doc/pgr_extractVertices.rst:292
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:288
+#: ../../build/doc/pgr_extractVertices.rst:293
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:289
+#: ../../build/doc/pgr_extractVertices.rst:294
 msgid ":ref:`search`"
 msgstr ""
