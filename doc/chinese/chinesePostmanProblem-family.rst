@@ -17,7 +17,7 @@
   `3.0 <https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__
 
 Chinese Postman Problem - Family of functions (Experimental)
-=============================================================
+===============================================================================
 
 .. index from here
 
@@ -36,13 +36,12 @@ Chinese Postman Problem - Family of functions (Experimental)
    :start-after: begin-warn-expr
    :end-before: end-warn-expr
 
-
 Description
 -------------------------------------------------------------------------------
 
 .. charactersistics-start
 
-The main characteristics are:
+**The main characteristics are:**
 
 - Process is done only on edges with **positive** costs.
 - Running time: :math:`O(E * (E + V * logV))`
@@ -53,29 +52,25 @@ The main characteristics are:
 Parameters
 -------------------------------------------------------------------------------
 
-.. parameters-start
-
-============== ================== ======== =================================================
-Column         Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    The edges SQL query as described in `Inner query`_.
-============== ================== ======== =================================================
-
-.. parameters-end
-
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
 Inner query
 -------------------------------------------------------------------------------
 
 .. inner_query-start
 
+Edges SQL
+...............................................................................
+
 An Edges SQL that represents a **directed** graph with the following columns
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
-.. inner_query-end
 
+.. inner_query-end
 
 See Also
 -------------------------------------------------------------------------------
