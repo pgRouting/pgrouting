@@ -27,19 +27,42 @@
 Topology - Family of Functions
 ===============================================================================
 
-The pgRouting's topology of a network, represented with an edge table with source and target attributes and a vertices table associated with it.
-Depending on the algorithm, you can create a topology or just reconstruct the vertices table, You can analyze the topology,
-We also provide a function to node an unoded network.
+The pgRouting's topology of a network represented with a graph in form of two
+tables: and edge table and a vertex table.
+
+Attributes associated to the tables help to indicate if the graph is directed or
+undirected, if an edge is one way on a directed graph, and depending on the
+final application needs, suitable topology(s) need to be
+created.
+
+pgRouting suplies some functions to create a routing topology and to analyze the
+topology.
+
+Additional functions to create a graph:
+
+* :doc:`contraction-family`
+
+Additional functions to analyze a graph:
+
+* :doc:`components-family`
+
 
 .. topology_index_start
 
--  :doc:`pgr_createTopology` -  to create a topology based on the geometry.
--  :doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on the source and target information.
--  :doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table.
--  :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
--  :doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table.
+The following functions modify the database directly therefore the user must
+have special permissions given by the administrators to use them.
+
+- :doc:`pgr_createTopology` -  create a topology based on the geometry.
+- :doc:`pgr_createVerticesTable` - reconstruct the vertices table based on
+  the source and target information.
+- :doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge
+  table.
+- :doc:`pgr_analyzeOneWay` - to analyze directionality of the edges.
+- :doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table.
 
 .. topology_index_end
+
+
 
 .. rubric:: Proposed
 
@@ -49,7 +72,11 @@ We also provide a function to node an unoded network.
 
 .. topology_proposed_start
 
--  :doc:`pgr_extractVertices` - Extracts vertices information based on the source and target.
+These proposed functions do not modify the database.
+
+- :doc:`pgr_degree` - Calculates the degree of the vertices of a graph.
+- :doc:`pgr_extractVertices` - Extracts vertex information based on the edge
+  table information.
 
 .. topology_proposed_end
 
@@ -62,6 +89,7 @@ We also provide a function to node an unoded network.
   pgr_analyzeOneWay
   pgr_nodeNetwork
   pgr_extractVertices
+  pgr_degree
 
 See Also
 -------------------------------------------------------------------------------

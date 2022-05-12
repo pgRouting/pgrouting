@@ -7,6 +7,7 @@ SET(LOCAL_FILES
     pgr_createVerticesTable.rst
     pgr_extractVertices.rst
     topology-functions.rst
+    pgr_degree.rst
     )
 
 foreach (f ${LOCAL_FILES})
