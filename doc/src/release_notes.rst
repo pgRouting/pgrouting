@@ -65,6 +65,11 @@ pgRouting 3.4.0 Release Notes
     * ``pgr_trsp_withPoints`` (Many to Many)
     * ``pgr_trsp_withPoints`` (Combinations)
 
+
+* Topology
+
+  * ``pgr_degree``
+
 .. rubric:: Deprecated functions
 
 * Turn Restrictions
