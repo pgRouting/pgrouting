@@ -1,0 +1,100 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* -- q1 */
+SELECT * FROM pgr_degree(
+  $$SELECT id FROM edge_table$$,
+  $$SELECT id, in_edges, out_edges
+    FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table')$$);
+ id | degree
+----+--------
+  1 |      1
+  2 |      1
+  3 |      2
+  4 |      1
+  5 |      1
+  6 |      3
+  7 |      4
+  8 |      3
+  9 |      1
+ 10 |      3
+ 11 |      4
+ 12 |      3
+ 13 |      1
+ 14 |      1
+ 15 |      2
+ 16 |      3
+ 17 |      2
+(17 rows)
+
+/* -- q2 */
+SELECT * FROM pgr_degree(
+  $$SELECT id FROM edge_table WHERE id < 17$$,
+  $$SELECT id, in_edges, out_edges
+    FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table')$$);
+ id | degree
+----+--------
+  1 |      1
+  2 |      0
+  3 |      2
+  4 |      0
+  5 |      1
+  6 |      3
+  7 |      4
+  8 |      3
+  9 |      1
+ 10 |      3
+ 11 |      4
+ 12 |      3
+ 13 |      0
+ 14 |      0
+ 15 |      2
+ 16 |      3
+ 17 |      2
+(17 rows)
+
+/* -- q3 */
+SELECT * FROM pgr_degree(
+  $$SELECT id FROM edge_table WHERE id < 17$$,
+  $$SELECT id, in_edges, out_edges
+    FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table')$$,
+  dryrun => true);
+NOTICE:
+    WITH
+
+    -- a sub set of edges of the graph goes here
+    g_edges AS (
+      SELECT id FROM edge_table WHERE id < 17
+    ),
+
+    -- sub set of vertices of the graph goes here
+    all_vertices AS (
+      SELECT id, in_edges, out_edges
+    FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table')
+    ),
+
+    g_vertices AS (
+      SELECT id,
+        unnest(
+          coalesce(in_edges::BIGINT[], '{}'::BIGINT[])
+          ||
+          coalesce(out_edges::BIGINT[], '{}'::BIGINT[])) AS eid
+      FROM all_vertices
+    ),
+
+    totals AS (
+      SELECT v.id, count(*)
+      FROM g_vertices AS v
+      JOIN g_edges AS e ON (e.id = eid) GROUP BY v.id
+    )
+
+    SELECT id::BIGINT, coalesce(count, 0)::BIGINT FROM all_vertices LEFT JOIN totals USING (id)
+    ;
+ id | degree
+----+--------
+(0 rows)
+
+/* -- q4 */
+ROLLBACK;
+ROLLBACK
