@@ -37,9 +37,12 @@ Installation
 * :ref:`install_build`
 * :ref:`install_testing`
 
-Instructions for downloading and installing binaries for different Operative systems instructions and additional notes and corrections not included in this documentation can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
+Instructions for downloading and installing binaries for different operating 
+systems, additional notes and corrections not included in this documentation can
+be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
 
-To use pgRouting postGIS needs to be installed, please read the information about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__
+To use pgRouting PostGIS needs to be installed, please read the information 
+about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__
 
 .. _install-short:
 
@@ -64,7 +67,8 @@ To compile assuming you have all the dependencies in your search path:
     make
     sudo make install
 
-Once pgRouting is installed, it needs to be enabled in each individual database you want to use it in.
+Once pgRouting is installed, it needs to be enabled in each individual 
+database you want to use it in.
 
 .. code-block:: bash
 
@@ -79,7 +83,8 @@ Get the sources
 -------------------------------------------------------------------------------
 
 
-The pgRouting latest release can be found in https://github.com/pgRouting/pgrouting/releases/latest
+The pgRouting latest release can be found in 
+https://github.com/pgRouting/pgrouting/releases/latest
 
 .. rubric:: wget
 
@@ -89,7 +94,7 @@ To download this release:
 
     wget -O pgrouting-${PROJECT_VERSION}.tar.gz https://github.com/pgRouting/pgrouting/archive/v${PROJECT_VERSION}.tar.gz
 
-Goto :ref:`install-short` to the extract and compile instructions.
+Go to :ref:`install-short` for more instructions on extracting tar ball and compiling pgRouting.
 
 .. rubric:: git
 
@@ -101,7 +106,8 @@ To download the repository
     cd pgrouting
     git checkout v${PROJECT_VERSION}
 
-Goto :ref:`install-short` to the compile instructions (there is no tar ball).
+Go to :ref:`install-short` for more instructions on compiling pgRouting
+(there is no tar ball involved while downloading pgRouting repository from GitHub).
 
 
 
@@ -112,13 +118,21 @@ Enabling and upgrading in the database
 
 .. rubric:: Enabling the database
 
-pgRouting is an extension and depends on postGIS. Enabling postGIS before enabling pgRouting in the database
+pgRouting is a PostgreSQL extension and depends on PostGIS to provide functionalities 
+to end user. Below given code demonstrates enabling PostGIS and pgRouting in the 
+database.
 
 .. code-block:: sql
 
-  CREATE EXTENSION postgis;
-  CREATE EXTENSION pgrouting;
+    CREATE EXTENSION postgis;
+    CREATE EXTENSION pgrouting;
 
+Checking PostGIS and pgRouting version after enabling them in the database.
+
+.. code-block:: sql
+
+    SELECT PostGIS_full_version();
+    SELECT * FROM pgr_version();
 
 .. rubric:: Upgrading the database
 
@@ -140,11 +154,16 @@ Dependencies
 
 .. rubric:: Compilation Dependencies
 
-To be able to compile pgRouting, make sure that the following dependencies are met:
+To be able to compile pgRouting, make sure that the following dependencies are 
+met:
 
 * C and C++0x compilers
-  * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support
-  * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support
+
+    * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with 
+      C++03 or C++11 standard support
+    * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard 
+      support
+      
 * Postgresql version = Supported versions by PostgreSQL
 * The Boost Graph Library (BGL). Version >= 1.56
 * CMake >= 3.2
@@ -176,34 +195,124 @@ Installing the compilation dependencies
 
 .. rubric:: Database dependencies
 
+.. code-block:: bash
+
+    sudo apt install postgresql-14
+    sudo apt install postgresql-server-dev-14
+    sudo apt install postgresql-14-postgis
+
+.. rubric:: Configuring PostgreSQL
+
+Entering psql console
+
+.. code-block:: bash
+
+    sudo systemctl start postgresql.service
+    sudo -i -u postgres
+    psql
+
+To exit psql console
+
+.. code-block:: psql
+
+    \q 
+
+Entering psql console directly without switching roles can be done by the 
+following commands
+
+.. code-block:: bash
+
+    sudo -u postgres psql
+
+Then use the above given method to exit out of the psql console
+
+Checking PostgreSQL version
+
+.. code-block:: bash
+
+    psql --version
+
+or
+
+Enter the psql console using above given method and then enter
+
+.. code-block:: sql
+
+    SELECT VERSION();
+
+Creating PostgreSQL role
+
+.. code-block:: bash
+
+    sudo -i -u postgres
+    createuser --interactive
+
+or
+
+.. code-block:: bash
+
+    sudo -u postgres createuser --interactive
+
+Default role provided by PostgreSQL is postgres. To create new roles you
+can use the above provided commands. The prompt will ask the user to type 
+name of the role and then provide affirmation. Proceed with the steps and 
+you will succeed in creating PostgreSQL role successfully.
+
+To add password to the role or change previously created password of the
+role use the following commands
+
+.. code-block:: sql
+
+    ALTER USER <role name> PASSWORD <password>
+
+To get additional details on the flags associated with ``createuser`` below 
+given command can be used
+
 .. code-block:: none
 
-    sudo apt-get install
-        postgresql-10 \
-        postgresql-server-dev-10 \
-        postgresql-10-postgis
+    man createuser
 
+Creating Database in PostgreSQL
+
+.. code-block:: bash
+
+    sudo -i -u postgres
+    createdb <database name>
+
+or 
+
+.. code-block:: bash
+
+    sudo -u postgres createdb <database name>
+    
+Connecting to a PostgreSQL Database
+
+Enter the psql console and type the following commands
+
+.. code-block:: psql
+
+    \connect <database name>
 
 .. rubric:: Build dependencies
 
-.. code-block:: none
+.. code-block:: bash
 
-    sudo apt-get install
-        cmake \
-        g++ \
-        libboost-graph-dev
+    sudo apt install cmake
+    sudo apt install g++
+    sudo apt install libboost-graph-dev
 
 .. rubric:: Optional dependencies
 
 For documentation and testing
 
-.. code-block:: none
+.. code-block:: bash
 
-    sudo apt-get install -y python-sphinx \
-        texlive \
-        doxygen \
-        libtap-parser-sourcehandler-pgtap-perl \
-        postgresql-10-pgtap
+    pip install sphinx
+    pip install sphinx-bootstrap-theme
+    sudo apt install texlive 
+    sudo apt install doxygen
+    sudo apt install libtap-parser-sourcehandler-pgtap-perl
+    sudo apt install postgresql-14-pgtap
 
 
 .. _install_configuring:
@@ -235,8 +344,8 @@ Configurable variables
 
 .. rubric:: Configuring The Documentation
 
-Most of the effort of the documentation has being on the HTML files.
-Some variables for the documentation:
+Most of the effort of the documentation has been on the HTML files.
+Some variables for building documentation:
 
 ================== ========= ============================
 Variable            Default     Comment
@@ -249,13 +358,14 @@ BUILD_MAN          BOOL=OFF  If ON, turn on/off building MAN pages
 DOC_USE_BOOTSTRAP  BOOL=OFF  If ON, use sphinx-bootstrap for HTML pages of the users documentation
 ================== ========= ============================
 
-Configuring with documentation
+Configuring cmake to create documentation before building
+pgRouting
 
 .. code-block:: bash
 
-    $ cmake -DWITH_DOC=ON ..
+    $ cmake -DWITH_DOC=ON -DDOC_USE_BOOTSTRAP=ON ..
 
-.. note:: Most of the effort of the documentation has being on the html files.
+.. note:: Most of the effort of the documentation has been on the html files.
 
 
 .. _install_build:
@@ -270,8 +380,9 @@ The following instructions start from *path/to/pgrouting/build*
 .. code-block:: bash
 
     $ make          # build the code but not the documentation
-    $ make doc      # build only the documentation
-    $ make all doc  # build both the code and the documentation
+    $ make doc      # build only the user's documentation
+    $ make all doc  # build both the code and the user's documentation
+    $ make doxy     # build only the developer's documentation
 
 
 We have tested on several platforms, For installing or reinstalling all the steps are needed.
@@ -301,13 +412,14 @@ The following instructions start from *path/to/pgrouting*
     make
     sudo make install
 
-When the configuration changes:
+To remove the build when the configuration changes, use the following
+code:
 
 .. code-block:: bash
 
     rm -rf build
 
-and start the build process as mentioned above.
+and start the build process as mentioned previously.
 
 .. _install_testing:
 
@@ -321,9 +433,9 @@ The following instructions start from *path/to/pgrouting/*
 .. code-block:: none
 
     tools/testers/doc_queries_generator.pl
-    createdb  -U <user> ___pgr___test___
+    createdb -U <user> ___pgr___test___
     sh ./tools/testers/pg_prove_tests.sh <user>
-    dropdb  -U <user> ___pgr___test___
+    dropdb -U <user> ___pgr___test___
 
 See Also
 -------------------------------------------------------------------------------
