@@ -157,9 +157,13 @@ Dependencies
 To be able to compile pgRouting, make sure that the following dependencies are 
 met:
 
-* C and C++0x compilers - Compiling with Boost 1.56 up to Boost 1.74 requires 
-  C++ Compiler with C++03 or C++11 standard support - Compiling with Boost 1.75 
-  requires C++ Compiler with C++14 standard support
+* C and C++0x compilers
+
+    * Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with 
+      C++03 or C++11 standard support
+    * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard 
+      support
+      
 * Postgresql version = Supported versions by PostgreSQL
 * The Boost Graph Library (BGL). Version >= 1.56
 * CMake >= 3.2
@@ -359,7 +363,7 @@ pgRouting
 
 .. code-block:: bash
 
-    $ cmake -DWITH_DOC=ON -DDOC-USE-BOOTSTRAP=ON ..
+    $ cmake -DWITH_DOC=ON -DDOC_USE_BOOTSTRAP=ON ..
 
 .. note:: Most of the effort of the documentation has been on the html files.
 
