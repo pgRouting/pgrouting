@@ -6,8 +6,13 @@ on:
       - 'v*.*.*'
 
 
+permissions:
+  contents: read
+
 jobs:
   release:
+    permissions:
+      contents: write  # for Git to git push
     name: Release
     runs-on: ubuntu-latest
 

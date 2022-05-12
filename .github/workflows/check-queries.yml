@@ -40,6 +40,9 @@ on:
     branches-ignore:
       - 'gh-pages'
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Check queries
