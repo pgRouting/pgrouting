@@ -167,8 +167,11 @@
 <li><p><a class="reference internal" href="#install-build"><span class="std std-ref">Compilando</span></a></p></li>
 <li><p><a class="reference internal" href="#install-testing"><span class="std std-ref">Pruebas</span></a></p></li>
 </ul>
-<p>Las instrucciones para descargar e instalar archivos binarios para diferentes instrucciones de sistemas operativos y notas y correcciones adicionales no incluidas en esta documentación se pueden encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Wiki de Instalación</a></p>
-<p>Para utilizar pgRouting postGIS necesita ser instalado, por favor lea la información sobre la instalación en esta  <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
+<p>Instructions for downloading and installing binaries for different operating
+systems, additional notes and corrections not included in this documentation can
+be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation wiki</a></p>
+<p>To use pgRouting PostGIS needs to be installed, please read the information
+about installation in this <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
 <section id="short-version">
 <span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Extraer la bola de alquitrán</p>
@@ -199,7 +202,7 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -O pgrouting-3.4.0.tar.gz https://github.com/pgRouting/pgrouting/archive/v3.4.0.tar.gz
 </pre></div>
 </div>
-<p>Ir al extracto de <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> y compilar instrucciones.</p>
+<p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> for more instructions on extracting tar ball and compiling pgRouting.</p>
 <p class="rubric">git</p>
 <p>Para descargar el repositorio</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git://github.com/pgRouting/pgrouting.git
@@ -207,14 +210,22 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 git checkout v3.4.0
 </pre></div>
 </div>
-<p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> a las instrucciones de compilación (no hay bola de alquitrán).</p>
+<p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> for more instructions on compiling pgRouting
+(there is no tar ball involved while downloading pgRouting repository from GitHub).</p>
 </section>
 <section id="enabling-and-upgrading-in-the-database">
 <span id="install-enable-db"></span><h2>Habilitación y actualización en la base de datos<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Habilitación de la base de datos</p>
-<p>pgRouting es una extensión y depende de postGIS. Habilitar de postGIS antes de habilitar pgRouting en la base de datos</p>
+<p>pgRouting is a PostgreSQL extension and depends on PostGIS to provide functionalities
+to end user. Below given code demonstrates enabling PostGIS and pgRouting in the
+database.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span><span class="w"></span>
 <span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">pgrouting</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Checking PostGIS and pgRouting version after enabling them in the database.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">PostGIS_full_version</span><span class="p">();</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pgr_version</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
 <p class="rubric">Actualización de la base de datos</p>
@@ -228,8 +239,17 @@ git checkout v3.4.0
 <span id="install-dependencies"></span><h2>Dependencias<a class="headerlink" href="#dependencies" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Dependencias de Compilación</p>
 <p>Para poder compilar pgRouting, asegúrese de que se cumplen las siguientes dependencias:</p>
-<ul class="simple">
-<li><p>Compiladores C and C++0x * Compilando con Boost 1.56 up to Boost 1.74 requires C++ Compiler with C++03 or C++11 standard support * Compiling with Boost 1.75 requires C++ Compiler with C++14 standard support</p></li>
+<ul>
+<li><p>C and C++0x compilers</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with
+C++03 or C++11 standard support</p></li>
+<li><p>Compiling with Boost 1.75 requires C++ Compiler with C++14 standard
+support</p></li>
+</ul>
+</div></blockquote>
+</li>
 <li><p>Versión postgresql = Versiones compatibles por PostgreSQL</p></li>
 <li><p>La Biblioteca de Gráficos Boost (BGL). Versión &gt;= 1.56</p></li>
 <li><p>CMake &gt;= 3.2</p></li>
@@ -256,26 +276,88 @@ git checkout v3.4.0
 <p class="rubric">Ejemplo: Instalación de dependencias en linux</p>
 <p>Instalación de las dependencias de compilación</p>
 <p class="rubric">Dependencias de bases de datos</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install
-    postgresql-10 \
-    postgresql-server-dev-10 \
-    postgresql-10-postgis
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install postgresql-14
+sudo apt install postgresql-server-dev-14
+sudo apt install postgresql-14-postgis
+</pre></div>
+</div>
+<p class="rubric">Configuring PostgreSQL</p>
+<p>Entering psql console</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo systemctl start postgresql.service
+sudo -i -u postgres
+psql
+</pre></div>
+</div>
+<p>To exit psql console</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="kp">\q</span>
+</pre></div>
+</div>
+<p>Entering psql console directly without switching roles can be done by the
+following commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -u postgres psql
+</pre></div>
+</div>
+<p>Then use the above given method to exit out of the psql console</p>
+<p>Checking PostgreSQL version</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql --version
+</pre></div>
+</div>
+<p>or</p>
+<p>Enter the psql console using above given method and then enter</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Creating PostgreSQL role</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i -u postgres
+createuser --interactive
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -u postgres createuser --interactive
+</pre></div>
+</div>
+<p>Default role provided by PostgreSQL is postgres. To create new roles you
+can use the above provided commands. The prompt will ask the user to type
+name of the role and then provide affirmation. Proceed with the steps and
+you will succeed in creating PostgreSQL role successfully.</p>
+<p>To add password to the role or change previously created password of the
+role use the following commands</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="o">&lt;</span><span class="k">role</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To get additional details on the flags associated with <code class="docutils literal notranslate"><span class="pre">createuser</span></code> below
+given command can be used</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>man createuser
+</pre></div>
+</div>
+<p>Creating Database in PostgreSQL</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i -u postgres
+createdb &lt;database name&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -u postgres createdb &lt;database name&gt;
+</pre></div>
+</div>
+<p>Connecting to a PostgreSQL Database</p>
+<p>Enter the psql console and type the following commands</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="kp">\connect</span><span class="w"> </span><span class="ss">&lt;database</span><span class="w"> </span><span class="ss">name&gt;</span>
 </pre></div>
 </div>
 <p class="rubric">Construir dependencias</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install
-    cmake \
-    g++ \
-    libboost-graph-dev
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install cmake
+sudo apt install g++
+sudo apt install libboost-graph-dev
 </pre></div>
 </div>
 <p class="rubric">Dependencias opcionales</p>
 <p>Para documentación y pruebas</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -y python-sphinx \
-    texlive \
-    doxygen \
-    libtap-parser-sourcehandler-pgtap-perl \
-    postgresql-10-pgtap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install sphinx
+pip install sphinx-bootstrap-theme
+sudo apt install texlive
+sudo apt install doxygen
+sudo apt install libtap-parser-sourcehandler-pgtap-perl
+sudo apt install postgresql-14-pgtap
 </pre></div>
 </div>
 </section>
@@ -295,7 +377,8 @@ $ cmake -L ..
 </pre></div>
 </div>
 <p class="rubric">Configurar la documentación</p>
-<p>La mayor parte del esfuerzo de la documentación ha estado en los archivos HTML. Algunas variables para la documentación:</p>
+<p>Most of the effort of the documentation has been on the HTML files.
+Some variables for building documentation:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
@@ -335,13 +418,14 @@ $ cmake -L ..
 </tr>
 </tbody>
 </table>
-<p>Configuración con documentación</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cmake -DWITH_DOC<span class="o">=</span>ON ..
+<p>Configuring cmake to create documentation before building
+pgRouting</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cmake -DWITH_DOC<span class="o">=</span>ON -DDOC_USE_BOOTSTRAP<span class="o">=</span>ON ..
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>La mayor parte del esfuerzo de la documentación ha estado en los archivos html.</p>
+<p>Most of the effort of the documentation has been on the html files.</p>
 </div>
 </section>
 </section>
@@ -350,8 +434,9 @@ $ cmake -L ..
 <p>Uso de <code class="docutils literal notranslate"><span class="pre">make</span></code> para compilar el código y la documentación</p>
 <p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/build</em></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make          <span class="c1"># build the code but not the documentation</span>
-$ make doc      <span class="c1"># build only the documentation</span>
-$ make all doc  <span class="c1"># build both the code and the documentation</span>
+$ make doc      <span class="c1"># build only the user&#39;s documentation</span>
+$ make all doc  <span class="c1"># build both the code and the user&#39;s documentation</span>
+$ make doxy     <span class="c1"># build only the developer&#39;s documentation</span>
 </pre></div>
 </div>
 <p>Hemos probado en varias plataformas, Para instalar o reinstalar todos los pasos son necesarios.</p>
@@ -376,20 +461,21 @@ make
 sudo make install
 </pre></div>
 </div>
-<p>Cuando cambia la configuración:</p>
+<p>To remove the build when the configuration changes, use the following
+code:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm -rf build
 </pre></div>
 </div>
-<p>e iniciar el proceso de compilación como se mencionó anteriormente.</p>
+<p>and start the build process as mentioned previously.</p>
 </section>
 <section id="testing">
 <span id="install-testing"></span><h2>Pruebas<a class="headerlink" href="#testing" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Actualmente no hay  <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> y las pruebas se realizan de la siguiente manera</p>
 <p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/</em></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tools/testers/doc_queries_generator.pl
-createdb  -U &lt;user&gt; ___pgr___test___
+createdb -U &lt;user&gt; ___pgr___test___
 sh ./tools/testers/pg_prove_tests.sh &lt;user&gt;
-dropdb  -U &lt;user&gt; ___pgr___test___
+dropdb -U &lt;user&gt; ___pgr___test___
 </pre></div>
 </div>
 </section>
