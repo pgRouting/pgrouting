@@ -7,8 +7,13 @@ on:
       - main
       - develop
 
+permissions:
+  contents: read
+
 jobs:
   release:
+    permissions:
+      contents: write  # for Git to git push
     name: Update Locale and Website
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'pgRouting' }}
