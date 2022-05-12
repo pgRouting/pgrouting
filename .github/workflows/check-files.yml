@@ -12,6 +12,9 @@ name: Check files
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   Signature_check:
     runs-on: ubuntu-latest
