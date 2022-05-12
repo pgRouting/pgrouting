@@ -141,7 +141,7 @@ pgr_check_any_integerarray_type(Column_info_t info) {
                 || info.type == INT4ARRAYOID
                 || info.type == 1016)) {
         elog(ERROR,
-                "Unexpected Column '%s' type. Expected ANY-INTEGER-ARRAY",
+                "Unexpected Column '%s' type. Expected ANY-INTEGER[]",
                 info.name);
     }
 }

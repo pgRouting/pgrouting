@@ -2,8 +2,7 @@
 SET(LOCAL_FILES
     after_node_net.png
     before_node_net.png
-    #Fig3-reverseCost.png
-    #Fig5-reverseCostUndirected.png
+    topology.png
     )
 
 foreach (f ${LOCAL_FILES})
