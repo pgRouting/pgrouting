@@ -93,12 +93,15 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_chinesePostman - Experimental</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostman</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a></li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -155,7 +158,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_chinesePostman.html">3.0</a></p></li>
 </ul>
 <section id="pgr-chinesepostman-experimental">
-<h1>pgr_chinesePostman - Experimental<a class="headerlink" href="#pgr-chinesepostman-experimental" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostman</span></code> - Experimental<a class="headerlink" href="#pgr-chinesepostman-experimental" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_chinesePostman</span></code> — Calculates the shortest circuit path which contains
 every edge in a directed graph and starts and ends on the same vertex.</p>
 <div class="admonition warning">
@@ -192,13 +195,13 @@ every edge in a directed graph and starts and ends on the same vertex.</p>
 <ul class="simple">
 <li><p>Version 3.0.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> function</p></li>
+<li><p>New <strong>experimental</strong> signature</p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>The main characteristics are:</p>
+<p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
 <li><p>Process is done only on edges with <strong>positive</strong> costs.</p></li>
 <li><p>Running time: <span class="math notranslate nohighlight">\(O(E * (E + V * logV))\)</span></p></li>
@@ -210,20 +213,16 @@ every edge in a directed graph and starts and ends on the same vertex.</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_chinesePostman(edges_sql)
+<pre class="literal-block" id="index-0">pgr_chinesePostman(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 RETURNS SET OF (seq, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
+OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Example</dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_chinesePostman</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id,</span>
-     <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
-     <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="s1">&#39;</span>
-<span class="p">);</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="s1">&#39;);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----+------+------+------+----------</span>
    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
@@ -268,31 +267,25 @@ OR EMPTY SET
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 20%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
-</colgroup>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>edges_sql</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>The edges SQL query as described in <a class="reference internal" href="#inner-query">Inner query</a>.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="inner-query">
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
 <p>An Edges SQL that represents a <strong>directed</strong> graph with the following columns</p>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
@@ -351,15 +344,11 @@ it’s not part of the graph.</p></li>
 </dd>
 </dl>
 </section>
-<section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="return-columns">
+<h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 9%" />
-<col style="width: 7%" />
-<col style="width: 84%" />
-</colgroup>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -367,23 +356,25 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
-<td><p>Sequential value starting from <strong>1</strong>.</p></td>
+<td><p>Sequential value starting from <code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>edge</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the path.</p></td>
+<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in
+the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the path sequence.</p></td>
+<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the
+path sequence.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
@@ -394,6 +385,7 @@ it’s not part of the graph.</p></li>
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="chinesePostmanProblem-family.html"><span class="doc">Chinese Postman Problem - Family of functions (Experimental)</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -416,7 +408,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 06, 2022.<br/>
+      Last updated on May 12, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
