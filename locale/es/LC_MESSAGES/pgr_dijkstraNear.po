@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 14:40+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-05-14 15:26+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstranear/es/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:12
@@ -88,7 +88,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_dijkstraNear.rst:30
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstraNear.rst:33
 msgid "Availability"
@@ -487,7 +487,7 @@ msgstr "**dirigido**"
 #: ../../build/doc/pgr_dijkstraNear.rst:242
 #: ../../build/doc/pgr_dijkstraNear.rst:245
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/pgr_dijkstraNear.rst:242
 #: ../../build/doc/pgr_dijkstraNear.rst:245
@@ -496,7 +496,7 @@ msgstr "``true``"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:242
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr "En caso de ``true``, el grafo se considera `Dirigido`"
+msgstr "En caso de ``true``, el grafo se considera **dirigido**"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:243
 msgid "When ``false`` the graph is considered as `Undirected`."
