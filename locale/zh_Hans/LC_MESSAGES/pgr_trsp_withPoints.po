@@ -1,0 +1,754 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:12
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
+"pgr_trsp_withPoints.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"pgr_trsp_withPoints.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:17
+msgid "pgr_trsp_withPoints - Proposed"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:19
+msgid "``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:28
+msgid "Boost Graph Inside"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:31
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:32
+msgid "Version 3.4.0"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:34
+msgid "New **Proposed** signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:36
+msgid "``pgr_trsp_withPoints`` (`One to One`_)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:37
+msgid "``pgr_trsp_withPoints`` (`One to Many`_)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:38
+msgid "``pgr_trsp_withPoints`` (`Many to One`_)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:39
+msgid "``pgr_trsp_withPoints`` (`Many to Many`_)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:40
+msgid "``pgr_trsp_withPoints`` (`Combinations`_)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:43
+#: ../../build/doc/pgr_trsp_withPoints.rst:206
+#: ../../build/doc/pgr_trsp_withPoints.rst:254
+#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/TRSP-family.rst:10
+#: ../../build/doc/withPoints-category.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgr_trsp_withPoints.rst:315
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:45
+msgid ""
+"Modify the graph to include points defined by points_sql. Using Dijkstra "
+"algorithm, find the shortest path(s)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:48
+msgid "**The main characteristics are:**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:50
+msgid "Process is done only on edges with positive costs."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:51
+msgid "Driving side can not be `b` (**both**)"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:52
+msgid "Vertices of the graph are:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:54
+msgid "**positive** when it belongs to the `Edges SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:55
+msgid "**negative** when it belongs to the `Points SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:57
+msgid "Values are returned when there is a path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:59
+msgid ""
+"When the starting vertex and ending vertex are the same, there is no path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:61
+msgid "The agg_cost the non included values (v, v) is 0"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:63
+msgid ""
+"When the starting vertex and ending vertex are the different and there is no "
+"path:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:66
+msgid "The agg_cost the non included values (u, v) is ∞"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:68
+msgid ""
+"For optimization purposes, any duplicated value in the start_vids or "
+"end_vids are ignored."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:70
+msgid ""
+"The returned values are ordered: - start_vid ascending - end_vid ascending"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:74
+msgid "Running time: :math:`O(|start\\_vids|\\times(V \\log V + E))`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:77
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:80
+msgid "Summary"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:100
+msgid "One to One"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:0
+msgid "Example"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:109
+msgid ""
+"From point :math:`1` to vertex :math:`3` with details on a **left** driving "
+"side configuration on a **directed** graph with **details**."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:120
+msgid "One to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:129
+msgid "From point :math:`1` to point :math:`3` and vertex :math:`5`."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:139
+msgid "Many to One"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:148
+msgid "From point :math:`1` and vertex :math:`2` to point :math:`3`."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:158
+msgid "Many to Many"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:167
+msgid ""
+"From point :math:`1` and vertex :math:`2`  to point :math:`3` and vertex :"
+"math:`7`."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:178
+msgid "Combinations"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:186
+msgid ""
+"From point :math:`1` to vertex :math:`3` and from vertex :math:`2` to point :"
+"math:`3` with **right** side driving configuration."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:194
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:203
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/TRSP-family.rst:8
+#: ../../build/doc/pgr_trsp_withPoints.rst:313
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:204
+#: ../../build/doc/pgr_trsp_withPoints.rst:252
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/TRSP-family.rst:9
+#: ../../build/doc/withPoints-category.rst:9
+#: ../../build/doc/pgr_trsp_withPoints.rst:314
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:205
+#: ../../build/doc/pgr_trsp_withPoints.rst:253
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/withPoints-category.rst:10
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:207
+msgid "`Edges SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:208
+#: ../../build/doc/pgr_trsp_withPoints.rst:212
+#: ../../build/doc/pgr_trsp_withPoints.rst:216
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:210
+#: ../../build/doc/pgr_trsp_withPoints.rst:214
+#: ../../build/doc/pgr_trsp_withPoints.rst:218
+msgid "SQL query as described."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:211
+msgid "`Restrictions SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:215
+msgid "`Points SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:219
+msgid "**start vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:220
+#: ../../build/doc/pgr_trsp_withPoints.rst:228
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/withPoints-category.rst:13
+#: ../../build/doc/withPoints-category.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:222
+#: ../../build/doc/pgr_trsp_withPoints.rst:230
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:223
+msgid "**start vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:224
+#: ../../build/doc/pgr_trsp_withPoints.rst:232
+#: ../../build/doc/TRSP-family.rst:12
+msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:226
+msgid "Array of identifieris of destination vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:227
+msgid "**end vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:231
+msgid "**end vids**"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:234
+msgid "Array of identifiers of destination vertices."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:235
+msgid "``directed``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:236
+#: ../../build/doc/pgr_trsp_withPoints.rst:264
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:237
+msgid "``true``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:238
+msgid "When ``true`` Graph is considered `Directed`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:239
+msgid "When ``false`` the graph is considered as Undirected."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:242
+msgid "With points optional parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:251
+#: ../../build/doc/withPoints-category.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:255
+msgid "``driving_side``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:256
+#: ../../build/doc/withPoints-category.rst:32
+msgid "``CHAR``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:257
+msgid "``r``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:258
+msgid "Value in [``r``, ``l``] indicating if the driving side is:"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:260
+msgid "``r`` for right driving side"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:261
+msgid "``l`` for left driving side"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:262
+msgid "Any other value will be considered as ``r``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:263
+msgid "``details``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:265
+msgid "``false``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:266
+msgid "When ``true`` the results will include the points that are in the path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:267
+msgid ""
+"When ``false`` the results will not include the points that are in the path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:275
+msgid "Inner query"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:278
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "``source``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "``target``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgr_trsp_withPoints.rst:338
+msgid "``cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29 ../../build/doc/TRSP-family.rst:18
+#: ../../build/doc/withPoints-category.rst:27
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore it's "
+"not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36 ../../build/doc/TRSP-family.rst:21
+#: ../../build/doc/withPoints-category.rst:40
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/TRSP-family.rst:0
+#: ../../build/doc/withPoints-category.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:38 ../../build/doc/TRSP-family.rst:23
+#: ../../build/doc/withPoints-category.rst:42
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/TRSP-family.rst:0
+#: ../../build/doc/withPoints-category.rst:0
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:39 ../../build/doc/TRSP-family.rst:24
+#: ../../build/doc/withPoints-category.rst:43
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:285
+msgid "Restrictions SQL"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:11
+msgid "``path``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:13
+msgid ""
+"Sequence of edge identifiers that form a path that is not allowed to be "
+"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a "
+"``NULL`` element will raise an exception."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:17
+msgid "``Cost``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:19
+msgid "Cost of taking the forbidden path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:292
+msgid "Points SQL"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:12
+msgid "``pid``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:14
+msgid "**value**"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:15
+msgid "Identifier of the point."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:17
+msgid ""
+"Use with positive value, as internally will be converted to negative value"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:19
+msgid "If column is present, it can not be NULL."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:20
+msgid ""
+"If column is not present, a sequential negative **value** will be given "
+"automatically."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:22
+msgid "``edge_id``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:25
+msgid "Identifier of the \"closest\" edge to the point."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:26
+msgid "``fraction``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:29
+msgid ""
+"Value in <0,1> that indicates the relative postition from the first end "
+"point of the edge."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:31
+msgid "``side``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:33
+msgid "``b``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:34
+msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:36
+msgid "In the right ``r``,"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:37
+msgid "In the left ``l``,"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:38
+msgid "In both sides ``b``, ``NULL``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:299
+msgid "Combinations SQL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Identifier of the arrival vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:306
+msgid "Return Columns"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:316
+msgid "``seq``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:317
+#: ../../build/doc/pgr_trsp_withPoints.rst:320
+msgid "``INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:318
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:319
+msgid "``path_seq``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:321
+msgid ""
+"Relative position in the path. Has value **1** for the beginning of a path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:323
+msgid "``start_vid``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:324
+#: ../../build/doc/pgr_trsp_withPoints.rst:327
+#: ../../build/doc/pgr_trsp_withPoints.rst:330
+#: ../../build/doc/pgr_trsp_withPoints.rst:333
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:325
+msgid "Identifier of the starting vertex of the path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:326
+msgid "``end_vid``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:328
+msgid "Identifier of the ending vertex of the path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:329
+msgid "``node``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:331
+msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:332
+msgid "``edge``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:334
+msgid ""
+"Identifier of the edge used to go from ``node`` to the next node in the path "
+"sequence."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:337
+msgid "-1 for the last node of the path."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:339
+#: ../../build/doc/pgr_trsp_withPoints.rst:345
+msgid "``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:340
+msgid ""
+"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
+"sequence."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:343
+msgid "``0`` for the last row in the path sequence."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:344
+msgid "``agg_cost``"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:346
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:348
+msgid "``0`` for the first row in the path sequence."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:355
+msgid "Additional Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:357
+msgid ""
+"Which path (if any) passes in front of point :math:`6` or vertex :math:`6` "
+"with **right** side driving topology."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:365
+msgid ""
+"From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex :math:"
+"`7` on an **undirected** graph, with details."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:373
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:375
+msgid ":doc:`TRSP-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:376
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:377
+msgid ":doc:`sampledata`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:380
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:381
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:382
+msgid ":ref:`search`"
+msgstr ""

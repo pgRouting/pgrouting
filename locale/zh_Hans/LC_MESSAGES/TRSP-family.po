@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-25 16:32+0000\n"
+"PO-Revision-Date: 2022-03-28 21:21+0000\n"
+"Last-Translator: Chen <onsummer@foxmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
+"pgrouting/trsp-family/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.11.2\n"
+
+#: ../../build/doc/TRSP-family.rst:12
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/TRSP-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/TRSP-family.html>`__)"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:17
+msgid "TRSP - Family of functions"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:19
+msgid "When points are also given as input:"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:22
+msgid "Proposed"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:29
+msgid ":doc:`pgr_trsp` - Vertex - Vertex routing with restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:30
+msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:31
+msgid ":doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:32
+msgid ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:36
+msgid "Read the :doc:`trsp_migration` about how to migrate from the deprecated TRSP functionality to the new signatures or replacement functions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:40
+msgid "Experimental"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:3
+msgid "Possible server crash"
+msgstr "可能存在服务器崩溃问题"
+
+#: ../../build/doc/experimental.rst:5
+msgid "These functions might create a server crash"
+msgstr "这些函数可能会导致服务器崩溃"
+
+#: ../../build/doc/experimental.rst:7
+msgid "Experimental functions"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:9
+msgid "They are not officially of the current release."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:10
+msgid "They likely will not be officially be part of the next release:"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:12
+msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:13
+msgid "Name might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:14
+msgid "Signature might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:15
+msgid "Functionality might change."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:16
+msgid "pgTap tests might be missing."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:17
+msgid "Might need c/c++ coding."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:18
+msgid "May lack documentation."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:19
+msgid "Documentation if any might need to be rewritten."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:20
+msgid "Documentation examples might need to be automatically generated."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:21
+msgid "Might need a lot of feedback from the comunity."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:22
+msgid "Might depend on a proposed function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/experimental.rst:23
+msgid "Might depend on a deprecated function of pgRouting"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:47
+msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:61
+msgid "Introduction"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:63
+msgid "Road restrictions are a sequence of road segments that can not be taken in a sequential manner. Some restrictions are implicit on a directed graph, for example, one way roads where the wrong way edge is not even inserted on the graph. But normally on turns like **left turn** or **right turn**, hence the name turn restrictions, there are sometimes restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:76
+msgid "TRSP algorithm"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:78
+msgid "The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in order to find out if the attempted path has a restriction. This allows the algorithm to pass twice on the same vertex."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:85
+msgid "Restrictions"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:87
+msgid "On road networks, there are restrictions such as left or right turn restrictions, no U turn restrictions."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:90
+msgid "A restriction is a sequence of edges, called **path** and that **path** is to be avoided."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:96
+msgid "**Restrictions on the road network**"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:98
+msgid "These restrictions are represented on a table as follows:"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:104
+msgid "The table has an identifier, which maybe is needed for the administration of the restrictions, but the algorithms do not need that information. If given it will be ignored."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:111
+msgid "Restrictions SQL"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:120
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:121
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:122
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:123
+msgid "``path``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:124
+msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:125
+msgid "Sequence of edge identifiers that form a path that is not allowed to be taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a ``NULL`` element will raise an exception."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:129
+msgid "``Cost``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:130
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:131
+msgid "Cost of taking the forbidden path."
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:133
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:0
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:135
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:0
+msgid "ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:136
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:144
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:147
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:148
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/TRSP-family.rst:149
+msgid ":ref:`search`"
+msgstr ""

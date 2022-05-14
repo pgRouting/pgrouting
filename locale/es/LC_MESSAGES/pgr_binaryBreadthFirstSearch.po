@@ -8,21 +8,22 @@
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2020-11-04 18:29+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_binarybreadthfirstsearch/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:12
 msgid ""
@@ -57,7 +58,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:26
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr ""
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -122,7 +123,7 @@ msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
-msgstr "Puede depender de una función propuesta de pgRouting."
+msgstr "Puede depender de una función propuesta de pgRouting"
 
 #: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
@@ -320,7 +321,7 @@ msgstr "Tipo"
 #: ../../build/doc/pgRouting-concepts.rst:4
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:185
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:187
 msgid "**Edges SQL**"
@@ -397,7 +398,7 @@ msgstr "**dirigido**"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:193
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:193
 msgid "``true``"
@@ -409,7 +410,7 @@ msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:194
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:200
 msgid "Inner queries"
@@ -446,7 +447,7 @@ msgstr "**origen**"
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -456,7 +457,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:26
@@ -497,8 +498,8 @@ msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not "
 "part of the graph."
 msgstr ""
-"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
-"es parte del grafo."
+"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
+"parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:19
@@ -591,7 +592,7 @@ msgstr "`Muchos a Uno`_"
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "`Many to Many`_"
-msgstr "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid ""
@@ -635,7 +636,7 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
-"Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
 "nodo en la secuencia de ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:27

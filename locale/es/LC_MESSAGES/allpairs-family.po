@@ -8,21 +8,22 @@
 # Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 10:56-0600\n"
-"PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"allpairs-family/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11.2\n"
 "Generated-By: Babel 2.8.0\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/allpairs-family.rst:12
 msgid ""
@@ -66,7 +67,7 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:32
 msgid ":doc:`pgr_floydWarshall` - Floyd-Warshall's algorithm."
-msgstr ":doc:`pgr_floydWarshall` - Algoritmo de Floyd-Warshall "
+msgstr ":doc:`pgr_floydWarshall` - Algoritmo de Floyd-Warshall."
 
 #: ../../build/doc/allpairs-family.rst:33
 msgid ":doc:`pgr_johnson` - Johnson's algorithm"
@@ -146,7 +147,7 @@ msgstr "TAMAÑO"
 
 #: ../../build/doc/allpairs-family.rst:97
 msgid "is the number of edges given as input."
-msgstr "es el número de aristas entradas"
+msgstr "es la cantidad de aristas dadas como entradas."
 
 #: ../../build/doc/allpairs-family.rst ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:163
@@ -156,7 +157,7 @@ msgstr "ARISTAS"
 #: ../../build/doc/allpairs-family.rst:98
 #: ../../build/doc/allpairs-family.rst:155
 msgid "is the total number of records in the query."
-msgstr "es el numero de registros en la consulta"
+msgstr "es el número de registros en la consulta."
 
 #: ../../build/doc/allpairs-family.rst ../../build/doc/allpairs-family.rst:106
 #: ../../build/doc/allpairs-family.rst:163
@@ -1036,4 +1037,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/allpairs-family.rst:195
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

@@ -8,21 +8,22 @@
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2020-11-04 18:32+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_primdd/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_primDD.rst:12
 msgid ""
@@ -50,7 +51,7 @@ msgstr "``pgr_primDD`` —  Nodos de captación mediante el algoritmo de Prim."
 
 #: ../../build/doc/pgr_primDD.rst:27
 msgid "Boost Graph Inside"
-msgstr "Adentro: Boost Graph"
+msgstr ""
 
 #: ../../build/doc/pgr_primDD.rst:30
 msgid "Availability"
@@ -94,7 +95,7 @@ msgstr "El proceso se realiza sólo en las aristas con costos positivos."
 
 #: ../../build/doc/prim-family.rst:5
 msgid "When the graph is connected"
-msgstr "Cuando el grafo está conectado"
+msgstr "Cuando el grafo es conectado"
 
 #: ../../build/doc/prim-family.rst:7
 msgid "The resulting edges make up a tree"
@@ -155,7 +156,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_primDD.rst:85
 msgid "Multiple vertices"
-msgstr "Múltiples Vértices"
+msgstr "Múltiples vértices"
 
 #: ../../build/doc/pgr_primDD.rst:93
 msgid ""
@@ -234,11 +235,11 @@ msgstr "Utilizado en `Múltiples Vértices`_"
 
 #: ../../build/doc/pgr_kruskalDD.rst:19
 msgid ":math:`0` values are ignored"
-msgstr "los valores :math:`0` son ignorados"
+msgstr "Valores :math:`0` son ignorados"
 
 #: ../../build/doc/pgr_kruskalDD.rst:20
 msgid "For optimization purposes, any duplicated value is ignored."
-msgstr "Para fines de optimización, se omite cualquier valor duplicado."
+msgstr "Con el propósito de optimización, valores duplicados son ignorados."
 
 #: ../../build/doc/pgr_kruskalDD.rst:22
 msgid "**Distance**"
@@ -289,7 +290,7 @@ msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "**id**"
@@ -311,7 +312,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -319,7 +320,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_kruskalDD.rst:65
@@ -360,8 +361,8 @@ msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not "
 "part of the graph."
 msgstr ""
-"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
-"es parte del grafo."
+"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
+"parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -377,9 +378,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_kruskalDD.rst:46
 msgid "Returns SET OF ``(seq, depth, start_vid, node, edge, cost, agg_cost)``"
-msgstr ""
-"devuelve el conjunto SET OF ``(seq, depth, start_vid, node, edge, cost, "
-"agg_cost)``"
+msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:51
 msgid "**seq**"
@@ -395,11 +394,11 @@ msgstr "**profundidad**"
 
 #: ../../build/doc/pgr_kruskalDD.rst:52
 msgid "Depth of the ``node``."
-msgstr "Profundidad del ``nodo``."
+msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:54
 msgid ":math:`0`  when ``node`` = ``start_vid``."
-msgstr ":math:`0`  cuando ``node`` = ``start_vid``."
+msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:56
 msgid "**start_vid**"
@@ -427,7 +426,7 @@ msgstr "**edge**"
 
 #: ../../build/doc/pgr_kruskalDD.rst:61
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
-msgstr "Identificador del ''edge'' utilizado para llegar a ''node''."
+msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:63
 msgid ":math:`-1`  when ``node`` = ``start_vid``."
@@ -439,7 +438,7 @@ msgstr "``FLOAT``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:65
 msgid "Cost to traverse ``edge``."
-msgstr "Costo para atravesar ``edge``."
+msgstr "Costo por recorrer ``edge``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:66
 msgid "**agg_cost**"
@@ -447,7 +446,7 @@ msgstr "**agg_cost**"
 
 #: ../../build/doc/pgr_kruskalDD.rst:66
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr "Costo agregado de ``start_vid`` a ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/pgr_primDD.rst:108
 msgid "See Also"
@@ -459,11 +458,11 @@ msgstr ":doc:`spanningTree-family`"
 
 #: ../../build/doc/pgr_primDD.rst:111
 msgid ":doc:`prim-family`"
-msgstr ":doc:`prim-family`"
+msgstr ""
 
 #: ../../build/doc/pgr_primDD.rst:112
 msgid "The queries use the :doc:`sampledata` network."
-msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_primDD.rst:113
 msgid ""

@@ -8,21 +8,22 @@
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2020-11-04 18:30+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgrouting-concepts/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid ""
@@ -530,7 +531,7 @@ msgstr "Tipo"
 #: ../../build/doc/pgRouting-concepts.rst:350
 #: ../../build/doc/pgRouting-concepts.rst:428
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:267
@@ -589,7 +590,7 @@ msgstr "**origen**"
 #: ../../build/doc/pgRouting-concepts.rst:353
 #: ../../build/doc/pgRouting-concepts.rst:430
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:271
@@ -605,7 +606,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:354
 #: ../../build/doc/pgRouting-concepts.rst:431
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:272
@@ -678,8 +679,8 @@ msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not "
 "part of the graph."
 msgstr ""
-"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
-"es parte del grafo."
+"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
+"parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:293
 msgid "Description of the edges_sql query (id is not necessary)"
@@ -728,7 +729,7 @@ msgstr "``ARRAY[ANY-INTEGER]``"
 
 #: ../../build/doc/pgRouting-concepts.rst:329
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr "Arreglo de identificadores de vértices ordenados que serán visitados."
+msgstr "Arreglo ordenados de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/pgRouting-concepts.rst:330
 msgid "**directed**"
@@ -738,7 +739,7 @@ msgstr "**dirigido**"
 #: ../../build/doc/pgRouting-concepts.rst:332
 #: ../../build/doc/pgRouting-concepts.rst:334
 msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:330
 #: ../../build/doc/pgRouting-concepts.rst:334
@@ -848,7 +849,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst
 msgid "Edges SQL"
-msgstr "Edges SQL"
+msgstr "SQL de aristas"
 
 #: ../../build/doc/flow-family.rst:3
 msgid ""
@@ -964,7 +965,7 @@ msgstr "Si no importa con 'b' o NULL."
 
 #: ../../build/doc/pgRouting-concepts.rst:411
 msgid "If column not present 'b' is considered."
-msgstr "Si  la columna no presente 'b' es considerada"
+msgstr "Si la columna 'b' no presente es considerada."
 
 #: ../../build/doc/pgRouting-concepts.rst:417
 msgid "smallint, int, bigint"
@@ -1119,7 +1120,7 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
-"Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
+"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
 "nodo en la secuencia de ruta."
 
 #: ../../build/doc/flow-family.rst:13

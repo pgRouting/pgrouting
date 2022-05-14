@@ -9,21 +9,22 @@
 # Vicky Vergara <vicky@georepublic.de>, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 10:56-0600\n"
-"PO-Revision-Date: 2020-11-04 18:28+0000\n"
-"Last-Translator: MarPetra <mvergaratrejo@gmail.com>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"vrp-category/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11.2\n"
 "Generated-By: Babel 2.8.0\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/VRP-category.rst:12
 msgid ""
@@ -33,6 +34,10 @@ msgid ""
 "category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/VRP-"
 "category.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Último <https://docs.pgrouting.org/latest/es/VRP-"
+"category.html>`__ (`3.2 <https://docs.pgrouting.org/3.2/es/VRP-category."
+"html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/VRP-category.html>`__) `3.0 "
+"<https://docs.pgrouting.org/3.0/es/VRP-category.html>`__"
 
 #: ../../build/doc/VRP-category.rst:19
 msgid "Vehicle Routing Functions - Category (Experimental)"
@@ -101,7 +106,7 @@ msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
-msgstr "Puede depender de una función propuesta de pgRouting."
+msgstr "Puede depender de una función propuesta de pgRouting"
 
 #: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
@@ -114,14 +119,14 @@ msgstr "Problema de recogida y entrega"
 #: ../../build/doc/VRP-category.rst:29
 msgid ":doc:`pgr_pickDeliver` - Pickup & Delivery using a Cost Matrix"
 msgstr ""
-":doc:`pgr_pickDeliver` - Recogida y Entrega utilizando una Matriz de Costos."
+":doc:`pgr_pickDeliver` - Recogida y Entrega utilizando una Matriz de Costos"
 
 #: ../../build/doc/VRP-category.rst:30
 msgid ""
 ":doc:`pgr_pickDeliverEuclidean` - Pickup & Delivery with Euclidean distances"
 msgstr ""
-":doc:`pgr_pickDeliverEuclidean` - Recogida y Entrega con distancias "
-"Euclideanas."
+":doc:`pgr_pickDeliverEuclidean` - Recoger y Entregar con distancias "
+"Euclideanas"
 
 #: ../../build/doc/VRP-category.rst:32
 msgid "Distribution problem"
@@ -177,9 +182,9 @@ msgid ""
 "Vehicle Routing Problem with Time Windows `VRPTW` where the locations have "
 "time windows within which the vehicle's visits must be made."
 msgstr ""
-"Problema de Ruteo del Vehículo con Ventanas de Tiempo  `VRPTW` donde las "
-"ubicaciones tienen ventanas de tiempo dentro de las cuales se deben realizar"
-" las visitas del vehículo."
+"Problema de Ruteo del Vehículo con Ventanas de Tiempo `VRPTW` donde las "
+"ubicaciones tienen ventanas de tiempo dentro de las cuales se deben realizar "
+"las visitas del vehículo."
 
 #: ../../build/doc/VRP-category.rst:64
 msgid ""
@@ -323,7 +328,7 @@ msgstr "Tipo"
 #: ../../build/doc/VRP-category.rst:229 ../../build/doc/VRP-category.rst:251
 #: ../../build/doc/VRP-category.rst:264
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
 #: ../../build/doc/VRP-category.rst:116 ../../build/doc/VRP-category.rst:137
@@ -347,8 +352,8 @@ msgstr "``TEXT``"
 msgid ""
 "`Pick & Deliver Orders SQL`_ query containing the orders to be processed."
 msgstr ""
-"`Pick & Deliver Orders SQL`_  consulta que contiene las órdenes que se van a"
-" procesar."
+"`Pick & Deliver Orders SQL`_ consulta que contiene las órdenes que se van a "
+"procesar."
 
 #: ../../build/doc/VRP-category.rst:119
 msgid "**vehicles_sql**"
@@ -375,7 +380,7 @@ msgstr "1"
 
 #: ../../build/doc/VRP-category.rst:120
 msgid "(Optional) Travel time multiplier. See :ref:`pd_factor`"
-msgstr "(Opcional) Multiplicador de tiempo de viaje. Ver  :ref:`pd_factor`"
+msgstr "(Opcional) Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
 
 #: ../../build/doc/VRP-category.rst:121
 msgid "**max_cycles**"
@@ -627,7 +632,7 @@ msgstr "**p_x**"
 
 #: ../../build/doc/VRP-category.rst:204
 msgid ":math:`x` value of the pick up location"
-msgstr ":math:`x`  valor de la ubicación de recogida"
+msgstr ":math:`x` valor de la ubicación de recogida"
 
 #: ../../build/doc/VRP-category.rst:205
 msgid "**p_y**"
@@ -867,7 +872,7 @@ msgid ""
 "Sequential value starting from **1** for current vehicles. The "
 ":math:`n_{th}` vehicle in the solution."
 msgstr ""
-"Valor secuencial a partir de **1** para vehículos actuales. El vehículo  "
+"Valor secuencial a partir de **1** para vehículos actuales. El vehículo "
 ":math:`n_{th}` en la solución."
 
 #: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:58
@@ -1364,7 +1369,7 @@ msgstr "https://en.wikipedia.org/wiki/Vehicle_routing_problem"
 
 #: ../../build/doc/VRP-category.rst:483
 msgid "The queries use the :doc:`sampledata` network."
-msgstr "Las consultas utilizan la red  :doc:`sampledata` ."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
 #: ../../build/doc/VRP-category.rst:486
 msgid "Indices and tables"
@@ -1377,4 +1382,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/VRP-category.rst:488
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

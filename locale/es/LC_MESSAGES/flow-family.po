@@ -8,21 +8,22 @@
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-11 13:15+0000\n"
-"PO-Revision-Date: 2020-11-04 18:31+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"PO-Revision-Date: 2022-05-06 15:35+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"flow-family/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11.2\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/flow-family.rst:12
 msgid ""
@@ -173,7 +174,7 @@ msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
-msgstr "Puede depender de una función propuesta de pgRouting."
+msgstr "Puede depender de una función propuesta de pgRouting"
 
 #: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
@@ -293,7 +294,7 @@ msgstr "Tipo"
 #: ../../build/doc/flow-family.rst:151
 #: ../../build/doc/pgRouting-concepts.rst:4
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/flow-family.rst:101 ../../build/doc/flow-family.rst:123
 #: ../../build/doc/flow-family.rst:151 ../../build/doc/flow-family.rst:195
@@ -386,7 +387,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst
 msgid "Edges SQL"
-msgstr "Edges SQL"
+msgstr "SQL de aristas"
 
 #: ../../build/doc/flow-family.rst:120 ../../build/doc/flow-family.rst:148
 msgid ""
@@ -418,13 +419,13 @@ msgstr "Identificador de la arista."
 #: ../../build/doc/flow-family.rst:199 ../../build/doc/flow-family.rst:216
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice extremo de la arista."
 
 #: ../../build/doc/flow-family.rst:127 ../../build/doc/flow-family.rst:155
 #: ../../build/doc/flow-family.rst:200 ../../build/doc/flow-family.rst:217
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/flow-family.rst:128 ../../build/doc/flow-family.rst:156
 msgid "**capacity**"
@@ -459,8 +460,8 @@ msgid ""
 "When negative: edge `(target, source)` does not exist, therefore it's not "
 "part of the graph."
 msgstr ""
-"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
-"es parte del grafo."
+"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
+"parte del grafo."
 
 #: ../../build/doc/flow-family.rst:138 ../../build/doc/flow-family.rst:166
 #: ../../build/doc/flow-family.rst:277
