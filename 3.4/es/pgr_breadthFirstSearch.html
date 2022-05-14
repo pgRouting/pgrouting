@@ -168,7 +168,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -195,7 +195,7 @@
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
 <li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
@@ -322,7 +322,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>Raíz</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice raíz del árbol.</p>
 <ul class="simple">
@@ -331,12 +331,12 @@ aleatory nodes for each tree in the forest.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Root vids</strong></p></td>
+<tr class="row-even"><td><p><strong>Raíces</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
 <td><p>Arreglo de identificadores de los vértices raíz.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(0\)</span> values are ignored</p></li>
-<li><p>Para fines de optimización, se omite cualquier valor duplicado.</p></li>
+<li><p>Con el propósito de optimización, valores duplicados son ignorados.</p></li>
 </ul>
 </td>
 </tr>
@@ -367,7 +367,7 @@ aleatory nodes for each tree in the forest.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
-<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
 </ul>
 </td>
 </tr>
@@ -380,7 +380,7 @@ aleatory nodes for each tree in the forest.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -412,7 +412,7 @@ aleatory nodes for each tree in the forest.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -425,12 +425,12 @@ aleatory nodes for each tree in the forest.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -462,7 +462,7 @@ it’s not part of the graph.</p></li>
 </section>
 <section id="return-columns">
 <h2>Return columns<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>devuelve el conjunto SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Regresa <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">OF</span> <span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -477,7 +477,7 @@ it’s not part of the graph.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">depth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Profundidad del <code class="docutils literal notranslate"><span class="pre">nodo</span></code>.</p>
+<td><p>Profundidad del <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(0\)</span> when <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
@@ -493,7 +493,7 @@ it’s not part of the graph.</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del “”edge”” utilizado para llegar a “”node””.</p>
+<td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">edge</span></code> utilizado para llegar a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(-1\)</span> when <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
@@ -501,11 +501,11 @@ it’s not part of the graph.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo para atravesar <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
+<td><p>Costo por recorrer <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -557,7 +557,7 @@ shows with descending order of the edge identifiers.</p>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - Category</span></a></p></li>
+<li><p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html">Boost: Breadth First Search algorithm documentation</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">Wikipedia: Breadth First Search algorithm</a></p></li>

@@ -112,7 +112,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL de aristas</a><ul>
 <li><a class="reference internal" href="#general">General</a></li>
 <li><a class="reference internal" href="#general-without-id">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li><a class="reference internal" href="#general-with-x-y">General with (X,Y)</a></li>
@@ -228,7 +228,7 @@
 </li>
 <li><p><a class="reference internal" href="#inner-queries" id="id21">Consultas Internas</a></p>
 <ul>
-<li><p><a class="reference internal" href="#edges-sql" id="id22">Edges SQL</a></p>
+<li><p><a class="reference internal" href="#edges-sql" id="id22">SQL de aristas</a></p>
 <ul>
 <li><p><a class="reference internal" href="#general" id="id23">General</a></p></li>
 <li><p><a class="reference internal" href="#general-without-id" id="id24">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
@@ -445,7 +445,7 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 <h2><a class="toc-backref" href="#id21">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="contents local topic" id="id2">
 <ul class="simple">
-<li><p><a class="reference internal" href="#edges-sql" id="id51">Edges SQL</a></p>
+<li><p><a class="reference internal" href="#edges-sql" id="id51">SQL de aristas</a></p>
 <ul>
 <li><p><a class="reference internal" href="#general" id="id52">General</a></p></li>
 <li><p><a class="reference internal" href="#general-without-id" id="id53">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
@@ -473,7 +473,7 @@ To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMER
 <div class="line"><br /></div>
 </div>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id51">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id51">SQL de aristas</a><a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <section id="general">
 <h4><a class="toc-backref" href="#id52">General</a><a class="headerlink" href="#general" title="Enlazar permanentemente con este título">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
@@ -496,7 +496,7 @@ To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMER
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -509,12 +509,12 @@ To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMER
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -559,7 +559,7 @@ it’s not part of the graph.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -567,12 +567,12 @@ it’s not part of the graph.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -618,7 +618,7 @@ it’s not part of the graph.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -631,12 +631,12 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -709,7 +709,7 @@ it’s not part of the graph.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -722,12 +722,12 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
@@ -770,7 +770,7 @@ it’s not part of the graph.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -783,12 +783,12 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
@@ -885,7 +885,7 @@ it’s not part of the graph.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -973,7 +973,7 @@ The optional parameters are named parameters and will have a default value.</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -986,7 +986,7 @@ The optional parameters are named parameters and will have a default value.</p>
 <tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
-<td><p>Arreglo de identificadores de vértices ordenados que serán visitados.</p></td>
+<td><p>Arreglo ordenados de identificadores de vértices que serán visitados.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
@@ -1091,7 +1091,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -1170,7 +1170,7 @@ path sequence.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p>
 <ul class="simple">
 <li><p><strong>0</strong> For the first row of the path.</p></li>
 </ul>
@@ -1231,7 +1231,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -1306,7 +1306,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -1429,11 +1429,11 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>start_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>flujo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -1472,11 +1472,11 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>origen</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>objetivo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>flujo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>

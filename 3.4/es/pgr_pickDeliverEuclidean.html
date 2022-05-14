@@ -182,7 +182,7 @@
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
 <li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
@@ -269,7 +269,7 @@ RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -277,7 +277,7 @@ RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
 <tr class="row-even"><td><p><strong>orders_sql</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a>  consulta que contiene las órdenes que se van a procesar.</p></td>
+<td><p><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a> consulta que contiene las órdenes que se van a procesar.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vehicles_sql</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -287,7 +287,7 @@ RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
 <tr class="row-even"><td><p><strong>factor</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
 <td><p>1</p></td>
-<td><p>(Opcional) Multiplicador de tiempo de viaje. Ver  <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Manejo de Factores</span></a></p></td>
+<td><p>(Opcional) Multiplicador de tiempo de viaje. Ver <a class="reference internal" href="VRP-category.html#pd-factor"><span class="std std-ref">Manejo de Factores</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>max_cycles</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
@@ -330,7 +330,7 @@ d_x, d_y, d_open, d_close, [d_service, ]
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -393,7 +393,7 @@ d_x, d_y, d_open, d_close, [d_service, ]
 <tbody>
 <tr class="row-even"><td><p><strong>p_x</strong></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
-<td><p><span class="math notranslate nohighlight">\(x\)</span>  valor de la ubicación de recogida</p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> valor de la ubicación de recogida</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>p_y</strong></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
@@ -429,7 +429,7 @@ start_x, start_y, start_open, start_close [, start_service, ]
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -492,7 +492,7 @@ start_x, start_y, start_open, start_close [, start_service, ]
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -545,7 +545,7 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </tr>
 <tr class="row-odd"><td><p><strong>vehicle_seq</strong></p></td>
 <td><p>INTEGER</p></td>
-<td><p>Valor secuencial a partir de <strong>1</strong> para vehículos actuales. El vehículo  <span class="math notranslate nohighlight">\(n_{th}\)</span> en la solución.</p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong> para vehículos actuales. El vehículo <span class="math notranslate nohighlight">\(n_{th}\)</span> en la solución.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vehicle_id</strong></p></td>
 <td><p>BIGINT</p></td>
@@ -716,7 +716,7 @@ start_x, start_y, start_open, start_close [, start_service, ]
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Funciones de Ruteo de Vehículos - Categoría (Experimental)</span></a></p></li>
-<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">

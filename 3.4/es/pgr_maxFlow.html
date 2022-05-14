@@ -106,7 +106,7 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
 <li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
 <li><a class="reference internal" href="#combinations-sql">Combinaciones SQL</a></li>
 </ul>
 </li>
@@ -169,7 +169,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
@@ -387,7 +387,7 @@ vertices <span class="math notranslate nohighlight">\(\{1, 2\}\)</span> to verti
 <section id="inner-queries">
 <h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -398,7 +398,7 @@ vertices <span class="math notranslate nohighlight">\(\{1, 2\}\)</span> to verti
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -411,12 +411,12 @@ vertices <span class="math notranslate nohighlight">\(\{1, 2\}\)</span> to verti
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>

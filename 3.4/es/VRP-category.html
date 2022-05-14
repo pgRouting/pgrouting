@@ -169,11 +169,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/VRP-category.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.2/en/VRP-category.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/VRP-category.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/VRP-category.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/VRP-category.html">Último</a> (<a class="reference external" href="https://docs.pgrouting.org/3.2/es/VRP-category.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/VRP-category.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/VRP-category.html">3.0</a></p></li>
 </ul>
 <section id="vehicle-routing-functions-category-experimental">
 <h1><a class="toc-backref" href="#id3">Funciones de Ruteo de Vehículos - Categoría (Experimental)</a><a class="headerlink" href="#vehicle-routing-functions-category-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
@@ -201,7 +197,7 @@
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
 <li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
@@ -210,8 +206,8 @@
 <ul class="simple">
 <li><p>Problema de recogida y entrega</p>
 <ul>
-<li><p><a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> - Recogida y Entrega utilizando una Matriz de Costos.</p></li>
-<li><p><a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> - Recogida y Entrega con distancias Euclideanas.</p></li>
+<li><p><a class="reference internal" href="pgr_pickDeliver.html"><span class="doc">pgr_pickDeliver - Experimental</span></a> - Recogida y Entrega utilizando una Matriz de Costos</p></li>
+<li><p><a class="reference internal" href="pgr_pickDeliverEuclidean.html"><span class="doc">pgr_pickDeliverEuclidean - Experimental</span></a> - Recoger y Entregar con distancias Euclideanas</p></li>
 </ul>
 </li>
 <li><p>Problema de distribución</p>
@@ -275,7 +271,7 @@
 <h3><a class="toc-backref" href="#id5">Características</a><a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Problema de Ruteo de Vehículos Capacitados <cite>CVRP</cite> donde los vehículos tienen una capacidad de transporte limitada de las mercancías.</p></li>
-<li><p>Problema de Ruteo del Vehículo con Ventanas de Tiempo  <cite>VRPTW</cite> donde las ubicaciones tienen ventanas de tiempo dentro de las cuales se deben realizar las visitas del vehículo.</p></li>
+<li><p>Problema de Ruteo del Vehículo con Ventanas de Tiempo <cite>VRPTW</cite> donde las ubicaciones tienen ventanas de tiempo dentro de las cuales se deben realizar las visitas del vehículo.</p></li>
 <li><p>Problema de Ruteo de Vehículos con Recogida y Entrega <cite>VRPPD</cite> donde una serie de mercancías necesitan ser trasladadas de ciertas ubicaciones de recogida a otros lugares de entrega.</p></li>
 </ul>
 <p class="rubric">Limitaciones</p>
@@ -331,7 +327,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -339,7 +335,7 @@
 <tr class="row-even"><td><p><strong>orders_sql</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a>  consulta que contiene las órdenes que se van a procesar.</p></td>
+<td><p><a class="reference internal" href="#pick-deliver-orders-sql">Pick &amp; Deliver Orders SQL</a> consulta que contiene las órdenes que se van a procesar.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vehicles_sql</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -349,7 +345,7 @@
 <tr class="row-even"><td><p><strong>factor</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p></td>
 <td><p>1</p></td>
-<td><p>(Opcional) Multiplicador de tiempo de viaje. Ver  <a class="reference internal" href="#pd-factor"><span class="std std-ref">Manejo de Factores</span></a></p></td>
+<td><p>(Opcional) Multiplicador de tiempo de viaje. Ver <a class="reference internal" href="#pd-factor"><span class="std std-ref">Manejo de Factores</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>max_cycles</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
@@ -419,7 +415,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -506,7 +502,7 @@
 <tbody>
 <tr class="row-even"><td><p><strong>p_x</strong></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
-<td><p><span class="math notranslate nohighlight">\(x\)</span>  valor de la ubicación de recogida</p></td>
+<td><p><span class="math notranslate nohighlight">\(x\)</span> valor de la ubicación de recogida</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>p_y</strong></p></td>
 <td><p><abbr title="SMALLINT, INTEGER, BIGINT, REAL, FLOAT">ANY-NUMERICAL</abbr></p></td>
@@ -536,7 +532,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -599,7 +595,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -627,7 +623,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -693,7 +689,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>vehicle_seq</strong></p></td>
 <td><p>INTEGER</p></td>
-<td><p>Valor secuencial a partir de <strong>1</strong> para vehículos actuales. El vehículo  <span class="math notranslate nohighlight">\(n_{th}\)</span> en la solución.</p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong> para vehículos actuales. El vehículo <span class="math notranslate nohighlight">\(n_{th}\)</span> en la solución.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vehicle_id</strong></p></td>
 <td><p>BIGINT</p></td>
@@ -850,7 +846,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>vehicle_seq</strong></p></td>
 <td><p>INTEGER</p></td>
-<td><p>Valor secuencial a partir de <strong>1</strong> para vehículos actuales. El vehículo  <span class="math notranslate nohighlight">\(n_{th}\)</span> en la solución.</p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong> para vehículos actuales. El vehículo <span class="math notranslate nohighlight">\(n_{th}\)</span> en la solución.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vehicle_id</strong></p></td>
 <td><p>BIGINT</p></td>
@@ -1119,7 +1115,7 @@
 <h2><a class="toc-backref" href="#id20">Ver también</a><a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Vehicle_routing_problem">https://en.wikipedia.org/wiki/Vehicle_routing_problem</a></p></li>
-<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">

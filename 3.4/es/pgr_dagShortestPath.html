@@ -167,7 +167,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/dag_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -194,7 +194,7 @@
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
 <li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
@@ -225,7 +225,7 @@
 <dl>
 <dt>Las principales características son:</dt><dd><ul class="simple">
 <li><p>El proceso solo es válido para grafos acíclicos dirigidos ponderados, de lo contrario lanzará advertencias.</p></li>
-<li><p>Valores son regresados cuando hay un camino.</p>
+<li><p>Valores son regresados cuando hay una ruta.</p>
 <ul>
 <li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
 <ul>
@@ -234,7 +234,7 @@
 </li>
 <li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
 <ul>
-<li><p>El  “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></p></li>
+<li><p>El “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></p></li>
 </ul>
 </li>
 </ul>
@@ -432,7 +432,7 @@ OR EMPTY SET
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -484,7 +484,7 @@ OR EMPTY SET
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -497,12 +497,12 @@ OR EMPTY SET
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -593,7 +593,7 @@ it’s not part of the graph.</p></li>
 <td><p>Identificador del vértice inicial. Se devuelve cuando hay varias vetrices iniciales en la consulta.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
 </ul>
 </td>
 </tr>
@@ -602,7 +602,7 @@ it’s not part of the graph.</p></li>
 <td><p>Identificador del vértice final. Se devuelve cuando hay varios vértices finales en la consulta.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
 </ul>
 </td>
 </tr>
@@ -617,7 +617,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -630,7 +630,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Topological_sorting">https://en.wikipedia.org/wiki/Topological_sorting</a></p></li>
-<li><p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">

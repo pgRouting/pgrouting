@@ -161,7 +161,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Interno</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
@@ -279,7 +279,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -292,12 +292,12 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -360,11 +360,11 @@ it’s not part of the graph.</p></li>
 </tr>
 <tr class="row-even"><td><p><strong>cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo para atravesar <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
+<td><p>Costo por recorrer <code class="docutils literal notranslate"><span class="pre">edge</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -460,7 +460,7 @@ it’s not part of the graph.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Para consultas marcadas como  <code class="docutils literal notranslate"><span class="pre">undirected</span></code> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p>
+<dd class="field-odd"><p>Para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">undirected</span></code> con columnas <code class="docutils literal notranslate"><span class="pre">cost</span></code> y <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p>
 </dd>
 </dl>
 <p>Los ejemplos de esta sección utilizan lo siguiente <a class="reference internal" href="sampledata.html#fig2"><span class="std std-ref">Se utiliza la red para consultas marcadas como undirected , cost y  reverse_cost</span></a></p>

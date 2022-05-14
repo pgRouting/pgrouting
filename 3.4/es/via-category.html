@@ -96,19 +96,19 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Via - Category</a><ul>
 <li><a class="reference internal" href="#general-information">General Information</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#via-optional-parameters">Via optional parameters</a></li>
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-query">Inner query</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
 <li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
 <li><a class="reference internal" href="#points-sql">Points SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#return-columns">Return Columns</a></li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
+<li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
 </ul>
@@ -165,17 +165,17 @@
 <p class="rubric">proposed</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Proposed functions for next mayor release.</p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
-<li><p>They are not officially in the current release.</p></li>
-<li><p>They will likely officially be part of the next mayor release:</p>
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
-<li><p>The functions make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
-<li><p>Name might not change. (But still can)</p></li>
-<li><p>Signature might not change. (But still can)</p></li>
-<li><p>Functionality might not change. (But still can)</p></li>
-<li><p>pgTap tests have being done. But might need more.</p></li>
-<li><p>Documentation might need refinement.</p></li>
+<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
+<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
+<li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
 </li>
 </ul>
@@ -208,7 +208,7 @@ given.</p>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <p><strong>Used on:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
@@ -222,14 +222,14 @@ given.</p>
 <col style="width: 49%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>SQL query as described.</p></td>
@@ -237,7 +237,7 @@ given.</p>
 <tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
-<td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
+<td><p>Arreglo ordenados de identificadores de vértices que serán visitados.</p></td>
 </tr>
 </tbody>
 </table>
@@ -254,14 +254,14 @@ given.</p>
 <col style="width: 49%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
 <td><p>SQL query as described.</p></td>
@@ -274,7 +274,7 @@ given.</p>
 <tr class="row-even"><td><p><strong>via vertices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
-<td><p>Array of ordered vertices identifiers that are going to be visited.</p>
+<td><p>Arreglo ordenados de identificadores de vértices que serán visitados.</p>
 <ul class="simple">
 <li><p>When positive it is considered a vertex identifier</p></li>
 <li><p>When negative it is considered a point identifier</p></li>
@@ -296,10 +296,10 @@ parameters that exist due to the kind of function.</p>
 <col style="width: 68%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -337,10 +337,10 @@ parameters that exist due to the kind of function.</p>
 <col style="width: 68%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -372,7 +372,7 @@ parameters that exist due to the kind of function.</p>
 <h2>Inner query<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Depending on the function one or more inner queries are needed.</p>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p class="rubric">Used on all Via functions</p>
 <table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
@@ -382,27 +382,27 @@ parameters that exist due to the kind of function.</p>
 <col style="width: 56%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identifier of the edge.</p></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identifier of the first end point vertex of the edge.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -412,16 +412,15 @@ parameters that exist due to the kind of function.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arsita (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -444,9 +443,9 @@ it’s not part of the graph.</p></li>
 <col style="width: 65%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -463,7 +462,7 @@ taken.
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -487,10 +486,10 @@ taken.
 <col style="width: 57%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -531,7 +530,7 @@ point of the edge.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ANY-INTEGER</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -556,58 +555,56 @@ point of the edge.</p></td>
 <col style="width: 70%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Sequential value starting from <strong>1</strong>.</p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Identifier of a path. Has value <strong>1</strong> for the first path.</p></td>
+<td><p>Identificador del camino. Tiene valor <strong>1</strong> para el primer camino.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
-path sequence.</p>
+<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
-<li><p>-1 for the last node of the path.</p></li>
-<li><p>-2 for the last node of the route.</p></li>
+<li><p>-1 para el último nodo de la ruta</p></li>
+<li><p>-2 para el último nodo de la ruta</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the
-path sequence.</p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">route_agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Total cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> of <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> of the current <code class="docutils literal notranslate"><span class="pre">seq</span></code>.</p></td>
+<td><p>Costo total desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> en <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hasta <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> del <code class="docutils literal notranslate"><span class="pre">seq</span></code> actual.</p></td>
 </tr>
 </tbody>
 </table>
@@ -623,23 +620,23 @@ path sequence.</p></td>
 <col style="width: 70%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Sequential value starting from <strong>1</strong>.</p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Identifier of a path. Has value <strong>1</strong> for the first path.</p></td>
+<td><p>Identificador del camino. Tiene valor <strong>1</strong> para el primer camino.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -661,7 +658,7 @@ path sequence.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p>
+<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p>
 <ul class="simple">
 <li><p>When positive it is a vertex identifier</p></li>
 <li><p>When negative it is a point identifier</p></li>
@@ -670,8 +667,7 @@ path sequence.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
-path sequence.</p>
+<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(-1\)</span> for the last row of the path.</p></li>
 <li><p><span class="math notranslate nohighlight">\(-2\)</span> for the last row of the route.</p></li>
@@ -680,12 +676,11 @@ path sequence.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the
-path sequence.</p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(0\)</span> on the first row of the path.</p></li>
 </ul>
@@ -706,13 +701,13 @@ path sequence.</p></td>
 </div>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a></p></li>
 </ul>
-<p class="rubric">Indices and tables</p>
+<p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>

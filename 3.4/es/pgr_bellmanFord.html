@@ -168,7 +168,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -195,7 +195,7 @@
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
 <li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
-<li><p>Puede depender de una función propuesta de pgRouting.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
@@ -236,7 +236,7 @@ implementation can be used with a directed graph and an undirected graph.</p>
 <dl class="simple">
 <dt><strong>The main characteristics are:</strong></dt><dd><ul class="simple">
 <li><p>El proceso es válido para aristas con grosores de arista positivos y negativos.</p></li>
-<li><p>Valores son regresados cuando hay un camino.</p>
+<li><p>Valores son regresados cuando hay una ruta.</p>
 <ul>
 <li><p>When the start vertex and the end vertex are the same, there is no path.
 The agg_cost would be <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
@@ -527,7 +527,7 @@ OR EMPTY SET</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
-<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
 </ul>
 </td>
 </tr>
@@ -548,7 +548,7 @@ OR EMPTY SET</pre>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -561,12 +561,12 @@ OR EMPTY SET</pre>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -657,7 +657,7 @@ it’s not part of the graph.</p></li>
 <td><p>Identificador del vértice inicial. Se devuelve cuando hay varias vetrices iniciales en la consulta.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#many-to-one">Many to One</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
 </ul>
 </td>
 </tr>
@@ -666,7 +666,7 @@ it’s not part of the graph.</p></li>
 <td><p>Identificador del vértice final. Se devuelve cuando hay varios vértices finales en la consulta.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-many">One to Many</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
 </ul>
 </td>
 </tr>
@@ -681,7 +681,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo de desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>

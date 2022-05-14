@@ -165,7 +165,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsCostMatrix</span></code> - Calcula la ruta más corta y devuelve solo el costo agregado de las rutas más cortas encontradas, para la combinación de puntos dados.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Funciones propuestas para el próximo lanzamineto.</p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
 <li><p>No están oficialmente en la versión actual.</p></li>
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
@@ -174,7 +174,7 @@
 <li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
-<li><p>Se han hecho pruebas de pgTap. Pero tal vez necesite más.</p></li>
+<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
 </li>
@@ -183,7 +183,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
@@ -301,7 +301,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -335,7 +335,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -348,12 +348,12 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -394,7 +394,7 @@ it’s not part of the graph.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
