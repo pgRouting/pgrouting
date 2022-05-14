@@ -315,17 +315,17 @@ pdf_style_path = ['.', '_styles']
 
 # cases to ignore during link checking
 linkcheck_ignore = [
-    'https://docs.pgrouting.org/latest/en/TRSP-family.html',
-    'https://docs.pgrouting.org/latest/en/pgr_trsp_withPoints.html',
-    'https://docs.pgrouting.org/latest/en/pgr_trspVia.html',
-    'https://docs.pgrouting.org/latest/en/pgr_withPointsVia.html',
-    'https://docs.pgrouting.org/latest/en/via-category.html',
-    'https://docs.pgrouting.org/latest/en/pgr_trspVia_withPoints.html',
-    'https://docs.pgrouting.org/latest/en/withPoints-category.html',
-    'https://docs.pgrouting.org/latest/en/trsp_migration.html',
-    'https://docs.pgrouting.org/latest/en/BFS-category.html',
-    'https://docs.pgrouting.org/latest/en/DFS-category.html',
-    'https://docs.pgrouting.org/latest/en/reference.html',
+    r'https://docs.pgrouting.org/.*/.*/TRSP-family.html',
+    r'https://docs.pgrouting.org/.*/.*/pgr_trsp_withPoints.html',
+    r'https://docs.pgrouting.org/.*/.*/pgr_trspVia.html',
+    r'https://docs.pgrouting.org/.*/.*/pgr_withPointsVia.html',
+    r'https://docs.pgrouting.org/.*/.*/via-category.html',
+    r'https://docs.pgrouting.org/.*/.*/pgr_trspVia_withPoints.html',
+    r'https://docs.pgrouting.org/.*/.*/withPoints-category.html',
+    r'https://docs.pgrouting.org/.*/.*/trsp_migration.html',
+    r'https://docs.pgrouting.org/.*/.*/BFS-category.html',
+    r'https://docs.pgrouting.org/.*/.*/DFS-category.html',
+    r'https://docs.pgrouting.org/.*/.*/reference.html',
 
     # link failing used in contraction-family
     'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'
