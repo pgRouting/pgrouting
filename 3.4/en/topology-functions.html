@@ -158,13 +158,30 @@
 </ul>
 <section id="topology-family-of-functions">
 <h1>Topology - Family of Functions<a class="headerlink" href="#topology-family-of-functions" title="Permalink to this headline">¶</a></h1>
-<p>The pgRouting’s topology of a network, represented with an edge table with source and target attributes and a vertices table associated with it.
-Depending on the algorithm, you can create a topology or just reconstruct the vertices table, You can analyze the topology,
-We also provide a function to node an unoded network.</p>
+<p>The pgRouting’s topology of a network represented with a graph in form of two
+tables: and edge table and a vertex table.</p>
+<p>Attributes associated to the tables help to indicate if the graph is directed or
+undirected, if an edge is one way on a directed graph, and depending on the
+final application needs, suitable topology(s) need to be
+created.</p>
+<p>pgRouting suplies some functions to create a routing topology and to analyze the
+topology.</p>
+<p>Additional functions to create a graph:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> -  to create a topology based on the geometry.</p></li>
-<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - to reconstruct the vertices table based on the source and target information.</p></li>
-<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  - to analyze the edges and vertices of the edge table.</p></li>
+<li><p><a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Family of functions</span></a></p></li>
+</ul>
+<p>Additional functions to analyze a graph:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a></p></li>
+</ul>
+<p>The following functions modify the database directly therefore the user must
+have special permissions given by the administrators to use them.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> -  create a topology based on the geometry.</p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - reconstruct the vertices table based on
+the source and target information.</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  - to analyze the edges and vertices of the edge
+table.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - to analyze directionality of the edges.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a>  -to create nodes to a not noded edge table.</p></li>
 </ul>
@@ -186,8 +203,11 @@ We also provide a function to node an unoded network.</p>
 </li>
 </ul>
 </div>
+<p>These proposed functions do not modify the database.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a> - Extracts vertices information based on the source and target.</p></li>
+<li><p><a class="reference internal" href="pgr_degree.html"><span class="doc">pgr_degree – Proposed</span></a> - Calculates the degree of the vertices of a graph.</p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a> - Extracts vertex information based on the edge
+table information.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -214,7 +234,7 @@ We also provide a function to node an unoded network.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 14, 2022.<br/>
+      Last updated on May 16, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
     </p>
   </div>
