@@ -326,6 +326,7 @@ linkcheck_ignore = [
     r'https://docs.pgrouting.org/.*/.*/BFS-category.html',
     r'https://docs.pgrouting.org/.*/.*/DFS-category.html',
     r'https://docs.pgrouting.org/.*/.*/reference.html',
+    r'https://docs.pgrouting.org/.*/.*/pgr_degree.html',
 
     # link failing used in contraction-family
     'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'

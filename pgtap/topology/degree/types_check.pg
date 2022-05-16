@@ -1,0 +1,32 @@
+BEGIN;
+
+SELECT CASE WHEN min_version('3.4.0') THEN plan(5) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION types_check() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT has_function('pgr_degree');
+  RETURN QUERY SELECT has_function('pgr_degree',    ARRAY['text', 'text', 'boolean']);
+  RETURN QUERY SELECT function_returns('pgr_degree', ARRAY['text', 'text', 'boolean'], 'setof record');
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_degree'$$,
+    $$SELECT  '{"","","dryrun","id","degree"}'::TEXT[] $$);
+
+  RETURN QUERY SELECT set_eq(
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_degree'$$,
+  $$VALUES ('{25,25,16,20,20}'::OID[])$$);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT types_check();
+
+SELECT  finish();
+ROLLBACK;

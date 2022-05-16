@@ -6,6 +6,7 @@ SET(LOCAL_FILES
     doc-pgr_createVerticesTable
     doc-pgr_extractVertices
     doc-pgr_nodeNetwork
+    degree
     )
 
 foreach (f ${LOCAL_FILES})

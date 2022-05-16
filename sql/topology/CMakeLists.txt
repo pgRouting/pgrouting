@@ -6,6 +6,7 @@ SET(LOCAL_FILES
     createverticestable.sql
     nodeNetwork.sql
     extractVertices.sql
+    degree.sql
     )
 
 foreach (f ${LOCAL_FILES})
