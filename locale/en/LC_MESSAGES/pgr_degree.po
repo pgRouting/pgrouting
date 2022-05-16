@@ -1,0 +1,289 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
+# This file is distributed under the same license as the pgRouting package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-16 17:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.1\n"
+
+#: ../../build/doc/pgr_degree.rst:12
+msgid ""
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_degree.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_degree.html>`__)"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:17
+msgid "``pgr_degree`` -- Proposed"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:19
+msgid "``pgr_degree`` — Calculates the vertices degree"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:3
+msgid "Proposed functions for next mayor release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:5
+msgid "They are not officially in the current release."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:6
+msgid "They will likely officially be part of the next mayor release:"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:8
+msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:9
+msgid "Name might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:10
+msgid "Signature might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:11
+msgid "Functionality might not change. (But still can)"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:12
+msgid "pgTap tests have being done. But might need more."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:13
+msgid "Documentation might need refinement."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:27
+msgid "Availability"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:28
+msgid "Version 3.4.0"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:30
+msgid "New **proposed** function"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:34 ../../build/doc/pgr_degree.rst:61
+#: ../../build/doc/pgr_degree.rst:73 ../../build/doc/pgr_degree.rst:91
+#: ../../build/doc/pgr_degree.rst:108 ../../build/doc/pgr_degree.rst:138
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:36
+msgid "Calculates the degree of the vertices of an **undirected** graph"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:40
+msgid "Signatures"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst
+msgid "Example"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:50
+msgid "Extracting the vertex information"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:58
+msgid "Parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:61 ../../build/doc/pgr_degree.rst:73
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:61 ../../build/doc/pgr_degree.rst:73
+#: ../../build/doc/pgr_degree.rst:91 ../../build/doc/pgr_degree.rst:107
+#: ../../build/doc/pgr_degree.rst:137
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:63
+msgid "`Edges SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:63 ../../build/doc/pgr_degree.rst:64
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:63
+msgid "`Edges SQL`_ as described below"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:64
+msgid "`Vertex SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:64
+msgid "`Vertex SQL`_ as described below"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:68
+msgid "Optional parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:73
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:75
+msgid "``dryrun``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:75
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:75
+msgid "``false``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:75
+msgid "When true do not process and get in a NOTICE the resulting query."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:80
+msgid "Inner Queries"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:86
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:91 ../../build/doc/pgr_degree.rst:106
+#: ../../build/doc/pgr_degree.rst:136
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:93 ../../build/doc/pgr_degree.rst:109
+#: ../../build/doc/pgr_degree.rst:139
+msgid "``id``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:93 ../../build/doc/pgr_degree.rst:110
+#: ../../build/doc/pgr_degree.rst:140 ../../build/doc/pgr_degree.rst:143
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:93
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:97
+msgid "Vertex SQL"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:111 ../../build/doc/pgr_degree.rst:141
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:112
+msgid "``in_edges``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:113 ../../build/doc/pgr_degree.rst:119
+msgid "``BIGINT[]``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:114
+msgid ""
+"Array of identifiers of the edges that have the vertex ``id`` as *first "
+"end point*."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:117
+msgid "When missing, ``out_edges`` must exist."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:118
+msgid "``out_edges``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:120
+msgid ""
+"Array of identifiers of the edges that have the vertex ``id`` as *second "
+"end point*."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:123
+msgid "When missing, ``in_edges`` must exist."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:127
+msgid "Result Columns"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:142
+msgid "``degree``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:144
+msgid "Number of edges that are incident to the vertex ``id``"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:147
+msgid "Additional Examples"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:153
+msgid "Degree of a sub graph"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:160
+msgid "Dry run execution"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:162
+msgid ""
+"To get the query generated used to get the vertex information, use "
+"``dryrun => true``."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:165
+msgid ""
+"The results can be used as base code to make a refinement based on the "
+"back end development needs."
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:175
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:177
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:178
+msgid ":doc:`pgr_extractVertices`"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:181
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:182
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:183
+msgid ":ref:`search`"
+msgstr ""
+

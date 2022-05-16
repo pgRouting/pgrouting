@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 15:09+0000\n"
+"POT-Creation-Date: 2022-05-16 17:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,18 +139,18 @@ msgid ":doc:`topology-functions`"
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:3
-msgid ":doc:`pgr_extractVertices` - Extracts vertices information based on the source and target."
+msgid "These proposed functions do not modify the database."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:5
+msgid ":doc:`pgr_degree` - Calculates the degree of the vertices of a graph."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:6
+msgid ":doc:`pgr_extractVertices` - Extracts vertex information based on the edge table information."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:75
-msgid ":doc:`traversal-family`"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:3
-msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:81
 msgid ":doc:`coloring-family`"
 msgstr ""
 
@@ -158,11 +158,19 @@ msgstr ""
 msgid ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:93
-msgid "categories"
+#: ../../build/doc/proposed.rst:81
+msgid ":doc:`traversal-family`"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:3
+msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:94
+msgid "categories"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:95
 msgid ":doc:`cost-category`"
 msgstr ""
 
@@ -170,7 +178,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:100
+#: ../../build/doc/proposed.rst:101
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
@@ -178,7 +186,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:106
+#: ../../build/doc/proposed.rst:107
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -186,7 +194,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:112
+#: ../../build/doc/proposed.rst:113
 msgid ":doc:`KSP-category`"
 msgstr ""
 
@@ -194,7 +202,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:118
+#: ../../build/doc/proposed.rst:119
 msgid ":doc:`via-category`"
 msgstr ""
 
@@ -214,7 +222,7 @@ msgstr ""
 msgid ":doc:`pgr_trspVia_withPoints`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:124
+#: ../../build/doc/proposed.rst:125
 msgid ":doc:`withPoints-category`"
 msgstr ""
 
@@ -226,22 +234,22 @@ msgstr ""
 msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:139
+#: ../../build/doc/proposed.rst:140
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:141
+#: ../../build/doc/proposed.rst:142
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:144
+#: ../../build/doc/proposed.rst:145
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:145
+#: ../../build/doc/proposed.rst:146
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:146
+#: ../../build/doc/proposed.rst:147
 msgid ":ref:`search`"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 15:01+0000\n"
+"POT-Creation-Date: 2022-05-16 17:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,22 +271,26 @@ msgid ":doc:`topology-functions`"
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:3
-msgid ":doc:`pgr_createTopology` -  to create a topology based on the geometry."
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:4
-msgid ":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based on the source and target information."
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:5
-msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
+msgid "The following functions modify the database directly therefore the user must have special permissions given by the administrators to use them."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:6
-msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
+msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:7
+msgid ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on the source and target information."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:9
+msgid ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge table."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:11
+msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:12
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
 msgstr ""
 
