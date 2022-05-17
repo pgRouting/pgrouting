@@ -33,21 +33,25 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Create table
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE CREATE start
    :end-before: --EDGE TABLE CREATE end
 
 
 .. rubric:: Insert data
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE ADD DATA start
    :end-before: --EDGE TABLE ADD DATA end
+
+.. literalinclude:: sampledata.queries
+   :start-after: --EDGE TABLE ADD DATA end
+   :end-before: --EDGE TABLE update geometry start
 
 
 .. rubric:: Updating geometry
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE update geometry start
    :end-before: --EDGE TABLE update geometry end
 
@@ -56,7 +60,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 - Before you test a routing function use this query to create a topology (fills the ``source`` and ``target`` columns).
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE TOPOLOGY start
    :end-before: --EDGE TABLE TOPOLOGY end
 
@@ -64,7 +68,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 - Used to test the combinations_sql signature in dijkstra-like functions.
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --COMBINATIONS CREATE start
    :end-before: --COMBINATIONS CREATE end
 
@@ -73,7 +77,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 - When points outside of the graph.
 - Used with the :doc:`withPoints-family` functions.
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --POINTS CREATE start
    :end-before: --POINTS CREATE end
 
@@ -81,13 +85,13 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 - Used with the :doc:`TRSP-family` functions.
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --RESTRICTIONS CREATE start
    :end-before: --RESTRICTIONS CREATE end
 
 - Used with the :doc:`pgr_trsp` deprecated and prototype functions.
 
-.. literalinclude:: ../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata.queries
    :start-after: --RESTRICTIONS OLD CREATE start
    :end-before: --RESTRICTIONS OLD CREATE end
 
@@ -154,6 +158,6 @@ Network for queries marked as ``undirected`` and only ``cost`` column is used
 Pick & Deliver Data
 ...............................................................................
 
-.. literalinclude:: ../../tools/testers/vrppdtw_data.sql
+.. literalinclude:: ../../tools/testers/vrppdtw_data.queries
 
 
