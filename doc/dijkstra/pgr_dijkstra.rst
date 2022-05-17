@@ -237,19 +237,19 @@ Additional Examples
 
 :Example: Demonstration of repeated values are ignored, and result is sorted.
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
     :start-after: -- q6
     :end-before: -- q7
 
 :Example: Making ``start_vids`` the same as ``end_vids``.
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
     :start-after: -- q7
     :end-before: -- q8
 
 :Example: Manually assigned vertex combinations.
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_dijkstra.queries
     :start-after: -- q8
     :end-before: -- q9
 
