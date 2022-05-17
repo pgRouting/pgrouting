@@ -40,7 +40,7 @@ do
     psql "${PGFLAGS}" -d "$PGDATABASE" -c "SELECT * FROM pgr_full_version();"
 
     psql "${PGFLAGS}" -d "$PGDATABASE" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
-        -f sampledata.sql \
+        -f sampledata_pgtap.sql \
         -f vrppdtw_data.sql \
         -f solomon_100_rc101.data.sql \
         -f innerQuery.sql \

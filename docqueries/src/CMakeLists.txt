@@ -1,6 +1,7 @@
 # Do not use extensions
 SET(LOCAL_FILES
     withPoints-category
+    sampledata
     )
 
 foreach (f ${LOCAL_FILES})
