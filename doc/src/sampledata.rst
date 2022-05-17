@@ -158,6 +158,6 @@ Network for queries marked as ``undirected`` and only ``cost`` column is used
 Pick & Deliver Data
 ...............................................................................
 
-.. literalinclude:: ../../tools/testers/vrppdtw_data.queries
+.. literalinclude:: ../../tools/testers/vrppdtw_data.sql
 
 
