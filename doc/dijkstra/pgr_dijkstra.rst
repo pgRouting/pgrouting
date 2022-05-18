@@ -104,7 +104,7 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
     :start-after: -- q2
@@ -123,7 +123,7 @@ One to Many
     RETURNS SET OF (seq, path_seq, end vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q3
@@ -141,7 +141,7 @@ Many to One
     RETURNS SET OF (seq, path_seq, start vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
@@ -160,7 +160,7 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on an
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
@@ -267,57 +267,65 @@ For **directed** graphs with ``cost`` and ``reverse_cost`` columns
 
    Directed graph with cost and reverse cost columns
 
-:Example 1: Path from :math:`2` to :math:`3`
+1) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q70
    :end-before: -- q71
 
-:Example 2: Path from :math:`2` to :math:`5`
+2) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q71
    :end-before: -- q72
 
-:Example 3: Path from :math:`11` to :math:`3`
+3) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q72
    :end-before: -- q73
 
-:Example 4: Path from :math:`11` to :math:`5`
+4) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q73
    :end-before: -- q74
 
-:Example 5: Using `One to Many`_ to get the solution of examples 1 and 2
+5) Using `One to Many`_ to get the solution of examples 1 and 2
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q74
    :end-before: -- q75
 
-:Example 6: Using `Many to One`_ to get the solution of examples 2 and 4
+6) Using `Many to One`_ to get the solution of examples 2 and 4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{5\}`
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q75
    :end-before: -- q76
 
-:Example 7: Using `Many to Many`_ to get the solution of examples 1 to 4
+7) Using `Many to Many`_ to get the solution of examples 1 to 4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{3, 5\}`
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q76
    :end-before: -- q77
 
-:Example 8: Using `Combinations`_ to get the solution of examples 1 to 3
+8) Using `Combinations`_ to get the solution of examples 1 to 3
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}\cup\{11\}\rightarrow\{3\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q77
@@ -331,57 +339,65 @@ For **undirected** graphs with ``cost`` and ``reverse_cost`` columns
 
    Undirected graph with cost and reverse cost columns
 
-:Example 9: Path from :math:`2` to :math:`3`
+9) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q90
    :end-before: -- q91
 
-:Example 10: Path from :math:`2` to :math:`5`
+10) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q91
    :end-before: -- q92
 
-:Example 11: Path from :math:`11` to :math:`3`
+11) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q92
    :end-before: -- q93
 
-:Example 12: Path from :math:`11` to :math:`5`
+12) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q93
    :end-before: -- q94
 
-:Example 13: Using `One to Many`_ to get the solution of examples 9 and 10
+13) Using `One to Many`_ to get the solution of examples 9 and 10
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q94
    :end-before: -- q95
 
-:Example 14: Using `Many to One`_ to get the solution of examples 10 and 12
+14) Using `Many to One`_ to get the solution of examples 10 and 12
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{5\}`
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q95
    :end-before: -- q96
 
-:Example 15: Using `Many to Many`_ to get the solution of examples 9 to 12
+15) Using `Many to Many`_ to get the solution of examples 9 to 12
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{3, 5\}`
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q96
    :end-before: -- q97
 
-:Example 16: Using `Combinations`_ to get the solution of examples 9 to 11
+16) Using `Combinations`_ to get the solution of examples 9 to 11
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}\cup\{11\}\rightarrow\{3\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q97
@@ -395,57 +411,65 @@ For **directed** graphs only with ``cost`` column
 
    Directed graph only with cost column
 
-:Example 17: Path from :math:`2` to :math:`3`
+17) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q11
    :end-before: -- q111
 
-:Example 18: Path from :math:`2` to :math:`5`
+18) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q111
    :end-before: -- q112
 
-:Example 19: Path from :math:`11` to :math:`3`
+19) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q112
    :end-before: -- q113
 
-:Example 20: Path from :math:`11` to :math:`5`
+20) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q113
    :end-before: -- q114
 
-:Example 21: Using `One to Many`_ to get the solution of examples 17 and 18
+21) Using `One to Many`_ to get the solution of examples 17 and 18
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q114
    :end-before: -- q115
 
-:Example 22: Using `Many to One`_ to get the solution of examples 18 and 20
+22) Using `Many to One`_ to get the solution of examples 18 and 20
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{5\}`
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q115
    :end-before: -- q116
 
-:Example 23: Using `Many to Many`_ to get the solution of examples 17 to 20
+23) Using `Many to Many`_ to get the solution of examples 17 to 20
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{3, 5\}`
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q116
    :end-before: -- q117
 
-:Example 24: Using `Combinations`_ to get the solution of examples 17 to 19
+24) Using `Combinations`_ to get the solution of examples 17 to 19
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}\cup\{11\}\rightarrow\{3\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q117
@@ -459,57 +483,65 @@ For **undirected** graphs only with ``cost`` column
 
    Undirected graph only with cost column
 
-:Example 25: Path from :math:`2` to :math:`3`
+25) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q13
    :end-before: -- q131
 
-:Example 26: Path from :math:`2` to :math:`5`
+26) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q131
    :end-before: -- q132
 
-:Example 27: Path from :math:`11` to :math:`3`
+27) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q132
    :end-before: -- q133
 
-:Example 28: Path from :math:`11` to :math:`5`
+28) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q133
    :end-before: -- q134
 
-:Example 29: Using `One to Many`_ to get the solution of examples 17 and 18
+29) Using `One to Many`_ to get the solution of examples 25 and 26
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q134
    :end-before: -- q135
 
-:Example 30: Using `Many to One`_ to get the solution of examples 18 and 20
+30) Using `Many to One`_ to get the solution of examples 26 and 28
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{5\}`
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q135
    :end-before: -- q136
 
-:Example 31: Using `Many to Many`_ to get the solution of examples 17 to 20
+31) Using `Many to Many`_ to get the solution of examples 25 to 28
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2, 11\}\rightarrow\{3, 5\}`
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q136
    :end-before: -- q137
 
-:Example 32: Using `Combinations`_ to get the solution of examples 17 to 19
+32) Using `Combinations`_ to get the solution of examples 25 to 27
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Paths :math:`\{2\}\rightarrow\{3, 5\}\cup\{11\}\rightarrow\{3\}`
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q137
@@ -519,33 +551,38 @@ Paths :math:`\{2\}\rightarrow\{3, 5\}\cup\{11\}\rightarrow\{3\}`
 Equvalences between signatures
 ...............................................................................
 
-The following examples find the path for :math:`\{2\}\rightarrow\{3\}`
+The following examples find the path for :math:`\{6\}\rightarrow\{10\}`
 
-:Example 33: Using `One to One`_
+33) Using `One to One`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q15
    :end-before: -- q151
 
-:Example 34: Using `One to Many`_
+34) Using `One to Many`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q151
    :end-before: -- q152
 
-:Example 35: Using `Many to One`_
+35) Using `Many to One`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q152
    :end-before: -- q153
 
-:Example 36: Using `Many to Many`_
+36) Using `Many to Many`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q153
    :end-before: -- q154
 
-:Example 37: Using `Combinations`_
+36) Using `Combinations`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q154
