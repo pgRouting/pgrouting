@@ -241,10 +241,10 @@ CREATE TABLE combinations_table (
 
 INSERT INTO combinations_table (
     source, target) VALUES
-(1, 2),
-(1, 3),
-(2, 1),
-(2, 4),
-(2, 17);
+(5, 6),
+(5, 10),
+(6, 5),
+(6, 15),
+(6, 14);
 
 /* --COMBINATIONS CREATE end */
