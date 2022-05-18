@@ -68,7 +68,7 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 1, 7, 10\}` in that
+:Example: Find the route that visits the vertices :math:`\{5, 1, 8\}` in that
           order on an **directed** graph.
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
@@ -116,7 +116,7 @@ Return Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{1, 5, 7, 10, 4\}`
+:Example 1: Find the route that visits the vertices :math:`\{5, 7, 1, 8, 15\}`
             in that order
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
