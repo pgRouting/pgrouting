@@ -68,11 +68,11 @@ Signatures
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: For vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
+:Example: For a directed subgraph with edges :math:`\{1, 2, 3, 4\}`.
 
 .. literalinclude:: doc-johnson.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
