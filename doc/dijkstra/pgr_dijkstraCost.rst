@@ -91,7 +91,7 @@ One to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: -- q2
@@ -109,7 +109,7 @@ One to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
@@ -128,7 +128,7 @@ Many to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
@@ -147,7 +147,7 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on an
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
