@@ -75,7 +75,7 @@ Signatures
     pgr_aStarCostMatrix(`Edges SQL`_, **vids** [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
+:Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
           **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCostMatrix.queries
