@@ -16,14 +16,14 @@ SELECT * FROM pgr_aStar(
 SELECT * FROM pgr_aStar(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edge_table',
-  ARRAY[6, 50], 10,
+  ARRAY[6, 8], 10,
   false, heuristic => 4
 );
 /* -- q5 */
 SELECT * FROM pgr_aStar(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edge_table',
-  ARRAY[6, 50], ARRAY[10, 12],
+  ARRAY[6, 8], ARRAY[10, 12],
   factor => 0.5
 );
 /* -- q51 */

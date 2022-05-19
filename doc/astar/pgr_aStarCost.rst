@@ -138,7 +138,7 @@ Many to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 50\}` to vertex :math:`10` on an
+:Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an
           **undirected** graph with heuristic :math:`4`
 
 .. literalinclude:: doc-aStarCost.queries
@@ -157,7 +157,7 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 50\}` to vertices :math:`\{10, 12\}` on a
+:Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
           **directed** graph with factor :math:`0.5`
 
 .. literalinclude:: doc-aStarCost.queries

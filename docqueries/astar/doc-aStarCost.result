@@ -31,26 +31,29 @@ SELECT * FROM pgr_aStarCost(
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edge_table',
-  ARRAY[6, 50], 10,
+  ARRAY[6, 8], 10,
   false, heuristic => 4
 );
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          6 |      10 |        1
-(1 row)
+         8 |      10 |        3
+(2 rows)
 
 /* -- q5 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edge_table',
-  ARRAY[6, 50], ARRAY[10, 12],
+  ARRAY[6, 8], ARRAY[10, 12],
   factor => 0.5
 );
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          6 |      10 |        5
          6 |      12 |        3
-(2 rows)
+         8 |      10 |        5
+         8 |      12 |        1
+(4 rows)
 
 /* -- q51 */
 SELECT * FROM combinations_table;
