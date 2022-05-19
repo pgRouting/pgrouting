@@ -43,7 +43,7 @@ graph, using greedy approach.
 Description
 -------------------------------------------------------------------------------
 
-Sequential Vertex Coloring algorithm is a graph coloring algorithm in which 
+Sequential vertex coloring algorithm is a graph coloring algorithm in which
 color identifiers are assigned to the vertices of a graph in a sequential manner,
 such that no edge connects two identically colored vertices.
 
@@ -117,7 +117,7 @@ See Also
 
 .. see also start
 
-* `Boost: Sequential Vertex Coloring algorithm documentation 
+* `Boost: Sequential Vertex Coloring algorithm documentation
   <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__
 * `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
 
