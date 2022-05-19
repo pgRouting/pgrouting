@@ -1,3 +1,4 @@
+-- TODO move to pgtap
 
 -- this is a hand made test
 UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;

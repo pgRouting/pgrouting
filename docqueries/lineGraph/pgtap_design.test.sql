@@ -1,3 +1,4 @@
+-- TODO move to pgtap
 
 /* -- one edge graph */
 SELECT * FROM pgr_lineGraph(

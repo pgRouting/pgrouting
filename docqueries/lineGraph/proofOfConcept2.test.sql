@@ -1,3 +1,4 @@
+-- TODO move to pgtap
 
 DROP TABLE edge_table;
 DROP TABLE edge_table_vertices_pgr;

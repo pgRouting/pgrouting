@@ -41,7 +41,7 @@ edgesWithUnassignedSourcePlusVertices
         JOIN lineGraph_vertices
         ON(source = id)),
 verticesFromEdgesWithUnassignedSource
-  AS (SELECT DISTINCT edgesWithUnassignedSourcePlusVertices.target, 
+  AS (SELECT DISTINCT edgesWithUnassignedSourcePlusVertices.target,
                       edgesWithUnassignedSourcePlusVertices.original_id
         FROM edgesWithUnassignedSourcePlusVertices
         JOIN lineGraph_vertices AS r
@@ -66,7 +66,7 @@ edgesWithUnassignedTargetPlusVertices
         JOIN lineGraph_vertices
         ON(target = id)),
 verticesFromEdgesWithUnassignedTarget
-  AS (SELECT DISTINCT edgesWithUnassignedTargetPlusVertices.source, 
+  AS (SELECT DISTINCT edgesWithUnassignedTargetPlusVertices.source,
                      edgesWithUnassignedTargetPlusVertices.original_id
         FROM edgesWithUnassignedTargetPlusVertices
         JOIN lineGraph_vertices AS r
@@ -93,7 +93,7 @@ originalEdgesWithUnassignedSource
 UPDATE lineGraph_vertices AS d
   SET original_id = (SELECT source
                        FROM originalEdgesWithUnassignedSource
-                       WHERE originalEdgesWithUnassignedSource.id = 
+                       WHERE originalEdgesWithUnassignedSource.id =
                          (SELECT edge
                             FROM edgesWithUnassignedSource
                             WHERE edgesWithUnassignedSource.source = d.id))
@@ -115,7 +115,7 @@ originalEdgesWithUnassignedTarget
 UPDATE lineGraph_vertices AS d
   SET original_id = (SELECT target
                        FROM originalEdgesWithUnassignedTarget
-                       WHERE originalEdgesWithUnassignedTarget.id = 
+                       WHERE originalEdgesWithUnassignedTarget.id =
                          (SELECT edge
                             FROM edgesWithUnassignedTarget
                             WHERE edgesWithUnassignedTarget.target = d.id))
@@ -137,10 +137,10 @@ UPDATE lineGraph_edges
 SELECT * FROM
   (SELECT * FROM
     (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM lineGraph_edges$$,
-      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 2),
-      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 8)
+      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 6),
+      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 3)
     )) as shortestPaths
-  WHERE start_vid = 2 AND end_vid = 8 AND (cost != 0 OR edge = -1)) as b;
+  WHERE start_vid = 6 AND end_vid = 3 AND (cost != 0 OR edge = -1)) as b;
 
 /* -- q9 */
 
