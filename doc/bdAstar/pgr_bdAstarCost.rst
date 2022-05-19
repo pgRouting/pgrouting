@@ -100,7 +100,7 @@ One to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex :math:`11` on a **directed** graph
+:Example: From vertex :math:`6` to vertex :math:`12` on a **directed** graph
           with heuristic :math:`2`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
@@ -119,7 +119,7 @@ One to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 12\}` on a **directed**
           graph with heuristic :math:`3` and factor :math:`3.5`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
@@ -138,7 +138,7 @@ Many to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 10\}` to vertex :math:`3` on an
+:Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an
           **undirected** graph with heuristic :math:`4`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
@@ -157,7 +157,7 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 10\}` to vertices :math:`\{3, 11\}` on a
+:Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
           **directed** graph with factor :math:`0.5`
 
 .. literalinclude:: doc-pgr_bdAstarCost.queries
