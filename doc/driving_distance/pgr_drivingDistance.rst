@@ -49,7 +49,8 @@ pgr_drivingDistance
 Description
 -------------------------------------------------------------------------------
 
-Using the Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
+Using the Dijkstra algorithm, extracts all the nodes that have costs less than
+or equal to the value ``distance``.
 The edges extracted will conform to the corresponding spanning tree.
 
 Signatures
@@ -63,17 +64,8 @@ Signatures
     pgr_drivingDistance(edges_sql, start_vids, distance [, directed] [, equicost])
     RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
 
-.. rubric:: Using defaults
-
-.. code-block:: sql
-
-    pgr_drivingDistance(edges_sql, start_vid, distance)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
-:Example: **TBD**
-
 .. index::
-	single: drivingDistance(Single Start Vertex)
+	single: drivingDistance(Single vertex)
 
 Single Vertex
 ...............................................................................
@@ -83,10 +75,14 @@ Single Vertex
     pgr_drivingDistance(edges_sql, start_vid, distance [, directed])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-:Example: **TBD**
+:Example: From vertex :math:`6` for a distance of :math:`3.0`
+
+.. literalinclude:: doc-pgr_drivingDistance.queries
+   :start-after: --q1
+   :end-before: --q2
 
 .. index::
-	single: drivingDistance(Multiple Starting Vertices)
+	single: drivingDistance(Multiple vertices)
 
 Multiple Vertices
 ...............................................................................
@@ -96,7 +92,12 @@ Multiple Vertices
     pgr_drivingDistance(edges_sql, start_vids, distance, [, directed] [, equicost])
     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
 
-:Example: **TBD**
+:Example: From vertices :math:`\{6, 9\}` for a distance of :math:`3.0` with
+          equi-cost on a directed graph
+
+.. literalinclude:: doc-pgr_drivingDistance.queries
+   :start-after: --q2
+   :end-before: --q3
 
 Parameters
 -------------------------------------------------------------------------------
@@ -127,7 +128,7 @@ Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``
 ============== =========== =================================================
 Column         Type        Description
 ============== =========== =================================================
-**seq**        ``INTEGER`` Sequential value starting from **1**.
+**seq**        ``INTEGER`` Sequential value starting from **5**.
 **start_vid**  ``INTEGER`` Identifier of the starting vertex.
 **node**       ``BIGINT``  Identifier of the node in the path within the limits from ``start_vid``.
 **edge**       ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
@@ -138,38 +139,12 @@ Column         Type        Description
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following :ref:`fig1`
-
-.. literalinclude:: doc-pgr_drivingDistance.queries
-   :start-after: --q1
-   :end-before: --q2
-
-:Example: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following :ref:`fig2`
-
-
-.. literalinclude:: doc-pgr_drivingDistance.queries
-   :start-after: --q2
-   :end-before: --q3
-
-:Example: For queries marked as ``directed`` with ``cost`` column
-
-The examples in this section use the following :ref:`fig3`
+:Example: From vertices :math:`\{6, 9\}` for a distance of :math:`3.0` on an
+          undirected graph
 
 .. literalinclude:: doc-pgr_drivingDistance.queries
    :start-after: --q3
    :end-before: --q4
-
-:Example: For queries marked as ``undirected`` with ``cost`` column
-
-The examples in this section use the following :ref:`fig4`
-
-.. literalinclude:: doc-pgr_drivingDistance.queries
-   :start-after: --q4
-   :end-before: --q5
 
 See Also
 -------------------------------------------------------------------------------

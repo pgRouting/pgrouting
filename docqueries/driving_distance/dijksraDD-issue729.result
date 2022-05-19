@@ -15,7 +15,7 @@ FROM
         sum(node) AS sum
         FROM
             pgr_drivingDistance(
-            'SELECT id, source, target, ST_Length(the_geom) AS cost FROM edge_table',
+            'SELECT id, source, target, ST_Length(geom) AS cost FROM edge_table',
             ARRAY(SELECT DISTINCT source FROM edge_table),
             1,
             false)

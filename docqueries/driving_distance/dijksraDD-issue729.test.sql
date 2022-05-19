@@ -1,3 +1,5 @@
+-- TODO move to pgtap
+
 ALTER TABLE edge_table
 DROP COLUMN IF EXISTS node_count,
 ADD COLUMN node_count INTEGER;
@@ -10,7 +12,7 @@ FROM
         sum(node) AS sum
         FROM
             pgr_drivingDistance(
-            'SELECT id, source, target, ST_Length(the_geom) AS cost FROM edge_table',
+            'SELECT id, source, target, ST_Length(geom) AS cost FROM edge_table',
             ARRAY(SELECT DISTINCT source FROM edge_table),
             1,
             false)
