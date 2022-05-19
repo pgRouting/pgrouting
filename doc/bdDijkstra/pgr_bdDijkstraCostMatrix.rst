@@ -67,7 +67,7 @@ Signatures
     pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids** [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
+:Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
           **undirected** graph
 
 .. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
