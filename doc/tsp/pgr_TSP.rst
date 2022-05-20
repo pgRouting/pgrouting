@@ -132,7 +132,8 @@ Signatures
 
 :Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information
 
-* **Line 5** Vertices 15 to 18 are not included because they are not connected.
+* **Line 4** Vertices :math:`\{2, 4, 13, 14\}` are not included because they are
+  not connected.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q1
@@ -175,22 +176,27 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Start from vertex :math:`7`
+.. contents::
+   :local:
 
-* **Line 9** ``start_vid => 7``
+Start from vertex :math:`1`
+...............................................................................
+
+* **Line 6** ``start_vid => 1``
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q2
    :end-before: -- q3
    :linenos:
 
-:Example: Using points of interest to generate an asymetric matrix.
+Using points of interest to generate an asymetric matrix.
+...............................................................................
 
 To generate an asymmetric matrix:
 
-* **Line 5** The ``side`` information of pointsOfInterset is ignored by not
+* **Line 4** The ``side`` information of ``pointsOfInterset`` is ignored by not
   including it in the query
-* **Line 7** Generating an asymetric matrix with ``directed => true``
+* **Line 6** Generating an asymetric matrix with ``directed => true``
 
   * :math:`min(agg\_cost(u, v), agg\_cost(v, u))` is going to be considered as
     the ``agg_cost``
@@ -205,30 +211,29 @@ To generate an asymmetric matrix:
    :end-before: -- q4
    :linenos:
 
-:Example: Connected incomplete data
+Connected incomplete data
+...............................................................................
 
-Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is
-connected
+Using selected edges :math:`\{2, 4, 5, 8, 9, 15\}` the matrix is not complete.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q4
    :end-before: -- q5
    :linenos:
 
-Edge `(5,12)` does not exist on the initial data, but it is calculated
-internally.
+Cost value for :math:`17 \rightarrow 10` do not exist on the matrix, but the
+value used is taken from :math:`10 \rightarrow 17`.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q5
    :end-before: -- q6
    :linenos:
 
-The queries use the :doc:`sampledata` network.
-
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
+* :doc:`sampledata`
 * `Boost's metric appro's metric approximation
   <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Wikipedia: Traveling Salesman Problem

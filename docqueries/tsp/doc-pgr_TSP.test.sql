@@ -3,42 +3,35 @@ SET client_min_messages TO WARNING;
 
 /* -- q1 */
 SELECT * FROM pgr_TSP(
-  $$
-  SELECT * FROM pgr_dijkstraCostMatrix(
+  $$SELECT * FROM pgr_dijkstraCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 14),
-    directed => false)
-  $$);
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id NOT IN (2, 4, 13, 14)),
+    directed => false) $$);
 /* -- q2 */
 SELECT * FROM pgr_TSP(
-  $$
-  SELECT * FROM pgr_dijkstraCostMatrix(
+  $$SELECT * FROM pgr_dijkstraCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 14),
-    directed => false
-  )
-  $$,
-  start_id => 7
-);
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id NOT IN (2, 4, 13, 14)),
+    directed => false) $$,
+  start_id => 1);
 /* -- q3 */
 SELECT * FROM pgr_TSP(
-  $$
-  SELECT * FROM pgr_withPointsCostMatrix(
+  $$SELECT * FROM pgr_withPointsCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction from pointsOfInterest',
-    array[-1, 3, 5, 6, -6],
-    directed => true)
-  $$,
-  start_id => 5,
-  end_id => 6
-);
+    array[-1, 10, 7, 11, -6],
+    directed => true) $$,
+  start_id => 7,
+  end_id => 11);
 /* -- q4 */
-SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
-FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15);
+SELECT * FROM pgr_dijkstraCostMatrix(
+  $q1$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+  directed => true);
 /* -- q5 */
 SELECT * FROM pgr_TSP(
-  $$
-  SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
-  FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15)
-  $$);
+  $$SELECT * FROM pgr_dijkstraCostMatrix(
+  $q1$SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+  directed => true)$$);
 /* -- q6 */
