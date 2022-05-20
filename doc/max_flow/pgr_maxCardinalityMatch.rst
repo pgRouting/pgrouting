@@ -77,7 +77,7 @@ Signatures
     RETURNS SET OF (seq, edge_id, source, target)
     OR EMPTY SET
 
-:Example: For an **undirected** graph
+:Example: For a **directed** graph
 
 .. literalinclude:: doc-pgr_maxCardinalityMatch.queries
    :start-after: -- q2
