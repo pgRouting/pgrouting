@@ -96,23 +96,8 @@ Signatures
     pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**  [, directed])
     pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids** [, directed])
     pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_ [, directed])
-
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
-
-.. rubric:: Using defaults
-
-.. parsed-literal::
-
-    pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
-
-:Example: From vertex :math:`2` to vertex :math:`3` on a **directed** graph
-
-.. literalinclude:: doc-pgr_bellmanFord.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 .. index::
     single: bellman_ford(One to One) - Experimental on v3.0
@@ -126,7 +111,7 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex :math:`3` on an **undirected** graph
+:Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q2
@@ -144,7 +129,7 @@ One to Many
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{ 3, 5\}` on an **undirected**
+:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
@@ -163,7 +148,7 @@ Many to One
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
@@ -182,8 +167,8 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an
-          **directed** graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q5
@@ -201,19 +186,19 @@ Combinations
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Using a combinations table on an **directed** graph.
+:Example: Using a combinations table on an **undirected** graph.
 
 The combinations table:
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q51
-   :end-before: -- q6
+   :end-before: -- q52
 
 The query:
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q52
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -229,7 +214,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner Queries
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -246,12 +231,33 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Results Columns
+Return columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_path_short_start
     :end-before: return_path_short_end
+
+Additional Examples
+-------------------------------------------------------------------------------
+
+:Example 1: Demonstration of repeated values are ignored, and result is sorted.
+
+.. literalinclude:: doc-pgr_bellmanFord.queries
+    :start-after: -- q6
+    :end-before: -- q7
+
+:Example 2: Making ``start_vids`` the same as ``end_vids``.
+
+.. literalinclude:: doc-pgr_bellmanFord.queries
+    :start-after: -- q7
+    :end-before: -- q8
+
+:Example 3: Manually assigned vertex combinations.
+
+.. literalinclude:: doc-pgr_bellmanFord.queries
+    :start-after: -- q8
+    :end-before: -- q9
 
 See Also
 -------------------------------------------------------------------------------

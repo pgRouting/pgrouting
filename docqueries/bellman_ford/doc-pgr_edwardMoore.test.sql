@@ -1,187 +1,37 @@
 /* -- q2 */
 SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, 3,
-    FALSE
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  6, 10, true);
 /* -- q3 */
 SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    2, ARRAY[3,5],
-    FALSE
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  6, ARRAY[10, 17]);
 /* -- q4 */
 SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[2,11], 5
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  ARRAY[6, 1], 17);
 /* -- q5 */
 SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[2,11], ARRAY[3,5],
-    FALSE
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  ARRAY[6, 1], ARRAY[10, 17],
+  directed => false);
 /* -- q51 */
-SELECT * FROM combinations_table;
+SELECT source, target FROM combinations_table;
+/* -- q52 */
+SELECT * FROM pgr_edwardMoore(
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT source, target FROM combinations_table',
+  false);
 /* -- q6 */
 SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT * FROM combinations_table',
-    FALSE
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  ARRAY[7, 10, 15, 10, 10, 15], ARRAY[10, 7, 10, 15]);
 /* -- q7 */
-
--- Examples for :ref:`fig1-direct-Cost-Reverse`
--------------------------------------------------------------------------------
-
+SELECT * FROM pgr_edwardMoore(
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  ARRAY[7, 10, 15], ARRAY[7, 10, 15]);
 /* -- q8 */
 SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, 3
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, 5
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, ARRAY[3,5]
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    11, 3
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    11, 5
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[2,11], 5
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 11], ARRAY[3,5]
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
 /* -- q9 */
-
-
--- Examples for :ref:`fig2-undirect-Cost-Reverse`
--------------------------------------------------------------------------------
-
-
-/* -- q10 */
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, 3,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, 5,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    11, 3,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    11, 5,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[2,11], 5,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, ARRAY[3,5],
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 11], ARRAY[3,5],
-    FALSE
-);
-/* -- q11 */
-
-
--- Examples for :ref:`fig3-direct-Cost`
--------------------------------------------------------------------------------
-
-
-/* -- q12 */
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    2, 3
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    2, 5
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    11, 3
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    11, 5
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[2,11], 5
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    2, ARRAY[3,5]
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[2, 11], ARRAY[3,5]
-);
-/* -- q13 */
-
-
--- Examples for :ref:`fig4-undirect-Cost`
--------------------------------------------------------------------------------
-
-/* -- q14 */
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    2, 3,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    2, 5,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    11, 3,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    11, 5,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[2,11], 5,
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    2, ARRAY[3,5],
-    FALSE
-);
-SELECT * FROM pgr_edwardMoore(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[2, 11], ARRAY[3,5],
-    FALSE
-);
-/* -- q15 */

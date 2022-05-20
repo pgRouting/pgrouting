@@ -45,18 +45,18 @@ Edward-Moore algorithm is an improvement of the Bellman-Ford Algorithm.
 Description
 -------------------------------------------------------------------------------
 
-Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It 
+Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It
 can compute the shortest paths from a single source vertex to all other vertices
 in a weighted directed graph. The main difference between Edward Moore's Algorithm
 and Bellman Ford's Algorithm lies in the run time.
 
 The worst-case running time of the algorithm is :math:`O(| V | * | E |)` similar
 to the time complexity of Bellman-Ford algorithm.
-However, experiments suggest that this algorithm has an average running time 
+However, experiments suggest that this algorithm has an average running time
 complexity of :math:`O( | E | )` for random graphs. This is significantly faster
 in terms of computation speed.
 
-Thus, the algorithm is at-best, significantly faster than Bellman-Ford algorithm 
+Thus, the algorithm is at-best, significantly faster than Bellman-Ford algorithm
 and is at-worst,as good as Bellman-Ford algorithm
 
 **The main characteristics are:**
@@ -66,7 +66,7 @@ and is at-worst,as good as Bellman-Ford algorithm
 
       * The `agg_cost` the non included values `(v, v)` is :math:`0`
 
-    * When the starting vertex and ending vertex are the different and there is 
+    * When the starting vertex and ending vertex are the different and there is
       no path:
 
       * The `agg_cost` the non included values `(u, v)` is :math:`\infty`
@@ -88,7 +88,7 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal:: 
+.. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
     pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vids** [, directed])
@@ -110,7 +110,7 @@ One to One
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
+:Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q2
@@ -128,7 +128,8 @@ One to Many
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a **directed**
+          graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q3
@@ -146,7 +147,8 @@ Many to One
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
+          graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q4
@@ -164,7 +166,8 @@ Many to Many
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q5
@@ -182,17 +185,19 @@ Combinations
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
+:Example: Using a combinations table on an **undirected** graph.
+
 The combinations table:
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q51
-   :end-before: -- q6
+   :end-before: -- q52
 
-:Example: Using the combinations table on an **undirected** graph.
+The query:
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q52
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -225,52 +230,33 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Return columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
-
+    :start-after: return_path_short_start
+    :end-before: return_path_short_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-The examples of this section are based on the :doc:`sampledata` network.
-The examples include combinations from starting vertices 2 and 11 to ending 
-vertices 3 and 5 in a directed and undirected graph with and with out reverse_cost.
-
-**Examples:** For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following :ref:`fig1`
+:Example 1: Demonstration of repeated values are ignored, and result is sorted.
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q8
-   :end-before: -- q9
+    :start-after: -- q6
+    :end-before: -- q7
 
-**Examples:** For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following :ref:`fig2`
+:Example 2: Making ``start_vids`` the same as ``end_vids``.
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q10
-   :end-before: -- q11
+    :start-after: -- q7
+    :end-before: -- q8
 
-**Examples:** For queries marked as ``directed`` with ``cost`` column
-
-The examples in this section use the following :ref:`fig3`
+:Example 3: Manually assigned vertex combinations.
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q12
-   :end-before: -- q13
-
-**Examples:** For queries marked as ``undirected`` with ``cost`` column
-
-The examples in this section use the following :ref:`fig4`
-
-.. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q14
-   :end-before: -- q15
+    :start-after: -- q8
+    :end-before: -- q9
 
 See Also
 -------------------------------------------------------------------------------
