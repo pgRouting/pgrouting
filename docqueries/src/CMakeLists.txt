@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     withPoints-category
     sampledata
+    migration
     )
 
 foreach (f ${LOCAL_FILES})

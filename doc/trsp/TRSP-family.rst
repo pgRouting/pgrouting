@@ -33,7 +33,7 @@ When points are also given as input:
 
 .. index proposed to here
 
-.. Warning:: Read the :doc:`trsp_migration` about how to migrate from the
+.. Warning:: Read the :doc:`migration` about how to migrate from the
    deprecated TRSP functionality to the new signatures or replacement functions.
 
 .. rubric:: Experimental

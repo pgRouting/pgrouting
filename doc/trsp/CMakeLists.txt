@@ -6,7 +6,6 @@ SET(LOCAL_FILES
     pgr_trspVia_withPoints.rst
     pgr_trsp_withPoints.rst
     pgr_turnRestrictedPath.rst
-    trsp_migration.rst
     )
 
 foreach (f ${LOCAL_FILES})

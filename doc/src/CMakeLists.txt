@@ -14,6 +14,7 @@ SET(LOCAL_FILES
     costMatrix-category.rst
     via-category.rst
     withPoints-category.rst
+    migration.rst
     )
 
 foreach (f ${LOCAL_FILES})

@@ -110,7 +110,7 @@ Available Functions but not official pgRouting functions
 .. toctree::
     :hidden:
 
-    trsp_migration
+    migration
 
 .. rubric:: Indices and tables
 

@@ -256,7 +256,7 @@ See Also
 
 * :doc:`TRSP-family`
 * `Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_
-* :doc:`trsp_migration`
+* :doc:`migration`
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables
