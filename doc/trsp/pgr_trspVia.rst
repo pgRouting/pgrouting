@@ -68,7 +68,7 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 1, 7, 10\}` in that
+:Example: Find the route that visits the vertices :math:`\{ 5, 1, 8\}` in that
           order on an **directed** graph.
 
 .. literalinclude:: trspVia.queries
@@ -78,7 +78,7 @@ One Via
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: via-category.rst
+.. include:: TRSP-family.rst
     :start-after: via_parameters_start
     :end-before: via_parameters_end
 
@@ -109,7 +109,7 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-.. include:: TRSP-family.rst
+.. include:: pgRouting-concepts.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
@@ -123,7 +123,7 @@ Return Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{1, 5, 7, 10, 4\}`
+:Example 1: Find the route that visits the vertices :math:`\{5, 7, 1, 8, 15\}`
             in that order
 
 .. literalinclude:: trspVia.queries
@@ -172,7 +172,7 @@ The algorithm performs a :doc:`pgr_dijkstraVia`
     :end-before: -- q8
 
 Detects which of the sub paths pass through a restriction in this case is for
-the ``path_id = 1`` from ``2`` to ``8`` because the path :math:`4 \rightarrow 7`
+the ``path_id = 5`` from ``6`` to ``3`` because the path :math:`15 \rightarrow 1`
 is restricted.
 
 Executes the :doc:`pgr_trsp` algorithm for the conflicting paths.
@@ -198,7 +198,7 @@ Getting the same result as ``pgr_trspVia``:
             ``false``.
 
 The first step, doing a :doc:`pgr_dijkstraVia` does consider not making a U turn
-on the same edge. But the path :math:`9 \rightarrow 16` (Rows 4 and 5) is
+on the same edge. But the path :math:`16 \rightarrow 13` (Rows 4 and 5) is
 restricted and the result is using it.
 
 .. literalinclude:: trspVia.queries

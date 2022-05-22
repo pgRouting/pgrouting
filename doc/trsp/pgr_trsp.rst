@@ -42,10 +42,11 @@ pgr_trsp - Proposed
     * ``pgr_trsp`` (`Many to Many`_)
     * ``pgr_trsp`` (`Combinations`_)
 
-  * Signature ``pgr_trsp(text,integer,integer,boolean,boolean,text)`` is deprecated
-  * Signature ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)`` is deprecated
-  * Signature ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)`` is deprecated
-  * Signature ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)`` is deprecated
+  * Deprecated signatures
+     * ``pgr_trsp(text,integer,integer,boolean,boolean,text)``
+     * ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``
+     * ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
+     * ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``
 
 * Version 2.1.0
 
@@ -57,9 +58,6 @@ pgr_trsp - Proposed
 * Version 2.0.0
 
   * **Official** function
-
-
-.. contents:: Contents
 
 Description
 -------------------------------------------------------------------------------
@@ -82,13 +80,8 @@ The general algorithm is as follows:
 
   * Execute the **TRSP** algorithm with restrictions
 
-
-
-
 Signatures
 -------------------------------------------------------------------------------
-
-.. rubric:: Summary
 
 .. rubric:: Proposed
 
@@ -118,7 +111,7 @@ One to One
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on an **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q2
@@ -136,7 +129,7 @@ One to Many
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 7\}` on an **undirected** graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 1\}` on an **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q3
@@ -154,7 +147,7 @@ Many to One
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`10` on a **directed** graph
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`8` on a **directed** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q4
@@ -172,7 +165,7 @@ Many to Many
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 10\}` on an **undirected** graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 8\}` on an **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q5
@@ -200,23 +193,17 @@ Combinations
 Parameters
 -------------------------------------------------------------------------------
 
-.. trsp_parameters_start
+.. include:: pgRouting-concepts.rst
+    :start-after: restriction_parameters_start
+    :end-before: restriction_parameters_end
 
-===================== ================== ========= ==========================================================
-Parameter             Type               Default     Description
-===================== ================== ========= ==========================================================
-`Edges SQL`_          ``TEXT``                     `Edges SQL`_ as described below
-`Restrictions SQL`_   ``TEXT``                     `Restrictions SQL`_ as described below
-`Combinations SQL`_   ``TEXT``                     `Combinations SQL`_ as described below
-**start vid**         ``BIGINT``                   Identifier of the starting vertex of the path.
-**start vids**        ``ARRAY[BIGINT]``            Array of identifiers of starting vertices.
-**end vid**           ``BIGINT``                   Identifier of the ending vertex of the path.
-**end vids**          ``ARRAY[BIGINT]``            Array of identifiers of ending vertices.
-``directed``          ``BOOLEAN``         ``true`` - When ``true`` Graph is considered `Directed`
-                                                   - When ``false`` the graph is considered as `Undirected`.
-===================== ================== ========= ==========================================================
 
-.. pgr_trsp_parameters_end
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 Inner queries
 -------------------------------------------------------------------------------
@@ -231,7 +218,7 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-.. include:: TRSP-family.rst
+.. include:: pgRouting-concepts.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
@@ -246,8 +233,8 @@ Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: return_path_all_columns_start
+    :end-before: return_path_all_columns_end
 
 
 
