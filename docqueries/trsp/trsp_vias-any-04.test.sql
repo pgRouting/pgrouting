@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
     SELECT * FROM pgr_trspViaVertices(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
-        ARRAY[2, 7, 11]::INTEGER[],     -- array of vids
+        ARRAY[6, 1, 12]::INTEGER[],     -- array of vids
         true,  -- directed graph?
         true,  -- has_reverse_cost?
         -- include the turn restrictions
