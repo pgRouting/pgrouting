@@ -154,8 +154,8 @@ void Pgr_trspHandler::clear() {
 
 // -------------------------------------------------------------------------
 double Pgr_trspHandler::construct_path(int64_t ed_id, Position pos) {
-    pgassert(pos != ILLEGAL);
     if (pos == ILLEGAL) return (std::numeric_limits<double>::max)();
+    pgassert(pos != ILLEGAL);
 
     if (m_parent[static_cast<size_t>(ed_id)].isIllegal(pos)) {
         Path_t pelement;
@@ -320,6 +320,10 @@ Path
 Pgr_trspHandler::process(
         const int64_t start_vertex,
         const int64_t end_vertex) {
+    if (m_id_to_idx.find(start_vertex) == m_id_to_idx.end()
+        || m_id_to_idx.find(end_vertex) == m_id_to_idx.end()) {
+        return Path();
+    }
     clear();
     pgassert(m_id_to_idx.find(start_vertex) != m_id_to_idx.end());
     pgassert(m_id_to_idx.find(end_vertex) != m_id_to_idx.end());
