@@ -1,24 +1,23 @@
 SET extra_float_digits=-3;
--- documentation queries
 /* -- q0 */
 SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 4, -5]);
+  ARRAY[-6, 15, -5]);
 /* -- q1 */
 SELECT * FROM pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 );
 /* -- q2 */
 SELECT agg_cost FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE path_id = 3 AND edge <0;
 /* -- q3 */
@@ -26,7 +25,7 @@ SELECT route_agg_cost FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE path_id = 3 AND edge < 0;
 /* -- q4 */
@@ -35,7 +34,7 @@ FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE edge <> -1 ORDER BY seq;
 /* -- q5 */
@@ -43,7 +42,7 @@ SELECT path_id, route_agg_cost FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE edge < 0;
 /* -- q6 */
@@ -55,20 +54,20 @@ FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2])
+  ARRAY[-6, 7, -4, 8, -2])
 WHERE agg_cost  <> 0 or seq = 1;
 /* -- q7 */
 SELECT * FROM pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 4, -5]);
+  ARRAY[-6, 15, -5]);
 /* -- q8 */
 SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
 FROM  pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  -6, 4);
+  -6, 15);
 /* -- q9 */
 WITH
 solutions AS (
@@ -76,7 +75,7 @@ solutions AS (
   FROM  pgr_withPointsVia(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-    ARRAY[-6, 4, -5]) WHERE path_id != 1
+    ARRAY[-6, 15, -5]) WHERE path_id != 1
 
   UNION
 
@@ -85,7 +84,7 @@ solutions AS (
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     $$SELECT path, cost FROM restrictions$$,
     $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-    -6, 4)),
+    -6, 15)),
 with_seq AS (
   SELECT row_number() over(ORDER BY path_id, path_seq) AS seq, *
   FROM solutions),
@@ -98,23 +97,23 @@ SELECT * FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 4, -5]);
+  ARRAY[-6, 15, -5]);
 /* -- q11 */
 SELECT * FROM  pgr_withPointsVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[2, 5, 2], U_turn_on_edge => false);
+  ARRAY[6, 7, 6], U_turn_on_edge => false);
 /* -- q12 */
-SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+SELECT 5 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
 FROM  pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  5, 2);
+  7, 6);
 /* -- q13 */
 SELECT * FROM  pgr_trspVia_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[2, 5, 2], U_turn_on_edge => false);
+  ARRAY[6, 7, 6], U_turn_on_edge => false);
 /* -- q14 */

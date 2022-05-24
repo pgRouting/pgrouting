@@ -65,7 +65,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: trspVia - Proposed on v3.4
+    single: trspVia_withPoints - Proposed on v3.4
 
 One Via
 ...............................................................................
@@ -78,7 +78,7 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ -6, 4, -5\}` in that
+:Example: Find the route that visits the vertices :math:`\{-6, 15, -5\}` in that
           order on an **directed** graph.
 
 .. literalinclude:: trspVia_withPoints.queries
@@ -126,7 +126,7 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-.. include:: TRSP-family.rst
+.. include:: pgRouting-concepts.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
@@ -147,7 +147,7 @@ Return Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{-6, 5, -4, 10, -2\}`
+:Example 1: Find the route that visits the vertices :math:`\{-6, 7, -4, 8, -2\}`
             in that order
 
 .. literalinclude:: trspVia_withPoints.queries
@@ -196,7 +196,7 @@ The algorithm performs a :doc:`pgr_withPointsVia`
     :end-before: -- q8
 
 Detects which of the paths pass through a restriction in this case is for the
-``path_id = 1`` from ``-6`` to ``4`` because the path :math:`9 \rightarrow 16`
+``path_id = 1`` from ``-6`` to ``15`` because the path :math:`9 \rightarrow 16`
 is restricted.
 
 Executes the :ref:`TRSP-family:TRSP algorithm` for the conflicting paths.
