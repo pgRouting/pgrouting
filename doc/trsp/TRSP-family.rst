@@ -70,8 +70,6 @@ restrictions, there are sometimes restrictions.
 .. image:: images/restrictions.png
 
 
-|
-
 TRSP algorithm
 ...............................................................................
 
@@ -79,7 +77,34 @@ The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in
 order to find out if the attempted path has a restriction. This allows the
 algorithm to pass twice on the same vertex.
 
-|
+Parameters
+...............................................................................
+
+.. via_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 18 20 40
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - `Edges SQL`_ query as described.
+   * - `Restrictions SQL`_
+     - ``TEXT``
+     - `Restrictions SQL`_ query as described.
+   * - **via vertices**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Array of ordered vertices identifiers that are going to be visited.
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+.. via_parameters_end
 
 Restrictions
 ...............................................................................
@@ -89,6 +114,8 @@ no U turn restrictions.
 
 A restriction is a sequence of edges, called **path** and that **path** is to be
 avoided.
+
+.. TODO update the image
 
 .. figure:: /images/with_restrictions.png
    :scale: 50%
@@ -105,39 +132,20 @@ These restrictions are represented on a table as follows:
    administration of the restrictions, but the algorithms do not need that
    information. If given it will be ignored.
 
-|
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Restrictions SQL
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. restrictions_columns_start
-
-.. list-table::
-   :width: 81
-   :widths: 7 17 44
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``path``
-     - ``ARRAY[`` **ANY-INTEGER** ``]``
-     - Sequence of edge identifiers that form a path that is not allowed to be
-       taken.
-       - Empty arrays or ``NULL`` arrays are ignored.
-       - Arrays that have a ``NULL`` element will raise an exception.
-   * - ``Cost``
-     - **ANY-NUMERICAL**
-     - Cost of taking the forbidden path.
-
-Where:
-
-:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
-:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
-
-
-
-.. restrictions_columns_end
+.. include:: pgRouting-concepts.rst
+   :start-after: restrictions_columns_start
+   :end-before: restrictions_columns_end
 
 
 See Also

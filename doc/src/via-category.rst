@@ -45,8 +45,6 @@ given.
 :path: represents a section of a **route**.
 :route: is a sequence of **paths**
 
-|
-
 Parameters
 -------------------------------------------------------------------------------
 
@@ -74,6 +72,11 @@ Parameters
      - ``ARRAY[`` **ANY-INTEGER** ``]``
      -
      - Array of ordered vertices identifiers that are going to be visited.
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 .. via_parameters_end
 
@@ -109,9 +112,12 @@ Parameters
        * When positive it is considered a vertex identifier
        * When negative it is considered a point identifier
 
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
 .. via_withPoints_parameters_end
-
-
 
 Besides the compulsory parameters each function has, there are optional
 parameters that exist due to the kind of function.

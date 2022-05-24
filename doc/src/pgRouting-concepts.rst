@@ -219,8 +219,6 @@ When routing from:
 * From **many** starting vertices
 * to **many** ending vertices
 
-|
-
 Combinations
 ...............................................................................
 
@@ -565,8 +563,36 @@ Where:
 
 .. basic_combinations_sql_end
 
+Restrictions SQL
+...............................................................................
 
-|
+.. restrictions_columns_start
+
+.. list-table::
+   :width: 81
+   :widths: 7 17 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``path``
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Sequence of edge identifiers that form a path that is not allowed to be
+       taken.
+       - Empty arrays or ``NULL`` arrays are ignored.
+       - Arrays that have a ``NULL`` element will raise an exception.
+   * - ``Cost``
+     - **ANY-NUMERICAL**
+     - Cost of taking the forbidden path.
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+.. restrictions_columns_end
+
 
 Points SQL
 ...............................................................................
@@ -607,7 +633,8 @@ parameters, some of them are compulsory and some are optional.
 The compulsory parameters are nameless and must be given in the required order.
 The optional parameters are named parameters and will have a default value.
 
-.. rubric:: Parameters for the Via functions
+Parameters for the Via functions
+...............................................................................
 
 * :doc:`pgr_dijkstraVia`
 
@@ -653,6 +680,49 @@ The optional parameters are named parameters and will have a default value.
 
 .. pgr_dijkstra_via_parameters_end
 
+For the TRSP functions
+...............................................................................
+
+* :doc:`pgr_trsp`
+
+.. restriction_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 17 22 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Restrictions SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Combinations SQL`_
+     - ``TEXT``
+     - `Combinations SQL`_ as described below
+   * - **start vid**
+     - **ANY-INTEGER**
+     - Identifier of the departure vertex.
+   * - **start vids**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Array of identifiers of destination vertices.
+   * - **end vid**
+     - **ANY-INTEGER**
+     - Identifier of the departure vertex.
+   * - **end vids**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Array of identifiers of destination vertices.
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+
+.. restriction_parameters_end
+
 Return columns
 --------------------------------------------------------------------------------
 
@@ -660,8 +730,6 @@ Return columns
     :local:
 
 There are several kinds of columns returned are depending of the function.
-
-|
 
 Return columns for a path
 ...............................................................................
@@ -830,12 +898,13 @@ Returns set of ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 .. return_path_complete_end
 
-|
-
-Return columns for multiple paths
+Multiple paths
 ...............................................................................
 
-.. rubric:: Used on functions that return many paths solutions
+Selective for multiple paths.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The columns depend on the function call.
 
 .. return_path_start
 
@@ -868,6 +937,7 @@ agg_cost)``
 
        * `Many to One`_
        * `Many to Many`_
+       * `Combinations`_
    * - ``end_vid``
      - ``BIGINT``
      - Identifier of the ending vertex.
@@ -875,6 +945,7 @@ agg_cost)``
 
        * `One to Many`_
        * `Many to Many`_
+       * `Combinations`_
    * - ``node``
      - ``BIGINT``
      - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
@@ -892,14 +963,66 @@ agg_cost)``
 
 .. return_path_end
 
-|
+Non selective for multiple paths
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Regardless of the call, al the columns are returned.
+
+* :doc:`pgr_trsp`
+
+.. return_path_all_columns_start
+
+Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost,
+agg_cost)``
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_id``
+     - ``INTEGER``
+     - Path identifier.
+
+       * Has value **1** for the first of a path from ``start_vid`` to ``end_vid``.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex.
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex.
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence. **-1** for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
+
+.. return_path_all_columns_end
 
 Return columns for cost functions
 ...............................................................................
 
 .. rubric:: Used in the following
 
-* Cost functions
+* :doc:`cost-category`
 * :doc:`costMatrix-category`
 * :doc:`allpairs-family`
 
