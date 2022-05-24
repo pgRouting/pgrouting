@@ -75,7 +75,7 @@ Single vertex
     pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertex :math:`2` on a **directed** graph with edges in
+:Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
@@ -93,7 +93,7 @@ Multiple vertices
     pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph with
+:Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
@@ -153,6 +153,8 @@ The left image shows the result with ascending order of ids and the right image
 shows with descending order of the edge identifiers.
 
 |ascending| |descending|
+
+.. TODO adjust the images
 
 .. |ascending| image:: images/bfs-ascending.png
    :scale: 50%
