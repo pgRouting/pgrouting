@@ -246,7 +246,7 @@ Additional Examples
     :start-after: -- q6
     :end-before: -- q7
 
-:Example 2: Making ``start_vids`` the same as ``end_vids``.
+:Example 2: Making **start vids** the same as **end vids**.
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
     :start-after: -- q7

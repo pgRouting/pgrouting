@@ -241,7 +241,7 @@ Additional Examples
     :start-after: -- q6
     :end-before: -- q7
 
-:Example: Making ``start_vids`` the same as ``end_vids``.
+:Example 2: Making **start_vids** the same as **end_vids**
 
 .. literalinclude:: doc-pgr_dijkstra.queries
     :start-after: -- q7
