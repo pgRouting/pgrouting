@@ -70,7 +70,11 @@ class Pgr_topologicalSort {
         /* abort in case of an interruption occurs (e.g. the query is being cancelled) */
         CHECK_FOR_INTERRUPTS();
 
+        try {
         boost::topological_sort(graph.graph, std::back_inserter(c));
+        } catch (...) {
+            throw std::string("Graph is not DAG");
+        }
 
         typename std::vector< V >::reverse_iterator ii;
         for (ii = c.rbegin(); ii != c.rend(); ++ii) {

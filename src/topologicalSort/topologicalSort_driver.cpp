@@ -79,7 +79,6 @@ do_pgr_topologicalSort(
 
         std::vector<I_rt> results;
 
-        log << "Working with Directed Graph\n";
         pgrouting::DirectedGraph digraph(gType);
         digraph.insert_edges(data_edges, total_edges);
         results = pgr_topologicalSort(
@@ -120,6 +119,12 @@ do_pgr_topologicalSort(
         err << except.what();
         *err_msg = pgr_msg(err.str().c_str());
         *log_msg = pgr_msg(log.str().c_str());
+    } catch (const std::string& ex) {
+        (*return_count) = 0;
+        err << ex;
+        log.str("");
+        log.clear();
+        *err_msg = pgr_msg(err.str().c_str());
     } catch(...) {
         (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
