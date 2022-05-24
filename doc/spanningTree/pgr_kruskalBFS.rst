@@ -69,11 +69,11 @@ Single vertex
     pgr_kruskalBFS(`Edges SQL`_, **Root vid** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree having as root vertex :math:`2`
+:Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
 .. literalinclude:: doc-pgr_kruskalBFS.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: kruskalBFS(Multiple vertices)
@@ -86,12 +86,12 @@ Multiple vertices
     pgr_kruskalBFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with
-          :math:`depth <= 3`
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
+          :math:`depth \leq 3`
 
 .. literalinclude:: doc-pgr_kruskalBFS.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 Parameters
 -------------------------------------------------------------------------------

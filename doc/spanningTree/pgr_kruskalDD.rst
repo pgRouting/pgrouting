@@ -75,8 +75,8 @@ Single vertex
     pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertex :math:`2` with
-          **distance** :math:`<= 3.5`
+:Example: The Minimum Spanning Tree starting on vertex :math:`6` with
+          :math:`distance \leq 3.5`
 
 .. literalinclude:: doc-pgr_kruskalDD.queries
    :start-after: -- q1
@@ -93,8 +93,8 @@ Multiple vertices
     pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with
-          **distance** :math:`<= 3.5`
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
+          :math:`distance \leq 3.5`
 
 .. literalinclude:: doc-pgr_kruskalDD.queries
    :start-after: -- q2
