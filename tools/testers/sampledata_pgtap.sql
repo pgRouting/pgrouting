@@ -146,8 +146,7 @@ CREATE TABLE vehicles (
   start_x FLOAT,
   start_y FLOAT,
   start_open FLOAT,
-  start_close FLOAT,
-  start_service FLOAT DEFAULT 0.0
+  start_close FLOAT
 );
 
 INSERT INTO vehicles

@@ -3,6 +3,19 @@ BEGIN;
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
 SELECT plan(139);
 
+ALTER TABLE vehicles ADD start_service FLOAT DEFAULT 0.0,
+ADD speed FLOAT DEFAULT 1.0,
+ADD end_node_id  BIGINT,
+ADD end_open  FLOAT,
+ADD end_close FLOAT,
+ADD end_service  FLOAT;
+
+UPDATE vehicles
+SET end_node_id  = start_node_id,
+ end_open  = start_open,
+ end_close = start_close,
+ end_service = start_service;
+
 SELECT lives_ok(
   $q$
   SELECT * FROM pgr_pickdelivereuclidean(
