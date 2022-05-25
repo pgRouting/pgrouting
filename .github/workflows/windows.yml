@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install boost
-        uses: MarkusJx/install-boost@v1.0.1
+        uses: MarkusJx/install-boost@v2.3.0
         id: install-boost
         with:
           # REQUIRED: Specify the required boost version
