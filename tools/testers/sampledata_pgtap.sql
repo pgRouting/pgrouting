@@ -141,18 +141,13 @@ INSERT INTO restrictions (path, cost) VALUES
 
 CREATE TABLE vehicles (
   id BIGSERIAL PRIMARY KEY,
-  speed FLOAT DEFAULT 1.0,
+  capacity FLOAT,
   start_node_id BIGINT,
   start_x FLOAT,
   start_y FLOAT,
   start_open FLOAT,
   start_close FLOAT,
-  start_service FLOAT DEFAULT 0.0,
-  end_node_id  BIGINT GENERATED ALWAYS AS (start_node_id) STORED,
-  end_open  FLOAT GENERATED ALWAYS AS (start_open) STORED,
-  end_close FLOAT GENERATED ALWAYS AS (start_close) STORED,
-  end_service  FLOAT GENERATED ALWAYS AS (start_service) STORED,
-  capacity FLOAT
+  start_service FLOAT DEFAULT 0.0
 );
 
 INSERT INTO vehicles

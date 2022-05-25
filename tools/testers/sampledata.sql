@@ -172,7 +172,7 @@ INSERT INTO restrictions (path, cost) VALUES
 
 CREATE TABLE vehicles (
   id BIGSERIAL PRIMARY KEY,
-  capacity FLOAT
+  capacity FLOAT,
   start_node_id BIGINT,
   start_x FLOAT,
   start_y FLOAT,
