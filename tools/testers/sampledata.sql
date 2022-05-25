@@ -172,24 +172,19 @@ INSERT INTO restrictions (path, cost) VALUES
 
 CREATE TABLE vehicles (
   id BIGSERIAL PRIMARY KEY,
-  speed FLOAT DEFAULT 1.0,
+  capacity FLOAT
   start_node_id BIGINT,
   start_x FLOAT,
   start_y FLOAT,
   start_open FLOAT,
   start_close FLOAT,
-  start_service FLOAT DEFAULT 0.0,
-  end_node_id  BIGINT GENERATED ALWAYS AS (start_node_id) STORED,
-  end_open  FLOAT GENERATED ALWAYS AS (start_open) STORED,
-  end_close FLOAT GENERATED ALWAYS AS (start_close) STORED,
-  end_service  FLOAT GENERATED ALWAYS AS (start_service) STORED,
-  capacity FLOAT
+  start_service FLOAT DEFAULT 0.0
 );
 
 INSERT INTO vehicles
 (start_node_id, start_x,  start_y,  start_open,  start_close, capacity) VALUES
-(            6,       3,        2,           0,           50,       50),
-(            6,       3,        2,           0,           50,       50);
+(            11,       3,        2,           0,           50,       50),
+(            11,       3,        2,           0,           50,       50);
 
 /* --VEHICLES TABLE END */
 
@@ -221,14 +216,14 @@ INSERT INTO orders
     p_node_id,  p_x, p_y,  p_open,  p_close,  p_service,
     d_node_id,  d_x, d_y,  d_open,  d_close,  d_service) VALUES
 (10,
-            3,    3,   1,      2,         10,          3,
-            8,    1,   2,      6,         15,          3),
+            10,    3,   1,      2,         10,          3,
+            3,    1,   2,      6,         15,          3),
 (20,
-            9,    4,   2,      4,         15,          2,
-            4,    4,   1,      6,         20,          3),
+            16,    4,   2,      4,         15,          2,
+            15,    4,   1,      6,         20,          3),
 (30,
-            5,    2,   2,      2,         10,          3,
-           11,    3,   3,      3,         20,          3);
+            7,    2,   2,      2,         10,          3,
+           12,    3,   3,      3,         20,          3);
 
 
 /* --ORDERS TABLE END */
