@@ -70,9 +70,9 @@ Signatures
 .. index::
     single: MaximumCardinalityMatch
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_maxCardinalityMatch(Edges SQL [, directed])
+    pgr_maxCardinalityMatch(`Edges SQL`_ [, directed])
 
     RETURNS SET OF (seq, edge_id, source, target)
     OR EMPTY SET

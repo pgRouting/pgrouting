@@ -54,9 +54,9 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: sql
+.. parsed-literal::
 
-    pgr_lengauerTarjanDominatorTree(Edges SQL, root vertex)
+    pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)
     RETURNS SET OF (seq, vertex_id, idom)
     OR EMPTY SET
 
@@ -84,6 +84,9 @@ Column          Type           Description
 
 Inner query
 -------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
