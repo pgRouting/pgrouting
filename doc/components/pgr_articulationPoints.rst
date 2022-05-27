@@ -20,10 +20,11 @@
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_articulationPoints.html>`__
 
 
-pgr_articulationPoints
+``pgr_articulationPoints``
 ===============================================================================
 
-``pgr_articulationPoints`` - Return the articulation points of an undirected graph.
+``pgr_articulationPoints`` - Return the articulation points of an undirected
+graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/biconnected_components.html
@@ -45,30 +46,29 @@ Description
 -------------------------------------------------------------------------------
 
 Those vertices that belong to more than one biconnected component are called
-articulation points or, equivalently, cut vertices. Articulation points are
-vertices whose removal would increase the number of connected components in
-the graph.
+articulation points or, equivalently, cut vertices.
+Articulation points are vertices whose removal would increase the number of
+connected components in the graph.
 This implementation can only be used with an undirected graph.
 
 **The main characteristics are:**
 
-- The signature is for an **undirected** graph.
+- Works for **undirected** graphs.
 - The returned values are ordered:
 
-  - `node` ascending
+  - ``node`` ascending
 
 - Running time: :math:`O(V + E)`
-
-Signatures
--------------------------------------------------------------------------------
 
 .. index::
     single: articulationPoints
 
-.. code-block:: none
+Signatures
+-------------------------------------------------------------------------------
 
-    pgr_articulationPoints(Edges SQL)
+.. parsed-literal::
 
+    pgr_articulationPoints(`Edges SQL`_)
     RETURNS SET OF (node)
     OR EMPTY SET
 
@@ -81,14 +81,15 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: components-family.rst
-    :start-after: components_parameters_start
-    :end-before: components_parameters_end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-:edges SQL: an SQL query of an **undirected** graph, which should return a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -97,25 +98,29 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-.. return_articulation_start
-
 Returns set of ``(node)``
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**node**       ``BIGINT`` Identifier of the vertex.
-============== ========== =================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
-.. return_articulation_end
+   * - Column
+     - Type
+     - Description
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the vertex.
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`components-family`
 * The queries use the :doc:`sampledata` network.
-* Boost: `Biconnected components & articulation points <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__
-* wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__
+* Boost: `Biconnected components & articulation points
+  <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__
+* wikipedia: `Biconnected component
+  <https://en.wikipedia.org/wiki/Biconnected_component>`__
 
 .. rubric:: Indices and tables
 

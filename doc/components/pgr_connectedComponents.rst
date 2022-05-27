@@ -22,7 +22,8 @@
 pgr_connectedComponents
 ===============================================================================
 
-``pgr_connectedComponents`` — Connected components of an undirected graph using a DFS-based approach.
+``pgr_connectedComponents`` — Connected components of an undirected graph using
+a DFS-based approach.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/connected_components.html
@@ -48,30 +49,31 @@ pgr_connectedComponents
 Description
 -------------------------------------------------------------------------------
 
-A connected component of an undirected graph is a set of vertices that are all reachable
+A connected component of an undirected graph is a set of vertices that are all
+reachable
 from each other.
 
 **The main characteristics are:**
 
-- The signature is for an **undirected** graph.
+- Works for **undirected** graphs.
 - Components are described by vertices
 
 - The returned values are ordered:
 
-  - `component` ascending
-  - `node` ascending
+  - ``component`` ascending
+  - ``node`` ascending
 
 - Running time: :math:`O(V + E)`
-
-Signatures
--------------------------------------------------------------------------------
 
 .. index::
     single: connectedComponents
 
-.. code-block:: none
+Signatures
+-------------------------------------------------------------------------------
 
-    pgr_connectedComponents(edges_sql)
+.. parsed-literal::
+
+    pgr_connectedComponents(`Edges SQL`_)
 
     RETURNS SET OF (seq, component, node)
     OR EMPTY SET
@@ -85,14 +87,15 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: components-family.rst
-    :start-after: components_parameters_start
-    :end-before: components_parameters_end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
 Inner query
 -------------------------------------------------------------------------------
 
-:edges SQL: an SQL query of an **undirected** graph, which should return a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -106,13 +109,25 @@ Result Columns
 
 Returns set of ``(seq, component, node)``
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``BIGINT``    Sequential value starting from **1**.
-**component**  ``BIGINT`` Component identifier. It is equal to the minimum node identifier in the component.
-**node**       ``BIGINT`` Identifier of the vertex that belongs to **component**.
-============== ========== =================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``BIGINT``
+     - Sequential value starting from **1**.
+   * - ``component``
+     - ``BIGINT``
+     - Component identifier.
+
+       * Has the value of the minimum node identifier in the component.
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the vertex that belongs to the ``component``.
 
 .. return_componentsV_end
 

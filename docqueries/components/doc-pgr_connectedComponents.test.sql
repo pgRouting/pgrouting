@@ -1,10 +1,5 @@
-
 /* -- q1 */
 SELECT * FROM pgr_connectedComponents(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
-
 /* -- q2 */
-SELECT * FROM pgr_connectedComponents(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
-);
