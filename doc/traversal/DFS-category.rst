@@ -35,6 +35,8 @@ Traversal using Depth First Search.
 * :doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph.
 
 
+In general:
+
 .. spanntree_traits_start
 
 * It's implementation is only on **undirected** graph.
@@ -49,37 +51,6 @@ Traversal using Depth First Search.
   * The resulting edges make up a forest.
 
 .. spanntree_traits_end
-
-Parameters
--------------------------------------------------------------------------------
-
-.. include:: BFS-category.rst
-   :start-after: mst-bfs-dfs-params_start
-   :end-before: mst-bfs-dfs-params_end
-
-DFS optional parameters
-...............................................................................
-
-.. include:: BFS-category.rst
-   :start-after: max-depth-optional-start
-   :end-before: max-depth-optional-end
-
-Inner queries
--------------------------------------------------------------------------------
-
-Edges SQL
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-Result Columns
--------------------------------------------------------------------------------
-
-.. include:: BFS-category.rst
-   :start-after: mst-bfs-dfs-dd-result-columns-start
-   :end-before: mst-bfs-dfs-dd-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------
