@@ -16,7 +16,7 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__)
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__
 
-pgr_pickDeliver - Experimental
+``pgr_pickDeliver`` - Experimental
 ===============================================================================
 
 ``pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
@@ -35,7 +35,8 @@ pgr_pickDeliver - Experimental
 Synopsis
 -------------------------------------------------------------------------------
 
-Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.
+Problem: Distribute and optimize the pickup-delivery pairs into a fleet of
+vehicles.
 
 - Optimization problem is NP-hard.
 - pickup and Delivery with time windows.
@@ -81,67 +82,51 @@ Characteristics
 Signature
 -------------------------------------------------------------------------------
 
-..
-    TEXT, -- orders_sql
-    TEXT, -- vehicles_sql
-    TEXT, -- matrix_cell_sql
-    factor FLOAT DEFAULT 1,
-    max_cycles INTEGER DEFAULT 10,
-    initial_sol INTEGER DEFAULT 4,
+.. parsed-literal::
 
-..
-    OUT seq INTEGER,
-    OUT vehicle_seq INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT stop_seq INTEGER,
-    OUT stop_type INTEGER,
-    OUT order_id BIGINT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT
+    pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_
+       [, factor], [max_cycles] [,initial_sol])
+    RETURNS SET OF (seq, vehicle_number, vehicle_id,
+       stop, order_id, stop_type, cargo,
+       travel_time, arrival_time, wait_time, service_time, departure_time)
 
+:Example: Solve the following problem
 
-.. code-block:: none
+Given the vehicles:
 
-    pgr_pickDeliver(orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol])
-    RETURNS SET OF (seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo,
-                    travel_time, arrival_time, wait_time, service_time, departure_time)
+.. literalinclude:: doc-pickDeliver.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
+and the orders:
+
+.. literalinclude:: doc-pickDeliver.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+The query:
+
+.. literalinclude:: doc-pickDeliver.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 Parameters
 ...............................................................................
 
 The parameters are:
 
-.. code-block:: none
+.. include:: VRP-category.rst
+    :start-after: pd_parameters_start
+    :end-before: pd_parameters_end
 
-    orders_sql, vehicles_sql, matrix_sql [, factor, max_cycles, initial_sol]
+Pick-Deliver optional parameters
+...............................................................................
 
+.. include:: VRP-category.rst
+    :start-after: pd_optionals_start
+    :end-before: pd_optionals_end
 
-================= ================== ========= =================================================
-Column            Type                Default    Description
-================= ================== ========= =================================================
-**orders_sql**    ``TEXT``                     `Pick & Deliver Orders SQL`_ query contianing the orders to be processed.
-**vehicles_sql**  ``TEXT``                     `Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used.
-**matrix_sql**    ``TEXT``                     `Pick & Deliver Matrix SQL`_ query containing the distance or travel times.
-**factor**        ``NUMERIC``          1       Travel time multiplier. See :ref:`pd_factor`
-**max_cycles**    ``INTEGER``          10      Maximum number of cycles to perform on the optimization.
-**initial_sol**   ``INTEGER``          4       Initial solution to be used.
-
-                                               - ``1`` One order per truck
-                                               - ``2`` Push front order.
-                                               - ``3`` Push back order.
-                                               - ``4`` Optimize insert.
-                                               - ``5`` Push back order that allows more orders to be inserted at the back
-                                               - ``6`` Push front order that allows more orders to be inserted at the front
-================= ================== ========= =================================================
-
-
-
-Pick & Deliver Orders SQL
+Orders SQL
 ................................................................................
 
 A `SELECT` statement that returns the following columns:
@@ -149,8 +134,8 @@ A `SELECT` statement that returns the following columns:
 .. code-block:: none
 
     id, demand
-    p_node_id, p_open, p_close, [p_service, ]
-    d_node_id, d_open, d_close, [d_service, ]
+    p_node_id, p_open, p_close, [p_service,]
+    d_node_id, d_open, d_close, [d_service,]
 
 where:
 
@@ -163,16 +148,16 @@ where:
     :end-before: pd_orders_sql_matrix_end
 
 
-Pick & Deliver Vehicles SQL
-.........................................................................................
+Vehicles SQL
+...............................................................................
 
 A `SELECT` statement that returns the following columns:
 
 .. code-block:: none
 
     id, capacity
-    start_node_id, start_open, start_close [, start_service, ]
-    [ end_node_id, end_open, end_close, end_service ]
+    start_node_id, start_open, start_close [, start_service,]
+    [end_node_id, end_open, end_close, end_service]
 
 where:
 
@@ -185,42 +170,25 @@ where:
     :end-before: pd_vehicle_sql_matrix_end
 
 
-.. end of vehicles_sql
-
-Pick & Deliver Matrix SQL
+Matrix SQL
 .........................................................................................
-
-A `SELECT` statement that returns the following columns:
-
-
-.. TODO
-.. warning:: TODO
-
-
 
 .. include:: pgRouting-concepts.rst
     :start-after: where_definition_starts
     :end-before: where_definition_ends
 
-
-
-Example
+Return columns
 -------------------------------------------------------------------------------
 
-.. TODO
-
-This example use the following data: TODO put link
-
-.. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q2
-   :end-before: --q3
-
+.. include:: VRP-category.rst
+    :start-after: pd_returns_start
+    :end-before: pd_returns_end
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`VRP-category`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
