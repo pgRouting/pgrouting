@@ -122,11 +122,11 @@ One to One
     pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: From point :math:`1` to vertex :math:`3` with defaults
+:Example: From point :math:`1` to vertex :math:`10` with defaults
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --e2
-   :end-before: --e3
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: withPointsCost(One To Many) - Proposed on v2.2
@@ -139,12 +139,12 @@ One to Many
     pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: From point :math:`1` to point :math:`3` and vertex :math:`5` on an
+:Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --e3
-   :end-before: --e4
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: withPointsCost(Many To One) - Proposed on v2.2
@@ -157,11 +157,11 @@ Many to One
     pgr_withPointsCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3`
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --e4
-   :end-before: --e5
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: withPointsCost(Many To Many) - Proposed on v2.2
@@ -174,12 +174,12 @@ Many to Many
     pgr_withPointsCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: From point :math:`1` and vertex :math:`2`  to point :math:`3` and
-          vertex :math:`7`
+:Example: From point :math:`15` and vertex :math:`6`  to point :math:`3` and
+          vertex :math:`1`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --e5
-   :end-before: --e6
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
     single: withPointsCost(Combinations) -- Proposed on v3.2
@@ -194,12 +194,12 @@ Combinations
 
 :Example: Two combinations
 
-From point :math:`1` to vertex :math:`3`, and from vertex :math:`2` to point
+From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point
 :math:`3` with **right** side driving.
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --e6
-   :end-before: --e7
+   :start-after: -- q5
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -221,8 +221,8 @@ With points optional parameters
 .. withpoints_short_optionals_start
 
 .. list-table::
-   :width: 81
-   :widths: 14 7 7 60
+   :width: 35
+   :widths: auto
    :header-rows: 1
 
    * - Parameter
@@ -267,39 +267,59 @@ Combinations SQL
 Return Columns
 -------------------------------------------------------------------------------
 
-.. include:: pgRouting-concepts.rst
-    :start-after: return_cost_withPoints_start
-    :end-before: return_cost_withPoints_end
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``start_pid``
+     - ``BIGINT``
+     - Identifier of the starting vertex or point.
+
+       * When positive: is a vertex’s identifier.
+       * When negative: is a point’s identifier.
+   * - ``end_pid``
+     - ``BIGINT``
+     - Identifier of the ending vertex or point.
+
+       * When positive: is a vertex’s identifier.
+       * When negative: is a point’s identifier.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``end_vid``.
 
 Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: **Right** side driving topology
 
-Traveling from point 1 and vertex 1 to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{3, 6\}`
+Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}` and vertices
+:math:`\{10, 11\}`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q6
+   :end-before: -- q7
 
 :Example: **Left** side driving topology
 
-Traveling from point 1 and vertex 1 to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{3, 6\}`
+Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}` and vertices
+:math:`\{10, 11\}`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q7
+   :end-before: -- q8
 
 :Example: Does not matter driving side driving topology
 
-Traveling from point 1 and vertex 1 to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{3, 6\}`
+Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}` and vertices
+:math:`\{10, 11\}`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: -- q8
+   :end-before: -- q9
 
 The queries use the :doc:`sampledata` network.
 
@@ -312,4 +332,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-
