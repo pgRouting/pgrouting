@@ -24,9 +24,8 @@
 ``pgr_withPointsCostMatrix`` - proposed
 ===============================================================================
 
-``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the
-aggregate cost of the shortest path(s) found, for the combination of points
-given.
+``pgr_withPointsCostMatrix`` - Calculates a cost matrix using
+:doc:`pgr_withPoints`.
 
 .. include:: proposed.rst
    :start-after: begin-warning
@@ -43,11 +42,21 @@ given.
 
   * New **proposed** function
 
-
 Description
 -------------------------------------------------------------------------------
 
-* **TBD**
+Using Dijkstra algorithm, calculate and return a cost matrix.
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_description_start
+    :end-before: dijkstra_description_end
+
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_details_start
+    :end-before: costMatrix_details_end
+
+ .. index::
+    single: withPointsCostMatrix - proposed
 
 Signatures
 -------------------------------------------------------------------------------
@@ -56,13 +65,14 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**, [, directed] [, driving_side])
+    pgr_withPointsCostMatrix(`Edges SQL`_, `Points SQL`_, **start vids**
+      [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 .. note:: There is no **details** flag, unlike the other members of the
    withPoints family of functions.
 
-:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{3, 6\}`
+:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{10, 11\}`
           on an **undirected** graph
 
 * Returning a **symmetrical** cost matrix
@@ -70,8 +80,8 @@ Signatures
 * Using the default **driving_side** value
 
 .. literalinclude:: doc-pgr_withPointsCostMatrix.queries
-   :start-after: -- withPoints q2
-   :end-before: -- withPoints q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
@@ -94,7 +104,7 @@ With points optional parameters
     :start-after: withpoints_short_optionals_start
     :end-before: withpoints_short_optionals_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -111,8 +121,12 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 .. include:: pgRouting-concepts.rst
     :start-after: return_cost_withPoints_start
@@ -121,24 +135,21 @@ Return Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: :doc:`pgr_TSP` using ``pgr_withPointsCostMatrix`` for points
-          :math:`\{1, 6\}` and vertices :math:`\{3, 6\}` on an **undirected**
-          graph
+:Example: Use with :doc:`pgr_TSP`.
 
 .. literalinclude:: doc-pgr_withPointsCostMatrix.queries
-   :start-after: -- withPoints q3
-   :end-before: -- withPoints q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`pgr_withPoints`
+* :doc:`withPoints-family`
 * :doc:`costMatrix-category`
-* :doc:`pgr_TSP`
-* `sampledata` network.
+* :doc:`TSP-family`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
