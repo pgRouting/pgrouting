@@ -1,146 +1,169 @@
+DROP TABLE IF EXISTS linegraph_edges;
+DROP TABLE IF EXISTS vertex_map;
+DROP TABLE IF EXISTS new_graph;
 
+/* -- q0 */
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (4, 7, 8, 10);
 /* -- q1 */
 SELECT * FROM pgr_lineGraphFull(
-    'SELECT id, source, target, cost, reverse_cost
-      FROM edge_table
-      WHERE id IN (4,7,8,10)'
-);
-
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edge_table
+  WHERE id IN (4, 7, 8, 10)$$);
 /* -- q2 */
-CREATE TABLE lineGraph_edges AS SELECT * FROM pgr_lineGraphFull(
-    $$SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id IN (4,7,8,10)$$
-);
-
-CREATE TABLE lineGraph_vertices AS
-SELECT *, NULL::BIGINT AS original_id
-FROM (SELECT source AS id FROM lineGraph_edges
-    UNION
-    SELECT target FROM lineGraph_edges) as foo
-ORDER BY id;
-
+SELECT seq AS id, source, target, cost, edge
+INTO lineGraph_edges
+FROM pgr_lineGraphFull(
+  $$SELECT id, source, target, cost, reverse_cost
+  FROM edge_table
+  WHERE id IN (4, 7, 8, 10)$$);
 /* -- q3 */
-UPDATE lineGraph_vertices AS r
-  SET original_id = v.id
-  FROM edge_table_vertices_pgr AS v
-  WHERE v.id = r.id;
-
+SELECT id, NULL::BIGINT original_id
+INTO vertex_map
+FROM edge_table_vertices_pgr;
 /* -- q4 */
-WITH
-unassignedVertices
-  AS (SELECT e.id, e.original_id
-       FROM lineGraph_vertices AS e
-       WHERE original_id IS NOT NULL),
-edgesWithUnassignedSource
-  AS (SELECT *
-        FROM lineGraph_edges
-        WHERE cost = 0 and source IN (SELECT id FROM unassignedVertices)),
-edgesWithUnassignedSourcePlusVertices
-  AS (SELECT *
-        FROM edgesWithUnassignedSource
-        JOIN lineGraph_vertices
-        ON(source = id)),
-verticesFromEdgesWithUnassignedSource
-  AS (SELECT DISTINCT edgesWithUnassignedSourcePlusVertices.target,
-                      edgesWithUnassignedSourcePlusVertices.original_id
-        FROM edgesWithUnassignedSourcePlusVertices
-        JOIN lineGraph_vertices AS r
-        ON(target = r.id AND r.original_id IS NULL))
-UPDATE lineGraph_vertices
-  SET original_id = verticesFromEdgesWithUnassignedSource.original_id
-  FROM verticesFromEdgesWithUnassignedSource
-  WHERE verticesFromEdgesWithUnassignedSource.target = id;
-
-WITH
-unassignedVertices
-  AS (SELECT e.id, e.original_id
-        FROM lineGraph_vertices AS e
-        WHERE original_id IS NOT NULL),
-edgesWithUnassignedTarget
-  AS (SELECT *
-        FROM lineGraph_edges
-        WHERE cost = 0 and target IN (SELECT id FROM unassignedVertices)),
-edgesWithUnassignedTargetPlusVertices
-  AS (SELECT *
-        FROM edgesWithUnassignedTarget
-        JOIN lineGraph_vertices
-        ON(target = id)),
-verticesFromEdgesWithUnassignedTarget
-  AS (SELECT DISTINCT edgesWithUnassignedTargetPlusVertices.source,
-                     edgesWithUnassignedTargetPlusVertices.original_id
-        FROM edgesWithUnassignedTargetPlusVertices
-        JOIN lineGraph_vertices AS r
-        ON(source = r.id AND r.original_id IS NULL))
-UPDATE lineGraph_vertices
-  SET original_id = verticesFromEdgesWithUnassignedTarget.original_id
-  FROM verticesFromEdgesWithUnassignedTarget
-  WHERE verticesFromEdgesWithUnassignedTarget.source = id;
-
+INSERT INTO vertex_map (id)
+(SELECT id
+FROM pgr_extractVertices(
+  $$SELECT id, source, target FROM lineGraph_edges$$) WHERE id < 0);
 /* -- q5 */
-WITH
-unassignedVertexIds
-  AS (SELECT id
-        FROM lineGraph_vertices
-        WHERE original_id IS NULL),
-edgesWithUnassignedSource
-  AS (SELECT source,edge
-        FROM lineGraph_edges
-        WHERE source IN (SELECT id FROM unassignedVertexIds)),
-originalEdgesWithUnassignedSource
-  AS (SELECT id,source
-        FROM edge_table
-        WHERE id IN (SELECT edge FROM edgesWithUnassignedSource))
-UPDATE lineGraph_vertices AS d
-  SET original_id = (SELECT source
-                       FROM originalEdgesWithUnassignedSource
-                       WHERE originalEdgesWithUnassignedSource.id =
-                         (SELECT edge
-                            FROM edgesWithUnassignedSource
-                            WHERE edgesWithUnassignedSource.source = d.id))
-  WHERE id IN (SELECT id FROM unassignedVertexIds);
-
-WITH
-unassignedVertexIds
-  AS (SELECT id
-        FROM lineGraph_vertices
-        WHERE original_id IS NULL),
-edgesWithUnassignedTarget
-  AS (SELECT target,edge
-        FROM lineGraph_edges
-        WHERE target IN (SELECT id FROM unassignedVertexIds)),
-originalEdgesWithUnassignedTarget
-  AS (SELECT id,target
-        FROM edge_table
-        WHERE id IN (SELECT edge FROM edgesWithUnassignedTarget))
-UPDATE lineGraph_vertices AS d
-  SET original_id = (SELECT target
-                       FROM originalEdgesWithUnassignedTarget
-                       WHERE originalEdgesWithUnassignedTarget.id =
-                         (SELECT edge
-                            FROM edgesWithUnassignedTarget
-                            WHERE edgesWithUnassignedTarget.target = d.id))
-  WHERE id IN (SELECT id FROM unassignedVertexIds);
-
+UPDATE vertex_map
+SET original_id = id
+WHERE id > 0;
 /* -- q6 */
-SELECT * FROM lineGraph_vertices;
-
+SELECT *
+FROM vertex_map ORDER BY id DESC;
 /* -- q7 */
-UPDATE lineGraph_edges
-  SET cost = 100
-  WHERE source IN (SELECT target
-                     FROM lineGraph_edges
-                     WHERE edge = 4) AND target IN (SELECT source
-                                                      FROM lineGraph_edges
-                                                      WHERE edge = -7);
-
+SELECT *, source AS targets_original_id
+  FROM lineGraph_edges
+  WHERE cost = 0 and source > 0;
 /* -- q8 */
-SELECT * FROM
-  (SELECT * FROM
-    (SELECT * FROM pgr_dijkstra($$SELECT seq AS id, * FROM lineGraph_edges$$,
-      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 6),
-      (SELECT array_agg(id) FROM lineGraph_vertices where original_id = 3)
-    )) as shortestPaths
-  WHERE start_vid = 6 AND end_vid = 3 AND (cost != 0 OR edge = -1)) as b;
-
+WITH
+self_loops AS (
+  SELECT DISTINCT source, target, source AS targets_original_id
+  FROM lineGraph_edges
+  WHERE cost = 0 and source > 0)
+UPDATE vertex_map SET original_id = targets_original_id
+FROM self_loops WHERE target = id;
 /* -- q9 */
-
+SELECT *
+FROM vertex_map WHERE id < 0
+ORDER BY id DESC;
+/* -- q10 */
+WITH
+assigned_vertices
+AS (SELECT id, original_id
+  FROM vertex_map
+  WHERE original_id IS NOT NULL),
+cross_edges
+AS (SELECT DISTINCT e.source, v.original_id AS source_original_id
+  FROM lineGraph_edges AS e
+  JOIN vertex_map AS v ON (e.target = v.id)
+  WHERE source NOT IN (SELECT id FROM assigned_vertices)
+)
+UPDATE vertex_map SET original_id = source_original_id
+FROM cross_edges WHERE source = id;
+/* -- q11 */
+SELECT *
+FROM vertex_map WHERE id < 0
+ORDER BY id DESC;
+/* -- q12 */
+SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
+FROM (SELECT * FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))) dn
+JOIN vertex_map AS v1 ON (node = v1.id);
+/* -- q13 */
+SELECT edge FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))
+WHERE cost = 0 AND seq != 1 AND edge != -1;
+/* -- q14 */
+UPDATE lineGraph_edges
+SET cost = 100
+WHERE id IN (
+SELECT edge FROM pgr_dijkstraNear(
+  $$SELECT * FROM lineGraph_edges$$,
+  (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+  (SELECT array_agg(id) FROM vertex_map where original_id = 3))
+WHERE cost = 0 AND seq != 1 AND edge != -1);
+/* -- q15 */
+WITH
+results AS (
+  SELECT * FROM pgr_dijkstraNear(
+    $$SELECT * FROM lineGraph_edges$$,
+    (SELECT array_agg(id) FROM vertex_map where original_id = 6),
+    (SELECT array_agg(id) FROM vertex_map where original_id = 3)))
+SELECT seq, path_seq, start_vid, end_vid, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+/* -- q16 */
+WITH
+u_turns AS (
+SELECT e.id AS eid, v1.original_id
+FROM linegraph_edges as e
+JOIN vertex_map AS v1 ON (source = v1.id)
+AND v1.original_id IN (3, 6, 8, 11))
+UPDATE lineGraph_edges
+SET source = original_id
+FROM u_turns
+WHERE id = eid;
+/* -- q17 */
+WITH
+u_turns AS (
+SELECT e.id AS eid, v1.original_id
+FROM linegraph_edges as e
+JOIN vertex_map AS v1 ON (target = v1.id)
+AND v1.original_id IN (3, 6, 8, 11))
+UPDATE lineGraph_edges
+SET target = original_id
+FROM u_turns
+WHERE id = eid;
+/* -- q18 */
+SELECT * FROM linegraph_edges
+WHERE source = target
+ORDER BY id;
+/* -- q19 */
+DELETE FROM linegraph_edges
+WHERE source = target;
+/* -- q20 */
+WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM lineGraph_edges$$, 6, 3))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+/* -- q21 */
+SELECT id, source, target, cost, reverse_cost
+INTO new_graph from edge_table
+WHERE id NOT IN (4, 7, 8, 10);
+/* -- q22 */
+CREATE SEQUENCE new_graph_id_seq;
+ALTER TABLE new_graph ALTER COLUMN id SET DEFAULT nextval('new_graph_id_seq');
+ALTER TABLE new_graph ALTER COLUMN id SET NOT NULL;
+ALTER SEQUENCE new_graph_id_seq OWNED BY new_graph.id;
+SELECT setval('new_graph_id_seq', (SELECT max(id) FROM new_graph));
+/* -- q23 */
+INSERT INTO new_graph (source, target, cost, reverse_cost)
+SELECT source, target, cost, -1 FROM lineGraph_edges;
+/* -- q24 */
+WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM new_graph$$, 6, 3))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+/* -- q25 */
+WITH
+results AS (
+  SELECT * FROM pgr_dijkstra(
+    $$SELECT * FROM new_graph$$, 5, 1))
+SELECT seq, path_seq, node, original_id, edge, cost, agg_cost
+FROM results
+LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
+/* -- q26 */

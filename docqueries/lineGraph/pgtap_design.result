@@ -7,8 +7,8 @@ SELECT * FROM pgr_lineGraph(
     'SELECT id, source, target, cost FROM edge_table WHERE id = 1'
 );
 NOTICE:  Only vertices graph
-HINT:  0:  out_edges_of(1): 1=(1, 2) = 1
-1:  out_edges_of(2):
+HINT:  0:  out_edges_of(5): 1=(5, 6) = 1
+1:  out_edges_of(6):
 
 
  seq | source | target | cost | reverse_cost
@@ -24,7 +24,7 @@ SELECT * FROM pgr_lineGraph($$
 );
  seq | source | target | cost | reverse_cost
 -----+--------+--------+------+--------------
-   1 |      1 |     -1 |    1 |            1
+   1 |     -1 |      1 |    1 |            1
 (1 row)
 
 SELECT * FROM pgr_lineGraph($$
@@ -35,7 +35,7 @@ SELECT * FROM pgr_lineGraph($$
 );
  seq | source | target | cost | reverse_cost
 -----+--------+--------+------+--------------
-   1 |      1 |     -1 |    1 |            1
+   1 |     -1 |      1 |    1 |            1
 (1 row)
 
 SELECT * FROM pgr_lineGraph(
