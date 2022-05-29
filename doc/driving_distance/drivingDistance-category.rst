@@ -84,16 +84,16 @@ Parameters
    * - `Edges SQL`_
      - ``TEXT``
      - Edges SQL as described below.
-   * - Root vid
+   * - **Root vid**
      - ``BIGINT``
      - Identifier of the root vertex of the tree.
-   * - Root vids
+   * - **Root vids**
      - ``ARRAY[ANY-INTEGER]``
      - Array of identifiers of the root vertices.
 
        - :math:`0` values are ignored
        - For optimization purposes, any duplicated value is ignored.
-   * - distance
+   * - **distance**
      - ``FLOAT``
      - Upper limit for the inclusion of a node in the result.
 

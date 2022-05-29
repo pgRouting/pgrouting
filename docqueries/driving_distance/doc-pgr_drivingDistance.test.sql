@@ -1,14 +1,13 @@
-
-/* --q1 */
+/* --q5 */
 SELECT * FROM pgr_drivingDistance(
   'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-  6, 3.0);
-/* --q2 */
+  11, 3.0);
+/* --q6 */
 SELECT * FROM pgr_drivingDistance(
   'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-  array[6, 9], 3.0, equicost => true);
-/* --q3 */
+  array[11, 16], 3.0, equicost => true);
+/* --q10 */
 SELECT * FROM pgr_drivingDistance(
   'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-  array[6, 9], 3.0, directed => false);
-/* --q4 */
+  array[11, 16], 3.0, directed => false);
+/* --q15 */

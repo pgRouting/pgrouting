@@ -24,7 +24,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_driving_distance_v3.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_driving_distance.html>`__
 
-pgr_drivingDistance
+``pgr_drivingDistance``
 ===============================================================================
 
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
@@ -58,11 +58,11 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: sql
+.. parsed-literal::
 
-    pgr_drivingDistance(edges_sql, start_vid,  distance [, directed])
-    pgr_drivingDistance(edges_sql, start_vids, distance [, directed] [, equicost])
-    RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
+    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance** [, directed])
+    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance** [, directed] [, equicost])
+    RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)
 
 .. index::
 	single: drivingDistance(Single vertex)
@@ -72,14 +72,14 @@ Single Vertex
 
 .. code-block:: sql
 
-    pgr_drivingDistance(edges_sql, start_vid, distance [, directed])
+    pgr_drivingDistance(`Edges SQL`_, from_v, distance [, directed])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-:Example: From vertex :math:`6` for a distance of :math:`3.0`
+:Example: From vertex :math:`11` for a distance of :math:`3.0`
 
 .. literalinclude:: doc-pgr_drivingDistance.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: --q5
+   :end-before: --q6
 
 .. index::
 	single: drivingDistance(Multiple vertices)
@@ -89,62 +89,109 @@ Multiple Vertices
 
 .. code-block:: sql
 
-    pgr_drivingDistance(edges_sql, start_vids, distance, [, directed] [, equicost])
-    RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
+    pgr_drivingDistance(`Edges SQL`_, from_vs, distance, [, directed] [, equicost])
+    RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)
 
-:Example: From vertices :math:`\{6, 9\}` for a distance of :math:`3.0` with
+:Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with
           equi-cost on a directed graph
 
 .. literalinclude:: doc-pgr_drivingDistance.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: --q6
+   :end-before: --q10
 
 Parameters
 -------------------------------------------------------------------------------
 
-============== ====================== =================================================
-Column          Type                  Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as described above.
-**start_vid**  ``BIGINT``             Identifier of the starting vertex.
-**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of the starting vertices.
-**distance**   ``FLOAT``              Upper limit for the inclusion of the node in the result.
-**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**equicost**   ``BOOLEAN``            (optional). When ``true`` the node will only appear in the closest ``start_vid`` list.  Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.
-============== ====================== =================================================
+.. include:: drivingDistance-category.rst
+    :start-after: mst-dd-params_start
+    :end-before: mst-dd-params_end
 
-Inner query
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Specific function's optional parameters
+...............................................................................
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - default
+     - Description
+   * - ``equicost``
+     - ``BOOLEAN``
+     - ``true``
+     - * When ``true`` the node will only appear in the closest ``from_v``
+         list.
+       * When ``false`` which resembles several calls using the single starting
+         point signatures. Tie brakes are arbitrary.
+
+Inner queries
 -------------------------------------------------------------------------------
 
+Edges SQL
+..............................................................................
+
 .. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``
+Returns SET OF ``(seq, from_v, node, edge, cost, agg_cost)``
 
-============== =========== =================================================
-Column         Type        Description
-============== =========== =================================================
-**seq**        ``INTEGER`` Sequential value starting from **5**.
-**start_vid**  ``INTEGER`` Identifier of the starting vertex.
-**node**       ``BIGINT``  Identifier of the node in the path within the limits from ``start_vid``.
-**edge**       ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
-**cost**       ``FLOAT``   Cost to traverse ``edge``.
-**agg_cost**   ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
-============== =========== =================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - ``seq``
+     - ``BIGINT``
+     - Sequential value starting from :math:`1`.
+   * - ``from_v``
+     - ``BIGINT``
+     - Identifier of the root vertex.
+
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of ``node`` within the limits from ``from_v``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the ``edge`` used to arrive to ``node``.
+
+       - :math:`0` when ``node`` = ``from_v``.
+
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse ``edge``.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``from_v`` to ``node``.
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: From vertices :math:`\{6, 9\}` for a distance of :math:`3.0` on an
+:Example: From vertices :math:`\{11, 16\}` for a distance of :math:`10.0` on an
           undirected graph
 
 .. literalinclude:: doc-pgr_drivingDistance.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: --q10
+   :end-before: --q15
 
 See Also
 -------------------------------------------------------------------------------
