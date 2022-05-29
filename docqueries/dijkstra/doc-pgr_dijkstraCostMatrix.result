@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-/* -- q2 */
+/* -- q1 */
 SELECT * FROM pgr_dijkstraCostMatrix(
   'SELECT id, source, target, cost, reverse_cost FROM edge_table',
   (SELECT array_agg(id)
@@ -25,7 +25,7 @@ SELECT * FROM pgr_dijkstraCostMatrix(
         15 |      10 |        1
 (12 rows)
 
-/* -- q3 */
+/* -- q2 */
 SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_dijkstraCostMatrix(
@@ -46,6 +46,6 @@ HINT:  Ignoring annaeling parameters
    5 |    5 |    3 |        6
 (5 rows)
 
-/* -- q4 */
+/* -- q3 */
 ROLLBACK;
 ROLLBACK
