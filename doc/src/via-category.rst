@@ -223,12 +223,7 @@ Used on
 Return Columns
 -------------------------------------------------------------------------------
 
-**Used on:**
-
-* :doc:`pgr_dijkstraVia`
-* :doc:`pgr_trspVia`
-
-.. result via start
+.. result_via_start
 
 .. list-table::
    :width: 81
@@ -274,75 +269,15 @@ Return Columns
      - ``FLOAT``
      - Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``.
 
-.. result via end
+.. result_via_end
 
-**Used on:**
+.. result_via_withPoints_start
 
-* :doc:`pgr_withPointsVia`
-* :doc:`pgr_trspVia_withPoints`
+.. Note::
+   When ``start_vid``, ``end_vid`` and ``node`` columns have negative values,
+   the identifier is for a Point.
 
-.. result via withPoints start
-
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``seq``
-     - ``INTEGER``
-     - Sequential value starting from **1**.
-   * - ``path_id``
-     - ``INTEGER``
-     - Identifier of a path. Has value **1** for the first path.
-   * - ``path_seq``
-     - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a path.
-   * - ``start_vid``
-     - ``BIGINT``
-     - Identifier of the starting vertex or point of the path.
-
-       * When positive it is a vertex identifier
-       * When negative it is a point identifier
-   * - ``end_vid``
-     - ``BIGINT``
-     - Identifier of the ending vertex or point of the path.
-
-       * When positive it is a vertex identifier
-       * When negative it is a point identifier
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-
-       * When positive it is a vertex identifier
-       * When negative it is a point identifier
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the edge used to go from ``node`` to the next node in the
-       path sequence.
-
-       * :math:`-1` for the last row of the path.
-       * :math:`-2` for the last row of the route.
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse from ``node`` using ``edge`` to the next node in the
-       path sequence.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``start_vid`` to ``node``.
-
-       * :math:`0` on the first row of the path.
-   * - ``route_agg_cost``
-     - ``FLOAT``
-     - Total cost from the first row of the route up to the current node.
-
-       * :math:`0` on the first row of the route.
-
-.. result via withPoints end
-
-|
+.. result_via_withPoints_end
 
 See Also
 -------------------------------------------------------------------------------

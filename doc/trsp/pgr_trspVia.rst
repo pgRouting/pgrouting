@@ -117,53 +117,62 @@ Return Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
-    :start-after: result via start
-    :end-before: result via end
+    :start-after: result_via_start
+    :end-before: result_via_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{5, 7, 1, 8, 15\}`
-            in that order
+.. contents::
+   :local:
+
+All this examples are about the route that visits the vertices :math:`\{5, 7, 1,
+8, 15\}` in that order on a **directed** graph.
+
+The main query
+...............................................................................
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q1
     :end-before: -- q2
 
-:Example 2: What's the aggregate cost of the third path?
+Aggregate cost of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q2
     :end-before: -- q3
 
-:Example 3: What's the route's aggregate cost of the route at the end of the
-            third path?
+Route's aggregate cost of the route at the end of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q3
     :end-before: -- q4
 
-:Example 4: How are the nodes visited in the route?
+Nodes visited in the route.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q4
     :end-before: -- q5
 
-:Example 5: What are the aggregate costs of the route when the visited vertices
-            are reached?
+The aggregate costs of the route when the visited vertices are reached.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q5
     :end-before: -- q6
 
-:Example 6: Show the route's seq and aggregate cost and a status of "passes in
-            front" or "visits"
+Status of "passes in front" or "visits" of the nodes.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q6
     :end-before: -- q7
 
-:Example 7: Simulation of how algorithm works
+Simulation of how algorithm works
+...............................................................................
 
 The algorithm performs a :doc:`pgr_dijkstraVia`
 
