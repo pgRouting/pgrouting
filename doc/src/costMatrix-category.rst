@@ -173,7 +173,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -195,7 +195,7 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

@@ -71,8 +71,8 @@ Signatures
           **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -111,8 +111,8 @@ Additional Examples
 :Example: Use with :doc:`pgr_TSP`.
 
 .. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 See Also
 -------------------------------------------------------------------------------

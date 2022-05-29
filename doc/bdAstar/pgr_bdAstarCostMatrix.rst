@@ -102,7 +102,7 @@ aStar optional Parameters
     :start-after: astar_optionals_start
     :end-before: astar_optionals_end
 
-Inner query
+Inner queries
 -------------------------------------------------------------------------------
 
 Edges SQL
