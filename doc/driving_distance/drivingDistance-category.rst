@@ -97,8 +97,6 @@ Parameters
      - ``FLOAT``
      - Upper limit for the inclusion of a node in the result.
 
-       - When the value is Negative **throws** error
-
 Where:
 
 :ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``

@@ -32,14 +32,12 @@
 
   * New **Official** function
 
-
 Description
 -------------------------------------------------------------------------------
 
 Using Kruskal's algorithm, extracts the nodes that have aggregate costs less
 than or equal to a **distance** from a **root** vertex (or vertices) within the
 calculated minimum spanning tree.
-
 
 **The main Characteristics are:**
 
@@ -53,7 +51,6 @@ calculated minimum spanning tree.
 
 - Returned tree nodes from a root vertex are on Depth First Search order.
 - Depth First Search running time: :math:`O(E + V)`
-
 
 Signatures
 -------------------------------------------------------------------------------

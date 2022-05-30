@@ -153,7 +153,7 @@ Optional parameters
 
    * - Column
      - Type
-     - default
+     - Default
      - Description
    * - ``directed``
      - ``BOOLEAN``

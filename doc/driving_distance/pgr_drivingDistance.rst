@@ -56,8 +56,6 @@ The edges extracted will conform to the corresponding spanning tree.
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. parsed-literal::
 
     pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance** [, directed])
@@ -65,14 +63,14 @@ Signatures
     RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)
 
 .. index::
-	single: drivingDistance(Single vertex)
+   single: drivingDistance(Single vertex)
 
 Single Vertex
 ...............................................................................
 
-.. code-block:: sql
+.. parsed-literal::
 
-    pgr_drivingDistance(`Edges SQL`_, from_v, distance [, directed])
+    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance** [, directed])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
@@ -82,14 +80,14 @@ Single Vertex
    :end-before: --q6
 
 .. index::
-	single: drivingDistance(Multiple vertices)
+   single: drivingDistance(Multiple vertices)
 
 Multiple Vertices
 ...............................................................................
 
-.. code-block:: sql
+.. parsed-literal::
 
-    pgr_drivingDistance(`Edges SQL`_, from_vs, distance, [, directed] [, equicost])
+    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance** [, directed] [, equicost])
     RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)
 
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with
@@ -113,16 +111,19 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Specific function's optional parameters
+Driving distance optional parameters
 ...............................................................................
+
+.. equicost_start
+
 .. list-table::
    :width: 81
-   :widths: auto
+   :widths: 12, 8, 8, 60
    :header-rows: 1
 
    * - Column
      - Type
-     - default
+     - Default
      - Description
    * - ``equicost``
      - ``BOOLEAN``
@@ -131,6 +132,8 @@ Specific function's optional parameters
          list.
        * When ``false`` which resembles several calls using the single starting
          point signatures. Tie brakes are arbitrary.
+
+.. equicost_end
 
 Inner queries
 -------------------------------------------------------------------------------
@@ -158,7 +161,7 @@ Returns SET OF ``(seq, from_v, node, edge, cost, agg_cost)``
    * - ``seq``
      - ``BIGINT``
      - Sequential value starting from :math:`1`.
-   * - ``from_v``
+   * - ``[from_v]``
      - ``BIGINT``
      - Identifier of the root vertex.
 

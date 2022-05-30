@@ -101,9 +101,9 @@ Via optional parameters
 With points optional parameters
 ...............................................................................
 
-.. include:: via-category.rst
-    :start-after: via_withPoints_optionals_start
-    :end-before: via_withPoints_optionals_end
+.. include:: withPoints-family.rst
+   :start-after: withPoints_optionals_start
+   :end-before: withPoints_optionals_end
 
 Inner query
 -------------------------------------------------------------------------------

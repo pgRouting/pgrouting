@@ -32,7 +32,6 @@
 
   * New **Official** function
 
-
 Description
 -------------------------------------------------------------------------------
 
@@ -55,8 +54,6 @@ calculated minimum spanning tree.
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. rubric:: Summary
 
 .. parsed-literal::
 

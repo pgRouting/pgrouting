@@ -150,40 +150,6 @@ Via optional parameters
 
 .. via_optionals_end
 
-With points optional parameters
-...............................................................................
-
-Used on
-
-* :doc:`pgr_withPointsVia`
-
-.. via_withPoints_optionals_start
-
-.. list-table::
-   :width: 81
-   :widths: 14 7 7 60
-   :header-rows: 1
-
-   * - Parameter
-     - Type
-     - Default
-     - Description
-   * - ``driving_side``
-     - ``CHAR``
-     - ``b``
-     - Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the driving side is:
-
-       - ``r`` for right driving side
-       - ``l`` for left driving side
-       - ``b`` for both, or ignore driving side
-   * - ``details``
-     - ``BOOLEAN``
-     - ``false``
-     - - When ``true`` the results will include the points that are in the path.
-       - When ``false`` the results will not include the points that are in the path.
-
-.. via_withPoints_optionals_end
-
 Inner query
 -------------------------------------------------------------------------------
 
