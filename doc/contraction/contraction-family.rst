@@ -61,121 +61,154 @@ Allowing the user to:
 
 Dead end contraction
 -------------------------------------------------------------------------------
-In the algorithm, dead end contraction is represented by 1.
+
+Contraction of the leaf nodes of the graph.
 
 Dead end
 ..............................................................................
 
-In case of an undirected graph, a node is considered a `dead end` node when
+A node is considered a **dead end** node when
 
-* `The number of adjacent vertices is 1.`_
+* On undirected graphs:
 
-In case of a directed graph, a node is considered a `dead end` node when
+  * The number of adjacent vertices is 1.
 
-* `The number of adjacent vertices is 1.`_
+* On directed graphs:
 
-  * `There are no outgoing edges and has at least one incoming edge.`_
-  * `There are no incoming edges and has at least one outgoing edge.`_
+  * The number of adjacent vertices is 1.
+  * There are no outgoing edges and has at least one incoming edge.
+  * There are no incoming edges and has at least one outgoing edge.
 
 
-When the conditions are true then the `Operation: Dead End Contraction`_ can be done.
+When the conditions are true then the `Operation: Dead End Contraction`_ can be
+done.
 
-The number of adjacent vertices is 1.
+Dead end vertex on undirected graph
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 - The green nodes are `dead end`_ nodes
-- The blue nodes have an unlimited number of incoming and outgoing edges.
-
-.. rubric:: Directed graph
-
-.. graphviz::
-
-    digraph G {
-        u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
-        w, z [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;color=deepskyblue;label = "Rest of the Graph"];
-
-        rankdir=LR;
-        G -> {u, v} [dir=none, weight=1, penwidth=3];
-        u -> w -> u;
-        v -> z;
-    }
-
-.. rubric:: Undirected graph
+- The blue nodes have an unlimited number of edges.
 
 .. graphviz::
 
     graph G {
         u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
-        w, z [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;color=deepskyblue;label = "Rest of the Graph"];
+        a, b [style=filled; color=green];
+        G [shape=tripleoctagon;width=1.5;style=filled;
+           color=deepskyblue;label = "Rest of the Graph"];
 
         rankdir=LR;
         G -- {u, v} [dir=none, weight=1, penwidth=3];
-        u -- w [color=black];
-        u -- w [color=darkgray];
-        v -- z;
+        u -- a [color=black];
+        u -- a [color=darkgray];
+        v -- b;
     }
 
+.. list-table::
+   :width: 80
+   :widths: auto
+   :header-rows: 1
 
-There are no outgoing edges and has at least one incoming edge.
+   * - Node
+     - Adjecent nodes
+     - Number of adjacent nodes
+   * - :math:`a`
+     - :math:`\{u\}`
+     - 1
+   * - :math:`b`
+     - :math:`\{v\}`
+     - 1
+
+
+Dead end vertex on directed graph
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 - The green nodes are `dead end`_ nodes
-- The blue nodes have an unlimited number of incoming and outgoing edges.
-
-.. rubric:: Directed graph
+- The blue nodes have an unlimited number of incoming and/or outgoing edges.
 
 .. graphviz::
 
     digraph G {
-        u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
-        w, z [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;color=deepskyblue;label = "Rest of the Graph"];
+        u, v, w, x, y [shape=circle;style=filled;width=.4;color=deepskyblue];
+        a, b, c, d, e [style=filled; color=green];
+        G [shape=tripleoctagon;width=1.5;style=filled;
+           color=deepskyblue;label = "Rest of the Graph"];
 
         rankdir=LR;
-        G -> {u, v} [dir=none, weight=1, penwidth=3];
-        u -> w;
-        v -> w;
-        v -> z;
+        G -> {u, v, w} [dir=none, weight=1, penwidth=3];
+        {x, y} -> G  [dir=none, weight=1, penwidth=3];
+        u -> a -> u;
+        v -> b;
+        {w, v} -> c;
+        d -> x;
+        e -> {x, y};
     }
 
-There are no incoming edges and has at least one outgoing edge.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-- The green nodes are `dead end`_ nodes
-- The blue nodes have an unlimited number of incoming and outgoing edges.
-- Considering that the nodes are `dead starts` nodes
+.. list-table::
+   :width: 80
+   :widths: auto
+   :header-rows: 1
 
-.. rubric:: Directed graph
+   * - Node
+     - Adjecent nodes
+     - Number of adjacent nodes
+     - Number of incoming edges
+     - Number of outgoing edges
+   * - :math:`a`
+     - :math:`\{u\}`
+     - 1
+     -
+     -
+   * - :math:`b`
+     - :math:`\{v\}`
+     - 1
+     -
+     -
+   * - :math:`c`
+     - :math:`\{v, w\}`
+     - 2
+     - 2
+     - 0
+   * - :math:`d`
+     - :math:`\{x\}`
+     - 1
+     -
+     -
+   * - :math:`e`
+     - :math:`\{x, y\}`
+     - 2
+     - 0
+     - 2
 
-.. graphviz::
 
-    digraph G {
-        u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
-        w, z [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;color=deepskyblue;label = "Rest of the Graph"];
+From above, nodes :math:`\{a, b, d\}` are dead ends because the
+number of adjacent vertices is 1. No further checks are needed for those nodes.
 
-        rankdir=LR;
-        {u, v} -> G [dir=none, weight=1, penwidth=3];
-        w -> u;
-        w -> v;
-        z -> v;
-    }
+On the following table, nodes :math:`\{c, e\}` because the
+even that the number of adjacent vertices is not 1 for
 
+* :math:`c`
+
+  * There are no outgoing edges and has at least one incoming edge.
+
+* :math:`e`
+
+  * There are no incoming edges and has at least one outgoing edge.
 
 Operation: Dead End Contraction
 ...............................................................................
 
 The dead end contraction will stop until there are no more dead end nodes.
-For example from the following graph where ``w`` is the `dead end`_ node:
+For example from the following graph where :math:`w` is the `dead end`_ node:
 
 .. graphviz::
 
     digraph G {
         u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
         w [style=filled; color=green];
-        "G" [shape=tripleoctagon;style=filled;color=deepskyblue; label = "Rest of the Graph"];
+        "G" [shape=tripleoctagon;style=filled;
+        color=deepskyblue; label = "Rest of the Graph"];
 
         rankdir=LR;
         G -> u [dir=none, weight=1, penwidth=3];
@@ -183,21 +216,24 @@ For example from the following graph where ``w`` is the `dead end`_ node:
     }
 
 
-After contracting ``w``, node ``v`` is now a `dead end`_ node and is contracted:
+After contracting :math:`w`, node :math:`v` is now a `dead end`_ node and is
+contracted:
 
 .. graphviz::
 
     digraph G {
         u [shape=circle;style=filled;width=.4;color=deepskyblue];
         v [style=filled; color=green, label="v{w}"];
-        "G" [shape=tripleoctagon;style=filled;color=deepskyblue; label = "Rest of the Graph"];
+        "G" [shape=tripleoctagon;style=filled;
+            color=deepskyblue; label = "Rest of the Graph"];
 
         rankdir=LR;
         G -> u [dir=none, weight=1, penwidth=3];
         u -> v;
     }
 
-After contracting ``v``, stop. Node ``u`` has the information of nodes that were contrcted.
+After contracting :math:`v`, stop. Node :math:`u` has the information of nodes that
+were contrcted.
 
 .. graphviz::
 
@@ -209,7 +245,7 @@ After contracting ``v``, stop. Node ``u`` has the information of nodes that were
         G -> u [dir=none, weight=1, penwidth=3];
     }
 
-Node ``u`` has the information of nodes that were contracted.
+Node :math:`u` has the information of nodes that were contracted.
 
 
 Linear contraction
@@ -221,35 +257,19 @@ Linear
 
 In case of an undirected graph, a node is considered a `linear` node when
 
-* `The number of adjacent vertices is 2.`_
+* The number of adjacent vertices is 2.
 
 In case of a directed graph, a node is considered a `linear` node when
 
-* `The number of adjacent vertices is 2.`_
+* The number of adjacent vertices is 2.
+* Linearity is symmetrical
 
-  * `Linearity is symmetrical`_
-
-The number of adjacent vertices is 2.
+Linear vertex on undirected graph
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 - The green nodes are `linear`_ nodes
 - The blue nodes have an unlimited number of incoming and outgoing edges.
 
-.. rubric:: Directed
-
-.. graphviz::
-
-    digraph G {
-        u, c, a, w [shape=circle;style=filled;width=.4;color=deepskyblue];
-        v, b [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;color=deepskyblue;label = "Rest of the Graph"];
-
-        rankdir=LR;
-        {w, c} -> G -> {u, a} [dir=none, weight=1, penwidth=3];
-        u -> v -> w;
-        a -> b -> c;
-        c -> b -> a[color=darkgray];
-    }
 
 .. rubric:: Undirected
 
@@ -265,28 +285,71 @@ The number of adjacent vertices is 2.
         u -- v -- w;
     }
 
-Linearity is symmetrical
+.. list-table::
+   :width: 80
+   :widths: auto
+   :header-rows: 1
+
+   * - Node
+     - Adjecent nodes
+     - Number of adjacent nodes
+   * - :math:`v`
+     - :math:`\{u, w\}`
+     - 2
+
+Linear vertex on directed graph
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Using a contra example, vertex ``v`` is not linear because it's not possible to
-go from ``w`` to ``u`` via ``v``.
+- The green nodes are `linear`_ nodes
+- The blue nodes have an unlimited number of incoming and outgoing edges.
+- The white node is not linear because the linearity is not symetrical.
+
+  * It is possible to go :math:`y \rightarrow c \rightarrow z`
+  * It's not possible to go :math:`z \rightarrow c \rightarrow y`
 
 .. graphviz::
 
     digraph G {
-        u, w, v [shape=circle;style=filled;width=.4;color=deepskyblue];
-        G [shape=tripleoctagon;width=1.5;style=filled;color=deepskyblue;label = "Rest of the Graph"];
+        u, v, w, x, y, z [shape=circle;style=filled;width=.4;color=deepskyblue];
+        a, b [style=filled; color=green];
+        G [shape=tripleoctagon;width=1.5;style=filled;
+          color=deepskyblue;label = "Rest of the Graph"];
 
         rankdir=LR;
-        {w} -> G -> {u} [dir=none, weight=1, penwidth=3];
-        u -> v -> w -> v;
+        {u, v} -> G -> {x, w, y, z} [dir=none, weight=1, penwidth=3];
+        u -> a -> v;
+        w -> b -> x;
+        x -> b -> w [color=darkgray];
+        y -> c -> z -> c;
     }
+
+.. list-table::
+   :width: 80
+   :widths: auto
+   :header-rows: 1
+
+   * - Node
+     - Adjecent nodes
+     - Number of adjacent nodes
+     - Is symmetrical?
+   * - :math:`a`
+     - :math:`\{u, v\}`
+     - 2
+     - yes
+   * - :math:`b`
+     - :math:`\{w, x\}`
+     - 2
+     - yes
+   * - :math:`c`
+     - :math:`\{y, z\}`
+     - 2
+     - no
 
 Operation: Linear Contraction
 ...............................................................................
 
-The linear contraction will stop until there are no more linear nodes.
-For example from the following graph where ``v`` and ``w`` are `linear`_ nodes:
+The linear contraction will stop when there are no more linear nodes.
+For example from the following graph where :math:`v` and :math:`w` are `linear`_ nodes:
 
 .. graphviz::
 
@@ -300,12 +363,10 @@ For example from the following graph where ``v`` and ``w`` are `linear`_ nodes:
         u -> v -> w -> z;
     }
 
-After contracting ``w``,
+Contracting :math:`w`,
 
-* The vertex ``w`` is removed from the graph
-
-  * The edges :math:`v \rightarrow w` and  :math:`w \rightarrow z` are removed from the graph.
-
+* The vertex :math:`w` is removed from the graph
+* The edges :math:`v \rightarrow w` and  :math:`w \rightarrow z` are removed from the graph.
 * A new edge :math:`v \rightarrow z` is inserted represented with red color.
 
 .. graphviz::
@@ -321,12 +382,10 @@ After contracting ``w``,
         v -> z [label="{w}";color=red]
     }
 
-Contracting ``v``:
+Contracting :math:`v`:
 
-* The vertex ``v`` is removed from the graph
-
-  * The edges :math:`u \rightarrow v` and  :math:`v \rightarrow z` are removed from the graph.
-
+* The vertex :math:`v` is removed from the graph
+* The edges :math:`u \rightarrow v` and  :math:`v \rightarrow z` are removed from the graph.
 * A new edge :math:`u \rightarrow z` is inserted represented with red color.
 
 
@@ -373,20 +432,24 @@ In this section, building and using a contracted graph will be shown by example.
 - a dead end operation first followed by a linear operation.
 
 
-
+.. contents::
+   :local:
 
 Construction of the graph in the database
 ...............................................................................
 
 .. rubric:: Original Data
 
-The following query shows the original data involved in the contraction operation.
+The following query shows the original data involved in the contraction
+operation.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q00
    :end-before: -- q01
 
 The original graph:
+
+.. TODO update image
 
 .. image:: images/undirected_sampledata_a.png
    :scale: 50%
@@ -395,10 +458,11 @@ Contraction Results
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The results do not represent the contracted graph.
-They represent the changes done to the graph after applying the contraction algorithm.
+They represent the changes done to the graph after applying the contraction
+algorithm.
 
-Observe that vertices, for example, :math:`6` do not appear in the results because
-it was not affected by the contraction algorithm.
+Observe that vertices, for example, :math:`6` do not appear in the results
+because it was not affected by the contraction algorithm.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q2
@@ -406,43 +470,52 @@ it was not affected by the contraction algorithm.
 
 After doing the dead end contraction operation:
 
+.. TODO update image
+
 .. image:: images/undirected_sampledata_b.png
    :scale: 50%
 
 After doing the linear contraction operation to the graph above:
+
+.. TODO update image
 
 .. image:: images/undirected_sampledata_c.png
    :scale: 50%
 
 The process to create the contraction graph on the database:
 
-* `Add additional columns`_
-* `Store contraction information`_
-* `Update the vertices and edge tables`_
-
+.. contents::
+   :local:
 
 Add additional columns
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Adding extra columns to the ``edge_table`` and ``edge_table_vertices_pgr`` tables, where:
+Adding extra columns to the ``edge_table`` and ``edge_table_vertices_pgr``
+tables, where:
 
-========================  ==================================================
-Column                    Description
-========================  ==================================================
-**contracted_vertices**   The vertices set belonging to the vertex/edge
-**is_contracted**         On the `vertex` table
+.. list-table::
+   :width: 80
+   :widths: auto
+   :header-rows: 1
 
-                          * when ``true`` the vertex is contracted, its not part of the contracted graph.
-                          * when ``false`` the vertex is not contracted, its part of the contracted graph.
+   * - Column
+     - Description
+   * - ``contracted_vertices``
+     - The vertices set belonging to the vertex/edge
+   * - ``is_contracted``
+     - On the vertex table
 
-**is_new**                On the `edge` table:
+       * when ``true`` the vertex is contracted, its not part of the contracted
+         graph.
+       * when ``false`` the vertex is not contracted, its part of the contracted
+         graph.
+   * - ``is_new``
+     - On the edge table
 
-                          * when ``true`` the edge was generated by the contraction algorithm. its part of the contracted graph.
-                          * when ``false`` the edge is an original edge, might be or not part of the contracted graph.
-
-========================  ==================================================
-
-
+       * when ``true`` the edge was generated by the contraction algorithm. its
+         part of the contracted graph.
+       * when ``false`` the edge is an original edge, might be or not part of
+         the contracted graph.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q1
@@ -457,30 +530,31 @@ Store the `contraction results`_ in a table
    :start-after: -- q3
    :end-before: -- q4
 
-Update the vertices and edge tables
+
+The vertex table update
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. rubric:: Update the `vertex` table using the contraction information
-
-Use ``edge_table_vertices_pgr.is_contracted`` to indicate the vertices that are contracted.
+Use ``is_contracted`` column to indicate the vertices that are contracted.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q4
    :end-before: -- q5
 
-Add to ``edge_table_vertices_pgr.contracted_vertices`` the contracted vertices belonging to the vertices.
+Fill ``contracted_vertices`` with the information from the results tha belong to
+the vertices.
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q6
    :end-before: -- q7
 
-The modified ``edge_table_vertices_pgr``.
+The modified vertices table:
 
 .. literalinclude:: doc-contraction-family.queries
    :start-after: -- q7
    :end-before: -- q8
 
-.. rubric:: Update the `edge` table using the contraction information
+The edge table update
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Insert the new edges generated by pgr_contraction.
 
@@ -512,6 +586,8 @@ Edges that belong to the contracted graph.
    :start-after: -- q11
    :end-before: -- case1
 
+.. TODO update image
+
 .. image:: images/undirected_sampledata_c.png
    :scale: 50%
 
@@ -520,8 +596,8 @@ Using the contracted graph
 
 Using the contracted graph with ``pgr_dijkstra``
 
-There are three cases when calculating the shortest path between a given source and target
-in a contracted graph:
+There are three cases when calculating the shortest path between a given source
+and target in a contracted graph:
 
 - Case 1: Both source and target belong to the contracted graph.
 - Case 2: Source and/or target belong to an edge subgraph.
@@ -663,4 +739,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-
