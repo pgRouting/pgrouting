@@ -20,7 +20,7 @@
   `2.5 <https://docs.pgrouting.org/2.5/en/aStar-family.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/aStar-family.html>`__
 
-aStar - Family of functions
+A* - Family of functions
 ===============================================================================
 
 The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a
@@ -42,24 +42,20 @@ a sub-set of the overall graph.
     pgr_aStarCost
     pgr_aStarCostMatrix
 
-General Information
+Description
 --------------------------------------------------------------------------------
 
 The main Characteristics are:
 
 .. astar general info start
 
-* Default kind of graph is **directed**  when
-
-  * ``directed`` flag is missing.
-  * ``directed`` flag is set to true
-
-* Unless specified otherwise, ordering is:
+* Process works for directed and undirected graphs.
+* Ordering is:
 
   *  first by ``start_vid`` (if exists)
   *  then by ``end_vid``
 
-* Values are returned when there is a path
+* Values are returned when there is a path.
 * Let :math:`v` and :math:`u` be nodes on the graph:
 
   * If there is no path from :math:`v` to :math:`u`:
@@ -72,28 +68,13 @@ The main Characteristics are:
     * no corresponding row is returned
     * ``agg_cost`` from `v` to `u` is :math:`0`
 
-* Edges with negative costs are not included in the graph.
-* When (x,y) coordinates for the same vertex identifier differ:
+* When :math:`(x,y)` coordinates for the same vertex identifier differ:
 
-  * A random selection of the vertex's (x,y) coordinates is used.
+  * A random selection of the vertex's :math:`(x,y)` coordinates is used.
 
 * Running time: :math:`O((E + V) * \log V)`
 
 .. astar general info end
-
-Parameters
--------------------------------------------------------------------------------
-
-.. include:: dijkstra-family.rst
-    :start-after: dijkstra_parameters_start
-    :end-before: dijkstra_parameters_end
-
-Optional parameters
-...............................................................................
-
-.. include:: dijkstra-family.rst
-    :start-after: dijkstra_optionals_start
-    :end-before: dijkstra_optionals_end
 
 aStar optional Parameters
 ...............................................................................
@@ -110,54 +91,32 @@ aStar optional Parameters
      - Default
      - Description
    * - ``heuristic``
-     - **INTEGER**
+     - ``INTEGER``
      - 5
      - Heuristic number. Current valid values 0~5.
 
-       * 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
-       * 1: h(v) abs(max(dx, dy))
-       * 2: h(v) abs(min(dx, dy))
-       * 3: h(v) = dx * dx + dy * dy
-       * 4: h(v) = sqrt(dx * dx + dy * dy)
-       * 5: h(v) = abs(dx) + abs(dy)
+       * 0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)
+       * 1: :math:`h(v) = abs(max(\Delta x, \Delta y))`
+       * 2: :math:`h(v) = abs(min(\Delta x, \Delta y))`
+       * 3: :math:`h(v) = \Delta x * \Delta x + \Delta y * \Delta y`
+       * 4: :math:`h(v) = sqrt(\Delta x * \Delta x + \Delta y * \Delta y)`
+       * 5: :math:`h(v) = abs(\Delta x) + abs(\Delta y)`
    * - ``factor``
      - ``FLOAT``
      - ``1``
-     - For units manipulation. :math:`factor > 0`.  See :ref:`astar_factor`
+     - For units manipulation. :math:`factor > 0`.
    * - ``epsilon``
      - ``FLOAT``
      - ``1``
      - For less restricted results. :math:`epsilon >= 1`.
 
+See :ref:`heuristics <astar_heuristics>` available and :ref:`factor
+<astar_factor>` handling.
+
 .. astar_optionals_end
-
-Inner queries
--------------------------------------------------------------------------------
-
-Edges SQL
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-    :start-after: xy_edges_sql_start
-    :end-before: xy_edges_sql_end
-
-Combinations SQL
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_combinations_sql_start
-    :end-before: basic_combinations_sql_end
-
 
 Advanced documentation
 --------------------------------------------------------------------------------
-
-The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a
-heuristic, that is an estimation of the remaining cost from the vertex to the
-goal, that allows to solve most shortest path problems by evaluation only a
-sub-set of the overall graph.
-
-Running time: :math:`O((E + V) * \log V)`
 
 .. _astar_heuristics:
 
@@ -178,7 +137,7 @@ where :math:`\Delta x = x_1 - x_0` and :math:`\Delta y = y_1 - y_0`
 .. _astar_factor:
 
 Factor
--------------------------------------------------------------------------------
+................................................................................
 
 .. rubric:: Analysis 1
 
@@ -229,9 +188,7 @@ say 25m/s is the speed.
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`pgr_aStar`
-* :doc:`pgr_aStarCost`
-* :doc:`pgr_aStarCostMatrix`
+* :doc:`bdAstar-family`
 * https://www.boost.org/libs/graph/doc/astar_search.html
 * https://en.wikipedia.org/wiki/A*_search_algorithm
 

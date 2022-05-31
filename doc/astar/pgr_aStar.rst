@@ -90,11 +90,16 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, `Combinations SQL`_  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -108,7 +113,8 @@ One to One
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -128,7 +134,8 @@ One to Many
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -147,7 +154,8 @@ Many to One
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -166,7 +174,8 @@ Many to Many
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -185,7 +194,8 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, `Combinations SQL`_  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 

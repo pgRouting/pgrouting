@@ -71,7 +71,8 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_bdAstarCostMatrix(`Edges SQL`_, **vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_bdAstarCostMatrix(`Edges SQL`_, **start vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 :Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
