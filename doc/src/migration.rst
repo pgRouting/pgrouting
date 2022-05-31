@@ -13,7 +13,7 @@
   `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__
   (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)
 
-``pgr_trsp`` - Migration guide
+Migration guide
 ===============================================================================
 
 ``pgr_trsp`` signatures have changed and many issues have been fixed in the new

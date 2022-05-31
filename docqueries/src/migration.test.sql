@@ -1,4 +1,3 @@
-ROLLBACK;
 \set VERBOSITY terse
 SET extra_float_digits=-3;
 
@@ -21,24 +20,24 @@ SELECT * FROM new_restrictions;
 SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
     FROM edge_table WHERE id != 16$$,
-  4, 9,
+  15, 16,
   true, true);
 /* --verticesv2 */
 SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id != 16$$,
-  4, 9);
+  15, 16);
 /* --verticesv3 */
 SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id != 16$$,
-  4, 9);
+  15, 16);
 /* --verticesv4 */
 SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
     FROM edge_table WHERE id != 16$$,
-  4, 9,
+  15, 16,
   true, true,
   $$SELECT to_cost, target_id::INTEGER, via_path
     FROM old_restrictions$$);
@@ -47,14 +46,14 @@ SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id != 16$$,
   $$SELECT * FROM new_restrictions$$,
-  4, 9);
+  15, 16);
 /* --verticesv6 */
 SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
     FROM edge_table WHERE id != 16$$,
   $$SELECT * FROM new_restrictions$$,
-  4, 9);
+  15, 16);
 /* --verticesv7 */
 SELECT pid, edge_id, fraction, side FROM pointsOfInterest
 WHERE pid IN (3, 4);
@@ -67,7 +66,7 @@ SELECT * FROM pgr_trsp(
 /* --edgesv2 */
 SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4,3)$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
   -4, -3,
   details => false);
 /* --edgesv3 */
@@ -86,7 +85,7 @@ SELECT * FROM pgr_trsp(
 SELECT * FROM pgr_trsp_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT * FROM new_restrictions$$,
-  $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4,3)$$,
+  $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
   -4, -3,
   details => false);
 /* --edgesv6 */
@@ -102,31 +101,31 @@ WHERE edge != -1;
 /* --viav1 */
 SELECT * FROM pgr_trspViaVertices(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-  ARRAY[2, 8, 2],
+  ARRAY[6, 3, 6],
   true, true);
 /* --viav2 */
 SELECT * FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  ARRAY[2, 8, 2]);
+  ARRAY[6, 3, 6]);
 /* --viav3*/
 SELECT row_number() over(ORDER BY seq) AS seq,
   path_id::INTEGER AS id1, node::INTEGER AS id2,
   CASE WHEN edge >= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
 FROM pgr_dijkstraVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
-  ARRAY[2, 8, 2])
+  ARRAY[6, 3, 6])
 WHERE edge != -1;
 /* --viav4*/
 SELECT * FROM pgr_trspViaVertices(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-  ARRAY[2, 8, 2],
+  ARRAY[6, 3, 6],
   true, true,
   $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
 /* --viav5 */
 SELECT * FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT * FROM new_restrictions$$,
-  ARRAY[2, 8, 2]);
+  ARRAY[6, 3, 6]);
 /* --viav6*/
 SELECT row_number() over(ORDER BY seq) AS seq,
   path_id::INTEGER AS id1, node::INTEGER AS id2,
@@ -134,7 +133,7 @@ SELECT row_number() over(ORDER BY seq) AS seq,
 FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
   $$SELECT * FROM new_restrictions$$,
-  ARRAY[2, 8, 2])
+  ARRAY[6, 3, 6])
 WHERE edge != -1;
 /* --viav7*/
 SELECT pid, edge_id, fraction, side FROM pointsOfInterest
