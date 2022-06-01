@@ -1,7 +1,7 @@
 -- TODO move to pgtap
 
 DROP TABLE edge_table;
-DROP TABLE edge_table_vertices_pgr;
+DROP TABLE vertices;
 CREATE TABLE edge_table (
     id integer,
     source integer,
@@ -318,7 +318,7 @@ INSERT INTO edge_table (id, source, target, cost, the_geom) VALUES
 
 
 WITH a AS (SELECT source FROM edge_table UNION select target FROM edge_table)
-SELECT source AS id INTO edge_table_vertices_pgr FROM a;
+SELECT source AS id INTO vertices FROM a;
 
 DROP TABLE IF EXISTS result2;
 SELECT  * INTO result2 FROM pgr_lineGraphFull(
@@ -341,7 +341,7 @@ SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
 
 UPDATE result2_vertices_pgr AS r SET original_id = v.id
-FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
+FROM vertices AS v WHERE v.id = r.id;
 
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;

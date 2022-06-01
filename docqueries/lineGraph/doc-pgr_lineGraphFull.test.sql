@@ -21,7 +21,7 @@ FROM pgr_lineGraphFull(
 /* -- q3 */
 SELECT id, NULL::BIGINT original_id
 INTO vertex_map
-FROM edge_table_vertices_pgr;
+FROM vertices;
 /* -- q4 */
 INSERT INTO vertex_map (id)
 (SELECT id

@@ -3,8 +3,6 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
-DROP TABLE
 SELECT  pgr_createTopology('edge_table',0.001, 'geom', clean := true);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := t)

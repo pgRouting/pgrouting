@@ -4,7 +4,7 @@ SET client_min_messages TO WARNING;
 /* -- q1 */
 SELECT * FROM pgr_TSPeuclidean(
   $$
-  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM edge_table_vertices_pgr
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
   $$);
 /* -- q2 */
 SELECT *

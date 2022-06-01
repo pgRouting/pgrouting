@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;
 UPDATE 18
-UPDATE edge_table_vertices_pgr SET id = id * 1000;
+UPDATE vertices SET id = id * 1000;
 UPDATE 17
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
   id  | source | target | cost | reverse_cost
@@ -29,7 +29,7 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table;
  1500 |  16000 |  17000 |    1 |            1
 (18 rows)
 
-SELECT id FROM edge_table_vertices_pgr;
+SELECT id FROM vertices;
   id
 -------
   1000

@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 DROP TABLE edge_table;
 DROP TABLE
-DROP TABLE edge_table_vertices_pgr;
+DROP TABLE vertices;
 DROP TABLE
 CREATE TABLE edge_table (
     id integer,
@@ -319,7 +319,7 @@ INSERT INTO edge_table (id, source, target, cost, the_geom) VALUES
 (170151, 11736, 70733, 1, '0105000000010000000102000000050000001448CDD103595D4139CEAC9C859B254144BF53FFF9585D4192F23763DE9C2541B3737717F5585D41E289758BF49D254130783A6DF6585D4183DA6569D69E2541D3473EF6F9585D4197B02122439F2541');
 INSERT 0 302
 WITH a AS (SELECT source FROM edge_table UNION select target FROM edge_table)
-SELECT source AS id INTO edge_table_vertices_pgr FROM a;
+SELECT source AS id INTO vertices FROM a;
 SELECT 256
 DROP TABLE IF EXISTS result2;
 NOTICE:  table "result2" does not exist, skipping
@@ -359,7 +359,7 @@ SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NULL;
 (1 row)
 
 UPDATE result2_vertices_pgr AS r SET original_id = v.id
-FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
+FROM vertices AS v WHERE v.id = r.id;
 UPDATE 256
 SELECT count(*) FROM result2_vertices_pgr WHERE original_id IS NOT NULL;
  count

@@ -6,13 +6,11 @@
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q1 */
 SELECT  pgr_createTopology('edge_table', 0.001, 'geom');
 /* --q1.1 */
 
-DROP TABLE edge_table_vertices_pgr;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q2 */
 SELECT  pgr_createTopology('edge_table', 0.001,
@@ -26,7 +24,7 @@ SELECT  pgr_createTopology('edge_table', 0.001,
 /* --q3.1 */
 
 SET client_min_messages TO WARNING;
-DROP TABLE edge_table_vertices_pgr;
+DROP TABLE vertices;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q4 */
 SELECT  pgr_createTopology('edge_table', 0.001,

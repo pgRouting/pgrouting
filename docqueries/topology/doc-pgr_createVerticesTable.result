@@ -2,8 +2,6 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
-DROP TABLE
 /* --q1 */
 SELECT  pgr_createVerticesTable('edge_table', 'geom');
 NOTICE:  PROCESSING:

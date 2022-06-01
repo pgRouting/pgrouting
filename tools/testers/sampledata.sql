@@ -5,7 +5,7 @@
 ------------------------------------------------------------------------------------------------------
 
 DROP TABLE IF EXISTS edge_table;
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
+DROP TABLE IF EXISTS vertices;
 DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS old_restrictions;
 DROP TABLE IF EXISTS restrictions;
@@ -61,18 +61,18 @@ INSERT INTO edge_table (
 /* --EDGE TABLE ADD DATA end */
 
 /* -- Create the vertices table */
-SELECT  * INTO edge_table_vertices_pgr
+SELECT  * INTO vertices
 FROM pgr_extractVertices('SELECT id, geom FROM edge_table ORDER BY id');
 
 /* -- Inspect the vertices table */
-SELECT * FROM edge_table_vertices_pgr;
+SELECT * FROM vertices;
 
 /* -- Create the topology */
 /* -- set the source information */
 WITH
 out_going AS (
   SELECT id AS vid, unnest(out_edges) AS eid, x, y
-  FROM edge_table_vertices_pgr
+  FROM vertices
 )
 UPDATE edge_table
 SET source = vid, x1 = x, y1 = y
@@ -82,7 +82,7 @@ FROM out_going WHERE id = eid;
 WITH
 in_coming AS (
   SELECT id AS vid, unnest(in_edges) AS eid, x, y
-  FROM edge_table_vertices_pgr
+  FROM vertices
 )
 UPDATE edge_table
 SET target = vid, x2 = x, y2 = y

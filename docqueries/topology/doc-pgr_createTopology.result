@@ -2,8 +2,6 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
-DROP TABLE
 UPDATE edge_table SET source = NULL,  target = NULL;
 UPDATE 18
 /* --q1 */
@@ -22,8 +20,6 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 /* --q1.1 */
-DROP TABLE edge_table_vertices_pgr;
-DROP TABLE
 UPDATE edge_table SET source = NULL,  target = NULL;
 UPDATE 18
 /* --q2 */
@@ -62,7 +58,7 @@ NOTICE:  Unexpected error raise_exception
 /* --q3.1 */
 SET client_min_messages TO WARNING;
 SET
-DROP TABLE edge_table_vertices_pgr;
+DROP TABLE vertices;
 DROP TABLE
 UPDATE edge_table SET source = NULL,  target = NULL;
 UPDATE 18

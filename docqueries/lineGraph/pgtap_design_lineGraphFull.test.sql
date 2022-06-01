@@ -1,8 +1,8 @@
 UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;
-UPDATE edge_table_vertices_pgr SET id = id * 1000;
+UPDATE vertices SET id = id * 1000;
 
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
-SELECT id FROM edge_table_vertices_pgr;
+SELECT id FROM vertices;
 
 SELECT  *  FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost FROM edge_table WHERE id = 1$$

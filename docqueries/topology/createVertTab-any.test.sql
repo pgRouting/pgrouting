@@ -7,7 +7,6 @@
 
 SELECT AddGeometryColumn ('public','edge_table','the_geom',0,'LINESTRING',2);
 UPDATE edge_table SET the_geom = geom;
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
 --    SELECT pgr_createTopology('edge_table',0.001);
 	 SELECT  pgr_createVerticesTable('edge_table');
 	 SELECT  pgr_createVerticesTable('edge_table','the_geom','source','target');

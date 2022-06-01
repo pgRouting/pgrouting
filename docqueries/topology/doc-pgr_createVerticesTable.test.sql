@@ -1,6 +1,5 @@
 
 
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
 /* --q1 */
 SELECT  pgr_createVerticesTable('edge_table', 'geom');
 /* --q1.1 */

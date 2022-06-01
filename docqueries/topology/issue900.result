@@ -4,8 +4,6 @@ SET client_min_messages TO NOTICE;
 SET
 ALTER TABLE edge_table RENAME TO mbta_arc;
 ALTER TABLE
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
-DROP TABLE
 CREATE TABLE edge_table AS SELECT * FROM mbta_arc;
 SELECT 18
 ;

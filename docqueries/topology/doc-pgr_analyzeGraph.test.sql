@@ -5,7 +5,6 @@
 ------------------------------------------------------------------------------------------------------
 
 /* -- q1 */
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
 SELECT  pgr_createTopology('edge_table',0.001, 'geom', clean := true);
 SELECT  pgr_analyzeGraph('edge_table',0.001,'geom');
 /* -- q1.1 */

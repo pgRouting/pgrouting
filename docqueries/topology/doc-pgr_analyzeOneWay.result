@@ -5,6 +5,20 @@ SET
 /* --q1 */
 ALTER TABLE edge_table ADD COLUMN dir TEXT;
 ALTER TABLE
+SELECT  pgr_createTopology('edge_table', 0.001, 'geom');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  0 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology
+--------------------
+ OK
+(1 row)
+
 UPDATE edge_table SET
 dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'
            WHEN (cost>0 AND reverse_cost<0) THEN 'FT'

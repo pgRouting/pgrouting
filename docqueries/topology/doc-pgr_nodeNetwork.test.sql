@@ -1,7 +1,6 @@
 --                pgr_nodeNetwork
 --------------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS edge_table_vertices_pgr;
 /* --q1 */
 SELECT pgr_createTopology('edge_table', 0.001, 'geom', clean := TRUE);
 /* --q1.1 */
