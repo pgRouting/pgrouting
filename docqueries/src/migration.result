@@ -49,7 +49,7 @@ SELECT * FROM new_restrictions;
 /* --verticesv1 */
 SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
-    FROM edge_table WHERE id != 16$$,
+    FROM edges WHERE id != 16$$,
   15, 16,
   true, true);
 WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
@@ -64,7 +64,7 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 /* --verticesv2 */
 SELECT * FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id != 16$$,
+    FROM edges WHERE id != 16$$,
   15, 16);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -78,7 +78,7 @@ SELECT * FROM pgr_dijkstra(
 SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_dijkstra(
   $$SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id != 16$$,
+    FROM edges WHERE id != 16$$,
   15, 16);
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -91,7 +91,7 @@ FROM pgr_dijkstra(
 /* --verticesv4 */
 SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
-    FROM edge_table WHERE id != 16$$,
+    FROM edges WHERE id != 16$$,
   15, 16,
   true, true,
   $$SELECT to_cost, target_id::INTEGER, via_path
@@ -110,7 +110,7 @@ WARNING:  pgr_trsp(text,integer,integer,boolean,boolean) is been deprecated
 /* --verticesv5 */
 SELECT * FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id != 16$$,
+    FROM edges WHERE id != 16$$,
   $$SELECT * FROM new_restrictions$$,
   15, 16);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -127,7 +127,7 @@ SELECT * FROM pgr_trsp(
 SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_trsp(
   $$SELECT id, source, target, cost, reverse_cost
-    FROM edge_table WHERE id != 16$$,
+    FROM edges WHERE id != 16$$,
   $$SELECT * FROM new_restrictions$$,
   15, 16);
  seq | id1 | id2 | cost
@@ -152,7 +152,7 @@ WHERE pid IN (3, 4);
 /* --edgesv1 */
 SELECT * FROM pgr_trsp(
   $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost
-    FROM edge_table$$,
+    FROM edges$$,
   6, 0.3, 12, 0.6,
   true, true);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
@@ -167,7 +167,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 
 /* --edgesv2 */
 SELECT * FROM pgr_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
   -4, -3,
   details => false);
@@ -183,7 +183,7 @@ SELECT * FROM pgr_withPoints(
 /* --edgesv3 */
 SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6)) AS t(pid, edge_id, fraction)$$,
   -1, -2,
   details => false);
@@ -198,7 +198,7 @@ FROM pgr_withPoints(
 
 /* --edgesv4 */
 SELECT * FROM pgr_trsp(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
   6, 0.3, 12, 0.6, true, true,
   $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
 WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been deprecated
@@ -218,7 +218,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 
 /* --edgesv5 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
   -4, -3,
@@ -241,7 +241,7 @@ SELECT * FROM pgr_trsp_withPoints(
 /* --edgesv6 */
 SELECT seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
 FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6)) AS t(pid, edge_id, fraction)$$,
   -1, -2,
@@ -264,7 +264,7 @@ WHERE edge != -1;
 /* --edgesv7 */
 /* --viav1 */
 SELECT * FROM pgr_trspViaVertices(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6],
   true, true);
 WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprecated
@@ -279,7 +279,7 @@ WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprec
 
 /* --viav2 */
 SELECT * FROM pgr_dijkstraVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6]);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
@@ -296,7 +296,7 @@ SELECT row_number() over(ORDER BY seq) AS seq,
   path_id::INTEGER AS id1, node::INTEGER AS id2,
   CASE WHEN edge >= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
 FROM pgr_dijkstraVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6])
 WHERE edge != -1;
  seq | id1 | id2 | id3 | cost
@@ -310,7 +310,7 @@ WHERE edge != -1;
 
 /* --viav4*/
 SELECT * FROM pgr_trspViaVertices(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
   ARRAY[6, 3, 6],
   true, true,
   $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
@@ -332,7 +332,7 @@ WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprec
 
 /* --viav5 */
 SELECT * FROM pgr_trspVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   ARRAY[6, 3, 6]);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
@@ -356,7 +356,7 @@ SELECT row_number() over(ORDER BY seq) AS seq,
   path_id::INTEGER AS id1, node::INTEGER AS id2,
   CASE WHEN edge >= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
 FROM pgr_trspVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   ARRAY[6, 3, 6])
 WHERE edge != -1;
@@ -387,7 +387,7 @@ WHERE pid IN (3, 4, 6);
 
 /* --edgesvia1 */
 SELECT * FROM pgr_trspViaEdges(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
   ARRAY[6, 12, 4], ARRAY[0.3, 0.6, 0.7],
   true, true);
 WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is been deprecated
@@ -409,7 +409,7 @@ WARNING:  pgr_trspViaEdges(text, integer[], float[], boolean, boolean, text) is 
 
 /* --edgesvia2 */
 SELECT * FROM pgr_withPointsVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
   details => false);
@@ -434,7 +434,7 @@ SELECT row_number() over(ORDER BY seq) AS seq,
 path_id::INTEGER AS id1, node::INTEGER AS id2,
 CASE WHEN edge >= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
 FROM pgr_withPointsVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6),(3, 4, 0.7)) AS t(pid, edge_id, fraction)$$,
   ARRAY[-1, -2, -3],
   details=> false);
@@ -456,7 +456,7 @@ FROM pgr_withPointsVia(
 
 /* --edgesvia4 */
 SELECT * FROM pgr_trspViaEdges(
-  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
   ARRAY[6, 12, 4], ARRAY[0.3, 0.6, 0.7],
   true, true,
   $$SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions$$);
@@ -484,7 +484,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 
 /* --edgesvia5 */
 SELECT * FROM pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (3, 4, 6)$$,
   ARRAY[-4, -3, -6],
@@ -511,7 +511,7 @@ SELECT row_number() over(ORDER BY seq) AS seq,
 path_id::INTEGER AS id1, node::INTEGER AS id2,
 CASE WHEN edge >= 0 THEN edge::INTEGER ELSE -1 END AS id3, cost::FLOAT
 FROM pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT * FROM new_restrictions$$,
   $$SELECT * FROM (VALUES (1, 6, 0.3),(2, 12, 0.6),(3, 4, 0.7)) AS t(pid, edge_id, fraction)$$,
   ARRAY[-1, -2, -3],

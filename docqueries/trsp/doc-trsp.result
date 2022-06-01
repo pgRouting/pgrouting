@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q2 */
 SELECT * FROM pgr_trsp(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   6, 10,
   false);
@@ -16,7 +16,7 @@ SELECT * FROM pgr_trsp(
 
 /* -- q3 */
 SELECT * FROM pgr_trsp(
-  $$SELECT id, source, target, cost FROM edge_table$$,
+  $$SELECT id, source, target, cost FROM edges$$,
   $$SELECT * FROM restrictions$$,
   6, ARRAY[10, 1],
   false);
@@ -38,7 +38,7 @@ SELECT * FROM pgr_trsp(
 
 /* -- q4 */
 SELECT * FROM pgr_trsp(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[6, 1], 8);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -54,7 +54,7 @@ SELECT * FROM pgr_trsp(
 
 /* -- q5 */
 SELECT * FROM pgr_trsp(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   ARRAY[6, 1], ARRAY[10, 8],
   false);
@@ -82,7 +82,7 @@ SELECT * FROM pgr_trsp(
 
 /* -- q6 */
 SELECT * FROM pgr_trsp(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT * FROM (VALUES (6, 10), (6, 1), (6, 8), (1, 8)) AS combinations (source, target)$$);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost

@@ -3,36 +3,36 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* --q1 */
-ALTER TABLE edge_table ADD COLUMN dir TEXT;
+ALTER TABLE edges ADD COLUMN dir TEXT;
 ALTER TABLE
-SELECT  pgr_createTopology('edge_table', 0.001, 'geom');
+SELECT  pgr_createTopology('edges', 0.001, 'geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  pgr_createTopology('edges', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
 NOTICE:  -------------> TOPOLOGY CREATED FOR  0 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
+NOTICE:  Vertices table for table public.edges is: public.edges_vertices_pgr
 NOTICE:  ----------------------------------------------
  pgr_createtopology
 --------------------
  OK
 (1 row)
 
-UPDATE edge_table SET
+UPDATE edges SET
 dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'
            WHEN (cost>0 AND reverse_cost<0) THEN 'FT'
            WHEN (cost<0 AND reverse_cost>0) THEN 'TF'
            ELSE '' END;
 UPDATE 18
-SELECT pgr_analyzeOneWay('edge_table',
+SELECT pgr_analyzeOneWay('edges',
         ARRAY['', 'B', 'TF'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'TF'],
         oneway:='dir');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeOneway('edge_table','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
+NOTICE:  pgr_analyzeOneway('edges','{"",B,TF}','{"",B,FT}','{"",B,FT}','{"",B,TF}','dir','source','target',t)
 NOTICE:  Analyzing graph for one way street errors.
 NOTICE:  Analysis 25% complete ...
 NOTICE:  Analysis 50% complete ...

@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
     SELECT * FROM pgr_trspViaVertices(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[6, 1, 12]::INTEGER[],     -- array of vids
         true,  -- directed graph?
         true,  -- has_reverse_cost?
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
 
     SELECT * FROM pgr_trspViaEdges(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[4,6,11]::INTEGER[],           -- array of eids
         ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
         true,  -- directed graph?
@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         -- include the turn restrictions
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
     SELECT * FROM pgr_trspViaEdges(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[1,11,6]::INTEGER[],           -- array of eids
         ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
         true,  -- directed graph?
@@ -48,7 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
         -- include the turn restrictions
         'SELECT to_cost, target_id::INTEGER, via_path FROM old_restrictions');
     SELECT * FROM pgr_trspViaEdges(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[1,11,6]::INTEGER[],           -- array of eids
         ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
         true,  -- directed graph?

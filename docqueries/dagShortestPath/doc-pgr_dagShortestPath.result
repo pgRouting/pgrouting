@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q2 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   5, 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -16,7 +16,7 @@ SELECT * FROM pgr_dagShortestPath(
 
 /* -- q3 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   5, ARRAY[7, 11]);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -31,7 +31,7 @@ SELECT * FROM pgr_dagShortestPath(
 
 /* -- q4 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[5, 10], 11);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -45,7 +45,7 @@ SELECT * FROM pgr_dagShortestPath(
 
 /* -- q5 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[5, 15], ARRAY[11, 17]);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -77,7 +77,7 @@ SELECT source, target FROM combinations_table;
 
 /* -- q52 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   'SELECT source, target FROM combinations_table');
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -87,7 +87,7 @@ SELECT * FROM pgr_dagShortestPath(
 
 /* -- q6 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[5, 10, 5, 10, 10, 5], ARRAY[11, 17, 17, 11]);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -111,7 +111,7 @@ SELECT * FROM pgr_dagShortestPath(
 
 /* -- q7 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[5, 10, 11], ARRAY[5, 10, 11]);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -125,7 +125,7 @@ SELECT * FROM pgr_dagShortestPath(
 
 /* -- q8 */
 SELECT * FROM pgr_dagShortestPath(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------

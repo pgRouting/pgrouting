@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q2 */
 SELECT * FROM pgr_Dijkstra(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'select id, source, target, cost, reverse_cost from edges',
   6, 10, true);
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -18,7 +18,7 @@ SELECT * FROM pgr_Dijkstra(
 
 /* -- q3 */
 SELECT * FROM pgr_Dijkstra(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'select id, source, target, cost, reverse_cost from edges',
   6, ARRAY[10, 17]);
  seq | path_seq | end_vid | node | edge | cost | agg_cost
 -----+----------+---------+------+------+------+----------
@@ -37,7 +37,7 @@ SELECT * FROM pgr_Dijkstra(
 
 /* -- q4 */
 SELECT * FROM pgr_Dijkstra(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'select id, source, target, cost, reverse_cost from edges',
   ARRAY[6, 1], 17);
  seq | path_seq | start_vid | node | edge | cost | agg_cost
 -----+----------+-----------+------+------+------+----------
@@ -56,7 +56,7 @@ SELECT * FROM pgr_Dijkstra(
 
 /* -- q5 */
 SELECT * FROM pgr_Dijkstra(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'select id, source, target, cost, reverse_cost from edges',
   ARRAY[6, 1], ARRAY[10, 17],
   directed => false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -94,7 +94,7 @@ SELECT source, target FROM combinations_table;
 
 /* -- q52 */
 SELECT * FROM pgr_Dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   'SELECT source, target FROM combinations_table',
   false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -113,7 +113,7 @@ SELECT * FROM pgr_Dijkstra(
 
 /* -- q6 */
 SELECT * FROM pgr_Dijkstra(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'select id, source, target, cost, reverse_cost from edges',
   ARRAY[7, 10, 15, 10, 10, 15], ARRAY[10, 7, 10, 15]);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
@@ -143,7 +143,7 @@ SELECT * FROM pgr_Dijkstra(
 
 /* -- q7 */
 SELECT * FROM pgr_Dijkstra(
-  'select id, source, target, cost, reverse_cost from edge_table',
+  'select id, source, target, cost, reverse_cost from edges',
   ARRAY[7, 10, 15], ARRAY[7, 10, 15]);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
@@ -173,7 +173,7 @@ SELECT * FROM pgr_Dijkstra(
 
 /* -- q8 */
 SELECT * FROM pgr_Dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------
@@ -197,7 +197,7 @@ SELECT * FROM pgr_Dijkstra(
 
 /* -- q70 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, 10
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -212,7 +212,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q71 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, 7
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -223,7 +223,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q72 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   12, 10
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -237,7 +237,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q73 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   12, 7
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -251,7 +251,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q74 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, ARRAY[10, 7]
 );
  seq | path_seq | end_vid | node | edge | cost | agg_cost
@@ -268,7 +268,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q75 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6, 12], 7
 );
  seq | path_seq | start_vid | node | edge | cost | agg_cost
@@ -284,7 +284,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q76 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6, 12], ARRAY[10,7]
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -311,7 +311,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q77 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -336,7 +336,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q90 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, 10,
   false
 );
@@ -348,7 +348,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q91 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, 7,
   false
 );
@@ -360,7 +360,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q92 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   12, 10,
   false
 );
@@ -373,7 +373,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q93 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   12, 7,
   false
 );
@@ -386,7 +386,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q94 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, ARRAY[10,7],
   false
 );
@@ -400,7 +400,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q95 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6,12], 7,
   false
 );
@@ -415,7 +415,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q96 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6, 12], ARRAY[10,7],
   false
 );
@@ -435,7 +435,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q97 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)',
   false
 );
@@ -455,7 +455,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q11 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   6, 10
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -464,7 +464,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q111 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   6, 7
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -475,7 +475,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q112 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   12, 10
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -484,7 +484,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q113 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   12, 7
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -493,7 +493,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q114 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   6, ARRAY[10,7]
 );
  seq | path_seq | end_vid | node | edge | cost | agg_cost
@@ -504,7 +504,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q115 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[6,12], 7
 );
  seq | path_seq | start_vid | node | edge | cost | agg_cost
@@ -515,7 +515,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q116 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[6, 12], ARRAY[10,7]
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -526,7 +526,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q117 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)'
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -540,7 +540,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q13 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   6, 10,
   false
 );
@@ -554,7 +554,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q131 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   6, 7,
   false
 );
@@ -566,7 +566,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q132 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   12, 10,
   false
 );
@@ -579,7 +579,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q133 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   12, 7,
   false
 );
@@ -592,7 +592,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q134 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   6, ARRAY[10,7],
   false
 );
@@ -608,7 +608,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q135 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[6,12], 7,
   false
 );
@@ -623,7 +623,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q136 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   ARRAY[6, 12], ARRAY[10,7],
   false
 );
@@ -645,7 +645,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q137 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost FROM edge_table',
+  'SELECT id, source, target, cost FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)',
   false
 );
@@ -667,7 +667,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q15 */
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, 10
 );
  seq | path_seq | node | edge | cost | agg_cost
@@ -682,7 +682,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q151*/
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, ARRAY[10]
 );
  seq | path_seq | end_vid | node | edge | cost | agg_cost
@@ -697,7 +697,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q152*/
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6], 10
 );
  seq | path_seq | start_vid | node | edge | cost | agg_cost
@@ -712,7 +712,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q153*/
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6], ARRAY[10]
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
@@ -727,7 +727,7 @@ SELECT * FROM pgr_dijkstra(
 
 /* -- q154*/
 SELECT * FROM pgr_dijkstra(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   'SELECT * FROM (VALUES(6, 10)) AS combinations (source, target)'
 );
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost

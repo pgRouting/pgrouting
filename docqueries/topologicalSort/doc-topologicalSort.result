@@ -5,10 +5,10 @@ SET
 /* -- q1 */
 SELECT * FROM pgr_topologicalsort(
   $$SELECT id, source, target, cost
-  FROM edge_table WHERE cost >= 0
+  FROM edges WHERE cost >= 0
   UNION
   SELECT id, target, source, reverse_cost
-  FROM edge_table WHERE cost < 0$$);
+  FROM edges WHERE cost < 0$$);
  seq | sorted_v
 -----+----------
    1 |        1
@@ -33,10 +33,10 @@ SELECT * FROM pgr_topologicalsort(
 /* -- q2 */
 SELECT * FROM pgr_topologicalsort(
   $$SELECT id, source, target, cost, -1 AS reverse_cost
-  FROM edge_table WHERE cost >= 0
+  FROM edges WHERE cost >= 0
   UNION
   SELECT id, source, target, -1, reverse_cost
-  FROM edge_table WHERE cost < 0$$);
+  FROM edges WHERE cost < 0$$);
  seq | sorted_v
 -----+----------
    1 |        5
@@ -60,7 +60,7 @@ SELECT * FROM pgr_topologicalsort(
 
 /* -- q3 */
 SELECT * FROM pgr_topologicalsort(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$);
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$);
 ERROR:  Graph is not DAG
 CONTEXT:  SQL function "pgr_topologicalsort" statement 1
 /* -- q4 */

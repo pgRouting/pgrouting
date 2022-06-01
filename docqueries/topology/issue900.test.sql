@@ -1,5 +1,5 @@
 
-ALTER TABLE edge_table RENAME TO mbta_arc;
-CREATE TABLE edge_table AS SELECT * FROM mbta_arc;;
-SELECT pgr_CreateTopology('edge_table', 0.001, 'geom', 'id', clean := true);
+ALTER TABLE edges RENAME TO mbta_arc;
+CREATE TABLE edges AS SELECT * FROM mbta_arc;;
+SELECT pgr_CreateTopology('edges', 0.001, 'geom', 'id', clean := true);
 

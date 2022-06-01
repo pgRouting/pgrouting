@@ -4,7 +4,7 @@
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS edge_table;
+DROP TABLE IF EXISTS edges;
 DROP TABLE IF EXISTS vertices;
 DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS old_restrictions;
@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS orders;
 
 
 /* --EDGE TABLE CREATE start */
-CREATE TABLE edge_table (
+CREATE TABLE edges (
     id BIGSERIAL,
     source BIGINT,
     target BIGINT,
@@ -36,7 +36,7 @@ CREATE TABLE edge_table (
 );
 /* --EDGE TABLE CREATE end */
 /* --EDGE TABLE ADD DATA start */
-INSERT INTO edge_table (
+INSERT INTO edges (
     category_id, reverse_category_id,
     cost, reverse_cost,
     capacity, reverse_capacity, geom) VALUES
@@ -62,7 +62,7 @@ INSERT INTO edge_table (
 
 /* -- Create the vertices table */
 SELECT  * INTO vertices
-FROM pgr_extractVertices('SELECT id, geom FROM edge_table ORDER BY id');
+FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
 
 /* -- Inspect the vertices table */
 SELECT * FROM vertices;
@@ -74,7 +74,7 @@ out_going AS (
   SELECT id AS vid, unnest(out_edges) AS eid, x, y
   FROM vertices
 )
-UPDATE edge_table
+UPDATE edges
 SET source = vid, x1 = x, y1 = y
 FROM out_going WHERE id = eid;
 
@@ -84,18 +84,18 @@ in_coming AS (
   SELECT id AS vid, unnest(in_edges) AS eid, x, y
   FROM vertices
 )
-UPDATE edge_table
+UPDATE edges
 SET target = vid, x2 = x, y2 = y
 FROM in_coming WHERE id = eid;
 
 /* -- inspect the routing topology*/
 SELECT id, source, target
-FROM edge_table ORDER BY id;
+FROM edges ORDER BY id;
 
 /* --EDGE TABLE update geometry start */
 
 /*
-UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
+UPDATE edges SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
 dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
            WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
            WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
@@ -105,7 +105,7 @@ dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
 
 /* --EDGE TABLE TOPOLOGY start */
 /*
-SELECT pgr_createTopology('edge_table',0.001);
+SELECT pgr_createTopology('edges',0.001);
 */
 /* --EDGE TABLE TOPOLOGY end */
 
@@ -132,7 +132,7 @@ UPDATE pointsOfInterest SET the_geom = st_makePoint(x,y);
 
 UPDATE pointsOfInterest
     SET newPoint = ST_LineInterpolatePoint(e.geom, fraction)
-    FROM edge_table AS e WHERE edge_id = id;
+    FROM edges AS e WHERE edge_id = id;
 /* --POINTS CREATE end */
 
 /* --RESTRICTIONS OLD CREATE start */

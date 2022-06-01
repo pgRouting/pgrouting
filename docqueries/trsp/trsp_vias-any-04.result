@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
     SELECT * FROM pgr_trspViaVertices(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[6, 1, 12]::INTEGER[],
         true,
         true,
@@ -55,7 +55,7 @@ WARNING:  pgr_trspViaVertices(text,anyarray,boolean,boolean,text) is been deprec
 (18 rows)
 
 SELECT * FROM pgr_trspViaEdges(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[4,6,11]::INTEGER[],
         ARRAY[0.5, 0.5, 0.5]::float8[],
         true,
@@ -86,7 +86,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 (16 rows)
 
 SELECT * FROM pgr_trspViaEdges(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[1,11,6]::INTEGER[],
         ARRAY[0.5, 0.5, 0.5]::float8[],
         true,
@@ -115,7 +115,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 (14 rows)
 
 SELECT * FROM pgr_trspViaEdges(
-        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edge_table',
+        'SELECT id::INTEGER, source::INTEGER, target::INTEGER,cost, reverse_cost FROM edges',
         ARRAY[1,11,6]::INTEGER[],
         ARRAY[0.5, 0.5, 0.5]::float8[],
         true,

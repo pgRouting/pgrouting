@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   3, 8, 3);
  seq | path_id | path_seq | node | edge | cost | agg_cost
@@ -16,7 +16,7 @@ SELECT * FROM pgr_turnRestrictedPath(
 
 /* -- q2 */
 SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   3, 8, 3,
   strict => true);
@@ -26,7 +26,7 @@ SELECT * FROM pgr_turnRestrictedPath(
 
 /* -- q3 */
 SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   3, 8, 3,
   directed => false);
@@ -43,7 +43,7 @@ SELECT * FROM pgr_turnRestrictedPath(
 
 /* -- q4 */
 SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   3, 8, 3,
   directed => false,

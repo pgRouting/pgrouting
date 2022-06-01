@@ -4,9 +4,9 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_degree(
-  $$SELECT id FROM edge_table$$,
+  $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edge_table')$$);
+    FROM pgr_extractVertices('SELECT id, geom FROM edges')$$);
  id | degree
 ----+--------
   1 |      1
@@ -30,9 +30,9 @@ SELECT * FROM pgr_degree(
 
 /* -- q2 */
 SELECT * FROM pgr_degree(
-  $$SELECT id FROM edge_table WHERE id < 17$$,
+  $$SELECT id FROM edges WHERE id < 17$$,
   $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edge_table')$$);
+    FROM pgr_extractVertices('SELECT id, geom FROM edges')$$);
  id | degree
 ----+--------
   1 |      1
@@ -56,22 +56,22 @@ SELECT * FROM pgr_degree(
 
 /* -- q3 */
 SELECT * FROM pgr_degree(
-  $$SELECT id FROM edge_table WHERE id < 17$$,
+  $$SELECT id FROM edges WHERE id < 17$$,
   $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edge_table')$$,
+    FROM pgr_extractVertices('SELECT id, geom FROM edges')$$,
   dryrun => true);
 NOTICE:
     WITH
 
     -- a sub set of edges of the graph goes here
     g_edges AS (
-      SELECT id FROM edge_table WHERE id < 17
+      SELECT id FROM edges WHERE id < 17
     ),
 
     -- sub set of vertices of the graph goes here
     all_vertices AS (
       SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices('SELECT id, geom FROM edge_table')
+    FROM pgr_extractVertices('SELECT id, geom FROM edges')
     ),
 
     g_vertices AS (

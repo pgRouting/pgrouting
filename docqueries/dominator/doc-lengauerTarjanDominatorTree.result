@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* --q1 */
 SELECT * FROM pgr_lengauertarjandominatortree(
-  $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
+  $$SELECT id,source,target,cost,reverse_cost FROM edges$$,
   5);
  seq | vertex_id | idom
 -----+-----------+------
@@ -29,7 +29,7 @@ SELECT * FROM pgr_lengauertarjandominatortree(
 
 /* --q2 */
 SELECT * FROM pgr_lengauertarjandominatortree(
-  $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
+  $$SELECT id,source,target,cost,reverse_cost FROM edges$$,
   13);
  seq | vertex_id | idom
 -----+-----------+------

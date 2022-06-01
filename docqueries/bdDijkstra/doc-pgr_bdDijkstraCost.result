@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q2 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, 10, true);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -13,7 +13,7 @@ SELECT * FROM pgr_bdDijkstraCost(
 
 /* -- q3 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   6, ARRAY[10, 17]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -23,7 +23,7 @@ SELECT * FROM pgr_bdDijkstraCost(
 
 /* -- q4 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6, 1], 17);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -33,7 +33,7 @@ SELECT * FROM pgr_bdDijkstraCost(
 
 /* -- q5 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[6, 1], ARRAY[10, 17],
   directed => false);
  start_vid | end_vid | agg_cost
@@ -57,7 +57,7 @@ SELECT source, target FROM combinations_table;
 
 /* -- q52 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   'SELECT source, target FROM combinations_table',
   false);
  start_vid | end_vid | agg_cost
@@ -70,7 +70,7 @@ SELECT * FROM pgr_bdDijkstraCost(
 
 /* -- q6 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[7, 10, 15, 10, 10, 15], ARRAY[10, 7, 10, 15]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -84,7 +84,7 @@ SELECT * FROM pgr_bdDijkstraCost(
 
 /* -- q7 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[7, 10, 15], ARRAY[7, 10, 15]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
@@ -98,7 +98,7 @@ SELECT * FROM pgr_bdDijkstraCost(
 
 /* -- q8 */
 SELECT * FROM pgr_bdDijkstraCost(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
  start_vid | end_vid | agg_cost
 -----------+---------+----------

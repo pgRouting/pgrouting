@@ -4,19 +4,19 @@ DROP TABLE IF EXISTS new_graph;
 
 /* -- q0 */
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table
+FROM edges
 WHERE id IN (4, 7, 8, 10);
 /* -- q1 */
 SELECT * FROM pgr_lineGraphFull(
   $$SELECT id, source, target, cost, reverse_cost
-  FROM edge_table
+  FROM edges
   WHERE id IN (4, 7, 8, 10)$$);
 /* -- q2 */
 SELECT seq AS id, source, target, cost, edge
 INTO lineGraph_edges
 FROM pgr_lineGraphFull(
   $$SELECT id, source, target, cost, reverse_cost
-  FROM edge_table
+  FROM edges
   WHERE id IN (4, 7, 8, 10)$$);
 /* -- q3 */
 SELECT id, NULL::BIGINT original_id
@@ -139,7 +139,7 @@ FROM results
 LEFT JOIN vertex_map AS v1 ON (node = v1.id) ORDER BY seq;
 /* -- q21 */
 SELECT id, source, target, cost, reverse_cost
-INTO new_graph from edge_table
+INTO new_graph from edges
 WHERE id NOT IN (4, 7, 8, 10);
 /* -- q22 */
 CREATE SEQUENCE new_graph_id_seq;

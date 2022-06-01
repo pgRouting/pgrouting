@@ -1,21 +1,21 @@
 
 /* -- q00 */
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table ORDER BY id;
+FROM edges ORDER BY id;
 /* -- q01 */
 /* -- q1 */
 ALTER TABLE vertices ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE vertices ADD contracted_vertices BIGINT[];
-ALTER TABLE edge_table ADD is_new BOOLEAN DEFAULT false;
-ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
+ALTER TABLE edges ADD is_new BOOLEAN DEFAULT false;
+ALTER TABLE edges ADD contracted_vertices BIGINT[];
 /* -- q2 */
 SELECT * FROM pgr_contraction(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   array[1, 2], directed => false);
 /* -- q3 */
 SELECT * INTO contraction_results
 FROM pgr_contraction(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   array[1, 2], directed => false);
 /* -- q4 */
 UPDATE vertices
@@ -35,13 +35,13 @@ SELECT id, contracted_vertices, is_contracted
 FROM vertices
 ORDER BY id;
 /* -- q8 */
-INSERT INTO edge_table(source, target, cost, reverse_cost, contracted_vertices, is_new)
+INSERT INTO edges(source, target, cost, reverse_cost, contracted_vertices, is_new)
 SELECT source, target, cost, -1, contracted_vertices, true
 FROM contraction_results
 WHERE type = 'e';
 /* -- q9 */
 SELECT id, source, target, cost, reverse_cost, contracted_vertices, is_new
-FROM edge_table
+FROM edges
 ORDER BY id;
 /* -- q10 */
 SELECT id
@@ -56,7 +56,7 @@ vertices_in_graph AS (
   WHERE is_contracted = false
 )
 SELECT id, source, target, cost, reverse_cost, contracted_vertices
-FROM edge_table
+FROM edges
 WHERE source IN (SELECT * FROM vertices_in_graph)
 AND target IN (SELECT * FROM vertices_in_graph)
 ORDER BY id;
@@ -77,7 +77,7 @@ SELECT * FROM pgr_dijkstra(
     WHERE is_contracted = false
   )
   SELECT id, source, target, cost, reverse_cost
-  FROM edge_table
+  FROM edges
   WHERE source IN (SELECT * FROM vertices_in_graph)
   AND target IN (SELECT * FROM vertices_in_graph)
   $$,
@@ -103,7 +103,7 @@ SELECT * FROM pgr_dijkstra(
   WITH
   edges_to_expand AS (
     SELECT id
-    FROM edge_table
+    FROM edges
     WHERE ARRAY[$$ || departure || $$]::BIGINT[] <@ contracted_vertices
     OR ARRAY[$$ || destination || $$]::BIGINT[] <@ contracted_vertices
   ),
@@ -116,12 +116,12 @@ SELECT * FROM pgr_dijkstra(
     UNION
 
     SELECT unnest(contracted_vertices)
-    FROM edge_table
+    FROM edges
     WHERE id IN (SELECT id FROM edges_to_expand)
   )
 
   SELECT id, source, target, cost, reverse_cost
-  FROM edge_table
+  FROM edges
   WHERE source IN (SELECT * FROM vertices_in_graph)
   AND target IN (SELECT * FROM vertices_in_graph)
   $$,
@@ -147,7 +147,7 @@ SELECT * FROM pgr_dijkstra(
   WITH
   edges_to_expand AS (
     SELECT id
-    FROM edge_table
+    FROM edges
     WHERE ARRAY[$$ || departure || $$]::BIGINT[] <@ contracted_vertices
     OR ARRAY[$$ || destination || $$]::BIGINT[] <@ contracted_vertices
   ),
@@ -167,7 +167,7 @@ SELECT * FROM pgr_dijkstra(
     UNION
 
     SELECT unnest(contracted_vertices)
-    FROM edge_table
+    FROM edges
     WHERE id IN (SELECT id FROM edges_to_expand)
 
     UNION
@@ -178,7 +178,7 @@ SELECT * FROM pgr_dijkstra(
   )
 
   SELECT id, source, target, cost, reverse_cost
-  FROM edge_table
+  FROM edges
   WHERE source IN (SELECT * FROM vertices_in_graph)
   AND target IN (SELECT * FROM vertices_in_graph)
   $$,

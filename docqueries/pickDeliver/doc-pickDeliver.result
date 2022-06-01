@@ -34,7 +34,7 @@ SELECT * FROM pgr_pickDeliver(
   $$SELECT id, capacity, start_node_id, start_open, start_close
     FROM vehicles$$,
   $$SELECT * from pgr_dijkstraCostMatrix(
-    'SELECT * FROM edge_table ',
+    'SELECT * FROM edges ',
     (SELECT array_agg(id) FROM (SELECT p_node_id AS id FROM orders
         UNION
         SELECT d_node_id FROM orders

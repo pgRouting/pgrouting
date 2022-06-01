@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_contraction(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[1, 2], directed => false);
  type | id | contracted_vertices | source | target | cost
 ------+----+---------------------+--------+--------+------
@@ -19,7 +19,7 @@ SELECT * FROM pgr_contraction(
 
 /* -- q2 */
 SELECT type, id, contracted_vertices FROM pgr_contraction(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[1]);
  type | id | contracted_vertices
 ------+----+---------------------
@@ -32,7 +32,7 @@ SELECT type, id, contracted_vertices FROM pgr_contraction(
 
 /* -- q3 */
 SELECT * FROM pgr_contraction(
-  'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[2]);
  type | id | contracted_vertices | source | target | cost
 ------+----+---------------------+--------+--------+------
