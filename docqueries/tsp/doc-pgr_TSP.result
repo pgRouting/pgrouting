@@ -2,7 +2,7 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-SET extra_float_digits=-10;
+SET extra_float_digits=-3;
 SET
 SET client_min_messages TO WARNING;
 SET
