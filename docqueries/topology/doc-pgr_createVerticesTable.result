@@ -2,10 +2,12 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+DROP TABLE IF EXISTS edge_table_vertices_pgr;
+DROP TABLE
 /* --q1 */
-SELECT  pgr_createVerticesTable('edge_table');
+SELECT  pgr_createVerticesTable('edge_table', 'geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
@@ -21,9 +23,9 @@ NOTICE:  ----------------------------------------------
 
 /* --q1.1 */
 /* --q2 */
-SELECT  pgr_createVerticesTable('edge_table', 'the_geom', 'source', 'target');
+SELECT  pgr_createVerticesTable('edge_table', 'geom', 'source', 'target');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
@@ -38,12 +40,12 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 /* --q2.1 */
-SELECT  pgr_createVerticesTable('edge_table', 'source', 'the_geom', 'target');
+SELECT  pgr_createVerticesTable('edge_table', 'source', 'geom', 'target');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','source','the_geom','target','true')
+NOTICE:  pgr_createVerticesTable('edge_table','source','geom','target','true')
 NOTICE:  Performing checks, please wait .....
-NOTICE:  ----> PGR ERROR in pgr_createVerticesTable: Wrong type of Column source: the_geom
-HINT:    ----> Expected type of the_geom is integer, smallint or bigint but USER-DEFINED was found
+NOTICE:  ----> PGR ERROR in pgr_createVerticesTable: Wrong type of Column source: geom
+HINT:    ----> Expected type of geom is integer, smallint or bigint but USER-DEFINED was found
 NOTICE:  Unexpected error raise_exception
  pgr_createverticestable
 -------------------------
@@ -52,9 +54,9 @@ NOTICE:  Unexpected error raise_exception
 
 /* --q2.2 */
 /* --q3.1 */
-SELECT  pgr_createVerticesTable('edge_table', the_geom:='the_geom', source:='source', target:='target');
+SELECT  pgr_createVerticesTable('edge_table', the_geom:='geom', source:='source', target:='target');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
@@ -70,9 +72,9 @@ NOTICE:  ----------------------------------------------
 
 /* --q3.2 */
 /* --q4 */
-SELECT  pgr_createVerticesTable('edge_table', source:='source', target:='target', the_geom:='the_geom');
+SELECT  pgr_createVerticesTable('edge_table', source:='source', target:='target', the_geom:='geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
@@ -88,9 +90,9 @@ NOTICE:  ----------------------------------------------
 
 /* --q4.1 */
 /* --q5 */
-SELECT  pgr_createVerticesTable('edge_table',source:='source');
+SELECT  pgr_createVerticesTable('edge_table', 'geom', source:='source');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','true')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  17 VERTICES
@@ -106,9 +108,9 @@ NOTICE:  ----------------------------------------------
 
 /* --q5.1 */
 /* --q6 */
-SELECT  pgr_createVerticesTable('edge_table',rows_where:='id < 10');
+SELECT  pgr_createVerticesTable('edge_table', 'geom', rows_where:='id < 10');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','id < 10')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','id < 10')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
@@ -124,10 +126,10 @@ NOTICE:  ----------------------------------------------
 
 /* --q6.1 */
 /* --q7 */
-SELECT  pgr_createVerticesTable('edge_table',
-    rows_where:='the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)');
+SELECT  pgr_createVerticesTable('edge_table', 'geom',
+    rows_where:='geom && (select st_buffer(geom,0.5) FROM edge_table WHERE id=5)');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','geom && (select st_buffer(geom,0.5) FROM edge_table WHERE id=5)')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  9 VERTICES
@@ -148,10 +150,10 @@ NOTICE:  table "othertable" does not exist, skipping
 DROP TABLE
 CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 SELECT 1
-SELECT  pgr_createVerticesTable('edge_table',
-    rows_where:='the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+SELECT  pgr_createVerticesTable('edge_table', 'geom',
+    rows_where:='geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
+NOTICE:  pgr_createVerticesTable('edge_table','geom','source','target','geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)')
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Populating public.edge_table_vertices_pgr, please wait...
 NOTICE:    ----->   VERTICES TABLE CREATED WITH  10 VERTICES
@@ -170,7 +172,7 @@ NOTICE:  ----------------------------------------------
 DROP TABLE IF EXISTS mytable;
 NOTICE:  table "mytable" does not exist, skipping
 DROP TABLE
-CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom, source AS src ,target AS tgt FROM edge_table) ;
+CREATE TABLE mytable AS (SELECT id AS gid, geom AS mygeom, source AS src ,target AS tgt FROM edge_table) ;
 SELECT 18
 /* --tab2 */
 /* --q9 */

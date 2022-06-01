@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 /* --q1 */
 SELECT  * FROM pgr_extractVertices(
-  'SELECT id, the_geom AS geom FROM edge_table');
+  'SELECT id, geom FROM edge_table');
  id | in_edges | out_edges |       x        |  y  |                    geom
 ----+----------+-----------+----------------+-----+--------------------------------------------
   1 |          | {6}       |              0 |   2 | 010100000000000000000000000000000000000040
@@ -29,13 +29,13 @@ SELECT  * FROM pgr_extractVertices(
 /* --q1.1 */
 /* --q2 */
 SELECT  * FROM pgr_extractVertices(
-  'SELECT id, the_geom AS geom FROM edge_table',
+  'SELECT id, geom FROM edge_table',
   dryrun => true);
 NOTICE:
         WITH
 
         main_sql AS (
-          SELECT id, the_geom AS geom FROM edge_table
+          SELECT id, geom FROM edge_table
         ),
 
         the_out AS (
@@ -85,7 +85,7 @@ x2 = NULL, y2 = NULL;
 UPDATE 18
 /* --q3.2 */
 SELECT  * INTO vertices_table
-FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table ORDER BY id');
+FROM pgr_extractVertices('SELECT id, geom FROM edge_table ORDER BY id');
 SELECT 17
 /* --q3.3 */
 SELECT *

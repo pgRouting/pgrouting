@@ -2,10 +2,12 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+DROP TABLE IF EXISTS edge_table_vertices_pgr;
+DROP TABLE
 /* --q1 */
-SELECT pgr_createTopology('edge_table', 0.001, clean := TRUE);
+SELECT pgr_createTopology('edge_table', 0.001, 'geom', clean := TRUE);
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
 NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
@@ -19,9 +21,9 @@ NOTICE:  ----------------------------------------------
 
 /* --q1.1 */
 /* --q2 */
-SELECT pgr_analyzegraph('edge_table', 0.001);
+SELECT pgr_analyzegraph('edge_table', 0.001, 'geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+NOTICE:  pgr_analyzeGraph('edge_table',0.001,'geom','id','source','target','true')
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Analyzing for dead ends. Please wait...
 NOTICE:  Analyzing for gaps. Please wait...
@@ -41,14 +43,14 @@ NOTICE:                      Ring geometries: 0
 
 /* --q2.1 */
 /* --q3 */
-SELECT pgr_nodeNetwork('edge_table', 0.001);
+SELECT pgr_nodeNetwork('edge_table', 0.001, the_geom => 'geom');
 NOTICE:  PROCESSING:
 NOTICE:  id: id
-NOTICE:  the_geom: the_geom
+NOTICE:  the_geom: geom
 NOTICE:  table_ending: noded
 NOTICE:  rows_where:
 NOTICE:  outall: f
-NOTICE:  pgr_nodeNetwork('edge_table', 0.001, 'id', 'the_geom', 'noded', '',  f)
+NOTICE:  pgr_nodeNetwork('edge_table', 0.001, 'id', 'geom', 'noded', '',  f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Processing, please wait .....
 NOTICE:    Split Edges: 3
@@ -94,9 +96,9 @@ SELECT old_id, sub_id FROM edge_table_noded ORDER BY old_id, sub_id;
 
 /* --q4.1 */
 /* --q5 */
-SELECT pgr_createTopology('edge_table_noded', 0.001);
+SELECT pgr_createTopology('edge_table_noded', 0.001, 'geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table_noded', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  pgr_createTopology('edge_table_noded', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
 NOTICE:  -------------> TOPOLOGY CREATED FOR  21 edges
@@ -110,9 +112,9 @@ NOTICE:  ----------------------------------------------
 
 /* --q5.1 */
 /* --q6 */
-SELECT pgr_analyzegraph('edge_table_noded', 0.001);
+SELECT pgr_analyzegraph('edge_table_noded', 0.001, 'geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edge_table_noded',0.001,'the_geom','id','source','target','true')
+NOTICE:  pgr_analyzeGraph('edge_table_noded',0.001,'geom','id','source','target','true')
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Analyzing for dead ends. Please wait...
 NOTICE:  Analyzing for gaps. Please wait...
@@ -137,18 +139,18 @@ NOTICE:  column "old_id" of relation "edge_table" does not exist, skipping
 ALTER TABLE
 alter table edge_table add column old_id integer;
 ALTER TABLE
-insert into edge_table (old_id, dir, cost, reverse_cost, the_geom)
+insert into edge_table (old_id, cost, reverse_cost, geom)
    (with
        segmented as (select old_id,count(*) as i from edge_table_noded group by old_id)
-   select  segments.old_id, dir, cost, reverse_cost, segments.the_geom
+   select  segments.old_id, cost, reverse_cost, segments.geom
        from edge_table as edges join edge_table_noded as segments on (edges.id = segments.old_id)
        where edges.id in (select old_id from segmented where i>1) );
 INSERT 0 6
 /* --q7.1 */
 /* --q8 */
-SELECT pgr_createTopology('edge_table', 0.001);
+SELECT pgr_createTopology('edge_table', 0.001, 'geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
 NOTICE:  -------------> TOPOLOGY CREATED FOR  6 edges
@@ -162,9 +164,9 @@ NOTICE:  ----------------------------------------------
 
 /* --q8.1 */
 /* --q9 */
-SELECT pgr_analyzegraph('edge_table', 0.001, rows_where:='id not in (select old_id from edge_table where old_id is not null)');
+SELECT pgr_analyzegraph('edge_table', 0.001, 'geom', rows_where:='id not in (select old_id from edge_table where old_id is not null)');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','id not in (select old_id from edge_table where old_id is not null)')
+NOTICE:  pgr_analyzeGraph('edge_table',0.001,'geom','id','source','target','id not in (select old_id from edge_table where old_id is not null)')
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Analyzing for dead ends. Please wait...
 NOTICE:  Analyzing for gaps. Please wait...
@@ -184,9 +186,9 @@ NOTICE:                      Ring geometries: 0
 
 /* --q9.1 */
 /* --q10 */
-SELECT pgr_analyzegraph('edge_table', 0.001, rows_where:='old_id is null');
+SELECT pgr_analyzegraph('edge_table', 0.001, 'geom', rows_where:='old_id is null');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','old_id is null')
+NOTICE:  pgr_analyzeGraph('edge_table',0.001,'geom','id','source','target','old_id is null')
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Analyzing for dead ends. Please wait...
 NOTICE:  Analyzing for gaps. Please wait...
@@ -206,9 +208,9 @@ NOTICE:                      Ring geometries: 0
 
 /* --q10.1 */
 /* --q11 */
-SELECT pgr_analyzegraph('edge_table', 0.001);
+SELECT pgr_analyzegraph('edge_table', 0.001, 'geom');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+NOTICE:  pgr_analyzeGraph('edge_table',0.001,'geom','id','source','target','true')
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Analyzing for dead ends. Please wait...
 NOTICE:  Analyzing for gaps. Please wait...

@@ -1,46 +1,47 @@
 
 
+DROP TABLE IF EXISTS edge_table_vertices_pgr;
 /* --q1 */
-SELECT  pgr_createVerticesTable('edge_table');
+SELECT  pgr_createVerticesTable('edge_table', 'geom');
 /* --q1.1 */
 
 /* --q2 */
-SELECT  pgr_createVerticesTable('edge_table', 'the_geom', 'source', 'target');
+SELECT  pgr_createVerticesTable('edge_table', 'geom', 'source', 'target');
 /* --q2.1 */
-SELECT  pgr_createVerticesTable('edge_table', 'source', 'the_geom', 'target');
+SELECT  pgr_createVerticesTable('edge_table', 'source', 'geom', 'target');
 /* --q2.2 */
 
 /* --q3.1 */
-SELECT  pgr_createVerticesTable('edge_table', the_geom:='the_geom', source:='source', target:='target');
+SELECT  pgr_createVerticesTable('edge_table', the_geom:='geom', source:='source', target:='target');
 /* --q3.2 */
 
 /* --q4 */
-SELECT  pgr_createVerticesTable('edge_table', source:='source', target:='target', the_geom:='the_geom');
+SELECT  pgr_createVerticesTable('edge_table', source:='source', target:='target', the_geom:='geom');
 /* --q4.1 */
 
 /* --q5 */
-SELECT  pgr_createVerticesTable('edge_table',source:='source');
+SELECT  pgr_createVerticesTable('edge_table', 'geom', source:='source');
 /* --q5.1 */
 
 /* --q6 */
-SELECT  pgr_createVerticesTable('edge_table',rows_where:='id < 10');
+SELECT  pgr_createVerticesTable('edge_table', 'geom', rows_where:='id < 10');
 /* --q6.1 */
 
 /* --q7 */
-SELECT  pgr_createVerticesTable('edge_table',
-    rows_where:='the_geom && (select st_buffer(the_geom,0.5) FROM edge_table WHERE id=5)');
+SELECT  pgr_createVerticesTable('edge_table', 'geom',
+    rows_where:='geom && (select st_buffer(geom,0.5) FROM edge_table WHERE id=5)');
 /* --q7.1 */
 
 /* --q8 */
 DROP TABLE IF EXISTS otherTable;
 CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
-SELECT  pgr_createVerticesTable('edge_table',
-    rows_where:='the_geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
+SELECT  pgr_createVerticesTable('edge_table', 'geom',
+    rows_where:='geom && (select st_buffer(other_geom,0.5) FROM otherTable WHERE gid=100)');
 /* --q8.1 */
 
 /* --tab1 */
 DROP TABLE IF EXISTS mytable;
-CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom, source AS src ,target AS tgt FROM edge_table) ;
+CREATE TABLE mytable AS (SELECT id AS gid, geom AS mygeom, source AS src ,target AS tgt FROM edge_table) ;
 /* --tab2 */
 
 /* --q9 */

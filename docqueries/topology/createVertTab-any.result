@@ -2,6 +2,16 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
+SELECT AddGeometryColumn ('public','edge_table','the_geom',0,'LINESTRING',2);
+                     addgeometrycolumn
+-----------------------------------------------------------
+ public.edge_table.the_geom SRID:0 TYPE:LINESTRING DIMS:2
+(1 row)
+
+UPDATE edge_table SET the_geom = geom;
+UPDATE 18
+DROP TABLE IF EXISTS edge_table_vertices_pgr;
+DROP TABLE
 SELECT  pgr_createVerticesTable('edge_table');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createVerticesTable('edge_table','the_geom','source','target','true')

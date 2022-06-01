@@ -1,10 +1,10 @@
 /* --q1 */
 SELECT  * FROM pgr_extractVertices(
-  'SELECT id, the_geom AS geom FROM edge_table');
+  'SELECT id, geom FROM edge_table');
 /* --q1.1 */
 /* --q2 */
 SELECT  * FROM pgr_extractVertices(
-  'SELECT id, the_geom AS geom FROM edge_table',
+  'SELECT id, geom FROM edge_table',
   dryrun => true);
 /* --q2.1 */
 /* --q3 */
@@ -16,7 +16,7 @@ x1 = NULL, y1 = NULL,
 x2 = NULL, y2 = NULL;
 /* --q3.2 */
 SELECT  * INTO vertices_table
-FROM pgr_extractVertices('SELECT id, the_geom AS geom FROM edge_table ORDER BY id');
+FROM pgr_extractVertices('SELECT id, geom FROM edge_table ORDER BY id');
 /* --q3.3 */
 SELECT *
 FROM vertices_table;

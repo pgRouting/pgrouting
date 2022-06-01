@@ -20,7 +20,6 @@ DROP TABLE IF EXISTS orders;
 /* --EDGE TABLE CREATE start */
 CREATE TABLE edge_table (
     id BIGSERIAL,
-    dir character varying,
     source BIGINT,
     target BIGINT,
     cost FLOAT,

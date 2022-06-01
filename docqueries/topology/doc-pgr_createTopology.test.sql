@@ -6,23 +6,23 @@
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 
-DROP TABLE edge_table_vertices_pgr;
+DROP TABLE IF EXISTS edge_table_vertices_pgr;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q1 */
-SELECT  pgr_createTopology('edge_table', 0.001);
+SELECT  pgr_createTopology('edge_table', 0.001, 'geom');
 /* --q1.1 */
 
 DROP TABLE edge_table_vertices_pgr;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q2 */
 SELECT  pgr_createTopology('edge_table', 0.001,
-    'the_geom', 'id', 'source', 'target');
+    'geom', 'id', 'source', 'target');
 /* --q2.1 */
 
 SET client_min_messages TO NOTICE;
 /* --q3 */
 SELECT  pgr_createTopology('edge_table', 0.001,
-    'id', 'the_geom');
+    'id', 'geom');
 /* --q3.1 */
 
 SET client_min_messages TO WARNING;
@@ -30,41 +30,41 @@ DROP TABLE edge_table_vertices_pgr;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q4 */
 SELECT  pgr_createTopology('edge_table', 0.001,
-    the_geom:='the_geom', id:='id', source:='source', target:='target');
+    the_geom:='geom', id:='id', source:='source', target:='target');
 /* --q4.1 */
 
 DROP TABLE edge_table_vertices_pgr;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q5 */
 SELECT  pgr_createTopology('edge_table', 0.001,
-    source:='source', id:='id', target:='target', the_geom:='the_geom');
+    source:='source', id:='id', target:='target', the_geom:='geom');
 /* --q5.1 */
 
 DROP TABLE edge_table_vertices_pgr;
 UPDATE edge_table SET source = NULL,  target = NULL;
 /* --q6 */
-SELECT  pgr_createTopology('edge_table', 0.001, source:='source');
+SELECT  pgr_createTopology('edge_table', 0.001, 'geom', source:='source');
 /* --q6.1 */
 
 /* --q7 */
-SELECT  pgr_createTopology('edge_table', 0.001, rows_where:='id < 10');
+SELECT  pgr_createTopology('edge_table', 0.001, 'geom', rows_where:='id < 10');
 /* --q7.1 */
 
 /* --q8 */
-SELECT  pgr_createTopology('edge_table', 0.001,
-    rows_where:='the_geom && (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)');
+SELECT  pgr_createTopology('edge_table', 0.001, 'geom',
+    rows_where:='geom && (SELECT st_buffer(geom, 0.05) FROM edge_table WHERE id=5)');
 /* --q8.1 */
 
 /* --q9 */
 CREATE TABLE otherTable AS  (SELECT 100 AS gid,  st_point(2.5, 2.5) AS other_geom);
-SELECT  pgr_createTopology('edge_table', 0.001,
-    rows_where:='the_geom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
+SELECT  pgr_createTopology('edge_table', 0.001, 'geom',
+    rows_where:='geom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
 /* --q9.1 */
 
 -- THE NEXT SECTION
 
 /* --q10 */
-CREATE TABLE mytable AS (SELECT id AS gid,  the_geom AS mygeom, source AS src , target AS tgt FROM edge_table) ;
+CREATE TABLE mytable AS (SELECT id AS gid,  geom AS mygeom, source AS src , target AS tgt FROM edge_table) ;
 /* --q10.1 */
 
 /* --q11 */
@@ -108,8 +108,8 @@ SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='
 -------------------------------------------------------------------------------
 SET client_min_messages TO NOTICE;
 /* --q17 */
-SELECT pgr_createTopology('edge_table',  0.001, rows_where:='id < 6', clean := true);
-SELECT pgr_createTopology('edge_table',  0.001);
+SELECT pgr_createTopology('edge_table',  0.001, 'geom', rows_where:='id < 6', clean := true);
+SELECT pgr_createTopology('edge_table',  0.001, 'geom');
 /* --q17.1 */
 
 SET client_min_messages TO NOTICE;

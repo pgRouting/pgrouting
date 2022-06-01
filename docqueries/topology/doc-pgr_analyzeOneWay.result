@@ -3,7 +3,15 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* --q1 */
-	SELECT pgr_analyzeOneWay('edge_table',
+ALTER TABLE edge_table ADD COLUMN dir TEXT;
+ALTER TABLE
+UPDATE edge_table SET
+dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'
+           ELSE '' END;
+UPDATE 18
+SELECT pgr_analyzeOneWay('edge_table',
         ARRAY['', 'B', 'TF'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'FT'],
