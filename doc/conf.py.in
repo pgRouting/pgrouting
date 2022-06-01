@@ -322,7 +322,7 @@ linkcheck_ignore = [
     r'https://docs.pgrouting.org/.*/.*/via-category.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_trspVia_withPoints.html',
     r'https://docs.pgrouting.org/.*/.*/withPoints-category.html',
-    r'https://docs.pgrouting.org/.*/.*/trsp_migration.html',
+    r'https://docs.pgrouting.org/.*/.*/migration.html',
     r'https://docs.pgrouting.org/.*/.*/BFS-category.html',
     r'https://docs.pgrouting.org/.*/.*/DFS-category.html',
     r'https://docs.pgrouting.org/.*/.*/reference.html',
