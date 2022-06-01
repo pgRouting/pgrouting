@@ -53,7 +53,22 @@ On the deprecated signatures:
 
   * Is of type ``FLOAT``.
 
-For example:
+Creation of the old restrictions table
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: migration.queries
+   :start-after: --rest00
+   :end-before: --rest01
+
+Old restrictions fillup
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: migration.queries
+   :start-after: --rest01
+   :end-before: --rest1
+
+Old restrictions contents
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: migration.queries
    :start-after: --rest1
@@ -75,7 +90,6 @@ The restriction with ``rid = 2`` is representing :math:`3\rightarrow5\rightarrow
 New restrictions structure
 ................................................................................
 
-
 * Column ``id`` is ignored
 * Column ``path``
 
@@ -87,9 +101,31 @@ New restrictions structure
 
   * Is of type ``ANY-NUMERICAL``
 
-.. literalinclude:: migration.queries
-   :start-after: --rest2
-   :end-before: --rest3
+Creation of the restrictions table
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r1
+   :end-before: -- r2
+
+Restrictions fillup
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r2
+   :end-before: -- r3
+
+Restrictions contents
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r3
+   :end-before: -- r4
+
+The restriction with ``rid = 2`` represents the path :math:`3 \rightarrow5
+\rightarrow9`.
+
+* By inspection the path is clear.
 
 Migration
 ................................................................................

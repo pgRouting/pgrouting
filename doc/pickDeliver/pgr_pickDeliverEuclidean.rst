@@ -191,38 +191,9 @@ Example
 .. contents::
    :local:
 
-This data example **lc101** is from data published at
-http://www.sintef.no/Projectweb/TOP/PDPTW/Li--Lim-benchmark/
-
-The best solution found for **lc101** is a travel time of 828.94.
-
-The vehicles
-...............................................................................
-
-There are 25 vehciles in the problem all with the same characteristics.
-
-.. literalinclude:: ./lc101.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-The original orders
-...............................................................................
-
-The data comes in different rows for the pickup and the delivery of the same
-order.
-
-.. literalinclude:: ./lc101.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-The orders
-...............................................................................
-
-The original data needs to be converted to an appropiate table:
-
-.. literalinclude:: ./lc101.queries
-   :start-after: -- q3
-   :end-before: -- q4
+.. include:: sampledata.rst
+    :start-after: pd_data_start
+    :end-before: pd_data_end
 
 The query
 ...............................................................................
@@ -230,6 +201,9 @@ The query
 Showing only the relevant information to compare with the best solution
 information published on
 https://www.sintef.no/projectweb/top/pdptw/100-customers/
+
+* The best solution found for **lc101** is a travel time: 828.94
+* This implementation's travel time: 854.54
 
 .. literalinclude:: ./lc101.queries
    :start-after: -- q4

@@ -60,14 +60,12 @@ INSERT INTO edges (
 (4, 1,    1,  1,  50, 130,   ST_MakeLine(ST_POINT(3.5, 2.3), ST_POINT(3.5, 4)));
 /* --EDGE TABLE ADD DATA end */
 
-/* -- Create the vertices table */
+/* -- q1 */
 SELECT  * INTO vertices
 FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
-
-/* -- Inspect the vertices table */
+/* -- q2 */
 SELECT * FROM vertices;
-
-/* -- Create the topology */
+/* -- q3 */
 /* -- set the source information */
 WITH
 out_going AS (
@@ -87,29 +85,14 @@ in_coming AS (
 UPDATE edges
 SET target = vid, x2 = x, y2 = y
 FROM in_coming WHERE id = eid;
-
-/* -- inspect the routing topology*/
+/* -- q4 */
 SELECT id, source, target
 FROM edges ORDER BY id;
-
-/* --EDGE TABLE update geometry start */
-
-/*
-UPDATE edges SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
-dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
-           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
-           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
-           ELSE '' END;                                -- unknown
-*/
-/* --EDGE TABLE update geometry end */
-
-/* --EDGE TABLE TOPOLOGY start */
-/*
-SELECT pgr_createTopology('edges',0.001);
-*/
-/* --EDGE TABLE TOPOLOGY end */
+/* -- q5 */
 
 /* --POINTS CREATE start */
+
+/* -- p1 */
 CREATE TABLE pointsOfInterest(
     pid BIGSERIAL,
     x FLOAT,
@@ -117,10 +100,10 @@ CREATE TABLE pointsOfInterest(
     edge_id BIGINT,
     side CHAR,
     fraction FLOAT,
-    the_geom geometry,
+    geom geometry,
     newPoint geometry
 );
-
+/* -- p2 */
 INSERT INTO pointsOfInterest (x, y, edge_id, side, fraction) VALUES
 (1.8, 0.4,   1, 'l', 0.4),
 (4.2, 2.4,  15, 'r', 0.4),
@@ -128,42 +111,54 @@ INSERT INTO pointsOfInterest (x, y, edge_id, side, fraction) VALUES
 (0.3, 1.8,   6, 'r', 0.3),
 (2.9, 1.8,   5, 'l', 0.8),
 (2.2, 1.7,   4, 'b', 0.7);
-UPDATE pointsOfInterest SET the_geom = st_makePoint(x,y);
-
+/* -- p3 */
+UPDATE pointsOfInterest SET geom = st_makePoint(x,y);
+/* -- p4 */
 UPDATE pointsOfInterest
     SET newPoint = ST_LineInterpolatePoint(e.geom, fraction)
     FROM edges AS e WHERE edge_id = id;
+/* -- p5 */
+SELECT pid, x, y, edge_id, side, fraction
+FROM pointsOfInterest;
+/* -- p6 */
 /* --POINTS CREATE end */
 
-/* --RESTRICTIONS OLD CREATE start */
-CREATE TABLE old_restrictions (
-    rid BIGINT NOT NULL,
-    to_cost FLOAT,
-    target_id BIGINT,
-    via_path TEXT
+/* --COMBINATIONS CREATE start */
+/* -- c1 */
+CREATE TABLE combinations_table (
+    source BIGINT,
+    target BIGINT
 );
-
-INSERT INTO old_restrictions (rid, to_cost, target_id, via_path) VALUES
-(1, 100,  7,  '4'),
-(1, 100, 11,  '8'),
-(1, 100, 10,  '7'),
-(2,   4,  9,  '5, 3'),
-(3, 100,  9, '16');
-/* --RESTRICTIONS OLD CREATE end */
+/* -- c2 */
+INSERT INTO combinations_table (
+    source, target) VALUES
+(5, 6),
+(5, 10),
+(6, 5),
+(6, 15),
+(6, 14);
+/* -- c3 */
+SELECT * FROM combinations_table;
+/* -- c4 */
+/* --COMBINATIONS CREATE end */
 
 /* --RESTRICTIONS CREATE start */
+/* -- r1 */
 CREATE TABLE restrictions (
     id SERIAL PRIMARY KEY,
     path BIGINT[],
     cost FLOAT
 );
-
+/* -- r2 */
 INSERT INTO restrictions (path, cost) VALUES
 (ARRAY[4, 7], 100),
 (ARRAY[8, 11], 100),
 (ARRAY[7, 10], 100),
 (ARRAY[3, 5, 9], 4),
 (ARRAY[9, 16], 100);
+/* -- r3 */
+SELECT * FROM restrictions;
+/* -- r4 */
 /* --RESTRICTIONS CREATE end */
 
 
@@ -226,18 +221,3 @@ INSERT INTO orders
 
 /* --ORDERS TABLE END */
 
-/* --COMBINATIONS CREATE start */
-CREATE TABLE combinations_table (
-    source BIGINT,
-    target BIGINT
-);
-
-INSERT INTO combinations_table (
-    source, target) VALUES
-(5, 6),
-(5, 10),
-(6, 5),
-(6, 15),
-(6, 14);
-
-/* --COMBINATIONS CREATE end */

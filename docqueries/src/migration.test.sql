@@ -1,6 +1,20 @@
 \set VERBOSITY terse
 SET extra_float_digits=-3;
 
+/* --rest00 */
+CREATE TABLE old_restrictions (
+    rid BIGINT NOT NULL,
+    to_cost FLOAT,
+    target_id BIGINT,
+    via_path TEXT
+);
+/* --rest01 */
+INSERT INTO old_restrictions (rid, to_cost, target_id, via_path) VALUES
+(1, 100,  7,  '4'),
+(1, 100, 11,  '8'),
+(1, 100, 10,  '7'),
+(2,   4,  9,  '5, 3'),
+(3, 100,  9, '16');
 /* --rest1 */
 SELECT * FROM old_restrictions;
 /* --rest2 */

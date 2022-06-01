@@ -9,6 +9,7 @@ DROP TABLE
 DROP table if exists pointsOfInterest;
 DROP TABLE
 DROP TABLE IF EXISTS old_restrictions;
+NOTICE:  table "old_restrictions" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE
@@ -71,11 +72,11 @@ INSERT INTO edges (
 (4, 1,    1,  1,  50, 130,   ST_MakeLine(ST_POINT(3.5, 2.3), ST_POINT(3.5, 4)));
 INSERT 0 18
 /* --EDGE TABLE ADD DATA end */
-/* -- Create the vertices table */
+/* -- q1 */
 SELECT  * INTO vertices
 FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
 SELECT 17
-/* -- Inspect the vertices table */
+/* -- q2 */
 SELECT * FROM vertices;
  id | in_edges | out_edges |       x        |  y  |                    geom
 ----+----------+-----------+----------------+-----+--------------------------------------------
@@ -98,7 +99,7 @@ SELECT * FROM vertices;
  17 | {13,15}  |           |              4 |   3 | 010100000000000000000010400000000000000840
 (17 rows)
 
-/* -- Create the topology */
+/* -- q3 */
 /* -- set the source information */
 WITH
 out_going AS (
@@ -119,7 +120,7 @@ UPDATE edges
 SET target = vid, x2 = x, y2 = y
 FROM in_coming WHERE id = eid;
 UPDATE 18
-/* -- inspect the routing topology*/
+/* -- q4 */
 SELECT id, source, target
 FROM edges ORDER BY id;
  id | source | target
@@ -144,21 +145,9 @@ FROM edges ORDER BY id;
  18 |     13 |     14
 (18 rows)
 
-/* --EDGE TABLE update geometry start */
-/*
-UPDATE edges SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
-dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
-           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
-           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
-           ELSE '' END;                                -- unknown
-*/
-/* --EDGE TABLE update geometry end */
-/* --EDGE TABLE TOPOLOGY start */
-/*
-SELECT pgr_createTopology('edges',0.001);
-*/
-/* --EDGE TABLE TOPOLOGY end */
+/* -- q5 */
 /* --POINTS CREATE start */
+/* -- p1 */
 CREATE TABLE pointsOfInterest(
     pid BIGSERIAL,
     x FLOAT,
@@ -166,10 +155,11 @@ CREATE TABLE pointsOfInterest(
     edge_id BIGINT,
     side CHAR,
     fraction FLOAT,
-    the_geom geometry,
+    geom geometry,
     newPoint geometry
 );
 CREATE TABLE
+/* -- p2 */
 INSERT INTO pointsOfInterest (x, y, edge_id, side, fraction) VALUES
 (1.8, 0.4,   1, 'l', 0.4),
 (4.2, 2.4,  15, 'r', 0.4),
@@ -178,36 +168,67 @@ INSERT INTO pointsOfInterest (x, y, edge_id, side, fraction) VALUES
 (2.9, 1.8,   5, 'l', 0.8),
 (2.2, 1.7,   4, 'b', 0.7);
 INSERT 0 6
-UPDATE pointsOfInterest SET the_geom = st_makePoint(x,y);
+/* -- p3 */
+UPDATE pointsOfInterest SET geom = st_makePoint(x,y);
 UPDATE 6
+/* -- p4 */
 UPDATE pointsOfInterest
     SET newPoint = ST_LineInterpolatePoint(e.geom, fraction)
     FROM edges AS e WHERE edge_id = id;
 UPDATE 6
+/* -- p5 */
+SELECT pid, x, y, edge_id, side, fraction
+FROM pointsOfInterest;
+ pid |  x  |  y  | edge_id | side | fraction
+-----+-----+-----+---------+------+----------
+   1 | 1.8 | 0.4 |       1 | l    |      0.4
+   2 | 4.2 | 2.4 |      15 | r    |      0.4
+   3 | 2.6 | 3.2 |      12 | l    |      0.6
+   4 | 0.3 | 1.8 |       6 | r    |      0.3
+   5 | 2.9 | 1.8 |       5 | l    |      0.8
+   6 | 2.2 | 1.7 |       4 | b    |      0.7
+(6 rows)
+
+/* -- p6 */
 /* --POINTS CREATE end */
-/* --RESTRICTIONS OLD CREATE start */
-CREATE TABLE old_restrictions (
-    rid BIGINT NOT NULL,
-    to_cost FLOAT,
-    target_id BIGINT,
-    via_path TEXT
+/* --COMBINATIONS CREATE start */
+/* -- c1 */
+CREATE TABLE combinations_table (
+    source BIGINT,
+    target BIGINT
 );
 CREATE TABLE
-INSERT INTO old_restrictions (rid, to_cost, target_id, via_path) VALUES
-(1, 100,  7,  '4'),
-(1, 100, 11,  '8'),
-(1, 100, 10,  '7'),
-(2,   4,  9,  '5, 3'),
-(3, 100,  9, '16');
+/* -- c2 */
+INSERT INTO combinations_table (
+    source, target) VALUES
+(5, 6),
+(5, 10),
+(6, 5),
+(6, 15),
+(6, 14);
 INSERT 0 5
-/* --RESTRICTIONS OLD CREATE end */
+/* -- c3 */
+SELECT * FROM combinations_table;
+ source | target
+--------+--------
+      5 |      6
+      5 |     10
+      6 |      5
+      6 |     15
+      6 |     14
+(5 rows)
+
+/* -- c4 */
+/* --COMBINATIONS CREATE end */
 /* --RESTRICTIONS CREATE start */
+/* -- r1 */
 CREATE TABLE restrictions (
     id SERIAL PRIMARY KEY,
     path BIGINT[],
     cost FLOAT
 );
 CREATE TABLE
+/* -- r2 */
 INSERT INTO restrictions (path, cost) VALUES
 (ARRAY[4, 7], 100),
 (ARRAY[8, 11], 100),
@@ -215,6 +236,18 @@ INSERT INTO restrictions (path, cost) VALUES
 (ARRAY[3, 5, 9], 4),
 (ARRAY[9, 16], 100);
 INSERT 0 5
+/* -- r3 */
+SELECT * FROM restrictions;
+ id |  path   | cost
+----+---------+------
+  1 | {4,7}   |  100
+  2 | {8,11}  |  100
+  3 | {7,10}  |  100
+  4 | {3,5,9} |    4
+  5 | {9,16}  |  100
+(5 rows)
+
+/* -- r4 */
 /* --RESTRICTIONS CREATE end */
 /* --VEHICLES TABLE START */
 CREATE TABLE vehicles (
@@ -268,20 +301,5 @@ INSERT INTO orders
            12,    3,   3,      3,         20,          3);
 INSERT 0 3
 /* --ORDERS TABLE END */
-/* --COMBINATIONS CREATE start */
-CREATE TABLE combinations_table (
-    source BIGINT,
-    target BIGINT
-);
-CREATE TABLE
-INSERT INTO combinations_table (
-    source, target) VALUES
-(5, 6),
-(5, 10),
-(6, 5),
-(6, 15),
-(6, 14);
-INSERT 0 5
-/* --COMBINATIONS CREATE end */
 ROLLBACK;
 ROLLBACK

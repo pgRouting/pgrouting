@@ -27,76 +27,122 @@
 Sample Data
 ===============================================================================
 
-The documentation provides very simple example queries based on a small sample network.
-To be able to execute the sample queries, run the following SQL commands to create a table with a small network data set.
+The documentation provides very simple example queries based on a small sample
+network.
+To be able to execute the sample queries, run the following SQL commands to
+create a table with a small network data set.
 
+.. contents::
+   :local:
 
-.. rubric:: Create table
+Main graph
+-------------------------------------------------------------------------------
+
+Edges
+...............................................................................
 
 .. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE CREATE start
    :end-before: --EDGE TABLE CREATE end
 
-
-.. rubric:: Insert data
+Edges data
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE ADD DATA start
    :end-before: --EDGE TABLE ADD DATA end
 
-.. literalinclude:: sampledata.queries
-   :start-after: --EDGE TABLE ADD DATA end
-   :end-before: --EDGE TABLE update geometry start
-
-
-.. rubric:: Updating geometry
+Vertices
+...............................................................................
 
 .. literalinclude:: sampledata.queries
-   :start-after: --EDGE TABLE update geometry start
-   :end-before: --EDGE TABLE update geometry end
+   :start-after: -- q1
+   :end-before: -- q2
 
-
-.. rubric:: Topology
-
-- Before you test a routing function use this query to create a topology (fills the ``source`` and ``target`` columns).
+Vertices data
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: sampledata.queries
-   :start-after: --EDGE TABLE TOPOLOGY start
-   :end-before: --EDGE TABLE TOPOLOGY end
+   :start-after: -- q2
+   :end-before: -- q3
 
-.. rubric:: Combinations of start and end vertices
+The topology
+...............................................................................
 
-- Used to test the combinations_sql signature in dijkstra-like functions.
-
-.. literalinclude:: sampledata.queries
-   :start-after: --COMBINATIONS CREATE start
-   :end-before: --COMBINATIONS CREATE end
-
-.. rubric:: Points of interest
-
-- When points outside of the graph.
-- Used with the :doc:`withPoints-family` functions.
+This queries based on the vertices data create a topology by filling the
+``source`` and ``target`` columns in the edges table.
 
 .. literalinclude:: sampledata.queries
-   :start-after: --POINTS CREATE start
-   :end-before: --POINTS CREATE end
+   :start-after: -- q3
+   :end-before: -- q4
 
-.. rubric:: Restrictions
-
-- Used with the :doc:`TRSP-family` functions.
-
-.. literalinclude:: sampledata.queries
-   :start-after: --RESTRICTIONS CREATE start
-   :end-before: --RESTRICTIONS CREATE end
-
-- Used with the :doc:`pgr_trsp` deprecated and prototype functions.
+Topology data
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: sampledata.queries
-   :start-after: --RESTRICTIONS OLD CREATE start
-   :end-before: --RESTRICTIONS OLD CREATE end
+   :start-after: -- q4
+   :end-before: -- q5
+
+Points outside the graph
+...............................................................................
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p1
+   :end-before: -- p2
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p2
+   :end-before: -- p3
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p3
+   :end-before: -- p4
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p4
+   :end-before: -- p5
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- p5
+   :end-before: -- p6
+
+Support tables
+-------------------------------------------------------------------------------
+
+Combinations
+...............................................................................
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- c1
+   :end-before: -- c2
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- c2
+   :end-before: -- c3
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- c3
+   :end-before: -- c4
+
+
+Restrictions
+...............................................................................
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r1
+   :end-before: -- r2
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r2
+   :end-before: -- r3
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r3
+   :end-before: -- r4
+
 
 Images
-----------------
+-------------------------------------------------------------------------------
 
 * Red arrows correspond when ``cost`` > 0 in the edge table.
 * Blue arrows correspond when ``reverse_cost`` > 0 in the edge table.
@@ -105,59 +151,85 @@ Images
 
 .. _fig1:
 
-Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used
-......................................................................................................
+Directed graph with ``cost`` and ``reverse_cost``
+...............................................................................
 
 When working with city networks, this is recommended for point of view of vehicles.
 
-
 .. figure:: /images/Fig1-originalData.png
 
-   **Graph 1: Directed, with cost and reverse cost**
+   Directed, with cost and reverse_cost
 
 .. _fig2:
 
-Network for queries marked as ``undirected`` and ``cost`` and ``reverse_cost`` columns are used
-......................................................................................................
+Undirected graph with ``cost`` and ``reverse_cost``
+...............................................................................
 
 When working with city networks, this is recommended for point of view of pedestrians.
-
 
 .. figure:: /images/Fig6-undirected.png
    :scale: 50%
 
-   **Graph 2: Undirected, with cost and reverse cost**
+   Undirected, with cost and reverse cost
 
 .. _fig3:
 
-Network for queries marked as ``directed`` and only ``cost`` column is used
-......................................................................................................
-
-
+Directed graph with ``cost``
+...............................................................................
 
 .. figure:: /images/Fig2-cost.png
    :scale: 20%
 
-   **Graph 3: Directed, with cost**
+   Directed, with cost
 
 .. _fig4:
 
-Network for queries marked as ``undirected`` and only ``cost`` column is used
-......................................................................................................
-
+Undirected graph with ``cost``
+...............................................................................
 
 .. figure:: /images/Fig4-costUndirected.png
    :scale: 20%
 
-   **Graph 4: Undirected, with cost**
+   Undirected, with cost
 
 
 .. _pickdeliverdata:
 
 
 Pick & Deliver Data
+-------------------------------------------------------------------------------
+
+.. pd_data_start
+
+This data example **lc101** is from data published at
+http://www.sintef.no/Projectweb/TOP/PDPTW/Li--Lim-benchmark/
+
+The vehicles
 ...............................................................................
 
-.. literalinclude:: ../../tools/testers/vrppdtw_data.sql
+There are 25 vehciles in the problem all with the same characteristics.
 
+.. literalinclude:: lc101.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
+The original orders
+...............................................................................
+
+The data comes in different rows for the pickup and the delivery of the same
+order.
+
+.. literalinclude:: lc101.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+The orders
+...............................................................................
+
+The original data needs to be converted to an appropiate table:
+
+.. literalinclude:: lc101.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+.. pd_data_end
