@@ -82,7 +82,7 @@ SELECT * FROM pgr_bellmanFord(
 (18 rows)
 
 /* -- q51 */
-SELECT source, target FROM combinations_table;
+SELECT source, target FROM combinations;
  source | target
 --------+--------
       5 |      6
@@ -95,7 +95,7 @@ SELECT source, target FROM combinations_table;
 /* -- q52 */
 SELECT * FROM pgr_bellmanFord(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  'SELECT source, target FROM combinations_table',
+  'SELECT source, target FROM combinations',
   false);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------

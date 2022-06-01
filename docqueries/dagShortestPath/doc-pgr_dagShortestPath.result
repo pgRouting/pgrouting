@@ -65,7 +65,7 @@ SELECT * FROM pgr_dagShortestPath(
 (13 rows)
 
 /* -- q51 */
-SELECT source, target FROM combinations_table;
+SELECT source, target FROM combinations;
  source | target
 --------+--------
       5 |      6
@@ -78,7 +78,7 @@ SELECT source, target FROM combinations_table;
 /* -- q52 */
 SELECT * FROM pgr_dagShortestPath(
   'SELECT id, source, target, cost FROM edges',
-  'SELECT source, target FROM combinations_table');
+  'SELECT source, target FROM combinations');
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |    5 |    1 |    1 |        0

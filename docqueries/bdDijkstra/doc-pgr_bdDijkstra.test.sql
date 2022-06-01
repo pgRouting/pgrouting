@@ -16,11 +16,11 @@ SELECT * FROM pgr_bdDijkstra(
   ARRAY[6, 1], ARRAY[10, 17],
   directed => false);
 /* -- q51 */
-SELECT source, target FROM combinations_table;
+SELECT source, target FROM combinations;
 /* -- q52 */
 SELECT * FROM pgr_bdDijkstra(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  'SELECT source, target FROM combinations_table',
+  'SELECT source, target FROM combinations',
   false);
 /* -- q6 */
 SELECT * FROM pgr_bdDijkstra(

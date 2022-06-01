@@ -15,11 +15,11 @@ SELECT * FROM pgr_dagShortestPath(
   'SELECT id, source, target, cost FROM edges',
   ARRAY[5, 15], ARRAY[11, 17]);
 /* -- q51 */
-SELECT source, target FROM combinations_table;
+SELECT source, target FROM combinations;
 /* -- q52 */
 SELECT * FROM pgr_dagShortestPath(
   'SELECT id, source, target, cost FROM edges',
-  'SELECT source, target FROM combinations_table');
+  'SELECT source, target FROM combinations');
 /* -- q6 */
 SELECT * FROM pgr_dagShortestPath(
   'SELECT id, source, target, cost FROM edges',

@@ -9,14 +9,13 @@ DROP TABLE
 DROP table if exists pointsOfInterest;
 DROP TABLE
 DROP TABLE IF EXISTS old_restrictions;
-NOTICE:  table "old_restrictions" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE
 DROP TABLE IF EXISTS retrict;
 NOTICE:  table "retrict" does not exist, skipping
 DROP TABLE
-DROP TABLE IF EXISTS combinations_table;
+DROP TABLE IF EXISTS combinations;
 DROP TABLE
 DROP TABLE IF EXISTS vertex_table;
 NOTICE:  table "vertex_table" does not exist, skipping
@@ -193,13 +192,13 @@ FROM pointsOfInterest;
 /* --POINTS CREATE end */
 /* --COMBINATIONS CREATE start */
 /* -- c1 */
-CREATE TABLE combinations_table (
+CREATE TABLE combinations (
     source BIGINT,
     target BIGINT
 );
 CREATE TABLE
 /* -- c2 */
-INSERT INTO combinations_table (
+INSERT INTO combinations (
     source, target) VALUES
 (5, 6),
 (5, 10),
@@ -208,7 +207,7 @@ INSERT INTO combinations_table (
 (6, 14);
 INSERT 0 5
 /* -- c3 */
-SELECT * FROM combinations_table;
+SELECT * FROM combinations;
  source | target
 --------+--------
       5 |      6
@@ -301,5 +300,21 @@ INSERT INTO orders
            12,    3,   3,      3,         20,          3);
 INSERT 0 3
 /* --ORDERS TABLE END */
+
+CREATE TABLE old_restrictions (
+    rid BIGINT NOT NULL,
+    to_cost FLOAT,
+    target_id BIGINT,
+    via_path TEXT
+);
+CREATE TABLE
+/* --rest01 */
+INSERT INTO old_restrictions (rid, to_cost, target_id, via_path) VALUES
+(1, 100,  7,  '4'),
+(1, 100, 11,  '8'),
+(1, 100, 10,  '7'),
+(2,   4,  9,  '5, 3'),
+(3, 100,  9, '16');
+INSERT 0 5
 ROLLBACK;
 ROLLBACK

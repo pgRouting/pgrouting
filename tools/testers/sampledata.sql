@@ -10,7 +10,7 @@ DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS old_restrictions;
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE IF EXISTS retrict;
-DROP TABLE IF EXISTS combinations_table;
+DROP TABLE IF EXISTS combinations;
 DROP TABLE IF EXISTS vertex_table;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS vehicles;
@@ -125,12 +125,12 @@ FROM pointsOfInterest;
 
 /* --COMBINATIONS CREATE start */
 /* -- c1 */
-CREATE TABLE combinations_table (
+CREATE TABLE combinations (
     source BIGINT,
     target BIGINT
 );
 /* -- c2 */
-INSERT INTO combinations_table (
+INSERT INTO combinations (
     source, target) VALUES
 (5, 6),
 (5, 10),
@@ -138,7 +138,7 @@ INSERT INTO combinations_table (
 (6, 15),
 (6, 14);
 /* -- c3 */
-SELECT * FROM combinations_table;
+SELECT * FROM combinations;
 /* -- c4 */
 /* --COMBINATIONS CREATE end */
 
@@ -221,3 +221,18 @@ INSERT INTO orders
 
 /* --ORDERS TABLE END */
 
+
+-- TODO remove in v4
+CREATE TABLE old_restrictions (
+    rid BIGINT NOT NULL,
+    to_cost FLOAT,
+    target_id BIGINT,
+    via_path TEXT
+);
+/* --rest01 */
+INSERT INTO old_restrictions (rid, to_cost, target_id, via_path) VALUES
+(1, 100,  7,  '4'),
+(1, 100, 11,  '8'),
+(1, 100, 10,  '7'),
+(2,   4,  9,  '5, 3'),
+(3, 100,  9, '16');

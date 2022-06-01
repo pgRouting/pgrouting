@@ -56,7 +56,7 @@ SELECT * FROM pgr_bdAstarCost(
 (4 rows)
 
 /* -- q51 */
-SELECT * FROM combinations_table;
+SELECT * FROM combinations;
  source | target
 --------+--------
       5 |      6
@@ -70,7 +70,7 @@ SELECT * FROM combinations_table;
 SELECT * FROM pgr_bdAstarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
-  'SELECT * FROM combinations_table',
+  'SELECT * FROM combinations',
   factor => 0.5
 );
  start_vid | end_vid | agg_cost

@@ -68,7 +68,7 @@ SELECT * FROM pgr_maxFlowMinCost(
 (11 rows)
 
 /* -- q5 */
-SELECT source, target FROM combinations_table
+SELECT source, target FROM combinations
 WHERE target NOT IN (5, 6);
  source | target
 --------+--------
@@ -81,7 +81,7 @@ WHERE target NOT IN (5, 6);
 SELECT * FROM pgr_maxFlowMinCost(
   'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
   FROM edges',
-  'SELECT * FROM combinations_table WHERE target NOT IN (5, 6)');
+  'SELECT * FROM combinations WHERE target NOT IN (5, 6)');
  seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
    1 |    4 |      6 |      7 |   80 |                20 |   80 |       80

@@ -16,11 +16,11 @@ SELECT * FROM pgr_binaryBreadthFirstSearch(
   ARRAY[6, 1], ARRAY[10, 17],
   directed => false);
 /* -- q5 */
-SELECT source, target FROM combinations_table;
+SELECT source, target FROM combinations;
 /* -- q51 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
-  'SELECT source, target FROM combinations_table',
+  'SELECT source, target FROM combinations',
   false);
 /* -- q6 */
 SELECT * FROM pgr_binaryBreadthFirstSearch(

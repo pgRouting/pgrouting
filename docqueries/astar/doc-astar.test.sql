@@ -27,12 +27,12 @@ SELECT * FROM pgr_aStar(
   factor => 0.5
 );
 /* -- q51 */
-SELECT * FROM combinations_table;
+SELECT * FROM combinations;
 /* -- q52 */
 SELECT * FROM pgr_aStar(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
-  'SELECT * FROM combinations_table',
+  'SELECT * FROM combinations',
   factor => 0.5
 );
 /* -- q6 */

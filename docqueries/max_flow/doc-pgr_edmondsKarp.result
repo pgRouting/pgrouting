@@ -67,7 +67,7 @@ SELECT * FROM pgr_edmondsKarp(
 (10 rows)
 
 /* -- q5 */
-SELECT source, target FROM combinations_table
+SELECT source, target FROM combinations
 WHERE target NOT IN (5, 6);
  source | target
 --------+--------
@@ -80,7 +80,7 @@ WHERE target NOT IN (5, 6);
 SELECT * FROM pgr_edmondsKarp(
   'SELECT id, source, target, capacity, reverse_capacity
   FROM edges',
-  'SELECT * FROM combinations_table WHERE target NOT IN (5, 6)');
+  'SELECT * FROM combinations WHERE target NOT IN (5, 6)');
  seq | edge | start_vid | end_vid | flow | residual_capacity
 -----+------+-----------+---------+------+-------------------
    1 |    4 |         6 |       7 |   80 |                20

@@ -4,6 +4,8 @@ SET client_min_messages TO NOTICE;
 SET
 SET extra_float_digits=-3;
 SET
+DROP TABLE IF EXISTS old_restrictions;
+DROP TABLE
 /* --rest00 */
 CREATE TABLE old_restrictions (
     rid BIGINT NOT NULL,

@@ -1,6 +1,7 @@
 \set VERBOSITY terse
 SET extra_float_digits=-3;
 
+DROP TABLE IF EXISTS old_restrictions;
 /* --rest00 */
 CREATE TABLE old_restrictions (
     rid BIGINT NOT NULL,
