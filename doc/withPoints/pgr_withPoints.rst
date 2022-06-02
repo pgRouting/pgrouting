@@ -86,11 +86,16 @@ Signatures
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, `Combinations SQL`_ [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_
+         [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 .. index::
@@ -101,7 +106,8 @@ One to One
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
+         [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` to vertex :math:`10` with details
@@ -118,7 +124,8 @@ One to Many
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
+         [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -136,7 +143,8 @@ Many to One
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
+         [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
@@ -153,7 +161,8 @@ Many to Many
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
+         [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6`  to point :math:`3` and
@@ -171,7 +180,8 @@ Combinations
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, `Combinations SQL`_ [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`, `Combinations SQL`_,
+         [, directed] [, driving_side] [, details])
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: Two combinations

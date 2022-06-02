@@ -56,11 +56,13 @@ Description
 -------------------------------------------------------------------------------
 
 Modify the graph to include points defined by points_sql.
-Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s) found.
+Using Dijkstra algorithm, return only the aggregate cost of the shortest path(s)
+found.
 
 The main characteristics are:
   - It does not return a path.
-  - Returns the sum of the costs of the shortest path for pair combination of vertices in the modified graph.
+  - Returns the sum of the costs of the shortest path for pair combination of
+    vertices in the modified graph.
   - Vertices of the graph are:
 
     - **positive** when it belongs to the edges_sql
@@ -69,24 +71,27 @@ The main characteristics are:
   - Process is done only on edges with positive costs.
   - Values are returned when there is a path.
 
-    - The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
+    - The returned values are in the form of a set of `(start_vid, end_vid,
+      agg_cost)`.
 
     - When the starting vertex and ending vertex are the same, there is no path.
 
       - The `agg_cost` in the non included values `(v, v)` is `0`
 
-    - When the starting vertex and ending vertex are the different and there is no path.
+    - When the starting vertex and ending vertex are the different and there is
+      no path.
 
       - The `agg_cost` in the non included values `(u, v)` is :math:`\infty`
 
-  - If the values returned are stored in a table, the unique index would be the pair:
-    `(start_vid, end_vid)`.
+  - If the values returned are stored in a table, the unique index would be the
+    pair: `(start_vid, end_vid)`.
 
   - For **undirected** graphs, the results are **symmetric**.
 
     - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` is ignored.
+  - For optimization purposes, any duplicated value in the `start_vids` or
+    `end_vids` is ignored.
 
   - The returned values are ordered:
 
@@ -102,11 +107,16 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side])
-    pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side])
-    pgr_withPointsCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, driving_side])
-    pgr_withPointsCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side])
-    pgr_withPointsCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vid**
+            [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**
+            [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**
+            [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vids**
+            [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_
+            [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 .. note:: There is no **details** flag, unlike the other members of the
@@ -120,7 +130,8 @@ One to One
 
 .. parsed-literal::
 
-    pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vid**
+            [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`1` to vertex :math:`10` with defaults
@@ -137,7 +148,8 @@ One to Many
 
 .. parsed-literal::
 
-    pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**
+            [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
@@ -155,7 +167,8 @@ Many to One
 
 .. parsed-literal::
 
-    pgr_withPointsCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**
+            [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
@@ -172,7 +185,8 @@ Many to Many
 
 .. parsed-literal::
 
-    pgr_withPointsCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vids**
+            [, directed] [, driving_side])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`15` and vertex :math:`6`  to point :math:`3` and
@@ -190,7 +204,8 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_withPointsCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, driving_side])
+    pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_
+            [, directed] [, driving_side])
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: Two combinations

@@ -47,7 +47,7 @@ pgr_withPointsKSP - Proposed
 Description
 -------------------------------------------------------------------------------
 
-Modifies the graph to include the points defined in the ```Points SQL``` and
+Modifies the graph to include the points defined in the `Points SQL`_ and
 using Yen algorithm, finds the :math:`K` shortest paths.
 
 .. index::
@@ -58,7 +58,7 @@ Signatures
 
 .. parsed-literal::
 
-   pgr_withPointsKSP(`Edges SQL`_, **`Points SQL`**, **start_pid**, **end_pid**, **K**
+   pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start_pid**, **end_pid**, **K**
      [, directed] [, heap_paths] [, driving_side] [, details])
    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
@@ -152,7 +152,7 @@ Result Columns
     :end-before: ksp_returns_end
 
 Additional Examples
---------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 :Example: get :math:`2` paths using left side driving topology, from point
           :math:`1` to point :math:`2` with details.
