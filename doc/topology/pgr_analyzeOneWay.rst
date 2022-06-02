@@ -58,7 +58,7 @@ The  edge table to be analyzed must contain a source column and a target column 
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
+.. parsed-literal::
 
 	text pgr_analyzeOneWay(geom_table text,
 			       text[] s_in_rules, text[] s_out_rules,

@@ -440,7 +440,7 @@ Return columns
 
 .. pd_returns_start
 
-.. code-block:: none
+.. parsed-literal::
 
     RETURNS SET OF
       (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,

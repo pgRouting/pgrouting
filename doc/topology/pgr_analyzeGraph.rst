@@ -48,7 +48,7 @@ The function returns:
 .. index::
 	single: analyzeGraph
 
-.. code-block:: sql
+.. parsed-literal::
 
 	varchar pgr_analyzeGraph(text edge_table, double precision tolerance,
                            text the_geom:='the_geom', text id:='id',

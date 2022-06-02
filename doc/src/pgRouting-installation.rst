@@ -53,14 +53,14 @@ Short Version
 
 Extracting the tar ball
 
-.. code-block:: bash
+.. parsed-literal::
 
     tar xvfz pgrouting-${PROJECT_VERSION}.tar.gz
     cd pgrouting-${PROJECT_VERSION}
 
 To compile assuming you have all the dependencies in your search path:
 
-.. code-block:: bash
+.. parsed-literal::
 
     mkdir build
     cd build
@@ -71,7 +71,7 @@ To compile assuming you have all the dependencies in your search path:
 Once pgRouting is installed, it needs to be enabled in each individual 
 database you want to use it in.
 
-.. code-block:: bash
+.. parsed-literal::
 
     createdb routing
     psql routing -c 'CREATE EXTENSION PostGIS'
@@ -91,7 +91,7 @@ https://github.com/pgRouting/pgrouting/releases/latest
 
 To download this release:
 
-.. code-block:: bash
+.. parsed-literal::
 
     wget -O pgrouting-${PROJECT_VERSION}.tar.gz https://github.com/pgRouting/pgrouting/archive/v${PROJECT_VERSION}.tar.gz
 
@@ -101,7 +101,7 @@ Go to :ref:`install-short` for more instructions on extracting tar ball and comp
 
 To download the repository
 
-.. code-block:: bash
+.. parsed-literal::
 
     git clone git://github.com/pgRouting/pgrouting.git
     cd pgrouting
@@ -123,14 +123,14 @@ pgRouting is a PostgreSQL extension and depends on PostGIS to provide functional
 to end user. Below given code demonstrates enabling PostGIS and pgRouting in the 
 database.
 
-.. code-block:: sql
+.. parsed-literal::
 
     CREATE EXTENSION postgis;
     CREATE EXTENSION pgrouting;
 
 Checking PostGIS and pgRouting version after enabling them in the database.
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT PostGIS_full_version();
     SELECT * FROM pgr_version();
@@ -141,7 +141,7 @@ To upgrade pgRouting in the database to version ${PROJECT_VERSION} use the follo
 
 .. TODO: pumpup release must change this value
 
-.. code-block:: sql
+.. parsed-literal::
 
    ALTER EXTENSION pgrouting UPDATE TO "${PROJECT_VERSION}";
 
@@ -196,7 +196,7 @@ Installing the compilation dependencies
 
 .. rubric:: Database dependencies
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo apt install postgresql-14
     sudo apt install postgresql-server-dev-14
@@ -206,7 +206,7 @@ Installing the compilation dependencies
 
 Entering psql console
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo systemctl start postgresql.service
     sudo -i -u postgres
@@ -214,14 +214,14 @@ Entering psql console
 
 To exit psql console
 
-.. code-block:: psql
+.. parsed-literal::
 
     \q 
 
 Entering psql console directly without switching roles can be done by the 
 following commands
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo -u postgres psql
 
@@ -229,7 +229,7 @@ Then use the above given method to exit out of the psql console
 
 Checking PostgreSQL version
 
-.. code-block:: bash
+.. parsed-literal::
 
     psql --version
 
@@ -237,20 +237,20 @@ or
 
 Enter the psql console using above given method and then enter
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT VERSION();
 
 Creating PostgreSQL role
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo -i -u postgres
     createuser --interactive
 
 or
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo -u postgres createuser --interactive
 
@@ -262,27 +262,27 @@ you will succeed in creating PostgreSQL role successfully.
 To add password to the role or change previously created password of the
 role use the following commands
 
-.. code-block:: sql
+.. parsed-literal::
 
     ALTER USER <role name> PASSWORD <password>
 
 To get additional details on the flags associated with ``createuser`` below 
 given command can be used
 
-.. code-block:: none
+.. parsed-literal::
 
     man createuser
 
 Creating Database in PostgreSQL
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo -i -u postgres
     createdb <database name>
 
 or 
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo -u postgres createdb <database name>
     
@@ -290,13 +290,13 @@ Connecting to a PostgreSQL Database
 
 Enter the psql console and type the following commands
 
-.. code-block:: psql
+.. parsed-literal::
 
     \connect <database name>
 
 .. rubric:: Build dependencies
 
-.. code-block:: bash
+.. parsed-literal::
 
     sudo apt install cmake
     sudo apt install g++
@@ -306,7 +306,7 @@ Enter the psql console and type the following commands
 
 For documentation and testing
 
-.. code-block:: bash
+.. parsed-literal::
 
     pip install sphinx
     pip install sphinx-bootstrap-theme
@@ -327,7 +327,7 @@ The build directory is different from the source directory
 
 Create the build directory
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ mkdir build
 
@@ -337,7 +337,7 @@ Configurable variables
 .. rubric:: To see the variables that can be configured
 
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ cd build
     $ cmake -L ..
@@ -362,7 +362,7 @@ DOC_USE_BOOTSTRAP  BOOL=OFF  If ON, use sphinx-bootstrap for HTML pages of the u
 Configuring cmake to create documentation before building
 pgRouting
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ cmake -DWITH_DOC=ON -DDOC_USE_BOOTSTRAP=ON ..
 
@@ -378,7 +378,7 @@ Using ``make`` to build the code and the documentation
 
 The following instructions start from *path/to/pgrouting/build*
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ make          # build the code but not the documentation
     $ make doc      # build only the user's documentation
@@ -392,7 +392,7 @@ We have tested on several platforms, For installing or reinstalling all the step
 
 .. rubric:: MinGW on Windows
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ mkdir build
     $ cd build
@@ -405,7 +405,7 @@ We have tested on several platforms, For installing or reinstalling all the step
 
 The following instructions start from *path/to/pgrouting*
 
-.. code-block:: bash
+.. parsed-literal::
 
     mkdir build
     cd build
@@ -416,7 +416,7 @@ The following instructions start from *path/to/pgrouting*
 To remove the build when the configuration changes, use the following
 code:
 
-.. code-block:: bash
+.. parsed-literal::
 
     rm -rf build
 
@@ -431,7 +431,7 @@ Currently there is no :code:`make test` and testing is done as follows
 
 The following instructions start from *path/to/pgrouting/*
 
-.. code-block:: none
+.. parsed-literal::
 
     tools/testers/doc_queries_generator.pl
     createdb -U <user> ___pgr___test___

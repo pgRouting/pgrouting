@@ -161,7 +161,7 @@ Migration of ``pgr_trsp`` (Vertices)
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
   pgr_trsp(Edges SQL, source, target,
            directed boolean, has_rcost boolean
@@ -289,7 +289,7 @@ Migration of ``pgr_trsp`` (Edges)
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
    pgr_trsp(sql text, source_edge integer, source_pos float8,
                     target_edge integer, target_pos float8,
@@ -425,7 +425,7 @@ Migration of ``pgr_trspViaVertices``
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
    pgr_trspViaVertices(sql text, vids integer[],
                      directed boolean, has_rcost boolean
@@ -556,7 +556,7 @@ Migration of ``pgr_trspViaEdges``
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
    pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
                      directed boolean, has_rcost boolean

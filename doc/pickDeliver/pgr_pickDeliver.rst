@@ -132,7 +132,7 @@ Orders SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. code-block:: none
+.. parsed-literal::
 
     id, demand
     p_node_id, p_open, p_close, [p_service,]
@@ -154,7 +154,7 @@ Vehicles SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. code-block:: none
+.. parsed-literal::
 
     id, capacity
     start_node_id, start_open, start_close [, start_service,]

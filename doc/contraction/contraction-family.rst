@@ -414,7 +414,7 @@ by another operation changes.
 
 This implementation, cycles ``max_cycles`` times through ``operations_order`` .
 
-.. code-block:: none
+.. parsed-literal::
 
     <input>
     do max_cycles times {

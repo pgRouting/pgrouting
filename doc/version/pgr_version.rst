@@ -53,7 +53,7 @@ Returns pgRouting version information.
 Signature
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
+.. parsed-literal::
 
 	TEXT pgr_version();
 

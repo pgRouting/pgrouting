@@ -63,7 +63,7 @@ The function returns:
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: none
+.. parsed-literal::
 
     varchar pgr_createTopology(text edge_table, double precision tolerance,
                            text the_geom:='the_geom', text id:='id',

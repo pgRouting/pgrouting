@@ -57,7 +57,7 @@ later if you want to to say a production server.
 
 For Postgresql 9.2 and later versions
 
-.. code-block:: bash
+.. parsed-literal::
 
 	createdb mydatabase
 	psql mydatabase -c "create extension postgis"
@@ -101,7 +101,7 @@ to a unique node and to other edges that are also connected to that same unique
 node. Once all the edges are connected to nodes we have a graph that can be
 used for routing with pgrouting. We provide a tool that will help with this:
 
-.. code-block:: sql
+.. parsed-literal::
 
     select pgr_createTopology('myroads', 0.000001);
 
@@ -123,7 +123,7 @@ There can be other errors like the direction of a one-way street being entered
 in the wrong direction. We do not have tools to search for all possible errors
 but we have some basic tools that might help.
 
-.. code-block:: sql
+.. parsed-literal::
 
     select pgr_analyzegraph('myroads', 0.000001);
     select pgr_analyzeoneway('myroads',  s_in_rules, s_out_rules,
@@ -145,9 +145,9 @@ Once you have all the preparation work done above, computing a route is fairly e
 We have a lot of different algorithms that can work with your prepared road
 network. The general form of a route query using Dijkstra algorithm is:
 
-.. code-block:: none
+.. parsed-literal::
 
-    select pgr_dijkstra(`SELECT * FROM myroads', <start>, <end>)
+    select pgr_dijkstra('SELECT * FROM myroads', <start>, <end>)
 
 
 This algorithm only requires *id*, *source*, *target* and *cost* as the minimal attributes, that by
@@ -156,7 +156,7 @@ roads table do not match exactly the names of these attributes, you can use alia
 if you imported OSM data using **osm2pgrouting**, your id column's name would be *gid* and your
 roads table would be *ways*, so you would query a route from node id 1 to node id 2 by typing:
 
-.. code-block:: none
+.. parsed-literal::
 
     select pgr_dijkstra('SELECT gid AS id, source, target, cost FROM ways', 1, 2)
 
@@ -1132,7 +1132,7 @@ For example, when you have an overpass and underpass intersection, you do not wa
 
 For those cases where topology needs to be added the following functions may be useful. One way to prep the data for pgRouting is to add the following columns to your table and then populate them as appropriate. This example makes a lot of assumption like that you original data tables already has certain columns in it like ``one_way``, ``fcc``, and possibly others and that they contain specific data values. This is only to give you an idea of what you can do with your data.
 
-.. code-block:: sql
+.. parsed-literal::
 
     ALTER TABLE edge_table
         ADD COLUMN source integer,
@@ -1153,7 +1153,7 @@ For those cases where topology needs to be added the following functions may be 
 
 The function :doc:`pgr_createTopology <pgr_createTopology>` will create the ``vertices_tmp`` table and populate the ``source`` and ``target`` columns. The following example populated the remaining columns. In this example, the ``fcc`` column contains feature class code and the ``CASE`` statements converts it to an average speed.
 
-.. code-block:: sql
+.. parsed-literal::
 
     UPDATE edge_table SET x1 = st_x(st_startpoint(the_geom)),
                           y1 = st_y(st_startpoint(the_geom)),
@@ -1235,7 +1235,7 @@ Analyze a Graph
 
 With :doc:`pgr_analyzeGraph` the graph can be checked for errors. For example for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT pgr_analyzeGraph('mytab', 0.000002);
     NOTICE:  Performing checks, pelase wait...
@@ -1261,7 +1261,7 @@ In the vertices table "mytab_vertices_pgr":
 - Deadends are identified by ``cnt=1``
 - Potencial gap problems are identified with ``chk=1``.
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT count(*) as deadends  FROM mytab_vertices_pgr WHERE cnt = 1;
     deadends
@@ -1279,7 +1279,7 @@ In the vertices table "mytab_vertices_pgr":
 
 For isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT *
         FROM mytab a, mytab_vertices_pgr b, mytab_vertices_pgr c
@@ -1313,7 +1313,7 @@ Lets assume we have a table "st" of edges and a column "one_way" that might have
 
 Then we could form the following query to analyze the oneway streets for errors.
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT pgr_analyzeOneway('mytab',
                 ARRAY['', 'B', 'TF'],
@@ -1353,7 +1353,7 @@ To get faster results bound your queries to the area of interest of routing to h
 
 Use an inner query SQL that does not include some edges in the routing function
 
-.. code-block:: sql
+.. parsed-literal::
 
 	SELECT id, source, target from edge_table WHERE
         	id < 17 and
@@ -1361,7 +1361,7 @@ Use an inner query SQL that does not include some edges in the routing function
 
 Integrating the inner query to the pgRouting function:
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT * FROM pgr_dijkstra(
 	    'SELECT id, source, target from edge_table WHERE
@@ -1379,13 +1379,13 @@ When "you know" that you are going to remove a set of edges from the edges table
 
 Analize the new topology based on the actual topology:
 
-.. code-block:: sql
+.. parsed-literal::
 
 	pgr_analyzegraph('edge_table',rows_where:='id < 17');
 
 Or create a new topology if the change is permanent:
 
-.. code-block:: sql
+.. parsed-literal::
 
 	pgr_createTopology('edge_table',rows_where:='id < 17');
 	pgr_analyzegraph('edge_table',rows_where:='id < 17');

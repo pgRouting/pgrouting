@@ -38,7 +38,7 @@ The function reads edges from a not "noded" network table and writes the "noded"
 .. index::
 	single: pgr_nodeNetwork
 
-.. code-block:: sql
+.. parsed-literal::
 
     pgr_nodenetwork(edge_table, tolerance, id, text the_geom, table_ending, rows_where, outall)
     RETURNS TEXT

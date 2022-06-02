@@ -48,7 +48,7 @@ The function returns:
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
+.. parsed-literal::
 
 	pgr_createVerticesTable(edge_table, the_geom, source, target, rows_where)
     RETURNS VARCHAR

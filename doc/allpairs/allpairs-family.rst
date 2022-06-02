@@ -133,7 +133,7 @@ Data
 
 The following data was used
 
-.. code-block:: none
+.. parsed-literal::
 
     BBOX="-122.8,45.4,-122.5,45.6"
     wget --progress=dot:mega -O "sampledata.osm" "https://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
@@ -141,7 +141,7 @@ The following data was used
 
 Data processing was done with osm2pgrouting-alpha
 
-.. code-block:: none
+.. parsed-literal::
 
     createdb portland
     psql -c "create extension postgis" portland
@@ -161,7 +161,7 @@ The density of the passed graph is extremely low.
 For each <SIZE> 30 tests were executed to get the average
 The tested query is:
 
-.. code-block:: none
+.. parsed-literal::
 
      SELECT count(*) FROM pgr_floydWarshall(
         'SELECT gid as id, source, target, cost, reverse_cost FROM ways where id <=  <SIZE>');
@@ -212,7 +212,7 @@ The density of the passed graph higher than of the Test One.
 For each <SIZE> 30 tests were executed to get the average
 The tested edge query is:
 
-.. code-block:: none
+.. parsed-literal::
 
     WITH
         buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
@@ -221,7 +221,7 @@ The tested edge query is:
 
 The tested queries
 
-.. code-block:: none
+.. parsed-literal::
 
     SELECT count(*) FROM pgr_floydWarshall(<edge query>)
     SELECT count(*) FROM pgr_johnson(<edge query>)
