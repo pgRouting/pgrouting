@@ -29,8 +29,10 @@ algorithm.
 .. index from here
 
 - :doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths.
-- :doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths.
-- :doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths.
+- :doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of
+  the paths.
+- :doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost
+  matrix of paths.
 
 .. index to here
 

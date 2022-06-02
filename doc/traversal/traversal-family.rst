@@ -39,7 +39,8 @@ Traversal - Family of functions
 .. index experimental from here
 
 * :doc:`pgr_breadthFirstSearch` - Breath first search traversal of the graph.
-* :doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of the graph.
+* :doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of the
+  graph.
 
 .. index experimental to here
 

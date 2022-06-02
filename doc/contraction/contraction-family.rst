@@ -233,14 +233,15 @@ contracted:
         u -> v;
     }
 
-After contracting :math:`v`, stop. Node :math:`u` has the information of nodes that
-were contrcted.
+After contracting :math:`v`, stop. Node :math:`u` has the information of nodes
+that were contrcted.
 
 .. graphviz::
 
     digraph G {
         u [style=filled; color=green, label="u{v,w}"];
-        "G" [shape=tripleoctagon;style=filled;color=deepskyblue; label = "Rest of the Graph"];
+        "G" [shape=tripleoctagon;style=filled;
+             color=deepskyblue; label = "Rest of the Graph"];
 
         rankdir=LR;
         G -> u [dir=none, weight=1, penwidth=3];
@@ -279,7 +280,8 @@ Linear vertex on undirected graph
     graph G {
         u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
         v [style=filled; color=green];
-        G [shape=tripleoctagon;width=1.5;style=filled;color=deepskyblue;label = "Rest of the Graph"];
+        G [shape=tripleoctagon;width=1.5;style=filled;
+           color=deepskyblue;label = "Rest of the Graph"];
 
         rankdir=LR;
         w -- G -- u [dir=none, weight=1, penwidth=3];
@@ -350,14 +352,16 @@ Operation: Linear Contraction
 ...............................................................................
 
 The linear contraction will stop when there are no more linear nodes.
-For example from the following graph where :math:`v` and :math:`w` are `linear`_ nodes:
+For example from the following graph where :math:`v` and :math:`w` are `linear`_
+nodes:
 
 .. graphviz::
 
     digraph G {
         u, z [shape=circle;style=filled;color=deepskyblue];
         v, w [style=filled; color=green];
-        "G" [shape=tripleoctagon; style=filled;color=deepskyblue;label = "Rest of the Graph"];
+        "G" [shape=tripleoctagon; style=filled;
+             color=deepskyblue;label = "Rest of the Graph"];
 
         rankdir=LR;
         G -> {u, z} [dir=none, weight=1, penwidth=3];
@@ -367,7 +371,8 @@ For example from the following graph where :math:`v` and :math:`w` are `linear`_
 Contracting :math:`w`,
 
 * The vertex :math:`w` is removed from the graph
-* The edges :math:`v \rightarrow w` and  :math:`w \rightarrow z` are removed from the graph.
+* The edges :math:`v \rightarrow w` and  :math:`w \rightarrow z` are removed
+  from the graph.
 * A new edge :math:`v \rightarrow z` is inserted represented with red color.
 
 .. graphviz::
@@ -375,7 +380,8 @@ Contracting :math:`w`,
     digraph G {
         u, z [shape=circle;style=filled;color=deepskyblue];
         v [style=filled; color=green];
-        "G" [shape=tripleoctagon; style=filled;color=deepskyblue;label = "Rest of the Graph"];
+        "G" [shape=tripleoctagon; style=filled;
+             color=deepskyblue;label = "Rest of the Graph"];
 
         rankdir=LR;
         G -> {u, z} [dir=none, weight=1, penwidth=3];
@@ -386,7 +392,8 @@ Contracting :math:`w`,
 Contracting :math:`v`:
 
 * The vertex :math:`v` is removed from the graph
-* The edges :math:`u \rightarrow v` and  :math:`v \rightarrow z` are removed from the graph.
+* The edges :math:`u \rightarrow v` and  :math:`v \rightarrow z` are removed
+  from the graph.
 * A new edge :math:`u \rightarrow z` is inserted represented with red color.
 
 
@@ -394,7 +401,8 @@ Contracting :math:`v`:
 
     digraph G {
         u, z [shape=circle;style=filled;color=deepskyblue];
-        "G" [shape=tripleoctagon; style=filled;color=deepskyblue;label = "Rest of the Graph"];
+        "G" [shape=tripleoctagon; style=filled;
+             color=deepskyblue;label = "Rest of the Graph"];
 
         rankdir=LR;
         G -> {u, z} [dir=none, weight=1, penwidth=3];
@@ -732,9 +740,10 @@ Now, the routing graph has an edge connecting with node :math:`7`.
 See Also
 -------------
 
+* :doc:`pgr_contraction`
+* :doc:`sampledata`
 * https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
-* The queries use :doc:`pgr_contraction` function and the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

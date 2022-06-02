@@ -134,8 +134,10 @@ See Also
 
 * :doc:`components-family`
 * The queries use the :doc:`sampledata` network.
-* Boost: `Biconnected components <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__
-* wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__
+* Boost: `Biconnected components
+  <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__
+* wikipedia: `Biconnected component
+  <https://en.wikipedia.org/wiki/Biconnected_component>`__
 
 .. rubric:: Indices and tables
 

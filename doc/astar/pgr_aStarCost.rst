@@ -182,7 +182,8 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_  [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCost(`Edges SQL`_, `Combinations SQL`_
+                     [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 

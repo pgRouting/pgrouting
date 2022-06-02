@@ -155,7 +155,8 @@ Images
 Directed graph with ``cost`` and ``reverse_cost``
 ...............................................................................
 
-When working with city networks, this is recommended for point of view of vehicles.
+When working with city networks, this is recommended for point of view of
+vehicles.
 
 .. figure:: /images/Fig1-originalData.png
 
@@ -166,7 +167,8 @@ When working with city networks, this is recommended for point of view of vehicl
 Undirected graph with ``cost`` and ``reverse_cost``
 ...............................................................................
 
-When working with city networks, this is recommended for point of view of pedestrians.
+When working with city networks, this is recommended for point of view of
+pedestrians.
 
 .. figure:: /images/Fig6-undirected.png
    :scale: 50%

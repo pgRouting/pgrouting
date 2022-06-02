@@ -69,10 +69,12 @@ Using Dijkstra algorithm, find the shortest path(s)
   - When the starting vertex and ending vertex are the same, there is no path.
     - The agg_cost the non included values (v, v) is 0
 
-  - When the starting vertex and ending vertex are the different and there is no path:
+  - When the starting vertex and ending vertex are the different and there is no
+    path:
     - The agg_cost the non included values (u, v) is ∞
 
-- For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.
+- For optimization purposes, any duplicated value in the start_vids or end_vids
+  are ignored.
 - The returned values are ordered:
   - start_vid ascending
   - end_vid ascending
@@ -96,7 +98,7 @@ Signatures
          [, directed] [, driving_side] [, details])
    pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_
          [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+   RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 .. index::
     single: withPoints(One to One) - Proposed on v2.2
@@ -108,7 +110,7 @@ One to One
 
    pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
          [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+   RETURNS (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` to vertex :math:`10` with details
 
@@ -126,7 +128,7 @@ One to Many
 
    pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
          [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+   RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
@@ -145,7 +147,7 @@ Many to One
 
    pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
          [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+   RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
@@ -163,7 +165,7 @@ Many to Many
 
    pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
          [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6`  to point :math:`3` and
           vertex :math:`1`
@@ -182,7 +184,7 @@ Combinations
 
    pgr_withPoints(`Edges SQL`_, `Points SQL`, `Combinations SQL`_,
          [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: Two combinations
 

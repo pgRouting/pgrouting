@@ -59,8 +59,10 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance** [, directed])
-    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance** [, directed] [, equicost])
+    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**
+               [, directed])
+    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**
+               [, directed] [, equicost])
     RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)
 
 .. index::
@@ -71,7 +73,8 @@ Single Vertex
 
 .. parsed-literal::
 
-    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance** [, directed])
+    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**
+               [, directed])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
@@ -88,7 +91,8 @@ Multiple Vertices
 
 .. parsed-literal::
 
-    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance** [, directed] [, equicost])
+    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**
+               [, directed] [, equicost])
     RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)
 
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with

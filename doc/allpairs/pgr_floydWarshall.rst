@@ -28,8 +28,8 @@
 ``pgr_floydWarshall``
 ===============================================================================
 
-``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path for each
-pair of nodes in the graph using Floyd-Warshall algorithm.
+``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path for
+each pair of nodes in the graph using Floyd-Warshall algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html
@@ -50,10 +50,10 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The Floyd-Warshall algorithm, also known as Floyd's algorithm,
-is a good choice to calculate the sum of the costs of the shortest path for each
-pair of nodes in the graph, for *dense graphs*. We use Boost's
-implementation which runs in :math:`\Theta(V^3)` time,
+The Floyd-Warshall algorithm, also known as Floyd's algorithm, is a good choice
+to calculate the sum of the costs of the shortest path for each pair of nodes in
+the graph, for *dense graphs*.
+We use Boost's implementation which runs in :math:`\Theta(V^3)` time,
 
 .. include:: allpairs-family.rst
    :start-after: characteristics_start
@@ -113,7 +113,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_johnson`
-* `Boost floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
+* Boost `floyd-Warshall
+  <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_
 * Queries uses the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

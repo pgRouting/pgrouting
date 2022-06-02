@@ -27,7 +27,8 @@ Coloring - Family of functions
 
 .. index proposed from here
 
-* :doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach.
+* :doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy
+  approach.
 
 .. index proposed to here
 
@@ -39,7 +40,8 @@ Coloring - Family of functions
 
 .. index from here
 
-* :doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach.
+* :doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring
+  approach.
 * :doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem.
 
 .. index to here
@@ -60,15 +62,15 @@ Result Columns
 
 Returns SET OF ``(vertex_id, color_id)``
 
-===============  =========== ====================================================
+===============  =========== ======================================
 Column           Type        Description
-===============  =========== ====================================================
+===============  =========== ======================================
 ``vertex_id``    ``BIGINT``  Identifier of the vertex.
 ``color_id``     ``BIGINT``  Identifier of the color of the vertex.
 
                              - The minimum value of color is 1.
 
-===============  =========== ====================================================
+===============  =========== ======================================
 
 .. result columns end
 
@@ -76,15 +78,15 @@ Column           Type        Description
 
 Returns SET OF ``(edge_id, color_id)``
 
-===============  =========== ====================================================
+===============  =========== =====================================
 Column           Type        Description
-===============  =========== ====================================================
+===============  =========== =====================================
 ``edge_id``      ``BIGINT``  Identifier of the edge.
 ``color_id``     ``BIGINT``  Identifier of the color of the edge.
 
                              - The minimum value of color is 1.
 
-===============  =========== ====================================================
+===============  =========== =====================================
 
 .. result columns end edgeColoring
 

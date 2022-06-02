@@ -18,7 +18,8 @@
 pgr_lengauerTarjanDominatorTree -Experimental
 ===============================================================================
 
-``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices.
+``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all
+vertices.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm

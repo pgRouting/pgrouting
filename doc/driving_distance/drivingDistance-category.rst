@@ -57,9 +57,10 @@ Calculate nodes that are within a distance.
 
 .. dd_traits_start
 
-*  Extracts all the nodes that have costs less than or equal to the value distance.
-*  The edges extracted will conform to the corresponding spanning tree.
-   Edge
+* Extracts all the nodes that have costs less than or equal to the value
+  distance.
+* The edges extracted will conform to the corresponding spanning tree.
+  Edge
 * Edge :math:`(u, v)` will not be included when:
 
   * The distance from the **root** to :math:`u` > limit distance.
@@ -101,7 +102,7 @@ Parameters
 Where:
 
 :ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
-:ANY-NUMERIC: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``, ``NUMERIC``
+:ANY-NUMERIC: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. mst-dd-params_end
 
@@ -109,7 +110,7 @@ Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
-..............................................................................
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start

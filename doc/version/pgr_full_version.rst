@@ -43,7 +43,7 @@ Signatures
 .. Parsed-literal::
 
    pgr_full_version()
-   RETURNS RECORD OF (version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)
+   RETURNS (version, build_type, compile_date, library, system, PostgreSQL, compiler, boost, hash)
 
 
 :Example: Information about when this documentation was built

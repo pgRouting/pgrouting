@@ -80,7 +80,8 @@ Characteristics
 Pick & Delivery
 -------------------------------------------------------------------------------
 
-Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehicle Routing problem with Time Windows
+Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehicle Routing problem with
+Time Windows
 
 - Times are relative to `0`
 - The vehicles
@@ -94,7 +95,8 @@ Problem: `CVRPPDTW` Capacitated Pick and Delivery Vehicle Routing problem with T
   - Have pick up and delivery locations.
   - Have opening and closing times for the pickup and delivery locations.
   - Have pickup and delivery duration service times.
-  - have a demand request for moving goods from the pickup location to the delivery location.
+  - have a demand request for moving goods from the pickup location to the
+    delivery location.
 
 - Time based calculations:
 
@@ -310,7 +312,7 @@ Where:
     see include/c_types/pickDeliver/vehicle_t.h documentation
 
 Vehicles SQL
-.........................................................................................
+...............................................................................
 
 Common columns for the vehicles SQL in both implementations:
 
@@ -495,7 +497,8 @@ Return columns
      - ``BIGINT``
      - Pickup-Delivery order pair identifier.
 
-       * Value :math:`-1`: When no order is involved on the current stop location.
+       * Value :math:`-1`: When no order is involved on the current stop
+         location.
    * - ``cargo``
      - ``FLOAT``
      - Cargo units of the vehicle when leaving the stop.

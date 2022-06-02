@@ -27,8 +27,10 @@ Components - Family of functions
 .. index from here
 
 * :doc:`pgr_connectedComponents` - Connected components of an undirected graph.
-* :doc:`pgr_strongComponents` - Strongly connected components of a directed graph.
-* :doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph.
+* :doc:`pgr_strongComponents` - Strongly connected components of a directed
+  graph.
+* :doc:`pgr_biconnectedComponents` - Biconnected components of an undirected
+  graph.
 * :doc:`pgr_articulationPoints` - Articulation points of an undirected graph.
 * :doc:`pgr_bridges` - Bridges of an undirected graph.
 

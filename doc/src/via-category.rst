@@ -207,7 +207,8 @@ Result Columns
      - Identifier of a path. Has value **1** for the first path.
    * - ``path_seq``
      - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a path.
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
    * - ``start_vid``
      - ``BIGINT``
      - Identifier of the starting vertex of the path.
@@ -233,7 +234,8 @@ Result Columns
      - Aggregate cost from ``start_vid`` to ``node``.
    * - ``route_agg_cost``
      - ``FLOAT``
-     - Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current ``seq``.
+     - Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the
+       current ``seq``.
 
 .. result_via_end
 

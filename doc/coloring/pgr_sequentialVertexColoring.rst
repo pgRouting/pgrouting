@@ -45,8 +45,8 @@ Description
 -------------------------------------------------------------------------------
 
 Sequential vertex coloring algorithm is a graph coloring algorithm in which
-color identifiers are assigned to the vertices of a graph in a sequential manner,
-such that no edge connects two identically colored vertices.
+color identifiers are assigned to the vertices of a graph in a sequential
+manner, such that no edge connects two identically colored vertices.
 
 **The main Characteristics are:**
 

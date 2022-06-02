@@ -18,8 +18,8 @@
 ``pgr_dijkstraNearCost`` - Proposed
 ===============================================================================
 
-``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads to
-the nearest vertex.
+``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads
+to the nearest vertex.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -44,9 +44,8 @@ the nearest vertex.
 Description
 -------------------------------------------------------------------------------
 
-Given a graph, a starting vertex and a set of ending vertices,
-this function finds the shortest path from the starting vertex to the nearest
-ending vertex.
+Given a graph, a starting vertex and a set of ending vertices, this function
+finds the shortest path from the starting vertex to the nearest ending vertex.
 
 Characteristics
 ...............................................................................
@@ -62,10 +61,14 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
-    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -77,11 +80,13 @@ One to Many
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: Departing on car from vertex :math:`6` find the nearest subway station.
+:Example: Departing on car from vertex :math:`6` find the nearest subway
+          station.
 
 * Using a **directed** graph for car routing.
 * The subway stations are on the following vertices :math:`\{1, 10, 11\}`
@@ -106,7 +111,8 @@ Many to One
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -123,8 +129,8 @@ Many to One
     :end-before: -- q3
     :linenos:
 
-The result shows that station at vertex :math:`10` is the nearest and the next best
-is :math:`11`.
+The result shows that station at vertex :math:`10` is the nearest and the next
+best is :math:`11`.
 
 .. index::
     single: dijkstraNearCost(Many to Many) - Proposed on v3.3
@@ -134,7 +140,8 @@ Many to Many
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -154,8 +161,8 @@ Many to Many
     :end-before: -- q4
     :linenos:
 
-For a pedestrian the best connection is to get on/off is at vertex :math:`15` of the
-first subway line and at vertex :math:`10` of the second subway line.
+For a pedestrian the best connection is to get on/off is at vertex :math:`15` of
+the first subway line and at vertex :math:`10` of the second subway line.
 
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
@@ -167,11 +174,13 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
+    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: Find the best car connection between all the stations of two subway lines
+:Example: Find the best car connection between all the stations of two subway
+          lines
 
 * Using a **directed** graph for car routing.
 * The first subway line stations stops are at :math:`\{1, 10, 11\}`
@@ -185,10 +194,10 @@ The combinations contents:
 
 The query:
 
-* lines `3~4` sets the start vertices to be from the fisrt subway line and the ending
-  vertices to be from the second subway line
-* lines `6~7` sets the start vertices to be from the first subway line and the ending
-  vertices to be from the first subway line
+* lines `3~4` sets the start vertices to be from the fisrt subway line and the
+  ending vertices to be from the second subway line
+* lines `6~7` sets the start vertices to be from the first subway line and the
+  ending vertices to be from the first subway line
 * On line `8`: using the named parameter is `global => false`
 * The defaults used:
 

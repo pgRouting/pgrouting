@@ -18,8 +18,7 @@
 ``pgr_edwardMoore - Experimental``
 ===============================================================================
 
-``pgr_edwardMoore`` —  Returns the shortest path(s) using Edward-Moore algorithm.
-Edward-Moore algorithm is an improvement of the Bellman-Ford Algorithm.
+``pgr_edwardMoore`` —  Returns the shortest path using Edward-Moore algorithm.
 
 
 .. include:: experimental.rst
@@ -46,10 +45,11 @@ Edward-Moore algorithm is an improvement of the Bellman-Ford Algorithm.
 Description
 -------------------------------------------------------------------------------
 
-Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It
-can compute the shortest paths from a single source vertex to all other vertices
-in a weighted directed graph. The main difference between Edward Moore's Algorithm
-and Bellman Ford's Algorithm lies in the run time.
+Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm.
+It can compute the shortest paths from a single source vertex to all other
+vertices in a weighted directed graph.
+The main difference between Edward Moore's Algorithm and Bellman Ford's
+Algorithm lies in the run time.
 
 The worst-case running time of the algorithm is :math:`O(| V | * | E |)` similar
 to the time complexity of Bellman-Ford algorithm.
@@ -61,28 +61,30 @@ Thus, the algorithm is at-best, significantly faster than Bellman-Ford algorithm
 and is at-worst,as good as Bellman-Ford algorithm
 
 **The main characteristics are:**
-  * Values are returned when there is a path.
 
-    * When the starting vertex and ending vertex are the same, there is no path.
+* Values are returned when there is a path.
 
-      * The `agg_cost` the non included values `(v, v)` is :math:`0`
+  * When the starting vertex and ending vertex are the same, there is no path.
 
-    * When the starting vertex and ending vertex are the different and there is
-      no path:
+    * The `agg_cost` the non included values `(v, v)` is :math:`0`
 
-      * The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+  * When the starting vertex and ending vertex are the different and there is
+    no path:
 
-  * For optimization purposes, any duplicated value in the `start vids` or `end vids`
-    are ignored.
+    * The `agg_cost` the non included values `(u, v)` is :math:`\infty`
 
-  * The returned values are ordered:
+* For optimization purposes, any duplicated value in the `start vids` or `end
+  vids` are ignored.
 
-    * `start vid` ascending
-    * `end vid` ascending
+* The returned values are ordered:
 
-  * Running time:
-    * Worst case: :math:`O(| V | * | E |)`
-    * Average case: :math:`O( | E | )`
+  * `start vid` ascending
+  * `end vid` ascending
+
+* Running time:
+
+  * Worst case: :math:`O(| V | * | E |)`
+  * Average case: :math:`O( | E | )`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -91,13 +93,13 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
-    pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vids** [, directed])
-    pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
+   pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vids** [, directed])
+   pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**  [, directed])
+   pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed])
+   pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed])
+   RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+   OR EMPTY SET
 
 .. index::
     single: edwardMoore(One to One) - Experimental on v3.0
@@ -108,7 +110,7 @@ One to One
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid** [, directed]);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -126,11 +128,11 @@ One to Many
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids** [, directed]);
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a **directed**
-          graph
+:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a
+          **directed** graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q3
@@ -145,7 +147,7 @@ Many to One
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid** [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
@@ -164,7 +166,7 @@ Many to Many
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
@@ -183,7 +185,7 @@ Combinations
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph.

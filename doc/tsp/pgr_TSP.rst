@@ -102,9 +102,11 @@ Description
 
       - is directed
       - is fully connected (As long as the graph has one component)
-      - some (or all) traveling costs on edges might not obey the triangle inequality.
+      - some (or all) traveling costs on edges might not obey the triangle
+        inequality.
 
-    - As an undirected graph is required, the directed graph is transformed as follows:
+    - As an undirected graph is required, the directed graph is transformed as
+      follows:
 
       - edges `(u, v)` and `(v, u)` is considered to be the same edge (denoted
         `(u, v)`

@@ -71,7 +71,8 @@ implementation can be used with a directed graph and an undirected graph.
       a path between them, but it contains a *negative cycle*. In such case,
       agg_cost for those vertices keep on decreasing furthermore, Hence agg_cost
       can’t be defined for them.
-    * When the start vertex and the end vertex are different, and there is no path.
+    * When the start vertex and the end vertex are different, and there is no
+      path.
       The agg_cost is :math:`\infty`.
 
   * For optimization purposes, any duplicated value in the `start_vids` or
@@ -92,13 +93,13 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-    pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vid**  [, directed])
+   pgr_bellmanFord(`Edges SQL`_, **start vid**, **end vids** [, directed])
+   pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**  [, directed])
+   pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids** [, directed])
+   pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_ [, directed])
+   RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+   OR EMPTY SET
 
 .. index::
     single: bellman_ford(One to One) - Experimental on v3.0
@@ -109,7 +110,7 @@ One to One
 .. parsed-literal::
 
     pgr_bellmanFord(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
@@ -127,11 +128,11 @@ One to Many
 .. parsed-literal::
 
     pgr_bellmanFord(`Edges SQL`_, **start vid**,  **end vids** [, directed])
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a **directed**
-          graph
+:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a
+          **directed** graph
 
 .. literalinclude:: doc-pgr_bellmanFord.queries
    :start-after: -- q3
@@ -146,7 +147,7 @@ Many to One
 .. parsed-literal::
 
     pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
@@ -165,7 +166,7 @@ Many to Many
 .. parsed-literal::
 
     pgr_bellmanFord(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
@@ -184,7 +185,7 @@ Combinations
 .. parsed-literal::
 
     pgr_bellmanFord(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph.

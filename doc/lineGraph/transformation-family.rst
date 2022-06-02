@@ -28,7 +28,8 @@ Transformation - Family of functions (Experimental)
 .. index from here
 
 * :doc:`pgr_lineGraph` - Transformation algorithm for generating a Line Graph.
-* :doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph.
+* :doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line
+  Graph out of each vertex in the input graph.
 
 .. index to here
 
@@ -43,7 +44,8 @@ Transformation - Family of functions (Experimental)
 Introduction
 ------------------------
 
-This family of functions is used for transforming a given input graph :math:`G(V,E)` into a new graph :math:`G'(V',E')`.
+This family of functions is used for transforming a given input graph
+:math:`G(V,E)` into a new graph :math:`G'(V',E')`.
 
 See Also
 -------------------------------------------------------------------------------

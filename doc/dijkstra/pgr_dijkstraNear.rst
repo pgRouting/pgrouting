@@ -86,11 +86,15 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
-    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
-    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
-    pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
+    pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 .. index::
@@ -101,11 +105,13 @@ One to Many
 
 .. parsed-literal::
 
-    pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Departing on car from vertex :math:`6` find the nearest subway station.
+:Example: Departing on car from vertex :math:`6` find the nearest subway
+          station.
 
 * Using a **directed** graph for car routing.
 * The subway stations are on the following vertices :math:`\{1, 10, 11\}`
@@ -130,8 +136,9 @@ Many to One
 
 .. parsed-literal::
 
-    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Departing on a car from a subway station find the nearest **two**
@@ -147,8 +154,8 @@ Many to One
     :end-before: -- q3
     :linenos:
 
-The result shows that station at vertex :math:`10` is the nearest and the next best
-is :math:`11`.
+The result shows that station at vertex :math:`10` is the nearest and the next
+best is :math:`11`.
 
 .. index::
     single: dijkstraNear(Many to Many) - Proposed on v3.3
@@ -158,9 +165,11 @@ Many to Many
 
 .. parsed-literal::
 
-    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
-    pgr_dijkstraNear(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
+    pgr_dijkstraNear(Edges SQL, Start vids, End vids
+               [, directed] [, cap], [global])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Find the best pedestrian connection between two lines of buses
@@ -179,8 +188,8 @@ Many to Many
     :end-before: -- q4
     :linenos:
 
-For a pedestrian the best connection is to get on/off is at vertex :math:`15` of the
-first subway line and at vertex :math:`10` of the second subway line.
+For a pedestrian the best connection is to get on/off is at vertex :math:`15` of
+the first subway line and at vertex :math:`10` of the second subway line.
 
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
@@ -192,11 +201,13 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Find the best car connection between all the stations of two subway lines
+:Example: Find the best car connection between all the stations of two subway
+          lines
 
 * Using a **directed** graph for car routing.
 * The first subway line stations stops are at :math:`\{1, 10, 11\}`
@@ -210,10 +221,10 @@ The combinations contents:
 
 The query:
 
-* lines `3~4` sets the start vertices to be from the first subway line and the ending
-  vertices to be from the second subway line
-* lines `6~7` sets the start vertices to be from the first subway line and the ending
-  vertices to be from the first subway line
+* lines `3~4` sets the start vertices to be from the first subway line and the
+  ending vertices to be from the second subway line
+* lines `6~7` sets the start vertices to be from the first subway line and the
+  ending vertices to be from the first subway line
 * On line `8`: using the named parameter is `global => false`
 * The defaults used:
 
@@ -232,8 +243,8 @@ From the results:
 
   * The best connections from all the stations from the first line are:
     :math:`{(1 \rightarrow 16) (10 \rightarrow 16) (11 \rightarrow 16)}`
-  * The best one is :math:`(11 \rightarrow 16)` with a cost of :math:`1` (lines: `11` and
-    `12`)
+  * The best one is :math:`(11 \rightarrow 16)` with a cost of :math:`1` (lines:
+    `11` and `12`)
 
 * making a connection from the second subway line :math:`\{15, 16\}` to the
   first :math:`\{1, 10, 11\}`:

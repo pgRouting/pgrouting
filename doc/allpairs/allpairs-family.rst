@@ -136,7 +136,8 @@ The following data was used
 .. parsed-literal::
 
     BBOX="-122.8,45.4,-122.5,45.6"
-    wget --progress=dot:mega -O "sampledata.osm" "https://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
+    wget --progress=dot:mega -O "sampledata.osm" \
+         "https://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
 
 
 Data processing was done with osm2pgrouting-alpha
@@ -164,10 +165,12 @@ The tested query is:
 .. parsed-literal::
 
      SELECT count(*) FROM pgr_floydWarshall(
-        'SELECT gid as id, source, target, cost, reverse_cost FROM ways where id <=  <SIZE>');
+        'SELECT gid as id, source, target, cost, reverse_cost
+         FROM ways where id <=  <SIZE>');
 
      SELECT count(*) FROM pgr_johnson(
-        'SELECT gid as id, source, target, cost, reverse_cost FROM ways where id <=  <SIZE>');
+        'SELECT gid as id, source, target, cost, reverse_cost
+         FROM ways where id <=  <SIZE>');
 
 The results of this tests are presented as:
 
@@ -215,9 +218,13 @@ The tested edge query is:
 .. parsed-literal::
 
     WITH
-        buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
-        bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer)
-    SELECT gid as id, source, target, cost, reverse_cost FROM ways where the_geom && (SELECT box from bbox);
+    buffer AS (
+      SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom
+      FROM ways),
+    bbox AS (
+      SELECT ST_Envelope(ST_Extent(geom)) as box FROM buffer)
+    SELECT gid as id, source, target, cost, reverse_cost
+    FROM ways where the_geom && (SELECT box from bbox);
 
 The tested queries
 
@@ -264,7 +271,8 @@ See Also
 
 * :doc:`pgr_johnson`
 * :doc:`pgr_floydWarshall`
-* `Boost floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
+* Boost `floyd-Warshall
+  <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__
 
 .. rubric:: Indices and tables
 

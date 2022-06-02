@@ -93,7 +93,8 @@ Special optional parameters
    * - ``stop_on_first``
      - ``BOOLEAN``
      - ``true``
-     - * When ``true`` stops on first path found that dos not violate restrictions
+     - * When ``true`` stops on first path found that dos not violate
+         restrictions
        * When ``false`` returns at most K paths
    * - ``strict``
      - ``BOOLEAN``

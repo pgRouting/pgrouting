@@ -23,17 +23,18 @@ new replacement functions.
 .. Note:: Results might be different as the deprecated function's code is
    different from the replacement function.
 
-.. warning:: All deprecated functions will be removed on next mayor version 4.0.0
+.. warning::
+   All deprecated functions will be removed on next mayor version 4.0.0
 
 .. contents:: Contents
 
 Migration of restrictions
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 The structure of the restrictions have changed:
 
 Old restrictions structure
-................................................................................
+...............................................................................
 
 On the deprecated signatures:
 
@@ -74,7 +75,8 @@ Old restrictions contents
    :start-after: --rest1
    :end-before: --rest2
 
-The restriction with ``rid = 2`` is representing :math:`3\rightarrow5\rightarrow9`
+The restriction with ``rid = 2`` is representing :math:`3 \rightarrow 5
+\rightarrow9`
 
 * :math:`3\rightarrow5`
 
@@ -88,7 +90,7 @@ The restriction with ``rid = 2`` is representing :math:`3\rightarrow5\rightarrow
 
 
 New restrictions structure
-................................................................................
+...............................................................................
 
 * Column ``id`` is ignored
 * Column ``path``
@@ -128,7 +130,7 @@ The restriction with ``rid = 2`` represents the path :math:`3 \rightarrow5
 * By inspection the path is clear.
 
 Migration
-................................................................................
+...............................................................................
 
 To transform the old restrictions table to the new restrictions structure,
 
@@ -157,7 +159,7 @@ The migrated table contents:
 
 
 Migration of ``pgr_trsp`` (Vertices)
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
@@ -189,7 +191,7 @@ Migrate by using:
 
 
 Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
@@ -234,7 +236,7 @@ function been migrated then:
 
 
 Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 
@@ -285,7 +287,7 @@ function been migrated then:
 * ``id2`` is the edge
 
 Migration of ``pgr_trsp`` (Edges)
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
@@ -322,7 +324,7 @@ Migrate by using:
 *  :doc:`pgr_trsp_withPoints` (One to One) when there are restrictions.
 
 Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
@@ -368,7 +370,7 @@ values of the function been migrated then:
 
 
 Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 
@@ -421,7 +423,7 @@ values of the function been migrated then:
 * ``id2`` is the edge
 
 Migration of ``pgr_trspViaVertices``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
@@ -453,7 +455,7 @@ Migrate by using:
 *  :doc:`pgr_trspVia` when there are restrictions.
 
 Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
@@ -499,7 +501,7 @@ function been migrated then:
 
 
 Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 
@@ -552,7 +554,7 @@ function been migrated then:
 * ``id3`` is the edge
 
 Migration of ``pgr_trspViaEdges``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
@@ -591,7 +593,7 @@ Migrate by using:
 *  :doc:`pgr_trspVia_withPoints` when there are restrictions.
 
 Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
@@ -637,7 +639,7 @@ values of the function been migrated then:
 * ``id3`` is the edge
 
 Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 

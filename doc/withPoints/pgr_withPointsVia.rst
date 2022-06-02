@@ -16,7 +16,8 @@
 ``pgr_withPointsVia`` - Proposed
 ===============================================================================
 
-``pgr_withPointsVia`` - Route that goes through a list of vertices and/or points.
+``pgr_withPointsVia`` - Route that goes through a list of vertices and/or
+points.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -70,8 +71,8 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ -6, 15, -1\}` in that
-          order on a **directed** graph.
+:Example: Find the route that visits the vertices :math:`\{ -6, 15, -1\}` in
+          that order on a **directed** graph.
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q0

@@ -62,7 +62,8 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K** [, directed] [, heap_paths])
+    pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**
+               [, directed] [, heap_paths])
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -173,7 +174,8 @@ agg_cost)``
          **end_vid**
    * - ``path_seq``
      - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a path.
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
    * - ``node``
      - ``BIGINT``
      - Identifier of the node in the path from **start vid** to **end vid**

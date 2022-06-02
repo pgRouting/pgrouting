@@ -28,7 +28,8 @@
 Release Notes
 ===============================================================================
 
-To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
+To see the full list of changes check the list of `Git commits
+<https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
 .. contents:: Contents
    :local:
@@ -109,7 +110,10 @@ on Github.
 pgRouting 3.3.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.3.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_
+on Github.
 
 .. rubric:: Issue fixes
 
@@ -159,7 +163,10 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.2.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.2.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_
+on Github.
 
 .. rubric:: Issues
 
@@ -169,7 +176,10 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.2.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.2.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`_
+on Github.
 
 .. rubric:: Issue fixes
 
@@ -183,11 +193,15 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.2.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.2.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`_
+on Github.
 
 .. rubric:: Build
 
-* `#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56
+* `#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost
+  min version to 1.56
 
   * Removing support for Boost v1.53, v1.54 & v1.55
 
@@ -256,59 +270,87 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.1.4 Release Notes
 --------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.4
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.1.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`_
+on Github.
 
 .. rubric:: Issues fixes
 
-* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7
+* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on
+  RHEL 7
 
 
 pgRouting 3.1.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.1.3
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`_
+on Github.
 
 .. rubric:: Issues fixes
 
-* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored
-* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
-* `#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions crash server
+* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions
+  are not honored
+* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0
+  geometry "point_xy.hpp" build error on macOS environment
+* `#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions
+  crash server
 
 
 pgRouting 3.1.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.1.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`_
+on Github.
 
 .. rubric:: Issues fixes
 
-* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function
-* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
-* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
-* `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760
-* `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler
+* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12
+  64-bit crashes on pgr_vrOneDepot tests Experimental Function
+* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__:
+  tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash
+  on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
+* `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server
+  crash on ubuntu 20.04 #1760
+* `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove
+  warnings when using clang compiler
 
 
 pgRouting 3.1.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.1.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`_
+on Github.
 
 .. rubric:: Issues fixes
 
-* `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar fails when source or target vertex does not exist in the graph
-* `#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear Contraction contracts self loops
-* `#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints fails when points_sql is empty
-* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
-* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
+* `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar
+  fails when source or target vertex does not exist in the graph
+* `#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear
+  Contraction contracts self loops
+* `#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints
+  fails when points_sql is empty
+* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path
+  evaluation on C++ not updated before the results go back to C
+* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__:
+  pgr_chinesePostman crash on test data
 
 
 
 pgRouting 3.1.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.1.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`_
+on Github.
 
 .. rubric:: New proposed functions
 
@@ -322,38 +364,55 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 3.0.6 Release Notes
 --------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.6
-<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.0.6
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`_
+on Github.
 
 .. rubric:: Issues fixes
 
-* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7
+* `#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on
+  RHEL 7
 
 
 pgRouting 3.0.5 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.0.5
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`_
+on Github.
 
 .. rubric:: Backport issues fixes
 
-* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored
-* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry "point_xy.hpp" build error on macOS environment
-* `#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions crash server
+* `#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions
+  are not honored
+* `#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0
+  geometry "point_xy.hpp" build error on macOS environment
+* `#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions
+  crash server
 
 
 pgRouting 3.0.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.0.4
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_
+on Github.
 
 .. rubric:: Backport issues fixes
 
-* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function
-* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
-* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
-* `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760
-* `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler
+* `#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12
+  64-bit crashes on pgr_vrOneDepot tests Experimental Function
+* `#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__:
+  tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed
+* `#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash
+  on pgr_pickDeliver and pgr_vrpOneDepot on openbsd
+* `#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server
+  crash on ubuntu 20.04 #1760
+* `#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove
+  warnings when using clang compiler
 
 
 
@@ -362,48 +421,70 @@ pgRouting 3.0.3 Release Notes
 
 .. rubric:: Backport issues fixes
 
-* `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar fails when source or target vertex does not exist in the graph
-* `#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear Contraction contracts self loops
-* `#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints fails when points_sql is empty
-* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C
-* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data
+* `#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar
+  fails when source or target vertex does not exist in the graph
+* `#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear
+  Contraction contracts self loops
+* `#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints
+  fails when points_sql is empty
+* `#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path
+  evaluation on C++ not updated before the results go back to C
+* `#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__:
+  pgr_chinesePostman crash on test data
 
 
 
 pgRouting 3.0.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.0.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_
+on Github.
 
 .. rubric:: Issues fixes
 
-* `#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio build failing
+* `#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio
+  build failing
 
 
 pgRouting 3.0.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.0.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`_
+on Github.
 
 .. rubric:: Issues fixes
 
-* `#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client cancel requests in C /C++ code
+* `#232 <https://github.com/pgRouting/pgrouting/issues/232>`__:  Honor client
+  cancel requests in C /C++ code
 
 
 pgRouting 3.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see all issues & pull requests closed by this release see the `Git closed milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_ on Github.
+To see all issues & pull requests closed by this release see the `Git closed
+milestone for 3.0.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`_
+on Github.
 
 .. rubric:: Fixed Issues
 
-* `#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed pgr_eucledianTSP to pgr_TSPeuclidean
-* `#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL dependency
-* `#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixed contraction issues:
+* `#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed
+  pgr_eucledianTSP to pgr_TSPeuclidean
+* `#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL
+  dependency
+* `#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixed
+  contraction issues:
 
-  * `#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts when forbidden vertices do not belong to graph
-  * `#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate results eliminated
-  * `#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of information
+  * `#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts
+    when forbidden vertices do not belong to graph
+  * `#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate
+    results eliminated
+  * `#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of
+    information
 
 .. rubric:: New functions
 
@@ -556,32 +637,44 @@ To see all issues & pull requests closed by this release see the `Git closed mil
 pgRouting 2.6.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.6.3
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22%20>`_
+on Github.
 
 .. rubric:: Bug fixes
 
-* `#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast for via_path integer to text
-* `#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause
-* `#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve FindPostgreSQL.cmake
+* `#1219 <https://github.com/pgRouting/pgrouting/pull/1219>`__ Implicit cast for
+  via_path integer to text
+* `#1193 <https://github.com/pgRouting/pgrouting/pull/1193>`__ Fixed
+  pgr_pointsAsPolygon breaking when comparing strings in WHERE clause
+* `#1185 <https://github.com/pgRouting/pgrouting/pull/1185>`__ Improve
+  FindPostgreSQL.cmake
 
 
 
 pgRouting 2.6.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.6.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_
+on Github.
 
 .. rubric:: Bug fixes
 
-* `#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving distance when vertex is not part of the graph
-* `#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows test
-* `#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for python3 and perl5
+* `#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__ Fixes driving
+  distance when vertex is not part of the graph
+* `#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes windows
+  test
+* `#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__ Fixes build for
+  python3 and perl5
 
 
 pgRouting 2.6.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.6.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22%20>`_
+on Github.
 
 * Fixes server crash on several functions.
 
@@ -620,7 +713,9 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.1
 pgRouting 2.6.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.6.0
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_
+on Github.
 
 
 .. rubric:: New experimental functions
@@ -629,7 +724,8 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
 
 .. rubric:: Bug fixes
 
-* Fix pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean[,text])
+* Fix pgr_trsp(text,integer,double precision,integer,double
+  precision,boolean,boolean[,text])
 
   * without restrictions
 
@@ -642,7 +738,8 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
 
 .. rubric:: Internal code
 
-* Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [, text])
+* Cleaned the internal code of trsp(text,integer,integer,boolean,boolean [,
+  text])
 
   * Removed the use of pointers
   * Internal code can accept BIGINT
@@ -653,7 +750,9 @@ To see the issues closed by this release see the `Git closed milestone for 2.6.0
 pgRouting 2.5.5 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.5.5
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22%20>`_
+on Github.
 
 .. rubric:: Bug fixes
 
@@ -704,11 +803,14 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.4
 pgRouting 2.5.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.5.3
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22%20>`_
+on Github.
 
 .. rubric:: Bug fixes
 
-* Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL
+* Fix for postgresql 11: Removed a compilation error when compiling with
+  postgreSQL
 
 
 pgRouting 2.5.2 Release Notes
@@ -725,7 +827,9 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.2
 pgRouting 2.5.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.5.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22%20>`_
+on Github.
 
 .. rubric:: Bug fixes
 
@@ -736,7 +840,9 @@ To see the issues closed by this release see the `Git closed milestone for 2.5.1
 pgRouting 2.5.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.5.0
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_
+on Github.
 
 
 .. rubric:: enhancement:
@@ -801,7 +907,9 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 pgRouting 2.4.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.4.2
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22%20>`_
+on Github.
 
 .. rubric:: Improvement
 
@@ -818,7 +926,9 @@ To see the issues closed by this release see the `Git closed milestone for 2.4.2
 pgRouting 2.4.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_ on Github.
+To see the issues closed by this release see the `Git closed milestone for 2.4.1
+<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22%20>`_
+on Github.
 
 .. rubric:: Bug fixes
 
@@ -829,7 +939,9 @@ To see the issues closed by this release see the `Git closed milestone for 2.4.1
 pgRouting 2.4.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.4.0
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: New Signatures
 
@@ -868,7 +980,9 @@ To see the issues closed by this release see the `Git closed issues for 2.4.0 <h
 pgRouting 2.3.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.3.2
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: Bug Fixes
 
@@ -883,7 +997,9 @@ To see the issues closed by this release see the `Git closed issues for 2.3.2 <h
 pgRouting 2.3.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.3.1
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: Bug Fixes
 
@@ -896,7 +1012,9 @@ To see the issues closed by this release see the `Git closed issues for 2.3.1 <h
 pgRouting 2.3.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.3.0
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: New Signatures
 
@@ -951,7 +1069,9 @@ To see the issues closed by this release see the `Git closed issues for 2.3.0 <h
 pgRouting 2.2.4 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.4
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: Bug Fixes
 
@@ -963,7 +1083,9 @@ To see the issues closed by this release see the `Git closed issues for 2.2.4 <h
 pgRouting 2.2.3 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.3
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: Bug Fixes
 
@@ -973,7 +1095,9 @@ To see the issues closed by this release see the `Git closed issues for 2.2.3 <h
 pgRouting 2.2.2 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.2
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: Bug Fixes
 
@@ -984,7 +1108,9 @@ To see the issues closed by this release see the `Git closed issues for 2.2.2 <h
 pgRouting 2.2.1 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.1
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_
+on Github.
 
 .. rubric:: Bug Fixes
 
@@ -996,7 +1122,9 @@ To see the issues closed by this release see the `Git closed issues for 2.2.1 <h
 pgRouting 2.2.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.0
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_
+on Github.
 
 
 .. rubric:: Improvements
@@ -1051,7 +1179,9 @@ To see the issues closed by this release see the `Git closed issues for 2.2.0 <h
 pgRouting 2.1.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.1.0
+<https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_
+on Github.
 
 .. rubric:: New Signatures
 
@@ -1068,15 +1198,20 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 
 .. rubric:: Improvements
 
-- pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter.
+- pgr_alphaShape function now can generate better (multi)polygon with holes and
+  alpha parameter.
 
 .. rubric:: Proposed functionality
 
-- Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)
+- Proposed functions from Steve Woodbridge, (Classified as Convenience by the
+  author.)
 
-  - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.
-  - pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.
-  - pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.
+  - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on
+    closest edge.
+  - pgr_flipEdges - flip the edges in an array of geometries so the connect end
+    to end.
+  - pgr_textToPoints - convert a string of x,y;x,y;... locations into point
+    geometries.
   - pgr_pointsToVids - convert an array of point geometries into vertex ids.
   - pgr_pointsToDMatrix - Create a distance matrix from an array of points.
   - pgr_vidsToDMatrix - Create a distance matrix from an array of vertix_id.
@@ -1141,9 +1276,12 @@ Minor bug fixes.
 pgRouting 2.0.0 Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.0.0
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_
+on Github.
 
-With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to `pgRouting 1.x Release Notes`_ releases.
+With the release of pgRouting 2.0.0 the library has abandoned backwards
+compatibility to `pgRouting 1.x Release Notes`_ releases.
 The main Goals for this release are:
 
 * Major restructuring of pgRouting.
@@ -1161,17 +1299,22 @@ As a result of this effort:
 
 .. rubric:: Important Changes
 
-* Graph Analytics - tools for detecting and fixing connection some problems in a graph
+* Graph Analytics - tools for detecting and fixing connection some problems in a
+  graph
 * A collection of useful utility functions
 * Two new All Pairs Short Path algorithms (pgr_apspJohnson, pgr_apspWarshall)
-* Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, pgr_bdDijkstra)
+* Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar,
+  pgr_bdDijkstra)
 * One to many nodes search (pgr_kDijkstra)
 * K alternate paths shortest path (pgr_ksp)
-* New TSP solver that simplifies the code and the build process (pgr_tsp), dropped "Gaul Library" dependency
+* New TSP solver that simplifies the code and the build process (pgr_tsp),
+  dropped "Gaul Library" dependency
 * Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star
 * Dropped support for Shooting Star
-* Built a test infrastructure that is run before major code changes are checked in
-* Tested and fixed most all of the outstanding bugs reported against 1.x that existing in the 2.0-dev code base.
+* Built a test infrastructure that is run before major code changes are checked
+  in
+* Tested and fixed most all of the outstanding bugs reported against 1.x that
+  existing in the 2.0-dev code base.
 * Improved build process for Windows
 * Automated testing on Linux and Windows platforms trigger by every commit
 * Modular library design
@@ -1191,8 +1334,11 @@ As a result of this effort:
 pgRouting 1.x Release Notes
 -------------------------------------------------------------------------------
 
-To see the issues closed by this release see the `Git closed issues for 1.x <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_ on Github.
-The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference.
+To see the issues closed by this release see the `Git closed issues for 1.x
+<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_
+on Github.
+The following release notes have been copied from the previous ``RELEASE_NOTES``
+file and are kept as a reference.
 
 
 Changes for release 1.05

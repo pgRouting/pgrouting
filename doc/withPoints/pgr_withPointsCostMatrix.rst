@@ -73,8 +73,8 @@ Signatures
 .. note:: There is no **details** flag, unlike the other members of the
    withPoints family of functions.
 
-:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{10, 11\}`
-          on an **undirected** graph
+:Example: Cost matrix for points :math:`\{1, 6\}` and vertices :math:`\{10,
+          11\}` on an **undirected** graph
 
 * Returning a **symmetrical** cost matrix
 * Using the default **side** value on the **points_sql** query

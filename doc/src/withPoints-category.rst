@@ -120,7 +120,8 @@ Parameters
        point’s identifiers.
    * - **end vid**
      - ``BIGINT``
-     - Identifier of the ending vertex of the path. Negative value is for point’s identifier.
+     - Identifier of the ending vertex of the path. Negative value is for
+       point’s identifier.
    * - **end vids**
      - ``ARRAY[BIGINT]``
      - Array of identifiers of ending vertices. Negative values are for point’s

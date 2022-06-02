@@ -137,8 +137,10 @@ See Also
 
 * :doc:`components-family`
 * The queries use the :doc:`sampledata` network.
-* Boost: `Connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__
-* wikipedia: `Connected component <https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
+* Boost: `Connected components
+  <https://www.boost.org/libs/graph/doc/connected_components.html>`__
+* wikipedia: `Connected component
+  <https://en.wikipedia.org/wiki/Connected_component_(graph_theory)>`__
 
 .. rubric:: Indices and tables
 

@@ -92,12 +92,17 @@ Signatures
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid  [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid  [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_,
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
 .. index::
@@ -108,8 +113,9 @@ One to One
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid  [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
 :Example: From vertex :math:`6` to vertex  :math:`10` on an **undirected** graph
@@ -126,11 +132,13 @@ One to Many
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{10, 1\}` on an **undirected** graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 1\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q3
@@ -144,11 +152,13 @@ Many to One
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid  [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 1\}` to vertex :math:`8` on a **directed** graph
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`8` on a **directed**
+          graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q4
@@ -162,11 +172,13 @@ Many to Many
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 8\}` on an **undirected** graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 8\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q5
@@ -180,8 +192,9 @@ Combinations
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_,
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph

@@ -117,7 +117,7 @@ Signatures
             [, directed] [, driving_side])
     pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_
             [, directed] [, driving_side])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    RETURNS (start_vid, end_vid, agg_cost)
 
 .. note:: There is no **details** flag, unlike the other members of the
    withPoints family of functions.
@@ -132,7 +132,7 @@ One to One
 
     pgr_withPointsCost(`Edges SQL`_, **start vid**, **end vid**
             [, directed] [, driving_side])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    RETURNS (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`1` to vertex :math:`10` with defaults
 
@@ -150,7 +150,7 @@ One to Many
 
     pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vid**, **end vids**
             [, directed] [, driving_side])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    RETURNS (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
@@ -169,7 +169,7 @@ Many to One
 
     pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vid**
             [, directed] [, driving_side])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    RETURNS (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
@@ -187,7 +187,7 @@ Many to Many
 
     pgr_withPointsCost(`Edges SQL`_, 'Points SQL', **start vids**, **end vids**
             [, directed] [, driving_side])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
+    RETURNS (start_vid, end_vid, agg_cost)
 
 :Example: From point :math:`15` and vertex :math:`6`  to point :math:`3` and
           vertex :math:`1`
@@ -206,7 +206,7 @@ Combinations
 
     pgr_withPointsCost(`Edges SQL`_, 'Points SQL', `Combinations SQL`_
             [, directed] [, driving_side])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: Two combinations
 
@@ -312,8 +312,8 @@ Additional Examples
 
 :Example: **Right** side driving topology
 
-Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{10, 11\}`
+Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
+6\}` and vertices :math:`\{10, 11\}`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: -- q6
@@ -321,8 +321,8 @@ Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}
 
 :Example: **Left** side driving topology
 
-Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{10, 11\}`
+Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
+6\}` and vertices :math:`\{10, 11\}`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: -- q7
@@ -330,8 +330,8 @@ Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}
 
 :Example: Does not matter driving side driving topology
 
-Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{10, 11\}`
+Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
+6\}` and vertices :math:`\{10, 11\}`
 
 .. literalinclude:: doc-pgr_withPointsCost.queries
    :start-after: -- q8

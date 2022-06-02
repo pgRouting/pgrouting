@@ -88,8 +88,10 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-family`
-* `Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
+* Boost: `Prim's algorithm
+  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* Wikipedia: `Prim's algorithm
+  <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
 
 .. rubric:: Indices and tables
 

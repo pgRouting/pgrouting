@@ -96,7 +96,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  ``(seq, source, target, cost, reverse_cost)``
+RETURNS SETOF ``(seq, source, target, cost, reverse_cost)``
 
 .. list-table::
    :width: 81
@@ -125,14 +125,14 @@ RETURNS SETOF  ``(seq, source, target, cost, reverse_cost)``
      - ``FLOAT``
      - Weight of the edge (``source``, ``target``).
 
-       * When `negative`: edge (``source``, ``target``) does not exist, therefore it’s
-         not part of the graph.
+       * When `negative`: edge (``source``, ``target``) does not exist,
+         therefore it’s not part of the graph.
    * - ``reverse_cost``
      - ``FLOAT``
      - Weight of the edge (``target``, ``source``).
 
-       * When `negative`: edge (``target``, ``source``) does not exist, therefore it’s
-         not part of the graph.
+       * When `negative`: edge (``target``, ``source``) does not exist,
+         therefore it’s not part of the graph.
 
 See Also
 -------------------------------------------------------------------------------

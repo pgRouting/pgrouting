@@ -17,12 +17,13 @@
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_maxCardinalityMatch.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_maxCardinalityMatch.html>`__
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_maximumCardinalityMatching.html>`__
-  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching>`__
+  `2.3 <https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maximumCardinalityMatching.html>`__
 
 pgr_maxCardinalityMatch
 ===============================================================================
 
-``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph.
+``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a
+graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/maximum_matching.html
@@ -50,8 +51,10 @@ Description
 
 **The main characteristics are:**
 
-* A matching or independent edge set in a graph is a set of edges without common vertices.
-* A maximum matching is a matching that contains the largest possible number of edges.
+* A matching or independent edge set in a graph is a set of edges without common
+  vertices.
+* A maximum matching is a matching that contains the largest possible number of
+  edges.
 
   * There may be many maximum matchings.
   * Calculates **one** possible maximum cardinality matching in a graph.
@@ -83,36 +86,25 @@ Signatures
    :start-after: -- q2
    :end-before: -- q3
 
-Parameters
--------------------------------------------------------------------------------
-
-============== ================== ======== =========================================
-Parameter         Type            Default       Description
-============== ================== ======== =========================================
-**edges_sql**  ``TEXT``                    SQL query as described above.
-**directed**   ``BOOLEAN``        ``true`` Determines the type of the graph.
-                                           - When ``true`` Graph is considered `Directed`
-                                           - When ``false`` the graph is considered as `Undirected`.
-
-============== ================== ======== =========================================
-
 Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
 ...............................................................................
 
-:Edges SQL: an SQL query, which should return a set of rows with the following columns:
+SQL query, which should return a set of rows with the following columns:
 
-====================  ===================   =================================================
-Column                Type                  Description
-====================  ===================   =================================================
-**id**                ``ANY-INTEGER``       Identifier of the edge.
-**source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**going**             ``ANY-NUMERIC``       A positive value represents the existence of the edge (``source``, ``target``).
-**coming**            ``ANY-NUMERIC``       A positive value represents the existence of the edge (``target``, ``source``).
-====================  ===================   =================================================
+========== =============== =================================================
+Column     Type            Description
+========== =============== =================================================
+``id``     ``ANY-INTEGER`` Identifier of the edge.
+``source`` ``ANY-INTEGER`` Identifier of the first end point vertex of the edge.
+``target`` ``ANY-INTEGER`` Identifier of the second end point vertex of the edge.
+``going``  ``ANY-NUMERIC`` A positive value represents the existence of the edge
+                           (``source``, ``target``).
+``coming`` ``ANY-NUMERIC`` A positive value represents the existence of the edge
+                           (``target``, ``source``).
+========== =============== =================================================
 
 Where:
 
@@ -122,14 +114,14 @@ Where:
 Result Columns
 -------------------------------------------------------------------------------
 
-=====================  ====================  =================================================
-Column                 Type                  Description
-=====================  ====================  =================================================
-**seq**                ``INT``               Sequential value starting from **1**.
-**edge**               ``BIGINT``            Identifier of the edge in the original query.
-**source**             ``BIGINT``            Identifier of the first end point of the edge.
-**target**             ``BIGINT``            Identifier of the second end point of the edge.
-=====================  ====================  =================================================
+========== ========== =================================================
+Column     Type       Description
+========== ========== =================================================
+``seq``    ``INT``    Sequential value starting from **1**.
+``edge``   ``BIGINT`` Identifier of the edge in the original query.
+``source`` ``BIGINT`` Identifier of the first end point of the edge.
+``target`` ``BIGINT`` Identifier of the second end point of the edge.
+========== ========== =================================================
 
 See Also
 -------------------------------------------------------------------------------

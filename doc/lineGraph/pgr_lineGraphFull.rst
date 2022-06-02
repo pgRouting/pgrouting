@@ -134,14 +134,14 @@ RETURNS SETOF  ``(seq, source, target, cost, reverse_cost)``
      - ``FLOAT``
      - Weight of the edge (``source``, ``target``).
 
-       * When `negative`: edge (``source``, ``target``) does not exist, therefore it’s
-         not part of the graph.
+       * When `negative`: edge (``source``, ``target``) does not exist,
+         therefore it’s not part of the graph.
    * - ``reverse_cost``
      - ``FLOAT``
      - Weight of the edge (``target``, ``source``).
 
-       * When `negative`: edge (``target``, ``source``) does not exist, therefore it’s
-         not part of the graph.
+       * When `negative`: edge (``target``, ``source``) does not exist,
+         therefore it’s not part of the graph.
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -282,8 +282,8 @@ A soft restriction going from vertex 6 to vertex 3 using edges 4 -> 7 is wanted.
 Idenifying the restriction
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Running a :doc:`pgr_dijkstraNear` the edge with cost 0, edge 8, is where the cost
-will be increased
+Running a :doc:`pgr_dijkstraNear` the edge with cost 0, edge 8, is where the
+cost will be increased
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q12
@@ -362,7 +362,8 @@ Complete routing graph
 Add edges from the original graph
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Add all the edges that are not involved in the line graph process to the new table
+Add all the edges that are not involved in the line graph process to the new
+table
 
 .. literalinclude:: doc-pgr_lineGraphFull.queries
    :start-after: -- q21
@@ -399,7 +400,7 @@ When using this method for routing with soft restrictions there will be uturns
    :end-before: -- q26
 
 See Also
------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 * https://en.wikipedia.org/wiki/Line_graph
 * https://en.wikipedia.org/wiki/Complete_graph

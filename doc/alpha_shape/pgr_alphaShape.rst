@@ -79,7 +79,8 @@ Characteristics
 
   * :math:`spoon\_radius = \sqrt alpha`
 
-* A Triangle area is considered part of the alpha shape when :math:`circumcenter\ radius < spoon\_radius`
+* A Triangle area is considered part of the alpha shape when
+  :math:`circumcenter\ radius < spoon\_radius`
 * The ``alpha`` parameter is the **spoon radius**
 * When the total number of points is less than 3, returns an EMPTY geometry
 
@@ -97,7 +98,8 @@ Signatures
    RETURNS geometry
 
 
-.. rubric:: Example: passing a geometry collection with spoon radius :math:`1.5` using the return variable ``geom``
+:Example: passing a geometry collection with spoon radius :math:`1.5` using the
+          return variable ``geom``
 
 .. literalinclude:: doc-pgr_alphashape.queries
    :start-after: -- q1
@@ -107,12 +109,12 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-================= ================== ======== =================================================
-Parameter         Type               Default     Description
-================= ================== ======== =================================================
-**geometry**      ``geometry``                Geometry with at least :math:`3` points
-``alpha``         ``FLOAT``          0        The radius of the spoon.
-================= ================== ======== =================================================
+============= ============= ======== ========================================
+Parameter     Type          Default  Description
+============= ============= ======== ========================================
+**geometry**  ``geometry``           Geometry with at least :math:`3` points
+``alpha``     ``FLOAT``        0     The radius of the spoon.
+============= ============= ======== ========================================
 
 Return Value
 -------------------------------------------------------------------------------
@@ -122,10 +124,6 @@ Kind of geometry     Description
 ==================== ========================
 GEOMETRY COLLECTION  A Geometry collection of Polygons
 ==================== ========================
-
-
-
-
 
 See Also
 -------------------------------------------------------------------------------

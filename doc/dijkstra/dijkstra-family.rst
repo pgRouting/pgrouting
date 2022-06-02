@@ -31,8 +31,10 @@ Dijkstra - Family of functions
 * :doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
 * :doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
 * :doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix.
-* :doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information.
-* :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.
+* :doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament
+  information.
+* :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest
+  paths.
 
 .. index to here
 
@@ -281,7 +283,8 @@ In other words: The algorithm returns a the shortest path between
 :math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a sequence
 of nodes  and of edges,
 
-- :math:`path\_seq` indicates the relative position in the path of the :math:`node` or :math:`edge`.
+- :math:`path\_seq` indicates the relative position in the path of the
+  :math:`node` or :math:`edge`.
 - :math:`cost` is the cost of the edge to be used to go to the next node.
 - :math:`agg\_cost` is the cost from the :math:`start_{vid}` up to the node.
 
