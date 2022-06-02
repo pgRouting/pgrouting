@@ -113,7 +113,7 @@ Restrictions SQL
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
