@@ -157,7 +157,7 @@ TSP optional parameters
    :start-after: tsp_optionals_start
    :end-before: tsp_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Matrix SQL

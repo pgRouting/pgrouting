@@ -101,7 +101,7 @@ BFS optional parameters
 
 .. max-depth-optional-end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

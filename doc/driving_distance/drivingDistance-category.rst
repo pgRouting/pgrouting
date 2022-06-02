@@ -105,7 +105,7 @@ Where:
 
 .. mst-dd-params_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

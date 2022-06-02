@@ -105,7 +105,7 @@ Parameters
    :start-after: mst-dd-params_start
    :end-before: mst-dd-params_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

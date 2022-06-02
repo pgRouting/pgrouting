@@ -105,7 +105,7 @@ With points optional parameters
     :start-after: withpoints_short_optionals_start
     :end-before: withpoints_short_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

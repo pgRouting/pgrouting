@@ -57,7 +57,7 @@ Parameters
 
 * TBD
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 *Description of the edges_sql query for pgr_randomSpanTree functions*

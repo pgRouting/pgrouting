@@ -93,7 +93,7 @@ Flow Functions General Information
 
 :doc:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :doc:`pgr_pushRelabel <pgr_pushRelabel>`, :doc:`pgr_edmondsKarp <pgr_edmondsKarp>`, :doc:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

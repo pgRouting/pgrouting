@@ -238,7 +238,7 @@ With points optional parameters
 
 |
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

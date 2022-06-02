@@ -101,7 +101,7 @@ Special optional parameters
      - * When ``true`` returns only paths that do not violate restrictions
        * When ``false`` returns the paths found
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

@@ -238,7 +238,7 @@ Near optional parameters
     :start-after: near_optionals_start
     :end-before: near_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

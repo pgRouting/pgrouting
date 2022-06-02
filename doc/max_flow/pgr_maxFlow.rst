@@ -180,7 +180,7 @@ Parameters
     :start-after: dijkstra_parameters_start
     :end-before: dijkstra_parameters_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

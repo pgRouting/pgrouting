@@ -98,7 +98,7 @@ Via optional parameters
     :start-after: via_optionals_start
     :end-before: via_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

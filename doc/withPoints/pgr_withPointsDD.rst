@@ -156,7 +156,7 @@ Driving distance optional parameters
     :start-after: equicost_start
     :end-before: equicost_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

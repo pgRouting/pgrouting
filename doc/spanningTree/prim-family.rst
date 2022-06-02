@@ -77,7 +77,7 @@ forest.
    "The algorithm as implemented in Boost.Graph does not produce correct results
    on graphs with parallel edges."
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

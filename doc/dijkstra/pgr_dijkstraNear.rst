@@ -284,7 +284,7 @@ Near optional parameters
 
 .. near_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

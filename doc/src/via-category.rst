@@ -150,7 +150,7 @@ Via optional parameters
 
 .. via_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Depending on the function one or more inner queries are needed.

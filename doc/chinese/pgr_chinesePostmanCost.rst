@@ -66,7 +66,7 @@ Parameters
    :start-after: only_edge_param_start
    :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: chinesePostmanProblem-family.rst

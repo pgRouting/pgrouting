@@ -159,7 +159,7 @@ Optional parameters
 
 .. withPoints_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

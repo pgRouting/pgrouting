@@ -94,7 +94,7 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
-.. Parameters, Inner query & result columns
+.. Parameters, Inner Queries & result columns
 
 Parameters
 -------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ Parameters
    :start-after: only_edge_param_start
    :end-before: only_edge_param_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

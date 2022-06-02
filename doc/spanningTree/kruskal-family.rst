@@ -62,7 +62,7 @@ two trees in the forest.
 
 .. kruskal-description-end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

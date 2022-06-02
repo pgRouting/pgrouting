@@ -151,7 +151,7 @@ Contraction optional parameters
      - Number of times the contraction operations on ``contraction_order`` will
        be performed.
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
