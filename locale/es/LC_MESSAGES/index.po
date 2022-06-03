@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-06-25 18:22+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
 "Language: es\n"
@@ -155,15 +155,21 @@ msgstr ":doc:`components-family`"
 
 #: ../../build/doc/components-family.rst:3
 msgid ":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
-msgstr ":doc:`pgr_connectedComponents` - Componentes conectados de un grafo no dirigido."
+msgstr ""
+":doc:`pgr_connectedComponents` - Componentes conectados de un grafo no "
+"dirigido."
 
 #: ../../build/doc/components-family.rst:4
 msgid ":doc:`pgr_strongComponents` - Strongly connected components of a directed graph."
-msgstr ":doc:`pgr_strongComponents` - Componentes fuertemente conectados de un grafo dirigido."
+msgstr ""
+":doc:`pgr_strongComponents` - Componentes fuertemente conectados de un grafo "
+"dirigido."
 
 #: ../../build/doc/components-family.rst:6
 msgid ":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph."
-msgstr ":doc:`pgr_biconnectedComponents` - Componentes biconectados de un grafo no dirigido."
+msgstr ""
+":doc:`pgr_biconnectedComponents` - Componentes biconectados de un grafo no "
+"dirigido."
 
 #: ../../build/doc/components-family.rst:8
 msgid ":doc:`pgr_articulationPoints` - Articulation points of an undirected graph."
@@ -220,7 +226,9 @@ msgstr ":doc:`flow-family`"
 
 #: ../../build/doc/flow-family.rst:3
 msgid ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm."
-msgstr ":doc:`pgr_maxFlow` - Solo el flujo máximo se calcula usando los algoritmos Push y Relabel."
+msgstr ""
+":doc:`pgr_maxFlow` - Solo el flujo máximo se calcula usando los algoritmos "
+"Push y Relabel."
 
 #: ../../build/doc/flow-family.rst:5
 msgid ":doc:`pgr_boykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges."
@@ -230,7 +238,9 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:7
 msgid ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on edges."
-msgstr ":doc:`pgr_edmondsKarp` - Algoritmos de Edmonds y Karp con detalles de flujo con detalles del flujo en aristas."
+msgstr ""
+":doc:`pgr_edmondsKarp` - Algoritmos de Edmonds y Karp con detalles de flujo "
+"con detalles del flujo en aristas."
 
 #: ../../build/doc/flow-family.rst:9
 msgid ":doc:`pgr_pushRelabel` - Push and relabel algorithm with details of flow on edges."
@@ -314,11 +324,15 @@ msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/topology-functions.rst:3
 msgid "The following functions modify the database directly therefore the user must have special permissions given by the administrators to use them."
-msgstr "Las siguientes funciones modifican la base de datos directamente, por lo que el usuario debe tener permisos especiales otorgados por un administrador para usarlos."
+msgstr ""
+"Las siguientes funciones modifican la base de datos directamente, por lo que "
+"el usuario debe tener permisos especiales otorgados por un administrador "
+"para usarlos."
 
 #: ../../build/doc/topology-functions.rst:6
 msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
-msgstr ":doc:`pgr_createTopology` - para crear una topología basada en la geometría."
+msgstr ""
+":doc:`pgr_createTopology` - para crear una topología basada en la geometría."
 
 #: ../../build/doc/topology-functions.rst:7
 msgid ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on the source and target information."
@@ -337,7 +351,8 @@ msgstr ""
 
 #: ../../build/doc/topology-functions.rst:12
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
-msgstr ":doc:`pgr_nodeNetwork` - para crear nodos en una tabla delimitada sin nodos."
+msgstr ""
+":doc:`pgr_nodeNetwork` - para crear nodos en una tabla delimitada sin nodos."
 
 #: ../../build/doc/routingFunctions.rst:77
 msgid ":doc:`TSP-family`"
