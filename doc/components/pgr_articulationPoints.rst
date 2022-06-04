@@ -81,8 +81,8 @@ Signatures
 
 Nodes in red are the articulation points.
 
-.. figure:: /images/Fig1-originalData.png
-   :scale: 50%
+.. figure:: /images/ap_sampledata.png
+   :scale: 25%
 
 Parameters
 -------------------------------------------------------------------------------

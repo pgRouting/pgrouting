@@ -82,6 +82,9 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
+.. figure:: /images/scc_sampledata.png
+   :scale: 25%
+
 Parameters
 -------------------------------------------------------------------------------
 
