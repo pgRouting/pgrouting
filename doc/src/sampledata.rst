@@ -205,7 +205,7 @@ Pick & Deliver Data
 .. pd_data_start
 
 This data example **lc101** is from data published at
-http://www.sintef.no/Projectweb/TOP/PDPTW/Li--Lim-benchmark/
+https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/
 
 The vehicles
 ...............................................................................

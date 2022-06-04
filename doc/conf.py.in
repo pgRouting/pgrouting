@@ -333,8 +333,10 @@ linkcheck_ignore = [
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
-    "https://github.com/pgRouting/pgrouting/issues/*",    # limit only pgrouting
-    "https://www.leopark.mx",
+    r'https://github.com/pgRouting/pgrouting/issues/*i',    # limit only pgrouting
+    r'https://www.overpass-api.de/*',
+    'https://www.leopark.mx',
+    'https://github.com/pgRouting/pgrouting/archive/v3.4.0.tar.gz'
 ]
 
 linkcheck_timeout = 20

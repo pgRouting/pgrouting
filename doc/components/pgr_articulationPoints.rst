@@ -79,6 +79,11 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
+Nodes in red are the articulation points.
+
+.. figure:: /images/Fig1-originalData.png
+   :scale: 50%
+
 Parameters
 -------------------------------------------------------------------------------
 

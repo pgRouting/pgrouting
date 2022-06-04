@@ -142,7 +142,13 @@ Return columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Same as `Single vertex`_ but with edges in descending order of ``id``.
+:Example: Same as `Single vertex`_ with edges in ascending order of ``id``.
+
+.. literalinclude:: doc-pgr_breadthFirstSearch.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+:Example: Same as `Single vertex`_ with edges in descending order of ``id``.
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: -- q3

@@ -103,7 +103,7 @@ Additional Example
 
 :Example: The odd length cyclic graph can not be bipartite.
 
-The edge :math:`1 \leftarrow 5` will make subgraph with vertices :math:`\{1, 3,
+The edge :math:`5 \rightarrow 1` will make subgraph with vertices :math:`\{1, 3,
 7, 6, 5\}` an odd length cyclic graph, as the cycle has 5 vertices.
 
 .. literalinclude:: doc-bipartite.queries
