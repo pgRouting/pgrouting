@@ -432,7 +432,7 @@ This implementation, cycles ``max_cycles`` times through ``operations_order`` .
     <output>
 
 
-Contracting Sample Data
+Contracting sample data
 -------------------------------------------------------------------------------
 
 In this section, building and using a contracted graph will be shown by example.
@@ -458,12 +458,10 @@ operation.
 
 The original graph:
 
-.. TODO update image
+.. image:: /images/Fig6-undirected.png
+   :scale: 25%
 
-.. image:: images/undirected_sampledata_a.png
-   :scale: 50%
-
-Contraction Results
+Contraction results
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The results do not represent the contracted graph.
@@ -479,17 +477,13 @@ because it was not affected by the contraction algorithm.
 
 After doing the dead end contraction operation:
 
-.. TODO update image
-
 .. image:: images/undirected_sampledata_b.png
-   :scale: 50%
+   :scale: 25%
 
 After doing the linear contraction operation to the graph above:
 
-.. TODO update image
-
 .. image:: images/undirected_sampledata_c.png
-   :scale: 50%
+   :scale: 25%
 
 The process to create the contraction graph on the database:
 
@@ -595,10 +589,11 @@ Edges that belong to the contracted graph.
    :start-after: -- q11
    :end-before: -- case1
 
-.. TODO update image
+Contracted graph
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. image:: images/undirected_sampledata_c.png
-   :scale: 50%
+.. image:: images/newgraph.png
+   :scale: 25%
 
 Using the contracted graph
 ...............................................................................
@@ -738,7 +733,7 @@ Now, the routing graph has an edge connecting with node :math:`7`.
    :end-before: -- end
 
 See Also
--------------
+-------------------------------------------------------------------------------
 
 * :doc:`pgr_contraction`
 * :doc:`sampledata`
