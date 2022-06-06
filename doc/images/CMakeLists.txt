@@ -5,8 +5,6 @@ SET(LOCAL_FILES
     Fig2-cost.png
     Fig4-costUndirected.png
     Fig6-undirected.png
-    parallelImage.png
-    trsp-test-image.png
     with_restrictions.png
     restrictions.png
     )

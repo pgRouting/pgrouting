@@ -32,7 +32,7 @@ insert into edges (old_id, cost, reverse_cost, geom)
    (with
        segmented as (select old_id,count(*) as i from edges_noded group by old_id)
    select  segments.old_id, cost, reverse_cost, segments.geom
-       from edges as edges join edge_table_noded as segments on (edges.id = segments.old_id)
+       from edges as edges join edges_noded as segments on (edges.id = segments.old_id)
        where edges.id in (select old_id from segmented where i>1) );
 /* --q7.1 */
 
@@ -41,7 +41,7 @@ SELECT pgr_createTopology('edges', 0.001, 'geom');
 /* --q8.1 */
 
 /* --q9 */
-SELECT pgr_analyzegraph('edges', 0.001, 'geom', rows_where:='id not in (select old_id from edge_table where old_id is not null)');
+SELECT pgr_analyzegraph('edges', 0.001, 'geom', rows_where:='id not in (select old_id from edges where old_id is not null)');
 /* --q9.1 */
 
 /* --q10 */
