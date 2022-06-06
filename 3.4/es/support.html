@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Soporte &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -79,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -144,14 +145,20 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/support.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/support.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/support.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/support.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/support.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/support.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/support.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/support.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/support.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/support.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/support.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/support.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/support.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/support.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/introduction/support.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/introduction/support.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/introduction/support.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/introduction/support.html">2.0</a></p></li>
 </ul>
 <section id="support">
-<h1>Soporte<a class="headerlink" href="#support" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Soporte<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h1>
 <p>El soporte comunitario de pgRouting está disponible a través del  <a class="reference external" href="https://pgrouting.org/support.html">Sitio webn de pgRouting</a>, <a class="reference external" href="http://docs.pgrouting.org">documentación</a>, tutoriales, listas de correos y otros. Si estás buscando <a class="reference internal" href="#support-commercial"><span class="std std-ref">Soporte Comercial</span></a>, a continuación se encuentra una lista de compañias que proporcionan servicios de consultoría y desarrollo de pgRouting.</p>
 <section id="reporting-problems">
-<h2>Reporte de Problemas<a class="headerlink" href="#reporting-problems" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Reporte de Problemas<a class="headerlink" href="#reporting-problems" title="Permalink to this heading">¶</a></h2>
 <p>Errores son registrados y manejados en un <a class="reference external" href="https://github.com/pgrouting/pgrouting/issues">issue tracker</a>. Por favor siga los siguientes pasos:</p>
 <ol class="arabic simple">
 <li><p>Buscar en las entradas para ver si ya se ha informado de su problema. Si es así, añadir cualquier contexto extra que usted haya encontrado, o al menos indicar que también está teniendo el problema. Esto nos ayudará a priorizar los problemas más comunes.</p></li>
@@ -161,14 +168,14 @@
 <li><p>Para las versiones donde se puede reproducir el problema, anote el sistema operativo y la versión de pgRouting, PostGIS y PostgreSQL.</p></li>
 <li><p>Se recomienda que utilice el siguiente envoltorio en su problema para determinar el paso que está causando el problema</p></li>
 </ol>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="n">client_min_messages</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">debug</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">code</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">SET</span><span class="w"> </span><span class="n">client_min_messages</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">notice</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SET</span> <span class="n">client_min_messages</span> <span class="n">TO</span> <span class="n">debug</span><span class="p">;</span>
+  <span class="o">&lt;</span><span class="n">your</span> <span class="n">code</span><span class="o">&gt;</span>
+<span class="n">SET</span> <span class="n">client_min_messages</span> <span class="n">TO</span> <span class="n">notice</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="mailing-list-and-gis-stackexchange">
-<h2>Listas de correo y GIS StackExchange<a class="headerlink" href="#mailing-list-and-gis-stackexchange" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Listas de correo y GIS StackExchange<a class="headerlink" href="#mailing-list-and-gis-stackexchange" title="Permalink to this heading">¶</a></h2>
 <p>Hay dos listas de correo para pgRouting alojados en las listas de correo del Servidor de OSGeo:</p>
 <ul class="simple">
 <li><p>Lista de correo para usuarios: <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/pgrouting-users">https://lists.osgeo.org/mailman/listinfo/pgrouting-users</a></p></li>
@@ -178,9 +185,9 @@
 <p>También puede preguntar en <a class="reference external" href="https://gis.stackexchange.com/">GIS StackExchange</a> ay etiquetar la pregunta con <code class="docutils literal notranslate"><span class="pre">pgrouting</span></code>. Encuentra todas las preguntas etiquetadas con <code class="docutils literal notranslate"><span class="pre">pgrouting</span></code> en <a class="reference external" href="https://gis.stackexchange.com/questions/tagged/pgrouting">https://gis.stackexchange.com/questions/tagged/pgrouting</a> o suscríbete en <a class="reference external" href="https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&amp;sort=newest">preguntas de retroalimentación de pgRouting</a>.</p>
 </section>
 <section id="commercial-support">
-<span id="support-commercial"></span><h2>Soporte Comercial<a class="headerlink" href="#commercial-support" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="support-commercial"></span><h2>Soporte Comercial<a class="headerlink" href="#commercial-support" title="Permalink to this heading">¶</a></h2>
 <p>Para usuarios que requieren apoyo profesional, desarrollo y servicios de consultoría, considere ponerse en contacto con cualquiera de las siguientes organizaciones, que han contribuido significativamente al desarrollo de pgRouting:</p>
-<table class="colwidths-given docutils align-default">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
 <col style="width: 35%" />
@@ -221,8 +228,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

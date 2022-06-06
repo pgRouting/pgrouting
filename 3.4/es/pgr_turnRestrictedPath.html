@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_turnRestrictedPath - Experimental &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -80,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -96,12 +97,14 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">pgr_turnRestrictedPath - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#signatures">Firmas</a><ul>
-<li><a class="reference internal" href="#one-to-one">One to One</a></li>
+<li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
+<li><a class="reference internal" href="#ksp-optional-parameters">KSP Optional parameters</a></li>
+<li><a class="reference internal" href="#special-optional-parameters">Special optional parameters</a></li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 <li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
 </ul>
@@ -156,11 +159,18 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_turnRestrictedPath.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_turnRestrictedPath.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_turnRestrictedPath.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_turnRestrictedPath.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_turnRestrictedPath.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_turnRestrictedPath.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_turnRestrictedPath.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_turnRestrictedPath.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_turnRestrictedPath.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html">3.0</a></p></li>
 </ul>
 <section id="pgr-turnrestrictedpath-experimental">
-<h1><a class="toc-backref" href="#id1">pgr_turnRestrictedPath - Experimental</a><a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> Using Yen’s algorithm Vertex -Vertex routing with restrictions</p>
+<h1>pgr_turnRestrictedPath - Experimental<a class="headerlink" href="#pgr-turnrestrictedpath-experimental" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_turnRestrictedPath</span></code> Using Yen’s algorithm Vertex -Vertex routing with
+restrictions</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
@@ -199,132 +209,141 @@
 </ul>
 </li>
 </ul>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#pgr-turnrestrictedpath-experimental" id="id1">pgr_turnRestrictedPath - Experimental</a></p>
-<ul>
-<li><p><a class="reference internal" href="#description" id="id2">Descripción</a></p></li>
-<li><p><a class="reference internal" href="#signatures" id="id3">Firmas</a></p>
-<ul>
-<li><p><a class="reference internal" href="#one-to-one" id="id4">One to One</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#parameters" id="id5">Parámetros</a></p></li>
-<li><p><a class="reference internal" href="#inner-queries" id="id6">Inner queries</a></p>
-<ul>
-<li><p><a class="reference internal" href="#edges-sql" id="id7">Edges SQL</a></p></li>
-<li><p><a class="reference internal" href="#restrictions-sql" id="id8">Restrictions SQL</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#result-columns" id="id9">Columnas de Resultados</a></p></li>
-<li><p><a class="reference internal" href="#additional-examples" id="id10">Ejemplos Adicionales</a></p></li>
-<li><p><a class="reference internal" href="#see-also" id="id11">Ver también</a></p></li>
-</ul>
-</li>
-</ul>
-</div>
 <section id="description">
-<h2><a class="toc-backref" href="#id2">Descripción</a><a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Using Yen’s algorithm to obtain K shortest paths and analyze the paths to select the paths that do not use the
-restrictions</p>
+<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<p>Using Yen’s algorithm to obtain K shortest paths and analyze the paths to select
+the paths that do not use the restrictions</p>
 </section>
 <section id="signatures">
-<h2><a class="toc-backref" href="#id3">Firmas</a><a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
-<pre class="literal-block" id="index-0">none
-
-pgr_turnRestrictedPath(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, Start vid, End vid, K cycles,
+<h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<pre class="literal-block" id="index-0">pgr_turnRestrictedPath(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, Start vid, End vid, K cycles,
   [, directed] [,heap_paths] [, stop_on_first] [,strict])
 RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
-<section id="one-to-one">
-<h3><a class="toc-backref" href="#id4">One to One</a><a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid  [, directed])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-OR EMPTY SET
-</pre></div>
-</div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(8\)</span> to vertex  <span class="math notranslate nohighlight">\(10\)</span> on a <strong>directed</strong> graph</p>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex  <span class="math notranslate nohighlight">\(8\)</span> on a <strong>directed</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
-  8, 10, 3
-);
+  3, 8, 3);
  seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
-   1 |       1 |        1 |    8 |    7 |    1 | Infinity
-   2 |       1 |        2 |    5 |   10 |    1 |        1
-   3 |       1 |        3 |   10 |   -1 |    0 |        2
+   1 |       1 |        1 |    3 |    7 |    1 | Infinity
+   2 |       1 |        2 |    7 |   10 |    1 |        1
+   3 |       1 |        3 |    8 |   -1 |    0 |        2
 (3 rows)
 
 </pre></div>
 </div>
 </section>
-</section>
 <section id="parameters">
-<h2><a class="toc-backref" href="#id5">Parámetros</a><a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="docutils align-default">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 15%" />
-<col style="width: 8%" />
-<col style="width: 60%" />
+<col style="width: 20%" />
+<col style="width: 27%" />
+<col style="width: 53%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+<td><p>SQL query as described.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a> as described below</p></td>
+<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>Identifier of the departure vertex.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<tr class="row-even"><td><p><strong>end vid</strong></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>Identifier of the departure vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<tr class="row-odd"><td><p><strong>K</strong></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>Number of required paths</p></td>
 </tr>
+</tbody>
+</table>
+<p>Where:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> Graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
 <li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">heap_paths</span></code></p></td>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ksp-optional-parameters">
+<h2>KSP Optional parameters<a class="headerlink" href="#ksp-optional-parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heap_paths</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> returns all the paths stored in the process heap.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> only returns <code class="docutils literal notranslate"><span class="pre">k</span></code> paths.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> Returns at most K paths</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> all the calculated paths while processing are returned.</p></li>
+<li><p>Roughly, when the shortest path has <code class="docutils literal notranslate"><span class="pre">N</span></code> edges, the heap will contain
+about than <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">*</span> <span class="pre">K</span></code> paths for small value of <code class="docutils literal notranslate"><span class="pre">K</span></code> and <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">&gt;</span> <span class="pre">5</span></code>.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop</span> <span class="pre">on</span> <span class="pre">first</span></code></p></td>
+</tbody>
+</table>
+</section>
+<section id="special-optional-parameters">
+<h2>Special optional parameters<a class="headerlink" href="#special-optional-parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stop_on_first</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> stops on first path found that dos not violate restrictions</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> continues work</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> stops on first path found that dos not violate
+restrictions</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> returns at most K paths</p></li>
 </ul>
 </td>
 </tr>
@@ -333,7 +352,7 @@ OR EMPTY SET
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> returns only paths that do not violate restrictions</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> returns all paths found</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> returns the paths found</p></li>
 </ul>
 </td>
 </tr>
@@ -341,10 +360,10 @@ OR EMPTY SET
 </table>
 </section>
 <section id="inner-queries">
-<h2><a class="toc-backref" href="#id6">Inner queries</a><a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id7">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -393,61 +412,33 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3><a class="toc-backref" href="#id8">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 25%" />
-<col style="width: 65%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of edge identifiers that form a path that is not allowed to be
-taken.
-- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
-- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td><p>Cost of taking the forbidden path.</p></td>
-</tr>
-</tbody>
-</table>
-<p>Where:</p>
-<dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
-</dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
-</dd>
+<h3>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">end-before<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
 </dl>
+</div></blockquote>
 </section>
 </section>
 <section id="result-columns">
-<h2><a class="toc-backref" href="#id9">Columnas de Resultados</a><a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">path_id,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="docutils align-default">
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
+<span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 9%" />
-<col style="width: 7%" />
-<col style="width: 83%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -456,31 +447,47 @@ taken.
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Sequential value starting from <strong>1</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>path_seq</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Relative position in the path of <code class="docutils literal notranslate"><span class="pre">node</span></code> and <code class="docutils literal notranslate"><span class="pre">edge</span></code>. Has value <strong>1</strong> for the beginning of a path.</p></td>
+<td><p>Path identifier.</p>
+<ul class="simple">
+<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
+<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+</ul>
+</td>
 </tr>
-<tr class="row-even"><td><p><strong>path_id</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Relative position in the path. Has value <strong>1</strong> for the beginning of a
+path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Path identifier. The ordering of the paths For two paths i, j if i &lt; j then agg_cost(i) &lt;= agg_cost(j).</p></td>
+<td><p>Identifier of the starting vertex.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>node</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the node in the path.</p></td>
+<td><p>Identifier of the ending vertex.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>edge</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the path sequence. <code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last node of the route.</p></td>
+<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>cost</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
+path sequence. <strong>-1</strong> for the last node of the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the path sequence.</p></td>
+<td><p>Cost to traverse from <code class="docutils literal notranslate"><span class="pre">node</span></code> using <code class="docutils literal notranslate"><span class="pre">edge</span></code> to the next node in the
+path sequence.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
@@ -488,19 +495,18 @@ taken.
 </table>
 </section>
 <section id="additional-examples">
-<h2><a class="toc-backref" href="#id10">Ejemplos Adicionales</a><a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(8\)</span> to <span class="math notranslate nohighlight">\(10\)</span> with <code class="docutils literal notranslate"><span class="pre">strict</span></code> flag on.</p>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to <span class="math notranslate nohighlight">\(8\)</span> with <code class="docutils literal notranslate"><span class="pre">strict</span></code> flag on.</p>
 </dd>
 </dl>
-<p>No results show because the only path available follows a restriction.</p>
+<p>No results because the only path available follows a restriction.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
-  8, 10, 3,
-  strict =&gt; true
-);
+  3, 8, 3,
+  strict =&gt; true);
  seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
 (0 rows)
@@ -508,65 +514,67 @@ taken.
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(8\)</span> to vertex  <span class="math notranslate nohighlight">\(10\)</span> on an <strong>undirected</strong> graph</p>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex  <span class="math notranslate nohighlight">\(8\)</span> on an <strong>undirected</strong> graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
-  8, 10, 3,
-  directed =&gt; false
-);
+  3, 8, 3,
+  directed =&gt; false);
  seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
-   1 |       1 |        1 |    8 |    7 |    1 |        0
-   2 |       1 |        2 |    5 |    4 |    1 |        1
-   3 |       1 |        3 |    2 |    2 |    1 |        2
-   4 |       1 |        4 |    3 |    5 |    1 |        3
-   5 |       1 |        5 |    6 |   11 |    1 |        4
-   6 |       1 |        6 |   11 |   12 |    1 |        5
-   7 |       1 |        7 |   10 |   -1 |    0 |        6
+   1 |       1 |        1 |    3 |    7 |    1 |        0
+   2 |       1 |        2 |    7 |    4 |    1 |        1
+   3 |       1 |        3 |    6 |    2 |    1 |        2
+   4 |       1 |        4 |   10 |    5 |    1 |        3
+   5 |       1 |        5 |   11 |   11 |    1 |        4
+   6 |       1 |        6 |   12 |   12 |    1 |        5
+   7 |       1 |        7 |    8 |   -1 |    0 |        6
 (7 rows)
 
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(8\)</span> to vertex  <span class="math notranslate nohighlight">\(10\)</span> with more alternatives</p>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(3\)</span> to vertex  <span class="math notranslate nohighlight">\(8\)</span> with more alternatives</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_turnRestrictedPath(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
-  8, 10, 3,
+  3, 8, 3,
   directed =&gt; false,
   heap_paths =&gt; true,
-  stop_on_first =&gt; false
-);
+  stop_on_first =&gt; false);
  seq | path_id | path_seq | node | edge | cost | agg_cost
 -----+---------+----------+------+------+------+----------
-   1 |       1 |        1 |    8 |    7 |    1 |        0
-   2 |       1 |        2 |    5 |    4 |    1 |        1
-   3 |       1 |        3 |    2 |    2 |    1 |        2
-   4 |       1 |        4 |    3 |    5 |    1 |        3
-   5 |       1 |        5 |    6 |   11 |    1 |        4
-   6 |       1 |        6 |   11 |   12 |    1 |        5
-   7 |       1 |        7 |   10 |   -1 |    0 |        6
-   8 |       2 |        1 |    8 |    7 |    1 |        0
-   9 |       2 |        2 |    5 |    8 |    1 |        1
-  10 |       2 |        3 |    6 |    9 |    1 |        2
-  11 |       2 |        4 |    9 |   15 |    1 |        3
-  12 |       2 |        5 |   12 |   13 |    1 |        4
-  13 |       2 |        6 |   11 |   12 |    1 |        5
-  14 |       2 |        7 |   10 |   -1 |    0 |        6
+   1 |       1 |        1 |    3 |    7 |    1 |        0
+   2 |       1 |        2 |    7 |    4 |    1 |        1
+   3 |       1 |        3 |    6 |    2 |    1 |        2
+   4 |       1 |        4 |   10 |    5 |    1 |        3
+   5 |       1 |        5 |   11 |   11 |    1 |        4
+   6 |       1 |        6 |   12 |   12 |    1 |        5
+   7 |       1 |        7 |    8 |   -1 |    0 |        6
+   8 |       2 |        1 |    3 |    7 |    1 |        0
+   9 |       2 |        2 |    7 |    8 |    1 |        1
+  10 |       2 |        3 |   11 |    9 |    1 |        2
+  11 |       2 |        4 |   16 |   15 |    1 |        3
+  12 |       2 |        5 |   17 |   13 |    1 |        4
+  13 |       2 |        6 |   12 |   12 |    1 |        5
+  14 |       2 |        7 |    8 |   -1 |    0 |        6
 (14 rows)
 
 </pre></div>
 </div>
 </section>
 <section id="see-also">
-<h2><a class="toc-backref" href="#id11">Ver también</a><a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="KSP-category.html"><span class="doc">Rutas más cortas K - Categoría</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
+</ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
@@ -588,8 +596,8 @@ taken.
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

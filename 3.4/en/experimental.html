@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Experimental Functions &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -78,7 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -143,7 +144,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/experimental.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/experimental.html">3.3</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/experimental.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/experimental.html">3.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/experimental.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/experimental.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/experimental.html">3.0</a></p></li>
@@ -155,7 +157,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/proposed.html#experimental-and-proposed-functions">2.2</a></p></li>
 </ul>
 <section id="experimental-functions">
-<h1>Experimental Functions<a class="headerlink" href="#experimental-functions" title="Permalink to this headline">¶</a></h1>
+<h1>Experimental Functions<a class="headerlink" href="#experimental-functions" title="Permalink to this heading">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Possible server crash</p>
@@ -199,18 +201,21 @@
 </ul>
 <p><a class="reference internal" href="coloring-family.html"><span class="doc">Coloring - Family of functions</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite -Experimental</span></a> - Bipartite graph algorithm using a DFS-based coloring approach.</p></li>
+<li><p><a class="reference internal" href="pgr_bipartite.html"><span class="doc">pgr_bipartite -Experimental</span></a> - Bipartite graph algorithm using a DFS-based coloring
+approach.</p></li>
 <li><p><a class="reference internal" href="pgr_edgeColoring.html"><span class="doc">pgr_edgeColoring - Experimental</span></a> - Edge Coloring algorithm using Vizing’s theorem.</p></li>
 </ul>
 <p><a class="reference internal" href="transformation-family.html"><span class="doc">Transformation - Family of functions (Experimental)</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_lineGraph.html"><span class="doc">pgr_lineGraph - Experimental</span></a> - Transformation algorithm for generating a Line Graph.</p></li>
-<li><p><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> - Transformation algorithm for generating a Line Graph out of each vertex in the input graph.</p></li>
+<li><p><a class="reference internal" href="pgr_lineGraphFull.html"><span class="doc">pgr_lineGraphFull - Experimental</span></a> - Transformation algorithm for generating a Line
+Graph out of each vertex in the input graph.</p></li>
 </ul>
 <p><a class="reference internal" href="traversal-family.html"><span class="doc">Traversal - Family of functions</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_breadthFirstSearch.html"><span class="doc">pgr_breadthFirstSearch - Experimental</span></a> - Breath first search traversal of the graph.</p></li>
-<li><p><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - Experimental</span></a> - Breath first search traversal of the graph.</p></li>
+<li><p><a class="reference internal" href="pgr_binaryBreadthFirstSearch.html"><span class="doc">pgr_binaryBreadthFirstSearch - Experimental</span></a> - Breath first search traversal of the
+graph.</p></li>
 </ul>
 <p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a></p>
 <ul class="simple">
@@ -253,7 +258,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -275,8 +280,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

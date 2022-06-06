@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Components - Family of functions &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -78,7 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -93,16 +94,6 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Components - Family of functions</a><ul>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-query">Inner query</a></li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a><ul>
-<li><a class="reference internal" href="#pgr-connectedcomponents-pgr-strongcomponents">pgr_connectedComponents &amp; pgr_strongComponents</a></li>
-<li><a class="reference internal" href="#pgr-biconnectedcomponents">pgr_biconnectedComponents</a></li>
-<li><a class="reference internal" href="#pgr-articulationpoints">pgr_articulationPoints</a></li>
-<li><a class="reference internal" href="#pgr-bridges">pgr_bridges</a></li>
-<li><a class="reference internal" href="#pgr-makeconnected-experimental">pgr_makeConnected - Experimental</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -153,7 +144,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/components-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/components-family.html">3.3</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/components-family.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/components-family.html">3.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/components-family.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/components-family.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/components-family.html">3.0</a></p></li>
@@ -162,11 +154,13 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/components-family.html">2.5</a></p></li>
 </ul>
 <section id="components-family-of-functions">
-<h1>Components - Family of functions<a class="headerlink" href="#components-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<h1>Components - Family of functions<a class="headerlink" href="#components-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a> - Connected components of an undirected graph.</p></li>
-<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> - Strongly connected components of a directed graph.</p></li>
-<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - Biconnected components of an undirected graph.</p></li>
+<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> - Strongly connected components of a directed
+graph.</p></li>
+<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - Biconnected components of an undirected
+graph.</p></li>
 <li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - Articulation points of an undirected graph.</p></li>
 <li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - Bridges of an undirected graph.</p></li>
 </ul>
@@ -206,239 +200,8 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 24%" />
-<col style="width: 10%" />
-<col style="width: 45%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Edges SQL</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>Inner query as described below.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="inner-query">
-<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
-<dl class="field-list simple">
-<dt class="field-odd">Edges SQL</dt>
-<dd class="field-odd"><p>an SQL query which should return a set of rows with the following columns:</p>
-</dd>
-</dl>
-<table class="colwidths-given docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td></td>
-<td><p>Identifier of the edge.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td></td>
-<td><p>Identifier of the first end point vertex of the edge.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
-<ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Where:</p>
-<dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
-</dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
-</dd>
-</dl>
-</section>
-<section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<section id="pgr-connectedcomponents-pgr-strongcomponents">
-<h3>pgr_connectedComponents &amp; pgr_strongComponents<a class="headerlink" href="#pgr-connectedcomponents-pgr-strongcomponents" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">node)</span></code></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 9%" />
-<col style="width: 77%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Sequential value starting from <strong>1</strong>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>component</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Component identifier. It is equal to the minimum node identifier in the component.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>node</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the vertex that belongs to <strong>component</strong>.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="pgr-biconnectedcomponents">
-<h3>pgr_biconnectedComponents<a class="headerlink" href="#pgr-biconnectedcomponents" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">component,</span> <span class="pre">edge)</span></code></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 9%" />
-<col style="width: 77%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Sequential value starting from <strong>1</strong>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>component</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Component identifier. It is equal to the minimum edge identifier in the component.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>edge</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="pgr-articulationpoints">
-<h3>pgr_articulationPoints<a class="headerlink" href="#pgr-articulationpoints" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(node)</span></code></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>node</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the vertex.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="pgr-bridges">
-<h3>pgr_bridges<a class="headerlink" href="#pgr-bridges" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(edge)</span></code></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 14%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>edge</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge that is a bridge.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="pgr-makeconnected-experimental">
-<h3>pgr_makeConnected - Experimental<a class="headerlink" href="#pgr-makeconnected-experimental" title="Permalink to this headline">¶</a></h3>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid)</span></code></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 13%" />
-<col style="width: 70%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
-<td><p>Sequential value starting from <strong>1</strong>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the first end point vertex of the edge.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -460,8 +223,8 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

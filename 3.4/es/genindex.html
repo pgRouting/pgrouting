@@ -12,6 +12,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -76,7 +77,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -343,9 +344,9 @@
 </li>
       <li><a href="pgr_dijkstraVia.html#index-0">dijkstraVia - Proposed on 2.2</a>
 </li>
-      <li><a href="pgr_drivingDistance.html#index-1">drivingDistance(Multiple Starting Vertices)</a>
+      <li><a href="pgr_drivingDistance.html#index-1">drivingDistance(Multiple vertices)</a>
 </li>
-      <li><a href="pgr_drivingDistance.html#index-0">drivingDistance(Single Start Vertex)</a>
+      <li><a href="pgr_drivingDistance.html#index-0">drivingDistance(Single vertex)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -415,17 +416,15 @@
 </li>
       <li><a href="pgr_kruskalBFS.html#index-0">kruskalBFS(Single vertex)</a>
 </li>
-      <li><a href="pgr_kruskalDD.html#index-1">kruskalDD(Multiple vertices)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pgr_kruskalDD.html#index-1">kruskalDD(Multiple vertices)</a>
+</li>
       <li><a href="pgr_kruskalDD.html#index-0">kruskalDD(Single vertex)</a>
 </li>
       <li><a href="pgr_kruskalDFS.html#index-1">kruskalDFS(Multiple vertices)</a>
 </li>
       <li><a href="pgr_kruskalDFS.html#index-0">kruskalDFS(Single vertex)</a>
-</li>
-      <li><a href="pgr_KSP.html#index-0">KSP</a>
 </li>
   </ul></td>
 </tr></table>
@@ -571,7 +570,9 @@
 </li>
       <li><a href="pgr_trsp_withPoints.html#index-0">trsp_withPoints(One to One) - Proposed on v3.4</a>
 </li>
-      <li><a href="pgr_trspVia.html#index-0">trspVia - Proposed on v3.4</a>, <a href="pgr_trspVia_withPoints.html#index-0">[1]</a>
+      <li><a href="pgr_trspVia.html#index-0">trspVia - Proposed on v3.4</a>
+</li>
+      <li><a href="pgr_trspVia_withPoints.html#index-0">trspVia_withPoints - Proposed on v3.4</a>
 </li>
       <li><a href="pgr_TSP.html#index-0">TSP</a>
 </li>
@@ -615,9 +616,11 @@
 </li>
       <li><a href="pgr_withPointsCost.html#index-0">withPointsCost(One To One) - Proposed on v2.2</a>
 </li>
-      <li><a href="pgr_withPointsDD.html#index-1">withPointsDD(Multiple Starting Vertices) - Proposed on v2.2</a>
+      <li><a href="pgr_withPointsCostMatrix.html#index-0">withPointsCostMatrix - proposed</a>
 </li>
-      <li><a href="pgr_withPointsDD.html#index-0">withPointsDD(Single Start Vertex) - Proposed on v2.2</a>
+      <li><a href="pgr_withPointsDD.html#index-1">withPointsDD(Multiple Vertices) - Proposed on v2.2</a>
+</li>
+      <li><a href="pgr_withPointsDD.html#index-0">withPointsDD(Single Vertex) - Proposed on v2.2</a>
 </li>
       <li><a href="pgr_withPointsKSP.html#index-0">withPointsKSP - Proposed on v2.2</a>
 </li>
@@ -640,8 +643,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

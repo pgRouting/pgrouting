@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Distancia Manejando - Categoría &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -80,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -96,7 +97,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Distancia Manejando - Categoría</a><ul>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 </ul>
 </li>
@@ -148,11 +149,17 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/drivingDistance-category.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/drivingDistance-category.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/drivingDistance-category.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/drivingDistance-category.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/drivingDistance-category.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/drivingDistance-category.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/drivingDistance-category.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/drivingDistance-category.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/drivingDistance-category.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/drivingDistance-category.html">3.1</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/drivingDistance-category.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/drivingDistance-category.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/drivingDistance-category.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/drivingDistance-category.html">2.4</a></p></li>
 </ul>
 <section id="driving-distance-category">
-<h1>Distancia Manejando - Categoría<a class="headerlink" href="#driving-distance-category" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Distancia Manejando - Categoría<a class="headerlink" href="#driving-distance-category" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Distancia Manejando basada en el algoritmo de Dijkstra.</p></li>
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Distancia Manejando basada en el algoritmo de Prim</p></li>
@@ -182,13 +189,14 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Distancia Manejando basada en pgr_withPoints</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Distancia Manejando basada en pgr_withPoints</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <p>Calculate nodes that are within a distance.</p>
 <ul class="simple">
-<li><p>Extracts all the nodes that have costs less than or equal to the value distance.</p></li>
+<li><p>Extracts all the nodes that have costs less than or equal to the value
+distance.</p></li>
 <li><p>The edges extracted will conform to the corresponding spanning tree.
 Edge</p></li>
 <li><p>Edge <span class="math notranslate nohighlight">\((u, v)\)</span> will not be included when:</p>
@@ -201,8 +209,8 @@ not within the limit, the edge is not included.</p></li>
 </li>
 </ul>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 25%" />
@@ -219,11 +227,11 @@ not within the limit, the edge is not included.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Edges SQL as described below.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Root vid</p></td>
+<tr class="row-odd"><td><p><strong>Root vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the root vertex of the tree.</p></td>
 </tr>
-<tr class="row-even"><td><p>Root vids</p></td>
+<tr class="row-even"><td><p><strong>Root vids</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
 <td><p>Array of identifiers of the root vertices.</p>
 <ul class="simple">
@@ -232,31 +240,27 @@ not within the limit, the edge is not included.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>distance</p></td>
+<tr class="row-odd"><td><p><strong>distance</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Upper limit for the inclusion of a node in the result.</p>
-<ul class="simple">
-<li><p>When the value is Negative <strong>throws</strong> error</p></li>
-</ul>
-</td>
+<td><p>Upper limit for the inclusion of a node in the result.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERIC</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>, <code class="docutils literal notranslate"><span class="pre">NUMERIC</span></code></p>
+<dt class="field-even">ANY-NUMERIC<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="inner-queries">
-<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -305,17 +309,17 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
@@ -337,8 +341,8 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

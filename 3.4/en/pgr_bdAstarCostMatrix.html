@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_bdAstarCostMatrix &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -79,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -101,7 +102,7 @@
 <li><a class="reference internal" href="#astar-optional-parameters">aStar optional Parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 </ul>
 </li>
@@ -157,7 +158,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_bdAstarCostMatrix.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_bdAstarCostMatrix.html">3.3</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_bdAstarCostMatrix.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_bdAstarCostMatrix.html">3.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_bdAstarCostMatrix.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_bdAstarCostMatrix.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_bdAstarCostMatrix.html">3.0</a></p></li>
@@ -166,7 +168,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_bdAstarCostMatrix.html">2.5</a></p></li>
 </ul>
 <section id="pgr-bdastarcostmatrix">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCostMatrix</span></code><a class="headerlink" href="#pgr-bdastarcostmatrix" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCostMatrix</span></code><a class="headerlink" href="#pgr-bdastarcostmatrix" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCostMatrix</span></code> - Calculates the a cost matrix using <a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a>.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org//libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -188,7 +190,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p><strong>The main characteristics are:</strong></p>
 <ul class="simple">
 <li><p>Using internaly the <a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> algorithm</p></li>
@@ -214,43 +216,44 @@
 </ul>
 </section>
 <section id="signatures">
-<span id="index-0"></span><h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr_bdAstarCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>vids</strong> [, directed] [, heuristic] [, factor] [, epsilon])
+<pre class="literal-block">pgr_bdAstarCostMatrix(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>
+           [, directed] [, heuristic] [, factor] [, epsilon])
 RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Symmetric cost matrix for vertices <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> on an
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Symmetric cost matrix for vertices <span class="math notranslate nohighlight">\(\{5, 6, 10, 15\}\)</span> on an
 <strong>undirected</strong> graph using heuristic <span class="math notranslate nohighlight">\(2\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCostMatrix</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;</span><span class="p">,</span>
-  <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">),</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges&#39;</span><span class="p">,</span>
+  <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)),</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">2</span>
 <span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
-         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">1</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>        <span class="mi">1</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span>
-         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">5</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">2</span>
+         <span class="mi">5</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>        <span class="mi">3</span>
+         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span>
+         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>        <span class="mi">2</span>
+        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">2</span>
+        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
+        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>        <span class="mi">1</span>
+        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span>
+        <span class="mi">15</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span>
+        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span>
 <span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -269,12 +272,12 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>default</p></th>
+<th class="head"><p>Default</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
@@ -292,8 +295,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </table>
 </section>
 <section id="astar-optional-parameters">
-<h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -303,23 +306,23 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heuristic</span></code></p></td>
-<td><p><strong>INTEGER</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>5</p></td>
 <td><p>Heuristic number. Current valid values 0~5.</p>
 <ul class="simple">
-<li><p>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</p></li>
-<li><p>1: h(v) abs(max(dx, dy))</p></li>
-<li><p>2: h(v) abs(min(dx, dy))</p></li>
-<li><p>3: h(v) = dx * dx + dy * dy</p></li>
-<li><p>4: h(v) = sqrt(dx * dx + dy * dy)</p></li>
-<li><p>5: h(v) = abs(dx) + abs(dy)</p></li>
+<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Use this value to compare with pgr_dijkstra)</p></li>
+<li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
+<li><p>2: <span class="math notranslate nohighlight">\(h(v) = abs(min(\Delta x, \Delta y))\)</span></p></li>
+<li><p>3: <span class="math notranslate nohighlight">\(h(v) = \Delta x * \Delta x + \Delta y * \Delta y\)</span></p></li>
+<li><p>4: <span class="math notranslate nohighlight">\(h(v) = sqrt(\Delta x * \Delta x + \Delta y * \Delta y)\)</span></p></li>
+<li><p>5: <span class="math notranslate nohighlight">\(h(v) = abs(\Delta x) + abs(\Delta y)\)</span></p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p>For units manipulation. <span class="math notranslate nohighlight">\(factor &gt; 0\)</span>.  See <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">Factor</span></a></p></td>
+<td><p>For units manipulation. <span class="math notranslate nohighlight">\(factor &gt; 0\)</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">epsilon</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -328,13 +331,14 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </tr>
 </tbody>
 </table>
+<p>See <a class="reference internal" href="aStar-family.html#astar-heuristics"><span class="std std-ref">heuristics</span></a> available and <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">factor</span></a> handling.</p>
 </section>
 </section>
-<section id="inner-query">
-<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 18%" />
@@ -408,19 +412,19 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
 <p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -449,17 +453,17 @@ it’s not part of the graph.</p></li>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Use with <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_bdAstarCostMatrix(
-    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
-    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5),
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges&#39;,
+    (SELECT array_agg(id) FROM vertices WHERE id IN (5, 6, 10, 15)),
     directed=&gt; false, heuristic =&gt; 2
   )
   $$,
@@ -469,18 +473,18 @@ NOTICE:  pgr_TSP no longer solving with simulated annaeling
 HINT:  Ignoring annaeling parameters
  seq | node | cost | agg_cost
 -----+------+------+----------
-   1 |    1 |    0 |        0
-   2 |    2 |    1 |        1
-   3 |    3 |    1 |        2
-   4 |    4 |    1 |        3
-   5 |    1 |    3 |        6
+   1 |    5 |    0 |        0
+   2 |    6 |    1 |        1
+   3 |   10 |    1 |        2
+   4 |   15 |    1 |        3
+   5 |    5 |    3 |        6
 (5 rows)
 
 </pre></div>
 </div>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">Bidirectional A* - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a></p></li>
@@ -508,8 +512,8 @@ HINT:  Ignoring annaeling parameters
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

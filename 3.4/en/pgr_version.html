@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_version &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -78,7 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -146,7 +147,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_version.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_version.html">3.3</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_version.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_version.html">3.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_version.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_version.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_version.html">3.0</a></p></li>
@@ -160,7 +162,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html">2.0</a></p></li>
 </ul>
 <section id="pgr-version">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_version</span></code><a class="headerlink" href="#pgr-version" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_version</span></code><a class="headerlink" href="#pgr-version" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_version</span></code> — Query for pgRouting version information.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
@@ -177,16 +179,16 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Returns pgRouting version information.</p>
 </section>
 <section id="signature">
-<span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="nb">TEXT</span><span class="w"> </span><span class="n">pgr_version</span><span class="p">();</span><span class="w"></span>
+<span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TEXT</span> <span class="n">pgr_version</span><span class="p">();</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pgRouting Version for this documentation</p>
 </dd>
 </dl>
@@ -200,12 +202,8 @@
 </div>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 74%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Type</p></th>
 <th class="head"><p>Description</p></th>
@@ -219,7 +217,7 @@
 </table>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="reference.html"><span class="doc">Reference</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a></p></li>
@@ -245,8 +243,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

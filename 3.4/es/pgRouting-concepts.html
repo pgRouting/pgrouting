@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Conceptos de pgRouting &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -80,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -120,13 +121,22 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
+<li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
 <li><a class="reference internal" href="#points-sql">Points SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#parameters-for-the-via-functions">Parameters for the Via functions</a></li>
+<li><a class="reference internal" href="#for-the-trsp-functions">For the TRSP functions</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#return-columns">Return columns</a><ul>
 <li><a class="reference internal" href="#return-columns-for-a-path">Return columns for a path</a></li>
-<li><a class="reference internal" href="#return-columns-for-multiple-paths">Return columns for multiple paths</a></li>
+<li><a class="reference internal" href="#multiple-paths">Multiple paths</a><ul>
+<li><a class="reference internal" href="#selective-for-multiple-paths">Selective for multiple paths.</a></li>
+<li><a class="reference internal" href="#non-selective-for-multiple-paths">Non selective for multiple paths</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#return-columns-for-cost-functions">Return columns for cost functions</a></li>
 <li><a class="reference internal" href="#return-columns-for-flow-functions">Return columns for flow functions</a></li>
 <li><a class="reference internal" href="#return-columns-for-spanning-tree-functions">Return columns for spanning tree functions</a></li>
@@ -195,15 +205,18 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgRouting-concepts.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgRouting-concepts.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgRouting-concepts.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgRouting-concepts.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgRouting-concepts.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-concepts.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgRouting-concepts.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgRouting-concepts.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html">3.0</a></p></li>
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html">2.0</a></p></li>
 </ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="pgrouting-concepts">
-<h1><a class="toc-backref" href="#id8">Conceptos de pgRouting</a><a class="headerlink" href="#pgrouting-concepts" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="contents topic" id="contenido">
+<h1><a class="toc-backref" href="#id8" role="doc-backlink">Conceptos de pgRouting</a><a class="headerlink" href="#pgrouting-concepts" title="Permalink to this heading">¶</a></h1>
+<nav class="contents" id="contenido">
 <p class="topic-title">Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#pgrouting-concepts" id="id8">Conceptos de pgRouting</a></p>
@@ -237,89 +250,91 @@
 </ul>
 </li>
 <li><p><a class="reference internal" href="#combinations-sql" id="id27">Combinations SQL</a></p></li>
-<li><p><a class="reference internal" href="#points-sql" id="id28">Points SQL</a></p></li>
+<li><p><a class="reference internal" href="#restrictions-sql" id="id28">Restrictions SQL</a></p></li>
+<li><p><a class="reference internal" href="#points-sql" id="id29">Points SQL</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#parameters" id="id29">Parámetros</a></p></li>
-<li><p><a class="reference internal" href="#return-columns" id="id30">Return columns</a></p>
+<li><p><a class="reference internal" href="#parameters" id="id30">Parámetros</a></p>
 <ul>
-<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id31">Return columns for a path</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-multiple-paths" id="id32">Return columns for multiple paths</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id33">Return columns for cost functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id34">Return columns for flow functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id35">Return columns for spanning tree functions</a></p></li>
+<li><p><a class="reference internal" href="#parameters-for-the-via-functions" id="id31">Parameters for the Via functions</a></p></li>
+<li><p><a class="reference internal" href="#for-the-trsp-functions" id="id32">For the TRSP functions</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#advanced-topics" id="id36">Tópicos avanzados</a></p>
+<li><p><a class="reference internal" href="#return-columns" id="id33">Return columns</a></p>
 <ul>
-<li><p><a class="reference internal" href="#routing-topology" id="id37">Topología para Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#graph-analytics" id="id38">Análisis de gráficas</a></p></li>
-<li><p><a class="reference internal" href="#analyze-a-graph" id="id39">Analizar un gráfico</a></p></li>
-<li><p><a class="reference internal" href="#analyze-one-way-streets" id="id40">Analizar las calles unidireccionales</a></p>
+<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id34">Return columns for a path</a></p></li>
+<li><p><a class="reference internal" href="#multiple-paths" id="id35">Multiple paths</a></p>
 <ul>
-<li><p><a class="reference internal" href="#example" id="id41">Ejemplo</a></p></li>
+<li><p><a class="reference internal" href="#selective-for-multiple-paths" id="id36">Selective for multiple paths.</a></p></li>
+<li><p><a class="reference internal" href="#non-selective-for-multiple-paths" id="id37">Non selective for multiple paths</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id38">Return columns for cost functions</a></p></li>
+<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id39">Return columns for flow functions</a></p></li>
+<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id40">Return columns for spanning tree functions</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#performance-tips" id="id42">Consejos de Rendimiento</a></p>
+<li><p><a class="reference internal" href="#advanced-topics" id="id41">Tópicos avanzados</a></p>
 <ul>
-<li><p><a class="reference internal" href="#for-the-routing-functions" id="id43">Para las funciones de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#for-the-topology-functions" id="id44">Para las funciones de topología:</a></p></li>
+<li><p><a class="reference internal" href="#routing-topology" id="id42">Topología para Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#graph-analytics" id="id43">Análisis de gráficas</a></p></li>
+<li><p><a class="reference internal" href="#analyze-a-graph" id="id44">Analizar un gráfico</a></p></li>
+<li><p><a class="reference internal" href="#analyze-one-way-streets" id="id45">Analizar las calles unidireccionales</a></p>
+<ul>
+<li><p><a class="reference internal" href="#example" id="id46">Ejemplo</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#how-to-contribute" id="id45">Cómo contribuir</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#performance-tips" id="id47">Consejos de Rendimiento</a></p>
+<ul>
+<li><p><a class="reference internal" href="#for-the-routing-functions" id="id48">Para las funciones de Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#for-the-topology-functions" id="id49">Para las funciones de topología:</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#how-to-contribute" id="id50">Cómo contribuir</a></p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+</nav>
 <section id="getting-started">
-<h2><a class="toc-backref" href="#id9">Comenzando a trabajar</a><a class="headerlink" href="#getting-started" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Comenzando a trabajar</a><a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
 <p>Esta es una guía simple para llevarte a través de los pasos básicos para trabajar con pgRouting. Esta guía cubre:</p>
-<div class="contents local topic" id="id1">
+<nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#create-a-routing-database" id="id46">Crear una Base de Datos de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#load-data" id="id47">Cargar Datos</a></p></li>
-<li><p><a class="reference internal" href="#build-a-routing-topology" id="id48">Construir una Topología de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#check-the-routing-topology" id="id49">Compruebe la Topología de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#compute-a-path" id="id50">Calcular una Ruta</a></p></li>
+<li><p><a class="reference internal" href="#create-a-routing-database" id="id51">Crear una Base de Datos de Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#load-data" id="id52">Cargar Datos</a></p></li>
+<li><p><a class="reference internal" href="#build-a-routing-topology" id="id53">Construir una Topología de Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#check-the-routing-topology" id="id54">Compruebe la Topología de Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#compute-a-path" id="id55">Calcular una Ruta</a></p></li>
 </ul>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+</nav>
 <section id="create-a-routing-database">
-<h3><a class="toc-backref" href="#id46">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id51" role="doc-backlink">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Permalink to this heading">¶</a></h3>
 <p>Lo primero que hay que hacer es crear una base de datos y cargar pgRouting a la base de datos. Típicamente se creará una base de datos para cada proyecto. Una vez que se tiene una base de datos donde trabajar, se pueden cargar los datos y construir la aplicación en la base de datos. Esto hace que sea sencillo de mover el proyecto en el futuro, como por ejemplo, a un servidor de producción.</p>
 <p>Para Postgresql 9.2 y versiones posteriores</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>createdb mydatabase
-psql mydatabase -c <span class="s2">&quot;create extension postgis&quot;</span>
-psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">mydatabase</span>
+<span class="n">psql</span> <span class="n">mydatabase</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension postgis&quot;</span>
+<span class="n">psql</span> <span class="n">mydatabase</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension pgrouting&quot;</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 <section id="load-data">
-<h3><a class="toc-backref" href="#id47">Cargar Datos</a><a class="headerlink" href="#load-data" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id52" role="doc-backlink">Cargar Datos</a><a class="headerlink" href="#load-data" title="Permalink to this heading">¶</a></h3>
 <p>Hay varias maneras de cargar los datos en pgRouting. La forma más directa es cargar un dataset de Open Street Maps (OSM) utilizando <strong>osm2pgrouting</strong>. Esta es una herramienta, integrada en el proyecto pgRouting, que carga datos OSM en postgresql con requisitos pgRouting, incluida la estructura de datos y la topología de enrutamiento.</p>
 <p>Si tiene otros requisitos, puede probar varias herramientas de OpenSource que pueden ayudarle, como:</p>
 <dl class="field-list simple">
-<dt class="field-odd">shp2pgsql</dt>
+<dt class="field-odd">shp2pgsql<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p>Este es un cargador de archivo shape a postgresql</p></li>
 </ul>
 </dd>
-<dt class="field-even">ogr2ogr</dt>
+<dt class="field-even">ogr2ogr<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p>Esta es una utilidad de conversión de datos vectoriales</p></li>
 </ul>
 </dd>
-<dt class="field-odd">osm2pgsql</dt>
+<dt class="field-odd">osm2pgsql<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p>Esta es una herramienta para cargar los datos de OSM a postgresql</p></li>
 </ul>
@@ -327,18 +342,15 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </dl>
 <p>Tenga en cuenta que estas herramientas no importarán los datos en una estructura compatible con pgRouting y es posible que deba adaptarlos.</p>
 <p>Estas herramientas y probablemente otras le permitirán leer datos vectoriales para poder cargar esos datos en la base de datos como una tabla de algún tipo. En este punto necesita saber un poco sobre su estructura de datos y contenido. Una manera fácil de navegar por su nueva tabla de datos es con pgAdmin o phpPgAdmin.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="build-a-routing-topology">
-<h3><a class="toc-backref" href="#id48">Construir una Topología de Ruteo</a><a class="headerlink" href="#build-a-routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id53" role="doc-backlink">Construir una Topología de Ruteo</a><a class="headerlink" href="#build-a-routing-topology" title="Permalink to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>este paso no es necesario si los datos se cargan con  <cite>osm2pgrouting</cite></p>
 </div>
 <p>A continuación, tenemos que construir una topología para nuestros datos de calle. Esto significa que para cualquier arista dada dentro de los datos de calle, los extremos de la arista se conectarán a un nodo único y a otras aristas que también están conectados a ese mismo nodo único. Una vez que todas las aristas están conectados a los nodos tenemos un grafo que se puede utilizar para el ruteo con pgRouting. Proporcionamos una herramienta que le ayudará con esto:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>donde debe reemplazar “myroads” con el nombre de su tabla almacenando los bordes.</p>
@@ -347,14 +359,14 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </ul>
 </section>
 <section id="check-the-routing-topology">
-<h3><a class="toc-backref" href="#id49">Compruebe la Topología de Ruteo</a><a class="headerlink" href="#check-the-routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id54" role="doc-backlink">Compruebe la Topología de Ruteo</a><a class="headerlink" href="#check-the-routing-topology" title="Permalink to this heading">¶</a></h3>
 <p>Hay muchas fuentes posibles de errores en un grafo. Es posible que los datos con los que comenzó no se hayan diseñado teniendo en cuenta el ruteo. Un grafo tiene algunos requisitos muy específicos. Una es que es <em>NODED</em>, esto significa que, a excepción de algunos casos de usos muy específicos, cada segmento de carretera comienza y termina en un nodo y, en general, no cruza otro segmento de carretera al que debería estar conectado.</p>
 <p>Puede haber otros errores como en una calle de un solo sentido tener el sentido equivocado. No contamos con herramientas para buscar todos los errores posibles, pero tenemos algunas herramientas básicas que pueden ayudar.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">);</span><span class="w"></span>
-<span class="k">select</span><span class="w"> </span><span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span><span class="w">  </span><span class="n">s_in_rules</span><span class="p">,</span><span class="w"> </span><span class="n">s_out_rules</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                     </span><span class="n">t_in_rules</span><span class="p">,</span><span class="w"> </span><span class="n">t_out_rules</span><span class="w"></span>
-<span class="w">                                     </span><span class="n">direction</span><span class="p">)</span><span class="w"></span>
-<span class="k">select</span><span class="w"> </span><span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">);</span>
+<span class="n">select</span> <span class="n">pgr_analyzeoneway</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span>  <span class="n">s_in_rules</span><span class="p">,</span> <span class="n">s_out_rules</span><span class="p">,</span>
+                                     <span class="n">t_in_rules</span><span class="p">,</span> <span class="n">t_out_rules</span>
+                                     <span class="n">direction</span><span class="p">)</span>
+<span class="n">select</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;myroads&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>donde debe reemplazar “myroads” por el nombre de la tabla que almacena los bordes (“ways”, en caso de que haya utilizado osm2pgrouting para importar los datos).</p>
@@ -365,13 +377,13 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </ul>
 </section>
 <section id="compute-a-path">
-<h3><a class="toc-backref" href="#id50">Calcular una Ruta</a><a class="headerlink" href="#compute-a-path" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id55" role="doc-backlink">Calcular una Ruta</a><a class="headerlink" href="#compute-a-path" title="Permalink to this heading">¶</a></h3>
 <p>Una vez que tenga todo el trabajo de preparación realizado anteriormente, calcular una ruta es bastante fácil. Tenemos muchos algoritmos diferentes que pueden funcionar con su red de carreteras preparada. La forma general de una consulta de ruta mediante el algoritmo Dijkstra es:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(`SELECT * FROM myroads&#39;, &lt;start&gt;, &lt;end&gt;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM myroads&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">start</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">end</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Este algoritmo solo requiere <em>id</em>, <em>source</em>, <em>target</em> y <em>cost</em> como los atributos mínimos, que de forma predeterminada se considerarán columnas en la tabla de caminos. Si los nombres de columna de la tabla de caminos no coinciden exactamente con los nombres de estos atributos, puede usar alias. Por ejemplo, si importara datos de OSM mediante <strong>osm2pgrouting</strong>, el nombre de la columna id sería <em>gid</em> y la tabla de caminos sería <em>ways</em>, por lo que consultaría una ruta del id 1 del nodo al id 2 del nodo escribiendo:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>select pgr_dijkstra(&#39;SELECT gid AS id, source, target, cost FROM ways&#39;, 1, 2)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT gid AS id, source, target, cost FROM ways&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Como puede ver, esto es bastante sencillo y también permite una gran flexibilidad, tanto en términos de estructura de base de datos como en la definición de funciones de coste. Puede probar la consulta anterior utilizando <em>length_m AS cost</em> para calcular la ruta de acceso más corta en metros o <em>cost_s / 60 AS cost</em> para calcular la ruta de acceso más rápida en minutos.</p>
@@ -382,7 +394,7 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </section>
 </section>
 <section id="group-of-functions">
-<h2><a class="toc-backref" href="#id15">Grupo de Funciones</a><a class="headerlink" href="#group-of-functions" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Grupo de Funciones</a><a class="headerlink" href="#group-of-functions" title="Permalink to this heading">¶</a></h2>
 <p>Una función puede tener diferentes sobrecargas. A través de esta documentación, para indicar qué sobrecarga usamos los siguientes términos:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-one">Uno a Uno</a></p></li>
@@ -393,7 +405,7 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </ul>
 <p>Dependiendo de la sobrecarga son los parámetros utilizados, manteniendo la coherencia en todas las funciones.</p>
 <section id="one-to-one">
-<h3><a class="toc-backref" href="#id16">Uno a Uno</a><a class="headerlink" href="#one-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Uno a Uno</a><a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde el vértice inicial <strong>one</strong></p></li>
@@ -401,7 +413,7 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </ul>
 </section>
 <section id="one-to-many">
-<h3><a class="toc-backref" href="#id17">Uno a Muchos</a><a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Uno a Muchos</a><a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde el vértice inicial <strong>one</strong></p></li>
@@ -409,7 +421,7 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </ul>
 </section>
 <section id="many-to-one">
-<h3><a class="toc-backref" href="#id18">Muchos a Uno</a><a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Muchos a Uno</a><a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde  vértices iniciales <strong>many</strong></p></li>
@@ -417,18 +429,15 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 </ul>
 </section>
 <section id="many-to-many">
-<h3><a class="toc-backref" href="#id19">Muchos a Muchos</a><a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Muchos a Muchos</a><a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde  vértices iniciales <strong>many</strong></p></li>
 <li><p>a los vértices finales <strong>many</strong></p></li>
 </ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="combinations">
-<h3><a class="toc-backref" href="#id20">Combinaciones</a><a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Combinaciones</a><a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>A partir de <strong>muchos</strong> diferentes vértices de inicio</p></li>
@@ -436,46 +445,42 @@ psql mydatabase -c <span class="s2">&quot;create extension pgrouting&quot;</span
 <li><p>Cada tupla especifica un par de vértices iniciales y un vértice final</p></li>
 <li><p>Los usuarios pueden definir las combinaciones como deseen.</p></li>
 </ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 </section>
 <section id="inner-queries">
-<h2><a class="toc-backref" href="#id21">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="contents local topic" id="id2">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id2">
 <ul class="simple">
-<li><p><a class="reference internal" href="#edges-sql" id="id51">SQL de aristas</a></p>
+<li><p><a class="reference internal" href="#edges-sql" id="id56">SQL de aristas</a></p>
 <ul>
-<li><p><a class="reference internal" href="#general" id="id52">General</a></p></li>
-<li><p><a class="reference internal" href="#general-without-id" id="id53">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
-<li><p><a class="reference internal" href="#general-with-x-y" id="id54">General with (X,Y)</a></p></li>
-<li><p><a class="reference internal" href="#flow" id="id55">Flow</a></p></li>
+<li><p><a class="reference internal" href="#general" id="id57">General</a></p></li>
+<li><p><a class="reference internal" href="#general-without-id" id="id58">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
+<li><p><a class="reference internal" href="#general-with-x-y" id="id59">General with (X,Y)</a></p></li>
+<li><p><a class="reference internal" href="#flow" id="id60">Flow</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#combinations-sql" id="id56">Combinations SQL</a></p></li>
-<li><p><a class="reference internal" href="#points-sql" id="id57">Points SQL</a></p></li>
+<li><p><a class="reference internal" href="#combinations-sql" id="id61">Combinations SQL</a></p></li>
+<li><p><a class="reference internal" href="#restrictions-sql" id="id62">Restrictions SQL</a></p></li>
+<li><p><a class="reference internal" href="#points-sql" id="id63">Points SQL</a></p></li>
 </ul>
-</div>
-<p>There are several kinds of valid inner queries and also the columns returned are depending of the function.
+</nav>
+<p>There are several kinds of valid inner queries and also the columns returned are
+depending of the function.
 Which kind of inner query will depend on the function(s) requirements.
 To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMERICAL</strong> is used.</p>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id51">SQL de aristas</a><a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id56" role="doc-backlink">SQL de aristas</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <section id="general">
-<h4><a class="toc-backref" href="#id52">General</a><a class="headerlink" href="#general" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id57" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
@@ -486,7 +491,7 @@ To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMER
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
 <li><p>Some uncategorized functions</p></li>
 </ul>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -535,21 +540,21 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="general-without-id">
-<h4><a class="toc-backref" href="#id53">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id58" role="doc-backlink">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="allpairs-family.html"><span class="doc">Todos los Pares - Familia de Funciones</span></a></p></li>
 </ul>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -593,22 +598,22 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="general-with-x-y">
-<h4><a class="toc-backref" href="#id54">General with (X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id59" role="doc-backlink">General with (X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Familia de Funciones</span></a></p></li>
+<li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 </ul>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 18%" />
@@ -682,16 +687,16 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="flow">
-<h4><a class="toc-backref" href="#id55">Flow</a><a class="headerlink" href="#flow" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id60" role="doc-backlink">Flow</a><a class="headerlink" href="#flow" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
@@ -699,7 +704,7 @@ it’s not part of the graph.</p></li>
 <li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a></p></li>
 </ul>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -748,10 +753,10 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -760,7 +765,7 @@ it’s not part of the graph.</p></li>
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a></p></li>
 </ul>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -824,19 +829,19 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="combinations-sql">
-<h3><a class="toc-backref" href="#id56">Combinations SQL</a><a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id61" role="doc-backlink">Combinations SQL</a><a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Used on combination signatures</p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -861,21 +866,56 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+</section>
+<section id="restrictions-sql">
+<h3><a class="toc-backref" href="#id62" role="doc-backlink">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Sequence of edge identifiers that form a path that is not allowed to be
+taken.
+- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
+- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>Cost of taking the forbidden path.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
 </section>
 <section id="points-sql">
-<h3><a class="toc-backref" href="#id57">Points SQL</a><a class="headerlink" href="#points-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id63" role="doc-backlink">Points SQL</a><a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Points SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p></li>
 </ul>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 18%" />
@@ -928,20 +968,20 @@ automatically.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="parameters">
-<h2><a class="toc-backref" href="#id29">Parámetros</a><a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Parámetros</a><a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <p>The main parameter of the majority of the pgRouting functions is a query that
 selects the edges of the graph.</p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -959,11 +999,12 @@ selects the edges of the graph.</p>
 parameters, some of them are compulsory and some are optional.</p>
 <p>The compulsory parameters are nameless and must be given in the required order.
 The optional parameters are named parameters and will have a default value.</p>
-<p class="rubric">Parameters for the Via functions</p>
+<section id="parameters-for-the-via-functions">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Parameters for the Via functions</a><a class="headerlink" href="#parameters-for-the-via-functions" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
 </ul>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17%" />
 <col style="width: 25%" />
@@ -1022,26 +1063,84 @@ with same identifier is used when no other path is found.</p></li>
 </tbody>
 </table>
 </section>
-<section id="return-columns">
-<h2><a class="toc-backref" href="#id30">Return columns</a><a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="contents local topic" id="id3">
+<section id="for-the-trsp-functions">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">For the TRSP functions</a><a class="headerlink" href="#for-the-trsp-functions" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id58">Return columns for a path</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-multiple-paths" id="id59">Return columns for multiple paths</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id60">Return columns for cost functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id61">Return columns for flow functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id62">Return columns for spanning tree functions</a></p></li>
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
 </ul>
-</div>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 27%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>SQL query as described.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p>SQL query as described.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>Identifier of the departure vertex.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Array of identifiers of destination vertices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>Identifier of the departure vertex.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Array of identifiers of destination vertices.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="return-columns">
+<h2><a class="toc-backref" href="#id33" role="doc-backlink">Return columns</a><a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id3">
+<ul class="simple">
+<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id64">Return columns for a path</a></p></li>
+<li><p><a class="reference internal" href="#multiple-paths" id="id65">Multiple paths</a></p>
+<ul>
+<li><p><a class="reference internal" href="#selective-for-multiple-paths" id="id66">Selective for multiple paths.</a></p></li>
+<li><p><a class="reference internal" href="#non-selective-for-multiple-paths" id="id67">Non selective for multiple paths</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id68">Return columns for cost functions</a></p></li>
+<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id69">Return columns for flow functions</a></p></li>
+<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id70">Return columns for spanning tree functions</a></p></li>
+</ul>
+</nav>
 <p>Hay varios tipos de columnas devueltas que dependen de la función.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="return-columns-for-a-path">
-<h3><a class="toc-backref" href="#id58">Return columns for a path</a><a class="headerlink" href="#return-columns-for-a-path" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id64" role="doc-backlink">Return columns for a path</a><a class="headerlink" href="#return-columns-for-a-path" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Used on functions that return one path solution</p>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -1105,7 +1204,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </ul>
 <p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
 <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -1190,8 +1289,8 @@ path sequence.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a></p></li>
 </ul>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -1239,16 +1338,15 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
-<section id="return-columns-for-multiple-paths">
-<h3><a class="toc-backref" href="#id59">Return columns for multiple paths</a><a class="headerlink" href="#return-columns-for-multiple-paths" title="Enlazar permanentemente con este título">¶</a></h3>
-<p class="rubric">Used on functions that return many paths solutions</p>
+<section id="multiple-paths">
+<h3><a class="toc-backref" href="#id65" role="doc-backlink">Multiple paths</a><a class="headerlink" href="#multiple-paths" title="Permalink to this heading">¶</a></h3>
+<section id="selective-for-multiple-paths">
+<h4><a class="toc-backref" href="#id66" role="doc-backlink">Selective for multiple paths.</a><a class="headerlink" href="#selective-for-multiple-paths" title="Permalink to this heading">¶</a></h4>
+<p>The columns depend on the function call.</p>
 <p>Set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
 <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -1269,7 +1367,8 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Path identifier.</p>
 <ul class="simple">
-<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
+<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
@@ -1283,6 +1382,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 <ul class="simple">
 <li><p><a class="reference internal" href="#many-to-one">Muchos a Uno</a></p></li>
 <li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
+<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
 </td>
 </tr>
@@ -1292,6 +1392,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-many">Uno a Muchos</a></p></li>
 <li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
+<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
 </td>
 </tr>
@@ -1314,20 +1415,84 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+</section>
+<section id="non-selective-for-multiple-paths">
+<h4><a class="toc-backref" href="#id67" role="doc-backlink">Non selective for multiple paths</a><a class="headerlink" href="#non-selective-for-multiple-paths" title="Permalink to this heading">¶</a></h4>
+<p>Regardless of the call, al the columns are returned.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
+</ul>
+<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
+<span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Path identifier.</p>
+<ul class="simple">
+<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
+<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice inicial.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice final.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
+path sequence. <strong>-1</strong> for the last node of the path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="return-columns-for-cost-functions">
-<h3><a class="toc-backref" href="#id60">Return columns for cost functions</a><a class="headerlink" href="#return-columns-for-cost-functions" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id68" role="doc-backlink">Return columns for cost functions</a><a class="headerlink" href="#return-columns-for-cost-functions" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Used in the following</p>
 <ul class="simple">
-<li><p>Cost functions</p></li>
+<li><p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="allpairs-family.html"><span class="doc">Todos los Pares - Familia de Funciones</span></a></p></li>
 </ul>
 <p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -1354,64 +1519,19 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Used in the following</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a></p></li>
-</ul>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Columna</p></th>
-<th class="head"><p>Tipo</p></th>
-<th class="head"><p>Descripción</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex or point.</p>
-<ul class="simple">
-<li><p>When positive: is a vertex’s identifier.</p></li>
-<li><p>When negative: is a point’s identifier.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex or point.</p>
-<ul class="simple">
-<li><p>When positive: is a vertex’s identifier.</p></li>
-<li><p>When negative: is a point’s identifier.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="line-block">
-<div class="line"><br /></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>When start_vid or end_vid columns have negative values, the identifier is for
+a Point.</p>
 </div>
 </section>
 <section id="return-columns-for-flow-functions">
-<h3><a class="toc-backref" href="#id61">Return columns for flow functions</a><a class="headerlink" href="#return-columns-for-flow-functions" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id69" role="doc-backlink">Return columns for flow functions</a><a class="headerlink" href="#return-columns-for-flow-functions" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Edges SQL for the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p></li>
 </ul>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 17%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -1425,7 +1545,8 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>edge</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador de la arista en la consulta original(edges_sql).</p></td>
+<td><p>Identifier of the edge in the original query
+(edges_sql).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>start_vid</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -1450,11 +1571,6 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p></li>
 </ul>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 16%" />
-<col style="width: 66%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -1468,7 +1584,8 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>edge</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador de la arista en la consulta original(edges_sql).</p></td>
+<td><p>Identifier of the edge in the original query
+(edges_sql).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>origen</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -1498,14 +1615,14 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </table>
 </section>
 <section id="return-columns-for-spanning-tree-functions">
-<h3><a class="toc-backref" href="#id62">Return columns for spanning tree functions</a><a class="headerlink" href="#return-columns-for-spanning-tree-functions" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id70" role="doc-backlink">Return columns for spanning tree functions</a><a class="headerlink" href="#return-columns-for-spanning-tree-functions" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Edges SQL for the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_kruskal.html"><span class="doc">pgr_kruskal</span></a></p></li>
 </ul>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">cost)</span></code></p>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -1526,132 +1643,132 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </section>
 </section>
 <section id="advanced-topics">
-<h2><a class="toc-backref" href="#id36">Tópicos avanzados</a><a class="headerlink" href="#advanced-topics" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="contents local topic" id="id4">
+<h2><a class="toc-backref" href="#id41" role="doc-backlink">Tópicos avanzados</a><a class="headerlink" href="#advanced-topics" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id4">
 <ul class="simple">
-<li><p><a class="reference internal" href="#routing-topology" id="id63">Topología para Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#graph-analytics" id="id64">Análisis de gráficas</a></p></li>
-<li><p><a class="reference internal" href="#analyze-a-graph" id="id65">Analizar un gráfico</a></p></li>
-<li><p><a class="reference internal" href="#analyze-one-way-streets" id="id66">Analizar las calles unidireccionales</a></p>
+<li><p><a class="reference internal" href="#routing-topology" id="id71">Topología para Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#graph-analytics" id="id72">Análisis de gráficas</a></p></li>
+<li><p><a class="reference internal" href="#analyze-a-graph" id="id73">Analizar un gráfico</a></p></li>
+<li><p><a class="reference internal" href="#analyze-one-way-streets" id="id74">Analizar las calles unidireccionales</a></p>
 <ul>
-<li><p><a class="reference internal" href="#example" id="id67">Ejemplo</a></p></li>
+<li><p><a class="reference internal" href="#example" id="id75">Ejemplo</a></p></li>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="routing-topology">
-<span id="topology"></span><h3><a class="toc-backref" href="#id63">Topología para Ruteo</a><a class="headerlink" href="#routing-topology" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="topology"></span><h3><a class="toc-backref" href="#id71" role="doc-backlink">Topología para Ruteo</a><a class="headerlink" href="#routing-topology" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Resumen</p>
 <p>Normalmente cuando se cargan archivos GIS en la base de datos para su uso con pgRouting no tienen información de la topología asociada a ellos. Para crear una topología útil, los datos debe ser «noded». Esto significa que donde dos o más caminos forman una intersección allí debe existir y todos los segmentos de carretera necesitan estar partidos en la intersección, eso suponiendo que puede navegar a cualquier otro segmento mediante la intersección de cualquiera de estos segmentos.</p>
 <p>Puedes utilizar <a class="reference internal" href="#analytics"><span class="std std-ref">graph analysis functions</span></a> para ayudarte a visualizar dónde podría haber problemas de topología en tus datos. Si necesitas crear nodos a partir de tus datos, también tenemos una función <a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork ()</span></a> que deberían funcionarte. Esta función divide TODOS los segmentos cruzados y los une. Hay algunos casos en los que esto podría NO ser lo correcto.</p>
 <p>Por ejemplo, cuando se tiene un cruce de puente o de un túnel, no quieres estos contengan un nodo, pero pgr_nodeNetwork no sabe que ese es el caso y va a crear un nodo,  entonces el enrutador interpretará el puente o  el paso a desnivel como si fuera una intersección plana en 2D. Para lidiar con este problema, se debe utilizar niveles z ya se para estos tipos de intersecciones o para otros casos en donde crear el nodo de la intersección no sea lo correcto.</p>
 <p>Para los casos donde la topología debe construirse,  las siguientes funciones pueden ser de utilidad. Una forma de preparar los datos para pgRouting es agregar los siguientes campos a la tabla y luego poblarlas según corresponda. Este ejemplo tiene como supuestos: que la tabla original ya tiene columnas como  <code class="docutils literal notranslate"><span class="pre">one_way</span></code>, <code class="docutils literal notranslate"><span class="pre">fcc</span></code> y posiblemente otras y que contienen valores de datos específicos. Esto es sólo para darle una idea de lo que se puede hacer con los datos.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">edge_table</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">cost_len</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">cost_time</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">rcost_len</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">rcost_time</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">y2</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">to_cost</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">rule</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">isolated</span><span class="w"> </span><span class="nb">integer</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edge_table</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">source</span> <span class="n">integer</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">target</span> <span class="n">integer</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">cost_len</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">cost_time</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">rcost_len</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">rcost_time</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">x1</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">y1</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">x2</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">y2</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">to_cost</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">rule</span> <span class="n">text</span><span class="p">,</span>
+    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">isolated</span> <span class="n">integer</span><span class="p">;</span>
 
-<span class="k">SELECT</span><span class="w"> </span><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">000001</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>La función <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> crea la tabla <code class="docutils literal notranslate"><span class="pre">vertices_tmp</span></code> y llena las columnas de <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code>. El siguiente ejemplo llenó las columnas restantes. Aquí, la columna <code class="docutils literal notranslate"><span class="pre">fcc</span></code> contiene código de clase de entidad y las declaraciones <code class="docutils literal notranslate"><span class="pre">CASE</span></code> lo convierten a una velocidad promedio.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">edge_table</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_x</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span><span class="w"></span>
-<span class="w">                      </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_y</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span><span class="w"></span>
-<span class="w">                      </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_x</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span><span class="w"></span>
-<span class="w">                      </span><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_y</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span><span class="w"></span>
-<span class="w">  </span><span class="n">cost_len</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="n">rcost_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span><span class="w"></span>
-<span class="w">  </span><span class="n">len_km</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">len_miles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">              </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">6213712</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">speed_mph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">65</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">65</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">55</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">55</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">45</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">45</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">35</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">35</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">15</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
-<span class="w">                   </span><span class="k">ELSE</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">END</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="n">speed_kmh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">104</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">104</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">88</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">88</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">72</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">72</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">56</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">56</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">40</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">50</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">40</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">40</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">40</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
-<span class="w">                   </span><span class="k">WHEN</span><span class="w"> </span><span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">15</span><span class="w"></span>
-<span class="w">                   </span><span class="k">ELSE</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">END</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table</span> <span class="n">SET</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+                      <span class="n">y1</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+                      <span class="n">x2</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+                      <span class="n">y2</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
+  <span class="n">cost_len</span>  <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span>
+  <span class="n">rcost_len</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span>
+  <span class="n">len_km</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span>
+  <span class="n">len_miles</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span>
+              <span class="o">/</span> <span class="mf">1000.0</span> <span class="o">*</span> <span class="mf">0.6213712</span><span class="p">,</span>
+  <span class="n">speed_mph</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span> <span class="n">THEN</span> <span class="mi">65</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span> <span class="n">THEN</span> <span class="mi">65</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span> <span class="n">THEN</span> <span class="mi">55</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span> <span class="n">THEN</span> <span class="mi">55</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span> <span class="n">THEN</span> <span class="mi">45</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span> <span class="n">THEN</span> <span class="mi">45</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span> <span class="n">THEN</span> <span class="mi">35</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span> <span class="n">THEN</span> <span class="mi">35</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span> <span class="n">THEN</span> <span class="mi">15</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span> <span class="n">THEN</span> <span class="mi">10</span>
+                   <span class="n">ELSE</span> <span class="n">null</span> <span class="n">END</span><span class="p">,</span>
+  <span class="n">speed_kmh</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span> <span class="n">THEN</span> <span class="mi">104</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span> <span class="n">THEN</span> <span class="mi">104</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span> <span class="n">THEN</span> <span class="mi">88</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span> <span class="n">THEN</span> <span class="mi">88</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span> <span class="n">THEN</span> <span class="mi">72</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span> <span class="n">THEN</span> <span class="mi">72</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span> <span class="n">THEN</span> <span class="mi">56</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span> <span class="n">THEN</span> <span class="mi">56</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span> <span class="n">THEN</span> <span class="mi">50</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
+                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span> <span class="n">THEN</span> <span class="mi">15</span>
+                   <span class="n">ELSE</span> <span class="n">null</span> <span class="n">END</span><span class="p">;</span>
 
-<span class="c1">-- UPDATE the cost information based on oneway streets</span>
+<span class="o">--</span> <span class="n">UPDATE</span> <span class="n">the</span> <span class="n">cost</span> <span class="n">information</span> <span class="n">based</span> <span class="n">on</span> <span class="n">oneway</span> <span class="n">streets</span>
 
-<span class="k">UPDATE</span><span class="w"> </span><span class="n">edge_table</span><span class="w"> </span><span class="k">SET</span><span class="w"></span>
-<span class="w">    </span><span class="n">cost_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CASE</span><span class="w"></span>
-<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;TF&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">10000</span><span class="p">.</span><span class="mi">0</span><span class="w"></span>
-<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="n">cost_len</span><span class="o">/</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="nb">numeric</span><span class="o">*</span><span class="mi">3600</span><span class="p">.</span><span class="mi">0</span><span class="w"></span>
-<span class="w">        </span><span class="k">END</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">rcost_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">CASE</span><span class="w"></span>
-<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;FT&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="mi">10000</span><span class="p">.</span><span class="mi">0</span><span class="w"></span>
-<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="n">cost_len</span><span class="o">/</span><span class="mi">1000</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="nb">numeric</span><span class="o">*</span><span class="mi">3600</span><span class="p">.</span><span class="mi">0</span><span class="w"></span>
-<span class="w">        </span><span class="k">END</span><span class="p">;</span><span class="w"></span>
+<span class="n">UPDATE</span> <span class="n">edge_table</span> <span class="n">SET</span>
+    <span class="n">cost_time</span> <span class="o">=</span> <span class="n">CASE</span>
+        <span class="n">WHEN</span> <span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;TF&#39;</span> <span class="n">THEN</span> <span class="mf">10000.0</span>
+        <span class="n">ELSE</span> <span class="n">cost_len</span><span class="o">/</span><span class="mf">1000.0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="n">numeric</span><span class="o">*</span><span class="mf">3600.0</span>
+        <span class="n">END</span><span class="p">,</span>
+    <span class="n">rcost_time</span> <span class="o">=</span> <span class="n">CASE</span>
+        <span class="n">WHEN</span> <span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;FT&#39;</span> <span class="n">THEN</span> <span class="mf">10000.0</span>
+        <span class="n">ELSE</span> <span class="n">cost_len</span><span class="o">/</span><span class="mf">1000.0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="n">numeric</span><span class="o">*</span><span class="mf">3600.0</span>
+        <span class="n">END</span><span class="p">;</span>
 
-<span class="c1">-- clean up the database because we have updated a lot of records</span>
+<span class="o">--</span> <span class="n">clean</span> <span class="n">up</span> <span class="n">the</span> <span class="n">database</span> <span class="n">because</span> <span class="n">we</span> <span class="n">have</span> <span class="n">updated</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">records</span>
 
-<span class="k">VACUUM</span><span class="w"> </span><span class="k">ANALYZE</span><span class="w"> </span><span class="k">VERBOSE</span><span class="w"> </span><span class="n">edge_table</span><span class="p">;</span><span class="w"></span>
+<span class="n">VACUUM</span> <span class="n">ANALYZE</span> <span class="n">VERBOSE</span> <span class="n">edge_table</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Ahora su base de datos debe estar lista para usarse en cualquiera (mayoría?) de los algoritmos de pgRouting.</p>
 </section>
 <section id="graph-analytics">
-<span id="analytics"></span><h3><a class="toc-backref" href="#id64">Análisis de gráficas</a><a class="headerlink" href="#graph-analytics" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="analytics"></span><h3><a class="toc-backref" href="#id72" role="doc-backlink">Análisis de gráficas</a><a class="headerlink" href="#graph-analytics" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Resumen</p>
 <p>Es común encontrar problemas con los gráficos que no se han construido completamente ligados con nodos o con gráficos con niveles z en intersecciónes que se han introducido incorrectamente. Otro problema es que las calles han sido introducidas en la dirección equivocada. No podemos detectar errores con respecto a la verdad respecto a la «tierra», pero podemos buscar inconsistencias y algunas anomalías en un gráfico y les reportarlas para inspecciones adicionales.</p>
 <p>Nosotros no tenemos herramientas de visualización para estos problemas, pero se ha utilizado MapServer para reproducir la gráfica y poner en relieve las áreas con problemas potenciales. Alguien familiarizado con graphviz podría contribuir con herramientas para generar imágenes para este propósito.</p>
 </section>
 <section id="analyze-a-graph">
-<h3><a class="toc-backref" href="#id65">Analizar un gráfico</a><a class="headerlink" href="#analyze-a-graph" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id73" role="doc-backlink">Analizar un gráfico</a><a class="headerlink" href="#analyze-a-graph" title="Permalink to this heading">¶</a></h3>
 <p>Con <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> el grafo puede revisarse en busca de errores. Por ejemplo, para la tabla «mytab» que incluye a «mytab_vertices_pgr» como la tabla de vértices:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">000002</span><span class="p">);</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">  </span><span class="n">Performing</span><span class="w"> </span><span class="n">checks</span><span class="p">,</span><span class="w"> </span><span class="n">pelase</span><span class="w"> </span><span class="n">wait</span><span class="p">...</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">  </span><span class="n">Analyzing</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">dead</span><span class="w"> </span><span class="n">ends</span><span class="p">.</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">wait</span><span class="p">...</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">  </span><span class="n">Analyzing</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">gaps</span><span class="p">.</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">wait</span><span class="p">...</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">  </span><span class="n">Analyzing</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">isolated</span><span class="w"> </span><span class="n">edges</span><span class="p">.</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">wait</span><span class="p">...</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">  </span><span class="n">Analyzing</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ring</span><span class="w"> </span><span class="n">geometries</span><span class="p">.</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">wait</span><span class="p">...</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">  </span><span class="n">Analyzing</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">intersections</span><span class="p">.</span><span class="w"> </span><span class="n">Please</span><span class="w"> </span><span class="n">wait</span><span class="p">...</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">              </span><span class="n">ANALYSIS</span><span class="w"> </span><span class="n">RESULTS</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">SELECTED</span><span class="w"> </span><span class="n">EDGES</span><span class="p">:</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">                    </span><span class="n">Isolated</span><span class="w"> </span><span class="n">segments</span><span class="p">:</span><span class="w"> </span><span class="mi">158</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">                            </span><span class="n">Dead</span><span class="w"> </span><span class="n">ends</span><span class="p">:</span><span class="w"> </span><span class="mi">20028</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">  </span><span class="n">Potential</span><span class="w"> </span><span class="n">gaps</span><span class="w"> </span><span class="k">found</span><span class="w"> </span><span class="n">near</span><span class="w"> </span><span class="n">dead</span><span class="w"> </span><span class="n">ends</span><span class="p">:</span><span class="w"> </span><span class="mi">527</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">               </span><span class="n">Intersections</span><span class="w"> </span><span class="n">detected</span><span class="p">:</span><span class="w"> </span><span class="mi">2560</span><span class="w"></span>
-<span class="n">NOTICE</span><span class="p">:</span><span class="w">                      </span><span class="n">Ring</span><span class="w"> </span><span class="n">geometries</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="n">pgr_analyzeGraph</span><span class="w"></span>
-<span class="c1">----------</span>
-<span class="w">   </span><span class="n">OK</span><span class="w"></span>
-<span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mf">0.000002</span><span class="p">);</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
+<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
+<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">158</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">20028</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">527</span>
+<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">2560</span>
+<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">pgr_analyzeGraph</span>
+<span class="o">----------</span>
+   <span class="n">OK</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>En la tabla de vértices «mytab_vertices_pgr»:</p>
@@ -1659,34 +1776,34 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 <li><p>Los callejones están identificados por <code class="docutils literal notranslate"><span class="pre">cnt=1</span></code></p></li>
 <li><p>Se identifican problemas potenciales brecha con``chk=1``.</p></li>
 </ul>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">deadends</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytab_vertices_pgr</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="n">deadends</span><span class="w"></span>
-<span class="c1">----------</span>
-<span class="w">    </span><span class="mi">20028</span><span class="w"></span>
-<span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="n">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="n">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">deadends</span>
+<span class="o">----------</span>
+    <span class="mi">20028</span>
+ <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
-<span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">gaps</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytab_vertices_pgr</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">chk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w"> </span><span class="n">gaps</span><span class="w"></span>
-<span class="w"> </span><span class="c1">-----</span>
-<span class="w">   </span><span class="mi">527</span><span class="w"></span>
-<span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="p">)</span><span class="w"></span>
+<span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">gaps</span>  <span class="n">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="n">WHERE</span> <span class="n">chk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="n">gaps</span>
+ <span class="o">-----</span>
+   <span class="mi">527</span>
+ <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Si se tienen segmentos aislados de caminos, por ejemplo, un segmento en el cual los dos extremos son callejones sin salida, se pueden encontrar con la siguiente consulta:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytab</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">mytab_vertices_pgr</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">mytab_vertices_pgr</span><span class="w"> </span><span class="k">c</span><span class="w"></span>
-<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
+    <span class="n">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">c</span>
+    <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">source</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span> <span class="n">AND</span> <span class="n">a</span><span class="o">.</span><span class="n">target</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Si quieren visualizar en una imagen gráfica, entonces usted puede utilizar algo como MapServer para representar los bordes y los vértices y el estilizar en base a <code class="docutils literal notranslate"><span class="pre">cnt</span></code> o si están aislados, etc. También se puede hacer esto con una herramienta como graphviz o geoserver u otras herramientas similares.</p>
 </section>
 <section id="analyze-one-way-streets">
-<h3><a class="toc-backref" href="#id66">Analizar las calles unidireccionales</a><a class="headerlink" href="#analyze-one-way-streets" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id74" role="doc-backlink">Analizar las calles unidireccionales</a><a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> analiza las calles unidireccionales de un grafo e identifica los segmentos volteados. Básicamente, si cuenta las aristas que entran en un nodo y las aristas bordes que salen de un nodo, el número tiene que ser mayor que uno.</p>
 <p>Esta consulta agrega dos columnas a la tabla vertices_tmp <code class="docutils literal notranslate"><span class="pre">ein</span> <span class="pre">int</span></code>  y <code class="docutils literal notranslate"><span class="pre">eout</span> <span class="pre">int</span></code> (ein = borde de entrada, eout=borde de salida) y las rellena con los conteos  correspondientes. Después de su ejecución, en un grafo se pueden identificar los nodos con  problemas potenciales utilizando la siguiente consulta.</p>
 <p>Las reglas se definen como un conjunto de cadenas de texto que si coinciden con el valor de <code class="docutils literal notranslate"><span class="pre">col</span></code> se considera como válido para el origen o destino dentro o fuera de la condición.</p>
 <section id="example">
-<h4><a class="toc-backref" href="#id67">Ejemplo</a><a class="headerlink" href="#example" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4><a class="toc-backref" href="#id75" role="doc-backlink">Ejemplo</a><a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
 <p>Supongamos que tenemos una tabla «st» de bordes y una columna «one_way» que podría tener valores como:</p>
 <ul class="simple">
 <li><p>“FT” - dirección unidireccional de la fuente para el nodo de destino.</p></li>
@@ -1696,20 +1813,20 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 <li><p>&lt;NULL&gt; - Campo NULL, usar bandera de two_way_if_null, es decir, doble sentido cuando nulo.</p></li>
 </ul>
 <p>Entonces se puede  formar la siguiente consulta para analizar las calles unidireccionales para errores.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;TF&#39;</span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;FT&#39;</span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;FT&#39;</span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="nb">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;TF&#39;</span><span class="p">],</span><span class="w"></span>
-<span class="w">            </span><span class="p">);</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span>
+            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
+            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
+            <span class="p">);</span>
 
-<span class="c1">-- now we can see the problem nodes</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytab_vertices_pgr</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ein</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="o">--</span> <span class="n">now</span> <span class="n">we</span> <span class="n">can</span> <span class="n">see</span> <span class="n">the</span> <span class="n">problem</span> <span class="n">nodes</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="n">WHERE</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="n">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 
-<span class="c1">-- and the problem edges connected to those nodes</span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">gid</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytab</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">mytab_vertices_pgr</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">source</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">ein</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
-<span class="k">UNION</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">gid</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytab</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">mytab_vertices_pgr</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">target</span><span class="o">=</span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">ein</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="o">--</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">problem</span> <span class="n">edges</span> <span class="n">connected</span> <span class="n">to</span> <span class="n">those</span> <span class="n">nodes</span>
+<span class="n">SELECT</span> <span class="n">gid</span> <span class="n">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span> <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">source</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="n">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="n">gid</span> <span class="n">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span> <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">target</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="n">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Normalmente estos problemas son generados por una rotura en la red, la dirección un camino equivocado, quizás un error relacionado con niveles z o una red que no esté debidamente indicada con nodos.</p>
@@ -1718,47 +1835,47 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </section>
 </section>
 <section id="performance-tips">
-<span id="performance"></span><h2><a class="toc-backref" href="#id42">Consejos de Rendimiento</a><a class="headerlink" href="#performance-tips" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="contents local topic" id="id5">
+<span id="performance"></span><h2><a class="toc-backref" href="#id47" role="doc-backlink">Consejos de Rendimiento</a><a class="headerlink" href="#performance-tips" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id5">
 <ul class="simple">
-<li><p><a class="reference internal" href="#for-the-routing-functions" id="id68">Para las funciones de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#for-the-topology-functions" id="id69">Para las funciones de topología:</a></p></li>
+<li><p><a class="reference internal" href="#for-the-routing-functions" id="id76">Para las funciones de Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#for-the-topology-functions" id="id77">Para las funciones de topología:</a></p></li>
 </ul>
-</div>
+</nav>
 <section id="for-the-routing-functions">
-<h3><a class="toc-backref" href="#id68">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id76" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Permalink to this heading">¶</a></h3>
 <p>Para obtener resultados más rápidos, las consultas enlazan el área de interés para tener, por ejemplo, no más de un millón de filas.</p>
 <p>Utilice una consulta SQL interna que no incluya algunas aristas en la función de ruteo</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">edge_table</span><span class="w"> </span><span class="k">WHERE</span><span class="w"></span>
-<span class="w">        </span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="k">and</span><span class="w"></span>
-<span class="w">        </span><span class="n">the_geom</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">myarea</span><span class="w"> </span><span class="k">FROM</span><span class="w">  </span><span class="n">edge_table</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="kn">from</span> <span class="nn">edge_table</span> <span class="n">WHERE</span>
+        <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="ow">and</span>
+        <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="n">FROM</span>  <span class="n">edge_table</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Integración de la consulta interna a la función pgRouting:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pgr_dijkstra</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="s1">&#39;SELECT id, source, target from edge_table WHERE</span>
-<span class="s1">            id &lt; 17 and</span>
-<span class="s1">            the_geom  &amp;&amp; (select st_buffer(the_geom,1) as myarea FROM  edge_table where id = 5)&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+        <span class="s1">&#39;SELECT id, source, target from edge_table WHERE</span>
+            <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="ow">and</span>
+            <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="n">FROM</span>  <span class="n">edge_table</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="s1">&#39;,</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="for-the-topology-functions">
-<h3><a class="toc-backref" href="#id69">Para las funciones de topología:</a><a class="headerlink" href="#for-the-topology-functions" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id77" role="doc-backlink">Para las funciones de topología:</a><a class="headerlink" href="#for-the-topology-functions" title="Permalink to this heading">¶</a></h3>
 <p>Cuando «sabe» que va a eliminar un conjunto de bordes de la tabla de  bordes, y sin esos bordes va a utilizar una función de enrrutamiento puede hacer el siguiente:</p>
 <p>Analizar la topología nueva basada en la topología actual:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>O crear una nueva topología si el cambio es permanente:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+<span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="how-to-contribute">
-<span id="how-contribute"></span><h2><a class="toc-backref" href="#id45">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="how-contribute"></span><h2><a class="toc-backref" href="#id50" role="doc-backlink">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Wiki</p>
 <ul class="simple">
 <li><p>Edita una página existente <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a></p></li>
@@ -1793,8 +1910,8 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

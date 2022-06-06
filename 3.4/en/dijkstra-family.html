@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Dijkstra - Family of functions &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -79,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -99,7 +100,7 @@
 <li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 <li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
@@ -158,7 +159,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/dijkstra-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/dijkstra-family.html">3.3</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/dijkstra-family.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/dijkstra-family.html">3.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/dijkstra-family.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/dijkstra-family.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/dijkstra-family.html">3.0</a></p></li>
@@ -170,13 +172,15 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/dijkstra.html">2.2</a></p></li>
 </ul>
 <section id="dijkstra-family-of-functions">
-<h1>Dijkstra - Family of functions<a class="headerlink" href="#dijkstra-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<h1>Dijkstra - Family of functions<a class="headerlink" href="#dijkstra-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Dijkstra’s algorithm for the shortest paths.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - Get the aggregate cost of the shortest paths.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - Use pgr_dijkstra to create a costs matrix.</p></li>
-<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament information.</p></li>
-<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament
+information.</p></li>
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest
+paths.</p></li>
 </ul>
 <p class="rubric">Proposed</p>
 <div class="admonition warning">
@@ -204,7 +208,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Dijkstra’s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
 1956.
 It is a graph search algorithm that solves the shortest path problem for a graph
@@ -243,8 +247,8 @@ the ending vertices are ignored.</p></li>
 <p>The Dijkstra family functions are based on the Dijkstra algorithm.</p>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 19%" />
@@ -284,12 +288,12 @@ the ending vertices are ignored.</p></li>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>default</p></th>
+<th class="head"><p>Default</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
@@ -308,10 +312,10 @@ the ending vertices are ignored.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -360,17 +364,17 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -395,16 +399,16 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="advanced-documentation">
-<h2>Advanced documentation<a class="headerlink" href="#advanced-documentation" title="Permalink to this headline">¶</a></h2>
+<h2>Advanced documentation<a class="headerlink" href="#advanced-documentation" title="Permalink to this heading">¶</a></h2>
 <section id="the-problem-definition-advanced-documentation">
-<h3>The problem definition (Advanced documentation)<a class="headerlink" href="#the-problem-definition-advanced-documentation" title="Permalink to this headline">¶</a></h3>
+<h3>The problem definition (Advanced documentation)<a class="headerlink" href="#the-problem-definition-advanced-documentation" title="Permalink to this heading">¶</a></h3>
 <p>Given the following query:</p>
 <p>pgr_dijkstra(<span class="math notranslate nohighlight">\(sql, start_{vid}, end_{vid}, directed\)</span>)</p>
 <p>where  <span class="math notranslate nohighlight">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
@@ -487,7 +491,8 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 <span class="math notranslate nohighlight">\(start_{vid}\)</span> and <span class="math notranslate nohighlight">\(end_{vid}\)</span>, if it exists, in terms of a sequence
 of nodes  and of edges,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(path\_seq\)</span> indicates the relative position in the path of the <span class="math notranslate nohighlight">\(node\)</span> or <span class="math notranslate nohighlight">\(edge\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(path\_seq\)</span> indicates the relative position in the path of the
+<span class="math notranslate nohighlight">\(node\)</span> or <span class="math notranslate nohighlight">\(edge\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(cost\)</span> is the cost of the edge to be used to go to the next node.</p></li>
 <li><p><span class="math notranslate nohighlight">\(agg\_cost\)</span> is the cost from the <span class="math notranslate nohighlight">\(start_{vid}\)</span> up to the node.</p></li>
 </ul>
@@ -495,7 +500,7 @@ of nodes  and of edges,</p>
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -517,8 +522,8 @@ of nodes  and of edges,</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

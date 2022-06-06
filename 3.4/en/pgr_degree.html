@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_degree – Proposed &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -78,7 +79,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -161,7 +162,7 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_degree.html">3.4</a>)</p></li>
 </ul>
 <section id="pgr-degree-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> – Proposed<a class="headerlink" href="#pgr-degree-proposed" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> – Proposed<a class="headerlink" href="#pgr-degree-proposed" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_degree</span></code> — Calculates the vertices degree</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -189,22 +190,22 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Calculates the degree of the vertices of an <strong>undirected</strong> graph</p>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <pre class="literal-block" id="index-0">pgr_degree(<a class="reference internal" href="#edges-sql">Edges SQL</a> , <a class="reference internal" href="#vertex-sql">Vertex SQL</a> [, dryrun])
 RETURNS SETOF (id, degree)</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Extracting the vertex information</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
-  $$SELECT id FROM edge_table$$,
+  $$SELECT id FROM edges$$,
   $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices(&#39;SELECT id, the_geom AS geom FROM edge_table&#39;)$$);
+    FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$);
  id | degree
 ----+--------
   1 |      1
@@ -230,13 +231,8 @@ RETURNS SETOF (id, degree)</pre>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 15%" />
-<col style="width: 59%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -256,14 +252,8 @@ RETURNS SETOF (id, degree)</pre>
 </table>
 </section>
 <section id="optional-parameters">
-<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 18%" />
-<col style="width: 14%" />
-<col style="width: 53%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -285,21 +275,16 @@ NOTICE the resulting query.</p></li>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
-<div class="contents local topic" id="contents">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#edges-sql" id="id2">Edges SQL</a></p></li>
 <li><p><a class="reference internal" href="#vertex-sql" id="id3">Vertex SQL</a></p></li>
 </ul>
-</div>
+</nav>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id2">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 27%" />
-<col style="width: 49%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -315,8 +300,8 @@ NOTICE the resulting query.</p></li>
 </table>
 </section>
 <section id="vertex-sql">
-<h3><a class="toc-backref" href="#id3">Vertex SQL</a><a class="headerlink" href="#vertex-sql" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Vertex SQL</a><a class="headerlink" href="#vertex-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -351,8 +336,8 @@ end point</em>.</p>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -372,19 +357,19 @@ end point</em>.</p>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<div class="contents local topic" id="id1">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id1">
 <ul class="simple">
 <li><p><a class="reference internal" href="#degree-of-a-sub-graph" id="id4">Degree of a sub graph</a></p></li>
 <li><p><a class="reference internal" href="#dry-run-execution" id="id5">Dry run execution</a></p></li>
 </ul>
-</div>
+</nav>
 <section id="degree-of-a-sub-graph">
-<h3><a class="toc-backref" href="#id4">Degree of a sub graph</a><a class="headerlink" href="#degree-of-a-sub-graph" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Degree of a sub graph</a><a class="headerlink" href="#degree-of-a-sub-graph" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
-  $$SELECT id FROM edge_table WHERE id &lt; 17$$,
+  $$SELECT id FROM edges WHERE id &lt; 17$$,
   $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices(&#39;SELECT id, the_geom AS geom FROM edge_table&#39;)$$);
+    FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$);
  id | degree
 ----+--------
   1 |      1
@@ -410,28 +395,28 @@ end point</em>.</p>
 </div>
 </section>
 <section id="dry-run-execution">
-<h3><a class="toc-backref" href="#id5">Dry run execution</a><a class="headerlink" href="#dry-run-execution" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Dry run execution</a><a class="headerlink" href="#dry-run-execution" title="Permalink to this heading">¶</a></h3>
 <p>To get the query generated used to get the vertex information, use <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">=&gt;</span>
 <span class="pre">true</span></code>.</p>
 <p>The results can be used as base code to make a refinement based on the back end
 development needs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_degree(
-  $$SELECT id FROM edge_table WHERE id &lt; 17$$,
+  $$SELECT id FROM edges WHERE id &lt; 17$$,
   $$SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices(&#39;SELECT id, the_geom AS geom FROM edge_table&#39;)$$,
+    FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)$$,
   dryrun =&gt; true);
 NOTICE:
     WITH
 
     -- a sub set of edges of the graph goes here
     g_edges AS (
-      SELECT id FROM edge_table WHERE id &lt; 17
+      SELECT id FROM edges WHERE id &lt; 17
     ),
 
     -- sub set of vertices of the graph goes here
     all_vertices AS (
       SELECT id, in_edges, out_edges
-    FROM pgr_extractVertices(&#39;SELECT id, the_geom AS geom FROM edge_table&#39;)
+    FROM pgr_extractVertices(&#39;SELECT id, geom FROM edges&#39;)
     ),
 
     g_vertices AS (
@@ -460,7 +445,7 @@ NOTICE:
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Proposed</span></a></p></li>
@@ -486,8 +471,8 @@ NOTICE:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

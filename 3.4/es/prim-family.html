@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Prim - Familia de funciones &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -80,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -96,7 +97,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Prim - Familia de funciones</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a></li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -145,10 +146,16 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/prim-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/prim-family.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/prim-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/prim-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/prim-family.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/prim-family.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/prim-family.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/prim-family.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/prim-family.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/prim-family.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/prim-family.html">3.0</a></p></li>
 </ul>
 <section id="prim-family-of-functions">
-<h1>Prim - Familia de funciones<a class="headerlink" href="#prim-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Prim - Familia de funciones<a class="headerlink" href="#prim-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
@@ -164,7 +171,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>El algoritmo prim fue desarrollado en 1930 por el matemático checo Vojtěch Jarník. Es un algoritmo ambicioso que encuentra un árbol de expansión mínimo para un grafo ponderado no dirigido. Esto significa que encuentra un subconjunto de los bordes que forma un árbol que incluye cada vértice, donde se minimiza el peso total de todos los bordes del árbol. El algoritmo funciona creando este árbol un vértice a la vez, desde un vértice inicial arbitrario, paso a paso agregando la conexión más barata posible desde el árbol a otro vértice.</p>
 <p>Estos algoritmos encuentran el bosque de expansión mínimo en un grafo posiblemente desconectado; en cambio, la forma más básica del algoritmo de Prim sólo encuentra árboles de expansión mínimos en los grafos conectados. Sin embargo, al ejecutar el algoritmo de Prim por separado para cada componente conectado del grafo, se denomina bosque de expansión mínimo.</p>
 <p><strong>Las características principales son:</strong></p>
@@ -191,9 +198,9 @@
 <p>De boost Graph: «El algoritmo tal como se aplica en el Boost.Graph no produce resultados correctos en grafos con bordes paralelos «.</p>
 </div>
 </section>
-<section id="inner-query">
-<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -242,20 +249,20 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Prim’s algorithm</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Wikipedia: algoritmo de Prim</a></p></li>
+<li><p>Boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Prim’s algorithm</a></p></li>
+<li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim’s algorithm</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -278,8 +285,8 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

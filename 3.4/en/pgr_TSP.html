@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_TSP &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -79,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -104,12 +105,17 @@
 <li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Inner queries</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#matrix-sql">Matrix SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
+<li><a class="reference internal" href="#start-from-vertex-1">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a></li>
+<li><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix">Using points of interest to generate an asymetric matrix.</a></li>
+<li><a class="reference internal" href="#connected-incomplete-data">Connected incomplete data</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -160,7 +166,8 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_TSP.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_TSP.html">3.3</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_TSP.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_TSP.html">3.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_TSP.html">3.2</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_TSP.html">3.1</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_TSP.html">3.0</a></p></li>
@@ -174,7 +181,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/tsp/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-tsp">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code><a class="headerlink" href="#pgr-tsp" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSP</span></code> - Aproximation using <em>metric</em> algorithm.</p></li>
 </ul>
@@ -216,9 +223,9 @@ randomize</p></li>
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <section id="problem-definition">
-<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
+<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this heading">¶</a></h3>
 <p>The travelling salesperson problem (TSP) asks the following question:</p>
 <blockquote>
 <div><p><em>Given a list of cities and the distances between each pair of cities, which
@@ -227,7 +234,7 @@ to the origin city?</em></p>
 </div></blockquote>
 </section>
 <section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>This problem is an NP-hard optimization problem.</p></li>
 <li><p>Metric Algorithm is used</p></li>
@@ -283,10 +290,12 @@ twice as long as the optimal tour</p></li>
 <ul>
 <li><p>is directed</p></li>
 <li><p>is fully connected (As long as the graph has one component)</p></li>
-<li><p>some (or all) traveling costs on edges might not obey the triangle inequality.</p></li>
+<li><p>some (or all) traveling costs on edges might not obey the triangle
+inequality.</p></li>
 </ul>
 </li>
-<li><p>As an undirected graph is required, the directed graph is transformed as follows:</p>
+<li><p>As an undirected graph is required, the directed graph is transformed as
+follows:</p>
 <ul>
 <li><p>edges <cite>(u, v)</cite> and <cite>(v, u)</cite> is considered to be the same edge (denoted
 <cite>(u, v)</cite></p></li>
@@ -310,54 +319,48 @@ triangle inequality.</p></li>
 </section>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
 <pre class="literal-block" id="index-0">pgr_TSP(<a class="reference internal" href="#matrix-sql">Matrix SQL</a>, [start_id], [end_id])
 RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Using <a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> to generate the matrix information</p>
 </dd>
 </dl>
 <ul class="simple">
-<li><p><strong>Line 5</strong> Vertices 15 to 18 are not included because they are not connected.</p></li>
+<li><p><strong>Line 4</strong> Vertices <span class="math notranslate nohighlight">\(\{2, 4, 13, 14\}\)</span> are not included because they are
+not connected.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
-<span class="linenos"> 2</span>  $$
-<span class="linenos"> 3</span>  SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 4</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-<span class="linenos"> 5</span>    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 14),
-<span class="linenos"> 6</span>    directed =&gt; false)
-<span class="linenos"> 7</span>  $$);
-<span class="linenos"> 8</span> seq | node | cost | agg_cost
-<span class="linenos"> 9</span>-----+------+------+----------
-<span class="linenos">10</span>   1 |    1 |    0 |        0
-<span class="linenos">11</span>   2 |    2 |    1 |        1
-<span class="linenos">12</span>   3 |    3 |    1 |        2
-<span class="linenos">13</span>   4 |    4 |    1 |        3
-<span class="linenos">14</span>   5 |    9 |    1 |        4
-<span class="linenos">15</span>   6 |   12 |    1 |        5
-<span class="linenos">16</span>   7 |    6 |    2 |        7
-<span class="linenos">17</span>   8 |    5 |    1 |        8
-<span class="linenos">18</span>   9 |    8 |    1 |        9
-<span class="linenos">19</span>  10 |    7 |    1 |       10
-<span class="linenos">20</span>  11 |   10 |    3 |       13
-<span class="linenos">21</span>  12 |   11 |    1 |       14
-<span class="linenos">22</span>  13 |   13 |    2 |       16
-<span class="linenos">23</span>  14 |    1 |    4 |       20
-<span class="linenos">24</span>(14 rows)
-<span class="linenos">25</span>
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
+<span class="linenos"> 5</span>    directed =&gt; false) $$);
+<span class="linenos"> 6</span> seq | node | cost | agg_cost
+<span class="linenos"> 7</span>-----+------+------+----------
+<span class="linenos"> 8</span>   1 |    1 |    0 |        0
+<span class="linenos"> 9</span>   2 |    3 |    1 |        1
+<span class="linenos">10</span>   3 |    7 |    1 |        2
+<span class="linenos">11</span>   4 |    6 |    1 |        3
+<span class="linenos">12</span>   5 |    5 |    1 |        4
+<span class="linenos">13</span>   6 |   10 |    2 |        6
+<span class="linenos">14</span>   7 |   11 |    1 |        7
+<span class="linenos">15</span>   8 |   12 |    1 |        8
+<span class="linenos">16</span>   9 |   16 |    2 |       10
+<span class="linenos">17</span>  10 |   15 |    1 |       11
+<span class="linenos">18</span>  11 |   17 |    2 |       13
+<span class="linenos">19</span>  12 |    9 |    3 |       16
+<span class="linenos">20</span>  13 |    8 |    1 |       17
+<span class="linenos">21</span>  14 |    1 |    3 |       20
+<span class="linenos">22</span>(14 rows)
+<span class="linenos">23</span>
 </pre></div>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 16%" />
-<col style="width: 56%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -372,8 +375,8 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 </tbody>
 </table>
 <section id="tsp-optional-parameters">
-<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -414,15 +417,10 @@ vertex</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="matrix-sql">
-<h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Permalink to this headline">¶</a></h3>
+<h3>Matrix SQL<a class="headerlink" href="#matrix-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 22%" />
-<col style="width: 62%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -447,14 +445,9 @@ vertex</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
 <p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 10%" />
-<col style="width: 78%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -490,55 +483,53 @@ vertex</p></li>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Start from vertex <span class="math notranslate nohighlight">\(7\)</span></p>
-</dd>
-</dl>
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><strong>Line 9</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">7</span></code></p></li>
+<li><p><a class="reference internal" href="#start-from-vertex-1" id="id2">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a></p></li>
+<li><p><a class="reference internal" href="#using-points-of-interest-to-generate-an-asymetric-matrix" id="id3">Using points of interest to generate an asymetric matrix.</a></p></li>
+<li><p><a class="reference internal" href="#connected-incomplete-data" id="id4">Connected incomplete data</a></p></li>
+</ul>
+</nav>
+<section id="start-from-vertex-1">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Start from vertex <span class="math notranslate nohighlight">\(1\)</span></a><a class="headerlink" href="#start-from-vertex-1" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Line 6</strong> <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=&gt;</span> <span class="pre">1</span></code></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
-<span class="linenos"> 2</span>  $$
-<span class="linenos"> 3</span>  SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 4</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-<span class="linenos"> 5</span>    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 14),
-<span class="linenos"> 6</span>    directed =&gt; false
-<span class="linenos"> 7</span>  )
-<span class="linenos"> 8</span>  $$,
-<span class="linenos"> 9</span>  start_id =&gt; 7
-<span class="linenos">10</span>);
-<span class="linenos">11</span> seq | node | cost | agg_cost
-<span class="linenos">12</span>-----+------+------+----------
-<span class="linenos">13</span>   1 |    7 |    0 |        0
-<span class="linenos">14</span>   2 |    8 |    1 |        1
-<span class="linenos">15</span>   3 |    5 |    1 |        2
-<span class="linenos">16</span>   4 |    2 |    1 |        3
-<span class="linenos">17</span>   5 |    1 |    1 |        4
-<span class="linenos">18</span>   6 |    3 |    2 |        6
-<span class="linenos">19</span>   7 |    4 |    1 |        7
-<span class="linenos">20</span>   8 |    9 |    1 |        8
-<span class="linenos">21</span>   9 |   12 |    1 |        9
-<span class="linenos">22</span>  10 |   11 |    1 |       10
-<span class="linenos">23</span>  11 |    6 |    1 |       11
-<span class="linenos">24</span>  12 |   10 |    2 |       13
-<span class="linenos">25</span>  13 |   13 |    1 |       14
-<span class="linenos">26</span>  14 |    7 |    4 |       18
-<span class="linenos">27</span>(14 rows)
-<span class="linenos">28</span>
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
+<span class="linenos"> 5</span>    directed =&gt; false) $$,
+<span class="linenos"> 6</span>  start_id =&gt; 1);
+<span class="linenos"> 7</span> seq | node | cost | agg_cost
+<span class="linenos"> 8</span>-----+------+------+----------
+<span class="linenos"> 9</span>   1 |    1 |    0 |        0
+<span class="linenos">10</span>   2 |    3 |    1 |        1
+<span class="linenos">11</span>   3 |    7 |    1 |        2
+<span class="linenos">12</span>   4 |    6 |    1 |        3
+<span class="linenos">13</span>   5 |    5 |    1 |        4
+<span class="linenos">14</span>   6 |   10 |    2 |        6
+<span class="linenos">15</span>   7 |   11 |    1 |        7
+<span class="linenos">16</span>   8 |   12 |    1 |        8
+<span class="linenos">17</span>   9 |   16 |    2 |       10
+<span class="linenos">18</span>  10 |   15 |    1 |       11
+<span class="linenos">19</span>  11 |   17 |    2 |       13
+<span class="linenos">20</span>  12 |    9 |    3 |       16
+<span class="linenos">21</span>  13 |    8 |    1 |       17
+<span class="linenos">22</span>  14 |    1 |    3 |       20
+<span class="linenos">23</span>(14 rows)
+<span class="linenos">24</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Using points of interest to generate an asymetric matrix.</p>
-</dd>
-</dl>
+</section>
+<section id="using-points-of-interest-to-generate-an-asymetric-matrix">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Using points of interest to generate an asymetric matrix.</a><a class="headerlink" href="#using-points-of-interest-to-generate-an-asymetric-matrix" title="Permalink to this heading">¶</a></h3>
 <p>To generate an asymmetric matrix:</p>
 <ul class="simple">
-<li><p><strong>Line 5</strong> The <code class="docutils literal notranslate"><span class="pre">side</span></code> information of pointsOfInterset is ignored by not
+<li><p><strong>Line 4</strong> The <code class="docutils literal notranslate"><span class="pre">side</span></code> information of <code class="docutils literal notranslate"><span class="pre">pointsOfInterset</span></code> is ignored by not
 including it in the query</p></li>
-<li><p><strong>Line 7</strong> Generating an asymetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
+<li><p><strong>Line 6</strong> Generating an asymetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> is going to be considered as
 the <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
@@ -553,75 +544,91 @@ because:</p>
 </li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
-<span class="linenos"> 2</span>  $$
-<span class="linenos"> 3</span>  SELECT * FROM pgr_withPointsCostMatrix(
-<span class="linenos"> 4</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
-<span class="linenos"> 5</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-<span class="linenos"> 6</span>    array[-1, 3, 5, 6, -6],
-<span class="linenos"> 7</span>    directed =&gt; true)
-<span class="linenos"> 8</span>  $$,
-<span class="linenos"> 9</span>  start_id =&gt; 5,
-<span class="linenos">10</span>  end_id =&gt; 6
-<span class="linenos">11</span>);
-<span class="linenos">12</span> seq | node | cost | agg_cost
-<span class="linenos">13</span>-----+------+------+----------
-<span class="linenos">14</span>   1 |    5 |    0 |        0
-<span class="linenos">15</span>   2 |   -6 |  0.3 |      0.3
-<span class="linenos">16</span>   3 |   -1 |  1.3 |      1.6
-<span class="linenos">17</span>   4 |    3 |  1.6 |      3.2
-<span class="linenos">18</span>   5 |    6 |    1 |      4.2
-<span class="linenos">19</span>   6 |    5 |    1 |      5.2
-<span class="linenos">20</span>(6 rows)
-<span class="linenos">21</span>
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
+<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
+<span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6],
+<span class="linenos"> 6</span>    directed =&gt; true) $$,
+<span class="linenos"> 7</span>  start_id =&gt; 7,
+<span class="linenos"> 8</span>  end_id =&gt; 11);
+<span class="linenos"> 9</span> seq | node | cost | agg_cost
+<span class="linenos">10</span>-----+------+------+----------
+<span class="linenos">11</span>   1 |    7 |    0 |        0
+<span class="linenos">12</span>   2 |   -6 |  0.3 |      0.3
+<span class="linenos">13</span>   3 |   -1 |  1.3 |      1.6
+<span class="linenos">14</span>   4 |   10 |  1.6 |      3.2
+<span class="linenos">15</span>   5 |   11 |    1 |      4.2
+<span class="linenos">16</span>   6 |    7 |    1 |      5.2
+<span class="linenos">17</span>(6 rows)
+<span class="linenos">18</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Connected incomplete data</p>
-</dd>
-</dl>
-<p>Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is
-connected</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">end_vid</span><span class="p">,</span> <span class="mi">1</span> <span class="n">AS</span> <span class="n">agg_cost</span>
-<span class="linenos"> 2</span><span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
-<span class="linenos"> 3</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
-<span class="linenos"> 4</span><span class="o">-----------+---------+----------</span>
-<span class="linenos"> 5</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos"> 6</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos"> 7</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos"> 8</span>         <span class="mi">5</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos"> 9</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">10</span>         <span class="mi">9</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">11</span><span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
-<span class="linenos">12</span>
+</section>
+<section id="connected-incomplete-data">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Connected incomplete data</a><a class="headerlink" href="#connected-incomplete-data" title="Permalink to this heading">¶</a></h3>
+<p>Using selected edges <span class="math notranslate nohighlight">\(\{2, 4, 5, 8, 9, 15\}\)</span> the matrix is not complete.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 2</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+<span class="linenos"> 3</span>  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+<span class="linenos"> 4</span>  directed =&gt; true);
+<span class="linenos"> 5</span> start_vid | end_vid | agg_cost
+<span class="linenos"> 6</span>-----------+---------+----------
+<span class="linenos"> 7</span>         6 |       7 |        1
+<span class="linenos"> 8</span>         6 |      11 |        2
+<span class="linenos"> 9</span>         6 |      16 |        3
+<span class="linenos">10</span>         6 |      17 |        4
+<span class="linenos">11</span>         7 |       6 |        1
+<span class="linenos">12</span>         7 |      11 |        1
+<span class="linenos">13</span>         7 |      16 |        2
+<span class="linenos">14</span>         7 |      17 |        3
+<span class="linenos">15</span>        10 |       6 |        1
+<span class="linenos">16</span>        10 |       7 |        2
+<span class="linenos">17</span>        10 |      11 |        1
+<span class="linenos">18</span>        10 |      16 |        2
+<span class="linenos">19</span>        10 |      17 |        3
+<span class="linenos">20</span>        11 |       6 |        2
+<span class="linenos">21</span>        11 |       7 |        1
+<span class="linenos">22</span>        11 |      16 |        1
+<span class="linenos">23</span>        11 |      17 |        2
+<span class="linenos">24</span>        16 |       6 |        3
+<span class="linenos">25</span>        16 |       7 |        2
+<span class="linenos">26</span>        16 |      11 |        1
+<span class="linenos">27</span>        16 |      17 |        1
+<span class="linenos">28</span>        17 |       6 |        4
+<span class="linenos">29</span>        17 |       7 |        3
+<span class="linenos">30</span>        17 |      11 |        2
+<span class="linenos">31</span>        17 |      16 |        1
+<span class="linenos">32</span>(25 rows)
+<span class="linenos">33</span>
 </pre></div>
 </div>
-<p>Edge <cite>(5,12)</cite> does not exist on the initial data, but it is calculated
-internally.</p>
+<p>Cost value for <span class="math notranslate nohighlight">\(17 \rightarrow 10\)</span> do not exist on the matrix, but the
+value used is taken from <span class="math notranslate nohighlight">\(10 \rightarrow 17\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
-<span class="linenos"> 2</span>  $$
-<span class="linenos"> 3</span>  SELECT source AS start_vid, target AS end_vid, 1 AS agg_cost
-<span class="linenos"> 4</span>  FROM edge_table WHERE id IN (2, 4, 5, 8, 9, 15)
-<span class="linenos"> 5</span>  $$);
+<span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
+<span class="linenos"> 3</span>  $q1$SELECT id, source, target, cost, reverse_cost FROM edges WHERE id IN (2, 4, 5, 8, 9, 15)$q1$,
+<span class="linenos"> 4</span>  (SELECT ARRAY[6, 7, 10, 11, 16, 17]),
+<span class="linenos"> 5</span>  directed =&gt; true)$$);
 <span class="linenos"> 6</span> seq | node | cost | agg_cost
 <span class="linenos"> 7</span>-----+------+------+----------
-<span class="linenos"> 8</span>   1 |    2 |    0 |        0
-<span class="linenos"> 9</span>   2 |    3 |    1 |        1
-<span class="linenos">10</span>   3 |    6 |    1 |        2
-<span class="linenos">11</span>   4 |   12 |    1 |        3
-<span class="linenos">12</span>   5 |    9 |    1 |        4
-<span class="linenos">13</span>   6 |    5 |    1 |        5
-<span class="linenos">14</span>   7 |    2 |    1 |        6
+<span class="linenos"> 8</span>   1 |    6 |    0 |        0
+<span class="linenos"> 9</span>   2 |    7 |    1 |        1
+<span class="linenos">10</span>   3 |   11 |    1 |        2
+<span class="linenos">11</span>   4 |   16 |    1 |        3
+<span class="linenos">12</span>   5 |   17 |    1 |        4
+<span class="linenos">13</span>   6 |   10 |    3 |        7
+<span class="linenos">14</span>   7 |    6 |    1 |        8
 <span class="linenos">15</span>(7 rows)
 <span class="linenos">16</span>
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
+</section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>
@@ -646,8 +653,8 @@ internally.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_dijkstraNear - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -79,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -110,12 +111,12 @@
 <li><a class="reference internal" href="#near-optional-parameters">Near optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
 <li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -166,11 +167,12 @@
 <ul class="simple">
 <li><p><strong>Supported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraNear.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraNear.html">3.3</a>)
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dijkstraNear.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraNear.html">3.3</a>
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html">3.2</a></p></li>
 </ul>
 <section id="pgr-dijkstranear-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Proposed<a class="headerlink" href="#pgr-dijkstranear-proposed" title="Permalink to this headline">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Proposed<a class="headerlink" href="#pgr-dijkstranear-proposed" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> — Using Dijkstra’s algorithm, finds the route that leads to
 the nearest vertex.</p>
 <div class="admonition warning">
@@ -210,12 +212,12 @@ the nearest vertex.</p>
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Given a graph, a starting vertex and a set of ending vertices,
 this function finds the shortest path from the starting vertex to the nearest
 ending vertex.</p>
 <section id="characteristics">
-<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Uses Dijkstra algorithm.</p></li>
 <li><p>Works for <strong>directed</strong> and <strong>undirected</strong> graphs.</p></li>
@@ -254,27 +256,33 @@ ending vertex.</p>
 </section>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, cap])
-pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, cap])
-pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, cap], [global])
-pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, cap] [, global])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
+           [, directed] [, cap])
+pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
+           [, directed] [, cap])
+pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
+           [, directed] [, cap], [global])
+pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
+           [, directed] [, cap] [, global])
+RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <section id="one-to-many">
-<span id="index-0"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong> [, directed] [, cap])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+<span id="index-0"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
+<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
+           [, directed] [, cap])
+RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Departing on car from vertex <span class="math notranslate nohighlight">\(2\)</span> find the nearest subway station.</p>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Departing on car from vertex <span class="math notranslate nohighlight">\(6\)</span> find the nearest subway
+station.</p>
 </dd>
 </dl>
 <ul class="simple">
 <li><p>Using a <strong>directed</strong> graph for car routing.</p></li>
-<li><p>The subway stations are on the following vertices <span class="math notranslate nohighlight">\(\{ 3, 6, 7\}\)</span></p></li>
+<li><p>The subway stations are on the following vertices <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
 <li><p>The defaults used:</p>
 <ul>
 <li><p><cite>directed =&gt; true</cite></p></li>
@@ -283,70 +291,73 @@ OR EMPTY SET</pre>
 </li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
-<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-<span class="linenos"> 3</span>  <span class="mi">2</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]);</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
 <span class="linenos"> 4</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="linenos"> 5</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
-<span class="linenos"> 6</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos"> 7</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos"> 8</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos"> 6</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos"> 7</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos"> 8</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
 <span class="linenos"> 9</span><span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 <span class="linenos">10</span>
 </pre></div>
 </div>
-<p>The result shows that station at vertex <span class="math notranslate nohighlight">\(6\)</span> is the nearest.</p>
+<p>The result shows that station at vertex <span class="math notranslate nohighlight">\(11\)</span> is the nearest.</p>
 </section>
 <section id="many-to-one">
-<span id="index-1"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed] [, cap])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+<span id="index-1"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
+<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
+           [, directed] [, cap])
+RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Departing on a car from a subway station find the nearest <strong>two</strong>
 stations to vertex <span class="math notranslate nohighlight">\(2\)</span></p>
 </dd>
 </dl>
 <ul class="simple">
 <li><p>Using a <strong>directed</strong> graph for car routing.</p></li>
-<li><p>The subway stations are on the following vertices <span class="math notranslate nohighlight">\(\{ 3, 6, 7\}\)</span></p></li>
+<li><p>The subway stations are on the following vertices <span class="math notranslate nohighlight">\(\{ 1, 10, 11\}\)</span></p></li>
 <li><p>On line <cite>4</cite>: using the positional parameter: <cite>directed</cite> set to <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
 <li><p>In line <cite>5</cite>: using named parameter <cite>cap =&gt; 2</cite></p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
-<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-<span class="linenos"> 3</span>  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">6</span><span class="p">,</span>
 <span class="linenos"> 4</span>  <span class="n">true</span><span class="p">,</span>
 <span class="linenos"> 5</span>  <span class="n">cap</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">);</span>
 <span class="linenos"> 6</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="linenos"> 7</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
-<span class="linenos"> 8</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos"> 9</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">10</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos">11</span>   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">12</span>   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos"> 8</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos"> 9</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">10</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">11</span>   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">12</span>   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
 <span class="linenos">13</span><span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
 <span class="linenos">14</span>
 </pre></div>
 </div>
-<p>The result shows that station at vertex <span class="math notranslate nohighlight">\(3\)</span> is the nearest and the next best
-is <span class="math notranslate nohighlight">\(6\)</span>.</p>
+<p>The result shows that station at vertex <span class="math notranslate nohighlight">\(10\)</span> is the nearest and the next
+best is <span class="math notranslate nohighlight">\(11\)</span>.</p>
 </section>
 <section id="many-to-many">
-<span id="index-2"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong> [, directed] [, cap], [global])
-pgr_dijkstraNear(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+<span id="index-2"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
+<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
+           [, directed] [, cap], [global])
+pgr_dijkstraNear(Edges SQL, Start vids, End vids
+           [, directed] [, cap], [global])
+RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Find the best pedestrian connection between two lines of buses</p>
 </dd>
 </dl>
 <ul class="simple">
 <li><p>Unsing an <strong>undirected</strong> graph for pedestrian routing</p></li>
-<li><p>The first subway line stations stops are at <span class="math notranslate nohighlight">\(\{3, 6, 7\}\)</span></p></li>
-<li><p>The second subway line stations are at <span class="math notranslate nohighlight">\(\{4, 9\}\)</span></p></li>
+<li><p>The first subway line stations are at <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
+<li><p>The second subway line stations stops are at <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
 <li><p>On line <cite>4</cite>: using the named parameter: <cite>directed =&gt; false</cite></p></li>
 <li><p>The defaults used:</p>
 <ul>
@@ -356,40 +367,69 @@ OR EMPTY SET</pre>
 </li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
-<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-<span class="linenos"> 3</span>  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="linenos"> 4</span>  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
 <span class="linenos"> 5</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="linenos"> 6</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
-<span class="linenos"> 7</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos"> 8</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos"> 7</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos"> 8</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
 <span class="linenos"> 9</span><span class="p">(</span><span class="mi">2</span> <span class="n">rows</span><span class="p">)</span>
 <span class="linenos">10</span>
 </pre></div>
 </div>
-<p>For a pedestrian the best connection is to get on/off is at vertex <span class="math notranslate nohighlight">\(3\)</span> of the
-first subway line and at vertex <span class="math notranslate nohighlight">\(4\)</span> of the second subway line.</p>
+<p>For a pedestrian the best connection is to get on/off is at vertex <span class="math notranslate nohighlight">\(15\)</span> of
+the first subway line and at vertex <span class="math notranslate nohighlight">\(10\)</span> of the second subway line.</p>
 <p>Only <cite>one</cite> route is returned because <cite>global</cite> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and <cite>cap</cite> is <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
 </section>
 <section id="combinations">
-<span id="index-3"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h3>
-<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a> [, directed] [, cap] [, global])
-RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+<span id="index-3"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<pre class="literal-block">pgr_dijkstraNear(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
+           [, directed] [, cap] [, global])
+RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p>Find the best car connection between all the stations of two subway lines</p>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Find the best car connection between all the stations of two subway
+lines</p>
 </dd>
 </dl>
 <ul class="simple">
 <li><p>Using a <strong>directed</strong> graph for car routing.</p></li>
-<li><p>The first subway line stations stops are at <span class="math notranslate nohighlight">\(\{3, 6, 7\}\)</span></p></li>
-<li><p>The second subway line stations are at <span class="math notranslate nohighlight">\(\{4, 9\}\)</span></p></li>
-<li><p>line <cite>3</cite> sets the start vertices to be from the first subway line and the ending
-vertices to be from the second subway line</p></li>
-<li><p>line <cite>5</cite> sets the start vertices to be from the first subway line and the ending
-vertices to be from the first subway line</p></li>
-<li><p>On line <cite>6</cite>: using the named parameter is <cite>global =&gt; false</cite></p></li>
+<li><p>The first subway line stations stops are at <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
+<li><p>The second subway line stations are at <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
+</ul>
+<p>The combinations contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">a</span>
+  <span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]),</span> <span class="n">target</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">b</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">;</span>
+ <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
+<span class="o">--------+--------</span>
+      <span class="mi">1</span> <span class="o">|</span>     <span class="mi">15</span>
+      <span class="mi">1</span> <span class="o">|</span>     <span class="mi">16</span>
+     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span>
+     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">16</span>
+     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">15</span>
+     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span>
+     <span class="mi">15</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">10</span>
+     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">11</span>
+     <span class="mi">16</span> <span class="o">|</span>      <span class="mi">1</span>
+     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">10</span>
+     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">11</span>
+<span class="p">(</span><span class="mi">12</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The query:</p>
+<ul class="simple">
+<li><p>lines <cite>3~4</cite> sets the start vertices to be from the first subway line and the
+ending vertices to be from the second subway line</p></li>
+<li><p>lines <cite>6~7</cite> sets the start vertices to be from the first subway line and the
+ending vertices to be from the first subway line</p></li>
+<li><p>On line <cite>8</cite>: using the named parameter is <cite>global =&gt; false</cite></p></li>
 <li><p>The defaults used:</p>
 <ul>
 <li><p><cite>directed =&gt; true</cite></p></li>
@@ -398,53 +438,59 @@ vertices to be from the first subway line</p></li>
 </li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraNear</span><span class="p">(</span>
-<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;</span><span class="p">,</span>
-<span class="linenos"> 3</span>  <span class="s1">&#39;SELECT unnest(ARRAY[3, 6, 7]) as source, target</span>
-<span class="linenos"> 4</span>   <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">a</span>
-<span class="linenos"> 5</span>       <span class="n">UNION</span>
-<span class="linenos"> 6</span>   <span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span> <span class="n">target</span>
-<span class="linenos"> 7</span>   <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="sa">b</span><span class="s1">&#39;,</span>
+<span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="s1">&#39;SELECT unnest(ARRAY[10, 11, 1]) as source, target</span>
+<span class="linenos"> 4</span>  <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">a</span>
+<span class="linenos"> 5</span>  <span class="n">UNION</span>
+<span class="linenos"> 6</span>  <span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]),</span> <span class="n">target</span>
+<span class="linenos"> 7</span>  <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="sa">b</span><span class="s1">&#39;,</span>
 <span class="linenos"> 8</span>  <span class="k">global</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
 <span class="linenos"> 9</span> <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="linenos">10</span><span class="o">-----+----------+-----------+---------+------+------+------+----------</span>
-<span class="linenos">11</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos">12</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">4</span> <span class="o">|</span>       <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">13</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos">14</span>   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">15</span>   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">9</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos">16</span>   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">9</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">17</span>   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos">18</span>   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">19</span>   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
-<span class="linenos">20</span>  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
-<span class="linenos">21</span>  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
-<span class="linenos">22</span>  <span class="mi">12</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
-<span class="linenos">23</span>  <span class="mi">13</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
-<span class="linenos">24</span>  <span class="mi">14</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">7</span> <span class="o">|</span>       <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
+<span class="linenos">11</span>   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">12</span>   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">11</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">13</span>   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">15</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">14</span>   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">15</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">15</span>   <span class="mi">5</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">16</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">16</span>   <span class="mi">6</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">16</span> <span class="o">|</span>      <span class="mi">11</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">17</span>   <span class="mi">7</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">10</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">18</span>   <span class="mi">8</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">19</span>   <span class="mi">9</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>        <span class="mi">10</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">20</span>  <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">0</span>
+<span class="linenos">21</span>  <span class="mi">11</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span>
+<span class="linenos">22</span>  <span class="mi">12</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>    <span class="mi">7</span> <span class="o">|</span>    <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">2</span>
+<span class="linenos">23</span>  <span class="mi">13</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">11</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>        <span class="mi">3</span>
+<span class="linenos">24</span>  <span class="mi">14</span> <span class="o">|</span>        <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>      <span class="mi">16</span> <span class="o">|</span>   <span class="mi">16</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>        <span class="mi">4</span>
 <span class="linenos">25</span><span class="p">(</span><span class="mi">14</span> <span class="n">rows</span><span class="p">)</span>
 <span class="linenos">26</span>
 </pre></div>
 </div>
 <p>From the results:</p>
 <ul class="simple">
-<li><p>making a connection from the first subway line to the second:</p>
+<li><p>making a connection from the first subway line <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span> to the
+second <span class="math notranslate nohighlight">\(\{15, 16\}\)</span>:</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\({(3 -&gt; 9) (6 -&gt; 9) (7 -&gt; 9)}\)</span> and the best one is <span class="math notranslate nohighlight">\((6 -&gt; 9)\)</span> with a
-cost of <span class="math notranslate nohighlight">\(1\)</span> (lines: <cite>12</cite> and <cite>13</cite>)</p></li>
+<li><p>The best connections from all the stations from the first line are:
+<span class="math notranslate nohighlight">\({(1 \rightarrow 16) (10 \rightarrow 16) (11 \rightarrow 16)}\)</span></p></li>
+<li><p>The best one is <span class="math notranslate nohighlight">\((11 \rightarrow 16)\)</span> with a cost of <span class="math notranslate nohighlight">\(1\)</span> (lines:
+<cite>11</cite> and <cite>12</cite>)</p></li>
 </ul>
 </li>
-<li><p>making a connection from the second subway line to the first:</p>
+<li><p>making a connection from the second subway line <span class="math notranslate nohighlight">\(\{15, 16\}\)</span> to the
+first <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\({(4 -&gt; 3) (9 -&gt; 6)}\)</span> and both are equally good as they have the same
-cost. (lines: <cite>10</cite> and <cite>11</cite> and lines: <cite>14</cite> and <cite>15</cite>)</p></li>
+<li><p>The best connections from all the stations from the second line are:
+<span class="math notranslate nohighlight">\({(15 \rightarrow 10) (16 \rightarrow 11)}\)</span></p></li>
+<li><p>Both are equaly good as they have the same cost. (lines: <cite>13</cite> and <cite>14</cite> and
+lines: <cite>15</cite> and <cite>16</cite>)</p></li>
 </ul>
 </li>
 </ul>
 </section>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 19%" />
@@ -484,12 +530,12 @@ cost. (lines: <cite>10</cite> and <cite>11</cite> and lines: <cite>14</cite> and
 </tbody>
 </table>
 <section id="dijkstra-optional-parameters">
-<h3>Dijkstra optional parameters<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Dijkstra optional parameters<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>default</p></th>
+<th class="head"><p>Default</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
@@ -507,8 +553,8 @@ cost. (lines: <cite>10</cite> and <cite>11</cite> and lines: <cite>14</cite> and
 </table>
 </section>
 <section id="near-optional-parameters">
-<h3>Near optional parameters<a class="headerlink" href="#near-optional-parameters" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Near optional parameters<a class="headerlink" href="#near-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 8%" />
@@ -541,11 +587,11 @@ cost. (lines: <cite>10</cite> and <cite>11</cite> and lines: <cite>14</cite> and
 </table>
 </section>
 </section>
-<section id="inner-query">
-<h2>Inner query<a class="headerlink" href="#inner-query" title="Permalink to this headline">¶</a></h2>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -594,17 +640,17 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -629,16 +675,16 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
-<section id="return-columns">
-<h2>Return Columns<a class="headerlink" href="#return-columns" title="Permalink to this headline">¶</a></h2>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<section id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -657,7 +703,8 @@ it’s not part of the graph.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</p></td>
+<td><p>Relative position in the path. Has value <strong>1</strong> for the beginning of a
+path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -689,7 +736,7 @@ path sequence.</p></td>
 </table>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a></p></li>
@@ -718,8 +765,8 @@ path sequence.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Funciones propuestas &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -79,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -142,11 +143,17 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/proposed.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/proposed.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/proposed.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/proposed.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/proposed.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/proposed.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/proposed.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/proposed.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/proposed.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/proposed.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/proposed.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/proposed.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/proposed.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/proposed.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/proposed.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/proposed.html">2.2</a></p></li>
 </ul>
 <section id="proposed-functions">
-<h1>Funciones propuestas<a class="headerlink" href="#proposed-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Funciones propuestas<a class="headerlink" href="#proposed-functions" title="Permalink to this heading">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -177,7 +184,7 @@
 <li><p><a class="reference internal" href="pgr_withPointsCost.html"><span class="doc">pgr_withPointsCost - Proposed</span></a> - Costos de las tutas más cortas.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsCostMatrix.html"><span class="doc">pgr_withPointsCostMatrix - proposed</span></a> - Costos de las rutas más cortas.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Propuesto</span></a> - rutas más cortas K.</p></li>
-<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Distancia de conducción.</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Distancia de conducción.</p></li>
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a> - Via routing</p></li>
 </ul>
 <p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a></p>
@@ -217,7 +224,7 @@ table information.</p></li>
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Distancia Manejando - Categoría</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Driving Distance basada en pgr_withPoints</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Proposed</span></a> - Driving Distance basada en pgr_withPoints</p></li>
 </ul>
 <p><a class="reference internal" href="KSP-category.html"><span class="doc">Rutas más cortas K - Categoría</span></a></p>
 <ul class="simple">
@@ -243,7 +250,7 @@ table information.</p></li>
 <div class="toctree-wrapper compound">
 </div>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="experimental.html"><span class="doc">Funciones Experimentales</span></a></p></li>
 </ul>
@@ -268,8 +275,8 @@ table information.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

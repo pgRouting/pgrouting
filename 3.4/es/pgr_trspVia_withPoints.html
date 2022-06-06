@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_trspVia_withPoints - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -80,7 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -106,14 +107,25 @@
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-query">Inner query</a><ul>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
 <li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
 <li><a class="reference internal" href="#points-sql">Points SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#return-columns">Return Columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#the-main-query">The main query</a><ul>
+<li><a class="reference internal" href="#aggregate-cost-of-the-third-path">Aggregate cost of the third path.</a></li>
+<li><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">Route’s aggregate cost of the route at the end of the third path.</a></li>
+<li><a class="reference internal" href="#nodes-visited-in-the-route">Nodes visited in the route.</a></li>
+<li><a class="reference internal" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached">The aggregate costs of the route when the visited vertices are reached.</a></li>
+<li><a class="reference internal" href="#status-of-passes-in-front-or-visits-of-the-nodes-and-points">Status of «passes in front» or «visits» of the nodes and points.</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simulation-of-how-algorithm-works">Sumulación del functionamiento del algoritmo</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -167,7 +179,7 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_trspVia_withPoints.html">3.4</a>)</p></li>
 </ul>
 <section id="pgr-trspvia-withpoints-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> - Proposed<a class="headerlink" href="#pgr-trspvia-withpoints-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> - Proposed<a class="headerlink" href="#pgr-trspvia-withpoints-proposed" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code> - Route that goes through a list of vertices and/or
 points with restrictions.</p>
 <div class="admonition warning">
@@ -202,17 +214,17 @@ points with restrictions.</p>
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Given a graph, a set of restriction on the graph edges, a set of points on the
 graphs edges and a list of vertices, this function is equivalent to finding the
 shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</span> and <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> (where
 <span class="math notranslate nohighlight">\(vertex\)</span> can be a vertex or a point on the graph) for all <span class="math notranslate nohighlight">\(i &lt;
 size\_of(via\;vertices)\)</span> trying not to use restricted paths.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Route</dt>
+<dt class="field-odd">Route<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is a sequence of paths</p>
 </dd>
-<dt class="field-even">Path</dt>
+<dt class="field-even">Path<span class="colon">:</span></dt>
 <dd class="field-even"><p>is a section of the route.</p>
 </dd>
 </dl>
@@ -238,37 +250,37 @@ size\_of(via\;vertices)\)</span> trying not to use restricted paths.</p>
 </div>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <section id="one-via">
-<span id="index-0"></span><h3>One Via<a class="headerlink" href="#one-via" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="index-0"></span><h3>One Via<a class="headerlink" href="#one-via" title="Permalink to this heading">¶</a></h3>
 <pre class="literal-block">pgr_trspVia_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a>, <strong>via vertices</strong>
-           [, directed] [, strict] [, U_turn_on_edge]) -- Proposed on v3.4
+           [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4
 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                 node, edge, cost, agg_cost, route_agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
-<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{ -6, 4, -5\}\)</span> in that
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{-6, 15, -5\}\)</span> in that
 order on an <strong>directed</strong> graph.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 4, -5]);
+  ARRAY[-6, 15, -5]);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |        -6 |       4 |   -6 |    4 |  0.3 |        0 |              0
-   2 |       1 |        2 |        -6 |       4 |    5 |   10 |    1 |      0.3 |            0.3
-   3 |       1 |        3 |        -6 |       4 |   10 |   12 |    1 |      1.3 |            1.3
-   4 |       1 |        4 |        -6 |       4 |   11 |   13 |    1 |      2.3 |            2.3
-   5 |       1 |        5 |        -6 |       4 |   12 |   15 |    1 |      3.3 |            3.3
-   6 |       1 |        6 |        -6 |       4 |    9 |   16 |    1 |      4.3 |            4.3
-   7 |       1 |        7 |        -6 |       4 |    4 |   -1 |    0 |      5.3 |            5.3
-   8 |       2 |        1 |         4 |      -5 |    4 |    3 |    1 |        0 |            5.3
-   9 |       2 |        2 |         4 |      -5 |    3 |    5 |  0.8 |        1 |            6.3
-  10 |       2 |        3 |         4 |      -5 |   -5 |   -2 |    0 |      1.8 |            7.1
+   1 |       1 |        1 |        -6 |      15 |   -6 |    4 |  0.3 |        0 |              0
+   2 |       1 |        2 |        -6 |      15 |    7 |   10 |    1 |      0.3 |            0.3
+   3 |       1 |        3 |        -6 |      15 |    8 |   12 |    1 |      1.3 |            1.3
+   4 |       1 |        4 |        -6 |      15 |   12 |   13 |    1 |      2.3 |            2.3
+   5 |       1 |        5 |        -6 |      15 |   17 |   15 |    1 |      3.3 |            3.3
+   6 |       1 |        6 |        -6 |      15 |   16 |   16 |    1 |      4.3 |            4.3
+   7 |       1 |        7 |        -6 |      15 |   15 |   -1 |    0 |      5.3 |            5.3
+   8 |       2 |        1 |        15 |      -5 |   15 |    3 |    1 |        0 |            5.3
+   9 |       2 |        2 |        15 |      -5 |   10 |    5 |  0.8 |        1 |            6.3
+  10 |       2 |        3 |        15 |      -5 |   -5 |   -2 |    0 |      1.8 |            7.1
 (10 rows)
 
 </pre></div>
@@ -276,8 +288,8 @@ order on an <strong>directed</strong> graph.</p>
 </section>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 17%" />
 <col style="width: 25%" />
@@ -314,13 +326,22 @@ order on an <strong>directed</strong> graph.</p>
 </tr>
 </tbody>
 </table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+</dd>
+</dl>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>default</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -338,8 +359,8 @@ order on an <strong>directed</strong> graph.</p>
 </table>
 </section>
 <section id="via-optional-parameters">
-<h3>Via optional parameters<a class="headerlink" href="#via-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Via optional parameters<a class="headerlink" href="#via-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 8%" />
@@ -375,8 +396,8 @@ order on an <strong>directed</strong> graph.</p>
 </table>
 </section>
 <section id="with-points-optional-parameters">
-<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 8%" />
@@ -416,11 +437,11 @@ path.</p></li>
 </table>
 </section>
 </section>
-<section id="inner-query">
-<h2>Inner query<a class="headerlink" href="#inner-query" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -468,17 +489,17 @@ path.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 25%" />
@@ -506,17 +527,17 @@ taken.
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="points-sql">
-<h3>Points SQL<a class="headerlink" href="#points-sql" title="Enlazar permanentemente con este título">¶</a></h3>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<h3>Points SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 18%" />
@@ -570,18 +591,18 @@ point of the edge.</p></td>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
-<section id="return-columns">
-<h2>Return Columns<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
-<table class="colwidths-given docutils align-default" style="width: 81">
+<section id="result-columns">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -608,37 +629,22 @@ point of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex or point of the path.</p>
-<ul class="simple">
-<li><p>When positive it is a vertex identifier</p></li>
-<li><p>When negative it is a point identifier</p></li>
-</ul>
-</td>
+<td><p>Identifier of the starting vertex of the path.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex or point of the path.</p>
-<ul class="simple">
-<li><p>When positive it is a vertex identifier</p></li>
-<li><p>When negative it is a point identifier</p></li>
-</ul>
-</td>
+<td><p>Identifier of the ending vertex of the path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p>
-<ul class="simple">
-<li><p>When positive it is a vertex identifier</p></li>
-<li><p>When negative it is a point identifier</p></li>
-</ul>
-</td>
+<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(-1\)</span> for the last row of the path.</p></li>
-<li><p><span class="math notranslate nohighlight">\(-2\)</span> for the last row of the route.</p></li>
+<li><p>-1 for the last node of the path.</p></li>
+<li><p>-2 for the last node of the route.</p></li>
 </ul>
 </td>
 </tr>
@@ -648,68 +654,75 @@ point of the edge.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> on the first row of the path.</p></li>
-</ul>
-</td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">route_agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Total cost from the first row of the route up to the current node.</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> on the first row of the route.</p></li>
-</ul>
-</td>
+<td><p>Total cost from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> of <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> of the
+current <code class="docutils literal notranslate"><span class="pre">seq</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">node</span></code> columns have negative values,
+the identifier is for a Point.</p>
+</div>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 1</dt>
-<dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{-6, 5, -4, 10, -2\}\)</span>
-in that order</p>
-</dd>
-</dl>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-main-query" id="id2">The main query</a></p>
+<ul>
+<li><p><a class="reference internal" href="#aggregate-cost-of-the-third-path" id="id3">Aggregate cost of the third path.</a></p></li>
+<li><p><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" id="id4">Route’s aggregate cost of the route at the end of the third path.</a></p></li>
+<li><p><a class="reference internal" href="#nodes-visited-in-the-route" id="id5">Nodes visited in the route.</a></p></li>
+<li><p><a class="reference internal" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached" id="id6">The aggregate costs of the route when the visited vertices are reached.</a></p></li>
+<li><p><a class="reference internal" href="#status-of-passes-in-front-or-visits-of-the-nodes-and-points" id="id7">Status of «passes in front» or «visits» of the nodes and points.</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#simulation-of-how-algorithm-works" id="id8">Sumulación del functionamiento del algoritmo</a></p></li>
+</ul>
+</nav>
+<p>All this examples are about the route that visits the vertices <span class="math notranslate nohighlight">\(\{-6, 7,
+-4, 8, -2\}\)</span> in that order on a <strong>directed</strong> graph.</p>
+<section id="the-main-query">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">The main query</a><a class="headerlink" href="#the-main-query" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 );
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |        -6 |       5 |   -6 |    4 |  0.3 |        0 |              0
-   2 |       1 |        2 |        -6 |       5 |    5 |   -1 |    0 |      0.3 |            0.3
-   3 |       2 |        1 |         5 |      -4 |    5 |    7 |    1 |        0 |            0.3
-   4 |       2 |        2 |         5 |      -4 |    8 |    6 |  1.3 |        1 |            1.3
-   5 |       2 |        3 |         5 |      -4 |   -4 |   -1 |    0 |      2.3 |            2.6
-   6 |       3 |        1 |        -4 |      10 |   -4 |    6 |  0.7 |        0 |            2.6
-   7 |       3 |        2 |        -4 |      10 |    8 |    7 |    1 |      0.7 |            3.3
-   8 |       3 |        3 |        -4 |      10 |    5 |    4 |  0.6 |      1.7 |            4.3
-   9 |       3 |        4 |        -4 |      10 |    5 |   10 |    1 |      2.3 |            4.9
-  10 |       3 |        5 |        -4 |      10 |   10 |   -1 |    0 |      3.3 |            5.9
-  11 |       4 |        1 |        10 |      -2 |   10 |   10 |    1 |        0 |            5.9
-  12 |       4 |        2 |        10 |      -2 |    5 |    8 |    1 |        1 |            6.9
-  13 |       4 |        3 |        10 |      -2 |    6 |    9 |    1 |        2 |            7.9
-  14 |       4 |        4 |        10 |      -2 |    9 |   15 |  0.4 |        3 |            8.9
-  15 |       4 |        5 |        10 |      -2 |   -2 |   -2 |    0 |      3.4 |            9.3
+   1 |       1 |        1 |        -6 |       7 |   -6 |    4 |  0.3 |        0 |              0
+   2 |       1 |        2 |        -6 |       7 |    7 |   -1 |    0 |      0.3 |            0.3
+   3 |       2 |        1 |         7 |      -4 |    7 |    7 |    1 |        0 |            0.3
+   4 |       2 |        2 |         7 |      -4 |    3 |    6 |  1.3 |        1 |            1.3
+   5 |       2 |        3 |         7 |      -4 |   -4 |   -1 |    0 |      2.3 |            2.6
+   6 |       3 |        1 |        -4 |       8 |   -4 |    6 |  0.7 |        0 |            2.6
+   7 |       3 |        2 |        -4 |       8 |    3 |    7 |    1 |      0.7 |            3.3
+   8 |       3 |        3 |        -4 |       8 |    7 |    4 |  0.6 |      1.7 |            4.3
+   9 |       3 |        4 |        -4 |       8 |    7 |   10 |    1 |      2.3 |            4.9
+  10 |       3 |        5 |        -4 |       8 |    8 |   -1 |    0 |      3.3 |            5.9
+  11 |       4 |        1 |         8 |      -2 |    8 |   10 |    1 |        0 |            5.9
+  12 |       4 |        2 |         8 |      -2 |    7 |    8 |    1 |        1 |            6.9
+  13 |       4 |        3 |         8 |      -2 |   11 |    9 |    1 |        2 |            7.9
+  14 |       4 |        4 |         8 |      -2 |   16 |   15 |  0.4 |        3 |            8.9
+  15 |       4 |        5 |         8 |      -2 |   -2 |   -2 |    0 |      3.4 |            9.3
 (15 rows)
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 2</dt>
-<dd class="field-odd"><p>¿Cuál es el costo total de la tercera ruta?</p>
-</dd>
-</dl>
+<section id="aggregate-cost-of-the-third-path">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Aggregate cost of the third path.</a><a class="headerlink" href="#aggregate-cost-of-the-third-path" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT agg_cost FROM  pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE path_id = 3 AND edge &lt;0;
  agg_cost
@@ -719,16 +732,14 @@ WHERE path_id = 3 AND edge &lt;0;
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 3</dt>
-<dd class="field-odd"><p>¿Cuál es el costo agregado de la ruta al final de la tercera ruta?</p>
-</dd>
-</dl>
+</section>
+<section id="route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Route’s aggregate cost of the route at the end of the third path.</a><a class="headerlink" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT route_agg_cost FROM  pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE path_id = 3 AND edge &lt; 0;
  route_agg_cost
@@ -738,47 +749,43 @@ WHERE path_id = 3 AND edge &lt; 0;
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 4</dt>
-<dd class="field-odd"><p>¿Cómo se visitan los nodos en la ruta?</p>
-</dd>
-</dl>
+</section>
+<section id="nodes-visited-in-the-route">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Nodes visited in the route.</a><a class="headerlink" href="#nodes-visited-in-the-route" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT row_number() over () as node_seq, node
 FROM  pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE edge &lt;&gt; -1 ORDER BY seq;
  node_seq | node
 ----------+------
         1 |   -6
-        2 |    5
-        3 |    8
+        2 |    7
+        3 |    3
         4 |   -4
-        5 |    8
-        6 |    5
-        7 |    5
-        8 |   10
-        9 |    5
-       10 |    6
-       11 |    9
+        5 |    3
+        6 |    7
+        7 |    7
+        8 |    8
+        9 |    7
+       10 |   11
+       11 |   16
        12 |   -2
 (12 rows)
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 5</dt>
-<dd class="field-odd"><p>¿Cuáles son los costos agregados de la ruta cuando se llega a los vértices visitados?</p>
-</dd>
-</dl>
+</section>
+<section id="the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">The aggregate costs of the route when the visited vertices are reached.</a><a class="headerlink" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT path_id, route_agg_cost FROM  pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2]
+  ARRAY[-6, 7, -4, 8, -2]
 )
 WHERE edge &lt; 0;
  path_id | route_agg_cost
@@ -791,83 +798,79 @@ WHERE edge &lt; 0;
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 6</dt>
-<dd class="field-odd"><p>Show the route’s seq and aggregate cost and a status of «passes in
-front» or «visits»</p>
-</dd>
-</dl>
+</section>
+<section id="status-of-passes-in-front-or-visits-of-the-nodes-and-points">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Status of «passes in front» or «visits» of the nodes and points.</a><a class="headerlink" href="#status-of-passes-in-front-or-visits-of-the-nodes-and-points" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT seq, route_agg_cost, node, agg_cost ,
 CASE WHEN edge = -1 THEN $$visits$$
 ELSE $$passes in front$$
 END as status
 FROM  pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 5, -4, 10, -2])
+  ARRAY[-6, 7, -4, 8, -2])
 WHERE agg_cost  &lt;&gt; 0 or seq = 1;
  seq | route_agg_cost | node | agg_cost |     status
 -----+----------------+------+----------+-----------------
    1 |              0 |   -6 |        0 | passes in front
-   2 |            0.3 |    5 |      0.3 | visits
-   4 |            1.3 |    8 |        1 | passes in front
+   2 |            0.3 |    7 |      0.3 | visits
+   4 |            1.3 |    3 |        1 | passes in front
    5 |            2.6 |   -4 |      2.3 | visits
-   7 |            3.3 |    8 |      0.7 | passes in front
-   8 |            4.3 |    5 |      1.7 | passes in front
-   9 |            4.9 |    5 |      2.3 | passes in front
-  10 |            5.9 |   10 |      3.3 | visits
-  12 |            6.9 |    5 |        1 | passes in front
-  13 |            7.9 |    6 |        2 | passes in front
-  14 |            8.9 |    9 |        3 | passes in front
+   7 |            3.3 |    3 |      0.7 | passes in front
+   8 |            4.3 |    7 |      1.7 | passes in front
+   9 |            4.9 |    7 |      2.3 | passes in front
+  10 |            5.9 |    8 |      3.3 | visits
+  12 |            6.9 |    7 |        1 | passes in front
+  13 |            7.9 |   11 |        2 | passes in front
+  14 |            8.9 |   16 |        3 | passes in front
   15 |            9.3 |   -2 |      3.4 | passes in front
 (12 rows)
 
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo 7</dt>
-<dd class="field-odd"><p>Sumulación del functionamiento del algoritmo</p>
-</dd>
-</dl>
+</section>
+</section>
+<section id="simulation-of-how-algorithm-works">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Sumulación del functionamiento del algoritmo</a><a class="headerlink" href="#simulation-of-how-algorithm-works" title="Permalink to this heading">¶</a></h3>
 <p>The algorithm performs a <a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 4, -5]);
+  ARRAY[-6, 15, -5]);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |        -6 |       4 |   -6 |    4 |  0.3 |        0 |              0
-   2 |       1 |        2 |        -6 |       4 |    5 |    8 |    1 |      0.3 |            0.3
-   3 |       1 |        3 |        -6 |       4 |    6 |    9 |    1 |      1.3 |            1.3
-   4 |       1 |        4 |        -6 |       4 |    9 |   16 |    1 |      2.3 |            2.3
-   5 |       1 |        5 |        -6 |       4 |    4 |   -1 |    0 |      3.3 |            3.3
-   6 |       2 |        1 |         4 |      -5 |    4 |    3 |    1 |        0 |            3.3
-   7 |       2 |        2 |         4 |      -5 |    3 |    5 |  0.8 |        1 |            4.3
-   8 |       2 |        3 |         4 |      -5 |   -5 |   -2 |    0 |      1.8 |            5.1
+   1 |       1 |        1 |        -6 |      15 |   -6 |    4 |  0.3 |        0 |              0
+   2 |       1 |        2 |        -6 |      15 |    7 |    8 |    1 |      0.3 |            0.3
+   3 |       1 |        3 |        -6 |      15 |   11 |    9 |    1 |      1.3 |            1.3
+   4 |       1 |        4 |        -6 |      15 |   16 |   16 |    1 |      2.3 |            2.3
+   5 |       1 |        5 |        -6 |      15 |   15 |   -1 |    0 |      3.3 |            3.3
+   6 |       2 |        1 |        15 |      -5 |   15 |    3 |    1 |        0 |            3.3
+   7 |       2 |        2 |        15 |      -5 |   10 |    5 |  0.8 |        1 |            4.3
+   8 |       2 |        3 |        15 |      -5 |   -5 |   -2 |    0 |      1.8 |            5.1
 (8 rows)
 
 </pre></div>
 </div>
 <p>Detects which of the paths pass through a restriction in this case is for the
-<code class="docutils literal notranslate"><span class="pre">path_id</span> <span class="pre">=</span> <span class="pre">1</span></code> from <code class="docutils literal notranslate"><span class="pre">-6</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code> because the path <span class="math notranslate nohighlight">\(9 \rightarrow 16\)</span>
+<code class="docutils literal notranslate"><span class="pre">path_id</span> <span class="pre">=</span> <span class="pre">1</span></code> from <code class="docutils literal notranslate"><span class="pre">-6</span></code> to <code class="docutils literal notranslate"><span class="pre">15</span></code> because the path <span class="math notranslate nohighlight">\(9 \rightarrow 16\)</span>
 is restricted.</p>
 <p>Executes the <a class="reference internal" href="TRSP-family.html#trsp-algorithm"><span class="std std-ref">TRSP algorithm</span></a> for the conflicting paths.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
 FROM  pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  -6, 4);
+  -6, 15);
  path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 ---------+----------+-----------+---------+------+------+------+----------
-       1 |        1 |        -6 |       4 |   -6 |    4 |  0.3 |        0
-       1 |        2 |        -6 |       4 |    5 |   10 |    1 |      0.3
-       1 |        3 |        -6 |       4 |   10 |   12 |    1 |      1.3
-       1 |        4 |        -6 |       4 |   11 |   13 |    1 |      2.3
-       1 |        5 |        -6 |       4 |   12 |   15 |    1 |      3.3
-       1 |        6 |        -6 |       4 |    9 |   16 |    1 |      4.3
-       1 |        7 |        -6 |       4 |    4 |   -1 |    0 |      5.3
+       1 |        1 |        -6 |      15 |   -6 |    4 |  0.3 |        0
+       1 |        2 |        -6 |      15 |    7 |   10 |    1 |      0.3
+       1 |        3 |        -6 |      15 |    8 |   12 |    1 |      1.3
+       1 |        4 |        -6 |      15 |   12 |   13 |    1 |      2.3
+       1 |        5 |        -6 |      15 |   17 |   15 |    1 |      3.3
+       1 |        6 |        -6 |      15 |   16 |   16 |    1 |      4.3
+       1 |        7 |        -6 |      15 |   15 |   -1 |    0 |      5.3
 (7 rows)
 
 </pre></div>
@@ -878,16 +881,16 @@ builds the solution with the results of the <a class="reference internal" href="
 solutions AS (
   SELECT path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
   FROM  pgr_withPointsVia(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
     $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-    ARRAY[-6, 4, -5]) WHERE path_id != 1
+    ARRAY[-6, 15, -5]) WHERE path_id != 1
   UNION
   SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
   FROM  pgr_trsp_withPoints(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+    $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
     $$SELECT path, cost FROM restrictions$$,
     $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-    -6, 4)),
+    -6, 15)),
 with_seq AS (
   SELECT row_number() over(ORDER BY path_id, path_seq) AS seq, *
   FROM solutions),
@@ -896,44 +899,44 @@ SELECT with_seq.*, COALESCE(route_agg_cost, 0) AS route_agg_cost
 FROM with_seq LEFT JOIN aggregation ON (with_seq.seq = aggregation.seq + 1);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |        -6 |       4 |   -6 |    4 |  0.3 |        0 |              0
-   2 |       1 |        2 |        -6 |       4 |    5 |   10 |    1 |      0.3 |            0.3
-   3 |       1 |        3 |        -6 |       4 |   10 |   12 |    1 |      1.3 |            1.3
-   4 |       1 |        4 |        -6 |       4 |   11 |   13 |    1 |      2.3 |            2.3
-   5 |       1 |        5 |        -6 |       4 |   12 |   15 |    1 |      3.3 |            3.3
-   6 |       1 |        6 |        -6 |       4 |    9 |   16 |    1 |      4.3 |            4.3
-   7 |       1 |        7 |        -6 |       4 |    4 |   -1 |    0 |      5.3 |            5.3
-   8 |       2 |        1 |         4 |      -5 |    4 |    3 |    1 |        0 |            5.3
-   9 |       2 |        2 |         4 |      -5 |    3 |    5 |  0.8 |        1 |            6.3
-  10 |       2 |        3 |         4 |      -5 |   -5 |   -2 |    0 |      1.8 |            7.1
+   1 |       1 |        1 |        -6 |      15 |   -6 |    4 |  0.3 |        0 |              0
+   2 |       1 |        2 |        -6 |      15 |    7 |   10 |    1 |      0.3 |            0.3
+   3 |       1 |        3 |        -6 |      15 |    8 |   12 |    1 |      1.3 |            1.3
+   4 |       1 |        4 |        -6 |      15 |   12 |   13 |    1 |      2.3 |            2.3
+   5 |       1 |        5 |        -6 |      15 |   17 |   15 |    1 |      3.3 |            3.3
+   6 |       1 |        6 |        -6 |      15 |   16 |   16 |    1 |      4.3 |            4.3
+   7 |       1 |        7 |        -6 |      15 |   15 |   -1 |    0 |      5.3 |            5.3
+   8 |       2 |        1 |        15 |      -5 |   15 |    3 |    1 |        0 |            5.3
+   9 |       2 |        2 |        15 |      -5 |   10 |    5 |  0.8 |        1 |            6.3
+  10 |       2 |        3 |        15 |      -5 |   -5 |   -2 |    0 |      1.8 |            7.1
 (10 rows)
 
 </pre></div>
 </div>
 <p>Getting the same result as <code class="docutils literal notranslate"><span class="pre">pgr_trspVia_withPoints</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[-6, 4, -5]);
+  ARRAY[-6, 15, -5]);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |        -6 |       4 |   -6 |    4 |  0.3 |        0 |              0
-   2 |       1 |        2 |        -6 |       4 |    5 |   10 |    1 |      0.3 |            0.3
-   3 |       1 |        3 |        -6 |       4 |   10 |   12 |    1 |      1.3 |            1.3
-   4 |       1 |        4 |        -6 |       4 |   11 |   13 |    1 |      2.3 |            2.3
-   5 |       1 |        5 |        -6 |       4 |   12 |   15 |    1 |      3.3 |            3.3
-   6 |       1 |        6 |        -6 |       4 |    9 |   16 |    1 |      4.3 |            4.3
-   7 |       1 |        7 |        -6 |       4 |    4 |   -1 |    0 |      5.3 |            5.3
-   8 |       2 |        1 |         4 |      -5 |    4 |    3 |    1 |        0 |            5.3
-   9 |       2 |        2 |         4 |      -5 |    3 |    5 |  0.8 |        1 |            6.3
-  10 |       2 |        3 |         4 |      -5 |   -5 |   -2 |    0 |      1.8 |            7.1
+   1 |       1 |        1 |        -6 |      15 |   -6 |    4 |  0.3 |        0 |              0
+   2 |       1 |        2 |        -6 |      15 |    7 |   10 |    1 |      0.3 |            0.3
+   3 |       1 |        3 |        -6 |      15 |    8 |   12 |    1 |      1.3 |            1.3
+   4 |       1 |        4 |        -6 |      15 |   12 |   13 |    1 |      2.3 |            2.3
+   5 |       1 |        5 |        -6 |      15 |   17 |   15 |    1 |      3.3 |            3.3
+   6 |       1 |        6 |        -6 |      15 |   16 |   16 |    1 |      4.3 |            4.3
+   7 |       1 |        7 |        -6 |      15 |   15 |   -1 |    0 |      5.3 |            5.3
+   8 |       2 |        1 |        15 |      -5 |   15 |    3 |    1 |        0 |            5.3
+   9 |       2 |        2 |        15 |      -5 |   10 |    5 |  0.8 |        1 |            6.3
+  10 |       2 |        3 |        15 |      -5 |   -5 |   -2 |    0 |      1.8 |            7.1
 (10 rows)
 
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo 8</dt>
+<dt class="field-odd">Ejemplo 8<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Sometimes <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</span></code> flag is ignored when is set to
 <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
 </dd>
@@ -942,35 +945,35 @@ FROM with_seq LEFT JOIN aggregation ON (with_seq.seq = aggregation.seq + 1);
 on the same edge. But the path <span class="math notranslate nohighlight">\(9 \rightarrow 16\)</span> (Rows 4 and 5) is
 restricted and the result is using it.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_withPointsVia(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[2, 5, 2], U_turn_on_edge =&gt; false);
+  ARRAY[6, 7, 6], U_turn_on_edge =&gt; false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |         2 |       5 |    2 |    4 |    1 |        0 |              0
-   2 |       1 |        2 |         2 |       5 |    5 |   -1 |    0 |        1 |              1
-   3 |       2 |        1 |         5 |       2 |    5 |    8 |    1 |        0 |              1
-   4 |       2 |        2 |         5 |       2 |    6 |    9 |    1 |        1 |              2
-   5 |       2 |        3 |         5 |       2 |    9 |   16 |    1 |        2 |              3
-   6 |       2 |        4 |         5 |       2 |    4 |    3 |    1 |        3 |              4
-   7 |       2 |        5 |         5 |       2 |    3 |    2 |    1 |        4 |              5
-   8 |       2 |        6 |         5 |       2 |    2 |   -2 |    0 |        5 |              6
+   1 |       1 |        1 |         6 |       7 |    6 |    4 |    1 |        0 |              0
+   2 |       1 |        2 |         6 |       7 |    7 |   -1 |    0 |        1 |              1
+   3 |       2 |        1 |         7 |       6 |    7 |    8 |    1 |        0 |              1
+   4 |       2 |        2 |         7 |       6 |   11 |    9 |    1 |        1 |              2
+   5 |       2 |        3 |         7 |       6 |   16 |   16 |    1 |        2 |              3
+   6 |       2 |        4 |         7 |       6 |   15 |    3 |    1 |        3 |              4
+   7 |       2 |        5 |         7 |       6 |   10 |    2 |    1 |        4 |              5
+   8 |       2 |        6 |         7 |       6 |    6 |   -2 |    0 |        5 |              6
 (8 rows)
 
 </pre></div>
 </div>
 <p>When executing the <a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> algorithm for the conflicting
 path, there is no <code class="docutils literal notranslate"><span class="pre">U_turn_on_edge</span></code> flag.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT 1 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT 5 AS path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost
 FROM  pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  5, 2);
+  7, 6);
  path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 ---------+----------+-----------+---------+------+------+------+----------
-       1 |        1 |         5 |       2 |    5 |    4 |    1 |        0
-       1 |        2 |         5 |       2 |    2 |   -1 |    0 |        1
+       5 |        1 |         7 |       6 |    7 |    4 |    1 |        0
+       5 |        2 |         7 |       6 |    6 |   -1 |    0 |        1
 (2 rows)
 
 </pre></div>
@@ -980,23 +983,24 @@ From the <a class="reference internal" href="pgr_withPointsVia.html"><span class
 builds the solution with the results of the <a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> algorithm.
 In this case a U turn is been done using the same edge.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM  pgr_trspVia_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
-  ARRAY[2, 5, 2], U_turn_on_edge =&gt; false);
+  ARRAY[6, 7, 6], U_turn_on_edge =&gt; false);
  seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost
 -----+---------+----------+-----------+---------+------+------+------+----------+----------------
-   1 |       1 |        1 |         2 |       5 |    2 |    4 |    1 |        0 |              0
-   2 |       1 |        2 |         2 |       5 |    5 |   -1 |    0 |        1 |              1
-   3 |       2 |        1 |         5 |       2 |    5 |    4 |    1 |        0 |              1
-   4 |       2 |        2 |         5 |       2 |    2 |   -2 |    0 |        1 |              2
+   1 |       1 |        1 |         6 |       7 |    6 |    4 |    1 |        0 |              0
+   2 |       1 |        2 |         6 |       7 |    7 |   -1 |    0 |        1 |              1
+   3 |       2 |        1 |         7 |       6 |    7 |    4 |    1 |        0 |              1
+   4 |       2 |        2 |         7 |       6 |    6 |   -2 |    0 |        1 |              2
 (4 rows)
 
 </pre></div>
 </div>
 </section>
+</section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="via-category.html"><span class="doc">Via - Category</span></a></p></li>
@@ -1023,8 +1027,8 @@ In this case a U turn is been done using the same edge.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

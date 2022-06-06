@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Familias de Funciones &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -79,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Notas de versión</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="trsp_migration.html"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> - Migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration guide</a></li>
 </ul>
 </ul>
 </li>
@@ -145,17 +146,23 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/routingFunctions.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/routingFunctions.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/routingFunctions.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/routingFunctions.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/routingFunctions.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/routingFunctions.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/routingFunctions.html">3.4</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.3/en/routingFunctions.html">3.3</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/routingFunctions.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/routingFunctions.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/routingFunctions.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/routingFunctions.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/routingFunctions.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/routingFunctions.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/routingFunctions.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/routingFunctions.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/index.html">2.0</a></p></li>
 </ul>
 <section id="function-families">
-<h1>Familias de Funciones<a class="headerlink" href="#function-families" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Familias de Funciones<a class="headerlink" href="#function-families" title="Permalink to this heading">¶</a></h1>
 <p><a class="reference internal" href="allpairs-family.html"><span class="doc">Todos los Pares - Familia de Funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Algoritmo de Floyd-Warshall.</p></li>
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Algoritmo de Johnson</p></li>
 </ul>
-<p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Familia de Funciones</span></a></p>
+<p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Family of functions</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* Algoritmo para la ruta más corta.</p></li>
 <li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - Obtenga el costo agregado de las rutas más cortas.</p></li>
@@ -195,7 +202,8 @@
 </ul>
 <p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</p></li>
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel
+algorithm.</p></li>
 <li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmos Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Algoritmo de Edmonds y Karp  algorithm con detalles de flujo con detalles del flujo en aristas.</p></li>
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Algoritmos Push y Relabel con detalles del flujo en aristas.</p></li>
@@ -243,7 +251,7 @@ the source and target information.</p></li>
 </ul>
 <p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Restricción de Giro Ruta Más Corta (Turn Restriction Shortest Path: TRSP)</p>
 <section id="functions-by-categories">
-<h2>Funciones por categorías<a class="headerlink" href="#functions-by-categories" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Funciones por categorías<a class="headerlink" href="#functions-by-categories" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
@@ -295,7 +303,7 @@ the source and target information.</p></li>
 <div class="toctree-wrapper compound">
 </div>
 <section id="see-also">
-<h3>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
@@ -318,8 +326,8 @@ the source and target information.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>
