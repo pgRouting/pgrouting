@@ -277,12 +277,12 @@ _______________________________________________________________________________
 .. image:: images/rightDrivingSide.png
     :scale: 50%
 
-- Point **1** located on edge ``(2, 1)``
-- Point **2** located on edge ``(9, 12)``
-- Point **3** located on edge ``(10, 11)``
-- Point **4** located on edge ``(7, 8)``
-- Point **5** located on edge ``(3, 6)``
-- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
+- Point **1** located on edge ``(6, 5)``
+- Point **2** located on edge ``(16, 17)``
+- Point **3** located on edge ``(8, 12)``
+- Point **4** located on edge ``(1, 3)``
+- Point **5** located on edge ``(10, 11)``
+- Point **6** located on edges ``(6, 7)`` and ``(7, 6)``
 
 Left driving side
 _______________________________________________________________________________
@@ -290,12 +290,12 @@ _______________________________________________________________________________
 .. image:: images/leftDrivingSide.png
     :scale: 50%
 
-- Point **1** located on edge ``(1, 2)``
-- Point **2** located on edge ``(12, 9)``
-- Point **3** located on edge ``(10, 11)``
-- Point **4** located on edge ``(8, 7)``
-- Point **5** located on edge ``(3, 6)``
-- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
+- Point **1** located on edge ``(5, 6)``
+- Point **2** located on edge ``(17, 16)``
+- Point **3** located on edge ``(8, 12)``
+- Point **4** located on edge ``(3, 1)``
+- Point **5** located on edge ``(10, 11)``
+- Point **6** located on edges ``(6, 7)`` and ``(7, 6)``
 
 Driving side does not matter
 _______________________________________________________________________________
@@ -307,13 +307,12 @@ _______________________________________________________________________________
 .. image:: images/noMatterDrivingSide.png
     :scale: 50%
 
-- Point **1** located on edges ``(1, 2)`` and ``(2, 1)``
-- Point **2** located on edges ``(12, 9)`` and ``(9, 12)``
-- Point **3** located on edge ``(10, 11)``
-- Point **4** located on edges ``(8, 7)`` and ``(7, 8)``
-- Point **5** located on edge ``(3, 6)``
-- Point **6** located on edges ``(2, 5)`` and ``(5, 2)``
-
+- Point **1** located on edge ``(5, 6)`` and ``(6, 5)``
+- Point **2** located on edge ``(17, 16)``and ``16, 17``
+- Point **3** located on edge ``(8, 12)``
+- Point **4** located on edge ``(3, 1)`` and ``(1, 3)``
+- Point **5** located on edge ``(10, 11)``
+- Point **6** located on edges ``(6, 7)`` and ``(7, 6)``
 
 Creating temporary vertices
 ...............................................................................
@@ -343,14 +342,14 @@ _______________________________________________________________________________
 .. image:: images/rightDrivingSide.png
     :scale: 50%
 
-- Arrival to point ``-2`` can be achived only via vertex **9**.
-- Does not affects edge ``(12, 9)``, therefore the edge is kept.
-- It only affects the edge ``(9, 12)``, therefore the edge is removed.
+- Arrival to point ``-2`` can be achived only via vertex **16**.
+- Does not affects edge ``(17, 16)``, therefore the edge is kept.
+- It only affects the edge ``(16, 17)``, therefore the edge is removed.
 - Create two new edges:
 
-  - Edge ``(9, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
+  - Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
     0.4`)
-  - Edge ``(-2, 12)`` with cost ``0.6`` (the remaing cost)
+  - Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)
 
 - The total cost of the additional edges is equal to the original cost.
 - If more points are on the same edge, the process is repeated recursevly.
@@ -363,24 +362,24 @@ _______________________________________________________________________________
 .. image:: images/leftDrivingSide.png
     :scale: 50%
 
-- Arrival to point ``-2`` can be achived only via vertex **12**.
-- Does not affects edge ``(9, 12)``, therefore the edge is kept.
-- It only affects the edge ``(12, 9)``, therefore the edge is removed.
+- Arrival to point ``-2`` can be achived only via vertex **17**.
+- Does not affects edge ``(16, 17)``, therefore the edge is kept.
+- It only affects the edge ``(17, 16)``, therefore the edge is removed.
 - Create two new edges:
 
-  - Work with the original edge ``(9, 12)`` as the fraction is a fraction of the
+  - Work with the original edge ``(16, 17)`` as the fraction is a fraction of the
     original:
 
-    - Edge ``(9, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
+    - Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
       0.4`)
-    - Edge ``(-2, 12)`` with cost ``0.6`` (the remaing cost)
+    - Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)
     - If more points are on the same edge, the process is repeated recursevly.
 
   - Flip the Edges and add them to the graph:
 
-    - Edge ``(9, -2)`` becomes ``(-2, 9)`` with cost ``0.4`` and is added to the
+    - Edge ``(17, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to the
       graph.
-    - Edge ``(-2, 12)`` becomes ``(12, -2)`` with cost ``0.6`` and is added to
+    - Edge ``(-2, 16)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to
       the graph.
 
 - The total cost of the additional edges is equal to the original cost.
@@ -391,25 +390,25 @@ _______________________________________________________________________________
 .. image:: images/noMatterDrivingSide.png
     :scale: 50%
 
-- Arrival to point ``-2`` can be achived only via vertex **9** or **12**.
-- Affects the edges ``(9, 12)`` and ``(12, 9)``, therefore the edges are removed.
+- Arrival to point ``-2`` can be achived via vertices **16** or **17**.
+- Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are removed.
 - Create four new edges:
 
-  - Work with the original edge ``(9, 12)`` as the fraction is a fraction of the
+  - Work with the original edge ``(16, 17)`` as the fraction is a fraction of the
     original:
 
-    - Edge ``(9, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
+    - Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 *
       0.4`)
-    - Edge ``(-2, 12)`` with cost ``0.6`` (the remaing cost)
+    - Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)
     - If more points are on the same edge, the process is repeated recursevly.
 
   - Flip the Edges and add all the edges to the graph:
 
-    - Edge ``(9, -2)`` is added to the graph.
-    - Edge ``(-2, 12)`` is added to the graph.
-    - Edge ``(9, -2)`` becomes ``(-2, 9)`` with cost ``0.4`` and is added to the
+    - Edge ``(16, -2)`` is added to the graph.
+    - Edge ``(-2, 17)`` is added to the graph.
+    - Edge ``(16, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to the
       graph.
-    - Edge ``(-2, 12)`` becomes ``(12, -2)`` with cost ``0.6`` and is added to
+    - Edge ``(-2, 17)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to
       the graph.
 
 .. advanced_documentation_end
