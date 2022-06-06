@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_aStarCostMatrix.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStarCostMatrix.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_aStarCostMatrix.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStarCostMatrix.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStarCostMatrix.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStarCostMatrix.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStarCostMatrix.html>`__
@@ -72,10 +73,11 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_aStarCostMatrix(`Edges SQL`_, **vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStarCostMatrix(`Edges SQL`_, **start vids**
+        [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
+:Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
           **undirected** graph using heuristic :math:`2`
 
 .. literalinclude:: doc-aStarCostMatrix.queries
@@ -103,7 +105,7 @@ aStar optional Parameters
     :start-after: astar_optionals_start
     :end-before: astar_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

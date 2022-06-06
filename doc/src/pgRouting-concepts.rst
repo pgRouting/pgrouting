@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgRouting-concepts.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-concepts.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgRouting-concepts.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgRouting-concepts.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html>`__
@@ -24,14 +25,10 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html>`__
 
-|
-
 pgRouting Concepts
 ===============================================================================
 
 .. contents::
-
-|
 
 Getting Started
 -------------------------------------------------------------------------------
@@ -41,9 +38,6 @@ with pgRouting. In this guide we will cover:
 
 .. contents::
     :local:
-
-
-|
 
 Create a routing Database
 ...............................................................................
@@ -56,13 +50,11 @@ later if you want to to say a production server.
 
 For Postgresql 9.2 and later versions
 
-.. code-block:: bash
+.. parsed-literal::
 
 	createdb mydatabase
 	psql mydatabase -c "create extension postgis"
 	psql mydatabase -c "create extension pgrouting"
-
-|
 
 Load Data
 ...............................................................................
@@ -87,8 +79,6 @@ you may then load that data into your database as a table of some kind. At this
 point you need to know a little about your data structure and content. One easy
 way to browse your new data table is with pgAdmin or phpPgAdmin.
 
-|
-
 Build a Routing Topology
 ...............................................................................
 
@@ -100,11 +90,12 @@ to a unique node and to other edges that are also connected to that same unique
 node. Once all the edges are connected to nodes we have a graph that can be
 used for routing with pgrouting. We provide a tool that will help with this:
 
-.. code-block:: sql
+.. parsed-literal::
 
     select pgr_createTopology('myroads', 0.000001);
 
-where you should replace 'myroads' with the name of your table storing the edges.
+where you should replace 'myroads' with the name of your table storing the
+edges.
 
 * :doc:`pgr_createTopology`
 
@@ -122,7 +113,7 @@ There can be other errors like the direction of a one-way street being entered
 in the wrong direction. We do not have tools to search for all possible errors
 but we have some basic tools that might help.
 
-.. code-block:: sql
+.. parsed-literal::
 
     select pgr_analyzegraph('myroads', 0.000001);
     select pgr_analyzeoneway('myroads',  s_in_rules, s_out_rules,
@@ -140,35 +131,41 @@ where you should replace 'myroads' with the name of your table storing the edges
 Compute a Path
 ...............................................................................
 
-Once you have all the preparation work done above, computing a route is fairly easy.
+Once you have all the preparation work done above, computing a route is fairly
+easy.
 We have a lot of different algorithms that can work with your prepared road
-network. The general form of a route query using Dijkstra algorithm is:
+network.
+The general form of a route query using Dijkstra algorithm is:
 
-.. code-block:: none
+.. parsed-literal::
 
-    select pgr_dijkstra(`SELECT * FROM myroads', <start>, <end>)
+    select pgr_dijkstra('SELECT * FROM myroads', <start>, <end>)
 
 
-This algorithm only requires *id*, *source*, *target* and *cost* as the minimal attributes, that by
-default will be considered to be columns in your roads table. If the column names in your
-roads table do not match exactly the names of these attributes, you can use aliases. For example,
-if you imported OSM data using **osm2pgrouting**, your id column's name would be *gid* and your
-roads table would be *ways*, so you would query a route from node id 1 to node id 2 by typing:
+This algorithm only requires *id*, *source*, *target* and *cost* as the minimal
+attributes, that by default will be considered to be columns in your roads
+table.
+If the column names in your roads table do not match exactly the names of these
+attributes, you can use aliases.
+For example, if you imported OSM data using **osm2pgrouting**, your id column's
+name would be *gid* and your roads table would be *ways*, so you would query a
+route from node id 1 to node id 2 by typing:
 
-.. code-block:: none
+.. parsed-literal::
 
     select pgr_dijkstra('SELECT gid AS id, source, target, cost FROM ways', 1, 2)
 
-As you can see this is fairly straight forward and it also allows for great flexibility, both in terms
-of database structure and in defining cost functions. You can test the previous query
-using *length_m AS cost* to compute the shortest path in meters or *cost_s / 60 AS cost* to compute
-the fastest path in minutes.
+As you can see this is fairly straight forward and it also allows for great
+flexibility, both in terms of database structure and in defining cost functions.
+You can test the previous query using *length_m AS cost* to compute the shortest
+path in meters or *cost_s / 60 AS cost* to compute the fastest path in minutes.
 
-You can look and the specific algorithms for the details of the signatures and how
-to use them. These results have information like edge id and/or the
-node id along with the cost or geometry for the step in the path from *start*
-to *end*. Using the ids you can join these result back to your edge table
-to get more information about each step in the path.
+You can look and the specific algorithms for the details of the signatures and
+how to use them.
+These results have information like edge id and/or the node id along with the
+cost or geometry for the step in the path from *start* to *end*.
+Using the ids you can join these result back to your edge table to get more
+information about each step in the path.
 
 * :doc:`pgr_dijkstra`
 
@@ -176,7 +173,8 @@ Group of Functions
 -------------------------------------------------------------------------------
 
 A function might have different overloads.
-Across this documentation, to indicate which overload we use the following terms:
+Across this documentation, to indicate which overload we use the following
+terms:
 
 * `One to One`_
 * `One to Many`_
@@ -219,8 +217,6 @@ When routing from:
 * From **many** starting vertices
 * to **many** ending vertices
 
-|
-
 Combinations
 ...............................................................................
 
@@ -231,15 +227,14 @@ When routing from:
 * Every tuple specifies a pair of a start vertex and an end vertex
 * Users can define the combinations as desired.
 
-|
-
 Inner Queries
 -------------------------------------------------------------------------------
 
 .. contents::
     :local:
 
-There are several kinds of valid inner queries and also the columns returned are depending of the function.
+There are several kinds of valid inner queries and also the columns returned are
+depending of the function.
 Which kind of inner query will depend on the function(s) requirements.
 To simplify variety of types, **ANY-INTEGER** and **ANY-NUMERICAL** is used.
 
@@ -251,8 +246,6 @@ Where:
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 .. where_definition_ends
-
-|
 
 Edges SQL
 ...............................................................................
@@ -565,8 +558,36 @@ Where:
 
 .. basic_combinations_sql_end
 
+Restrictions SQL
+...............................................................................
 
-|
+.. restrictions_columns_start
+
+.. list-table::
+   :width: 81
+   :widths: 7 17 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``path``
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Sequence of edge identifiers that form a path that is not allowed to be
+       taken.
+       - Empty arrays or ``NULL`` arrays are ignored.
+       - Arrays that have a ``NULL`` element will raise an exception.
+   * - ``Cost``
+     - **ANY-NUMERICAL**
+     - Cost of taking the forbidden path.
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+:ANY-NUMERICAL: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
+
+.. restrictions_columns_end
+
 
 Points SQL
 ...............................................................................
@@ -607,7 +628,8 @@ parameters, some of them are compulsory and some are optional.
 The compulsory parameters are nameless and must be given in the required order.
 The optional parameters are named parameters and will have a default value.
 
-.. rubric:: Parameters for the Via functions
+Parameters for the Via functions
+...............................................................................
 
 * :doc:`pgr_dijkstraVia`
 
@@ -653,15 +675,56 @@ The optional parameters are named parameters and will have a default value.
 
 .. pgr_dijkstra_via_parameters_end
 
+For the TRSP functions
+...............................................................................
+
+* :doc:`pgr_trsp`
+
+.. restriction_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 17 22 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Restrictions SQL`_
+     - ``TEXT``
+     - SQL query as described.
+   * - `Combinations SQL`_
+     - ``TEXT``
+     - `Combinations SQL`_ as described below
+   * - **start vid**
+     - **ANY-INTEGER**
+     - Identifier of the departure vertex.
+   * - **start vids**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Array of identifiers of destination vertices.
+   * - **end vid**
+     - **ANY-INTEGER**
+     - Identifier of the departure vertex.
+   * - **end vids**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Array of identifiers of destination vertices.
+
+Where:
+
+:ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
+
+.. restriction_parameters_end
+
 Return columns
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 .. contents::
     :local:
 
 There are several kinds of columns returned are depending of the function.
-
-|
 
 Return columns for a path
 ...............................................................................
@@ -686,7 +749,8 @@ agg_cost)``
      - Sequential value starting from **1**.
    * - ``path_seq``
      - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a path.
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
    * - ``start_vid``
      - ``BIGINT``
      - Identifier of the starting vertex.
@@ -791,7 +855,7 @@ agg_cost)``
 
 .. return_path_complete_start
 
-Returns set of ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+Returns ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
 
 .. list-table::
    :width: 81
@@ -806,7 +870,8 @@ Returns set of ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
      - Sequential value starting from **1**.
    * - ``path_seq``
      - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a path.
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
    * - ``start_vid``
      - ``BIGINT``
      - Identifier of the starting vertex of the current path.
@@ -830,12 +895,13 @@ Returns set of ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 .. return_path_complete_end
 
-|
-
-Return columns for multiple paths
+Multiple paths
 ...............................................................................
 
-.. rubric:: Used on functions that return many paths solutions
+Selective for multiple paths.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The columns depend on the function call.
 
 .. return_path_start
 
@@ -857,10 +923,12 @@ agg_cost)``
      - ``INTEGER``
      - Path identifier.
 
-       * Has value **1** for the first of a path from ``start_vid`` to ``end_vid``.
+       * Has value **1** for the first of a path from ``start_vid`` to
+         ``end_vid``.
    * - ``path_seq``
      - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a path.
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
    * - ``start_vid``
      - ``BIGINT``
      - Identifier of the starting vertex.
@@ -868,6 +936,7 @@ agg_cost)``
 
        * `Many to One`_
        * `Many to Many`_
+       * `Combinations`_
    * - ``end_vid``
      - ``BIGINT``
      - Identifier of the ending vertex.
@@ -875,6 +944,7 @@ agg_cost)``
 
        * `One to Many`_
        * `Many to Many`_
+       * `Combinations`_
    * - ``node``
      - ``BIGINT``
      - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
@@ -892,14 +962,68 @@ agg_cost)``
 
 .. return_path_end
 
-|
+Non selective for multiple paths
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Regardless of the call, al the columns are returned.
+
+* :doc:`pgr_trsp`
+
+.. return_path_all_columns_start
+
+Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost,
+agg_cost)``
+
+.. list-table::
+   :width: 81
+   :widths: 12 14 60
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from **1**.
+   * - ``path_id``
+     - ``INTEGER``
+     - Path identifier.
+
+       * Has value **1** for the first of a path from ``start_vid`` to
+         ``end_vid``.
+   * - ``path_seq``
+     - ``INTEGER``
+     - Relative position in the path. Has value **1** for the beginning of a
+       path.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the starting vertex.
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the ending vertex.
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in the
+       path sequence. **-1** for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_vid`` to ``node``.
+
+.. return_path_all_columns_end
 
 Return columns for cost functions
 ...............................................................................
 
 .. rubric:: Used in the following
 
-* Cost functions
+* :doc:`cost-category`
 * :doc:`costMatrix-category`
 * :doc:`allpairs-family`
 
@@ -927,44 +1051,16 @@ Set of ``(start_vid, end_vid, agg_cost)``
 
 .. return_cost_end
 
-.. rubric:: Used in the following
-
-* :doc:`pgr_withPointsCost`
-
 .. return_cost_withPoints_start
 
-Set of ``(start_vid, end_vid, agg_cost)``
-
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``start_vid``
-     - ``BIGINT``
-     - Identifier of the starting vertex or point.
-
-       * When positive: is a vertex’s identifier.
-       * When negative: is a point’s identifier.
-   * - ``end_vid``
-     - ``BIGINT``
-     - Identifier of the ending vertex or point.
-
-       * When positive: is a vertex’s identifier.
-       * When negative: is a point’s identifier.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``start_vid`` to ``end_vid``.
+.. Note::
+   When start_vid or end_vid columns have negative values, the identifier is for
+   a Point.
 
 .. return_cost_withPoints_end
 
-|
-
 Return columns for flow functions
-.....................................................................
+...............................................................................
 
 .. rubric:: Edges SQL for the following
 
@@ -983,8 +1079,7 @@ Return columns for flow functions
     :end-before: result_costFlow_end
 
 Return columns for spanning tree functions
-.....................................................................
-
+...............................................................................
 
 .. rubric:: Edges SQL for the following
 
@@ -1015,6 +1110,8 @@ Returns SET OF ``(edge, cost)``
 Advanced Topics
 -------------------------------------------------------------------------------
 
+.. TODO this will change, nothing is been generated automatically
+
 .. contents::
     :local:
 
@@ -1023,18 +1120,37 @@ Advanced Topics
 Routing Topology
 ...............................................................................
 
-
 .. rubric:: Overview
 
-Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information associated with them. To create a useful topology the data needs to be "noded". This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.
+Typically when GIS files are loaded into the data database for use with
+pgRouting they do not have topology information associated with them. To create
+a useful topology the data needs to be "noded". This means that where two or
+more roads form an intersection there it needs to be a node at the intersection
+and all the road segments need to be broken at the intersection, assuming that
+you can navigate from any of these segments to any other segment via that
+intersection.
 
-You can use the :ref:`graph analysis functions <analytics>` to help you see where you might have topology problems in your data. If you need to node your data, we also have a function :doc:`pgr_nodeNetwork() <pgr_nodeNetwork>` that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.
+You can use the :ref:`graph analysis functions <analytics>` to help you see
+where you might have topology problems in your data. If you need to node your
+data, we also have a function :doc:`pgr_nodeNetwork() <pgr_nodeNetwork>` that
+might work for you. This function splits ALL crossing segments and nodes them.
+There are some cases where this might NOT be the right thing to do.
 
-For example, when you have an overpass and underpass intersection, you do not want these noded, but pgr_nodeNetwork does not know that is the case and will node them which is not good because then the router will be able to turn off the overpass onto the underpass like it was a flat 2D intersection. To deal with this problem some data sets use z-levels at these types of intersections and other data might not node these intersection which would be ok.
+For example, when you have an overpass and underpass intersection, you do not
+want these noded, but pgr_nodeNetwork does not know that is the case and will
+node them which is not good because then the router will be able to turn off the
+overpass onto the underpass like it was a flat 2D intersection. To deal with
+this problem some data sets use z-levels at these types of intersections and
+other data might not node these intersection which would be ok.
 
-For those cases where topology needs to be added the following functions may be useful. One way to prep the data for pgRouting is to add the following columns to your table and then populate them as appropriate. This example makes a lot of assumption like that you original data tables already has certain columns in it like ``one_way``, ``fcc``, and possibly others and that they contain specific data values. This is only to give you an idea of what you can do with your data.
+For those cases where topology needs to be added the following functions may be
+useful. One way to prep the data for pgRouting is to add the following columns
+to your table and then populate them as appropriate. This example makes a lot of
+assumption like that you original data tables already has certain columns in it
+like ``one_way``, ``fcc``, and possibly others and that they contain specific
+data values. This is only to give you an idea of what you can do with your data.
 
-.. code-block:: sql
+.. parsed-literal::
 
     ALTER TABLE edge_table
         ADD COLUMN source integer,
@@ -1053,9 +1169,13 @@ For those cases where topology needs to be added the following functions may be 
 
     SELECT pgr_createTopology('edge_table', 0.000001, 'the_geom', 'id');
 
-The function :doc:`pgr_createTopology <pgr_createTopology>` will create the ``vertices_tmp`` table and populate the ``source`` and ``target`` columns. The following example populated the remaining columns. In this example, the ``fcc`` column contains feature class code and the ``CASE`` statements converts it to an average speed.
+The function :doc:`pgr_createTopology <pgr_createTopology>` will create the
+``vertices_tmp`` table and populate the ``source`` and ``target`` columns. The
+following example populated the remaining columns. In this example, the ``fcc``
+column contains feature class code and the ``CASE`` statements converts it to an
+average speed.
 
-.. code-block:: sql
+.. parsed-literal::
 
     UPDATE edge_table SET x1 = st_x(st_startpoint(the_geom)),
                           y1 = st_y(st_startpoint(the_geom)),
@@ -1127,17 +1247,26 @@ Graph Analytics
 
 .. rubric:: Overview
 
-It is common to find problems with graphs that have not been constructed fully noded or in graphs with z-levels at intersection that have been entered incorrectly. An other problem is one way streets that have been entered in the wrong direction. We can not detect errors with respect to "ground" truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections.
+It is common to find problems with graphs that have not been constructed fully
+noded or in graphs with z-levels at intersection that have been entered
+incorrectly. An other problem is one way streets that have been entered in the
+wrong direction. We can not detect errors with respect to "ground" truth, but we
+can look for inconsistencies and some anomalies in a graph and report them for
+additional inspections.
 
-We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familiar with graphviz might contribute tools for generating images with that.
+We do not current have any visualization tools for these problems, but I have
+used mapserver to render the graph and highlight potential problem areas.
+Someone familiar with graphviz might contribute tools for generating images with
+that.
 
 
 Analyze a Graph
 ...............................................................................
 
-With :doc:`pgr_analyzeGraph` the graph can be checked for errors. For example for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
+With :doc:`pgr_analyzeGraph` the graph can be checked for errors. For example
+for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT pgr_analyzeGraph('mytab', 0.000002);
     NOTICE:  Performing checks, pelase wait...
@@ -1163,7 +1292,7 @@ In the vertices table "mytab_vertices_pgr":
 - Deadends are identified by ``cnt=1``
 - Potencial gap problems are identified with ``chk=1``.
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT count(*) as deadends  FROM mytab_vertices_pgr WHERE cnt = 1;
     deadends
@@ -1179,33 +1308,43 @@ In the vertices table "mytab_vertices_pgr":
 
 
 
-For isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:
+For isolated road segments, for example, a segment where both ends are deadends.
+you can find these with the following query:
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT *
         FROM mytab a, mytab_vertices_pgr b, mytab_vertices_pgr c
         WHERE a.source=b.id AND b.cnt=1 AND a.target=c.id AND c.cnt=1;
 
 
-If you want to visualize these on a graphic image, then you can use something like mapserver to render the edges and the vertices and style based on ``cnt`` or if they are isolated, etc. You can also do this with a tool like graphviz, or geoserver or other similar tools.
+If you want to visualize these on a graphic image, then you can use something
+like mapserver to render the edges and the vertices and style based on ``cnt``
+or if they are isolated, etc. You can also do this with a tool like graphviz, or
+geoserver or other similar tools.
 
 
 Analyze One Way Streets
 ...............................................................................
 
-:doc:`pgr_analyzeOneWay` analyzes one way streets in a graph and identifies any flipped segments. Basically if you count the edges coming into a node and the edges exiting a node the number has to be greater than one.
+:doc:`pgr_analyzeOneWay` analyzes one way streets in a graph and identifies any
+flipped segments. Basically if you count the edges coming into a node and the
+edges exiting a node the number has to be greater than one.
 
-This query will add two columns to the vertices_tmp table ``ein int`` and ``eout int`` and populate it with the appropriate counts. After running this on a graph you can identify nodes with potential problems with the following query.
+This query will add two columns to the vertices_tmp table ``ein int`` and ``eout
+int`` and populate it with the appropriate counts. After running this on a graph
+you can identify nodes with potential problems with the following query.
 
 
-The rules are defined as an array of text strings that if match the ``col`` value would be counted as true for the source or target in or out condition.
+The rules are defined as an array of text strings that if match the ``col``
+value would be counted as true for the source or target in or out condition.
 
 
 Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Lets assume we have a table "st" of edges and a column "one_way" that might have values like:
+Lets assume we have a table "st" of edges and a column "one_way" that might have
+values like:
 
 * 'FT'    - oneway from the source to the target node.
 * 'TF'    - oneway from the target to the source node.
@@ -1215,7 +1354,7 @@ Lets assume we have a table "st" of edges and a column "one_way" that might have
 
 Then we could form the following query to analyze the oneway streets for errors.
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT pgr_analyzeOneway('mytab',
                 ARRAY['', 'B', 'TF'],
@@ -1232,9 +1371,15 @@ Then we could form the following query to analyze the oneway streets for errors.
     UNION
     SELECT gid FROM mytab a, mytab_vertices_pgr b WHERE a.target=b.id AND ein=0 OR eout=0;
 
-Typically these problems are generated by a break in the network, the one way direction set wrong, maybe an error related to z-levels or a network that is not properly noded.
+Typically these problems are generated by a break in the network, the one way
+direction set wrong, maybe an error related to z-levels or a network that is not
+properly noded.
 
-The above tools do not detect all network issues, but they will identify some common problems. There are other problems that are hard to detect because they are more global in nature like multiple disconnected networks. Think of an island with a road network that is not connected to the mainland network because the bridge or ferry routes are missing.
+The above tools do not detect all network issues, but they will identify some
+common problems. There are other problems that are hard to detect because they
+are more global in nature like multiple disconnected networks. Think of an
+island with a road network that is not connected to the mainland network because
+the bridge or ferry routes are missing.
 
 
 
@@ -1251,11 +1396,12 @@ Performance Tips
 For the Routing functions
 ...............................................................................
 
-To get faster results bound your queries to the area of interest of routing to have, for example, no more than one million rows.
+To get faster results bound your queries to the area of interest of routing to
+have, for example, no more than one million rows.
 
 Use an inner query SQL that does not include some edges in the routing function
 
-.. code-block:: sql
+.. parsed-literal::
 
 	SELECT id, source, target from edge_table WHERE
         	id < 17 and
@@ -1263,7 +1409,7 @@ Use an inner query SQL that does not include some edges in the routing function
 
 Integrating the inner query to the pgRouting function:
 
-.. code-block:: sql
+.. parsed-literal::
 
     SELECT * FROM pgr_dijkstra(
 	    'SELECT id, source, target from edge_table WHERE
@@ -1277,17 +1423,19 @@ Integrating the inner query to the pgRouting function:
 For the topology functions:
 ...............................................................................
 
-When "you know" that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:
+When "you know" that you are going to remove a set of edges from the edges
+table, and without those edges you are going to use a routing function you can
+do the following:
 
 Analize the new topology based on the actual topology:
 
-.. code-block:: sql
+.. parsed-literal::
 
 	pgr_analyzegraph('edge_table',rows_where:='id < 17');
 
 Or create a new topology if the change is permanent:
 
-.. code-block:: sql
+.. parsed-literal::
 
 	pgr_createTopology('edge_table',rows_where:='id < 17');
 	pgr_analyzegraph('edge_table',rows_where:='id < 17');

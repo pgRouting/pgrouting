@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_floydWarshall.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_floydWarshall.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_floydWarshall.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_floydWarshall.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_floydWarshall.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_floydWarshall.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html>`__
@@ -27,8 +28,8 @@
 ``pgr_floydWarshall``
 ===============================================================================
 
-``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path for each
-pair of nodes in the graph using Floyd-Warshall algorithm.
+``pgr_floydWarshall`` - Returns the sum of the costs of the shortest path for
+each pair of nodes in the graph using Floyd-Warshall algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html
@@ -49,10 +50,10 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The Floyd-Warshall algorithm, also known as Floyd's algorithm,
-is a good choice to calculate the sum of the costs of the shortest path for each
-pair of nodes in the graph, for *dense graphs*. We use Boost's
-implementation which runs in :math:`\Theta(V^3)` time,
+The Floyd-Warshall algorithm, also known as Floyd's algorithm, is a good choice
+to calculate the sum of the costs of the shortest path for each pair of nodes in
+the graph, for *dense graphs*.
+We use Boost's implementation which runs in :math:`\Theta(V^3)` time,
 
 .. include:: allpairs-family.rst
    :start-after: characteristics_start
@@ -69,11 +70,11 @@ Signatures
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: For vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
+:Example: For a directed subgraph with edges :math:`\{1, 2, 3, 4\}`.
 
 .. literalinclude:: doc-floydWarshall.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
@@ -89,7 +90,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -112,7 +113,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_johnson`
-* `Boost floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
+* Boost `floyd-Warshall
+  <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_
 * Queries uses the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

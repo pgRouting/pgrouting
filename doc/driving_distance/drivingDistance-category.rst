@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/drivingDistance-category.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/drivingDistance-category.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-category.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/drivingDistance-category.html>`__)
   `3.0 <https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__
@@ -56,9 +57,10 @@ Calculate nodes that are within a distance.
 
 .. dd_traits_start
 
-*  Extracts all the nodes that have costs less than or equal to the value distance.
-*  The edges extracted will conform to the corresponding spanning tree.
-   Edge
+* Extracts all the nodes that have costs less than or equal to the value
+  distance.
+* The edges extracted will conform to the corresponding spanning tree.
+  Edge
 * Edge :math:`(u, v)` will not be included when:
 
   * The distance from the **root** to :math:`u` > limit distance.
@@ -84,33 +86,31 @@ Parameters
    * - `Edges SQL`_
      - ``TEXT``
      - Edges SQL as described below.
-   * - Root vid
+   * - **Root vid**
      - ``BIGINT``
      - Identifier of the root vertex of the tree.
-   * - Root vids
+   * - **Root vids**
      - ``ARRAY[ANY-INTEGER]``
      - Array of identifiers of the root vertices.
 
        - :math:`0` values are ignored
        - For optimization purposes, any duplicated value is ignored.
-   * - distance
+   * - **distance**
      - ``FLOAT``
      - Upper limit for the inclusion of a node in the result.
-
-       - When the value is Negative **throws** error
 
 Where:
 
 :ANY-INTEGER: ``SMALLINT``, ``INTEGER``, ``BIGINT``
-:ANY-NUMERIC: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``, ``NUMERIC``
+:ANY-NUMERIC: ``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``
 
 .. mst-dd-params_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
-..............................................................................
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start

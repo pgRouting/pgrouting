@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_aStar.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStar.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_aStar.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_aStar.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_aStar.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_aStar.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_aStar.html>`__
@@ -90,12 +91,18 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
-    pgr_aStar(`Edges SQL`_, `Combinations SQL`_  [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    RETURNS SET OF
+      (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
 Optional parameters are `named parameters` and have a default value.
@@ -108,12 +115,13 @@ One to One
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex :math:`11` on a **directed** graph
+:Example: From vertex :math:`6` to vertex :math:`12` on a **directed** graph
           with heuristic :math:`2`
 
 .. literalinclude:: doc-astar.queries
@@ -128,11 +136,12 @@ One to Many
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vid**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 11\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 12\}` on a **directed**
           graph with heuristic :math:`3` and factor :math:`3.5`
 
 .. literalinclude:: doc-astar.queries
@@ -147,11 +156,12 @@ Many to One
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vid** [, directed] [, heuristic] [, factor] [, epsilon])
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, heuristic] [, factor] [, epsilon])
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 10\}` to vertex :math:`3` on an
+:Example: From vertices :math:`\{6, 8\}` to vertex :math:`10` on an
           **undirected** graph with heuristic :math:`4`
 
 .. literalinclude:: doc-astar.queries
@@ -166,11 +176,12 @@ Many to Many
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, **start vids**, **end vids** [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_aStar(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 10\}` to vertices :math:`\{3, 11\}` on a
+:Example: From vertices :math:`\{6, 8\}` to vertices :math:`\{10, 12\}` on a
           **directed** graph with factor :math:`0.5`
 
 .. literalinclude:: doc-astar.queries
@@ -185,8 +196,9 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_aStar(`Edges SQL`_, `Combinations SQL`_  [, directed] [, heuristic] [, factor] [, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_aStar(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, heuristic] [, factor] [, epsilon])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Using a combinations table on a **directed** graph with factor
@@ -225,7 +237,7 @@ aStar optional Parameters
     :start-after: astar_optionals_start
     :end-before: astar_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -258,7 +270,7 @@ Additional Examples
     :start-after: -- q6
     :end-before: -- q7
 
-:Example 2: Making ``start_vids`` the same as ``end_vids``.
+:Example 2: Making **start vids** the same as **end vids**.
 
 .. literalinclude:: doc-astar.queries
     :start-after: -- q7

@@ -11,14 +11,15 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraNearCost.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__
 
 ``pgr_dijkstraNearCost`` - Proposed
 ===============================================================================
 
-``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads to
-the nearest vertex.
+``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that leads
+to the nearest vertex.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -43,9 +44,8 @@ the nearest vertex.
 Description
 -------------------------------------------------------------------------------
 
-Given a graph, a starting vertex and a set of ending vertices,
-this function finds the shortest path from the starting vertex to the nearest
-ending vertex.
+Given a graph, a starting vertex and a set of ending vertices, this function
+finds the shortest path from the starting vertex to the nearest ending vertex.
 
 Characteristics
 ...............................................................................
@@ -61,10 +61,14 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
-    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
@@ -76,14 +80,16 @@ One to Many
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids** [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: Departing on car from vertex :math:`2` find the nearest subway station.
+:Example: Departing on car from vertex :math:`6` find the nearest subway
+          station.
 
 * Using a **directed** graph for car routing.
-* The subway stations are on the following vertices :math:`\{ 3, 6, 7\}`
+* The subway stations are on the following vertices :math:`\{1, 10, 11\}`
 * The defaults used:
 
   * `directed => true`
@@ -95,7 +101,7 @@ One to Many
     :end-before: -- q2
     :linenos:
 
-The result shows that station at vertex :math:`6` is the nearest.
+The result shows that station at vertex :math:`11` is the nearest.
 
 .. index::
     single: dijkstraNearCost(Many to One) - Proposed on v3.3
@@ -105,15 +111,16 @@ Many to One
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, cap])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 :Example: Departing on a car from a subway station find the nearest **two**
-          stations to vertex :math:`2`
+          stations to vertex :math:`6`
 
 * Using a **directed** graph for car routing.
-* The subway stations are on the following vertices :math:`\{ 3, 6, 7\}`
+* The subway stations are on the following vertices :math:`\{1, 10, 11\}`
 * On line `4`: using the positional parameter: `directed` set to ``true``
 * In line `5`: using named parameter `cap => 2`
 
@@ -122,8 +129,8 @@ Many to One
     :end-before: -- q3
     :linenos:
 
-The result shows that station at vertex :math:`3` is the nearest and the next best
-is :math:`6`.
+The result shows that station at vertex :math:`10` is the nearest and the next
+best is :math:`11`.
 
 .. index::
     single: dijkstraNearCost(Many to Many) - Proposed on v3.3
@@ -133,15 +140,16 @@ Many to Many
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids** [, directed] [, cap], [global])
+    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 :Example: Find the best pedestrian connection between two lines of buses
 
 * Unsing an **undirected** graph for pedestrian routing
-* The first subway line stations stops are at :math:`\{3, 6, 7\}`
-* The second subway line stations are at :math:`\{4, 9\}`
+* The first subway line stations are at :math:`\{15, 16\}`
+* The second subway line stations stops are at :math:`\{1, 10, 11\}`
 * On line `4`: using the named parameter: `directed => false`
 * The defaults used:
 
@@ -153,8 +161,8 @@ Many to Many
     :end-before: -- q4
     :linenos:
 
-For a pedestrian the best connection is to get on/off is at vertex :math:`3` of the
-first subway line and at vertex :math:`4` of the second subway line.
+For a pedestrian the best connection is to get on/off is at vertex :math:`15` of
+the first subway line and at vertex :math:`10` of the second subway line.
 
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
@@ -166,42 +174,57 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_ [, directed] [, cap] [, global])
+    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: Find the best car connection between all the stations of two subway lines
+:Example: Find the best car connection between all the stations of two subway
+          lines
 
 * Using a **directed** graph for car routing.
-* The first subway line stations stops are at :math:`\{3, 6, 7\}`
-* The second subway line stations are at :math:`\{4, 9\}`
-* line `3` sets the start vertices to be from the fisrt subway line and the ending
-  vertices to be from the second subway line
-* line `5` sets the start vertices to be from the first subway line and the ending
-  vertices to be from the first subway line
-* On line `6`: using the named parameter is `global => false`
+* The first subway line stations stops are at :math:`\{1, 10, 11\}`
+* The second subway line stations are at :math:`\{15, 16\}`
+
+The combinations contents:
+
+.. literalinclude:: doc-pgr_dijkstraNear.queries
+    :start-after: -- q4
+    :end-before: -- q41
+
+The query:
+
+* lines `3~4` sets the start vertices to be from the fisrt subway line and the
+  ending vertices to be from the second subway line
+* lines `6~7` sets the start vertices to be from the first subway line and the
+  ending vertices to be from the first subway line
+* On line `8`: using the named parameter is `global => false`
 * The defaults used:
 
   * `directed => true`
   * `cap => 1`
 
 .. literalinclude:: doc-pgr_dijkstraNearCost.queries
-    :start-after: -- q4
+    :start-after: -- q41
     :end-before: -- q5
     :linenos:
 
 From the results:
 
-* making a connection from the first subway line to the second:
+* making a connection from the first subway line :math:`\{1, 10, 11\}` to the
+  second :math:`\{15, 16\}`:
 
-  * :math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` and the best one is :math:`(6 -> 9)` with a
-    cost of :math:`1` (line: `11`)
+  * The best connections from all the stations from the first line are:
+    :math:`{(1 \rightarrow 16) (10 \rightarrow 16) (11 \rightarrow 16)}`
+  * The best one is :math:`(11 \rightarrow 16)` with a cost of :math:`1` (lines:
+    `1`)
 
-* making a connection from the second subway line to the first:
+* making a connection from the second subway line :math:`\{15, 16\}` to the
+  first :math:`\{1, 10, 11\}`:
 
-  * :math:`{(4 -> 3) (9 -> 6)}` and both are equaly good as they have the same
-    cost. (lines: `10` and `12`)
-
+  * The best connections from all the stations from the second line are:
+    :math:`{(15 \rightarrow 10) (16 \rightarrow 11)}`
+  * Both are equaly good as they have the same cost. (lines: `12` and `13`)
 
 Parameters
 -------------------------------------------------------------------------------
@@ -224,7 +247,7 @@ Near optional parameters
     :start-after: near_optionals_start
     :end-before: near_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -241,7 +264,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

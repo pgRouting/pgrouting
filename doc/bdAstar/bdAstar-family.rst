@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/bdAstar-family.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/bdAstar-family.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/bdAstar-family.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/bdAstar-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/bdAstar-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/bdAstar-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/bdAstar-family.html>`__
@@ -22,11 +23,16 @@
 Bidirectional A* - Family of functions
 ===============================================================================
 
+The bidirectional A* (pronounced "A Star") algorithm is based on the A*
+algorithm.
+
 .. index from here
 
-* :doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths.
-* :doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths.
-* :doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths.
+- :doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths.
+- :doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of
+  the paths.
+- :doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost
+  matrix of paths.
 
 .. index to here
 
@@ -43,81 +49,30 @@ Description
 
 Based on A* algorithm, the bidirectional search finds a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``,
-stopping when the two meet in the middle.
+It runs two simultaneous searches: one forward from the ``start_vid``, and one
+backward from the ``end_vid``, stopping when the two meet in the middle.
 This implementation can be used with a directed graph and an undirected graph.
 
 The main Characteristics are:
 
-- Process is done only on edges with positive costs.
-- Values are returned when there is a path.
+.. include:: aStar-family.rst
+    :start-after: astar general info start
+    :end-before: astar general info end
 
-- When the starting vertex and ending vertex are the same, there is no path.
+* For large graphs where there is a path bewtween the starting vertex and ending
+  vertex:
 
-  - The `agg_cost` the non included values `(v, v)` is `0`
+  * It is expected to terminate faster than pgr_astar
 
-- When the starting vertex and ending vertex are the different and there is no path:
-
-  - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-- Running time (worse case scenario): :math:`O((E + V) * \log V)`
-- For large graphs where there is a path bewtween the starting vertex and ending vertex:
-
-  - It is expected to terminate faster than pgr_astar
-
-Signatures
--------------------------------------------------------------------------------
-
-Edges query
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-    :start-after: xy_edges_sql_start
-    :end-before: xy_edges_sql_end
-
-Combinations query
-...............................................................................
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_combinations_sql_start
-    :end-before: basic_combinations_sql_end
-
-.. parameters_begin
-
-Parameters
--------------------------------------------------------------------------------
-
-======================= ====================== =================================================
-Parameter               Type                   Description
-======================= ====================== =================================================
-**Edges SQL**           ``TEXT``               Edges query as described above.
-**Combinations SQL**    ``TEXT``               Combinations query as described above.
-**start_vid**           ``ANY-INTEGER``        Starting vertex identifier.
-**start_vids**          ``ARRAY[ANY-INTEGER]`` Starting vertices identifierers.
-**end_vid**             ``ANY-INTEGER``        Ending vertex identifier.
-**end_vids**            ``ARRAY[ANY-INTEGER]`` Ending vertices identifiers.
-**directed**            ``BOOLEAN``            - Optional.
-
-                                                 - When ``false`` the graph is considered as Undirected.
-                                                 - Default is ``true`` which considers the graph as Directed.
-
-**heuristic**           ``INTEGER``            (optional). Heuristic number. Current valid values 0~5. Default ``5``
-
-                                                 - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
-                                                 - 1: h(v) abs(max(dx, dy))
-                                                 - 2: h(v) abs(min(dx, dy))
-                                                 - 3: h(v) = dx * dx + dy * dy
-                                                 - 4: h(v) = sqrt(dx * dx + dy * dy)
-                                                 - 5: h(v) = abs(dx) + abs(dy)
-
-**factor**              ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`
-**epsilon**             ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
-======================= ====================== =================================================
-
-.. parameters_end
+See :ref:`heuristics <astar_heuristics>` available and :ref:`factor
+<astar_factor>` handling.
 
 See Also
 -------------------------------------------------------------------------------
+
+* :doc:`aStar-family`
+* https://www.boost.org/libs/graph/doc/astar_search.html
+* https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables
 

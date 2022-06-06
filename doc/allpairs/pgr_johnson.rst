@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_johnson.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_johnson.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_johnson.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_johnson.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_johnson.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_johnson.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_johnson.html>`__
@@ -68,11 +69,11 @@ Signatures
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: For vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
+:Example: For a directed subgraph with edges :math:`\{1, 2, 3, 4\}`.
 
 .. literalinclude:: doc-johnson.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
@@ -88,7 +89,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -111,7 +112,8 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`pgr_floydWarshall`
-* `Boost Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_ algorithm implementation.
+* Boost `Johnson
+  <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_
 * Queries uses the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

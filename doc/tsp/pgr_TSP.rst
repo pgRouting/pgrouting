@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_TSP.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSP.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_TSP.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSP.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSP.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSP.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSP.html>`__
@@ -101,9 +102,11 @@ Description
 
       - is directed
       - is fully connected (As long as the graph has one component)
-      - some (or all) traveling costs on edges might not obey the triangle inequality.
+      - some (or all) traveling costs on edges might not obey the triangle
+        inequality.
 
-    - As an undirected graph is required, the directed graph is transformed as follows:
+    - As an undirected graph is required, the directed graph is transformed as
+      follows:
 
       - edges `(u, v)` and `(v, u)` is considered to be the same edge (denoted
         `(u, v)`
@@ -132,7 +135,8 @@ Signatures
 
 :Example: Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information
 
-* **Line 5** Vertices 15 to 18 are not included because they are not connected.
+* **Line 4** Vertices :math:`\{2, 4, 13, 14\}` are not included because they are
+  not connected.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q1
@@ -155,7 +159,7 @@ TSP optional parameters
    :start-after: tsp_optionals_start
    :end-before: tsp_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Matrix SQL
@@ -175,22 +179,27 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Start from vertex :math:`7`
+.. contents::
+   :local:
 
-* **Line 9** ``start_vid => 7``
+Start from vertex :math:`1`
+...............................................................................
+
+* **Line 6** ``start_vid => 1``
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q2
    :end-before: -- q3
    :linenos:
 
-:Example: Using points of interest to generate an asymetric matrix.
+Using points of interest to generate an asymetric matrix.
+...............................................................................
 
 To generate an asymmetric matrix:
 
-* **Line 5** The ``side`` information of pointsOfInterset is ignored by not
+* **Line 4** The ``side`` information of ``pointsOfInterset`` is ignored by not
   including it in the query
-* **Line 7** Generating an asymetric matrix with ``directed => true``
+* **Line 6** Generating an asymetric matrix with ``directed => true``
 
   * :math:`min(agg\_cost(u, v), agg\_cost(v, u))` is going to be considered as
     the ``agg_cost``
@@ -205,30 +214,29 @@ To generate an asymmetric matrix:
    :end-before: -- q4
    :linenos:
 
-:Example: Connected incomplete data
+Connected incomplete data
+...............................................................................
 
-Using selected edges (2, 4, 5, 8, 9, 15) the matrix is not complete but it is
-connected
+Using selected edges :math:`\{2, 4, 5, 8, 9, 15\}` the matrix is not complete.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q4
    :end-before: -- q5
    :linenos:
 
-Edge `(5,12)` does not exist on the initial data, but it is calculated
-internally.
+Cost value for :math:`17 \rightarrow 10` do not exist on the matrix, but the
+value used is taken from :math:`10 \rightarrow 17`.
 
 .. literalinclude:: doc-pgr_TSP.queries
    :start-after: -- q5
    :end-before: -- q6
    :linenos:
 
-The queries use the :doc:`sampledata` network.
-
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TSP-family`
+* :doc:`sampledata`
 * `Boost's metric appro's metric approximation
   <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__
 * `Wikipedia: Traveling Salesman Problem

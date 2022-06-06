@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraVia.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraVia.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraVia.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraVia.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__
@@ -47,9 +48,10 @@ Description
 
 Given a list of vertices and a graph, this function is equivalent to finding the
 shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i
-< size\_of(vertex_via)`.
+< size\_of(via\;vertices)`.
 
-The paths represents the sections of the route.
+:Route: is a sequence of paths.
+:Path: is a section of the route.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -68,7 +70,7 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 1, 7, 10\}` in that
+:Example: Find the route that visits the vertices :math:`\{5, 1, 8\}` in that
           order on an **directed** graph.
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
@@ -96,7 +98,7 @@ Via optional parameters
     :start-after: via_optionals_start
     :end-before: via_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -106,51 +108,59 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
-    :start-after: result via start
-    :end-before: result via end
+    :start-after: result_via_start
+    :end-before: result_via_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{1, 5, 7, 10, 4\}`
-            in that order
+.. contents::
+   :local:
+
+All this examples are about the route that visits the vertices :math:`\{5, 7, 1,
+8, 15\}` in that order on a **directed** graph.
+
+The main query
+...............................................................................
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q1
     :end-before: -- q2
 
-:Example 2: What's the aggregate cost of the third path?
+Aggregate cost of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q2
     :end-before: -- q3
 
-:Example 3: What's the route's aggregate cost of the route at the end of the
-            third path?
+Route's aggregate cost of the route at the end of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q3
     :end-before: -- q4
 
-:Example 4: How are the nodes visited in the route?
+Nodes visited in the route.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q4
     :end-before: -- q5
 
-:Example 5: What are the aggregate costs of the route when the visited vertices
-            are reached?
+The aggregate costs of the route when the visited vertices are reached.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q5
     :end-before: -- q6
 
-:Example 6: Show the route's seq and aggregate cost and a status of "passes in
-            front" or "visits"
+Status of "passes in front" or "visits" of the nodes.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q6

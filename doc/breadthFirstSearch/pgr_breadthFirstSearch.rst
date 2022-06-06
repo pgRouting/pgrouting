@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_breadthFirstSearch.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_breadthFirstSearch.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_breadthFirstSearch.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_breadthFirstSearch.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__
@@ -49,8 +50,8 @@ particular depth.
 **The main Characteristics are:**
 
 * The implementation will work on any type of graph.
-* Provides the Breadth First Search traversal order from a source node to a target
-  depth level.
+* Provides the Breadth First Search traversal order from a source node to a
+  target depth level.
 * Running time: :math:`O(E + V)`
 
 Signatures
@@ -60,9 +61,9 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
-    pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+  pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
+  pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
+  RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
     single: breadthFirstSearch(Single vertex) - Experimental on v3.0
@@ -72,10 +73,10 @@ Single vertex
 
 .. parsed-literal::
 
-    pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+   pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
+   RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertex :math:`2` on a **directed** graph with edges in
+:Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
@@ -90,10 +91,10 @@ Multiple vertices
 
 .. parsed-literal::
 
-    pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
-    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
+  pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
+  RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph with
+:Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
@@ -121,7 +122,7 @@ DFS optional parameters
    :start-after: max-depth-optional-start
    :end-before: max-depth-optional-end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -141,7 +142,13 @@ Return columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Same as `Single vertex`_ but with edges in descending order of ``id``.
+:Example: Same as `Single vertex`_ with edges in ascending order of ``id``.
+
+.. literalinclude:: doc-pgr_breadthFirstSearch.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+:Example: Same as `Single vertex`_ with edges in descending order of ``id``.
 
 .. literalinclude:: doc-pgr_breadthFirstSearch.queries
    :start-after: -- q3
@@ -153,6 +160,8 @@ The left image shows the result with ascending order of ids and the right image
 shows with descending order of the edge identifiers.
 
 |ascending| |descending|
+
+.. TODO adjust the images
 
 .. |ascending| image:: images/bfs-ascending.png
    :scale: 50%

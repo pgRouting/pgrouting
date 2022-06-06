@@ -1,45 +1,5 @@
-CREATE TABLE edge_table1 (
-    id serial,
-    source integer,
-    target integer,
-    cost double precision,
-    reverse_cost double precision
-);
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (0,1,1,-1);
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (0,3,1,-1);
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (0,2,1,-1);
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (1,3,1,-1);
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (1,2,1,-1);
-INSERT INTO edge_table1 (source,target,cost,reverse_cost) VALUES (3,2,1,-1);
-
 /* -- q1 */
-
 SELECT * FROM pgr_transitiveclosure(
-  'SELECT id,source,target,cost,reverse_cost FROM edge_table1'
-);
-
+  'SELECT id, source, target, cost, reverse_cost
+  FROM edges WHERE id IN (2, 3, 5, 11, 12, 13, 15)');
 /* -- q2 */
-
-SELECT * FROM pgr_transitiveclosure(
-  'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=2'
-);
-SELECT * FROM pgr_transitiveclosure(
-  'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=3'
-);
-
-SELECT * FROM pgr_transitiveclosure(
-  'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=2 or id=3'
-);
-
-SELECT * FROM pgr_transitiveclosure(
-  'SELECT id,source,target,cost,reverse_cost FROM edge_table where id=11'
-);
-
-/* -- q3 */
-
-SELECT * FROM pgr_transitiveclosure(
-  'SELECT id,source,target,cost,reverse_cost FROM edge_table where cost=-1 or reverse_cost=-1'
-);
-
-
-/* -- q4 */

@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_contraction.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_contraction.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_contraction.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_contraction.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_contraction.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_contraction.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_contraction.html>`__
@@ -22,10 +23,11 @@
   `2.3 <https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__
 
 
-pgr_contraction
+``pgr_contraction``
 ===============================================================================
 
-``pgr_contraction`` — Performs graph contraction and returns the contracted vertices and edges.
+``pgr_contraction`` — Performs graph contraction and returns the contracted
+vertices and edges.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
@@ -54,25 +56,26 @@ edges and, for example, might add edges that represent a sequence of original
 edges decreasing the total time and space used in graph algorithms.
 
 The main Characteristics are:
-  - Process is done only on edges with positive costs.
-  - Does not return the full contracted graph
 
-    - Only changes on the graph are returned
+- Process is done only on edges with positive costs.
+- Does not return the full contracted graph
 
-  - Currnetly there are two types of contraction methods
+  - Only changes on the graph are returned
 
-    - Dead End Contraction
-    - Linear Contraction
+- Currnetly there are two types of contraction methods
 
-  - The returned values include
+  - Dead End Contraction
+  - Linear Contraction
 
-    -  the added edges by linear contraction.
-    -  the modified vertices by dead end contraction.
+- The returned values include
 
-  - The returned values are ordered as follows:
+  -  the added edges by linear contraction.
+  -  the modified vertices by dead end contraction.
 
-    - column `id` ascending when type = `v`
-    - column `id` descending when type = `e`
+- The returned values are ordered as follows:
+
+  - column ``id`` ascending when type is ``v``
+  - column ``id`` descending when type is ``e``
 
 
 Signatures
@@ -85,43 +88,74 @@ The pgr_contraction function has the following signature:
 .. index::
    single: contraction
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_contraction(Edges SQL, Contraction order [, max_cycles] [, forbidden_vertices] [, directed])
+    pgr_contraction(`Edges SQL`_, **contraction order**
+         [, max_cycles] [, forbidden_vertices] [, directed])
     RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
 
-:Example: Making a dead end contraction and a linear contraction with vertex 2 forbidden from being contracted
+:Example: Making a dead end and linear contraction in that order on an
+          undirected graph.
 
 .. literalinclude:: doc-pgr_contraction.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
 
-======================= ====================== =================================================
-Column                  Type                   Description
-======================= ====================== =================================================
-**Edges SQL**           ``TEXT``               SQL query as described in `Inner query`_
-**Ccontraction Order**  ``ARRAY[ANY-INTEGER]`` Ordered contraction operations.
-                                                -  1 = Dead end contraction
-                                                -  2 = Linear contraction
-======================= ====================== =================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - `Edges SQL`_ as described below.
+   * - **contraction Order**
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - Ordered contraction operations.
+
+       - 1 = Dead end contraction
+       - 2 = Linear contraction
 
 Optional Parameters
 ...............................................................................
 
-======================= ====================== ============ =====================================
-Column                  Type                   Default      Description
-======================= ====================== ============ =====================================
-**forbidden_vertices**  ``ARRAY[ANY-INTEGER]`` Empty        Identifiers of vertices forbidden from contraction.
-**max_cycles**          ``INTEGER``            :math:`1`    Number of times the contraction operations on `contraction_order` will be performed.
-**directed**            ``BOOLEAN``            ``true``     * When ``true`` the graph is considered as `Directed`.
-                                                            * When ``false`` the graph is considered as `Undirected`.
-======================= ====================== ============ =====================================
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
-Inner query
+Contraction optional parameters
+...............................................................................
+
+.. list-table::
+   :width: 81
+   :widths: 19 22 7 40
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``forbidden_vertices``
+     - ``ARRAY[`` **ANY-INTEGER** ``]``
+     - **Empty**
+     - Identifiers of vertices forbidden for contraction.
+   * - ``max_cycles``
+     - ``INTEGER``
+     - :math:`1`
+     - Number of times the contraction operations on ``contraction_order`` will
+       be performed.
+
+Inner Queries
 -------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -134,29 +168,55 @@ RETURNS SETOF  (type, id, contracted_vertices, source, target, cost)
 
 The function returns a single row. The columns of the row are:
 
-============================ =================   ===================================================================
-Column                       Type                Description
-============================ =================   ===================================================================
-**type**                     ``TEXT``            Type of the `id`.
-                                                  - **'v'** when the row is a vertex.
-                                                  - **'e'** when the row is an edge.
-**id**                       ``BIGINT``          All numbers on this column are ``DISTINCT``
-                                                  * When ``type`` = **'v'**.
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
-                                                    * Identifier of the modified vertex.
-                                                  * When ``type`` = **'e'**.
+   * - Column
+     - Type
+     - Description
+   * - ``type``
+     - ``TEXT``
+     - Type of the ``id``.
 
-                                                    - Decreasing sequence starting from **-1**.
+       * ``v`` when the row is a vertex.
 
-                                                    - Representing a pseudo `id` as is not incorporated in the set of original edges.
-**contracted_vertices**      ``ARRAY[BIGINT]``   Array of contracted vertex identifiers.
-**source**                   ``BIGINT``          * When ``type`` = **'v'**: :math:`-1`
-                                                 * When ``type`` = **'e'**: Identifier of the source vertex of the current edge (``source``, ``target``).
-**target**                   ``BIGINT``          * When ``type`` = **'v'**: :math:`-1`
-                                                 * When ``type`` = **'e'**: Identifier of the target vertex of the current edge (``source``, ``target``).
-**cost**                     ``FLOAT``           * When ``type`` = **'v'**: :math:`-1`
-                                                 * When ``type`` = **'e'**: Weight of the current edge (``source``, ``target``).
-============================ =================   ===================================================================
+         * Column ``id`` has a positive value
+       * ``e`` when the row is an edge.
+
+         * Column ``id`` has a negative value
+   * - ``id``
+     - ``BIGINT``
+     - All numbers on this column are ``DISTINCT``
+
+       * When ``type`` = **'v'**.
+
+         * Identifier of the modified vertex.
+
+       * When ``type`` = **'e'**.
+
+         * Decreasing sequence starting from **-1**.
+         * Representing a pseudo `id` as is not incorporated in the set of
+           original edges.
+   * - ``contracted_vertices``
+     - ``ARRAY[BIGINT]``
+     - Array of contracted vertex identifiers.
+   * - ``source``
+     - ``BIGINT``
+     - * When ``type`` = **'v'**: :math:`-1`
+       * When ``type`` = **'e'**: Identifier of the source vertex of the current
+         edge (``source``, ``target``).
+   * - ``target``
+     - ``BIGINT``
+     - * When ``type`` = **'v'**: :math:`-1`
+       * When ``type`` = **'e'**: Identifier of the target vertex of the current
+         edge (``source``, ``target``).
+   * - ``cost``
+     - ``FLOAT``
+     - * When ``type`` = **'v'**: :math:`-1`
+       * When ``type`` = **'e'**: Weight of the current edge (``source``,
+         ``target``).
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -164,14 +224,14 @@ Additional Examples
 :Example: Only dead end contraction
 
 .. literalinclude:: doc-pgr_contraction.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 :Example: Only linear contraction
 
 .. literalinclude:: doc-pgr_contraction.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: -- q3
+   :end-before: -- q4
 
 See Also
 -------------------------------------------------------------------------------

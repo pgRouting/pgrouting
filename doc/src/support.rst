@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/support.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/support.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/support.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/support.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/support.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/support.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/support.html>`__
@@ -27,22 +28,34 @@
 Support
 ===============================================================================
 
-pgRouting community support is available through the `pgRouting website <https://pgrouting.org/support.html>`_, `documentation <https://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re looking for :ref:`commercial support <support_commercial>`, find below a list of companies providing pgRouting development and consulting services.
+pgRouting community support is available through the `pgRouting website
+<https://pgrouting.org/support.html>`_, `documentation
+<https://docs.pgrouting.org>`_, tutorials, mailing lists and others. If you’re
+looking for :ref:`commercial support <support_commercial>`, find below a list of
+companies providing pgRouting development and consulting services.
 
 
 Reporting Problems
 -------------------------------------------------------------------------------
 
-Bugs are reported and managed in an `issue tracker <https://github.com/pgrouting/pgrouting/issues>`_. Please follow these steps:
+Bugs are reported and managed in an `issue tracker
+<https://github.com/pgrouting/pgrouting/issues>`_. Please follow these steps:
 
-1. Search the tickets to see if your problem has already been reported. If so, add any extra context you might have found, or at least indicate that you too are having the problem. This will help us prioritize common issues.
-2. If your problem is unreported, create a `new issue <https://github.com/pgRouting/pgrouting/issues/new>`__ for it.
-3. In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem.
-4. If you can test older versions of PostGIS for your problem, please do. On your ticket, note the earliest version the problem appears.
-5. For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL.
-6. It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem.
+1. Search the tickets to see if your problem has already been reported. If so,
+   add any extra context you might have found, or at least indicate that you too
+   are having the problem. This will help us prioritize common issues.
+2. If your problem is unreported, create a `new issue
+   <https://github.com/pgRouting/pgrouting/issues/new>`__ for it.
+3. In your report include explicit instructions to replicate your issue. The
+   best tickets include the exact SQL necessary to replicate a problem.
+4. If you can test older versions of PostGIS for your problem, please do. On
+   your ticket, note the earliest version the problem appears.
+5. For the versions where you can replicate the problem, note the operating
+   system and version of pgRouting, PostGIS and PostgreSQL.
+6. It is recommended to use the following wrapper on the problem to pin point
+   the step that is causing the problem.
 
-.. code-block:: sql
+.. parsed-literal::
 
     SET client_min_messages TO debug;
       <your code>
@@ -58,12 +71,15 @@ There are two mailing lists for pgRouting hosted on OSGeo mailing list server:
 * User mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-users
 * Developer mailing list: https://lists.osgeo.org/mailman/listinfo/pgrouting-dev
 
-For general questions and topics about how to use pgRouting, please write to the user mailing list.
+For general questions and topics about how to use pgRouting, please write to the
+user mailing list.
 
-You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and tag
-the question with ``pgrouting``. Find all questions tagged with ``pgrouting``
-under https://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to the
-`pgRouting questions feed <https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_.
+You can also ask at `GIS StackExchange <https://gis.stackexchange.com/>`_ and
+tag the question with ``pgrouting``.
+Find all questions tagged with ``pgrouting`` under
+https://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to the
+`pgRouting questions feed
+<https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&sort=newest>`_.
 
 
 .. _support_commercial:
@@ -71,7 +87,9 @@ under https://gis.stackexchange.com/questions/tagged/pgrouting or subscribe to t
 Commercial Support
 -------------------------------------------------------------------------------
 
-For users who require professional support, development and consulting services, consider contacting any of the following organizations, which have significantly contributed to the development of pgRouting:
+For users who require professional support, development and consulting services,
+consider contacting any of the following organizations, which have significantly
+contributed to the development of pgRouting:
 
 .. list-table::
    :widths: 100 160 200

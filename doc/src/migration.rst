@@ -13,7 +13,7 @@
   `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__
   (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)
 
-``pgr_trsp`` - Migration guide
+Migration guide
 ===============================================================================
 
 ``pgr_trsp`` signatures have changed and many issues have been fixed in the new
@@ -23,17 +23,18 @@ new replacement functions.
 .. Note:: Results might be different as the deprecated function's code is
    different from the replacement function.
 
-.. warning:: All deprecated functions will be removed on next mayor version 4.0.0
+.. warning::
+   All deprecated functions will be removed on next mayor version 4.0.0
 
 .. contents:: Contents
 
 Migration of restrictions
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 The structure of the restrictions have changed:
 
 Old restrictions structure
-................................................................................
+...............................................................................
 
 On the deprecated signatures:
 
@@ -53,13 +54,29 @@ On the deprecated signatures:
 
   * Is of type ``FLOAT``.
 
-For example:
+Creation of the old restrictions table
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
+   :start-after: --rest00
+   :end-before: --rest01
+
+Old restrictions fillup
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: migration.queries
+   :start-after: --rest01
+   :end-before: --rest1
+
+Old restrictions contents
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: migration.queries
    :start-after: --rest1
    :end-before: --rest2
 
-The restriction with ``rid = 2`` is representing :math:`3\rightarrow5\rightarrow9`
+The restriction with ``rid = 2`` is representing :math:`3 \rightarrow 5
+\rightarrow9`
 
 * :math:`3\rightarrow5`
 
@@ -73,8 +90,7 @@ The restriction with ``rid = 2`` is representing :math:`3\rightarrow5\rightarrow
 
 
 New restrictions structure
-................................................................................
-
+...............................................................................
 
 * Column ``id`` is ignored
 * Column ``path``
@@ -87,12 +103,34 @@ New restrictions structure
 
   * Is of type ``ANY-NUMERICAL``
 
-.. literalinclude:: trsp_notes.queries
-   :start-after: --rest2
-   :end-before: --rest3
+Creation of the restrictions table
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r1
+   :end-before: -- r2
+
+Restrictions fillup
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r2
+   :end-before: -- r3
+
+Restrictions contents
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- r3
+   :end-before: -- r4
+
+The restriction with ``rid = 2`` represents the path :math:`3 \rightarrow5
+\rightarrow9`.
+
+* By inspection the path is clear.
 
 Migration
-................................................................................
+...............................................................................
 
 To transform the old restrictions table to the new restrictions structure,
 
@@ -109,23 +147,23 @@ To transform the old restrictions table to the new restrictions structure,
     * Is not documented.
     * Will be removed on the next mayor version 4.0.0
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --rest3
    :end-before: --rest4
 
 The migrated table contents:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --rest4
    :end-before: --rest5
 
 
 Migration of ``pgr_trsp`` (Vertices)
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
   pgr_trsp(Edges SQL, source, target,
            directed boolean, has_rcost boolean
@@ -153,11 +191,11 @@ Migrate by using:
 
 
 Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --verticesv1
    :end-before: --verticesv2
 
@@ -168,7 +206,7 @@ The following query does not have restrictions.
 Use :doc:`pgr_dijkstra` instead.
 
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --verticesv2
    :end-before: --verticesv3
 
@@ -189,7 +227,7 @@ Use :doc:`pgr_dijkstra` instead.
 When the need of using strictly the same (meaningless) names and types of the
 function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --verticesv3
    :end-before: --verticesv4
 
@@ -198,11 +236,11 @@ function been migrated then:
 
 
 Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --verticesv4
    :end-before: --verticesv5
 
@@ -216,7 +254,7 @@ The following query has restrictions.
 
 Use :doc:`pgr_trsp` (One to One) instead.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --verticesv5
    :end-before: --verticesv6
 
@@ -241,7 +279,7 @@ Use :doc:`pgr_trsp` (One to One) instead.
 When the need of using strictly the same (meaningless) names and types of the
 function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --verticesv6
    :end-before: --verticesv7
 
@@ -249,11 +287,11 @@ function been migrated then:
 * ``id2`` is the edge
 
 Migration of ``pgr_trsp`` (Edges)
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
    pgr_trsp(sql text, source_edge integer, source_pos float8,
                     target_edge integer, target_pos float8,
@@ -276,7 +314,7 @@ Signature to be migrated:
 
 For these migration guide the following points will be used:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --verticesv7
    :end-before: --edgesv1
 
@@ -286,11 +324,11 @@ Migrate by using:
 *  :doc:`pgr_trsp_withPoints` (One to One) when there are restrictions.
 
 Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesv1
    :end-before: --edgesv2
 
@@ -300,7 +338,7 @@ The following query does not have restrictions.
 
 Use :doc:`pgr_withPoints` instead.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesv2
    :end-before: --edgesv3
 
@@ -323,7 +361,7 @@ Use :doc:`pgr_withPoints` instead.
 When the need of using strictly the same (meaningless) names and types, and node
 values of the function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesv3
    :end-before: --edgesv4
 
@@ -332,11 +370,11 @@ values of the function been migrated then:
 
 
 Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesv4
    :end-before: --edgesv5
 
@@ -350,7 +388,7 @@ The following query has restrictions.
 
 Use :doc:`pgr_trsp_withPoints` instead.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesv5
    :end-before: --edgesv6
 
@@ -377,7 +415,7 @@ Use :doc:`pgr_trsp_withPoints` instead.
 When the need of using strictly the same (meaningless) names and types, and node
 values of the function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesv6
    :end-before: --edgesv7
 
@@ -385,11 +423,11 @@ values of the function been migrated then:
 * ``id2`` is the edge
 
 Migration of ``pgr_trspViaVertices``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
    pgr_trspViaVertices(sql text, vids integer[],
                      directed boolean, has_rcost boolean
@@ -417,11 +455,11 @@ Migrate by using:
 *  :doc:`pgr_trspVia` when there are restrictions.
 
 Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --viav1
    :end-before: --viav2
 
@@ -431,7 +469,7 @@ The following query does not have restrictions.
 
 Use :doc:`pgr_dijkstraVia` instead.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --viav2
    :end-before: --viav3
 
@@ -453,7 +491,7 @@ Use :doc:`pgr_dijkstraVia` instead.
 When the need of using strictly the same (meaningless) names and types of the
 function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --viav3
    :end-before: --viav4
 
@@ -463,11 +501,11 @@ function been migrated then:
 
 
 Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --viav4
    :end-before: --viav5
 
@@ -481,7 +519,7 @@ The following query has restrictions.
 
 Use :doc:`pgr_trspVia` instead.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --viav5
    :end-before: --viav6
 
@@ -507,7 +545,7 @@ Use :doc:`pgr_trspVia` instead.
 When the need of using strictly the same (meaningless) names and types of the
 function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --viav6
    :end-before: --viav7
 
@@ -516,11 +554,11 @@ function been migrated then:
 * ``id3`` is the edge
 
 Migration of ``pgr_trspViaEdges``
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Signature to be migrated:
 
-.. code-block:: sql
+.. parsed-literal::
 
    pgr_trspViaEdges(sql text, eids integer[], pcts float8[],
                      directed boolean, has_rcost boolean
@@ -543,7 +581,7 @@ Signature to be migrated:
 
 For these migration guide the following points will be used:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --viav7
    :end-before: --edgesvia1
 
@@ -555,11 +593,11 @@ Migrate by using:
 *  :doc:`pgr_trspVia_withPoints` when there are restrictions.
 
 Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``
-................................................................................
+...............................................................................
 
 The following query does not have restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesvia1
    :end-before: --edgesvia2
 
@@ -569,7 +607,7 @@ The following query does not have restrictions.
 
 Use :doc:`pgr_withPointsVia` instead.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesvia2
    :end-before: --edgesvia3
 
@@ -592,7 +630,7 @@ Use :doc:`pgr_withPointsVia` instead.
 When the need of using strictly the same (meaningless) names and types, and node
 values of the function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesvia3
    :end-before: --edgesvia4
 
@@ -601,11 +639,11 @@ values of the function been migrated then:
 * ``id3`` is the edge
 
 Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``
-................................................................................
+...............................................................................
 
 The following query has restrictions.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesvia4
    :end-before: --edgesvia5
 
@@ -619,7 +657,7 @@ The following query has restrictions.
 
 Use :doc:`pgr_trspVia_withPoints` instead.
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesvia5
    :end-before: --edgesvia6
 
@@ -646,7 +684,7 @@ Use :doc:`pgr_trspVia_withPoints` instead.
 When the need of using strictly the same (meaningless) names and types, and node
 values of the function been migrated then:
 
-.. literalinclude:: trsp_notes.queries
+.. literalinclude:: migration.queries
    :start-after: --edgesvia6
    :end-before: --edgesvia7
 

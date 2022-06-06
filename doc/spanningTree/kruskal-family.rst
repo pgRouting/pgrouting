@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/kruskal-family.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/kruskal-family.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/kruskal-family.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/kruskal-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/kruskal-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/kruskal-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/kruskal-family.html>`__
@@ -61,7 +62,7 @@ two trees in the forest.
 
 .. kruskal-description-end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

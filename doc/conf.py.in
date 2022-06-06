@@ -322,7 +322,7 @@ linkcheck_ignore = [
     r'https://docs.pgrouting.org/.*/.*/via-category.html',
     r'https://docs.pgrouting.org/.*/.*/pgr_trspVia_withPoints.html',
     r'https://docs.pgrouting.org/.*/.*/withPoints-category.html',
-    r'https://docs.pgrouting.org/.*/.*/trsp_migration.html',
+    r'https://docs.pgrouting.org/.*/.*/migration.html',
     r'https://docs.pgrouting.org/.*/.*/BFS-category.html',
     r'https://docs.pgrouting.org/.*/.*/DFS-category.html',
     r'https://docs.pgrouting.org/.*/.*/reference.html',
@@ -333,7 +333,10 @@ linkcheck_ignore = [
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
-    "https://github.com/pgRouting/pgrouting/issues/*",    # limit only pgrouting
+    r'https://github.com/pgRouting/pgrouting/issues/*i',    # limit only pgrouting
+    r'https://www.overpass-api.de/*',
+    'https://www.leopark.mx',
+    'https://github.com/pgRouting/pgrouting/archive/v3.4.0.tar.gz'
 ]
 
 linkcheck_timeout = 20

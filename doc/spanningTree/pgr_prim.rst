@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_prim.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_prim.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_prim.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_prim.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_prim.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_prim.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__
@@ -75,7 +76,7 @@ Parameters
    :start-after: only_edge_param_start
    :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

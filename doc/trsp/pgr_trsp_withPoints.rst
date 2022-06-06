@@ -106,7 +106,7 @@ One to One
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` to vertex :math:`3` with details on a **left**
+:Example: From point :math:`1` to vertex :math:`10` with details on a **left**
           driving side configuration on a **directed** graph with **details**.
 
 .. literalinclude:: trsp_withPoints.queries
@@ -126,7 +126,7 @@ One to Many
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` to point :math:`3` and vertex :math:`5`.
+:Example: From point :math:`1` to point :math:`3` and vertex :math:`7`.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --e2
@@ -145,7 +145,7 @@ Many to One
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3`.
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3`.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --e3
@@ -164,8 +164,8 @@ Many to Many
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From point :math:`1` and vertex :math:`2`  to point :math:`3` and
-          vertex :math:`7`.
+:Example: From point :math:`1` and vertex :math:`6`  to point :math:`3` and
+          vertex :math:`1`.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --e4
@@ -183,7 +183,7 @@ Combinations
                              [, directed], [, driving_side] [, details]) -- Proposed on v3.4
    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` to vertex :math:`3` and from vertex :math:`2` to
+:Example: From point :math:`1` to vertex :math:`10` and from vertex :math:`6` to
           point :math:`3` with **right** side driving configuration.
 
 .. literalinclude:: trsp_withPoints.queries
@@ -193,50 +193,17 @@ Combinations
 Parameters
 -------------------------------------------------------------------------------
 
-.. parameters_start
+.. include:: pgRouting-concepts.rst
+    :start-after: restriction_parameters_start
+    :end-before: restriction_parameters_end
 
-.. list-table::
-   :width: 81
-   :widths: 14 22 7 44
-   :header-rows: 1
 
-   * - Column
-     - Type
-     - Default
-     - Description
-   * - `Edges SQL`_
-     - ``TEXT``
-     -
-     - SQL query as described.
-   * - `Restrictions SQL`_
-     - ``TEXT``
-     -
-     - SQL query as described.
-   * - `Points SQL`_
-     - ``TEXT``
-     -
-     - SQL query as described.
-   * - **start vid**
-     - **ANY-INTEGER**
-     -
-     - Identifier of the departure vertex.
-   * - **start vids**
-     - ``ARRAY[`` **ANY-INTEGER** ``]``
-     -
-     - Array of identifieris of destination vertices.
-   * - **end vid**
-     - **ANY-INTEGER**
-     -
-     - Identifier of the departure vertex.
-   * - **end vids**
-     - ``ARRAY[`` **ANY-INTEGER** ``]``
-     -
-     - Array of identifiers of destination vertices.
-   * - ``directed``
-     - ``BOOLEAN``
-     - ``true``
-     - - When ``true`` Graph is considered `Directed`
-       - When ``false`` the graph is considered as Undirected.
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
 With points optional parameters
 ...............................................................................
@@ -271,7 +238,7 @@ With points optional parameters
 
 |
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -284,7 +251,7 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-.. include:: TRSP-family.rst
+.. include:: pgRouting-concepts.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
@@ -302,7 +269,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. list-table::
@@ -355,15 +322,15 @@ Additional Examples
 -------------------------------------------------------------------------------
 
 :Example: Which path (if any) passes in front of point :math:`6` or vertex
-          :math:`6` with **right** side driving topology.
+          :math:`11` with **right** side driving topology.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --q1
    :end-before: --q2
 
 
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` to vertex
-          :math:`7` on an **undirected** graph, with details.
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex
+          :math:`1` on an **undirected** graph, with details.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --q2

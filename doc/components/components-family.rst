@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/components-family.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/components-family.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/components-family.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/components-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/components-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/components-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/components-family.html>`__
@@ -26,8 +27,10 @@ Components - Family of functions
 .. index from here
 
 * :doc:`pgr_connectedComponents` - Connected components of an undirected graph.
-* :doc:`pgr_strongComponents` - Strongly connected components of a directed graph.
-* :doc:`pgr_biconnectedComponents` - Biconnected components of an undirected graph.
+* :doc:`pgr_strongComponents` - Strongly connected components of a directed
+  graph.
+* :doc:`pgr_biconnectedComponents` - Biconnected components of an undirected
+  graph.
 * :doc:`pgr_articulationPoints` - Articulation points of an undirected graph.
 * :doc:`pgr_bridges` - Bridges of an undirected graph.
 
@@ -55,68 +58,6 @@ Components - Family of functions
     pgr_articulationPoints
     pgr_bridges
     pgr_makeConnected
-
-
-Parameters
--------------------------------------------------------------------------------
-
-.. components_parameters_start
-
-=================== ====================== ========= =========================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =========================================
-**Edges SQL**       ``TEXT``                         Inner query as described below.
-=================== ====================== ========= =========================================
-
-.. components_parameters_end
-
-Inner query
--------------------------------------------------------------------------------
-
-:Edges SQL: an SQL query which should return a set of rows with the following columns:
-
-.. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
-
-Result Columns
--------------------------------------------------------------------------------
-
-pgr_connectedComponents & pgr_strongComponents
-...............................................................................
-
-.. include:: pgr_connectedComponents.rst
-    :start-after: return_componentsV_start
-    :end-before: return_componentsV_end
-
-
-pgr_biconnectedComponents
-...............................................................................
-
-.. include:: pgr_biconnectedComponents.rst
-    :start-after: return_componentsE_start
-    :end-before: return_componentsE_end
-
-pgr_articulationPoints
-...............................................................................
-
-.. include:: pgr_articulationPoints.rst
-    :start-after: return_articulation_start
-    :end-before: return_articulation_end
-
-pgr_bridges
-...............................................................................
-
-.. include:: pgr_bridges.rst
-    :start-after: return_bridges_start
-    :end-before: return_bridges_end
-
-pgr_makeConnected - Experimental
-...............................................................................
-
-.. include:: pgr_makeConnected.rst
-    :start-after: return_makeConnected_start
-    :end-before: return_makeConnected_end
 
 
 See Also

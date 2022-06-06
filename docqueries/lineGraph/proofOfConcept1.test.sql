@@ -1,12 +1,22 @@
+-- TODO move to pgtap
+
+-- getting same results using pgr_createTopology
+DROP TABLE IF EXISTS edges1;
+SELECT id, NULL::BIGINT as source, NULL::BIGINT as target, cost, reverse_cost, x1, x2, y1, y2, geom AS the_geom
+INTO edges1
+FROM edges ORDER BY id;
+UPDATE edges1 SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2));
+SELECT pgr_createTopology('edges1',0.001);
+
 
 -- this is a hand made test
-UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;
-UPDATE edge_table_vertices_pgr SET id = id * 1000;
+UPDATE edges1 SET id = id * 100, source = 1000 * source, target = 1000 * target;
+UPDATE edges1_vertices_pgr SET id = id * 1000;
 
 DROP TABLE IF EXISTS result2;
 SELECT  * INTO result2 FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
-    FROM edge_table$$
+    FROM edges1$$
 );
 SELECT * FROM result2;
 
@@ -22,7 +32,7 @@ ORDER BY id;
 SELECT * FROM result2_vertices_pgr;
 
 UPDATE result2_vertices_pgr AS r SET original_id = v.id
-FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
+FROM edges1_vertices_pgr AS v WHERE v.id = r.id;
 
 WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and source IN (SELECT id FROM a)),
@@ -40,12 +50,12 @@ UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.sourc
 
 WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
 b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
-c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
+c AS (SELECT id,source FROM edges1 WHERE id IN (SELECT edge FROM b))
 UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
 
 WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
 b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
-c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
+c AS (SELECT id,target FROM edges1 WHERE id IN (SELECT edge FROM b))
 UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
 
 SELECT * FROM result2_vertices_pgr;
@@ -111,5 +121,5 @@ SELECT
 FROM a;
 
 -- A Dijkstra
-SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
+SELECT * from pgr_dijkstra($$SELECT id, * FROM edges1$$,
     ARRAY[2000], ARRAY[3000]);

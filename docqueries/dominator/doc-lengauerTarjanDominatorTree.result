@@ -3,41 +3,39 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* --q1 */
-   SELECT * FROM pgr_lengauertarjandominatortree(
-    $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
-    1
-);
+SELECT * FROM pgr_lengauertarjandominatortree(
+  $$SELECT id,source,target,cost,reverse_cost FROM edges$$,
+  5);
  seq | vertex_id | idom
 -----+-----------+------
-   1 |         1 |    0
-   2 |         2 |    1
-   3 |         3 |    4
-   4 |         4 |    9
-   5 |         5 |    2
+   1 |         1 |    2
+   2 |         3 |    7
+   3 |         2 |    0
+   4 |         4 |    0
+   5 |         5 |    0
    6 |         6 |    5
-   7 |         7 |    8
-   8 |         8 |    5
-   9 |         9 |    5
-  10 |        10 |    5
-  11 |        11 |    5
-  12 |        12 |    5
-  13 |        13 |   10
+   7 |         7 |    6
+   8 |         8 |    7
+   9 |         9 |    8
+  10 |        10 |   15
+  11 |        11 |    7
+  12 |        12 |    7
+  13 |        13 |    0
   14 |        14 |    0
-  15 |        15 |    0
-  16 |        16 |    0
-  17 |        17 |    0
+  15 |        15 |   16
+  16 |        16 |    7
+  17 |        17 |    7
 (17 rows)
 
 /* --q2 */
-   SELECT * FROM pgr_lengauertarjandominatortree(
-    $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$,
-    16
-);
+SELECT * FROM pgr_lengauertarjandominatortree(
+  $$SELECT id,source,target,cost,reverse_cost FROM edges$$,
+  13);
  seq | vertex_id | idom
 -----+-----------+------
    1 |         1 |    0
-   2 |         2 |    0
-   3 |         3 |    0
+   2 |         3 |    0
+   3 |         2 |    0
    4 |         4 |    0
    5 |         5 |    0
    6 |         6 |    0
@@ -48,10 +46,10 @@ SET
   11 |        11 |    0
   12 |        12 |    0
   13 |        13 |    0
-  14 |        14 |    0
+  14 |        14 |   13
   15 |        15 |    0
   16 |        16 |    0
-  17 |        17 |   16
+  17 |        17 |    0
 (17 rows)
 
 /* --q3 */

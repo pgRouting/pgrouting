@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_maxFlowMinCost.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_maxFlowMinCost.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_maxFlowMinCost.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_maxFlowMinCost.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_maxFlowMinCost.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__
@@ -60,8 +61,8 @@ Description
 * Running time: :math:`O(U * (E + V * logV))`
 
   * where :math:`U` is the value of the max flow.
-  * :math:`U` is upper bound on number of iterations.
-    In many real world cases number of iterations is much smaller than :math:`U`.
+  * :math:`U` is upper bound on number of iterations. In many real world cases
+    number of iterations is much smaller than :math:`U`.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -75,7 +76,7 @@ Signatures
     pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)
     pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)
     pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
 .. index::
@@ -87,10 +88,10 @@ One to One
 .. parsed-literal::
 
     pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertex :math:`11`
+:Example: From vertex :math:`11` to vertex :math:`12`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
    :start-after: -- q1
@@ -105,10 +106,10 @@ One to Many
 .. parsed-literal::
 
     pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`6` to vertices :math:`\{1, 3, 11\}`
+:Example: From vertex :math:`11` to vertices :math:`\{5, 10, 12\}`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
    :start-after: -- q2
@@ -123,10 +124,10 @@ Many to One
 .. parsed-literal::
 
     pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertex :math:`11`
+:Example: From vertices :math:`\{11, 3, 17\}` to vertex :math:`12`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
    :start-after: -- q3
@@ -141,10 +142,10 @@ Many to Many
 .. parsed-literal::
 
     pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{6, 8, 12\}` to vertices :math:`\{1, 3, 11\}`
+:Example: From vertices :math:`\{11, 3, 17\}` to vertices :math:`\{5, 10, 12\}`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
    :start-after: -- q4
@@ -159,11 +160,11 @@ Combinations
 .. parsed-literal::
 
     pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Using a combinations table, equivalent to calculating result from
-          vertices :math:`\{1, 2\}` to vertices :math:`\{3, 4, 17\}`.
+          vertices :math:`\{5, 6\}` to vertices :math:`\{10, 15, 14\}`.
 
 The combinations table:
 
@@ -184,7 +185,7 @@ Parameters
     :start-after: dijkstra_parameters_start
     :end-before: dijkstra_parameters_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -201,7 +202,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: flow-family.rst

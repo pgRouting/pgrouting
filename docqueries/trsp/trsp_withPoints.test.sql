@@ -2,36 +2,36 @@ SET extra_float_digits=-3;
 
 /* --e1 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT id, path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  -1, 3,
+  -1, 10,
   details => true);
 /* --e2 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT id, path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  -1, ARRAY[-3, 5]);
+  -1, ARRAY[-3, 7]);
 /* --e3 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT id, path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  ARRAY[-1, 2], -3);
+  ARRAY[-1, 6], -3);
 /* --e4 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT id, path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  ARRAY[-1, 2], ARRAY[-3, 7]);
+  ARRAY[-1, 6], ARRAY[-3, 1]);
 
 /* --e5 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT id, path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  $$SELECT * FROM (VALUES (-1, 3), (2, -3)) AS t(source, target)$$,
+  $$SELECT * FROM (VALUES (-1, 10), (6, -3)) AS t(source, target)$$,
   driving_side => 'r',
   details => true);
 /* --q1 */
@@ -44,19 +44,19 @@ ELSE ' passes in front of'
   END as is_a,
   abs(node) as id
   FROM pgr_trsp_withPoints(
-    $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+    $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
     $$SELECT id, path, cost FROM restrictions$$,
     $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-    ARRAY[1,-1], ARRAY[-2, -3, -6, 3, 6],
+    ARRAY[5, -1], ARRAY[-6, -3, -6, 10, 11],
     driving_side => 'r',
     details => true)
-  WHERE node IN (-6, 6);
+  WHERE node IN (-6, 11);
 /* --q2 */
 SELECT * FROM pgr_trsp_withPoints(
-  $$SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id$$,
+  $$SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id$$,
   $$SELECT id, path, cost FROM restrictions$$,
   $$SELECT pid, edge_id, fraction, side FROM pointsOfInterest$$,
-  ARRAY[-1, 2], ARRAY[-3, 7],
+  ARRAY[-1, 6], ARRAY[-3, 1],
   directed => false,
   details => true);
 /* --q3 */

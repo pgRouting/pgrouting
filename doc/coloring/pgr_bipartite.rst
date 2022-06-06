@@ -11,15 +11,15 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_bipartite.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bipartite.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_bipartite.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bipartite.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__
 
 pgr_bipartite -Experimental
 ===============================================================================
 
-``pgr_bipartite`` — If graph is bipartite then function returns the vertex id 
-along with color (0 and 1) else it will return an empty set. In particular, the 
-is_bipartite() algorithm is implemented using Boost Graph Library.
+``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices within
+the same set are adjacent.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/is_bipartite.html
@@ -39,17 +39,17 @@ is_bipartite() algorithm is implemented using Boost Graph Library.
 
 Description
 -------------------------------------------------------------------------------
-A bipartite graph is a graph with two sets of vertices which are connected to 
-each other, but not within themselves. A bipartite graph is possible if the 
-graph coloring is possible using two colors such that vertices in a set are 
+A bipartite graph is a graph with two sets of vertices which are connected to
+each other, but not within themselves. A bipartite graph is possible if the
+graph coloring is possible using two colors such that vertices in a set are
 colored with the same color.
 
 **The main Characteristics are:**
 
 - The algorithm works in undirected graph only.
 - The returned values are not ordered.
-- The algorithm checks graph is bipartite or not. If it is bipartite then it 
-  returns the node along with two    colors `0` and `1` which represents two 
+- The algorithm checks graph is bipartite or not. If it is bipartite then it
+  returns the node along with two    colors `0` and `1` which represents two
   different sets.
 - If graph is not bipartite then algorithm returns empty set.
 - Running time: :math:`O(V + E)`
@@ -68,8 +68,7 @@ Signatures
     RETURNS SET OF (vertex_id, color_id)
     OR EMPTY SET
 
-:Example: The pgr_bipartite algorithm with and `Edges SQL`_ as a parameter when 
-          graph is bipartite
+:Example: When the graph is bipartite
 
 .. literalinclude:: doc-bipartite.queries
    :start-after: --q1
@@ -82,7 +81,7 @@ Parameters
    :start-after: only_edge_param_start
    :end-before: only_edge_param_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -102,20 +101,19 @@ Result Columns
 Additional Example
 --------------------------------------------------------------------------------
 
-:Example: The odd length cyclic graph can not be bipartite. The following edge 
-          will make subgraph with vertices {1, 2, 5, 7, 8} an odd length cyclic 
-          graph.
+:Example: The odd length cyclic graph can not be bipartite.
 
+The edge :math:`5 \rightarrow 1` will make subgraph with vertices :math:`\{1, 3,
+7, 6, 5\}` an odd length cyclic graph, as the cycle has 5 vertices.
 
 .. literalinclude:: doc-bipartite.queries
    :start-after: --q2
    :end-before: --q3
 
-The new graph is not bipartite because it has a odd length cycle of 5 vertices.
-Edges in blue represent odd length cycle.
+Edges in blue represent odd length cycle subgraph.
 
 .. image:: images/bipartite.png
-   :scale: 60%
+   :scale: 40%
 
 .. literalinclude:: doc-bipartite.queries
     :start-after: --q3
@@ -126,9 +124,9 @@ See Also
 
 .. see also start
 
-* `Boost: is_bipartite algorithm documentation 
+* `Boost: is_bipartite
   <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__
-* `Wikipedia: bipartite graph 
+* `Wikipedia: bipartite graph
   <https://en.wikipedia.org/wiki/Bipartite_graph>`__
 
 .. see also end

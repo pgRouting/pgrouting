@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+/* TODO move to pgtap */
+
 /* --q1 */
 SELECT seq, node, edge, round(cost::numeric, 6)  FROM
   pgr_bdDijkstra('SELECT * FROM bdd_ways', 5700, 6733, true);

@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/costMatrix-category.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/costMatrix-category.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/costMatrix-category.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/costMatrix-category.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/costMatrix-category.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/costMatrix-category.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/costMatrix-category.html>`__
@@ -173,7 +174,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -195,7 +196,7 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

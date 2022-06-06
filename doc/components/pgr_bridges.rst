@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_bridges.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bridges.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_bridges.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bridges.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bridges.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bridges.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bridges.html>`__
@@ -19,7 +20,7 @@
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__
   `2.5 <https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__
 
-pgr_bridges
+``pgr_bridges``
 ===============================================================================
 
 ``pgr_bridges`` - Return the bridges of an undirected graph.
@@ -40,7 +41,6 @@ pgr_bridges
 
   * New **experimental** function
 
-
 Description
 -------------------------------------------------------------------------------
 
@@ -50,23 +50,22 @@ This implementation can only be used with an undirected graph.
 
 **The main characteristics are:**
 
-- The signature is for an **undirected** graph.
+- Works for **undirected** graphs.
 - The returned values are ordered:
 
-  - `edge` ascending
+  - ``edge`` ascending
 
 - Running time: :math:`O(E * (V + E))`
-
-Signatures
--------------------------------------------------------------------------------
 
 .. index::
     single: bridges
 
-.. code-block:: none
+Signatures
+-------------------------------------------------------------------------------
 
-    pgr_bridges(Edges SQL)
+.. parsed-literal::
 
+    pgr_bridges(`Edges SQL`_)
     RETURNS SET OF (edge)
     OR EMPTY SET
 
@@ -76,17 +75,21 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
+.. figure:: /images/bridge_sampledata.png
+   :scale: 25%
+
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: components-family.rst
-    :start-after: components_parameters_start
-    :end-before: components_parameters_end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
-:edges SQL: an SQL query of an **undirected** graph, which should return a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -94,17 +97,20 @@ Inner query
 
 Result Columns
 -------------------------------------------------------------------------------
-.. return_bridges_start
 
 Returns set of ``(edge)``
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**edge**       ``BIGINT`` Identifier of the edge that is a bridge.
-============== ========== =================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
-.. return_bridges_end
+   * - Column
+     - Type
+     - Description
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge that is a bridge.
 
 See Also
 -------------------------------------------------------------------------------
@@ -116,4 +122,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

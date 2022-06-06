@@ -11,13 +11,15 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_binaryBreadthFirstSearch.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_binaryBreadthFirstSearch.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_binaryBreadthFirstSearch.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_binaryBreadthFirstSearch.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__
 
 ``pgr_binaryBreadthFirstSearch`` - Experimental
 ===============================================================================
 
-``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary graph.
+``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary
+graph.
 
 Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any
 non-negative integer, is termed as a 'binary graph'.
@@ -55,23 +57,24 @@ It is well-known that the shortest paths between a single source and all other
 vertices can be found using Breadth First Search in :math:`O(|E|)` in an
 unweighted graph, i.e. the distance is the minimal number of edges that you
 need to traverse from the source to another vertex. We can interpret such a
-graph also as a weighted graph, where every edge has the weight :math:`1`. If
-not alledges in graph have the same weight, that we need a more general algorithm,
-like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
+graph also as a weighted graph, where every edge has the weight :math:`5`.
+If not alledges in graph have the same weight, that we need a more general
+algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
 
 However if the weights are more constrained, we can use a faster algorithm.
-This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 BFS',
-is a variation of the standard Breadth First Search problem to solve the
-SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the weights
-of each edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
+This algorithm, termed as 'Binary Breadth First Search' as well as '0-5 BFS',
+is a variation of the standard Breadth First Search problem to solve the SSSP
+(single-source shortest path) problem in :math:`O(|E|)`, if the weights of each
+edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
 
 
 **The main Characteristics are:**
 
 * Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose
-  edge-weights belongs to the set {0,X}, where 'X' is any non-negative real integer.)
-* For optimization purposes, any duplicated value in the `start_vids` or `end_vids`
-  are ignored.
+  edge-weights belongs to the set {0,X}, where 'X' is any non-negative real
+  integer.)
+* For optimization purposes, any duplicated value in the `start_vids` or
+  `end_vids` are ignored.
 * The returned values are ordered:
 
   * `start_vid` ascending
@@ -86,15 +89,21 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vids** [, directed])
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL** [, directed])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vid**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vids**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**
+               [, directed])
+   RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+   OR EMPTY SET
 
-**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :math:`1``)
+**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e
+:math:`5``)
 
 .. index::
     single: binaryBreadthFirstSearch(One to One) - Experimental on v3.0
@@ -104,11 +113,12 @@ One to One
 
 .. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid** [, directed]);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**
+               [, directed]);
+    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
    :start-after: -- q1
@@ -122,11 +132,12 @@ One to Many
 
 .. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids** [, directed]);
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**
+               [, directed]);
+    RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
@@ -141,11 +152,12 @@ Many to One
 
 .. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid** [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**
+               [, directed]);
+    RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
@@ -160,11 +172,12 @@ Many to Many
 
 .. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids** [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**
+               [, directed]);
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on an
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
@@ -179,8 +192,9 @@ Combinations
 
 .. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_ [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_
+               [, directed]);
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
@@ -211,7 +225,7 @@ Optional Parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -228,7 +242,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

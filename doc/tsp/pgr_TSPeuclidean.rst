@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_TSPeuclidean.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__
@@ -77,8 +78,8 @@ Description
   - The coordinates are quite different for the same identifier, for example
     ::
 
-      2 , 3.5, 1.0
-      2 , 3.6, 1.1
+      2, 3.5, 1.0
+      2, 3.6, 1.1
 
 
 Signatures
@@ -116,7 +117,7 @@ TSP optional parameters
    :start-after: tsp_optionals_start
    :end-before: tsp_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Coordinates SQL
@@ -136,7 +137,11 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Test 29 cities of Western Sahara
+.. contents::
+   :local:
+
+Test 29 cities of Western Sahara
+...............................................................................
 
 This example shows how to make performance tests using University of Waterloo's
 `example data <https://www.math.uwaterloo.ca/tsp/world/countries.html>`__ using
@@ -144,16 +149,20 @@ the 29 cities of `Western Sahara dataset
 <https://www.math.uwaterloo.ca/tsp/world/wi29.tsp>`__
 
 Creating a table for the data and storing the data
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: wi29.queries
    :start-after: -- data start
    :end-before: -- data end
 
 Adding a geometry (for visual purposes)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: wi29.queries
    :start-after: -- data end
 
+Total tour cost
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Getting a total cost of the tour, compare the value with the length of an
 optimal tour is 27603, given on the dataset
 
@@ -162,11 +171,14 @@ optimal tour is 27603, given on the dataset
    :end-before: -- q3
 
 Getting a geometry of the tour
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_TSPeuclidean.queries
    :start-after: -- q3
    :end-before: -- q4
 
+Visual results
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Visualy, The first image is the `optimal solution
 <https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and the second image
 is the solution obtained with ``pgr_TSPeuclidean``.

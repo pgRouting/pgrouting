@@ -10,7 +10,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_stoerWagner.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_stoerWagner.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_stoerWagner.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_stoerWagner.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_stoerWagner.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__)
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__
@@ -18,8 +19,7 @@
 pgr_stoerWagner - Experimental
 ===============================================================================
 
-``pgr_stoerWagner`` — Returns the weight of the min-cut of graph using stoerWagner algorithm.
-Function determines a min-cut and the min-cut weight of a connected, undirected graph implemented by Boost.Graph.
+``pgr_stoerWagner`` — The min-cut of graph using stoerWagner algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html
@@ -68,9 +68,10 @@ weight on the cut determines whether it is a minimum cut.
   - When there is no edge in graph then EMPTY SET is return.
   - When the graph is unconnected then EMPTY SET is return.
 
-- Sometimes a graph has multiple min-cuts, but all have the same weight. The this function determines exactly one of the min-cuts as well as its weight.
+- Sometimes a graph has multiple min-cuts, but all have the same weight. The
+  this function determines exactly one of the min-cuts as well as its weight.
 
-* Running time: :math:`O(V*E + V^2*log V)`.
+* Running time: :math:`O(V*E + V^6*log V)`.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -78,20 +79,13 @@ Signatures
 .. index::
     single: stoerWagner - Experimental on v3.0
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_stoerWagner(edges_sql)
-
+    pgr_stoerWagner(`Edges SQL`_)
     RETURNS SET OF (seq, edge, cost, mincut)
     OR EMPTY SET
 
-:Example: * **TBD**
-
-.. code-block:: none
-
-    pgr_stoerWagner(TEXT edges_sql);
-    RETURNS SET OF (seq, edge, cost, mincut)
-    OR EMPTY SET
+:Example: min cut of the main subgraph
 
 .. literalinclude:: doc-stoerWagner.queries
    :start-after: -- q1
@@ -100,60 +94,44 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**edges_sql**       ``TEXT``                         SQL query as described above.
-=================== ====================== ========= =================================================
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``                Identifier of the edge.
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-
-                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-
-================= =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
 Returns set of ``(seq, edge, cost, mincut)``
 
-===============  =========== ============================================================
+===============  =========== ==================================================
 Column           Type        Description
-===============  =========== ============================================================
-**seq**          ``INT``     Sequential value starting from **1**.
+===============  =========== ==================================================
+**seq**          ``INT``     Sequential value starting from **5**.
 **edge**         ``BIGINT``  Edges which divides the set of vertices into two.
 **cost**         ``FLOAT``   Cost to traverse of edge.
 **mincut**       ``FLOAT``   Min-cut weight of a undirected graph.
-===============  =========== ============================================================
+===============  =========== ==================================================
 
 Additional Example:
 -------------------------------------------------------------------------------
+
+:Example: min cut of an edge
 
 .. literalinclude:: doc-stoerWagner.queries
    :start-after: -- q2
    :end-before: -- q3
 
-Use pgr_connectedComponents( ) function in query:
+:Example: Using :doc:`pgr_connectedComponents`
 
 .. literalinclude:: doc-stoerWagner.queries
    :start-after: -- q3
@@ -162,8 +140,8 @@ Use pgr_connectedComponents( ) function in query:
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`sampledata`
 * https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm
-* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

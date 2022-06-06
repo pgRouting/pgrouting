@@ -16,7 +16,8 @@
 ``pgr_withPointsVia`` - Proposed
 ===============================================================================
 
-``pgr_withPointsVia`` - Route that goes through a list of vertices and/or points.
+``pgr_withPointsVia`` - Route that goes through a list of vertices and/or
+points.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -41,7 +42,7 @@ function is equivalent to finding the shortest path between :math:`vertex_i` and
 :math:`vertex_{i+1}` (where :math:`vertex` can be a vertex or a point on the
 graph) for all :math:`i < size\_of(via\;vertices)`.
 
-:Route: is a sequence of paths
+:Route: is a sequence of paths.
 :Path: is a section of the route.
 
 The general algorithm is as follows:
@@ -65,13 +66,13 @@ One Via
 .. parsed-literal::
 
     pgr_withPointsVia(`Edges SQL`_, `Points SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge]) -- Proposed on v3.4
+               [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ -6, 4, -5\}` in that
-          order on a **directed** graph.
+:Example: Find the route that visits the vertices :math:`\{ -6, 15, -1\}` in
+          that order on a **directed** graph.
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q0
@@ -101,11 +102,11 @@ Via optional parameters
 With points optional parameters
 ...............................................................................
 
-.. include:: via-category.rst
-    :start-after: via_withPoints_optionals_start
-    :end-before: via_withPoints_optionals_end
+.. include:: withPoints-family.rst
+   :start-after: withPoints_optionals_start
+   :end-before: withPoints_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -122,51 +123,63 @@ Points SQL
     :start-after: points_sql_start
     :end-before: points_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
-    :start-after: result via withPoints start
-    :end-before: result via withPoints end
+    :start-after: result_via_start
+    :end-before: result_via_end
+
+.. include:: via-category.rst
+    :start-after: result_via_withPoints_start
+    :end-before: result_via_withPoints_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{-1, 5, -3, 9, 4\}`
-            in that order on a **directed** graph
+.. contents::
+   :local:
+
+All this examples are about the route that visits the vertices :math:`\{-1, 7,
+-3, 16, 15\}` in that order on a **directed** graph.
+
+The main query
+...............................................................................
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q1
     :end-before: -- q2
 
-:Example 2: What's the aggregate cost of the third path?
+Aggregate cost of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q2
     :end-before: -- q3
 
-:Example 3: What's the route's aggregate cost of the route at the end of the
-            third path?
+Route's aggregate cost of the route at the end of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q3
     :end-before: -- q4
 
-:Example 4: How are the nodes visited in the route?
+Nodes visited in the route.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q4
     :end-before: -- q5
 
-:Example 5: What are the aggregate costs of the route when the visited vertices
-            are reached?
+The aggregate costs of the route when the visited vertices are reached.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q5
     :end-before: -- q6
 
-:Example 6: Show a status of "passes in front" or "visits" of the nodes and
-            points.
+Status of "passes in front" or "visits" of the nodes and points.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: withPointsVia.queries
     :start-after: -- q6

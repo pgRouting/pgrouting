@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_depthFirstSearch.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__
 
 ``pgr_depthFirstSearch`` - Proposed
@@ -86,7 +87,7 @@ Single vertex
     pgr_depthFirstSearch(`Edges SQL`_, **Root vid** [, directed] [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertex :math:`2` on a **directed** graph with edges in
+:Example: From root vertex :math:`6` on a **directed** graph with edges in
           ascending order of ``id``
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
@@ -104,7 +105,7 @@ Multiple vertices
     pgr_depthFirstSearch(`Edges SQL`_, **Root vids** [, directed] [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: From root vertices :math:`\{11, 2\}` on an **undirected** graph with
+:Example: From root vertices :math:`\{12, 6\}` on an **undirected** graph with
           **depth** :math:`<= 2` and edges in ascending order of ``id``
 
 .. literalinclude:: doc-pgr_depthFirstSearch.queries
@@ -132,7 +133,7 @@ DFS optional parameters
    :start-after: max-depth-optional-start
    :end-before: max-depth-optional-end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -164,6 +165,8 @@ The left image shows the result with ascending order of ids and the right image
 shows with descending order of the edge identifiers.
 
 |ascending| |descending|
+
+.. TODO fix the images
 
 .. |ascending| image:: images/Fig1-AscendingOrder.png
    :scale: 50%

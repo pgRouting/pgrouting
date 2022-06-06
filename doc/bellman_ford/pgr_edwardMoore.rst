@@ -11,14 +11,14 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_edwardMoore.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_edwardMoore.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_edwardMoore.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html>`__
 
 ``pgr_edwardMoore - Experimental``
 ===============================================================================
 
-``pgr_edwardMoore`` —  Returns the shortest path(s) using Edward-Moore algorithm.
-Edward-Moore algorithm is an improvement of the Bellman-Ford Algorithm.
+``pgr_edwardMoore`` —  Returns the shortest path using Edward-Moore algorithm.
 
 
 .. include:: experimental.rst
@@ -45,58 +45,61 @@ Edward-Moore algorithm is an improvement of the Bellman-Ford Algorithm.
 Description
 -------------------------------------------------------------------------------
 
-Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm. It 
-can compute the shortest paths from a single source vertex to all other vertices
-in a weighted directed graph. The main difference between Edward Moore's Algorithm
-and Bellman Ford's Algorithm lies in the run time.
+Edward Moore’s Algorithm is an improvement of the Bellman-Ford Algorithm.
+It can compute the shortest paths from a single source vertex to all other
+vertices in a weighted directed graph.
+The main difference between Edward Moore's Algorithm and Bellman Ford's
+Algorithm lies in the run time.
 
 The worst-case running time of the algorithm is :math:`O(| V | * | E |)` similar
 to the time complexity of Bellman-Ford algorithm.
-However, experiments suggest that this algorithm has an average running time 
+However, experiments suggest that this algorithm has an average running time
 complexity of :math:`O( | E | )` for random graphs. This is significantly faster
 in terms of computation speed.
 
-Thus, the algorithm is at-best, significantly faster than Bellman-Ford algorithm 
+Thus, the algorithm is at-best, significantly faster than Bellman-Ford algorithm
 and is at-worst,as good as Bellman-Ford algorithm
 
 **The main characteristics are:**
-  * Values are returned when there is a path.
 
-    * When the starting vertex and ending vertex are the same, there is no path.
+* Values are returned when there is a path.
 
-      * The `agg_cost` the non included values `(v, v)` is :math:`0`
+  * When the starting vertex and ending vertex are the same, there is no path.
 
-    * When the starting vertex and ending vertex are the different and there is 
-      no path:
+    * The `agg_cost` the non included values `(v, v)` is :math:`0`
 
-      * The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+  * When the starting vertex and ending vertex are the different and there is
+    no path:
 
-  * For optimization purposes, any duplicated value in the `start vids` or `end vids`
-    are ignored.
+    * The `agg_cost` the non included values `(u, v)` is :math:`\infty`
 
-  * The returned values are ordered:
+* For optimization purposes, any duplicated value in the `start vids` or `end
+  vids` are ignored.
 
-    * `start vid` ascending
-    * `end vid` ascending
+* The returned values are ordered:
 
-  * Running time:
-    * Worst case: :math:`O(| V | * | E |)`
-    * Average case: :math:`O( | E | )`
+  * `start vid` ascending
+  * `end vid` ascending
+
+* Running time:
+
+  * Worst case: :math:`O(| V | * | E |)`
+  * Average case: :math:`O( | E | )`
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. parsed-literal:: 
+.. parsed-literal::
 
-    pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
-    pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vids** [, directed])
-    pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
+   pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vids** [, directed])
+   pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid**  [, directed])
+   pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed])
+   pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed])
+   RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+   OR EMPTY SET
 
 .. index::
     single: edwardMoore(One to One) - Experimental on v3.0
@@ -107,10 +110,10 @@ One to One
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid** [, directed]);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
+:Example: From vertex :math:`6` to vertex :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q2
@@ -125,10 +128,11 @@ One to Many
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids** [, directed]);
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertex :math:`6` to vertices :math:`\{ 10, 17\}` on a
+          **directed** graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q3
@@ -143,10 +147,11 @@ Many to One
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid** [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
+          graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q4
@@ -161,10 +166,11 @@ Many to Many
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q5
@@ -179,20 +185,22 @@ Combinations
 .. parsed-literal::
 
     pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
+
+:Example: Using a combinations table on an **undirected** graph.
 
 The combinations table:
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
    :start-after: -- q51
-   :end-before: -- q6
+   :end-before: -- q52
 
-:Example: Using the combinations table on an **undirected** graph.
+The query:
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q52
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -208,7 +216,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -225,52 +233,33 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Return columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
-
+    :start-after: return_path_short_start
+    :end-before: return_path_short_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-The examples of this section are based on the :doc:`sampledata` network.
-The examples include combinations from starting vertices 2 and 11 to ending 
-vertices 3 and 5 in a directed and undirected graph with and with out reverse_cost.
-
-**Examples:** For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following :ref:`fig1`
+:Example 1: Demonstration of repeated values are ignored, and result is sorted.
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q8
-   :end-before: -- q9
+    :start-after: -- q6
+    :end-before: -- q7
 
-**Examples:** For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following :ref:`fig2`
+:Example 2: Making **start vids** the same as **end vids**.
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q10
-   :end-before: -- q11
+    :start-after: -- q7
+    :end-before: -- q8
 
-**Examples:** For queries marked as ``directed`` with ``cost`` column
-
-The examples in this section use the following :ref:`fig3`
+:Example 3: Manually assigned vertex combinations.
 
 .. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q12
-   :end-before: -- q13
-
-**Examples:** For queries marked as ``undirected`` with ``cost`` column
-
-The examples in this section use the following :ref:`fig4`
-
-.. literalinclude:: doc-pgr_edwardMoore.queries
-   :start-after: -- q14
-   :end-before: -- q15
+    :start-after: -- q8
+    :end-before: -- q9
 
 See Also
 -------------------------------------------------------------------------------

@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCostMatrix.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCostMatrix.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdDijkstraCostMatrix.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCostMatrix.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__
@@ -67,7 +68,7 @@ Signatures
     pgr_bdDijkstraCostMatrix(`Edges SQL`_, **start vids** [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an
+:Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
           **undirected** graph
 
 .. literalinclude:: doc-pgr_bdDijkstraCostMatrix.queries
@@ -88,7 +89,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -98,7 +99,7 @@ Edges SQL
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst

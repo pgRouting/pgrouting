@@ -1,37 +1,36 @@
 /* -- q1 */
 SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
-  FROM edge_table',
-  6, 11);
+  FROM edges',
+  11, 12);
 /* -- q2 */
 SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
-  FROM edge_table',
-  6, ARRAY[1, 3, 11]);
+  FROM edges',
+  11, ARRAY[5, 10, 12]);
 /* -- q3 */
 SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
-  FROM edge_table',
-  ARRAY[6, 8, 12], 11);
+  FROM edges',
+  ARRAY[11, 3, 17], 12);
 /* -- q4 */
 SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
-  FROM edge_table',
-  ARRAY[6, 8, 12], ARRAY[1, 3, 11]);
+  FROM edges',
+  ARRAY[11, 3, 17], ARRAY[5, 10, 12]);
 /* -- q5 */
-SELECT source, target FROM combinations_table
-WHERE target NOT IN (1, 2);
+SELECT source, target FROM combinations
+WHERE target NOT IN (5, 6);
 /* -- q51 */
 SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
-  FROM edge_table',
-  'SELECT * FROM combinations_table
-   WHERE target NOT IN (1, 2)',
+  FROM edges',
+  'SELECT * FROM combinations WHERE target NOT IN (5, 6)',
   directed => false);
 /* -- q6 */
 SELECT * FROM pgr_edgeDisjointPaths(
   'SELECT id, source, target, cost, reverse_cost
-  FROM edge_table',
-  'SELECT * FROM (VALUES (1, 3), (2, 4), (2, 17)) AS t(source, target)',
+  FROM edges',
+  'SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)',
   directed => false);
 /* -- q7 */

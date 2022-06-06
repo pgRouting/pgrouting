@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_trsp.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_trsp.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_trsp.html>`__
@@ -42,10 +43,11 @@ pgr_trsp - Proposed
     * ``pgr_trsp`` (`Many to Many`_)
     * ``pgr_trsp`` (`Combinations`_)
 
-  * Signature ``pgr_trsp(text,integer,integer,boolean,boolean,text)`` is deprecated
-  * Signature ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)`` is deprecated
-  * Signature ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)`` is deprecated
-  * Signature ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)`` is deprecated
+  * Deprecated signatures
+     * ``pgr_trsp(text,integer,integer,boolean,boolean,text)``
+     * ``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``
+     * ``pgr_trspViaVertices(text,anyarray,boolean,boolean,text)``
+     * ``pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)``
 
 * Version 2.1.0
 
@@ -57,9 +59,6 @@ pgr_trsp - Proposed
 * Version 2.0.0
 
   * **Official** function
-
-
-.. contents:: Contents
 
 Description
 -------------------------------------------------------------------------------
@@ -82,13 +81,8 @@ The general algorithm is as follows:
 
   * Execute the **TRSP** algorithm with restrictions
 
-
-
-
 Signatures
 -------------------------------------------------------------------------------
-
-.. rubric:: Summary
 
 .. rubric:: Proposed
 
@@ -98,12 +92,17 @@ Signatures
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid  [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid  [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids [, directed]) -- Proposed on v3.4
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids
+               [, directed]) -- Proposed on v3.4
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_,
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
 .. index::
@@ -114,11 +113,12 @@ One to One
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid  [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vid
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on an **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q2
@@ -132,11 +132,13 @@ One to Many
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vid,  end vids
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 7\}` on an **undirected** graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 1\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q3
@@ -150,11 +152,13 @@ Many to One
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid  [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vid
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`10` on a **directed** graph
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`8` on a **directed**
+          graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q4
@@ -168,11 +172,13 @@ Many to Many
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, start vids, end vids
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 10\}` on an **undirected** graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 8\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-trsp.queries
    :start-after: -- q5
@@ -186,8 +192,9 @@ Combinations
 
 .. parsed-literal::
 
-   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, [, directed]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_,
+               [, directed]) -- Proposed on v3.4
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
    OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
@@ -200,25 +207,19 @@ Combinations
 Parameters
 -------------------------------------------------------------------------------
 
-.. trsp_parameters_start
+.. include:: pgRouting-concepts.rst
+    :start-after: restriction_parameters_start
+    :end-before: restriction_parameters_end
 
-===================== ================== ========= ==========================================================
-Parameter             Type               Default     Description
-===================== ================== ========= ==========================================================
-`Edges SQL`_          ``TEXT``                     `Edges SQL`_ as described below
-`Restrictions SQL`_   ``TEXT``                     `Restrictions SQL`_ as described below
-`Combinations SQL`_   ``TEXT``                     `Combinations SQL`_ as described below
-**start vid**         ``BIGINT``                   Identifier of the starting vertex of the path.
-**start vids**        ``ARRAY[BIGINT]``            Array of identifiers of starting vertices.
-**end vid**           ``BIGINT``                   Identifier of the ending vertex of the path.
-**end vids**          ``ARRAY[BIGINT]``            Array of identifiers of ending vertices.
-``directed``          ``BOOLEAN``         ``true`` - When ``true`` Graph is considered `Directed`
-                                                   - When ``false`` the graph is considered as `Undirected`.
-===================== ================== ========= ==========================================================
 
-.. pgr_trsp_parameters_end
+Optional parameters
+...............................................................................
 
-Inner queries
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -231,7 +232,7 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-.. include:: TRSP-family.rst
+.. include:: pgRouting-concepts.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
@@ -242,12 +243,12 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: return_path_all_columns_start
+    :end-before: return_path_all_columns_end
 
 
 
@@ -256,7 +257,7 @@ See Also
 
 * :doc:`TRSP-family`
 * `Deprecated documentation <https://docs.pgrouting.org/3.3/en/pgr_trsp.html>`_
-* :doc:`trsp_migration`
+* :doc:`migration`
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables

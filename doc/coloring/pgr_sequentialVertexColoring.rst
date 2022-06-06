@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_sequentialVertexColoring.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html>`__
 
 pgr_sequentialVertexColoring - Proposed
@@ -43,9 +44,9 @@ graph, using greedy approach.
 Description
 -------------------------------------------------------------------------------
 
-Sequential Vertex Coloring algorithm is a graph coloring algorithm in which 
-color identifiers are assigned to the vertices of a graph in a sequential manner,
-such that no edge connects two identically colored vertices.
+Sequential vertex coloring algorithm is a graph coloring algorithm in which
+color identifiers are assigned to the vertices of a graph in a sequential
+manner, such that no edge connects two identically colored vertices.
 
 **The main Characteristics are:**
 
@@ -83,7 +84,7 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
-.. Parameters, Inner query & result columns
+.. Parameters, Inner Queries & result columns
 
 Parameters
 -------------------------------------------------------------------------------
@@ -92,7 +93,7 @@ Parameters
    :start-after: only_edge_param_start
    :end-before: only_edge_param_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -117,7 +118,7 @@ See Also
 
 .. see also start
 
-* `Boost: Sequential Vertex Coloring algorithm documentation 
+* `Boost: Sequential Vertex Coloring algorithm documentation
   <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__
 * `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
 

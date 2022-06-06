@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstra.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstra.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdDijkstra.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstra.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstra.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstra.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstra.html>`__
@@ -27,7 +28,8 @@
 ``pgr_bdDijkstra``
 ===============================================================================
 
-``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.
+``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra
+algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
@@ -81,12 +83,12 @@ Signatures
 
 .. parsed-literal::
 
-    pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-    pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+   pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
+   pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
+   pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed])
+   pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
+   pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
+   RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
 .. index::
@@ -98,10 +100,10 @@ One to One
 .. parsed-literal::
 
     pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
     :start-after: -- q2
@@ -116,10 +118,10 @@ One to Many
 .. parsed-literal::
 
     pgr_bdDijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
@@ -135,10 +137,10 @@ Many to One
 .. parsed-literal::
 
     pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
@@ -154,10 +156,10 @@ Many to Many
 .. parsed-literal::
 
     pgr_bdDijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on an
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
@@ -173,7 +175,7 @@ Combinations
 .. parsed-literal::
 
     pgr_bdDijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
@@ -204,7 +206,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -221,7 +223,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -237,7 +239,7 @@ Additional Examples
     :start-after: -- q6
     :end-before: -- q7
 
-:Example 2: Making ``start_vids`` the same as ``end_vids``.
+:Example 2: Making **start vids** the same as **end vids**.
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
     :start-after: -- q7

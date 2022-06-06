@@ -16,10 +16,10 @@ SELECT pid, edge_id, fraction, side FROM pointsOfInterest;
 
 /* --q2 */
 SELECT id, source, target, cost, reverse_cost
-FROM edge_table WHERE id = 15;
+FROM edges WHERE id = 15;
  id | source | target | cost | reverse_cost
 ----+--------+--------+------+--------------
- 15 |      9 |     12 |    1 |            1
+ 15 |     16 |     17 |    1 |            1
 (1 row)
 
 /* --q3 */

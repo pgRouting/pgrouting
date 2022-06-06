@@ -1,15 +1,8 @@
 
 SET(LOCAL_FILES
-    twoNodesoneEdge_a.png
-    twoNodesoneEdge_b.png
-
-    threeNodestwoEdges_a.png
-    threeNodestwoEdges_b.png
-    threeNodestwoEdges_c.png
-
     undirected_sampledata_b.png
-    undirected_sampledata_a.png
     undirected_sampledata_c.png
+    newgraph.png
     )
 
 foreach (f ${LOCAL_FILES})

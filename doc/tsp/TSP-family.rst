@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/TSP-family.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/TSP-family.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/TSP-family.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/TSP-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/TSP-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/TSP-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/TSP-family.html>`__
@@ -83,7 +84,8 @@ To calculate the number of different tours through :math:`n` cities:
 - There are :math:`n-1` choices for the second city,
 - And  :math:`n-2` choices for the third city, etc.
 - Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`.
-- Now since the travel costs do not depend on the direction taken around the tour:
+- Now since the travel costs do not depend on the direction taken around the
+  tour:
 
   - this number by 2
   - :math:`(n-1)!/2`.

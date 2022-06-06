@@ -1,53 +1,53 @@
 /* -- q2 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  2, 11,
+  FROM edges',
+  6, 12,
   directed => true, heuristic => 2
 );
 /* -- q3 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  2, ARRAY[3, 11],
+  FROM edges',
+  6, ARRAY[10, 12],
   heuristic => 3, factor := 3.5
 );
 /* -- q4 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  ARRAY[2, 10], 3,
+  FROM edges',
+  ARRAY[6, 8], 10,
   false, heuristic => 4
 );
 /* -- q5 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  ARRAY[2, 10], ARRAY[3, 11],
+  FROM edges',
+  ARRAY[6, 8], ARRAY[10, 12],
   factor => 0.5
 );
 /* -- q51 */
-SELECT * FROM combinations_table;
+SELECT * FROM combinations;
 /* -- q52 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  'SELECT * FROM combinations_table',
+  FROM edges',
+  'SELECT * FROM combinations',
   factor => 0.5
 );
 /* -- q6 */
  SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  ARRAY[5, 3, 4, 3, 3, 4], ARRAY[3, 5, 3, 4]);
+  FROM edges',
+  ARRAY[7, 10, 15, 10, 10, 15], ARRAY[10, 7, 10, 15]);
 /* -- q7 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  ARRAY[5, 3, 4], ARRAY[5, 3, 4]);
+  FROM edges',
+  ARRAY[7, 10, 15], ARRAY[7, 10, 15]);
 /* -- q8 */
 SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
-  FROM edge_table',
-  'SELECT * FROM (VALUES (2, 3), (2, 5), (11, 3)) AS combinations (source, target)');
+  FROM edges',
+  'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
 -/* -- q9 */

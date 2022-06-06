@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_withPoints.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPoints.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPoints.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPoints.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPoints.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__
@@ -25,7 +26,8 @@
 ``pgr_withPoints`` - Proposed
 ===============================================================================
 
-``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices.
+``pgr_withPoints`` - Returns the shortest path in a graph with additional
+temporary vertices.
 
 .. include:: proposed.rst
    :start-after: begin-warning
@@ -67,10 +69,12 @@ Using Dijkstra algorithm, find the shortest path(s)
   - When the starting vertex and ending vertex are the same, there is no path.
     - The agg_cost the non included values (v, v) is 0
 
-  - When the starting vertex and ending vertex are the different and there is no path:
+  - When the starting vertex and ending vertex are the different and there is no
+    path:
     - The agg_cost the non included values (u, v) is ∞
 
-- For optimization purposes, any duplicated value in the start_vids or end_vids are ignored.
+- For optimization purposes, any duplicated value in the start_vids or end_vids
+  are ignored.
 - The returned values are ordered:
   - start_vid ascending
   - end_vid ascending
@@ -84,12 +88,17 @@ Signatures
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, `Combinations SQL`_ [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
+         [, directed] [, driving_side] [, details])
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_
+         [, directed] [, driving_side] [, details])
+   RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 .. index::
     single: withPoints(One to One) - Proposed on v2.2
@@ -99,14 +108,15 @@ One to One
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vid**  [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
+         [, directed] [, driving_side] [, details])
+   RETURNS (seq, path_seq, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` to vertex :math:`3` with details
+:Example: From point :math:`1` to vertex :math:`10` with details
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --e2
-   :end-before: --e3
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: withPoints(One to Many) - Proposed on v2.2
@@ -116,15 +126,16 @@ One to Many
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vid**, **end vids** [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
+         [, directed] [, driving_side] [, details])
+   RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` to point :math:`3` and vertex :math:`5` on an
+:Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --e3
-   :end-before: --e4
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: withPoints(Many to One) - Proposed on v2.2
@@ -134,14 +145,15 @@ Many to One
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vid**  [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
+         [, directed] [, driving_side] [, details])
+   RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3`
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --e4
-   :end-before: --e5
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: withPoints(Many to Many) - Proposed on v2.2
@@ -151,15 +163,16 @@ Many to Many
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, **start vids**, **end vids** [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
+         [, directed] [, driving_side] [, details])
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
-:Example: From point :math:`1` and vertex :math:`2`  to point :math:`3` and
-          vertex :math:`7`
+:Example: From point :math:`1` and vertex :math:`6`  to point :math:`3` and
+          vertex :math:`1`
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --e5
-   :end-before: --e6
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
     single: withPoints(Combinations) - Proposed on v3.2
@@ -169,17 +182,18 @@ Combinations
 
 .. parsed-literal::
 
-   pgr_withPoints(`Edges SQL`_, `Combinations SQL`_ [, directed] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_withPoints(`Edges SQL`_, `Points SQL`, `Combinations SQL`_,
+         [, directed] [, driving_side] [, details])
+   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: Two combinations
 
-From point :math:`1` to vertex :math:`3`, and from vertex :math:`2` to point
+From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to point
 :math:`3` with **right** side driving.
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --e6
-   :end-before: --e7
+   :start-after: -- q5
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
@@ -202,7 +216,7 @@ With points optional parameters
     :start-after: withPoints_optionals_start
     :end-before: withPoints_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -236,40 +250,42 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Paths that passes in front or visits point :math:`6` or vertex
-          :math:`6` with **right** side driving.
+All the examples are about traveling from point :math:`1` and vertex :math:`5`
+to points :math:`\{2, 3, 6\}` and vertices :math:`\{10, 11\}`
 
-Traveling from point 1 and vertex 1 to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{3, 6\}`
-
-.. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --q1
-   :end-before: --q2
-
-:Example: Which path (if any) passes in front of point :math:`6` or vertex
-          :math:`6` with **left** side.
-
-Traveling from point 1 and vertex 1 to points :math:`\{2, 3, 6\}` and vertices
-:math:`\{3, 6\}`
+The query
+...............................................................................
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q6
+   :end-before: -- q7
 
-:Example: From point :math:`1` and vertex :math:`2` to point :math:`3` and to
-          vertex :math:`7` on an **undirected** graph, with details.
+Passes in front or visits with right side driving.
+...............................................................................
+
+For point :math:`6` and vertex :math:`11`.
+
 
 .. literalinclude:: doc-pgr_withPoints.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: -- q7
+   :end-before: -- q8
 
-The queries use the :doc:`sampledata` network
+Passes in front or visits with left side driving.
+...............................................................................
+
+For point :math:`6` and vertex :math:`11`.
+
+.. literalinclude:: doc-pgr_withPoints.queries
+   :start-after: -- q8
+   :end-before: -- q9
+
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`withPoints-family`
 * :doc:`withPoints-category`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

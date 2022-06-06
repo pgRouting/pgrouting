@@ -11,16 +11,16 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_transitiveClosure.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_transitiveClosure.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_transitiveClosure.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_transitiveClosure.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_transitiveClosure.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__
 
-pgr_transitiveClosure - Experimental
+``pgr_transitiveClosure`` - Experimental
 ===============================================================================
 
-``pgr_transitiveClosure`` — Returns the transitive closure graph of the input graph.
-In particular, the transitive closure algorithm implemented by Boost.Graph.
+``pgr_transitiveClosure`` — Transitive closure graph of a directed graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/transitive_closure.html
@@ -41,16 +41,20 @@ In particular, the transitive closure algorithm implemented by Boost.Graph.
 Description
 -------------------------------------------------------------------------------
 
-The transitive_closure() function transforms the input graph g into the transitive closure graph tc.
+Transforms the input directed graph into the transitive closure of the graph.
 
-This implementation can only be used with a **directed** graph with no cycles i.e. directed acyclic graph.
 
 The main characteristics are:
-  - Process is valid for directed acyclic graphs only. otherwise it will throw warnings.
 
-  - The returned values are not ordered:
+* Process is valid for directed graphs.
 
-  * Running time: :math:`O(|V||E|)`
+  * The transitive closure of an undirected graph produces a cluster graph
+  * Reachability between vertices on an undirected graph happens when they
+    belong to the same connected component. (see :doc:`pgr_connectedComponents`)
+
+* The returned values are not ordered
+* The returned graph is compresed
+* Running time: :math:`O(|V||E|)`
 
 
 Signatures
@@ -63,12 +67,12 @@ The pgr_transitiveClosure function has the following signature:
 .. index::
    single: transitiveClosure - Experimental on v3.0
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_transitiveClosure(Edges SQL)
-    RETURNS SETOF (id, vid, target_array)
+    pgr_transitiveClosure(`Edges SQL`_)
+    RETURNS SETOF (seq, vid, target_array)
 
-:Example: Complete Graph of 3 vertexs
+:Example: Rechability of a subgraph
 
 .. literalinclude:: doc-transitiveClosure.queries
    :start-after: -- q1
@@ -77,14 +81,15 @@ The pgr_transitiveClosure function has the following signature:
 Parameters
 -------------------------------------------------------------------------------
 
-======================= ====================== =================================================
-Column                  Type                   Description
-======================= ====================== =================================================
-**Edges SQL**           ``TEXT``               SQL query as described in `Inner query`_
-======================= ====================== =================================================
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -95,31 +100,31 @@ Result Columns
 
 RETURNS SETOF  (seq, vid, target_array)
 
-The function returns a single row. The columns of the row are:
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
-============================ =================   ===================================================================
-Column                       Type                Description
-============================ =================   ===================================================================
-**seq**                      ``INTEGER``         Sequential value starting from **1**.
-**vid**                      ``BIGINT``          Identifier of the vertex.
-**target_array**             ``ARRAY[BIGINT]``   Array of identifiers of the vertices that are reachable from vertex v.
-============================ =================   ===================================================================
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INTEGER``
+     - Sequential value starting from :math:`1`
+   * - ``vid``
+     - ``BIGINT``
+     - Identifier of the source of the edges
+   * - ``target_array``
+     - ``BIGINT``
+     - Identifiers of the targets of the edges
 
-Additional Examples
--------------------------------------------------------------------------------
-
-:Example: Some sub graphs of the sample data
-
-.. literalinclude:: doc-transitiveClosure.queries
-   :start-after: -- q2
-   :end-before: -- q4
-
+       * Identifiers of the vertices that are reachable from vertex v.
 
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`sampledata`
 * https://en.wikipedia.org/wiki/Transitive_closure
-* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

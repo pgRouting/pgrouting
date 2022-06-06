@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_primDD.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_primDD.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_primDD.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_primDD.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_primDD.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_primDD.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primDD.html>`__
@@ -31,7 +32,6 @@
 * Version 3.0.0
 
   * New **Official** function
-
 
 Description
 -------------------------------------------------------------------------------
@@ -56,8 +56,6 @@ calculated minimum spanning tree.
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. parsed-literal::
 
     pgr_primDD(`Edges SQL`_, **Root vid**, **distance**)
@@ -75,8 +73,8 @@ Single vertex
     pgr_primDD(`Edges SQL`_, **Root vid**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertex :math:`2` with
-          **distance** :math:`<= 3.5`.
+:Example: The Minimum Spanning Tree starting on vertex :math:`6` with
+          :math:`distance \leq 3.5`
 
 .. literalinclude:: doc-pgr_primDD.queries
    :start-after: -- q1
@@ -93,8 +91,8 @@ Multiple vertices
     pgr_primDD(`Edges SQL`_, **Root vids**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with
-          **distance** :math:`<= 3.5`.
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
+          :math:`distance \leq 3.5`
 
 .. literalinclude:: doc-pgr_primDD.queries
    :start-after: -- q2
@@ -107,7 +105,7 @@ Parameters
    :start-after: mst-dd-params_start
    :end-before: mst-dd-params_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL

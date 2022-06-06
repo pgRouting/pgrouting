@@ -12,7 +12,7 @@ psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_E
     -c "CREATE EXTENSION IF NOT EXISTS pgtap; CREATE EXTENSION IF NOT EXISTS pgrouting WITH VERSION '${4}' CASCADE;"
 
 psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_ERROR_STOP=1 --pset pager=off \
-    -f sampledata.sql \
+    -f sampledata_pgtap.sql \
     -f vrppdtw_data.sql \
     -f solomon_100_rc101.data.sql \
     -f innerQuery.sql \

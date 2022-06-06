@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/dijkstra-family.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-family.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/dijkstra-family.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/dijkstra-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/dijkstra-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/dijkstra-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/dijkstra-family.html>`__
@@ -30,8 +31,10 @@ Dijkstra - Family of functions
 * :doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
 * :doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
 * :doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix.
-* :doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information.
-* :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.
+* :doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament
+  information.
+* :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest
+  paths.
 
 .. index to here
 
@@ -153,7 +156,7 @@ Optional parameters
 
    * - Column
      - Type
-     - default
+     - Default
      - Description
    * - ``directed``
      - ``BOOLEAN``
@@ -163,7 +166,7 @@ Optional parameters
 
 .. dijkstra_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -280,7 +283,8 @@ In other words: The algorithm returns a the shortest path between
 :math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a sequence
 of nodes  and of edges,
 
-- :math:`path\_seq` indicates the relative position in the path of the :math:`node` or :math:`edge`.
+- :math:`path\_seq` indicates the relative position in the path of the
+  :math:`node` or :math:`edge`.
 - :math:`cost` is the cost of the edge to be used to go to the next node.
 - :math:`agg\_cost` is the cost from the :math:`start_{vid}` up to the node.
 

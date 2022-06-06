@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_withPointsDD.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsDD.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_withPointsDD.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_withPointsDD.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_withPointsDD.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_withPointsDD.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsDD.html>`__
@@ -22,11 +23,10 @@
   `2.3 <https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html>`__
   `2.2 <https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__
 
-
-pgr_withPointsDD - Proposed
+``pgr_withPointsDD`` - Proposed
 ===============================================================================
 
-``pgr_withPointsDD`` - Returns the driving distance from a starting point.
+``pgr_withPointsDD`` - Returns the driving **distance** from a starting point.
 
 .. include:: proposed.rst
    :start-after: begin-warning
@@ -47,105 +47,127 @@ pgr_withPointsDD - Proposed
 Description
 -------------------------------------------------------------------------------
 
-Modify the graph to include points and
-using Dijkstra algorithm, extracts all the nodes and points that have costs less
-than or equal to the value ``distance`` from the starting point.
+Modify the graph to include points and using Dijkstra algorithm, extracts all
+the nodes and points that have costs less than or equal to the value
+``**distance**`` from the starting point.
 The edges extracted will conform the corresponding spanning tree.
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
+.. parsed-literal::
 
-.. code-block:: none
-
-    pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
-.. rubric:: Using defaults
-
-- For a **directed** graph.
-- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-- No **details** are given about distance of other points of the query.
-
-.. code-block:: none
-
-    pgr_withPointsDD(edges_sql, points_sql, start_vid, distance)
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
-:Example: From point :math:`1` with :math:`agg\_cost <= 3.8`
-
-- For a **directed** graph.
-- The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
-- No **details** are given about distance of other points of the query.
-
-
-.. literalinclude:: doc-pgr_withPointsDD.queries
-   :start-after: --q1
-   :end-before: --q2
+    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
+       [, directed] [, driving_side] [, details])
+    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
+       [, directed] [, driving_side] [, details] [, equicost])
+    RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
 
 .. index::
-    single: withPointsDD(Single Start Vertex) - Proposed on v2.2
+    single: withPointsDD(Single Vertex) - Proposed on v2.2
 
 Single vertex
 ...............................................................................
 
-Finds the driving distance depending on the optional parameters setup.
+.. parsed-literal::
 
-.. code-block:: none
-
-    pgr_withPointsDD(edges_sql, points_sql, from_vid,  distance [, directed] [, driving_side] [, details])
+    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
+       [, directed] [, driving_side] [, details])
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
-:Example: Right side driving topology, from point :math:`1` with :math:`agg\_cost <= 3.8`
+:Example: Right side driving topology, from point :math:`1` within a distance of
+          :math:`3.3` with details.
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
-    single: withPointsDD(Multiple Starting Vertices) - Proposed on v2.2
+    single: withPointsDD(Multiple Vertices) - Proposed on v2.2
 
 Multiple vertices
 ...............................................................................
 
-Finds the driving distance depending on the optional parameters setup.
+.. parsed-literal::
 
-.. code-block:: none
+    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
+       [, directed] [, driving_side] [, details] [, equicost])
+    RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
 
-    pgr_withPointsDD(edges_sql, points_sql, from_vids, distance [, directed] [, driving_side] [, details] [, equicost])
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+:Example: From point :math:`1` and vertex :math:`16` within a distance of
+          :math:`3.3` with ``equicost`` on a directed graph
+
+.. literalinclude:: doc-pgr_withPointsDD.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 Parameters
 -------------------------------------------------------------------------------
 
-================ ================= =================================================
-Parameter        Type              Description
-================ ================= =================================================
-**edges_sql**    ``TEXT``          Edges SQL query as described above.
-**points_sql**   ``TEXT``          Points SQL query as described above.
-**start_vid**    ``ANY-INTEGER``   Starting point id
-**distance**     ``ANY-NUMERICAL`` Distance from the start_pid
-**directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**driving_side** ``CHAR``          (optional). Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
-                                     - In the right or left or
-                                     - If it doesn't matter with 'b' or NULL.
-                                     - If column not present 'b' is considered.
+.. list-table::
+   :width: 81
+   :widths: 14 19 44
+   :header-rows: 1
 
-**details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in the ``distance``.
-                                   Default is ``false`` which ignores other points of the points_sql.
-**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.
-================ ================= =================================================
+   * - Column
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - `Edges SQL`_ as described below
+   * - `Points SQL`_
+     - ``TEXT``
+     - `Points SQL`_ as described below
+   * - **Root vid**
+     - ``BIGINT``
+     - Identifier of the root vertex of the tree.
 
-Inner query
+       - Negative values represent a point
+   * - **Root vids**
+     - ``ARRAY[ANY-INTEGER]``
+     - Array of identifiers of the root vertices.
+
+
+       - Negative values represent a point
+       - :math:`0` values are ignored
+       - For optimization purposes, any duplicated value is ignored.
+   * - **distance**
+     - ``FLOAT``
+     - Upper limit for the inclusion of a node in the result.
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+With points optional parameters
+...............................................................................
+
+.. include:: withPoints-family.rst
+   :start-after: withPoints_optionals_start
+   :end-before: withPoints_optionals_end
+
+Driving distance optional parameters
+...............................................................................
+
+.. include:: pgr_drivingDistance.rst
+    :start-after: equicost_start
+    :end-before: equicost_end
+
+Inner Queries
 -------------------------------------------------------------------------------
 
-..
-    description of the sql queries
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
+Points SQL
+...............................................................................
 
 .. include:: withPoints-category.rst
     :start-after: points_sql_start
@@ -154,48 +176,61 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-============ =========== =================================================
-Column           Type              Description
-============ =========== =================================================
-**seq**      ``INT``     row sequence.
-**node**     ``BIGINT``  Identifier of the node within the Distance from ``start_pid``. If ``details =: true`` a negative value is the identifier of a point.
-**edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence.
-                           - ``-1`` when ``start_vid`` = ``node``.
+Returns SET OF ``(seq, [start_vid,] node, edge, cost, agg_cost)``
 
-**cost**     ``FLOAT``   Cost to traverse ``edge``.
-                           - ``0`` when ``start_vid`` = ``node``.
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
-**agg_cost** ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
-                           - ``0`` when ``start_vid`` = ``node``.
+   * - Parameter
+     - Type
+     - Description
+   * - ``seq``
+     - ``BIGINT``
+     - Sequential value starting from :math:`1`.
+   * - ``[start_vid]``
+     - ``BIGINT``
+     - Identifier of the root vertex.
 
-============ =========== =================================================
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of ``node`` within the limits from ``from_v``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the ``edge`` used to arrive to ``node``.
+
+       - :math:`0` when ``node`` = ``from_v``.
+
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse ``edge``.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``from_v`` to ``node``.
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC
 
 Additional Examples
---------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
-.. rubric:: Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns.
-
-The examples in this section use the following :ref:`fig1`
-
-:Example: Left side driving topology from point :math:`1` with :math:`agg\_cost <= 3.8`, with details
+:Example: From point :math:`1` within a distance of :math:`3.3`, does not matter
+          driving side, with details
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: -- q4
+   :end-before: -- q5
 
-:Example: From point :math:`1` with :math:`agg\_cost <= 3.8`, does not matter driving side, with details
-
-.. literalinclude:: doc-pgr_withPointsDD.queries
-   :start-after: --q4
-   :end-before: --q5
-
-The queries use the :doc:`sampledata` network.
 
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`pgr_drivingDistance` - Driving distance using dijkstra.
-* :doc:`pgr_alphaShape` - Alpha shape computation.
+* :doc:`pgr_drivingDistance`
+* :doc:`pgr_alphaShape`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 

@@ -18,6 +18,19 @@ SELECT lives_ok(
     $$SELECT * FROM vehicles$$,
     $$SELECT * from matrix$$)$q$,'Basic call works');
 
+ALTER TABLE vehicles ADD start_service FLOAT DEFAULT 0.0,
+ADD speed FLOAT DEFAULT 1.0,
+ADD end_node_id  BIGINT,
+ADD end_open  FLOAT,
+ADD end_close FLOAT,
+ADD end_service  FLOAT;
+
+UPDATE vehicles
+SET end_node_id  = start_node_id,
+ end_open  = start_open,
+ end_close = start_close,
+ end_service = start_service;
+
 
 CREATE OR REPLACE FUNCTION style_jobs()
 RETURNS SETOF TEXT AS

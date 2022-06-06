@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCost.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCost.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_bdDijkstraCost.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCost.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCost.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__
@@ -50,7 +51,7 @@ Dijkstra algorithm.
 Description
 -------------------------------------------------------------------------------
 
-The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest path(s)
+The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest path
 using the bidirectional Dijkstra Algorithm.
 
 .. include:: bdDijkstra-family.rst
@@ -88,7 +89,7 @@ One to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_bdDijkstraCost.queries
     :start-after: -- q2
@@ -106,7 +107,7 @@ One to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 12\}` on a **directed**
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_bdDijkstraCost.queries
@@ -125,7 +126,7 @@ Many to One
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertex :math:`12` on a **directed**
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
           graph
 
 .. literalinclude:: doc-pgr_bdDijkstraCost.queries
@@ -144,7 +145,7 @@ Many to Many
     RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 7\}` to vertices :math:`\{3, 12\}` on an
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
           **undirected** graph
 
 .. literalinclude:: doc-pgr_bdDijkstraCost.queries
@@ -191,7 +192,7 @@ Optional parameters
     :start-after: dijkstra_optionals_start
     :end-before: dijkstra_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -208,7 +209,7 @@ Combinations SQL
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -224,7 +225,7 @@ Additional Examples
     :start-after: -- q6
     :end-before: -- q7
 
-:Example 2: Making ``start_vids`` the same as ``end_vids``.
+:Example 2: Making **start vids** the same as **end vids**.
 
 .. literalinclude:: doc-pgr_bdDijkstraCost.queries
     :start-after: -- q7

@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/prim-family.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/prim-family.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/prim-family.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/prim-family.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/prim-family.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/prim-family.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/prim-family.html>`__
@@ -76,7 +77,7 @@ forest.
    "The algorithm as implemented in Boost.Graph does not produce correct results
    on graphs with parallel edges."
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -87,8 +88,10 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-family`
-* `Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
+* Boost: `Prim's algorithm
+  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* Wikipedia: `Prim's algorithm
+  <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
 
 .. rubric:: Indices and tables
 

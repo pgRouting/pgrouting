@@ -1,12 +1,12 @@
 /* --q1 */
 SELECT * FROM pgr_bipartite(
-    $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
+    $$SELECT id, source, target, cost, reverse_cost FROM edges$$
 );
 /* --q2 */
-INSERT INTO edge_table (source, target, cost, reverse_cost) VALUES
-(1, 7, 1, 1);
+INSERT INTO edges (source, target, cost, reverse_cost) VALUES
+(5, 1, 1, 1);
 /* --q3 */
 SELECT * FROM pgr_bipartite(
-    $$SELECT id,source,target,cost,reverse_cost FROM edge_table$$
+    $$SELECT id, source, target, cost, reverse_cost FROM edges$$
 );
 /* --q4 */

@@ -11,7 +11,8 @@
 
 * **Supported versions:**
   `Latest <https://docs.pgrouting.org/latest/en/pgr_chinesePostmanCost.html>`__
-  (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_chinesePostmanCost.html>`__)
+  (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_chinesePostmanCost.html>`__)
+  `3.3 <https://docs.pgrouting.org/3.3/en/pgr_chinesePostmanCost.html>`__
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_chinesePostmanCost.html>`__
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostmanCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostmanCost.html>`__
@@ -19,8 +20,9 @@
 ``pgr_chinesePostmanCost`` - Experimental
 ===============================================================================
 
-``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path which
-contains every edge in a directed graph and starts and ends on the same vertex.
+``pgr_chinesePostmanCost`` — Calculates the minimum costs of a circuit path
+which contains every edge in a directed graph and starts and ends on the same
+vertex.
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
@@ -65,14 +67,14 @@ Parameters
    :start-after: only_edge_param_start
    :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: chinesePostmanProblem-family.rst
    :start-after: inner_query-start
    :end-before: inner_query-end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. list-table::

@@ -68,7 +68,7 @@ One Via
                     node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 1, 7, 10\}` in that
+:Example: Find the route that visits the vertices :math:`\{ 5, 1, 8\}` in that
           order on an **directed** graph.
 
 .. literalinclude:: trspVia.queries
@@ -78,7 +78,7 @@ One Via
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: via-category.rst
+.. include:: TRSP-family.rst
     :start-after: via_parameters_start
     :end-before: via_parameters_end
 
@@ -96,7 +96,7 @@ Via optional parameters
     :start-after: via_optionals_start
     :end-before: via_optionals_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 Edges SQL
@@ -109,61 +109,70 @@ Edges SQL
 Restrictions SQL
 ...............................................................................
 
-.. include:: TRSP-family.rst
+.. include:: pgRouting-concepts.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: via-category.rst
-    :start-after: result via start
-    :end-before: result via end
+    :start-after: result_via_start
+    :end-before: result_via_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{1, 5, 7, 10, 4\}`
-            in that order
+.. contents::
+   :local:
+
+All this examples are about the route that visits the vertices :math:`\{5, 7, 1,
+8, 15\}` in that order on a **directed** graph.
+
+The main query
+...............................................................................
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q1
     :end-before: -- q2
 
-:Example 2: What's the aggregate cost of the third path?
+Aggregate cost of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q2
     :end-before: -- q3
 
-:Example 3: What's the route's aggregate cost of the route at the end of the
-            third path?
+Route's aggregate cost of the route at the end of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q3
     :end-before: -- q4
 
-:Example 4: How are the nodes visited in the route?
+Nodes visited in the route.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q4
     :end-before: -- q5
 
-:Example 5: What are the aggregate costs of the route when the visited vertices
-            are reached?
+The aggregate costs of the route when the visited vertices are reached.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q5
     :end-before: -- q6
 
-:Example 6: Show the route's seq and aggregate cost and a status of "passes in
-            front" or "visits"
+Status of "passes in front" or "visits" of the nodes.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q6
     :end-before: -- q7
 
-:Example 7: Simulation of how algorithm works
+Simulation of how algorithm works
+...............................................................................
 
 The algorithm performs a :doc:`pgr_dijkstraVia`
 
@@ -172,7 +181,7 @@ The algorithm performs a :doc:`pgr_dijkstraVia`
     :end-before: -- q8
 
 Detects which of the sub paths pass through a restriction in this case is for
-the ``path_id = 1`` from ``2`` to ``8`` because the path :math:`4 \rightarrow 7`
+the ``path_id = 5`` from ``6`` to ``3`` because the path :math:`15 \rightarrow 1`
 is restricted.
 
 Executes the :doc:`pgr_trsp` algorithm for the conflicting paths.
@@ -198,7 +207,7 @@ Getting the same result as ``pgr_trspVia``:
             ``false``.
 
 The first step, doing a :doc:`pgr_dijkstraVia` does consider not making a U turn
-on the same edge. But the path :math:`9 \rightarrow 16` (Rows 4 and 5) is
+on the same edge. But the path :math:`16 \rightarrow 13` (Rows 4 and 5) is
 restricted and the result is using it.
 
 .. literalinclude:: trspVia.queries
