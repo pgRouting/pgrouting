@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 14:39+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,16 +20,17 @@ msgstr ""
 #: ../../build/doc/traversal-family.rst:12
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
-"/traversal-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
-"/traversal-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/traversal-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
+"/traversal-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en"
+"/traversal-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en"
 "/traversal-family.html>`__"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:18
+#: ../../build/doc/traversal-family.rst:19
 msgid "Traversal - Family of functions"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:21
+#: ../../build/doc/traversal-family.rst:22
 msgid "Proposed"
 msgstr ""
 
@@ -69,11 +70,11 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:28
+#: ../../build/doc/traversal-family.rst:29
 msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:33
+#: ../../build/doc/traversal-family.rst:34
 msgid "Experimental"
 msgstr ""
 
@@ -145,43 +146,43 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:40
+#: ../../build/doc/traversal-family.rst:41
 msgid ""
 ":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the "
 "graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:41
+#: ../../build/doc/traversal-family.rst:42
 msgid ""
 ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of "
 "the graph."
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:45
+#: ../../build/doc/traversal-family.rst:47
 msgid "Aditionaly there are 2 categories under this family"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:47
+#: ../../build/doc/traversal-family.rst:49
 msgid ":doc:`BFS-category`"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:48
+#: ../../build/doc/traversal-family.rst:50
 msgid ":doc:`DFS-category`"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:60
+#: ../../build/doc/traversal-family.rst:62
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:63
+#: ../../build/doc/traversal-family.rst:65
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:64
+#: ../../build/doc/traversal-family.rst:66
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/traversal-family.rst:65
+#: ../../build/doc/traversal-family.rst:67
 msgid ":ref:`search`"
 msgstr ""
 

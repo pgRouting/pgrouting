@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,21 +20,20 @@ msgstr ""
 #: ../../build/doc/pgr_bipartite.rst:12
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_bipartite.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_bipartite.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/en/pgr_bipartite.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_bipartite.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_bipartite.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:18
+#: ../../build/doc/pgr_bipartite.rst:19
 msgid "pgr_bipartite -Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:20
+#: ../../build/doc/pgr_bipartite.rst:21
 msgid ""
-"``pgr_bipartite`` — If graph is bipartite then function returns the "
-"vertex id along with color (0 and 1) else it will return an empty set. In"
-" particular, the is_bipartite() algorithm is implemented using Boost "
-"Graph Library."
+"``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices "
+"within the same set are adjacent."
 msgstr ""
 
 #: ../../build/doc/pgr_bipartite.rst:27
@@ -172,12 +171,10 @@ msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_bipartite.rst:71
-msgid ""
-"The pgr_bipartite algorithm with and `Edges SQL`_ as a parameter when "
-"graph is bipartite"
+msgid "When the graph is bipartite"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:79
+#: ../../build/doc/pgr_bipartite.rst:78
 msgid "Parameters"
 msgstr ""
 
@@ -202,11 +199,11 @@ msgstr ""
 msgid "`Edges SQL`_ as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:86
-msgid "Inner queries"
+#: ../../build/doc/pgr_bipartite.rst:85
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:89
+#: ../../build/doc/pgr_bipartite.rst:88
 msgid "Edges SQL"
 msgstr ""
 
@@ -300,7 +297,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:96
+#: ../../build/doc/pgr_bipartite.rst:95
 msgid "Result Columns"
 msgstr ""
 
@@ -332,51 +329,54 @@ msgstr ""
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:103
+#: ../../build/doc/pgr_bipartite.rst:102
 msgid "Additional Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:105
-msgid ""
-"The odd length cyclic graph can not be bipartite. The following edge will"
-" make subgraph with vertices {1, 2, 5, 7, 8} an odd length cyclic graph."
+#: ../../build/doc/pgr_bipartite.rst:104
+msgid "The odd length cyclic graph can not be bipartite."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:114
+#: ../../build/doc/pgr_bipartite.rst:106
 msgid ""
-"The new graph is not bipartite because it has a odd length cycle of 5 "
-"vertices. Edges in blue represent odd length cycle."
+"The edge :math:`5 \\rightarrow 1` will make subgraph with vertices "
+":math:`\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has "
+"5 vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:125
+#: ../../build/doc/pgr_bipartite.rst:113
+msgid "Edges in blue represent odd length cycle subgraph."
+msgstr ""
+
+#: ../../build/doc/pgr_bipartite.rst:123
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:129
+#: ../../build/doc/pgr_bipartite.rst:127
 msgid ""
-"`Boost: is_bipartite algorithm documentation "
+"`Boost: is_bipartite "
 "<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:131
+#: ../../build/doc/pgr_bipartite.rst:129
 msgid ""
 "`Wikipedia: bipartite graph "
 "<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:136
+#: ../../build/doc/pgr_bipartite.rst:134
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:139
+#: ../../build/doc/pgr_bipartite.rst:137
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:140
+#: ../../build/doc/pgr_bipartite.rst:138
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:141
+#: ../../build/doc/pgr_bipartite.rst:139
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_breadthFirstSearch.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_breadthFirstSearch.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_breadthFirstSearch.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_breadthFirstSearch.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_breadthFirstSearch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_breadthFirstSearch.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:20
+#: ../../build/doc/pgr_breadthFirstSearch.rst:21
 msgid "``pgr_breadthFirstSearch`` - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:22
+#: ../../build/doc/pgr_breadthFirstSearch.rst:23
 msgid "``pgr_breadthFirstSearch`` — Returns the traversal order(s) using Breadth First Search algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:28
+#: ../../build/doc/pgr_breadthFirstSearch.rst:29
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -100,100 +100,96 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:35
+#: ../../build/doc/pgr_breadthFirstSearch.rst:36
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:36
+#: ../../build/doc/pgr_breadthFirstSearch.rst:37
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:38
+#: ../../build/doc/pgr_breadthFirstSearch.rst:39
 msgid "New **experimental** signature:"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:40
+#: ../../build/doc/pgr_breadthFirstSearch.rst:41
 msgid "``pgr_breadthFirstSearch`` (`Single Vertex`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:41
+#: ../../build/doc/pgr_breadthFirstSearch.rst:42
 msgid "``pgr_breadthFirstSearch`` (`Multiple Vertices`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:44
+#: ../../build/doc/pgr_breadthFirstSearch.rst:45
 #: ../../build/doc/BFS-category.rst:10
-#: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/BFS-category.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/BFS-category.rst:12
+#: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:46
+#: ../../build/doc/pgr_breadthFirstSearch.rst:47
 msgid "Provides the Breadth First Search traversal order from a root vertex to a particular depth."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:49
+#: ../../build/doc/pgr_breadthFirstSearch.rst:50
 msgid "**The main Characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:51
+#: ../../build/doc/pgr_breadthFirstSearch.rst:52
 msgid "The implementation will work on any type of graph."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:52
+#: ../../build/doc/pgr_breadthFirstSearch.rst:53
 msgid "Provides the Breadth First Search traversal order from a source node to a target depth level."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:54
+#: ../../build/doc/pgr_breadthFirstSearch.rst:55
 msgid "Running time: :math:`O(E + V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:57
+#: ../../build/doc/pgr_breadthFirstSearch.rst:58
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:60
+#: ../../build/doc/pgr_breadthFirstSearch.rst:61
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:71
+#: ../../build/doc/pgr_breadthFirstSearch.rst:72
 msgid "Single vertex"
 msgstr ""
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:0
-#: ../../build/doc/pgr_breadthFirstSearch.rst:0
-#: ../../build/doc/pgr_breadthFirstSearch.rst:0
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:78
-msgid "From root vertex :math:`2` on a **directed** graph with edges in ascending order of ``id``"
+#: ../../build/doc/pgr_breadthFirstSearch.rst:79
+msgid "From root vertex :math:`6` on a **directed** graph with edges in ascending order of ``id``"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:89
+#: ../../build/doc/pgr_breadthFirstSearch.rst:90
 msgid "Multiple vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:96
-msgid "From root vertices :math:`\\{11, 2\\}` on an **undirected** graph with **depth** :math:`<= 2` and edges in ascending order of ``id``"
+#: ../../build/doc/pgr_breadthFirstSearch.rst:97
+msgid "From root vertices :math:`\\{12, 6\\}` on an **undirected** graph with **depth** :math:`<= 2` and edges in ascending order of ``id``"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:104
+#: ../../build/doc/pgr_breadthFirstSearch.rst:105
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:8
 #: ../../build/doc/BFS-category.rst:8
 #: ../../build/doc/BFS-category.rst:10
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:9
-#: ../../build/doc/dijkstra-family.rst:9
-#: ../../build/doc/BFS-category.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/BFS-category.rst:11
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
@@ -213,9 +209,9 @@ msgstr ""
 msgid "**Root vid**"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:15
 #: ../../build/doc/BFS-category.rst:13
 #: ../../build/doc/BFS-category.rst:14
+#: ../../build/doc/BFS-category.rst:15
 #: ../../build/doc/BFS-category.rst:17
 #: ../../build/doc/BFS-category.rst:23
 #: ../../build/doc/BFS-category.rst:27
@@ -252,14 +248,13 @@ msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:28
-#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/BFS-category.rst:42
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -269,7 +264,6 @@ msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:0
-#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-NUMERIC"
 msgstr ""
 
@@ -278,7 +272,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:111
+#: ../../build/doc/pgr_breadthFirstSearch.rst:112
 msgid "Optional parameters"
 msgstr ""
 
@@ -287,8 +281,10 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
+#: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/dijkstra-family.rst:10
-msgid "default"
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:12
@@ -311,13 +307,8 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:118
+#: ../../build/doc/pgr_breadthFirstSearch.rst:119
 msgid "DFS optional parameters"
-msgstr ""
-
-#: ../../build/doc/BFS-category.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "Default"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:12
@@ -336,11 +327,11 @@ msgstr ""
 msgid "When negative throws an error."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:125
-msgid "Inner queries"
+#: ../../build/doc/pgr_breadthFirstSearch.rst:126
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:128
+#: ../../build/doc/pgr_breadthFirstSearch.rst:129
 msgid "Edges SQL"
 msgstr ""
 
@@ -374,8 +365,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/BFS-category.rst:35
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
 msgstr ""
 
@@ -416,7 +407,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:135
+#: ../../build/doc/pgr_breadthFirstSearch.rst:136
 msgid "Return columns"
 msgstr ""
 
@@ -489,64 +480,66 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:142
+#: ../../build/doc/pgr_breadthFirstSearch.rst:143
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:144
-msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
+#: ../../build/doc/pgr_breadthFirstSearch.rst:145
+msgid "Same as `Single vertex`_ with edges in ascending order of ``id``."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:150
+#: ../../build/doc/pgr_breadthFirstSearch.rst:151
+msgid "Same as `Single vertex`_ with edges in descending order of ``id``."
+msgstr ""
+
+#: ../../build/doc/pgr_breadthFirstSearch.rst:157
 msgid "The resulting traversal is different."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:152
+#: ../../build/doc/pgr_breadthFirstSearch.rst:159
 msgid "The left image shows the result with ascending order of ids and the right image shows with descending order of the edge identifiers."
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:155
+#: ../../build/doc/pgr_breadthFirstSearch.rst:162
 msgid "|ascending| |descending|"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:157
-#: ../../build/doc/pgr_breadthFirstSearch.rst:157
+#: ../../build/doc/pgr_breadthFirstSearch.rst:166
 msgid "ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:160
-#: ../../build/doc/pgr_breadthFirstSearch.rst:160
+#: ../../build/doc/pgr_breadthFirstSearch.rst:169
 msgid "descending"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:164
+#: ../../build/doc/pgr_breadthFirstSearch.rst:173
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:166
+#: ../../build/doc/pgr_breadthFirstSearch.rst:175
 msgid ":doc:`BFS-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:167
+#: ../../build/doc/pgr_breadthFirstSearch.rst:176
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:168
+#: ../../build/doc/pgr_breadthFirstSearch.rst:177
 msgid "`Boost: Breadth First Search algorithm documentation <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:170
+#: ../../build/doc/pgr_breadthFirstSearch.rst:179
 msgid "`Wikipedia: Breadth First Search algorithm <https://en.wikipedia.org/wiki/Breadth-first_search>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:174
+#: ../../build/doc/pgr_breadthFirstSearch.rst:183
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:175
+#: ../../build/doc/pgr_breadthFirstSearch.rst:184
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_breadthFirstSearch.rst:176
+#: ../../build/doc/pgr_breadthFirstSearch.rst:185
 msgid ":ref:`search`"
 msgstr ""

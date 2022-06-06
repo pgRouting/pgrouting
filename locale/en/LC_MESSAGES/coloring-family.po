@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-03 17:23+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,16 +20,17 @@ msgstr ""
 #: ../../build/doc/coloring-family.rst:12
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
-"/coloring-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en"
-"/coloring-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en"
+"/coloring-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
+"/coloring-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en"
+"/coloring-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en"
 "/coloring-family.html>`__"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:19
+#: ../../build/doc/coloring-family.rst:20
 msgid "Coloring - Family of functions"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:22
+#: ../../build/doc/coloring-family.rst:23
 msgid "Proposed"
 msgstr ""
 
@@ -69,13 +70,13 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:29
+#: ../../build/doc/coloring-family.rst:30
 msgid ""
 ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using "
 "greedy approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:34
+#: ../../build/doc/coloring-family.rst:36
 msgid "Experimental"
 msgstr ""
 
@@ -147,85 +148,85 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:41
+#: ../../build/doc/coloring-family.rst:43
 msgid ""
 ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based "
 "coloring approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:42
+#: ../../build/doc/coloring-family.rst:45
 msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:56
+#: ../../build/doc/coloring-family.rst:59
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:60
+#: ../../build/doc/coloring-family.rst:63
 msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:63
-#: ../../build/doc/coloring-family.rst:79
+#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:82
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:63
-#: ../../build/doc/coloring-family.rst:79
+#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:82
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:63
-#: ../../build/doc/coloring-family.rst:79
+#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:82
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:65
+#: ../../build/doc/coloring-family.rst:68
 msgid "``vertex_id``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:65
-#: ../../build/doc/coloring-family.rst:66
-#: ../../build/doc/coloring-family.rst:81
-#: ../../build/doc/coloring-family.rst:82
+#: ../../build/doc/coloring-family.rst:68
+#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/coloring-family.rst:84
+#: ../../build/doc/coloring-family.rst:85
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:65
+#: ../../build/doc/coloring-family.rst:68
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:66
-#: ../../build/doc/coloring-family.rst:82
+#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/coloring-family.rst:85
 msgid "``color_id``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:69
 msgid "Identifier of the color of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:68
-#: ../../build/doc/coloring-family.rst:84
+#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:87
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:76
+#: ../../build/doc/coloring-family.rst:79
 msgid "Returns SET OF ``(edge_id, color_id)``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:81
+#: ../../build/doc/coloring-family.rst:84
 msgid "``edge_id``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:81
+#: ../../build/doc/coloring-family.rst:84
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:82
+#: ../../build/doc/coloring-family.rst:85
 msgid "Identifier of the color of the edge."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:91
+#: ../../build/doc/coloring-family.rst:94
 msgid "See Also"
 msgstr ""
 
@@ -243,7 +244,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_bipartite.rst:3
 msgid ""
-"`Boost: is_bipartite algorithm documentation "
+"`Boost: is_bipartite "
 "<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 msgstr ""
 
@@ -265,15 +266,15 @@ msgid ""
 "<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:107
+#: ../../build/doc/coloring-family.rst:110
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:108
+#: ../../build/doc/coloring-family.rst:111
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:109
+#: ../../build/doc/coloring-family.rst:112
 msgid ":ref:`search`"
 msgstr ""
 

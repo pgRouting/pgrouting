@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 17:43+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,15 @@ msgstr ""
 #: ../../build/doc/pgr_TSPeuclidean.rst:12
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_TSPeuclidean.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:18
+#: ../../build/doc/pgr_TSPeuclidean.rst:19
 msgid ""
 "**Unsupported versions:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 "
@@ -35,37 +36,37 @@ msgid ""
 "<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:24
+#: ../../build/doc/pgr_TSPeuclidean.rst:25
 msgid "``pgr_TSPeuclidean``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:26
+#: ../../build/doc/pgr_TSPeuclidean.rst:27
 msgid "``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:31
+#: ../../build/doc/pgr_TSPeuclidean.rst:32
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:35
+#: ../../build/doc/pgr_TSPeuclidean.rst:36
 msgid "Availability:"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:36
+#: ../../build/doc/pgr_TSPeuclidean.rst:37
 msgid "Version 3.2.1"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:38
+#: ../../build/doc/pgr_TSPeuclidean.rst:39
 msgid ""
 "Metric Algorithm from `Boost library "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:40
+#: ../../build/doc/pgr_TSPeuclidean.rst:41
 msgid "Simulated Annealing Algorithm no longer supported"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:42
+#: ../../build/doc/pgr_TSPeuclidean.rst:43
 msgid ""
 "The Simulated Annealing Algorithm related parameters are ignored: "
 "`max_processing_time`, `tries_per_temperature`, "
@@ -73,24 +74,24 @@ msgid ""
 "`initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:48
+#: ../../build/doc/pgr_TSPeuclidean.rst:49
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:50
+#: ../../build/doc/pgr_TSPeuclidean.rst:51
 msgid "Name change from pgr_eucledianTSP"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:52
+#: ../../build/doc/pgr_TSPeuclidean.rst:53
 msgid "Version 2.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:54
+#: ../../build/doc/pgr_TSPeuclidean.rst:55
 msgid "New **Official** function"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:11 ../../build/doc/pgr_TSPeuclidean.rst:58
-#: ../../build/doc/pgr_TSPeuclidean.rst:107
+#: ../../build/doc/TSP-family.rst:11 ../../build/doc/pgr_TSPeuclidean.rst:59
+#: ../../build/doc/pgr_TSPeuclidean.rst:108
 #: ../../include/c_types/tsp_tour_rt.h:6 ../../src/common/coordinates_input.c:4
 msgid "Description"
 msgstr ""
@@ -154,31 +155,31 @@ msgid ""
 "``v`` to ``u``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:69
+#: ../../build/doc/pgr_TSPeuclidean.rst:70
 msgid ""
 "Any duplicated identifier will be ignored. The coordinates that will be "
 "kept"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:69
+#: ../../build/doc/pgr_TSPeuclidean.rst:70
 msgid "is arbitrarly."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:71
+#: ../../build/doc/pgr_TSPeuclidean.rst:72
 msgid "The coordinates are quite similar for the same identifier, for example ::"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:77
+#: ../../build/doc/pgr_TSPeuclidean.rst:78
 msgid ""
 "The coordinates are quite different for the same identifier, for example "
 "::"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:85
+#: ../../build/doc/pgr_TSPeuclidean.rst:86
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:88
+#: ../../build/doc/pgr_TSPeuclidean.rst:89
 msgid "Summary"
 msgstr ""
 
@@ -186,36 +187,36 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:97
+#: ../../build/doc/pgr_TSPeuclidean.rst:98
 msgid "With default values"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:104
+#: ../../build/doc/pgr_TSPeuclidean.rst:105
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:107
+#: ../../build/doc/pgr_TSPeuclidean.rst:108
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSPeuclidean.rst:107
+#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSPeuclidean.rst:108
 #: ../../include/c_types/tsp_tour_rt.h:6 ../../src/common/coordinates_input.c:4
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:109
+#: ../../build/doc/pgr_TSPeuclidean.rst:110
 msgid "`Coordinates SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:109
+#: ../../build/doc/pgr_TSPeuclidean.rst:110
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:109
+#: ../../build/doc/pgr_TSPeuclidean.rst:110
 msgid "`Coordinates SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:113
+#: ../../build/doc/pgr_TSPeuclidean.rst:114
 msgid "TSP optional parameters"
 msgstr ""
 
@@ -266,11 +267,11 @@ msgstr ""
 msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:120
-msgid "Inner queries"
+#: ../../build/doc/pgr_TSPeuclidean.rst:121
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:123
+#: ../../build/doc/pgr_TSPeuclidean.rst:124
 msgid "Coordinates SQL"
 msgstr ""
 
@@ -307,7 +308,7 @@ msgstr ""
 msgid "Y value of the coordinate."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:130
+#: ../../build/doc/pgr_TSPeuclidean.rst:131
 msgid "Result Columns"
 msgstr ""
 
@@ -370,15 +371,15 @@ msgstr ""
 msgid "``0`` for the first row in the tour sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:137
+#: ../../build/doc/pgr_TSPeuclidean.rst:138
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:139
+#: ../../build/doc/pgr_TSPeuclidean.rst:144
 msgid "Test 29 cities of Western Sahara"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:141
+#: ../../build/doc/pgr_TSPeuclidean.rst:146
 msgid ""
 "This example shows how to make performance tests using University of "
 "Waterloo's `example data "
@@ -387,68 +388,76 @@ msgid ""
 "<https://www.math.uwaterloo.ca/tsp/world/wi29.tsp>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:146
+#: ../../build/doc/pgr_TSPeuclidean.rst:152
 msgid "Creating a table for the data and storing the data"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:152
+#: ../../build/doc/pgr_TSPeuclidean.rst:159
 msgid "Adding a geometry (for visual purposes)"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:157
+#: ../../build/doc/pgr_TSPeuclidean.rst:165
+msgid "Total tour cost"
+msgstr ""
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:166
 msgid ""
 "Getting a total cost of the tour, compare the value with the length of an"
 " optimal tour is 27603, given on the dataset"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:164
+#: ../../build/doc/pgr_TSPeuclidean.rst:174
 msgid "Getting a geometry of the tour"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:170
+#: ../../build/doc/pgr_TSPeuclidean.rst:181
+msgid "Visual results"
+msgstr ""
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:182
 msgid ""
 "Visualy, The first image is the `optimal solution "
 "<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and the second "
 "image is the solution obtained with ``pgr_TSPeuclidean``."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:181
+#: ../../build/doc/pgr_TSPeuclidean.rst:193
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:183
+#: ../../build/doc/pgr_TSPeuclidean.rst:195
 msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:184
+#: ../../build/doc/pgr_TSPeuclidean.rst:196
 msgid ":doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:185
+#: ../../build/doc/pgr_TSPeuclidean.rst:197
 msgid ""
 "`Boost's metric appro's metric approximation "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:187
+#: ../../build/doc/pgr_TSPeuclidean.rst:199
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:188
+#: ../../build/doc/pgr_TSPeuclidean.rst:200
 msgid ""
 "`Wikipedia: Traveling Salesman Problem "
 "<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:192
+#: ../../build/doc/pgr_TSPeuclidean.rst:204
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:193
+#: ../../build/doc/pgr_TSPeuclidean.rst:205
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:194
+#: ../../build/doc/pgr_TSPeuclidean.rst:206
 msgid ":ref:`search`"
 msgstr ""
 

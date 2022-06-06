@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,23 +21,25 @@ msgstr ""
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html>`__"
-" (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html>`__)"
-" `3.2 "
+" (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_sequentialVertexColoring.html>`__)"
+" `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html>`__ "
+"`3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:18
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:19
 msgid "pgr_sequentialVertexColoring - Proposed"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:20
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:21
 msgid ""
 "``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an "
 "undirected graph, using greedy approach."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:26
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:27
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -77,64 +79,64 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:33
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:34
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:34
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:35
 msgid "Version 3.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:36
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:37
 msgid "Promoted to **proposed** signature"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:38
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:39
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:40
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:41
 msgid "New **experimental** signature"
 msgstr ""
 
 #: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:44
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:45
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:46
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:47
 msgid ""
-"Sequential Vertex Coloring algorithm is a graph coloring algorithm in "
+"Sequential vertex coloring algorithm is a graph coloring algorithm in "
 "which color identifiers are assigned to the vertices of a graph in a "
 "sequential manner, such that no edge connects two identically colored "
 "vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:50
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:51
 msgid "**The main Characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:52
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:53
 msgid "The implementation is applicable only for **undirected** graphs."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:53
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:54
 msgid ""
 "Provides the color to be assigned to all the vertices present in the "
 "graph."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:54
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:55
 msgid "Color identifiers values are in the Range :math:`[1, |V|]`"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:55
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:56
 msgid "The algorithm tries to assign the least possible color to every vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:56
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:57
 msgid ""
 "Efficient graph coloring is an NP-Hard problem, and therefore, this "
 "algorithm does not always produce optimal coloring. It follows a greedy "
@@ -143,27 +145,27 @@ msgid ""
 "to each vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:60
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:61
 msgid "The returned rows are ordered in ascending order of the vertex value."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:61
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:62
 msgid "Sequential Vertex Coloring Running Time: :math:`O(|V|*(d + k))`"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:63
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:64
 msgid "where :math:`|V|` is the number of vertices,"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:64
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:65
 msgid ":math:`d` is the maximum degree of the vertices in the graph,"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:65
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:66
 msgid ":math:`k` is the number of colors used."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:68
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:69
 msgid "Signatures"
 msgstr ""
 
@@ -171,11 +173,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:80
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:81
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:89
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:90
 msgid "Parameters"
 msgstr ""
 
@@ -200,11 +202,11 @@ msgstr ""
 msgid "`Edges SQL`_ as described below."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:96
-msgid "Inner queries"
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:97
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:99
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:100
 msgid "Edges SQL"
 msgstr ""
 
@@ -298,7 +300,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:106
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:107
 msgid "Result Columns"
 msgstr ""
 
@@ -330,35 +332,35 @@ msgstr ""
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:114
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:115
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:116
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:117
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:120
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:121
 msgid ""
 "`Boost: Sequential Vertex Coloring algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:122
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:123
 msgid ""
 "`Wikipedia: Graph coloring "
 "<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:127
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:128
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:128
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:129
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:129
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:130
 msgid ":ref:`search`"
 msgstr ""
 

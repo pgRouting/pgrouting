@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_kruskalBFS.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_kruskalBFS.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskalBFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalBFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalBFS.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_kruskalBFS.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_kruskalBFS.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_kruskalBFS.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskalBFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalBFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalBFS.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:20
+#: ../../build/doc/pgr_kruskalBFS.rst:21
 msgid "``pgr_kruskalBFS``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:22
+#: ../../build/doc/pgr_kruskalBFS.rst:23
 msgid "``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with breadth First Search ordering."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:28
+#: ../../build/doc/pgr_kruskalBFS.rst:29
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:31
+#: ../../build/doc/pgr_kruskalBFS.rst:32
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:32
+#: ../../build/doc/pgr_kruskalBFS.rst:33
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:34
+#: ../../build/doc/pgr_kruskalBFS.rst:35
 msgid "New **Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:38
+#: ../../build/doc/pgr_kruskalBFS.rst:39
 #: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/BFS-category.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/BFS-category.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:40
+#: ../../build/doc/pgr_kruskalBFS.rst:41
 msgid "Visits and extracts the nodes information in Breath First Search ordering of the Minimum Spanning Tree created using Kruskal's algorithm."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:43
+#: ../../build/doc/pgr_kruskalBFS.rst:44
 msgid "**The main Characteristics are:**"
 msgstr ""
 
@@ -96,53 +96,50 @@ msgstr ""
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:49
+#: ../../build/doc/pgr_kruskalBFS.rst:50
 msgid "Returned tree nodes from a root vertex are on Breath First Search order"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:50
+#: ../../build/doc/pgr_kruskalBFS.rst:51
 msgid "Breath First Search Running time: :math:`O(E + V)`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:53
+#: ../../build/doc/pgr_kruskalBFS.rst:54
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:65
+#: ../../build/doc/pgr_kruskalBFS.rst:66
 msgid "Single vertex"
 msgstr ""
 
 #: ../../build/doc/pgr_kruskalBFS.rst:0
-#: ../../build/doc/pgr_kruskalBFS.rst:0
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:72
-msgid "The Minimum Spanning Tree having as root vertex :math:`2`"
+#: ../../build/doc/pgr_kruskalBFS.rst:73
+msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:82
+#: ../../build/doc/pgr_kruskalBFS.rst:83
 msgid "Multiple vertices"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:89
-msgid "The Minimum Spanning Tree starting on vertices :math:`\\{13, 2\\}` with :math:`depth <= 3`"
+#: ../../build/doc/pgr_kruskalBFS.rst:90
+msgid "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:`depth \\leq 3`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:97
+#: ../../build/doc/pgr_kruskalBFS.rst:98
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:8
 #: ../../build/doc/BFS-category.rst:8
 #: ../../build/doc/BFS-category.rst:10
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:9
-#: ../../build/doc/BFS-category.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/BFS-category.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
@@ -162,9 +159,9 @@ msgstr ""
 msgid "**Root vid**"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:15
 #: ../../build/doc/BFS-category.rst:13
 #: ../../build/doc/BFS-category.rst:14
+#: ../../build/doc/BFS-category.rst:15
 #: ../../build/doc/BFS-category.rst:17
 #: ../../build/doc/BFS-category.rst:23
 #: ../../build/doc/BFS-category.rst:27
@@ -201,14 +198,13 @@ msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:28
-#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/BFS-category.rst:42
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -218,7 +214,6 @@ msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:0
-#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-NUMERIC"
 msgstr ""
 
@@ -227,7 +222,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:104
+#: ../../build/doc/pgr_kruskalBFS.rst:105
 msgid "BFS optional parameters"
 msgstr ""
 
@@ -252,11 +247,11 @@ msgstr ""
 msgid "When negative throws an error."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:111
-msgid "Inner queries"
+#: ../../build/doc/pgr_kruskalBFS.rst:112
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:114
+#: ../../build/doc/pgr_kruskalBFS.rst:115
 msgid "Edges SQL"
 msgstr ""
 
@@ -294,8 +289,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/BFS-category.rst:35
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
 msgstr ""
 
@@ -336,7 +331,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:121
+#: ../../build/doc/pgr_kruskalBFS.rst:122
 msgid "Result Columns"
 msgstr ""
 
@@ -409,38 +404,38 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:128
+#: ../../build/doc/pgr_kruskalBFS.rst:129
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:130
+#: ../../build/doc/pgr_kruskalBFS.rst:131
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:131
+#: ../../build/doc/pgr_kruskalBFS.rst:132
 msgid ":doc:`kruskal-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:132
+#: ../../build/doc/pgr_kruskalBFS.rst:133
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:133
+#: ../../build/doc/pgr_kruskalBFS.rst:134
 msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:135
+#: ../../build/doc/pgr_kruskalBFS.rst:136
 msgid "`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:139
+#: ../../build/doc/pgr_kruskalBFS.rst:140
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:140
+#: ../../build/doc/pgr_kruskalBFS.rst:141
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_kruskalBFS.rst:141
+#: ../../build/doc/pgr_kruskalBFS.rst:142
 msgid ":ref:`search`"
 msgstr ""

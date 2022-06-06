@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,52 +21,53 @@ msgstr ""
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCostMatrix.html>`__ "
-"(`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCostMatrix.html>`__) "
-"`3.2 <https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html>`__"
-" `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__ `3.0"
-" <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__"
+"(`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_bdDijkstraCostMatrix.html>`__) "
+"`3.3 <https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCostMatrix.html>`__"
+" `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html>`__ `3.1"
+" <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:18
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:19
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html>`__ `2.5"
 " <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:23
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:24
 msgid "``pgr_bdDijkstraCostMatrix``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:25
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:26
 msgid ""
 "``pgr_bdDijkstraCostMatrix`` - Calculates a cost matrix using "
 ":doc:`pgr_bdDijkstra`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:32
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:33
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:35
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:36
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:36
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:37
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:38
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:39
 msgid "**Official** function"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:40
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:41
 msgid "Version 2.5.0"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:42
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:43
 msgid "New **proposed** function"
 msgstr ""
 
@@ -74,11 +75,11 @@ msgstr ""
 #: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:45
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:46
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:47
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:48
 msgid ""
 "Using bidirectional Dijkstra algorithm, calculate and return a cost "
 "matrix."
@@ -254,11 +255,11 @@ msgstr ""
 msgid "``end_vid`` ascending"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:61
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:62
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:64
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:65
 msgid "Summary"
 msgstr ""
 
@@ -266,13 +267,13 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:70
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:71
 msgid ""
-"Symmetric cost matrix for vertices :math:`\\{1, 2, 3, 4\\}` on an "
+"Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
 "**undirected** graph"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:78
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:79
 msgid "Parameters"
 msgstr ""
 
@@ -314,12 +315,13 @@ msgstr ""
 msgid "Array of identifiers of starting vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:85
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:86
 msgid "Optional parameters"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:10
-msgid "default"
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:12
@@ -342,16 +344,12 @@ msgstr ""
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:92
-msgid "Inner queries"
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:93
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:95
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:96
 msgid "Edges SQL"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "Default"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -435,8 +433,8 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:102
-msgid "Return Columns"
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:103
+msgid "Result Columns"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:3
@@ -476,43 +474,43 @@ msgstr ""
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:109
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:110
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:111
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:112
 msgid "Use with :doc:`pgr_TSP`."
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:118
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:119
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:120
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:121
 msgid ":doc:`bdDijkstra-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:121
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:122
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:122
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:123
 msgid ":doc:`TSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:123
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:124
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:126
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:127
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:127
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:128
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:128
+#: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:129
 msgid ":ref:`search`"
 msgstr ""
 

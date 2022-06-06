@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lengauerTarjanDominatorTree.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_lengauerTarjanDominatorTree.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lengauerTarjanDominatorTree.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_lengauerTarjanDominatorTree.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_lengauerTarjanDominatorTree.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_lengauerTarjanDominatorTree.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_lengauerTarjanDominatorTree.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:18
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:19
 msgid "pgr_lengauerTarjanDominatorTree -Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:20
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:21
 msgid "``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:25
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:27
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -100,114 +100,117 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:32
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:34
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:33
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:35
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:35
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:37
 msgid "New **experimental** function"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:39
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:76
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:41
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:80
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:103
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:96
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:40
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:42
 msgid "The algorithm calculates the *immidiate dominator* of each vertex called **idom**, once **idom** of each vertex is calculated then by making every **idom** of each vertex as its parent, the dominator tree can be built."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:42
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:46
 msgid "**The main Characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:44
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:48
 msgid "The algorithm works in directed graph only."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:45
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:49
 msgid "The returned values are not ordered."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:46
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:50
 msgid "The algorithm returns *idom* of each vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:47
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:51
 msgid "If the *root vertex* not present in the graph then it returns empty set."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:48
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:52
 msgid "Running time: :math:`O((V+E)log(V+E))`"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:51
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:55
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:54
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:58
 msgid "Summary"
 msgstr ""
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:0
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:0
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:66
-msgid "The lengauerTarjanDominatorTree with root vertex :math:`1`"
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:70
+msgid "The dominator tree with root vertex :math:`5`"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:73
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:77
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:76
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:80
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:103
 #: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:96
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:76
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:80
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:103
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:96
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:78
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:82
 msgid "**Edges SQL**"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:78
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:82
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:78
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:82
 msgid "SQL query as described above."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:79
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:83
 msgid "**root vertex**"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:79
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:99
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:100
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:83
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:106
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:107
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:79
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:83
 msgid "Identifier of the starting vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:84
-msgid "Inner query"
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:88
+msgid "Inner Queries"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:91
+msgid "Edges SQL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -293,78 +296,74 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:91
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:98
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:93
-msgid "Returns set of ``(seq, vertex_id,idom)``"
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:98
-msgid "**seq**"
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:98
-msgid "``INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:98
-msgid "Sequential value starting from **1**."
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:99
-msgid "**vertex_id**"
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:99
-msgid "Identifier of vertex ."
-msgstr ""
-
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:100
-msgid "**idom**"
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:100
-msgid "Immediate dominator of vertex."
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:104
-msgid "Additional Examples"
+msgid "Returns set of ``(seq, vertex_id, idom)``"
 msgstr ""
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:105
-msgid "The examples in this section use the following :ref:`fig1`"
+msgid "**seq**"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:105
+msgid "``INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:105
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:106
+msgid "**vertex_id**"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:106
+msgid "Identifier of vertex ."
 msgstr ""
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:107
-msgid "When the edge is disonnectd from graph then it will returns immidiate dominator of all other vertex as zero."
+msgid "**idom**"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:116
-msgid "See Also"
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:107
+msgid "Immediate dominator of vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:118
-msgid "`Boost: lengauerTarjanDominatorTree algorithm documentation <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:111
+msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:119
-msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:113
+msgid "Dominator tree of another component."
 msgstr ""
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:120
-msgid ":doc:`sampledata` network."
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:122
+msgid ":doc:`sampledata`"
 msgstr ""
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:123
-msgid "Indices and tables"
-msgstr ""
-
-#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:124
-msgid ":ref:`genindex`"
+msgid "`Boost: Lengauer-Tarjan dominator tree algorithm <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
 msgstr ""
 
 #: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:125
+msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:129
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:130
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_lengauerTarjanDominatorTree.rst:131
 msgid ":ref:`search`"
 msgstr ""

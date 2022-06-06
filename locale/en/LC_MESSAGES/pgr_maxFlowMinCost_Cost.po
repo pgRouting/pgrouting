@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-04 15:00+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,24 +21,25 @@ msgstr ""
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_maxFlowMinCost_Cost.html>`__ "
-"(`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_maxFlowMinCost_Cost.html>`__) `3.2"
+"(`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_maxFlowMinCost_Cost.html>`__) `3.3"
+" <https://docs.pgrouting.org/3.3/en/pgr_maxFlowMinCost_Cost.html>`__ `3.2"
 " <https://docs.pgrouting.org/3.2/en/pgr_maxFlowMinCost_Cost.html>`__ `3.1"
 " <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost_Cost.html>`__ `3.0"
 " <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost_Cost.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:20
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:21
 msgid "``pgr_maxFlowMinCost_Cost`` - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:22
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:23
 msgid ""
 "``pgr_maxFlowMinCost_Cost`` — Calculates the minimum total cost of the "
 "maximum flow on a graph"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:28
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:29
 msgid "Boost Graph Inside"
 msgstr ""
 
@@ -110,45 +111,45 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:35
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:36
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:36
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:37
 msgid "Version 3.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:38
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:39
 msgid "New **experimental** function:"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:40
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:41
 msgid "``pgr_maxFlowMinCost_Cost`` (`Combinations`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:42
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:43
 msgid "Version 3.0.0"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:44
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:45
 msgid "New **experimental** function"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:48
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:208
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:49
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:209
 msgid "Description"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:3
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:54
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:55
 msgid "**The main characteristics are:**"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:5
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:56
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:57
 msgid "The graph is **directed**."
 msgstr ""
 
@@ -162,80 +163,80 @@ msgid ""
 "returned."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:9
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:60
+#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:61
 msgid "There is no flow when a **source** is the same as a **target**."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:11
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:62
+#: ../../build/doc/flow-family.rst:12
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:63
 msgid "Any duplicated value in the source(s) or target(s) are ignored."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:12
+#: ../../build/doc/flow-family.rst:13
 msgid "Calculates the flow/residual capacity for each edge. In the output"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:14
+#: ../../build/doc/flow-family.rst:15
 msgid "Edges with zero flow are omitted."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:16
+#: ../../build/doc/flow-family.rst:17
 msgid ""
 "Creates a **super source** and edges to all the source(s), and a **super "
 "target** and the edges from all the targets(s)."
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:17
+#: ../../build/doc/flow-family.rst:19
 msgid ""
 "The maximum flow through the graph is guaranteed to be the value returned"
 " by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
 "parameters and can be calculated:"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:19
+#: ../../build/doc/flow-family.rst:23
 msgid "By aggregation of the outgoing flow from the sources"
 msgstr ""
 
-#: ../../build/doc/flow-family.rst:20
+#: ../../build/doc/flow-family.rst:24
 msgid "By aggregation of the incoming flow to the targets"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:57
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:58
 msgid "**The cost value of all input edges must be nonnegative.**"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:58
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:59
 msgid "When the maximum flow is 0 then there is no flow and **0** is returned."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:63
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:64
 msgid "Uses :doc:`pgr_maxFlowMinCost`."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:65
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:66
 msgid "Running time: :math:`O(U * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:67
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:68
 msgid "where :math:`U` is the value of the max flow."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:68
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:69
 msgid ""
 ":math:`U` is upper bound on number of iterations. In many real world "
 "cases number of iterations is much smaller than :math:`U`."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:72
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:73
 msgid "Signatures"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:75
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:76
 msgid "Summary"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:89
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:90
 msgid "One to One"
 msgstr ""
 
@@ -243,53 +244,53 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:96
-msgid "From vertex :math:`6` to vertex :math:`11`"
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:97
+msgid "From vertex :math:`11` to vertex :math:`12`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:106
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:107
 msgid "One to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:113
-msgid "From vertex :math:`6` to vertices :math:`\\{1, 3, 11\\}`"
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:114
+msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:123
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:124
 msgid "Many to One"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:130
-msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:131
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:140
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:141
 msgid "Many to Many"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:147
-msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:148
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:158
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:159
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:165
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:166
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
-"vertices :math:`\\{1, 2\\}` to vertices :math:`\\{3, 4, 17\\}`."
+"vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:168
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:169
 msgid "The combinations table:"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:174
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:175
 msgid "The query:"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:181
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:182
 msgid "Parameters"
 msgstr ""
 
@@ -300,7 +301,7 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:208
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:209
 msgid "Type"
 msgstr ""
 
@@ -367,11 +368,11 @@ msgstr ""
 msgid "Array of identifiers of ending vertices."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:188
-msgid "Inner queries"
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:189
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:191
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:192
 msgid "Edges SQL"
 msgstr ""
 
@@ -489,7 +490,7 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:198
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:199
 msgid "Combinations SQL"
 msgstr ""
 
@@ -505,47 +506,47 @@ msgstr ""
 msgid "Identifier of the arrival vertex."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:205
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:206
 msgid "Resturn Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:210
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:211
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:210
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:211
 msgid "Minimum Cost Maximum Flow possible from the source(s) to the target(s)"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:214
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:215
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:216
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:217
 msgid "Manually assigned vertex combinations."
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:223
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:224
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:225
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:226
 msgid ":doc:`flow-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:226
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:227
 msgid "https://www.boost.org/libs/graph/doc/successive_shortest_path_nonnegative_weights.html"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:229
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:230
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:230
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:231
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:231
+#: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:232
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,15 @@ msgstr ""
 #: ../../build/doc/pgr_withPointsKSP.rst:12
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_withPointsKSP.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_withPointsKSP.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/en/pgr_withPointsKSP.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_withPointsKSP.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_withPointsKSP.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_withPointsKSP.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_withPointsKSP.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_withPointsKSP.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:18
+#: ../../build/doc/pgr_withPointsKSP.rst:19
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_withPointsKSP.html>`__ `2.5 "
@@ -38,12 +39,14 @@ msgid ""
 "<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsKSP.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:26
+#: ../../build/doc/pgr_withPointsKSP.rst:27
 msgid "pgr_withPointsKSP - Proposed"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:28
-msgid "``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm."
+#: ../../build/doc/pgr_withPointsKSP.rst:29
+msgid ""
+"``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using "
+"Dijkstra."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:3
@@ -82,250 +85,276 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:37
+#: ../../build/doc/pgr_withPointsKSP.rst:38
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:40
+#: ../../build/doc/pgr_withPointsKSP.rst:41
 msgid "Availability"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:41
+#: ../../build/doc/pgr_withPointsKSP.rst:42
 msgid "Version 2.2.0"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:43
+#: ../../build/doc/pgr_withPointsKSP.rst:44
 msgid "New **proposed** function"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_withPointsKSP.rst:47
-#: ../../build/doc/pgr_withPointsKSP.rst:103
-#: ../../build/doc/pgr_withPointsKSP.rst:138
+#: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/pgr_KSP.rst:11
+#: ../../build/doc/pgr_KSP.rst:13 ../../build/doc/pgr_withPointsKSP.rst:48
+#: ../../build/doc/pgr_withPointsKSP.rst:88
 #: ../../build/doc/withPoints-category.rst:11
+#: ../../build/doc/withPoints-family.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:49
+#: ../../build/doc/pgr_withPointsKSP.rst:50
 msgid ""
-"Modifies the graph to include the points defined in the ``points_sql`` "
-"and using Yen algorithm, finds the :math:`K` shortest paths."
+"Modifies the graph to include the points defined in the `Points SQL`_ and"
+" using Yen algorithm, finds the :math:`K` shortest paths."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:53
+#: ../../build/doc/pgr_withPointsKSP.rst:57
 msgid "Signatures"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:56
-msgid "Summary"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:66
-msgid "Using defaults"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst
 msgid "Example"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:72
-msgid "From point :math:`1` to point :math:`2` in :math:`2` cycles"
+#: ../../build/doc/pgr_withPointsKSP.rst:65
+msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:74
-msgid "For a **directed** graph."
+#: ../../build/doc/pgr_withPointsKSP.rst:68
+msgid "For a directed graph."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:75
+#: ../../build/doc/pgr_withPointsKSP.rst:69
 msgid ""
 "The driving side is set as **b** both. So arriving/departing to/from the "
 "point(s) can be in any direction."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:76
-msgid "No **details** are given about distance of other points of the query."
+#: ../../build/doc/pgr_withPointsKSP.rst:71
+msgid "No details are given about distance of other points of the query."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:77
-msgid "No **heap paths** are returned."
+#: ../../build/doc/pgr_withPointsKSP.rst:72
+msgid "No heap paths are returned."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:84
-msgid "Complete Signature"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:86
-msgid ""
-"Finds the :math:`K` shortest paths depending on the optional parameters "
-"setup."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:93
-msgid "From point :math:`1` to vertex :math:`6` in :math:`2` cycles with details."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:100
+#: ../../build/doc/pgr_withPointsKSP.rst:79
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:103
-#: ../../build/doc/withPoints-category.rst:8
-msgid "Parameter"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_withPointsKSP.rst:103
-#: ../../build/doc/pgr_withPointsKSP.rst:138
-#: ../../build/doc/withPoints-category.rst:9
-msgid "Type"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:105
-msgid "**edges_sql**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:105
-#: ../../build/doc/pgr_withPointsKSP.rst:106
-msgid "``TEXT``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:105
-msgid "Edges SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:106
-msgid "**points_sql**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:106
-msgid "Points SQL query as described above."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:107
-msgid "**start_pid**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:107
-#: ../../build/doc/pgr_withPointsKSP.rst:108
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:107
-msgid "Starting point id."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:108
-msgid "**end_pid**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:108
-msgid "Ending point id."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:109
-msgid "**K**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:109
-#: ../../build/doc/pgr_withPointsKSP.rst:140
-#: ../../build/doc/pgr_withPointsKSP.rst:141
-#: ../../build/doc/pgr_withPointsKSP.rst:142
-msgid "``INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:109
-msgid "Number of shortest paths."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:110
-msgid "**directed**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:110
-#: ../../build/doc/pgr_withPointsKSP.rst:111
-#: ../../build/doc/pgr_withPointsKSP.rst:117
-msgid "``BOOLEAN``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:110
-msgid ""
-"(optional). When ``false`` the graph is considered as Undirected. Default"
-" is ``true`` which considers the graph as Directed."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:111
-msgid "**heap_paths**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:111
-msgid ""
-"(optional). When ``true`` the paths calculated to get the shortests paths"
-" will be returned also. Default is ``false`` only the K shortest paths "
-"are returned."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:112
-msgid "**driving_side**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:112
-#: ../../build/doc/withPoints-category.rst:32
-msgid "``CHAR``"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:115
-msgid ""
-"(optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side "
-"is:"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:113
-msgid "In the right or left or"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:114
-msgid "If it doesn't matter with 'b' or NULL."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:115
-msgid "If column not present 'b' is considered."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:117
-msgid "**details**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:117
-msgid ""
-"(optional). When ``true`` the results will include the driving distance "
-"to the points with in the ``distance``. Default is ``false`` which "
-"ignores other points of the points_sql."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:122
-msgid "Inner query"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgr_withPointsKSP.rst:138
+#: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_KSP.rst:8
+#: ../../build/doc/pgr_KSP.rst:11 ../../build/doc/pgr_withPointsKSP.rst:86
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/withPoints-category.rst:10
-msgid "Default"
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:9
+#: ../../build/doc/pgr_KSP.rst:12 ../../build/doc/pgr_withPointsKSP.rst:87
+#: ../../build/doc/withPoints-category.rst:9
+#: ../../build/doc/withPoints-family.rst:9
+msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
-msgid "``id``"
+#: ../../build/doc/pgr_withPointsKSP.rst:89
+msgid "`Edges SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:90
+#: ../../build/doc/pgr_withPointsKSP.rst:93
+msgid "``TEXT``"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:91
+msgid "`Edges SQL`_ query as described."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:92
+msgid "`Points SQL`_"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:94
+msgid "`Points SQL`_ query as described."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:95
+msgid "**start vid**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgr_withPointsKSP.rst:96
+#: ../../build/doc/pgr_withPointsKSP.rst:99
+#: ../../build/doc/pgr_withPointsKSP.rst:102
 #: ../../build/doc/withPoints-category.rst:13
 #: ../../build/doc/withPoints-category.rst:23
 msgid "**ANY-INTEGER**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:97
+#: ../../build/doc/pgr_withPointsKSP.rst:100
+msgid "Identifier of the departure vertex."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:98
+msgid "**end vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:101
+msgid "**K**"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:103
+msgid "Number of required paths"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgr_withPointsKSP.rst:105
+#: ../../build/doc/withPoints-category.rst:40
+msgid "Where:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst ../../build/doc/pgr_withPointsKSP.rst
+#: ../../build/doc/withPoints-category.rst
+msgid "ANY-INTEGER"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/pgr_withPointsKSP.rst:107
+#: ../../build/doc/withPoints-category.rst:42
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:110
+msgid "Optional parameters"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10 ../../build/doc/pgr_KSP.rst:10
+#: ../../build/doc/withPoints-category.rst:10
+#: ../../build/doc/withPoints-family.rst:10
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:12
+msgid "``directed``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:13 ../../build/doc/pgr_KSP.rst:13
+#: ../../build/doc/withPoints-family.rst:21
+msgid "``BOOLEAN``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "``true``"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:15
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr ""
+
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:117
+msgid "KSP Optional parameters"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:12
+msgid "``heap_paths``"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:14 ../../build/doc/withPoints-family.rst:22
+msgid "``false``"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:15
+msgid "When ``false`` Returns at most K paths"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:16
+msgid "When ``true`` all the calculated paths while processing are returned."
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:17
+msgid ""
+"Roughly, when the shortest path has ``N`` edges, the heap will contain "
+"about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:124
+msgid "With points optional parameters"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:8
+#: ../../build/doc/withPoints-family.rst:8
+msgid "Parameter"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:12
+msgid "``driving_side``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:32
+#: ../../build/doc/withPoints-family.rst:13
+msgid "``CHAR``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:33
+#: ../../build/doc/withPoints-family.rst:14
+msgid "``b``"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:15
+msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:17
+msgid "``r`` for right driving side."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:18
+msgid "``l`` for left driving side."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:19
+msgid "``b`` for both."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:20
+msgid "``details``"
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:23
+msgid "When ``true`` the results will include the points that are in the path."
+msgstr ""
+
+#: ../../build/doc/withPoints-family.rst:24
+msgid ""
+"When ``false`` the results will not include the points that are in the "
+"path."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:131
+msgid "Inner Queries"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:134
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -348,7 +377,7 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:24 ../../build/doc/pgr_KSP.rst:34
 msgid "``cost``"
 msgstr ""
 
@@ -380,21 +409,6 @@ msgid ""
 "it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/withPoints-category.rst:40
-msgid "Where:"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst
-#: ../../build/doc/withPoints-category.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:38
-#: ../../build/doc/withPoints-category.rst:42
-msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
-
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
 msgid "ANY-NUMERICAL"
@@ -403,6 +417,10 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/withPoints-category.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:141
+msgid "Points SQL"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:12
@@ -453,10 +471,6 @@ msgstr ""
 msgid "``side``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:33
-msgid "``b``"
-msgstr ""
-
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr ""
@@ -473,135 +487,140 @@ msgstr ""
 msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:135
+#: ../../build/doc/pgr_withPointsKSP.rst:148
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:140
-msgid "**seq**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:140
-msgid "Row sequence."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:141
-msgid "**path_seq**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:141
+#: ../../build/doc/pgr_KSP.rst:3
 msgid ""
-"Relative position in the path of node and edge. Has value 1 for the "
-"beginning of a path."
+"Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge,"
+" cost, agg_cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:142
-msgid "**path_id**"
+#: ../../build/doc/pgr_KSP.rst:14
+msgid "``seq``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:142
+#: ../../build/doc/pgr_KSP.rst:15 ../../build/doc/pgr_KSP.rst:18
+#: ../../build/doc/pgr_KSP.rst:24
+msgid "``INTEGER``"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:16
+msgid "Sequential value starting from **1**."
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:17
+msgid "``path_id``"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:19
+msgid "Path identifier."
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:21
+msgid "Has value **1** for the first of a path from **start vid** to **end_vid**"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:23
+msgid "``path_seq``"
+msgstr ""
+
+#: ../../build/doc/pgr_KSP.rst:25
 msgid ""
-"Path identifier. The ordering of the paths: For two paths i, j if i < j "
-"then agg_cost(i) <= agg_cost(j)."
+"Relative position in the path. Has value **1** for the beginning of a "
+"path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:143
-msgid "**node**"
+#: ../../build/doc/pgr_KSP.rst:27
+msgid "``node``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:143
-#: ../../build/doc/pgr_withPointsKSP.rst:144
+#: ../../build/doc/pgr_KSP.rst:28 ../../build/doc/pgr_KSP.rst:31
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:143
-msgid ""
-"Identifier of the node in the path. Negative values are the identifiers "
-"of a point."
+#: ../../build/doc/pgr_KSP.rst:29
+msgid "Identifier of the node in the path from **start vid** to **end vid**"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:144
-msgid "**edge**"
+#: ../../build/doc/pgr_KSP.rst:30
+msgid "``edge``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:145
+#: ../../build/doc/pgr_KSP.rst:32
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
-"path sequence."
+"path sequence. **-1** for the last node of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:145
-msgid "``-1`` for the last row in the path sequence."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:147
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:147
-#: ../../build/doc/pgr_withPointsKSP.rst:150
+#: ../../build/doc/pgr_KSP.rst:35 ../../build/doc/pgr_KSP.rst:41
 msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:148
+#: ../../build/doc/pgr_KSP.rst:36
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the"
-" path sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next node in the "
+"path sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:148
-msgid "``0`` for the last row in the path sequence."
+#: ../../build/doc/pgr_KSP.rst:39
+msgid ":math:`0` for the last ``node`` of the path."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:150
-msgid "**agg_cost**"
+#: ../../build/doc/pgr_KSP.rst:40
+msgid "``agg_cost``"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:151
-msgid "Aggregate cost from ``start_pid`` to ``node``."
+#: ../../build/doc/pgr_KSP.rst:42
+msgid "Aggregate cost from **start vid** to ``node``."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:151
-msgid "``0`` for the first row in the path sequence."
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsKSP.rst:156
+#: ../../build/doc/pgr_withPointsKSP.rst:155
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:158
+#: ../../build/doc/pgr_withPointsKSP.rst:157
 msgid ""
-"Left side driving topology from point :math:`1` to point :math:`2` in "
-":math:`2` cycles, with details"
+"get :math:`2` paths using left side driving topology, from point "
+":math:`1` to point :math:`2` with details."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:164
 msgid ""
-"Right side driving topology from point :math:`1` to point :math:`2` in "
-":math:`2` cycles, with heap paths and details"
+"get :math:`2` paths using right side driving topology from, point "
+":math:`1` to point :math:`2` with heap paths and details."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:170
+#: ../../build/doc/pgr_withPointsKSP.rst:171
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:173
+#: ../../build/doc/pgr_withPointsKSP.rst:174
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:175
+#: ../../build/doc/pgr_withPointsKSP.rst:176
 msgid ":doc:`withPoints-family`"
 msgstr ""
 
+#: ../../build/doc/pgr_withPointsKSP.rst:177
+msgid ":doc:`KSP-category`"
+msgstr ""
+
 #: ../../build/doc/pgr_withPointsKSP.rst:178
+msgid ":doc:`sampledata`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsKSP.rst:181
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:179
+#: ../../build/doc/pgr_withPointsKSP.rst:182
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsKSP.rst:180
+#: ../../build/doc/pgr_withPointsKSP.rst:183
 msgid ":ref:`search`"
 msgstr ""
 

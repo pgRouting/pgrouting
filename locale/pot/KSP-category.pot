@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.4.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/KSP-category.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-category.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__"
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/KSP-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/KSP-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/KSP-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/KSP-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/KSP-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/KSP-category.html>`__"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:18
+#: ../../build/doc/KSP-category.rst:19
 msgid "**Unsupported versions:** `2.5 <https://docs.pgrouting.org/2.5/en/KSP-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/KSP-category.html>`__ `2.6 <https://docs.pgrouting.org/2.6/en/KSP-category.html>`__"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:24
+#: ../../build/doc/KSP-category.rst:25
 msgid "K shortest paths - Category"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:28
+#: ../../build/doc/KSP-category.rst:29
 msgid ":doc:`pgr_KSP` - Yen's algorithm based on pgr_dijkstra"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:33
+#: ../../build/doc/KSP-category.rst:34
 msgid "Proposed"
 msgstr ""
 
@@ -72,18 +72,18 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:40
+#: ../../build/doc/KSP-category.rst:41
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:46
+#: ../../build/doc/KSP-category.rst:47
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:47
+#: ../../build/doc/KSP-category.rst:48
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/KSP-category.rst:48
+#: ../../build/doc/KSP-category.rst:49
 msgid ":ref:`search`"
 msgstr ""

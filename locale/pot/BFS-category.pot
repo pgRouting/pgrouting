@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,15 +76,15 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:55
 #: ../../build/doc/BFS-category.rst:92
-#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/BFS-category.rst:127
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:56
 #: ../../build/doc/BFS-category.rst:94
-#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/BFS-category.rst:128
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
@@ -143,14 +143,13 @@ msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:74
-#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/BFS-category.rst:158
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
-#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -159,7 +158,6 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/BFS-category.rst:0
 msgid "ANY-NUMERIC"
 msgstr ""
@@ -195,7 +193,7 @@ msgid "When negative throws an error."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:105
-msgid "Inner queries"
+msgid "Inner Queries"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:108
@@ -236,8 +234,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/BFS-category.rst:151
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-12 14:24+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,23 +20,25 @@ msgstr ""
 #: ../../build/doc/chinesePostmanProblem-family.rst:12
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
-"/chinesePostmanProblem-family.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/chinesePostmanProblem-family.html>`__)"
-" `3.2 <https://docs.pgrouting.org/3.2/en/chinesePostmanProblem-"
-"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
-"/chinesePostmanProblem-family.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-family.html>`__"
+"/chinesePostmanProblem-family.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/chinesePostmanProblem-family.html>`__)"
+" `3.3 <https://docs.pgrouting.org/3.3/en/chinesePostmanProblem-"
+"family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en"
+"/chinesePostmanProblem-family.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/chinesePostmanProblem-family.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/en/chinesePostmanProblem-"
+"family.html>`__"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:20
+#: ../../build/doc/chinesePostmanProblem-family.rst:21
 msgid "Chinese Postman Problem - Family of functions (Experimental)"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:24
+#: ../../build/doc/chinesePostmanProblem-family.rst:25
 msgid ":doc:`pgr_chinesePostman`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:25
+#: ../../build/doc/chinesePostmanProblem-family.rst:26
 msgid ":doc:`pgr_chinesePostmanCost`"
 msgstr ""
 
@@ -108,29 +110,29 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:40
+#: ../../build/doc/chinesePostmanProblem-family.rst:41
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:44
+#: ../../build/doc/chinesePostmanProblem-family.rst:45
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:46
+#: ../../build/doc/chinesePostmanProblem-family.rst:47
 msgid "Process is done only on edges with **positive** costs."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:47
+#: ../../build/doc/chinesePostmanProblem-family.rst:48
 msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:48
+#: ../../build/doc/chinesePostmanProblem-family.rst:49
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:53
+#: ../../build/doc/chinesePostmanProblem-family.rst:54
 msgid "Parameters"
 msgstr ""
 
@@ -154,15 +156,15 @@ msgstr ""
 msgid "`Edges SQL`_ as described below."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:60
-msgid "Inner query"
+#: ../../build/doc/chinesePostmanProblem-family.rst:61
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:65
+#: ../../build/doc/chinesePostmanProblem-family.rst:66
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:67
+#: ../../build/doc/chinesePostmanProblem-family.rst:68
 msgid ""
 "An Edges SQL that represents a **directed** graph with the following "
 "columns"
@@ -257,19 +259,19 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:76
+#: ../../build/doc/chinesePostmanProblem-family.rst:77
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:79
+#: ../../build/doc/chinesePostmanProblem-family.rst:80
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:80
+#: ../../build/doc/chinesePostmanProblem-family.rst:81
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:81
+#: ../../build/doc/chinesePostmanProblem-family.rst:82
 msgid ":ref:`search`"
 msgstr ""
 
