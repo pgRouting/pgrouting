@@ -276,7 +276,7 @@ Inspect the routing topology
    :start-after: --q3.6
    :end-before: --q3.7
 
-.. figure:: /images/topology.png
+.. figure:: /images/Fig1-originalData.png
    :scale: 50%
 
    **Generated topology**
