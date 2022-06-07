@@ -24,7 +24,7 @@ SELECT * FROM pgr_lineGraph($$
 );
  seq | source | target | cost | reverse_cost
 -----+--------+--------+------+--------------
-   1 |     -1 |      1 |    1 |            1
+   1 |      1 |     -1 |    1 |            1
 (1 row)
 
 SELECT * FROM pgr_lineGraph($$

@@ -7,7 +7,7 @@ SELECT * FROM pgr_dijkstraNearCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges',
   ARRAY[10, 11, 1], 6,
   true,
-  cap => 2);
+  cap => 2) ORDER BY agg_cost;
 /* -- q3 */
 SELECT * FROM pgr_dijkstraNearCost(
   'SELECT id, source, target, cost, reverse_cost FROM edges',

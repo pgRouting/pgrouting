@@ -78,7 +78,7 @@ WHERE ST_StartPoint(e.geom) = v.geom;
 
 /* -- set the target information */
 UPDATE edges AS e
-SET target = v.id, x1 = x, y1 = y
+SET target = v.id, x2 = x, y2 = y
 FROM vertices AS v
 WHERE ST_EndPoint(e.geom) = v.geom;
 /* -- q4 */
