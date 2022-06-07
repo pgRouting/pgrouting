@@ -29,9 +29,9 @@ Sample Data
 ===============================================================================
 
 The documentation provides very simple example queries based on a small sample
-network.
-To be able to execute the sample queries, run the following SQL commands to
-create a table with a small network data set.
+network that resembles a city.
+To be able to execute the mayority of the examples queries, follow the
+instructions bellow.
 
 .. contents::
    :local:
@@ -39,33 +39,134 @@ create a table with a small network data set.
 Main graph
 -------------------------------------------------------------------------------
 
+A graph consists of a set of edges and a set of vertices.
+
+The following city is to be inserted into the database:
+
+.. figure:: /images/Fig1-originalData.png
+
+Information known at this point is the geometry of the edges, cost values,
+cpacity values, category values and some locations that are not in the graph.
+
+The process to have working topology starts by inserting the edges.
+After that everything else is calculated.
+
 Edges
 ...............................................................................
+
+The database design for the documentation of pgRouting, keeps in the same row 2
+segments, one in the direction of the geometry and the second in the oposite
+direction. Therfore some information has the ``reverse_`` prefix which
+corresponds to the segment on the oposite direction of the geometry.
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - ``id``
+     - A unique identifier.
+   * - ``source``
+     - Identifier of the starting vertex of the geometry ``geom``.
+   * - ``target``
+     - Identifier of the ending vertex of the geometry ``geom``
+   * - ``cost``
+     - Cost to traverse from `source` to ``target``.
+   * - ``reverse_cost``
+     - Cost to traverse from `target` to ``source``.
+   * - ``capacity``
+     - Flow capacity from `source` to ``target``.
+   * - ``reverse_capacity``
+     - Flow capacity from `target` to ``source``.
+   * - ``category``
+     - Flow capacity from `target` to ``source``.
+   * - ``reverse_category``
+     - Flow capacity from `target` to ``source``.
+   * - ``x1``
+     - :math:`x` coordinate of the starting vertex of the geometry.
+
+       - For convinience it is saved on the table but can be calculated as
+         ``ST_X(ST_StartPoint(geom))``.
+   * - ``y2``
+     - :math:`y` coordinate of the ending vertex of the geometry.
+
+       - For convinience it is saved on the table but can be calculated as
+         ``ST_Y(ST_EndPoint(geom))``.
+   * - ``geom``
+     - The geometry of the segments.
 
 .. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE CREATE start
    :end-before: --EDGE TABLE CREATE end
 
+Starting on  PostgreSQL 12::
+
+   ...
+   x1 FLOAT GENERATED ALWAYS AS (ST_X(ST_StartPoint(geom))) STORED,
+   y1 FLOAT GENERATED ALWAYS AS (ST_Y(ST_StartPoint(geom))) STORED,
+   x1 FLOAT GENERATED ALWAYS AS (ST_X(ST_EndPoint(geom))) STORED,
+   y1 FLOAT GENERATED ALWAYS AS (ST_Y(ST_EndPoint(geom))) STORED,
+   ...
+
+Optionally indexes on different columns can be created.
+The recomendation is to have
+
+* ``id`` indexed.
+* ``source`` and ``target`` columns indexed to speed up pgRouting queries.
+* ``geom`` indexed to speed up gemetry processes that might be needed in the
+  front end.
+
+For this small example the indexes are skipped, except for ``id``
+
 Edges data
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Inserting into the database the information of the edges:
 
 .. literalinclude:: sampledata.queries
    :start-after: --EDGE TABLE ADD DATA start
    :end-before: --EDGE TABLE ADD DATA end
 
+Negative values on the cost, capacity and category means that the edge do not
+exist.
+
 Vertices
 ...............................................................................
 
+The vertex information is calculated based on the identifier of the edge and the
+geometry and saved on a table.
+Saving all the information provided by :doc:`pgr_extractVertices`:
+
 .. literalinclude:: sampledata.queries
    :start-after: -- q1
-   :end-before: -- q2
+   :end-before: -- q1-1
+
+In this case the because the ``CREATE`` statement was not used, the definition
+of an index on the table is needed.
+
+.. literalinclude:: sampledata.queries
+   :start-after: -- q1-1
+   :end-before: Table "public
+
+The structure of the table is:
+
+.. literalinclude:: sampledata.queries
+   :start-after: (1 row)
+   :end-before: -- q1-2
 
 Vertices data
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+The saved information of the vertices is:
+
 .. literalinclude:: sampledata.queries
    :start-after: -- q2
    :end-before: -- q3
+
+Here is where adding more columns to the vertices table can be done.
+Additional columns names and types will depend on the application.
 
 The topology
 ...............................................................................
@@ -91,6 +192,35 @@ Points outside the graph
 
 Points of interest
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Some times the applications work "on the fly" starting from a location that is
+not a vertex in the graph.
+Those locations, in pgRrouting are called points of interest.
+
+The information needed in the points of interest is ``pid``, ``edge_id``,
+``side``, ``fraction``.
+
+On this documentation there will be some 6 fixed points of interest and they
+will be stored on a table.
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - ``pid``
+     - A unique identifier.
+   * - ``edge_id``
+     - Identifier of the edge nearest edge that allows an arrival to the point.
+   * - ``side``
+     - Is it on the left, right or both sides of the segment ``edge_id``
+   * - ``fraction``
+     - Where in the segment is the point located.
+   * - ``geom``
+     - The geometry of the points.
+   * - ``newPoint``
+     - The geometry of the points moved on top of the segment.
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p1
@@ -98,6 +228,7 @@ Points of interest
 
 Points of interest geometry
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Inserting the data of the points of interest:
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p2
@@ -107,12 +238,14 @@ Points of interest fillup
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Using :doc:`pgr_findCloseEdges`
+Calculating for visual purposes the points over the graph.
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p3
    :end-before: -- p4
 
 A special case to arrive from both sides of the edge.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p4
@@ -133,13 +266,24 @@ Support tables
 Combinations
 ...............................................................................
 
+Many functions can be used with a combinations of ``(source, target)`` pairs
+when wanting a route from ``source`` to ``target``.
+
+For convinence of this documentations, some combinations will be stored on a
+table:
+
 .. literalinclude:: sampledata.queries
    :start-after: -- c1
    :end-before: -- c2
 
+Inserting the data:
+
 .. literalinclude:: sampledata.queries
    :start-after: -- c2
    :end-before: -- c3
+
+Combinations data
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: sampledata.queries
    :start-after: -- c3
@@ -149,18 +293,30 @@ Combinations
 Restrictions
 ...............................................................................
 
+Some functions accept soft restrictions about the segments.
+
+.. the_restrictions_start
+
+The creation of the restrictions table
+
 .. literalinclude:: sampledata.queries
    :start-after: -- r1
    :end-before: -- r2
+
+Adding the restrictions
 
 .. literalinclude:: sampledata.queries
    :start-after: -- r2
    :end-before: -- r3
 
+Restrictions data
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. literalinclude:: sampledata.queries
    :start-after: -- r3
    :end-before: -- r4
 
+.. the_restrictions_end
 
 Images
 -------------------------------------------------------------------------------
@@ -179,6 +335,7 @@ When working with city networks, this is recommended for point of view of
 vehicles.
 
 .. figure:: /images/Fig1-originalData.png
+   :scale: 50%
 
    Directed, with cost and reverse_cost
 

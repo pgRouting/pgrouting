@@ -9,17 +9,14 @@ DROP TABLE IF EXISTS vertices;
 DROP table if exists pointsOfInterest;
 DROP TABLE IF EXISTS old_restrictions;
 DROP TABLE IF EXISTS restrictions;
-DROP TABLE IF EXISTS retrict;
 DROP TABLE IF EXISTS combinations;
-DROP TABLE IF EXISTS vertex_table;
-DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS vehicles;
 DROP TABLE IF EXISTS orders;
 
 
 /* --EDGE TABLE CREATE start */
 CREATE TABLE edges (
-    id BIGSERIAL,
+    id BIGSERIAL PRIMARY KEY,
     source BIGINT,
     target BIGINT,
     cost FLOAT,
@@ -61,30 +58,29 @@ INSERT INTO edges (
 /* --EDGE TABLE ADD DATA end */
 
 /* -- q1 */
-SELECT  * INTO vertices
+SELECT * INTO vertices
 FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
+/* -- q1-1 */
+CREATE SEQUENCE vertices_id_seq;
+ALTER TABLE vertices ALTER COLUMN id SET DEFAULT nextval('vertices_id_seq');
+ALTER SEQUENCE vertices_id_seq OWNED BY vertices.id;
+SELECT setval('vertices_id_seq', (SELECT coalesce(max(id)) FROM vertices));
+/* -- q1-2 */
+\dS+ vertices
 /* -- q2 */
 SELECT * FROM vertices;
 /* -- q3 */
 /* -- set the source information */
-WITH
-out_going AS (
-  SELECT id AS vid, unnest(out_edges) AS eid, x, y
-  FROM vertices
-)
-UPDATE edges
-SET source = vid, x1 = x, y1 = y
-FROM out_going WHERE id = eid;
+UPDATE edges AS e
+SET source = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
 
 /* -- set the target information */
-WITH
-in_coming AS (
-  SELECT id AS vid, unnest(in_edges) AS eid, x, y
-  FROM vertices
-)
-UPDATE edges
-SET target = vid, x2 = x, y2 = y
-FROM in_coming WHERE id = eid;
+UPDATE edges AS e
+SET target = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
 /* -- q4 */
 SELECT id, source, target
 FROM edges ORDER BY id;
@@ -99,8 +95,7 @@ CREATE TABLE pointsOfInterest(
     side CHAR,
     fraction FLOAT,
     geom geometry,
-    newPoint geometry
-);
+    newPoint geometry);
 /* -- p2 */
 INSERT INTO pointsOfInterest (geom) VALUES
 (ST_POINT(1.8, 0.4)),

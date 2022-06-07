@@ -12,16 +12,7 @@ DROP TABLE IF EXISTS old_restrictions;
 DROP TABLE
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE
-DROP TABLE IF EXISTS retrict;
-NOTICE:  table "retrict" does not exist, skipping
-DROP TABLE
 DROP TABLE IF EXISTS combinations;
-DROP TABLE
-DROP TABLE IF EXISTS vertex_table;
-NOTICE:  table "vertex_table" does not exist, skipping
-DROP TABLE
-DROP TABLE IF EXISTS categories;
-NOTICE:  table "categories" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS vehicles;
 DROP TABLE
@@ -29,7 +20,7 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE
 /* --EDGE TABLE CREATE start */
 CREATE TABLE edges (
-    id BIGSERIAL,
+    id BIGSERIAL PRIMARY KEY,
     source BIGINT,
     target BIGINT,
     cost FLOAT,
@@ -72,9 +63,34 @@ INSERT INTO edges (
 INSERT 0 18
 /* --EDGE TABLE ADD DATA end */
 /* -- q1 */
-SELECT  * INTO vertices
+SELECT * INTO vertices
 FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
 SELECT 17
+/* -- q1-1 */
+CREATE SEQUENCE vertices_id_seq;
+CREATE SEQUENCE
+ALTER TABLE vertices ALTER COLUMN id SET DEFAULT nextval('vertices_id_seq');
+ALTER TABLE
+ALTER SEQUENCE vertices_id_seq OWNED BY vertices.id;
+ALTER SEQUENCE
+SELECT setval('vertices_id_seq', (SELECT coalesce(max(id)) FROM vertices));
+ setval
+--------
+     17
+(1 row)
+
+                                                      Table "public.vertices"
+  Column   |       Type       | Collation | Nullable |               Default                | Storage  | Stats target | Description
+-----------+------------------+-----------+----------+--------------------------------------+----------+--------------+-------------
+ id        | bigint           |           |          | nextval('vertices_id_seq'::regclass) | plain    |              |
+ in_edges  | bigint[]         |           |          |                                      | extended |              |
+ out_edges | bigint[]         |           |          |                                      | extended |              |
+ x         | double precision |           |          |                                      | plain    |              |
+ y         | double precision |           |          |                                      | plain    |              |
+ geom      | geometry         |           |          |                                      | main     |              |
+Access method: heap
+
+/* -- q1-2 */
 /* -- q2 */
 SELECT * FROM vertices;
  id | in_edges | out_edges |       x        |  y  |                    geom
@@ -100,24 +116,16 @@ SELECT * FROM vertices;
 
 /* -- q3 */
 /* -- set the source information */
-WITH
-out_going AS (
-  SELECT id AS vid, unnest(out_edges) AS eid, x, y
-  FROM vertices
-)
-UPDATE edges
-SET source = vid, x1 = x, y1 = y
-FROM out_going WHERE id = eid;
+UPDATE edges AS e
+SET source = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
 UPDATE 18
 /* -- set the target information */
-WITH
-in_coming AS (
-  SELECT id AS vid, unnest(in_edges) AS eid, x, y
-  FROM vertices
-)
-UPDATE edges
-SET target = vid, x2 = x, y2 = y
-FROM in_coming WHERE id = eid;
+UPDATE edges AS e
+SET target = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
 UPDATE 18
 /* -- q4 */
 SELECT id, source, target
@@ -153,8 +161,7 @@ CREATE TABLE pointsOfInterest(
     side CHAR,
     fraction FLOAT,
     geom geometry,
-    newPoint geometry
-);
+    newPoint geometry);
 CREATE TABLE
 /* -- p2 */
 INSERT INTO pointsOfInterest (geom) VALUES
