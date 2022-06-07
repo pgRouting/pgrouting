@@ -30,8 +30,6 @@ pgRouting Concepts
 
 .. contents::
 
-Getting Started
--------------------------------------------------------------------------------
 
 This is a simple guide to walk you through the steps of getting started
 with pgRouting. In this guide we will cover:
@@ -39,48 +37,417 @@ with pgRouting. In this guide we will cover:
 .. contents::
     :local:
 
+Graphs
+-------------------------------------------------------------------------------
+
+A graph is an ordered pair :math:`G = (V ,E)` where:
+
+* :math:`V` is a set of vertices, also called nodes
+* :math:`E \subseteq \{( u, v ) \mid u , v \in V \}`
+
+There are different kinds of graphs.
+
+* Undirected simple graph
+
+  * :math:`E \subseteq \{( u, v ) \mid u , v \in V, u \neq v\}`
+
+* Directed graph
+
+  * :math:`E \subseteq \{( u, v ) \mid (u , v) \in (V X V) \}`
+
+* Directed simple graph
+
+  * :math:`E \subseteq \{( u, v ) \mid (u , v) \in (V X V), u \neq v\}`
+
+Graphs:
+
+* Do not have geometries
+* Some graph theory problems requires graphs to have weights, called **cost** in
+  pgRouting.
+
+In pgRouting there are several ways to represent a graph on the database:
+
+* With ``cost``
+
+  * (``id``, ``source``, ``target``, ``cost``)
+
+* With ``cost`` and ``reverse_cost``
+
+  * (``id``, ``source``, ``target``, ``cost``, ``reverse_cost``)
+
+Where:
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - ``id``
+     - Identifier of the edge. Requirement to use the database in a consistent
+       manner.
+   * - ``source``
+     - Identifier of a vertex
+   * - ``target``
+     - Identifier of a vertex
+   * - ``cost``
+     - Weight of the edge (``source``, ``target``)
+
+       * When negative the edge (``source``, ``target``) do not exist on the
+         graph
+   * - ``reverse_cost``
+     - Weight of the edge (``target``, ``source``)
+
+       * When negative the edge (``target``, ``source``) do not exist on the
+         graph
+
+The decision of the graph to be **directed** or **undirected** is done when
+running a pgRouting algorithm.
+
+
+Graph with ``cost``
+...............................................................................
+
+The weighted directed graph, :math:`G_d(V,E)`, is interpreted as:
+
+* the set of vertices  :math:`V`
+
+  - :math:`V = source \cup target`
+
+* the set of edges :math:`E`
+
+  - :math:`E = \{(source_i, target_i, cost_i) \text{ when } cost_i >=0 \}`
+
+.. rubric:: Directed graph
+
+In a directed graph the edge :math:`(source_i, target_i, cost_i)` has
+directionality: :math:`source_i \rightarrow target_i`
+
+For the following data:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- g1
+   :end-before: -- g2
+
+.. graphviz::
+
+   digraph G {
+    1 -> 2 [label="  1(5)"];
+    3;
+   }
+
+.. rubric:: Undirected graph
+
+In an undirected graph the edge :math:`(source_i, target_i, cost_i)` does not
+have directionality: :math:`source_i \; {\rule[0.5ex]{1em}{0.55pt}} \; target_i`
+
+* In terms of a directed graph is like having two edges: :math:`source_i
+  \leftrightarrow target_i`
+
+For the following data:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- g1
+   :end-before: -- g2
+
+.. graphviz::
+
+   graph G {
+    1 -- 2 [label="  1(5)"];
+    3;
+   }
+
+Graph with ``cost`` and ``reverse_cost``
+...............................................................................
+
+The weighted directed graph, :math:`G_d(V,E)`, is defined by:
+
+* the set of vertices  :math:`V`
+
+  - :math:`V = source \cup target`
+
+* the set of edges :math:`E`
+
+  - :math:`E = \begin{split} \begin{align}
+    & {\{(source_i, target_i, cost_i) \text{ when } cost_i >=0 \}} \\
+    & \cup \\
+    & {\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0 \}}
+    \end{align} \end{split}`
+
+.. rubric:: Directed graph
+
+In a directed graph both edges have directionality
+
+* edge :math:`(source_i, target_i, cost_i)` has directionality: :math:`source_i
+  \rightarrow target_i`
+* edge :math:`(target_i, source_i, reverse\_cost_i)` has directionality:
+  :math:`target_i \rightarrow source_i`
+
+For the following data:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- g2
+   :end-before: -- g3
+
+.. graphviz::
+
+   digraph G {
+    1 -> 2 [label="  1(5)"];
+    2 -> 1 [label="  1(2)"];
+    3 -> 1 [label="  2(4)"];
+    2 -> 3 [label="  3(7)"];
+   }
+
+.. rubric:: Undirected graph
+
+In a directed graph both edges do not have directionality
+
+* Edge :math:`(source_i, target_i, cost_i)` is :math:`source_i
+  \; {\rule[0.5ex]{1em}{0.55pt}} \; target_i`
+* Edge :math:`(target_i, source_i, reverse\_cost_i)` is :math:`target_i
+  \; {\rule[0.5ex]{1em}{0.55pt}} \; source_i`
+* In terms of a directed graph is like having four edges:
+
+  * :math:`source_i \leftrightarrow target_i`
+  * :math:`target_i \leftrightarrow source_i`
+
+For the following data:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- g2
+   :end-before: -- g3
+
+.. graphviz::
+
+   graph G {
+    1 -- 2 [label="  1(5)"];
+    2 -- 1 [label="  1(2)"];
+    3 -- 1 [label="  2(4)"];
+    2 -- 3 [label="  3(7)"];
+   }
+
+Graphs without geometries
+-------------------------------------------------------------------------------
+
+Personal relationships, genealogy, file dependency problems can be solved
+using pgRouting. Those problems, normally,  do not come with gemetries asociated
+with the graph data.
+
+Wiki example
+...............................................................................
+
+Solve the example problem taken from wikipedia (`see top
+right graph <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`_) which:
+
+* Problem find the shortest path from :math:`1` to :math:`5`.
+* Is an undirected graph.
+* Although visually looks like to have geometries, the drawing is not to scale.
+
+  * No geometries asociated to the vertices or edges
+
+* Has 6 vertices :math`\{1,2,3,4,5,6\}'
+* Has 9 edges:
+
+:math:`\begin{split} \begin{align}
+E = & \{(1,2,7), (1,3,9), (1,6,14), \\
+& (2,3,10), (2,4,13), \\
+& (3,4,11), (3,6,2), \\
+& (4,5,6), \\
+& (5,6,9) \}
+\end{align} \end{split}`
+
+
+* The graph can be represented in many ways for example:
+
+.. graphviz::
+
+   graph G {
+    rankdir="LR";
+    1 [color="red"];
+    5 [color="green"];
+    1 -- 2 [label="  (7)"];
+    5 -- 6 [label="  (9)"];
+    1 -- 3 [label="  (9)"];
+    1 -- 6 [label="  (14)"];
+    2 -- 3 [label="  (10)"];
+    2 -- 4 [label="  (13)"];
+    3 -- 4 [label="  (11)"];
+    3 -- 6 [label="  (2)"];
+    4 -- 5 [label="  (6)"];
+   }
+
+
+Prepare the database
+...............................................................................
+
+Create a database for the example, access the database and install pgRouting: ::
+
+   $ createdb wiki
+   $ psql wiki
+   wiki =# CREATE EXTENSION pgRouting CASCADE;
+
+Create a table
+...............................................................................
+
+The basic elements needed to perform basic routing on an undirected graph are:
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - ``id``
+     - **ANY-INTEGER**
+     - Identifier of the edge.
+   * - ``source``
+     - **ANY-INTEGER**
+     - Identifier of the first end point vertex of the edge.
+   * - ``target``
+     - **ANY-INTEGER**
+     - Identifier of the second end point vertex of the edge.
+   * - ``cost``
+     - **ANY-NUMERICAL**
+     - Weight of the edge (``source``, ``target``)
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+.. literalinclude:: concepts.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+Insert the data
+...............................................................................
+
+.. literalinclude:: concepts.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+Find the shortest path
+...............................................................................
+
+To solve this example :doc:`pgr_dijkstra` is used:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+To go from :math:`1` to :math:`5` the path goes thru the following vertices:
+:math:`1 \rightarrow 3 \rightarrow 6 \rightarrow 5`
+
+.. graphviz::
+
+   graph G {
+    rankdir="LR";
+    1 [color="red"];
+    5 [color="green"];
+    1 -- 2 [label="  (7)"];
+    5 -- 6 [label="  (9)", color="blue"];
+    1 -- 3 [label="  (9)", color="blue"];
+    1 -- 6 [label="  (14)"];
+    2 -- 3 [label="  (10)"];
+    2 -- 4 [label="  (13)"];
+    3 -- 4 [label="  (11)"];
+    3 -- 6 [label="  (2)", color="blue"];
+    4 -- 5 [label="  (6)"];
+   }
+
+Create a topology
+...............................................................................
+
+For more complex functions a complete topology might be needed.
+
+To create the vertices table, use :doc:`pgr_extractVertices`
+
+.. literalinclude:: concepts.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+Graphs with geometries
+-------------------------------------------------------------------------------
+
 Create a routing Database
 ...............................................................................
 
-The first thing we need to do is create a database and load pgrouting in
-the database. Typically you will create a database for each project. Once
-you have a database to work in, your can load your data and build your
-application in that database. This makes it easy to move your project
-later if you want to to say a production server.
+The first step is to create a database and load pgRouting in the database.
 
-For Postgresql 9.2 and later versions
+Typically create a database for each project.
+
+Once having the database to work in, load your data and build the routing
+application in that database.
 
 .. parsed-literal::
 
-	createdb mydatabase
-	psql mydatabase -c "create extension postgis"
-	psql mydatabase -c "create extension pgrouting"
+	createdb sampledata
+	psql sampledata -c "CREATE EXTENSION postgis CASCADE"
 
 Load Data
 ...............................................................................
 
-There are several ways to load your data into pgRouting. The most direct way
-is to load an Open Street Maps (OSM) dataset using **osm2pgrouting**. This is a
-tool, integrated in pgRouting project, that loads OSM data into postgresql
-with pgRouting requirements, including data structure and routing topology.
+There are several ways to load your data into pgRouting.
 
-If you have other requirements, you can try various OpenSource tools that can
-help you, like:
+* Manually creating a database.
 
-:shp2pgsql: - this is the postgresql shapefile loader
-:ogr2ogr: - this is a vector data conversion utility
-:osm2pgsql: - this is a tool for loading OSM data into postgresql
+  * `Graphs without geometries`_
+  * :doc:`sampledata`: a small graph used on the documentation examples
 
-Please note that these tools will not import the data in a structure compatible
-with pgRouting and you might need to adapt it.
+* Using `osm2pgrouting
+  <https://workshop.pgrouting.org/latest/en/basic/data.html>`__
 
-These tools and probably others will allow you to read vector data so that
-you may then load that data into your database as a table of some kind. At this
-point you need to know a little about your data structure and content. One easy
-way to browse your new data table is with pgAdmin or phpPgAdmin.
+There are various open source tools that can help, like:
+
+:shp2pgsql: - postgresql shapefile loader
+:ogr2ogr: - vector data conversion utility
+:osm2pgsql: - loadg OSM data into postgresql
+
+Please note that these tools will **not** import the data in a structure
+compatible with pgRouting and when this happens the topology needs to be
+adajusted.
+
+* Breakup a segments on each segment-segment instersection
+* When missing, add columns and assign values to ``source``, ``target``,
+  ``cost``, ``reverse_cost``.
+* Connect a disconnected graph.
+* Create the complete graph topology
+* Create one or more graphs based on the application to be developed.
+
+  * Create a contracted graph for the high speed roads
+  * Create graphs per state/country
+
+In few words:
+
+   Prepare the graph
+
+What and how to prepare the graph, will depend on the application and/or on the
+quality of the data and/or on how close the information is to have a topology
+usable by pgRouting and/or some other factors not mentioned.
+
+The steps to prepare the graph involve geometry operations using `PostGIS
+<https://postgis.net/>`__ ans some others involve graph operations like
+:doc:`pgr_contraction` to contract a graph.
+
+The `workshop https://workshop.pgrouting.org/latest>`__ has a step by step on
+how to prepare a graph using Open Street Map data, for a small application.
+
+The use of indexes on the database design in general:
+
+* Have the geometries indexed.
+* Have the identifiers columns indexed.
+
+Please consult the `PostgreSQL <https://www.postgresql.org/docs/>` documentation
+and the `PostGIS <https://postgis.net/>`__ documentation.
+
 
 Build a Routing Topology
 ...............................................................................
+
+.. TODO checked up to here
 
 .. note:: this step is not needed if data is loaded with `osm2pgrouting`
 
