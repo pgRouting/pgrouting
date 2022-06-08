@@ -335,7 +335,6 @@ linkcheck_ignore = [
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
     r'https://github.com/pgRouting/pgrouting/issues/*i',    # limit only pgrouting
     r'https://www.overpass-api.de/*',
-    'https://www.leopark.mx',
     'https://github.com/pgRouting/pgrouting/archive/v3.4.0.tar.gz'
 ]
 

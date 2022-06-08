@@ -103,7 +103,6 @@ direct monetary funding to the pgRouting project:
 
 - `Georepublic <https://georepublic.info/en/>`__
 - `Google Summer of Code <https://summerofcode.withgoogle.com>`__
-- `Leopark <https://www.leopark.mx/>`__
 - `Paragon Corporation <https://www.paragoncorporation.com/>`__
 
 Contributors Past & Present:
