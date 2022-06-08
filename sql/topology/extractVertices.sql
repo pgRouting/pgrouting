@@ -312,12 +312,12 @@ BEGIN
           FULL OUTER JOIN agg_in USING (vid)
         )
 
-        SELECT vid AS id, in_edges, out_edges, NULL::FLOAT, NULL::FLOAT, NULL::geometry
+        SELECT vid::BIGINT AS id, in_edges, out_edges, NULL::FLOAT, NULL::FLOAT, NULL::geometry
         FROM the_points$q$;
 
 
     ELSIF has_source AND NOT has_id THEN
-      -- SELECT id, source, target
+      -- SELECT source, target
       query := $q$
         WITH
 
@@ -332,7 +332,7 @@ BEGIN
           SELECT target FROM main_sql
         )
 
-        SELECT DISTINCT vid AS id, NULL::BIGINT[], NULL::BIGINT[], NULL::FLOAT, NULL::FLOAT, NULL::geometry
+        SELECT DISTINCT vid::BIGINT AS id, NULL::BIGINT[], NULL::BIGINT[], NULL::FLOAT, NULL::FLOAT, NULL::geometry
         FROM the_points$q$;
 
     ELSE
