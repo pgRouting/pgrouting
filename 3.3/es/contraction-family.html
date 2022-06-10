@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Contraction - Familia de funciones &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -190,14 +191,14 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/contraction-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/contraction-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/contraction-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/contraction/doc/contraction.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html">2.2</a></p></li>
 </ul>
 <section id="contraction-family-of-functions">
-<h1>Contraction - Familia de funciones<a class="headerlink" href="#contraction-family-of-functions" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Contraction - Familia de funciones<a class="headerlink" href="#contraction-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Introducción<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>En grafos grandes, como los grafos de carretera o de redes eléctricas, la contracción de grafos se puede utilizar para acelerar algunos algoritmos. La contracción reduce el tamaño del grafo eliminando algunos de los vértices y aristas, por ejemplo, podría agregar aristas que representen una secuencia de las aristas originales disminuyendo el tiempo total y el espacio utilizados en los algoritmos de grafos.</p>
 <p>Esta implementación proporciona un marco flexible para agregar algoritmos de contracción en el futuro, actualmente, admite dos algoritmos:</p>
 <ol class="arabic simple">
@@ -211,10 +212,10 @@
 </ul>
 </section>
 <section id="dead-end-contraction">
-<h2>Contracción sin salida<a class="headerlink" href="#dead-end-contraction" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Contracción sin salida<a class="headerlink" href="#dead-end-contraction" title="Permalink to this heading">¶</a></h2>
 <p>En el algoritmo, la contracción sin salida se representa mediante 1.</p>
 <section id="dead-end">
-<h3>Sin salida<a class="headerlink" href="#dead-end" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Sin salida<a class="headerlink" href="#dead-end" title="Permalink to this heading">¶</a></h3>
 <p>En el caso de un grafo no dirigido, un nodo se considera <cite>dead end</cite> (sin salida)</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-number-of-adjacent-vertices-is-1">El número de vértices adyacentes es 1.</a></p></li>
@@ -230,7 +231,7 @@
 </ul>
 <p>Cuando las condiciones son verdaderas, se puede hacer la <a class="reference internal" href="#operation-dead-end-contraction">Operation: Dead End Contraction</a></p>
 <section id="the-number-of-adjacent-vertices-is-1">
-<h4>El número de vértices adyacentes es 1.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-1" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>El número de vértices adyacentes es 1.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-1" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y salientes.</p></li>
@@ -260,7 +261,7 @@
 }" class="graphviz" /></div>
 </section>
 <section id="there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">
-<h4>No hay aristas salientes y tiene al menos una arista entrante.<a class="headerlink" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>No hay aristas salientes y tiene al menos una arista entrante.<a class="headerlink" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y salientes.</p></li>
@@ -279,7 +280,7 @@
 }" class="graphviz" /></div>
 </section>
 <section id="there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">
-<h4>No hay aristas entrantes y tiene al menos una arista saliente.<a class="headerlink" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>No hay aristas entrantes y tiene al menos una arista saliente.<a class="headerlink" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son nodos <a class="reference internal" href="#dead-end">dead end</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y salientes.</p></li>
@@ -300,7 +301,7 @@
 </section>
 </section>
 <section id="operation-dead-end-contraction">
-<h3>Operación: Contracción sin salida<a class="headerlink" href="#operation-dead-end-contraction" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Operación: Contracción sin salida<a class="headerlink" href="#operation-dead-end-contraction" title="Permalink to this heading">¶</a></h3>
 <p>La contracción sin salida se detendrá hasta que no haya más nodos sin salida. Por ejemplo, del siguiente grafo donde <code class="docutils literal notranslate"><span class="pre">w</span></code> es el nodo <a class="reference internal" href="#dead-end">dead end</a>:</p>
 <div class="graphviz"><img src="_images/graphviz-5e35f42543a9c600b7fe7e468fc428e28f807680.png" alt="digraph G {
     u, v [shape=circle;style=filled;width=.4;color=deepskyblue];
@@ -333,10 +334,10 @@
 </section>
 </section>
 <section id="linear-contraction">
-<h2>Contracción lineal<a class="headerlink" href="#linear-contraction" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Contracción lineal<a class="headerlink" href="#linear-contraction" title="Permalink to this heading">¶</a></h2>
 <p>En el algoritmo, la contracción lineal es representada con un 2.</p>
 <section id="linear">
-<h3>Lineal<a class="headerlink" href="#linear" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Lineal<a class="headerlink" href="#linear" title="Permalink to this heading">¶</a></h3>
 <p>En el caso de un grafo no dirigido, un nodo se considera un nodo <cite>lineal</cite> cuando</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-number-of-adjacent-vertices-is-2">El número de vértices adyacentes es 2.</a></p></li>
@@ -350,7 +351,7 @@
 </li>
 </ul>
 <section id="the-number-of-adjacent-vertices-is-2">
-<h4>El número de vértices adyacentes es 2.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-2" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>El número de vértices adyacentes es 2.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-2" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Los nodos verdes son <a class="reference internal" href="#linear">lineales</a></p></li>
 <li><p>Los nodos azules tienen un número ilimitado de aristas entrantes y salientes.</p></li>
@@ -379,7 +380,7 @@
 }" class="graphviz" /></div>
 </section>
 <section id="linearity-is-symmetrical">
-<h4>La linealidad es simétrica<a class="headerlink" href="#linearity-is-symmetrical" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>La linealidad es simétrica<a class="headerlink" href="#linearity-is-symmetrical" title="Permalink to this heading">¶</a></h4>
 <p>Usando un contra ejemplo, el vértice <code class="docutils literal notranslate"><span class="pre">v</span></code> no es lineal porque no es posible pasar de <code class="docutils literal notranslate"><span class="pre">w</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code> a través de <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p>
 <div class="graphviz"><img src="_images/graphviz-bc77587ebc527e97cf3403da611daafab99363d2.png" alt="digraph G {
     u, w, v [shape=circle;style=filled;width=.4;color=deepskyblue];
@@ -392,7 +393,7 @@
 </section>
 </section>
 <section id="operation-linear-contraction">
-<h3>Operación: Contracción Lineal<a class="headerlink" href="#operation-linear-contraction" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Operación: Contracción Lineal<a class="headerlink" href="#operation-linear-contraction" title="Permalink to this heading">¶</a></h3>
 <p>La contracción lineal se detendrá hasta que no haya más nodos lineales. Por ejemplo, en el siguiente grafo donde <code class="docutils literal notranslate"><span class="pre">v</span></code> y <code class="docutils literal notranslate"><span class="pre">w</span></code> son nodos <a class="reference internal" href="#linear">lineales</a> :</p>
 <div class="graphviz"><img src="_images/graphviz-bde47d0456a0ce341e8e9c57a3df5cf0ddc93edc.png" alt="digraph G {
     u, z [shape=circle;style=filled;color=deepskyblue];
@@ -443,7 +444,7 @@
 </section>
 </section>
 <section id="the-cycle">
-<h2>El ciclo<a class="headerlink" href="#the-cycle" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>El ciclo<a class="headerlink" href="#the-cycle" title="Permalink to this heading">¶</a></h2>
 <p>Contraer un grafo se puede hacer con más de una operación. El orden de las operaciones afecta al gráfico contraído resultante; después de aplicar una operación, el conjunto de vértices que se pueden contraer con otra operación cambia.</p>
 <p>Esta implementación alterna los tiempos `` max_cycles`` a través de `` operations_order``.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;input&gt;
@@ -456,14 +457,14 @@ do max_cycles times {
 </div>
 </section>
 <section id="contracting-sample-data">
-<h2>Contracción de Datos de Muestra<a class="headerlink" href="#contracting-sample-data" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Contracción de Datos de Muestra<a class="headerlink" href="#contracting-sample-data" title="Permalink to this heading">¶</a></h2>
 <p>En esta sección, la creación y el uso de un grafo contraído se mostrarán en el ejemplo.</p>
 <ul class="simple">
 <li><p>Se usa <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> para un grafo no dirigido.</p></li>
 <li><p>una operación sin salida primero seguida de una operación lineal.</p></li>
 </ul>
 <section id="construction-of-the-graph-in-the-database">
-<h3>Construcción del grafo en la base de datos<a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Construcción del grafo en la base de datos<a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Datos Originales</p>
 <p>La siguiente consulta muestra los datos originales implicados en la operación de contracción.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
@@ -494,7 +495,7 @@ do max_cycles times {
 <p>El grafo original:</p>
 <a class="reference internal image-reference" href="_images/undirected_sampledata_a.png"><img alt="_images/undirected_sampledata_a.png" src="_images/undirected_sampledata_a.png" style="width: 262.0px; height: 237.0px;" /></a>
 <section id="contraction-results">
-<h4>Resultados de la Contracción<a class="headerlink" href="#contraction-results" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Resultados de la Contracción<a class="headerlink" href="#contraction-results" title="Permalink to this heading">¶</a></h4>
 <p>Los resultados no representan al grafo contraído. Representan los cambios realizados en el grafo después de aplicar el algoritmo de contracción.</p>
 <p>Observe que los vértices, por ejemplo, <span class="math notranslate nohighlight">\(6\)</span> , no aparecen en los resultados porque no se vieron afectados por el algoritmo de contracción.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
@@ -525,13 +526,9 @@ do max_cycles times {
 </ul>
 </section>
 <section id="add-additional-columns">
-<h4>Añadir columnas adicionales<a class="headerlink" href="#add-additional-columns" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Añadir columnas adicionales<a class="headerlink" href="#add-additional-columns" title="Permalink to this heading">¶</a></h4>
 <p>Adición de columnas adicionales a las tablas <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> y  <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr</span></code> donde:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 81%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -571,7 +568,7 @@ do max_cycles times {
 </div>
 </section>
 <section id="store-contraction-information">
-<h4>Almacenar información de contracción<a class="headerlink" href="#store-contraction-information" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Almacenar información de contracción<a class="headerlink" href="#store-contraction-information" title="Permalink to this heading">¶</a></h4>
 <p>Almacenar los <a class="reference internal" href="#contraction-results">resultados de la contracción</a> en una tabla</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
@@ -582,7 +579,7 @@ do max_cycles times {
 </div>
 </section>
 <section id="update-the-vertices-and-edge-tables">
-<h4>Actualizar los vértices y las tablas de aristas<a class="headerlink" href="#update-the-vertices-and-edge-tables" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Actualizar los vértices y las tablas de aristas<a class="headerlink" href="#update-the-vertices-and-edge-tables" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Actualice la tabla <cite>vértice</cite> utilizando la información de contracción</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr.is_contracted</span></code> para indicar los vértices que son contraídos.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table_vertices_pgr</span>
@@ -670,9 +667,9 @@ do max_cycles times {
 </section>
 </section>
 <section id="the-contracted-graph">
-<h3>El grafo contraído<a class="headerlink" href="#the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>El grafo contraído<a class="headerlink" href="#the-contracted-graph" title="Permalink to this heading">¶</a></h3>
 <section id="vertices-that-belong-to-the-contracted-graph">
-<h4>Vértices que pertenecen al grafo contraído.<a class="headerlink" href="#vertices-that-belong-to-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Vértices que pertenecen al grafo contraído.<a class="headerlink" href="#vertices-that-belong-to-the-contracted-graph" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span>
 <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span>
 <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">false</span>
@@ -692,7 +689,7 @@ do max_cycles times {
 </div>
 </section>
 <section id="edges-that-belong-to-the-contracted-graph">
-<h4>Aristas que pertenecen al grafo contraído.<a class="headerlink" href="#edges-that-belong-to-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Aristas que pertenecen al grafo contraído.<a class="headerlink" href="#edges-that-belong-to-the-contracted-graph" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">vertices_in_graph</span> <span class="n">AS</span> <span class="p">(</span>
     <span class="n">SELECT</span> <span class="nb">id</span>
@@ -722,7 +719,7 @@ do max_cycles times {
 </section>
 </section>
 <section id="using-the-contracted-graph">
-<h3>Usando el grafo contraído<a class="headerlink" href="#using-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Usando el grafo contraído<a class="headerlink" href="#using-the-contracted-graph" title="Permalink to this heading">¶</a></h3>
 <p>Uso del grafo contraído con <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></p>
 <p>Hay tres casos al calcular la ruta más corta entre un origen y un destino determinados en un grafo contraído:</p>
 <ul class="simple">
@@ -731,7 +728,7 @@ do max_cycles times {
 <li><p>Caso 3: El origen y/o el destino pertenecen a un vértice.</p></li>
 </ul>
 <section id="case-1-both-source-and-target-belong-to-the-contracted-graph">
-<h4>Caso 1: Tanto el origen como el destino pertenecen al grafo contraído.<a class="headerlink" href="#case-1-both-source-and-target-belong-to-the-contracted-graph" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Caso 1: Tanto el origen como el destino pertenecen al grafo contraído.<a class="headerlink" href="#case-1-both-source-and-target-belong-to-the-contracted-graph" title="Permalink to this heading">¶</a></h4>
 <p>Usando las <a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Aristas que pertenecen al grafo contraído.</a> en las líneas 10 a 19.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
 <span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
@@ -793,7 +790,7 @@ do max_cycles times {
 </div>
 </section>
 <section id="case-2-source-and-or-target-belong-to-an-edge-subgraph">
-<h4>Caso 2: El origen y/o el destino pertenecen a un subgrafo de aristas.<a class="headerlink" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Caso 2: El origen y/o el destino pertenecen a un subgrafo de aristas.<a class="headerlink" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph" title="Permalink to this heading">¶</a></h4>
 <p>Refinar la función anterior para incluir nodos que pertenezcan a una arista.</p>
 <ul class="simple">
 <li><p>Los vértices que deben ampliarse se calculan en las líneas 10 a 16.</p></li>
@@ -876,7 +873,7 @@ do max_cycles times {
 </div>
 </section>
 <section id="case-3-source-and-or-target-belong-to-a-vertex">
-<h4>Caso 3: El origen y/o el destino pertenecen a un vértice.<a class="headerlink" href="#case-3-source-and-or-target-belong-to-a-vertex" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Caso 3: El origen y/o el destino pertenecen a un vértice.<a class="headerlink" href="#case-3-source-and-or-target-belong-to-a-vertex" title="Permalink to this heading">¶</a></h4>
 <p>Refinar la función anterior para incluir nodos que pertenezcan a una arista.</p>
 <ul class="simple">
 <li><p>Los vértices que deben ampliarse se calculan en las líneas 18 a 23.</p></li>
@@ -978,7 +975,7 @@ do max_cycles times {
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
 <li><p><a class="reference external" href="https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></p></li>
@@ -1005,8 +1002,8 @@ do max_cycles times {
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

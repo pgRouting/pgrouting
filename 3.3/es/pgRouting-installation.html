@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Instalación &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -157,7 +158,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-installation.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-installation.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-installation.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/installation/installation.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/installation/installation.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/installation/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/installation/index.html">2.0</a></p></li>
 </ul>
 <section id="installation">
-<h1>Instalación<a class="headerlink" href="#installation" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Instalación<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
 <p class="rubric">Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a></p></li>
@@ -171,7 +172,7 @@
 <p>Las instrucciones para descargar e instalar archivos binarios para diferentes instrucciones de sistemas operativos y notas y correcciones adicionales no incluidas en esta documentación se pueden encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Wiki de Instalación</a></p>
 <p>Para utilizar pgRouting postGIS necesita ser instalado, por favor lea la información sobre la instalación en esta  <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
 <section id="short-version">
-<span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="install-short"></span><h2>Versión corta<a class="headerlink" href="#short-version" title="Permalink to this heading">¶</a></h2>
 <p>Extraer la bola de alquitrán</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar xvfz pgrouting-3.3.2.tar.gz
 <span class="nb">cd</span> pgrouting-3.3.2
@@ -193,7 +194,7 @@ psql routing -c <span class="s1">&#39;CREATE EXTENSION pgRouting&#39;</span>
 </div>
 </section>
 <section id="get-the-sources">
-<span id="install-get-sources"></span><h2>Obtener las fuentes<a class="headerlink" href="#get-the-sources" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="install-get-sources"></span><h2>Obtener las fuentes<a class="headerlink" href="#get-the-sources" title="Permalink to this heading">¶</a></h2>
 <p>La última versión de pgRouting se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
 <p class="rubric">Wget</p>
 <p>Para descargar esta versión:</p>
@@ -211,7 +212,7 @@ git checkout v3.3.2
 <p>Ir a <a class="reference internal" href="#install-short"><span class="std std-ref">Versión corta</span></a> a las instrucciones de compilación (no hay bola de alquitrán).</p>
 </section>
 <section id="enabling-and-upgrading-in-the-database">
-<span id="install-enable-db"></span><h2>Habilitación y actualización en la base de datos<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="install-enable-db"></span><h2>Habilitación y actualización en la base de datos<a class="headerlink" href="#enabling-and-upgrading-in-the-database" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Habilitación de la base de datos</p>
 <p>pgRouting es una extensión y depende de postGIS. Habilitar de postGIS antes de habilitar pgRouting en la base de datos</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span><span class="w"></span>
@@ -226,7 +227,7 @@ git checkout v3.3.2
 <p>Puede hallar más información en <a class="reference external" href="https://www.postgresql.org/docs/current/sql-createextension.html">https://www.postgresql.org/docs/current/sql-createextension.html</a></p>
 </section>
 <section id="dependencies">
-<span id="install-dependencies"></span><h2>Dependencias<a class="headerlink" href="#dependencies" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="install-dependencies"></span><h2>Dependencias<a class="headerlink" href="#dependencies" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Dependencias de Compilación</p>
 <p>Para poder compilar pgRouting, asegúrese de que se cumplen las siguientes dependencias:</p>
 <ul class="simple">
@@ -281,7 +282,7 @@ git checkout v3.3.2
 </div>
 </section>
 <section id="configuring">
-<span id="install-configuring"></span><h2>Configuración<a class="headerlink" href="#configuring" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="install-configuring"></span><h2>Configuración<a class="headerlink" href="#configuring" title="Permalink to this heading">¶</a></h2>
 <p>pgRouting utiliza el sistema “cmake” para realizar la configuración.</p>
 <p>El directorio de compilación es diferente del directorio de origen</p>
 <p>Cree el directorio de compilación</p>
@@ -289,7 +290,7 @@ git checkout v3.3.2
 </pre></div>
 </div>
 <section id="configurable-variables">
-<h3>Variables configurables<a class="headerlink" href="#configurable-variables" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Variables configurables<a class="headerlink" href="#configurable-variables" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Para ver las variables que se pueden configurar</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> build
 $ cmake -L ..
@@ -298,11 +299,6 @@ $ cmake -L ..
 <p class="rubric">Configurar la documentación</p>
 <p>La mayor parte del esfuerzo de la documentación ha estado en los archivos HTML. Algunas variables para la documentación:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 9%" />
-<col style="width: 72%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
 <th class="head"><p>Valores predeterminados</p></th>
@@ -347,7 +343,7 @@ $ cmake -L ..
 </section>
 </section>
 <section id="building">
-<span id="install-build"></span><h2>Compilando<a class="headerlink" href="#building" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="install-build"></span><h2>Compilando<a class="headerlink" href="#building" title="Permalink to this heading">¶</a></h2>
 <p>Uso de <code class="docutils literal notranslate"><span class="pre">make</span></code> para compilar el código y la documentación</p>
 <p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/build</em></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make          <span class="c1"># build the code but not the documentation</span>
@@ -384,7 +380,7 @@ sudo make install
 <p>e iniciar el proceso de compilación como se mencionó anteriormente.</p>
 </section>
 <section id="testing">
-<span id="install-testing"></span><h2>Pruebas<a class="headerlink" href="#testing" title="Enlazar permanentemente con este título">¶</a></h2>
+<span id="install-testing"></span><h2>Pruebas<a class="headerlink" href="#testing" title="Permalink to this heading">¶</a></h2>
 <p>Actualmente no hay  <code class="code docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> y las pruebas se realizan de la siguiente manera</p>
 <p>Las siguientes instrucciones comienzan desde <em>path/to/pgrouting/</em></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tools/testers/doc_queries_generator.pl
@@ -395,7 +391,7 @@ dropdb  -U &lt;user&gt; ___pgr___test___
 </div>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
@@ -417,8 +413,8 @@ dropdb  -U &lt;user&gt; ___pgr___test___
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

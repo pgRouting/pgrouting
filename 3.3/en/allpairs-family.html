@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>All Pairs - Family of Functions &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -162,7 +163,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/allpairs/doc/allpairs.html">2.2</a></p></li>
 </ul>
 <section id="all-pairs-family-of-functions">
-<h1>All Pairs - Family of Functions<a class="headerlink" href="#all-pairs-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<h1>All Pairs - Family of Functions<a class="headerlink" href="#all-pairs-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <p>The following functions work on all vertices pair combinations</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall’s algorithm.</p></li>
@@ -171,7 +172,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="performance">
-<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>The following tests:</dt><dd><ul class="simple">
 <li><p>non server computer</p></li>
@@ -183,7 +184,7 @@
 </dd>
 </dl>
 <section id="data">
-<h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this heading">¶</a></h3>
 <p>The following data was used</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
 wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;https://www.overpass-api.de/api/xapi?*[bbox=][@meta]&quot;
@@ -198,9 +199,9 @@ osm2pgrouting -f sampledata.osm -d portland -s 0
 </div>
 </section>
 <section id="results">
-<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this heading">¶</a></h3>
 <dl class="field-list simple">
-<dt class="field-odd">Test</dt>
+<dt class="field-odd">Test<span class="colon">:</span></dt>
 <dd class="field-odd"><p>One</p>
 </dd>
 </dl>
@@ -217,34 +218,26 @@ SELECT count(*) FROM pgr_johnson(
 </div>
 <p>The results of this tests are presented as:</p>
 <dl class="field-list simple">
-<dt class="field-odd">SIZE</dt>
+<dt class="field-odd">SIZE<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is the number of edges given as input.</p>
 </dd>
-<dt class="field-even">EDGES</dt>
+<dt class="field-even">EDGES<span class="colon">:</span></dt>
 <dd class="field-even"><p>is the total number of records in the query.</p>
 </dd>
-<dt class="field-odd">DENSITY</dt>
+<dt class="field-odd">DENSITY<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is the density of the data <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</p>
 </dd>
-<dt class="field-even">OUT ROWS</dt>
+<dt class="field-even">OUT ROWS<span class="colon">:</span></dt>
 <dd class="field-even"><p>is the number of records returned by the queries.</p>
 </dd>
-<dt class="field-odd">Floyd-Warshall</dt>
+<dt class="field-odd">Floyd-Warshall<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is the average execution time in seconds of pgr_floydWarshall.</p>
 </dd>
-<dt class="field-even">Johnson</dt>
+<dt class="field-even">Johnson<span class="colon">:</span></dt>
 <dd class="field-even"><p>is the average execution time in seconds of pgr_johnson.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 18%" />
-<col style="width: 14%" />
-<col style="width: 25%" />
-<col style="width: 23%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>SIZE</p></th>
 <th class="head"><p>EDGES</p></th>
@@ -398,7 +391,7 @@ SELECT count(*) FROM pgr_johnson(
 </tbody>
 </table>
 <dl class="field-list simple">
-<dt class="field-odd">Test</dt>
+<dt class="field-odd">Test<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Two</p>
 </dd>
 </dl>
@@ -419,34 +412,26 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 </div>
 <p>The results of this tests are presented as:</p>
 <dl class="field-list simple">
-<dt class="field-odd">SIZE</dt>
+<dt class="field-odd">SIZE<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is the size of the bounding box.</p>
 </dd>
-<dt class="field-even">EDGES</dt>
+<dt class="field-even">EDGES<span class="colon">:</span></dt>
 <dd class="field-even"><p>is the total number of records in the query.</p>
 </dd>
-<dt class="field-odd">DENSITY</dt>
+<dt class="field-odd">DENSITY<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is the density of the data <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</p>
 </dd>
-<dt class="field-even">OUT ROWS</dt>
+<dt class="field-even">OUT ROWS<span class="colon">:</span></dt>
 <dd class="field-even"><p>is the number of records returned by the queries.</p>
 </dd>
-<dt class="field-odd">Floyd-Warshall</dt>
+<dt class="field-odd">Floyd-Warshall<span class="colon">:</span></dt>
 <dd class="field-odd"><p>is the average execution time in seconds of pgr_floydWarshall.</p>
 </dd>
-<dt class="field-even">Johnson</dt>
+<dt class="field-even">Johnson<span class="colon">:</span></dt>
 <dd class="field-even"><p>is the average execution time in seconds of pgr_johnson.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 9%" />
-<col style="width: 15%" />
-<col style="width: 15%" />
-<col style="width: 26%" />
-<col style="width: 24%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>SIZE</p></th>
 <th class="head"><p>EDGES</p></th>
@@ -580,7 +565,7 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 </table>
 </section>
 <section id="see-also">
-<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
@@ -608,8 +593,8 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

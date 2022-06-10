@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Datos Muestra &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -154,7 +155,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/sampledata.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/sampledata.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/sampledata.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/developer/sampledata.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/developer/sampledata.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/developer/sampledata.html">2.0</a></p></li>
 </ul>
 <section id="sample-data">
-<h1>Datos Muestra<a class="headerlink" href="#sample-data" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>Datos Muestra<a class="headerlink" href="#sample-data" title="Permalink to this heading">¶</a></h1>
 <p>La documentación proporciona consultas de ejemplo muy simples basadas en una red muestra pequeña. Para ser capaz de ejecutar las consultas de la muestra, ejecute los siguientes comandos SQL para crear una tabla con el conjunto de datos de la red.</p>
 <p class="rubric">Crear tabla</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">edge_table</span> <span class="p">(</span>
@@ -305,7 +306,7 @@
 </pre></div>
 </div>
 <section id="images">
-<h2>Imágenes<a class="headerlink" href="#images" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Imágenes<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Las flechas rojas corresponden cuando <code class="docutils literal notranslate"><span class="pre">cost</span></code> &gt; 0 en la tabla de aristas.</p></li>
 <li><p>Las flechas azules corresponden cuando  <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> &gt; 0 en la tabla de aristas.</p></li>
@@ -313,7 +314,7 @@
 <li><p>Haga clic en el grafo para ampliarlo.</p></li>
 </ul>
 <section id="network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used">
-<span id="fig1"></span><h3>Se utilizan redes para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">directed</span></code> , <code class="docutils literal notranslate"><span class="pre">cost</span></code> y  <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="fig1"></span><h3>Se utilizan redes para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">directed</span></code> , <code class="docutils literal notranslate"><span class="pre">cost</span></code> y  <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-directed-and-cost-and-reverse-cost-columns-are-used" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de vista de los vehículos.</p>
 <figure class="align-default" id="id1">
 <img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" />
@@ -323,7 +324,7 @@
 </figure>
 </section>
 <section id="network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used">
-<span id="fig2"></span><h3>Se utiliza la red para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">undirected</span></code> , <code class="docutils literal notranslate"><span class="pre">cost</span></code> y  <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="fig2"></span><h3>Se utiliza la red para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">undirected</span></code> , <code class="docutils literal notranslate"><span class="pre">cost</span></code> y  <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-undirected-and-cost-and-reverse-cost-columns-are-used" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de vista de los peatones.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 310.5px; height: 312.0px;" /></a>
@@ -333,7 +334,7 @@
 </figure>
 </section>
 <section id="network-for-queries-marked-as-directed-and-only-cost-column-is-used">
-<span id="fig3"></span><h3>Red para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">directed</span></code> y sólo se utiliza la columna <code class="docutils literal notranslate"><span class="pre">cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-directed-and-only-cost-column-is-used" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="fig3"></span><h3>Red para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">directed</span></code> y sólo se utiliza la columna <code class="docutils literal notranslate"><span class="pre">cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-directed-and-only-cost-column-is-used" title="Permalink to this heading">¶</a></h3>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 130.8px; height: 126.60000000000001px;" /></a>
 <figcaption>
@@ -342,7 +343,7 @@
 </figure>
 </section>
 <section id="network-for-queries-marked-as-undirected-and-only-cost-column-is-used">
-<span id="fig4"></span><h3>Red para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">undirected</span></code> y solo se utiliza la columna <code class="docutils literal notranslate"><span class="pre">cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-undirected-and-only-cost-column-is-used" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="fig4"></span><h3>Red para consultas marcadas como <code class="docutils literal notranslate"><span class="pre">undirected</span></code> y solo se utiliza la columna <code class="docutils literal notranslate"><span class="pre">cost</span></code><a class="headerlink" href="#network-for-queries-marked-as-undirected-and-only-cost-column-is-used" title="Permalink to this heading">¶</a></h3>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 131.20000000000002px; height: 127.2px;" /></a>
 <figcaption>
@@ -351,7 +352,7 @@
 </figure>
 </section>
 <section id="pick-deliver-data">
-<span id="pickdeliverdata"></span><h3>Datos de Recogida y Entrega<a class="headerlink" href="#pick-deliver-data" title="Enlazar permanentemente con este título">¶</a></h3>
+<span id="pickdeliverdata"></span><h3>Datos de Recogida y Entrega<a class="headerlink" href="#pick-deliver-data" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">customer</span> <span class="n">CASCADE</span><span class="p">;</span>
 <span class="n">CREATE</span> <span class="n">table</span> <span class="n">customer</span> <span class="p">(</span>
@@ -495,8 +496,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

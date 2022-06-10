@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_trsp - Turn Restriction Shortest Path (TRSP) &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -183,7 +184,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-trsp-turn-restriction-shortest-path-trsp">
-<h1>pgr_trsp - Turn Restriction Shortest Path (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Permalink to this headline">¶</a></h1>
+<h1>pgr_trsp - Turn Restriction Shortest Path (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Permalink to this heading">¶</a></h1>
 <p id="index-0"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> — Returns the shortest path with support for turn restrictions.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
@@ -204,7 +205,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
 <span class="w">                  </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
@@ -233,54 +234,54 @@
 <p>The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.</p>
 <p>The TRSP setup is mostly the same as <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">Dijkstra shortest path</span></a> with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.</p>
 <dl class="field-list">
-<dt class="field-odd">sql</dt>
+<dt class="field-odd">sql<span class="colon">:</span></dt>
 <dd class="field-odd"><p>a SQL query, which should return a set of rows with the following columns:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">cost</span><span class="p">,</span><span class="w"> </span><span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">edge_table</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">id</dt>
+<dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identifier of the edge</p>
 </dd>
-<dt class="field-even">source</dt>
+<dt class="field-even">source<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identifier of the source vertex</p>
 </dd>
-<dt class="field-odd">target</dt>
+<dt class="field-odd">target<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identifier of the target vertex</p>
 </dd>
-<dt class="field-even">cost</dt>
+<dt class="field-even">cost<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.</p>
 </dd>
-<dt class="field-odd">reverse_cost</dt>
+<dt class="field-odd">reverse_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(optional) the cost for the reverse traversal of the edge. This is only used when the <code class="docutils literal notranslate"><span class="pre">directed</span></code> and <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameters are <code class="docutils literal notranslate"><span class="pre">true</span></code> (see the above remark about negative costs).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">source</dt>
+<dt class="field-even">source<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>NODE id</strong> of the start point</p>
 </dd>
-<dt class="field-odd">target</dt>
+<dt class="field-odd">target<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>NODE id</strong> of the end point</p>
 </dd>
-<dt class="field-even">directed</dt>
+<dt class="field-even">directed<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the graph is directed</p>
 </dd>
-<dt class="field-odd">has_rcost</dt>
+<dt class="field-odd">has_rcost<span class="colon">:</span></dt>
 <dd class="field-odd"><p>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.</p>
 </dd>
-<dt class="field-even">restrict_sql</dt>
+<dt class="field-even">restrict_sql<span class="colon">:</span></dt>
 <dd class="field-even"><p>(optional) a SQL query, which should return a set of rows with the following columns:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">to_cost</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">,</span><span class="w"> </span><span class="n">via_path</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">restrictions</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">to_cost</dt>
+<dt class="field-odd">to_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> turn restriction cost</p>
 </dd>
-<dt class="field-even">target_id</dt>
+<dt class="field-even">target_id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> target id</p>
 </dd>
-<dt class="field-odd">via_path</dt>
+<dt class="field-odd">via_path<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> comma separated list of edges in the reverse order of <code class="docutils literal notranslate"><span class="pre">rule</span></code></p>
 </dd>
 </dl>
@@ -288,88 +289,88 @@
 </dl>
 <p>Another variant of TRSP allows to specify <strong>EDGE id</strong> of source and target together with a fraction to interpolate the position:</p>
 <dl class="field-list simple">
-<dt class="field-odd">source_edge</dt>
+<dt class="field-odd">source_edge<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>EDGE id</strong> of the start edge</p>
 </dd>
-<dt class="field-even">source_pos</dt>
+<dt class="field-even">source_pos<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> fraction of 1 defines the position on the start edge</p>
 </dd>
-<dt class="field-odd">target_edge</dt>
+<dt class="field-odd">target_edge<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>EDGE id</strong> of the end edge</p>
 </dd>
-<dt class="field-even">target_pos</dt>
+<dt class="field-even">target_pos<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> fraction of 1 defines the position on the end edge</p>
 </dd>
 </dl>
 <p>Returns set of:</p>
 <dl class="field-list simple">
-<dt class="field-odd">seq</dt>
+<dt class="field-odd">seq<span class="colon">:</span></dt>
 <dd class="field-odd"><p>row sequence</p>
 </dd>
-<dt class="field-even">id1</dt>
+<dt class="field-even">id1<span class="colon">:</span></dt>
 <dd class="field-even"><p>node ID</p>
 </dd>
-<dt class="field-odd">id2</dt>
+<dt class="field-odd">id2<span class="colon">:</span></dt>
 <dd class="field-odd"><p>edge ID (<code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last row)</p>
 </dd>
-<dt class="field-even">cost</dt>
+<dt class="field-even">cost<span class="colon">:</span></dt>
 <dd class="field-even"><p>cost to traverse from <code class="docutils literal notranslate"><span class="pre">id1</span></code> using <code class="docutils literal notranslate"><span class="pre">id2</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="support-for-vias">
-<h2>Support for Vias<a class="headerlink" href="#support-for-vias" title="Permalink to this headline">¶</a></h2>
+<h2>Support for Vias<a class="headerlink" href="#support-for-vias" title="Permalink to this heading">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The Support for Vias functions are prototypes. Not all corner cases are being considered.</p>
 </div>
 <p>We also have support for vias where you can say generate a from A to B to C, etc. We support both methods above only you pass an array of vertices or and array of edges and percentage position along the edge in two arrays.</p>
 <dl class="field-list">
-<dt class="field-odd">sql</dt>
+<dt class="field-odd">sql<span class="colon">:</span></dt>
 <dd class="field-odd"><p>a SQL query, which should return a set of rows with the following columns:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">cost</span><span class="p">,</span><span class="w"> </span><span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">edge_table</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">id</dt>
+<dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identifier of the edge</p>
 </dd>
-<dt class="field-even">source</dt>
+<dt class="field-even">source<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identifier of the source vertex</p>
 </dd>
-<dt class="field-odd">target</dt>
+<dt class="field-odd">target<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identifier of the target vertex</p>
 </dd>
-<dt class="field-even">cost</dt>
+<dt class="field-even">cost<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.</p>
 </dd>
-<dt class="field-odd">reverse_cost</dt>
+<dt class="field-odd">reverse_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(optional) the cost for the reverse traversal of the edge. This is only used when the <code class="docutils literal notranslate"><span class="pre">directed</span></code> and <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameters are <code class="docutils literal notranslate"><span class="pre">true</span></code> (see the above remark about negative costs).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">vids</dt>
+<dt class="field-even">vids<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4[]</span></code> An ordered array of <strong>NODE id</strong> the path will go through from start to end.</p>
 </dd>
-<dt class="field-odd">directed</dt>
+<dt class="field-odd">directed<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the graph is directed</p>
 </dd>
-<dt class="field-even">has_rcost</dt>
+<dt class="field-even">has_rcost<span class="colon">:</span></dt>
 <dd class="field-even"><p>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.</p>
 </dd>
-<dt class="field-odd">restrict_sql</dt>
+<dt class="field-odd">restrict_sql<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(optional) a SQL query, which should return a set of rows with the following columns:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">to_cost</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">,</span><span class="w"> </span><span class="n">via_path</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">restrictions</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">to_cost</dt>
+<dt class="field-odd">to_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> turn restriction cost</p>
 </dd>
-<dt class="field-even">target_id</dt>
+<dt class="field-even">target_id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> target id</p>
 </dd>
-<dt class="field-odd">via_path</dt>
+<dt class="field-odd">via_path<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> commar separated list of edges in the reverse order of <code class="docutils literal notranslate"><span class="pre">rule</span></code></p>
 </dd>
 </dl>
@@ -377,36 +378,36 @@
 </dl>
 <p>Another variant of TRSP allows to specify <strong>EDGE id</strong> together with a fraction to interpolate the position:</p>
 <dl class="field-list simple">
-<dt class="field-odd">eids</dt>
+<dt class="field-odd">eids<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> An ordered array of <strong>EDGE id</strong> that the path has to traverse</p>
 </dd>
-<dt class="field-even">pcts</dt>
+<dt class="field-even">pcts<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> An array of fractional positions along the respective edges in <code class="docutils literal notranslate"><span class="pre">eids</span></code>, where 0.0 is the start of the edge and 1.0 is the end of the eadge.</p>
 </dd>
 </dl>
 <p>Returns set of:</p>
 <dl class="field-list simple">
-<dt class="field-odd">seq</dt>
+<dt class="field-odd">seq<span class="colon">:</span></dt>
 <dd class="field-odd"><p>row sequence</p>
 </dd>
-<dt class="field-even">id1</dt>
+<dt class="field-even">id1<span class="colon">:</span></dt>
 <dd class="field-even"><p>route ID</p>
 </dd>
-<dt class="field-odd">id2</dt>
+<dt class="field-odd">id2<span class="colon">:</span></dt>
 <dd class="field-odd"><p>node ID</p>
 </dd>
-<dt class="field-even">id3</dt>
+<dt class="field-even">id3<span class="colon">:</span></dt>
 <dd class="field-even"><p>edge ID (<code class="docutils literal notranslate"><span class="pre">-1</span></code> for the last row)</p>
 </dd>
-<dt class="field-odd">cost</dt>
+<dt class="field-odd">cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p>cost to traverse from <code class="docutils literal notranslate"><span class="pre">id2</span></code> using <code class="docutils literal notranslate"><span class="pre">id3</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Without turn restrictions</p>
 </dd>
 </dl>
@@ -427,7 +428,7 @@
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>With turn restrictions</p>
 </dd>
 </dl>
@@ -532,9 +533,9 @@
 <p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p>
 </section>
 <section id="known-issues">
-<h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this heading">¶</a></h2>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h3>
 <p>pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to <strong>hide</strong> the issues, not to fix them.</p>
 <p>For clarity on the queries:</p>
 <ul class="simple">
@@ -551,7 +552,7 @@
 </ul>
 </section>
 <section id="the-restrictions">
-<h3>The restrictions<a class="headerlink" href="#the-restrictions" title="Permalink to this headline">¶</a></h3>
+<h3>The restrictions<a class="headerlink" href="#the-restrictions" title="Permalink to this heading">¶</a></h3>
 <p>The restriction used in the examples does not have to do anything with the graph:</p>
 <ul class="simple">
 <li><p>No vertex has id: 25, 32 or 33</p></li>
@@ -578,13 +579,13 @@
 <p>therefore the shortest path expected are as if there was no restriction involved</p>
 </section>
 <section id="the-vertices-signature-version">
-<h3>The “Vertices” signature version<a class="headerlink" href="#the-vertices-signature-version" title="Permalink to this headline">¶</a></h3>
+<h3>The “Vertices” signature version<a class="headerlink" href="#the-vertices-signature-version" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="different-ways-to-represent-no-path-found">
-<h4>Different ways to represent ‘no path found`<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this headline">¶</a></h4>
+<h4>Different ways to represent ‘no path found`<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
 <li><p>Sometimes represents with Error a no path found</p></li>
@@ -626,7 +627,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 which will throw an EXCEPTION to represent no path found.</p>
 </section>
 <section id="routing-from-to-same-location">
-<h4>Routing from/to same location<a class="headerlink" href="#routing-from-to-same-location" title="Permalink to this headline">¶</a></h4>
+<h4>Routing from/to same location<a class="headerlink" href="#routing-from-to-same-location" title="Permalink to this heading">¶</a></h4>
 <p>When routing from location <span class="math notranslate nohighlight">\(1\)</span> to the same location <span class="math notranslate nohighlight">\(1\)</span>, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
 <cite>EMPTY SET</cite> or an <cite>EXCEPTION</cite> depending on the parameters</p>
@@ -685,7 +686,7 @@ in this case that code throws the expected EXCEPTION</p>
 in this case that code finds an unexpected path.</p>
 </section>
 <section id="user-contradictions">
-<h4>User contradictions<a class="headerlink" href="#user-contradictions" title="Permalink to this headline">¶</a></h4>
+<h4>User contradictions<a class="headerlink" href="#user-contradictions" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
 of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
@@ -724,14 +725,14 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 </section>
 </section>
 <section id="the-edges-signature-version">
-<h3>The “Edges” signature version<a class="headerlink" href="#the-edges-signature-version" title="Permalink to this headline">¶</a></h3>
+<h3>The “Edges” signature version<a class="headerlink" href="#the-edges-signature-version" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="n">source_edge</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">source_pos</span><span class="w"> </span><span class="n">float8</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">target_edge</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target_pos</span><span class="w"> </span><span class="n">float8</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="id1">
-<h4>Different ways to represent ‘no path found`<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4>Different ways to represent ‘no path found`<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
 <li><p>Sometimes represents with EXCEPTION a no path found</p></li>
@@ -762,7 +763,7 @@ ERROR:  Error computing path: Path Not Found
 which will throw an EXCEPTION to represent no path found.</p>
 </section>
 <section id="paths-with-equal-number-of-vertices-and-edges">
-<h4>Paths with equal number of vertices and edges<a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Permalink to this headline">¶</a></h4>
+<h4>Paths with equal number of vertices and edges<a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Permalink to this heading">¶</a></h4>
 <p>A path is made of <cite>N</cite> vertices and <cite>N - 1</cite> edges.</p>
 <ul class="simple">
 <li><p>Sometimes returns <cite>N</cite> vertices and <cite>N - 1</cite> edges.</p></li>
@@ -801,7 +802,7 @@ on the edge column to indicate the edge number is invalidu for that row.</p>
 and will not return the last vertex of the path.</p>
 </section>
 <section id="id2">
-<h4>Routing from/to same location<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h4>Routing from/to same location<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <p>When routing from the same edge and position to the same edge and position, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
 <cite>EMPTY SET</cite> or an <cite>EXCEPTION</cite> depending on the parameters, non of which is happening.</p>
@@ -837,7 +838,7 @@ from the second <span class="math notranslate nohighlight">\((edge, position)\)<
 and will not have the row for the vertex <span class="math notranslate nohighlight">\(-2\)</span>.</p>
 </section>
 <section id="id3">
-<h4>User contradictions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h4>User contradictions<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
 of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
@@ -872,7 +873,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and will cost execution time</p>
 </section>
 <section id="using-a-points-of-interest-table">
-<h4>Using a points of interest table<a class="headerlink" href="#using-a-points-of-interest-table" title="Permalink to this headline">¶</a></h4>
+<h4>Using a points of interest table<a class="headerlink" href="#using-a-points-of-interest-table" title="Permalink to this heading">¶</a></h4>
 <p>Given a set of points of interest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
@@ -942,7 +943,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </ul>
 </section>
 <section id="routing-from-a-vertex-to-a-point">
-<h4>Routing from a vertex to a point<a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Permalink to this headline">¶</a></h4>
+<h4>Routing from a vertex to a point<a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Permalink to this heading">¶</a></h4>
 <p>Solving a shortest path from vertex <span class="math notranslate nohighlight">\(6\)</span> to pid 1 using a points of interest table</p>
 <p class="rubric">Using pgr_trsp</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
@@ -1010,7 +1011,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </section>
 </section>
 <section id="prototypes">
-<h3>prototypes<a class="headerlink" href="#prototypes" title="Permalink to this headline">¶</a></h3>
+<h3>prototypes<a class="headerlink" href="#prototypes" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> were added to pgRouting as prototypes</p>
 <p>These functions use the pgr_trsp functions inheriting all the problems mentioned above.
 When there are no restrictions and have a routing “via” problem with vertices:</p>
@@ -1020,7 +1021,7 @@ When there are no restrictions and have a routing “via” problem with vertice
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -1042,8 +1043,8 @@ When there are no restrictions and have a routing “via” problem with vertice
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

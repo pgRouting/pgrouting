@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_trsp - Camino más corto con giros restringidos (TRSP) &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -172,7 +173,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_trsp.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_trsp.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_trsp.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/trsp/doc/pgr_trsp.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-trsp-turn-restriction-shortest-path-trsp">
-<h1>pgr_trsp - Camino más corto con giros restringidos (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1>pgr_trsp - Camino más corto con giros restringidos (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Permalink to this heading">¶</a></h1>
 <p id="index-0"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> — Devuelve el camino más corto con soporte para restricciones de giros</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
@@ -193,7 +194,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>La ruta más corta restringida por giro (TRSP) es un algoritmo de ruta más corta que opcionalmente puede tener en cuenta restricciones de giro complicadas como las que se encuentran en las redes de carreteras del mundo real. En cuanto al rendimiento, es casi tan rápido como la búsqueda A* pero tiene muchas características adicionales, como funcionar con bordes en lugar de los nodos de la red. Devuelve un conjunto de filas (seq, id1, id2, cost) o (seq, id1, id2, id3, cost) que forman una ruta.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
 <span class="w">                  </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
@@ -222,54 +223,54 @@
 <p>El algoritmo de la ruta más corta restringida por giro (TRSP) es similar a la estrella fugaz en que puede especificar restricciones de giro.</p>
 <p>La configuración de TRSP es en su mayoría la misma que <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">Dijkstra shortest path</span></a> con la adición de una tabla de restricción de giro opcional. Esto proporciona una manera fácil de agregar restricciones de giro a una red de carreteras colocándolas en una tabla separada.</p>
 <dl class="field-list">
-<dt class="field-odd">sql</dt>
+<dt class="field-odd">sql<span class="colon">:</span></dt>
 <dd class="field-odd"><p>una consulta SQL que debe proporcionar un conjunto de registros con los siguientes campos:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">cost</span><span class="p">,</span><span class="w"> </span><span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">edge_table</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">id</dt>
+<dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> Identificador del borde</p>
 </dd>
-<dt class="field-even">source</dt>
+<dt class="field-even">source<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> Identificador del vértice inicial del borde</p>
 </dd>
-<dt class="field-odd">target</dt>
+<dt class="field-odd">target<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> Identificador del vértice final del borde</p>
 </dd>
-<dt class="field-even">Costo</dt>
+<dt class="field-even">Costo<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code>  Costo del recorrido sobre el borde. Un costo negativo evitará que el borde sea insertado en el gráfico.</p>
 </dd>
-<dt class="field-odd">reverse_cost</dt>
+<dt class="field-odd">reverse_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(opcional) El costo para el recorrido inverso del borde. Esto sólo se utiliza cuando los parámetros <code class="docutils literal notranslate"><span class="pre">directed</span></code> y <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code>  son <code class="docutils literal notranslate"><span class="pre">True</span></code> (ver el comentario anterior sobre los costos negativos).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">source</dt>
+<dt class="field-even">source<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>identificador</strong> del nodo de partida</p>
 </dd>
-<dt class="field-odd">target</dt>
+<dt class="field-odd">target<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>identificador</strong> del nodo de llegada</p>
 </dd>
-<dt class="field-even">dirigido</dt>
+<dt class="field-even">dirigido<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> Si la gráfica es direccionada</p>
 </dd>
-<dt class="field-odd">has_rcost</dt>
+<dt class="field-odd">has_rcost<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Si  es <code class="docutils literal notranslate"><span class="pre">True</span></code>, el campo <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>  del conjunto de registros generados se utilizan para el calcular el costo de la travesía del borde en la dirección opuesta.</p>
 </dd>
-<dt class="field-even">restrict_sql</dt>
+<dt class="field-even">restrict_sql<span class="colon">:</span></dt>
 <dd class="field-even"><p>(opcional) una consulta SQL, que debe proporcionar un conjunto de registros con los siguientes campos:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">to_cost</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">,</span><span class="w"> </span><span class="n">via_path</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">restrictions</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">to_cost</dt>
+<dt class="field-odd">to_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> restricción del costo de giro</p>
 </dd>
-<dt class="field-even">target_id</dt>
+<dt class="field-even">target_id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identificador del borde donde se aplica la restricción</p>
 </dd>
-<dt class="field-odd">via_path</dt>
+<dt class="field-odd">via_path<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Lista de aristas <code class="docutils literal notranslate"><span class="pre">text</span></code> separadas por comas en el orden inverso de <code class="docutils literal notranslate"><span class="pre">rule</span></code></p>
 </dd>
 </dl>
@@ -277,88 +278,88 @@
 </dl>
 <p>Otra variante de TRSP que permite especificar el <strong>Identificador del borde</strong> de partida y de llegada junto con una fracción para interpolar la posición:</p>
 <dl class="field-list simple">
-<dt class="field-odd">source_edge</dt>
+<dt class="field-odd">source_edge<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>identificador del borde</strong> de partida</p>
 </dd>
-<dt class="field-even">source_pos</dt>
+<dt class="field-even">source_pos<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> fracción de 1 que define la posición del sobre el borde de partida.</p>
 </dd>
-<dt class="field-odd">target_edge</dt>
+<dt class="field-odd">target_edge<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> <strong>Identificador del borde</strong> de llegada</p>
 </dd>
-<dt class="field-even">target_pos</dt>
+<dt class="field-even">target_pos<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> fracción de 1 que define la posición del sobre el borde de llegada.</p>
 </dd>
 </dl>
 <p>Devuelve el conjunto de:</p>
 <dl class="field-list simple">
-<dt class="field-odd">seq</dt>
+<dt class="field-odd">seq<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Secuencia de registros</p>
 </dd>
-<dt class="field-even">id1</dt>
+<dt class="field-even">id1<span class="colon">:</span></dt>
 <dd class="field-even"><p>Identificador del nodo visitado</p>
 </dd>
-<dt class="field-odd">id2</dt>
+<dt class="field-odd">id2<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Identificador del borde (<code class="docutils literal notranslate"><span class="pre">-1</span></code> para el ultimo registro)</p>
 </dd>
-<dt class="field-even">Costo</dt>
+<dt class="field-even">Costo<span class="colon">:</span></dt>
 <dd class="field-even"><p>costo para atravesar desde el nodo <code class="docutils literal notranslate"><span class="pre">id1</span></code>  usando el borde``id2`` hasta su otro extremo</p>
 </dd>
 </dl>
 </section>
 <section id="support-for-vias">
-<h2>Soporte para Vias<a class="headerlink" href="#support-for-vias" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Soporte para Vias<a class="headerlink" href="#support-for-vias" title="Permalink to this heading">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Las funciones de Soporte para Vias son prototipos. No se están considerando todos los casos de esquina.</p>
 </div>
 <p>También tenemos soporte para vias donde puedes generar una ruta de A a B a C, etc. Admitimos ambos métodos por encima de solo pasar un arreglo de vértices y/o un arreglo de aristas y la posición porcentual a lo largo de la arista en dos arreglos.</p>
 <dl class="field-list">
-<dt class="field-odd">sql</dt>
+<dt class="field-odd">sql<span class="colon">:</span></dt>
 <dd class="field-odd"><p>una consulta SQL que debe proporcionar un conjunto de registros con los siguientes campos:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">cost</span><span class="p">,</span><span class="w"> </span><span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">edge_table</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">id</dt>
+<dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> Identificador del borde</p>
 </dd>
-<dt class="field-even">source</dt>
+<dt class="field-even">source<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> Identificador del vértice inicial del borde</p>
 </dd>
-<dt class="field-odd">target</dt>
+<dt class="field-odd">target<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> Identificador del vértice final del borde</p>
 </dd>
-<dt class="field-even">Costo</dt>
+<dt class="field-even">Costo<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code>  Costo del recorrido sobre el borde. Un costo negativo evitará que el borde sea insertado en el gráfico.</p>
 </dd>
-<dt class="field-odd">reverse_cost</dt>
+<dt class="field-odd">reverse_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(opcional) El costo para el recorrido inverso del borde. Esto sólo se utiliza cuando los parámetros <code class="docutils literal notranslate"><span class="pre">directed</span></code> y <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code>  son <code class="docutils literal notranslate"><span class="pre">True</span></code> (ver el comentario anterior sobre los costos negativos).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">vids</dt>
+<dt class="field-even">vids<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4[]</span></code> Un arreglo ordenado de <strong>NODE id</strong> la ruta irá de principio a fin.</p>
 </dd>
-<dt class="field-odd">dirigido</dt>
+<dt class="field-odd">dirigido<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> Si la gráfica es direccionada</p>
 </dd>
-<dt class="field-even">has_rcost</dt>
+<dt class="field-even">has_rcost<span class="colon">:</span></dt>
 <dd class="field-even"><p>Si  es <code class="docutils literal notranslate"><span class="pre">True</span></code>, el campo <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>  del conjunto de registros generados se utilizan para el calcular el costo de la travesía del borde en la dirección opuesta.</p>
 </dd>
-<dt class="field-odd">restrict_sql</dt>
+<dt class="field-odd">restrict_sql<span class="colon">:</span></dt>
 <dd class="field-odd"><p>(opcional) una consulta SQL, que debe proporcionar un conjunto de registros con los siguientes campos:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">to_cost</span><span class="p">,</span><span class="w"> </span><span class="n">target_id</span><span class="p">,</span><span class="w"> </span><span class="n">via_path</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">restrictions</span><span class="w"></span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">to_cost</dt>
+<dt class="field-odd">to_cost<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> restricción del costo de giro</p>
 </dd>
-<dt class="field-even">target_id</dt>
+<dt class="field-even">target_id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> identificador del borde donde se aplica la restricción</p>
 </dd>
-<dt class="field-odd">via_path</dt>
+<dt class="field-odd">via_path<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Lista de aristas `` text`` separadas por comas en el orden inverso de <code class="docutils literal notranslate"><span class="pre">rule</span></code></p>
 </dd>
 </dl>
@@ -366,36 +367,36 @@
 </dl>
 <p>Otra variante de TRSP permite especificar <strong>EDGE id</strong> junto con una fracción para interpolar la posición:</p>
 <dl class="field-list simple">
-<dt class="field-odd">eids</dt>
+<dt class="field-odd">eids<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int4</span></code> Un arreglo ordenado de <strong>EDGE id</strong> que la ruta tiene que atravesar</p>
 </dd>
-<dt class="field-even">Pct</dt>
+<dt class="field-even">Pct<span class="colon">:</span></dt>
 <dd class="field-even"><p>`` float8`` Un arreglo de posiciones fraccionarias a lo largo de las respectivas aristasen  <code class="docutils literal notranslate"><span class="pre">eids</span></code>, donde 0.0 es el comienzo de la arista y 1.0 es el final.</p>
 </dd>
 </dl>
 <p>Devuelve el conjunto de:</p>
 <dl class="field-list simple">
-<dt class="field-odd">seq</dt>
+<dt class="field-odd">seq<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Secuencia de registros</p>
 </dd>
-<dt class="field-even">id1</dt>
+<dt class="field-even">id1<span class="colon">:</span></dt>
 <dd class="field-even"><p>Identificador de la ruta</p>
 </dd>
-<dt class="field-odd">id2</dt>
+<dt class="field-odd">id2<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Identificador del nodo visitado</p>
 </dd>
-<dt class="field-even">id3</dt>
+<dt class="field-even">id3<span class="colon">:</span></dt>
 <dd class="field-even"><p>Identificador del borde (<code class="docutils literal notranslate"><span class="pre">-1</span></code> para el ultimo registro)</p>
 </dd>
-<dt class="field-odd">Costo</dt>
+<dt class="field-odd">Costo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>costo para atravesar desde el nodo <code class="docutils literal notranslate"><span class="pre">id2</span></code>  usando el borde <code class="docutils literal notranslate"><span class="pre">id3</span></code> hasta su otro extremo</p>
 </dd>
 </dl>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Sin restricción de giros</p>
 </dd>
 </dl>
@@ -416,7 +417,7 @@
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo</dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Con restricción de giros</p>
 </dd>
 </dl>
@@ -521,9 +522,9 @@
 <p>Las consultas utilizan la red  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p>
 </section>
 <section id="known-issues">
-<h2>Problemas conocidos<a class="headerlink" href="#known-issues" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Problemas conocidos<a class="headerlink" href="#known-issues" title="Permalink to this heading">¶</a></h2>
 <section id="introduction">
-<h3>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Introducción<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h3>
 <p>el código pgr_trsp tiene problemas que aún no se están solucionando, pero a medida que pasa el tiempo y se agrega nueva funcionalidad a pgRouting, hay contenedores para <strong>ocultar</strong> los problemas, no para solucionarlos.</p>
 <p>Para mayor claridad en las consultas:</p>
 <ul class="simple">
@@ -540,7 +541,7 @@
 </ul>
 </section>
 <section id="the-restrictions">
-<h3>Las restricciones<a class="headerlink" href="#the-restrictions" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Las restricciones<a class="headerlink" href="#the-restrictions" title="Permalink to this heading">¶</a></h3>
 <p>La restricción utilizada en los ejemplos no tiene que ver nada con el grafo:</p>
 <ul class="simple">
 <li><p>Ningún vértice tiene id: 25, 32 o 33</p></li>
@@ -567,13 +568,13 @@
 <p>por lo tanto, la ruta más corta esperado es como si no hubiera ninguna restricción involucrada</p>
 </section>
 <section id="the-vertices-signature-version">
-<h3>La versión de la firma «Vértices»<a class="headerlink" href="#the-vertices-signature-version" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>La versión de la firma «Vértices»<a class="headerlink" href="#the-vertices-signature-version" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="different-ways-to-represent-no-path-found">
-<h4>Diferentes formas de representar “ninguna ruta encontrada”<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Diferentes formas de representar “ninguna ruta encontrada”<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>A veces se representa con EMPTY SET ninguna ruta encontrada</p></li>
 <li><p>A veces representa con ERROR ninguna ruta encontrada</p></li>
@@ -613,7 +614,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 <p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, lo que producirá una EXCEPCIÓN para representar ninguna ruta encontrada.</p>
 </section>
 <section id="routing-from-to-same-location">
-<h4>Ruteo desde/hacia la misma ubicación<a class="headerlink" href="#routing-from-to-same-location" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Ruteo desde/hacia la misma ubicación<a class="headerlink" href="#routing-from-to-same-location" title="Permalink to this heading">¶</a></h4>
 <p>Al enrutar desde la ubicación <span class="math notranslate nohighlight">\(1\)</span> a la misma ubicación <span class="math notranslate nohighlight">\(1\)</span>, no se necesita ninguna ruta para llegar al destino, pues ya está allí. Por lo tanto, se espera que devuelva un <cite>EMPTY SET</cite> o un <cite>EXCEPTION</cite> dependiendo de los parámetros</p>
 <ul class="simple">
 <li><p>A veces se representa con EMPTY SET ninguna ruta encontrada (esperada)</p></li>
@@ -667,7 +668,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 <p>En este caso <code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> llama al código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, en este caso ese código encuentra una ruta inesperada.</p>
 </section>
 <section id="user-contradictions">
-<h4>Contradicciones de usuarios<a class="headerlink" href="#user-contradictions" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Contradicciones de usuarios<a class="headerlink" href="#user-contradictions" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> a diferencia de otras funciones de pgRouting no detecta automáticamente la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Por lo tanto, tiene el parámetro <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> para verificar la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Las contradicciones suceden:</p>
 <ul class="simple">
 <li><p>Cuando falta reverse_cost, y la marca <cite>has_rcost</cite> se establece como verdadera</p></li>
@@ -704,14 +705,14 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 </section>
 </section>
 <section id="the-edges-signature-version">
-<h3>La versión de firma «Edges»<a class="headerlink" href="#the-edges-signature-version" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>La versión de firma «Edges»<a class="headerlink" href="#the-edges-signature-version" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="n">source_edge</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">source_pos</span><span class="w"> </span><span class="n">float8</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">target_edge</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target_pos</span><span class="w"> </span><span class="n">float8</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="id1">
-<h4>Diferentes formas de representar “ninguna ruta encontrada”<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Diferentes formas de representar “ninguna ruta encontrada”<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>A veces se representa con EMPTY SET ninguna ruta encontrada</p></li>
 <li><p>A veces se representa con EXCEPCIÓN ninguna ruta encontrada</p></li>
@@ -740,7 +741,7 @@ ERROR:  Error computing path: Path Not Found
 <p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, lo que producirá una EXCEPCIÓN para representar ninguna ruta encontrada.</p>
 </section>
 <section id="paths-with-equal-number-of-vertices-and-edges">
-<h4>Rutas con igual número de vértices y aristas<a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Rutas con igual número de vértices y aristas<a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Permalink to this heading">¶</a></h4>
 <p>Una ruta se conforma por <cite>N</cite> vértices y <cite>N - 1</cite> aristas.</p>
 <ul class="simple">
 <li><p>A veces devuelve <cite>N</cite> vértices y <cite>N - 1</cite> aristas.</p></li>
@@ -776,7 +777,7 @@ ERROR:  Error computing path: Path Not Found
 <p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, y no devolverán el último vértice de la ruta.</p>
 </section>
 <section id="id2">
-<h4>Ruteo desde/hacia la misma ubicación<a class="headerlink" href="#id2" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Ruteo desde/hacia la misma ubicación<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <p>Al enrutar desde la misma arista y posición a la misma arista y posición, no se necesita ninguna ruta para llegar al destino, pues ya está allí. Por lo tanto, se espera que devuelva un <cite>EMPTY SET</cite> o una <cite>EXCEPTION</cite> dependiendo de los parámetros, ninguno de los cuales está sucediendo.</p>
 <p class="rubric">Una ruta con 2 vértices y coste de arista 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
@@ -808,7 +809,7 @@ ERROR:  Error computing path: Path Not Found
 <p>pgr_trsp utiliza el código original cuando hay restricciones, incluso si no tienen nada que ver con el grafo, y no tendrán la fila para el vértice <span class="math notranslate nohighlight">\(-2\)</span>.</p>
 </section>
 <section id="id3">
-<h4>Contradicciones de usuarios<a class="headerlink" href="#id3" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Contradicciones de usuarios<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> a diferencia de otras funciones de pgRouting no detecta automáticamente la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Por lo tanto, tiene el parámetro <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> para verificar la existencia de la columna <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>. Las contradicciones suceden:</p>
 <ul class="simple">
 <li><p>Cuando falta reverse_cost, y la marca <cite>has_rcost</cite> se establece como verdadera</p></li>
@@ -841,7 +842,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <p>La columna de <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> será eliminada efectivamente y costará tiempo de ejecución</p>
 </section>
 <section id="using-a-points-of-interest-table">
-<h4>Uso de una tabla de puntos de interés<a class="headerlink" href="#using-a-points-of-interest-table" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Uso de una tabla de puntos de interés<a class="headerlink" href="#using-a-points-of-interest-table" title="Permalink to this heading">¶</a></h4>
 <p>Dado un conjunto de puntos de interés:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
@@ -911,7 +912,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </ul>
 </section>
 <section id="routing-from-a-vertex-to-a-point">
-<h4>Ruteo desde un vértice a un punto<a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Enlazar permanentemente con este título">¶</a></h4>
+<h4>Ruteo desde un vértice a un punto<a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Permalink to this heading">¶</a></h4>
 <p>Resolver una ruta más corta desde el vértice <span class="math notranslate nohighlight">\(6\)</span> a pid 1 usando una tabla de puntos de interés</p>
 <p class="rubric">Uso de pgr_trsp</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
@@ -979,7 +980,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </section>
 </section>
 <section id="prototypes">
-<h3>Prototipos<a class="headerlink" href="#prototypes" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3>Prototipos<a class="headerlink" href="#prototypes" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> y <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> fueron añadidas como prototipos</p>
 <p>Estas funciones utilizan las funciones pgr_trsp heredando todos los problemas mencionados anteriormente. Cuando no hay restricciones y tienen un problema de ruteo «vía» con vértices:</p>
 <ul class="simple">
@@ -988,7 +989,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
@@ -1010,8 +1011,8 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en may 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Actualizado por última vez en jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

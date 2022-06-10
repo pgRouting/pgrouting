@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_pickDeliverEuclidean - Experimental &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -168,7 +169,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html">2.1</a></p></li>
 </ul>
 <section id="pgr-pickdelivereuclidean-experimental">
-<h1>pgr_pickDeliverEuclidean - Experimental<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Permalink to this headline">¶</a></h1>
+<h1>pgr_pickDeliverEuclidean - Experimental<a class="headerlink" href="#pgr-pickdelivereuclidean-experimental" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliverEuclidean</span></code> - Pickup and delivery Vehicle Routing Problem</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -210,7 +211,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </li>
 </ul>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
 <p>Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.</p>
 <ul class="simple">
 <li><p>Optimization problem is NP-hard.</p></li>
@@ -244,7 +245,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </ul>
 </section>
 <section id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>No multiple time windows for a location.</p></li>
 <li><p>Less vehicle used is considered better.</p></li>
@@ -258,26 +259,20 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 </ul>
 </section>
 <section id="signature">
-<span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2>Signature<a class="headerlink" href="#signature" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor, max_cycles, initial_sol])
 RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
     cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
 </pre></div>
 </div>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
 <p>The parameters are:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>orders_sql, vehicles_sql [,factor, max_cycles, initial_sol]
 </pre></div>
 </div>
 <p>Where:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 15%" />
-<col style="width: 8%" />
-<col style="width: 63%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -324,7 +319,7 @@ RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
 </table>
 </section>
 <section id="pick-deliver-orders-sql">
-<h3>Pick &amp; Deliver Orders SQL<a class="headerlink" href="#pick-deliver-orders-sql" title="Permalink to this headline">¶</a></h3>
+<h3>Pick &amp; Deliver Orders SQL<a class="headerlink" href="#pick-deliver-orders-sql" title="Permalink to this heading">¶</a></h3>
 <p>A <cite>SELECT</cite> statement that returns the following columns:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id, demand
 p_x, p_y, p_open, p_close, [p_service, ]
@@ -333,12 +328,6 @@ d_x, d_y, d_open, d_close, [d_service, ]
 </div>
 <p>Where:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 18%" />
-<col style="width: 10%" />
-<col style="width: 56%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -391,11 +380,6 @@ d_x, d_y, d_open, d_close, [d_service, ]
 </table>
 <p>For the euclidean implementation, pick up and delivery  <span class="math notranslate nohighlight">\((x,y)\)</span> locations are needed:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 23%" />
-<col style="width: 58%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -423,7 +407,7 @@ d_x, d_y, d_open, d_close, [d_service, ]
 </table>
 </section>
 <section id="pick-deliver-vehicles-sql">
-<h3>Pick &amp; Deliver Vehicles SQL<a class="headerlink" href="#pick-deliver-vehicles-sql" title="Permalink to this headline">¶</a></h3>
+<h3>Pick &amp; Deliver Vehicles SQL<a class="headerlink" href="#pick-deliver-vehicles-sql" title="Permalink to this heading">¶</a></h3>
 <p>A <cite>SELECT</cite> statement that returns the following columns:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>id, capacity
 start_x, start_y, start_open, start_close [, start_service, ]
@@ -432,12 +416,6 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </div>
 <p>where:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 17%" />
-<col style="width: 14%" />
-<col style="width: 53%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -495,12 +473,6 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </table>
 <p>For the euclidean implementation, starting and ending <span class="math notranslate nohighlight">\((x,y)\)</span> locations are needed:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 17%" />
-<col style="width: 14%" />
-<col style="width: 54%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -533,7 +505,7 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </table>
 </section>
 <section id="description-of-the-result-todo-disussion-euclidean-matrix">
-<h3>Description of the result (TODO Disussion: Euclidean &amp; Matrix)<a class="headerlink" href="#description-of-the-result-todo-disussion-euclidean-matrix" title="Permalink to this headline">¶</a></h3>
+<h3>Description of the result (TODO Disussion: Euclidean &amp; Matrix)<a class="headerlink" href="#description-of-the-result-todo-disussion-euclidean-matrix" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RETURNS SET OF
     (seq, vehicle_seq, vehicle_id, stop_seq, stop_type,
         travel_time, arrival_time, wait_time, service_time,  departure_time)
@@ -542,11 +514,6 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </pre></div>
 </div>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 8%" />
-<col style="width: 80%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -629,11 +596,6 @@ start_x, start_y, start_open, start_close [, start_service, ]
 <p>TODO: Review the summary</p>
 </div>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 10%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -693,17 +655,17 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER</dt>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL</dt>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <p>This example use the following data: TODO put link</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_pickDeliverEuclidean</span><span class="p">(</span>
     <span class="s1">&#39;SELECT * FROM orders ORDER BY id&#39;</span><span class="p">,</span>
@@ -728,7 +690,7 @@ start_x, start_y, start_open, start_close [, start_service, ]
 </div>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Vehicle Routing Functions - Category (Experimental)</span></a></p></li>
 <li><p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> network.</p></li>
@@ -754,8 +716,8 @@ start_x, start_y, start_open, start_close [, start_service, ]
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

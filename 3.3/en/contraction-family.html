@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Contraction - Family of functions &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -199,14 +200,14 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/contraction/doc/contraction.html">2.2</a></p></li>
 </ul>
 <section id="contraction-family-of-functions">
-<h1>Contraction - Family of functions<a class="headerlink" href="#contraction-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<h1>Contraction - Family of functions<a class="headerlink" href="#contraction-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_contraction.html"><span class="doc">pgr_contraction</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>In large graphs, like the road graphs, or electric networks, graph contraction
 can be used to speed up some graph algorithms.
 Contraction reduces the size of the graph by removing some of the vertices and
@@ -226,10 +227,10 @@ times they are to be executed.</p></li>
 </ul>
 </section>
 <section id="dead-end-contraction">
-<h2>Dead end contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this headline">¶</a></h2>
+<h2>Dead end contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this heading">¶</a></h2>
 <p>In the algorithm, dead end contraction is represented by 1.</p>
 <section id="dead-end">
-<h3>Dead end<a class="headerlink" href="#dead-end" title="Permalink to this headline">¶</a></h3>
+<h3>Dead end<a class="headerlink" href="#dead-end" title="Permalink to this heading">¶</a></h3>
 <p>In case of an undirected graph, a node is considered a <cite>dead end</cite> node when</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-number-of-adjacent-vertices-is-1">The number of adjacent vertices is 1.</a></p></li>
@@ -245,7 +246,7 @@ times they are to be executed.</p></li>
 </ul>
 <p>When the conditions are true then the <a class="reference internal" href="#operation-dead-end-contraction">Operation: Dead End Contraction</a> can be done.</p>
 <section id="the-number-of-adjacent-vertices-is-1">
-<h4>The number of adjacent vertices is 1.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-1" title="Permalink to this headline">¶</a></h4>
+<h4>The number of adjacent vertices is 1.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-1" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
@@ -275,7 +276,7 @@ times they are to be executed.</p></li>
 }" class="graphviz" /></div>
 </section>
 <section id="there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge">
-<h4>There are no outgoing edges and has at least one incoming edge.<a class="headerlink" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge" title="Permalink to this headline">¶</a></h4>
+<h4>There are no outgoing edges and has at least one incoming edge.<a class="headerlink" href="#there-are-no-outgoing-edges-and-has-at-least-one-incoming-edge" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
@@ -294,7 +295,7 @@ times they are to be executed.</p></li>
 }" class="graphviz" /></div>
 </section>
 <section id="there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge">
-<h4>There are no incoming edges and has at least one outgoing edge.<a class="headerlink" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge" title="Permalink to this headline">¶</a></h4>
+<h4>There are no incoming edges and has at least one outgoing edge.<a class="headerlink" href="#there-are-no-incoming-edges-and-has-at-least-one-outgoing-edge" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#dead-end">dead end</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
@@ -315,7 +316,7 @@ times they are to be executed.</p></li>
 </section>
 </section>
 <section id="operation-dead-end-contraction">
-<h3>Operation: Dead End Contraction<a class="headerlink" href="#operation-dead-end-contraction" title="Permalink to this headline">¶</a></h3>
+<h3>Operation: Dead End Contraction<a class="headerlink" href="#operation-dead-end-contraction" title="Permalink to this heading">¶</a></h3>
 <p>The dead end contraction will stop until there are no more dead end nodes.
 For example from the following graph where <code class="docutils literal notranslate"><span class="pre">w</span></code> is the <a class="reference internal" href="#dead-end">dead end</a> node:</p>
 <div class="graphviz"><img src="_images/graphviz-5e35f42543a9c600b7fe7e468fc428e28f807680.png" alt="digraph G {
@@ -349,10 +350,10 @@ For example from the following graph where <code class="docutils literal notrans
 </section>
 </section>
 <section id="linear-contraction">
-<h2>Linear contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this headline">¶</a></h2>
+<h2>Linear contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this heading">¶</a></h2>
 <p>In the algorithm, linear contraction is represented by 2.</p>
 <section id="linear">
-<h3>Linear<a class="headerlink" href="#linear" title="Permalink to this headline">¶</a></h3>
+<h3>Linear<a class="headerlink" href="#linear" title="Permalink to this heading">¶</a></h3>
 <p>In case of an undirected graph, a node is considered a <cite>linear</cite> node when</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-number-of-adjacent-vertices-is-2">The number of adjacent vertices is 2.</a></p></li>
@@ -366,7 +367,7 @@ For example from the following graph where <code class="docutils literal notrans
 </li>
 </ul>
 <section id="the-number-of-adjacent-vertices-is-2">
-<h4>The number of adjacent vertices is 2.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-2" title="Permalink to this headline">¶</a></h4>
+<h4>The number of adjacent vertices is 2.<a class="headerlink" href="#the-number-of-adjacent-vertices-is-2" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>The green nodes are <a class="reference internal" href="#linear">linear</a> nodes</p></li>
 <li><p>The blue nodes have an unlimited number of incoming and outgoing edges.</p></li>
@@ -395,7 +396,7 @@ For example from the following graph where <code class="docutils literal notrans
 }" class="graphviz" /></div>
 </section>
 <section id="linearity-is-symmetrical">
-<h4>Linearity is symmetrical<a class="headerlink" href="#linearity-is-symmetrical" title="Permalink to this headline">¶</a></h4>
+<h4>Linearity is symmetrical<a class="headerlink" href="#linearity-is-symmetrical" title="Permalink to this heading">¶</a></h4>
 <p>Using a contra example, vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> is not linear because it’s not possible to
 go from <code class="docutils literal notranslate"><span class="pre">w</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code> via <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p>
 <div class="graphviz"><img src="_images/graphviz-bc77587ebc527e97cf3403da611daafab99363d2.png" alt="digraph G {
@@ -409,7 +410,7 @@ go from <code class="docutils literal notranslate"><span class="pre">w</span></c
 </section>
 </section>
 <section id="operation-linear-contraction">
-<h3>Operation: Linear Contraction<a class="headerlink" href="#operation-linear-contraction" title="Permalink to this headline">¶</a></h3>
+<h3>Operation: Linear Contraction<a class="headerlink" href="#operation-linear-contraction" title="Permalink to this heading">¶</a></h3>
 <p>The linear contraction will stop until there are no more linear nodes.
 For example from the following graph where <code class="docutils literal notranslate"><span class="pre">v</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> are <a class="reference internal" href="#linear">linear</a> nodes:</p>
 <div class="graphviz"><img src="_images/graphviz-bde47d0456a0ce341e8e9c57a3df5cf0ddc93edc.png" alt="digraph G {
@@ -461,7 +462,7 @@ For example from the following graph where <code class="docutils literal notrans
 </section>
 </section>
 <section id="the-cycle">
-<h2>The cycle<a class="headerlink" href="#the-cycle" title="Permalink to this headline">¶</a></h2>
+<h2>The cycle<a class="headerlink" href="#the-cycle" title="Permalink to this heading">¶</a></h2>
 <p>Contracting a graph, can be done with more than one operation.
 The order of the operations affect the resulting contracted graph, after
 applying one operation, the set of vertices that can be contracted
@@ -477,14 +478,14 @@ do max_cycles times {
 </div>
 </section>
 <section id="contracting-sample-data">
-<h2>Contracting Sample Data<a class="headerlink" href="#contracting-sample-data" title="Permalink to this headline">¶</a></h2>
+<h2>Contracting Sample Data<a class="headerlink" href="#contracting-sample-data" title="Permalink to this heading">¶</a></h2>
 <p>In this section, building and using a contracted graph will be shown by example.</p>
 <ul class="simple">
 <li><p>The <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a> for an undirected graph is used</p></li>
 <li><p>a dead end operation first followed by a linear operation.</p></li>
 </ul>
 <section id="construction-of-the-graph-in-the-database">
-<h3>Construction of the graph in the database<a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Permalink to this headline">¶</a></h3>
+<h3>Construction of the graph in the database<a class="headerlink" href="#construction-of-the-graph-in-the-database" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Original Data</p>
 <p>The following query shows the original data involved in the contraction operation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
@@ -515,7 +516,7 @@ do max_cycles times {
 <p>The original graph:</p>
 <a class="reference internal image-reference" href="_images/undirected_sampledata_a.png"><img alt="_images/undirected_sampledata_a.png" src="_images/undirected_sampledata_a.png" style="width: 262.0px; height: 237.0px;" /></a>
 <section id="contraction-results">
-<h4>Contraction Results<a class="headerlink" href="#contraction-results" title="Permalink to this headline">¶</a></h4>
+<h4>Contraction Results<a class="headerlink" href="#contraction-results" title="Permalink to this heading">¶</a></h4>
 <p>The results do not represent the contracted graph.
 They represent the changes done to the graph after applying the contraction algorithm.</p>
 <p>Observe that vertices, for example, <span class="math notranslate nohighlight">\(6\)</span> do not appear in the results because
@@ -548,13 +549,9 @@ it was not affected by the contraction algorithm.</p>
 </ul>
 </section>
 <section id="add-additional-columns">
-<h4>Add additional columns<a class="headerlink" href="#add-additional-columns" title="Permalink to this headline">¶</a></h4>
+<h4>Add additional columns<a class="headerlink" href="#add-additional-columns" title="Permalink to this heading">¶</a></h4>
 <p>Adding extra columns to the <code class="docutils literal notranslate"><span class="pre">edge_table</span></code> and <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr</span></code> tables, where:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 81%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Description</p></th>
@@ -594,7 +591,7 @@ it was not affected by the contraction algorithm.</p>
 </div>
 </section>
 <section id="store-contraction-information">
-<h4>Store contraction information<a class="headerlink" href="#store-contraction-information" title="Permalink to this headline">¶</a></h4>
+<h4>Store contraction information<a class="headerlink" href="#store-contraction-information" title="Permalink to this heading">¶</a></h4>
 <p>Store the <a class="reference internal" href="#contraction-results">contraction results</a> in a table</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contraction</span><span class="p">(</span>
@@ -605,7 +602,7 @@ it was not affected by the contraction algorithm.</p>
 </div>
 </section>
 <section id="update-the-vertices-and-edge-tables">
-<h4>Update the vertices and edge tables<a class="headerlink" href="#update-the-vertices-and-edge-tables" title="Permalink to this headline">¶</a></h4>
+<h4>Update the vertices and edge tables<a class="headerlink" href="#update-the-vertices-and-edge-tables" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Update the <cite>vertex</cite> table using the contraction information</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">edge_table_vertices_pgr.is_contracted</span></code> to indicate the vertices that are contracted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table_vertices_pgr</span>
@@ -693,9 +690,9 @@ it was not affected by the contraction algorithm.</p>
 </section>
 </section>
 <section id="the-contracted-graph">
-<h3>The contracted graph<a class="headerlink" href="#the-contracted-graph" title="Permalink to this headline">¶</a></h3>
+<h3>The contracted graph<a class="headerlink" href="#the-contracted-graph" title="Permalink to this heading">¶</a></h3>
 <section id="vertices-that-belong-to-the-contracted-graph">
-<h4>Vertices that belong to the contracted graph.<a class="headerlink" href="#vertices-that-belong-to-the-contracted-graph" title="Permalink to this headline">¶</a></h4>
+<h4>Vertices that belong to the contracted graph.<a class="headerlink" href="#vertices-that-belong-to-the-contracted-graph" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span>
 <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span>
 <span class="n">WHERE</span> <span class="n">is_contracted</span> <span class="o">=</span> <span class="n">false</span>
@@ -715,7 +712,7 @@ it was not affected by the contraction algorithm.</p>
 </div>
 </section>
 <section id="edges-that-belong-to-the-contracted-graph">
-<h4>Edges that belong to the contracted graph.<a class="headerlink" href="#edges-that-belong-to-the-contracted-graph" title="Permalink to this headline">¶</a></h4>
+<h4>Edges that belong to the contracted graph.<a class="headerlink" href="#edges-that-belong-to-the-contracted-graph" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">vertices_in_graph</span> <span class="n">AS</span> <span class="p">(</span>
     <span class="n">SELECT</span> <span class="nb">id</span>
@@ -745,7 +742,7 @@ it was not affected by the contraction algorithm.</p>
 </section>
 </section>
 <section id="using-the-contracted-graph">
-<h3>Using the contracted graph<a class="headerlink" href="#using-the-contracted-graph" title="Permalink to this headline">¶</a></h3>
+<h3>Using the contracted graph<a class="headerlink" href="#using-the-contracted-graph" title="Permalink to this heading">¶</a></h3>
 <p>Using the contracted graph with <code class="docutils literal notranslate"><span class="pre">pgr_dijkstra</span></code></p>
 <p>There are three cases when calculating the shortest path between a given source and target
 in a contracted graph:</p>
@@ -755,7 +752,7 @@ in a contracted graph:</p>
 <li><p>Case 3: Source and/or target belong to a vertex.</p></li>
 </ul>
 <section id="case-1-both-source-and-target-belong-to-the-contracted-graph">
-<h4>Case 1: Both source and target belong to the contracted graph.<a class="headerlink" href="#case-1-both-source-and-target-belong-to-the-contracted-graph" title="Permalink to this headline">¶</a></h4>
+<h4>Case 1: Both source and target belong to the contracted graph.<a class="headerlink" href="#case-1-both-source-and-target-belong-to-the-contracted-graph" title="Permalink to this heading">¶</a></h4>
 <p>Using the <a class="reference internal" href="#edges-that-belong-to-the-contracted-graph">Edges that belong to the contracted graph.</a> on lines 10 to 19.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>CREATE OR REPLACE FUNCTION my_dijkstra(
 <span class="linenos"> 2</span>    departure BIGINT, destination BIGINT,
@@ -819,7 +816,7 @@ node <span class="math notranslate nohighlight">\(7\)</span> and of node <span c
 </div>
 </section>
 <section id="case-2-source-and-or-target-belong-to-an-edge-subgraph">
-<h4>Case 2: Source and/or target belong to an edge subgraph.<a class="headerlink" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph" title="Permalink to this headline">¶</a></h4>
+<h4>Case 2: Source and/or target belong to an edge subgraph.<a class="headerlink" href="#case-2-source-and-or-target-belong-to-an-edge-subgraph" title="Permalink to this heading">¶</a></h4>
 <p>Refining the above function to include nodes that belong to an edge.</p>
 <ul class="simple">
 <li><p>The vertices that need to be expanded are calculated on lines 10 to 16.</p></li>
@@ -903,7 +900,7 @@ node <span class="math notranslate nohighlight">\(7\)</span>.</p>
 </div>
 </section>
 <section id="case-3-source-and-or-target-belong-to-a-vertex">
-<h4>Case 3: Source and/or target belong to a vertex.<a class="headerlink" href="#case-3-source-and-or-target-belong-to-a-vertex" title="Permalink to this headline">¶</a></h4>
+<h4>Case 3: Source and/or target belong to a vertex.<a class="headerlink" href="#case-3-source-and-or-target-belong-to-a-vertex" title="Permalink to this heading">¶</a></h4>
 <p>Refining the above function to include nodes that belong to an edge.</p>
 <ul class="simple">
 <li><p>The vertices that need to be expanded are calculated on lines 18 to 23.</p></li>
@@ -1006,7 +1003,7 @@ to an edge subgraph, a path is still found.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></p></li>
 <li><p><a class="reference external" href="https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></p></li>
@@ -1033,8 +1030,8 @@ to an edge subgraph, a path is still found.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_extractVertices – Proposed &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -177,7 +178,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html">3.0</a></p></li>
 </ul>
 <section id="pgr-extractvertices-proposed">
-<h1>pgr_extractVertices – Proposed<a class="headerlink" href="#pgr-extractvertices-proposed" title="Permalink to this headline">¶</a></h1>
+<h1>pgr_extractVertices – Proposed<a class="headerlink" href="#pgr-extractvertices-proposed" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> — Extracts the vertices information</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -210,7 +211,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>This is an auxiliary function for extracting the vertex information of the set
 of edges of a graph.</p>
 <ul class="simple">
@@ -219,11 +220,11 @@ edges</p></li>
 </ul>
 </section>
 <section id="signatures">
-<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <pre class="literal-block" id="index-0">pgr_extractVertices(<a class="reference internal" href="#edges-sql">Edges SQL</a> [, dryrun])
 RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example</dt>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Extracting the vertex information</p>
 </dd>
 </dl>
@@ -255,13 +256,8 @@ RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 15%" />
-<col style="width: 59%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -277,14 +273,8 @@ RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 </table>
 </section>
 <section id="optional-parameters">
-<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 18%" />
-<col style="width: 14%" />
-<col style="width: 53%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
@@ -306,8 +296,8 @@ NOTICE the resulting query.</p></li>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
-<div class="contents local topic" id="contents">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#edges-sql" id="id2">Edges SQL</a></p>
 <ul>
@@ -317,17 +307,12 @@ NOTICE the resulting query.</p></li>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id2">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <section id="when-line-geometry-is-known">
-<h4><a class="toc-backref" href="#id3">When line geometry is known</a><a class="headerlink" href="#when-line-geometry-is-known" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">When line geometry is known</a><a class="headerlink" href="#when-line-geometry-is-known" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 27%" />
-<col style="width: 49%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -359,15 +344,10 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </ul>
 </section>
 <section id="when-vertex-geometry-is-known">
-<h4><a class="toc-backref" href="#id4">When vertex geometry is known</a><a class="headerlink" href="#when-vertex-geometry-is-known" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">When vertex geometry is known</a><a class="headerlink" href="#when-vertex-geometry-is-known" title="Permalink to this heading">¶</a></h4>
 <p>To use this inner query the column <code class="docutils literal notranslate"><span class="pre">geom</span></code> should not be part of the set of
 columns.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 25%" />
-<col style="width: 52%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -401,15 +381,10 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </ul>
 </section>
 <section id="when-identifiers-of-vertices-are-known">
-<h4><a class="toc-backref" href="#id5">When identifiers of vertices are known</a><a class="headerlink" href="#when-identifiers-of-vertices-are-known" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">When identifiers of vertices are known</a><a class="headerlink" href="#when-identifiers-of-vertices-are-known" title="Permalink to this heading">¶</a></h4>
 <p>To use this inner query the columns <code class="docutils literal notranslate"><span class="pre">geom</span></code>, <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> and <code class="docutils literal notranslate"><span class="pre">endpoint</span></code>
 should not be part of the set of columns.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 21%" />
-<col style="width: 60%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -437,8 +412,8 @@ of the edge.</p></td>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto docutils align-default" style="width: 81">
+<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
@@ -496,8 +471,8 @@ end point</em>.</p>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
-<div class="contents local topic" id="id1">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id1">
 <ul class="simple">
 <li><p><a class="reference internal" href="#dryrun-execution" id="id6">Dryrun execution</a></p></li>
 <li><p><a class="reference internal" href="#create-a-routing-topology" id="id7">Create a routing topology</a></p>
@@ -511,9 +486,9 @@ end point</em>.</p>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="dryrun-execution">
-<h3><a class="toc-backref" href="#id6">Dryrun execution</a><a class="headerlink" href="#dryrun-execution" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Dryrun execution</a><a class="headerlink" href="#dryrun-execution" title="Permalink to this heading">¶</a></h3>
 <p>To get the query generated used to get the vertex information, use <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">:=</span>
 <span class="pre">true</span></code>.</p>
 <p>The results can be used as base code to make a refinement based on the backend
@@ -566,9 +541,9 @@ development needs.</p>
 </div>
 </section>
 <section id="create-a-routing-topology">
-<h3><a class="toc-backref" href="#id7">Create a routing topology</a><a class="headerlink" href="#create-a-routing-topology" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Create a routing topology</a><a class="headerlink" href="#create-a-routing-topology" title="Permalink to this heading">¶</a></h3>
 <section id="make-sure-the-database-does-not-have-the-vertices-table">
-<h4><a class="toc-backref" href="#id8">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
@@ -576,7 +551,7 @@ development needs.</p>
 </div>
 </section>
 <section id="clean-up-the-columns-of-the-routing-topology-to-be-created">
-<h4><a class="toc-backref" href="#id9">Clean up the columns of the routing topology to be created</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Clean up the columns of the routing topology to be created</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
    <span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
@@ -586,7 +561,7 @@ development needs.</p>
 </div>
 </section>
 <section id="create-the-vertices-table">
-<h4><a class="toc-backref" href="#id10">Create the vertices table</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Create the vertices table</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
 <li><p>For big edge tables that are been prepared,</p>
@@ -603,7 +578,7 @@ development needs.</p>
 </div>
 </section>
 <section id="inspect-the-vertices-table">
-<h4><a class="toc-backref" href="#id11">Inspect the vertices table</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Inspect the vertices table</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
@@ -631,7 +606,7 @@ development needs.</p>
 </div>
 </section>
 <section id="create-the-routing-topology-on-the-edge-table">
-<h4><a class="toc-backref" href="#id12">Create the routing topology on the edge table</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Create the routing topology on the edge table</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this heading">¶</a></h4>
 <p>Updating the <code class="docutils literal notranslate"><span class="pre">source</span></code> information</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
     <span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
@@ -658,7 +633,7 @@ development needs.</p>
 </div>
 </section>
 <section id="inspect-the-routing-topology">
-<h4><a class="toc-backref" href="#id13">Inspect the routing topology</a><a class="headerlink" href="#inspect-the-routing-topology" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Inspect the routing topology</a><a class="headerlink" href="#inspect-the-routing-topology" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>
 <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">x1</span>  <span class="o">|</span> <span class="n">y1</span>  <span class="o">|</span>       <span class="n">x2</span>       <span class="o">|</span> <span class="n">y2</span>
@@ -689,7 +664,7 @@ development needs.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
@@ -715,8 +690,8 @@ development needs.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on May 25, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br/>
+      Last updated on Jun 10, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
     </p>
   </div>
 </footer>
