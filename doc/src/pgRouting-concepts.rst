@@ -238,7 +238,7 @@ Wiki example
 ...............................................................................
 
 Solve the example problem taken from wikipedia (`see top
-right graph <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`_) which:
+right graph <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`__) which:
 
 * Problem find the shortest path from :math:`1` to :math:`5`.
 * Is an undirected graph.
@@ -429,10 +429,10 @@ quality of the data and/or on how close the information is to have a topology
 usable by pgRouting and/or some other factors not mentioned.
 
 The steps to prepare the graph involve geometry operations using `PostGIS
-<https://postgis.net/>`__ ans some others involve graph operations like
+<https://postgis.net/>`__ and some others involve graph operations like
 :doc:`pgr_contraction` to contract a graph.
 
-The `workshop https://workshop.pgrouting.org/latest>`__ has a step by step on
+The `workshop <https://workshop.pgrouting.org/latest>`__ has a step by step on
 how to prepare a graph using Open Street Map data, for a small application.
 
 The use of indexes on the database design in general:
@@ -440,60 +440,168 @@ The use of indexes on the database design in general:
 * Have the geometries indexed.
 * Have the identifiers columns indexed.
 
-Please consult the `PostgreSQL <https://www.postgresql.org/docs/>` documentation
+Please consult the `PostgreSQL <https://www.postgresql.org/docs/>`__ documentation
 and the `PostGIS <https://postgis.net/>`__ documentation.
 
 
-Build a Routing Topology
+Build a routing topology
 ...............................................................................
 
-.. TODO checked up to here
+The basic information to use the majority of the pgRouting functions ``id,
+source, target, cost, [reverse_cost]`` is what in pgRouting is called the
+routing topology.
 
-.. note:: this step is not needed if data is loaded with `osm2pgrouting`
+``reverse_cost`` is optional but strongly recomended to have in order to reduce
+the size of the database due to the size of the geometry columns.
+Having said that, in this documentation ``reverse_cost`` is used in this
+documentation.
 
-Next we need to build a topology for our street data. What this means is that
-for any given edge in your street data the ends of that edge will be connected
-to a unique node and to other edges that are also connected to that same unique
-node. Once all the edges are connected to nodes we have a graph that can be
-used for routing with pgrouting. We provide a tool that will help with this:
+When the data comes with geometries and there is no routing topology, then this
+step is needed.
 
-.. parsed-literal::
+All the start and end vertices of the geometries need an identifier that is to
+be stored in a ``source`` and ``target`` columns of the table of the data.
+Likewise, ``cost`` and ``reverse_cost`` need to have the value of traversing the
+edge in both directions.
 
-    select pgr_createTopology('myroads', 0.000001);
+If the columns do not exist they need to be added to the table in question. (see
+`ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable.html>`__
 
-where you should replace 'myroads' with the name of your table storing the
-edges.
+The function :doc:`pgr_extractVertices` is used to create a vertices table
+based on the edge identifier and the geometry of the edge of the graph.
 
-* :doc:`pgr_createTopology`
+Finnaly using the data stored on the vertices tables the ``source`` and
+``target`` are filled up.
+
+See :doc:`sampledata` for an example for building the topology.
+
+Data coming from OSM and using `osm2pgrouting
+<https://github.com/pgRouting/osm2pgrouting>`__ as an import tool, comes with
+the routing topology. See an example of using ``osm2pgrouting`` on the `workshop
+<https://workshop.pgrouting.org/latest/en/basic/data.html>`__.
+
+Update to length of geometry
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The cost and reverse cost values can be in terms of the length of the geometry.
+Assume that the ``cost`` and ``reverse_cost`` columns in the sample data
+represent:
+
+* :math:`1` when the edge exists in the graph
+* :math:`-1` when the edge does not exist in the graph
+
+Using that information updating to the length of the geometries:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo1
+   :end-before: -- topo2
+
+Which gives the following results
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo2
+   :end-before: -- topo3
+
+Note that to be able to follow the documentation examples, everything is based
+on the original graph.
+
+So fixing to what there was before:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo3
+   :end-before: -- topo4
+
 
 Check the Routing Topology
 ...............................................................................
 
-There are lots of possible sources for errors in a graph. The data that you
-started with may not have been designed with routing in mind. A graph has some
-very specific requirements. One is that it is *NODED*, this means that except
-for some very specific use cases, each road segment starts and ends at a node
-and that in general is does not cross another road segment that it should be
-connected to.
+There are lots of possible problems in a graph.
 
-There can be other errors like the direction of a one-way street being entered
-in the wrong direction. We do not have tools to search for all possible errors
-but we have some basic tools that might help.
+* The data used may not have been designed with routing in mind.
+* A graph has some very specific requirements.
+* The graph is disconnected.
+* There are unwanted intersections.
+* The graph is too large and needs to be contracted.
+* A subgraph is needed for the application.
+* and many other problems that the pgRouting user, that is the application
+  developer might encounter.
 
-.. parsed-literal::
+Crossing edges
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    select pgr_analyzegraph('myroads', 0.000001);
-    select pgr_analyzeoneway('myroads',  s_in_rules, s_out_rules,
-                                         t_in_rules, t_out_rules
-                                         direction)
-    select pgr_nodeNetwork('myroads', 0.001);
+To get the crossing edges:
 
-where you should replace 'myroads' with the name of your table storing the edges
-('ways', in case you used osm2pgrouting to import the data).
+.. literalinclude:: concepts.queries
+   :start-after: -- check1
+   :end-before: -- check2
 
-* :doc:`pgr_analyzeGraph`
-* :doc:`pgr_analyzeOneWay`
-* :doc:`pgr_nodeNetwork`
+That information is correct, for example, when in terms of vehicles, is it a
+tunnel or bride crossing over another road.
+
+It might be incorrect, for example:
+
+1. when it is actually an intersection of roads, where vehicles can make turns.
+2. when in terms of electrical lines, the electrical line is able to swith roads
+   even on a tunnel or bridge.
+
+When it is incorrect, it needs fixing:
+
+1. For vehicles and pedestrians
+
+   * If the data comes from OSM and was imported to the database using
+     ``osm2pgrouting``, the fix needs to be done in the `OSM portal
+     <https://www.openstreetmap.org>`__ and the data imported again.
+   * In general when the data comes from a supplier that has the data prepared
+     for routing vehicles, and there is a problem, the data is to be fixed from
+     the supplier
+
+2. For very specific applications
+
+   * The data is correct when from the point of view of routing vehicles or
+     pedestrians.
+   * The data needs a local fix for the specific application.
+
+Once analized one by one the crossings, for the ones that need a local fix,
+the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- check2
+   :end-before: -- check3
+
+The new edges need to be added to the edges table, the rest of the attributes
+need to be updated in the new edges, the old edges need to be
+removed and the routing topology needs to be updated.
+
+How to do all those steps will depend on the application.
+
+Dead ends
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To get the dead ends:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- check3
+   :end-before: -- check4
+
+That information is correct, for example, when the dead end is on the limit of
+the imported graph.
+
+Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not.
+
+Is that correct?
+
+* Is there such a small curb:
+
+  * that does not allow a vehicle to use that visual intersection?
+  * Is my applicaction for pedestrians and therefore the pedestrican can easily
+    walk on the small curb?
+  * Is my application for the electicicity and the electrical lines than can
+    easily be extended on top of the small curb?
+
+* Is there a big cliff and from eagles view look like the dead end is close to
+  the segment?
+
+.. TODO checked up to here
 
 Compute a Path
 ...............................................................................
@@ -1815,19 +1923,23 @@ How to contribute
 
 .. rubric:: Wiki
 
-* Edit an existing  `pgRouting Wiki <https://github.com/pgRouting/pgrouting/wiki>`_ page.
+* Edit an existing  `pgRouting Wiki
+  <https://github.com/pgRouting/pgrouting/wiki>`__ page.
 * Or create a new Wiki page
 
-  * Create a page on the `pgRouting Wiki <https://github.com/pgRouting/pgrouting/wiki>`_
+  * Create a page on the `pgRouting Wiki
+    <https://github.com/pgRouting/pgrouting/wiki>`__
   * Give the title an appropriate name
 
 
-* `Example <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)>`_
+* `Example
+  <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)>`__
 
 .. rubric:: Adding Functionaity to pgRouting
 
 
-Consult the `developer's documentation <https://docs.pgrouting.org/doxy/2.4/index.html>`_
+Consult the `developer's documentation
+<https://docs.pgrouting.org/doxy/2.4/index.html>`__
 
 
 

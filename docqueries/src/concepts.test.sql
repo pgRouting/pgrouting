@@ -34,3 +34,33 @@ SELECT id, source, target FROM wiki;
 SELECT id, in_edges, out_edges
 FROM pgr_extractVertices('SELECT id, source, target FROM wiki');
 /* -- q5 */
+
+
+/* -- topo1 */
+UPDATE edges SET
+cost = sign(cost) * ST_length(geom),
+reverse_cost = sign(reverse_cost) * ST_length(geom);
+/* -- topo2 */
+SELECT id, cost, reverse_cost FROM edges;
+/* -- topo3 */
+UPDATE edges SET
+cost = sign(cost),
+reverse_cost = sign(reverse_cost);
+/* -- topo4 */
+
+/* -- check1 */
+SELECT a.id, b.id
+FROM edges AS a, edges AS b
+WHERE a.id < b.id AND st_crosses(a.geom, b.geom);
+/* -- check2 */
+SELECT ST_AsText((ST_Dump(ST_Split(a.geom, b.geom))).geom)
+FROM edges AS a, edges AS b
+WHERE a.id = 13 AND b.id = 18
+UNION
+SELECT ST_AsText((ST_Dump(ST_Split(b.geom, a.geom))).geom)
+FROM edges AS a, edges AS b
+WHERE a.id = 13 AND b.id = 18;
+/* -- check3 */
+SELECT id FROM vertices
+WHERE array_length(in_edges || out_edges, 1) = 1;
+/* -- check4 */
