@@ -93,7 +93,6 @@ These are corporate entities that have contributed developer time, hosting, or d
 
 - `Georepublic <https://georepublic.info/en/>`__
 - `Google Summer of Code <https://summerofcode.withgoogle.com>`__
-- `Leopark <https://www.leopark.mx/>`__
 - `Paragon Corporation <https://www.paragoncorporation.com/>`__
 
 Contributors Past & Present:

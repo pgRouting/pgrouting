@@ -1,7 +1,7 @@
 BEGIN;
 
 SET client_min_messages TO WARNING;
-SELECT plan(23);
+SELECT plan(30);
 
 UPDATE edge_table SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
@@ -195,6 +195,30 @@ SELECT set_eq(
     $$,
     $$SELECT id, unnest(in_edges) FROM result_table$$);
 
+SELECT CASE WHEN NOT min_version('3.3.2') THEN skip(7, 'issue fixed on 3.3.2') ELSE
+collect_tap(
+  lives_ok(
+    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT id::INTEGER, source, target FROM edge_table')$$,
+    'id used with integer'),
+  lives_ok(
+    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT id, source::INTEGER, target FROM edge_table')$$,
+    'source used with integer'),
+  lives_ok(
+    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT id, source, target::INTEGER FROM edge_table')$$,
+    'target used with integer'),
+  lives_ok(
+    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT id, source::INTEGER, target::INTEGER FROM edge_table')$$,
+    'source & target used with integer'),
+  lives_ok(
+    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT source::INTEGER, target FROM edge_table')$$,
+    'source used with integer, no id'),
+  lives_ok(
+    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT source, target::INTEGER FROM edge_table')$$,
+    'target used with integer, no id'),
+  lives_ok(
+    $$SELECT count(*) FROM pgr_extractVertices( 'SELECT source::INTEGER, target::INTEGER FROM edge_table')$$,
+    'source & target used with integer, no id'))
+END;
 
 SELECT * FROM finish();
 ROLLBACK;
