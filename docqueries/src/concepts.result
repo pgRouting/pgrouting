@@ -118,10 +118,10 @@ reverse_cost = sign(reverse_cost);
 UPDATE 18
 /* -- topo4 */
 /* -- check1 */
-SELECT a.id, b.id i
+SELECT a.id, b.id
 FROM edges AS a, edges AS b
 WHERE a.id < b.id AND st_crosses(a.geom, b.geom);
- id | i
+ id | id
 ----+----
  13 | 18
 (1 row)
