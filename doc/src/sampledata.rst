@@ -87,25 +87,45 @@ Topology data
 Points outside the graph
 ...............................................................................
 
+.. pois_start
+
+Points of interest
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. literalinclude:: sampledata.queries
    :start-after: -- p1
    :end-before: -- p2
+
+Points of interest geometry
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p2
    :end-before: -- p3
 
+Points of interest fillup
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Using :doc:`pgr_findCloseEdges`
+
 .. literalinclude:: sampledata.queries
    :start-after: -- p3
    :end-before: -- p4
+
+A special case to arrive from both sides of the edge.
 
 .. literalinclude:: sampledata.queries
    :start-after: -- p4
    :end-before: -- p5
 
+Points of interest data
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 .. literalinclude:: sampledata.queries
    :start-after: -- p5
    :end-before: -- p6
+
+.. pois_end
 
 Support tables
 -------------------------------------------------------------------------------
