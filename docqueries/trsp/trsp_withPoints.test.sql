@@ -60,3 +60,15 @@ SELECT * FROM pgr_trsp_withPoints(
   directed => false,
   details => true);
 /* --q3 */
+SELECT * FROM pgr_trsp_withPoints(
+  $e$ SELECT * FROM edges $e$,
+  $r$ SELECT id, path, cost FROM restrictions $r$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT ST_POINT(2.9, 1.8)),
+        0.5, cap => 2)
+  $p$,
+  1, ARRAY[-1, -2],
+  driving_side => 'r');
+/* -- q4 */

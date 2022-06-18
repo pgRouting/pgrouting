@@ -117,3 +117,14 @@ SELECT * FROM  pgr_trspVia_withPoints(
   $$SELECT pid, edge_id, side, fraction FROM pointsOfInterest$$,
   ARRAY[6, 7, 6], U_turn_on_edge => false);
 /* -- q14 */
+SELECT * FROM  pgr_trspVia_withPoints(
+  $e$ SELECT * FROM edges $e$,
+  $r$ SELECT path, cost FROM restrictions $r$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT ST_POINT(2.9, 1.8)),
+        0.5, cap => 2)
+  $p$,
+  ARRAY[1, -1, -2], details => true);
+/* -- q15 */

@@ -136,7 +136,24 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Use with :doc:`pgr_TSP`.
+.. contents::
+   :local:
+
+Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+...............................................................................
+
+Find the matrix cost of the routes from vertex :math:`1` and the two closest
+locations on the graph of point `(2.9, 1.8)`.
+
+.. literalinclude:: doc-pgr_withPointsCostMatrix.queries
+    :start-after: -- q3
+    :end-before: -- q4
+
+* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+
+Use with :doc:`pgr_TSP`.
+...............................................................................
 
 .. literalinclude:: doc-pgr_withPointsCostMatrix.queries
    :start-after: -- q2

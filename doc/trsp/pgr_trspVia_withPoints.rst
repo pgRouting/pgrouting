@@ -154,11 +154,26 @@ Additional Examples
 .. contents::
    :local:
 
+Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+...............................................................................
+
+Visit from vertex :math:`1` to the two locations on the graph of point `(2.9,
+1.8)` in order of closeness to the graph.
+
+.. literalinclude:: trspVia_withPoints.queries
+    :start-after: -- q14
+    :end-before: -- q15
+
+* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-2` is visited on the route to from vertex :math:`1` to Point
+  :math:`-1` (See row where :math:`seq = 4`).
+
+Usage variations
+...............................................................................
+
 All this examples are about the route that visits the vertices :math:`\{-6, 7,
 -4, 8, -2\}` in that order on a **directed** graph.
-
-The main query
-...............................................................................
 
 .. literalinclude:: trspVia_withPoints.queries
     :start-after: -- q1
@@ -263,6 +278,7 @@ See Also
 
 * :doc:`TRSP-family`
 * :doc:`via-category`
+* :doc:`withPoints-category`
 * :doc:`sampledata` network.
 
 .. rubric:: Indices and tables

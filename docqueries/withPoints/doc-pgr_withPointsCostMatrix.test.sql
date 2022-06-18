@@ -14,3 +14,13 @@ SELECT * FROM pgr_TSP(
   $$
 );
 /* -- q3 */
+SELECT * FROM pgr_withPointsCostMatrix(
+  $e$ SELECT * FROM edges $e$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT ST_POINT(2.9, 1.8)),
+        0.5, cap => 2)
+  $p$,
+  ARRAY[5, 10, -1, -2]);
+/* -- q4 */

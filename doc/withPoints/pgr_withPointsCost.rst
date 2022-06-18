@@ -310,7 +310,25 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: **Right** side driving topology
+.. contents::
+   :local:
+
+Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+...............................................................................
+
+Find the cost of the routes from vertex :math:`1` to the two closest locations
+on the graph of point `(2.9, 1.8)`.
+
+.. literalinclude:: doc-pgr_withPointsCost.queries
+    :start-after: -- q9
+    :end-before: -- q10
+
+* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Being close to the graph does not mean have a shorter route.
+
+Right side driving topology
+...............................................................................
 
 Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
 6\}` and vertices :math:`\{10, 11\}`
@@ -319,7 +337,8 @@ Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
    :start-after: -- q6
    :end-before: -- q7
 
-:Example: **Left** side driving topology
+Left side driving topology
+...............................................................................
 
 Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
 6\}` and vertices :math:`\{10, 11\}`
@@ -328,7 +347,8 @@ Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
    :start-after: -- q7
    :end-before: -- q8
 
-:Example: Does not matter driving side driving topology
+Does not matter driving side driving topology
+...............................................................................
 
 Traveling from point :math:`1` and vertex :math:`5` to points :math:`\{2, 3,
 6\}` and vertices :math:`\{10, 11\}`
