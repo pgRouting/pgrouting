@@ -1,0 +1,78 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(1) END;
+SET client_min_messages TO 'WARNING';
+
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  the_q TEXT;
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+  -- One point
+  PREPARE edges AS
+  SELECT id, the_geom AS geom FROM edge_table;
+  PREPARE edges1 AS
+  SELECT id FROM edge_table;
+  PREPARE edges2 AS
+  SELECT the_geom AS geom FROM edge_table;
+
+  PREPARE query_1 AS
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5);
+  PREPARE query_2 AS
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5, 2);
+  PREPARE query_3 AS
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5, 2, dryrun => true);
+
+  PREPARE err1 AS
+  SELECT * FROM pgr_findCloseEdges('edges1',(SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5);
+  PREPARE err2 AS
+  SELECT * FROM pgr_findCloseEdges('edges2',(SELECT the_geom FROM pointsOfInterest WHERE pid = 5), 0.5);
+
+  RETURN QUERY SELECT lives_ok('query_1', 'With defaults');
+  RETURN QUERY SELECT lives_ok('query_2', 'two rows');
+  RETURN QUERY SELECT lives_ok('query_3', 'dryrun');
+  RETURN QUERY SELECT is_empty('query_3', 'dryrun');
+
+  RETURN QUERY SELECT throws_ok('err1', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT throws_ok('err2', 'P0001', 'Missing column', 'Incomlete data -> throws');
+
+
+  -- Many points
+  PREPARE query_4 AS
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5);
+  PREPARE query_5 AS
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5, 2);
+  PREPARE query_6 AS
+  SELECT * FROM pgr_findCloseEdges('edges', (SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5, 2, dryrun => true);
+
+  PREPARE err3 AS
+  SELECT * FROM pgr_findCloseEdges('edges1',(SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5);
+  PREPARE err4 AS
+  SELECT * FROM pgr_findCloseEdges('edges2',(SELECT array_agg(the_geom) FROM pointsOfInterest), 0.5);
+
+  RETURN QUERY SELECT lives_ok('query_4', 'With defaults');
+  RETURN QUERY SELECT lives_ok('query_5', 'two rows');
+  RETURN QUERY SELECT lives_ok('query_6', 'dryrun');
+  RETURN QUERY SELECT is_empty('query_6', 'dryrun');
+
+  RETURN QUERY SELECT throws_ok('err3', 'P0001', 'Missing column', 'Incomlete data -> throws');
+  RETURN QUERY SELECT throws_ok('err4', 'P0001', 'Missing column', 'Incomlete data -> throws');
+
+
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT finish();
+ROLLBACK;

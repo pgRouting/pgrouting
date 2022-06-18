@@ -1,0 +1,54 @@
+BEGIN;
+
+SELECT CASE WHEN min_version('3.4.0') THEN plan(7) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION types_check() RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY
+  SELECT has_function('pgr_findcloseedges');
+  RETURN QUERY
+  SELECT has_function('pgr_findcloseedges', ARRAY['text', 'geometry','double precision','integer','boolean','boolean']);
+  RETURN QUERY
+  SELECT has_function('pgr_findcloseedges', ARRAY['text', 'geometry[]','double precision','integer','boolean','boolean']);
+  RETURN QUERY
+  SELECT function_returns('pgr_findcloseedges',
+    ARRAY['text', 'geometry','double precision','integer','boolean','boolean'],'setof record');
+  RETURN QUERY
+  SELECT function_returns('pgr_findcloseedges',
+    ARRAY['text', 'geometry[]','double precision','integer','boolean','boolean'],'setof record');
+
+
+  RETURN QUERY SELECT set_eq(
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_findcloseedges'$$,
+    $$SELECT  '{"","","","cap","partial","dryrun","edge_id","fraction","side","distance","geom","edge"}'::TEXT[] $$);
+
+  /* pgtap does not like geometry type, this is a workaround */
+  RETURN QUERY
+  SELECT set_eq(
+  $$WITH a AS (SELECT  unnest(proallargtypes) FROM pg_proc WHERE proname = 'pgr_findcloseedges')
+    SELECT typname FROM a JOIN pg_type ON(oid = unnest)$$,
+  $$VALUES
+    ('bool'),
+    ('int4'),
+    ('text'),
+    ('float8'),
+    ('geometry'),
+    ('_geometry'),
+    ('int8'),
+    ('bpchar')
+    $$);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+SELECT types_check();
+
+SELECT  finish();
+ROLLBACK;

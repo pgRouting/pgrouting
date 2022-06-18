@@ -22,7 +22,10 @@ BEGIN
   END LOOP;
   end_sql = ' FROM ' || tbl || ' $$' || rest_sql;
 
-  IF begin_sql LIKE 'pgr_extractVertices(%' OR begin_sql LIKE 'pgr_degree(%' THEN
+  IF begin_sql LIKE 'pgr_extractVertices(%'
+    OR begin_sql LIKE 'pgr_degree(%'
+    OR begin_sql LIKE 'pgr_findCloseEdges(%'
+  THEN
     code = 'P0001';
     msg = 'Expected type of column "'|| parameter|| '" is ANY-INTEGER';
   END IF;
