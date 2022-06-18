@@ -1,0 +1,29 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(12) ELSE plan(2) END;
+
+
+CREATE OR REPLACE FUNCTION chk_edges_sql(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id','the_geom AS geom'],
+    'id');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+
+SELECT chk_edges_sql('pgr_findCloseEdges(', ', (SELECT the_geom FROM pointsOfInterest limit 1), 3);');
+SELECT chk_edges_sql('pgr_findCloseEdges(', ', (SELECT array_agg(the_geom) FROM pointsOfInterest), 3);');
+
+SELECT finish();
+ROLLBACK;

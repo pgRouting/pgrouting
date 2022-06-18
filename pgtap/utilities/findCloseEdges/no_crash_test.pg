@@ -1,0 +1,55 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(33) ELSE plan(2) END;
+
+PREPARE edges AS
+SELECT id, the_geom AS geom FROM edge_table;
+
+SELECT isnt_empty('edges', 'Should be not empty to tests be meaningful');
+
+
+CREATE OR REPLACE FUNCTION no_crash()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+params TEXT[];
+subs TEXT[];
+BEGIN
+  IF NOT min_version('3.4.0') THEN
+    RETURN QUERY SELECT skip(1, 'Function added on 3.4.0');
+    RETURN;
+  END IF;
+
+  params = ARRAY[
+  '$$SELECT id, the_geom AS geom FROM edge_table$$',
+  '(SELECT the_geom FROM pointsOfInterest WHERE pid = 5)',
+  '0.5'
+  ]::TEXT[];
+
+  subs = ARRAY[
+  'NULL',
+  'NULL::geometry',
+  'NULL'
+  ]::TEXT[];
+
+  RETURN query SELECT * FROM no_crash_test('pgr_findCloseEdges', params, subs);
+
+  params[1] := '$$edges$$';
+  RETURN query SELECT * FROM no_crash_test('pgr_findCloseEdges', params, subs);
+
+  params[2] := '(SELECT array_agg(the_geom) FROM pointsOfInterest)';
+  subs[2] := 'NULL::geometry[]';
+  RETURN query SELECT * FROM no_crash_test('pgr_findCloseEdges', params, subs);
+
+  params[1] := '$$SELECT id, the_geom AS geom FROM edge_table$$';
+  RETURN query SELECT * FROM no_crash_test('pgr_findCloseEdges', params, subs);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+SELECT * FROM no_crash();
+
+ROLLBACK;
