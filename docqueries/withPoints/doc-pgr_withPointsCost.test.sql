@@ -44,3 +44,13 @@ SELECT * FROM pgr_withPointsCost(
   'SELECT pid, edge_id, fraction, side from pointsOfInterest',
   ARRAY[5, -1], ARRAY[-2, -3, -6, 10, 11]);
 /* -- q9 */
+SELECT * FROM pgr_withPointsCost(
+  $e$ SELECT * FROM edges $e$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT ST_POINT(2.9, 1.8)),
+        0.5, cap => 2)
+  $p$,
+  1, ARRAY[-1, -2]);
+/* -- q10 */

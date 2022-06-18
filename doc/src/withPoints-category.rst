@@ -24,7 +24,7 @@ When points are added to the graph.
 
 .. proposed start
 
-- :doc:`withPoints-family` - Functions based on dijkstra algorithms.
+- :doc:`withPoints-family` - Functions based on Dijkstra algorithm.
 - From the :doc:`TRSP-family`:
 
   - :doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions.
@@ -76,6 +76,8 @@ All this functions consider as many traits from the "real world" as possible:
     - There is a table on the database that describes the points
 
   - **Temporal**: for example points given through a web application
+
+    - Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
 
 - The numbering of the points are handled with negative sign.
 

@@ -217,8 +217,27 @@ Where:
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: From point :math:`1` within a distance of :math:`3.3`, does not matter
-          driving side, with details
+.. contents::
+   :local:
+
+Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+...............................................................................
+
+Find the driving distance from the two closest locations on the graph of point
+`(2.9, 1.8)`.
+
+.. literalinclude:: doc-pgr_withPointsDD.queries
+    :start-after: -- q5
+    :end-before: -- q6
+
+* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+
+Driving side does not matter
+...............................................................................
+
+From point :math:`1` within a distance of :math:`3.3`, does not matter driving
+side, with details.
 
 .. literalinclude:: doc-pgr_withPointsDD.queries
    :start-after: -- q4

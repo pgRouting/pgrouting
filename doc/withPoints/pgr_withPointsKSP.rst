@@ -154,15 +154,36 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: get :math:`2` paths using left side driving topology, from point
-          :math:`1` to point :math:`2` with details.
+.. contents::
+   :local:
+
+Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+...............................................................................
+
+Get :math:`2` paths using left side driving topology, from vertex :math:`1` to
+the closest location on the graph of point `(2.9, 1.8)`.
+
+.. literalinclude:: doc-pgr_withPointsKSP.queries
+    :start-after: --q4
+    :end-before: -- q5
+
+* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+
+Left driving side
+...............................................................................
+
+Get :math:`2` paths using left side driving topology, from point :math:`1` to
+point :math:`2` with details.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q2
    :end-before: --q3
 
-:Example: get :math:`2` paths using right side driving topology from, point
-          :math:`1` to point :math:`2` with heap paths and details.
+Right driving side
+...............................................................................
+
+Get :math:`2` paths using right side driving topology from, point :math:`1` to
+point :math:`2` with heap paths and details.
 
 .. literalinclude:: doc-pgr_withPointsKSP.queries
    :start-after: --q3

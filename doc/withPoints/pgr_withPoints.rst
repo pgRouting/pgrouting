@@ -250,18 +250,34 @@ Result Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
+.. contents::
+   :local:
+
+Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+...............................................................................
+
+Find the routes from vertex :math:`1` to the two closest locations on the graph
+of point `(2.9, 1.8)`.
+
+.. literalinclude:: doc-pgr_withPoints.queries
+    :start-after: -- q9
+    :end-before: -- q10
+
+* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+
+Usage variations
+...............................................................................
+
 All the examples are about traveling from point :math:`1` and vertex :math:`5`
 to points :math:`\{2, 3, 6\}` and vertices :math:`\{10, 11\}`
-
-The query
-...............................................................................
 
 .. literalinclude:: doc-pgr_withPoints.queries
    :start-after: -- q6
    :end-before: -- q7
 
 Passes in front or visits with right side driving.
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 For point :math:`6` and vertex :math:`11`.
 
@@ -271,7 +287,7 @@ For point :math:`6` and vertex :math:`11`.
    :end-before: -- q8
 
 Passes in front or visits with left side driving.
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 For point :math:`6` and vertex :math:`11`.
 

@@ -45,3 +45,13 @@ FROM  pgr_withPointsVia(
   ARRAY[-1, 7, -3, 16, 15], details => true)
 WHERE agg_cost <> 0 or seq = 1;
 /* -- q7 */
+SELECT * FROM pgr_withPointsVia(
+  $e$ SELECT * FROM edges $e$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT ST_POINT(2.9, 1.8)),
+        0.5, cap => 2)
+  $p$,
+  ARRAY[1, -1, -2], details => true);
+/* -- q8 */

@@ -316,21 +316,40 @@ Result Columns
 
 .. result columns end
 
-|
-
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Which path (if any) passes in front of point :math:`6` or vertex
-          :math:`11` with **right** side driving topology.
+.. contents::
+   :local:
+
+Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+...............................................................................
+
+Find the routes from vertex :math:`1` to the two closest locations on the graph
+of point `(2.9, 1.8)`.
+
+.. literalinclude:: trsp_withPoints.queries
+    :start-after: --q3
+    :end-before: -- q4
+
+* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+
+Pass in front or visits
+...............................................................................
+
+Which path (if any) passes in front of point :math:`6` or vertex :math:`11` with
+**right** side driving topology.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --q1
    :end-before: --q2
 
+Show details on undirected graph
+...............................................................................
 
-:Example: From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex
-          :math:`1` on an **undirected** graph, with details.
+From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex :math:`1`
+on an **undirected** graph, with details.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --q2
@@ -340,7 +359,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`TRSP-family`
-* :doc:`withPoints-family`
+* :doc:`withPoints-category`
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables

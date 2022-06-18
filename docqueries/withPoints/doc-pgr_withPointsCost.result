@@ -122,5 +122,21 @@ SELECT * FROM pgr_withPointsCost(
 (10 rows)
 
 /* -- q9 */
+SELECT * FROM pgr_withPointsCost(
+  $e$ SELECT * FROM edges $e$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT ST_POINT(2.9, 1.8)),
+        0.5, cap => 2)
+  $p$,
+  1, ARRAY[-1, -2]);
+ start_pid | end_pid | agg_cost
+-----------+---------+----------
+         1 |      -2 |      2.9
+         1 |      -1 |      6.8
+(2 rows)
+
+/* -- q10 */
 ROLLBACK;
 ROLLBACK
