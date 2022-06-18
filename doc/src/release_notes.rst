@@ -72,6 +72,11 @@ pgRouting 3.4.0 Release Notes
 
   * ``pgr_degree``
 
+* Utilities
+
+  * ``pgr_findCloseEdges`` (One point)
+  * ``pgr_findCloseEdges`` (Many points)
+
 .. rubric:: Deprecated functions
 
 * Turn Restrictions
