@@ -529,19 +529,23 @@ There are lots of possible problems in a graph.
 Crossing edges
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. cross_edges_start
+
 To get the crossing edges:
 
 .. literalinclude:: concepts.queries
-   :start-after: -- check1
-   :end-before: -- check2
+   :start-after: -- cross1
+   :end-before: -- cross2
+
+.. figure:: images/crossing_edges.png
 
 That information is correct, for example, when in terms of vehicles, is it a
 tunnel or bride crossing over another road.
 
 It might be incorrect, for example:
 
-1. when it is actually an intersection of roads, where vehicles can make turns.
-2. when in terms of electrical lines, the electrical line is able to swith roads
+1. When it is actually an intersection of roads, where vehicles can make turns.
+2. When in terms of electrical lines, the electrical line is able to swith roads
    even on a tunnel or bridge.
 
 When it is incorrect, it needs fixing:
@@ -565,14 +569,82 @@ Once analized one by one the crossings, for the ones that need a local fix,
 the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__.
 
 .. literalinclude:: concepts.queries
-   :start-after: -- check2
-   :end-before: -- check3
+   :start-after: -- cross2
+   :end-before: -- cross3
 
 The new edges need to be added to the edges table, the rest of the attributes
 need to be updated in the new edges, the old edges need to be
 removed and the routing topology needs to be updated.
 
-How to do all those steps will depend on the application.
+Adding split edges
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+For each pair of crossing edges a process similar to this one must be performed.
+
+The columns inserted and the way are calculated are based on the application.
+For example, if the edges have a trait **name**, then that column is to be
+copied.
+
+For pgRouting calculations
+
+* **factor** based on the position of the intersection of the edges can be used
+  to adjust the ``cost`` and ``reverse_cost`` columns.
+* Capacity information, used on the :doc:`flow-family` functions does not need
+  to change when spliting edges.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- cross3
+   :end-before: -- cross4
+
+Adding new vertices
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+After adding all the split edges requiered by the application, the newly created
+vertices need to be added to the vertices table.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- cross4
+   :end-before: -- cross5
+
+Updating edges topology
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: concepts.queries
+   :start-after: -- cross5
+   :end-before: -- cross6
+
+Removing the surplus edges
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Once all significant information needed by the application has been transported
+to the new edges, then the crossing edges can be deleted.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- cross6
+   :end-before: -- cross7
+
+There are other options to do this task, like creating a view, or a materialized
+view.
+
+Updating vertices topology
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To keep the graph consistent, the vertices topology needs to be updated
+
+.. literalinclude:: concepts.queries
+   :start-after: -- cross7
+   :end-before: -- cross8
+
+Checking for crossing edges
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+There are no crossing edges on the graph.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- cross8
+   :end-before: -- cross9
+
+.. cross_edges_end
 
 Dead ends
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -580,8 +652,8 @@ Dead ends
 To get the dead ends:
 
 .. literalinclude:: concepts.queries
-   :start-after: -- check3
-   :end-before: -- check4
+   :start-after: -- deadend1
+   :end-before: -- deadend2
 
 That information is correct, for example, when the dead end is on the limit of
 the imported graph.
