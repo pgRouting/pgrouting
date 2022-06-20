@@ -105,7 +105,7 @@ jobs:
       - name: Test documentation queries are up to date
         run: |
           sudo -u postgres createdb -p ${PGPORT}  pgr_test__db__test
-          TESTDIRS="version src"
+          TESTDIRS="version"
           for d in ${TESTDIRS}
           do
             ./tools/testers/doc_queries_generator.pl -pgver "${PGVER}" -pguser runner -documentation -alg "${d}"

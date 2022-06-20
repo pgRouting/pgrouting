@@ -63,7 +63,7 @@ ALTER TABLE vertices ALTER COLUMN id SET DEFAULT nextval('vertices_id_seq');
 ALTER SEQUENCE vertices_id_seq OWNED BY vertices.id;
 SELECT setval('vertices_id_seq', (SELECT coalesce(max(id)) FROM vertices));
 /* -- q1-2 */
-\dS+ vertices
+\d vertices
 /* -- q2 */
 SELECT * FROM vertices;
 /* -- q3 */
