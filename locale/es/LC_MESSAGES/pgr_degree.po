@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-16 17:37+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_degree/es/>\n"
 "Language: es\n"
@@ -33,7 +33,7 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
-msgstr ""
+msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
@@ -45,11 +45,11 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
+msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr ""
+msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -57,15 +57,15 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr ""
+msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
-msgstr ""
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
-msgstr ""
+msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_degree.rst:27
 msgid "Availability"
@@ -86,7 +86,7 @@ msgstr ""
 #: ../../build/doc/pgr_degree.rst:108
 #: ../../build/doc/pgr_degree.rst:138
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/pgr_degree.rst:36
 msgid "Calculates the degree of the vertices of an **undirected** graph"
@@ -111,7 +111,7 @@ msgstr "Parámetros"
 #: ../../build/doc/pgr_degree.rst:61
 #: ../../build/doc/pgr_degree.rst:73
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/pgr_degree.rst:61
 #: ../../build/doc/pgr_degree.rst:73
@@ -281,7 +281,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:181
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_degree.rst:182
 msgid ":ref:`genindex`"

@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bdastar-family/es/>\n"
 "Language: es\n"
@@ -57,7 +57,7 @@ msgstr "A* Bidireccional - Familia de Funciones"
 
 #: ../../build/doc/bdAstar-family.rst:27
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
-msgstr ":doc:`pgr_bdAstar` -  Algoritmo bidireccional A* para obtener rutas."
+msgstr ":doc:`pgr_bdAstar` - Algoritmo bidireccional A* para obtener rutas."
 
 #: ../../build/doc/bdAstar-family.rst:28
 msgid ""
@@ -72,7 +72,7 @@ msgid ""
 ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
 "cost matrix of paths."
 msgstr ""
-":doc:`pgr_bdAstarCostMatrix`  Algoritmo bidireccional A* para calcular una "
+":doc:`pgr_bdAstarCostMatrix` Algoritmo bidireccional A* para calcular una "
 "matriz de coste de rutas."
 
 #: ../../build/doc/bdAstar-family.rst:42 ../../build/doc/bdAstar-family.rst:91
@@ -217,7 +217,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo vértice extremo de la arista."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**cost**"
@@ -400,7 +400,7 @@ msgstr "Opcional."
 
 #: ../../build/doc/bdAstar-family.rst:101
 msgid "When ``false`` the graph is considered as Undirected."
-msgstr "Cuando ``false`` el gráfico se considera como No Dirigido"
+msgstr "Cuando ``false`` el gráfico se considera como No Dirigido."
 
 #: ../../build/doc/bdAstar-family.rst:102
 msgid "Default is ``true`` which considers the graph as Directed."
@@ -458,8 +458,8 @@ msgid ""
 "(optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see "
 ":ref:`astar_factor`"
 msgstr ""
-"(opcional). Para la manipulación de unidades. :math:`factor > 0`.  Predeterminado ``1``. \n"
-"Ver :ref:`astar_factor`"
+"(opcional). Para la manipulación de unidades. :math:`factor > 0`.  "
+"Predeterminado ``1``. Ver :ref:`astar_factor`"
 
 #: ../../build/doc/bdAstar-family.rst:114
 msgid "**epsilon**"

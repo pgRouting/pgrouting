@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_astar/es/>\n"
 "Language: es\n"
@@ -157,7 +157,7 @@ msgstr "Falta la el indicador de ``directed``."
 
 #: ../../build/doc/aStar-family.rst:6
 msgid "``directed`` flag is set to true"
-msgstr "El indicador de ``directed`` se configura a verdadero."
+msgstr "El indicador de ``directed`` se configura a \"true\""
 
 #: ../../build/doc/aStar-family.rst:8
 msgid "Unless specified otherwise, ordering is:"
@@ -169,7 +169,7 @@ msgstr "primero por ``start_vid`` (si existe)"
 
 #: ../../build/doc/aStar-family.rst:11
 msgid "then by ``end_vid``"
-msgstr "luego por  ``end_vid``"
+msgstr "luego por ``end_vid``"
 
 #: ../../build/doc/aStar-family.rst:13
 msgid "Values are returned when there is a path"
@@ -177,7 +177,7 @@ msgstr "Los valores se devuelven cuando hay una ruta"
 
 #: ../../build/doc/aStar-family.rst:14
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
-msgstr "Permita que  :math:`v`  y  :math:`u`  sean nodos en el grafo:"
+msgstr "Permita que :math:`v` y :math:`u` sean nodos en el grafo:"
 
 #: ../../build/doc/aStar-family.rst:16
 msgid "If there is no path from :math:`v` to :math:`u`:"
@@ -193,7 +193,7 @@ msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
 
 #: ../../build/doc/aStar-family.rst:21
 msgid "There is no path when :math:`v = u` therefore"
-msgstr "No hay camino cuando  :math:`v = u`  por lo tanto"
+msgstr "No hay camino cuando :math:`v = u` por lo tanto"
 
 #: ../../build/doc/aStar-family.rst:24
 msgid "``agg_cost`` from `v` to `u` is :math:`0`"
@@ -458,11 +458,11 @@ msgstr "En caso de ``true`` el grafo se considera como Dirigido."
 
 #: ../../build/doc/pgr_aStar.rst:252
 msgid "When ``false`` the graph is considered as Undirected."
-msgstr "Cuando ``false`` el gráfico se considera como No Dirigido"
+msgstr "Cuando ``false`` el gráfico se considera como No Dirigido."
 
 #: ../../build/doc/pgr_aStar.rst:254
 msgid "**heuristic**"
-msgstr "**heurística**"
+msgstr "**heuristic**"
 
 #: ../../build/doc/pgr_aStar.rst:254
 msgid "``INTEGER``"
@@ -577,7 +577,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo vértice extremo de la arista."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:24
