@@ -8,7 +8,7 @@ SELECT * FROM pgr_makeConnected(
 );
  seq | start_vid | end_vid
 -----+-----------+---------
-   1 |        17 |       2
+   1 |         5 |       2
    2 |         4 |      13
 (2 rows)
 

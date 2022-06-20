@@ -7,8 +7,7 @@ SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
   6, 12,
-  directed => true, heuristic => 2
-);
+  directed => true, heuristic => 2);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          6 |      12 |        3
@@ -19,8 +18,7 @@ SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
   6, ARRAY[10, 12],
-  heuristic => 3, factor := 3.5
-);
+  heuristic => 3, factor => 3.5);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          6 |      10 |        5
@@ -32,8 +30,7 @@ SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
   ARRAY[6, 8], 10,
-  false, heuristic => 4
-);
+  false, heuristic => 4);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          6 |      10 |        1
@@ -45,8 +42,7 @@ SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
   ARRAY[6, 8], ARRAY[10, 12],
-  factor => 0.5
-);
+  factor => 0.5);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          6 |      10 |        5
@@ -71,8 +67,7 @@ SELECT * FROM pgr_aStarCost(
   'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
   FROM edges',
   'SELECT * FROM combinations',
-  factor => 0.5
-);
+  factor => 0.5);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
          5 |       6 |        1

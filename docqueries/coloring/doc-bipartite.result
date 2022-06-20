@@ -5,12 +5,12 @@ SET
 /* --q1 */
 SELECT * FROM pgr_bipartite(
     $$SELECT id, source, target, cost, reverse_cost FROM edges$$
-);
+) ORDER BY vertex_id;
  vertex_id | color_id
 -----------+----------
          1 |        0
-         3 |        1
          2 |        0
+         3 |        1
          4 |        1
          5 |        0
          6 |        1

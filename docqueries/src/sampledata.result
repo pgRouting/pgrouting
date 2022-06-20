@@ -12,16 +12,7 @@ DROP TABLE IF EXISTS old_restrictions;
 DROP TABLE
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE
-DROP TABLE IF EXISTS retrict;
-NOTICE:  table "retrict" does not exist, skipping
-DROP TABLE
 DROP TABLE IF EXISTS combinations;
-DROP TABLE
-DROP TABLE IF EXISTS vertex_table;
-NOTICE:  table "vertex_table" does not exist, skipping
-DROP TABLE
-DROP TABLE IF EXISTS categories;
-NOTICE:  table "categories" does not exist, skipping
 DROP TABLE
 DROP TABLE IF EXISTS vehicles;
 DROP TABLE
@@ -29,15 +20,13 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE
 /* --EDGE TABLE CREATE start */
 CREATE TABLE edges (
-    id BIGSERIAL,
+    id BIGSERIAL PRIMARY KEY,
     source BIGINT,
     target BIGINT,
     cost FLOAT,
     reverse_cost FLOAT,
     capacity BIGINT,
     reverse_capacity BIGINT,
-    category_id INTEGER,
-    reverse_category_id INTEGER,
     x1 FLOAT,
     y1 FLOAT,
     x2 FLOAT,
@@ -48,33 +37,56 @@ CREATE TABLE
 /* --EDGE TABLE CREATE end */
 /* --EDGE TABLE ADD DATA start */
 INSERT INTO edges (
-    category_id, reverse_category_id,
     cost, reverse_cost,
     capacity, reverse_capacity, geom) VALUES
-(3, 1,    1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 0), ST_POINT(2, 1))),
-(3, 2,   -1,  1,  -1, 100,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(3, 1))),
-(2, 1,   -1,  1,  -1, 130,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(4, 1))),
-(2, 4,    1,  1, 100,  50,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(2, 2))),
-(1, 4,    1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(3, 2))),
-(4, 2,    1,  1,  50, 100,   ST_MakeLine(ST_POINT(0, 2), ST_POINT(1, 2))),
-(4, 1,    1,  1,  50, 130,   ST_MakeLine(ST_POINT(1, 2), ST_POINT(2, 2))),
-(2, 1,    1,  1, 100, 130,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(3, 2))),
-(1, 3,    1,  1, 130,  80,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(4, 2))),
-(1, 4,    1,  1, 130,  50,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(2, 3))),
-(1, 2,    1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(3, 3))),
-(2, 3,    1, -1, 100,  -1,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(3, 3))),
-(2, 4,    1, -1, 100,  -1,   ST_MakeLine(ST_POINT(3, 3), ST_POINT(4, 3))),
-(3, 1,    1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(2, 4))),
-(3, 4,    1,  1,  80,  50,   ST_MakeLine(ST_POINT(4, 2), ST_POINT(4, 3))),
-(3, 3,    1,  1,  80,  80,   ST_MakeLine(ST_POINT(4, 1), ST_POINT(4, 2))),
-(1, 2,    1,  1, 130, 100,   ST_MakeLine(ST_POINT(0.5, 3.5), ST_POINT(1.999999999999, 3.5))),
-(4, 1,    1,  1,  50, 130,   ST_MakeLine(ST_POINT(3.5, 2.3), ST_POINT(3.5, 4)));
+( 1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 0), ST_POINT(2, 1))),
+(-1,  1,  -1, 100,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(3, 1))),
+(-1,  1,  -1, 130,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(4, 1))),
+( 1,  1, 100,  50,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(2, 2))),
+( 1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(3, 2))),
+( 1,  1,  50, 100,   ST_MakeLine(ST_POINT(0, 2), ST_POINT(1, 2))),
+( 1,  1,  50, 130,   ST_MakeLine(ST_POINT(1, 2), ST_POINT(2, 2))),
+( 1,  1, 100, 130,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(3, 2))),
+( 1,  1, 130,  80,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(4, 2))),
+( 1,  1, 130,  50,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(2, 3))),
+( 1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(3, 3))),
+( 1, -1, 100,  -1,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(3, 3))),
+( 1, -1, 100,  -1,   ST_MakeLine(ST_POINT(3, 3), ST_POINT(4, 3))),
+( 1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(2, 4))),
+( 1,  1,  80,  50,   ST_MakeLine(ST_POINT(4, 2), ST_POINT(4, 3))),
+( 1,  1,  80,  80,   ST_MakeLine(ST_POINT(4, 1), ST_POINT(4, 2))),
+( 1,  1, 130, 100,   ST_MakeLine(ST_POINT(0.5, 3.5), ST_POINT(1.999999999999, 3.5))),
+( 1,  1,  50, 130,   ST_MakeLine(ST_POINT(3.5, 2.3), ST_POINT(3.5, 4)));
 INSERT 0 18
 /* --EDGE TABLE ADD DATA end */
 /* -- q1 */
-SELECT  * INTO vertices
+SELECT * INTO vertices
 FROM pgr_extractVertices('SELECT id, geom FROM edges ORDER BY id');
 SELECT 17
+/* -- q1-1 */
+CREATE SEQUENCE vertices_id_seq;
+CREATE SEQUENCE
+ALTER TABLE vertices ALTER COLUMN id SET DEFAULT nextval('vertices_id_seq');
+ALTER TABLE
+ALTER SEQUENCE vertices_id_seq OWNED BY vertices.id;
+ALTER SEQUENCE
+SELECT setval('vertices_id_seq', (SELECT coalesce(max(id)) FROM vertices));
+ setval
+--------
+     17
+(1 row)
+
+                                  Table "public.vertices"
+  Column   |       Type       | Collation | Nullable |               Default
+-----------+------------------+-----------+----------+--------------------------------------
+ id        | bigint           |           |          | nextval('vertices_id_seq'::regclass)
+ in_edges  | bigint[]         |           |          |
+ out_edges | bigint[]         |           |          |
+ x         | double precision |           |          |
+ y         | double precision |           |          |
+ geom      | geometry         |           |          |
+
+/* -- q1-2 */
 /* -- q2 */
 SELECT * FROM vertices;
  id | in_edges | out_edges |       x        |  y  |                    geom
@@ -100,24 +112,16 @@ SELECT * FROM vertices;
 
 /* -- q3 */
 /* -- set the source information */
-WITH
-out_going AS (
-  SELECT id AS vid, unnest(out_edges) AS eid, x, y
-  FROM vertices
-)
-UPDATE edges
-SET source = vid, x1 = x, y1 = y
-FROM out_going WHERE id = eid;
+UPDATE edges AS e
+SET source = v.id, x1 = x, y1 = y
+FROM vertices AS v
+WHERE ST_StartPoint(e.geom) = v.geom;
 UPDATE 18
 /* -- set the target information */
-WITH
-in_coming AS (
-  SELECT id AS vid, unnest(in_edges) AS eid, x, y
-  FROM vertices
-)
-UPDATE edges
-SET target = vid, x2 = x, y2 = y
-FROM in_coming WHERE id = eid;
+UPDATE edges AS e
+SET target = v.id, x2 = x, y2 = y
+FROM vertices AS v
+WHERE ST_EndPoint(e.geom) = v.geom;
 UPDATE 18
 /* -- q4 */
 SELECT id, source, target
@@ -153,8 +157,7 @@ CREATE TABLE pointsOfInterest(
     side CHAR,
     fraction FLOAT,
     geom geometry,
-    newPoint geometry
-);
+    newPoint geometry);
 CREATE TABLE
 /* -- p2 */
 INSERT INTO pointsOfInterest (geom) VALUES

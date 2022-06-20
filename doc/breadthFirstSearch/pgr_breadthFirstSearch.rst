@@ -161,13 +161,11 @@ shows with descending order of the edge identifiers.
 
 |ascending| |descending|
 
-.. TODO adjust the images
-
 .. |ascending| image:: images/bfs-ascending.png
-   :scale: 50%
+   :scale: 25%
 
 .. |descending| image:: images/bfs-descending.png
-   :scale: 50%
+   :scale: 25%
 
 See Also
 -------------------------------------------------------------------------------

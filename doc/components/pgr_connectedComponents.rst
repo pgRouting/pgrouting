@@ -135,6 +135,16 @@ Returns set of ``(seq, component, node)``
 
 .. return_componentsV_end
 
+Additional Examples
+-------------------------------------------------------------------------------
+
+Connecting disconnected components
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: connecting_graph_start
+    :end-before: connecting_graph_end
+
 See Also
 -------------------------------------------------------------------------------
 

@@ -55,14 +55,12 @@ On the deprecated signatures:
   * Is of type ``FLOAT``.
 
 Creation of the old restrictions table
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: migration.queries
    :start-after: --rest00
    :end-before: --rest01
 
 Old restrictions fillup
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: migration.queries
    :start-after: --rest01
@@ -103,26 +101,10 @@ New restrictions structure
 
   * Is of type ``ANY-NUMERICAL``
 
-Creation of the restrictions table
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.. include:: sampledata.rst
+   :start-after: the_restrictions_start
+   :end-before: the_restrictions_end
 
-.. literalinclude:: sampledata.queries
-   :start-after: -- r1
-   :end-before: -- r2
-
-Restrictions fillup
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. literalinclude:: sampledata.queries
-   :start-after: -- r2
-   :end-before: -- r3
-
-Restrictions contents
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. literalinclude:: sampledata.queries
-   :start-after: -- r3
-   :end-before: -- r4
 
 The restriction with ``rid = 2`` represents the path :math:`3 \rightarrow5
 \rightarrow9`.
