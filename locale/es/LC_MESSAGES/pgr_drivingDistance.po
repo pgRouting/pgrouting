@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-04 15:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_drivingdistance/es/>\n"
 "Language: es\n"
@@ -291,7 +291,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo vértice extremo de la arista."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_drivingDistance.rst:134
@@ -461,7 +461,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_drivingDistance.rst:177
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"
-msgstr ":doc:`pgr_alphaShape` - Cálculo de Alpha Shape"
+msgstr ":doc:`pgr_alphaShape` - Cálculo de la forma Alpha"
 
 #: ../../build/doc/pgr_drivingDistance.rst:178
 msgid ":doc:`sampledata` network."

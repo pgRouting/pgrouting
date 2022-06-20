@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 15:58+0000\n"
-"PO-Revision-Date: 2022-05-06 18:12+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-04 15:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "proposed/es/>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/proposed.rst:12
@@ -116,7 +116,8 @@ msgstr ":doc:`pgr_dijkstraNear` - Obtener la ruta al vértice más cercano."
 
 #: ../../build/doc/dijkstra-family.rst:5
 msgid ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
-msgstr ":doc:`pgr_dijkstraNearCost` - Get the cost to the nearest vertex."
+msgstr ""
+":doc:`pgr_dijkstraNearCost` - Consigue el costo del vértice más cercano."
 
 #: ../../build/doc/proposed.rst:52
 msgid ":doc:`withPoints-family`"
@@ -204,7 +205,7 @@ msgstr ":doc:`drivingDistance-category`"
 
 #: ../../build/doc/drivingDistance-category.rst:3
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
-msgstr ":doc:`pgr_withPointsDD` - Driving Distance basada en pgr_withPoints"
+msgstr ":doc:`pgr_withPointsDD` - Distancia Manejando basada en pgr_withPoints"
 
 #: ../../build/doc/proposed.rst:101
 msgid ":doc:`KSP-category`"
@@ -220,7 +221,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/proposed.rst:116
 msgid ":doc:`experimental`"
-msgstr ""
+msgstr ":doc:`experimental`"
 
 #: ../../build/doc/proposed.rst:119
 msgid "Indices and tables"

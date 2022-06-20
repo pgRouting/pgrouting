@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 18:12+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-04 15:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "routingfunctions/es/>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/routingFunctions.rst:12
@@ -102,7 +102,7 @@ msgstr ":doc:`bdAstar-family`"
 
 #: ../../build/doc/bdAstar-family.rst:3
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
-msgstr ":doc:`pgr_bdAstar` -  Algoritmo bidireccional A* para obtener rutas."
+msgstr ":doc:`pgr_bdAstar` - Algoritmo bidireccional A* para obtener rutas."
 
 #: ../../build/doc/bdAstar-family.rst:4
 msgid ""
@@ -117,7 +117,7 @@ msgid ""
 ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a "
 "cost matrix of paths."
 msgstr ""
-":doc:`pgr_bdAstarCostMatrix`  Algoritmo bidireccional A* para calcular una "
+":doc:`pgr_bdAstarCostMatrix` Algoritmo bidireccional A* para calcular una "
 "matriz de coste de rutas."
 
 #: ../../build/doc/routingFunctions.rst:54
@@ -438,7 +438,7 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:6
 msgid "Post pocessing"
-msgstr "Post poce"
+msgstr "Post procesamiento"
 
 #: ../../build/doc/drivingDistance-category.rst:8
 msgid ":doc:`pgr_alphaShape` - Alpha shape computation"

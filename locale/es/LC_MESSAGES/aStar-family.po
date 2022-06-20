@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "astar-family/es/>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/aStar-family.rst:12
@@ -33,12 +33,11 @@ msgid ""
 "family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/aStar-"
 "family.html>`__"
 msgstr ""
-"***Versiones soportadas:** `Última  <https://docs.pgrouting.org/latest/es"
-"/aStar-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es/aStar-"
-"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es/aStar-"
-"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/aStar-"
-"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/aStar-"
-"family.html>`__"
+"***Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"aStar-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es/aStar-family."
+"html>`__) `3.2 <https://docs.pgrouting.org/3.2/es/aStar-family.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/aStar-family.html>`__ `3.0 <https://docs."
+"pgrouting.org/3.0/es/aStar-family.html>`__"
 
 #: ../../build/doc/aStar-family.rst:18
 msgid ""
@@ -100,7 +99,7 @@ msgstr "Falta la el indicador de ``directed``."
 
 #: ../../build/doc/aStar-family.rst:54
 msgid "``directed`` flag is set to true"
-msgstr "El indicador de ``directed`` se configura a \"true\"."
+msgstr "El indicador de ``directed`` se configura a \"true\""
 
 #: ../../build/doc/aStar-family.rst:56
 msgid "Unless specified otherwise, ordering is:"
@@ -112,7 +111,7 @@ msgstr "primero por ``start_vid`` (si existe)"
 
 #: ../../build/doc/aStar-family.rst:59
 msgid "then by ``end_vid``"
-msgstr "luego por  ``end_vid``"
+msgstr "luego por ``end_vid``"
 
 #: ../../build/doc/aStar-family.rst:61
 msgid "Values are returned when there is a path"
@@ -120,7 +119,7 @@ msgstr "Los valores se devuelven cuando hay una ruta"
 
 #: ../../build/doc/aStar-family.rst:62
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
-msgstr "Permita que  :math:`v`  y  :math:`u`  sean nodos en el grafo:"
+msgstr "Permita que :math:`v` y :math:`u` sean nodos en el grafo:"
 
 #: ../../build/doc/aStar-family.rst:64
 msgid "If there is no path from :math:`v` to :math:`u`:"
@@ -136,7 +135,7 @@ msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
 
 #: ../../build/doc/aStar-family.rst:69
 msgid "There is no path when :math:`v = u` therefore"
-msgstr "No hay camino cuando  :math:`v = u`  por lo tanto"
+msgstr "No hay camino cuando :math:`v = u` por lo tanto"
 
 #: ../../build/doc/aStar-family.rst:72
 msgid "``agg_cost`` from `v` to `u` is :math:`0`"

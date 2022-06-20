@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bdastarcostmatrix/es/>\n"
 "Language: es\n"
@@ -236,7 +236,7 @@ msgstr "En caso de ``true`` el grafo se considera como Dirigido."
 
 #: ../../build/doc/pgr_aStar.rst:7
 msgid "When ``false`` the graph is considered as Undirected."
-msgstr "Cuando ``false`` el gráfico se considera como No Dirigido"
+msgstr "Cuando ``false`` el gráfico se considera como No Dirigido."
 
 #: ../../build/doc/pgr_aStar.rst:9
 msgid "**heuristic**"
@@ -352,7 +352,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo vértice extremo de la arista."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**cost**"

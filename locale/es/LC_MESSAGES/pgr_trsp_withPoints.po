@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-06 18:16+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
 "Language: es\n"
@@ -325,7 +325,7 @@ msgstr ""
 #: ../../build/doc/pgr_trsp_withPoints.rst:232
 #: ../../build/doc/TRSP-family.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr ""
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:226
 msgid "Array of identifieris of destination vertices."
@@ -362,7 +362,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:239
 msgid "When ``false`` the graph is considered as Undirected."
-msgstr ""
+msgstr "Cuando ``false`` el gráfico se considera como No Dirigido."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:242
 msgid "With points optional parameters"
@@ -452,7 +452,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo vértice extremo de la arista."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgr_trsp_withPoints.rst:338
@@ -518,11 +518,11 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:285
 msgid "Restrictions SQL"
-msgstr ""
+msgstr "Restricciones SQL"
 
 #: ../../build/doc/TRSP-family.rst:11
 msgid "``path``"
-msgstr ""
+msgstr "``path``"
 
 #: ../../build/doc/TRSP-family.rst:13
 msgid ""
@@ -533,11 +533,11 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:17
 msgid "``Cost``"
-msgstr ""
+msgstr "``Cost``"
 
 #: ../../build/doc/TRSP-family.rst:19
 msgid "Cost of taking the forbidden path."
-msgstr ""
+msgstr "Costo de tomar el camino prohibido."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:292
 msgid "Points SQL"
@@ -631,7 +631,7 @@ msgstr "``seq``"
 #: ../../build/doc/pgr_trsp_withPoints.rst:317
 #: ../../build/doc/pgr_trsp_withPoints.rst:320
 msgid "``INTEGER``"
-msgstr ""
+msgstr "``INTEGER``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:318
 msgid "Sequential value starting from **1**."

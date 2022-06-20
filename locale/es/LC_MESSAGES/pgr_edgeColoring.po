@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-06 18:16+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-04 15:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgecoloring/es/>\n"
 "Language: es\n"
@@ -42,71 +42,72 @@ msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
-msgstr ""
+msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr ""
+msgstr "Estas funciones pueden crear un bloque del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
-msgstr ""
+msgstr "Funciones experimentales"
 
 #: ../../build/doc/experimental.rst:9
 msgid "They are not officially of the current release."
-msgstr ""
+msgstr "No son oficialmente de la versión actual."
 
 #: ../../build/doc/experimental.rst:10
 msgid "They likely will not be officially be part of the next release:"
-msgstr ""
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
 
 #: ../../build/doc/experimental.rst:12
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
 
 #: ../../build/doc/experimental.rst:13
 msgid "Name might change."
-msgstr ""
+msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr ""
+msgstr "La firma (declaración de funciones) podría cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
-msgstr ""
+msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr ""
+msgstr "Las pruebas de pgTap pueden estar ausentes."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
-msgstr ""
+msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr ""
+msgstr "Puede haber carencia de documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
-msgstr ""
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
 msgstr ""
+"Ejemplos de documentación que puede ser necesario generar automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr ""
+msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
-msgstr ""
+msgstr "Puede depender de una función propuesta de pgRouting"
 
 #: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
-msgstr ""
+msgstr "Podría depender de una función obsoleta de pgRouting"
 
 #: ../../build/doc/pgr_edgeColoring.rst:32
 msgid "Availability"
@@ -280,7 +281,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo vértice extremo de la arista."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"

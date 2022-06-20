@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-06 18:16+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsvia/es/>\n"
 "Language: es\n"
@@ -200,7 +200,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:21
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr ""
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/via-category.rst:23
 msgid "Array of ordered vertices identifiers that are going to be visited."
@@ -362,7 +362,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo vértice extremo de la arista."
+msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/via-category.rst:45
@@ -504,7 +504,7 @@ msgstr "``seq``"
 #: ../../build/doc/via-category.rst:12 ../../build/doc/via-category.rst:15
 #: ../../build/doc/via-category.rst:18
 msgid "``INTEGER``"
-msgstr ""
+msgstr "``INTEGER``"
 
 #: ../../build/doc/via-category.rst:13
 msgid "Sequential value starting from **1**."
