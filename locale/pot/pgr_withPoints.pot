@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -699,51 +699,67 @@ msgstr ""
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:253
-msgid "All the examples are about traveling from point :math:`1` and vertex :math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
-msgstr ""
-
 #: ../../build/doc/pgr_withPoints.rst:257
-msgid "The query"
+msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:264
-msgid "Passes in front or visits with right side driving."
+#: ../../build/doc/pgr_withPoints.rst:259
+msgid "Find the routes from vertex :math:`1` to the two closest locations on the graph of point `(2.9, 1.8)`."
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:266
-#: ../../build/doc/pgr_withPoints.rst:276
+msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
+msgstr ""
+
+#: ../../build/doc/pgr_withPoints.rst:267
+msgid "Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`."
+msgstr ""
+
+#: ../../build/doc/pgr_withPoints.rst:270
+msgid "Usage variations"
+msgstr ""
+
+#: ../../build/doc/pgr_withPoints.rst:272
+msgid "All the examples are about traveling from point :math:`1` and vertex :math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPoints.rst:280
+msgid "Passes in front or visits with right side driving."
+msgstr ""
+
+#: ../../build/doc/pgr_withPoints.rst:282
+#: ../../build/doc/pgr_withPoints.rst:292
 msgid "For point :math:`6` and vertex :math:`11`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:274
+#: ../../build/doc/pgr_withPoints.rst:290
 msgid "Passes in front or visits with left side driving."
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:284
+#: ../../build/doc/pgr_withPoints.rst:300
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:286
+#: ../../build/doc/pgr_withPoints.rst:302
 msgid ":doc:`withPoints-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:287
+#: ../../build/doc/pgr_withPoints.rst:303
 msgid ":doc:`withPoints-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:288
+#: ../../build/doc/pgr_withPoints.rst:304
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:291
+#: ../../build/doc/pgr_withPoints.rst:307
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:292
+#: ../../build/doc/pgr_withPoints.rst:308
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPoints.rst:293
+#: ../../build/doc/pgr_withPoints.rst:309
 msgid ":ref:`search`"
 msgstr ""

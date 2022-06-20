@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/proposed.rst:12
 msgid ""
@@ -245,7 +245,7 @@ msgid ":doc:`withPoints-category`"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:3
-msgid ":doc:`withPoints-family` - Functions based on dijkstra algorithms."
+msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:4
@@ -253,22 +253,30 @@ msgid "From the :doc:`TRSP-family`:"
 msgstr ""
 
 #: ../../build/doc/proposed.rst:141
+msgid "Utilities"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:142
+msgid ":doc:`pgr_findCloseEdges`"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:150
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:143
+#: ../../build/doc/proposed.rst:152
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:146
+#: ../../build/doc/proposed.rst:155
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:147
+#: ../../build/doc/proposed.rst:156
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:148
+#: ../../build/doc/proposed.rst:157
 msgid ":ref:`search`"
 msgstr ""
 

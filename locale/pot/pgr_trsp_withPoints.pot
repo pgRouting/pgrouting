@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -685,42 +685,66 @@ msgstr ""
 msgid "``0`` for the first row in the path sequence."
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:322
+#: ../../build/doc/pgr_trsp_withPoints.rst:320
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:324
+#: ../../build/doc/pgr_trsp_withPoints.rst:326
+msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:328
+msgid "Find the routes from vertex :math:`1` to the two closest locations on the graph of point `(2.9, 1.8)`."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:335
+msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:336
+msgid "Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:339
+msgid "Pass in front or visits"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:341
 msgid "Which path (if any) passes in front of point :math:`6` or vertex :math:`11` with **right** side driving topology."
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:332
+#: ../../build/doc/pgr_trsp_withPoints.rst:349
+msgid "Show details on undirected graph"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp_withPoints.rst:351
 msgid "From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex :math:`1` on an **undirected** graph, with details."
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:340
+#: ../../build/doc/pgr_trsp_withPoints.rst:359
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:342
+#: ../../build/doc/pgr_trsp_withPoints.rst:361
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:343
-msgid ":doc:`withPoints-family`"
+#: ../../build/doc/pgr_trsp_withPoints.rst:362
+msgid ":doc:`withPoints-category`"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:344
+#: ../../build/doc/pgr_trsp_withPoints.rst:363
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:347
+#: ../../build/doc/pgr_trsp_withPoints.rst:366
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:348
+#: ../../build/doc/pgr_trsp_withPoints.rst:367
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:349
+#: ../../build/doc/pgr_trsp_withPoints.rst:368
 msgid ":ref:`search`"
 msgstr ""

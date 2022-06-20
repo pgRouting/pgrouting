@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -642,44 +642,64 @@ msgstr ""
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:313
-msgid "**Right** side driving topology"
+#: ../../build/doc/pgr_withPointsCost.rst:317
+msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:315
-#: ../../build/doc/pgr_withPointsCost.rst:324
-#: ../../build/doc/pgr_withPointsCost.rst:333
-msgid "Traveling from point :math:`1` and vertex :math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
+#: ../../build/doc/pgr_withPointsCost.rst:319
+msgid "Find the cost of the routes from vertex :math:`1` to the two closest locations on the graph of point `(2.9, 1.8)`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:322
-msgid "**Left** side driving topology"
+#: ../../build/doc/pgr_withPointsCost.rst:326
+msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:327
+msgid "Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:328
+msgid "Being close to the graph does not mean have a shorter route."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:331
+msgid "Right side driving topology"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:333
+#: ../../build/doc/pgr_withPointsCost.rst:343
+#: ../../build/doc/pgr_withPointsCost.rst:353
+msgid "Traveling from point :math:`1` and vertex :math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:341
+msgid "Left side driving topology"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCost.rst:351
 msgid "Does not matter driving side driving topology"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:340
+#: ../../build/doc/pgr_withPointsCost.rst:360
 msgid "The queries use the :doc:`sampledata` network."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:343
+#: ../../build/doc/pgr_withPointsCost.rst:363
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:345
+#: ../../build/doc/pgr_withPointsCost.rst:365
 msgid ":doc:`withPoints-family`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:348
+#: ../../build/doc/pgr_withPointsCost.rst:368
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:349
+#: ../../build/doc/pgr_withPointsCost.rst:369
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCost.rst:350
+#: ../../build/doc/pgr_withPointsCost.rst:370
 msgid ":ref:`search`"
 msgstr ""

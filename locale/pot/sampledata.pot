@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,106 +68,130 @@ msgstr ""
 msgid "Points outside the graph"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:111
+#: ../../build/doc/sampledata.rst:93
+msgid "Points of interest"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:100
+msgid "Points of interest geometry"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:107
+msgid "Points of interest fillup"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:109
+msgid "Using :doc:`pgr_findCloseEdges`"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:115
+msgid "A special case to arrive from both sides of the edge."
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:122
+msgid "Points of interest data"
+msgstr ""
+
+#: ../../build/doc/sampledata.rst:131
 msgid "Support tables"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:114
+#: ../../build/doc/sampledata.rst:134
 msgid "Combinations"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:130
+#: ../../build/doc/sampledata.rst:150
 msgid "Restrictions"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:146
+#: ../../build/doc/sampledata.rst:166
 msgid "Images"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:148
+#: ../../build/doc/sampledata.rst:168
 msgid "Red arrows correspond when ``cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:149
+#: ../../build/doc/sampledata.rst:169
 msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:150
+#: ../../build/doc/sampledata.rst:170
 msgid "Points are outside the graph."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:151
+#: ../../build/doc/sampledata.rst:171
 msgid "Click on the graph to enlarge."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:156
+#: ../../build/doc/sampledata.rst:176
 msgid "Directed graph with ``cost`` and ``reverse_cost``"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:158
+#: ../../build/doc/sampledata.rst:178
 msgid "When working with city networks, this is recommended for point of view of vehicles."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:163
+#: ../../build/doc/sampledata.rst:183
 msgid "Directed, with cost and reverse_cost"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:168
+#: ../../build/doc/sampledata.rst:188
 msgid "Undirected graph with ``cost`` and ``reverse_cost``"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:170
+#: ../../build/doc/sampledata.rst:190
 msgid "When working with city networks, this is recommended for point of view of pedestrians."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:176
+#: ../../build/doc/sampledata.rst:196
 msgid "Undirected, with cost and reverse cost"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:181
+#: ../../build/doc/sampledata.rst:201
 msgid "Directed graph with ``cost``"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:186
+#: ../../build/doc/sampledata.rst:206
 msgid "Directed, with cost"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:191
+#: ../../build/doc/sampledata.rst:211
 msgid "Undirected graph with ``cost``"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:196
+#: ../../build/doc/sampledata.rst:216
 msgid "Undirected, with cost"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:203
+#: ../../build/doc/sampledata.rst:223
 msgid "Pick & Deliver Data"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:207
+#: ../../build/doc/sampledata.rst:227
 msgid "This data example **lc101** is from data published at https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:211
+#: ../../build/doc/sampledata.rst:231
 msgid "The vehicles"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:213
+#: ../../build/doc/sampledata.rst:233
 msgid "There are 25 vehciles in the problem all with the same characteristics."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:220
+#: ../../build/doc/sampledata.rst:240
 msgid "The original orders"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:222
+#: ../../build/doc/sampledata.rst:242
 msgid "The data comes in different rows for the pickup and the delivery of the same order."
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:230
+#: ../../build/doc/sampledata.rst:250
 msgid "The orders"
 msgstr ""
 
-#: ../../build/doc/sampledata.rst:232
+#: ../../build/doc/sampledata.rst:252
 msgid "The original data needs to be converted to an appropiate table:"
 msgstr ""

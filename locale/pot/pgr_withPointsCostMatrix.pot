@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -569,38 +569,54 @@ msgstr ""
 msgid "Additional Examples"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:139
-msgid "Use with :doc:`pgr_TSP`."
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:143
+msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:146
-msgid "See Also"
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:145
+msgid "Find the matrix cost of the routes from vertex :math:`1` and the two closest locations on the graph of point `(2.9, 1.8)`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:148
-msgid ":doc:`withPoints-family`"
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:152
+msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:149
-msgid ":doc:`costMatrix-category`"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:150
-msgid ":doc:`TSP-family`"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:151
-msgid ":doc:`sampledata`"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:154
-msgid "Indices and tables"
-msgstr ""
-
-#: ../../build/doc/pgr_withPointsCostMatrix.rst:155
-msgid ":ref:`genindex`"
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:153
+msgid "Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:156
+msgid "Use with :doc:`pgr_TSP`."
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:163
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:165
+msgid ":doc:`withPoints-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:166
+msgid ":doc:`costMatrix-category`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:167
+msgid ":doc:`TSP-family`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:168
+msgid ":doc:`sampledata`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:171
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:172
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_withPointsCostMatrix.rst:173
 msgid ":ref:`search`"
 msgstr ""
