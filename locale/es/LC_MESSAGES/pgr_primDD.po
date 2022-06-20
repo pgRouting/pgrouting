@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-20 14:16+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_primdd/es/>\n"
 "Language: es\n"
@@ -458,7 +458,7 @@ msgstr ":doc:`spanningTree-family`"
 
 #: ../../build/doc/pgr_primDD.rst:111
 msgid ":doc:`prim-family`"
-msgstr ""
+msgstr ":doc:`prim-family`"
 
 #: ../../build/doc/pgr_primDD.rst:112
 msgid "The queries use the :doc:`sampledata` network."
