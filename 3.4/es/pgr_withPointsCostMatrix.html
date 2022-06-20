@@ -109,7 +109,11 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Result Columns</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Use <span class="xref std std-doc">pgr_findCloseEdges</span> in the Points SQL.</a></li>
+<li><a class="reference internal" href="#use-with-pgr-tsp">Use with <span class="xref std std-doc">pgr_TSP</span>.</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -549,11 +553,50 @@ a Point.</p>
 </section>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Use with <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</p>
-</dd>
-</dl>
+<nav class="contents local" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the Points SQL.</a></p></li>
+<li><p><a class="reference internal" href="#use-with-pgr-tsp" id="id3">Use with <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</a></p></li>
+</ul>
+</nav>
+<section id="use-pgr-findcloseedges-in-the-points-sql">
+<h3>Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the <a class="reference internal" href="#points-sql">Points SQL</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Permalink to this heading">¶</a></h3>
+<p>Find the matrix cost of the routes from vertex <span class="math notranslate nohighlight">\(1\)</span> and the two closest
+locations on the graph of point <cite>(2.9, 1.8)</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsCostMatrix(
+  $e$ SELECT * FROM edges $e$,
+  $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
+      FROM pgr_findCloseEdges(
+        $$SELECT id, geom FROM edges$$,
+        (SELECT ST_POINT(2.9, 1.8)),
+        0.5, cap =&gt; 2)
+  $p$,
+  ARRAY[5, 10, -1, -2]);
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+        -2 |      -1 |      3.9
+        -2 |       5 |      2.9
+        -2 |      10 |      3.1
+        -1 |      -2 |      0.3
+        -1 |       5 |      3.2
+        -1 |      10 |      3.2
+         5 |      -2 |      2.9
+         5 |      -1 |      6.8
+         5 |      10 |        6
+        10 |      -2 |      1.1
+        10 |      -1 |      0.8
+        10 |       5 |        2
+(12 rows)
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9,1.8)</cite>.</p></li>
+<li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9,1.8)</cite>.</p></li>
+</ul>
+</section>
+<section id="use-with-pgr-tsp">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Use with <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</a><a class="headerlink" href="#use-with-pgr-tsp" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_withPointsCostMatrix(
@@ -575,6 +618,7 @@ HINT:  Ignoring annaeling parameters
 
 </pre></div>
 </div>
+</section>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
@@ -605,8 +649,8 @@ HINT:  Ignoring annaeling parameters
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 10, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jun 20, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

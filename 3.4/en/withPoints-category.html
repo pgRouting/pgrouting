@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Experimental Functions" href="experimental.html" />
+    <link rel="next" title="pgr_findCloseEdges" href="pgr_findCloseEdges.html" />
     <link rel="prev" title="Via - Category" href="via-category.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -138,7 +138,7 @@
     </a>
   </li>
   <li>
-    <a href="experimental.html" title="Next Chapter: Experimental Functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Experimental ... &raquo;</span>
+    <a href="pgr_findCloseEdges.html" title="Next Chapter: pgr_findCloseEdges"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_findCloseEdges &raquo;</span>
     </a>
   </li>
               
@@ -195,7 +195,7 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a> - Functions based on dijkstra algorithms.</p></li>
+<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Family of functions</span></a> - Functions based on Dijkstra algorithm.</p></li>
 <li><p>From the <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Family of functions</span></a>:</p>
 <ul>
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point routing with restrictions.</p></li>
@@ -245,7 +245,11 @@ the data base.</p>
 <li><p>There is a table on the database that describes the points</p></li>
 </ul>
 </li>
-<li><p><strong>Temporal</strong>: for example points given through a web application</p></li>
+<li><p><strong>Temporal</strong>: for example points given through a web application</p>
+<ul>
+<li><p>Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the <a class="reference internal" href="#points-sql">Points SQL</a>.</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>The numbering of the points are handled with negative sign.</p>
@@ -559,14 +563,14 @@ example.</p>
 <p>The representation on the data base follows the <a class="reference internal" href="#points-sql">Points SQL</a> description, and
 for this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
- <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
-<span class="o">-----+---------+----------+------</span>
-   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
-   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span>      <span class="n">fraction</span>      <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+--------------------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>                <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>                <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span> <span class="mf">0.6000000000000001</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="mf">0.3999999999999999</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>                <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>                <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -641,9 +645,9 @@ the graph.</p>
 <p>insert point:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span>
 <span class="n">FROM</span> <span class="n">pointsOfInterest</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
- <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
-<span class="o">-----+---------+----------+------</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span>      <span class="n">fraction</span>      <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+--------------------+------</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="mf">0.3999999999999999</span> <span class="o">|</span> <span class="n">r</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -758,8 +762,8 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jun 10, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jun 20, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

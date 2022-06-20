@@ -547,14 +547,14 @@ example.</p>
 <p>The representation on the data base follows the <a class="reference internal" href="#points-sql">Points SQL</a> description, and
 for this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
- <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
-<span class="o">-----+---------+----------+------</span>
-   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
-   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
-   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
-   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span>      <span class="n">fraction</span>      <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+--------------------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>                <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>                <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span> <span class="mf">0.6000000000000001</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="mf">0.3999999999999999</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>                <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>                <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -629,9 +629,9 @@ the graph.</p>
 <p>insert point:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span>
 <span class="n">FROM</span> <span class="n">pointsOfInterest</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
- <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
-<span class="o">-----+---------+----------+------</span>
-   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span>      <span class="n">fraction</span>      <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+--------------------+------</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="mf">0.3999999999999999</span> <span class="o">|</span> <span class="n">r</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
@@ -746,8 +746,8 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jun 10, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jun 20, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>
