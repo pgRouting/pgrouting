@@ -76,16 +76,15 @@ SELECT setval('vertices_id_seq', (SELECT coalesce(max(id)) FROM vertices));
      17
 (1 row)
 
-                                                      Table "public.vertices"
-  Column   |       Type       | Collation | Nullable |               Default                | Storage  | Stats target | Description
------------+------------------+-----------+----------+--------------------------------------+----------+--------------+-------------
- id        | bigint           |           |          | nextval('vertices_id_seq'::regclass) | plain    |              |
- in_edges  | bigint[]         |           |          |                                      | extended |              |
- out_edges | bigint[]         |           |          |                                      | extended |              |
- x         | double precision |           |          |                                      | plain    |              |
- y         | double precision |           |          |                                      | plain    |              |
- geom      | geometry         |           |          |                                      | main     |              |
-Access method: heap
+                                  Table "public.vertices"
+  Column   |       Type       | Collation | Nullable |               Default
+-----------+------------------+-----------+----------+--------------------------------------
+ id        | bigint           |           |          | nextval('vertices_id_seq'::regclass)
+ in_edges  | bigint[]         |           |          |
+ out_edges | bigint[]         |           |          |
+ x         | double precision |           |          |
+ y         | double precision |           |          |
+ geom      | geometry         |           |          |
 
 /* -- q1-2 */
 /* -- q2 */
