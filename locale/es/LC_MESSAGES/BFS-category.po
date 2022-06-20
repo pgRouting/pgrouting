@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-02 16:50+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"bfs-category/es/>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/bfs-"
+"category/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,14 +83,14 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/BFS-category.rst:55 ../../build/doc/BFS-category.rst:92
-#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/BFS-category.rst:127
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr "Tipo"
 
 #: ../../build/doc/BFS-category.rst:56 ../../build/doc/BFS-category.rst:94
-#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/BFS-category.rst:128
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr "Descripción"
 
@@ -149,9 +149,8 @@ msgstr "Valores :math:`0` son ignorados"
 msgid "For optimization purposes, any duplicated value is ignored."
 msgstr "Con el propósito de optimización, valores duplicados son ignorados."
 
-#: ../../build/doc/BFS-category.rst:74
+#: ../../build/doc/BFS-category.rst:74 ../../build/doc/BFS-category.rst:158
 #: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/BFS-category.rst:158
 msgid "Where:"
 msgstr "Donde:"
 
@@ -197,7 +196,9 @@ msgid "When negative throws an error."
 msgstr "Cuando negativo arroja un error."
 
 #: ../../build/doc/BFS-category.rst:105
-msgid "Inner queries"
+#, fuzzy
+#| msgid "Inner queries"
+msgid "Inner Queries"
 msgstr "Consultas internas"
 
 #: ../../build/doc/BFS-category.rst:108
@@ -238,8 +239,8 @@ msgstr "``target``"
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo punto final en el vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/BFS-category.rst:151
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
 msgstr "``cost``"
 
