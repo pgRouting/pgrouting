@@ -104,6 +104,18 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
+<li><a class="reference internal" href="#additional-examples">Additional Examples</a><ul>
+<li><a class="reference internal" href="#connecting-disconnected-components">Connecting disconnected components</a><ul>
+<li><a class="reference internal" href="#prepare-storage-for-connection-information">Prepare storage for connection information</a></li>
+<li><a class="reference internal" href="#save-the-vertices-connection-information">Save the vertices connection information</a></li>
+<li><a class="reference internal" href="#save-the-edges-connection-information">Save the edges connection information</a></li>
+<li><a class="reference internal" href="#get-the-closest-vertex">Get the closest vertex</a></li>
+<li><a class="reference internal" href="#connecting-components">Connecting components</a></li>
+<li><a class="reference internal" href="#checking-components">Checking components</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -354,6 +366,193 @@ it’s not part of the graph.</p></li>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<section id="connecting-disconnected-components">
+<h3>Connecting disconnected components<a class="headerlink" href="#connecting-disconnected-components" title="Permalink to this heading">¶</a></h3>
+<p>To get the graph connectivity:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">16</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
+  <span class="mi">17</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
+  <span class="mi">18</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>In this example, the component <span class="math notranslate nohighlight">\(2\)</span> consists of vertices <span class="math notranslate nohighlight">\(\{2, 4\}\)</span>
+and both vertices are also part of the dead end result set.</p>
+<p>This graph needs to be connected.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>With the original graph of this documentation, there would be 3 components as
+the crossing edge in this graph is a different component.</p>
+</div>
+<section id="prepare-storage-for-connection-information">
+<h4>Prepare storage for connection information<a class="headerlink" href="#prepare-storage-for-connection-information" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+<section id="save-the-vertices-connection-information">
+<h4>Save the vertices connection information<a class="headerlink" href="#save-the-vertices-connection-information" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">))</span> <span class="n">AS</span> <span class="n">c</span>
+<span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</section>
+<section id="save-the-edges-connection-information">
+<h4>Save the edges connection information<a class="headerlink" href="#save-the-edges-connection-information" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</section>
+<section id="get-the-closest-vertex">
+<h4>Get the closest vertex<a class="headerlink" href="#get-the-closest-vertex" title="Permalink to this heading">¶</a></h4>
+<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertext to component <span class="math notranslate nohighlight">\(1\)</span> is
+vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges WHERE component = 1$$,
+  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
+  2, partial =&gt; false) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+ edge_id | fraction |                 edge                 | closest_vertex
+---------+----------+--------------------------------------+----------------
+      14 |      0.5 | LINESTRING(1.999999999999 3.5,2 3.5) |              4
+(1 row)
+
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">edge</span></code> can be used to connect the components, using the <code class="docutils literal notranslate"><span class="pre">fraction</span></code>
+information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
+</section>
+<section id="connecting-components">
+<h4>Connecting components<a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h4>
+<p>There are three basic ways to connect the components</p>
+<ul class="simple">
+<li><p>From the vertex to the starting point of the edge</p></li>
+<li><p>From the vertex to the ending point of the edge</p></li>
+<li><p>From the vertex to the closest vertex on the edge</p>
+<ul>
+<li><p>This solution requiers the edge to be split.</p></li>
+</ul>
+</li>
+</ul>
+<p>The following query shows the three ways to connect the components:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
+info AS (
+  SELECT
+    edge_id, fraction, side, distance, ce.geom, edge, v.id AS closest,
+    source, target, capacity, reverse_capacity, e.geom AS e_geom
+  FROM pgr_findCloseEdges(
+    $$SELECT id, geom FROM edges WHERE component = 1$$,
+    (SELECT array_agg(geom) FROM vertices WHERE component = 2),
+    2, partial =&gt; false) AS ce
+  JOIN vertices AS v USING (geom)
+  JOIN edges AS e ON (edge_id = e.id)
+  ORDER BY distance LIMIT 1),
+three_options AS (
+  SELECT
+    closest AS source, target, 0 AS cost, 0 AS reverse_cost,
+    capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
+    ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
+  FROM info
+
+  UNION
+
+  SELECT closest, source, 0, 0, capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
+    ST_MakeLine(info.geom, ST_StartPoint(e_geom))
+  FROM info
+  /*
+  UNION
+  -- This option requires splitting the edge
+  SELECT closest, NULL, 0, 0, capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_EndPoint(edge)) AS x2, ST_Y(ST_EndPoint(edge)) AS y2,
+    edge
+  FROM info */
+  )
+
+INSERT INTO edges
+  (source, target,
+    cost, reverse_cost,
+    capacity, reverse_capacity,
+    x1, y1, x2, y2,
+    geom)
+(SELECT
+    source, target, cost, reverse_cost, capacity, reverse_capacity,
+    x1, y1, x2, y2, geom
+  FROM three_options);
+INSERT 0 2
+</pre></div>
+</div>
+</section>
+<section id="checking-components">
+<h4>Checking components<a class="headerlink" href="#checking-components" title="Permalink to this heading">¶</a></h4>
+<p>Ignoring the edge that requieres further work. The graph is now fully connected
+as there is only one component.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
+<span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">component</span> <span class="o">|</span> <span class="n">node</span>
+<span class="o">-----+-----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span>
+   <span class="mi">3</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span>
+   <span class="mi">4</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span>
+   <span class="mi">5</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">5</span>
+   <span class="mi">6</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span>
+   <span class="mi">7</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">7</span>
+   <span class="mi">8</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">8</span>
+   <span class="mi">9</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>    <span class="mi">9</span>
+  <span class="mi">10</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">10</span>
+  <span class="mi">11</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">11</span>
+  <span class="mi">12</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">12</span>
+  <span class="mi">13</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">13</span>
+  <span class="mi">14</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">14</span>
+  <span class="mi">15</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">15</span>
+  <span class="mi">16</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">16</span>
+  <span class="mi">17</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">17</span>
+  <span class="mi">18</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span>   <span class="mi">18</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>

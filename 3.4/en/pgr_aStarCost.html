@@ -294,8 +294,7 @@ with heuristic <span class="math notranslate nohighlight">\(2\)</span></p>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
   <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
-  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">2</span>
-<span class="p">);</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>        <span class="mi">3</span>
@@ -320,8 +319,7 @@ graph with heuristic <span class="math notranslate nohighlight">\(3\)</span> and
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
   <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
-  <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="n">factor</span> <span class="o">:=</span> <span class="mf">3.5</span>
-<span class="p">);</span>
+  <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="n">factor</span> <span class="o">=&gt;</span> <span class="mf">3.5</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">5</span>
@@ -347,8 +345,7 @@ OR EMPTY SET</pre>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
   <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">4</span>
-<span class="p">);</span>
+  <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">1</span>
@@ -374,8 +371,7 @@ OR EMPTY SET</pre>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
   <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
-  <span class="n">factor</span> <span class="o">=&gt;</span> <span class="mf">0.5</span>
-<span class="p">);</span>
+  <span class="n">factor</span> <span class="o">=&gt;</span> <span class="mf">0.5</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">6</span> <span class="o">|</span>      <span class="mi">10</span> <span class="o">|</span>        <span class="mi">5</span>
@@ -417,8 +413,7 @@ OR EMPTY SET</pre>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2</span>
   <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
   <span class="s1">&#39;SELECT * FROM combinations&#39;</span><span class="p">,</span>
-  <span class="n">factor</span> <span class="o">=&gt;</span> <span class="mf">0.5</span>
-<span class="p">);</span>
+  <span class="n">factor</span> <span class="o">=&gt;</span> <span class="mf">0.5</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">5</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>

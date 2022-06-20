@@ -229,8 +229,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCostMatrix</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges&#39;</span><span class="p">,</span>
   <span class="p">(</span><span class="n">SELECT</span> <span class="n">array_agg</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">vertices</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)),</span>
-  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">2</span>
-<span class="p">);</span>
+  <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span> <span class="n">heuristic</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">);</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">5</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
@@ -463,8 +462,7 @@ it’s not part of the graph.</p></li>
   SELECT * FROM pgr_aStarCostMatrix(
     &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges&#39;,
     (SELECT array_agg(id) FROM vertices WHERE id IN (5, 6, 10, 15)),
-    directed=&gt; false, heuristic =&gt; 2
-  )
+    directed=&gt; false, heuristic =&gt; 2)
   $$,
   randomize =&gt; false
 );

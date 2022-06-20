@@ -322,7 +322,7 @@ stations to vertex <span class="math notranslate nohighlight">\(6\)</span></p>
 <span class="linenos"> 2</span>  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
 <span class="linenos"> 3</span>  <span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">6</span><span class="p">,</span>
 <span class="linenos"> 4</span>  <span class="n">true</span><span class="p">,</span>
-<span class="linenos"> 5</span>  <span class="n">cap</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">);</span>
+<span class="linenos"> 5</span>  <span class="n">cap</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">agg_cost</span><span class="p">;</span>
 <span class="linenos"> 6</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="linenos"> 7</span><span class="o">-----------+---------+----------</span>
 <span class="linenos"> 8</span>        <span class="mi">10</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>

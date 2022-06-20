@@ -222,8 +222,9 @@ OR EMPTY SET</pre>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT source, target, cost FROM edges WHERE id &lt; 5&#39;</span>
-<span class="p">);</span>
+  <span class="s1">&#39;SELECT source, target, cost FROM edges</span>
+  <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="s1">&#39;</span>
+<span class="p">)</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">end_vid</span><span class="p">;</span>
  <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">agg_cost</span>
 <span class="o">-----------+---------+----------</span>
          <span class="mi">5</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>        <span class="mi">1</span>
