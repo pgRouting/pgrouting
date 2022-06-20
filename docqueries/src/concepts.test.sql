@@ -137,11 +137,83 @@ WHERE a.id < b.id AND st_crosses(a.geom, b.geom);
 
 
 
-
-
-
-
-/* -- deadend1 */
+/* -- connect1 */
 SELECT id FROM vertices
 WHERE array_length(in_edges || out_edges, 1) = 1;
-/* -- deadend2 */
+/* -- connect2 */
+SELECT * FROM pgr_connectedComponents(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+);
+/* -- connect3 */
+ALTER TABLE vertices ADD COLUMN component BIGINT;
+ALTER TABLE edges ADD COLUMN component BIGINT;
+/* -- connect4 */
+UPDATE vertices SET component = c.component
+FROM (SELECT * FROM pgr_connectedComponents(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+)) AS c
+WHERE id = node;
+/* -- connect5 */
+UPDATE edges SET component = v.component
+FROM (SELECT id, component FROM vertices) AS v
+WHERE source = v.id;
+/* -- connect6 */
+SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
+FROM pgr_findCloseEdges(
+  $$SELECT id, geom FROM edges WHERE component = 1$$,
+  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
+  2, partial => false) JOIN vertices USING (geom) ORDER BY distance LIMIT 1;
+/* -- connect7 */
+WITH
+info AS (
+  SELECT
+    edge_id, fraction, side, distance, ce.geom, edge, v.id AS closest,
+    source, target, capacity, reverse_capacity, e.geom AS e_geom
+  FROM pgr_findCloseEdges(
+    $$SELECT id, geom FROM edges WHERE component = 1$$,
+    (SELECT array_agg(geom) FROM vertices WHERE component = 2),
+    2, partial => false) AS ce
+  JOIN vertices AS v USING (geom)
+  JOIN edges AS e ON (edge_id = e.id)
+  ORDER BY distance LIMIT 1),
+three_options AS (
+  SELECT
+    closest AS source, target, 0 AS cost, 0 AS reverse_cost,
+    capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_EndPoint(e_geom)) AS x2, ST_Y(ST_EndPoint(e_geom)) AS y2,
+    ST_MakeLine(geom, ST_EndPoint(e_geom)) AS geom
+  FROM info
+  --
+  UNION
+  --
+  SELECT closest, source, 0, 0, capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_StartPoint(e_geom)) AS x2, ST_Y(ST_StartPoint(e_geom)) AS y2,
+    ST_MakeLine(info.geom, ST_StartPoint(e_geom))
+  FROM info
+  /*
+  UNION
+  -- This option requires splitting the edge
+  SELECT closest, NULL, 0, 0, capacity, reverse_capacity,
+    ST_X(geom) AS x1, ST_Y(geom) AS y1,
+    ST_X(ST_EndPoint(edge)) AS x2, ST_Y(ST_EndPoint(edge)) AS y2,
+    edge
+  FROM info */
+  )
+--
+INSERT INTO edges
+  (source, target,
+    cost, reverse_cost,
+    capacity, reverse_capacity,
+    x1, y1, x2, y2,
+    geom)
+(SELECT
+    source, target, cost, reverse_cost, capacity, reverse_capacity,
+    x1, y1, x2, y2, geom
+  FROM three_options);
+/* -- connect8 */
+SELECT * FROM pgr_connectedComponents(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+);
+/* -- connect9 */

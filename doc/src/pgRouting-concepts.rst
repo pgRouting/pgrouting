@@ -646,14 +646,15 @@ There are no crossing edges on the graph.
 
 .. cross_edges_end
 
-Dead ends
+Dead ends and disconnected graphs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To get the dead ends:
 
 .. literalinclude:: concepts.queries
-   :start-after: -- deadend1
-   :end-before: -- deadend2
+   :start-after: -- connect1
+   :end-before: -- connect2
+
 
 That information is correct, for example, when the dead end is on the limit of
 the imported graph.
@@ -664,14 +665,94 @@ Is that correct?
 
 * Is there such a small curb:
 
-  * that does not allow a vehicle to use that visual intersection?
-  * Is my applicaction for pedestrians and therefore the pedestrican can easily
+  * That does not allow a vehicle to use that visual intersection?
+  * Is the applicaction for pedestrians and therefore the pedestrican can easily
     walk on the small curb?
-  * Is my application for the electicicity and the electrical lines than can
+  * Is the application for the electicicity and the electrical lines than can
     easily be extended on top of the small curb?
 
 * Is there a big cliff and from eagles view look like the dead end is close to
   the segment?
+
+.. connecting_graph_start
+
+To get the graph connectivity:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect2
+   :end-before: -- connect3
+
+In this example, the component :math:`2` consists of vertices :math:`\{2, 4\}`
+and both vertices are also part of the dead end result set.
+
+This graph needs to be connected.
+
+.. Note::
+   With the original graph of this documentation, there would be 3 components as
+   the crossing edge in this graph is a different component.
+
+Prepare storage for connection information
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect3
+   :end-before: -- connect4
+
+Save the vertices connection information
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect4
+   :end-before: -- connect5
+
+Save the edges connection information
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect5
+   :end-before: -- connect6
+
+Get the closest vertex
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Using :doc:`pgr_findCloseEdges` the closest vertext to component :math:`1` is
+vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:`14`.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect6
+   :end-before: -- connect7
+
+The ``edge`` can be used to connect the components, using the ``fraction``
+information about the edge :math:`14` to split the connecting edge.
+
+Connecting components
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+There are three basic ways to connect the components
+
+* From the vertex to the starting point of the edge
+* From the vertex to the ending point of the edge
+* From the vertex to the closest vertex on the edge
+
+  * This solution requiers the edge to be split.
+
+The following query shows the three ways to connect the components:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect7
+   :end-before: -- connect8
+
+Checking components
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Ignoring the edge that requieres further work. The graph is now fully connected
+as there is only one component.
+
+.. literalinclude:: concepts.queries
+   :start-after: -- connect8
+   :end-before: -- connect9
+
+.. connecting_graph_end
 
 .. TODO checked up to here
 

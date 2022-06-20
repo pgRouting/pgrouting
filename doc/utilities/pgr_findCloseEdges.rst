@@ -622,12 +622,13 @@ Handling points outside the graph.
    :start-after: pois_start
    :end-before: pois_end
 
-Connectig components
+Connecting disconnected components
 ...............................................................................
 
-.. literalinclude:: findCloseEdges.queries
-   :start-after: -- q5
-   :end-before: -- q10
+.. include:: pgRouting-concepts.rst
+    :start-after: connecting_graph_start
+    :end-before: connecting_graph_end
+
 
 See Also
 -------------------------------------------------------------------------------

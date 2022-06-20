@@ -143,7 +143,7 @@ FROM pgr_findCloseEdges(
       12 |     0.60 | l    |    0.200 | POINT(2.6 3.2)   |
       11 |     1.00 | l    |    0.447 | POINT(2.6 3.2)   |
       15 |     0.40 | r    |    0.200 | POINT(4.2 2.4)   |
-      16 |     1.00 | l    |    0.447 | POINT(4.2 2.4)   |
+       9 |     1.00 | l    |    0.447 | POINT(4.2 2.4)   |
        5 |     0.80 | l    |    0.100 | POINT(2.9 1.8)   |
        8 |     0.90 | r    |    0.200 | POINT(2.9 1.8)   |
        4 |     0.70 | r    |    0.200 | POINT(2.2 1.7)   |
@@ -183,7 +183,7 @@ FROM pgr_findCloseEdges(
       12 |     0.60 | l    |    0.200 | POINT(2.6 3.2)   | LINESTRING(2.6 3.2,2.6 3)
       11 |     1.00 | l    |    0.447 | POINT(2.6 3.2)   | LINESTRING(2.6 3.2,3 3)
       15 |     0.40 | r    |    0.200 | POINT(4.2 2.4)   | LINESTRING(4.2 2.4,4 2.4)
-      16 |     1.00 | l    |    0.447 | POINT(4.2 2.4)   | LINESTRING(4.2 2.4,4 2)
+       9 |     1.00 | l    |    0.447 | POINT(4.2 2.4)   | LINESTRING(4.2 2.4,4 2)
        5 |     0.80 | l    |    0.100 | POINT(2.9 1.8)   | LINESTRING(2.9 1.8,3 1.8)
        8 |     0.90 | r    |    0.200 | POINT(2.9 1.8)   | LINESTRING(2.9 1.8,2.9 2)
        4 |     0.70 | r    |    0.200 | POINT(2.2 1.7)   | LINESTRING(2.2 1.7,2 1.7)
@@ -226,57 +226,5 @@ WHERE rn <= 1
 (0 rows)
 
 /* -- m5 */
-/* -- q5 */
-ALTER TABLE vertices ADD COLUMN component BIGINT;
-ALTER TABLE
-UPDATE vertices SET component = c.component
-FROM (SELECT * FROM pgr_connectedComponents(
-  'SELECT id, source, target, cost, reverse_cost FROM edges'
-)) AS c
-WHERE id = node;
-UPDATE 17
-ALTER TABLE edges ADD COLUMN component BIGINT;
-ALTER TABLE
-UPDATE edges SET component = v.component
-FROM (SELECT id, component FROM vertices) AS v
-WHERE source = v.id;
-UPDATE 18
-SELECT *
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges WHERE component = 1$$,
-  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2, partial => false);
- edge_id | fraction | side |       distance        |                    geom                    |                                        edge
----------+----------+------+-----------------------+--------------------------------------------+------------------------------------------------------------------------------------
-      14 |      0.5 | l    |                   1.5 | 0101000000000000000000E03F0000000000000C40 | 010200000002000000000000000000E03F0000000000000C4000000000000000400000000000000C40
-      14 |      0.5 | l    | 1.000088900582341e-12 | 010100000068EEFFFFFFFFFF3F0000000000000C40 | 01020000000200000068EEFFFFFFFFFF3F0000000000000C4000000000000000400000000000000C40
-(2 rows)
-
-SELECT *
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges WHERE component = 1$$,
-  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  2, partial => false)
-ORDER BY Distance
-LIMIT 1;
- edge_id | fraction | side |       distance        |                    geom                    |                                        edge
----------+----------+------+-----------------------+--------------------------------------------+------------------------------------------------------------------------------------
-      14 |      0.5 | l    | 1.000088900582341e-12 | 010100000068EEFFFFFFFFFF3F0000000000000C40 | 01020000000200000068EEFFFFFFFFFF3F0000000000000C4000000000000000400000000000000C40
-(1 row)
-
-INSERT INTO edges (source, target, cost, reverse_cost, capacity, reverse_capacity, geom)
-
-SELECT
-  v.id as source, target, 100 AS cost, 100 AS reverse_cost,
-  capacity, reverse_capacity,
-  ST_makeLine(fce.geom, ST_endPoint(e.geom))
-FROM pgr_findCloseEdges(
-  $$SELECT id, geom FROM edges WHERE component = 1$$,
-  (SELECT array_agg(geom) FROM vertices WHERE component = 2),
-  0.5, partial => false) AS fce
-JOIN vertices AS v USING (geom)
-JOIN edges e ON (edge_id = e.id);
-INSERT 0 1
-/* -- q10 */
 ROLLBACK;
 ROLLBACK
