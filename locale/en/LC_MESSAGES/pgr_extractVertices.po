@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 14:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/pgr_extractVertices.rst:12
 msgid ""
@@ -460,27 +460,186 @@ msgstr ""
 msgid "**Generated topology**"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:287
-msgid "See Also"
+#: ../../build/doc/pgr_extractVertices.rst:288
+msgid "Crossing edges"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:289
-msgid ":doc:`topology-functions`"
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid "To get the crossing edges:"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:290
-msgid ":doc:`pgr_createVerticesTable`"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid ""
+"That information is correct, for example, when in terms of vehicles, is "
+"it a tunnel or bride crossing over another road."
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:293
-msgid "Indices and tables"
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "It might be incorrect, for example:"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:294
-msgid ":ref:`genindex`"
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid ""
+"When it is actually an intersection of roads, where vehicles can make "
+"turns."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid ""
+"When in terms of electrical lines, the electrical line is able to swith "
+"roads even on a tunnel or bridge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "When it is incorrect, it needs fixing:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "For vehicles and pedestrians"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid ""
+"If the data comes from OSM and was imported to the database using "
+"``osm2pgrouting``, the fix needs to be done in the `OSM portal "
+"<https://www.openstreetmap.org>`__ and the data imported again."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid ""
+"In general when the data comes from a supplier that has the data prepared"
+" for routing vehicles, and there is a problem, the data is to be fixed "
+"from the supplier"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "For very specific applications"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid ""
+"The data is correct when from the point of view of routing vehicles or "
+"pedestrians."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:35
+msgid "The data needs a local fix for the specific application."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:37
+msgid ""
+"Once analized one by one the crossings, for the ones that need a local "
+"fix, the edges need to be `split "
+"<https://postgis.net/docs/ST_Split.html>`__."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:44
+msgid ""
+"The new edges need to be added to the edges table, the rest of the "
+"attributes need to be updated in the new edges, the old edges need to be "
+"removed and the routing topology needs to be updated."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:49
+msgid "Adding split edges"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:51
+msgid ""
+"For each pair of crossing edges a process similar to this one must be "
+"performed."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:53
+msgid ""
+"The columns inserted and the way are calculated are based on the "
+"application. For example, if the edges have a trait **name**, then that "
+"column is to be copied."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:57
+msgid "For pgRouting calculations"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:59
+msgid ""
+"**factor** based on the position of the intersection of the edges can be "
+"used to adjust the ``cost`` and ``reverse_cost`` columns."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:61
+msgid ""
+"Capacity information, used on the :doc:`flow-family` functions does not "
+"need to change when spliting edges."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:69
+msgid "Adding new vertices"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:71
+msgid ""
+"After adding all the split edges requiered by the application, the newly "
+"created vertices need to be added to the vertices table."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:79
+msgid "Updating edges topology"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:86
+msgid "Removing the surplus edges"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:88
+msgid ""
+"Once all significant information needed by the application has been "
+"transported to the new edges, then the crossing edges can be deleted."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:95
+msgid ""
+"There are other options to do this task, like creating a view, or a "
+"materialized view."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:99
+msgid "Updating vertices topology"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:101
+msgid "To keep the graph consistent, the vertices topology needs to be updated"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:108
+msgid "Checking for crossing edges"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:110
+msgid "There are no crossing edges on the graph."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:295
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:297
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:298
+msgid ":doc:`pgr_createVerticesTable`"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:301
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:302
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:303
 msgid ":ref:`search`"
 msgstr ""
 

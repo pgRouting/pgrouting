@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-20 14:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,604 +96,604 @@ msgstr ""
 msgid "Is of type ``FLOAT``."
 msgstr ""
 
-#: ../../build/doc/migration.rst:58
+#: ../../build/doc/migration.rst:57
 msgid "Creation of the old restrictions table"
 msgstr ""
 
-#: ../../build/doc/migration.rst:65
+#: ../../build/doc/migration.rst:63
 msgid "Old restrictions fillup"
 msgstr ""
 
-#: ../../build/doc/migration.rst:72
+#: ../../build/doc/migration.rst:70
 msgid "Old restrictions contents"
 msgstr ""
 
-#: ../../build/doc/migration.rst:78
+#: ../../build/doc/migration.rst:76
 msgid "The restriction with ``rid = 2`` is representing :math:`3 \\rightarrow 5 \\rightarrow9`"
 msgstr ""
 
-#: ../../build/doc/migration.rst:81
+#: ../../build/doc/migration.rst:79
 msgid ":math:`3\\rightarrow5`"
 msgstr ""
 
-#: ../../build/doc/migration.rst:83
+#: ../../build/doc/migration.rst:81
 msgid "is on column ``via_path`` in reverse order"
 msgstr ""
 
-#: ../../build/doc/migration.rst:84
+#: ../../build/doc/migration.rst:82
 msgid "is of type ``TEXT``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:86
+#: ../../build/doc/migration.rst:84
 msgid ":math:`9`"
 msgstr ""
 
-#: ../../build/doc/migration.rst:88
+#: ../../build/doc/migration.rst:86
 msgid "is on column ``target_id``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:89
+#: ../../build/doc/migration.rst:87
 msgid "is of type ``INTEGER``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:93
+#: ../../build/doc/migration.rst:91
 msgid "New restrictions structure"
 msgstr ""
 
-#: ../../build/doc/migration.rst:95
+#: ../../build/doc/migration.rst:93
 msgid "Column ``id`` is ignored"
 msgstr ""
 
-#: ../../build/doc/migration.rst:96
+#: ../../build/doc/migration.rst:94
 msgid "Column ``path``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:98
+#: ../../build/doc/migration.rst:96
 msgid "Is of type ``ARRAY[ANY-INTEGER]``."
 msgstr ""
 
-#: ../../build/doc/migration.rst:99
+#: ../../build/doc/migration.rst:97
 msgid "Contains all the edges involved on the restriction."
 msgstr ""
 
-#: ../../build/doc/migration.rst:100
+#: ../../build/doc/migration.rst:98
 msgid "The array has the ordered edges of the restriction."
 msgstr ""
 
-#: ../../build/doc/migration.rst:102
+#: ../../build/doc/migration.rst:100
 msgid "Column ``cost``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:104
+#: ../../build/doc/migration.rst:102
 msgid "Is of type ``ANY-NUMERICAL``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:107
-msgid "Creation of the restrictions table"
+#: ../../build/doc/sampledata.rst:3
+msgid "The creation of the restrictions table"
 msgstr ""
 
-#: ../../build/doc/migration.rst:114
-msgid "Restrictions fillup"
+#: ../../build/doc/sampledata.rst:9
+msgid "Adding the restrictions"
 msgstr ""
 
-#: ../../build/doc/migration.rst:121
-msgid "Restrictions contents"
+#: ../../build/doc/sampledata.rst:16
+msgid "Restrictions data"
 msgstr ""
 
-#: ../../build/doc/migration.rst:127
+#: ../../build/doc/migration.rst:109
 msgid "The restriction with ``rid = 2`` represents the path :math:`3 \\rightarrow5 \\rightarrow9`."
 msgstr ""
 
-#: ../../build/doc/migration.rst:130
+#: ../../build/doc/migration.rst:112
 msgid "By inspection the path is clear."
 msgstr ""
 
-#: ../../build/doc/migration.rst:133
+#: ../../build/doc/migration.rst:115
 msgid "Migration"
 msgstr ""
 
-#: ../../build/doc/migration.rst:135
+#: ../../build/doc/migration.rst:117
 msgid "To transform the old restrictions table to the new restrictions structure,"
 msgstr ""
 
-#: ../../build/doc/migration.rst:137
+#: ../../build/doc/migration.rst:119
 msgid "Create a new table with the new restrictions structure."
 msgstr ""
 
-#: ../../build/doc/migration.rst:139
+#: ../../build/doc/migration.rst:121
 msgid "In this migration guide ``new_restrictions`` is been used."
 msgstr ""
 
-#: ../../build/doc/migration.rst:141
+#: ../../build/doc/migration.rst:123
 msgid "For this migration pgRuoting supllies an auxilary function for reversal of an array ``_pgr_array_reverse`` needed for the migration."
 msgstr ""
 
-#: ../../build/doc/migration.rst:144
+#: ../../build/doc/migration.rst:126
 msgid "``_pgr_array_reverse``:"
 msgstr ""
 
-#: ../../build/doc/migration.rst:146
+#: ../../build/doc/migration.rst:128
 msgid "Was created temporarly for this migration"
 msgstr ""
 
-#: ../../build/doc/migration.rst:147
+#: ../../build/doc/migration.rst:129
 msgid "Is not documented."
 msgstr ""
 
-#: ../../build/doc/migration.rst:148
+#: ../../build/doc/migration.rst:130
 msgid "Will be removed on the next mayor version 4.0.0"
 msgstr ""
 
-#: ../../build/doc/migration.rst:154
+#: ../../build/doc/migration.rst:136
 msgid "The migrated table contents:"
 msgstr ""
 
-#: ../../build/doc/migration.rst:162
+#: ../../build/doc/migration.rst:144
 msgid "Migration of ``pgr_trsp`` (Vertices)"
 msgstr ""
 
-#: ../../build/doc/migration.rst:164
-#: ../../build/doc/migration.rst:292
-#: ../../build/doc/migration.rst:428
-#: ../../build/doc/migration.rst:559
+#: ../../build/doc/migration.rst:146
+#: ../../build/doc/migration.rst:274
+#: ../../build/doc/migration.rst:410
+#: ../../build/doc/migration.rst:541
 msgid "Signature to be migrated:"
 msgstr ""
 
-#: ../../build/doc/migration.rst:173
+#: ../../build/doc/migration.rst:155
 msgid "The integral type of the ``Edges SQL`` can only be ``INTEGER``."
 msgstr ""
 
-#: ../../build/doc/migration.rst:174
-#: ../../build/doc/migration.rst:439
-#: ../../build/doc/migration.rst:570
+#: ../../build/doc/migration.rst:156
+#: ../../build/doc/migration.rst:421
+#: ../../build/doc/migration.rst:552
 msgid "The floating point type of the ``Edges SQL`` can only be ``FLOAT``."
 msgstr ""
 
-#: ../../build/doc/migration.rst:175
-#: ../../build/doc/migration.rst:304
-#: ../../build/doc/migration.rst:440
-#: ../../build/doc/migration.rst:571
+#: ../../build/doc/migration.rst:157
+#: ../../build/doc/migration.rst:286
+#: ../../build/doc/migration.rst:422
+#: ../../build/doc/migration.rst:553
 msgid "``directed`` flag is compulsory."
 msgstr ""
 
-#: ../../build/doc/migration.rst:177
-#: ../../build/doc/migration.rst:306
-#: ../../build/doc/migration.rst:442
-#: ../../build/doc/migration.rst:573
+#: ../../build/doc/migration.rst:159
+#: ../../build/doc/migration.rst:288
+#: ../../build/doc/migration.rst:424
+#: ../../build/doc/migration.rst:555
 msgid "Does not have a default value."
 msgstr ""
 
-#: ../../build/doc/migration.rst:179
-#: ../../build/doc/migration.rst:308
-#: ../../build/doc/migration.rst:444
-#: ../../build/doc/migration.rst:575
+#: ../../build/doc/migration.rst:161
+#: ../../build/doc/migration.rst:290
+#: ../../build/doc/migration.rst:426
+#: ../../build/doc/migration.rst:557
 msgid "Does not autodetect if ``reverse_cost`` column exist."
 msgstr ""
 
-#: ../../build/doc/migration.rst:181
-#: ../../build/doc/migration.rst:310
-#: ../../build/doc/migration.rst:446
-#: ../../build/doc/migration.rst:577
+#: ../../build/doc/migration.rst:163
+#: ../../build/doc/migration.rst:292
+#: ../../build/doc/migration.rst:428
+#: ../../build/doc/migration.rst:559
 msgid "User must be carefull to match the existance of the column with the value of ``has_rcost`` parameter."
 msgstr ""
 
-#: ../../build/doc/migration.rst:184
-#: ../../build/doc/migration.rst:313
-#: ../../build/doc/migration.rst:449
-#: ../../build/doc/migration.rst:580
+#: ../../build/doc/migration.rst:166
+#: ../../build/doc/migration.rst:295
+#: ../../build/doc/migration.rst:431
+#: ../../build/doc/migration.rst:562
 msgid "The restrictions inner query is optional."
 msgstr ""
 
-#: ../../build/doc/migration.rst:185
+#: ../../build/doc/migration.rst:167
 msgid "The output column names are meaningless"
 msgstr ""
 
-#: ../../build/doc/migration.rst:187
-#: ../../build/doc/migration.rst:321
-#: ../../build/doc/migration.rst:452
-#: ../../build/doc/migration.rst:590
+#: ../../build/doc/migration.rst:169
+#: ../../build/doc/migration.rst:303
+#: ../../build/doc/migration.rst:434
+#: ../../build/doc/migration.rst:572
 msgid "Migrate by using:"
 msgstr ""
 
-#: ../../build/doc/migration.rst:189
+#: ../../build/doc/migration.rst:171
 msgid ":doc:`pgr_dijkstra` when there are no restrictions,"
 msgstr ""
 
-#: ../../build/doc/migration.rst:190
+#: ../../build/doc/migration.rst:172
 msgid ":doc:`pgr_trsp` (One to One) when there are restrictions."
 msgstr ""
 
-#: ../../build/doc/migration.rst:194
+#: ../../build/doc/migration.rst:176
 msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_dijkstra``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:196
-#: ../../build/doc/migration.rst:329
-#: ../../build/doc/migration.rst:460
-#: ../../build/doc/migration.rst:598
+#: ../../build/doc/migration.rst:178
+#: ../../build/doc/migration.rst:311
+#: ../../build/doc/migration.rst:442
+#: ../../build/doc/migration.rst:580
 msgid "The following query does not have restrictions."
 msgstr ""
 
-#: ../../build/doc/migration.rst:202
-#: ../../build/doc/migration.rst:247
-#: ../../build/doc/migration.rst:335
-#: ../../build/doc/migration.rst:381
-#: ../../build/doc/migration.rst:466
-#: ../../build/doc/migration.rst:512
-#: ../../build/doc/migration.rst:604
-#: ../../build/doc/migration.rst:650
+#: ../../build/doc/migration.rst:184
+#: ../../build/doc/migration.rst:229
+#: ../../build/doc/migration.rst:317
+#: ../../build/doc/migration.rst:363
+#: ../../build/doc/migration.rst:448
+#: ../../build/doc/migration.rst:494
+#: ../../build/doc/migration.rst:586
+#: ../../build/doc/migration.rst:632
 msgid "A message about deprecation is shown"
 msgstr ""
 
-#: ../../build/doc/migration.rst:204
-#: ../../build/doc/migration.rst:249
-#: ../../build/doc/migration.rst:337
-#: ../../build/doc/migration.rst:383
-#: ../../build/doc/migration.rst:468
-#: ../../build/doc/migration.rst:514
-#: ../../build/doc/migration.rst:606
-#: ../../build/doc/migration.rst:652
+#: ../../build/doc/migration.rst:186
+#: ../../build/doc/migration.rst:231
+#: ../../build/doc/migration.rst:319
+#: ../../build/doc/migration.rst:365
+#: ../../build/doc/migration.rst:450
+#: ../../build/doc/migration.rst:496
+#: ../../build/doc/migration.rst:588
+#: ../../build/doc/migration.rst:634
 msgid "Deprecated functions will be removed on the next mayor version 4.0.0"
 msgstr ""
 
-#: ../../build/doc/migration.rst:206
+#: ../../build/doc/migration.rst:188
 msgid "Use :doc:`pgr_dijkstra` instead."
 msgstr ""
 
-#: ../../build/doc/migration.rst:213
-#: ../../build/doc/migration.rst:265
-#: ../../build/doc/migration.rst:345
-#: ../../build/doc/migration.rst:399
-#: ../../build/doc/migration.rst:476
-#: ../../build/doc/migration.rst:530
-#: ../../build/doc/migration.rst:614
-#: ../../build/doc/migration.rst:668
+#: ../../build/doc/migration.rst:195
+#: ../../build/doc/migration.rst:247
+#: ../../build/doc/migration.rst:327
+#: ../../build/doc/migration.rst:381
+#: ../../build/doc/migration.rst:458
+#: ../../build/doc/migration.rst:512
+#: ../../build/doc/migration.rst:596
+#: ../../build/doc/migration.rst:650
 msgid "The types casting has been removed."
 msgstr ""
 
-#: ../../build/doc/migration.rst:214
+#: ../../build/doc/migration.rst:196
 msgid ":doc:`pgr_dijkstra`:"
+msgstr ""
+
+#: ../../build/doc/migration.rst:198
+#: ../../build/doc/migration.rst:250
+#: ../../build/doc/migration.rst:331
+#: ../../build/doc/migration.rst:385
+#: ../../build/doc/migration.rst:461
+#: ../../build/doc/migration.rst:515
+#: ../../build/doc/migration.rst:600
+#: ../../build/doc/migration.rst:654
+msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
+msgstr ""
+
+#: ../../build/doc/migration.rst:200
+#: ../../build/doc/migration.rst:252
+#: ../../build/doc/migration.rst:333
+#: ../../build/doc/migration.rst:387
+#: ../../build/doc/migration.rst:463
+#: ../../build/doc/migration.rst:517
+#: ../../build/doc/migration.rst:602
+#: ../../build/doc/migration.rst:656
+msgid "Accepts ``ANY-INTEGER`` on integral types"
+msgstr ""
+
+#: ../../build/doc/migration.rst:201
+#: ../../build/doc/migration.rst:253
+#: ../../build/doc/migration.rst:334
+#: ../../build/doc/migration.rst:388
+#: ../../build/doc/migration.rst:464
+#: ../../build/doc/migration.rst:518
+#: ../../build/doc/migration.rst:603
+#: ../../build/doc/migration.rst:657
+msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
+msgstr ""
+
+#: ../../build/doc/migration.rst:202
+#: ../../build/doc/migration.rst:254
+#: ../../build/doc/migration.rst:335
+#: ../../build/doc/migration.rst:389
+#: ../../build/doc/migration.rst:465
+#: ../../build/doc/migration.rst:519
+#: ../../build/doc/migration.rst:604
+#: ../../build/doc/migration.rst:658
+msgid "``directed`` flag has a default value of ``true``."
+msgstr ""
+
+#: ../../build/doc/migration.rst:204
+#: ../../build/doc/migration.rst:256
+#: ../../build/doc/migration.rst:337
+#: ../../build/doc/migration.rst:391
+#: ../../build/doc/migration.rst:467
+#: ../../build/doc/migration.rst:521
+#: ../../build/doc/migration.rst:606
+#: ../../build/doc/migration.rst:660
+msgid "Use the same value that on the original query."
+msgstr ""
+
+#: ../../build/doc/migration.rst:205
+#: ../../build/doc/migration.rst:257
+#: ../../build/doc/migration.rst:338
+#: ../../build/doc/migration.rst:392
+#: ../../build/doc/migration.rst:468
+#: ../../build/doc/migration.rst:522
+#: ../../build/doc/migration.rst:607
+#: ../../build/doc/migration.rst:661
+msgid "In this example it is ``true`` which is the default value."
+msgstr ""
+
+#: ../../build/doc/migration.rst:207
+#: ../../build/doc/migration.rst:259
+#: ../../build/doc/migration.rst:340
+#: ../../build/doc/migration.rst:394
+#: ../../build/doc/migration.rst:470
+#: ../../build/doc/migration.rst:524
+#: ../../build/doc/migration.rst:609
+#: ../../build/doc/migration.rst:663
+msgid "The flag has been omitted and the default is been used."
+msgstr ""
+
+#: ../../build/doc/migration.rst:209
+#: ../../build/doc/migration.rst:261
+#: ../../build/doc/migration.rst:473
+#: ../../build/doc/migration.rst:527
+msgid "When the need of using strictly the same (meaningless) names and types of the function been migrated then:"
 msgstr ""
 
 #: ../../build/doc/migration.rst:216
 #: ../../build/doc/migration.rst:268
-#: ../../build/doc/migration.rst:349
-#: ../../build/doc/migration.rst:403
-#: ../../build/doc/migration.rst:479
-#: ../../build/doc/migration.rst:533
-#: ../../build/doc/migration.rst:618
-#: ../../build/doc/migration.rst:672
-msgid "Autodetects if ``reverse_cost`` column is in the edges SQL."
+#: ../../build/doc/migration.rst:350
+#: ../../build/doc/migration.rst:404
+msgid "``id1`` is the node"
 msgstr ""
 
-#: ../../build/doc/migration.rst:218
-#: ../../build/doc/migration.rst:270
+#: ../../build/doc/migration.rst:217
+#: ../../build/doc/migration.rst:269
 #: ../../build/doc/migration.rst:351
 #: ../../build/doc/migration.rst:405
+msgid "``id2`` is the edge"
+msgstr ""
+
+#: ../../build/doc/migration.rst:221
+msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
+msgstr ""
+
+#: ../../build/doc/migration.rst:223
+#: ../../build/doc/migration.rst:357
+#: ../../build/doc/migration.rst:488
+#: ../../build/doc/migration.rst:626
+msgid "The following query has restrictions."
+msgstr ""
+
+#: ../../build/doc/migration.rst:233
+#: ../../build/doc/migration.rst:367
+#: ../../build/doc/migration.rst:498
+#: ../../build/doc/migration.rst:636
+msgid "The restrictions are the last parameter of the function"
+msgstr ""
+
+#: ../../build/doc/migration.rst:235
+#: ../../build/doc/migration.rst:369
+#: ../../build/doc/migration.rst:500
+#: ../../build/doc/migration.rst:638
+msgid "Using the old structure of restrictions"
+msgstr ""
+
+#: ../../build/doc/migration.rst:237
+msgid "Use :doc:`pgr_trsp` (One to One) instead."
+msgstr ""
+
+#: ../../build/doc/migration.rst:243
+#: ../../build/doc/migration.rst:377
+#: ../../build/doc/migration.rst:508
+#: ../../build/doc/migration.rst:646
+msgid "The new structure of restrictions is been used."
+msgstr ""
+
+#: ../../build/doc/migration.rst:245
+#: ../../build/doc/migration.rst:379
+#: ../../build/doc/migration.rst:510
+#: ../../build/doc/migration.rst:648
+msgid "It is the second parameter."
+msgstr ""
+
+#: ../../build/doc/migration.rst:248
+msgid ":doc:`pgr_trsp`:"
+msgstr ""
+
+#: ../../build/doc/migration.rst:272
+msgid "Migration of ``pgr_trsp`` (Edges)"
+msgstr ""
+
+#: ../../build/doc/migration.rst:284
+msgid "The integral types of the ``sql`` can only be ``INTEGER``."
+msgstr ""
+
+#: ../../build/doc/migration.rst:285
+msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
+msgstr ""
+
+#: ../../build/doc/migration.rst:297
+#: ../../build/doc/migration.rst:564
+msgid "For these migration guide the following points will be used:"
+msgstr ""
+
+#: ../../build/doc/migration.rst:305
+msgid ":doc:`pgr_withPoints` when there are no restrictions,"
+msgstr ""
+
+#: ../../build/doc/migration.rst:306
+msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
+msgstr ""
+
+#: ../../build/doc/migration.rst:309
+msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
+msgstr ""
+
+#: ../../build/doc/migration.rst:321
+msgid "Use :doc:`pgr_withPoints` instead."
+msgstr ""
+
+#: ../../build/doc/migration.rst:328
+#: ../../build/doc/migration.rst:382
+#: ../../build/doc/migration.rst:597
+#: ../../build/doc/migration.rst:651
+msgid "Do not show details, as the deprecated function does not show details."
+msgstr ""
+
+#: ../../build/doc/migration.rst:329
+msgid ":doc:`pgr_withPoints`:"
+msgstr ""
+
+#: ../../build/doc/migration.rst:341
+#: ../../build/doc/migration.rst:395
+#: ../../build/doc/migration.rst:471
+#: ../../build/doc/migration.rst:525
+#: ../../build/doc/migration.rst:610
+#: ../../build/doc/migration.rst:664
+msgid "On the points query do not include the ``side`` column."
+msgstr ""
+
+#: ../../build/doc/migration.rst:343
+#: ../../build/doc/migration.rst:397
+#: ../../build/doc/migration.rst:612
+#: ../../build/doc/migration.rst:666
+msgid "When the need of using strictly the same (meaningless) names and types, and node values of the function been migrated then:"
+msgstr ""
+
+#: ../../build/doc/migration.rst:355
+msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
+msgstr ""
+
+#: ../../build/doc/migration.rst:371
+msgid "Use :doc:`pgr_trsp_withPoints` instead."
+msgstr ""
+
+#: ../../build/doc/migration.rst:383
+msgid ":doc:`pgr_trsp_withPoints`:"
+msgstr ""
+
+#: ../../build/doc/migration.rst:408
+msgid "Migration of ``pgr_trspViaVertices``"
+msgstr ""
+
+#: ../../build/doc/migration.rst:420
+#: ../../build/doc/migration.rst:551
+msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
+msgstr ""
+
+#: ../../build/doc/migration.rst:436
+msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
+msgstr ""
+
+#: ../../build/doc/migration.rst:437
+msgid ":doc:`pgr_trspVia` when there are restrictions."
+msgstr ""
+
+#: ../../build/doc/migration.rst:440
+msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
+msgstr ""
+
+#: ../../build/doc/migration.rst:452
+msgid "Use :doc:`pgr_dijkstraVia` instead."
+msgstr ""
+
+#: ../../build/doc/migration.rst:459
+msgid ":doc:`pgr_dijkstraVia`:"
+msgstr ""
+
+#: ../../build/doc/migration.rst:480
+#: ../../build/doc/migration.rst:534
+#: ../../build/doc/migration.rst:619
+#: ../../build/doc/migration.rst:673
+msgid "``id1`` is the path identifier"
+msgstr ""
+
 #: ../../build/doc/migration.rst:481
 #: ../../build/doc/migration.rst:535
 #: ../../build/doc/migration.rst:620
 #: ../../build/doc/migration.rst:674
-msgid "Accepts ``ANY-INTEGER`` on integral types"
+msgid "``id2`` is the node"
 msgstr ""
 
-#: ../../build/doc/migration.rst:219
-#: ../../build/doc/migration.rst:271
-#: ../../build/doc/migration.rst:352
-#: ../../build/doc/migration.rst:406
 #: ../../build/doc/migration.rst:482
 #: ../../build/doc/migration.rst:536
 #: ../../build/doc/migration.rst:621
 #: ../../build/doc/migration.rst:675
-msgid "Accepts ``ANY-NUMERICAL`` on floating point types"
-msgstr ""
-
-#: ../../build/doc/migration.rst:220
-#: ../../build/doc/migration.rst:272
-#: ../../build/doc/migration.rst:353
-#: ../../build/doc/migration.rst:407
-#: ../../build/doc/migration.rst:483
-#: ../../build/doc/migration.rst:537
-#: ../../build/doc/migration.rst:622
-#: ../../build/doc/migration.rst:676
-msgid "``directed`` flag has a default value of ``true``."
-msgstr ""
-
-#: ../../build/doc/migration.rst:222
-#: ../../build/doc/migration.rst:274
-#: ../../build/doc/migration.rst:355
-#: ../../build/doc/migration.rst:409
-#: ../../build/doc/migration.rst:485
-#: ../../build/doc/migration.rst:539
-#: ../../build/doc/migration.rst:624
-#: ../../build/doc/migration.rst:678
-msgid "Use the same value that on the original query."
-msgstr ""
-
-#: ../../build/doc/migration.rst:223
-#: ../../build/doc/migration.rst:275
-#: ../../build/doc/migration.rst:356
-#: ../../build/doc/migration.rst:410
-#: ../../build/doc/migration.rst:486
-#: ../../build/doc/migration.rst:540
-#: ../../build/doc/migration.rst:625
-#: ../../build/doc/migration.rst:679
-msgid "In this example it is ``true`` which is the default value."
-msgstr ""
-
-#: ../../build/doc/migration.rst:225
-#: ../../build/doc/migration.rst:277
-#: ../../build/doc/migration.rst:358
-#: ../../build/doc/migration.rst:412
-#: ../../build/doc/migration.rst:488
-#: ../../build/doc/migration.rst:542
-#: ../../build/doc/migration.rst:627
-#: ../../build/doc/migration.rst:681
-msgid "The flag has been omitted and the default is been used."
-msgstr ""
-
-#: ../../build/doc/migration.rst:227
-#: ../../build/doc/migration.rst:279
-#: ../../build/doc/migration.rst:491
-#: ../../build/doc/migration.rst:545
-msgid "When the need of using strictly the same (meaningless) names and types of the function been migrated then:"
-msgstr ""
-
-#: ../../build/doc/migration.rst:234
-#: ../../build/doc/migration.rst:286
-#: ../../build/doc/migration.rst:368
-#: ../../build/doc/migration.rst:422
-msgid "``id1`` is the node"
-msgstr ""
-
-#: ../../build/doc/migration.rst:235
-#: ../../build/doc/migration.rst:287
-#: ../../build/doc/migration.rst:369
-#: ../../build/doc/migration.rst:423
-msgid "``id2`` is the edge"
-msgstr ""
-
-#: ../../build/doc/migration.rst:239
-msgid "Migrating ``pgr_trsp`` (Vertices) using ``pgr_trsp``"
-msgstr ""
-
-#: ../../build/doc/migration.rst:241
-#: ../../build/doc/migration.rst:375
-#: ../../build/doc/migration.rst:506
-#: ../../build/doc/migration.rst:644
-msgid "The following query has restrictions."
-msgstr ""
-
-#: ../../build/doc/migration.rst:251
-#: ../../build/doc/migration.rst:385
-#: ../../build/doc/migration.rst:516
-#: ../../build/doc/migration.rst:654
-msgid "The restrictions are the last parameter of the function"
-msgstr ""
-
-#: ../../build/doc/migration.rst:253
-#: ../../build/doc/migration.rst:387
-#: ../../build/doc/migration.rst:518
-#: ../../build/doc/migration.rst:656
-msgid "Using the old structure of restrictions"
-msgstr ""
-
-#: ../../build/doc/migration.rst:255
-msgid "Use :doc:`pgr_trsp` (One to One) instead."
-msgstr ""
-
-#: ../../build/doc/migration.rst:261
-#: ../../build/doc/migration.rst:395
-#: ../../build/doc/migration.rst:526
-#: ../../build/doc/migration.rst:664
-msgid "The new structure of restrictions is been used."
-msgstr ""
-
-#: ../../build/doc/migration.rst:263
-#: ../../build/doc/migration.rst:397
-#: ../../build/doc/migration.rst:528
-#: ../../build/doc/migration.rst:666
-msgid "It is the second parameter."
-msgstr ""
-
-#: ../../build/doc/migration.rst:266
-msgid ":doc:`pgr_trsp`:"
-msgstr ""
-
-#: ../../build/doc/migration.rst:290
-msgid "Migration of ``pgr_trsp`` (Edges)"
-msgstr ""
-
-#: ../../build/doc/migration.rst:302
-msgid "The integral types of the ``sql`` can only be ``INTEGER``."
-msgstr ""
-
-#: ../../build/doc/migration.rst:303
-msgid "The floating point type of the ``sql`` can only be ``FLOAT``."
-msgstr ""
-
-#: ../../build/doc/migration.rst:315
-#: ../../build/doc/migration.rst:582
-msgid "For these migration guide the following points will be used:"
-msgstr ""
-
-#: ../../build/doc/migration.rst:323
-msgid ":doc:`pgr_withPoints` when there are no restrictions,"
-msgstr ""
-
-#: ../../build/doc/migration.rst:324
-msgid ":doc:`pgr_trsp_withPoints` (One to One) when there are restrictions."
-msgstr ""
-
-#: ../../build/doc/migration.rst:327
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_withPoints``"
-msgstr ""
-
-#: ../../build/doc/migration.rst:339
-msgid "Use :doc:`pgr_withPoints` instead."
-msgstr ""
-
-#: ../../build/doc/migration.rst:346
-#: ../../build/doc/migration.rst:400
-#: ../../build/doc/migration.rst:615
-#: ../../build/doc/migration.rst:669
-msgid "Do not show details, as the deprecated function does not show details."
-msgstr ""
-
-#: ../../build/doc/migration.rst:347
-msgid ":doc:`pgr_withPoints`:"
-msgstr ""
-
-#: ../../build/doc/migration.rst:359
-#: ../../build/doc/migration.rst:413
-#: ../../build/doc/migration.rst:489
-#: ../../build/doc/migration.rst:543
-#: ../../build/doc/migration.rst:628
-#: ../../build/doc/migration.rst:682
-msgid "On the points query do not include the ``side`` column."
-msgstr ""
-
-#: ../../build/doc/migration.rst:361
-#: ../../build/doc/migration.rst:415
-#: ../../build/doc/migration.rst:630
-#: ../../build/doc/migration.rst:684
-msgid "When the need of using strictly the same (meaningless) names and types, and node values of the function been migrated then:"
-msgstr ""
-
-#: ../../build/doc/migration.rst:373
-msgid "Migrating ``pgr_trsp`` (Edges) using ``pgr_trsp_withPoints``"
-msgstr ""
-
-#: ../../build/doc/migration.rst:389
-msgid "Use :doc:`pgr_trsp_withPoints` instead."
-msgstr ""
-
-#: ../../build/doc/migration.rst:401
-msgid ":doc:`pgr_trsp_withPoints`:"
-msgstr ""
-
-#: ../../build/doc/migration.rst:426
-msgid "Migration of ``pgr_trspViaVertices``"
-msgstr ""
-
-#: ../../build/doc/migration.rst:438
-#: ../../build/doc/migration.rst:569
-msgid "The integral types of the ``Edges SQL`` can only be ``INTEGER``."
-msgstr ""
-
-#: ../../build/doc/migration.rst:454
-msgid ":doc:`pgr_dijkstraVia` when there are no restrictions,"
-msgstr ""
-
-#: ../../build/doc/migration.rst:455
-msgid ":doc:`pgr_trspVia` when there are restrictions."
-msgstr ""
-
-#: ../../build/doc/migration.rst:458
-msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_dijkstraVia``"
-msgstr ""
-
-#: ../../build/doc/migration.rst:470
-msgid "Use :doc:`pgr_dijkstraVia` instead."
-msgstr ""
-
-#: ../../build/doc/migration.rst:477
-msgid ":doc:`pgr_dijkstraVia`:"
-msgstr ""
-
-#: ../../build/doc/migration.rst:498
-#: ../../build/doc/migration.rst:552
-#: ../../build/doc/migration.rst:637
-#: ../../build/doc/migration.rst:691
-msgid "``id1`` is the path identifier"
-msgstr ""
-
-#: ../../build/doc/migration.rst:499
-#: ../../build/doc/migration.rst:553
-#: ../../build/doc/migration.rst:638
-#: ../../build/doc/migration.rst:692
-msgid "``id2`` is the node"
-msgstr ""
-
-#: ../../build/doc/migration.rst:500
-#: ../../build/doc/migration.rst:554
-#: ../../build/doc/migration.rst:639
-#: ../../build/doc/migration.rst:693
 msgid "``id3`` is the edge"
 msgstr ""
 
-#: ../../build/doc/migration.rst:504
+#: ../../build/doc/migration.rst:486
 msgid "Migrating ``pgr_trspViaVertices`` using ``pgr_trspVia``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:520
+#: ../../build/doc/migration.rst:502
 msgid "Use :doc:`pgr_trspVia` instead."
 msgstr ""
 
-#: ../../build/doc/migration.rst:531
+#: ../../build/doc/migration.rst:513
 msgid ":doc:`pgr_trspVia`:"
 msgstr ""
 
-#: ../../build/doc/migration.rst:557
+#: ../../build/doc/migration.rst:539
 msgid "Migration of ``pgr_trspViaEdges``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:588
+#: ../../build/doc/migration.rst:570
 msgid "And will travel thru the follwoing Via points :math:`4\\rightarrow3\\rightarrow6`"
 msgstr ""
 
-#: ../../build/doc/migration.rst:592
+#: ../../build/doc/migration.rst:574
 msgid ":doc:`pgr_withPointsVia` when there are no restrictions,"
 msgstr ""
 
-#: ../../build/doc/migration.rst:593
+#: ../../build/doc/migration.rst:575
 msgid ":doc:`pgr_trspVia_withPoints` when there are restrictions."
 msgstr ""
 
-#: ../../build/doc/migration.rst:596
+#: ../../build/doc/migration.rst:578
 msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_withPointsVia``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:608
+#: ../../build/doc/migration.rst:590
 msgid "Use :doc:`pgr_withPointsVia` instead."
 msgstr ""
 
-#: ../../build/doc/migration.rst:616
+#: ../../build/doc/migration.rst:598
 msgid ":doc:`pgr_withPointsVia`:"
 msgstr ""
 
-#: ../../build/doc/migration.rst:642
+#: ../../build/doc/migration.rst:624
 msgid "Migrating ``pgr_trspViaEdges`` using ``pgr_trspVia_withPoints``"
 msgstr ""
 
-#: ../../build/doc/migration.rst:658
+#: ../../build/doc/migration.rst:640
 msgid "Use :doc:`pgr_trspVia_withPoints` instead."
 msgstr ""
 
-#: ../../build/doc/migration.rst:670
+#: ../../build/doc/migration.rst:652
 msgid ":doc:`pgr_trspVia_withPoints`:"
 msgstr ""
 
-#: ../../build/doc/migration.rst:696
+#: ../../build/doc/migration.rst:678
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/migration.rst:698
+#: ../../build/doc/migration.rst:680
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
-#: ../../build/doc/migration.rst:699
+#: ../../build/doc/migration.rst:681
 msgid ":doc:`withPoints-category`"
 msgstr ""
 
-#: ../../build/doc/migration.rst:702
+#: ../../build/doc/migration.rst:684
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/migration.rst:703
+#: ../../build/doc/migration.rst:685
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/migration.rst:704
+#: ../../build/doc/migration.rst:686
 msgid ":ref:`search`"
 msgstr ""
