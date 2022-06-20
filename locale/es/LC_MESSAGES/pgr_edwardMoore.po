@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edwardmoore/es/>\n"
@@ -215,7 +215,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_edwardMoore.rst:64
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
-msgstr "El 'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
+msgstr ""
+"El ``agg_cost`` de los valores no incluídos ``(u, v)`` es :math: `\\infty`"
 
 #: ../../build/doc/pgr_edwardMoore.rst:66
 msgid ""
@@ -331,7 +332,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgr_edwardMoore.rst:199
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/pgr_edwardMoore.rst:199
 #: ../../build/doc/pgr_edwardMoore.rst:200
@@ -353,7 +354,7 @@ msgstr "Consulta de combinaciones como se describe a continuación."
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgr_edwardMoore.rst:201
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:18
@@ -370,7 +371,7 @@ msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/pgr_edwardMoore.rst:202
 msgid "**start_vids**"
-msgstr "**start_vids**"
+msgstr "``start_vids``"
 
 #: ../../build/doc/pgr_edwardMoore.rst:202
 #: ../../build/doc/pgr_edwardMoore.rst:204
@@ -384,7 +385,7 @@ msgstr "Arreglo de identificadores de vértices iniciales."
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgr_edwardMoore.rst:203
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgr_edwardMoore.rst:203
 msgid "Identifier of the ending vertex of the path."
@@ -392,7 +393,7 @@ msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/pgr_edwardMoore.rst:204
 msgid "**end_vids**"
-msgstr "**end_vids**"
+msgstr "``end_vids``"
 
 #: ../../build/doc/pgr_edwardMoore.rst:204
 msgid "Array of identifiers of ending vertices."
@@ -404,7 +405,7 @@ msgstr "**dirigido**"
 
 #: ../../build/doc/pgr_edwardMoore.rst:205
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_edwardMoore.rst:205
 msgid "``true``"
@@ -468,7 +469,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -489,7 +490,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -514,7 +515,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:21
@@ -523,7 +524,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -535,7 +536,7 @@ msgstr "Consulta de combinaciones"
 
 #: ../../build/doc/pgr_edwardMoore.rst:229
 msgid "Return Columns"
-msgstr "Columnas de Devoluciones"
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid ""
@@ -547,7 +548,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -561,7 +562,7 @@ msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**path_id**"
-msgstr "**path_id**"
+msgstr "``path_id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid ""
@@ -569,12 +570,12 @@ msgid ""
 "are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
 msgstr ""
 "Identificador de ruta. Tiene el valor **1** para el primero de una ruta. Se "
-"utiliza cuando hay varias rutas  para la misma combinación de ``start_vid`` "
-"a ``end_vid``."
+"utiliza cuando hay varias rutas para la misma combinación de ``start_vid`` a "
+"``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**path_seq**"
-msgstr "**path_seq**"
+msgstr "``path_seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid ""
@@ -593,7 +594,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "`Many to One`_"
-msgstr "`Many to One`_"
+msgstr "`Muchos a Uno`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:22
@@ -622,7 +623,7 @@ msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid ""
@@ -630,7 +631,7 @@ msgid ""
 " sequence. ``-1`` for the last node of the path."
 msgstr ""
 "Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de "
-"la secuencia de ruta. ``-1``  para el último nodo de la ruta."
+"la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:26
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -647,7 +648,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Aggregate cost from ``start_v`` to ``node``."
@@ -660,7 +661,7 @@ msgstr "Ejemplo de aplicación"
 #: ../../build/doc/pgr_edwardMoore.rst:239
 msgid ""
 "The examples of this section are based on the :doc:`sampledata` network."
-msgstr "Los ejemplos de esta sección se basan en la red  :doc:`sampledata`."
+msgstr "Los ejemplos de esta sección se basan en la red :doc:`sampledata`."
 
 #: ../../build/doc/pgr_edwardMoore.rst:241
 msgid ""
@@ -702,7 +703,7 @@ msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig2`"
 
 #: ../../build/doc/pgr_edwardMoore.rst:260
 msgid "For queries marked as ``directed`` with ``cost`` column"
-msgstr "Para consultas marcadas como  ``directed`` con columna``cost``"
+msgstr "Para consultas marcadas como ``directed`` con columna``cost``"
 
 #: ../../build/doc/pgr_edwardMoore.rst:262
 msgid "The examples in this section use the following :ref:`fig3`"
@@ -710,7 +711,7 @@ msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig3`"
 
 #: ../../build/doc/pgr_edwardMoore.rst:268
 msgid "For queries marked as ``undirected`` with ``cost`` column"
-msgstr "Para consultas marcadas como  ``undirected`` con columna ``cost``"
+msgstr "Para consultas marcadas como ``undirected`` con columna ``cost``"
 
 #: ../../build/doc/pgr_edwardMoore.rst:270
 msgid "The examples in this section use the following :ref:`fig4`"

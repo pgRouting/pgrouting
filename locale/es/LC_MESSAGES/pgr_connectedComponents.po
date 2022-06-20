@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_connectedcomponents/es/>\n"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_connectedComponents.rst:30
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_connectedComponents.rst:33
 msgid "Availability"
@@ -175,7 +175,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/components-family.rst:6
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/components-family.rst:6
 msgid "``TEXT``"
@@ -238,7 +238,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -259,7 +259,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -283,7 +283,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -291,7 +291,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -307,7 +307,7 @@ msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:112
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:112
 #: ../../build/doc/pgr_connectedComponents.rst:113

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_maxflowmincost/es/>\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost.rst:28
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -334,7 +334,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/flow-family.rst:6 ../../build/doc/flow-family.rst:7
 msgid "``TEXT``"
@@ -475,7 +475,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:17
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/flow-family.rst:17 ../../build/doc/flow-family.rst:18
 msgid "``ANY-NUMERICAL``"
@@ -487,7 +487,7 @@ msgstr "Peso de la arista `(origen, destino)` si existe."
 
 #: ../../build/doc/flow-family.rst:18
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/flow-family.rst:18
 msgid "0"
@@ -504,7 +504,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/flow-family.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/flow-family.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -513,7 +513,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/flow-family.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/flow-family.rst:24
 msgid "smallint, int, bigint, real, float"
@@ -546,7 +546,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "``INT``"
@@ -558,7 +558,7 @@ msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/flow-family.rst:7
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/flow-family.rst:7
 msgid "Identifier of the edge in the original query(edges_sql)."
@@ -594,7 +594,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:13
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/flow-family.rst:13
 msgid "The aggregate cost."

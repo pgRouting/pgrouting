@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-06 18:16+0000\n"
-"PO-Revision-Date: 2022-05-06 15:35+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/bfs-"
-"category/es/>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"bfs-category/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #: ../../build/doc/BFS-category.rst:12
 msgid ""
@@ -135,7 +135,7 @@ msgstr "**Raíces**"
 
 #: ../../build/doc/BFS-category.rst:68
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/BFS-category.rst:69
 msgid "Array of identifiers of the root vertices."
@@ -157,7 +157,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/BFS-category.rst:0 ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/BFS-category.rst:76 ../../build/doc/BFS-category.rst:160
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -193,8 +193,6 @@ msgid "Upper limit of the depth of the tree."
 msgstr "Límite superior de la profundidad del árbol."
 
 #: ../../build/doc/BFS-category.rst:100
-#, fuzzy
-#| msgid "When ``Negative`` **throws** an error."
 msgid "When negative throws an error."
 msgstr "Cuando negativo arroja un error."
 
@@ -251,8 +249,6 @@ msgid "**ANY-NUMERICAL**"
 msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
-#| msgid "Weight of the edge  (``source``, ``target``)"
 msgid "Weight of the edge (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
@@ -282,7 +278,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
@@ -313,8 +309,6 @@ msgid "Depth of the ``node``."
 msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/BFS-category.rst:136
-#, fuzzy
-#| msgid ":math:`0`  when ``node`` = ``start_vid``."
 msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
@@ -343,10 +337,8 @@ msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/BFS-category.rst:149
-#, fuzzy
-#| msgid ":math:`-1`  when ``node`` = ``start_vid``."
 msgid ":math:`-1` when ``node`` = ``start_vid``."
-msgstr ":math:`-1`  cuando ``node`` = ``start_vid``."
+msgstr ":math:`-1` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/BFS-category.rst:152 ../../build/doc/BFS-category.rst:155
 msgid "``FLOAT``"

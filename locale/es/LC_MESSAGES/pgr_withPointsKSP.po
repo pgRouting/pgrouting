@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsksp/es/>\n"
@@ -108,7 +108,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:37
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:40
 msgid "Availability"
@@ -283,7 +283,7 @@ msgstr "**dirigido**"
 #: ../../build/doc/pgr_withPointsKSP.rst:108
 #: ../../build/doc/pgr_withPointsKSP.rst:114
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:107
 msgid ""
@@ -392,7 +392,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_withPointsKSP.rst:144
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -414,7 +414,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -439,7 +439,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -447,7 +447,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -533,7 +533,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:137
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:137
 msgid "Row sequence."
@@ -541,7 +541,7 @@ msgstr "Secuencia de filas."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:138
 msgid "**path_seq**"
-msgstr "**path_seq**"
+msgstr "``path_seq``"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:138
 msgid ""
@@ -553,7 +553,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:139
 msgid "**path_id**"
-msgstr "**path_id**"
+msgstr "``path_id``"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:139
 msgid ""
@@ -582,7 +582,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:141
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:142
 msgid ""
@@ -615,7 +615,7 @@ msgstr "``0`` para la última fila de la secuencia de ruta."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:147
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:148
 msgid "Aggregate cost from ``start_pid`` to ``node``."

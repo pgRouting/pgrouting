@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 15:18+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_depthfirstsearch/es/>\n"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:26
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -246,7 +246,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:131
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:131
 msgid "``TEXT``"
@@ -282,7 +282,7 @@ msgstr "**Raíces**"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:136
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:136
 msgid "Array of identifiers of the root vertices."
@@ -311,7 +311,7 @@ msgstr "**dirigido**"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:148
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:148
 msgid "``true``"
@@ -385,7 +385,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgr_kruskalDD.rst:22 ../../build/doc/traversal-family.rst:9
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/traversal-family.rst:9
 #: ../../build/doc/traversal-family.rst:12
@@ -403,7 +403,7 @@ msgstr ""
 
 #: ../../build/doc/traversal-family.rst:12
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/traversal-family.rst:12
 msgid "-1"
@@ -424,7 +424,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/traversal-family.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/traversal-family.rst:19
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -432,7 +432,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/traversal-family.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/traversal-family.rst:20
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -448,7 +448,7 @@ msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:8
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:8
 msgid "Sequential value starting from :math:`1`."
@@ -468,7 +468,7 @@ msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:13
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:13
 msgid "Identifier of the root vertex."
@@ -488,7 +488,7 @@ msgstr "Identificador del ``node`` alcanzado usando ``edge``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:18
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgr_kruskalDD.rst:18
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
@@ -508,7 +508,7 @@ msgstr "Costo por recorrer ``edge``."
 
 #: ../../build/doc/pgr_kruskalDD.rst:23
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:23
 msgid "Aggregate cost from ``start_vid`` to ``node``."
@@ -521,7 +521,7 @@ msgstr "Ejemplos Adicionales"
 #: ../../build/doc/pgr_depthFirstSearch.rst:175
 msgid ""
 "The examples of this section are based on the :doc:`sampledata` network."
-msgstr "Los ejemplos de esta sección se basan en la red  :doc:`sampledata`."
+msgstr "Los ejemplos de esta sección se basan en la red :doc:`sampledata`."
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:177
 msgid "**Example: No internal ordering on traversal**"

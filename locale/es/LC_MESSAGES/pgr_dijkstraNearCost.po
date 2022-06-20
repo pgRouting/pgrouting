@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 14:40+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstranearcost/es/>\n"
@@ -88,7 +88,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:30
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:33
 msgid "Availability"
@@ -410,7 +410,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:212
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:212
 #: ../../build/doc/pgr_dijkstraNearCost.rst:213
@@ -481,7 +481,7 @@ msgstr "**dirigido**"
 #: ../../build/doc/pgr_dijkstraNearCost.rst:218
 #: ../../build/doc/pgr_dijkstraNearCost.rst:221
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:218
 #: ../../build/doc/pgr_dijkstraNearCost.rst:221
@@ -571,7 +571,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -592,7 +592,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -617,7 +617,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:21
@@ -626,7 +626,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -638,7 +638,7 @@ msgstr "Consulta de combinaciones"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:244
 msgid "Return Columns"
-msgstr "Columnas de Devoluciones"
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "Returns SET OF ``(start_vid, end_vid, agg_cost)``"
@@ -646,7 +646,7 @@ msgstr "Devuelve SET OF ``(start_vid, end_vid, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the starting vertex."
@@ -654,7 +654,7 @@ msgstr "Identificador del vértice inicial."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Identifier of the ending vertex."
@@ -662,7 +662,7 @@ msgstr "Identificador del vértice final."
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "``FLOAT``"

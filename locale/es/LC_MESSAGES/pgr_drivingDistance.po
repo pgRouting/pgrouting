@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_drivingdistance/es/>\n"
@@ -80,7 +80,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:35
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_drivingDistance.rst:38
 msgid "Availability"
@@ -184,7 +184,7 @@ msgstr "Consulta SQL como se describió anteriormente."
 #: ../../build/doc/pgr_drivingDistance.rst:108
 #: ../../build/doc/pgr_drivingDistance.rst:131
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:108
 #: ../../build/doc/pgr_drivingDistance.rst:132
@@ -199,11 +199,11 @@ msgstr "Identificador del vértice inicial."
 
 #: ../../build/doc/pgr_drivingDistance.rst:109
 msgid "**start_vids**"
-msgstr "**start_vids**"
+msgstr "``start_vids``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:109
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:109
 msgid "Array of identifiers of the starting vertices."
@@ -230,7 +230,7 @@ msgstr "**dirigido**"
 #: ../../build/doc/pgr_drivingDistance.rst:111
 #: ../../build/doc/pgr_drivingDistance.rst:112
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:111
 msgid ""
@@ -296,7 +296,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_drivingDistance.rst:134
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -317,7 +317,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -341,7 +341,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -349,7 +349,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -366,7 +366,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:130
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:130
 #: ../../build/doc/pgr_drivingDistance.rst:131
@@ -405,7 +405,7 @@ msgstr "Costo por recorrer ``edge``."
 
 #: ../../build/doc/pgr_drivingDistance.rst:135
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:135
 msgid "Aggregate cost from ``start_vid`` to ``node``."
@@ -441,7 +441,7 @@ msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig2`"
 
 #: ../../build/doc/pgr_drivingDistance.rst:158
 msgid "For queries marked as ``directed`` with ``cost`` column"
-msgstr "Para consultas marcadas como  ``directed`` con columna``cost``"
+msgstr "Para consultas marcadas como ``directed`` con columna``cost``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:160
 msgid "The examples in this section use the following :ref:`fig3`"
@@ -449,7 +449,7 @@ msgstr "Los ejemplos de esta sección utilizan lo siguiente :ref:`fig3`"
 
 #: ../../build/doc/pgr_drivingDistance.rst:166
 msgid "For queries marked as ``undirected`` with ``cost`` column"
-msgstr "Para consultas marcadas como  ``undirected`` con columna ``cost``"
+msgstr "Para consultas marcadas como ``undirected`` con columna ``cost``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:168
 msgid "The examples in this section use the following :ref:`fig4`"

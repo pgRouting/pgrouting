@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bdastar-family/es/>\n"
@@ -128,7 +128,8 @@ msgstr ""
 
 #: ../../build/doc/bdAstar-family.rst:61
 msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
-msgstr "El 'agg_cost' de los valores no incluídos '(u, v)' es :math: `\\infty`"
+msgstr ""
+"El ``agg_cost`` de los valores no incluídos ``(u, v)`` es :math: `\\infty`"
 
 #: ../../build/doc/bdAstar-family.rst:63
 msgid "Running time (worse case scenario): :math:`O((E + V) * \\log V)`"
@@ -220,7 +221,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -245,7 +246,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "-1"
@@ -302,7 +303,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -311,7 +312,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -331,7 +332,7 @@ msgstr "Parámetro"
 
 #: ../../build/doc/bdAstar-family.rst:93
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/bdAstar-family.rst:93 ../../build/doc/bdAstar-family.rst:94
 msgid "``TEXT``"
@@ -351,7 +352,7 @@ msgstr "Consulta de combinaciones como se describió anteriormente."
 
 #: ../../build/doc/bdAstar-family.rst:95
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/bdAstar-family.rst:95
 msgid "Starting vertex identifier."
@@ -359,11 +360,11 @@ msgstr "Comenzando identificador de vértice."
 
 #: ../../build/doc/bdAstar-family.rst:96
 msgid "**start_vids**"
-msgstr "**start_vids**"
+msgstr "``start_vids``"
 
 #: ../../build/doc/bdAstar-family.rst:96 ../../build/doc/bdAstar-family.rst:98
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/bdAstar-family.rst:96
 msgid "Starting vertices identifierers."
@@ -371,7 +372,7 @@ msgstr "Comenzando identificadores de vértices."
 
 #: ../../build/doc/bdAstar-family.rst:97
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/bdAstar-family.rst:97
 msgid "Ending vertex identifier."
@@ -379,7 +380,7 @@ msgstr "Terminando identificador de vértice."
 
 #: ../../build/doc/bdAstar-family.rst:98
 msgid "**end_vids**"
-msgstr "**end_vids**"
+msgstr "``end_vids``"
 
 #: ../../build/doc/bdAstar-family.rst:98
 msgid "Ending vertices identifiers."
@@ -391,7 +392,7 @@ msgstr "**dirigido**"
 
 #: ../../build/doc/bdAstar-family.rst:99
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/bdAstar-family.rst:99
 msgid "Optional."

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-10 16:45+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_tsp/"
 "es/>\n"
@@ -71,7 +71,7 @@ msgstr "``pgr_TSP`` - Aproximación usando el algoritmo*metrico*."
 
 #: ../../build/doc/pgr_TSP.rst:35
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_TSP.rst:39
 msgid "Availability:"
@@ -383,7 +383,7 @@ msgstr "Una consulta SQL, descrita en la sección `Matrix SQL`_."
 
 #: ../../build/doc/pgr_TSP.rst:147 ../../src/common/matrixRows_input.c:11
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgr_TSP.rst:147 ../../build/doc/pgr_TSP.rst:151
 #: ../../include/c_types/tsp_tour_rt.h:9
@@ -406,7 +406,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:151 ../../src/common/matrixRows_input.c:12
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgr_TSP.rst:151
 msgid "Last visiting vertex before returning to ``start_vid``."
@@ -463,7 +463,7 @@ msgstr "Identificador del vértice final."
 #: ../../include/c_types/tsp_tour_rt.h:14
 #: ../../src/common/matrixRows_input.c:13
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../src/common/matrixRows_input.c:13
 msgid "``ANY-NUMERICAL``"
@@ -483,7 +483,7 @@ msgstr "Devuelve el CONJUNTO DE ``(seq, node, cost, agg_cost)``"
 
 #: ../../include/c_types/tsp_tour_rt.h:8
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../include/c_types/tsp_tour_rt.h:8
 msgid "``INTEGER``"
@@ -503,7 +503,7 @@ msgstr "Identificador del nodo/coordenada/punto."
 
 #: ../../include/c_types/tsp_tour_rt.h:10
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../include/c_types/tsp_tour_rt.h:10
 #: ../../include/c_types/tsp_tour_rt.h:14

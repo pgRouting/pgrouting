@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 15:58+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_sequentialvertexcoloring/es/>\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:26
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -221,7 +221,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/coloring-family.rst:6
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/coloring-family.rst:6
 msgid "``TEXT``"
@@ -288,7 +288,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/traversal-family.rst:9
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/traversal-family.rst:9
 #: ../../build/doc/traversal-family.rst:12
@@ -306,7 +306,7 @@ msgstr ""
 
 #: ../../build/doc/traversal-family.rst:12
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/traversal-family.rst:12
 msgid "-1"
@@ -327,7 +327,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/traversal-family.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/traversal-family.rst:19
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -335,7 +335,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/traversal-family.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/traversal-family.rst:20
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"

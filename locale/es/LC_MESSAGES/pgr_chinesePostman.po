@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:35+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_chinesepostman/es/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_chinesePostman.rst:12
@@ -267,7 +267,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -291,7 +291,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -299,7 +299,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -315,7 +315,7 @@ msgstr "Devuelve un conjunto de ``(seq, node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_chinesePostman.rst:87
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_chinesePostman.rst:87
 msgid "``INT``"
@@ -348,7 +348,7 @@ msgid ""
 " sequence. ``-1`` for the last node of the path."
 msgstr ""
 "Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de "
-"la secuencia de ruta. ``-1``  para el último nodo de la ruta."
+"la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgr_chinesePostman.rst:90
 #: ../../build/doc/pgr_chinesePostman.rst:91
@@ -365,7 +365,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_chinesePostman.rst:91
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_chinesePostman.rst:91
 msgid "Aggregate cost from ``start_v`` to ``node``."
