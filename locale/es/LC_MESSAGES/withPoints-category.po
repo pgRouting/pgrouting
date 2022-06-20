@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: 2022-06-02 16:50+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -71,7 +71,7 @@ msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/withPoints-category.rst:27
-msgid ":doc:`withPoints-family` - Functions based on dijkstra algorithms."
+msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:28
@@ -186,210 +186,216 @@ msgid "**Temporal**: for example points given through a web application"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:80
-msgid "The numbering of the points are handled with negative sign."
+msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:82
+msgid "The numbering of the points are handled with negative sign."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:84
 msgid ""
 "This sign change is to avoid confusion when there is a vertex with the same "
 "identifier as the point identifier."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:84
+#: ../../build/doc/withPoints-category.rst:86
 msgid "Original point identifiers are to be positive."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:85
+#: ../../build/doc/withPoints-category.rst:87
 msgid "Transformation to negative is done internally."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:86
+#: ../../build/doc/withPoints-category.rst:88
 msgid "Interpretation of the sign on the node information of the output"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:88
+#: ../../build/doc/withPoints-category.rst:90
 msgid "positive sign is a vertex of the original graph"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:89
+#: ../../build/doc/withPoints-category.rst:91
 msgid "negative sign is a point of the `Points SQL`_"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:92
+#: ../../build/doc/withPoints-category.rst:94
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/withPoints-category.rst:101
+#: ../../build/doc/withPoints-category.rst:103
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/withPoints-category.rst:102
-#: ../../build/doc/withPoints-category.rst:142
+#: ../../build/doc/withPoints-category.rst:104
+#: ../../build/doc/withPoints-category.rst:145
+#: ../../build/doc/withPoints-category.rst:186
 #: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/withPoints-category.rst:183
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/withPoints-category.rst:103
-#: ../../build/doc/withPoints-category.rst:144
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/withPoints-category.rst:185
+#: ../../build/doc/withPoints-category.rst:105
+#: ../../build/doc/withPoints-category.rst:147
+#: ../../build/doc/withPoints-category.rst:188
 #: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/withPoints-category.rst:104
+#: ../../build/doc/withPoints-category.rst:106
 msgid "`Edges SQL`_"
 msgstr "`SQL de Aristas`_"
 
-#: ../../build/doc/withPoints-category.rst:105
-#: ../../build/doc/withPoints-category.rst:108
-#: ../../build/doc/withPoints-category.rst:111
+#: ../../build/doc/withPoints-category.rst:107
+#: ../../build/doc/withPoints-category.rst:110
+#: ../../build/doc/withPoints-category.rst:113
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/withPoints-category.rst:106
+#: ../../build/doc/withPoints-category.rst:108
 msgid "`Edges SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:107
+#: ../../build/doc/withPoints-category.rst:109
 msgid "`Points SQL`_"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:109
+#: ../../build/doc/withPoints-category.rst:111
 msgid "`Points SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:110
+#: ../../build/doc/withPoints-category.rst:112
 msgid "`Combinations SQL`_"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:112
+#: ../../build/doc/withPoints-category.rst:114
 msgid "`Combinations SQL`_ as described below"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:113
+#: ../../build/doc/withPoints-category.rst:115
 msgid "**start vid**"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:114
-#: ../../build/doc/withPoints-category.rst:122
+#: ../../build/doc/withPoints-category.rst:116
+#: ../../build/doc/withPoints-category.rst:124
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/withPoints-category.rst:115
+#: ../../build/doc/withPoints-category.rst:117
 msgid ""
 "Identifier of the starting vertex of the path. Negative value is for point’s "
 "identifier."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:117
+#: ../../build/doc/withPoints-category.rst:119
 msgid "**start vids**"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:118
-#: ../../build/doc/withPoints-category.rst:125
+#: ../../build/doc/withPoints-category.rst:120
+#: ../../build/doc/withPoints-category.rst:128
 msgid "``ARRAY[BIGINT]``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:119
+#: ../../build/doc/withPoints-category.rst:121
 msgid ""
 "Array of identifiers of starting vertices. Negative values are for point’s "
 "identifiers."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:121
+#: ../../build/doc/withPoints-category.rst:123
 msgid "**end vid**"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:123
+#: ../../build/doc/withPoints-category.rst:125
 msgid ""
 "Identifier of the ending vertex of the path. Negative value is for point’s "
 "identifier."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:124
+#: ../../build/doc/withPoints-category.rst:127
 msgid "**end vids**"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:126
+#: ../../build/doc/withPoints-category.rst:129
 msgid ""
 "Array of identifiers of ending vertices. Negative values are for point’s "
 "identifiers."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:132
+#: ../../build/doc/withPoints-category.rst:135
 msgid "Optional parameters"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:141
-#: ../../build/doc/withPoints-category.rst:182
+#: ../../build/doc/withPoints-category.rst:144
+#: ../../build/doc/withPoints-category.rst:185
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/withPoints-category.rst:143
+#: ../../build/doc/withPoints-category.rst:146
+#: ../../build/doc/withPoints-category.rst:187
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/withPoints-category.rst:184
 msgid "Default"
 msgstr "x Defecto"
 
-#: ../../build/doc/withPoints-category.rst:145
+#: ../../build/doc/withPoints-category.rst:148
 msgid "``driving_side``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:146
-#: ../../build/doc/withPoints-category.rst:206
+#: ../../build/doc/withPoints-category.rst:149
+#: ../../build/doc/withPoints-category.rst:209
 msgid "``CHAR``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:147
+#: ../../build/doc/withPoints-category.rst:150
 msgid "``r``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:148
+#: ../../build/doc/withPoints-category.rst:151
 msgid "Value in [``r``, ``l``] indicating if the driving side is:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:150
+#: ../../build/doc/withPoints-category.rst:153
 msgid "``r`` for right driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:151
+#: ../../build/doc/withPoints-category.rst:154
 msgid "``l`` for left driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:152
+#: ../../build/doc/withPoints-category.rst:155
 msgid "Any other value will be considered as ``r``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:153
+#: ../../build/doc/withPoints-category.rst:156
 msgid "``details``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:154
+#: ../../build/doc/withPoints-category.rst:157
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/withPoints-category.rst:155
+#: ../../build/doc/withPoints-category.rst:158
 msgid "``false``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:156
+#: ../../build/doc/withPoints-category.rst:159
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:157
+#: ../../build/doc/withPoints-category.rst:160
 msgid ""
 "When ``false`` the results will not include the points that are in the path."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:163
-msgid "Inner queries"
+#: ../../build/doc/withPoints-category.rst:166
+#, fuzzy
+#| msgid "Inner queries"
+msgid "Inner Queries"
 msgstr "Consultas internas"
 
-#: ../../build/doc/withPoints-category.rst:166
+#: ../../build/doc/withPoints-category.rst:169
 msgid "Edges SQL"
 msgstr "SQL de aristas"
 
@@ -397,13 +403,13 @@ msgstr "SQL de aristas"
 msgid "``id``"
 msgstr "``id``"
 
+#: ../../build/doc/withPoints-category.rst:190
+#: ../../build/doc/withPoints-category.rst:200
+#: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/withPoints-category.rst:187
-#: ../../build/doc/withPoints-category.rst:197
-#: ../../build/doc/pgRouting-concepts.rst:12
-#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "**ANY-INTEGER**"
 msgstr "**ANY-INTEGER**"
 
@@ -411,8 +417,8 @@ msgstr "**ANY-INTEGER**"
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``source``"
 msgstr "``source``"
 
@@ -420,8 +426,8 @@ msgstr "``source``"
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice extremo de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
 msgstr "``target``"
 
@@ -433,9 +439,9 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 msgid "``cost``"
 msgstr "``cost``"
 
+#: ../../build/doc/withPoints-category.rst:204
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/withPoints-category.rst:201
 msgid "**ANY-NUMERICAL**"
 msgstr "**ANY-NUMERICAL**"
 
@@ -463,107 +469,107 @@ msgstr ""
 "Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
 "no es parte del grafo."
 
-#: ../../build/doc/pgRouting-concepts.rst:36
-#: ../../build/doc/withPoints-category.rst:214
+#: ../../build/doc/withPoints-category.rst:217
 #: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr "Donde:"
 
-#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
-#: ../../build/doc/pgRouting-concepts.rst:38
-#: ../../build/doc/withPoints-category.rst:216
+#: ../../build/doc/withPoints-category.rst:219
 #: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
+#: ../../build/doc/withPoints-category.rst:220
 #: ../../build/doc/pgRouting-concepts.rst:39
-#: ../../build/doc/withPoints-category.rst:217
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
-#: ../../build/doc/withPoints-category.rst:173
+#: ../../build/doc/withPoints-category.rst:176
 msgid "Points SQL"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:186
+#: ../../build/doc/withPoints-category.rst:189
 msgid "``pid``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:188
+#: ../../build/doc/withPoints-category.rst:191
 msgid "**value**"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:189
+#: ../../build/doc/withPoints-category.rst:192
 msgid "Identifier of the point."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:191
+#: ../../build/doc/withPoints-category.rst:194
 msgid ""
 "Use with positive value, as internally will be converted to negative value"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:193
+#: ../../build/doc/withPoints-category.rst:196
 msgid "If column is present, it can not be NULL."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:194
+#: ../../build/doc/withPoints-category.rst:197
 msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:196
+#: ../../build/doc/withPoints-category.rst:199
 msgid "``edge_id``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:199
+#: ../../build/doc/withPoints-category.rst:202
 msgid "Identifier of the \"closest\" edge to the point."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:200
+#: ../../build/doc/withPoints-category.rst:203
 msgid "``fraction``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:203
+#: ../../build/doc/withPoints-category.rst:206
 msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:205
+#: ../../build/doc/withPoints-category.rst:208
 msgid "``side``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:207
+#: ../../build/doc/withPoints-category.rst:210
 msgid "``b``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:208
+#: ../../build/doc/withPoints-category.rst:211
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:210
+#: ../../build/doc/withPoints-category.rst:213
 msgid "In the right ``r``,"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:211
+#: ../../build/doc/withPoints-category.rst:214
 msgid "In the left ``l``,"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:212
+#: ../../build/doc/withPoints-category.rst:215
 msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:222
+#: ../../build/doc/withPoints-category.rst:225
 msgid "Combinations SQL"
 msgstr ""
 
@@ -575,319 +581,329 @@ msgstr ""
 msgid "Identifier of the arrival vertex."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:229
+#: ../../build/doc/withPoints-category.rst:232
 msgid "Advanced documentation"
 msgstr "Documentación avanzada"
 
-#: ../../build/doc/withPoints-category.rst:234
+#: ../../build/doc/withPoints-category.rst:237
 msgid "Contents"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:237
+#: ../../build/doc/withPoints-category.rst:240
 msgid "About points"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:239
+#: ../../build/doc/withPoints-category.rst:242
 msgid ""
 "For this section the following city (see :doc:`sampledata`) some interesing "
 "points such as restaurant, supermarket, post office, etc. will be used as "
 "example."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:246
+#: ../../build/doc/withPoints-category.rst:249
 msgid "The graph is **directed**"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:247
+#: ../../build/doc/withPoints-category.rst:250
 msgid "Red arrows show the ``(source, target)`` of the edge on the edge table"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:248
+#: ../../build/doc/withPoints-category.rst:251
 msgid "Blue arrows show the ``(target, source)`` of the edge on the edge table"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:249
+#: ../../build/doc/withPoints-category.rst:252
 msgid ""
 "Each point location shows where it is located with relation of the edge "
 "``(source, target)``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:252
+#: ../../build/doc/withPoints-category.rst:255
 msgid "On the right for points **2** and **4**."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:253
+#: ../../build/doc/withPoints-category.rst:256
 msgid "On the left for points **1**, **3** and **5**."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:254
+#: ../../build/doc/withPoints-category.rst:257
 msgid "On both sides for point **6**."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:256
+#: ../../build/doc/withPoints-category.rst:259
 msgid ""
 "The representation on the data base follows the `Points SQL`_ description, "
 "and for this example:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:264
+#: ../../build/doc/withPoints-category.rst:267
 msgid "Driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:266
+#: ../../build/doc/withPoints-category.rst:269
 msgid "In the the folowwing images:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:268
+#: ../../build/doc/withPoints-category.rst:271
 msgid "The squared vertices are the temporary vertices,"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:269
+#: ../../build/doc/withPoints-category.rst:272
 msgid "The temporary vertices are added according to the driving side,"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:270
+#: ../../build/doc/withPoints-category.rst:273
 msgid ""
 "visually showing the differences on how depending on the driving side the "
 "data is interpreted."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:274
-#: ../../build/doc/withPoints-category.rst:341
+#: ../../build/doc/withPoints-category.rst:277
+#: ../../build/doc/withPoints-category.rst:343
 msgid "Right driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:279
-msgid "Point **1** located on edge ``(2, 1)``"
-msgstr ""
-
-#: ../../build/doc/withPoints-category.rst:280
-msgid "Point **2** located on edge ``(9, 12)``"
-msgstr ""
-
-#: ../../build/doc/withPoints-category.rst:281
-#: ../../build/doc/withPoints-category.rst:294
-#: ../../build/doc/withPoints-category.rst:311
-msgid "Point **3** located on edge ``(10, 11)``"
-msgstr ""
-
 #: ../../build/doc/withPoints-category.rst:282
-msgid "Point **4** located on edge ``(7, 8)``"
+msgid "Point **1** located on edge ``(6, 5)``"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:283
-#: ../../build/doc/withPoints-category.rst:296
-#: ../../build/doc/withPoints-category.rst:313
-msgid "Point **5** located on edge ``(3, 6)``"
+msgid "Point **2** located on edge ``(16, 17)``"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:284
 #: ../../build/doc/withPoints-category.rst:297
 #: ../../build/doc/withPoints-category.rst:314
-msgid "Point **6** located on edges ``(2, 5)`` and ``(5, 2)``"
+msgid "Point **3** located on edge ``(8, 12)``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:285
+msgid "Point **4** located on edge ``(1, 3)``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:286
+#: ../../build/doc/withPoints-category.rst:299
+#: ../../build/doc/withPoints-category.rst:316
+msgid "Point **5** located on edge ``(10, 11)``"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:287
-#: ../../build/doc/withPoints-category.rst:361
+#: ../../build/doc/withPoints-category.rst:300
+#: ../../build/doc/withPoints-category.rst:317
+msgid "Point **6** located on edges ``(6, 7)`` and ``(7, 6)``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:290
+#: ../../build/doc/withPoints-category.rst:363
 msgid "Left driving side"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:292
-msgid "Point **1** located on edge ``(1, 2)``"
-msgstr ""
-
-#: ../../build/doc/withPoints-category.rst:293
-msgid "Point **2** located on edge ``(12, 9)``"
-msgstr ""
-
 #: ../../build/doc/withPoints-category.rst:295
-msgid "Point **4** located on edge ``(8, 7)``"
+msgid "Point **1** located on edge ``(5, 6)``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:300
-msgid "Driving side does not matter"
+#: ../../build/doc/withPoints-category.rst:296
+msgid "Point **2** located on edge ``(17, 16)``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:302
-msgid "Like having all points to be considered in both sides ``b``"
+#: ../../build/doc/withPoints-category.rst:298
+msgid "Point **4** located on edge ``(3, 1)``"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:303
+msgid "Driving side does not matter"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:305
+msgid "Like having all points to be considered in both sides ``b``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:306
 msgid "Prefered usage on **undirected** graphs"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:304
+#: ../../build/doc/withPoints-category.rst:307
 msgid "On the :doc:`TRSP-family` this option is not valid"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:309
-msgid "Point **1** located on edges ``(1, 2)`` and ``(2, 1)``"
-msgstr ""
-
-#: ../../build/doc/withPoints-category.rst:310
-msgid "Point **2** located on edges ``(12, 9)`` and ``(9, 12)``"
-msgstr ""
-
 #: ../../build/doc/withPoints-category.rst:312
-msgid "Point **4** located on edges ``(8, 7)`` and ``(7, 8)``"
+msgid "Point **1** located on edge ``(5, 6)`` and ``(6, 5)``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:318
-msgid "Creating temporary vertices"
+#: ../../build/doc/withPoints-category.rst:313
+msgid "Point **2** located on edge ``(17, 16)``and ``16, 17``"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:315
+msgid "Point **4** located on edge ``(3, 1)`` and ``(1, 3)``"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:320
+msgid "Creating temporary vertices"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:322
 msgid ""
 "This section will demonstrate how a temporary vertex is created internally "
 "on the graph."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:324
+#: ../../build/doc/withPoints-category.rst:326
 msgid "Problem"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:325
+#: ../../build/doc/withPoints-category.rst:327
 msgid "For edge:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:331
+#: ../../build/doc/withPoints-category.rst:333
 msgid "insert point:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:338
+#: ../../build/doc/withPoints-category.rst:340
 msgid "On a right hand side driving network"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:345
-msgid "Arrival to point ``-2`` can be achived only via vertex **9**."
-msgstr ""
-
-#: ../../build/doc/withPoints-category.rst:346
-msgid "Does not affects edge ``(12, 9)``, therefore the edge is kept."
-msgstr ""
-
 #: ../../build/doc/withPoints-category.rst:347
-msgid "It only affects the edge ``(9, 12)``, therefore the edge is removed."
+msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:348
-#: ../../build/doc/withPoints-category.rst:368
-msgid "Create two new edges:"
+msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:349
+msgid "It only affects the edge ``(16, 17)``, therefore the edge is removed."
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:350
-#: ../../build/doc/withPoints-category.rst:373
-#: ../../build/doc/withPoints-category.rst:400
-msgid ""
-"Edge ``(9, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 * "
-"0.4`)"
+#: ../../build/doc/withPoints-category.rst:370
+msgid "Create two new edges:"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:352
 #: ../../build/doc/withPoints-category.rst:375
 #: ../../build/doc/withPoints-category.rst:402
-msgid "Edge ``(-2, 12)`` with cost ``0.6`` (the remaing cost)"
+msgid ""
+"Edge ``(16, -2)`` with cost ``0.4`` (original cost * fraction == :math:`1 * "
+"0.4`)"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:354
-#: ../../build/doc/withPoints-category.rst:385
+#: ../../build/doc/withPoints-category.rst:377
+#: ../../build/doc/withPoints-category.rst:404
+msgid "Edge ``(-2, 17)`` with cost ``0.6`` (the remaing cost)"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:356
+#: ../../build/doc/withPoints-category.rst:387
 msgid "The total cost of the additional edges is equal to the original cost."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:355
-#: ../../build/doc/withPoints-category.rst:376
-#: ../../build/doc/withPoints-category.rst:403
+#: ../../build/doc/withPoints-category.rst:357
+#: ../../build/doc/withPoints-category.rst:378
+#: ../../build/doc/withPoints-category.rst:405
 msgid ""
 "If more points are on the same edge, the process is repeated recursevly."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:358
+#: ../../build/doc/withPoints-category.rst:360
 msgid "On a left hand side driving network"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:365
-msgid "Arrival to point ``-2`` can be achived only via vertex **12**."
-msgstr ""
-
-#: ../../build/doc/withPoints-category.rst:366
-msgid "Does not affects edge ``(9, 12)``, therefore the edge is kept."
-msgstr ""
-
 #: ../../build/doc/withPoints-category.rst:367
-msgid "It only affects the edge ``(12, 9)``, therefore the edge is removed."
+msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:370
-#: ../../build/doc/withPoints-category.rst:397
+#: ../../build/doc/withPoints-category.rst:368
+msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:369
+msgid "It only affects the edge ``(17, 16)``, therefore the edge is removed."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:372
+#: ../../build/doc/withPoints-category.rst:399
 msgid ""
-"Work with the original edge ``(9, 12)`` as the fraction is a fraction of the "
-"original:"
-msgstr ""
-
-#: ../../build/doc/withPoints-category.rst:378
-msgid "Flip the Edges and add them to the graph:"
+"Work with the original edge ``(16, 17)`` as the fraction is a fraction of "
+"the original:"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:380
-#: ../../build/doc/withPoints-category.rst:409
-msgid ""
-"Edge ``(9, -2)`` becomes ``(-2, 9)`` with cost ``0.4`` and is added to the "
-"graph."
+msgid "Flip the Edges and add them to the graph:"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:382
-#: ../../build/doc/withPoints-category.rst:411
 msgid ""
-"Edge ``(-2, 12)`` becomes ``(12, -2)`` with cost ``0.6`` and is added to the "
+"Edge ``(17, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to the "
 "graph."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:388
+#: ../../build/doc/withPoints-category.rst:384
+msgid ""
+"Edge ``(-2, 16)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to the "
+"graph."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:390
 msgid "When driving side does not matter"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:393
-msgid "Arrival to point ``-2`` can be achived only via vertex **9** or **12**."
+#: ../../build/doc/withPoints-category.rst:395
+msgid "Arrival to point ``-2`` can be achived via vertices **16** or **17**."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:394
+#: ../../build/doc/withPoints-category.rst:396
 msgid ""
-"Affects the edges ``(9, 12)`` and ``(12, 9)``, therefore the edges are "
+"Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are "
 "removed."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:395
+#: ../../build/doc/withPoints-category.rst:397
 msgid "Create four new edges:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:405
+#: ../../build/doc/withPoints-category.rst:407
 msgid "Flip the Edges and add all the edges to the graph:"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:407
-msgid "Edge ``(9, -2)`` is added to the graph."
+#: ../../build/doc/withPoints-category.rst:409
+msgid "Edge ``(16, -2)`` is added to the graph."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:408
-msgid "Edge ``(-2, 12)`` is added to the graph."
+#: ../../build/doc/withPoints-category.rst:410
+msgid "Edge ``(-2, 17)`` is added to the graph."
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:417
+#: ../../build/doc/withPoints-category.rst:411
+msgid ""
+"Edge ``(16, -2)`` becomes ``(-2, 16)`` with cost ``0.4`` and is added to the "
+"graph."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:413
+msgid ""
+"Edge ``(-2, 17)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to the "
+"graph."
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:419
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/withPoints-category.rst:419
+#: ../../build/doc/withPoints-category.rst:421
 msgid ":doc:`withPoints-family`"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:422
+#: ../../build/doc/withPoints-category.rst:424
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/withPoints-category.rst:423
+#: ../../build/doc/withPoints-category.rst:425
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/withPoints-category.rst:424
+#: ../../build/doc/withPoints-category.rst:426
 msgid ":ref:`search`"
 msgstr ":ref:`search`"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 18:16+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-04 15:50+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -22,21 +22,22 @@ msgstr ""
 #: ../../build/doc/pgr_edgeColoring.rst:12
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
-"pgr_edgeColoring.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/"
-"pgr_edgeColoring.html>`__)"
+"pgr_edgeColoring.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"pgr_edgeColoring.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"pgr_edgeColoring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:17
+#: ../../build/doc/pgr_edgeColoring.rst:18
 msgid "pgr_edgeColoring - Experimental"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:19
+#: ../../build/doc/pgr_edgeColoring.rst:20
 msgid ""
-"``pgr_edgeColoring`` — Returns the edge coloring of an undirected and loop-"
-"free (i.e *no self-loops and no parallel edges*) graph."
+"``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-free "
+"graphs"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:25
+#: ../../build/doc/pgr_edgeColoring.rst:26
 msgid "Boost Graph Inside"
 msgstr "Adentro Boost Graph"
 
@@ -109,96 +110,106 @@ msgstr "Puede depender de una función propuesta de pgRouting"
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_edgeColoring.rst:32
+#: ../../build/doc/pgr_edgeColoring.rst:33
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_edgeColoring.rst:33
+#: ../../build/doc/pgr_edgeColoring.rst:34
 msgid "Version 3.3.0"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:35
+#: ../../build/doc/pgr_edgeColoring.rst:36
 msgid "New **experimental** signature"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:39
+#: ../../build/doc/pgr_edgeColoring.rst:40
+#: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/coloring-family.rst:6
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_edgeColoring.rst:41
+#: ../../build/doc/pgr_edgeColoring.rst:42
 msgid ""
 "Edge Coloring is an algorithm used for coloring of the edges for the "
 "vertices in the graph. It is an assignment of colors to the edges of the "
 "graph so that no two adjacent edges have the same color."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:45
+#: ../../build/doc/pgr_edgeColoring.rst:46
 msgid "**The main Characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/pgr_edgeColoring.rst:47
-msgid ""
-"The implementation is applicable only for **undirected** and **loop-free** "
-"(i.e *no self-loops and no parallel edges*) graphs."
+#: ../../build/doc/pgr_edgeColoring.rst:48
+msgid "The implementation is for **undirected** and **loop-free** graphs"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:49
-msgid ""
-"Provides the color to be assigned to all the edges present in the graph."
+#: ../../build/doc/pgr_edgeColoring.rst:0
+msgid "loop free"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:50
-msgid ""
-"At most **Δ + 1** colors are used, where **Δ** is the degree of the graph. "
-"This is optimal for some graphs, and by Vizing's theorem it uses at most one "
-"color more than the optimal for all others."
+msgid "no self-loops and no parallel edges."
 msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:53
 msgid ""
-"It can tell us whether a graph is **Bipartite**. If in a graph, the "
-"chromatic number **χ′(G)** i.e. minimum number of colors needed for proper "
-"edge coloring of graph is equal to degree **Δ** of the graph, (i.e. **χ′(G) "
-"= Δ**) then graph is said to be Bipartite. But, the vice-versa is not always "
-"true."
+"Provides the color to be assigned to all the edges present in the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:57
-msgid "The algorithm tries to assign the least possible color to every edge."
+#: ../../build/doc/pgr_edgeColoring.rst:55
+msgid ""
+"At most :math:`\\Delta + 1` colors are used, where :math:`\\Delta` is the "
+"degree of the graph."
 msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:58
 msgid ""
-"Efficient graph coloring is an NP-Hard problem, and therefore, this "
-"algorithm does not always produce optimal coloring."
+"This is optimal for some graphs, and by Vizing's theorem it uses at most one "
+"color more than the optimal for all others."
 msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:60
-msgid "The returned rows are ordered in ascending order of the edge value."
+msgid "When the graph is bipartite"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:61
+#: ../../build/doc/pgr_edgeColoring.rst:62
 msgid ""
-"This algorithm is the fastest known almost-optimal algorithm for edge "
-"coloring."
-msgstr ""
-
-#: ../../build/doc/pgr_edgeColoring.rst:63
-msgid "Edge Coloring Running Time: :math:`O(|E||V|)`"
-msgstr ""
-
-#: ../../build/doc/pgr_edgeColoring.rst:65
-msgid "where :math:`|E|` is the number of edges in the graph,"
+"the chromatic number :math:`x'(G)` (minimum number of colors needed for "
+"proper edge coloring of graph)  is equal to the degree :math:`\\Delta + 1` "
+"of the graph, (:math:`x'(G) = \\Delta`)"
 msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:66
+msgid "The algorithm tries to assign the least possible color to every edge."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeColoring.rst:68
+msgid "Does not always produce optimal coloring."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeColoring.rst:70
+msgid ""
+"The returned rows are ordered in ascending order of the edge identifier."
+msgstr ""
+
+#: ../../build/doc/pgr_edgeColoring.rst:71
+msgid "Efficient graph coloring is an NP-Hard problem, and therefore:"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeColoring.rst:73
+msgid "In this implelentation the running time: :math:`O(|E|*|V|)`"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeColoring.rst:75
+msgid "where :math:`|E|` is the number of edges in the graph,"
+msgstr ""
+
+#: ../../build/doc/pgr_edgeColoring.rst:76
 msgid ":math:`|V|` is the number of vertices in the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:69
+#: ../../build/doc/pgr_edgeColoring.rst:79
 msgid "Signatures"
 msgstr "Firmas"
 
@@ -206,11 +217,11 @@ msgstr "Firmas"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_edgeColoring.rst:81
+#: ../../build/doc/pgr_edgeColoring.rst:91
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:90
+#: ../../build/doc/pgr_edgeColoring.rst:100
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -218,8 +229,8 @@ msgstr "Parámetros"
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/coloring-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr "Tipo"
 
@@ -235,16 +246,18 @@ msgstr "``TEXT``"
 msgid "`Edges SQL`_ as described below."
 msgstr "`SQL de aristas`_ descritas más adelante."
 
-#: ../../build/doc/pgr_edgeColoring.rst:97
-msgid "Inner queries"
+#: ../../build/doc/pgr_edgeColoring.rst:107
+#, fuzzy
+#| msgid "Inner queries"
+msgid "Inner Queries"
 msgstr "Consultas internas"
 
-#: ../../build/doc/pgr_edgeColoring.rst:100
+#: ../../build/doc/pgr_edgeColoring.rst:110
 msgid "Edges SQL"
 msgstr "SQL de aristas"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/coloring-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
 msgstr "Columna"
 
@@ -262,8 +275,8 @@ msgstr "``id``"
 msgid "**ANY-INTEGER**"
 msgstr "**ANY-INTEGER**"
 
-#: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/coloring-family.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
@@ -336,7 +349,7 @@ msgstr "FLOTANTES"
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
-#: ../../build/doc/pgr_edgeColoring.rst:107
+#: ../../build/doc/pgr_edgeColoring.rst:117
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -364,33 +377,33 @@ msgstr ""
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:115
+#: ../../build/doc/pgr_edgeColoring.rst:125
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_edgeColoring.rst:117
+#: ../../build/doc/pgr_edgeColoring.rst:127
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_edgeColoring.rst:121
+#: ../../build/doc/pgr_edgeColoring.rst:131
 msgid ""
 "`Boost: Edge Coloring Algorithm documentation <https://www.boost.org/libs/"
 "graph/doc/edge_coloring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:123
+#: ../../build/doc/pgr_edgeColoring.rst:133
 msgid ""
 "`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:129
+#: ../../build/doc/pgr_edgeColoring.rst:139
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_edgeColoring.rst:130
+#: ../../build/doc/pgr_edgeColoring.rst:140
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_edgeColoring.rst:131
+#: ../../build/doc/pgr_edgeColoring.rst:141
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
