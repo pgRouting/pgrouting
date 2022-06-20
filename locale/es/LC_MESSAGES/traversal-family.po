@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-11 13:15+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "traversal-family/es/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/traversal-family.rst:12
@@ -93,7 +93,7 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/traversal-family.rst:43
 msgid "Edges SQL"
-msgstr "Edges SQL"
+msgstr "SQL de aristas"
 
 #: ../../build/doc/traversal-family.rst:47
 msgid "Column"
@@ -105,7 +105,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/traversal-family.rst:47
 msgid "Default"
-msgstr "Valores predeterminados"
+msgstr "x Defecto"
 
 #: ../../build/doc/traversal-family.rst:47
 msgid "Description"
@@ -143,7 +143,7 @@ msgstr "Identificador del segundo punto final en el vértice de la arista."
 
 #: ../../build/doc/traversal-family.rst:52
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/traversal-family.rst:52
 #: ../../build/doc/traversal-family.rst:55
@@ -161,7 +161,7 @@ msgstr ""
 
 #: ../../build/doc/traversal-family.rst:55
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/traversal-family.rst:55
 msgid "-1"
@@ -182,7 +182,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/traversal-family.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/traversal-family.rst:62
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -190,7 +190,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/traversal-family.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/traversal-family.rst:63
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"

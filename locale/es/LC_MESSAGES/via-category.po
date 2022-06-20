@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-06 18:16+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "via-category/es/>\n"
@@ -226,7 +226,7 @@ msgstr ""
 #: ../../build/doc/via-category.rst:136 ../../build/doc/via-category.rst:141
 #: ../../build/doc/via-category.rst:174
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/via-category.rst:137 ../../build/doc/via-category.rst:175
 msgid "``false``"
@@ -366,8 +366,6 @@ msgid "**ANY-NUMERICAL**"
 msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
-#| msgid "Weight of the edge  (``source``, ``target``)"
 msgid "Weight of the edge (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
@@ -399,7 +397,7 @@ msgstr "Donde:"
 #: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/TRSP-family.rst:0
 #: ../../build/doc/withPoints-category.rst:0
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38 ../../build/doc/TRSP-family.rst:23
 #: ../../build/doc/withPoints-category.rst:42
@@ -409,7 +407,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 #: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/TRSP-family.rst:0
 #: ../../build/doc/withPoints-category.rst:0
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39 ../../build/doc/TRSP-family.rst:24
 #: ../../build/doc/withPoints-category.rst:43
@@ -510,7 +508,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:218
 msgid "Return Columns"
-msgstr ""
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/via-category.rst:235 ../../build/doc/via-category.rst:288
 msgid "``seq``"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-concepts/es/>\n"
@@ -472,7 +472,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/flow-family.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/flow-family.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:255
@@ -485,7 +485,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/flow-family.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:256
 #: ../../build/doc/pgRouting-concepts.rst:285
@@ -615,7 +615,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:478
 #: ../../build/doc/pgRouting-concepts.rst:513
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/flow-family.rst:17 ../../build/doc/flow-family.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:272
@@ -655,7 +655,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:305
 #: ../../build/doc/pgRouting-concepts.rst:359
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/flow-family.rst:14 ../../build/doc/flow-family.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:276
@@ -725,7 +725,7 @@ msgstr "**via_vertices**"
 
 #: ../../build/doc/pgRouting-concepts.rst:329
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgRouting-concepts.rst:329
 msgid "Array of ordered vertices identifiers that are going to be visited."
@@ -739,7 +739,7 @@ msgstr "**dirigido**"
 #: ../../build/doc/pgRouting-concepts.rst:332
 #: ../../build/doc/pgRouting-concepts.rst:334
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgRouting-concepts.rst:330
 #: ../../build/doc/pgRouting-concepts.rst:334
@@ -1002,7 +1002,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:462
 #: ../../build/doc/pgRouting-concepts.rst:495
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/flow-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:462
@@ -1022,7 +1022,7 @@ msgstr "Valor secuencial a partir de **1**."
 #: ../../build/doc/pgRouting-concepts.rst:463
 #: ../../build/doc/pgRouting-concepts.rst:497
 msgid "**path_seq**"
-msgstr "**path_seq**"
+msgstr "``path_seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:463
 #: ../../build/doc/pgRouting-concepts.rst:497
@@ -1037,7 +1037,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:498
 #: ../../build/doc/pgRouting-concepts.rst:530
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:8
 #: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
@@ -1069,7 +1069,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:505
 #: ../../build/doc/pgRouting-concepts.rst:531
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:470
 #: ../../build/doc/pgRouting-concepts.rst:505
@@ -1094,7 +1094,7 @@ msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 #: ../../build/doc/pgRouting-concepts.rst:477
 #: ../../build/doc/pgRouting-concepts.rst:512
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgRouting-concepts.rst:477
 #: ../../build/doc/pgRouting-concepts.rst:512
@@ -1103,7 +1103,7 @@ msgid ""
 " sequence. ``-1`` for the last node of the path."
 msgstr ""
 "Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de "
-"la secuencia de ruta. ``-1``  para el último nodo de la ruta."
+"la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:478
@@ -1128,7 +1128,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:514
 #: ../../build/doc/pgRouting-concepts.rst:532
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:479
 #: ../../build/doc/pgRouting-concepts.rst:514
@@ -1149,7 +1149,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:496
 msgid "**path_id**"
-msgstr "**path_id**"
+msgstr "``path_id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:496
 msgid ""
@@ -1157,8 +1157,8 @@ msgid ""
 "are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
 msgstr ""
 "Identificador de ruta. Tiene el valor **1** para el primero de una ruta. Se "
-"utiliza cuando hay varias rutas  para la misma combinación de ``start_vid`` "
-"a ``end_vid``."
+"utiliza cuando hay varias rutas para la misma combinación de ``start_vid`` a "
+"``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:521
 msgid ""

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-06 18:16+0000\n"
-"PO-Revision-Date: 2022-05-10 16:55+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgecoloring/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #: ../../build/doc/pgr_edgeColoring.rst:12
 msgid ""
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeColoring.rst:25
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -292,8 +292,6 @@ msgid "**ANY-NUMERICAL**"
 msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
-#| msgid "Weight of the edge  (``source``, ``target``)"
 msgid "Weight of the edge (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
@@ -323,7 +321,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
@@ -331,7 +329,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
@@ -371,7 +369,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_edgeColoring.rst:117
 msgid "The queries use the :doc:`sampledata` network."
-msgstr ""
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_edgeColoring.rst:121
 msgid ""

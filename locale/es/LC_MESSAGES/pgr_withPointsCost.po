@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-11 13:15+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointscost/es/>\n"
@@ -111,7 +111,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_withPointsCost.rst:37
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_withPointsCost.rst:40
 msgid "Availability"
@@ -376,7 +376,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgr_withPointsCost.rst:221
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/pgr_withPointsCost.rst:221
 #: ../../build/doc/pgr_withPointsCost.rst:222
@@ -407,7 +407,7 @@ msgstr "`Consulta de combinaciones` como se describe a continuación."
 #: ../../build/doc/pgr_withPointsCost.rst:224
 #: ../../build/doc/pgr_withPointsCost.rst:268
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
@@ -427,7 +427,7 @@ msgstr ""
 #: ../../build/doc/pgr_withPointsCost.rst:225
 #: ../../build/doc/pgr_withPointsCost.rst:269
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:225
 msgid "Ending vertex identifier. When negative: is a point's pid."
@@ -436,12 +436,12 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:226
 msgid "**start_vids**"
-msgstr "**start_vids**"
+msgstr "``start_vids``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:226
 #: ../../build/doc/pgr_withPointsCost.rst:227
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:226
 msgid ""
@@ -452,7 +452,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:227
 msgid "**end_vids**"
-msgstr "**end_vids**"
+msgstr "``end_vids``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:227
 msgid ""
@@ -467,7 +467,7 @@ msgstr "**dirigido**"
 
 #: ../../build/doc/pgr_withPointsCost.rst:228
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:228
 msgid ""
@@ -555,7 +555,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -577,7 +577,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -603,7 +603,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:21
@@ -612,7 +612,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -722,7 +722,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:270
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:270
 msgid "``FLOAT``"

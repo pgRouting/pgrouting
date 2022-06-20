@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_boykovkolmogorov/es/>\n"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:32
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:35
 msgid "Availability:"
@@ -271,7 +271,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/flow-family.rst:6 ../../build/doc/flow-family.rst:7
 msgid "``TEXT``"
@@ -416,7 +416,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/flow-family.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/flow-family.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -450,7 +450,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "``INT``"
@@ -470,11 +470,11 @@ msgstr "Identificador de la arista en la consulta original(edges_sql)."
 
 #: ../../build/doc/flow-family.rst:8
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/flow-family.rst:9
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/flow-family.rst:10
 msgid "**flow**"

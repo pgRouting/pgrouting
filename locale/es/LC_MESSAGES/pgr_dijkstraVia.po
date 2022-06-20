@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstravia/es/>\n"
@@ -109,7 +109,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:38
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:41
 msgid "Availability"
@@ -218,7 +218,7 @@ msgstr "**via_vertices**"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Array of ordered vertices identifiers that are going to be visited."
@@ -232,7 +232,7 @@ msgstr "**dirigido**"
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -334,7 +334,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_dijkstraVia.rst:127
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -355,7 +355,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "-1"
@@ -379,7 +379,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -387,7 +387,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -395,7 +395,7 @@ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:113
 msgid "Return Columns"
-msgstr "Columnas de Devoluciones"
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:115
 msgid "Returns set of ``(start_vid, end_vid, agg_cost)``"
@@ -403,7 +403,7 @@ msgstr "Devuelve un conjunto de ``(start_vid, end_vid, agg_cost)``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:120
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:120
 #: ../../build/doc/pgr_dijkstraVia.rst:121
@@ -429,7 +429,7 @@ msgstr "Identificador de la ruta."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:122
 msgid "**path_seq**"
-msgstr "**path_seq**"
+msgstr "``path_seq``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:122
 msgid "Sequential value starting from 1 for the path."
@@ -437,7 +437,7 @@ msgstr "Valor secuencial a partir de 1 para la ruta."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:123
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:123
 msgid "Identifier of the starting vertex of the path."
@@ -445,7 +445,7 @@ msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:124
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:124
 msgid "Identifier of the ending vertex of the path."
@@ -461,7 +461,7 @@ msgstr "Identificador del nodo en la ruta de start_vid a end_vid."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:126
 msgid "**edge**"
-msgstr "**edge**"
+msgstr "**arista**"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:126
 msgid ""
@@ -489,7 +489,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:128
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:128
 msgid "Total cost from ``start_vid`` to ``end_vid`` of the path."

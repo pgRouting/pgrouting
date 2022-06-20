@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-14 15:26+0000\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_astarcost/es/>\n"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst:31
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro Boost Graph"
 
 #: ../../build/doc/pgr_aStarCost.rst:34
 msgid "Availability"
@@ -303,7 +303,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgr_aStar.rst:6
 msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
+msgstr "**SQL de aristas**"
 
 #: ../../build/doc/pgr_aStar.rst:6 ../../build/doc/pgr_aStar.rst:7
 msgid "``TEXT``"
@@ -352,7 +352,7 @@ msgstr "**from_vids**"
 
 #: ../../build/doc/pgr_aStar.rst:13 ../../build/doc/pgr_aStar.rst:23
 msgid "``ARRAY[ANY-INTEGER]``"
-msgstr "``ARRAY[ANY-INTEGER]``"
+msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgr_aStar.rst:13
 msgid "Array of starting vertices identifiers. Parameter in:"
@@ -397,7 +397,7 @@ msgstr "**dirigido**"
 
 #: ../../build/doc/pgr_aStar.rst:6
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_aStar.rst:6
 msgid "``true``"
@@ -531,7 +531,7 @@ msgstr "Identificador del segundo vértice extremo de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**cost**"
-msgstr "**cost**"
+msgstr "**costo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -556,7 +556,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "-1"
@@ -613,7 +613,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:27
@@ -622,7 +622,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -642,7 +642,7 @@ msgstr "Devuelve SET OF ``(start_vid, end_vid, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**start_vid**"
-msgstr "**start_vid**"
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -655,7 +655,7 @@ msgstr "Identificador del vértice inicial."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**end_vid**"
-msgstr "**end_vid**"
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Identifier of the ending vertex."
@@ -663,7 +663,7 @@ msgstr "Identificador del vértice final."
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "**agg_cost**"
-msgstr "**agg_cost**"
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."

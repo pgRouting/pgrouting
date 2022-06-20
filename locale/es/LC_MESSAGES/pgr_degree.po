@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-16 17:37+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-28 15:50+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_degree/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #: ../../build/doc/pgr_degree.rst:12
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_degree.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_degree.html>`__)"
@@ -91,7 +94,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:40
 msgid "Signatures"
-msgstr ""
+msgstr "Firmas"
 
 #: ../../build/doc/pgr_degree.rst:0
 msgid "Example"
@@ -103,7 +106,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:58
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../build/doc/pgr_degree.rst:61
 #: ../../build/doc/pgr_degree.rst:73
@@ -116,7 +119,7 @@ msgstr ""
 #: ../../build/doc/pgr_degree.rst:107
 #: ../../build/doc/pgr_degree.rst:137
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/pgr_degree.rst:63
 msgid "`Edges SQL`_"
@@ -145,7 +148,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:73
 msgid "Default"
-msgstr ""
+msgstr "x Defecto"
 
 #: ../../build/doc/pgr_degree.rst:75
 msgid "``dryrun``"
@@ -153,7 +156,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:75
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_degree.rst:75
 msgid "``false``"
@@ -169,30 +172,30 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:86
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL de aristas"
 
 #: ../../build/doc/pgr_degree.rst:91
 #: ../../build/doc/pgr_degree.rst:106
 #: ../../build/doc/pgr_degree.rst:136
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/pgr_degree.rst:93
 #: ../../build/doc/pgr_degree.rst:109
 #: ../../build/doc/pgr_degree.rst:139
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgr_degree.rst:93
 #: ../../build/doc/pgr_degree.rst:110
 #: ../../build/doc/pgr_degree.rst:140
 #: ../../build/doc/pgr_degree.rst:143
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/pgr_degree.rst:93
 msgid "Identifier of the edge."
-msgstr ""
+msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgr_degree.rst:97
 msgid "Vertex SQL"
@@ -266,7 +269,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:175
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/pgr_degree.rst:177
 msgid ":doc:`topology-functions`"
@@ -282,8 +285,8 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:182
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_degree.rst:183
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
