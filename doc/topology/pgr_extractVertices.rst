@@ -291,6 +291,13 @@ Crossing edges
    :start-after: cross_edges_start
    :end-before: cross_edges_end
 
+Graphs without geometries
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: no_geometry_start
+   :end-before: no_geometry_end
+
 See Also
 -------------------------------------------------------------------------------
 

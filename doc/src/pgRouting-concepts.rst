@@ -28,11 +28,8 @@
 pgRouting Concepts
 ===============================================================================
 
-.. contents::
-
-
-This is a simple guide to walk you through the steps of getting started
-with pgRouting. In this guide we will cover:
+This is a simple guide that go through some of the steps for getting started
+with pgRouting. This guide covers:
 
 .. contents::
     :local:
@@ -42,10 +39,14 @@ Graphs
 
 A graph is an ordered pair :math:`G = (V ,E)` where:
 
-* :math:`V` is a set of vertices, also called nodes
+* :math:`V` is a set of vertices, also called nodes.
 * :math:`E \subseteq \{( u, v ) \mid u , v \in V \}`
 
-There are different kinds of graphs.
+There are different kinds of graphs:
+
+* Undirected graph
+
+  * :math:`E \subseteq \{( u, v ) \mid u , v \in V\}`
 
 * Undirected simple graph
 
@@ -61,8 +62,8 @@ There are different kinds of graphs.
 
 Graphs:
 
-* Do not have geometries
-* Some graph theory problems requires graphs to have weights, called **cost** in
+* Do not have geometries.
+* Some graph theory problems require graphs to have weights, called **cost** in
   pgRouting.
 
 In pgRouting there are several ways to represent a graph on the database:
@@ -85,50 +86,62 @@ Where:
    * - Column
      - Description
    * - ``id``
-     - Identifier of the edge. Requirement to use the database in a consistent
+     - Identifier of the edge. Requirement to use the database in a consistent.
        manner.
    * - ``source``
-     - Identifier of a vertex
+     - Identifier of a vertex.
    * - ``target``
-     - Identifier of a vertex
+     - Identifier of a vertex.
    * - ``cost``
-     - Weight of the edge (``source``, ``target``)
+     - Weight of the edge (``source``, ``target``):
 
        * When negative the edge (``source``, ``target``) do not exist on the
-         graph
+         graph.
+       * ``cost`` must exist in the query.
    * - ``reverse_cost``
      - Weight of the edge (``target``, ``source``)
 
        * When negative the edge (``target``, ``source``) do not exist on the
-         graph
+         graph.
 
 The decision of the graph to be **directed** or **undirected** is done when
-running a pgRouting algorithm.
+executing a pgRouting algorithm.
 
 
 Graph with ``cost``
 ...............................................................................
 
-The weighted directed graph, :math:`G_d(V,E)`, is interpreted as:
+The weighted directed graph, :math:`G_d(V,E)`:
 
-* the set of vertices  :math:`V`
+* Graph data is obtained with a query
 
-  - :math:`V = source \cup target`
+  ``SELECT id, source, target, cost FROM edges``
 
 * the set of edges :math:`E`
 
-  - :math:`E = \{(source_i, target_i, cost_i) \text{ when } cost_i >=0 \}`
+  * :math:`E = \{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id}
+    \ge 0 \}`
+  * Edges where ``cost`` is non negative are part of the graph.
+
+* the set of vertices  :math:`V`
+
+  * :math:`V = \{source_{id} \cup target_{id}\}`
+  * All vertices in ``source`` and ``target`` are part of the graph.
 
 .. rubric:: Directed graph
 
-In a directed graph the edge :math:`(source_i, target_i, cost_i)` has
-directionality: :math:`source_i \rightarrow target_i`
+In a directed graph the edge :math:`(source_{id}, target_{id}, cost_{id})` has
+directionality: :math:`source_{id} \rightarrow target_{id}`
 
 For the following data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- g1
    :end-before: -- g2
+
+Edge :math:`2` (:math:`1 \rightarrow 3`) is not part of the graph.
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -139,17 +152,22 @@ For the following data:
 
 .. rubric:: Undirected graph
 
-In an undirected graph the edge :math:`(source_i, target_i, cost_i)` does not
-have directionality: :math:`source_i \; {\rule[0.5ex]{1em}{0.55pt}} \; target_i`
+In an undirected graph the edge :math:`(source_{id}, target_{id}, cost_{id})`
+does not have directionality: :math:`source_{id} \frac{\;\;\;\;\;}{}
+target_{id}`
 
-* In terms of a directed graph is like having two edges: :math:`source_i
-  \leftrightarrow target_i`
+* In terms of a directed graph is like having two edges: :math:`source_{id}
+  \leftrightarrow target_{id}`
 
 For the following data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- g1
    :end-before: -- g2
+
+Edge :math:`2` (:math:`1  \frac{\;\;\;\;\;}{} 3`) is not part of the graph.
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -163,32 +181,48 @@ Graph with ``cost`` and ``reverse_cost``
 
 The weighted directed graph, :math:`G_d(V,E)`, is defined by:
 
-* the set of vertices  :math:`V`
+* Graph data is obtained with a query
 
-  - :math:`V = source \cup target`
+  ``SELECT id, source, target, cost, reverse_cost FROM edges``
 
-* the set of edges :math:`E`
+* The set of edges :math:`E`:
 
-  - :math:`E = \begin{split} \begin{align}
-    & {\{(source_i, target_i, cost_i) \text{ when } cost_i >=0 \}} \\
+  * :math:`E = \begin{split} \begin{align}
+    & {\{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id} >=0 \}} \\
     & \cup \\
-    & {\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0 \}}
+    & {\{(target_{id}, source_{id}, reverse\_cost_{id}) \text{ when } reverse\_cost_{id} >=0 \}}
     \end{align} \end{split}`
+  * Edges :math:`(source \rightarrow target)` where ``cost`` is non negative are
+    part of the graph.
+  * Edges :math:`(target \rightarrow source)` where ``reverse_cost`` is non
+    negative are part of the graph.
+
+* The set of vertices  :math:`V`:
+
+  * :math:`V = \{source_{id} \cup target_{id}\}`
+  * All vertices in ``source`` and ``target`` are part of the graph.
 
 .. rubric:: Directed graph
 
 In a directed graph both edges have directionality
 
-* edge :math:`(source_i, target_i, cost_i)` has directionality: :math:`source_i
-  \rightarrow target_i`
-* edge :math:`(target_i, source_i, reverse\_cost_i)` has directionality:
-  :math:`target_i \rightarrow source_i`
+* edge :math:`(source_{id}, target_{id}, cost_{id})` has directionality: :math:`source_{id}
+  \rightarrow target_{id}`
+* edge :math:`(target_{id}, source_{id}, reverse\_cost_{id})` has directionality:
+  :math:`target_{id} \rightarrow source_{id}`
 
 For the following data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- g2
    :end-before: -- g3
+
+Edges not part of the graph:
+
+* :math:`2` (:math:`1  \rightarrow 3`)
+* :math:`3` (:math:`3  \rightarrow 2`)
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -203,10 +237,10 @@ For the following data:
 
 In a directed graph both edges do not have directionality
 
-* Edge :math:`(source_i, target_i, cost_i)` is :math:`source_i
-  \; {\rule[0.5ex]{1em}{0.55pt}} \; target_i`
-* Edge :math:`(target_i, source_i, reverse\_cost_i)` is :math:`target_i
-  \; {\rule[0.5ex]{1em}{0.55pt}} \; source_i`
+* Edge :math:`(source_{id}, target_{id}, cost_{id})` is :math:`source_{id}
+  \frac{\;\;\;\;\;}{} target_{id}`
+* Edge :math:`(target_{id}, source_{id}, reverse\_cost_{id})` is
+  :math:`target_{id} \frac{\;\;\;\;\;}{} source_{id}`
 * In terms of a directed graph is like having four edges:
 
   * :math:`source_i \leftrightarrow target_i`
@@ -217,6 +251,13 @@ For the following data:
 .. literalinclude:: concepts.queries
    :start-after: -- g2
    :end-before: -- g3
+
+Edges not part of the graph:
+
+* :math:`2` (:math:`1  \frac{\;\;\;\;\;}{} 3`)
+* :math:`3` (:math:`3  \frac{\;\;\;\;\;}{} 2`)
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -232,31 +273,34 @@ Graphs without geometries
 
 Personal relationships, genealogy, file dependency problems can be solved
 using pgRouting. Those problems, normally,  do not come with gemetries asociated
-with the graph data.
+with the graph.
 
 Wiki example
 ...............................................................................
 
-Solve the example problem taken from wikipedia (`see top
-right graph <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`__) which:
+Solve the example problem taken from `wikipedia
+<https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`__):
 
-* Problem find the shortest path from :math:`1` to :math:`5`.
+.. figure:: images/Dijkstra_Animation.gif
+
+Where:
+
+* Problem is to find the shortest path from :math:`1` to :math:`5`.
 * Is an undirected graph.
 * Although visually looks like to have geometries, the drawing is not to scale.
 
   * No geometries asociated to the vertices or edges
 
-* Has 6 vertices :math`\{1,2,3,4,5,6\}'
+* Has 6 vertices :math:`\{1,2,3,4,5,6\}`
 * Has 9 edges:
 
-:math:`\begin{split} \begin{align}
-E = & \{(1,2,7), (1,3,9), (1,6,14), \\
-& (2,3,10), (2,4,13), \\
-& (3,4,11), (3,6,2), \\
-& (4,5,6), \\
-& (5,6,9) \}
-\end{align} \end{split}`
-
+  :math:`\begin{split} \begin{align}
+  E = & \{(1,2,7), (1,3,9), (1,6,14), \\
+  & (2,3,10), (2,4,13), \\
+  & (3,4,11), (3,6,2), \\
+  & (4,5,6), \\
+  & (5,6,9) \}
+  \end{align} \end{split}`
 
 * The graph can be represented in many ways for example:
 
@@ -279,7 +323,7 @@ E = & \{(1,2,7), (1,3,9), (1,6,14), \\
 
 
 Prepare the database
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Create a database for the example, access the database and install pgRouting: ::
 
@@ -288,7 +332,7 @@ Create a database for the example, access the database and install pgRouting: ::
    wiki =# CREATE EXTENSION pgRouting CASCADE;
 
 Create a table
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The basic elements needed to perform basic routing on an undirected graph are:
 
@@ -318,19 +362,23 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
+.. no_geometry_start
+
+Using this table design for this example:
+
 .. literalinclude:: concepts.queries
    :start-after: -- q1
    :end-before: -- q2
 
 Insert the data
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: concepts.queries
    :start-after: -- q2
    :end-before: -- q3
 
 Find the shortest path
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 To solve this example :doc:`pgr_dijkstra` is used:
 
@@ -358,16 +406,16 @@ To go from :math:`1` to :math:`5` the path goes thru the following vertices:
     4 -- 5 [label="  (6)"];
    }
 
-Create a topology
-...............................................................................
+Vertex information
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-For more complex functions a complete topology might be needed.
-
-To create the vertices table, use :doc:`pgr_extractVertices`
+To obtain the vertices information, use :doc:`pgr_extractVertices`
 
 .. literalinclude:: concepts.queries
    :start-after: -- q4
    :end-before: -- q5
+
+.. no_geometry_end
 
 Graphs with geometries
 -------------------------------------------------------------------------------
@@ -385,7 +433,7 @@ application in that database.
 .. parsed-literal::
 
 	createdb sampledata
-	psql sampledata -c "CREATE EXTENSION postgis CASCADE"
+	psql sampledata -c "CREATE EXTENSION pgrouting CASCADE"
 
 Load Data
 ...............................................................................
@@ -465,7 +513,7 @@ Likewise, ``cost`` and ``reverse_cost`` need to have the value of traversing the
 edge in both directions.
 
 If the columns do not exist they need to be added to the table in question. (see
-`ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable.html>`__
+`ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable.html>`__)
 
 The function :doc:`pgr_extractVertices` is used to create a vertices table
 based on the edge identifier and the geometry of the edge of the graph.
@@ -473,19 +521,23 @@ based on the edge identifier and the geometry of the edge of the graph.
 Finnaly using the data stored on the vertices tables the ``source`` and
 ``target`` are filled up.
 
-See :doc:`sampledata` for an example for building the topology.
+See :doc:`sampledata` for an example for building a topology.
 
 Data coming from OSM and using `osm2pgrouting
 <https://github.com/pgRouting/osm2pgrouting>`__ as an import tool, comes with
 the routing topology. See an example of using ``osm2pgrouting`` on the `workshop
 <https://workshop.pgrouting.org/latest/en/basic/data.html>`__.
 
-Update to length of geometry
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adjust costs
+...............................................................................
 
-The cost and reverse cost values can be in terms of the length of the geometry.
-Assume that the ``cost`` and ``reverse_cost`` columns in the sample data
-represent:
+For this example the ``cost`` and ``reverse_cost`` values are going to be the
+double of the length of the geometry.
+
+Update costs to length of geometry
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Suppose that ``cost`` and ``reverse_cost`` columns in the sample data represent:
 
 * :math:`1` when the edge exists in the graph
 * :math:`-1` when the edge does not exist in the graph
@@ -496,7 +548,7 @@ Using that information updating to the length of the geometries:
    :start-after: -- topo1
    :end-before: -- topo2
 
-Which gives the following results
+Which gives the following results:
 
 .. literalinclude:: concepts.queries
    :start-after: -- topo2
@@ -505,15 +557,48 @@ Which gives the following results
 Note that to be able to follow the documentation examples, everything is based
 on the original graph.
 
-So fixing to what there was before:
+Returning to the original data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- topo3
    :end-before: -- topo4
 
+Update costs based on codes
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Other datasets, can have a column with values like
+
+* ``FT`` vehicle flow on the direction of the geometry
+* ``TF`` vehicle flow opposite of the direction of the geometry
+* ``B`` vehicle flow on both directions
+
+Preparing a code column for the example:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo4
+   :end-before: -- topo5
+
+Adjusting the costs based on the codes:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo5
+   :end-before: -- topo6
+
+Which gives the following results:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo6
+   :end-before: -- topo7
+
+Returning to the original data:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo7
+   :end-before: -- topo8
+
 
 Check the Routing Topology
-...............................................................................
+-------------------------------------------------------------------------------
 
 There are lots of possible problems in a graph.
 
@@ -527,7 +612,7 @@ There are lots of possible problems in a graph.
   developer might encounter.
 
 Crossing edges
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...............................................................................
 
 .. cross_edges_start
 
@@ -647,7 +732,7 @@ There are no crossing edges on the graph.
 .. cross_edges_end
 
 Dead ends and disconnected graphs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...............................................................................
 
 To get the dead ends:
 
@@ -757,7 +842,7 @@ as there is only one component.
 .. TODO checked up to here
 
 Compute a Path
-...............................................................................
+-------------------------------------------------------------------------------
 
 Once you have all the preparation work done above, computing a route is fairly
 easy.

@@ -1,6 +1,7 @@
 
 SET(LOCAL_FILES
     crossing_edges.png
+    Dijkstra_Animation.gif
     )
 
 foreach (f ${LOCAL_FILES})

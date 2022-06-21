@@ -55,20 +55,6 @@ SELECT * FROM pgr_dijkstra(
 (4 rows)
 
 /* -- q4 */
-SELECT id, source, target FROM wiki;
- id | source | target
-----+--------+--------
-  1 |      1 |      2
-  2 |      1 |      3
-  3 |      1 |      6
-  4 |      2 |      3
-  5 |      2 |      4
-  6 |      3 |      6
-  7 |      3 |      4
-  8 |      4 |      5
-  9 |      5 |      6
-(9 rows)
-
 SELECT id, in_edges, out_edges
 FROM pgr_extractVertices('SELECT id, source, target FROM wiki');
  id | in_edges | out_edges
@@ -84,31 +70,31 @@ FROM pgr_extractVertices('SELECT id, source, target FROM wiki');
 /* -- q5 */
 /* -- topo1 */
 UPDATE edges SET
-cost = sign(cost) * ST_length(geom),
-reverse_cost = sign(reverse_cost) * ST_length(geom);
+cost = sign(cost) * ST_length(geom) * 2,
+reverse_cost = sign(reverse_cost) * ST_length(geom) * 2;
 UPDATE 18
 /* -- topo2 */
 SELECT id, cost, reverse_cost FROM edges;
  id |        cost        |    reverse_cost
 ----+--------------------+--------------------
-  6 |                  1 |                  1
-  7 |                  1 |                  1
-  4 |                  1 |                  1
-  5 |                  1 |                 -1
-  8 |                  1 |                  1
- 12 |                  1 |                 -1
- 11 |                  1 |                 -1
- 10 |                  1 |                  1
- 17 |     1.499999999999 |     1.499999999999
- 14 |                  1 |                  1
- 18 | 1.7000000000000002 | 1.7000000000000002
- 13 |                  1 |                 -1
- 15 |                  1 |                  1
- 16 |                  1 |                  1
-  9 |                  1 |                  1
-  3 |                 -1 |                  1
-  1 |                  1 |                  1
-  2 |                 -1 |                  1
+  6 |                  2 |                  2
+  7 |                  2 |                  2
+  4 |                  2 |                  2
+  5 |                  2 |                 -2
+  8 |                  2 |                  2
+ 12 |                  2 |                 -2
+ 11 |                  2 |                 -2
+ 10 |                  2 |                  2
+ 17 |     2.999999999998 |     2.999999999998
+ 14 |                  2 |                  2
+ 18 | 3.4000000000000004 | 3.4000000000000004
+ 13 |                  2 |                 -2
+ 15 |                  2 |                  2
+ 16 |                  2 |                  2
+  9 |                  2 |                  2
+  3 |                 -2 |                  2
+  1 |                  2 |                  2
+  2 |                 -2 |                  2
 (18 rows)
 
 /* -- topo3 */
@@ -117,6 +103,55 @@ cost = sign(cost),
 reverse_cost = sign(reverse_cost);
 UPDATE 18
 /* -- topo4 */
+ALTER TABLE edges ADD COLUMN direction TEXT;
+ALTER TABLE
+UPDATE edges SET
+direction = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'
+           ELSE '' END;
+UPDATE 18
+/* -- topo5 */
+UPDATE edges SET
+cost = CASE WHEN (direction = 'B' OR direction = 'FT')
+       THEN ST_length(geom) * 2
+       ELSE -1 END,
+reverse_cost = CASE WHEN (direction = 'B' OR direction = 'TF')
+       THEN ST_length(geom) * 2
+       ELSE -1 END;
+UPDATE 18
+/* -- topo6 */
+SELECT id, cost, reverse_cost FROM edges;
+ id |        cost        |    reverse_cost
+----+--------------------+--------------------
+  6 |                  2 |                  2
+  7 |                  2 |                  2
+  4 |                  2 |                  2
+  5 |                  2 |                 -1
+  8 |                  2 |                  2
+ 12 |                  2 |                 -1
+ 11 |                  2 |                 -1
+ 10 |                  2 |                  2
+ 17 |     2.999999999998 |     2.999999999998
+ 14 |                  2 |                  2
+ 18 | 3.4000000000000004 | 3.4000000000000004
+ 13 |                  2 |                 -1
+ 15 |                  2 |                  2
+ 16 |                  2 |                  2
+  9 |                  2 |                  2
+  3 |                 -1 |                  2
+  1 |                  2 |                  2
+  2 |                 -1 |                  2
+(18 rows)
+
+/* -- topo7 */
+UPDATE edges SET
+cost = sign(cost),
+reverse_cost = sign(reverse_cost);
+UPDATE 18
+ALTER TABLE edges DROP COLUMN direction;
+ALTER TABLE
+/* -- topo8 */
 /* -- cross1 */
 SELECT a.id, b.id
 FROM edges AS a, edges AS b
