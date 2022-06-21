@@ -159,9 +159,6 @@ WHERE a.id < b.id AND st_crosses(a.geom, b.geom);
 
 
 
-/* -- connect1 */
-SELECT id FROM vertices
-WHERE array_length(in_edges || out_edges, 1) = 1;
 /* -- connect2 */
 SELECT * FROM pgr_connectedComponents(
   'SELECT id, source, target, cost, reverse_cost FROM edges'
@@ -239,3 +236,11 @@ SELECT * FROM pgr_connectedComponents(
   'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 /* -- connect9 */
+
+/* -- contract1 */
+SELECT id FROM vertices
+WHERE array_length(in_edges || out_edges, 1) = 1;
+/* -- contract2 */
+SELECT id FROM vertices
+WHERE array_length(in_edges || out_edges, 1) = 2;
+/* -- contract3 */

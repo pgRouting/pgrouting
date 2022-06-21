@@ -731,33 +731,8 @@ There are no crossing edges on the graph.
 
 .. cross_edges_end
 
-Dead ends and disconnected graphs
+Disconnected graphs
 ...............................................................................
-
-To get the dead ends:
-
-.. literalinclude:: concepts.queries
-   :start-after: -- connect1
-   :end-before: -- connect2
-
-
-That information is correct, for example, when the dead end is on the limit of
-the imported graph.
-
-Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not.
-
-Is that correct?
-
-* Is there such a small curb:
-
-  * That does not allow a vehicle to use that visual intersection?
-  * Is the applicaction for pedestrians and therefore the pedestrican can easily
-    walk on the small curb?
-  * Is the application for the electicicity and the electrical lines than can
-    easily be extended on top of the small curb?
-
-* Is there a big cliff and from eagles view look like the dead end is close to
-  the segment?
 
 .. connecting_graph_start
 
@@ -838,6 +813,70 @@ as there is only one component.
    :end-before: -- connect9
 
 .. connecting_graph_end
+
+Contraction of a graph
+...............................................................................
+
+The graph can be reduced in size using :doc:`contraction-family`
+
+When to contract will depend on the size of the graph, processing times,
+correctness of the data, on the final application, or any other factor not
+mentioned.
+
+A fairly good method of finding out if contraction can be useful is because of
+the number of dead ends and/or the number of linear edges.
+
+A complete method on how to contract and how to use the contracted graph is
+descrubed on :doc:`contraction-family`
+
+.. degree_from_table_start
+
+Dead ends
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To get the dead ends:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- contract1
+   :end-before: -- contract2
+
+That information is correct, for example, when the dead end is on the limit of
+the imported graph.
+
+Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not.
+
+Is that correct?
+
+* Is there such a small curb:
+
+  * That does not allow a vehicle to use that visual intersection?
+  * Is the applicaction for pedestrians and therefore the pedestrican can easily
+    walk on the small curb?
+  * Is the application for the electicicity and the electrical lines than can
+    easily be extended on top of the small curb?
+
+* Is there a big cliff and from eagles view look like the dead end is close to
+  the segment?
+
+When there are many dead ends, to speed up, the :doc:`contraction-family`
+functions can be used to divide the problem.
+
+Linear edges
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To get the linear edges:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- contract2
+   :end-before: -- contract3
+
+This information is correct, for example, when the application is taking into
+account speed bumps, stop signals.
+
+When there are many linear edges, to speed up, the :doc:`contraction-family`
+functions can be used to divide the problem.
+
+.. degree_from_table_end
 
 .. TODO checked up to here
 
