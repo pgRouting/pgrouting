@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 14:20+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"migration/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 
 #: ../../build/doc/migration.rst:12
 msgid ""
@@ -610,7 +613,7 @@ msgstr ""
 
 #: ../../build/doc/migration.rst:678
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/migration.rst:680
 msgid ":doc:`TRSP-family`"
@@ -622,12 +625,12 @@ msgstr ""
 
 #: ../../build/doc/migration.rst:684
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/migration.rst:685
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/migration.rst:686
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
