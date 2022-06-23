@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-23 16:16+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-concepts/es/>\n"
@@ -492,7 +492,7 @@ msgstr "FLOTANTES"
 #: ../../build/doc/pgRouting-concepts.rst:314
 #: ../../build/doc/pgRouting-concepts.rst:372
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:262
 msgid "Description of the edges_sql query for dijkstra like functions"
@@ -590,7 +590,7 @@ msgstr "**origen**"
 #: ../../build/doc/pgRouting-concepts.rst:353
 #: ../../build/doc/pgRouting-concepts.rst:430
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:271
@@ -606,7 +606,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:354
 #: ../../build/doc/pgRouting-concepts.rst:431
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/flow-family.rst:12 ../../build/doc/flow-family.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:272
@@ -729,7 +729,7 @@ msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgRouting-concepts.rst:329
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr "Arreglo ordenados de identificadores de vértices que serán visitados."
+msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/pgRouting-concepts.rst:330
 msgid "**directed**"
@@ -929,7 +929,7 @@ msgstr "**edge_id**"
 
 #: ../../build/doc/pgRouting-concepts.rst:405
 msgid "Identifier of the \"closest\" edge to the point."
-msgstr "Identificador de la arista \"más cercano\" al punto."
+msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/pgRouting-concepts.rst:406
 msgid "**fraction**"
@@ -940,8 +940,8 @@ msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
-"El valor en <0,1> que indica la posición relativa desde el primer punto "
-"final de la arista."
+"El valor en <0,1> que indica la posición relativa desde el primer punto de "
+"la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:407
 msgid "**side**"
@@ -1201,7 +1201,7 @@ msgstr "Flujo a través del arista en la dirección (``start_vid``, ``end_vid``)
 
 #: ../../build/doc/flow-family.rst:11
 msgid "**residual_capacity**"
-msgstr "**residual_capacity** (**capacidad residual**)"
+msgstr "**residual_capacity**"
 
 #: ../../build/doc/flow-family.rst:11
 msgid ""
