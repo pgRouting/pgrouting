@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-09 14:40+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstranearcost/es/>\n"
 "Language: es\n"
@@ -64,7 +64,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -88,7 +88,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:30
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:33
 msgid "Availability"
@@ -123,7 +123,7 @@ msgid ""
 " finds the shortest path from the starting vertex to the nearest ending "
 "vertex."
 msgstr ""
-"Dado un gráfico, un vértice inicial y un conjunto de vértices finales, esta "
+"Dado un grafo, un vértice inicial y un conjunto de vértices finales, esta "
 "función encuentra la ruta más corta desde el vértice inicial hasta el "
 "vértice final más cercano."
 
@@ -137,11 +137,11 @@ msgstr "Utiliza el algoritmo Dijkstra."
 
 #: ../../build/doc/pgr_dijkstraNear.rst:4
 msgid "Works for **directed** and **undirected** graphs."
-msgstr "Funciona para gráficos **dirigidos** y **no dirigidos**."
+msgstr "Funciona para grafos **dirigidos** y **no dirigidos**."
 
 #: ../../build/doc/pgr_dijkstraNear.rst:5
 msgid "When there are more than one path to the same vertex with same cost:"
-msgstr "Cuando hay más de un trazado al mismo vértice con el mismo coste:"
+msgstr "Cuando hay más de una ruta al mismo vértice con el mismo coste:"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:7
 msgid "The algorithm will return just one path"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraNear.rst:22
 msgid "One to Many; :math:`drt`"
-msgstr "Uno a Muchos;  :math:`drt`"
+msgstr "Uno a Muchos; :math:`drt`"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:23
 msgid "Many to One: :math:`drt`"
@@ -221,7 +221,7 @@ msgstr ""
 #: ../../build/doc/pgr_dijkstraNearCost.rst:115
 #: ../../build/doc/pgr_dijkstraNearCost.rst:175
 msgid "Using a **directed** graph for car routing."
-msgstr "Usando un gráfico **dirigido** para el enrutamiento de automóviles."
+msgstr "Usando un grafo **dirigido** para el ruteo de automóviles."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:86
 #: ../../build/doc/pgr_dijkstraNearCost.rst:116
@@ -294,7 +294,7 @@ msgstr "Encuentra la mejor conexión peatonal entre dos líneas de autobuses"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:142
 msgid "Unsing an **undirected** graph for pedestrian routing"
-msgstr "Usando un gráfico **no dirigido** para el enrutamiento de peatones"
+msgstr "Usando un grafo **no dirigido** para el ruteo de peatones"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:143
 #: ../../build/doc/pgr_dijkstraNearCost.rst:176
@@ -309,7 +309,7 @@ msgstr "Las segundas estaciones de la línea de metro están en :math:`\\{4, 9\\
 #: ../../build/doc/pgr_dijkstraNearCost.rst:145
 msgid "On line `4`: using the named parameter: `directed => false`"
 msgstr ""
-"En la línea `4`: utilizando el parámetro con nombre:  `directed => false`"
+"En la línea `4`: utilizando el parámetro con nombre: `directed => false`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:149
 msgid "`global => true`"
@@ -557,7 +557,7 @@ msgstr "**origen**"
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -567,7 +567,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**cost**"
@@ -686,7 +686,7 @@ msgstr ":doc:`pgr_dijkstraNear`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:255
 msgid ":doc:`sampledata` network."
-msgstr "Red :doc:`sampledata` ."
+msgstr ":doc:`sampledata` ."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:256
 msgid "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
