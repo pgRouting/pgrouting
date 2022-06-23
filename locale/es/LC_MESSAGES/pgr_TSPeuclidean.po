@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-10 16:45+0000\n"
-"PO-Revision-Date: 2022-05-28 15:50+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_tspeuclidean/es/>\n"
@@ -63,7 +63,7 @@ msgstr "``pgr_TSPeuclidean`` - Aproximación usando el algoritmo *metric*."
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:31
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:35
 msgid "Availability:"
@@ -84,7 +84,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:39
 msgid "Simulated Annealing Algorithm no longer supported"
-msgstr "El algoritmo de recocido simulado ya no es utilizado."
+msgstr "El algoritmo de recocido simulado ya no es utilizado"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:41
 msgid ""
@@ -287,8 +287,7 @@ msgstr "El primer vértice visitado"
 #: ../../build/doc/pgr_TSPeuclidean.rst:116
 msgid "When `0` any vertex can become the first visiting vertex."
 msgstr ""
-"Cuando `0`  cualquier vértice puede convertirse en el primer vértice "
-"visitado."
+"Cuando `0` cualquier vértice puede convertirse en el primer vértice visitado."
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:118
 msgid "**end_vid**"
@@ -408,12 +407,12 @@ msgid ""
 "Cost to traverse from the current ``node`` to the next ``node`` in the path "
 "sequence."
 msgstr ""
-"Coste que se debe recorrer desde el ``nodo`` al siguiente ``nodo``  en la "
+"Coste que se debe recorrer desde el ``nodo`` al siguiente ``nodo`` en la "
 "secuencia de ruta."
 
 #: ../../include/c_types/tsp_tour_rt.h:12
 msgid "``0`` for the last row in the tour sequence."
-msgstr "``0``  para la última fila de la secuencia del recorrido."
+msgstr "``0`` para la última fila en la secuencia del recorrido."
 
 #: ../../include/c_types/tsp_tour_rt.h:14
 msgid "**agg_cost**"
@@ -421,11 +420,11 @@ msgstr "``agg_cost``"
 
 #: ../../include/c_types/tsp_tour_rt.h:14
 msgid "Aggregate cost from the ``node`` at ``seq = 1`` to the current node."
-msgstr "Costo agregado del ``nodo`` en  ``seq = 1`` hacia el nodo actual."
+msgstr "Costo agregado del ``nodo`` en ``seq = 1`` hacia el nodo actual."
 
 #: ../../include/c_types/tsp_tour_rt.h:16
 msgid "``0`` for the first row in the tour sequence."
-msgstr "``0``  para la primera fila en la secuencia del recorrido."
+msgstr "``0`` para la primera fila en la secuencia del recorrido."
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:139
 msgid "Additional Examples"
@@ -488,7 +487,7 @@ msgstr ":doc:`TSP-family`"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:188
 msgid ":doc:`sampledata` network."
-msgstr "Red :doc:`sampledata` ."
+msgstr ":doc:`sampledata` ."
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:190
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
