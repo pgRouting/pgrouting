@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_ksp/"
 "es/>\n"
 "Language: es\n"
@@ -71,7 +71,7 @@ msgstr "``pgr_KSP`` — Devuelve la ruta más corta \"K\"."
 
 #: ../../build/doc/pgr_KSP.rst:36
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_KSP.rst:39
 msgid "Availability"
@@ -107,7 +107,7 @@ msgid ""
 "The K shortest path routing algorithm based on Yen's algorithm. \"K\" is the"
 " number of shortest paths desired."
 msgstr ""
-"El algoritmo de ruteo  para obtener la ruta más corta K basado en el "
+"El algoritmo de ruteo para obtener la ruta más corta K basado en el "
 "algoritmo de Yen . \"K\" es el número de rutas más cortas deseadas."
 
 #: ../../build/doc/pgr_KSP.rst:57
@@ -261,7 +261,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -269,7 +269,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_KSP.rst:124
 msgid "**cost**"
