@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_nodenetwork/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:12
@@ -72,8 +72,7 @@ msgstr "pgr_nodeNetwork"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:30
 msgid "``pgr_nodeNetwork`` - Nodes an network edge table."
-msgstr ""
-"``pgr_nodeNetwork`` -  Crea los nodos de una tabla de bordes de la red."
+msgstr "``pgr_nodeNetwork`` - Crea los nodos de una tabla de aristas de la red."
 
 #: ../../build/doc/pgr_nodeNetwork.rst
 msgid "Author"
@@ -138,10 +137,10 @@ msgid ""
 "from the over-pass to the under-pass, but this function does not have the "
 "ability to detect and accommodate those situations."
 msgstr ""
-"Que los bordes estén indicados con nodos significa que, en en cada "
-"intersección de la red de caminos, los bordes se descompondrán en segmentos "
-"separados del camino. Los casos como una intersección de puente o túnel "
-"donde no existe conexión vial no son detectados por esta función."
+"Que los bordes estén indicados como anudados significa que, en cada "
+"intersección de la red de caminos, las aristas se descompondrán en segmentos "
+"separados . Los casos como una intersección por puente o túnel donde no "
+"existe conexión vial no son detectados por esta función."
 
 #: ../../build/doc/pgr_nodeNetwork.rst:61
 msgid ""
@@ -151,10 +150,10 @@ msgid ""
 "``edge_table_noded``. It uses the ``tolerance`` for deciding that multiple "
 "nodes within the tolerance are considered the same node."
 msgstr ""
-"Esta función lee la tabla  ``table_in``, que tiene una columna de clave "
-"principal ``gid_cname`` y columna de la geometría llamada ``geo_cname``,  y "
-"verifica la intersección de todos los segmentos contra todos los demás "
-"segmentos creando una tabla de salida ``table_out``. Usa la tolerancia "
+"Esta función lee la tabla ``edge_table``, que tiene una columna de clave "
+"principal ``id`` y columna de la geometría llamada ``the_geom``, y verifica "
+"la intersección de todos los segmentos contra todos los demás segmentos "
+"creando una tabla de salida ``edge_table_noded``. Usa la tolerancia "
 "``tolerance`` para decidir cuáles nodos son considerados como mismo nodo."
 
 #: ../../build/doc/pgr_nodeNetwork.rst:64
@@ -200,8 +199,8 @@ msgid ""
 "``text`` Geometry column name of the network table. Default value is "
 "``the_geom``."
 msgstr ""
-"``text``  nombre de la columna de la geometría en la tabla de la red. El "
-"valor por defecto es `the_geom``"
+"``text`` nombre de la columna de la geometría en la tabla de la red. El "
+"valor por defecto es `the_geom``."
 
 #: ../../build/doc/pgr_nodeNetwork.rst
 msgid "table_ending"
@@ -218,7 +217,7 @@ msgstr "La tabla de salida tendrá para  ``edge_table_noded``"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:74
 msgid "``bigint`` Unique identifier for the table"
-msgstr "``bigint`` identificador del vértice."
+msgstr "``bigint`` identificador único del vértice"
 
 #: ../../build/doc/pgr_nodeNetwork.rst
 msgid "old_id"
@@ -274,7 +273,7 @@ msgstr "Ejemplos"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:84
 msgid "Let's create the topology for the data in :doc:`sampledata`"
-msgstr "Vamos a crear la topología para los datos en  :doc:`sampledata`"
+msgstr "Vamos a crear la topología para los datos en :doc:`sampledata`"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:90
 msgid "Now we can analyze the network."
@@ -298,7 +297,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_nodeNetwork.rst:108
 msgid "We can create the topology of the new network"
-msgstr "Podemos crear la topología de la nueva red  "
+msgstr "Podemos crear la topología de la nueva red"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:114
 msgid "Now let's analyze the new topology"
@@ -330,7 +329,7 @@ msgstr "Comparando los resultados"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:156
 msgid "Comparing with the Analysis in the original edge_table, we see that."
-msgstr "Comparando con el análisis del edge_table original,  vemos que:"
+msgstr "Comparando con el análisis del edge_table original, vemos que."
 
 #: ../../build/doc/pgr_nodeNetwork.rst:159
 msgid "Before"
@@ -413,8 +412,8 @@ msgid ""
 "There is a gap between edge 17 and 14 because edge 14 is near to the right "
 "node of edge 17"
 msgstr ""
-"Existe un espacio entre 17 y 14 borde borde 14 es cerca del nodo derecho del"
-" borde 17"
+"Existe un espacio entre la arista 17 y la 14 porque la arista 14 está cerca "
+"del nodo derecho a la arista 17"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:176
 msgid ""
@@ -506,8 +505,11 @@ msgid ""
 " :doc:`pgr_createTopology` to create a topology based on the geometry. "
 ":doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table."
 msgstr ""
-":doc:`topology-functions` para obtener una visión general de una topología para algoritmos de enrutamiento.\n"
-":doc:`pgr_analyzeOneWay` para analizar la direccionalidad de los bordes. :doc:`pgr_createTopology` para crear una topología basada en la geometría. :doc:`pgr_analyzeGraph`  para analizar los bordes y vértices de la tabla de bordes."
+":doc:`topology-functions` para obtener una visión general de una topología "
+"para algoritmos de enrutamiento. :doc:`pgr_analyzeOneWay` para analizar la "
+"direccionalidad de los bordes. :doc:`pgr_createTopology` para crear una "
+"topología basada en la geometría. :doc:`pgr_analyzeGraph` para analizar los "
+"bordes y vértices de la tabla de bordes."
 
 #: ../../build/doc/pgr_nodeNetwork.rst:227
 msgid "Indices and tables"
