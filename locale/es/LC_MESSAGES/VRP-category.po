@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 10:56-0600\n"
-"PO-Revision-Date: 2022-06-04 15:50+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "vrp-category/es/>\n"
@@ -1329,7 +1329,7 @@ msgstr "16.5"
 
 #: ../../build/doc/VRP-category.rst:463 ../../build/doc/VRP-category.rst:464
 msgid ":math:`10.5 / 60  = 0.175`"
-msgstr ":math:`10.5 / 60  = 0.175`"
+msgstr ":math:`10.5 / 60 = 0.175`"
 
 #: ../../build/doc/VRP-category.rst:464
 msgid "7.5"
