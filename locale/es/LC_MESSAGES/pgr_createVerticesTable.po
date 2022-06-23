@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_createverticestable/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:12
@@ -106,14 +106,13 @@ msgstr "La función devuelve:"
 #: ../../build/doc/pgr_createVerticesTable.rst:44
 #: ../../build/doc/pgr_createVerticesTable.rst:78
 msgid "``OK`` after the vertices table has been reconstructed."
-msgstr "``OK``  después de que se ha construido la tabla de vértices."
+msgstr "``OK`` después de que se ha construido la tabla de vértices."
 
 #: ../../build/doc/pgr_createVerticesTable.rst:45
 #: ../../build/doc/pgr_createVerticesTable.rst:83
 msgid ""
 "``FAIL`` when the vertices table was not reconstructed due to an error."
-msgstr ""
-"``FAIL`` cuando la tabla de vértices no se construyó debido a un error:"
+msgstr "``FAIL`` cuando la tabla de vértices no se construyó debido a un error."
 
 #: ../../build/doc/pgr_createVerticesTable.rst:48
 msgid "Signatures"
@@ -149,7 +148,7 @@ msgid ""
 "``the_geom``."
 msgstr ""
 "``text``  nombre de la columna de la geometría en la tabla de la red. El "
-"valor por defecto es ``the_geom``"
+"valor por defecto es ``the_geom``."
 
 #: ../../build/doc/pgr_createVerticesTable.rst
 msgid "source"
@@ -433,7 +432,7 @@ msgid ""
 "``gid`` =100 of the table ``othertable``."
 msgstr ""
 "Seleccionar las filas donde la geometría está cerca de la geometría de la "
-"fila con``gid`` =100  de la tabla ``othertable``."
+"fila con``gid`` =100 de la tabla ``othertable``."
 
 #: ../../build/doc/pgr_createVerticesTable.rst:175
 msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
@@ -466,9 +465,9 @@ msgid ""
 "``mygeom`` is passed to the function as the source column."
 msgstr ""
 "Se producirá un error cuando los argumentos no se dan en el orden adecuado: "
-"en este ejemplo, la columna  ``src`` de la tabla ``mytable`` se pasa a la "
+"en este ejemplo, la columna ``src`` de la tabla ``mytable`` se pasa a la "
 "función como la columna de geometría, y la columna de geometría ``mygeom`` "
-"se pasa a la función como columna de  origen."
+"se pasa a la función como columna de origen."
 
 #: ../../build/doc/pgr_createVerticesTable.rst
 msgid "Example 10"
@@ -513,8 +512,8 @@ msgid ""
 "Selecting the rows where the geometry is near the geometry of row with "
 "``gid`` = 5."
 msgstr ""
-"Selección de las filas en las que la geometría está cerca de la geometría de"
-" la fila con  ``gid`` = 5."
+"Selección de las filas en las que la geometría está cerca de la geometría de "
+"la fila con ``gid`` = 5."
 
 #: ../../build/doc/pgr_createVerticesTable.rst
 msgid "Example 15"
@@ -535,7 +534,7 @@ msgstr "Ejemplo 17"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:258
 msgid "The example uses the :doc:`sampledata` network."
-msgstr "En el ejemplo se utiliza la red :doc:`sampledata`. "
+msgstr "En el ejemplo se utiliza la red :doc:`sampledata`."
 
 #: ../../build/doc/pgr_createVerticesTable.rst:261
 msgid "See Also"
