@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgedisjointpaths/es/>\n"
 "Language: es\n"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:33
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:36
 msgid "Availability"
@@ -376,7 +376,7 @@ msgstr "**origen**"
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -386,7 +386,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:26
@@ -554,7 +554,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "`One to Many`_"
-msgstr "`One to Many`_"
+msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "**node**"
