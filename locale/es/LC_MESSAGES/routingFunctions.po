@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-20 14:16+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "routingfunctions/es/>\n"
 "Language: es\n"
@@ -157,7 +157,7 @@ msgid ""
 ":doc:`pgr_connectedComponents` - Connected components of an undirected "
 "graph."
 msgstr ""
-":doc:`pgr_connectedComponents`  - Componentes conectados de un grafo no "
+":doc:`pgr_connectedComponents` - Componentes conectados de un grafo no "
 "dirigido."
 
 #: ../../build/doc/components-family.rst:4
@@ -165,15 +165,15 @@ msgid ""
 ":doc:`pgr_strongComponents` - Strongly connected components of a directed "
 "graph."
 msgstr ""
-":doc:`pgr_strongComponents` -  Componentes fuertemente conectados de un "
-"grafo dirigido."
+":doc:`pgr_strongComponents` - Componentes fuertemente conectados de un grafo "
+"dirigido."
 
 #: ../../build/doc/components-family.rst:5
 msgid ""
 ":doc:`pgr_biconnectedComponents` - Biconnected components of an undirected "
 "graph."
 msgstr ""
-":doc:`pgr_biconnectedComponents` -  Componentes biconectados de un grafo no "
+":doc:`pgr_biconnectedComponents` - Componentes biconectados de un grafo no "
 "dirigido."
 
 #: ../../build/doc/components-family.rst:6
@@ -242,8 +242,8 @@ msgid ""
 ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
 "algorithm."
 msgstr ""
-":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel "
-"algorithm."
+":doc:`pgr_maxFlow` - Solo el flujo máximo se calcula usando los algoritmos "
+"Push y Relabel."
 
 #: ../../build/doc/flow-family.rst:4
 msgid ""
@@ -258,8 +258,8 @@ msgid ""
 ":doc:`pgr_edmondsKarp` - Edmonds and Karp algorithm with details of flow on "
 "edges."
 msgstr ""
-":doc:`pgr_edmondsKarp` - Algoritmo de Edmonds y Karp  algorithm con detalles"
-" de flujo con detalles del flujo en aristas."
+":doc:`pgr_edmondsKarp` - Algoritmos de Edmonds y Karp con detalles de flujo "
+"con detalles del flujo en aristas."
 
 #: ../../build/doc/flow-family.rst:6
 msgid ""
@@ -366,7 +366,7 @@ msgstr ""
 #: ../../build/doc/topology-functions.rst:7
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
 msgstr ""
-":doc:`pgr_nodeNetwork` - para crear nodos en una tabla delimitada sin nodos "
+":doc:`pgr_nodeNetwork` - para crear nodos en una tabla delimitada sin nodos."
 
 #: ../../build/doc/routingFunctions.rst:102
 msgid ":doc:`TSP-family`"
@@ -424,17 +424,17 @@ msgstr ":doc:`drivingDistance-category`"
 msgid ""
 ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Driving Distance basada en el algoritmo de "
+":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo de "
 "Dijkstra."
 
 #: ../../build/doc/drivingDistance-category.rst:4
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
-msgstr ":doc:`pgr_primDD` - Driving Distance basada en el algoritmo de Prim"
+msgstr ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 
 #: ../../build/doc/drivingDistance-category.rst:5
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Driving Distance basada en el algoritmo de Kruskal"
+":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de Kruskal."
 
 #: ../../build/doc/drivingDistance-category.rst:6
 msgid "Post pocessing"
