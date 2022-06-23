@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_contraction/es/>\n"
 "Language: es\n"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_contraction.rst:33
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_contraction.rst:36
 msgid "Availability"
@@ -85,7 +85,7 @@ msgstr "Cambio de columnas de retorno: ``seq`` se elimina"
 
 #: ../../build/doc/pgr_contraction.rst:40
 msgid "Name change from ``pgr_contractGraph``"
-msgstr "Cambio de nombre de  ``pgr_contractGraph``"
+msgstr "Cambio de nombre de ``pgr_contractGraph``"
 
 #: ../../build/doc/pgr_contraction.rst:41
 msgid "Bug fixes"
@@ -184,7 +184,7 @@ msgstr "Resumen"
 
 #: ../../build/doc/pgr_contraction.rst:83
 msgid "The pgr_contraction function has the following signature:"
-msgstr "La función  pgr_contraction tiene la siguiente firma:"
+msgstr "La función pgr_contraction tiene la siguiente firma:"
 
 #: ../../build/doc/pgr_contraction.rst
 msgid "Example"
@@ -337,7 +337,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_contraction.rst:155
@@ -346,7 +346,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_contraction.rst:157
@@ -460,7 +460,7 @@ msgstr "Identificador del vértice modificado."
 
 #: ../../build/doc/pgr_contraction.rst:147
 msgid "When ``type`` = **'e'**."
-msgstr "En caso de  ``type`` = **'e'**."
+msgstr "En caso de ``type`` = **'e'**."
 
 #: ../../build/doc/pgr_contraction.rst:149
 msgid "Decreasing sequence starting from **-1**."
@@ -497,8 +497,8 @@ msgid ""
 "When ``type`` = **'e'**: Identifier of the source vertex of the current edge"
 " (``source``, ``target``)."
 msgstr ""
-"En caso de  ``type`` = **'e'**: Identificador del vétice de la arista actual"
-" (``source``, ``target``)."
+"En caso de ``type`` = **'e'**: Identificador del vétice de la arista actual "
+"(``source``, ``target``)."
 
 #: ../../build/doc/pgr_contraction.rst:156
 msgid ""
