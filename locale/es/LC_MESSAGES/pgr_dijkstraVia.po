@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-23 17:24+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstravia/es/>\n"
 "Language: es\n"
@@ -85,7 +85,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -391,7 +391,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:113
 msgid "Return Columns"
@@ -505,7 +505,7 @@ msgid ""
 "current ``path_pid`` ."
 msgstr ""
 "Coste total desde ``start_vid`` de ``path_pid = 1`` hacia ``end_vid`` del "
-"actual  ``path_pid`` ."
+"actual ``path_pid`` ."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:133
 msgid "Additional Examples"
@@ -569,8 +569,8 @@ msgid ""
 "Show the route's seq and aggregate cost and a status of \"passes in front\" "
 "or \"visits\" node :math:`9`"
 msgstr ""
-"Muestre la secuencia de la ruta, el costo agregado y el estado de los "
-"\"pases al frente\" o del nodo  :math:`9` , \"visitss\""
+"Muestre la secuencia de la ruta, el costo agregado y el estado de los \"pasa "
+"al frente\" o \"visita\" el nodo :math:`9`"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:171
 msgid "See Also"
