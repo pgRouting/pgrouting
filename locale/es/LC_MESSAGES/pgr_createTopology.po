@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_createtopology/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_createTopology.rst:12
@@ -148,7 +148,7 @@ msgid ""
 "``OK`` after the network topology has been built and the vertices table "
 "created."
 msgstr ""
-"``OK``  después de que se ha construido la topología de red y la tabla de "
+"``OK`` después de que se ha construido la topología de red y la tabla de "
 "vértices."
 
 #: ../../build/doc/pgr_createTopology.rst:60
@@ -198,7 +198,7 @@ msgid ""
 "``the_geom``."
 msgstr ""
 "``text``  nombre de la columna de la geometría en la tabla de la red. El "
-"valor por defecto es ``the_geom``"
+"valor por defecto es ``the_geom``."
 
 #: ../../build/doc/pgr_createTopology.rst
 msgid "id"
@@ -313,8 +313,8 @@ msgid ""
 "Fills the source and target columns of the edge table referencing the ``id``"
 " of the vertices table."
 msgstr ""
-"Llena las columnas los origen y destino  de la tabla de borde haciendo "
-"referencia al ``id``  de la tabla de los vértices."
+"Llena las columnas los origen y destino de la tabla de borde haciendo "
+"referencia al ``id`` de la tabla de los vértices."
 
 #: ../../build/doc/pgr_createTopology.rst:110
 msgid "``FAIL`` when the network topology was not built due to an error:"
@@ -497,7 +497,7 @@ msgid ""
 "``gid`` =100 of the table ``othertable``."
 msgstr ""
 "Seleccionar las filas donde la geometría está cerca de la geometría de la "
-"fila con``gid`` =100  de la tabla ``othertable``."
+"fila con``gid`` =100 de la tabla ``othertable``."
 
 #: ../../build/doc/pgr_createTopology.rst:193
 msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
@@ -586,7 +586,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_createTopology.rst:257
 msgid "The example uses the :doc:`sampledata` network."
-msgstr "En el ejemplo se utiliza la red :doc:`sampledata`. "
+msgstr "En el ejemplo se utiliza la red :doc:`sampledata`."
 
 #: ../../build/doc/pgr_createTopology.rst:260
 msgid "See Also"
