@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsvia/es/>\n"
 "Language: es\n"
@@ -193,15 +193,15 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/via-category.rst:15 ../../build/doc/via-category.rst:19
 msgid "SQL query as described."
-msgstr ""
+msgstr "consulta SQL como descrito."
 
 #: ../../build/doc/via-category.rst:16
 msgid "`Points SQL`_"
-msgstr ""
+msgstr "`Points SQL`_"
 
 #: ../../build/doc/via-category.rst:20
 msgid "**via vertices**"
-msgstr ""
+msgstr "**vía vértices**"
 
 #: ../../build/doc/via-category.rst:21
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
@@ -213,11 +213,11 @@ msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/via-category.rst:25
 msgid "When positive it is considered a vertex identifier"
-msgstr ""
+msgstr "Cuando sea positivo se considera como un identificador de vértice"
 
 #: ../../build/doc/via-category.rst:26
 msgid "When negative it is considered a point identifier"
-msgstr ""
+msgstr "Cuando sea negativo se considera como un identificador de punto"
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/via-category.rst:28
@@ -275,11 +275,11 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_withPointsVia.rst:96
 msgid "Via optional parameters"
-msgstr ""
+msgstr "Vía parámetros opcional"
 
 #: ../../build/doc/via-category.rst:12
 msgid "``strict``"
-msgstr ""
+msgstr "``strict``"
 
 #: ../../build/doc/via-category.rst:14 ../../build/doc/withPoints-family.rst:22
 msgid "``false``"
@@ -287,7 +287,7 @@ msgstr "``false``"
 
 #: ../../build/doc/via-category.rst:15
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
-msgstr ""
+msgstr "Cuando ``true`` si un camino le faltan paradas y regresa **EMPTY SET**"
 
 #: ../../build/doc/via-category.rst:16
 msgid "When ``false`` ignores missing paths returning all paths found"
@@ -297,11 +297,12 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:17
 msgid "``U_turn_on_edge``"
-msgstr ""
+msgstr "``U_turn_on_edge``"
 
 #: ../../build/doc/via-category.rst:20
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
+"Cuando ``true``saliendo desde un vértice visitado no intentara esquivarlo"
 
 #: ../../build/doc/pgr_withPointsVia.rst:103
 msgid "With points optional parameters"
@@ -319,7 +320,7 @@ msgstr "``CHAR``"
 #: ../../build/doc/withPoints-category.rst:33
 #: ../../build/doc/withPoints-family.rst:14
 msgid "``b``"
-msgstr ""
+msgstr "``b``"
 
 #: ../../build/doc/withPoints-family.rst:15
 msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
@@ -437,34 +438,38 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_withPointsVia.rst:120
 msgid "Points SQL"
-msgstr ""
+msgstr "Puntos SQL"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/withPoints-category.rst:14
 msgid "**value**"
-msgstr ""
+msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
 msgid "Identifier of the point."
-msgstr ""
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid ""
 "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
 msgid "If column is present, it can not be NULL."
-msgstr ""
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo "
+"automáticamente se otorgará.."
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
@@ -476,7 +481,7 @@ msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 #: ../../build/doc/withPoints-category.rst:29
 msgid ""
@@ -488,23 +493,23 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr ""
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] indicando si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
-msgstr ""
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
-msgstr ""
+msgstr "A la izquierda ``l``,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "In both sides ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_withPointsVia.rst:127
 msgid "Result Columns"
@@ -629,6 +634,8 @@ msgid ""
 "When ``start_vid``, ``end_vid`` and ``node`` columns have negative values, "
 "the identifier is for a Point."
 msgstr ""
+"Cuando las columnas ``start_vid``, ``end_vid`` y``node`` tengan valores "
+"negativos, el identificador es para un Punto."
 
 #: ../../build/doc/pgr_withPointsVia.rst:138
 msgid "Additional Examples"
