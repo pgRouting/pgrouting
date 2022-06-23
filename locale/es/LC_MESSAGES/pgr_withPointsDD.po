@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsdd/es/>\n"
 "Language: es\n"
@@ -84,7 +84,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -108,7 +108,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_withPointsDD.rst:38
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_withPointsDD.rst:41
 msgid "Availability"
@@ -185,7 +185,7 @@ msgstr "Desde el punto :math:`1` with :math:`agg\\_cost <= 3.8`"
 
 #: ../../build/doc/pgr_withPointsDD.rst:91
 msgid "Single vertex"
-msgstr "Un solo vértice"
+msgstr "Vértice único"
 
 #: ../../build/doc/pgr_withPointsDD.rst:93
 #: ../../build/doc/pgr_withPointsDD.rst:112
@@ -380,7 +380,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -388,7 +388,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_withPointsDD.rst:165
@@ -488,7 +488,7 @@ msgstr "**edge_id**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the \"closest\" edge to the point."
-msgstr "Identificador de la arista \"más cercano\" al punto."
+msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "**fraction**"
@@ -499,8 +499,8 @@ msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
-"El valor en <0,1> que indica la posición relativa desde el primer punto "
-"final de la arista."
+"El valor en <0,1> que indica la posición relativa desde el primer punto de "
+"la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "**side**"
