@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-23 16:16+0000\n"
+"PO-Revision-Date: 2022-06-23 16:28+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bfs-category/es/>\n"
@@ -131,7 +131,7 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:67
 msgid "**Root vids**"
-msgstr "**Root vids**"
+msgstr "**Raíces**"
 
 #: ../../build/doc/BFS-category.rst:68
 msgid "``ARRAY[ANY-INTEGER]``"
@@ -215,7 +215,7 @@ msgstr "``id``"
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
