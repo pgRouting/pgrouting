@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_alphashape/es/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_alphaShape.rst:12
@@ -168,7 +168,7 @@ msgstr "Usa PostGis ST_DelaunyTriangles"
 msgid ""
 "Instead of using CGAL's definition of `alpha` it use the ``spoon_radius``"
 msgstr ""
-"En lugar de utilizar la definición de CGAL de  `alpha` utiliza "
+"En lugar de utilizar la definición de CGAL de `alpha` utiliza "
 "``spoon_radius`` el ''spoon_radius''"
 
 #: ../../build/doc/pgr_alphaShape.rst:79
@@ -228,7 +228,7 @@ msgstr "**geometría**"
 
 #: ../../build/doc/pgr_alphaShape.rst:111
 msgid "``geometry``"
-msgstr "''geometría''"
+msgstr "``geometry``"
 
 #: ../../build/doc/pgr_alphaShape.rst:111
 msgid "Geometry with at least :math:`3` points"
@@ -256,7 +256,7 @@ msgstr "Tipo de geometría"
 
 #: ../../build/doc/pgr_alphaShape.rst:121
 msgid "GEOMETRY COLLECTION"
-msgstr "COLECCIÓN  DE GEOMETRÍA"
+msgstr "GEOMETRY COLLECTION"
 
 #: ../../build/doc/pgr_alphaShape.rst:121
 msgid "A Geometry collection of Polygons"
@@ -272,7 +272,7 @@ msgstr ":doc:`pgr_drivingDistance`"
 
 #: ../../build/doc/pgr_alphaShape.rst:132
 msgid ":doc:`sampledata` network."
-msgstr "Red :doc:`sampledata` ."
+msgstr ":doc:`sampledata` ."
 
 #: ../../build/doc/pgr_alphaShape.rst:133
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
