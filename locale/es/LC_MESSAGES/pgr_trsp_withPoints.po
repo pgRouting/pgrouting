@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
 "Language: es\n"
@@ -295,7 +295,7 @@ msgstr "``TEXT``"
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "SQL query as described."
-msgstr ""
+msgstr "consulta SQL como descrito."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "`Restrictions SQL`_"
@@ -322,7 +322,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:13
 #: ../../build/doc/withPoints-category.rst:23
 msgid "**ANY-INTEGER**"
-msgstr "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:22
@@ -568,34 +568,38 @@ msgstr "Costo de tomar el camino prohibido."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:259
 msgid "Points SQL"
-msgstr ""
+msgstr "Puntos SQL"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/withPoints-category.rst:14
 msgid "**value**"
-msgstr ""
+msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
 msgid "Identifier of the point."
-msgstr ""
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid ""
 "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
 msgid "If column is present, it can not be NULL."
-msgstr ""
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo "
+"automáticamente se otorgará.."
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
@@ -607,7 +611,7 @@ msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 #: ../../build/doc/withPoints-category.rst:29
 msgid ""
@@ -619,27 +623,27 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
-msgstr ""
+msgstr "``b``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr ""
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] indicando si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
-msgstr ""
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
-msgstr ""
+msgstr "A la izquierda ``l``,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "In both sides ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:266
 msgid "Combinations SQL"
@@ -759,7 +763,7 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:326
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr ""
+msgstr "Usa :doc:`pgr_findCloseEdges` en el `Points SQL`_."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:328
 msgid ""
