@@ -33,9 +33,16 @@ with pgRouting. This guide covers:
 
 .. contents::
     :local:
+    :depth: 1
 
 Graphs
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
+
+Graph definition
+...............................................................................
 
 A graph is an ordered pair :math:`G = (V ,E)` where:
 
@@ -275,6 +282,9 @@ Personal relationships, genealogy, file dependency problems can be solved
 using pgRouting. Those problems, normally,  do not come with gemetries asociated
 with the graph.
 
+.. contents::
+    :local:
+
 Wiki example
 ...............................................................................
 
@@ -419,6 +429,9 @@ To obtain the vertices information, use :doc:`pgr_extractVertices`
 
 Graphs with geometries
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 Create a routing Database
 ...............................................................................
@@ -599,6 +612,9 @@ Returning to the original data:
 
 Check the Routing Topology
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 There are lots of possible problems in a graph.
 
@@ -880,53 +896,69 @@ functions can be used to divide the problem.
 
 .. TODO checked up to here
 
-Compute a Path
+Function's structure
 -------------------------------------------------------------------------------
 
-Once you have all the preparation work done above, computing a route is fairly
-easy.
-We have a lot of different algorithms that can work with your prepared road
-network.
-The general form of a route query using Dijkstra algorithm is:
+Once the graph preparation work has been done above, it is time to use a
+
+The general form of a pgRouting function call is:
 
 .. parsed-literal::
 
-    select pgr_dijkstra('SELECT * FROM myroads', <start>, <end>)
+    pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)
 
+Where:
 
-This algorithm only requires *id*, *source*, *target* and *cost* as the minimal
-attributes, that by default will be considered to be columns in your roads
-table.
-If the column names in your roads table do not match exactly the names of these
-attributes, you can use aliases.
-For example, if you imported OSM data using **osm2pgrouting**, your id column's
-name would be *gid* and your roads table would be *ways*, so you would query a
-route from node id 1 to node id 2 by typing:
+* `Inner queries`_: Are compulsory parameters that are ``TEXT`` strings
+  contianing SQL queries.
+* **parameters**: Additional compulsory parameters needed by the function.
+* ``Optional parameters``: Are non compulsory **named** parameters that have a
+  default value when ommited.
+
+The compulsory parameters are positional parameters, the optional parameters are
+named parameters.
+
+For example, for this :doc:`pgr_dijkstra` signature:
 
 .. parsed-literal::
 
-    select pgr_dijkstra('SELECT gid AS id, source, target, cost FROM ways', 1, 2)
+   pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, ``directed``])
 
-As you can see this is fairly straight forward and it also allows for great
-flexibility, both in terms of database structure and in defining cost functions.
-You can test the previous query using *length_m AS cost* to compute the shortest
-path in meters or *cost_s / 60 AS cost* to compute the fastest path in minutes.
+* `Edges SQL`_:
 
-You can look and the specific algorithms for the details of the signatures and
-how to use them.
-These results have information like edge id and/or the node id along with the
-cost or geometry for the step in the path from *start* to *end*.
-Using the ids you can join these result back to your edge table to get more
-information about each step in the path.
+  * Is the first parameter.
+  * It is compulsory.
+  * It is an inner query.
+  * It has no name, so **Edges SQL** gives an idea of what kind of inner query
+    needs to be used
 
-* :doc:`pgr_dijkstra`
+* **start vid**:
 
-Group of Functions
+  * Is the second parameter.
+  * It is compulsory.
+  * It has no name, so **start vid** gives an idea of what the second
+    parameter's value should contain.
+
+* **end vid**
+
+  * Is the third parameter.
+  * It is compulsory.
+  * It has no name, so **end vid** gives an idea of what the third
+    parameter's value should contain
+
+* ``directed``
+
+  * Is the fourth parameter.
+  * It is optional.
+  * It has a name.
+
+The full description of the parameters are found on the `Parameters`_ section of
+each function.
+
+Function's overloads
 -------------------------------------------------------------------------------
 
-A function might have different overloads.
-Across this documentation, to indicate which overload we use the following
-terms:
+A function might have different overloads. The most common are called:
 
 * `One to One`_
 * `One to Many`_
@@ -934,8 +966,13 @@ terms:
 * `Many to Many`_
 * `Combinations`_
 
-Depending on the overload are the parameters used, keeping consistency across
-all functions.
+Depending on the overload the parameters types change.
+
+* **One**: **ANY-INTEGER**
+* **Many**: ``ARRAY`` [ **ANY-INTEGER** ]
+
+Depending of the function the overloads may vary. But the concept of parameter
+type change remains the same.
 
 One to One
 ...............................................................................
@@ -978,6 +1015,7 @@ When routing from:
 * to **many** different ending vertices
 * Every tuple specifies a pair of a start vertex and an end vertex
 * Users can define the combinations as desired.
+* Needs a `Combinations SQL`_
 
 Inner Queries
 -------------------------------------------------------------------------------
