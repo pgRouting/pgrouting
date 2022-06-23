@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "via-category/es/>\n"
 "Language: es\n"
@@ -106,7 +106,7 @@ msgid ""
 "`vertex_i` and :math:`vertex_{i+1}` for all vertices"
 msgstr ""
 "Dado un grafo y una lista de vértices, encuentra el camino mas corto entre "
-":math:`vertex_i` and :math:`vertex_{i+1}` para todos los vértices."
+":math:`vertex_i` and :math:`vertex_{i+1}` para todos los vértices"
 
 #: ../../build/doc/via-category.rst:42
 msgid ""
@@ -452,23 +452,23 @@ msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
-msgstr ""
+msgstr "``b``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr ""
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] indicando si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
-msgstr ""
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
-msgstr ""
+msgstr "A la izquierda ``l``,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "In both sides ``b``, ``NULL``"
 
 #: ../../build/doc/via-category.rst:190
 msgid "Result Columns"
@@ -593,6 +593,8 @@ msgid ""
 "When ``start_vid``, ``end_vid`` and ``node`` columns have negative values, "
 "the identifier is for a Point."
 msgstr ""
+"Cuando las columnas ``start_vid``, ``end_vid`` y``node`` tengan valores "
+"negativos, el identificador es para un Punto."
 
 #: ../../build/doc/via-category.rst:251
 msgid "See Also"
