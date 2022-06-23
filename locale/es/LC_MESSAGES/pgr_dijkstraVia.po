@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-02 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-23 17:24+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstravia/es/>\n"
 "Language: es\n"
@@ -109,7 +109,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:38
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:41
 msgid "Availability"
@@ -222,7 +222,7 @@ msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr "Arreglo ordenados de identificadores de vértices que serán visitados."
+msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "**directed**"
@@ -321,7 +321,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -329,7 +329,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_dijkstraVia.rst:127
@@ -583,7 +583,7 @@ msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:174
 msgid ":doc:`sampledata` network."
-msgstr "Red :doc:`sampledata` ."
+msgstr ":doc:`sampledata` ."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:177
 msgid "Indices and tables"
