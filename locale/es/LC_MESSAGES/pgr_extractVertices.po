@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-13 05:24+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_extractvertices/es/>\n"
 "Language: es\n"
@@ -68,7 +68,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -334,7 +334,7 @@ msgstr "``ANY-INTEGER``"
 #: ../../build/doc/pgr_extractVertices.rst:128
 #: ../../build/doc/pgr_extractVertices.rst:141
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgr_extractVertices.rst:129
 msgid "**target**"
@@ -342,7 +342,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgr_extractVertices.rst:129
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgr_extractVertices.rst:134
 msgid "Result Columns"
@@ -366,8 +366,8 @@ msgid ""
 "Array of identifiers of the edges that have the vertex ``id`` as *first end "
 "point*."
 msgstr ""
-"Arreglo de identificadores de las aristas que tienen el vértice  ``id`` como"
-" *primer punto final*."
+"Arreglo de identificadores de las aristas que tienen el vértice ``id`` como *"
+"primer punto final*."
 
 #: ../../build/doc/pgr_extractVertices.rst:143
 #: ../../build/doc/pgr_extractVertices.rst:145
@@ -383,8 +383,8 @@ msgid ""
 "Array of identifiers of the edges that have the vertex ``id`` as *second end"
 " point*."
 msgstr ""
-"Arreglo de identificadores de las aristas que tienen el vértice ``id``  como"
-" *segundo punto final*."
+"Arreglo de identificadores de las aristas que tienen el vértice ``id`` como *"
+"segundo punto final*."
 
 #: ../../build/doc/pgr_extractVertices.rst:146
 msgid "**x**"
@@ -475,7 +475,7 @@ msgstr "Creación de la topología de ruteo en la tabla de aristas"
 
 #: ../../build/doc/pgr_extractVertices.rst:196
 msgid "Updating the ``source`` information"
-msgstr "Actualización de la información de ``source`` "
+msgstr "Actualización de la información de ``source``"
 
 #: ../../build/doc/pgr_extractVertices.rst:202
 msgid "Updating the ``target`` information"
