@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-23 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:12
 msgid ""
@@ -346,30 +346,26 @@ msgid ":doc:`topology-functions`"
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:155
-msgid ":ref:`analytics`"
-msgstr ""
-
-#: ../../build/doc/pgr_analyzeOneWay.rst:156
 msgid ":doc:`pgr_analyzeGraph`"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:157
+#: ../../build/doc/pgr_analyzeOneWay.rst:156
 msgid ":doc:`pgr_createVerticesTable`"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:158
+#: ../../build/doc/pgr_analyzeOneWay.rst:157
 msgid ":doc:`sampledata`"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:161
+#: ../../build/doc/pgr_analyzeOneWay.rst:160
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:162
+#: ../../build/doc/pgr_analyzeOneWay.rst:161
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_analyzeOneWay.rst:163
+#: ../../build/doc/pgr_analyzeOneWay.rst:162
 msgid ":ref:`search`"
 msgstr ""
 

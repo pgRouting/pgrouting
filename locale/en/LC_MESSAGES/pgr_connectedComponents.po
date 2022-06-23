@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 14:20+0000\n"
+"POT-Creation-Date: 2022-06-23 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,9 +347,9 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:42
 msgid ""
-"Using :doc:`pgr_findCloseEdges` the closest vertext to component "
-":math:`1` is vertex :math:`4`. And the closest edge to vertex :math:`4` "
-"is edge :math:`14`."
+"Using :doc:`pgr_findCloseEdges` the closest vertex to component :math:`1`"
+" is vertex :math:`4`. And the closest edge to vertex :math:`4` is edge "
+":math:`14`."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:49
@@ -380,7 +380,7 @@ msgid "From the vertex to the closest vertex on the edge"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:61
-msgid "This solution requiers the edge to be split."
+msgid "This solution requires the edge to be split."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:63
@@ -393,7 +393,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:72
 msgid ""
-"Ignoring the edge that requieres further work. The graph is now fully "
+"Ignoring the edge that requires further work. The graph is now fully "
 "connected as there is only one component."
 msgstr ""
 

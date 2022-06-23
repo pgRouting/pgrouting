@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 14:20+0000\n"
+"POT-Creation-Date: 2022-06-23 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -450,7 +450,7 @@ msgid "When it is actually an intersection of roads, where vehicles can make tur
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
-msgid "When in terms of electrical lines, the electrical line is able to swith roads even on a tunnel or bridge."
+msgid "When in terms of electrical lines, the electrical line is able to switch roads even on a tunnel or bridge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
@@ -482,7 +482,7 @@ msgid "The data needs a local fix for the specific application."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:37
-msgid "Once analized one by one the crossings, for the ones that need a local fix, the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
+msgid "Once analyzed one by one the crossings, for the ones that need a local fix, the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:44
@@ -510,7 +510,7 @@ msgid "**factor** based on the position of the intersection of the edges can be 
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:61
-msgid "Capacity information, used on the :doc:`flow-family` functions does not need to change when spliting edges."
+msgid "Capacity information, used on the :doc:`flow-family` functions does not need to change when splitting edges."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:69
@@ -518,7 +518,7 @@ msgid "Adding new vertices"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:71
-msgid "After adding all the split edges requiered by the application, the newly created vertices need to be added to the vertices table."
+msgid "After adding all the split edges required by the application, the newly created vertices need to be added to the vertices table."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:79
@@ -554,25 +554,57 @@ msgid "There are no crossing edges on the graph."
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:295
-msgid "See Also"
+msgid "Graphs without geometries"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:297
-msgid ":doc:`topology-functions`"
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid "Using this table design for this example:"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:298
-msgid ":doc:`pgr_createVerticesTable`"
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Insert the data"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:301
-msgid "Indices and tables"
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "Find the shortest path"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "To solve this example :doc:`pgr_dijkstra` is used:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+msgid "To go from :math:`1` to :math:`5` the path goes thru the following vertices: :math:`1 \\rightarrow 3 \\rightarrow 6 \\rightarrow 5`"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:46
+msgid "Vertex information"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:48
+msgid "To obtain the vertices information, use :doc:`pgr_extractVertices`"
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:302
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:304
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:305
+msgid ":doc:`pgr_createVerticesTable`"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:308
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_extractVertices.rst:309
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/pgr_extractVertices.rst:303
+#: ../../build/doc/pgr_extractVertices.rst:310
 msgid ":ref:`search`"
 msgstr ""
