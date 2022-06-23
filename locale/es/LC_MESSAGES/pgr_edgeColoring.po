@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-04 15:50+0000\n"
+"PO-Revision-Date: 2022-06-23 16:16+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgecoloring/es/>\n"
@@ -247,10 +247,8 @@ msgid "`Edges SQL`_ as described below."
 msgstr "`SQL de aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_edgeColoring.rst:107
-#, fuzzy
-#| msgid "Inner queries"
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_edgeColoring.rst:110
 msgid "Edges SQL"
