@@ -152,7 +152,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`topology-functions`
-* :ref:`analytics`
 * :doc:`pgr_analyzeGraph`
 * :doc:`pgr_createVerticesTable`
 * :doc:`sampledata`

@@ -30,7 +30,6 @@ SELECT * FROM pgr_dijkstra(
   'SELECT id, source, target, cost FROM wiki',
   1, 5, false);
 /* -- q4 */
-SELECT id, source, target FROM wiki;
 SELECT id, in_edges, out_edges
 FROM pgr_extractVertices('SELECT id, source, target FROM wiki');
 /* -- q5 */
@@ -38,8 +37,8 @@ FROM pgr_extractVertices('SELECT id, source, target FROM wiki');
 
 /* -- topo1 */
 UPDATE edges SET
-cost = sign(cost) * ST_length(geom),
-reverse_cost = sign(reverse_cost) * ST_length(geom);
+cost = sign(cost) * ST_length(geom) * 2,
+reverse_cost = sign(reverse_cost) * ST_length(geom) * 2;
 /* -- topo2 */
 SELECT id, cost, reverse_cost FROM edges;
 /* -- topo3 */
@@ -47,6 +46,29 @@ UPDATE edges SET
 cost = sign(cost),
 reverse_cost = sign(reverse_cost);
 /* -- topo4 */
+ALTER TABLE edges ADD COLUMN direction TEXT;
+UPDATE edges SET
+direction = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
+           WHEN (cost>0 AND reverse_cost<0) THEN 'FT'  -- direction of the LINESSTRING
+           WHEN (cost<0 AND reverse_cost>0) THEN 'TF'  -- reverse direction of the LINESTRING
+           ELSE '' END;                                -- unknown
+/* -- topo5 */
+UPDATE edges SET
+cost = CASE WHEN (direction = 'B' OR direction = 'FT')
+       THEN ST_length(geom) * 2
+       ELSE -1 END,
+reverse_cost = CASE WHEN (direction = 'B' OR direction = 'TF')
+       THEN ST_length(geom) * 2
+       ELSE -1 END;
+/* -- topo6 */
+SELECT id, cost, reverse_cost FROM edges;
+/* -- topo7 */
+UPDATE edges SET
+cost = sign(cost),
+reverse_cost = sign(reverse_cost);
+ALTER TABLE edges DROP COLUMN direction;
+/* -- topo8 */
+
 
 /* -- cross1 */
 SELECT a.id, b.id
@@ -137,9 +159,6 @@ WHERE a.id < b.id AND st_crosses(a.geom, b.geom);
 
 
 
-/* -- connect1 */
-SELECT id FROM vertices
-WHERE array_length(in_edges || out_edges, 1) = 1;
 /* -- connect2 */
 SELECT * FROM pgr_connectedComponents(
   'SELECT id, source, target, cost, reverse_cost FROM edges'
@@ -217,3 +236,19 @@ SELECT * FROM pgr_connectedComponents(
   'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
 /* -- connect9 */
+
+/* -- contract1 */
+SELECT id FROM vertices
+WHERE array_length(in_edges || out_edges, 1) = 1;
+/* -- contract2 */
+SELECT id FROM vertices
+WHERE array_length(in_edges || out_edges, 1) = 2;
+/* -- contract3 */
+
+/* -- performance1 */
+SELECT * FROM pgr_dijkstra($$
+  SELECT id, source, target, cost, reverse_cost from edges
+  WHERE geom && (SELECT st_buffer(geom, 1) AS myarea
+    FROM edges WHERE id = 2)$$,
+  1, 2);
+/* -- performance2 */

@@ -28,24 +28,32 @@
 pgRouting Concepts
 ===============================================================================
 
-.. contents::
-
-
-This is a simple guide to walk you through the steps of getting started
-with pgRouting. In this guide we will cover:
+This is a simple guide that go through some of the steps for getting started
+with pgRouting. This guide covers:
 
 .. contents::
     :local:
+    :depth: 1
 
 Graphs
 -------------------------------------------------------------------------------
 
+.. contents::
+    :local:
+
+Graph definition
+...............................................................................
+
 A graph is an ordered pair :math:`G = (V ,E)` where:
 
-* :math:`V` is a set of vertices, also called nodes
+* :math:`V` is a set of vertices, also called nodes.
 * :math:`E \subseteq \{( u, v ) \mid u , v \in V \}`
 
-There are different kinds of graphs.
+There are different kinds of graphs:
+
+* Undirected graph
+
+  * :math:`E \subseteq \{( u, v ) \mid u , v \in V\}`
 
 * Undirected simple graph
 
@@ -61,8 +69,8 @@ There are different kinds of graphs.
 
 Graphs:
 
-* Do not have geometries
-* Some graph theory problems requires graphs to have weights, called **cost** in
+* Do not have geometries.
+* Some graph theory problems require graphs to have weights, called **cost** in
   pgRouting.
 
 In pgRouting there are several ways to represent a graph on the database:
@@ -85,50 +93,62 @@ Where:
    * - Column
      - Description
    * - ``id``
-     - Identifier of the edge. Requirement to use the database in a consistent
+     - Identifier of the edge. Requirement to use the database in a consistent.
        manner.
    * - ``source``
-     - Identifier of a vertex
+     - Identifier of a vertex.
    * - ``target``
-     - Identifier of a vertex
+     - Identifier of a vertex.
    * - ``cost``
-     - Weight of the edge (``source``, ``target``)
+     - Weight of the edge (``source``, ``target``):
 
        * When negative the edge (``source``, ``target``) do not exist on the
-         graph
+         graph.
+       * ``cost`` must exist in the query.
    * - ``reverse_cost``
      - Weight of the edge (``target``, ``source``)
 
        * When negative the edge (``target``, ``source``) do not exist on the
-         graph
+         graph.
 
 The decision of the graph to be **directed** or **undirected** is done when
-running a pgRouting algorithm.
+executing a pgRouting algorithm.
 
 
 Graph with ``cost``
 ...............................................................................
 
-The weighted directed graph, :math:`G_d(V,E)`, is interpreted as:
+The weighted directed graph, :math:`G_d(V,E)`:
 
-* the set of vertices  :math:`V`
+* Graph data is obtained with a query
 
-  - :math:`V = source \cup target`
+  ``SELECT id, source, target, cost FROM edges``
 
 * the set of edges :math:`E`
 
-  - :math:`E = \{(source_i, target_i, cost_i) \text{ when } cost_i >=0 \}`
+  * :math:`E = \{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id}
+    \ge 0 \}`
+  * Edges where ``cost`` is non negative are part of the graph.
+
+* the set of vertices  :math:`V`
+
+  * :math:`V = \{source_{id} \cup target_{id}\}`
+  * All vertices in ``source`` and ``target`` are part of the graph.
 
 .. rubric:: Directed graph
 
-In a directed graph the edge :math:`(source_i, target_i, cost_i)` has
-directionality: :math:`source_i \rightarrow target_i`
+In a directed graph the edge :math:`(source_{id}, target_{id}, cost_{id})` has
+directionality: :math:`source_{id} \rightarrow target_{id}`
 
 For the following data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- g1
    :end-before: -- g2
+
+Edge :math:`2` (:math:`1 \rightarrow 3`) is not part of the graph.
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -139,17 +159,22 @@ For the following data:
 
 .. rubric:: Undirected graph
 
-In an undirected graph the edge :math:`(source_i, target_i, cost_i)` does not
-have directionality: :math:`source_i \; {\rule[0.5ex]{1em}{0.55pt}} \; target_i`
+In an undirected graph the edge :math:`(source_{id}, target_{id}, cost_{id})`
+does not have directionality: :math:`source_{id} \frac{\;\;\;\;\;}{}
+target_{id}`
 
-* In terms of a directed graph is like having two edges: :math:`source_i
-  \leftrightarrow target_i`
+* In terms of a directed graph is like having two edges: :math:`source_{id}
+  \leftrightarrow target_{id}`
 
 For the following data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- g1
    :end-before: -- g2
+
+Edge :math:`2` (:math:`1  \frac{\;\;\;\;\;}{} 3`) is not part of the graph.
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -163,32 +188,48 @@ Graph with ``cost`` and ``reverse_cost``
 
 The weighted directed graph, :math:`G_d(V,E)`, is defined by:
 
-* the set of vertices  :math:`V`
+* Graph data is obtained with a query
 
-  - :math:`V = source \cup target`
+  ``SELECT id, source, target, cost, reverse_cost FROM edges``
 
-* the set of edges :math:`E`
+* The set of edges :math:`E`:
 
-  - :math:`E = \begin{split} \begin{align}
-    & {\{(source_i, target_i, cost_i) \text{ when } cost_i >=0 \}} \\
+  * :math:`E = \begin{split} \begin{align}
+    & {\{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id} >=0 \}} \\
     & \cup \\
-    & {\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i >=0 \}}
+    & {\{(target_{id}, source_{id}, reverse\_cost_{id}) \text{ when } reverse\_cost_{id} >=0 \}}
     \end{align} \end{split}`
+  * Edges :math:`(source \rightarrow target)` where ``cost`` is non negative are
+    part of the graph.
+  * Edges :math:`(target \rightarrow source)` where ``reverse_cost`` is non
+    negative are part of the graph.
+
+* The set of vertices  :math:`V`:
+
+  * :math:`V = \{source_{id} \cup target_{id}\}`
+  * All vertices in ``source`` and ``target`` are part of the graph.
 
 .. rubric:: Directed graph
 
 In a directed graph both edges have directionality
 
-* edge :math:`(source_i, target_i, cost_i)` has directionality: :math:`source_i
-  \rightarrow target_i`
-* edge :math:`(target_i, source_i, reverse\_cost_i)` has directionality:
-  :math:`target_i \rightarrow source_i`
+* edge :math:`(source_{id}, target_{id}, cost_{id})` has directionality: :math:`source_{id}
+  \rightarrow target_{id}`
+* edge :math:`(target_{id}, source_{id}, reverse\_cost_{id})` has directionality:
+  :math:`target_{id} \rightarrow source_{id}`
 
 For the following data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- g2
    :end-before: -- g3
+
+Edges not part of the graph:
+
+* :math:`2` (:math:`1  \rightarrow 3`)
+* :math:`3` (:math:`3  \rightarrow 2`)
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -203,10 +244,10 @@ For the following data:
 
 In a directed graph both edges do not have directionality
 
-* Edge :math:`(source_i, target_i, cost_i)` is :math:`source_i
-  \; {\rule[0.5ex]{1em}{0.55pt}} \; target_i`
-* Edge :math:`(target_i, source_i, reverse\_cost_i)` is :math:`target_i
-  \; {\rule[0.5ex]{1em}{0.55pt}} \; source_i`
+* Edge :math:`(source_{id}, target_{id}, cost_{id})` is :math:`source_{id}
+  \frac{\;\;\;\;\;}{} target_{id}`
+* Edge :math:`(target_{id}, source_{id}, reverse\_cost_{id})` is
+  :math:`target_{id} \frac{\;\;\;\;\;}{} source_{id}`
 * In terms of a directed graph is like having four edges:
 
   * :math:`source_i \leftrightarrow target_i`
@@ -217,6 +258,13 @@ For the following data:
 .. literalinclude:: concepts.queries
    :start-after: -- g2
    :end-before: -- g3
+
+Edges not part of the graph:
+
+* :math:`2` (:math:`1  \frac{\;\;\;\;\;}{} 3`)
+* :math:`3` (:math:`3  \frac{\;\;\;\;\;}{} 2`)
+
+The data is representing the following graph:
 
 .. graphviz::
 
@@ -231,32 +279,38 @@ Graphs without geometries
 -------------------------------------------------------------------------------
 
 Personal relationships, genealogy, file dependency problems can be solved
-using pgRouting. Those problems, normally,  do not come with gemetries asociated
-with the graph data.
+using pgRouting. Those problems, normally,  do not come with geometries associated
+with the graph.
+
+.. contents::
+    :local:
 
 Wiki example
 ...............................................................................
 
-Solve the example problem taken from wikipedia (`see top
-right graph <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`__) which:
+Solve the example problem taken from `wikipedia
+<https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`__):
 
-* Problem find the shortest path from :math:`1` to :math:`5`.
+.. figure:: images/Dijkstra_Animation.gif
+
+Where:
+
+* Problem is to find the shortest path from :math:`1` to :math:`5`.
 * Is an undirected graph.
 * Although visually looks like to have geometries, the drawing is not to scale.
 
-  * No geometries asociated to the vertices or edges
+  * No geometries associated to the vertices or edges
 
-* Has 6 vertices :math`\{1,2,3,4,5,6\}'
+* Has 6 vertices :math:`\{1,2,3,4,5,6\}`
 * Has 9 edges:
 
-:math:`\begin{split} \begin{align}
-E = & \{(1,2,7), (1,3,9), (1,6,14), \\
-& (2,3,10), (2,4,13), \\
-& (3,4,11), (3,6,2), \\
-& (4,5,6), \\
-& (5,6,9) \}
-\end{align} \end{split}`
-
+  :math:`\begin{split} \begin{align}
+  E = & \{(1,2,7), (1,3,9), (1,6,14), \\
+  & (2,3,10), (2,4,13), \\
+  & (3,4,11), (3,6,2), \\
+  & (4,5,6), \\
+  & (5,6,9) \}
+  \end{align} \end{split}`
 
 * The graph can be represented in many ways for example:
 
@@ -279,7 +333,7 @@ E = & \{(1,2,7), (1,3,9), (1,6,14), \\
 
 
 Prepare the database
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Create a database for the example, access the database and install pgRouting: ::
 
@@ -288,7 +342,7 @@ Create a database for the example, access the database and install pgRouting: ::
    wiki =# CREATE EXTENSION pgRouting CASCADE;
 
 Create a table
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The basic elements needed to perform basic routing on an undirected graph are:
 
@@ -318,19 +372,23 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
+.. no_geometry_start
+
+Using this table design for this example:
+
 .. literalinclude:: concepts.queries
    :start-after: -- q1
    :end-before: -- q2
 
 Insert the data
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: concepts.queries
    :start-after: -- q2
    :end-before: -- q3
 
 Find the shortest path
-...............................................................................
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 To solve this example :doc:`pgr_dijkstra` is used:
 
@@ -358,19 +416,22 @@ To go from :math:`1` to :math:`5` the path goes thru the following vertices:
     4 -- 5 [label="  (6)"];
    }
 
-Create a topology
-...............................................................................
+Vertex information
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-For more complex functions a complete topology might be needed.
-
-To create the vertices table, use :doc:`pgr_extractVertices`
+To obtain the vertices information, use :doc:`pgr_extractVertices`
 
 .. literalinclude:: concepts.queries
    :start-after: -- q4
    :end-before: -- q5
 
+.. no_geometry_end
+
 Graphs with geometries
 -------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 Create a routing Database
 ...............................................................................
@@ -385,7 +446,7 @@ application in that database.
 .. parsed-literal::
 
 	createdb sampledata
-	psql sampledata -c "CREATE EXTENSION postgis CASCADE"
+	psql sampledata -c "CREATE EXTENSION pgrouting CASCADE"
 
 Load Data
 ...............................................................................
@@ -404,13 +465,13 @@ There are various open source tools that can help, like:
 
 :shp2pgsql: - postgresql shapefile loader
 :ogr2ogr: - vector data conversion utility
-:osm2pgsql: - loadg OSM data into postgresql
+:osm2pgsql: - load OSM data into postgresql
 
 Please note that these tools will **not** import the data in a structure
 compatible with pgRouting and when this happens the topology needs to be
-adajusted.
+adjusted.
 
-* Breakup a segments on each segment-segment instersection
+* Breakup a segments on each segment-segment intersection
 * When missing, add columns and assign values to ``source``, ``target``,
   ``cost``, ``reverse_cost``.
 * Connect a disconnected graph.
@@ -440,8 +501,8 @@ The use of indexes on the database design in general:
 * Have the geometries indexed.
 * Have the identifiers columns indexed.
 
-Please consult the `PostgreSQL <https://www.postgresql.org/docs/>`__ documentation
-and the `PostGIS <https://postgis.net/>`__ documentation.
+Please consult the `PostgreSQL <https://www.postgresql.org/docs/>`__
+documentation and the `PostGIS <https://postgis.net/>`__ documentation.
 
 
 Build a routing topology
@@ -451,7 +512,7 @@ The basic information to use the majority of the pgRouting functions ``id,
 source, target, cost, [reverse_cost]`` is what in pgRouting is called the
 routing topology.
 
-``reverse_cost`` is optional but strongly recomended to have in order to reduce
+``reverse_cost`` is optional but strongly recommended to have in order to reduce
 the size of the database due to the size of the geometry columns.
 Having said that, in this documentation ``reverse_cost`` is used in this
 documentation.
@@ -465,27 +526,31 @@ Likewise, ``cost`` and ``reverse_cost`` need to have the value of traversing the
 edge in both directions.
 
 If the columns do not exist they need to be added to the table in question. (see
-`ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable.html>`__
+`ALTER TABLE <https://www.postgresql.org/docs/current/sql-altertable.html>`__)
 
 The function :doc:`pgr_extractVertices` is used to create a vertices table
 based on the edge identifier and the geometry of the edge of the graph.
 
-Finnaly using the data stored on the vertices tables the ``source`` and
+Finally using the data stored on the vertices tables the ``source`` and
 ``target`` are filled up.
 
-See :doc:`sampledata` for an example for building the topology.
+See :doc:`sampledata` for an example for building a topology.
 
 Data coming from OSM and using `osm2pgrouting
 <https://github.com/pgRouting/osm2pgrouting>`__ as an import tool, comes with
 the routing topology. See an example of using ``osm2pgrouting`` on the `workshop
 <https://workshop.pgrouting.org/latest/en/basic/data.html>`__.
 
-Update to length of geometry
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adjust costs
+...............................................................................
 
-The cost and reverse cost values can be in terms of the length of the geometry.
-Assume that the ``cost`` and ``reverse_cost`` columns in the sample data
-represent:
+For this example the ``cost`` and ``reverse_cost`` values are going to be the
+double of the length of the geometry.
+
+Update costs to length of geometry
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Suppose that ``cost`` and ``reverse_cost`` columns in the sample data represent:
 
 * :math:`1` when the edge exists in the graph
 * :math:`-1` when the edge does not exist in the graph
@@ -496,7 +561,7 @@ Using that information updating to the length of the geometries:
    :start-after: -- topo1
    :end-before: -- topo2
 
-Which gives the following results
+Which gives the following results:
 
 .. literalinclude:: concepts.queries
    :start-after: -- topo2
@@ -505,15 +570,51 @@ Which gives the following results
 Note that to be able to follow the documentation examples, everything is based
 on the original graph.
 
-So fixing to what there was before:
+Returning to the original data:
 
 .. literalinclude:: concepts.queries
    :start-after: -- topo3
    :end-before: -- topo4
 
+Update costs based on codes
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Other datasets, can have a column with values like
+
+* ``FT`` vehicle flow on the direction of the geometry
+* ``TF`` vehicle flow opposite of the direction of the geometry
+* ``B`` vehicle flow on both directions
+
+Preparing a code column for the example:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo4
+   :end-before: -- topo5
+
+Adjusting the costs based on the codes:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo5
+   :end-before: -- topo6
+
+Which gives the following results:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo6
+   :end-before: -- topo7
+
+Returning to the original data:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- topo7
+   :end-before: -- topo8
+
 
 Check the Routing Topology
-...............................................................................
+-------------------------------------------------------------------------------
+
+.. contents::
+    :local:
 
 There are lots of possible problems in a graph.
 
@@ -522,12 +623,12 @@ There are lots of possible problems in a graph.
 * The graph is disconnected.
 * There are unwanted intersections.
 * The graph is too large and needs to be contracted.
-* A subgraph is needed for the application.
+* A sub graph is needed for the application.
 * and many other problems that the pgRouting user, that is the application
   developer might encounter.
 
 Crossing edges
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...............................................................................
 
 .. cross_edges_start
 
@@ -545,8 +646,8 @@ tunnel or bride crossing over another road.
 It might be incorrect, for example:
 
 1. When it is actually an intersection of roads, where vehicles can make turns.
-2. When in terms of electrical lines, the electrical line is able to swith roads
-   even on a tunnel or bridge.
+2. When in terms of electrical lines, the electrical line is able to switch
+   roads even on a tunnel or bridge.
 
 When it is incorrect, it needs fixing:
 
@@ -565,7 +666,7 @@ When it is incorrect, it needs fixing:
      pedestrians.
    * The data needs a local fix for the specific application.
 
-Once analized one by one the crossings, for the ones that need a local fix,
+Once analyzed one by one the crossings, for the ones that need a local fix,
 the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__.
 
 .. literalinclude:: concepts.queries
@@ -590,7 +691,7 @@ For pgRouting calculations
 * **factor** based on the position of the intersection of the edges can be used
   to adjust the ``cost`` and ``reverse_cost`` columns.
 * Capacity information, used on the :doc:`flow-family` functions does not need
-  to change when spliting edges.
+  to change when splitting edges.
 
 .. literalinclude:: concepts.queries
    :start-after: -- cross3
@@ -599,7 +700,7 @@ For pgRouting calculations
 Adding new vertices
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-After adding all the split edges requiered by the application, the newly created
+After adding all the split edges required by the application, the newly created
 vertices need to be added to the vertices table.
 
 .. literalinclude:: concepts.queries
@@ -646,33 +747,8 @@ There are no crossing edges on the graph.
 
 .. cross_edges_end
 
-Dead ends and disconnected graphs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To get the dead ends:
-
-.. literalinclude:: concepts.queries
-   :start-after: -- connect1
-   :end-before: -- connect2
-
-
-That information is correct, for example, when the dead end is on the limit of
-the imported graph.
-
-Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not.
-
-Is that correct?
-
-* Is there such a small curb:
-
-  * That does not allow a vehicle to use that visual intersection?
-  * Is the applicaction for pedestrians and therefore the pedestrican can easily
-    walk on the small curb?
-  * Is the application for the electicicity and the electrical lines than can
-    easily be extended on top of the small curb?
-
-* Is there a big cliff and from eagles view look like the dead end is close to
-  the segment?
+Disconnected graphs
+...............................................................................
 
 .. connecting_graph_start
 
@@ -715,7 +791,7 @@ Save the edges connection information
 Get the closest vertex
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Using :doc:`pgr_findCloseEdges` the closest vertext to component :math:`1` is
+Using :doc:`pgr_findCloseEdges` the closest vertex to component :math:`1` is
 vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:`14`.
 
 .. literalinclude:: concepts.queries
@@ -734,7 +810,7 @@ There are three basic ways to connect the components
 * From the vertex to the ending point of the edge
 * From the vertex to the closest vertex on the edge
 
-  * This solution requiers the edge to be split.
+  * This solution requires the edge to be split.
 
 The following query shows the three ways to connect the components:
 
@@ -745,7 +821,7 @@ The following query shows the three ways to connect the components:
 Checking components
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Ignoring the edge that requieres further work. The graph is now fully connected
+Ignoring the edge that requires further work. The graph is now fully connected
 as there is only one component.
 
 .. literalinclude:: concepts.queries
@@ -754,55 +830,133 @@ as there is only one component.
 
 .. connecting_graph_end
 
-.. TODO checked up to here
-
-Compute a Path
+Contraction of a graph
 ...............................................................................
 
-Once you have all the preparation work done above, computing a route is fairly
-easy.
-We have a lot of different algorithms that can work with your prepared road
-network.
-The general form of a route query using Dijkstra algorithm is:
+The graph can be reduced in size using :doc:`contraction-family`
 
-.. parsed-literal::
+When to contract will depend on the size of the graph, processing times,
+correctness of the data, on the final application, or any other factor not
+mentioned.
 
-    select pgr_dijkstra('SELECT * FROM myroads', <start>, <end>)
+A fairly good method of finding out if contraction can be useful is because of
+the number of dead ends and/or the number of linear edges.
 
+A complete method on how to contract and how to use the contracted graph is
+described on :doc:`contraction-family`
 
-This algorithm only requires *id*, *source*, *target* and *cost* as the minimal
-attributes, that by default will be considered to be columns in your roads
-table.
-If the column names in your roads table do not match exactly the names of these
-attributes, you can use aliases.
-For example, if you imported OSM data using **osm2pgrouting**, your id column's
-name would be *gid* and your roads table would be *ways*, so you would query a
-route from node id 1 to node id 2 by typing:
+.. degree_from_table_start
 
-.. parsed-literal::
+Dead ends
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    select pgr_dijkstra('SELECT gid AS id, source, target, cost FROM ways', 1, 2)
+To get the dead ends:
 
-As you can see this is fairly straight forward and it also allows for great
-flexibility, both in terms of database structure and in defining cost functions.
-You can test the previous query using *length_m AS cost* to compute the shortest
-path in meters or *cost_s / 60 AS cost* to compute the fastest path in minutes.
+.. literalinclude:: concepts.queries
+   :start-after: -- contract1
+   :end-before: -- contract2
 
-You can look and the specific algorithms for the details of the signatures and
-how to use them.
-These results have information like edge id and/or the node id along with the
-cost or geometry for the step in the path from *start* to *end*.
-Using the ids you can join these result back to your edge table to get more
-information about each step in the path.
+That information is correct, for example, when the dead end is on the limit of
+the imported graph.
 
-* :doc:`pgr_dijkstra`
+Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not.
 
-Group of Functions
+Is that correct?
+
+* Is there such a small curb:
+
+  * That does not allow a vehicle to use that visual intersection?
+  * Is the application for pedestrians and therefore the pedestrian can easily
+    walk on the small curb?
+  * Is the application for the electricity and the electrical lines than can
+    easily be extended on top of the small curb?
+
+* Is there a big cliff and from eagles view look like the dead end is close to
+  the segment?
+
+When there are many dead ends, to speed up, the :doc:`contraction-family`
+functions can be used to divide the problem.
+
+Linear edges
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To get the linear edges:
+
+.. literalinclude:: concepts.queries
+   :start-after: -- contract2
+   :end-before: -- contract3
+
+This information is correct, for example, when the application is taking into
+account speed bumps, stop signals.
+
+When there are many linear edges, to speed up, the :doc:`contraction-family`
+functions can be used to divide the problem.
+
+.. degree_from_table_end
+
+Function's structure
 -------------------------------------------------------------------------------
 
-A function might have different overloads.
-Across this documentation, to indicate which overload we use the following
-terms:
+Once the graph preparation work has been done above, it is time to use a
+
+The general form of a pgRouting function call is:
+
+.. parsed-literal::
+
+    pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)
+
+Where:
+
+* `Inner queries`_: Are compulsory parameters that are ``TEXT`` strings
+  containing SQL queries.
+* **parameters**: Additional compulsory parameters needed by the function.
+* ``Optional parameters``: Are non compulsory **named** parameters that have a
+  default value when omitted.
+
+The compulsory parameters are positional parameters, the optional parameters are
+named parameters.
+
+For example, for this :doc:`pgr_dijkstra` signature:
+
+.. parsed-literal::
+
+   pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, ``directed``])
+
+* `Edges SQL`_:
+
+  * Is the first parameter.
+  * It is compulsory.
+  * It is an inner query.
+  * It has no name, so **Edges SQL** gives an idea of what kind of inner query
+    needs to be used
+
+* **start vid**:
+
+  * Is the second parameter.
+  * It is compulsory.
+  * It has no name, so **start vid** gives an idea of what the second
+    parameter's value should contain.
+
+* **end vid**
+
+  * Is the third parameter.
+  * It is compulsory.
+  * It has no name, so **end vid** gives an idea of what the third
+    parameter's value should contain
+
+* ``directed``
+
+  * Is the fourth parameter.
+  * It is optional.
+  * It has a name.
+
+The full description of the parameters are found on the `Parameters`_ section of
+each function.
+
+Function's overloads
+-------------------------------------------------------------------------------
+
+A function might have different overloads. The most common are called:
 
 * `One to One`_
 * `One to Many`_
@@ -810,8 +964,13 @@ terms:
 * `Many to Many`_
 * `Combinations`_
 
-Depending on the overload are the parameters used, keeping consistency across
-all functions.
+Depending on the overload the parameters types change.
+
+* **One**: **ANY-INTEGER**
+* **Many**: ``ARRAY`` [ **ANY-INTEGER** ]
+
+Depending of the function the overloads may vary. But the concept of parameter
+type change remains the same.
 
 One to One
 ...............................................................................
@@ -854,6 +1013,7 @@ When routing from:
 * to **many** different ending vertices
 * Every tuple specifies a pair of a start vertex and an end vertex
 * Users can define the combinations as desired.
+* Needs a `Combinations SQL`_
 
 Inner Queries
 -------------------------------------------------------------------------------
@@ -879,7 +1039,7 @@ Edges SQL
 ...............................................................................
 
 General
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. rubric:: Edges SQL for
 
@@ -889,7 +1049,7 @@ General
 * :doc:`components-family`
 * :doc:`kruskal-family`
 * :doc:`prim-family`
-* Some uncategorized functions
+* Some uncategorised functions
 
 .. basic_edges_sql_start
 
@@ -934,7 +1094,7 @@ Where:
 .. basic_edges_sql_end
 
 General without ``id``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. rubric:: Edges SQL for
 
@@ -979,7 +1139,7 @@ Where:
 .. no_id_edges_sql_end
 
 General with (X,Y)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. rubric:: Edges SQL for
 
@@ -1048,7 +1208,7 @@ Where:
 .. xy_edges_sql_end
 
 Flow
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. rubric:: Edges SQL for :doc:`flow-family`
 
@@ -1527,7 +1687,7 @@ Multiple paths
 ...............................................................................
 
 Selective for multiple paths.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 The columns depend on the function call.
 
@@ -1591,7 +1751,7 @@ agg_cost)``
 .. return_path_end
 
 Non selective for multiple paths
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Regardless of the call, al the columns are returned.
 
@@ -1735,341 +1895,23 @@ Returns SET OF ``(edge, cost)``
 
 .. r-edge-cost-end
 
-Advanced Topics
--------------------------------------------------------------------------------
-
-.. TODO this will change, nothing is been generated automatically
-
-.. contents::
-    :local:
-
-.. _topology:
-
-Routing Topology
-...............................................................................
-
-.. rubric:: Overview
-
-Typically when GIS files are loaded into the data database for use with
-pgRouting they do not have topology information associated with them. To create
-a useful topology the data needs to be "noded". This means that where two or
-more roads form an intersection there it needs to be a node at the intersection
-and all the road segments need to be broken at the intersection, assuming that
-you can navigate from any of these segments to any other segment via that
-intersection.
-
-You can use the :ref:`graph analysis functions <analytics>` to help you see
-where you might have topology problems in your data. If you need to node your
-data, we also have a function :doc:`pgr_nodeNetwork() <pgr_nodeNetwork>` that
-might work for you. This function splits ALL crossing segments and nodes them.
-There are some cases where this might NOT be the right thing to do.
-
-For example, when you have an overpass and underpass intersection, you do not
-want these noded, but pgr_nodeNetwork does not know that is the case and will
-node them which is not good because then the router will be able to turn off the
-overpass onto the underpass like it was a flat 2D intersection. To deal with
-this problem some data sets use z-levels at these types of intersections and
-other data might not node these intersection which would be ok.
-
-For those cases where topology needs to be added the following functions may be
-useful. One way to prep the data for pgRouting is to add the following columns
-to your table and then populate them as appropriate. This example makes a lot of
-assumption like that you original data tables already has certain columns in it
-like ``one_way``, ``fcc``, and possibly others and that they contain specific
-data values. This is only to give you an idea of what you can do with your data.
-
-.. parsed-literal::
-
-    ALTER TABLE edge_table
-        ADD COLUMN source integer,
-        ADD COLUMN target integer,
-        ADD COLUMN cost_len double precision,
-        ADD COLUMN cost_time double precision,
-        ADD COLUMN rcost_len double precision,
-        ADD COLUMN rcost_time double precision,
-        ADD COLUMN x1 double precision,
-        ADD COLUMN y1 double precision,
-        ADD COLUMN x2 double precision,
-        ADD COLUMN y2 double precision,
-        ADD COLUMN to_cost double precision,
-        ADD COLUMN rule text,
-        ADD COLUMN isolated integer;
-
-    SELECT pgr_createTopology('edge_table', 0.000001, 'the_geom', 'id');
-
-The function :doc:`pgr_createTopology <pgr_createTopology>` will create the
-``vertices_tmp`` table and populate the ``source`` and ``target`` columns. The
-following example populated the remaining columns. In this example, the ``fcc``
-column contains feature class code and the ``CASE`` statements converts it to an
-average speed.
-
-.. parsed-literal::
-
-    UPDATE edge_table SET x1 = st_x(st_startpoint(the_geom)),
-                          y1 = st_y(st_startpoint(the_geom)),
-                          x2 = st_x(st_endpoint(the_geom)),
-                          y2 = st_y(st_endpoint(the_geom)),
-      cost_len  = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]'),
-      rcost_len = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]'),
-      len_km = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]')/1000.0,
-      len_miles = st_length_spheroid(the_geom, 'SPHEROID["WGS84",6378137,298.25728]')
-                  / 1000.0 * 0.6213712,
-      speed_mph = CASE WHEN fcc='A10' THEN 65
-                       WHEN fcc='A15' THEN 65
-                       WHEN fcc='A20' THEN 55
-                       WHEN fcc='A25' THEN 55
-                       WHEN fcc='A30' THEN 45
-                       WHEN fcc='A35' THEN 45
-                       WHEN fcc='A40' THEN 35
-                       WHEN fcc='A45' THEN 35
-                       WHEN fcc='A50' THEN 25
-                       WHEN fcc='A60' THEN 25
-                       WHEN fcc='A61' THEN 25
-                       WHEN fcc='A62' THEN 25
-                       WHEN fcc='A64' THEN 25
-                       WHEN fcc='A70' THEN 15
-                       WHEN fcc='A69' THEN 10
-                       ELSE null END,
-      speed_kmh = CASE WHEN fcc='A10' THEN 104
-                       WHEN fcc='A15' THEN 104
-                       WHEN fcc='A20' THEN 88
-                       WHEN fcc='A25' THEN 88
-                       WHEN fcc='A30' THEN 72
-                       WHEN fcc='A35' THEN 72
-                       WHEN fcc='A40' THEN 56
-                       WHEN fcc='A45' THEN 56
-                       WHEN fcc='A50' THEN 40
-                       WHEN fcc='A60' THEN 50
-                       WHEN fcc='A61' THEN 40
-                       WHEN fcc='A62' THEN 40
-                       WHEN fcc='A64' THEN 40
-                       WHEN fcc='A70' THEN 25
-                       WHEN fcc='A69' THEN 15
-                       ELSE null END;
-
-    -- UPDATE the cost information based on oneway streets
-
-    UPDATE edge_table SET
-        cost_time = CASE
-            WHEN one_way='TF' THEN 10000.0
-            ELSE cost_len/1000.0/speed_kmh::numeric*3600.0
-            END,
-        rcost_time = CASE
-            WHEN one_way='FT' THEN 10000.0
-            ELSE cost_len/1000.0/speed_kmh::numeric*3600.0
-            END;
-
-    -- clean up the database because we have updated a lot of records
-
-    VACUUM ANALYZE VERBOSE edge_table;
-
-
-Now your database should be ready to use any (most?) of the pgRouting algorithms.
-
-
-.. _analytics:
-
-Graph Analytics
-...............................................................................
-
-
-.. rubric:: Overview
-
-It is common to find problems with graphs that have not been constructed fully
-noded or in graphs with z-levels at intersection that have been entered
-incorrectly. An other problem is one way streets that have been entered in the
-wrong direction. We can not detect errors with respect to "ground" truth, but we
-can look for inconsistencies and some anomalies in a graph and report them for
-additional inspections.
-
-We do not current have any visualization tools for these problems, but I have
-used mapserver to render the graph and highlight potential problem areas.
-Someone familiar with graphviz might contribute tools for generating images with
-that.
-
-
-Analyze a Graph
-...............................................................................
-
-With :doc:`pgr_analyzeGraph` the graph can be checked for errors. For example
-for table "mytab" that has "mytab_vertices_pgr" as the vertices table:
-
-.. parsed-literal::
-
-    SELECT pgr_analyzeGraph('mytab', 0.000002);
-    NOTICE:  Performing checks, pelase wait...
-    NOTICE:  Analyzing for dead ends. Please wait...
-    NOTICE:  Analyzing for gaps. Please wait...
-    NOTICE:  Analyzing for isolated edges. Please wait...
-    NOTICE:  Analyzing for ring geometries. Please wait...
-    NOTICE:  Analyzing for intersections. Please wait...
-    NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-    NOTICE:                    Isolated segments: 158
-    NOTICE:                            Dead ends: 20028
-    NOTICE:  Potential gaps found near dead ends: 527
-    NOTICE:               Intersections detected: 2560
-    NOTICE:                      Ring geometries: 0
-    pgr_analyzeGraph
-    ----------
-       OK
-    (1 row)
-
-
-In the vertices table "mytab_vertices_pgr":
-
-- Deadends are identified by ``cnt=1``
-- Potencial gap problems are identified with ``chk=1``.
-
-.. parsed-literal::
-
-    SELECT count(*) as deadends  FROM mytab_vertices_pgr WHERE cnt = 1;
-    deadends
-    ----------
-        20028
-     (1 row)
-
-    SELECT count(*) as gaps  FROM mytab_vertices_pgr WHERE chk = 1;
-     gaps
-     -----
-       527
-     (1 row)
-
-
-
-For isolated road segments, for example, a segment where both ends are deadends.
-you can find these with the following query:
-
-.. parsed-literal::
-
-    SELECT *
-        FROM mytab a, mytab_vertices_pgr b, mytab_vertices_pgr c
-        WHERE a.source=b.id AND b.cnt=1 AND a.target=c.id AND c.cnt=1;
-
-
-If you want to visualize these on a graphic image, then you can use something
-like mapserver to render the edges and the vertices and style based on ``cnt``
-or if they are isolated, etc. You can also do this with a tool like graphviz, or
-geoserver or other similar tools.
-
-
-Analyze One Way Streets
-...............................................................................
-
-:doc:`pgr_analyzeOneWay` analyzes one way streets in a graph and identifies any
-flipped segments. Basically if you count the edges coming into a node and the
-edges exiting a node the number has to be greater than one.
-
-This query will add two columns to the vertices_tmp table ``ein int`` and ``eout
-int`` and populate it with the appropriate counts. After running this on a graph
-you can identify nodes with potential problems with the following query.
-
-
-The rules are defined as an array of text strings that if match the ``col``
-value would be counted as true for the source or target in or out condition.
-
-
-Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Lets assume we have a table "st" of edges and a column "one_way" that might have
-values like:
-
-* 'FT'    - oneway from the source to the target node.
-* 'TF'    - oneway from the target to the source node.
-* 'B'     - two way street.
-* ''      - empty field, assume twoway.
-* <NULL>  - NULL field, use two_way_if_null flag.
-
-Then we could form the following query to analyze the oneway streets for errors.
-
-.. parsed-literal::
-
-    SELECT pgr_analyzeOneway('mytab',
-                ARRAY['', 'B', 'TF'],
-                ARRAY['', 'B', 'FT'],
-                ARRAY['', 'B', 'FT'],
-                ARRAY['', 'B', 'TF'],
-                );
-
-    -- now we can see the problem nodes
-    SELECT * FROM mytab_vertices_pgr WHERE ein=0 OR eout=0;
-
-    -- and the problem edges connected to those nodes
-    SELECT gid FROM mytab a, mytab_vertices_pgr b WHERE a.source=b.id AND ein=0 OR eout=0
-    UNION
-    SELECT gid FROM mytab a, mytab_vertices_pgr b WHERE a.target=b.id AND ein=0 OR eout=0;
-
-Typically these problems are generated by a break in the network, the one way
-direction set wrong, maybe an error related to z-levels or a network that is not
-properly noded.
-
-The above tools do not detect all network issues, but they will identify some
-common problems. There are other problems that are hard to detect because they
-are more global in nature like multiple disconnected networks. Think of an
-island with a road network that is not connected to the mainland network because
-the bridge or ferry routes are missing.
-
-
-
-
-.. _performance:
-
 Performance Tips
 -------------------------------------------------------------------------------
 
 .. contents::
     :local:
 
-
 For the Routing functions
 ...............................................................................
 
-To get faster results bound your queries to the area of interest of routing to
-have, for example, no more than one million rows.
+To get faster results bound the queries to an area of interest of routing.
 
-Use an inner query SQL that does not include some edges in the routing function
+In this example Use an inner query SQL that does not include some edges in the
+routing function and is within the area of the results.
 
-.. parsed-literal::
-
-	SELECT id, source, target from edge_table WHERE
-        	id < 17 and
-        	the_geom  && (select st_buffer(the_geom,1) as myarea FROM  edge_table where id = 5)
-
-Integrating the inner query to the pgRouting function:
-
-.. parsed-literal::
-
-    SELECT * FROM pgr_dijkstra(
-	    'SELECT id, source, target from edge_table WHERE
-        	id < 17 and
-        	the_geom  && (select st_buffer(the_geom,1) as myarea FROM  edge_table where id = 5)',
-        1, 2)
-
-
-
-
-For the topology functions:
-...............................................................................
-
-When "you know" that you are going to remove a set of edges from the edges
-table, and without those edges you are going to use a routing function you can
-do the following:
-
-Analize the new topology based on the actual topology:
-
-.. parsed-literal::
-
-	pgr_analyzegraph('edge_table',rows_where:='id < 17');
-
-Or create a new topology if the change is permanent:
-
-.. parsed-literal::
-
-	pgr_createTopology('edge_table',rows_where:='id < 17');
-	pgr_analyzegraph('edge_table',rows_where:='id < 17');
-
-
-.. _how_contribute:
+.. literalinclude:: concepts.queries
+   :start-after: -- performance1
+   :end-before: -- performance2
 
 How to contribute
 -------------------------------------------------------------------------------

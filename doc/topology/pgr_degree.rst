@@ -169,6 +169,12 @@ development needs.
    :start-after: -- q3
    :end-before: -- q4
 
+Degree from an existing table
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: degree_from_table_start
+   :end-before: degree_from_table_end
 
 
 See Also
