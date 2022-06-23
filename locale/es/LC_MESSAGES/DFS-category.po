@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "dfs-category/es/>\n"
 "Language: es\n"
@@ -93,7 +93,7 @@ msgstr ""
 
 #: ../../build/doc/DFS-category.rst:38
 msgid "In general:"
-msgstr ""
+msgstr "En general:"
 
 #: ../../build/doc/DFS-category.rst:42
 msgid "It's implementation is only on **undirected** graph."
