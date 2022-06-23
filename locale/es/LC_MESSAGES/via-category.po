@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-23 16:16+0000\n"
+"PO-Revision-Date: 2022-06-23 18:53+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "via-category/es/>\n"
@@ -25,14 +25,17 @@ msgid ""
 "category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/via-category."
 "html>`__)"
 msgstr ""
+"**Versiones Soportadas:** `Última <https://docs.pgrouting.org/latest/en/via-"
+"category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/via-category."
+"html>`__)"
 
 #: ../../build/doc/via-category.rst:17
 msgid "Via - Category"
-msgstr ""
+msgstr "Via- Categoria"
 
 #: ../../build/doc/via-category.rst:20
 msgid "proposed"
-msgstr ""
+msgstr "propuesta"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -73,57 +76,61 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 #: ../../build/doc/via-category.rst:27 ../../build/doc/via-category.rst:53
 #: ../../build/doc/via-category.rst:253
 msgid ":doc:`pgr_dijkstraVia`"
-msgstr ""
+msgstr ":doc:`pgr_dijkstraVia`"
 
 #: ../../build/doc/via-category.rst:28 ../../build/doc/via-category.rst:85
 #: ../../build/doc/via-category.rst:183 ../../build/doc/via-category.rst:255
 msgid ":doc:`pgr_withPointsVia`"
-msgstr ""
+msgstr ":doc:`pgr_withPointsVia`"
 
 #: ../../build/doc/via-category.rst:29 ../../build/doc/via-category.rst:54
 #: ../../build/doc/via-category.rst:172 ../../build/doc/via-category.rst:254
 msgid ":doc:`pgr_trspVia`"
-msgstr ""
+msgstr ":doc:`pgr_trspVia`"
 
 #: ../../build/doc/via-category.rst:30 ../../build/doc/via-category.rst:86
 msgid ":doc:`pgr_trspVia_withPoints`"
-msgstr ""
+msgstr ":doc:`pgr_trspVia_withPoints`"
 
 #: ../../build/doc/via-category.rst:35
 msgid "General Information"
-msgstr ""
+msgstr "Información general"
 
 #: ../../build/doc/via-category.rst:37
 msgid "This category intends to solve the general problem:"
-msgstr ""
+msgstr "La intención de esta categoría es resolver el problema general:"
 
 #: ../../build/doc/via-category.rst:39
 msgid ""
 "Given a graph and a list of vertices, find the shortest path between :math:"
 "`vertex_i` and :math:`vertex_{i+1}` for all vertices"
 msgstr ""
+"Dado un grafo y una lista de vértices, encuentra el camino mas corto entre "
+":math:`vertex_i` and :math:`vertex_{i+1}` para todos los vértices."
 
 #: ../../build/doc/via-category.rst:42
 msgid ""
 "In other words, find a continuos route that visits all the vertices in the "
 "order given."
 msgstr ""
+"En otras palabras, encuentre la ruta continua que visite todos los vértices "
+"en el orden dado."
 
 #: ../../build/doc/via-category.rst:0
 msgid "path"
-msgstr ""
+msgstr "camino"
 
 #: ../../build/doc/via-category.rst:45
 msgid "represents a section of a **route**."
-msgstr ""
+msgstr "representa una sección de una **ruta**."
 
 #: ../../build/doc/via-category.rst:0
 msgid "route"
-msgstr ""
+msgstr "ruta"
 
 #: ../../build/doc/via-category.rst:46
 msgid "is a sequence of **paths**"
-msgstr ""
+msgstr "es una secuencia de **caminos**"
 
 #: ../../build/doc/via-category.rst:49
 msgid "Parameters"
@@ -131,7 +138,7 @@ msgstr "Parámetros"
 
 #: ../../build/doc/via-category.rst:51 ../../build/doc/via-category.rst:83
 msgid "**Used on:**"
-msgstr ""
+msgstr "**Usado en:**"
 
 #: ../../build/doc/via-category.rst:63 ../../build/doc/via-category.rst:95
 #: ../../build/doc/via-category.rst:137
@@ -172,11 +179,11 @@ msgstr "``TEXT``"
 #: ../../build/doc/via-category.rst:70 ../../build/doc/via-category.rst:102
 #: ../../build/doc/via-category.rst:106
 msgid "SQL query as described."
-msgstr ""
+msgstr "consulta SQL como descrito."
 
 #: ../../build/doc/via-category.rst:71 ../../build/doc/via-category.rst:107
 msgid "**via vertices**"
-msgstr ""
+msgstr "**vía vértices**"
 
 #: ../../build/doc/via-category.rst:72 ../../build/doc/via-category.rst:108
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
@@ -198,10 +205,8 @@ msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
 #: ../../build/doc/via-category.rst:78 ../../build/doc/via-category.rst:117
-#, fuzzy
-#| msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT, INTEGER, BIGINT``"
 
 #: ../../build/doc/via-category.rst:0 ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
@@ -216,33 +221,35 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/via-category.rst:103
 msgid "`Points SQL`_"
-msgstr ""
+msgstr "`Points SQL`_"
 
 #: ../../build/doc/via-category.rst:112
 msgid "When positive it is considered a vertex identifier"
-msgstr ""
+msgstr "Cuando sea positivo se considera como un identificador de vértice"
 
 #: ../../build/doc/via-category.rst:113
 msgid "When negative it is considered a point identifier"
-msgstr ""
+msgstr "Cuando sea negativo se considera como un identificador de punto"
 
 #: ../../build/doc/via-category.rst:122
 msgid ""
 "Besides the compulsory parameters each function has, there are optional "
 "parameters that exist due to the kind of function."
 msgstr ""
+"Ademas de los parámetros obligatorios que tiene cada función, hay parámetros "
+"opcionales que existen dado el tipo de función."
 
 #: ../../build/doc/via-category.rst:126
 msgid "Via optional parameters"
-msgstr ""
+msgstr "Vía parámetros opcional"
 
 #: ../../build/doc/via-category.rst:129 ../../build/doc/via-category.rst:162
 msgid "Used on all Via functions"
-msgstr ""
+msgstr "Usado en todas las funciones Via"
 
 #: ../../build/doc/via-category.rst:141
 msgid "``strict``"
-msgstr ""
+msgstr "``strict``"
 
 #: ../../build/doc/via-category.rst:142 ../../build/doc/via-category.rst:147
 msgid "``BOOLEAN``"
@@ -254,7 +261,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:144
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
-msgstr ""
+msgstr "Cuando ``true`` si un camino le faltan paradas y regresa **EMPTY SET**"
 
 #: ../../build/doc/via-category.rst:145
 msgid "When ``false`` ignores missing paths returning all paths found"
@@ -262,7 +269,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:146
 msgid "``U_turn_on_edge``"
-msgstr ""
+msgstr "``U_turn_on_edge``"
 
 #: ../../build/doc/via-category.rst:148
 msgid "``true``"
@@ -271,6 +278,7 @@ msgstr "``true``"
 #: ../../build/doc/via-category.rst:149
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
+"Cuando ``true``saliendo desde un vértice visitado no intentara esquivarlo"
 
 #: ../../build/doc/via-category.rst:154
 msgid "Inner Queries"
@@ -279,6 +287,7 @@ msgstr "Consultas Internas"
 #: ../../build/doc/via-category.rst:156
 msgid "Depending on the function one or more inner queries are needed."
 msgstr ""
+"Dependiendo de la función, serán necesarias una o mas consultas internas."
 
 #: ../../build/doc/via-category.rst:159
 msgid "Edges SQL"
@@ -299,7 +308,7 @@ msgstr "``id``"
 #: ../../build/doc/withPoints-category.rst:13
 #: ../../build/doc/withPoints-category.rst:23
 msgid "**ANY-INTEGER**"
-msgstr "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
@@ -372,7 +381,7 @@ msgstr "Restricciones SQL"
 
 #: ../../build/doc/via-category.rst:170 ../../build/doc/via-category.rst:181
 msgid "Used on"
-msgstr ""
+msgstr "Usado en"
 
 #: ../../build/doc/TRSP-family.rst:0
 msgid "end-before"
@@ -380,34 +389,38 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:179
 msgid "Points SQL"
-msgstr ""
+msgstr "Puntos SQL"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/withPoints-category.rst:14
 msgid "**value**"
-msgstr ""
+msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
 msgid "Identifier of the point."
-msgstr ""
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid ""
 "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
 msgid "If column is present, it can not be NULL."
-msgstr ""
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo "
+"automáticamente se otorgará.."
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
@@ -419,7 +432,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 #: ../../build/doc/withPoints-category.rst:29
 msgid ""
@@ -429,7 +442,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
