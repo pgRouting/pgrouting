@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgecoloring/es/>\n"
 "Language: es\n"
@@ -288,7 +288,7 @@ msgstr "``id``"
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/coloring-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -370,7 +370,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/coloring-family.rst:3
 msgid "Returns SET OF ``(edge_id, color_id)``"
-msgstr ""
+msgstr "Devuelve SET OF ``((edge_id, color_id)``"
 
 #: ../../build/doc/coloring-family.rst:8
 msgid "``edge_id``"
@@ -386,11 +386,11 @@ msgstr "``color_id``"
 
 #: ../../build/doc/coloring-family.rst:9
 msgid "Identifier of the color of the edge."
-msgstr ""
+msgstr "Identificador del color del segmento."
 
 #: ../../build/doc/coloring-family.rst:11
 msgid "The minimum value of color is 1."
-msgstr ""
+msgstr "El valor mínimo de color es 1."
 
 #: ../../build/doc/pgr_edgeColoring.rst:125
 msgid "See Also"
@@ -405,11 +405,15 @@ msgid ""
 "`Boost: Edge Coloring Algorithm documentation <https://www.boost.org/libs/"
 "graph/doc/edge_coloring.html>`__"
 msgstr ""
+"`Boost: Algoritmo de Coloración de Segmentos <https://www.boost.org/libs/"
+"graph/doc/edge_coloring.html>`__"
 
 #: ../../build/doc/pgr_edgeColoring.rst:133
 msgid ""
 "`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
+"`Wikipedia: Coloración de grafos <https://en.wikipedia.org/wiki/"
+"Graph_coloring>`__"
 
 #: ../../build/doc/pgr_edgeColoring.rst:139
 msgid "Indices and tables"
