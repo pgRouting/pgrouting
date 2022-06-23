@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-23 18:53+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "via-category/es/>\n"
 "Language: es\n"
@@ -191,7 +191,7 @@ msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/via-category.rst:74 ../../build/doc/via-category.rst:110
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr "Arreglo ordenados de identificadores de vértices que serán visitados."
+msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/via-category.rst:76 ../../build/doc/via-category.rst:115
 #: ../../build/doc/pgRouting-concepts.rst:36
@@ -214,8 +214,6 @@ msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
 #: ../../build/doc/via-category.rst:79 ../../build/doc/via-category.rst:118
-#, fuzzy
-#| msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
@@ -257,7 +255,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/via-category.rst:143
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 #: ../../build/doc/via-category.rst:144
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
@@ -266,6 +264,8 @@ msgstr "Cuando ``true`` si un camino le faltan paradas y regresa **EMPTY SET**"
 #: ../../build/doc/via-category.rst:145
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
+"En caso de ``false``, ignora las rutas faltantes y devuelve todas las rutas "
+"encontradas"
 
 #: ../../build/doc/via-category.rst:146
 msgid "``U_turn_on_edge``"
@@ -320,7 +320,7 @@ msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
@@ -328,7 +328,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/via-category.rst:228
 #: ../../build/doc/pgRouting-concepts.rst:24
@@ -355,7 +355,7 @@ msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arsita (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
@@ -424,11 +424,11 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
-msgstr ""
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
-msgstr ""
+msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
@@ -439,6 +439,8 @@ msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto de "
+"la arista."
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
@@ -446,7 +448,7 @@ msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
@@ -469,8 +471,6 @@ msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:190
-#, fuzzy
-#| msgid "Return Columns"
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -488,7 +488,6 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/via-category.rst:205
-#, fuzzy
 msgid "``path_id``"
 msgstr "``path_id``"
 
@@ -497,7 +496,6 @@ msgid "Identifier of a path. Has value **1** for the first path."
 msgstr "Identificador del camino. Tiene valor **1** para el primer camino."
 
 #: ../../build/doc/via-category.rst:208
-#, fuzzy
 msgid "``path_seq``"
 msgstr "``path_seq``"
 
@@ -551,11 +549,11 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:226
 msgid "-1 for the last node of the path."
-msgstr "-1 para el último nodo de la ruta"
+msgstr "-1 para el último nodo de la ruta."
 
 #: ../../build/doc/via-category.rst:227
 msgid "-2 for the last node of the route."
-msgstr "-2 para el último nodo de la ruta"
+msgstr "-2 para el último nodo de la ruta."
 
 #: ../../build/doc/via-category.rst:229 ../../build/doc/via-category.rst:233
 #: ../../build/doc/via-category.rst:236
