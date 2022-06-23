@@ -15,6 +15,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -126,6 +127,12 @@
 <li><a class="reference internal" href="#removing-the-surplus-edges">Removing the surplus edges</a></li>
 <li><a class="reference internal" href="#updating-vertices-topology">Updating vertices topology</a></li>
 <li><a class="reference internal" href="#checking-for-crossing-edges">Checking for crossing edges</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#graphs-without-geometries">Graphs without geometries</a><ul>
+<li><a class="reference internal" href="#insert-the-data">Insert the data</a></li>
+<li><a class="reference internal" href="#find-the-shortest-path">Find the shortest path</a></li>
+<li><a class="reference internal" href="#vertex-information">Vertex information</a></li>
 </ul>
 </li>
 </ul>
@@ -503,6 +510,13 @@ end point</em>.</p>
 <li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id21">Checking for crossing edges</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#graphs-without-geometries" id="id22">Graphs without geometries</a></p>
+<ul>
+<li><p><a class="reference internal" href="#insert-the-data" id="id23">Insert the data</a></p></li>
+<li><p><a class="reference internal" href="#find-the-shortest-path" id="id24">Find the shortest path</a></p></li>
+<li><p><a class="reference internal" href="#vertex-information" id="id25">Vertex information</a></p></li>
+</ul>
+</li>
 </ul>
 </nav>
 <section id="dryrun-execution">
@@ -707,8 +721,8 @@ tunnel or bride crossing over another road.</p>
 <p>It might be incorrect, for example:</p>
 <ol class="arabic simple">
 <li><p>When it is actually an intersection of roads, where vehicles can make turns.</p></li>
-<li><p>When in terms of electrical lines, the electrical line is able to swith roads
-even on a tunnel or bridge.</p></li>
+<li><p>When in terms of electrical lines, the electrical line is able to switch
+roads even on a tunnel or bridge.</p></li>
 </ol>
 <p>When it is incorrect, it needs fixing:</p>
 <ol class="arabic simple">
@@ -729,7 +743,7 @@ pedestrians.</p></li>
 </ul>
 </li>
 </ol>
-<p>Once analized one by one the crossings, for the ones that need a local fix,
+<p>Once analyzed one by one the crossings, for the ones that need a local fix,
 the edges need to be <a class="reference external" href="https://postgis.net/docs/ST_Split.html">split</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_AsText</span><span class="p">((</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
@@ -762,7 +776,7 @@ copied.</p>
 <li><p><strong>factor</strong> based on the position of the intersection of the edges can be used
 to adjust the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns.</p></li>
 <li><p>Capacity information, used on the <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Family of functions</span></a> functions does not need
-to change when spliting edges.</p></li>
+to change when splitting edges.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">first_edge</span> <span class="n">AS</span> <span class="p">(</span>
@@ -813,7 +827,7 @@ to change when spliting edges.</p></li>
 </section>
 <section id="adding-new-vertices">
 <h4><a class="toc-backref" href="#id17" role="doc-backlink">Adding new vertices</a><a class="headerlink" href="#adding-new-vertices" title="Permalink to this heading">¶</a></h4>
-<p>After adding all the split edges requiered by the application, the newly created
+<p>After adding all the split edges required by the application, the newly created
 vertices need to be added to the vertices table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="p">(</span><span class="n">SELECT</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">geom</span>
@@ -876,6 +890,81 @@ view.</p>
 </div>
 </section>
 </section>
+<section id="graphs-without-geometries">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Graphs without geometries</a><a class="headerlink" href="#graphs-without-geometries" title="Permalink to this heading">¶</a></h3>
+<p>Using this table design for this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wiki</span> <span class="p">(</span>
+  <span class="nb">id</span> <span class="n">SERIAL</span><span class="p">,</span>
+  <span class="n">source</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">target</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">cost</span> <span class="n">INTEGER</span><span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<section id="insert-the-data">
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Insert the data</a><a class="headerlink" href="#insert-the-data" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>  <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">9</span>
+</pre></div>
+</div>
+</section>
+<section id="find-the-shortest-path">
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">Find the shortest path</a><a class="headerlink" href="#find-the-shortest-path" title="Permalink to this heading">¶</a></h4>
+<p>To solve this example <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> is used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">9</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>       <span class="mi">11</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>       <span class="mi">20</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>To go from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span> the path goes thru the following vertices:
+<span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
+<div class="graphviz"><img src="_images/graphviz-7095ca58fc489e099e284f23a9e49787441fc104.png" alt="graph G {
+ rankdir=&quot;LR&quot;;
+ 1 [color=&quot;red&quot;];
+ 5 [color=&quot;green&quot;];
+ 1 -- 2 [label=&quot;  (7)&quot;];
+ 5 -- 6 [label=&quot;  (9)&quot;, color=&quot;blue&quot;];
+ 1 -- 3 [label=&quot;  (9)&quot;, color=&quot;blue&quot;];
+ 1 -- 6 [label=&quot;  (14)&quot;];
+ 2 -- 3 [label=&quot;  (10)&quot;];
+ 2 -- 4 [label=&quot;  (13)&quot;];
+ 3 -- 4 [label=&quot;  (11)&quot;];
+ 3 -- 6 [label=&quot;  (2)&quot;, color=&quot;blue&quot;];
+ 4 -- 5 [label=&quot;  (6)&quot;];
+}" class="graphviz" /></div>
+</section>
+<section id="vertex-information">
+<h4><a class="toc-backref" href="#id25" role="doc-backlink">Vertex information</a><a class="headerlink" href="#vertex-information" title="Permalink to this heading">¶</a></h4>
+<p>To obtain the vertices information, use <a class="reference internal" href="#"><span class="doc">pgr_extractVertices – Proposed</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
+<span class="o">----+----------+-----------</span>
+  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>
+  <span class="mi">5</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">}</span>
+  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>
+  <span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
+  <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>  <span class="o">|</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
@@ -904,7 +993,7 @@ view.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jun 20, 2022.<br/>
+      Last updated on Jun 23, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

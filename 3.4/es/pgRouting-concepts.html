@@ -97,24 +97,31 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Conceptos de pgRouting</a><ul>
 <li><a class="reference internal" href="#graphs">Graphs</a><ul>
+<li><a class="reference internal" href="#graph-definition">Graph definition</a></li>
 <li><a class="reference internal" href="#graph-with-cost">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
 <li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#graphs-without-geometries">Graphs without geometries</a><ul>
-<li><a class="reference internal" href="#wiki-example">Wiki example</a></li>
+<li><a class="reference internal" href="#wiki-example">Wiki example</a><ul>
 <li><a class="reference internal" href="#prepare-the-database">Prepare the database</a></li>
 <li><a class="reference internal" href="#create-a-table">Create a table</a></li>
 <li><a class="reference internal" href="#insert-the-data">Insert the data</a></li>
 <li><a class="reference internal" href="#find-the-shortest-path">Find the shortest path</a></li>
-<li><a class="reference internal" href="#create-a-topology">Create a topology</a></li>
+<li><a class="reference internal" href="#vertex-information">Vertex information</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#graphs-with-geometries">Graphs with geometries</a><ul>
 <li><a class="reference internal" href="#create-a-routing-database">Crear una Base de Datos de Ruteo</a></li>
 <li><a class="reference internal" href="#load-data">Cargar Datos</a></li>
-<li><a class="reference internal" href="#build-a-routing-topology">Build a routing topology</a><ul>
-<li><a class="reference internal" href="#update-to-length-of-geometry">Update to length of geometry</a></li>
+<li><a class="reference internal" href="#build-a-routing-topology">Build a routing topology</a></li>
+<li><a class="reference internal" href="#adjust-costs">Adjust costs</a><ul>
+<li><a class="reference internal" href="#update-costs-to-length-of-geometry">Update costs to length of geometry</a></li>
+<li><a class="reference internal" href="#update-costs-based-on-codes">Update costs based on codes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#check-the-routing-topology">Compruebe la Topología de Ruteo</a><ul>
@@ -127,7 +134,7 @@
 <li><a class="reference internal" href="#checking-for-crossing-edges">Checking for crossing edges</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dead-ends-and-disconnected-graphs">Dead ends and disconnected graphs</a><ul>
+<li><a class="reference internal" href="#disconnected-graphs">Disconnected graphs</a><ul>
 <li><a class="reference internal" href="#prepare-storage-for-connection-information">Prepare storage for connection information</a></li>
 <li><a class="reference internal" href="#save-the-vertices-connection-information">Save the vertices connection information</a></li>
 <li><a class="reference internal" href="#save-the-edges-connection-information">Save the edges connection information</a></li>
@@ -136,12 +143,15 @@
 <li><a class="reference internal" href="#checking-components">Checking components</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#contraction-of-a-graph">Contraction of a graph</a><ul>
+<li><a class="reference internal" href="#dead-ends">Dead ends</a></li>
+<li><a class="reference internal" href="#linear-edges">Linear edges</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#compute-a-path">Calcular una Ruta</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#group-of-functions">Grupo de Funciones</a><ul>
+<li><a class="reference internal" href="#function-s-structure">Function’s structure</a></li>
+<li><a class="reference internal" href="#function-s-overloads">Function’s overloads</a><ul>
 <li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
 <li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
 <li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
@@ -179,19 +189,8 @@
 <li><a class="reference internal" href="#return-columns-for-spanning-tree-functions">Return columns for spanning tree functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#advanced-topics">Tópicos avanzados</a><ul>
-<li><a class="reference internal" href="#routing-topology">Topología para Ruteo</a></li>
-<li><a class="reference internal" href="#graph-analytics">Análisis de gráficas</a></li>
-<li><a class="reference internal" href="#analyze-a-graph">Analizar un gráfico</a></li>
-<li><a class="reference internal" href="#analyze-one-way-streets">Analizar las calles unidireccionales</a><ul>
-<li><a class="reference internal" href="#example">Ejemplo</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><a class="reference internal" href="#performance-tips">Consejos de Rendimiento</a><ul>
 <li><a class="reference internal" href="#for-the-routing-functions">Para las funciones de Ruteo</a></li>
-<li><a class="reference internal" href="#for-the-topology-functions">Para las funciones de topología:</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#how-to-contribute">Cómo contribuir</a></li>
@@ -252,260 +251,47 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html">2.0</a></p></li>
 </ul>
 <section id="pgrouting-concepts">
-<h1><a class="toc-backref" href="#id6" role="doc-backlink">Conceptos de pgRouting</a><a class="headerlink" href="#pgrouting-concepts" title="Permalink to this heading">¶</a></h1>
-<nav class="contents" id="contenido">
-<p class="topic-title">Contenido</p>
+<h1>Conceptos de pgRouting<a class="headerlink" href="#pgrouting-concepts" title="Permalink to this heading">¶</a></h1>
+<p>This is a simple guide that go through some of the steps for getting started
+with pgRouting. This guide covers:</p>
+<nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#pgrouting-concepts" id="id6">Conceptos de pgRouting</a></p>
-<ul>
-<li><p><a class="reference internal" href="#graphs" id="id7">Graphs</a></p>
-<ul>
-<li><p><a class="reference internal" href="#graph-with-cost" id="id8">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id9">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#graphs-without-geometries" id="id10">Graphs without geometries</a></p>
-<ul>
-<li><p><a class="reference internal" href="#wiki-example" id="id11">Wiki example</a></p></li>
-<li><p><a class="reference internal" href="#prepare-the-database" id="id12">Prepare the database</a></p></li>
-<li><p><a class="reference internal" href="#create-a-table" id="id13">Create a table</a></p></li>
-<li><p><a class="reference internal" href="#insert-the-data" id="id14">Insert the data</a></p></li>
-<li><p><a class="reference internal" href="#find-the-shortest-path" id="id15">Find the shortest path</a></p></li>
-<li><p><a class="reference internal" href="#create-a-topology" id="id16">Create a topology</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#graphs-with-geometries" id="id17">Graphs with geometries</a></p>
-<ul>
-<li><p><a class="reference internal" href="#create-a-routing-database" id="id18">Crear una Base de Datos de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#load-data" id="id19">Cargar Datos</a></p></li>
-<li><p><a class="reference internal" href="#build-a-routing-topology" id="id20">Build a routing topology</a></p>
-<ul>
-<li><p><a class="reference internal" href="#update-to-length-of-geometry" id="id21">Update to length of geometry</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#check-the-routing-topology" id="id22">Compruebe la Topología de Ruteo</a></p>
-<ul>
-<li><p><a class="reference internal" href="#crossing-edges" id="id23">Crossing edges</a></p>
-<ul>
-<li><p><a class="reference internal" href="#adding-split-edges" id="id24">Adding split edges</a></p></li>
-<li><p><a class="reference internal" href="#adding-new-vertices" id="id25">Adding new vertices</a></p></li>
-<li><p><a class="reference internal" href="#updating-edges-topology" id="id26">Updating edges topology</a></p></li>
-<li><p><a class="reference internal" href="#removing-the-surplus-edges" id="id27">Removing the surplus edges</a></p></li>
-<li><p><a class="reference internal" href="#updating-vertices-topology" id="id28">Updating vertices topology</a></p></li>
-<li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id29">Checking for crossing edges</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#dead-ends-and-disconnected-graphs" id="id30">Dead ends and disconnected graphs</a></p>
-<ul>
-<li><p><a class="reference internal" href="#prepare-storage-for-connection-information" id="id31">Prepare storage for connection information</a></p></li>
-<li><p><a class="reference internal" href="#save-the-vertices-connection-information" id="id32">Save the vertices connection information</a></p></li>
-<li><p><a class="reference internal" href="#save-the-edges-connection-information" id="id33">Save the edges connection information</a></p></li>
-<li><p><a class="reference internal" href="#get-the-closest-vertex" id="id34">Get the closest vertex</a></p></li>
-<li><p><a class="reference internal" href="#connecting-components" id="id35">Connecting components</a></p></li>
-<li><p><a class="reference internal" href="#checking-components" id="id36">Checking components</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#compute-a-path" id="id37">Calcular una Ruta</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#group-of-functions" id="id38">Grupo de Funciones</a></p>
-<ul>
-<li><p><a class="reference internal" href="#one-to-one" id="id39">Uno a Uno</a></p></li>
-<li><p><a class="reference internal" href="#one-to-many" id="id40">Uno a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#many-to-one" id="id41">Muchos a Uno</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many" id="id42">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations" id="id43">Combinaciones</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#inner-queries" id="id44">Consultas Internas</a></p>
-<ul>
-<li><p><a class="reference internal" href="#edges-sql" id="id45">SQL de aristas</a></p>
-<ul>
-<li><p><a class="reference internal" href="#general" id="id46">General</a></p></li>
-<li><p><a class="reference internal" href="#general-without-id" id="id47">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
-<li><p><a class="reference internal" href="#general-with-x-y" id="id48">General with (X,Y)</a></p></li>
-<li><p><a class="reference internal" href="#flow" id="id49">Flow</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#combinations-sql" id="id50">Combinations SQL</a></p></li>
-<li><p><a class="reference internal" href="#restrictions-sql" id="id51">Restrictions SQL</a></p></li>
-<li><p><a class="reference internal" href="#points-sql" id="id52">Points SQL</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#parameters" id="id53">Parámetros</a></p>
-<ul>
-<li><p><a class="reference internal" href="#parameters-for-the-via-functions" id="id54">Parameters for the Via functions</a></p></li>
-<li><p><a class="reference internal" href="#for-the-trsp-functions" id="id55">For the TRSP functions</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#return-columns" id="id56">Return columns</a></p>
-<ul>
-<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id57">Return columns for a path</a></p></li>
-<li><p><a class="reference internal" href="#multiple-paths" id="id58">Multiple paths</a></p>
-<ul>
-<li><p><a class="reference internal" href="#selective-for-multiple-paths" id="id59">Selective for multiple paths.</a></p></li>
-<li><p><a class="reference internal" href="#non-selective-for-multiple-paths" id="id60">Non selective for multiple paths</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id61">Return columns for cost functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id62">Return columns for flow functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id63">Return columns for spanning tree functions</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#advanced-topics" id="id64">Tópicos avanzados</a></p>
-<ul>
-<li><p><a class="reference internal" href="#routing-topology" id="id65">Topología para Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#graph-analytics" id="id66">Análisis de gráficas</a></p></li>
-<li><p><a class="reference internal" href="#analyze-a-graph" id="id67">Analizar un gráfico</a></p></li>
-<li><p><a class="reference internal" href="#analyze-one-way-streets" id="id68">Analizar las calles unidireccionales</a></p>
-<ul>
-<li><p><a class="reference internal" href="#example" id="id69">Ejemplo</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#performance-tips" id="id70">Consejos de Rendimiento</a></p>
-<ul>
-<li><p><a class="reference internal" href="#for-the-routing-functions" id="id71">Para las funciones de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#for-the-topology-functions" id="id72">Para las funciones de topología:</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#how-to-contribute" id="id73">Cómo contribuir</a></p></li>
-</ul>
-</li>
-</ul>
-</nav>
-<p>Esta es una guía simple para llevarte a través de los pasos básicos para trabajar con pgRouting. Esta guía cubre:</p>
-<nav class="contents local" id="id1">
-<ul class="simple">
-<li><p><a class="reference internal" href="#graphs" id="id74">Graphs</a></p>
-<ul>
-<li><p><a class="reference internal" href="#graph-with-cost" id="id75">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
-<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id76">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#graphs-without-geometries" id="id77">Graphs without geometries</a></p>
-<ul>
-<li><p><a class="reference internal" href="#wiki-example" id="id78">Wiki example</a></p></li>
-<li><p><a class="reference internal" href="#prepare-the-database" id="id79">Prepare the database</a></p></li>
-<li><p><a class="reference internal" href="#create-a-table" id="id80">Create a table</a></p></li>
-<li><p><a class="reference internal" href="#insert-the-data" id="id81">Insert the data</a></p></li>
-<li><p><a class="reference internal" href="#find-the-shortest-path" id="id82">Find the shortest path</a></p></li>
-<li><p><a class="reference internal" href="#create-a-topology" id="id83">Create a topology</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#graphs-with-geometries" id="id84">Graphs with geometries</a></p>
-<ul>
-<li><p><a class="reference internal" href="#create-a-routing-database" id="id85">Crear una Base de Datos de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#load-data" id="id86">Cargar Datos</a></p></li>
-<li><p><a class="reference internal" href="#build-a-routing-topology" id="id87">Build a routing topology</a></p>
-<ul>
-<li><p><a class="reference internal" href="#update-to-length-of-geometry" id="id88">Update to length of geometry</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#check-the-routing-topology" id="id89">Compruebe la Topología de Ruteo</a></p>
-<ul>
-<li><p><a class="reference internal" href="#crossing-edges" id="id90">Crossing edges</a></p>
-<ul>
-<li><p><a class="reference internal" href="#adding-split-edges" id="id91">Adding split edges</a></p></li>
-<li><p><a class="reference internal" href="#adding-new-vertices" id="id92">Adding new vertices</a></p></li>
-<li><p><a class="reference internal" href="#updating-edges-topology" id="id93">Updating edges topology</a></p></li>
-<li><p><a class="reference internal" href="#removing-the-surplus-edges" id="id94">Removing the surplus edges</a></p></li>
-<li><p><a class="reference internal" href="#updating-vertices-topology" id="id95">Updating vertices topology</a></p></li>
-<li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id96">Checking for crossing edges</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#dead-ends-and-disconnected-graphs" id="id97">Dead ends and disconnected graphs</a></p>
-<ul>
-<li><p><a class="reference internal" href="#prepare-storage-for-connection-information" id="id98">Prepare storage for connection information</a></p></li>
-<li><p><a class="reference internal" href="#save-the-vertices-connection-information" id="id99">Save the vertices connection information</a></p></li>
-<li><p><a class="reference internal" href="#save-the-edges-connection-information" id="id100">Save the edges connection information</a></p></li>
-<li><p><a class="reference internal" href="#get-the-closest-vertex" id="id101">Get the closest vertex</a></p></li>
-<li><p><a class="reference internal" href="#connecting-components" id="id102">Connecting components</a></p></li>
-<li><p><a class="reference internal" href="#checking-components" id="id103">Checking components</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#compute-a-path" id="id104">Calcular una Ruta</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#group-of-functions" id="id105">Grupo de Funciones</a></p>
-<ul>
-<li><p><a class="reference internal" href="#one-to-one" id="id106">Uno a Uno</a></p></li>
-<li><p><a class="reference internal" href="#one-to-many" id="id107">Uno a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#many-to-one" id="id108">Muchos a Uno</a></p></li>
-<li><p><a class="reference internal" href="#many-to-many" id="id109">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations" id="id110">Combinaciones</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#inner-queries" id="id111">Consultas Internas</a></p>
-<ul>
-<li><p><a class="reference internal" href="#edges-sql" id="id112">SQL de aristas</a></p>
-<ul>
-<li><p><a class="reference internal" href="#general" id="id113">General</a></p></li>
-<li><p><a class="reference internal" href="#general-without-id" id="id114">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
-<li><p><a class="reference internal" href="#general-with-x-y" id="id115">General with (X,Y)</a></p></li>
-<li><p><a class="reference internal" href="#flow" id="id116">Flow</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#combinations-sql" id="id117">Combinations SQL</a></p></li>
-<li><p><a class="reference internal" href="#restrictions-sql" id="id118">Restrictions SQL</a></p></li>
-<li><p><a class="reference internal" href="#points-sql" id="id119">Points SQL</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#parameters" id="id120">Parámetros</a></p>
-<ul>
-<li><p><a class="reference internal" href="#parameters-for-the-via-functions" id="id121">Parameters for the Via functions</a></p></li>
-<li><p><a class="reference internal" href="#for-the-trsp-functions" id="id122">For the TRSP functions</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#return-columns" id="id123">Return columns</a></p>
-<ul>
-<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id124">Return columns for a path</a></p></li>
-<li><p><a class="reference internal" href="#multiple-paths" id="id125">Multiple paths</a></p>
-<ul>
-<li><p><a class="reference internal" href="#selective-for-multiple-paths" id="id126">Selective for multiple paths.</a></p></li>
-<li><p><a class="reference internal" href="#non-selective-for-multiple-paths" id="id127">Non selective for multiple paths</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id128">Return columns for cost functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id129">Return columns for flow functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id130">Return columns for spanning tree functions</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#advanced-topics" id="id131">Tópicos avanzados</a></p>
-<ul>
-<li><p><a class="reference internal" href="#routing-topology" id="id132">Topología para Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#graph-analytics" id="id133">Análisis de gráficas</a></p></li>
-<li><p><a class="reference internal" href="#analyze-a-graph" id="id134">Analizar un gráfico</a></p></li>
-<li><p><a class="reference internal" href="#analyze-one-way-streets" id="id135">Analizar las calles unidireccionales</a></p>
-<ul>
-<li><p><a class="reference internal" href="#example" id="id136">Ejemplo</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#performance-tips" id="id137">Consejos de Rendimiento</a></p>
-<ul>
-<li><p><a class="reference internal" href="#for-the-routing-functions" id="id138">Para las funciones de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#for-the-topology-functions" id="id139">Para las funciones de topología:</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#how-to-contribute" id="id140">Cómo contribuir</a></p></li>
+<li><p><a class="reference internal" href="#graphs" id="id8">Graphs</a></p></li>
+<li><p><a class="reference internal" href="#graphs-without-geometries" id="id9">Graphs without geometries</a></p></li>
+<li><p><a class="reference internal" href="#graphs-with-geometries" id="id10">Graphs with geometries</a></p></li>
+<li><p><a class="reference internal" href="#check-the-routing-topology" id="id11">Compruebe la Topología de Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#function-s-structure" id="id12">Function’s structure</a></p></li>
+<li><p><a class="reference internal" href="#function-s-overloads" id="id13">Function’s overloads</a></p></li>
+<li><p><a class="reference internal" href="#inner-queries" id="id14">Consultas Internas</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id15">Parámetros</a></p></li>
+<li><p><a class="reference internal" href="#return-columns" id="id16">Return columns</a></p></li>
+<li><p><a class="reference internal" href="#performance-tips" id="id17">Consejos de Rendimiento</a></p></li>
+<li><p><a class="reference internal" href="#how-to-contribute" id="id18">Cómo contribuir</a></p></li>
 </ul>
 </nav>
 <section id="graphs">
-<h2><a class="toc-backref" href="#id74" role="doc-backlink">Graphs</a><a class="headerlink" href="#graphs" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Graphs</a><a class="headerlink" href="#graphs" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#graph-definition" id="id19">Graph definition</a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost" id="id20">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
+<li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id21">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
+</ul>
+</nav>
+<section id="graph-definition">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Graph definition</a><a class="headerlink" href="#graph-definition" title="Permalink to this heading">¶</a></h3>
 <p>A graph is an ordered pair <span class="math notranslate nohighlight">\(G = (V ,E)\)</span> where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(V\)</span> is a set of vertices, also called nodes</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span> is a set of vertices, also called nodes.</p></li>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V \}\)</span></p></li>
 </ul>
-<p>There are different kinds of graphs.</p>
+<p>There are different kinds of graphs:</p>
 <ul class="simple">
+<li><p>Undirected graph</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V\}\)</span></p></li>
+</ul>
+</li>
 <li><p>Undirected simple graph</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V, u \neq v\}\)</span></p></li>
@@ -524,8 +310,8 @@
 </ul>
 <p>Graphs:</p>
 <ul class="simple">
-<li><p>Do not have geometries</p></li>
-<li><p>Some graph theory problems requires graphs to have weights, called <strong>cost</strong> in
+<li><p>Do not have geometries.</p></li>
+<li><p>Some graph theory problems require graphs to have weights, called <strong>cost</strong> in
 pgRouting.</p></li>
 </ul>
 <p>In pgRouting there are several ways to represent a graph on the database:</p>
@@ -550,20 +336,21 @@ pgRouting.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p>Identifier of the edge. Requirement to use the database in a consistent
+<td><p>Identifier of the edge. Requirement to use the database in a consistent.
 manner.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p>Identifier of a vertex</p></td>
+<td><p>Identifier of a vertex.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p>Identifier of a vertex</p></td>
+<td><p>Identifier of a vertex.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>):</p>
 <ul class="simple">
 <li><p>When negative the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) do not exist on the
-graph</p></li>
+graph.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cost</span></code> must exist in the query.</p></li>
 </ul>
 </td>
 </tr>
@@ -571,32 +358,39 @@ graph</p></li>
 <td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
 <li><p>When negative the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) do not exist on the
-graph</p></li>
+graph.</p></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p>The decision of the graph to be <strong>directed</strong> or <strong>undirected</strong> is done when
-running a pgRouting algorithm.</p>
+executing a pgRouting algorithm.</p>
+</section>
 <section id="graph-with-cost">
-<h3><a class="toc-backref" href="#id75" role="doc-backlink">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#graph-with-cost" title="Permalink to this heading">¶</a></h3>
-<p>The weighted directed graph, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, is interpreted as:</p>
-<ul class="simple">
-<li><p>the set of vertices  <span class="math notranslate nohighlight">\(V\)</span></p>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#graph-with-cost" title="Permalink to this heading">¶</a></h3>
+<p>The weighted directed graph, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>:</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(V = source \cup target\)</span></p></li>
-</ul>
+<li><p>Graph data is obtained with a query</p>
+<p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost</span> <span class="pre">FROM</span> <span class="pre">edges</span></code></p>
 </li>
 <li><p>the set of edges <span class="math notranslate nohighlight">\(E\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(E = \{(source_i, target_i, cost_i) \text{ when } cost_i &gt;=0 \}\)</span></p></li>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E = \{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id}
+\ge 0 \}\)</span></p></li>
+<li><p>Edges where <code class="docutils literal notranslate"><span class="pre">cost</span></code> is non negative are part of the graph.</p></li>
+</ul>
+</li>
+<li><p>the set of vertices  <span class="math notranslate nohighlight">\(V\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
+<li><p>All vertices in <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> are part of the graph.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Directed graph</p>
-<p>In a directed graph the edge <span class="math notranslate nohighlight">\((source_i, target_i, cost_i)\)</span> has
-directionality: <span class="math notranslate nohighlight">\(source_i \rightarrow target_i\)</span></p>
+<p>In a directed graph the edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> has
+directionality: <span class="math notranslate nohighlight">\(source_{id} \rightarrow target_{id}\)</span></p>
 <p>For the following data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">))</span>
@@ -609,16 +403,19 @@ directionality: <span class="math notranslate nohighlight">\(source_i \rightarro
 
 </pre></div>
 </div>
+<p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1 \rightarrow 3\)</span>) is not part of the graph.</p>
+<p>The data is representing the following graph:</p>
 <div class="graphviz"><img src="_images/graphviz-fea3ff0c3c30969d4fcc1a5452438952118b0036.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;  1(5)&quot;];
  3;
 }" class="graphviz" /></div>
 <p class="rubric">Undirected graph</p>
-<p>In an undirected graph the edge <span class="math notranslate nohighlight">\((source_i, target_i, cost_i)\)</span> does not
-have directionality: <span class="math notranslate nohighlight">\(source_i \; {\rule[0.5ex]{1em}{0.55pt}} \; target_i\)</span></p>
+<p>In an undirected graph the edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span>
+does not have directionality: <span class="math notranslate nohighlight">\(source_{id} \frac{\;\;\;\;\;}{}
+target_{id}\)</span></p>
 <ul class="simple">
-<li><p>In terms of a directed graph is like having two edges: <span class="math notranslate nohighlight">\(source_i
-\leftrightarrow target_i\)</span></p></li>
+<li><p>In terms of a directed graph is like having two edges: <span class="math notranslate nohighlight">\(source_{id}
+\leftrightarrow target_{id}\)</span></p></li>
 </ul>
 <p>For the following data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
@@ -632,37 +429,47 @@ have directionality: <span class="math notranslate nohighlight">\(source_i \; {\
 
 </pre></div>
 </div>
+<p>Edge <span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \frac{\;\;\;\;\;}{} 3\)</span>) is not part of the graph.</p>
+<p>The data is representing the following graph:</p>
 <div class="graphviz"><img src="_images/graphviz-15ad35e043b1329141358020162ef62da0f2d5e0.png" alt="graph G {
  1 -- 2 [label=&quot;  1(5)&quot;];
  3;
 }" class="graphviz" /></div>
 </section>
 <section id="graph-with-cost-and-reverse-cost">
-<h3><a class="toc-backref" href="#id76" role="doc-backlink">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#graph-with-cost-and-reverse-cost" title="Permalink to this heading">¶</a></h3>
 <p>The weighted directed graph, <span class="math notranslate nohighlight">\(G_d(V,E)\)</span>, is defined by:</p>
-<ul class="simple">
-<li><p>the set of vertices  <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(V = source \cup target\)</span></p></li>
+<li><p>Graph data is obtained with a query</p>
+<p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">reverse_cost</span> <span class="pre">FROM</span> <span class="pre">edges</span></code></p>
+</li>
+<li><p>The set of edges <span class="math notranslate nohighlight">\(E\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E = \begin{split} \begin{align}
+&amp; {\{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id} &gt;=0 \}} \\
+&amp; \cup \\
+&amp; {\{(target_{id}, source_{id}, reverse\_cost_{id}) \text{ when } reverse\_cost_{id} &gt;=0 \}}
+\end{align} \end{split}\)</span></p></li>
+<li><p>Edges <span class="math notranslate nohighlight">\((source \rightarrow target)\)</span> where <code class="docutils literal notranslate"><span class="pre">cost</span></code> is non negative are
+part of the graph.</p></li>
+<li><p>Edges <span class="math notranslate nohighlight">\((target \rightarrow source)\)</span> where <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is non
+negative are part of the graph.</p></li>
 </ul>
 </li>
-<li><p>the set of edges <span class="math notranslate nohighlight">\(E\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{split} \begin{align}
-&amp; {\{(source_i, target_i, cost_i) \text{ when } cost_i &gt;=0 \}} \\
-&amp; \cup \\
-&amp; {\{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0 \}}
-\end{align} \end{split}\)</span></p></li>
+<li><p>The set of vertices  <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V = \{source_{id} \cup target_{id}\}\)</span></p></li>
+<li><p>All vertices in <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> are part of the graph.</p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">Directed graph</p>
 <p>In a directed graph both edges have directionality</p>
 <ul class="simple">
-<li><p>edge <span class="math notranslate nohighlight">\((source_i, target_i, cost_i)\)</span> has directionality: <span class="math notranslate nohighlight">\(source_i
-\rightarrow target_i\)</span></p></li>
-<li><p>edge <span class="math notranslate nohighlight">\((target_i, source_i, reverse\_cost_i)\)</span> has directionality:
-<span class="math notranslate nohighlight">\(target_i \rightarrow source_i\)</span></p></li>
+<li><p>edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> has directionality: <span class="math notranslate nohighlight">\(source_{id}
+\rightarrow target_{id}\)</span></p></li>
+<li><p>edge <span class="math notranslate nohighlight">\((target_{id}, source_{id}, reverse\_cost_{id})\)</span> has directionality:
+<span class="math notranslate nohighlight">\(target_{id} \rightarrow source_{id}\)</span></p></li>
 </ul>
 <p>For the following data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
@@ -677,6 +484,12 @@ have directionality: <span class="math notranslate nohighlight">\(source_i \; {\
 
 </pre></div>
 </div>
+<p>Edges not part of the graph:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \rightarrow 3\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3  \rightarrow 2\)</span>)</p></li>
+</ul>
+<p>The data is representing the following graph:</p>
 <div class="graphviz"><img src="_images/graphviz-30736f62adc8dbf11ad4115151b7af7577cda635.png" alt="digraph G {
  1 -&gt; 2 [label=&quot;  1(5)&quot;];
  2 -&gt; 1 [label=&quot;  1(2)&quot;];
@@ -686,10 +499,10 @@ have directionality: <span class="math notranslate nohighlight">\(source_i \; {\
 <p class="rubric">Undirected graph</p>
 <p>In a directed graph both edges do not have directionality</p>
 <ul class="simple">
-<li><p>Edge <span class="math notranslate nohighlight">\((source_i, target_i, cost_i)\)</span> is <span class="math notranslate nohighlight">\(source_i
-\; {\rule[0.5ex]{1em}{0.55pt}} \; target_i\)</span></p></li>
-<li><p>Edge <span class="math notranslate nohighlight">\((target_i, source_i, reverse\_cost_i)\)</span> is <span class="math notranslate nohighlight">\(target_i
-\; {\rule[0.5ex]{1em}{0.55pt}} \; source_i\)</span></p></li>
+<li><p>Edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> is <span class="math notranslate nohighlight">\(source_{id}
+\frac{\;\;\;\;\;}{} target_{id}\)</span></p></li>
+<li><p>Edge <span class="math notranslate nohighlight">\((target_{id}, source_{id}, reverse\_cost_{id})\)</span> is
+<span class="math notranslate nohighlight">\(target_{id} \frac{\;\;\;\;\;}{} source_{id}\)</span></p></li>
 <li><p>In terms of a directed graph is like having four edges:</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(source_i \leftrightarrow target_i\)</span></p></li>
@@ -710,6 +523,12 @@ have directionality: <span class="math notranslate nohighlight">\(source_i \; {\
 
 </pre></div>
 </div>
+<p>Edges not part of the graph:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2\)</span> (<span class="math notranslate nohighlight">\(1  \frac{\;\;\;\;\;}{} 3\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span> (<span class="math notranslate nohighlight">\(3  \frac{\;\;\;\;\;}{} 2\)</span>)</p></li>
+</ul>
+<p>The data is representing the following graph:</p>
 <div class="graphviz"><img src="_images/graphviz-d3e0d812756609c1050c29940fd38b77a9a039cd.png" alt="graph G {
  1 -- 2 [label=&quot;  1(5)&quot;];
  2 -- 1 [label=&quot;  1(2)&quot;];
@@ -719,25 +538,40 @@ have directionality: <span class="math notranslate nohighlight">\(source_i \; {\
 </section>
 </section>
 <section id="graphs-without-geometries">
-<h2><a class="toc-backref" href="#id77" role="doc-backlink">Graphs without geometries</a><a class="headerlink" href="#graphs-without-geometries" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Graphs without geometries</a><a class="headerlink" href="#graphs-without-geometries" title="Permalink to this heading">¶</a></h2>
 <p>Personal relationships, genealogy, file dependency problems can be solved
-using pgRouting. Those problems, normally,  do not come with gemetries asociated
-with the graph data.</p>
-<section id="wiki-example">
-<h3><a class="toc-backref" href="#id78" role="doc-backlink">Wiki example</a><a class="headerlink" href="#wiki-example" title="Permalink to this heading">¶</a></h3>
-<p>Solve the example problem taken from wikipedia (<a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">see top
-right graph</a>) which:</p>
+using pgRouting. Those problems, normally,  do not come with geometries associated
+with the graph.</p>
+<nav class="contents local" id="id2">
 <ul class="simple">
-<li><p>Problem find the shortest path from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
-<li><p>Is an undirected graph.</p></li>
-<li><p>Although visually looks like to have geometries, the drawing is not to scale.</p>
+<li><p><a class="reference internal" href="#wiki-example" id="id22">Wiki example</a></p>
 <ul>
-<li><p>No geometries asociated to the vertices or edges</p></li>
+<li><p><a class="reference internal" href="#prepare-the-database" id="id23">Prepare the database</a></p></li>
+<li><p><a class="reference internal" href="#create-a-table" id="id24">Create a table</a></p></li>
+<li><p><a class="reference internal" href="#insert-the-data" id="id25">Insert the data</a></p></li>
+<li><p><a class="reference internal" href="#find-the-shortest-path" id="id26">Find the shortest path</a></p></li>
+<li><p><a class="reference internal" href="#vertex-information" id="id27">Vertex information</a></p></li>
 </ul>
 </li>
-<li><p>Has 6 vertices :math`{1,2,3,4,5,6}”</p></li>
-<li><p>Has 9 edges:</p></li>
 </ul>
+</nav>
+<section id="wiki-example">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Wiki example</a><a class="headerlink" href="#wiki-example" title="Permalink to this heading">¶</a></h3>
+<p>Solve the example problem taken from <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">wikipedia</a>):</p>
+<figure class="align-default">
+<img alt="_images/Dijkstra_Animation.gif" src="_images/Dijkstra_Animation.gif" />
+</figure>
+<p>Donde:</p>
+<ul>
+<li><p>Problem is to find the shortest path from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p>Is an undirected graph.</p></li>
+<li><p>Although visually looks like to have geometries, the drawing is not to scale.</p>
+<ul class="simple">
+<li><p>No geometries associated to the vertices or edges</p></li>
+</ul>
+</li>
+<li><p>Has 6 vertices <span class="math notranslate nohighlight">\(\{1,2,3,4,5,6\}\)</span></p></li>
+<li><p>Has 9 edges:</p>
 <p><span class="math notranslate nohighlight">\(\begin{split} \begin{align}
 E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
 &amp; (2,3,10), (2,4,13), \\
@@ -745,7 +579,7 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
 &amp; (4,5,6), \\
 &amp; (5,6,9) \}
 \end{align} \end{split}\)</span></p>
-<ul class="simple">
+</li>
 <li><p>The graph can be represented in many ways for example:</p></li>
 </ul>
 <div class="graphviz"><img src="_images/graphviz-f7be590ac01a366380dea45ade8a60068b4b9db9.png" alt="graph G {
@@ -762,9 +596,8 @@ E = &amp; \{(1,2,7), (1,3,9), (1,6,14), \\
  3 -- 6 [label=&quot;  (2)&quot;];
  4 -- 5 [label=&quot;  (6)&quot;];
 }" class="graphviz" /></div>
-</section>
 <section id="prepare-the-database">
-<h3><a class="toc-backref" href="#id79" role="doc-backlink">Prepare the database</a><a class="headerlink" href="#prepare-the-database" title="Permalink to this heading">¶</a></h3>
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Prepare the database</a><a class="headerlink" href="#prepare-the-database" title="Permalink to this heading">¶</a></h4>
 <p>Create a database for the example, access the database and install pgRouting:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ createdb wiki
 $ psql wiki
@@ -773,7 +606,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="create-a-table">
-<h3><a class="toc-backref" href="#id80" role="doc-backlink">Create a table</a><a class="headerlink" href="#create-a-table" title="Permalink to this heading">¶</a></h3>
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">Create a table</a><a class="headerlink" href="#create-a-table" title="Permalink to this heading">¶</a></h4>
 <p>The basic elements needed to perform basic routing on an undirected graph are:</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -810,6 +643,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
+<p>Using this table design for this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wiki</span> <span class="p">(</span>
   <span class="nb">id</span> <span class="n">SERIAL</span><span class="p">,</span>
   <span class="n">source</span> <span class="n">INTEGER</span><span class="p">,</span>
@@ -820,7 +654,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="insert-the-data">
-<h3><a class="toc-backref" href="#id81" role="doc-backlink">Insert the data</a><a class="headerlink" href="#insert-the-data" title="Permalink to this heading">¶</a></h3>
+<h4><a class="toc-backref" href="#id25" role="doc-backlink">Insert the data</a><a class="headerlink" href="#insert-the-data" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
@@ -832,7 +666,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 <section id="find-the-shortest-path">
-<h3><a class="toc-backref" href="#id82" role="doc-backlink">Find the shortest path</a><a class="headerlink" href="#find-the-shortest-path" title="Permalink to this heading">¶</a></h3>
+<h4><a class="toc-backref" href="#id26" role="doc-backlink">Find the shortest path</a><a class="headerlink" href="#find-the-shortest-path" title="Permalink to this heading">¶</a></h4>
 <p>To solve this example <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> is used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
@@ -864,25 +698,10 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
  4 -- 5 [label=&quot;  (6)&quot;];
 }" class="graphviz" /></div>
 </section>
-<section id="create-a-topology">
-<h3><a class="toc-backref" href="#id83" role="doc-backlink">Create a topology</a><a class="headerlink" href="#create-a-topology" title="Permalink to this heading">¶</a></h3>
-<p>For more complex functions a complete topology might be needed.</p>
-<p>To create the vertices table, use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="n">FROM</span> <span class="n">wiki</span><span class="p">;</span>
- <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
-<span class="o">----+--------+--------</span>
-  <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span>
-  <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span>
-  <span class="mi">3</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">6</span>
-  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span>
-  <span class="mi">5</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span>
-  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">6</span>
-  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span>
-  <span class="mi">8</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>      <span class="mi">5</span>
-  <span class="mi">9</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span>
-<span class="p">(</span><span class="mi">9</span> <span class="n">rows</span><span class="p">)</span>
-
-<span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
+<section id="vertex-information">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">Vertex information</a><a class="headerlink" href="#vertex-information" title="Permalink to this heading">¶</a></h4>
+<p>To obtain the vertices information, use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
 <span class="o">----+----------+-----------</span>
@@ -898,21 +717,35 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 </div>
 </section>
 </section>
+</section>
 <section id="graphs-with-geometries">
-<h2><a class="toc-backref" href="#id84" role="doc-backlink">Graphs with geometries</a><a class="headerlink" href="#graphs-with-geometries" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Graphs with geometries</a><a class="headerlink" href="#graphs-with-geometries" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id3">
+<ul class="simple">
+<li><p><a class="reference internal" href="#create-a-routing-database" id="id28">Crear una Base de Datos de Ruteo</a></p></li>
+<li><p><a class="reference internal" href="#load-data" id="id29">Cargar Datos</a></p></li>
+<li><p><a class="reference internal" href="#build-a-routing-topology" id="id30">Build a routing topology</a></p></li>
+<li><p><a class="reference internal" href="#adjust-costs" id="id31">Adjust costs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#update-costs-to-length-of-geometry" id="id32">Update costs to length of geometry</a></p></li>
+<li><p><a class="reference internal" href="#update-costs-based-on-codes" id="id33">Update costs based on codes</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
 <section id="create-a-routing-database">
-<h3><a class="toc-backref" href="#id85" role="doc-backlink">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">Crear una Base de Datos de Ruteo</a><a class="headerlink" href="#create-a-routing-database" title="Permalink to this heading">¶</a></h3>
 <p>The first step is to create a database and load pgRouting in the database.</p>
 <p>Typically create a database for each project.</p>
 <p>Once having the database to work in, load your data and build the routing
 application in that database.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">sampledata</span>
-<span class="n">psql</span> <span class="n">sampledata</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;CREATE EXTENSION postgis CASCADE&quot;</span>
+<span class="n">psql</span> <span class="n">sampledata</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;CREATE EXTENSION pgrouting CASCADE&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="load-data">
-<h3><a class="toc-backref" href="#id86" role="doc-backlink">Cargar Datos</a><a class="headerlink" href="#load-data" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">Cargar Datos</a><a class="headerlink" href="#load-data" title="Permalink to this heading">¶</a></h3>
 <p>There are several ways to load your data into pgRouting.</p>
 <ul class="simple">
 <li><p>Manually creating a database.</p>
@@ -937,15 +770,15 @@ application in that database.</p>
 </dd>
 <dt class="field-odd">osm2pgsql<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p>loadg OSM data into postgresql</p></li>
+<li><p>load OSM data into postgresql</p></li>
 </ul>
 </dd>
 </dl>
 <p>Please note that these tools will <strong>not</strong> import the data in a structure
 compatible with pgRouting and when this happens the topology needs to be
-adajusted.</p>
+adjusted.</p>
 <ul class="simple">
-<li><p>Breakup a segments on each segment-segment instersection</p></li>
+<li><p>Breakup a segments on each segment-segment intersection</p></li>
 <li><p>When missing, add columns and assign values to <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>,
 <code class="docutils literal notranslate"><span class="pre">cost</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code>.</p></li>
 <li><p>Connect a disconnected graph.</p></li>
@@ -973,15 +806,15 @@ how to prepare a graph using Open Street Map data, for a small application.</p>
 <li><p>Have the geometries indexed.</p></li>
 <li><p>Have the identifiers columns indexed.</p></li>
 </ul>
-<p>Please consult the <a class="reference external" href="https://www.postgresql.org/docs/">PostgreSQL</a> documentation
-and the <a class="reference external" href="https://postgis.net/">PostGIS</a> documentation.</p>
+<p>Please consult the <a class="reference external" href="https://www.postgresql.org/docs/">PostgreSQL</a>
+documentation and the <a class="reference external" href="https://postgis.net/">PostGIS</a> documentation.</p>
 </section>
 <section id="build-a-routing-topology">
-<h3><a class="toc-backref" href="#id87" role="doc-backlink">Build a routing topology</a><a class="headerlink" href="#build-a-routing-topology" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">Build a routing topology</a><a class="headerlink" href="#build-a-routing-topology" title="Permalink to this heading">¶</a></h3>
 <p>The basic information to use the majority of the pgRouting functions <code class="docutils literal notranslate"><span class="pre">id,</span>
 <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost,</span> <span class="pre">[reverse_cost]</span></code> is what in pgRouting is called the
 routing topology.</p>
-<p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is optional but strongly recomended to have in order to reduce
+<p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is optional but strongly recommended to have in order to reduce
 the size of the database due to the size of the geometry columns.
 Having said that, in this documentation <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> is used in this
 documentation.</p>
@@ -992,59 +825,62 @@ be stored in a <code class="docutils literal notranslate"><span class="pre">sour
 Likewise, <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> need to have the value of traversing the
 edge in both directions.</p>
 <p>If the columns do not exist they need to be added to the table in question. (see
-<a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a></p>
+<a class="reference external" href="https://www.postgresql.org/docs/current/sql-altertable.html">ALTER TABLE</a>)</p>
 <p>The function <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a> is used to create a vertices table
 based on the edge identifier and the geometry of the edge of the graph.</p>
-<p>Finnaly using the data stored on the vertices tables the <code class="docutils literal notranslate"><span class="pre">source</span></code> and
+<p>Finally using the data stored on the vertices tables the <code class="docutils literal notranslate"><span class="pre">source</span></code> and
 <code class="docutils literal notranslate"><span class="pre">target</span></code> are filled up.</p>
-<p>See <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> for an example for building the topology.</p>
+<p>See <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> for an example for building a topology.</p>
 <p>Data coming from OSM and using <a class="reference external" href="https://github.com/pgRouting/osm2pgrouting">osm2pgrouting</a> as an import tool, comes with
 the routing topology. See an example of using <code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span></code> on the <a class="reference external" href="https://workshop.pgrouting.org/latest/en/basic/data.html">workshop</a>.</p>
-<section id="update-to-length-of-geometry">
-<h4><a class="toc-backref" href="#id88" role="doc-backlink">Update to length of geometry</a><a class="headerlink" href="#update-to-length-of-geometry" title="Permalink to this heading">¶</a></h4>
-<p>The cost and reverse cost values can be in terms of the length of the geometry.
-Assume that the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns in the sample data
-represent:</p>
+</section>
+<section id="adjust-costs">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">Adjust costs</a><a class="headerlink" href="#adjust-costs" title="Permalink to this heading">¶</a></h3>
+<p>For this example the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> values are going to be the
+double of the length of the geometry.</p>
+<section id="update-costs-to-length-of-geometry">
+<h4><a class="toc-backref" href="#id32" role="doc-backlink">Update costs to length of geometry</a><a class="headerlink" href="#update-costs-to-length-of-geometry" title="Permalink to this heading">¶</a></h4>
+<p>Suppose that <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns in the sample data represent:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(1\)</span> when the edge exists in the graph</p></li>
 <li><p><span class="math notranslate nohighlight">\(-1\)</span> when the edge does not exist in the graph</p></li>
 </ul>
 <p>Using that information updating to the length of the geometries:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
-<span class="n">cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span> <span class="o">*</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span>
-<span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">reverse_cost</span><span class="p">)</span> <span class="o">*</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">);</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span> <span class="o">*</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+<span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">reverse_cost</span><span class="p">)</span> <span class="o">*</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p>Which gives the following results</p>
+<p>Which gives the following results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edges</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span>        <span class="n">cost</span>        <span class="o">|</span>    <span class="n">reverse_cost</span>
 <span class="o">----+--------------------+--------------------</span>
-  <span class="mi">6</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
-  <span class="mi">7</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
-  <span class="mi">4</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
-  <span class="mi">5</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">8</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
- <span class="mi">12</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
- <span class="mi">11</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
- <span class="mi">10</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
- <span class="mi">17</span> <span class="o">|</span>     <span class="mf">1.499999999999</span> <span class="o">|</span>     <span class="mf">1.499999999999</span>
- <span class="mi">14</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
- <span class="mi">18</span> <span class="o">|</span> <span class="mf">1.7000000000000002</span> <span class="o">|</span> <span class="mf">1.7000000000000002</span>
- <span class="mi">13</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
- <span class="mi">15</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
- <span class="mi">16</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
-  <span class="mi">9</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
-  <span class="mi">3</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
-  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
-  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>                  <span class="mi">1</span>
+  <span class="mi">6</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">7</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">4</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">5</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">2</span>
+  <span class="mi">8</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">12</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">2</span>
+ <span class="mi">11</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">2</span>
+ <span class="mi">10</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">17</span> <span class="o">|</span>     <span class="mf">2.999999999998</span> <span class="o">|</span>     <span class="mf">2.999999999998</span>
+ <span class="mi">14</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">18</span> <span class="o">|</span> <span class="mf">3.4000000000000004</span> <span class="o">|</span> <span class="mf">3.4000000000000004</span>
+ <span class="mi">13</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">2</span>
+ <span class="mi">15</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">16</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">9</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">3</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
 <span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 <p>Note that to be able to follow the documentation examples, everything is based
 on the original graph.</p>
-<p>So fixing to what there was before:</p>
+<p>Returning to the original data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
 <span class="n">cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">cost</span><span class="p">),</span>
 <span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">reverse_cost</span><span class="p">);</span>
@@ -1052,9 +888,106 @@ on the original graph.</p>
 </pre></div>
 </div>
 </section>
+<section id="update-costs-based-on-codes">
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">Update costs based on codes</a><a class="headerlink" href="#update-costs-based-on-codes" title="Permalink to this heading">¶</a></h4>
+<p>Other datasets, can have a column with values like</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FT</span></code> vehicle flow on the direction of the geometry</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TF</span></code> vehicle flow opposite of the direction of the geometry</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code> vehicle flow on both directions</p></li>
+</ul>
+<p>Preparing a code column for the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">direction</span> <span class="n">TEXT</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;B&#39;</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;FT&#39;</span>
+           <span class="n">WHEN</span> <span class="p">(</span><span class="n">cost</span><span class="o">&lt;</span><span class="mi">0</span> <span class="n">AND</span> <span class="n">reverse_cost</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;TF&#39;</span>
+           <span class="n">ELSE</span> <span class="s1">&#39;&#39;</span> <span class="n">END</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>Adjusting the costs based on the codes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span> <span class="n">OR</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;FT&#39;</span><span class="p">)</span>
+       <span class="n">THEN</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+       <span class="n">ELSE</span> <span class="o">-</span><span class="mi">1</span> <span class="n">END</span><span class="p">,</span>
+<span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="p">(</span><span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;B&#39;</span> <span class="n">OR</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;TF&#39;</span><span class="p">)</span>
+       <span class="n">THEN</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+       <span class="n">ELSE</span> <span class="o">-</span><span class="mi">1</span> <span class="n">END</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>Which gives the following results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edges</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span>        <span class="n">cost</span>        <span class="o">|</span>    <span class="n">reverse_cost</span>
+<span class="o">----+--------------------+--------------------</span>
+  <span class="mi">6</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">7</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">4</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">5</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
+  <span class="mi">8</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">12</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
+ <span class="mi">11</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
+ <span class="mi">10</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">17</span> <span class="o">|</span>     <span class="mf">2.999999999998</span> <span class="o">|</span>     <span class="mf">2.999999999998</span>
+ <span class="mi">14</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">18</span> <span class="o">|</span> <span class="mf">3.4000000000000004</span> <span class="o">|</span> <span class="mf">3.4000000000000004</span>
+ <span class="mi">13</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span>
+ <span class="mi">15</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+ <span class="mi">16</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">9</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">3</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">1</span> <span class="o">|</span>                  <span class="mi">2</span> <span class="o">|</span>                  <span class="mi">2</span>
+  <span class="mi">2</span> <span class="o">|</span>                 <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>                  <span class="mi">2</span>
+<span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Returning to the original data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">cost</span><span class="p">),</span>
+<span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">reverse_cost</span><span class="p">);</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">DROP</span> <span class="n">COLUMN</span> <span class="n">direction</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 <section id="check-the-routing-topology">
-<h3><a class="toc-backref" href="#id89" role="doc-backlink">Compruebe la Topología de Ruteo</a><a class="headerlink" href="#check-the-routing-topology" title="Permalink to this heading">¶</a></h3>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Compruebe la Topología de Ruteo</a><a class="headerlink" href="#check-the-routing-topology" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id4">
+<ul class="simple">
+<li><p><a class="reference internal" href="#crossing-edges" id="id34">Crossing edges</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-split-edges" id="id35">Adding split edges</a></p></li>
+<li><p><a class="reference internal" href="#adding-new-vertices" id="id36">Adding new vertices</a></p></li>
+<li><p><a class="reference internal" href="#updating-edges-topology" id="id37">Updating edges topology</a></p></li>
+<li><p><a class="reference internal" href="#removing-the-surplus-edges" id="id38">Removing the surplus edges</a></p></li>
+<li><p><a class="reference internal" href="#updating-vertices-topology" id="id39">Updating vertices topology</a></p></li>
+<li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id40">Checking for crossing edges</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#disconnected-graphs" id="id41">Disconnected graphs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#prepare-storage-for-connection-information" id="id42">Prepare storage for connection information</a></p></li>
+<li><p><a class="reference internal" href="#save-the-vertices-connection-information" id="id43">Save the vertices connection information</a></p></li>
+<li><p><a class="reference internal" href="#save-the-edges-connection-information" id="id44">Save the edges connection information</a></p></li>
+<li><p><a class="reference internal" href="#get-the-closest-vertex" id="id45">Get the closest vertex</a></p></li>
+<li><p><a class="reference internal" href="#connecting-components" id="id46">Connecting components</a></p></li>
+<li><p><a class="reference internal" href="#checking-components" id="id47">Checking components</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#contraction-of-a-graph" id="id48">Contraction of a graph</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dead-ends" id="id49">Dead ends</a></p></li>
+<li><p><a class="reference internal" href="#linear-edges" id="id50">Linear edges</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
 <p>There are lots of possible problems in a graph.</p>
 <ul class="simple">
 <li><p>The data used may not have been designed with routing in mind.</p></li>
@@ -1062,12 +995,12 @@ on the original graph.</p>
 <li><p>The graph is disconnected.</p></li>
 <li><p>There are unwanted intersections.</p></li>
 <li><p>The graph is too large and needs to be contracted.</p></li>
-<li><p>A subgraph is needed for the application.</p></li>
+<li><p>A sub graph is needed for the application.</p></li>
 <li><p>and many other problems that the pgRouting user, that is the application
 developer might encounter.</p></li>
 </ul>
 <section id="crossing-edges">
-<h4><a class="toc-backref" href="#id90" role="doc-backlink">Crossing edges</a><a class="headerlink" href="#crossing-edges" title="Permalink to this heading">¶</a></h4>
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">Crossing edges</a><a class="headerlink" href="#crossing-edges" title="Permalink to this heading">¶</a></h3>
 <p>To get the crossing edges:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
@@ -1087,8 +1020,8 @@ tunnel or bride crossing over another road.</p>
 <p>It might be incorrect, for example:</p>
 <ol class="arabic simple">
 <li><p>When it is actually an intersection of roads, where vehicles can make turns.</p></li>
-<li><p>When in terms of electrical lines, the electrical line is able to swith roads
-even on a tunnel or bridge.</p></li>
+<li><p>When in terms of electrical lines, the electrical line is able to switch
+roads even on a tunnel or bridge.</p></li>
 </ol>
 <p>When it is incorrect, it needs fixing:</p>
 <ol class="arabic simple">
@@ -1109,7 +1042,7 @@ pedestrians.</p></li>
 </ul>
 </li>
 </ol>
-<p>Once analized one by one the crossings, for the ones that need a local fix,
+<p>Once analyzed one by one the crossings, for the ones that need a local fix,
 the edges need to be <a class="reference external" href="https://postgis.net/docs/ST_Split.html">split</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_AsText</span><span class="p">((</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
@@ -1132,7 +1065,7 @@ the edges need to be <a class="reference external" href="https://postgis.net/doc
 need to be updated in the new edges, the old edges need to be
 removed and the routing topology needs to be updated.</p>
 <section id="adding-split-edges">
-<h5><a class="toc-backref" href="#id91" role="doc-backlink">Adding split edges</a><a class="headerlink" href="#adding-split-edges" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id35" role="doc-backlink">Adding split edges</a><a class="headerlink" href="#adding-split-edges" title="Permalink to this heading">¶</a></h4>
 <p>For each pair of crossing edges a process similar to this one must be performed.</p>
 <p>The columns inserted and the way are calculated are based on the application.
 For example, if the edges have a trait <strong>name</strong>, then that column is to be
@@ -1142,7 +1075,7 @@ copied.</p>
 <li><p><strong>factor</strong> based on the position of the intersection of the edges can be used
 to adjust the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns.</p></li>
 <li><p>Capacity information, used on the <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a> functions does not need
-to change when spliting edges.</p></li>
+to change when splitting edges.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">first_edge</span> <span class="n">AS</span> <span class="p">(</span>
@@ -1192,8 +1125,8 @@ to change when spliting edges.</p></li>
 </div>
 </section>
 <section id="adding-new-vertices">
-<h5><a class="toc-backref" href="#id92" role="doc-backlink">Adding new vertices</a><a class="headerlink" href="#adding-new-vertices" title="Permalink to this heading">¶</a></h5>
-<p>After adding all the split edges requiered by the application, the newly created
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">Adding new vertices</a><a class="headerlink" href="#adding-new-vertices" title="Permalink to this heading">¶</a></h4>
+<p>After adding all the split edges required by the application, the newly created
 vertices need to be added to the vertices table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
 <span class="p">(</span><span class="n">SELECT</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">geom</span>
@@ -1204,7 +1137,7 @@ vertices need to be added to the vertices table.</p>
 </div>
 </section>
 <section id="updating-edges-topology">
-<h5><a class="toc-backref" href="#id93" role="doc-backlink">Updating edges topology</a><a class="headerlink" href="#updating-edges-topology" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">Updating edges topology</a><a class="headerlink" href="#updating-edges-topology" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
@@ -1221,7 +1154,7 @@ vertices need to be added to the vertices table.</p>
 </div>
 </section>
 <section id="removing-the-surplus-edges">
-<h5><a class="toc-backref" href="#id94" role="doc-backlink">Removing the surplus edges</a><a class="headerlink" href="#removing-the-surplus-edges" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">Removing the surplus edges</a><a class="headerlink" href="#removing-the-surplus-edges" title="Permalink to this heading">¶</a></h4>
 <p>Once all significant information needed by the application has been transported
 to the new edges, then the crossing edges can be deleted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
@@ -1232,7 +1165,7 @@ to the new edges, then the crossing edges can be deleted.</p>
 view.</p>
 </section>
 <section id="updating-vertices-topology">
-<h5><a class="toc-backref" href="#id95" role="doc-backlink">Updating vertices topology</a><a class="headerlink" href="#updating-vertices-topology" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">Updating vertices topology</a><a class="headerlink" href="#updating-vertices-topology" title="Permalink to this heading">¶</a></h4>
 <p>To keep the graph consistent, the vertices topology needs to be updated</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">SET</span>
 <span class="n">in_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span>
@@ -1243,7 +1176,7 @@ view.</p>
 </div>
 </section>
 <section id="checking-for-crossing-edges">
-<h5><a class="toc-backref" href="#id96" role="doc-backlink">Checking for crossing edges</a><a class="headerlink" href="#checking-for-crossing-edges" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">Checking for crossing edges</a><a class="headerlink" href="#checking-for-crossing-edges" title="Permalink to this heading">¶</a></h4>
 <p>There are no crossing edges on the graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
@@ -1256,41 +1189,8 @@ view.</p>
 </div>
 </section>
 </section>
-<section id="dead-ends-and-disconnected-graphs">
-<h4><a class="toc-backref" href="#id97" role="doc-backlink">Dead ends and disconnected graphs</a><a class="headerlink" href="#dead-ends-and-disconnected-graphs" title="Permalink to this heading">¶</a></h4>
-<p>To get the dead ends:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
-<span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
- <span class="nb">id</span>
-<span class="o">----</span>
-  <span class="mi">1</span>
-  <span class="mi">2</span>
-  <span class="mi">4</span>
-  <span class="mi">5</span>
-  <span class="mi">9</span>
- <span class="mi">13</span>
- <span class="mi">14</span>
-<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>That information is correct, for example, when the dead end is on the limit of
-the imported graph.</p>
-<p>Visually node <span class="math notranslate nohighlight">\(4\)</span> looks to be as start/ending of 3 edges, but it is not.</p>
-<p>Is that correct?</p>
-<ul class="simple">
-<li><p>Is there such a small curb:</p>
-<ul>
-<li><p>That does not allow a vehicle to use that visual intersection?</p></li>
-<li><p>Is the applicaction for pedestrians and therefore the pedestrican can easily
-walk on the small curb?</p></li>
-<li><p>Is the application for the electicicity and the electrical lines than can
-easily be extended on top of the small curb?</p></li>
-</ul>
-</li>
-<li><p>Is there a big cliff and from eagles view look like the dead end is close to
-the segment?</p></li>
-</ul>
+<section id="disconnected-graphs">
+<h3><a class="toc-backref" href="#id41" role="doc-backlink">Disconnected graphs</a><a class="headerlink" href="#disconnected-graphs" title="Permalink to this heading">¶</a></h3>
 <p>To get the graph connectivity:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1328,7 +1228,7 @@ and both vertices are also part of the dead end result set.</p>
 the crossing edge in this graph is a different component.</p>
 </div>
 <section id="prepare-storage-for-connection-information">
-<h5><a class="toc-backref" href="#id98" role="doc-backlink">Prepare storage for connection information</a><a class="headerlink" href="#prepare-storage-for-connection-information" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id42" role="doc-backlink">Prepare storage for connection information</a><a class="headerlink" href="#prepare-storage-for-connection-information" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
@@ -1337,7 +1237,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-vertices-connection-information">
-<h5><a class="toc-backref" href="#id99" role="doc-backlink">Save the vertices connection information</a><a class="headerlink" href="#save-the-vertices-connection-information" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id43" role="doc-backlink">Save the vertices connection information</a><a class="headerlink" href="#save-the-vertices-connection-information" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1348,7 +1248,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-edges-connection-information">
-<h5><a class="toc-backref" href="#id100" role="doc-backlink">Save the edges connection information</a><a class="headerlink" href="#save-the-edges-connection-information" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id44" role="doc-backlink">Save the edges connection information</a><a class="headerlink" href="#save-the-edges-connection-information" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
 <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
@@ -1357,8 +1257,8 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="get-the-closest-vertex">
-<h5><a class="toc-backref" href="#id101" role="doc-backlink">Get the closest vertex</a><a class="headerlink" href="#get-the-closest-vertex" title="Permalink to this heading">¶</a></h5>
-<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertext to component <span class="math notranslate nohighlight">\(1\)</span> is
+<h4><a class="toc-backref" href="#id45" role="doc-backlink">Get the closest vertex</a><a class="headerlink" href="#get-the-closest-vertex" title="Permalink to this heading">¶</a></h4>
+<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
 vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
@@ -1376,14 +1276,14 @@ FROM pgr_findCloseEdges(
 information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
 </section>
 <section id="connecting-components">
-<h5><a class="toc-backref" href="#id102" role="doc-backlink">Connecting components</a><a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h5>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">Connecting components</a><a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h4>
 <p>There are three basic ways to connect the components</p>
 <ul class="simple">
 <li><p>From the vertex to the starting point of the edge</p></li>
 <li><p>From the vertex to the ending point of the edge</p></li>
 <li><p>From the vertex to the closest vertex on the edge</p>
 <ul>
-<li><p>This solution requiers the edge to be split.</p></li>
+<li><p>This solution requires the edge to be split.</p></li>
 </ul>
 </li>
 </ul>
@@ -1441,8 +1341,8 @@ INSERT 0 2
 </div>
 </section>
 <section id="checking-components">
-<h5><a class="toc-backref" href="#id103" role="doc-backlink">Checking components</a><a class="headerlink" href="#checking-components" title="Permalink to this heading">¶</a></h5>
-<p>Ignoring the edge that requieres further work. The graph is now fully connected
+<h4><a class="toc-backref" href="#id47" role="doc-backlink">Checking components</a><a class="headerlink" href="#checking-components" title="Permalink to this heading">¶</a></h4>
+<p>Ignoring the edge that requires further work. The graph is now fully connected
 as there is only one component.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1473,27 +1373,132 @@ as there is only one component.</p>
 </div>
 </section>
 </section>
-</section>
-<section id="compute-a-path">
-<h3><a class="toc-backref" href="#id104" role="doc-backlink">Calcular una Ruta</a><a class="headerlink" href="#compute-a-path" title="Permalink to this heading">¶</a></h3>
-<p>Una vez que tenga todo el trabajo de preparación realizado anteriormente, calcular una ruta es bastante fácil. Tenemos muchos algoritmos diferentes que pueden funcionar con su red de carreteras preparada. La forma general de una consulta de ruta mediante el algoritmo Dijkstra es:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM myroads&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">start</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">end</span><span class="o">&gt;</span><span class="p">)</span>
+<section id="contraction-of-a-graph">
+<h3><a class="toc-backref" href="#id48" role="doc-backlink">Contraction of a graph</a><a class="headerlink" href="#contraction-of-a-graph" title="Permalink to this heading">¶</a></h3>
+<p>The graph can be reduced in size using <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p>
+<p>When to contract will depend on the size of the graph, processing times,
+correctness of the data, on the final application, or any other factor not
+mentioned.</p>
+<p>A fairly good method of finding out if contraction can be useful is because of
+the number of dead ends and/or the number of linear edges.</p>
+<p>A complete method on how to contract and how to use the contracted graph is
+described on <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a></p>
+<section id="dead-ends">
+<h4><a class="toc-backref" href="#id49" role="doc-backlink">Dead ends</a><a class="headerlink" href="#dead-ends" title="Permalink to this heading">¶</a></h4>
+<p>To get the dead ends:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
+<span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="nb">id</span>
+<span class="o">----</span>
+  <span class="mi">1</span>
+  <span class="mi">5</span>
+  <span class="mi">9</span>
+ <span class="mi">13</span>
+ <span class="mi">14</span>
+  <span class="mi">2</span>
+  <span class="mi">4</span>
+<span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
+
 </pre></div>
 </div>
-<p>Este algoritmo solo requiere <em>id</em>, <em>source</em>, <em>target</em> y <em>cost</em> como los atributos mínimos, que de forma predeterminada se considerarán columnas en la tabla de caminos. Si los nombres de columna de la tabla de caminos no coinciden exactamente con los nombres de estos atributos, puede usar alias. Por ejemplo, si importara datos de OSM mediante <strong>osm2pgrouting</strong>, el nombre de la columna id sería <em>gid</em> y la tabla de caminos sería <em>ways</em>, por lo que consultaría una ruta del id 1 del nodo al id 2 del nodo escribiendo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">pgr_dijkstra</span><span class="p">(</span><span class="s1">&#39;SELECT gid AS id, source, target, cost FROM ways&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Como puede ver, esto es bastante sencillo y también permite una gran flexibilidad, tanto en términos de estructura de base de datos como en la definición de funciones de coste. Puede probar la consulta anterior utilizando <em>length_m AS cost</em> para calcular la ruta de acceso más corta en metros o <em>cost_s / 60 AS cost</em> para calcular la ruta de acceso más rápida en minutos.</p>
-<p>Puede buscar y los algoritmos específicos para los detalles de las firmas y cómo utilizarlas. Estos resultados tienen información como el id de borde y/o el id del nodo junto con el costo o la geometría del paso en la ruta de acceso de <em>start</em> a <em>end</em>. Con los identificadores puede volver a unir estos resultados a la tabla perimetral para obtener más información sobre cada paso de la ruta de acceso.</p>
+<p>That information is correct, for example, when the dead end is on the limit of
+the imported graph.</p>
+<p>Visually node <span class="math notranslate nohighlight">\(4\)</span> looks to be as start/ending of 3 edges, but it is not.</p>
+<p>Is that correct?</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a></p></li>
+<li><p>Is there such a small curb:</p>
+<ul>
+<li><p>That does not allow a vehicle to use that visual intersection?</p></li>
+<li><p>Is the application for pedestrians and therefore the pedestrian can easily
+walk on the small curb?</p></li>
+<li><p>Is the application for the electricity and the electrical lines than can
+easily be extended on top of the small curb?</p></li>
 </ul>
+</li>
+<li><p>Is there a big cliff and from eagles view look like the dead end is close to
+the segment?</p></li>
+</ul>
+<p>When there are many dead ends, to speed up, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a>
+functions can be used to divide the problem.</p>
+</section>
+<section id="linear-edges">
+<h4><a class="toc-backref" href="#id50" role="doc-backlink">Linear edges</a><a class="headerlink" href="#linear-edges" title="Permalink to this heading">¶</a></h4>
+<p>To get the linear edges:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">FROM</span> <span class="n">vertices</span>
+<span class="n">WHERE</span> <span class="n">array_length</span><span class="p">(</span><span class="n">in_edges</span> <span class="o">||</span> <span class="n">out_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="nb">id</span>
+<span class="o">----</span>
+  <span class="mi">3</span>
+ <span class="mi">15</span>
+ <span class="mi">17</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>This information is correct, for example, when the application is taking into
+account speed bumps, stop signals.</p>
+<p>When there are many linear edges, to speed up, the <a class="reference internal" href="contraction-family.html"><span class="doc">Contraction - Familia de funciones</span></a>
+functions can be used to divide the problem.</p>
 </section>
 </section>
-<section id="group-of-functions">
-<h2><a class="toc-backref" href="#id105" role="doc-backlink">Grupo de Funciones</a><a class="headerlink" href="#group-of-functions" title="Permalink to this heading">¶</a></h2>
-<p>Una función puede tener diferentes sobrecargas. A través de esta documentación, para indicar qué sobrecarga usamos los siguientes términos:</p>
+</section>
+<section id="function-s-structure">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Function’s structure</a><a class="headerlink" href="#function-s-structure" title="Permalink to this heading">¶</a></h2>
+<p>Once the graph preparation work has been done above, it is time to use a</p>
+<p>The general form of a pgRouting function call is:</p>
+<pre class="literal-block">pgr_&lt;name&gt;(<a class="reference internal" href="#inner-queries">Inner queries</a>, <strong>parameters</strong>, [ <code class="docutils literal notranslate"><span class="pre">Optional</span> <span class="pre">parameters</span></code>)</pre>
+<p>Donde:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#inner-queries">Inner queries</a>: Are compulsory parameters that are <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> strings
+containing SQL queries.</p></li>
+<li><p><strong>parameters</strong>: Additional compulsory parameters needed by the function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Optional</span> <span class="pre">parameters</span></code>: Are non compulsory <strong>named</strong> parameters that have a
+default value when omitted.</p></li>
+</ul>
+<p>The compulsory parameters are positional parameters, the optional parameters are
+named parameters.</p>
+<p>For example, for this <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> signature:</p>
+<pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</pre>
+<ul class="simple">
+<li><p><a class="reference internal" href="#edges-sql">Edges SQL</a>:</p>
+<ul>
+<li><p>Is the first parameter.</p></li>
+<li><p>It is compulsory.</p></li>
+<li><p>It is an inner query.</p></li>
+<li><p>It has no name, so <strong>Edges SQL</strong> gives an idea of what kind of inner query
+needs to be used</p></li>
+</ul>
+</li>
+<li><p><strong>start vid</strong>:</p>
+<ul>
+<li><p>Is the second parameter.</p></li>
+<li><p>It is compulsory.</p></li>
+<li><p>It has no name, so <strong>start vid</strong> gives an idea of what the second
+parameter’s value should contain.</p></li>
+</ul>
+</li>
+<li><p><strong>end vid</strong></p>
+<ul>
+<li><p>Is the third parameter.</p></li>
+<li><p>It is compulsory.</p></li>
+<li><p>It has no name, so <strong>end vid</strong> gives an idea of what the third
+parameter’s value should contain</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p>
+<ul>
+<li><p>Is the fourth parameter.</p></li>
+<li><p>It is optional.</p></li>
+<li><p>It has a name.</p></li>
+</ul>
+</li>
+</ul>
+<p>The full description of the parameters are found on the <a class="reference internal" href="#parameters">Parameters</a> section of
+each function.</p>
+</section>
+<section id="function-s-overloads">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Function’s overloads</a><a class="headerlink" href="#function-s-overloads" title="Permalink to this heading">¶</a></h2>
+<p>A function might have different overloads. The most common are called:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-one">Uno a Uno</a></p></li>
 <li><p><a class="reference internal" href="#one-to-many">Uno a Muchos</a></p></li>
@@ -1501,9 +1506,15 @@ as there is only one component.</p>
 <li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
 <li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
-<p>Dependiendo de la sobrecarga son los parámetros utilizados, manteniendo la coherencia en todas las funciones.</p>
+<p>Depending on the overload the parameters types change.</p>
+<ul class="simple">
+<li><p><strong>One</strong>: <strong>ANY-INTEGER</strong></p></li>
+<li><p><strong>Many</strong>: <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> [ <strong>ANY-INTEGER</strong> ]</p></li>
+</ul>
+<p>Depending of the function the overloads may vary. But the concept of parameter
+type change remains the same.</p>
 <section id="one-to-one">
-<h3><a class="toc-backref" href="#id106" role="doc-backlink">Uno a Uno</a><a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
+<h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde el vértice inicial <strong>one</strong></p></li>
@@ -1511,7 +1522,7 @@ as there is only one component.</p>
 </ul>
 </section>
 <section id="one-to-many">
-<h3><a class="toc-backref" href="#id107" role="doc-backlink">Uno a Muchos</a><a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
+<h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde el vértice inicial <strong>one</strong></p></li>
@@ -1519,7 +1530,7 @@ as there is only one component.</p>
 </ul>
 </section>
 <section id="many-to-one">
-<h3><a class="toc-backref" href="#id108" role="doc-backlink">Muchos a Uno</a><a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
+<h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde  vértices iniciales <strong>many</strong></p></li>
@@ -1527,7 +1538,7 @@ as there is only one component.</p>
 </ul>
 </section>
 <section id="many-to-many">
-<h3><a class="toc-backref" href="#id109" role="doc-backlink">Muchos a Muchos</a><a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
+<h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>Desde  vértices iniciales <strong>many</strong></p></li>
@@ -1535,31 +1546,32 @@ as there is only one component.</p>
 </ul>
 </section>
 <section id="combinations">
-<h3><a class="toc-backref" href="#id110" role="doc-backlink">Combinaciones</a><a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<h3>Combinaciones<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
 <li><p>A partir de <strong>muchos</strong> diferentes vértices de inicio</p></li>
 <li><p>a <strong>muchos</strong> diferentes vértices finales</p></li>
 <li><p>Cada tupla especifica un par de vértices iniciales y un vértice final</p></li>
 <li><p>Los usuarios pueden definir las combinaciones como deseen.</p></li>
+<li><p>Needs a <a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></li>
 </ul>
 </section>
 </section>
 <section id="inner-queries">
-<h2><a class="toc-backref" href="#id111" role="doc-backlink">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
-<nav class="contents local" id="id2">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id5">
 <ul class="simple">
-<li><p><a class="reference internal" href="#edges-sql" id="id141">SQL de aristas</a></p>
+<li><p><a class="reference internal" href="#edges-sql" id="id51">SQL de aristas</a></p>
 <ul>
-<li><p><a class="reference internal" href="#general" id="id142">General</a></p></li>
-<li><p><a class="reference internal" href="#general-without-id" id="id143">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
-<li><p><a class="reference internal" href="#general-with-x-y" id="id144">General with (X,Y)</a></p></li>
-<li><p><a class="reference internal" href="#flow" id="id145">Flow</a></p></li>
+<li><p><a class="reference internal" href="#general" id="id52">General</a></p></li>
+<li><p><a class="reference internal" href="#general-without-id" id="id53">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
+<li><p><a class="reference internal" href="#general-with-x-y" id="id54">General with (X,Y)</a></p></li>
+<li><p><a class="reference internal" href="#flow" id="id55">Flow</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#combinations-sql" id="id146">Combinations SQL</a></p></li>
-<li><p><a class="reference internal" href="#restrictions-sql" id="id147">Restrictions SQL</a></p></li>
-<li><p><a class="reference internal" href="#points-sql" id="id148">Points SQL</a></p></li>
+<li><p><a class="reference internal" href="#combinations-sql" id="id56">Combinations SQL</a></p></li>
+<li><p><a class="reference internal" href="#restrictions-sql" id="id57">Restrictions SQL</a></p></li>
+<li><p><a class="reference internal" href="#points-sql" id="id58">Points SQL</a></p></li>
 </ul>
 </nav>
 <p>There are several kinds of valid inner queries and also the columns returned are
@@ -1576,9 +1588,9 @@ To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMER
 </dd>
 </dl>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id141" role="doc-backlink">SQL de aristas</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id51" role="doc-backlink">SQL de aristas</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <section id="general">
-<h4><a class="toc-backref" href="#id142" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id52" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
@@ -1587,7 +1599,7 @@ To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMER
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
-<li><p>Some uncategorized functions</p></li>
+<li><p>Some uncategorised functions</p></li>
 </ul>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -1647,7 +1659,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="general-without-id">
-<h4><a class="toc-backref" href="#id143" role="doc-backlink">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id53" role="doc-backlink">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a><a class="headerlink" href="#general-without-id" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="allpairs-family.html"><span class="doc">Todos los Pares - Familia de Funciones</span></a></p></li>
@@ -1705,7 +1717,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="general-with-x-y">
-<h4><a class="toc-backref" href="#id144" role="doc-backlink">General with (X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id54" role="doc-backlink">General with (X,Y)</a><a class="headerlink" href="#general-with-x-y" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Family of functions</span></a></p></li>
@@ -1794,7 +1806,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="flow">
-<h4><a class="toc-backref" href="#id145" role="doc-backlink">Flow</a><a class="headerlink" href="#flow" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">Flow</a><a class="headerlink" href="#flow" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
@@ -1937,7 +1949,7 @@ it’s not part of the graph.</p></li>
 </section>
 </section>
 <section id="combinations-sql">
-<h3><a class="toc-backref" href="#id146" role="doc-backlink">Combinations SQL</a><a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id56" role="doc-backlink">Combinations SQL</a><a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Used on combination signatures</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -1970,7 +1982,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3><a class="toc-backref" href="#id147" role="doc-backlink">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id57" role="doc-backlink">Restrictions SQL</a><a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10%" />
@@ -2008,7 +2020,7 @@ taken.
 </dl>
 </section>
 <section id="points-sql">
-<h3><a class="toc-backref" href="#id148" role="doc-backlink">Points SQL</a><a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id58" role="doc-backlink">Points SQL</a><a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Points SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p></li>
@@ -2076,7 +2088,7 @@ automatically.</p></li>
 </section>
 </section>
 <section id="parameters">
-<h2><a class="toc-backref" href="#id120" role="doc-backlink">Parámetros</a><a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Parámetros</a><a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <p>The main parameter of the majority of the pgRouting functions is a query that
 selects the edges of the graph.</p>
 <table class="docutils align-default" style="width: 81">
@@ -2098,7 +2110,7 @@ parameters, some of them are compulsory and some are optional.</p>
 <p>The compulsory parameters are nameless and must be given in the required order.
 The optional parameters are named parameters and will have a default value.</p>
 <section id="parameters-for-the-via-functions">
-<h3><a class="toc-backref" href="#id121" role="doc-backlink">Parameters for the Via functions</a><a class="headerlink" href="#parameters-for-the-via-functions" title="Permalink to this heading">¶</a></h3>
+<h3>Parameters for the Via functions<a class="headerlink" href="#parameters-for-the-via-functions" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
 </ul>
@@ -2162,7 +2174,7 @@ with same identifier is used when no other path is found.</p></li>
 </table>
 </section>
 <section id="for-the-trsp-functions">
-<h3><a class="toc-backref" href="#id122" role="doc-backlink">For the TRSP functions</a><a class="headerlink" href="#for-the-trsp-functions" title="Permalink to this heading">¶</a></h3>
+<h3>For the TRSP functions<a class="headerlink" href="#for-the-trsp-functions" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
 </ul>
@@ -2218,24 +2230,24 @@ with same identifier is used when no other path is found.</p></li>
 </section>
 </section>
 <section id="return-columns">
-<h2><a class="toc-backref" href="#id123" role="doc-backlink">Return columns</a><a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
-<nav class="contents local" id="id3">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Return columns</a><a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id6">
 <ul class="simple">
-<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id149">Return columns for a path</a></p></li>
-<li><p><a class="reference internal" href="#multiple-paths" id="id150">Multiple paths</a></p>
+<li><p><a class="reference internal" href="#return-columns-for-a-path" id="id59">Return columns for a path</a></p></li>
+<li><p><a class="reference internal" href="#multiple-paths" id="id60">Multiple paths</a></p>
 <ul>
-<li><p><a class="reference internal" href="#selective-for-multiple-paths" id="id151">Selective for multiple paths.</a></p></li>
-<li><p><a class="reference internal" href="#non-selective-for-multiple-paths" id="id152">Non selective for multiple paths</a></p></li>
+<li><p><a class="reference internal" href="#selective-for-multiple-paths" id="id61">Selective for multiple paths.</a></p></li>
+<li><p><a class="reference internal" href="#non-selective-for-multiple-paths" id="id62">Non selective for multiple paths</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id153">Return columns for cost functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id154">Return columns for flow functions</a></p></li>
-<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id155">Return columns for spanning tree functions</a></p></li>
+<li><p><a class="reference internal" href="#return-columns-for-cost-functions" id="id63">Return columns for cost functions</a></p></li>
+<li><p><a class="reference internal" href="#return-columns-for-flow-functions" id="id64">Return columns for flow functions</a></p></li>
+<li><p><a class="reference internal" href="#return-columns-for-spanning-tree-functions" id="id65">Return columns for spanning tree functions</a></p></li>
 </ul>
 </nav>
 <p>Hay varios tipos de columnas devueltas que dependen de la función.</p>
 <section id="return-columns-for-a-path">
-<h3><a class="toc-backref" href="#id149" role="doc-backlink">Return columns for a path</a><a class="headerlink" href="#return-columns-for-a-path" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id59" role="doc-backlink">Return columns for a path</a><a class="headerlink" href="#return-columns-for-a-path" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Used on functions that return one path solution</p>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
@@ -2438,9 +2450,9 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </table>
 </section>
 <section id="multiple-paths">
-<h3><a class="toc-backref" href="#id150" role="doc-backlink">Multiple paths</a><a class="headerlink" href="#multiple-paths" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id60" role="doc-backlink">Multiple paths</a><a class="headerlink" href="#multiple-paths" title="Permalink to this heading">¶</a></h3>
 <section id="selective-for-multiple-paths">
-<h4><a class="toc-backref" href="#id151" role="doc-backlink">Selective for multiple paths.</a><a class="headerlink" href="#selective-for-multiple-paths" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id61" role="doc-backlink">Selective for multiple paths.</a><a class="headerlink" href="#selective-for-multiple-paths" title="Permalink to this heading">¶</a></h4>
 <p>The columns depend on the function call.</p>
 <p>Set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
 <span class="pre">agg_cost)</span></code></p>
@@ -2515,7 +2527,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </table>
 </section>
 <section id="non-selective-for-multiple-paths">
-<h4><a class="toc-backref" href="#id152" role="doc-backlink">Non selective for multiple paths</a><a class="headerlink" href="#non-selective-for-multiple-paths" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id62" role="doc-backlink">Non selective for multiple paths</a><a class="headerlink" href="#non-selective-for-multiple-paths" title="Permalink to this heading">¶</a></h4>
 <p>Regardless of the call, al the columns are returned.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
@@ -2582,7 +2594,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
 </section>
 </section>
 <section id="return-columns-for-cost-functions">
-<h3><a class="toc-backref" href="#id153" role="doc-backlink">Return columns for cost functions</a><a class="headerlink" href="#return-columns-for-cost-functions" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id63" role="doc-backlink">Return columns for cost functions</a><a class="headerlink" href="#return-columns-for-cost-functions" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Used in the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="cost-category.html"><span class="doc">Costo - Categoría</span></a></p></li>
@@ -2624,7 +2636,7 @@ a Point.</p>
 </div>
 </section>
 <section id="return-columns-for-flow-functions">
-<h3><a class="toc-backref" href="#id154" role="doc-backlink">Return columns for flow functions</a><a class="headerlink" href="#return-columns-for-flow-functions" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id64" role="doc-backlink">Return columns for flow functions</a><a class="headerlink" href="#return-columns-for-flow-functions" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Edges SQL for the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p></li>
@@ -2713,7 +2725,7 @@ a Point.</p>
 </table>
 </section>
 <section id="return-columns-for-spanning-tree-functions">
-<h3><a class="toc-backref" href="#id155" role="doc-backlink">Return columns for spanning tree functions</a><a class="headerlink" href="#return-columns-for-spanning-tree-functions" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id65" role="doc-backlink">Return columns for spanning tree functions</a><a class="headerlink" href="#return-columns-for-spanning-tree-functions" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Edges SQL for the following</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_prim.html"><span class="doc">pgr_prim</span></a></p></li>
@@ -2740,240 +2752,33 @@ a Point.</p>
 </table>
 </section>
 </section>
-<section id="advanced-topics">
-<h2><a class="toc-backref" href="#id131" role="doc-backlink">Tópicos avanzados</a><a class="headerlink" href="#advanced-topics" title="Permalink to this heading">¶</a></h2>
-<nav class="contents local" id="id4">
-<ul class="simple">
-<li><p><a class="reference internal" href="#routing-topology" id="id156">Topología para Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#graph-analytics" id="id157">Análisis de gráficas</a></p></li>
-<li><p><a class="reference internal" href="#analyze-a-graph" id="id158">Analizar un gráfico</a></p></li>
-<li><p><a class="reference internal" href="#analyze-one-way-streets" id="id159">Analizar las calles unidireccionales</a></p>
-<ul>
-<li><p><a class="reference internal" href="#example" id="id160">Ejemplo</a></p></li>
-</ul>
-</li>
-</ul>
-</nav>
-<section id="routing-topology">
-<span id="topology"></span><h3><a class="toc-backref" href="#id156" role="doc-backlink">Topología para Ruteo</a><a class="headerlink" href="#routing-topology" title="Permalink to this heading">¶</a></h3>
-<p class="rubric">Resumen</p>
-<p>Normalmente cuando se cargan archivos GIS en la base de datos para su uso con pgRouting no tienen información de la topología asociada a ellos. Para crear una topología útil, los datos debe ser «noded». Esto significa que donde dos o más caminos forman una intersección allí debe existir y todos los segmentos de carretera necesitan estar partidos en la intersección, eso suponiendo que puede navegar a cualquier otro segmento mediante la intersección de cualquiera de estos segmentos.</p>
-<p>Puedes utilizar <a class="reference internal" href="#analytics"><span class="std std-ref">graph analysis functions</span></a> para ayudarte a visualizar dónde podría haber problemas de topología en tus datos. Si necesitas crear nodos a partir de tus datos, también tenemos una función <a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork ()</span></a> que deberían funcionarte. Esta función divide TODOS los segmentos cruzados y los une. Hay algunos casos en los que esto podría NO ser lo correcto.</p>
-<p>Por ejemplo, cuando se tiene un cruce de puente o de un túnel, no quieres estos contengan un nodo, pero pgr_nodeNetwork no sabe que ese es el caso y va a crear un nodo,  entonces el enrutador interpretará el puente o  el paso a desnivel como si fuera una intersección plana en 2D. Para lidiar con este problema, se debe utilizar niveles z ya se para estos tipos de intersecciones o para otros casos en donde crear el nodo de la intersección no sea lo correcto.</p>
-<p>Para los casos donde la topología debe construirse,  las siguientes funciones pueden ser de utilidad. Una forma de preparar los datos para pgRouting es agregar los siguientes campos a la tabla y luego poblarlas según corresponda. Este ejemplo tiene como supuestos: que la tabla original ya tiene columnas como  <code class="docutils literal notranslate"><span class="pre">one_way</span></code>, <code class="docutils literal notranslate"><span class="pre">fcc</span></code> y posiblemente otras y que contienen valores de datos específicos. Esto es sólo para darle una idea de lo que se puede hacer con los datos.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edge_table</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">source</span> <span class="n">integer</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">target</span> <span class="n">integer</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">cost_len</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">cost_time</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">rcost_len</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">rcost_time</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">x1</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">y1</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">x2</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">y2</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">to_cost</span> <span class="n">double</span> <span class="n">precision</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">rule</span> <span class="n">text</span><span class="p">,</span>
-    <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">isolated</span> <span class="n">integer</span><span class="p">;</span>
-
-<span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>La función <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> crea la tabla <code class="docutils literal notranslate"><span class="pre">vertices_tmp</span></code> y llena las columnas de <code class="docutils literal notranslate"><span class="pre">source</span></code> y <code class="docutils literal notranslate"><span class="pre">target</span></code>. El siguiente ejemplo llenó las columnas restantes. Aquí, la columna <code class="docutils literal notranslate"><span class="pre">fcc</span></code> contiene código de clase de entidad y las declaraciones <code class="docutils literal notranslate"><span class="pre">CASE</span></code> lo convierten a una velocidad promedio.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table</span> <span class="n">SET</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
-                      <span class="n">y1</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_startpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
-                      <span class="n">x2</span> <span class="o">=</span> <span class="n">st_x</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
-                      <span class="n">y2</span> <span class="o">=</span> <span class="n">st_y</span><span class="p">(</span><span class="n">st_endpoint</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span>
-  <span class="n">cost_len</span>  <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span>
-  <span class="n">rcost_len</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">),</span>
-  <span class="n">len_km</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span>
-  <span class="n">len_miles</span> <span class="o">=</span> <span class="n">st_length_spheroid</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="s1">&#39;SPHEROID[&quot;WGS84&quot;,6378137,298.25728]&#39;</span><span class="p">)</span>
-              <span class="o">/</span> <span class="mf">1000.0</span> <span class="o">*</span> <span class="mf">0.6213712</span><span class="p">,</span>
-  <span class="n">speed_mph</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span> <span class="n">THEN</span> <span class="mi">65</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span> <span class="n">THEN</span> <span class="mi">65</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span> <span class="n">THEN</span> <span class="mi">55</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span> <span class="n">THEN</span> <span class="mi">55</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span> <span class="n">THEN</span> <span class="mi">45</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span> <span class="n">THEN</span> <span class="mi">45</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span> <span class="n">THEN</span> <span class="mi">35</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span> <span class="n">THEN</span> <span class="mi">35</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span> <span class="n">THEN</span> <span class="mi">15</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span> <span class="n">THEN</span> <span class="mi">10</span>
-                   <span class="n">ELSE</span> <span class="n">null</span> <span class="n">END</span><span class="p">,</span>
-  <span class="n">speed_kmh</span> <span class="o">=</span> <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A10&#39;</span> <span class="n">THEN</span> <span class="mi">104</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A15&#39;</span> <span class="n">THEN</span> <span class="mi">104</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A20&#39;</span> <span class="n">THEN</span> <span class="mi">88</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A25&#39;</span> <span class="n">THEN</span> <span class="mi">88</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A30&#39;</span> <span class="n">THEN</span> <span class="mi">72</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A35&#39;</span> <span class="n">THEN</span> <span class="mi">72</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A40&#39;</span> <span class="n">THEN</span> <span class="mi">56</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A45&#39;</span> <span class="n">THEN</span> <span class="mi">56</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A50&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A60&#39;</span> <span class="n">THEN</span> <span class="mi">50</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A61&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A62&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A64&#39;</span> <span class="n">THEN</span> <span class="mi">40</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A70&#39;</span> <span class="n">THEN</span> <span class="mi">25</span>
-                   <span class="n">WHEN</span> <span class="n">fcc</span><span class="o">=</span><span class="s1">&#39;A69&#39;</span> <span class="n">THEN</span> <span class="mi">15</span>
-                   <span class="n">ELSE</span> <span class="n">null</span> <span class="n">END</span><span class="p">;</span>
-
-<span class="o">--</span> <span class="n">UPDATE</span> <span class="n">the</span> <span class="n">cost</span> <span class="n">information</span> <span class="n">based</span> <span class="n">on</span> <span class="n">oneway</span> <span class="n">streets</span>
-
-<span class="n">UPDATE</span> <span class="n">edge_table</span> <span class="n">SET</span>
-    <span class="n">cost_time</span> <span class="o">=</span> <span class="n">CASE</span>
-        <span class="n">WHEN</span> <span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;TF&#39;</span> <span class="n">THEN</span> <span class="mf">10000.0</span>
-        <span class="n">ELSE</span> <span class="n">cost_len</span><span class="o">/</span><span class="mf">1000.0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="n">numeric</span><span class="o">*</span><span class="mf">3600.0</span>
-        <span class="n">END</span><span class="p">,</span>
-    <span class="n">rcost_time</span> <span class="o">=</span> <span class="n">CASE</span>
-        <span class="n">WHEN</span> <span class="n">one_way</span><span class="o">=</span><span class="s1">&#39;FT&#39;</span> <span class="n">THEN</span> <span class="mf">10000.0</span>
-        <span class="n">ELSE</span> <span class="n">cost_len</span><span class="o">/</span><span class="mf">1000.0</span><span class="o">/</span><span class="n">speed_kmh</span><span class="p">::</span><span class="n">numeric</span><span class="o">*</span><span class="mf">3600.0</span>
-        <span class="n">END</span><span class="p">;</span>
-
-<span class="o">--</span> <span class="n">clean</span> <span class="n">up</span> <span class="n">the</span> <span class="n">database</span> <span class="n">because</span> <span class="n">we</span> <span class="n">have</span> <span class="n">updated</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">records</span>
-
-<span class="n">VACUUM</span> <span class="n">ANALYZE</span> <span class="n">VERBOSE</span> <span class="n">edge_table</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>Ahora su base de datos debe estar lista para usarse en cualquiera (mayoría?) de los algoritmos de pgRouting.</p>
-</section>
-<section id="graph-analytics">
-<span id="analytics"></span><h3><a class="toc-backref" href="#id157" role="doc-backlink">Análisis de gráficas</a><a class="headerlink" href="#graph-analytics" title="Permalink to this heading">¶</a></h3>
-<p class="rubric">Resumen</p>
-<p>Es común encontrar problemas con los gráficos que no se han construido completamente ligados con nodos o con gráficos con niveles z en intersecciónes que se han introducido incorrectamente. Otro problema es que las calles han sido introducidas en la dirección equivocada. No podemos detectar errores con respecto a la verdad respecto a la «tierra», pero podemos buscar inconsistencias y algunas anomalías en un gráfico y les reportarlas para inspecciones adicionales.</p>
-<p>Nosotros no tenemos herramientas de visualización para estos problemas, pero se ha utilizado MapServer para reproducir la gráfica y poner en relieve las áreas con problemas potenciales. Alguien familiarizado con graphviz podría contribuir con herramientas para generar imágenes para este propósito.</p>
-</section>
-<section id="analyze-a-graph">
-<h3><a class="toc-backref" href="#id158" role="doc-backlink">Analizar un gráfico</a><a class="headerlink" href="#analyze-a-graph" title="Permalink to this heading">¶</a></h3>
-<p>Con <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> el grafo puede revisarse en busca de errores. Por ejemplo, para la tabla «mytab» que incluye a «mytab_vertices_pgr» como la tabla de vértices:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span> <span class="mf">0.000002</span><span class="p">);</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">pelase</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">158</span>
-<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">20028</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">527</span>
-<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">2560</span>
-<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">pgr_analyzeGraph</span>
-<span class="o">----------</span>
-   <span class="n">OK</span>
-<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>En la tabla de vértices «mytab_vertices_pgr»:</p>
-<ul class="simple">
-<li><p>Los callejones están identificados por <code class="docutils literal notranslate"><span class="pre">cnt=1</span></code></p></li>
-<li><p>Se identifican problemas potenciales brecha con``chk=1``.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">deadends</span>  <span class="n">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="n">WHERE</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">deadends</span>
-<span class="o">----------</span>
-    <span class="mi">20028</span>
- <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-
-<span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">gaps</span>  <span class="n">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="n">WHERE</span> <span class="n">chk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
- <span class="n">gaps</span>
- <span class="o">-----</span>
-   <span class="mi">527</span>
- <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Si se tienen segmentos aislados de caminos, por ejemplo, un segmento en el cual los dos extremos son callejones sin salida, se pueden encontrar con la siguiente consulta:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
-    <span class="n">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">c</span>
-    <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">source</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span> <span class="n">AND</span> <span class="n">a</span><span class="o">.</span><span class="n">target</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>Si quieren visualizar en una imagen gráfica, entonces usted puede utilizar algo como MapServer para representar los bordes y los vértices y el estilizar en base a <code class="docutils literal notranslate"><span class="pre">cnt</span></code> o si están aislados, etc. También se puede hacer esto con una herramienta como graphviz o geoserver u otras herramientas similares.</p>
-</section>
-<section id="analyze-one-way-streets">
-<h3><a class="toc-backref" href="#id159" role="doc-backlink">Analizar las calles unidireccionales</a><a class="headerlink" href="#analyze-one-way-streets" title="Permalink to this heading">¶</a></h3>
-<p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> analiza las calles unidireccionales de un grafo e identifica los segmentos volteados. Básicamente, si cuenta las aristas que entran en un nodo y las aristas bordes que salen de un nodo, el número tiene que ser mayor que uno.</p>
-<p>Esta consulta agrega dos columnas a la tabla vertices_tmp <code class="docutils literal notranslate"><span class="pre">ein</span> <span class="pre">int</span></code>  y <code class="docutils literal notranslate"><span class="pre">eout</span> <span class="pre">int</span></code> (ein = borde de entrada, eout=borde de salida) y las rellena con los conteos  correspondientes. Después de su ejecución, en un grafo se pueden identificar los nodos con  problemas potenciales utilizando la siguiente consulta.</p>
-<p>Las reglas se definen como un conjunto de cadenas de texto que si coinciden con el valor de <code class="docutils literal notranslate"><span class="pre">col</span></code> se considera como válido para el origen o destino dentro o fuera de la condición.</p>
-<section id="example">
-<h4><a class="toc-backref" href="#id160" role="doc-backlink">Ejemplo</a><a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
-<p>Supongamos que tenemos una tabla «st» de bordes y una columna «one_way» que podría tener valores como:</p>
-<ul class="simple">
-<li><p>“FT” - dirección unidireccional de la fuente para el nodo de destino.</p></li>
-<li><p>“TF” - dirección unidireccional  desde el nodo destino hasta el nodo fuente.</p></li>
-<li><p>“B” - calle de doble sentido.</p></li>
-<li><p>“”- campo vacío, suponer doble sentido.</p></li>
-<li><p>&lt;NULL&gt; - Campo NULL, usar bandera de two_way_if_null, es decir, doble sentido cuando nulo.</p></li>
-</ul>
-<p>Entonces se puede  formar la siguiente consulta para analizar las calles unidireccionales para errores.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="s1">&#39;mytab&#39;</span><span class="p">,</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;FT&#39;</span><span class="p">],</span>
-            <span class="n">ARRAY</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">],</span>
-            <span class="p">);</span>
-
-<span class="o">--</span> <span class="n">now</span> <span class="n">we</span> <span class="n">can</span> <span class="n">see</span> <span class="n">the</span> <span class="n">problem</span> <span class="n">nodes</span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">mytab_vertices_pgr</span> <span class="n">WHERE</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="n">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-
-<span class="o">--</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">problem</span> <span class="n">edges</span> <span class="n">connected</span> <span class="n">to</span> <span class="n">those</span> <span class="n">nodes</span>
-<span class="n">SELECT</span> <span class="n">gid</span> <span class="n">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span> <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">source</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="n">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">UNION</span>
-<span class="n">SELECT</span> <span class="n">gid</span> <span class="n">FROM</span> <span class="n">mytab</span> <span class="n">a</span><span class="p">,</span> <span class="n">mytab_vertices_pgr</span> <span class="n">b</span> <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">target</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">ein</span><span class="o">=</span><span class="mi">0</span> <span class="n">OR</span> <span class="n">eout</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>Normalmente estos problemas son generados por una rotura en la red, la dirección un camino equivocado, quizás un error relacionado con niveles z o una red que no esté debidamente indicada con nodos.</p>
-<p>Las herramientas anteriores no detectan todos los problemas de la red, pero identifican algunos problemas comunes. Hay otros problemas que son difíciles de detectar porque son más globales en su naturaleza como múltiples redes desconectadas. Piense usted en una isla con una red de carreteras que no está conectada a la red del continente porque faltan las rutas del puente o del ferry.</p>
-</section>
-</section>
-</section>
 <section id="performance-tips">
-<span id="performance"></span><h2><a class="toc-backref" href="#id137" role="doc-backlink">Consejos de Rendimiento</a><a class="headerlink" href="#performance-tips" title="Permalink to this heading">¶</a></h2>
-<nav class="contents local" id="id5">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Consejos de Rendimiento</a><a class="headerlink" href="#performance-tips" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="id7">
 <ul class="simple">
-<li><p><a class="reference internal" href="#for-the-routing-functions" id="id161">Para las funciones de Ruteo</a></p></li>
-<li><p><a class="reference internal" href="#for-the-topology-functions" id="id162">Para las funciones de topología:</a></p></li>
+<li><p><a class="reference internal" href="#for-the-routing-functions" id="id66">Para las funciones de Ruteo</a></p></li>
 </ul>
 </nav>
 <section id="for-the-routing-functions">
-<h3><a class="toc-backref" href="#id161" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Permalink to this heading">¶</a></h3>
-<p>Para obtener resultados más rápidos, las consultas enlazan el área de interés para tener, por ejemplo, no más de un millón de filas.</p>
-<p>Utilice una consulta SQL interna que no incluya algunas aristas en la función de ruteo</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="kn">from</span> <span class="nn">edge_table</span> <span class="n">WHERE</span>
-        <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="ow">and</span>
-        <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="n">FROM</span>  <span class="n">edge_table</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Integración de la consulta interna a la función pgRouting:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id, source, target from edge_table WHERE</span>
-            <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="ow">and</span>
-            <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="n">FROM</span>  <span class="n">edge_table</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span><span class="s1">&#39;,</span>
-    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="for-the-topology-functions">
-<h3><a class="toc-backref" href="#id162" role="doc-backlink">Para las funciones de topología:</a><a class="headerlink" href="#for-the-topology-functions" title="Permalink to this heading">¶</a></h3>
-<p>Cuando «sabe» que va a eliminar un conjunto de bordes de la tabla de  bordes, y sin esos bordes va a utilizar una función de enrrutamiento puede hacer el siguiente:</p>
-<p>Analizar la topología nueva basada en la topología actual:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>O crear una nueva topología si el cambio es permanente:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
-<span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+<h3><a class="toc-backref" href="#id66" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Permalink to this heading">¶</a></h3>
+<p>To get faster results bound the queries to an area of interest of routing.</p>
+<p>In this example Use an inner query SQL that does not include some edges in the
+routing function and is within the area of the results.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
+  SELECT id, source, target, cost, reverse_cost from edges
+  WHERE geom &amp;&amp; (SELECT st_buffer(geom, 1) AS myarea
+    FROM edges WHERE id = 2)$$,
+  1, 2);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
 </pre></div>
 </div>
 </section>
 </section>
 <section id="how-to-contribute">
-<span id="how-contribute"></span><h2><a class="toc-backref" href="#id140" role="doc-backlink">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Wiki</p>
 <ul class="simple">
 <li><p>Edit an existing  <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a> page.</p></li>
@@ -3008,7 +2813,7 @@ a Point.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 20, 2022.<br/>
+      Actualizado por última vez en jun 23, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

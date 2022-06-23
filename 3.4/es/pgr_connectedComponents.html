@@ -438,7 +438,7 @@ the crossing edge in this graph is a different component.</p>
 </section>
 <section id="get-the-closest-vertex">
 <h4>Get the closest vertex<a class="headerlink" href="#get-the-closest-vertex" title="Permalink to this heading">¶</a></h4>
-<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertext to component <span class="math notranslate nohighlight">\(1\)</span> is
+<p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> the closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
 vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT edge_id, fraction, ST_AsText(edge) AS edge, id AS closest_vertex
 FROM pgr_findCloseEdges(
@@ -463,7 +463,7 @@ information about the edge <span class="math notranslate nohighlight">\(14\)</sp
 <li><p>From the vertex to the ending point of the edge</p></li>
 <li><p>From the vertex to the closest vertex on the edge</p>
 <ul>
-<li><p>This solution requiers the edge to be split.</p></li>
+<li><p>This solution requires the edge to be split.</p></li>
 </ul>
 </li>
 </ul>
@@ -522,7 +522,7 @@ INSERT 0 2
 </section>
 <section id="checking-components">
 <h4>Checking components<a class="headerlink" href="#checking-components" title="Permalink to this heading">¶</a></h4>
-<p>Ignoring the edge that requieres further work. The graph is now fully connected
+<p>Ignoring the edge that requires further work. The graph is now fully connected
 as there is only one component.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -583,7 +583,7 @@ as there is only one component.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 20, 2022.<br/>
+      Actualizado por última vez en jun 23, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
