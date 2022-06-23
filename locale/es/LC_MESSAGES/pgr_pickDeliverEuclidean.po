@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-04 15:50+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_pickdelivereuclidean/es/>\n"
@@ -372,7 +372,7 @@ msgstr "(Opcional) Solución inicial a utilizar."
 
 #: ../../build/doc/VRP-category.rst:12
 msgid "``1`` One order per truck"
-msgstr "``1`` Un orden por camión"
+msgstr "``1`` Una orden por camión"
 
 #: ../../build/doc/VRP-category.rst:13
 msgid "``2`` Push front order."
