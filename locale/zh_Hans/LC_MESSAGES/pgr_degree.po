@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-16 17:37+0000\n"
+"POT-Creation-Date: 2022-06-23 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -76,12 +76,9 @@ msgstr ""
 msgid "New **proposed** function"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:34
-#: ../../build/doc/pgr_degree.rst:61
-#: ../../build/doc/pgr_degree.rst:73
-#: ../../build/doc/pgr_degree.rst:91
-#: ../../build/doc/pgr_degree.rst:108
-#: ../../build/doc/pgr_degree.rst:138
+#: ../../build/doc/pgr_degree.rst:34 ../../build/doc/pgr_degree.rst:61
+#: ../../build/doc/pgr_degree.rst:73 ../../build/doc/pgr_degree.rst:91
+#: ../../build/doc/pgr_degree.rst:108 ../../build/doc/pgr_degree.rst:138
 msgid "Description"
 msgstr ""
 
@@ -105,15 +102,12 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:61
-#: ../../build/doc/pgr_degree.rst:73
+#: ../../build/doc/pgr_degree.rst:61 ../../build/doc/pgr_degree.rst:73
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:61
-#: ../../build/doc/pgr_degree.rst:73
-#: ../../build/doc/pgr_degree.rst:91
-#: ../../build/doc/pgr_degree.rst:107
+#: ../../build/doc/pgr_degree.rst:61 ../../build/doc/pgr_degree.rst:73
+#: ../../build/doc/pgr_degree.rst:91 ../../build/doc/pgr_degree.rst:107
 #: ../../build/doc/pgr_degree.rst:137
 msgid "Type"
 msgstr ""
@@ -122,8 +116,7 @@ msgstr ""
 msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:63
-#: ../../build/doc/pgr_degree.rst:64
+#: ../../build/doc/pgr_degree.rst:63 ../../build/doc/pgr_degree.rst:64
 msgid "``TEXT``"
 msgstr ""
 
@@ -171,22 +164,18 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:91
-#: ../../build/doc/pgr_degree.rst:106
+#: ../../build/doc/pgr_degree.rst:91 ../../build/doc/pgr_degree.rst:106
 #: ../../build/doc/pgr_degree.rst:136
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:93
-#: ../../build/doc/pgr_degree.rst:109
+#: ../../build/doc/pgr_degree.rst:93 ../../build/doc/pgr_degree.rst:109
 #: ../../build/doc/pgr_degree.rst:139
 msgid "``id``"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:93
-#: ../../build/doc/pgr_degree.rst:110
-#: ../../build/doc/pgr_degree.rst:140
-#: ../../build/doc/pgr_degree.rst:143
+#: ../../build/doc/pgr_degree.rst:93 ../../build/doc/pgr_degree.rst:110
+#: ../../build/doc/pgr_degree.rst:140 ../../build/doc/pgr_degree.rst:143
 msgid "``BIGINT``"
 msgstr ""
 
@@ -198,8 +187,7 @@ msgstr ""
 msgid "Vertex SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:111
-#: ../../build/doc/pgr_degree.rst:141
+#: ../../build/doc/pgr_degree.rst:111 ../../build/doc/pgr_degree.rst:141
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
@@ -207,8 +195,7 @@ msgstr ""
 msgid "``in_edges``"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:113
-#: ../../build/doc/pgr_degree.rst:119
+#: ../../build/doc/pgr_degree.rst:113 ../../build/doc/pgr_degree.rst:119
 msgid "``BIGINT[]``"
 msgstr ""
 
@@ -264,26 +251,90 @@ msgstr ""
 msgid "The results can be used as base code to make a refinement based on the back end development needs."
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:175
-msgid "See Also"
+#: ../../build/doc/pgr_degree.rst:173
+msgid "Degree from an existing table"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:177
-msgid ":doc:`topology-functions`"
+#: ../../build/doc/pgRouting-concepts.rst:4
+msgid "Dead ends"
 msgstr ""
 
-#: ../../build/doc/pgr_degree.rst:178
-msgid ":doc:`pgr_extractVertices`"
+#: ../../build/doc/pgRouting-concepts.rst:6
+msgid "To get the dead ends:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "That information is correct, for example, when the dead end is on the limit of the imported graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:15
+msgid "Visually node :math:`4` looks to be as start/ending of 3 edges, but it is not."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "Is that correct?"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Is there such a small curb:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "That does not allow a vehicle to use that visual intersection?"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:22
+msgid "Is the application for pedestrians and therefore the pedestrian can easily walk on the small curb?"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "Is the application for the electricity and the electrical lines than can easily be extended on top of the small curb?"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Is there a big cliff and from eagles view look like the dead end is close to the segment?"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "When there are many dead ends, to speed up, the :doc:`contraction-family` functions can be used to divide the problem."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:34
+msgid "Linear edges"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36
+msgid "To get the linear edges:"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:42
+msgid "This information is correct, for example, when the application is taking into account speed bumps, stop signals."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:45
+msgid "When there are many linear edges, to speed up, the :doc:`contraction-family` functions can be used to divide the problem."
 msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:181
-msgid "Indices and tables"
-msgstr ""
-
-#: ../../build/doc/pgr_degree.rst:182
-msgid ":ref:`genindex`"
+msgid "See Also"
 msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:183
+msgid ":doc:`topology-functions`"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:184
+msgid ":doc:`pgr_extractVertices`"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:187
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:188
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../build/doc/pgr_degree.rst:189
 msgid ":ref:`search`"
 msgstr ""
