@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-23 16:16+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trspvia_withpoints/es/>\n"
 "Language: es\n"
@@ -50,7 +50,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -74,7 +74,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:29
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:32
 msgid "Availability"
@@ -225,11 +225,11 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/via-category.rst:21
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
+msgstr "``ARRAY[`` **ENTEROS** ``]``"
 
 #: ../../build/doc/via-category.rst:23
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr "Arreglo ordenados de identificadores de vértices que serán visitados."
+msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/via-category.rst:25
 msgid "When positive it is considered a vertex identifier"
@@ -263,14 +263,12 @@ msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
 #: ../../build/doc/via-category.rst:31
-#, fuzzy
-#| msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:96
 msgid "Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/via-category.rst:8
@@ -310,7 +308,7 @@ msgstr ""
 #: ../../build/doc/pgr_trsp_withPoints.rst:22
 #: ../../build/doc/via-category.rst:14
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 #: ../../build/doc/via-category.rst:15
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
@@ -319,6 +317,8 @@ msgstr ""
 #: ../../build/doc/via-category.rst:16
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
+"En caso de ``false``, ignora las rutas faltantes y devuelve todas las rutas "
+"encontradas"
 
 #: ../../build/doc/via-category.rst:17
 msgid "``U_turn_on_edge``"
@@ -339,7 +339,7 @@ msgstr ""
 #: ../../build/doc/pgr_trsp_withPoints.rst:13
 #: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:14
 msgid "``r``"
@@ -404,7 +404,7 @@ msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
@@ -412,7 +412,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/via-category.rst:37
@@ -440,7 +440,7 @@ msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arsita (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
@@ -518,11 +518,11 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
-msgstr ""
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
-msgstr ""
+msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
@@ -533,6 +533,8 @@ msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto de "
+"la arista."
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
@@ -559,8 +561,6 @@ msgid "In both sides ``b``, ``NULL``"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:141
-#, fuzzy
-#| msgid "Return Columns"
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -578,7 +578,6 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/via-category.rst:14
-#, fuzzy
 msgid "``path_id``"
 msgstr "``path_id``"
 
@@ -587,7 +586,6 @@ msgid "Identifier of a path. Has value **1** for the first path."
 msgstr "Identificador del camino. Tiene valor **1** para el primer camino."
 
 #: ../../build/doc/via-category.rst:17
-#, fuzzy
 msgid "``path_seq``"
 msgstr "``path_seq``"
 
@@ -608,20 +606,16 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/via-category.rst:23
-#, fuzzy
-#| msgid "Identifier of the first end point vertex of the edge."
 msgid "Identifier of the starting vertex of the path."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/via-category.rst:24
 msgid "``end_vid``"
 msgstr "``end_vid``"
 
 #: ../../build/doc/via-category.rst:26
-#, fuzzy
-#| msgid "Identifier of the first end point vertex of the edge."
 msgid "Identifier of the ending vertex of the path."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/via-category.rst:27
 msgid "``node``"
@@ -645,13 +639,11 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:35
 msgid "-1 for the last node of the path."
-msgstr ""
+msgstr "-1 para el último nodo de la ruta."
 
 #: ../../build/doc/via-category.rst:36
-#, fuzzy
-#| msgid "How are the nodes visited in the route?"
 msgid "-2 for the last node of the route."
-msgstr "¿Cómo se visitan los nodos en la ruta?"
+msgstr "-2 para el último nodo de la ruta."
 
 #: ../../build/doc/via-category.rst:38 ../../build/doc/via-category.rst:42
 #: ../../build/doc/via-category.rst:45
@@ -683,6 +675,8 @@ msgid ""
 "Total cost from ``start_vid`` of ``seq = 1`` to ``end_vid`` of the current "
 "``seq``."
 msgstr ""
+"Costo total desde ``start_vid`` en ``seq = 1`` hasta ``end_vid`` del ``seq`` "
+"actual."
 
 #: ../../build/doc/via-category.rst:4
 msgid ""
@@ -731,34 +725,20 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:183
-#, fuzzy
-#| msgid "What's the aggregate cost of the third path?"
 msgid "Aggregate cost of the third path."
-msgstr "¿Cuál es el costo total de la tercera ruta?"
+msgstr "Costo agregado de la tercera ruta."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:190
-#, fuzzy
-#| msgid ""
-#| "What's the route's aggregate cost of the route at the end of the third "
-#| "path?"
 msgid "Route's aggregate cost of the route at the end of the third path."
-msgstr "¿Cuál es el costo agregado de la ruta al final de la tercera ruta?"
+msgstr "Costo agregado de al final de la tercera ruta."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:197
-#, fuzzy
-#| msgid "How are the nodes visited in the route?"
 msgid "Nodes visited in the route."
-msgstr "¿Cómo se visitan los nodos en la ruta?"
+msgstr "Nodos visitados en la ruta."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:204
-#, fuzzy
-#| msgid ""
-#| "What are the aggregate costs of the route when the visited vertices are "
-#| "reached?"
 msgid "The aggregate costs of the route when the visited vertices are reached."
-msgstr ""
-"¿Cuáles son los costos agregados de la ruta cuando se llega a los vértices "
-"visitados?"
+msgstr "Costo agregado de la ruta al llegar a los vértices visitados."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:211
 msgid "Status of \"passes in front\" or \"visits\" of the nodes and points."
@@ -843,7 +823,7 @@ msgstr ":doc:`via-category`"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:282
 msgid ":doc:`sampledata` network."
-msgstr ""
+msgstr ":doc:`sampledata` ."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:285
 msgid "Indices and tables"
