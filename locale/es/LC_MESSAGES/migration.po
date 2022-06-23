@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 14:20+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "migration/es/>\n"
 "Language: es\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: ../../build/doc/migration.rst:29
 msgid "Contents"
-msgstr ""
+msgstr "Contenido"
 
 #: ../../build/doc/migration.rst:32
 msgid "Migration of restrictions"
