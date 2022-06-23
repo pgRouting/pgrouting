@@ -415,5 +415,16 @@ WHERE array_length(in_edges || out_edges, 1) = 2;
 (3 rows)
 
 /* -- contract3 */
+/* -- performance1 */
+SELECT * FROM pgr_dijkstra($$
+  SELECT id, source, target, cost, reverse_cost from edges
+  WHERE geom && (SELECT st_buffer(geom, 1) AS myarea
+    FROM edges WHERE id = 2)$$,
+  1, 2);
+ seq | path_seq | node | edge | cost | agg_cost
+-----+----------+------+------+------+----------
+(0 rows)
+
+/* -- performance2 */
 ROLLBACK;
 ROLLBACK

@@ -244,3 +244,11 @@ WHERE array_length(in_edges || out_edges, 1) = 1;
 SELECT id FROM vertices
 WHERE array_length(in_edges || out_edges, 1) = 2;
 /* -- contract3 */
+
+/* -- performance1 */
+SELECT * FROM pgr_dijkstra($$
+  SELECT id, source, target, cost, reverse_cost from edges
+  WHERE geom && (SELECT st_buffer(geom, 1) AS myarea
+    FROM edges WHERE id = 2)$$,
+  1, 2);
+/* -- performance2 */
