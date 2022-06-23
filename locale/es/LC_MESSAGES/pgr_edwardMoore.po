@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-04 15:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edwardmoore/es/>\n"
 "Language: es\n"
@@ -172,8 +172,8 @@ msgid ""
 "complexity of :math:`O( | E | )` for random graphs. This is significantly "
 "faster in terms of computation speed."
 msgstr ""
-"El peor de los casos de funcionamiento del algoritmo es  :math:`O(| V | * | "
-"E |)` similar a la complejidad temporal del algoritmo Bellman-Ford. Sin "
+"El peor de los casos de funcionamiento del algoritmo es :math:`O(| V | * | E "
+"|)` similar a la complejidad temporal del algoritmo Bellman-Ford. Sin "
 "embargo, los experimentos sugieren que este algoritmo tiene una complejidad "
 "de tiempo de ejecución promedio de :math:`O( | E | )` para grafos "
 "aleatorios. Esto es significativamente más rápido en términos de velocidad "
@@ -454,7 +454,7 @@ msgstr "**origen**"
 #: ../../build/doc/pgRouting-concepts.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -464,7 +464,7 @@ msgstr "**objetivo**"
 #: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:26
