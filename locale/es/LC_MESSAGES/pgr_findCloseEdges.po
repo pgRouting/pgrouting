@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-23 16:16+0000\n"
-"PO-Revision-Date: 2022-06-23 16:16+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_findcloseedges/es/>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_findcloseedges/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +33,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:25
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:28
 msgid "Availability"
@@ -60,7 +61,7 @@ msgstr ""
 #: ../../build/doc/pgr_findCloseEdges.rst:188
 #: ../../build/doc/pgr_findCloseEdges.rst:211 ../../build/doc/sampledata.rst:21
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:39
 msgid "``pgr_findCloseEdges`` - An utility function that finds the closest edge to a point geometry."
@@ -84,7 +85,7 @@ msgstr "Firmas"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:51
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:63
 msgid "One point"
@@ -92,11 +93,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:0
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:71
 msgid "With default values"
-msgstr ""
+msgstr "Con valores predeterminados"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:73
 #: ../../build/doc/pgr_findCloseEdges.rst:395
@@ -179,7 +180,7 @@ msgstr "Parámetros"
 #: ../../build/doc/pgr_findCloseEdges.rst:129
 #: ../../build/doc/pgr_findCloseEdges.rst:154
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:130
 #: ../../build/doc/pgr_findCloseEdges.rst:155
@@ -194,11 +195,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:133
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:134
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "`SQL de aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_findCloseEdges.rst:135
 msgid "**point**"
@@ -206,7 +207,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:136
 msgid "``POINT``"
-msgstr ""
+msgstr "``POINT``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:137
 msgid "The point geometry"
@@ -232,7 +233,7 @@ msgstr ""
 #: ../../build/doc/pgr_findCloseEdges.rst:218
 #: ../../build/doc/pgr_findCloseEdges.rst:230
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:143
 msgid "Max distance between geometries"
@@ -240,11 +241,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:147
 msgid "Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:156
 msgid "Default"
-msgstr ""
+msgstr "x Defecto"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:158
 msgid "``cap``"
@@ -256,7 +257,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:160
 msgid ":math:`1`"
-msgstr ""
+msgstr ":math:`1`"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:161
 msgid "Limit output rows"
@@ -269,11 +270,11 @@ msgstr ""
 #: ../../build/doc/pgr_findCloseEdges.rst:163
 #: ../../build/doc/pgr_findCloseEdges.rst:169
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:164
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:165
 msgid "When ``true`` only columns needed for :doc:`withPoints-category` are calculated."
@@ -289,7 +290,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:170
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:171
 msgid "When ``false`` calculations are performed."
@@ -310,7 +311,7 @@ msgstr ""
 #: ../../build/doc/pgr_findCloseEdges.rst:186
 #: ../../build/doc/pgr_findCloseEdges.rst:209 ../../build/doc/sampledata.rst:20
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:189
 msgid "``id``"
@@ -323,7 +324,7 @@ msgstr ""
 #: ../../build/doc/pgr_findCloseEdges.rst:191
 #: ../../build/doc/pgr_findCloseEdges.rst:214
 msgid "Identifier of the edge."
-msgstr ""
+msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgr_findCloseEdges.rst:192
 #: ../../build/doc/pgr_findCloseEdges.rst:234 ../../build/doc/sampledata.rst:30
@@ -334,7 +335,7 @@ msgstr ""
 #: ../../build/doc/pgr_findCloseEdges.rst:235
 #: ../../build/doc/pgr_findCloseEdges.rst:242
 msgid "``geometry``"
-msgstr ""
+msgstr "``geometry``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:194
 msgid "The ``LINESTRING`` geometry of the edge."
@@ -342,7 +343,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:197
 msgid "Result Columns"
-msgstr ""
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:199
 msgid "``RETURNS SET OF (edge_id, fraction, side, distance, geom, edge) OR EMPTY SET``"
@@ -350,7 +351,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:212 ../../build/doc/sampledata.rst:24
 msgid "``edge_id``"
-msgstr ""
+msgstr "``edge_id``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:213
 msgid "``BIGINT``"
@@ -374,7 +375,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:222
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:223
 msgid "Value in ``[r, l]`` indicating if the point is:"
@@ -458,7 +459,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:343
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:349
 msgid "One point examples"
@@ -882,7 +883,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:634
 msgid "See Also"
-msgstr ""
+msgstr "Ver también"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:636
 msgid ":doc:`withPoints-category`"
@@ -890,11 +891,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:637
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:640
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:641
 msgid ":ref:`genindex`"
@@ -902,4 +903,4 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:642
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
