@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskaldfs/es/>\n"
 "Language: es\n"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_kruskalDFS.rst:28
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:31
 msgid "Availability"
@@ -130,12 +130,12 @@ msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
 msgid "Returned tree nodes from a root vertex are on Depth First Search order"
 msgstr ""
 "Los nodos de árbol devueltos desde un vértice raíz están en el orden de "
-"Búsqueda en Primera Profundidad "
+"Primera Búsqueda de Profundidad"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:50
 msgid "Depth First Search Running time: :math:`O(E + V)`"
 msgstr ""
-"Tiempo de ejecución de la Búsqueda en Primera Profundidad: :math:`O(E + V)`"
+"Tiempo de ejecución de la Primera Búsqueda de Profundidad: :math:`O(E + V)`"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:53
 msgid "Signatures"
@@ -143,7 +143,7 @@ msgstr "Firmas"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:66
 msgid "Single vertex"
-msgstr "Un solo vértice"
+msgstr "Vértice único"
 
 #: ../../build/doc/pgr_kruskalDFS.rst
 msgid "Example"
@@ -297,7 +297,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -305,7 +305,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_kruskalDD.rst:22
