@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-23 16:16+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_findcloseedges/es/>\n"
 "Language: es\n"
@@ -187,11 +187,11 @@ msgstr "Parámetro"
 #: ../../build/doc/pgr_findCloseEdges.rst:187
 #: ../../build/doc/pgr_findCloseEdges.rst:210
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:132
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL de Aristas`_"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:133
 msgid "``TEXT``"
@@ -253,7 +253,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:159
 msgid "``INTEGER``"
-msgstr ""
+msgstr "``INTEGER``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:160
 msgid ":math:`1`"
@@ -306,7 +306,7 @@ msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:179
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL de aristas"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:186
 #: ../../build/doc/pgr_findCloseEdges.rst:209 ../../build/doc/sampledata.rst:20
@@ -315,11 +315,11 @@ msgstr "Columna"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:189
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:190
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:191
 #: ../../build/doc/pgr_findCloseEdges.rst:214
@@ -355,7 +355,7 @@ msgstr "``edge_id``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:213
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:216
 msgid "When :math:`cap = 1`, it is the closest edge."
@@ -363,7 +363,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:217 ../../build/doc/sampledata.rst:28
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:219
 msgid "Value in <0,1> that indicates the relative postition from the first end-point of the edge."
@@ -371,7 +371,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:221 ../../build/doc/sampledata.rst:26
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:222
 msgid "``CHAR``"
@@ -419,7 +419,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:241
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:243
 msgid "``LINESTRING`` geometry from the **original point** to the closest point of the edge with identifier ``edge_id``"
@@ -747,7 +747,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:22
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/sampledata.rst:23
 msgid "A unique identifier."
@@ -899,7 +899,7 @@ msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:641
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:642
 msgid ":ref:`search`"
