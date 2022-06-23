@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-10 15:33+0000\n"
-"PO-Revision-Date: 2022-06-04 15:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_breadthfirstsearch/es/>\n"
 "Language: es\n"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:27
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -348,7 +348,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -356,7 +356,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_breadthFirstSearch.rst:166
@@ -539,16 +539,16 @@ msgid ""
 "`Boost: Breadth First Search algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
 msgstr ""
-"`Boost: Breadth First Search algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
+"`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/"
+"breadth_first_search.html>`__"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:200
 msgid ""
 "`Wikipedia: Breadth First Search algorithm <https://en.wikipedia.org/wiki"
 "/Breadth-first_search>`__"
 msgstr ""
-"`Wikipedia: Breadth First Search algorithm <https://en.wikipedia.org/wiki"
-"/Breadth-first_search>`__"
+"`Wikipedia: Breadth First Search <https://en.wikipedia.org/wiki/Breadth-"
+"first_search>`__"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:203
 msgid "Indices and tables"
