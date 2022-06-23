@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-20 14:16+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_primdd/es/>\n"
@@ -47,11 +47,11 @@ msgstr "pgr_primDD"
 
 #: ../../build/doc/pgr_primDD.rst:22
 msgid "``pgr_primDD`` — Catchament nodes using Prim's algorithm."
-msgstr "``pgr_primDD`` —  Nodos de captación mediante el algoritmo de Prim."
+msgstr "``pgr_primDD`` — Nodos de captación mediante el algoritmo de Prim."
 
 #: ../../build/doc/pgr_primDD.rst:27
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_primDD.rst:30
 msgid "Availability"
@@ -127,8 +127,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_primDD.rst:49
 msgid "Depth First Search running time: :math:`O(E + V)`"
-msgstr ""
-" Primera Búsqueda de Profundidad, tiempo de ejecución: :math:`O(E + V)`"
+msgstr "Primera Búsqueda de Profundidad, tiempo de ejecución: :math:`O(E + V)`"
 
 #: ../../build/doc/pgr_primDD.rst:52
 msgid "Signatures"
@@ -140,7 +139,7 @@ msgstr "Resumen"
 
 #: ../../build/doc/pgr_primDD.rst:67
 msgid "Single vertex"
-msgstr "Un solo vértice"
+msgstr "Vértice único"
 
 #: ../../build/doc/pgr_primDD.rst
 msgid "Example"
@@ -273,7 +272,7 @@ msgstr "SMALLINT, INTEGER, BIGINT"
 
 #: ../../build/doc/pgr_kruskalDD.rst
 msgid "ANY-NUMERIC"
-msgstr "ANY-NUMERIC"
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgr_kruskalDD.rst:30
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
@@ -312,7 +311,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -320,7 +319,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_kruskalDD.rst:65
@@ -469,8 +468,8 @@ msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
-"`Boost: Prim's algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+"`Boost: algoritmo de Prim <https://www.boost.org/libs/graph/doc/"
+"prim_minimum_spanning_tree.html>`__"
 
 #: ../../build/doc/pgr_primDD.rst:114
 #, python-format
