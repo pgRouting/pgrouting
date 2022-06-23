@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-20 14:16+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_primdfs/es/>\n"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_primDFS.rst:28
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_primDFS.rst:31
 msgid "Availability"
@@ -124,8 +124,8 @@ msgstr "Tiempo de ejecución de Prim:  :math:`O(E*log V)`"
 #: ../../build/doc/pgr_primDFS.rst:49
 msgid "Returned tree nodes from a root vertex are on Depth First Search order"
 msgstr ""
-"Los nodos de árbol devueltos desde un vértice raíz están en el orden de  "
-"Primera Búsqueda de Profundidad "
+"Los nodos de árbol devueltos desde un vértice raíz están en el orden de "
+"Primera Búsqueda de Profundidad"
 
 #: ../../build/doc/pgr_primDFS.rst:50
 msgid "Depth First Search Running time: :math:`O(E + V)`"
@@ -138,7 +138,7 @@ msgstr "Firmas"
 
 #: ../../build/doc/pgr_primDFS.rst:66
 msgid "Single vertex"
-msgstr "Un solo vértice"
+msgstr "Vértice único"
 
 #: ../../build/doc/pgr_primDFS.rst
 msgid "Example"
@@ -291,7 +291,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -299,7 +299,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_kruskalDD.rst:22
@@ -460,8 +460,8 @@ msgid ""
 "`Boost: Prim's algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
-"`Boost: Prim's algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+"`Boost: algoritmo de Prim <https://www.boost.org/libs/graph/doc/"
+"prim_minimum_spanning_tree.html>`__"
 
 #: ../../build/doc/pgr_primDFS.rst:112
 #, python-format
