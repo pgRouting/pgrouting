@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-category/es/>\n"
 "Language: es\n"
@@ -51,7 +51,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -318,7 +318,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:120
 #: ../../build/doc/withPoints-category.rst:128
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/withPoints-category.rst:121
 msgid ""
@@ -348,7 +348,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:135
 msgid "Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/withPoints-category.rst:144
 #: ../../build/doc/withPoints-category.rst:185
@@ -369,7 +369,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:149
 #: ../../build/doc/withPoints-category.rst:209
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:150
 msgid "``r``"
@@ -401,7 +401,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/withPoints-category.rst:158
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 #: ../../build/doc/withPoints-category.rst:159
 msgid "When ``true`` the results will include the points that are in the path."
@@ -445,7 +445,7 @@ msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:20
@@ -454,7 +454,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
@@ -480,7 +480,7 @@ msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arsita (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
@@ -554,11 +554,11 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:199
 msgid "``edge_id``"
-msgstr ""
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:202
 msgid "Identifier of the \"closest\" edge to the point."
-msgstr ""
+msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:203
 msgid "``fraction``"
@@ -569,6 +569,8 @@ msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto de "
+"la arista."
 
 #: ../../build/doc/withPoints-category.rst:208
 msgid "``side``"
@@ -596,7 +598,7 @@ msgstr "In both sides ``b``, ``NULL``"
 
 #: ../../build/doc/withPoints-category.rst:225
 msgid "Combinations SQL"
-msgstr ""
+msgstr "Combinaciones SQL"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the departure vertex."
