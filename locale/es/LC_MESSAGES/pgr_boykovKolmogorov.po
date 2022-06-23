@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-23 16:16+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_boykovkolmogorov/es/>\n"
 "Language: es\n"
@@ -148,7 +148,7 @@ msgstr ""
 #: ../../build/doc/flow-family.rst:9
 msgid "There is no flow when a **source** is the same as a **target**."
 msgstr ""
-"No hay ningún flujo cuando el  **orígen** es el mismo que el **destino**."
+"No hay ningún flujo cuando el **orígen** es el mismo que el **destino**."
 
 #: ../../build/doc/flow-family.rst:11
 msgid "Any duplicated value in the source(s) or target(s) are ignored."
@@ -178,8 +178,8 @@ msgid ""
 " :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and"
 " can be calculated:"
 msgstr ""
-"Se garantiza que el flujo máximo a través del grafo es el valor devuelto por"
-"  :doc:`pgr_maxFlow <pgr_maxFlow>` cuando es ejecutado con los mismos "
+"Se garantiza que el flujo máximo a través del grafo es el valor devuelto por "
+":doc:`pgr_maxFlow <pgr_maxFlow>` cuando es ejecutado con los mismos "
 "parámetros y se puede calcular:"
 
 #: ../../build/doc/flow-family.rst:19
@@ -482,8 +482,7 @@ msgstr "**flujo**"
 
 #: ../../build/doc/flow-family.rst:10
 msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
-msgstr ""
-"Flujo a través del arista en la dirección  (``start_vid``, ``end_vid``)."
+msgstr "Flujo a través del arista en la dirección (``start_vid``, ``end_vid``)."
 
 #: ../../build/doc/flow-family.rst:11
 msgid "**residual_capacity**"
