@@ -279,7 +279,7 @@ Graphs without geometries
 -------------------------------------------------------------------------------
 
 Personal relationships, genealogy, file dependency problems can be solved
-using pgRouting. Those problems, normally,  do not come with gemetries asociated
+using pgRouting. Those problems, normally,  do not come with geometries associated
 with the graph.
 
 .. contents::
@@ -299,7 +299,7 @@ Where:
 * Is an undirected graph.
 * Although visually looks like to have geometries, the drawing is not to scale.
 
-  * No geometries asociated to the vertices or edges
+  * No geometries associated to the vertices or edges
 
 * Has 6 vertices :math:`\{1,2,3,4,5,6\}`
 * Has 9 edges:
@@ -465,13 +465,13 @@ There are various open source tools that can help, like:
 
 :shp2pgsql: - postgresql shapefile loader
 :ogr2ogr: - vector data conversion utility
-:osm2pgsql: - loadg OSM data into postgresql
+:osm2pgsql: - load OSM data into postgresql
 
 Please note that these tools will **not** import the data in a structure
 compatible with pgRouting and when this happens the topology needs to be
-adajusted.
+adjusted.
 
-* Breakup a segments on each segment-segment instersection
+* Breakup a segments on each segment-segment intersection
 * When missing, add columns and assign values to ``source``, ``target``,
   ``cost``, ``reverse_cost``.
 * Connect a disconnected graph.
@@ -512,7 +512,7 @@ The basic information to use the majority of the pgRouting functions ``id,
 source, target, cost, [reverse_cost]`` is what in pgRouting is called the
 routing topology.
 
-``reverse_cost`` is optional but strongly recomended to have in order to reduce
+``reverse_cost`` is optional but strongly recommended to have in order to reduce
 the size of the database due to the size of the geometry columns.
 Having said that, in this documentation ``reverse_cost`` is used in this
 documentation.
@@ -531,7 +531,7 @@ If the columns do not exist they need to be added to the table in question. (see
 The function :doc:`pgr_extractVertices` is used to create a vertices table
 based on the edge identifier and the geometry of the edge of the graph.
 
-Finnaly using the data stored on the vertices tables the ``source`` and
+Finally using the data stored on the vertices tables the ``source`` and
 ``target`` are filled up.
 
 See :doc:`sampledata` for an example for building a topology.
@@ -623,7 +623,7 @@ There are lots of possible problems in a graph.
 * The graph is disconnected.
 * There are unwanted intersections.
 * The graph is too large and needs to be contracted.
-* A subgraph is needed for the application.
+* A sub graph is needed for the application.
 * and many other problems that the pgRouting user, that is the application
   developer might encounter.
 
@@ -646,8 +646,8 @@ tunnel or bride crossing over another road.
 It might be incorrect, for example:
 
 1. When it is actually an intersection of roads, where vehicles can make turns.
-2. When in terms of electrical lines, the electrical line is able to swith roads
-   even on a tunnel or bridge.
+2. When in terms of electrical lines, the electrical line is able to switch
+   roads even on a tunnel or bridge.
 
 When it is incorrect, it needs fixing:
 
@@ -666,7 +666,7 @@ When it is incorrect, it needs fixing:
      pedestrians.
    * The data needs a local fix for the specific application.
 
-Once analized one by one the crossings, for the ones that need a local fix,
+Once analyzed one by one the crossings, for the ones that need a local fix,
 the edges need to be `split <https://postgis.net/docs/ST_Split.html>`__.
 
 .. literalinclude:: concepts.queries
@@ -691,7 +691,7 @@ For pgRouting calculations
 * **factor** based on the position of the intersection of the edges can be used
   to adjust the ``cost`` and ``reverse_cost`` columns.
 * Capacity information, used on the :doc:`flow-family` functions does not need
-  to change when spliting edges.
+  to change when splitting edges.
 
 .. literalinclude:: concepts.queries
    :start-after: -- cross3
@@ -700,7 +700,7 @@ For pgRouting calculations
 Adding new vertices
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-After adding all the split edges requiered by the application, the newly created
+After adding all the split edges required by the application, the newly created
 vertices need to be added to the vertices table.
 
 .. literalinclude:: concepts.queries
@@ -791,7 +791,7 @@ Save the edges connection information
 Get the closest vertex
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Using :doc:`pgr_findCloseEdges` the closest vertext to component :math:`1` is
+Using :doc:`pgr_findCloseEdges` the closest vertex to component :math:`1` is
 vertex :math:`4`. And the closest edge to vertex :math:`4` is edge :math:`14`.
 
 .. literalinclude:: concepts.queries
@@ -810,7 +810,7 @@ There are three basic ways to connect the components
 * From the vertex to the ending point of the edge
 * From the vertex to the closest vertex on the edge
 
-  * This solution requiers the edge to be split.
+  * This solution requires the edge to be split.
 
 The following query shows the three ways to connect the components:
 
@@ -821,7 +821,7 @@ The following query shows the three ways to connect the components:
 Checking components
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Ignoring the edge that requieres further work. The graph is now fully connected
+Ignoring the edge that requires further work. The graph is now fully connected
 as there is only one component.
 
 .. literalinclude:: concepts.queries
@@ -843,7 +843,7 @@ A fairly good method of finding out if contraction can be useful is because of
 the number of dead ends and/or the number of linear edges.
 
 A complete method on how to contract and how to use the contracted graph is
-descrubed on :doc:`contraction-family`
+described on :doc:`contraction-family`
 
 .. degree_from_table_start
 
@@ -866,9 +866,9 @@ Is that correct?
 * Is there such a small curb:
 
   * That does not allow a vehicle to use that visual intersection?
-  * Is the applicaction for pedestrians and therefore the pedestrican can easily
+  * Is the application for pedestrians and therefore the pedestrian can easily
     walk on the small curb?
-  * Is the application for the electicicity and the electrical lines than can
+  * Is the application for the electricity and the electrical lines than can
     easily be extended on top of the small curb?
 
 * Is there a big cliff and from eagles view look like the dead end is close to
@@ -910,10 +910,10 @@ The general form of a pgRouting function call is:
 Where:
 
 * `Inner queries`_: Are compulsory parameters that are ``TEXT`` strings
-  contianing SQL queries.
+  containing SQL queries.
 * **parameters**: Additional compulsory parameters needed by the function.
 * ``Optional parameters``: Are non compulsory **named** parameters that have a
-  default value when ommited.
+  default value when omitted.
 
 The compulsory parameters are positional parameters, the optional parameters are
 named parameters.
@@ -1051,7 +1051,7 @@ General
 * :doc:`components-family`
 * :doc:`kruskal-family`
 * :doc:`prim-family`
-* Some uncategorized functions
+* Some uncategorised functions
 
 .. basic_edges_sql_start
 
