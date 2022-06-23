@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-06 15:34+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_analyzegraph/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:12
@@ -174,7 +174,7 @@ msgid ""
 "``the_geom``."
 msgstr ""
 "``text``  nombre de la columna de la geometría en la tabla de la red. El "
-"valor por defecto es ``the_geom``"
+"valor por defecto es ``the_geom``."
 
 #: ../../build/doc/pgr_analyzeGraph.rst
 msgid "id"
@@ -232,7 +232,7 @@ msgstr "Utiliza la tabla de los vértices: <edge_table>_vertices_pgr."
 msgid ""
 "Fills completely the ``cnt`` and ``chk`` columns of the vertices table."
 msgstr ""
-"Llena totalmente las columnas ``cnt`` y ``chk``  de la tabla de vértices."
+"Llena totalmente las columnas ``cnt`` y ``chk`` de la tabla de vértices."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:82
 msgid ""
@@ -294,7 +294,7 @@ msgid ""
 "``integer`` Number of vertices in the edge_table that reference this vertex."
 msgstr ""
 "``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice. "
+"vértice."
 
 #: ../../build/doc/pgr_analyzeGraph.rst
 msgid "chk"
@@ -411,7 +411,7 @@ msgid ""
 "``gid`` =100 of the table ``othertable``."
 msgstr ""
 "Seleccionar las filas donde la geometría está cerca de la geometría de la "
-"fila con``gid`` =100  de la tabla ``othertable``."
+"fila con``gid`` =100 de la tabla ``othertable``."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:169
 msgid "Usage when the edge table's columns DO NOT MATCH the default values:"
@@ -439,8 +439,8 @@ msgid ""
 "passed to the function as the geometry column, and the geometry column "
 "``mygeom`` is passed to the function as the id column."
 msgstr ""
-"Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado:"
-" en este ejemplo, la columna  ``gid``  de la tabla ``mytable`` se pasa a la "
+"Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado: "
+"en este ejemplo, la columna ``gid`` de la tabla ``mytable`` se pasa a la "
 "función como geometría, y la columna de geometría``mygeom`` se pasa a la "
 "función como columna ``id``."
 
@@ -471,8 +471,8 @@ msgid ""
 "Selecting the rows WHERE the geometry is near the place='myhouse' of the "
 "table ``othertable``. (note the use of quote_literal)"
 msgstr ""
-"Seleccionar las filas donde la geometría está cerca de la place='myhouse'  "
-"de la tabla ``othertable``. (Nótese el uso de quote_literal)"
+"Seleccionar las filas donde la geometría está cerca de la place='myhouse' de "
+"la tabla ``othertable``. (Nótese el uso de quote_literal)"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:239
 msgid "Additional Examples"
@@ -480,7 +480,7 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:265
 msgid "The examples use the :doc:`sampledata` network."
-msgstr "Los ejemplos usan la red de ejemplo  :doc:`sampledata`"
+msgstr "Los ejemplos usan la red de ejemplo :doc:`sampledata`."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:269
 msgid "See Also"
