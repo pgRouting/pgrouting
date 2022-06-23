@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-02 16:50+0000\n"
+"PO-Revision-Date: 2022-06-23 16:16+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-category/es/>\n"
@@ -390,10 +390,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:166
-#, fuzzy
-#| msgid "Inner queries"
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/withPoints-category.rst:169
 msgid "Edges SQL"
