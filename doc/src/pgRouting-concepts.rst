@@ -894,8 +894,6 @@ functions can be used to divide the problem.
 
 .. degree_from_table_end
 
-.. TODO checked up to here
-
 Function's structure
 -------------------------------------------------------------------------------
 
