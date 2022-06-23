@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-05-31 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "prim-family/es/>\n"
 "Language: es\n"
@@ -61,7 +61,7 @@ msgstr ":doc:`pgr_primDFS`"
 
 #: ../../build/doc/prim-family.rst:34
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/prim-family.rst:46
 msgid "Description"
@@ -143,7 +143,7 @@ msgid ""
 "produce correct results on graphs with parallel edges.\""
 msgstr ""
 "De boost Graph: \"El algoritmo tal como se aplica en el Boost.Graph no "
-"produce resultados correctos en grafos con bordes paralelos \"."
+"produce resultados correctos en grafos con bordes paralelos .\""
 
 #: ../../build/doc/prim-family.rst:86
 msgid "Inner query"
@@ -181,7 +181,7 @@ msgstr "**origen**"
 
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "**target**"
@@ -189,7 +189,7 @@ msgstr "**objetivo**"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "**cost**"
