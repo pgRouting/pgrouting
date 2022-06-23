@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2022-06-23 16:16+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edmondskarp/es/>\n"
@@ -70,7 +70,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_edmondsKarp.rst:33
 msgid "Boost Graph Inside"
-msgstr "Adentro Boost Graph"
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_edmondsKarp.rst:36
 msgid "Availability"
@@ -166,8 +166,8 @@ msgid ""
 "Creates a **super source** and edges to all the source(s), and a **super "
 "target** and the edges from all the targets(s)."
 msgstr ""
-"Crea una **súper origen**, con aristas para todos los orígen(es), y un "
-"**súper destino** con aristas para todos los destin(os)."
+"Crea una **súper origen**, con aristas para todos los orígen(es), y un **"
+"súper destino** con aristas para todos los destino(s)."
 
 #: ../../build/doc/flow-family.rst:17
 msgid ""
@@ -363,12 +363,12 @@ msgstr "Identificador de la arista."
 #: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer vértice extremo de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:7
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/flow-family.rst:11
 msgid "**capacity**"
