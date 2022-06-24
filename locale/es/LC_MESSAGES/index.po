@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-24 18:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
@@ -51,20 +51,25 @@ msgstr "Este es el manual para pgRouting |release|."
 
 #: ../../build/doc/index.rst:-1
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
-msgstr "Licencia de Creative Commons Attribution-Share Alike 3.0 "
+msgstr "Licencia de Creative Commons Attribution-Share Alike 3.0"
 
 #: ../../build/doc/index.rst:42
 msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to https://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."
-msgstr "El Manual de pgRouting está bajo licencia `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_.  Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite https://pgrouting.org. Para otras licencias utilizadas en pgRouting, consulte la página :ref:`license` ."
+msgstr ""
+"El Manual de pgRouting está bajo licencia `Creative Commons Attribution-"
+"Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. "
+"Siéntase libre de usar este material de la manera que desee, pero le pedimos "
+"que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que "
+"sea posible, visite https://pgrouting.org. Para otras licencias utilizadas "
+"en pgRouting, consulte la página :ref:`license` ."
 
 #: ../../build/doc/index.rst:50
 msgid "General"
 msgstr "Generalidades"
 
 #: ../../build/doc/index.rst:60
-#, fuzzy
 msgid ":doc:`sampledata` that is used in the examples of this manual."
-msgstr ":doc:`sampledata` that is used in the examples of this manual."
+msgstr ":doc:`sampledata` Usado en los ejemplos de este manual."
 
 #: ../../build/doc/index.rst:68
 msgid "Pgrouting Concepts"
@@ -391,8 +396,8 @@ msgstr ":doc:`drivingDistance-category`"
 #: ../../build/doc/drivingDistance-category.rst:3
 msgid ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo de "
-"Dijkstra."
+":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo de "
+"Dijkstra"
 
 #: ../../build/doc/drivingDistance-category.rst:4
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
@@ -401,7 +406,7 @@ msgstr ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 #: ../../build/doc/drivingDistance-category.rst:5
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de Kruskal."
+":doc:`pgr_kruskalDD` - Distancia de manejo basada en el algoritmo de Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:6
 msgid "Post pocessing"
