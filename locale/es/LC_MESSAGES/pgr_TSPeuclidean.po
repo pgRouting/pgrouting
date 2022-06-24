@@ -2,34 +2,34 @@
 # Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 16:45+0000\n"
+"POT-Creation-Date: 2022-06-24 12:46-0500\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_tspeuclidean/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_tspeuclidean/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:12
+#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_TSPeuclidean.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__"
@@ -41,7 +41,7 @@ msgstr ""
 "<https://docs.pgrouting.org/3.1/es/pgr_TSPeuclidean.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_TSPeuclidean.html>`__"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:18
+#: ../../build/doc/pgr_TSPeuclidean.rst:19
 msgid ""
 "**Unsupported versions:** `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html>`__ `2.4 "
@@ -53,28 +53,28 @@ msgstr ""
 "<https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html>`__ `2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:24
-msgid "pgr_TSPeuclidean"
+#: ../../build/doc/pgr_TSPeuclidean.rst:25
+#, fuzzy
+msgid "``pgr_TSPeuclidean``"
 msgstr "pgr_TSPeuclidean"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:26
+#: ../../build/doc/pgr_TSPeuclidean.rst:27
 msgid "``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm."
 msgstr "``pgr_TSPeuclidean`` - Aproximación usando el algoritmo *metric*."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:31
+#: ../../build/doc/pgr_TSPeuclidean.rst:32
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:35
+#: ../../build/doc/pgr_TSPeuclidean.rst:36
 msgid "Availability:"
 msgstr "Disponibilidad:"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:36
+#: ../../build/doc/pgr_TSPeuclidean.rst:37
 msgid "Version 3.2.1"
 msgstr "Versión 3.2.1"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:38
-#: ../../build/doc/pgr_TSPeuclidean.rst:189
+#: ../../build/doc/pgr_TSPeuclidean.rst:39
 msgid ""
 "Metric Algorithm from `Boost library "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
@@ -82,42 +82,42 @@ msgstr ""
 "Algoritmo Metrico de la `Librería Boost "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:39
+#: ../../build/doc/pgr_TSPeuclidean.rst:41
 msgid "Simulated Annealing Algorithm no longer supported"
 msgstr "El algoritmo de recocido simulado ya no es utilizado"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:41
+#: ../../build/doc/pgr_TSPeuclidean.rst:43
+#, fuzzy
 msgid ""
 "The Simulated Annealing Algorithm related parameters are ignored: "
-"max_processing_time, tries_per_temperature, max_changes_per_temperature, "
-"max_consecutive_non_changes, initial_temperature, final_temperature, "
-"cooling_factor, randomize"
+"`max_processing_time`, `tries_per_temperature`, "
+"`max_changes_per_temperature`, `max_consecutive_non_changes`, "
+"`initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`"
 msgstr ""
 "Se ignoran los parámetros relacionados con el algoritmo de recocido "
 "simulado: `max_processing_time`, `tries_per_temperature`, "
 "`max_changes_per_temperature`, `max_consecutive_non_changes`, "
 "`initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:47
+#: ../../build/doc/pgr_TSPeuclidean.rst:49
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:49
+#: ../../build/doc/pgr_TSPeuclidean.rst:51
 msgid "Name change from pgr_eucledianTSP"
 msgstr "Cambio de nombre de pgr_eucledianTSP"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:51
+#: ../../build/doc/pgr_TSPeuclidean.rst:53
 msgid "Version 2.3.0"
 msgstr "Versión 2.3.0"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:53
+#: ../../build/doc/pgr_TSPeuclidean.rst:55
 msgid "New **Official** function"
 msgstr "Nueva función **Oficial**"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:57
-#: ../../build/doc/pgr_TSPeuclidean.rst:111
-#: ../../include/c_types/tsp_tour_rt.h:6
-#: ../../src/common/coordinates_input.c:9
+#: ../../build/doc/TSP-family.rst:11 ../../build/doc/pgr_TSPeuclidean.rst:59
+#: ../../build/doc/pgr_TSPeuclidean.rst:108
+#: ../../include/c_types/tsp_tour_rt.h:6 ../../src/common/coordinates_input.c:4
 msgid "Description"
 msgstr "Descripción"
 
@@ -127,22 +127,21 @@ msgstr "Definición del Problema"
 
 #: ../../build/doc/TSP-family.rst:6
 msgid "The travelling salesperson problem (TSP) asks the following question:"
-msgstr ""
-"En el problema del vendedor viajante (TSP) hace la siguiente pregunta:"
+msgstr "En el problema del vendedor viajante (TSP) hace la siguiente pregunta:"
 
 #: ../../build/doc/TSP-family.rst:8
 msgid ""
-"*Given a list of cities and the distances between each pair of cities, which"
-" is the shortest possible route that visits each city exactly once and "
-"returns to the origin city?*"
+"*Given a list of cities and the distances between each pair of cities, "
+"which is the shortest possible route that visits each city exactly once "
+"and returns to the origin city?*"
 msgstr ""
-"*Dada una lista de ciudades y las distancias entre cada par de ciudades, que"
-" corresponde con la ruta más corta posible que para visite cada ciudad "
-"exactamente una vez y regrese a la ciudad de origen?*"
+"*Dada una lista de ciudades y las distancias entre cada par de ciudades, "
+"que corresponde con la ruta más corta posible que para visite cada ciudad"
+" exactamente una vez y regrese a la ciudad de origen?*"
 
 #: ../../build/doc/TSP-family.rst:4
-msgid "General Characteristics"
-msgstr "Características generales"
+msgid "Characteristics"
+msgstr "Características"
 
 #: ../../build/doc/TSP-family.rst:6
 msgid "This problem is an NP-hard optimization problem."
@@ -154,76 +153,76 @@ msgstr "Se utiliza el algoritmo métrico"
 
 #: ../../build/doc/TSP-family.rst:8
 msgid ""
-"Implementation generates solutions that *are twice as long as the optimal "
-"tour in the worst case* when:"
+"Implementation generates solutions that *are twice as long as the optimal"
+" tour in the worst case* when:"
 msgstr ""
 "La implementación genera soluciones que *son el doble de largas que el "
 "recorrido óptimo en el peor de los casos* cuando:"
 
-#: ../../build/doc/TSP-family.rst:10
+#: ../../build/doc/TSP-family.rst:11
 msgid "Graph is undirected"
 msgstr "El grafo es no dirigido"
 
-#: ../../build/doc/TSP-family.rst:11
+#: ../../build/doc/TSP-family.rst:12
 msgid "Graph is fully connected"
 msgstr "El grafo está completamente conectado"
 
-#: ../../build/doc/TSP-family.rst:12
+#: ../../build/doc/TSP-family.rst:13
 msgid "Graph where traveling costs on edges obey the triangle inequality."
 msgstr ""
-"Grafo donde los costos de viaje en los segmentos cumplen con la desigualdad "
-"del triángulo."
+"Grafo donde los costos de viaje en los segmentos cumplen con la "
+"desigualdad del triángulo."
 
-#: ../../build/doc/TSP-family.rst:14
+#: ../../build/doc/TSP-family.rst:15
 msgid "On an undirected graph:"
 msgstr "En un grafo no dirigido:"
 
-#: ../../build/doc/TSP-family.rst:16
+#: ../../build/doc/TSP-family.rst:17
 msgid "The traveling costs are symmetric:"
 msgstr "Los costos del viaje son simétricos:"
 
-#: ../../build/doc/TSP-family.rst:17
+#: ../../build/doc/TSP-family.rst:18
+#, fuzzy
 msgid ""
-"Traveling costs from ``u`` to ``v`` are just as much as traveling from  "
+"Traveling costs from ``u`` to ``v`` are just as much as traveling from "
 "``v`` to ``u``"
 msgstr ""
-"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a ``u``"
+"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a "
+"``u``"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:69
-msgid "Characteristics"
-msgstr "Características"
-
-#: ../../build/doc/pgr_TSPeuclidean.rst:71
-msgid "Duplicated identifiers with different coordinates are not allowed"
-msgstr "No se permiten identificadores duplicados con diferentes coordenadas"
-
-#: ../../build/doc/pgr_TSPeuclidean.rst:73
+#: ../../build/doc/pgr_TSPeuclidean.rst:70
+#, fuzzy
 msgid ""
-"The coordinates are quite the same for the same identifier, for example ::"
-msgstr ""
-"Las coordenadas son bastante iguales para el mismo identificador, por "
-"ejemplo:"
-
-#: ../../build/doc/pgr_TSPeuclidean.rst:79
-msgid ""
-"The coordinates are quite different for the same identifier, for example ::"
-msgstr ""
-"Las coordenadas son bastante diferentes para el mismo identificador, por "
-"ejemplo:"
-
-#: ../../build/doc/pgr_TSPeuclidean.rst:85
-msgid ""
-"Any duplicated identifier will be ignored. The coordinates that will be kept"
-" is arbitrarly."
+"Any duplicated identifier will be ignored. The coordinates that will be "
+"kept"
 msgstr ""
 "Cualquier identificador duplicado será ignorado. Las coordenadas que se "
 "mantendrán son arbitrarias."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:89
+#: ../../build/doc/pgr_TSPeuclidean.rst:70
+msgid "is arbitrarly."
+msgstr ""
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:72
+#, fuzzy
+msgid "The coordinates are quite similar for the same identifier, for example ::"
+msgstr ""
+"Las coordenadas son bastante iguales para el mismo identificador, por "
+"ejemplo:"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:78
+msgid ""
+"The coordinates are quite different for the same identifier, for example "
+"::"
+msgstr ""
+"Las coordenadas son bastante diferentes para el mismo identificador, por "
+"ejemplo:"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:86
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:92
+#: ../../build/doc/pgr_TSPeuclidean.rst:89
 msgid "Summary"
 msgstr "Resumen"
 
@@ -231,141 +230,142 @@ msgstr "Resumen"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:101
+#: ../../build/doc/pgr_TSPeuclidean.rst:98
 msgid "With default values"
 msgstr "Con valores predeterminados"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:108
+#: ../../build/doc/pgr_TSPeuclidean.rst:105
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:111
+#: ../../build/doc/pgr_TSPeuclidean.rst:108
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:111
-#: ../../include/c_types/tsp_tour_rt.h:6
-#: ../../src/common/coordinates_input.c:9
+#: ../../build/doc/TSP-family.rst:9 ../../build/doc/pgr_TSPeuclidean.rst:108
+#: ../../include/c_types/tsp_tour_rt.h:6 ../../src/common/coordinates_input.c:4
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:111
-msgid "Default"
-msgstr "x Defecto"
+#: ../../build/doc/pgr_TSPeuclidean.rst:110
+#, fuzzy
+msgid "`Coordinates SQL`_"
+msgstr "Coordenadas SQL"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:113
-msgid "**Coordinates SQL**"
-msgstr "**Coordenadas SQL**"
-
-#: ../../build/doc/pgr_TSPeuclidean.rst:113
+#: ../../build/doc/pgr_TSPeuclidean.rst:110
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:113
-msgid "An SQL query, described in the `Coordinates SQL`_ section"
-msgstr "Una consulta SQL, descrita en la sección `Coordenadas SQL`_"
+#: ../../build/doc/pgr_TSPeuclidean.rst:110
+msgid "`Coordinates SQL`_ as described below"
+msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:114
-msgid "**start_vid**"
+msgid "TSP optional parameters"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:8 ../../include/c_types/tsp_tour_rt.h:6
+#: ../../src/common/coordinates_input.c:4
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/TSP-family.rst:10
+msgid "Default"
+msgstr "x Defecto"
+
+#: ../../build/doc/TSP-family.rst:12
+#, fuzzy
+msgid "``start_id``"
 msgstr "``start_vid``"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:114
-#: ../../build/doc/pgr_TSPeuclidean.rst:118
-#: ../../include/c_types/tsp_tour_rt.h:9
-msgid "``BIGINT``"
-msgstr "``BIGINT``"
+#: ../../build/doc/TSP-family.rst:13 ../../build/doc/TSP-family.rst:20
+msgid "**ANY-INTEGER**"
+msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:114
-#: ../../build/doc/pgr_TSPeuclidean.rst:118
+#: ../../build/doc/TSP-family.rst:14 ../../build/doc/TSP-family.rst:21
 msgid "``0``"
 msgstr "``0``"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:114
+#: ../../build/doc/TSP-family.rst:15
 msgid "The first visiting vertex"
 msgstr "El primer vértice visitado"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:116
+#: ../../build/doc/TSP-family.rst:17
 msgid "When `0` any vertex can become the first visiting vertex."
 msgstr ""
-"Cuando `0` cualquier vértice puede convertirse en el primer vértice visitado."
+"Cuando `0` cualquier vértice puede convertirse en el primer vértice "
+"visitado."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:118
-msgid "**end_vid**"
-msgstr "``end_vid``"
+#: ../../build/doc/TSP-family.rst:19
+msgid "``end_id``"
+msgstr ""
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:118
+#: ../../build/doc/TSP-family.rst:22
 msgid "Last visiting vertex before returning to ``start_vid``."
 msgstr "Último vértice visitado antes de regresar a '``start_vid``."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:120
+#: ../../build/doc/TSP-family.rst:24
+#, fuzzy
 msgid ""
-"When ``0`` any vertex can become the last visiting vertex before returning "
-"to ``start_vid``."
+"When ``0`` any vertex can become the last visiting vertex before "
+"returning to ``start_id``."
 msgstr ""
 "Cuando  ``0``  cualquier vértice puede convertirse en el último vértice "
 "visitado antes de regresr a ``start_vid``."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:121
-msgid ""
-"When ``NOT 0`` and ``start_vid = 0`` then it is the first and last vertex"
+#: ../../build/doc/TSP-family.rst:26
+#, fuzzy
+msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
 msgstr ""
-"Cuando ``NOT 0`` y ``start_vid = 0`` entonces es el primer y último vértice"
+"Cuando ``NOT 0`` y ``start_vid = 0`` entonces es el primer y último "
+"vértice"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:125
-msgid "Inner query"
+#: ../../build/doc/pgr_TSPeuclidean.rst:121
+#, fuzzy
+msgid "Inner Queries"
 msgstr "Consulta interna"
 
-#: ../../src/common/coordinates_input.c:4
+#: ../../build/doc/pgr_TSPeuclidean.rst:124
 msgid "Coordinates SQL"
 msgstr "Coordenadas SQL"
 
 #: ../../src/common/coordinates_input.c:6
-msgid ""
-"**Coordinates SQL**: an SQL query, which should return a set of rows with "
-"the following columns:"
-msgstr ""
-"**Coordenadas SQL**: una consulta SQL, que debe devolver un conjunto de "
-"filas con las siguientes columnas:"
+#, fuzzy
+msgid "``id``"
+msgstr "``0``"
 
-#: ../../include/c_types/tsp_tour_rt.h:6
-#: ../../src/common/coordinates_input.c:9
-msgid "Column"
-msgstr "Columna"
-
-#: ../../src/common/coordinates_input.c:11
-msgid "**id**"
-msgstr "**id**"
-
-#: ../../src/common/coordinates_input.c:11
+#: ../../src/common/coordinates_input.c:6
 msgid "``ANY-INTEGER``"
 msgstr "``ANY-INTEGER``"
 
-#: ../../src/common/coordinates_input.c:11
+#: ../../src/common/coordinates_input.c:6
 msgid "Identifier of the starting vertex."
 msgstr "Identificador del vértice inicial."
 
-#: ../../src/common/coordinates_input.c:12
-msgid "**x**"
-msgstr "**x**"
+#: ../../src/common/coordinates_input.c:7
+#, fuzzy
+msgid "``x``"
+msgstr "``0``"
 
-#: ../../src/common/coordinates_input.c:12
-#: ../../src/common/coordinates_input.c:13
+#: ../../src/common/coordinates_input.c:7
+#: ../../src/common/coordinates_input.c:8
 msgid "``ANY-NUMERICAL``"
 msgstr "``ANY-NUMERICAL``"
 
-#: ../../src/common/coordinates_input.c:12
+#: ../../src/common/coordinates_input.c:7
 msgid "X value of the coordinate."
 msgstr "Valor X de la coordenada."
 
-#: ../../src/common/coordinates_input.c:13
-msgid "**y**"
-msgstr "**y**"
+#: ../../src/common/coordinates_input.c:8
+#, fuzzy
+msgid "``y``"
+msgstr "``0``"
 
-#: ../../src/common/coordinates_input.c:13
+#: ../../src/common/coordinates_input.c:8
 msgid "Y value of the coordinate."
 msgstr "Valor Y de la coordenada."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:132
+#: ../../build/doc/pgr_TSPeuclidean.rst:131
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -390,6 +390,10 @@ msgid "**node**"
 msgstr "**node**"
 
 #: ../../include/c_types/tsp_tour_rt.h:9
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../include/c_types/tsp_tour_rt.h:9
 msgid "Identifier of the node/coordinate/point."
 msgstr "Identificador del nodo/coordenada/punto."
 
@@ -404,8 +408,8 @@ msgstr "``FLOAT``"
 
 #: ../../include/c_types/tsp_tour_rt.h:10
 msgid ""
-"Cost to traverse from the current ``node`` to the next ``node`` in the path "
-"sequence."
+"Cost to traverse from the current ``node`` to the next ``node`` in the "
+"path sequence."
 msgstr ""
 "Coste que se debe recorrer desde el ``nodo`` al siguiente ``nodo`` en la "
 "secuencia de ruta."
@@ -426,15 +430,15 @@ msgstr "Costo agregado del ``nodo`` en ``seq = 1`` hacia el nodo actual."
 msgid "``0`` for the first row in the tour sequence."
 msgstr "``0`` para la primera fila en la secuencia del recorrido."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:139
+#: ../../build/doc/pgr_TSPeuclidean.rst:138
 msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:141
+#: ../../build/doc/pgr_TSPeuclidean.rst:144
 msgid "Test 29 cities of Western Sahara"
 msgstr "Prueba 29 ciudades del Sáhara Occidental"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:143
+#: ../../build/doc/pgr_TSPeuclidean.rst:146
 msgid ""
 "This example shows how to make performance tests using University of "
 "Waterloo's `example data "
@@ -442,32 +446,43 @@ msgid ""
 "cities of `Western Sahara dataset "
 "<https://www.math.uwaterloo.ca/tsp/world/wi29.tsp>`__"
 msgstr ""
-"Este ejemplo muestra cómo hacer pruebas de rendimiento utilizando los `datos"
-" de ejemplo <https://www.math.uwaterloo.ca/tsp/world/countries.html>`__ de "
-"la Universidad de Waterloo utilizando el conjunto de datos de 29 ciudades "
-"del `Sáhara Occidental <https://www.math.uwaterloo.ca/tsp/world/wi29.tsp>`__"
+"Este ejemplo muestra cómo hacer pruebas de rendimiento utilizando los "
+"`datos de ejemplo "
+"<https://www.math.uwaterloo.ca/tsp/world/countries.html>`__ de la "
+"Universidad de Waterloo utilizando el conjunto de datos de 29 ciudades "
+"del `Sáhara Occidental "
+"<https://www.math.uwaterloo.ca/tsp/world/wi29.tsp>`__"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:147
+#: ../../build/doc/pgr_TSPeuclidean.rst:152
 msgid "Creating a table for the data and storing the data"
 msgstr "Creación de una tabla para datos y almacenamiento de los datos"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:153
+#: ../../build/doc/pgr_TSPeuclidean.rst:159
 msgid "Adding a geometry (for visual purposes)"
 msgstr "Agregar una geometría (con fines visuales)"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:158
-msgid ""
-"Getting a total cost of the tour, compare the value with the length of an "
-"optimal tour is 27603, given on the dataset"
+#: ../../build/doc/pgr_TSPeuclidean.rst:165
+msgid "Total tour cost"
 msgstr ""
-"Al obtener un costo total del recorrido, comparar el valor con la duración "
-"de un recorrido óptimo, que es 27603, dado en el conjunto de datos"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:164
+#: ../../build/doc/pgr_TSPeuclidean.rst:166
+msgid ""
+"Getting a total cost of the tour, compare the value with the length of an"
+" optimal tour is 27603, given on the dataset"
+msgstr ""
+"Al obtener un costo total del recorrido, comparar el valor con la "
+"duración de un recorrido óptimo, que es 27603, dado en el conjunto de "
+"datos"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:174
 msgid "Getting a geometry of the tour"
 msgstr "Obtener una geometría del recorrido"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:171
+#: ../../build/doc/pgr_TSPeuclidean.rst:181
+msgid "Visual results"
+msgstr ""
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:182
 msgid ""
 "Visualy, The first image is the `optimal solution "
 "<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  and the second "
@@ -477,38 +492,81 @@ msgstr ""
 "óptima'<https://www.math.uwaterloo.ca/tsp/world/witour.html>`__  y la "
 "segunda imagen es la solución obtenida con ``pgr_TSPeuclidean``."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:185
+#: ../../build/doc/pgr_TSPeuclidean.rst:193
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:187
+#: ../../build/doc/pgr_TSPeuclidean.rst:195
 msgid ":doc:`TSP-family`"
 msgstr ":doc:`TSP-family`"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:188
+#: ../../build/doc/pgr_TSPeuclidean.rst:196
 msgid ":doc:`sampledata` network."
 msgstr ":doc:`sampledata` ."
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:190
+#: ../../build/doc/pgr_TSPeuclidean.rst:197
+#, fuzzy
+msgid ""
+"`Boost's metric appro's metric approximation "
+"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr ""
+"Algoritmo Metrico de la `Librería Boost "
+"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+
+#: ../../build/doc/pgr_TSPeuclidean.rst:199
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 msgstr "`Universided de Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:191
+#: ../../build/doc/pgr_TSPeuclidean.rst:200
 msgid ""
 "`Wikipedia: Traveling Salesman Problem "
 "<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
-"`Wikipedia: Problema del viajante <https://es.wikipedia.org/wiki/"
-"Problema_del_viajante>`__"
+"`Wikipedia: Problema del viajante "
+"<https://es.wikipedia.org/wiki/Problema_del_viajante>`__"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:194
+#: ../../build/doc/pgr_TSPeuclidean.rst:204
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:195
+#: ../../build/doc/pgr_TSPeuclidean.rst:205
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_TSPeuclidean.rst:196
+#: ../../build/doc/pgr_TSPeuclidean.rst:206
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "General Characteristics"
+#~ msgstr "Características generales"
+
+#~ msgid "Duplicated identifiers with different coordinates are not allowed"
+#~ msgstr "No se permiten identificadores duplicados con diferentes coordenadas"
+
+#~ msgid "**Coordinates SQL**"
+#~ msgstr "**Coordenadas SQL**"
+
+#~ msgid "An SQL query, described in the `Coordinates SQL`_ section"
+#~ msgstr "Una consulta SQL, descrita en la sección `Coordenadas SQL`_"
+
+#~ msgid "**end_vid**"
+#~ msgstr "``end_vid``"
+
+#~ msgid ""
+#~ "**Coordinates SQL**: an SQL query, which"
+#~ " should return a set of rows "
+#~ "with the following columns:"
+#~ msgstr ""
+#~ "**Coordenadas SQL**: una consulta SQL, "
+#~ "que debe devolver un conjunto de "
+#~ "filas con las siguientes columnas:"
+
+#~ msgid "**id**"
+#~ msgstr "**id**"
+
+#~ msgid "**x**"
+#~ msgstr "**x**"
+
+#~ msgid "**y**"
+#~ msgstr "**y**"
+

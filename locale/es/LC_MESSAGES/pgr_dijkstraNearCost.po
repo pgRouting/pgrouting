@@ -2,53 +2,54 @@
 # Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Esteban Zimanyi <estebanzimanyi@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 14:40+0000\n"
+"POT-Creation-Date: 2022-06-24 12:46-0500\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_dijkstranearcost/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_dijkstranearcost/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:12
+#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__ (`3.4"
+" <https://docs.pgrouting.org/3.4/en/pgr_dijkstraNearCost.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_dijkstraNearCost.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_dijkstraNearCost.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/es/pgr_dijkstraNearCost.html>`__ (`3.3"
+" <https://docs.pgrouting.org/3.3/es/pgr_dijkstraNearCost.html>`__) `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_dijkstraNearCost.html>`__"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:18
-msgid "pgr_dijkstraNearCost - Proposed"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:19
+#, fuzzy
+msgid "``pgr_dijkstraNearCost`` - Proposed"
 msgstr "pgr_dijkstraNearCost - Propuesto"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:20
+#: ../../build/doc/pgr_dijkstraNearCost.rst:21
 msgid ""
-"``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that "
-"leads to the nearest vertex."
+"``pgr_dijkstraNearCost`` — Using dijkstra algorithm, finds the route that"
+" leads to the nearest vertex."
 msgstr ""
-"``pgr_dijkstraNearCost`` — Usando el algoritmo dijkstra, encuentra la ruta "
-"que conduce al vértice más cercano."
+"``pgr_dijkstraNearCost`` — Usando el algoritmo dijkstra, encuentra la "
+"ruta que conduce al vértice más cercano."
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -86,45 +87,48 @@ msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:30
+#: ../../build/doc/pgr_dijkstraNearCost.rst:31
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:33
+#: ../../build/doc/pgr_dijkstraNearCost.rst:34
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:34
+#: ../../build/doc/pgr_dijkstraNearCost.rst:35
 msgid "Version 3.3.0"
 msgstr "Versión 3.3.0"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:36
+#: ../../build/doc/pgr_dijkstraNearCost.rst:37
 msgid "Promoted to **proposed** function"
 msgstr "Promovido a función **propuesta**"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:38
+#: ../../build/doc/pgr_dijkstraNearCost.rst:39
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:40
+#: ../../build/doc/pgr_dijkstraNearCost.rst:41
 msgid "New **experimental** function"
 msgstr "Nueva función **experimental**"
 
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_dijkstraNearCost.rst:44
-#: ../../build/doc/pgr_dijkstraNearCost.rst:210
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgr_dijkstraNear.rst:11
+#: ../../build/doc/pgr_dijkstraNearCost.rst:45
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:46
+#: ../../build/doc/pgr_dijkstraNearCost.rst:47
 msgid ""
-"Given a graph, a starting vertex and a set of ending vertices, this function"
-" finds the shortest path from the starting vertex to the nearest ending "
-"vertex."
+"Given a graph, a starting vertex and a set of ending vertices, this "
+"function finds the shortest path from the starting vertex to the nearest "
+"ending vertex."
 msgstr ""
-"Dado un grafo, un vértice inicial y un conjunto de vértices finales, esta "
-"función encuentra la ruta más corta desde el vértice inicial hasta el "
+"Dado un grafo, un vértice inicial y un conjunto de vértices finales, esta"
+" función encuentra la ruta más corta desde el vértice inicial hasta el "
 "vértice final más cercano."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:51
@@ -172,8 +176,7 @@ msgid "results are sorted by (source, target)"
 msgstr "los resultados se ordenan por (fuente, destino)"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:20
-msgid ""
-"Running time: Dijkstra running time: :math:`drt = O((|E| + |V|)log|V|)`"
+msgid "Running time: Dijkstra running time: :math:`drt = O((|E| + |V|)log|V|)`"
 msgstr ""
 "Tiempo de ejecución: Dijkstra tiempo de ejecución: :math:`drt = O((|E| + "
 "|V|)log|V|)`"
@@ -202,7 +205,7 @@ msgstr "Firmas"
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:75
+#: ../../build/doc/pgr_dijkstraNearCost.rst:79
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
@@ -210,408 +213,474 @@ msgstr "Uno a Muchos"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:83
-msgid ""
-"Departing on car from vertex :math:`2` find the nearest subway station."
+#: ../../build/doc/pgr_dijkstraNearCost.rst:88
+#, fuzzy
+msgid "Departing on car from vertex :math:`6` find the nearest subway station."
 msgstr ""
-"Saliendo en coche desde el vértice  :math:`2` encontrar la estación de metro"
-" más cercana."
+"Saliendo en coche desde el vértice  :math:`2` encontrar la estación de "
+"metro más cercana."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:85
-#: ../../build/doc/pgr_dijkstraNearCost.rst:115
-#: ../../build/doc/pgr_dijkstraNearCost.rst:175
+#: ../../build/doc/pgr_dijkstraNearCost.rst:91
+#: ../../build/doc/pgr_dijkstraNearCost.rst:122
+#: ../../build/doc/pgr_dijkstraNearCost.rst:185
 msgid "Using a **directed** graph for car routing."
 msgstr "Usando un grafo **dirigido** para el ruteo de automóviles."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:86
-#: ../../build/doc/pgr_dijkstraNearCost.rst:116
-msgid "The subway stations are on the following vertices :math:`\\{ 3, 6, 7\\}`"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:92
+#: ../../build/doc/pgr_dijkstraNearCost.rst:123
+#, fuzzy
+msgid "The subway stations are on the following vertices :math:`\\{1, 10, 11\\}`"
 msgstr ""
-"Las estaciones de metro se encuentran en los siguientes vértices :math:`\\{ "
-"3, 6, 7\\}`"
+"Las estaciones de metro se encuentran en los siguientes vértices "
+":math:`\\{ 3, 6, 7\\}`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:87
-#: ../../build/doc/pgr_dijkstraNearCost.rst:146
-#: ../../build/doc/pgr_dijkstraNearCost.rst:183
+#: ../../build/doc/pgr_dijkstraNearCost.rst:93
+#: ../../build/doc/pgr_dijkstraNearCost.rst:154
+#: ../../build/doc/pgr_dijkstraNearCost.rst:202
 msgid "The defaults used:"
 msgstr "Los valores predeterminados utilizados:"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:89
-#: ../../build/doc/pgr_dijkstraNearCost.rst:185
+#: ../../build/doc/pgr_dijkstraNearCost.rst:95
+#: ../../build/doc/pgr_dijkstraNearCost.rst:204
 msgid "`directed => true`"
 msgstr "`directed => true`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:90
-#: ../../build/doc/pgr_dijkstraNearCost.rst:148
-#: ../../build/doc/pgr_dijkstraNearCost.rst:186
+#: ../../build/doc/pgr_dijkstraNearCost.rst:96
+#: ../../build/doc/pgr_dijkstraNearCost.rst:156
+#: ../../build/doc/pgr_dijkstraNearCost.rst:205
 msgid "`cap => 1`"
 msgstr "`cap => 1`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:98
-msgid "The result shows that station at vertex :math:`6` is the nearest."
+#: ../../build/doc/pgr_dijkstraNearCost.rst:104
+#, fuzzy
+msgid "The result shows that station at vertex :math:`11` is the nearest."
 msgstr ""
 "El resultado muestra que la estación en el vértice :math:`6` es la más "
 "cercana."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:104
+#: ../../build/doc/pgr_dijkstraNearCost.rst:110
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:112
+#: ../../build/doc/pgr_dijkstraNearCost.rst:119
+#, fuzzy
 msgid ""
-"Departing on a car from a subway station find the nearest **two** stations "
-"to vertex :math:`2`"
+"Departing on a car from a subway station find the nearest **two** "
+"stations to vertex :math:`6`"
 msgstr ""
 "Saliendo en coche desde una estación de metro encontrar las **dos** "
 "estaciones más cercanas al vértice :math:`2`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:117
-msgid ""
-"On line `4`: using the positional parameter: `directed` set to ``true``"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:124
+msgid "On line `4`: using the positional parameter: `directed` set to ``true``"
 msgstr ""
-"En la línea `4`: utilizando el parámetro posicional: `directed` configurado "
-"en ``true``"
+"En la línea `4`: utilizando el parámetro posicional: `directed` "
+"configurado en ``true``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:118
+#: ../../build/doc/pgr_dijkstraNearCost.rst:125
 msgid "In line `5`: using named parameter `cap => 2`"
 msgstr "En la línea `5`: usando el parámetro con nombre `cap => 2`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:125
+#: ../../build/doc/pgr_dijkstraNearCost.rst:132
+#, fuzzy
 msgid ""
-"The result shows that station at vertex :math:`3` is the nearest and the "
-"next best is :math:`6`."
+"The result shows that station at vertex :math:`10` is the nearest and the"
+" next best is :math:`11`."
 msgstr ""
 "El resultado muestra que la estación en el vértice :math:`3` es la más "
 "cercana y la siguiente mejor es :math:`6`."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:132
+#: ../../build/doc/pgr_dijkstraNearCost.rst:139
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:140
+#: ../../build/doc/pgr_dijkstraNearCost.rst:148
 msgid "Find the best pedestrian connection between two lines of buses"
 msgstr "Encuentra la mejor conexión peatonal entre dos líneas de autobuses"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:142
+#: ../../build/doc/pgr_dijkstraNearCost.rst:150
 msgid "Unsing an **undirected** graph for pedestrian routing"
 msgstr "Usando un grafo **no dirigido** para el ruteo de peatones"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:143
-#: ../../build/doc/pgr_dijkstraNearCost.rst:176
-msgid "The first subway line stations stops are at :math:`\\{3, 6, 7\\}`"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:151
+#, fuzzy
+msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
 msgstr "Las primeras paradas de la línea de metro están en :math:`\\{3, 6, 7\\}`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:144
-#: ../../build/doc/pgr_dijkstraNearCost.rst:177
-msgid "The second subway line stations are at :math:`\\{4, 9\\}`"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:152
+#, fuzzy
+msgid "The second subway line stations stops are at :math:`\\{1, 10, 11\\}`"
 msgstr "Las segundas estaciones de la línea de metro están en :math:`\\{4, 9\\}`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:145
+#: ../../build/doc/pgr_dijkstraNearCost.rst:153
 msgid "On line `4`: using the named parameter: `directed => false`"
-msgstr ""
-"En la línea `4`: utilizando el parámetro con nombre: `directed => false`"
+msgstr "En la línea `4`: utilizando el parámetro con nombre: `directed => false`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:149
+#: ../../build/doc/pgr_dijkstraNearCost.rst:157
 msgid "`global => true`"
 msgstr "`global => true`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:156
+#: ../../build/doc/pgr_dijkstraNearCost.rst:164
+#, fuzzy
 msgid ""
-"For a pedestrian the best connection is to get on/off is at vertex :math:`3`"
-" of the first subway line and at vertex :math:`4` of the second subway line."
+"For a pedestrian the best connection is to get on/off is at vertex "
+":math:`15` of the first subway line and at vertex :math:`10` of the "
+"second subway line."
 msgstr ""
-"Para un peatón la mejor conexión es subir/bajar en el vértice :math:`3` de "
-"la primera línea de metro y en el vértice :math:`4` de la segunda línea de "
-"metro."
+"Para un peatón la mejor conexión es subir/bajar en el vértice :math:`3` "
+"de la primera línea de metro y en el vértice :math:`4` de la segunda "
+"línea de metro."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:159
+#: ../../build/doc/pgr_dijkstraNearCost.rst:167
 msgid ""
-"Only `one` route is returned because `global` is ``true`` and `cap` is ``1``"
-msgstr ""
-"Solo se devuelve `una` ruta porque `global` es ``true`` y `cap` es ``1``"
+"Only `one` route is returned because `global` is ``true`` and `cap` is "
+"``1``"
+msgstr "Solo se devuelve `una` ruta porque `global` es ``true`` y `cap` es ``1``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:165
+#: ../../build/doc/pgr_dijkstraNearCost.rst:173
 msgid "Combinations"
 msgstr "Combinaciones"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:173
-msgid ""
-"Find the best car connection between all the stations of two subway lines"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:182
+msgid "Find the best car connection between all the stations of two subway lines"
 msgstr ""
 "Encuentra la mejor conexión de coche entre todas las estaciones de dos "
 "líneas de metro"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:178
-msgid ""
-"line `3` sets the start vertices to be from the fisrt subway line and the "
-"ending vertices to be from the second subway line"
-msgstr ""
-"línea `3` establece los vértices de inicio para ser de la primera línea de "
-"metro y los vértices finales para ser de la segunda línea de metro"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:186
+#, fuzzy
+msgid "The first subway line stations stops are at :math:`\\{1, 10, 11\\}`"
+msgstr "Las primeras paradas de la línea de metro están en :math:`\\{3, 6, 7\\}`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:180
-msgid ""
-"line `5` sets the start vertices to be from the first subway line and the "
-"ending vertices to be from the first subway line"
-msgstr ""
-"la línea `5` establece los vértices de inicio que sean de la primera línea "
-"de metro y los vértices finales de la primera línea de metro"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:187
+#, fuzzy
+msgid "The second subway line stations are at :math:`\\{15, 16\\}`"
+msgstr "Las segundas estaciones de la línea de metro están en :math:`\\{4, 9\\}`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:182
-msgid "On line `6`: using the named parameter is `global => false`"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:189
+msgid "The combinations contents:"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:195
+#, fuzzy
+msgid "The query:"
+msgstr "Consulta interna"
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:197
+#, fuzzy
+msgid ""
+"lines `3~4` sets the start vertices to be from the fisrt subway line and "
+"the ending vertices to be from the second subway line"
+msgstr ""
+"línea `3` establece los vértices de inicio para ser de la primera línea "
+"de metro y los vértices finales para ser de la segunda línea de metro"
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:199
+#, fuzzy
+msgid ""
+"lines `6~7` sets the start vertices to be from the first subway line and "
+"the ending vertices to be from the first subway line"
+msgstr ""
+"la línea `5` establece los vértices de inicio que sean de la primera "
+"línea de metro y los vértices finales de la primera línea de metro"
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:201
+#, fuzzy
+msgid "On line `8`: using the named parameter is `global => false`"
 msgstr "En la línea `6`: el uso del parámetro con nombre es 'global '> false'"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:193
+#: ../../build/doc/pgr_dijkstraNearCost.rst:212
 msgid "From the results:"
 msgstr "A partir de los resultados:"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:195
-msgid "making a connection from the first subway line to the second:"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:214
+#, fuzzy
+msgid ""
+"making a connection from the first subway line :math:`\\{1, 10, 11\\}` to"
+" the second :math:`\\{15, 16\\}`:"
 msgstr "haciendo una conexión desde la primera línea de metro a la segunda:"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:197
+#: ../../build/doc/pgr_dijkstraNearCost.rst:217
 msgid ""
-":math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` and the best one is :math:`(6 -> 9)` "
-"with a cost of :math:`1` (line: `11`)"
+"The best connections from all the stations from the first line are: "
+":math:`{(1 \\rightarrow 16) (10 \\rightarrow 16) (11 \\rightarrow 16)}`"
 msgstr ""
-":math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` y lo mejor es :math:`(6 -> 9)` con un "
-"costo de :math:`1` (line: `11`)"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:200
-msgid "making a connection from the second subway line to the first:"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:219
+#, fuzzy
+msgid ""
+"The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` "
+"(lines: `1`)"
+msgstr ""
+":math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` y lo mejor es :math:`(6 -> 9)` con "
+"un costo de :math:`1` (line: `11`)"
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:222
+#, fuzzy
+msgid ""
+"making a connection from the second subway line :math:`\\{15, 16\\}` to "
+"the first :math:`\\{1, 10, 11\\}`:"
 msgstr "haciendo una conexión desde la segunda línea de metro a la primera:"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:202
+#: ../../build/doc/pgr_dijkstraNearCost.rst:225
 msgid ""
-":math:`{(4 -> 3) (9 -> 6)}` and both are equaly good as they have the same "
-"cost. (lines: `10` and `12`)"
+"The best connections from all the stations from the second line are: "
+":math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
 msgstr ""
-":math:`{(4 -> 3) (9 -> 6)} ` y ambos son igualmente buenos ya que tienen el "
-"mismo costo. (líneas: `10` y`12`)"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:207
+#: ../../build/doc/pgr_dijkstraNearCost.rst:227
+#, fuzzy
+msgid "Both are equaly good as they have the same cost. (lines: `12` and `13`)"
+msgstr ""
+":math:`{(4 -> 3) (9 -> 6)} ` y ambos son igualmente buenos ya que tienen "
+"el mismo costo. (líneas: `10` y`12`)"
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:230
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:210
-msgid "Parameter"
-msgstr "Parámetro"
+#: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Column"
+msgstr "Columna"
 
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_dijkstraNearCost.rst:210
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_dijkstraNear.rst:9
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_dijkstraNearCost.rst:210
-msgid "Default"
-msgstr "x Defecto"
+#: ../../build/doc/dijkstra-family.rst:11
+msgid "`Edges SQL`_"
+msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:212
-msgid "**Edges SQL**"
-msgstr "**SQL de aristas**"
-
-#: ../../build/doc/pgr_dijkstraNearCost.rst:212
-#: ../../build/doc/pgr_dijkstraNearCost.rst:213
+#: ../../build/doc/dijkstra-family.rst:12
+#: ../../build/doc/dijkstra-family.rst:15
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:212
-msgid "`Edges query`_ as described below"
+#: ../../build/doc/dijkstra-family.rst:13
+#, fuzzy
+msgid "`Edges SQL`_ as described below"
 msgstr "`Edges query`_ como se describe a continuación"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:213
-msgid "**Combinations SQL**"
-msgstr "**Combinaciones SQL**"
+#: ../../build/doc/dijkstra-family.rst:14
+#, fuzzy
+msgid "`Combinations SQL`_"
+msgstr "Combinaciones"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:213
-msgid "`Combinations query` as described below"
+#: ../../build/doc/dijkstra-family.rst:16
+#, fuzzy
+msgid "`Combinations SQL`_ as described below"
 msgstr "`Consulta de combinaciones` como se describe a continuación"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:214
-msgid "**Start vid**"
-msgstr "**Start vid**"
+#: ../../build/doc/dijkstra-family.rst:17
+#, fuzzy
+msgid "**start vid**"
+msgstr "``start_vid``"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_dijkstraNearCost.rst:214
-#: ../../build/doc/pgr_dijkstraNearCost.rst:216
-#: ../../build/doc/pgr_dijkstraNearCost.rst:220
+#: ../../build/doc/dijkstra-family.rst:18
+#: ../../build/doc/dijkstra-family.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgr_dijkstraNear.rst:13
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:214
+#: ../../build/doc/dijkstra-family.rst:19
 msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial de la ruta."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:215
-msgid "**Start vids**"
+#: ../../build/doc/dijkstra-family.rst:20
+#, fuzzy
+msgid "**start vids**"
 msgstr "**Start vids**"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:215
-#: ../../build/doc/pgr_dijkstraNearCost.rst:217
+#: ../../build/doc/dijkstra-family.rst:21
+#: ../../build/doc/dijkstra-family.rst:27
 msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:215
+#: ../../build/doc/dijkstra-family.rst:22
 msgid "Array of identifiers of starting vertices."
 msgstr "Arreglo de identificadores de vértices iniciales."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:216
-msgid "**End vid**"
-msgstr "**End vid**"
+#: ../../build/doc/dijkstra-family.rst:23
+#, fuzzy
+msgid "**end vid**"
+msgstr "``end_vid``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:216
+#: ../../build/doc/dijkstra-family.rst:25
 msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final de la ruta."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:217
-msgid "**End vids**"
+#: ../../build/doc/dijkstra-family.rst:26
+#, fuzzy
+msgid "**end vids**"
 msgstr "**End vids**"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:217
+#: ../../build/doc/dijkstra-family.rst:28
 msgid "Array of identifiers of ending vertices."
 msgstr "Arreglo de identificadores de vértices finales."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:218
-msgid "**directed**"
-msgstr "**dirigido**"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:237
+msgid "Dijkstra optional parameters"
+msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:218
-#: ../../build/doc/pgr_dijkstraNearCost.rst:221
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgr_dijkstraNear.rst:10
+msgid "Default"
+msgstr "x Defecto"
+
+#: ../../build/doc/dijkstra-family.rst:12
+#, fuzzy
+msgid "``directed``"
+msgstr "`directed => true`"
+
+#: ../../build/doc/dijkstra-family.rst:13
+#: ../../build/doc/pgr_dijkstraNear.rst:17
 msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:218
-#: ../../build/doc/pgr_dijkstraNearCost.rst:221
+#: ../../build/doc/dijkstra-family.rst:14
+#: ../../build/doc/pgr_dijkstraNear.rst:18
 msgid "``true``"
 msgstr "``true``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:218
+#: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
 msgstr "En caso de ``true``, el grafo se considera **dirigido**"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:219
+#: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:220
-msgid "**cap**"
-msgstr "**cap**"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:244
+msgid "Near optional parameters"
+msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:220
-msgid "1"
-msgstr "1"
+#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_dijkstraNear.rst:8
+msgid "Parameter"
+msgstr "Parámetro"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:220
+#: ../../build/doc/pgr_dijkstraNear.rst:12
+msgid "``cap``"
+msgstr ""
+
+#: ../../build/doc/pgr_dijkstraNear.rst:14
+#, fuzzy
+msgid "``1``"
+msgstr "``true``"
+
+#: ../../build/doc/pgr_dijkstraNear.rst:15
 msgid "Find at most ``cap`` number of nearest shortest paths"
 msgstr ""
 "Encuentra como máximo el número ``cap`` de los caminos más cortos y más "
 "cercanos"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:221
-msgid "**global**"
-msgstr "**global**"
+#: ../../build/doc/pgr_dijkstraNear.rst:16
+#, fuzzy
+msgid "``global``"
+msgstr "`global => true`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:221
+#: ../../build/doc/pgr_dijkstraNear.rst:19
 msgid "When ``true``: only ``cap`` limit results will be returned"
 msgstr "Cuando ``true``: solo se devolverán los resultados del límite ``cap``"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:222
+#: ../../build/doc/pgr_dijkstraNear.rst:20
 msgid "When ``false``: ``cap`` limit per ``Start vid`` will be returned"
 msgstr "Cuando ``false``: ``cap`` límite por ``Start vid`` será devuelto"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:227
-msgid "Inner query"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:251
+#, fuzzy
+msgid "Inner Queries"
 msgstr "Consulta interna"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:230
-msgid "Edges query"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:254
+#, fuzzy
+msgid "Edges SQL"
 msgstr "Consulta de aristas"
 
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "Column"
-msgstr "Columna"
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**id**"
-msgstr "**id**"
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
-
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**source**"
-msgstr "**origen**"
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:16
+#, fuzzy
+msgid "``source``"
+msgstr "``true``"
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**target**"
-msgstr "**objetivo**"
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:20
+#, fuzzy
+msgid "``target``"
+msgstr "``true``"
 
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "**cost**"
-msgstr "**costo**"
+#: ../../build/doc/pgRouting-concepts.rst:24
+#, fuzzy
+msgid "``cost``"
+msgstr "``true``"
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "``ANY-NUMERICAL``"
-msgstr "``ANY-NUMERICAL``"
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Weight of the edge  `(source, target)`"
+#: ../../build/doc/pgRouting-concepts.rst:27
+#, fuzzy
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr "Peso de la arista `(source, target)`"
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
-msgstr ""
-"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
-"es parte del grafo."
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**reverse_cost**"
+#: ../../build/doc/pgRouting-concepts.rst:28
+#, fuzzy
+msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
 msgstr "-1"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "Weight of the edge `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:31
+#, fuzzy
+msgid "Weight of the edge (``target``, ``source``)"
 msgstr "Peso de la arista `(target, source)`,"
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:33
+#, fuzzy
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
-"parte del grafo."
+"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
+" es parte del grafo."
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr "Donde:"
 
@@ -619,92 +688,169 @@ msgstr "Donde:"
 msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:237
-msgid "Combinations query"
-msgstr "Consulta de combinaciones"
+#: ../../build/doc/pgr_dijkstraNearCost.rst:261
+#, fuzzy
+msgid "Combinations SQL"
+msgstr "Combinaciones"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:244
-msgid "Return Columns"
+#: ../../build/doc/pgRouting-concepts.rst:13
+#, fuzzy
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice inicial."
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+#, fuzzy
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice inicial."
+
+#: ../../build/doc/pgr_dijkstraNearCost.rst:268
+#, fuzzy
+msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
-msgid "Returns SET OF ``(start_vid, end_vid, agg_cost)``"
+#, fuzzy
+msgid "Set of ``(start_vid, end_vid, agg_cost)``"
 msgstr "Devuelve SET OF ``(start_vid, end_vid, agg_cost)``"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**start_vid**"
+#: ../../build/doc/pgRouting-concepts.rst:13
+#, fuzzy
+msgid "``start_vid``"
 msgstr "``start_vid``"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the starting vertex."
 msgstr "Identificador del vértice inicial."
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "**end_vid**"
+#: ../../build/doc/pgRouting-concepts.rst:16
+#, fuzzy
+msgid "``end_vid``"
 msgstr "``end_vid``"
 
-#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
 msgstr "Identificador del vértice final."
 
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "**agg_cost**"
+#: ../../build/doc/pgRouting-concepts.rst:19
+#, fuzzy
+msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
 msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:251
+#: ../../build/doc/pgr_dijkstraNearCost.rst:275
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:253
+#: ../../build/doc/pgr_dijkstraNearCost.rst:277
 msgid ":doc:`dijkstra-family`"
 msgstr ":doc:`dijkstra-family`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:254
+#: ../../build/doc/pgr_dijkstraNearCost.rst:278
 msgid ":doc:`pgr_dijkstraNear`"
 msgstr ":doc:`pgr_dijkstraNear`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:255
+#: ../../build/doc/pgr_dijkstraNearCost.rst:279
 msgid ":doc:`sampledata` network."
 msgstr ":doc:`sampledata` ."
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:256
+#: ../../build/doc/pgr_dijkstraNearCost.rst:280
 msgid "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
 msgstr "boost: https://www.boost.org/libs/graph/doc/table_of_contents.html"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:257
+#: ../../build/doc/pgr_dijkstraNearCost.rst:281
 #, python-format
 msgid "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 msgstr "Wikipedia: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:260
+#: ../../build/doc/pgr_dijkstraNearCost.rst:284
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:261
+#: ../../build/doc/pgr_dijkstraNearCost.rst:285
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_dijkstraNearCost.rst:262
+#: ../../build/doc/pgr_dijkstraNearCost.rst:286
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "**Edges SQL**"
+#~ msgstr "**SQL de aristas**"
+
+#~ msgid "**Combinations SQL**"
+#~ msgstr "**Combinaciones SQL**"
+
+#~ msgid "**Start vid**"
+#~ msgstr "**Start vid**"
+
+#~ msgid "**End vid**"
+#~ msgstr "**End vid**"
+
+#~ msgid "**directed**"
+#~ msgstr "**dirigido**"
+
+#~ msgid "**cap**"
+#~ msgstr "**cap**"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "**global**"
+#~ msgstr "**global**"
+
+#~ msgid "**id**"
+#~ msgstr "**id**"
+
+#~ msgid "``ANY-INTEGER``"
+#~ msgstr "``ANY-INTEGER``"
+
+#~ msgid "**source**"
+#~ msgstr "**origen**"
+
+#~ msgid "**target**"
+#~ msgstr "**objetivo**"
+
+#~ msgid "**cost**"
+#~ msgstr "**costo**"
+
+#~ msgid "``ANY-NUMERICAL``"
+#~ msgstr "``ANY-NUMERICAL``"
+
+#~ msgid ""
+#~ "When negative: edge `(source, target)` "
+#~ "does not exist, therefore it's not "
+#~ "part of the graph."
+#~ msgstr ""
+#~ "Cuando es negativo: la arista `(source,"
+#~ " target)` no existe, por lo tanto "
+#~ "no es parte del grafo."
+
+#~ msgid "SMALLINT, INTEGER, BIGINT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT"
+
+#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#~ msgid "Combinations query"
+#~ msgstr "Consulta de combinaciones"
+

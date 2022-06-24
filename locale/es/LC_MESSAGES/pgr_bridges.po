@@ -2,34 +2,34 @@
 # Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-06-24 12:46-0500\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_bridges/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_bridges/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_bridges.rst:12
+#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_bridges.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_bridges.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/en/pgr_bridges.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_bridges.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_bridges.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_bridges.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/en/pgr_bridges.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_bridges.html>`__"
@@ -41,7 +41,7 @@ msgstr ""
 "<https://docs.pgrouting.org/3.1/es/pgr_bridges.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_bridges.html>`__"
 
-#: ../../build/doc/pgr_bridges.rst:18
+#: ../../build/doc/pgr_bridges.rst:19
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__ `2.5 "
@@ -51,64 +51,66 @@ msgstr ""
 "<https://docs.pgrouting.org/2.6/en/pgr_bridges.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__"
 
-#: ../../build/doc/pgr_bridges.rst:23
-msgid "pgr_bridges"
+#: ../../build/doc/pgr_bridges.rst:24
+#, fuzzy
+msgid "``pgr_bridges``"
 msgstr "pgr_bridges"
 
-#: ../../build/doc/pgr_bridges.rst:25
+#: ../../build/doc/pgr_bridges.rst:26
 msgid "``pgr_bridges`` - Return the bridges of an undirected graph."
 msgstr "``pgr_bridges`` - Calcula los puentes de un grafo no dirigido."
 
-#: ../../build/doc/pgr_bridges.rst:30
+#: ../../build/doc/pgr_bridges.rst:31
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_bridges.rst:33
+#: ../../build/doc/pgr_bridges.rst:34
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_bridges.rst:34
+#: ../../build/doc/pgr_bridges.rst:35
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_bridges.rst:36
+#: ../../build/doc/pgr_bridges.rst:37
 msgid "Return columns change: ``seq`` is removed"
 msgstr "Cambio de columnas de retorno: ``seq`` se elimina"
 
-#: ../../build/doc/pgr_bridges.rst:37
+#: ../../build/doc/pgr_bridges.rst:38
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_bridges.rst:39
+#: ../../build/doc/pgr_bridges.rst:40
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-#: ../../build/doc/pgr_bridges.rst:41
+#: ../../build/doc/pgr_bridges.rst:42
 msgid "New **experimental** function"
 msgstr "Nueva función **experimental**"
 
-#: ../../build/doc/components-family.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/pgr_bridges.rst:45
-#: ../../build/doc/pgr_bridges.rst:102
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/pgr_bridges.rst:45
+#: ../../build/doc/pgr_bridges.rst:110
 msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_bridges.rst:47
 msgid ""
 "A bridge is an edge of an undirected graph whose deletion increases its "
-"number of connected components. This implementation can only be used with an"
-" undirected graph."
+"number of connected components. This implementation can only be used with"
+" an undirected graph."
 msgstr ""
-"Un puente es un borde de un grafo no dirigido cuya eliminación aumenta su "
-"número de componentes conectados. Esta implementación solo se puede utilizar"
-" con un grafo no dirigido."
+"Un puente es un borde de un grafo no dirigido cuya eliminación aumenta su"
+" número de componentes conectados. Esta implementación solo se puede "
+"utilizar con un grafo no dirigido."
 
 #: ../../build/doc/pgr_bridges.rst:51
 msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_bridges.rst:53
-msgid "The signature is for an **undirected** graph."
+#, fuzzy
+msgid "Works for **undirected** graphs."
 msgstr "La firma es para un grafo **no dirigido**."
 
 #: ../../build/doc/pgr_bridges.rst:54
@@ -116,14 +118,15 @@ msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/pgr_bridges.rst:56
-msgid "`edge` ascending"
+#, fuzzy
+msgid "``edge`` ascending"
 msgstr "`edge` ascendente."
 
 #: ../../build/doc/pgr_bridges.rst:58
 msgid "Running time: :math:`O(E * (V + E))`"
 msgstr "Tiempo de ejecución: :math:`O(E * (V + E))`"
 
-#: ../../build/doc/pgr_bridges.rst:61
+#: ../../build/doc/pgr_bridges.rst:64
 msgid "Signatures"
 msgstr "Firmas"
 
@@ -131,134 +134,124 @@ msgstr "Firmas"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_bridges.rst:73
+#: ../../build/doc/pgr_bridges.rst:72
 msgid "The bridges of the graph"
 msgstr "Los puentes del grafo"
 
-#: ../../build/doc/pgr_bridges.rst:80
+#: ../../build/doc/pgr_bridges.rst:82
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/components-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/components-family.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_bridges.rst:102
+#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/pgr_bridges.rst:109
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/components-family.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:4
-msgid "Default"
-msgstr "x Defecto"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "`Edges SQL`_"
+msgstr ""
 
-#: ../../build/doc/components-family.rst:6
-msgid "**Edges SQL**"
-msgstr "**SQL de aristas**"
-
-#: ../../build/doc/components-family.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/components-family.rst:6
-msgid "Inner query as described below."
+#: ../../build/doc/pgRouting-concepts.rst:13
+#, fuzzy
+msgid "`Edges SQL`_ as described below."
 msgstr "Consulta interna como se describe a continuación."
 
-#: ../../build/doc/pgr_bridges.rst:87
-msgid "Inner query"
+#: ../../build/doc/pgr_bridges.rst:89
+#, fuzzy
+msgid "Inner Queries"
 msgstr "Consulta interna"
 
-#: ../../build/doc/pgr_bridges.rst
-msgid "edges SQL"
+#: ../../build/doc/pgr_bridges.rst:92
+#, fuzzy
+msgid "Edges SQL"
 msgstr "bordes SQL"
 
-#: ../../build/doc/pgr_bridges.rst:89
-msgid ""
-"an SQL query of an **undirected** graph, which should return a set of rows "
-"with the following columns:"
-msgstr ""
-"Una consulta SQL de un grafo **no dirigido**, que debería devolver un "
-"conjunto de filas con las siguientes columnas:"
-
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_bridges.rst:102
+#: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/pgr_bridges.rst:108
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**id**"
-msgstr "**id**"
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
+msgstr "x Defecto"
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+#, fuzzy
+msgid "**ANY-INTEGER**"
+msgstr "**arista**"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**source**"
+#: ../../build/doc/pgRouting-concepts.rst:16
+#, fuzzy
+msgid "``source``"
 msgstr "**origen**"
 
-#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**target**"
+#: ../../build/doc/pgRouting-concepts.rst:20
+#, fuzzy
+msgid "``target``"
 msgstr "**objetivo**"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "**cost**"
-msgstr "**costo**"
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``cost``"
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "``ANY-NUMERICAL``"
-msgstr "``ANY-NUMERICAL``"
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Weight of the edge  `(source, target)`"
+#: ../../build/doc/pgRouting-concepts.rst:27
+#, fuzzy
+msgid "Weight of the edge (``source``, ``target``)"
 msgstr "Peso de la arista `(source, target)`"
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
-msgstr ""
-"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
-"es parte del grafo."
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**reverse_cost**"
+#: ../../build/doc/pgRouting-concepts.rst:28
+#, fuzzy
+msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
 msgstr "-1"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "Weight of the edge `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:31
+#, fuzzy
+msgid "Weight of the edge (``target``, ``source``)"
 msgstr "Peso de la arista `(target, source)`,"
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:33
+#, fuzzy
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no es "
-"parte del grafo."
+"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
+" es parte del grafo."
 
-#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr "Donde:"
 
@@ -266,59 +259,100 @@ msgstr "Donde:"
 msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:96
+#: ../../build/doc/pgr_bridges.rst:99
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_bridges.rst:99
+#: ../../build/doc/pgr_bridges.rst:101
 msgid "Returns set of ``(edge)``"
 msgstr "Devuelve el conjunto de ``(edge)``"
 
-#: ../../build/doc/pgr_bridges.rst:104
-msgid "**edge**"
-msgstr "**arista**"
+#: ../../build/doc/pgr_bridges.rst:111
+msgid "``edge``"
+msgstr ""
 
-#: ../../build/doc/pgr_bridges.rst:104
+#: ../../build/doc/pgr_bridges.rst:112
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/pgr_bridges.rst:104
+#: ../../build/doc/pgr_bridges.rst:113
 msgid "Identifier of the edge that is a bridge."
 msgstr "Identificador del borde que es un puente."
 
-#: ../../build/doc/pgr_bridges.rst:110
+#: ../../build/doc/pgr_bridges.rst:116
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_bridges.rst:112
+#: ../../build/doc/pgr_bridges.rst:118
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 
-#: ../../build/doc/pgr_bridges.rst:113
+#: ../../build/doc/pgr_bridges.rst:119
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_bridges.rst:116
+#: ../../build/doc/pgr_bridges.rst:122
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_bridges.rst:117
+#: ../../build/doc/pgr_bridges.rst:123
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_bridges.rst:118
+#: ../../build/doc/pgr_bridges.rst:124
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "**Edges SQL**"
+#~ msgstr "**SQL de aristas**"
+
+#~ msgid ""
+#~ "an SQL query of an **undirected** "
+#~ "graph, which should return a set "
+#~ "of rows with the following columns:"
+#~ msgstr ""
+#~ "Una consulta SQL de un grafo **no"
+#~ " dirigido**, que debería devolver un "
+#~ "conjunto de filas con las siguientes "
+#~ "columnas:"
+
+#~ msgid "**id**"
+#~ msgstr "**id**"
+
+#~ msgid "``ANY-INTEGER``"
+#~ msgstr "``ANY-INTEGER``"
+
+#~ msgid "**cost**"
+#~ msgstr "**costo**"
+
+#~ msgid "``ANY-NUMERICAL``"
+#~ msgstr "``ANY-NUMERICAL``"
+
+#~ msgid ""
+#~ "When negative: edge `(source, target)` "
+#~ "does not exist, therefore it's not "
+#~ "part of the graph."
+#~ msgstr ""
+#~ "Cuando es negativo: la arista `(source,"
+#~ " target)` no existe, por lo tanto "
+#~ "no es parte del grafo."
+
+#~ msgid "SMALLINT, INTEGER, BIGINT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT"
+
+#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+

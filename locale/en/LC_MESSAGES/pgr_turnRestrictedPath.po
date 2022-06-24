@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-24 12:46-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.1\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:12
 msgid ""
@@ -119,6 +119,7 @@ msgid "New **Experimental** function"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:13 ../../build/doc/pgr_KSP.rst:10
 #: ../../build/doc/pgr_KSP.rst:11 ../../build/doc/pgr_turnRestrictedPath.rst:37
@@ -201,6 +202,7 @@ msgstr ""
 msgid "Number of required paths"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:21
 #: ../../build/doc/pgRouting-concepts.rst:36 ../../build/doc/pgr_KSP.rst:24
 msgid "Where:"
 msgstr ""
@@ -209,6 +211,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:38 ../../build/doc/pgr_KSP.rst:26
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
@@ -338,6 +341,7 @@ msgstr ""
 msgid "``cost``"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
@@ -369,6 +373,7 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
@@ -377,8 +382,27 @@ msgstr ""
 msgid "Restrictions SQL"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst
-msgid "end-before"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "``path``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid ""
+"Sequence of edge identifiers that form a path that is not allowed to be "
+"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have "
+"a ``NULL`` element will raise an exception."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "``Cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Cost of taking the forbidden path."
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:124
