@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-24 18:12+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "via-category/es/>\n"
 "Language: es\n"
@@ -468,7 +468,7 @@ msgstr "A la izquierda ``l``,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados``b``, ``NULL``"
 
 #: ../../build/doc/via-category.rst:190
 msgid "Result Columns"
