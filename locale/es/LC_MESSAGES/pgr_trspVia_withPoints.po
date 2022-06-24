@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
 "PO-Revision-Date: 2022-06-24 18:12+0000\n"
-"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trspvia_withpoints/es/>\n"
 "Language: es\n"
@@ -332,8 +332,9 @@ msgid "With points optional parameters"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:12
+#, fuzzy
 msgid "``driving_side``"
-msgstr ""
+msgstr "``driving_side``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:13
 #: ../../build/doc/withPoints-category.rst:32
@@ -341,37 +342,42 @@ msgid "``CHAR``"
 msgstr "``CHAR``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:14
+#, fuzzy
 msgid "``r``"
-msgstr ""
+msgstr "``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:15
 msgid "Value in [``r``, ``l``] indicating if the driving side is:"
-msgstr ""
+msgstr "Valor en [``r``, ``l``] indica que el lado de manejo es:"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:17
 msgid "``r`` for right driving side"
-msgstr ""
+msgstr "``r`` para el manejo del lado derecho"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:18
 msgid "``l`` for left driving side"
-msgstr ""
+msgstr "``l`` para el manejo del lado izquierdo"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:19
 msgid "Any other value will be considered as ``r``"
-msgstr ""
+msgstr "Cualquier otro valor se considera como ``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:20
+#, fuzzy
 msgid "``details``"
-msgstr ""
+msgstr "``details``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:23
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
+"Cuando ``true`` los resultados incluyen los puntos que están en el camino."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:24
 msgid ""
 "When ``false`` the results will not include the points that are in the path."
 msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:117
 msgid "Inner Queries"
@@ -561,7 +567,7 @@ msgstr "A la izquierda ``l``,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados``b``, ``NULL``"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:141
 msgid "Result Columns"
