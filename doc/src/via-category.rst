@@ -171,7 +171,7 @@ Used on
 
 * :doc:`pgr_trspVia`
 
-.. include:: TRSP-family.rst
+.. include:: pgRouting-concepts.rst
    :start-after: restrictions_columns_start
    :end-before: restrictions_columns_end
 
