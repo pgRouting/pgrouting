@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-23 18:11+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsvia/es/>\n"
 "Language: es\n"
@@ -50,7 +50,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -205,7 +205,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:21
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
+msgstr "``ARRAY[`` **ENTEROS** ``]``"
 
 #: ../../build/doc/via-category.rst:23
 msgid "Array of ordered vertices identifiers that are going to be visited."
@@ -314,7 +314,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:32
 #: ../../build/doc/withPoints-family.rst:13
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:33
 #: ../../build/doc/withPoints-family.rst:14
