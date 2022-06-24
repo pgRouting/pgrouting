@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-23 16:16+0000\n"
+"PO-Revision-Date: 2022-06-24 15:25+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "trsp-family/es/>\n"
@@ -35,7 +35,7 @@ msgstr "TRSP - Familia de funciones"
 
 #: ../../build/doc/TRSP-family.rst:19
 msgid "When points are also given as input:"
-msgstr ""
+msgstr "Cuando los puntos también se dan como entrada:"
 
 #: ../../build/doc/TRSP-family.rst:22
 msgid "Proposed"
@@ -208,7 +208,7 @@ msgstr "Parámetros"
 
 #: ../../build/doc/TRSP-family.rst:90
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/TRSP-family.rst:91 ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
@@ -221,7 +221,7 @@ msgstr "Descripción"
 
 #: ../../build/doc/TRSP-family.rst:93
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL de Aristas`_"
 
 #: ../../build/doc/TRSP-family.rst:94 ../../build/doc/TRSP-family.rst:97
 msgid "``TEXT``"
@@ -243,7 +243,7 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:99
 msgid "**via vertices**"
-msgstr ""
+msgstr "**vía vértices**"
 
 #: ../../build/doc/TRSP-family.rst:100
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -265,10 +265,8 @@ msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
 #: ../../build/doc/TRSP-family.rst:105
-#, fuzzy
-#| msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT, INTEGER, BIGINT``"
 
 #: ../../build/doc/TRSP-family.rst:110
 msgid "Restrictions"
@@ -308,7 +306,7 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:137
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL de aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
@@ -320,15 +318,13 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
-#| msgid "ANY-INTEGER"
 msgid "**ANY-INTEGER**"
-msgstr "ENTEROS"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
@@ -336,7 +332,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``source``"
-msgstr ""
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
@@ -344,17 +340,15 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
-msgstr ""
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#, fuzzy
-#| msgid "``Cost``"
 msgid "``cost``"
-msgstr "``Cost``"
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:25
@@ -364,11 +358,11 @@ msgstr "**ANY-NUMERICAL**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr ""
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "``reverse_cost``"
-msgstr ""
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
@@ -383,6 +377,8 @@ msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore it's "
 "not part of the graph."
 msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:38

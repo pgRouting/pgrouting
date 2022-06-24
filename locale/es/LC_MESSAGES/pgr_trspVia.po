@@ -104,7 +104,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:43
 msgid "The paths represents the sections of the route."
-msgstr ""
+msgstr "Las trayectorias representan los tramos de la ruta."
 
 #: ../../build/doc/pgr_trspVia.rst:45
 msgid "The general algorithm is as follows:"
@@ -141,9 +141,6 @@ msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_trspVia.rst:71
 #, fuzzy
-#| msgid ""
-#| "Find the route that visits the vertices :math:`\\{1, 5, 7, 10, 4\\}` in "
-#| "that order"
 msgid ""
 "Find the route that visits the vertices :math:`\\{ 5, 1, 8\\}` in that order "
 "on an **directed** graph."
@@ -177,10 +174,8 @@ msgid "`Edges SQL`_ query as described."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:14
-#, fuzzy
-#| msgid "Restrictions SQL"
 msgid "`Restrictions SQL`_"
-msgstr "Restricciones SQL"
+msgstr "`SQL de restricciones`_"
 
 #: ../../build/doc/TRSP-family.rst:16
 msgid "`Restrictions SQL`_ query as described."
@@ -188,7 +183,7 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:17
 msgid "**via vertices**"
-msgstr ""
+msgstr "**vía vértices**"
 
 #: ../../build/doc/TRSP-family.rst:18 ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
@@ -208,14 +203,12 @@ msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
 #: ../../build/doc/TRSP-family.rst:23
-#, fuzzy
-#| msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT, INTEGER, BIGINT``"
 
 #: ../../build/doc/pgr_trspVia.rst:86
 msgid "Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/via-category.rst:8
@@ -251,31 +244,34 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_trspVia.rst:93
 msgid "Via optional parameters"
-msgstr ""
+msgstr "Vía parámetros opcional"
 
 #: ../../build/doc/via-category.rst:12
 msgid "``strict``"
-msgstr ""
+msgstr "``strict``"
 
 #: ../../build/doc/via-category.rst:14
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 #: ../../build/doc/via-category.rst:15
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
-msgstr ""
+msgstr "Cuando ``true`` si un camino le faltan paradas y regresa **EMPTY SET**"
 
 #: ../../build/doc/via-category.rst:16
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
+"En caso de ``false``, ignora las rutas faltantes y devuelve todas las rutas "
+"encontradas"
 
 #: ../../build/doc/via-category.rst:17
 msgid "``U_turn_on_edge``"
-msgstr ""
+msgstr "``U_turn_on_edge``"
 
 #: ../../build/doc/via-category.rst:20
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
+"Cuando ``true``saliendo desde un vértice visitado no intentara esquivarlo"
 
 #: ../../build/doc/pgr_trspVia.rst:100
 msgid "Inner Queries"
@@ -293,7 +289,7 @@ msgstr "``id``"
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
@@ -388,8 +384,6 @@ msgid "Cost of taking the forbidden path."
 msgstr "Costo de tomar el camino prohibido."
 
 #: ../../build/doc/pgr_trspVia.rst:117
-#, fuzzy
-#| msgid "Return Columns"
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
@@ -407,7 +401,6 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/via-category.rst:14
-#, fuzzy
 msgid "``path_id``"
 msgstr "``path_id``"
 
@@ -416,7 +409,6 @@ msgid "Identifier of a path. Has value **1** for the first path."
 msgstr "Identificador del camino. Tiene valor **1** para el primer camino."
 
 #: ../../build/doc/via-category.rst:17
-#, fuzzy
 msgid "``path_seq``"
 msgstr "``path_seq``"
 
@@ -515,9 +507,6 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_trspVia.rst:129
 #, fuzzy
-#| msgid ""
-#| "Find the route that visits the vertices :math:`\\{1, 5, 7, 10, 4\\}` in "
-#| "that order"
 msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{5, "
 "7, 1, 8, 15\\}` in that order on a **directed** graph."
@@ -530,34 +519,20 @@ msgid "The main query"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:140
-#, fuzzy
-#| msgid "What's the aggregate cost of the third path?"
 msgid "Aggregate cost of the third path."
-msgstr "¿Cuál es el costo total de la tercera ruta?"
+msgstr "Costo agregado de la tercera ruta."
 
 #: ../../build/doc/pgr_trspVia.rst:147
-#, fuzzy
-#| msgid ""
-#| "What's the route's aggregate cost of the route at the end of the third "
-#| "path?"
 msgid "Route's aggregate cost of the route at the end of the third path."
-msgstr "¿Cuál es el costo agregado de la ruta al final de la tercera ruta?"
+msgstr "Costo agregado de al final de la tercera ruta."
 
 #: ../../build/doc/pgr_trspVia.rst:154
-#, fuzzy
-#| msgid "How are the nodes visited in the route?"
 msgid "Nodes visited in the route."
-msgstr "¿Cómo se visitan los nodos en la ruta?"
+msgstr "Nodos visitados en la ruta."
 
 #: ../../build/doc/pgr_trspVia.rst:161
-#, fuzzy
-#| msgid ""
-#| "What are the aggregate costs of the route when the visited vertices are "
-#| "reached?"
 msgid "The aggregate costs of the route when the visited vertices are reached."
-msgstr ""
-"¿Cuáles son los costos agregados de la ruta cuando se llega a los vértices "
-"visitados?"
+msgstr "Costo agregado de la ruta al llegar a los vértices visitados."
 
 #: ../../build/doc/pgr_trspVia.rst:168
 msgid "Status of \"passes in front\" or \"visits\" of the nodes."
@@ -629,7 +604,7 @@ msgstr ":doc:`via-category`"
 
 #: ../../build/doc/pgr_trspVia.rst:234
 msgid ":doc:`sampledata` network."
-msgstr ""
+msgstr ":doc:`sampledata` ."
 
 #: ../../build/doc/pgr_trspVia.rst:237
 msgid "Indices and tables"
