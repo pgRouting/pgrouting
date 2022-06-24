@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-24 18:12+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
@@ -303,15 +303,15 @@ msgstr "`SQL de restricciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "`Combinations SQL`_"
-msgstr ""
+msgstr "`Combinations SQL`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "`Combinations SQL`_ as described below"
-msgstr ""
+msgstr "`Combinations SQL`_ como se describe abajo"
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "**start vid**"
-msgstr ""
+msgstr "**start vid**"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -328,11 +328,11 @@ msgstr "**ENTEROS**"
 #: ../../build/doc/pgRouting-concepts.rst:22
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "Identifier of the departure vertex."
-msgstr ""
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "**start vids**"
-msgstr ""
+msgstr "**start vids**"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:24
@@ -347,11 +347,11 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**end vid**"
-msgstr ""
+msgstr "**end vid**"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**end vids**"
-msgstr ""
+msgstr "**end vids**"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:21
@@ -417,8 +417,9 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:222
+#, fuzzy
 msgid "``driving_side``"
-msgstr ""
+msgstr "``driving_side``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:223
 #: ../../build/doc/withPoints-category.rst:32
@@ -426,28 +427,30 @@ msgid "``CHAR``"
 msgstr "``CHAR``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:224
+#, fuzzy
 msgid "``r``"
-msgstr ""
+msgstr "``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:225
 msgid "Value in [``r``, ``l``] indicating if the driving side is:"
-msgstr ""
+msgstr "Valor en [``r``, ``l``] indica que el lado de manejo es:"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:227
 msgid "``r`` for right driving side"
-msgstr ""
+msgstr "``r`` para el manejo del lado derecho"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:228
 msgid "``l`` for left driving side"
-msgstr ""
+msgstr "``l`` para el manejo del lado izquierdo"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:229
 msgid "Any other value will be considered as ``r``"
-msgstr ""
+msgstr "Cualquier otro valor se considera como ``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:230
+#, fuzzy
 msgid "``details``"
-msgstr ""
+msgstr "``details``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:232
 msgid "``false``"
@@ -456,11 +459,14 @@ msgstr "``false``"
 #: ../../build/doc/pgr_trsp_withPoints.rst:233
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
+"Cuando ``true`` los resultados incluyen los puntos que están en el camino."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:234
 msgid ""
 "When ``false`` the results will not include the points that are in the path."
 msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:242
 msgid "Inner Queries"
@@ -643,7 +649,7 @@ msgstr "A la izquierda ``l``,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados``b``, ``NULL``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:266
 msgid "Combinations SQL"
@@ -651,7 +657,7 @@ msgstr "Combinaciones SQL"
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Identifier of the arrival vertex."
-msgstr ""
+msgstr "Identificador del vértice de entrada."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:273
 msgid "Result Columns"
