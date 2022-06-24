@@ -785,13 +785,13 @@ msgstr ":ref:`search`"
 #~ msgid ""
 #~ "**Supported versions:** `Latest "
 #~ "<https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html>`__ "
-#~ "(`3.3 "
+#~ "(`3.3
 #~ "<https://docs.pgrouting.org/3.3/en/pgr_edwardMoore.html>`__) "
 #~ "`3.2 <https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html>`__"
 #~ msgstr ""
 #~ "**Versiones soportadas:** `Última  "
 #~ "<https://docs.pgrouting.org/latest/es/pgr_edwardMoore.html>`__ "
-#~ "(`3.3 "
+#~ "(`3.3
 #~ "<https://docs.pgrouting.org/3.3/es/pgr_edwardMoore.html>`__) "
 #~ "`3.2 <https://docs.pgrouting.org/3.2/es/pgr_edwardMoore.html>`__"
 

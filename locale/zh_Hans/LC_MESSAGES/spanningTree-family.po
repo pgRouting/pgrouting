@@ -17,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/spanningTree-family.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/spanningTree-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/spanningTree-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/spanningTree-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__"
-msgstr ""
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/spanningTree-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/spanningTree-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/spanningTree-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/en/spanningTree-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/spanningTree-family.html>`__ msgstr"
 
 #: ../../build/doc/spanningTree-family.rst:20
 msgid "Spanning Tree - Category"

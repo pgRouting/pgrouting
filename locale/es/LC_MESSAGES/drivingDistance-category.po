@@ -35,7 +35,7 @@ msgid ""
 "<https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/drivingDistance-category.html>`__ (`3.3 "
+"/drivingDistance-category.html>`__ (`3.3
 "<https://docs.pgrouting.org/3.3/es/drivingDistance-category.html>`__) "
 "`3.2 <https://docs.pgrouting.org/3.2/es/drivingDistance-category.html>`__"
 " `3.1 <https://docs.pgrouting.org/3.1/es/drivingDistance-"
