@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-24 15:25+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "trsp-family/es/>\n"
 "Language: es\n"
@@ -225,7 +225,7 @@ msgstr "`SQL de Aristas`_"
 
 #: ../../build/doc/TRSP-family.rst:94 ../../build/doc/TRSP-family.rst:97
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/TRSP-family.rst:95
 msgid "`Edges SQL`_ query as described."
@@ -252,7 +252,7 @@ msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/TRSP-family.rst:101
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr ""
+msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/TRSP-family.rst:103
 #: ../../build/doc/pgRouting-concepts.rst:21
@@ -314,7 +314,7 @@ msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
-msgstr ""
+msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -328,7 +328,7 @@ msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
-msgstr ""
+msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``source``"
@@ -336,7 +336,7 @@ msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
@@ -344,7 +344,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
@@ -366,11 +366,11 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr ""
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
