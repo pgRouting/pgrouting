@@ -2,47 +2,47 @@
 # Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Esteban Zimanyi <estebanzimanyi@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 15:58+0000\n"
+"POT-Creation-Date: 2022-06-06 19:21+0000\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"coloring-family/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/coloring-family/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/coloring-family.rst:12
+#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
-"/coloring-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/coloring-"
-"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/coloring-"
-"family.html>`__"
+"/coloring-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
+"/coloring-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en"
+"/coloring-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en"
+"/coloring-family.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/coloring-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es/coloring-"
-"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es/coloring-"
-"family.html>`__"
+"/coloring-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es"
+"/coloring-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es"
+"/coloring-family.html>`__"
 
-#: ../../build/doc/coloring-family.rst:19
+#: ../../build/doc/coloring-family.rst:20
 msgid "Coloring - Family of functions"
 msgstr "Coloración - Familia de funciones"
 
-#: ../../build/doc/coloring-family.rst:22
+#: ../../build/doc/coloring-family.rst:23
 msgid "Proposed"
 msgstr "Propuesto"
 
@@ -82,15 +82,15 @@ msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
-#: ../../build/doc/coloring-family.rst:29
+#: ../../build/doc/coloring-family.rst:30
 msgid ""
-":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy"
-" approach."
+":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using "
+"greedy approach."
 msgstr ""
 ":doc:`pgr_sequentialVertexColoring`- Algoritmo de coloración de vértices "
 "mediante un enfoque codicioso."
 
-#: ../../build/doc/coloring-family.rst:34
+#: ../../build/doc/coloring-family.rst:36
 msgid "Experimental"
 msgstr "Experimental"
 
@@ -148,8 +148,7 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-"Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
@@ -163,217 +162,92 @@ msgstr "Puede depender de una función propuesta de pgRouting"
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/coloring-family.rst:41
+#: ../../build/doc/coloring-family.rst:43
 msgid ""
-":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring "
-"approach."
+":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based "
+"coloring approach."
 msgstr ""
-":doc:`pgr_bipartite` - Algoritmo de grafo bipartito mediante un enfoque de "
-"coloración basado en DFS."
+":doc:`pgr_bipartite` - Algoritmo de grafo bipartito mediante un enfoque "
+"de coloración basado en DFS."
 
-#: ../../build/doc/coloring-family.rst:42
-msgid ""
-":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
+#: ../../build/doc/coloring-family.rst:45
+msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
 msgstr ""
-":doc:`pgr_edgeColoring` - Algoritmo de coloración de segmentos utilizando el"
-" teorema de Vizing."
+":doc:`pgr_edgeColoring` - Algoritmo de coloración de segmentos utilizando"
+" el teorema de Vizing."
 
-#: ../../build/doc/coloring-family.rst:56
-msgid "Parameters"
-msgstr "Parámetros"
-
-#: ../../build/doc/coloring-family.rst:61
-msgid "Parameter"
-msgstr "Parámetro"
-
-#: ../../build/doc/coloring-family.rst:61
-#: ../../build/doc/coloring-family.rst:87
-#: ../../build/doc/coloring-family.rst:103
-#: ../../build/doc/traversal-family.rst:4
-msgid "Type"
-msgstr "Tipo"
-
-#: ../../build/doc/coloring-family.rst:61
-#: ../../build/doc/coloring-family.rst:87
-#: ../../build/doc/coloring-family.rst:103
-#: ../../build/doc/traversal-family.rst:4
-msgid "Description"
-msgstr "Descripción"
-
-#: ../../build/doc/coloring-family.rst:63
-msgid "**Edges SQL**"
-msgstr "**SQL de aristas**"
-
-#: ../../build/doc/coloring-family.rst:63
-msgid "``TEXT``"
-msgstr "``TEXT``"
-
-#: ../../build/doc/coloring-family.rst:63
-msgid "Inner query as described below."
-msgstr "Consulta interna como se describe a continuación."
-
-#: ../../build/doc/coloring-family.rst:69
-msgid "Inner query"
-msgstr "Consulta interna"
-
-#: ../../build/doc/coloring-family.rst
-msgid "Edges SQL"
-msgstr "SQL de aristas"
-
-#: ../../build/doc/coloring-family.rst:71
-msgid ""
-"an SQL query of an **undirected** graph, which should return a set of rows "
-"with the following columns:"
-msgstr ""
-"Una consulta SQL de un grafo **no dirigido**, que debería devolver un "
-"conjunto de filas con las siguientes columnas:"
-
-#: ../../build/doc/coloring-family.rst:87
-#: ../../build/doc/coloring-family.rst:103
-#: ../../build/doc/traversal-family.rst:4
-msgid "Column"
-msgstr "Columna"
-
-#: ../../build/doc/traversal-family.rst:4
-msgid "Default"
-msgstr "x Defecto"
-
-#: ../../build/doc/traversal-family.rst:6
-msgid "**id**"
-msgstr "**id**"
-
-#: ../../build/doc/traversal-family.rst:6
-#: ../../build/doc/traversal-family.rst:7
-#: ../../build/doc/traversal-family.rst:8
-msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
-
-#: ../../build/doc/coloring-family.rst:105
-#: ../../build/doc/traversal-family.rst:6
-msgid "Identifier of the edge."
-msgstr "Identificador de la arista."
-
-#: ../../build/doc/traversal-family.rst:7
-msgid "**source**"
-msgstr "**origen**"
-
-#: ../../build/doc/traversal-family.rst:7
-msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
-
-#: ../../build/doc/traversal-family.rst:8
-msgid "**target**"
-msgstr "**objetivo**"
-
-#: ../../build/doc/traversal-family.rst:8
-msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
-
-#: ../../build/doc/traversal-family.rst:9
-msgid "**cost**"
-msgstr "**costo**"
-
-#: ../../build/doc/traversal-family.rst:9
-#: ../../build/doc/traversal-family.rst:12
-msgid "``ANY-NUMERICAL``"
-msgstr "``ANY-NUMERICAL``"
-
-#: ../../build/doc/traversal-family.rst:9
-msgid "When positive: edge `(source, target)` exist on the graph."
-msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
-
-#: ../../build/doc/traversal-family.rst:10
-msgid "When negative: edge `(source, target)` does not exist on the graph."
-msgstr ""
-"Cuando es negativo: el borde `(origen, desitno)` no existe en el grafo."
-
-#: ../../build/doc/traversal-family.rst:12
-msgid "**reverse_cost**"
-msgstr "``reverse_cost``"
-
-#: ../../build/doc/traversal-family.rst:12
-msgid "-1"
-msgstr "-1"
-
-#: ../../build/doc/traversal-family.rst:12
-msgid "When positive: edge `(target, source)` exist on the graph."
-msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
-
-#: ../../build/doc/traversal-family.rst:13
-msgid "When negative: edge `(target, source)` does not exist on the graph."
-msgstr ""
-"Cuando es negativo: el borde `(destino, origen)` no existe en el grafo."
-
-#: ../../build/doc/traversal-family.rst:17
-msgid "Where:"
-msgstr "Donde:"
-
-#: ../../build/doc/traversal-family.rst
-msgid "ANY-INTEGER"
-msgstr "ENTEROS"
-
-#: ../../build/doc/traversal-family.rst:19
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
-
-#: ../../build/doc/traversal-family.rst
-msgid "ANY-NUMERICAL"
-msgstr "FLOTANTES"
-
-#: ../../build/doc/traversal-family.rst:20
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-
-#: ../../build/doc/coloring-family.rst:80
+#: ../../build/doc/coloring-family.rst:59
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/coloring-family.rst:84
+#: ../../build/doc/coloring-family.rst:63
 msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr "Devuelve SET OF ``(vertex_id, color_id)``"
 
-#: ../../build/doc/coloring-family.rst:89
-msgid "**vertex_id**"
+#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:82
+msgid "Column"
+msgstr "Columna"
+
+#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:82
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../build/doc/coloring-family.rst:66
+#: ../../build/doc/coloring-family.rst:82
+msgid "Description"
+msgstr "Descripción"
+
+#: ../../build/doc/coloring-family.rst:68
+#, fuzzy
+msgid "``vertex_id``"
 msgstr "**vertex_id**"
 
-#: ../../build/doc/coloring-family.rst:89
-#: ../../build/doc/coloring-family.rst:90
-#: ../../build/doc/coloring-family.rst:105
-#: ../../build/doc/coloring-family.rst:106
+#: ../../build/doc/coloring-family.rst:68
+#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/coloring-family.rst:84
+#: ../../build/doc/coloring-family.rst:85
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/coloring-family.rst:89
+#: ../../build/doc/coloring-family.rst:68
 msgid "Identifier of the vertex."
 msgstr "Identificador del vértice."
 
-#: ../../build/doc/coloring-family.rst:90
-#: ../../build/doc/coloring-family.rst:106
-msgid "**color_id**"
+#: ../../build/doc/coloring-family.rst:69
+#: ../../build/doc/coloring-family.rst:85
+#, fuzzy
+msgid "``color_id``"
 msgstr "**color_id**"
 
-#: ../../build/doc/coloring-family.rst:90
+#: ../../build/doc/coloring-family.rst:69
 msgid "Identifier of the color of the vertex."
 msgstr "Identificador del color del vértice."
 
-#: ../../build/doc/coloring-family.rst:92
-#: ../../build/doc/coloring-family.rst:108
+#: ../../build/doc/coloring-family.rst:71
+#: ../../build/doc/coloring-family.rst:87
 msgid "The minimum value of color is 1."
 msgstr "El valor mínimo de color es 1."
 
-#: ../../build/doc/coloring-family.rst:100
+#: ../../build/doc/coloring-family.rst:79
 msgid "Returns SET OF ``(edge_id, color_id)``"
 msgstr "Devuelve SET OF ``((edge_id, color_id)``"
 
-#: ../../build/doc/coloring-family.rst:105
-msgid "**edge_id**"
+#: ../../build/doc/coloring-family.rst:84
+#, fuzzy
+msgid "``edge_id``"
 msgstr "**edge_id**"
 
-#: ../../build/doc/coloring-family.rst:106
+#: ../../build/doc/coloring-family.rst:84
+msgid "Identifier of the edge."
+msgstr "Identificador de la arista."
+
+#: ../../build/doc/coloring-family.rst:85
 msgid "Identifier of the color of the edge."
 msgstr "Identificador del color del segmento."
 
-#: ../../build/doc/coloring-family.rst:118
+#: ../../build/doc/coloring-family.rst:94
 msgid "See Also"
 msgstr "Ver también"
 
@@ -385,52 +259,147 @@ msgstr ""
 "`Boost: Documentacion de Algoritmo de Coloración Secuencial de Vertices "
 "<https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:4
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:5
 msgid ""
-"`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
+"`Wikipedia: Graph coloring "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
-"`Wikipedia: Coloración de grafos <https://en.wikipedia.org/wiki/"
-"Graph_coloring>`__"
+"`Wikipedia: Coloración de grafos "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 
 #: ../../build/doc/pgr_bipartite.rst:3
+#, fuzzy
 msgid ""
-"`Boost: is_bipartite algorithm documentation "
+"`Boost: is_bipartite "
 "<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 msgstr ""
 "`Boost: documentación del algoritmo is_bipartite "
 "<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 
-#: ../../build/doc/pgr_bipartite.rst:4
+#: ../../build/doc/pgr_bipartite.rst:5
 msgid ""
 "`Wikipedia: bipartite graph "
 "<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 msgstr ""
-"`Wikipedia: grafo bipartito <https://en.wikipedia.org/wiki/"
-"Bipartite_graph>`__"
+"`Wikipedia: grafo bipartito "
+"<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
 
 #: ../../build/doc/pgr_edgeColoring.rst:3
 msgid ""
 "`Boost: Edge Coloring Algorithm documentation "
 "<https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
 msgstr ""
-"`Boost: Algoritmo de Coloración de Segmentos <https://www.boost.org/libs/"
-"graph/doc/edge_coloring.html>`__"
+"`Boost: Algoritmo de Coloración de Segmentos "
+"<https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
 
-#: ../../build/doc/pgr_edgeColoring.rst:4
+#: ../../build/doc/pgr_edgeColoring.rst:5
 msgid ""
-"`Wikipedia: Graph Coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
+"`Wikipedia: Graph Coloring "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
-"`Wikipedia: Coloración de grafos <https://en.wikipedia.org/wiki/"
-"Graph_coloring>`__"
+"`Wikipedia: Coloración de grafos "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 
-#: ../../build/doc/coloring-family.rst:134
+#: ../../build/doc/coloring-family.rst:110
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/coloring-family.rst:135
+#: ../../build/doc/coloring-family.rst:111
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/coloring-family.rst:136
+#: ../../build/doc/coloring-family.rst:112
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "Parameters"
+#~ msgstr "Parámetros"
+
+#~ msgid "Parameter"
+#~ msgstr "Parámetro"
+
+#~ msgid "**Edges SQL**"
+#~ msgstr "**SQL de aristas**"
+
+#~ msgid "``TEXT``"
+#~ msgstr "``TEXT``"
+
+#~ msgid "Inner query as described below."
+#~ msgstr "Consulta interna como se describe a continuación."
+
+#~ msgid "Inner query"
+#~ msgstr "Consulta interna"
+
+#~ msgid "Edges SQL"
+#~ msgstr "SQL de aristas"
+
+#~ msgid ""
+#~ "an SQL query of an **undirected** "
+#~ "graph, which should return a set "
+#~ "of rows with the following columns:"
+#~ msgstr ""
+#~ "Una consulta SQL de un grafo **no"
+#~ " dirigido**, que debería devolver un "
+#~ "conjunto de filas con las siguientes "
+#~ "columnas:"
+
+#~ msgid "Default"
+#~ msgstr "x Defecto"
+
+#~ msgid "**id**"
+#~ msgstr "**id**"
+
+#~ msgid "``ANY-INTEGER``"
+#~ msgstr "``ANY-INTEGER``"
+
+#~ msgid "**source**"
+#~ msgstr "**origen**"
+
+#~ msgid "Identifier of the first end point vertex of the edge."
+#~ msgstr "Identificador del primer punto final en el vértice de la arista."
+
+#~ msgid "**target**"
+#~ msgstr "**objetivo**"
+
+#~ msgid "Identifier of the second end point vertex of the edge."
+#~ msgstr "Identificador del segundo punto final en el vértice de la arista."
+
+#~ msgid "**cost**"
+#~ msgstr "**costo**"
+
+#~ msgid "``ANY-NUMERICAL``"
+#~ msgstr "``ANY-NUMERICAL``"
+
+#~ msgid "When positive: edge `(source, target)` exist on the graph."
+#~ msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
+
+#~ msgid "When negative: edge `(source, target)` does not exist on the graph."
+#~ msgstr "Cuando es negativo: el borde `(origen, desitno)` no existe en el grafo."
+
+#~ msgid "**reverse_cost**"
+#~ msgstr "``reverse_cost``"
+
+#~ msgid "-1"
+#~ msgstr "-1"
+
+#~ msgid "When positive: edge `(target, source)` exist on the graph."
+#~ msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
+
+#~ msgid "When negative: edge `(target, source)` does not exist on the graph."
+#~ msgstr "Cuando es negativo: el borde `(destino, origen)` no existe en el grafo."
+
+#~ msgid "Where:"
+#~ msgstr "Donde:"
+
+#~ msgid "ANY-INTEGER"
+#~ msgstr "ENTEROS"
+
+#~ msgid "SMALLINT, INTEGER, BIGINT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT"
+
+#~ msgid "ANY-NUMERICAL"
+#~ msgstr "FLOTANTES"
+
+#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+

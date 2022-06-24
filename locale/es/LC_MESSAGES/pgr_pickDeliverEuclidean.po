@@ -2,74 +2,70 @@
 # Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-06-24 12:46-0500\n"
 "PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_pickdelivereuclidean/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_pickdelivereuclidean/es/>"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:12
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__ "
-"(`3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__) "
-"`3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__ "
+"(`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_pickDeliverEuclidean.html>`__) "
+"`3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__"
+" `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__ "
 "current(`3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
+"<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__) "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_TSPeuclidean.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_TSPeuclidean.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_TSPeuclidean.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_TSPeuclidean.html>`__"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:18
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:19
 msgid ""
 "**Unsupported versions:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__"
-" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ `2.1"
-" <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
+" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ "
+"`2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
 msgstr ""
 "**Versiones No Soportadas:** `2.6 "
 "<https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_gsoc_vrppdtw.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_gsoc_vrppdtw.html>`__ `2.3 "
 "<https://docs.pgrouting.org/2.3/en/src/vrppdtw/doc/pgr_gsoc_vrppdtw.html>`__"
-" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ `2.1"
-" <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
+" `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__ "
+"`2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:27
-msgid "pgr_pickDeliverEuclidean - Experimental"
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:28
+#, fuzzy
+msgid "``pgr_pickDeliverEuclidean`` - Experimental"
 msgstr "pgr_pickDeliverEuclidean - Experimental"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:29
-msgid ""
-"``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:30
+msgid "``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem"
 msgstr ""
-"``pgr_pickDeliverEuclidean`` - Problema de Ruteo del Vehículo de Recogida y "
-"Entrega"
+"``pgr_pickDeliverEuclidean`` - Problema de Ruteo del Vehículo de Recogida"
+" y Entrega"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -125,8 +121,7 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr ""
-"Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
@@ -140,559 +135,599 @@ msgstr "Puede depender de una función propuesta de pgRouting"
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:36
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:37
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:37
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:38
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:39
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:40
 msgid "Replaces ``pgr_gsoc_vrppdtw``"
 msgstr "Reemplaza  ``pgr_gsoc_vrppdtw``"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:40
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:41
 msgid "New **experimental** function"
 msgstr "Nueva función **experimental**"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:44
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:45
 msgid "Synopsis"
 msgstr "Sinopsis"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:46
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:47
 msgid ""
-"Problem: Distribute and optimize the pickup-delivery pairs into a fleet of "
-"vehicles."
+"Problem: Distribute and optimize the pickup-delivery pairs into a fleet "
+"of vehicles."
 msgstr ""
-"Problema: Distribuya y optimice los pares de recogida-entrega en una flota "
-"de vehículos."
+"Problema: Distribuya y optimice los pares de recogida-entrega en una "
+"flota de vehículos."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:48
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:50
 msgid "Optimization problem is NP-hard."
 msgstr "El problema de optimización es NP-hard."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:49
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:51
 msgid "Pickup and Delivery:"
 msgstr "Recogida y Entrega:"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:51
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:53
 msgid "capacitated"
 msgstr "capacitado"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:52
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:54
 msgid "with time windows."
 msgstr "con ventanas de tiempo."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:54
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:56
+#: ../../build/doc/sampledata.rst:7
 msgid "The vehicles"
 msgstr "Los vehículos"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:56
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:58
 msgid "have (x, y) start and ending locations."
 msgstr "tienen (x, y) ubicaciones de inicio y finalización."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:57
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:59
 msgid "have a start and ending service times."
 msgstr "tener un inicio y un final de los tiempos de servicio."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:58
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:60
 msgid "have opening and closing times for the start and ending locations."
 msgstr ""
 "tienen horarios de apertura y cierre para las ubicaciones de inicio y "
 "finalización."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:60
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:62
 msgid "An order is for doing a pickup and a a deliver."
 msgstr "Un pedido es para hacer una recogida y una entrega."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:62
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:64
 msgid "has (x, y) pickup and delivery locations."
 msgstr "tiene (x, y) ubicaciones de recogida y entrega."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:63
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:65
 msgid "has opening and closing times for the pickup and delivery locations."
 msgstr ""
-"tiene horarios de apertura y cierre para los lugares de recogida y entrega."
+"tiene horarios de apertura y cierre para los lugares de recogida y "
+"entrega."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:64
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:66
 msgid "has a pickup and deliver service times."
 msgstr "tiene una recogida y entrega de tiempos de servicio."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:66
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:68
 msgid "There is a customer where to deliver a pickup."
 msgstr "Hay un cliente donde entregar una recogida."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:68
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:70
 msgid "travel time between customers is distance / speed"
 msgstr "tiempo de viaje entre los clientes es distancia / velocidad"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:69
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:71
 msgid "pickup and delivery pair is done with the same vehicle."
 msgstr "La recogida y entrega se realizan con el mismo vehículo."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:70
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:72
 msgid "A pickup is done before the delivery."
 msgstr "La recogida se realiza antes de la entrega."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:75
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:77
 msgid "Characteristics"
 msgstr "Características"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:77
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:79
 msgid "No multiple time windows for a location."
 msgstr "No hay varias ventanas de tiempo para una ubicación."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:78
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:80
 msgid "Less vehicle used is considered better."
 msgstr "Menos vehículo utilizado se considera mejor."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:79
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:81
 msgid "Less total duration is better."
 msgstr "Menos duración total es mejor."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:80
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:82
 msgid "Less wait time is better."
 msgstr "Menos tiempo de espera es mejor."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:81
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:83
 msgid "Six different optional different initial solutions"
 msgstr "Seis diferentes soluciones iniciales opcionales"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:83
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:85
 msgid "the best solution found will be result"
 msgstr "la mejor solución encontrada será el resultado"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:91
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:93
 msgid "Signature"
 msgstr "Firma"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:124
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:191
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:103
+msgid "Solve the following problem"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:105
+#, fuzzy
+msgid "Given the vehicles:"
+msgstr "Los vehículos"
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:111
+msgid "and the orders:"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:117
+msgid "The query:"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:125
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:126
-msgid "The parameters are:"
-msgstr "Los parámetros son:"
-
-#: ../../build/doc/pgRouting-concepts.rst:3
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:132
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:150
-msgid "Where:"
-msgstr "Donde:"
-
-#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
-#: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
+#: ../../build/doc/VRP-category.rst:8 ../../build/doc/VRP-category.rst:16
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
-#: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
+#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:17
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
-msgid "Default"
-msgstr "x Defecto"
-
-#: ../../build/doc/VRP-category.rst:4 ../../build/doc/VRP-category.rst:6
-#: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:54
+#: ../../build/doc/VRP-category.rst:10 ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/VRP-category.rst:18
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/VRP-category.rst:6
-msgid "**orders_sql**"
+#: ../../build/doc/VRP-category.rst:11
+#, fuzzy
+msgid "`Orders SQL`_"
 msgstr "**orders_sql**"
 
-#: ../../build/doc/VRP-category.rst:6 ../../build/doc/VRP-category.rst:7
+#: ../../build/doc/VRP-category.rst:12 ../../build/doc/VRP-category.rst:15
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/VRP-category.rst:6
-msgid ""
-"`Pick & Deliver Orders SQL`_ query containing the orders to be processed."
+#: ../../build/doc/VRP-category.rst:13
+msgid "`Orders SQL`_ as described below."
 msgstr ""
-"`Pick & Deliver Orders SQL`_ consulta que contiene las órdenes que se van a "
-"procesar."
 
-#: ../../build/doc/VRP-category.rst:7
-msgid "**vehicles_sql**"
+#: ../../build/doc/VRP-category.rst:14
+#, fuzzy
+msgid "`Vehicles SQL`_"
 msgstr "**vehicles_sql**"
 
-#: ../../build/doc/VRP-category.rst:7
-msgid ""
-"`Pick & Deliver Vehicles SQL`_ query containing the vehicles to be used."
+#: ../../build/doc/VRP-category.rst:16
+msgid "`Vehicles SQL`_ as described below."
 msgstr ""
-"La consulta `Pick & Deliver Vehicles SQL`_ contiene los vehículos que se van"
-" a utilizar."
 
-#: ../../build/doc/VRP-category.rst:8
-msgid "**factor**"
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:132
+msgid "Pick-Deliver optional parameters"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:10
+msgid "Default"
+msgstr "x Defecto"
+
+#: ../../build/doc/VRP-category.rst:12
+#, fuzzy
+msgid "``factor``"
 msgstr "**factor**"
 
-#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:13
 msgid "``NUMERIC``"
 msgstr "``NUMERIC``"
 
-#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:14
 msgid "1"
 msgstr "1"
 
-#: ../../build/doc/VRP-category.rst:8
-msgid "(Optional) Travel time multiplier. See :ref:`pd_factor`"
+#: ../../build/doc/VRP-category.rst:15
+#, fuzzy
+msgid "Travel time multiplier. See :ref:`pd_factor`"
 msgstr "(Opcional) Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
 
-#: ../../build/doc/VRP-category.rst:9
-msgid "**max_cycles**"
+#: ../../build/doc/VRP-category.rst:16
+#, fuzzy
+msgid "``max_cycles``"
 msgstr "**max_cycles**"
 
-#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:17 ../../build/doc/VRP-category.rst:20
+#: ../../build/doc/VRP-category.rst:21 ../../build/doc/VRP-category.rst:23
+#: ../../build/doc/VRP-category.rst:46
 msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
-#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/VRP-category.rst:18
 msgid "10"
 msgstr "10"
 
-#: ../../build/doc/VRP-category.rst:9
-msgid "(Optional) Maximum number of cycles to perform on the optimization."
+#: ../../build/doc/VRP-category.rst:19
+#, fuzzy
+msgid "Maximum number of cycles to perform on the optimization."
 msgstr "(Opcional) Número máximo de ciclos a realizar en la optimización."
 
-#: ../../build/doc/VRP-category.rst:10
-msgid "**initial_sol**"
+#: ../../build/doc/VRP-category.rst:20
+#, fuzzy
+msgid "``initial_sol``"
 msgstr "**initial_sol**"
 
-#: ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:22
 msgid "4"
 msgstr "4"
 
-#: ../../build/doc/VRP-category.rst:10
-msgid "(Optional) Initial solution to be used."
+#: ../../build/doc/VRP-category.rst:23
+#, fuzzy
+msgid "Initial solution to be used."
 msgstr "(Opcional) Solución inicial a utilizar."
 
-#: ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:25
 msgid "``1`` One order per truck"
 msgstr "``1`` Una orden por camión"
 
-#: ../../build/doc/VRP-category.rst:13
+#: ../../build/doc/VRP-category.rst:26
 msgid "``2`` Push front order."
 msgstr "``2`` Empuje la orden delantera."
 
-#: ../../build/doc/VRP-category.rst:14
+#: ../../build/doc/VRP-category.rst:27
 msgid "``3`` Push back order."
 msgstr "``3`` Empuje la orden trasera."
 
-#: ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:28
 msgid "``4`` Optimize insert."
 msgstr "``4`` Optimizar inserción."
 
-#: ../../build/doc/VRP-category.rst:16
-msgid ""
-"``5`` Push back order that allows more orders to be inserted at the back"
+#: ../../build/doc/VRP-category.rst:29
+msgid "``5`` Push back order that allows more orders to be inserted at the back"
 msgstr ""
 "``5`` Orden de retroceso que permite insertar más órdenes en la parte "
 "posterior"
 
-#: ../../build/doc/VRP-category.rst:17
-msgid ""
-"``6`` Push front order that allows more orders to be inserted at the front"
-msgstr ""
-"``6`` Orden de avance que permite insertar más órdenes en la parte frontal"
+#: ../../build/doc/VRP-category.rst:31
+msgid "``6`` Push front order that allows more orders to be inserted at the front"
+msgstr "``6`` Orden de avance que permite insertar más órdenes en la parte frontal"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:140
-msgid "Pick & Deliver Orders SQL"
-msgstr "Pick & Deliver Orders SQL (Recoger y Entregar Pedidos)"
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:139
+#, fuzzy
+msgid "Orders SQL"
+msgstr "**orders_sql**"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:142
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:166
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:141
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:163
 msgid "A `SELECT` statement that returns the following columns:"
 msgstr "Una instrucción `SELECT` que devuelve las siguientes columnas:"
 
-#: ../../build/doc/VRP-category.rst:6
-msgid "**id**"
-msgstr "**id**"
+#: ../../build/doc/VRP-category.rst:24 ../../build/doc/VRP-category.rst:28
+#: ../../build/doc/VRP-category.rst:40
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:149
+msgid "Where:"
+msgstr "Donde:"
 
-#: ../../build/doc/VRP-category.rst:6
+#: ../../build/doc/VRP-category.rst:11
+#, fuzzy
+msgid "``id``"
+msgstr "``-1``"
+
+#: ../../build/doc/VRP-category.rst:12
 msgid "|ANY-INTEGER|"
 msgstr "|ANY-INTEGER|"
 
-#: ../../build/doc/VRP-category.rst:6
+#: ../../build/doc/VRP-category.rst:13
 msgid "Identifier of the pick-delivery order pair."
 msgstr "Identificador del par de órdenes recogida-entrega."
 
-#: ../../build/doc/VRP-category.rst:7
-msgid "**demand**"
+#: ../../build/doc/VRP-category.rst:14
+#, fuzzy
+msgid "``demand``"
 msgstr "**demanda**"
 
-#: ../../build/doc/VRP-category.rst:7 ../../build/doc/VRP-category.rst:8
-#: ../../build/doc/VRP-category.rst:9 ../../build/doc/VRP-category.rst:10
-#: ../../build/doc/VRP-category.rst:11 ../../build/doc/VRP-category.rst:12
-#: ../../build/doc/VRP-category.rst:13 ../../build/doc/VRP-category.rst:14
-#: ../../build/doc/VRP-category.rst:15 ../../build/doc/VRP-category.rst:16
+#: ../../build/doc/VRP-category.rst:12 ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:21
+#: ../../build/doc/VRP-category.rst:23 ../../build/doc/VRP-category.rst:24
+#: ../../build/doc/VRP-category.rst:29 ../../build/doc/VRP-category.rst:32
+#: ../../build/doc/VRP-category.rst:34 ../../build/doc/VRP-category.rst:35
+#: ../../build/doc/VRP-category.rst:39
 msgid "|ANY-NUMERICAL|"
 msgstr "|ANY-NUMERICAL|"
 
-#: ../../build/doc/VRP-category.rst:7
+#: ../../build/doc/VRP-category.rst:16
 msgid "Number of units in the order"
 msgstr "Número de unidades en la orden"
 
-#: ../../build/doc/VRP-category.rst:8
-msgid "**p_open**"
-msgstr "**p_open**"
+#: ../../build/doc/VRP-category.rst:17
+#, fuzzy
+msgid "``p_open``"
+msgstr "`start_open`"
 
-#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:19
 msgid "The time, relative to 0, when the pickup location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación de recogida."
 
-#: ../../build/doc/VRP-category.rst:9
-msgid "**p_close**"
-msgstr "**p_close**"
+#: ../../build/doc/VRP-category.rst:20
+#, fuzzy
+msgid "``p_close``"
+msgstr "`start_close`"
 
-#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/VRP-category.rst:22
 msgid "The time, relative to 0, when the pickup location closes."
-msgstr ""
-"La hora, en relación con 0, cuando se cierra la ubicación de recogida."
+msgstr "La hora, en relación con 0, cuando se cierra la ubicación de recogida."
 
-#: ../../build/doc/VRP-category.rst:10 ../../build/doc/VRP-category.rst:13
-msgid "**d_service**"
-msgstr "**d_service**"
+#: ../../build/doc/VRP-category.rst:23
+#, fuzzy
+msgid "[``p_service``]"
+msgstr "`start_service`"
 
-#: ../../build/doc/VRP-category.rst:10 ../../build/doc/VRP-category.rst:13
-msgid "0"
-msgstr "0"
-
-#: ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:25
 msgid "The duration of the loading at the pickup location."
 msgstr "La duración de la carga en el lugar de recogida."
 
-#: ../../build/doc/VRP-category.rst:11
-msgid "**d_open**"
-msgstr "**d_open**"
+#: ../../build/doc/VRP-category.rst:27 ../../build/doc/VRP-category.rst:38
+msgid "When missing: 0 time units are used"
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/VRP-category.rst:28
+#, fuzzy
+msgid "``d_open``"
+msgstr "`start_open`"
+
+#: ../../build/doc/VRP-category.rst:30
 msgid "The time, relative to 0, when the delivery location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación de entrega."
 
-#: ../../build/doc/VRP-category.rst:12
-msgid "**d_close**"
-msgstr "**d_close**"
+#: ../../build/doc/VRP-category.rst:31
+#, fuzzy
+msgid "``d_close``"
+msgstr "`start_close`"
 
-#: ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:33
 msgid "The time, relative to 0, when the delivery location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación de entrega."
 
-#: ../../build/doc/VRP-category.rst:13
-msgid "The duration of the loading at the delivery location."
+#: ../../build/doc/VRP-category.rst:34
+#, fuzzy
+msgid "[``d_service``]"
+msgstr "`start_service`"
+
+#: ../../build/doc/VRP-category.rst:36
+#, fuzzy
+msgid "The duration of the unloading at the delivery location."
 msgstr "La duración de la carga en el lugar de entrega."
 
-#: ../../build/doc/VRP-category.rst:3
-msgid ""
-"For the euclidean implementation, pick up and delivery  :math:`(x,y)` "
-"locations are needed:"
+#: ../../build/doc/VRP-category.rst
+msgid "ANY-INTEGER"
+msgstr "ENTEROS"
+
+#: ../../build/doc/VRP-category.rst:42
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
-"Para la implementación euclidiana, se necesitan ubicaciones :math:`(x,y)` de"
-" recogida y entrega:"
 
-#: ../../build/doc/VRP-category.rst:8
-msgid "**p_x**"
-msgstr "**p_x**"
+#: ../../build/doc/VRP-category.rst
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
-#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:26 ../../build/doc/VRP-category.rst:30
+#: ../../build/doc/VRP-category.rst:43
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:11
+#, fuzzy
+msgid "``p_x``"
+msgstr "``-1``"
+
+#: ../../build/doc/VRP-category.rst:13
 msgid ":math:`x` value of the pick up location"
 msgstr ":math:`x` valor de la ubicación de recogida"
 
-#: ../../build/doc/VRP-category.rst:9
-msgid "**p_y**"
-msgstr "**p_y**"
+#: ../../build/doc/VRP-category.rst:14
+#, fuzzy
+msgid "``p_y``"
+msgstr "``-1``"
 
-#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/VRP-category.rst:16
 msgid ":math:`y` value of the pick up location"
 msgstr ":math:`y` valor de la ubicación de recogida"
 
-#: ../../build/doc/VRP-category.rst:10
-msgid "**d_x**"
-msgstr "**d_x**"
+#: ../../build/doc/VRP-category.rst:17
+#, fuzzy
+msgid "``d_x``"
+msgstr "``-1``"
 
-#: ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:19
 msgid ":math:`x` value of the delivery location"
 msgstr "valor :math:`x` de la ubicación de entrega"
 
-#: ../../build/doc/VRP-category.rst:11
-msgid "**d_y**"
-msgstr "**d_y**"
+#: ../../build/doc/VRP-category.rst:20
+#, fuzzy
+msgid "``d_y``"
+msgstr "``-1``"
 
-#: ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/VRP-category.rst:22
 msgid ":math:`y` value of the delivery location"
 msgstr "valor :math:`y` del lugar de entrega"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:164
-msgid "Pick & Deliver Vehicles SQL"
-msgstr "SQL de Vehículos de Recogida y Entrega"
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:161
+#, fuzzy
+msgid "Vehicles SQL"
+msgstr "**vehicles_sql**"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:174
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:171
 msgid "where:"
 msgstr "Donde:"
 
-#: ../../build/doc/VRP-category.rst:7
-msgid "**capacity**"
-msgstr "**capacidad**"
-
-#: ../../build/doc/VRP-category.rst:8
-msgid "**speed**"
-msgstr "**speed**"
-
-#: ../../build/doc/VRP-category.rst:8
-msgid "`1`"
-msgstr "`1`"
-
-#: ../../build/doc/VRP-category.rst:8
-msgid "Average speed of the vehicle."
+#: ../../build/doc/VRP-category.rst:13
+#, fuzzy
+msgid "Identifier of the vehicle."
 msgstr "Velocidad media del vehículo."
 
-#: ../../build/doc/VRP-category.rst:10
-msgid "**start_open**"
-msgstr "**start_open**"
+#: ../../build/doc/VRP-category.rst:14
+#, fuzzy
+msgid "``capacity``"
+msgstr "**capacidad**"
 
-#: ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:16
+msgid "Maiximum capacity units"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:17
+#, fuzzy
+msgid "``start_open``"
+msgstr "`start_open`"
+
+#: ../../build/doc/VRP-category.rst:19
 msgid "The time, relative to 0, when the starting location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación inicial."
 
-#: ../../build/doc/VRP-category.rst:11
-msgid "**start_close**"
-msgstr "**start_close**"
+#: ../../build/doc/VRP-category.rst:20
+#, fuzzy
+msgid "``start_close``"
+msgstr "`start_close`"
 
-#: ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/VRP-category.rst:22
 msgid "The time, relative to 0, when the starting location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación inicial."
 
-#: ../../build/doc/VRP-category.rst:12
-msgid "**start_service**"
-msgstr "**start_service**"
+#: ../../build/doc/VRP-category.rst:23
+#, fuzzy
+msgid "[``start_service``]"
+msgstr "`start_service`"
 
-#: ../../build/doc/VRP-category.rst:12
-msgid "`0`"
-msgstr "`0`"
-
-#: ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:25
 msgid "The duration of the loading at the starting location."
 msgstr "La duración de la carga en la ubicación inicial."
 
-#: ../../build/doc/VRP-category.rst:14
-msgid "**end_open**"
+#: ../../build/doc/VRP-category.rst:27
+msgid "When missing: A duration of :math:`0` time units is used."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:28
+#, fuzzy
+msgid "[``end_open``]"
 msgstr "**end_open**"
 
-#: ../../build/doc/VRP-category.rst:14
-msgid "`start_open`"
-msgstr "`start_open`"
-
-#: ../../build/doc/VRP-category.rst:14
+#: ../../build/doc/VRP-category.rst:30
 msgid "The time, relative to 0, when the ending location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación final."
 
-#: ../../build/doc/VRP-category.rst:15
-msgid "**end_close**"
+#: ../../build/doc/VRP-category.rst:32
+msgid "When missing: The value of ``start_open`` is used"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:33
+#, fuzzy
+msgid "[``end_close``]"
 msgstr "**end_close**"
 
-#: ../../build/doc/VRP-category.rst:15
-msgid "`start_close`"
-msgstr "`start_close`"
-
-#: ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:35
 msgid "The time, relative to 0, when the ending location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación final."
 
-#: ../../build/doc/VRP-category.rst:16
-msgid "**end_service**"
+#: ../../build/doc/VRP-category.rst:37
+msgid "When missing: The value of ``start_close`` is used"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:38
+#, fuzzy
+msgid "[``end_service``]"
 msgstr "**end_service**"
 
-#: ../../build/doc/VRP-category.rst:16
-msgid "`start_service`"
-msgstr "`start_service`"
-
-#: ../../build/doc/VRP-category.rst:16
+#: ../../build/doc/VRP-category.rst:40
 msgid "The duration of the loading at the ending location."
 msgstr "La duración de la carga en la ubicación final."
 
-#: ../../build/doc/VRP-category.rst:3
-msgid ""
-"For the euclidean implementation, starting and ending :math:`(x,y)` "
-"locations are needed:"
+#: ../../build/doc/VRP-category.rst:42
+msgid "When missing: A duration in ``start_service`` is used."
 msgstr ""
-"Para la implementación euclidiana, se necesitan ubicaciones :math:`(x,y)` de"
-" inicio y finalización:"
 
-#: ../../build/doc/VRP-category.rst:8
-msgid "**start_x**"
-msgstr "**start_x**"
-
-#: ../../build/doc/VRP-category.rst:8
-msgid ":math:`x` value of the coordinate of the starting location."
-msgstr "valor :math:`x` de la coordenada de la ubicación inicial."
-
-#: ../../build/doc/VRP-category.rst:9
-msgid "**start_y**"
-msgstr "**start_y**"
-
-#: ../../build/doc/VRP-category.rst:9
-msgid ":math:`y` value of the coordinate of the starting location."
-msgstr "valor :math:`y` de la coordenada de la ubicación de inicio."
-
-#: ../../build/doc/VRP-category.rst:10
-msgid "**end_x**"
-msgstr "**end_x**"
-
-#: ../../build/doc/VRP-category.rst:10
-msgid "`start_x`"
+#: ../../build/doc/VRP-category.rst:11
+#, fuzzy
+msgid "``start_x``"
 msgstr "`start_x`"
 
-#: ../../build/doc/VRP-category.rst:10
-msgid ":math:`x` value of the coordinate of the ending location."
-msgstr "valor :math:`x` de la coordenada de la ubicación final."
+#: ../../build/doc/VRP-category.rst:13
+#, fuzzy
+msgid ":math:`x` value of the starting location"
+msgstr ":math:`x` valor de la ubicación de recogida"
 
-#: ../../build/doc/VRP-category.rst:11
-msgid "**end_y**"
-msgstr "**end_y**"
-
-#: ../../build/doc/VRP-category.rst:11
-msgid "`start_y`"
+#: ../../build/doc/VRP-category.rst:14
+#, fuzzy
+msgid "``start_y``"
 msgstr "`start_y`"
 
-#: ../../build/doc/VRP-category.rst:11
-msgid ":math:`y` value of the coordinate of the ending location."
-msgstr ":math:`y` valor de la coordenada de la ubicación final."
+#: ../../build/doc/VRP-category.rst:16
+#, fuzzy
+msgid ":math:`y` value of the starting location"
+msgstr ":math:`y` valor de la ubicación de recogida"
 
-#: ../../build/doc/VRP-category.rst:4
-msgid "Description of the result (TODO Disussion: Euclidean & Matrix)"
-msgstr "Descripción del resultado (TODO Disussion: Euclidean & Matrix)"
+#: ../../build/doc/VRP-category.rst:17
+msgid "[``end_x``]"
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:6
-msgid "Todo"
-msgstr "Por hacer"
+#: ../../build/doc/VRP-category.rst:19
+#, fuzzy
+msgid ":math:`x` value of the ending location"
+msgstr "valor :math:`x` de la ubicación de entrega"
 
-#: ../../build/doc/VRP-category.rst:6
-msgid "fix when everything below is fixed"
-msgstr "Arreglar cuando todo abajo esté arreglado"
+#: ../../build/doc/VRP-category.rst:21
+msgid "When missing: ``start_x`` is used."
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:20 ../../build/doc/VRP-category.rst:56
-msgid "**seq**"
-msgstr "``seq``"
+#: ../../build/doc/VRP-category.rst:22
+msgid "[``end_y``]"
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:20 ../../build/doc/VRP-category.rst:21
-#: ../../build/doc/VRP-category.rst:23 ../../build/doc/VRP-category.rst:24
-#: ../../build/doc/VRP-category.rst:56 ../../build/doc/VRP-category.rst:57
-#: ../../build/doc/VRP-category.rst:59 ../../build/doc/VRP-category.rst:60
-msgid "INTEGER"
-msgstr "INTEGER"
+#: ../../build/doc/VRP-category.rst:24
+#, fuzzy
+msgid ":math:`y` value of the ending location"
+msgstr "valor :math:`y` del lugar de entrega"
 
-#: ../../build/doc/VRP-category.rst:20
+#: ../../build/doc/VRP-category.rst:26
+msgid "When missing: ``start_y`` is used."
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:184
+msgid "Return columns"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:19
+#, fuzzy
+msgid "``seq``"
+msgstr "``-1``"
+
+#: ../../build/doc/VRP-category.rst:21
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/VRP-category.rst:21 ../../build/doc/VRP-category.rst:57
-msgid "**vehicle_seq**"
+#: ../../build/doc/VRP-category.rst:22
+#, fuzzy
+msgid "``vehicle_seq``"
 msgstr "**vehicle_seq**"
 
-#: ../../build/doc/VRP-category.rst:21
+#: ../../build/doc/VRP-category.rst:24
 msgid ""
 "Sequential value starting from **1** for current vehicles. The "
 ":math:`n_{th}` vehicle in the solution."
@@ -700,24 +735,42 @@ msgstr ""
 "Valor secuencial a partir de **1** para vehículos actuales. El vehículo "
 ":math:`n_{th}` en la solución."
 
-#: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:58
-msgid "**vehicle_id**"
+#: ../../build/doc/VRP-category.rst:27
+#, fuzzy
+msgid "Value :math:`-2` indicates it is the summary row."
+msgstr "``-2`` para indicar es una fila de resumen"
+
+#: ../../build/doc/VRP-category.rst:28
+#, fuzzy
+msgid "``vehicle_id``"
 msgstr "**vehicle_id**"
 
-#: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:31
-#: ../../build/doc/VRP-category.rst:58 ../../build/doc/VRP-category.rst:61
+#: ../../build/doc/VRP-category.rst:29
 msgid "BIGINT"
 msgstr "BIGINT"
 
-#: ../../build/doc/VRP-category.rst:22
+#: ../../build/doc/VRP-category.rst:30
 msgid "Current vehicle identifier."
 msgstr "Identificador actual del vehículo."
 
-#: ../../build/doc/VRP-category.rst:23 ../../build/doc/VRP-category.rst:59
-msgid "**stop_seq**"
+#: ../../build/doc/VRP-category.rst:32
+msgid "Sumary row has the **total capacity violations**."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:34
+msgid "A capacity violation happens when overloading or underloading a vehicle."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:36
+#, fuzzy
+msgid "``stop_seq``"
 msgstr "**stop_seq**"
 
-#: ../../build/doc/VRP-category.rst:23
+#: ../../build/doc/VRP-category.rst:37
+msgid "INTEGER"
+msgstr "INTEGER"
+
+#: ../../build/doc/VRP-category.rst:38
 msgid ""
 "Sequential value starting from **1** for the stops made by the current "
 "vehicle. The :math:`m_{th}` stop of the current vehicle."
@@ -725,206 +778,449 @@ msgstr ""
 "Valor secuencial a partir de **1** para las paradas realizadas por el "
 "vehículo actual. La parada :math:`m_{th}` vdel vehículo actual."
 
-#: ../../build/doc/VRP-category.rst:24 ../../build/doc/VRP-category.rst:60
-msgid "**stop_type**"
+#: ../../build/doc/VRP-category.rst:41
+msgid "Sumary row has the **total time windows violations**."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:43
+msgid ""
+"A time window violation happens when arriving after the location has "
+"closed."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:45
+#, fuzzy
+msgid "``stop_type``"
 msgstr "**stop_type**"
 
-#: ../../build/doc/VRP-category.rst:24
-msgid "Kind of stop location the vehicle is at:"
+#: ../../build/doc/VRP-category.rst:47
+#, fuzzy
+msgid "Kind of stop location the vehicle is at"
 msgstr "Tipo de ubicación de parada en la que se encuentra el vehículo:"
 
-#: ../../build/doc/VRP-category.rst:26
-msgid "``1``: Starting location"
+#: ../../build/doc/VRP-category.rst:49
+msgid ":math:`-1`: at the solution summary row"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:50
+#, fuzzy
+msgid ":math:`1`: Starting location"
 msgstr "``1``: Ubicación de inicio"
 
-#: ../../build/doc/VRP-category.rst:27
-msgid "``2``: Pickup location"
+#: ../../build/doc/VRP-category.rst:51
+#, fuzzy
+msgid ":math:`2`: Pickup location"
 msgstr "``2``: Ubicación de recogida"
 
-#: ../../build/doc/VRP-category.rst:28
-msgid "``3``: Delivery location"
+#: ../../build/doc/VRP-category.rst:52
+#, fuzzy
+msgid ":math:`3`: Delivery location"
 msgstr "``3``: Lugar de entrega"
 
-#: ../../build/doc/VRP-category.rst:29
-msgid "``6``: Ending location"
-msgstr "``6``: Ubicación final"
+#: ../../build/doc/VRP-category.rst:53
+msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:31 ../../build/doc/VRP-category.rst:61
-msgid "**order_id**"
+#: ../../build/doc/VRP-category.rst:54
+#, fuzzy
+msgid "``order_id``"
 msgstr "**order_id**"
 
-#: ../../build/doc/VRP-category.rst:31
+#: ../../build/doc/VRP-category.rst:55
+msgid "``BIGINT``"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:56
 msgid "Pickup-Delivery order pair identifier."
 msgstr "Identificador de par de órdenes Recogida-Entrega."
 
-#: ../../build/doc/VRP-category.rst:33
-msgid "``-1``: When no order is involved on the current stop location."
+#: ../../build/doc/VRP-category.rst:58
+#, fuzzy
+msgid "Value :math:`-1`: When no order is involved on the current stop location."
 msgstr ""
-"``-1``: Cuando no hay ningún pedido involucrado en la ubicación actual de la"
-" parada."
+"``-1``: Cuando no hay ningún pedido involucrado en la ubicación actual de"
+" la parada."
 
-#: ../../build/doc/VRP-category.rst:35 ../../build/doc/VRP-category.rst:62
-msgid "**cargo**"
-msgstr "**cargo**"
+#: ../../build/doc/VRP-category.rst:60
+msgid "``cargo``"
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:35 ../../build/doc/VRP-category.rst:37
-#: ../../build/doc/VRP-category.rst:41 ../../build/doc/VRP-category.rst:42
-#: ../../build/doc/VRP-category.rst:43 ../../build/doc/VRP-category.rst:44
-#: ../../build/doc/VRP-category.rst:62 ../../build/doc/VRP-category.rst:63
-#: ../../build/doc/VRP-category.rst:64 ../../build/doc/VRP-category.rst:65
-#: ../../build/doc/VRP-category.rst:66 ../../build/doc/VRP-category.rst:67
-msgid "FLOAT"
-msgstr "FLOAT"
+#: ../../build/doc/VRP-category.rst:61 ../../build/doc/VRP-category.rst:66
+#: ../../build/doc/VRP-category.rst:73 ../../build/doc/VRP-category.rst:80
+#: ../../build/doc/VRP-category.rst:87 ../../build/doc/VRP-category.rst:94
+msgid "``FLOAT``"
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:35
+#: ../../build/doc/VRP-category.rst:62
 msgid "Cargo units of the vehicle when leaving the stop."
 msgstr "Unidades de carga del vehículo al salir de la parada."
 
-#: ../../build/doc/VRP-category.rst:37 ../../build/doc/VRP-category.rst:63
-msgid "**travel_time**"
+#: ../../build/doc/VRP-category.rst:64
+msgid "Value :math:`-1` on solution summary row."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:65
+#, fuzzy
+msgid "``travel_time``"
 msgstr "**travel_time**"
 
-#: ../../build/doc/VRP-category.rst:37
+#: ../../build/doc/VRP-category.rst:67
 msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
 msgstr ""
-"Tiempo de viaje desde el ``stop_seq`` anterior hasta el ``stop_seq`` actual."
+"Tiempo de viaje desde el ``stop_seq`` anterior hasta el ``stop_seq`` "
+"actual."
 
-#: ../../build/doc/VRP-category.rst:39
-msgid "``0`` When ``stop_type = 1``"
-msgstr "``0`` cuando ``stop_type = 1``"
+#: ../../build/doc/VRP-category.rst:69
+msgid "Summary has the **total traveling time**:"
+msgstr ""
 
-#: ../../build/doc/VRP-category.rst:41 ../../build/doc/VRP-category.rst:64
-msgid "**arrival_time**"
+#: ../../build/doc/VRP-category.rst:71
+#, fuzzy
+msgid "The sum of all the ``travel_time``."
+msgstr "`total_travel_time` La suma de todo el `tiempo_de_viaje`"
+
+#: ../../build/doc/VRP-category.rst:72
+#, fuzzy
+msgid "``arrival_time``"
 msgstr "**arrival_time**"
 
-#: ../../build/doc/VRP-category.rst:41
-msgid "Previous ``departure_time`` plus current ``travel_time``."
-msgstr "Anterior ``departure_time`` más actual ``travel_time``."
-
-#: ../../build/doc/VRP-category.rst:42 ../../build/doc/VRP-category.rst:65
-msgid "**wait_time**"
-msgstr "**wait_time**"
-
-#: ../../build/doc/VRP-category.rst:42
-msgid "Time spent waiting for current `location` to open."
+#: ../../build/doc/VRP-category.rst:74 ../../build/doc/VRP-category.rst:81
+#, fuzzy
+msgid "Time spent waiting for current location to open."
 msgstr "Tiempo dedicado a la apertura de `ubicación` actual."
 
-#: ../../build/doc/VRP-category.rst:43 ../../build/doc/VRP-category.rst:66
-msgid "**service_time**"
+#: ../../build/doc/VRP-category.rst:76
+msgid ":math:`-1`: at the solution summary row."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:77
+#, fuzzy
+msgid ":math:`0`: at the starting location."
+msgstr "valor :math:`y` de la coordenada de la ubicación de inicio."
+
+#: ../../build/doc/VRP-category.rst:79
+#, fuzzy
+msgid "``wait_time``"
+msgstr "**wait_time**"
+
+#: ../../build/doc/VRP-category.rst:83
+msgid "Summary row has the **total waiting time**:"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:85
+#, fuzzy
+msgid "The sum of all the ``wait_time``."
+msgstr "`total_waiting_time` La suma de todo el `tiempo_de_espera`"
+
+#: ../../build/doc/VRP-category.rst:86
+#, fuzzy
+msgid "``service_time``"
 msgstr "**service_time**"
 
-#: ../../build/doc/VRP-category.rst:43
-msgid "Service time at current `location`."
+#: ../../build/doc/VRP-category.rst:88
+#, fuzzy
+msgid "Service duration at current location."
 msgstr "Tiempo de servicio en la `ubicación` actual."
 
-#: ../../build/doc/VRP-category.rst:44 ../../build/doc/VRP-category.rst:67
-msgid "**departure_time**"
+#: ../../build/doc/VRP-category.rst:90
+msgid "Summary row has the **total service time**:"
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:92
+#, fuzzy
+msgid "The sum of all the ``service_time``."
+msgstr "`total_service_time` La suma de todo el `tiempo_de_servicio`"
+
+#: ../../build/doc/VRP-category.rst:93
+#, fuzzy
+msgid "``departure_time``"
 msgstr "**departure_time**"
 
-#: ../../build/doc/VRP-category.rst:44
+#: ../../build/doc/VRP-category.rst:95
+msgid "The time at which the vehicle departs from the stop."
+msgstr ""
+
+#: ../../build/doc/VRP-category.rst:97
 msgid ":math:`arrival\\_time + wait\\_time + service\\_time`."
 msgstr ":math:`arrival\\_time + wait\\_time + service\\_time`."
 
-#: ../../build/doc/VRP-category.rst:46
-msgid ""
-"When ``stop_type = 6`` has the `total_time` used for the current vehicle."
+#: ../../build/doc/VRP-category.rst:99
+#, fuzzy
+msgid "The ending location has the **total time** used by the current vehicle."
 msgstr ""
-"Cuando ``stop_type = 6`` tiene el `total_time` utilizado para el vehículo "
-"actual."
+"Cuando ``stop_type = 6`` tiene el `total_time` utilizado para el vehículo"
+" actual."
 
-#: ../../build/doc/VRP-category.rst:50
-msgid "Summary Row"
-msgstr "Fila de Resumen"
-
-#: ../../build/doc/VRP-category.rst:51
-msgid "TODO: Review the summary"
-msgstr "TODO: Review the summary"
-
-#: ../../build/doc/VRP-category.rst:56
-msgid "Continues the Sequential value"
-msgstr "Continúa el valor Secuencial"
-
-#: ../../build/doc/VRP-category.rst:57
-msgid "``-2`` to indicate is a summary row"
-msgstr "``-2`` para indicar es una fila de resumen"
-
-#: ../../build/doc/VRP-category.rst:58
-msgid "`Total Capacity Violations` in the solution."
-msgstr "`Total de Violaciones de Capacidad` en la solución."
-
-#: ../../build/doc/VRP-category.rst:59
-msgid "`Total Time Window Violations` in the solution."
-msgstr "`Tiempo Total de Violaciones de la Ventana` en la solución."
-
-#: ../../build/doc/VRP-category.rst:60 ../../build/doc/VRP-category.rst:61
-#: ../../build/doc/VRP-category.rst:62 ../../build/doc/VRP-category.rst:64
-msgid "``-1``"
-msgstr "``-1``"
-
-#: ../../build/doc/VRP-category.rst:63
-msgid "`total_travel_time` The sum of all the `travel_time`"
-msgstr "`total_travel_time` La suma de todo el `tiempo_de_viaje`"
-
-#: ../../build/doc/VRP-category.rst:65
-msgid "`total_waiting_time` The sum of all the `wait_time`"
-msgstr "`total_waiting_time` La suma de todo el `tiempo_de_espera`"
-
-#: ../../build/doc/VRP-category.rst:66
-msgid "`total_service_time` The sum of all the `service_time`"
-msgstr "`total_service_time` La suma de todo el `tiempo_de_servicio`"
-
-#: ../../build/doc/VRP-category.rst:67
-msgid ""
-"`total_solution_time` = :math:`total\\_travel\\_time + total\\_wait\\_time +"
-" total\\_service\\_time`."
+#: ../../build/doc/VRP-category.rst:101
+msgid "Summary row has the **total solution time**:"
 msgstr ""
-"`total_solution_time` = :math:`total\\_travel\\_time + total\\_wait\\_time +"
-" total\\_service\\_time`."
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-INTEGER"
-msgstr "ENTEROS"
+#: ../../build/doc/VRP-category.rst:103
+#, fuzzy
+msgid ""
+":math:`total\\ traveling\\ time + total\\ waiting\\ time + total\\ "
+"service\\ time`."
+msgstr ""
+"`total_solution_time` = :math:`total\\_travel\\_time + "
+"total\\_wait\\_time + total\\_service\\_time`."
 
-#: ../../build/doc/pgRouting-concepts.rst:5
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/sampledata.rst:3
+msgid ""
+"This data example **lc101** is from data published at "
+"https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/"
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst
-msgid "ANY-NUMERICAL"
-msgstr "FLOTANTES"
+#: ../../build/doc/sampledata.rst:9
+msgid "There are 25 vehciles in the problem all with the same characteristics."
+msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/sampledata.rst:16
+msgid "The original orders"
+msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:197
-msgid "Example"
-msgstr "Ejemplo"
+#: ../../build/doc/sampledata.rst:18
+msgid ""
+"The data comes in different rows for the pickup and the delivery of the "
+"same order."
+msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:201
-msgid "This example use the following data: TODO put link"
-msgstr "En este ejemplo se utilizan los siguientes datos: TODO put link"
+#: ../../build/doc/sampledata.rst:26
+msgid "The orders"
+msgstr ""
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:209
+#: ../../build/doc/sampledata.rst:28
+msgid "The original data needs to be converted to an appropiate table:"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:200
+msgid "The query"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:202
+msgid ""
+"Showing only the relevant information to compare with the best solution "
+"information published on "
+"https://www.sintef.no/projectweb/top/pdptw/100-customers/"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:206
+msgid "The best solution found for **lc101** is a travel time: 828.94"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:207
+msgid "This implementation's travel time: 854.54"
+msgstr ""
+
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:214
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:211
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:216
 msgid ":doc:`VRP-category`"
 msgstr ":doc:`VRP-category`"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:212
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:217
 msgid "The queries use the :doc:`sampledata` network."
 msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:215
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:220
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:216
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:221
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_pickDeliverEuclidean.rst:217
+#: ../../build/doc/pgr_pickDeliverEuclidean.rst:222
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid ""
+#~ "**Supported versions:** `Latest "
+#~ "<https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__"
+#~ " (`3.3 "
+#~ "<https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__)"
+#~ " `3.2 "
+#~ "<https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__"
+#~ " current(`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__)"
+#~ " `3.0 "
+#~ "<https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__"
+#~ msgstr ""
+#~ "**Versiones soportadas:** `Última "
+#~ "<https://docs.pgrouting.org/latest/es/pgr_TSPeuclidean.html>`__ "
+#~ "(`3.3 "
+#~ "<https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html>`__) "
+#~ "`3.2 "
+#~ "<https://docs.pgrouting.org/3.2/es/pgr_TSPeuclidean.html>`__ "
+#~ "`3.1 "
+#~ "<https://docs.pgrouting.org/3.1/es/pgr_TSPeuclidean.html>`__ "
+#~ "`3.0 "
+#~ "<https://docs.pgrouting.org/3.0/es/pgr_TSPeuclidean.html>`__"
+
+#~ msgid "The parameters are:"
+#~ msgstr "Los parámetros son:"
+
+#~ msgid ""
+#~ "`Pick & Deliver Orders SQL`_ query "
+#~ "containing the orders to be processed."
+#~ msgstr ""
+#~ "`Pick & Deliver Orders SQL`_ consulta"
+#~ " que contiene las órdenes que se "
+#~ "van a procesar."
+
+#~ msgid ""
+#~ "`Pick & Deliver Vehicles SQL`_ query "
+#~ "containing the vehicles to be used."
+#~ msgstr ""
+#~ "La consulta `Pick & Deliver Vehicles "
+#~ "SQL`_ contiene los vehículos que se "
+#~ "van a utilizar."
+
+#~ msgid "Pick & Deliver Orders SQL"
+#~ msgstr "Pick & Deliver Orders SQL (Recoger y Entregar Pedidos)"
+
+#~ msgid "**id**"
+#~ msgstr "**id**"
+
+#~ msgid "**p_open**"
+#~ msgstr "**p_open**"
+
+#~ msgid "**p_close**"
+#~ msgstr "**p_close**"
+
+#~ msgid "**d_service**"
+#~ msgstr "**d_service**"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "**d_open**"
+#~ msgstr "**d_open**"
+
+#~ msgid "**d_close**"
+#~ msgstr "**d_close**"
+
+#~ msgid ""
+#~ "For the euclidean implementation, pick "
+#~ "up and delivery  :math:`(x,y)` locations "
+#~ "are needed:"
+#~ msgstr ""
+#~ "Para la implementación euclidiana, se "
+#~ "necesitan ubicaciones :math:`(x,y)` de "
+#~ "recogida y entrega:"
+
+#~ msgid "**p_x**"
+#~ msgstr "**p_x**"
+
+#~ msgid "**p_y**"
+#~ msgstr "**p_y**"
+
+#~ msgid "**d_x**"
+#~ msgstr "**d_x**"
+
+#~ msgid "**d_y**"
+#~ msgstr "**d_y**"
+
+#~ msgid "Pick & Deliver Vehicles SQL"
+#~ msgstr "SQL de Vehículos de Recogida y Entrega"
+
+#~ msgid "**speed**"
+#~ msgstr "**speed**"
+
+#~ msgid "`1`"
+#~ msgstr "`1`"
+
+#~ msgid "**start_open**"
+#~ msgstr "**start_open**"
+
+#~ msgid "**start_close**"
+#~ msgstr "**start_close**"
+
+#~ msgid "**start_service**"
+#~ msgstr "**start_service**"
+
+#~ msgid "`0`"
+#~ msgstr "`0`"
+
+#~ msgid ""
+#~ "For the euclidean implementation, starting "
+#~ "and ending :math:`(x,y)` locations are "
+#~ "needed:"
+#~ msgstr ""
+#~ "Para la implementación euclidiana, se "
+#~ "necesitan ubicaciones :math:`(x,y)` de inicio"
+#~ " y finalización:"
+
+#~ msgid "**start_x**"
+#~ msgstr "**start_x**"
+
+#~ msgid ":math:`x` value of the coordinate of the starting location."
+#~ msgstr "valor :math:`x` de la coordenada de la ubicación inicial."
+
+#~ msgid "**start_y**"
+#~ msgstr "**start_y**"
+
+#~ msgid "**end_x**"
+#~ msgstr "**end_x**"
+
+#~ msgid ":math:`x` value of the coordinate of the ending location."
+#~ msgstr "valor :math:`x` de la coordenada de la ubicación final."
+
+#~ msgid "**end_y**"
+#~ msgstr "**end_y**"
+
+#~ msgid ":math:`y` value of the coordinate of the ending location."
+#~ msgstr ":math:`y` valor de la coordenada de la ubicación final."
+
+#~ msgid "Description of the result (TODO Disussion: Euclidean & Matrix)"
+#~ msgstr "Descripción del resultado (TODO Disussion: Euclidean & Matrix)"
+
+#~ msgid "Todo"
+#~ msgstr "Por hacer"
+
+#~ msgid "fix when everything below is fixed"
+#~ msgstr "Arreglar cuando todo abajo esté arreglado"
+
+#~ msgid "**seq**"
+#~ msgstr "``seq``"
+
+#~ msgid "``6``: Ending location"
+#~ msgstr "``6``: Ubicación final"
+
+#~ msgid "**cargo**"
+#~ msgstr "**cargo**"
+
+#~ msgid "FLOAT"
+#~ msgstr "FLOAT"
+
+#~ msgid "``0`` When ``stop_type = 1``"
+#~ msgstr "``0`` cuando ``stop_type = 1``"
+
+#~ msgid "Previous ``departure_time`` plus current ``travel_time``."
+#~ msgstr "Anterior ``departure_time`` más actual ``travel_time``."
+
+#~ msgid "Summary Row"
+#~ msgstr "Fila de Resumen"
+
+#~ msgid "TODO: Review the summary"
+#~ msgstr "TODO: Review the summary"
+
+#~ msgid "Continues the Sequential value"
+#~ msgstr "Continúa el valor Secuencial"
+
+#~ msgid "`Total Capacity Violations` in the solution."
+#~ msgstr "`Total de Violaciones de Capacidad` en la solución."
+
+#~ msgid "`Total Time Window Violations` in the solution."
+#~ msgstr "`Tiempo Total de Violaciones de la Ventana` en la solución."
+
+#~ msgid "SMALLINT, INTEGER, BIGINT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT"
+
+#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+
+#~ msgid "This example use the following data: TODO put link"
+#~ msgstr "En este ejemplo se utilizan los siguientes datos: TODO put link"
+
