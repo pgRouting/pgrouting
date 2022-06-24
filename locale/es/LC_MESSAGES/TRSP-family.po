@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-24 15:25+0000\n"
+"PO-Revision-Date: 2022-06-24 16:38+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "trsp-family/es/>\n"
@@ -55,7 +55,7 @@ msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr "Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL"
+msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
@@ -100,6 +100,8 @@ msgid ""
 "Read the :doc:`migration` about how to migrate from the deprecated TRSP "
 "functionality to the new signatures or replacement functions."
 msgstr ""
+"Leer :doc:`migration` sobre como migrar de la funcionalidad obsoleta de TRSP "
+"a las nuevas firmas o funciones que las reemplazan."
 
 #: ../../build/doc/TRSP-family.rst:40
 msgid "Experimental"
@@ -190,6 +192,12 @@ msgid ""
 "graph. But normally on turns like **left turn** or **right turn**, hence the "
 "name turn restrictions, there are sometimes restrictions."
 msgstr ""
+"Las restricciones viales son una secuencia de tramos viales que no se pueden "
+"tomar de manera secuencial. Algunas restricciones están implícitas en un "
+"grafo dirigido, por ejemplo, caminos de un solo sentido donde el sentido "
+"contrario ni siquiera se inserta en el grafo. Pero normalmente en giros como "
+"**giro a la izquierda** o **giro a la derecha**, de ahí el nombre de "
+"restricciones de giro, a veces hay restricciones."
 
 #: ../../build/doc/TRSP-family.rst:74
 msgid "TRSP algorithm"
@@ -232,10 +240,8 @@ msgid "`Edges SQL`_ query as described."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:96
-#, fuzzy
-#| msgid "Restrictions SQL"
 msgid "`Restrictions SQL`_"
-msgstr "Restricciones SQL"
+msgstr "`SQL de restricciones`_"
 
 #: ../../build/doc/TRSP-family.rst:98
 msgid "`Restrictions SQL`_ query as described."
@@ -248,7 +254,7 @@ msgstr "**vía vértices**"
 #: ../../build/doc/TRSP-family.rst:100
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
+msgstr "``ARRAY[`` **ENTEROS** ``]``"
 
 #: ../../build/doc/TRSP-family.rst:101
 msgid "Array of ordered vertices identifiers that are going to be visited."
