@@ -12,15 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_isplanar/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_isplanar/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_isPlanar.rst:12
@@ -198,21 +199,19 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta SQL como se describe a continuación."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_isPlanar.rst:82
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_isPlanar.rst:85
 msgid "Edges SQL"
@@ -228,31 +227,29 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -260,19 +257,18 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr ""
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -282,14 +278,15 @@ msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr ""
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
-#, fuzzy
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
-msgstr "En caso negativo: la arista `(destino, origen)` no forma parte del grafo."
+msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
@@ -301,7 +298,7 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -309,7 +306,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_isPlanar.rst:92
 msgid "Result Columns"
@@ -385,14 +382,12 @@ msgstr ":ref:`search`"
 #~ msgid ""
 #~ "**Supported versions:** `Latest "
 #~ "<https://docs.pgrouting.org/latest/en/pgr_isPlanar.html>`__ "
-#~ "(`3.3 <https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__)"
-#~ " `3.2 "
+#~ "(`3.4 <https://docs.pgrouting.org/3.4/en/pgr_isPlanar.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__  #~ "
 #~ "<https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__"
 #~ msgstr ""
 #~ "**Versiones soportadas:** `Última "
 #~ "<https://docs.pgrouting.org/latest/es/pgr_isPlanar.html>`__ "
-#~ "(`3.3 <https://docs.pgrouting.org/3.3/es/pgr_isPlanar.html>`__)"
-#~ " `3.2 "
+#~ "(`3.4 <https://docs.pgrouting.org/3.4/es/pgr_isPlanar.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/pgr_isPlanar.html>`__  #~ "
 #~ "<https://docs.pgrouting.org/3.2/es/pgr_isPlanar.html>`__"
 
 #~ msgid "**Edges SQL**"
@@ -430,4 +425,3 @@ msgstr ":ref:`search`"
 
 #~ msgid "The queries use the :doc:`sampledata` network."
 #~ msgstr "Las consultas utilizan la red :doc:`sampledata` ."
-

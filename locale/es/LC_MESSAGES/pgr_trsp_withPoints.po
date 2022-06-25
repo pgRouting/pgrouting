@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
 "Language: es\n"
@@ -284,7 +284,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "`Edges SQL`_"
-msgstr "`SQL de Aristas`_"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -303,15 +303,15 @@ msgstr "`SQL de restricciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "`Combinations SQL`_"
-msgstr ""
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "`Combinations SQL`_ as described below"
-msgstr ""
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "**start vid**"
-msgstr ""
+msgstr "**vid de salida**"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -328,11 +328,11 @@ msgstr "**ENTEROS**"
 #: ../../build/doc/pgRouting-concepts.rst:22
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "Identifier of the departure vertex."
-msgstr ""
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "**start vids**"
-msgstr ""
+msgstr "**vid salidas**"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:24
@@ -347,11 +347,11 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "**end vid**"
-msgstr ""
+msgstr "**vid destino**"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**end vids**"
-msgstr ""
+msgstr "**vids destinos**"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:21
@@ -387,7 +387,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
 msgid "``directed``"
-msgstr ""
+msgstr "``directed``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:231
 #: ../../build/doc/dijkstra-family.rst:13
@@ -400,7 +400,7 @@ msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr "En caso de ``true``, el grafo se considera **dirigido**"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
@@ -464,7 +464,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:242
 msgid "Inner Queries"
-msgstr "Consultas Internas"
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:245
 msgid "Edges SQL"
@@ -506,7 +506,7 @@ msgstr "``cost``"
 #: ../../build/doc/pgRouting-concepts.rst:29
 #: ../../build/doc/withPoints-category.rst:27
 msgid "**ANY-NUMERICAL**"
-msgstr "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
@@ -647,11 +647,11 @@ msgstr "In both sides ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:266
 msgid "Combinations SQL"
-msgstr "Combinaciones SQL"
+msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Identifier of the arrival vertex."
-msgstr ""
+msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:273
 msgid "Result Columns"
@@ -751,7 +751,7 @@ msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:313
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+msgstr "Coste agregado desde ``start_vid`` al ``node``."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:315
 msgid "``0`` for the first row in the path sequence."

@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_maxcardinalitymatch/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_maxcardinalitymatch/es/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:12
@@ -164,9 +164,8 @@ msgid "For a **directed** graph"
 msgstr "Para un grafo **no dirigido**"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:90
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:93
 msgid "Edges SQL"
@@ -190,9 +189,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:100
-#, fuzzy
 msgid "``id``"
-msgstr "``INT``"
+msgstr "``id``"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:100
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:101
@@ -206,9 +204,8 @@ msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:101
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:122
-#, fuzzy
 msgid "``source``"
-msgstr "``true``"
+msgstr "``source``"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:101
 msgid "Identifier of the first end point vertex of the edge."
@@ -216,9 +213,8 @@ msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:102
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:123
-#, fuzzy
 msgid "``target``"
-msgstr "``true``"
+msgstr "``target``"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:102
 msgid "Identifier of the second end point vertex of the edge."
@@ -279,9 +275,8 @@ msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:120
-#, fuzzy
 msgid "``seq``"
-msgstr "``true``"
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:120
 msgid "``INT``"
@@ -292,9 +287,8 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:121
-#, fuzzy
 msgid "``edge``"
-msgstr "``true``"
+msgstr "``edge``"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:121
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:122
@@ -400,4 +394,3 @@ msgstr ":ref:`search`"
 
 #~ msgid "**edge**"
 #~ msgstr "**arista**"
-

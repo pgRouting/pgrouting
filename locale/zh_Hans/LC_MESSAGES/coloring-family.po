@@ -20,8 +20,7 @@ msgstr ""
 "X-Generator: Weblate 4.11.2\n"
 
 #: ../../build/doc/coloring-family.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/coloring-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/coloring-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__"
-msgstr ""
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/coloring-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/coloring-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/coloring-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/en/coloring-family.html>`__ msgstr"
 
 #: ../../build/doc/coloring-family.rst:19
 msgid "Coloring - Family of functions"

@@ -33,8 +33,7 @@ msgid ""
 "/traversal-family.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/traversal-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es"
-"/traversal-family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es"
+"/traversal-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/traversal-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/traversal-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es"
 "/traversal-family.html>`__"
 
 #: ../../build/doc/traversal-family.rst:19

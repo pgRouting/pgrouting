@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-23 16:16+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_degree/es/>\n"
@@ -117,7 +117,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgr_degree.rst:63
 msgid "`Edges SQL`_"
-msgstr "`SQL de Aristas`_"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgr_degree.rst:63 ../../build/doc/pgr_degree.rst:64
 msgid "``TEXT``"
@@ -125,7 +125,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_degree.rst:63
 msgid "`Edges SQL`_ as described below"
-msgstr ""
+msgstr "`Consulta de aristas`_ como se describe a continuación"
 
 #: ../../build/doc/pgr_degree.rst:64
 msgid "`Vertex SQL`_"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:80
 msgid "Inner Queries"
-msgstr "Consultas Internas"
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_degree.rst:86
 msgid "Edges SQL"

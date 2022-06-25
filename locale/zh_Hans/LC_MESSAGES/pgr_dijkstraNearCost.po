@@ -17,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__"
-msgstr ""
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstraNearCost.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__ msgstr"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:18
 msgid "pgr_dijkstraNearCost - Proposed"

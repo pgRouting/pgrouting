@@ -11,15 +11,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-02 16:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"astar-family/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
-"/astar-family/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/aStar-family.rst:12
@@ -34,8 +35,7 @@ msgid ""
 "family.html>`__"
 msgstr ""
 "***Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/aStar-family.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es/aStar-"
-"family.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es/aStar-"
+"/aStar-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/aStar-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/aStar-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es/aStar-"
 "family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/aStar-"
 "family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/aStar-"
 "family.html>`__"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:92
 msgid "Default"
-msgstr ""
+msgstr "x Defecto"
 
 #: ../../build/doc/aStar-family.rst:94
 #, fuzzy
@@ -173,7 +173,7 @@ msgstr "Heurística"
 
 #: ../../build/doc/aStar-family.rst:95
 msgid "``INTEGER``"
-msgstr ""
+msgstr "``INTEGER``"
 
 #: ../../build/doc/aStar-family.rst:96
 #, fuzzy
@@ -215,7 +215,7 @@ msgstr "Factor"
 
 #: ../../build/doc/aStar-family.rst:106 ../../build/doc/aStar-family.rst:110
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/aStar-family.rst:107 ../../build/doc/aStar-family.rst:111
 msgid "``1``"
@@ -422,4 +422,3 @@ msgstr ":ref:`search`"
 
 #~ msgid ":doc:`pgr_aStarCostMatrix`"
 #~ msgstr ":doc:`pgr_aStarCostMatrix`"
-
