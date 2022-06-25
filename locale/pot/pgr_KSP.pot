@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,10 +62,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:53
 #: ../../build/doc/pgr_KSP.rst:88
-#: ../../build/doc/pgr_KSP.rst:128
-#: ../../build/doc/pgr_KSP.rst:165
 #: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgr_KSP.rst:128
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_KSP.rst:165
 msgid "Description"
 msgstr ""
 
@@ -82,6 +82,7 @@ msgid "Summary"
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:0
+#: ../../build/doc/pgr_KSP.rst:0
 msgid "Example"
 msgstr ""
 
@@ -94,18 +95,18 @@ msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:86
-#: ../../build/doc/pgr_KSP.rst:125
-#: ../../build/doc/pgr_KSP.rst:163
 #: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/pgr_KSP.rst:125
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_KSP.rst:163
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:87
-#: ../../build/doc/pgr_KSP.rst:126
-#: ../../build/doc/pgr_KSP.rst:164
 #: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgr_KSP.rst:126
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_KSP.rst:164
 msgid "Type"
 msgstr ""
 
@@ -170,8 +171,8 @@ msgstr ""
 msgid "Optional parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:127
 #: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/pgr_KSP.rst:127
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
@@ -180,8 +181,8 @@ msgstr ""
 msgid "``directed``"
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:130
 #: ../../build/doc/dijkstra-family.rst:13
+#: ../../build/doc/pgr_KSP.rst:130
 msgid "``BOOLEAN``"
 msgstr ""
 
@@ -253,8 +254,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_KSP.rst:186
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgr_KSP.rst:186
 msgid "``cost``"
 msgstr ""
 

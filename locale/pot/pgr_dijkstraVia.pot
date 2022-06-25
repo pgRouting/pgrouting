@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,10 +85,11 @@ msgid "New **proposed** function"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:47
+#: ../../build/doc/via-category.rst:11
 #: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/via-category.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/via-category.rst:10
-#: ../../build/doc/via-category.rst:11
 msgid "Description"
 msgstr ""
 
@@ -133,18 +134,22 @@ msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/via-category.rst:8
+#: ../../build/doc/via-category.rst:8
 msgid "Parameter"
 msgstr ""
 
+#: ../../build/doc/via-category.rst:9
 #: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/via-category.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/via-category.rst:9
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/via-category.rst:10
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/via-category.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
 
@@ -172,13 +177,13 @@ msgstr ""
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/via-category.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/via-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -186,8 +191,8 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/via-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 

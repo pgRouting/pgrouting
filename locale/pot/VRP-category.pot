@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -257,9 +257,9 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:326
 #: ../../build/doc/VRP-category.rst:376
 #: ../../build/doc/VRP-category.rst:406
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/VRP-category.rst:458
 #: ../../build/doc/VRP-category.rst:557
-#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Column"
 msgstr ""
 
@@ -272,9 +272,9 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:327
 #: ../../build/doc/VRP-category.rst:377
 #: ../../build/doc/VRP-category.rst:407
+#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/VRP-category.rst:459
 #: ../../build/doc/VRP-category.rst:558
-#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Type"
 msgstr ""
 
@@ -287,9 +287,9 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:328
 #: ../../build/doc/VRP-category.rst:378
 #: ../../build/doc/VRP-category.rst:408
+#: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/VRP-category.rst:460
 #: ../../build/doc/VRP-category.rst:559
-#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Description"
 msgstr ""
 
@@ -543,6 +543,8 @@ msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -552,6 +554,8 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
+#: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
 #: ../../build/doc/VRP-category.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
@@ -779,10 +783,10 @@ msgstr ""
 msgid "``start_vid``"
 msgstr ""
 
-#: ../../build/doc/VRP-category.rst:497
-#: ../../build/doc/VRP-category.rst:582
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/VRP-category.rst:497
+#: ../../build/doc/VRP-category.rst:582
 msgid "``BIGINT``"
 msgstr ""
 
@@ -802,6 +806,7 @@ msgstr ""
 msgid "``agg_cost``"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/VRP-category.rst:503
 #: ../../build/doc/VRP-category.rst:508
 #: ../../build/doc/VRP-category.rst:515
@@ -814,7 +819,6 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:596
 #: ../../build/doc/VRP-category.rst:601
 #: ../../build/doc/VRP-category.rst:606
-#: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``FLOAT``"
 msgstr ""
 

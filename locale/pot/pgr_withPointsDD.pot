@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 00:25+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,12 +86,12 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:48
 #: ../../build/doc/pgr_withPointsDD.rst:114
-#: ../../build/doc/pgr_withPointsDD.rst:188
 #: ../../build/doc/dijkstra-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_drivingDistance.rst:11
-#: ../../build/doc/withPoints-category.rst:11
 #: ../../build/doc/withPoints-family.rst:11
+#: ../../build/doc/pgr_drivingDistance.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/withPoints-category.rst:11
+#: ../../build/doc/pgr_withPointsDD.rst:188
 msgid "Description"
 msgstr ""
 
@@ -107,6 +107,7 @@ msgstr ""
 msgid "Single vertex"
 msgstr ""
 
+#: ../../build/doc/pgr_withPointsDD.rst:0
 #: ../../build/doc/pgr_withPointsDD.rst:0
 msgid "Example"
 msgstr ""
@@ -129,18 +130,18 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:112
 #: ../../build/doc/dijkstra-family.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_drivingDistance.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:113
-#: ../../build/doc/pgr_withPointsDD.rst:187
 #: ../../build/doc/dijkstra-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_drivingDistance.rst:9
-#: ../../build/doc/withPoints-category.rst:9
 #: ../../build/doc/withPoints-family.rst:9
+#: ../../build/doc/pgr_drivingDistance.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/withPoints-category.rst:9
+#: ../../build/doc/pgr_withPointsDD.rst:187
 msgid "Type"
 msgstr ""
 
@@ -225,10 +226,10 @@ msgid "Optional parameters"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgr_drivingDistance.rst:10
-#: ../../build/doc/withPoints-category.rst:10
 #: ../../build/doc/withPoints-family.rst:10
+#: ../../build/doc/pgr_drivingDistance.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/withPoints-category.rst:10
 msgid "Default"
 msgstr ""
 
@@ -237,8 +238,8 @@ msgid "``directed``"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:13
-#: ../../build/doc/pgr_drivingDistance.rst:13
 #: ../../build/doc/withPoints-family.rst:21
+#: ../../build/doc/pgr_drivingDistance.rst:13
 msgid "``BOOLEAN``"
 msgstr ""
 
@@ -259,9 +260,9 @@ msgstr ""
 msgid "With points optional parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:186
-#: ../../build/doc/withPoints-category.rst:8
 #: ../../build/doc/withPoints-family.rst:8
+#: ../../build/doc/withPoints-category.rst:8
+#: ../../build/doc/pgr_withPointsDD.rst:186
 msgid "Parameter"
 msgstr ""
 
@@ -269,13 +270,13 @@ msgstr ""
 msgid "``driving_side``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:32
 #: ../../build/doc/withPoints-family.rst:13
+#: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:33
 #: ../../build/doc/withPoints-family.rst:14
+#: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
 msgstr ""
 
@@ -367,8 +368,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:205
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgr_withPointsDD.rst:205
 msgid "``cost``"
 msgstr ""
 
@@ -398,15 +399,15 @@ msgstr ""
 msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:212
 #: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/withPoints-category.rst:40
+#: ../../build/doc/pgr_withPointsDD.rst:212
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsDD.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
+#: ../../build/doc/pgr_withPointsDD.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 

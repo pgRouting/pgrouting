@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,9 +61,9 @@ msgid "New **experimental** function"
 msgstr ""
 
 #: ../../build/doc/pgr_articulationPoints.rst:47
-#: ../../build/doc/pgr_articulationPoints.rst:116
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_articulationPoints.rst:116
 msgid "Description"
 msgstr ""
 
@@ -115,8 +115,9 @@ msgstr ""
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:115
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_articulationPoints.rst:115
 msgid "Type"
 msgstr ""
 
@@ -140,8 +141,8 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_articulationPoints.rst:114
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_articulationPoints.rst:114
 msgid "Column"
 msgstr ""
 

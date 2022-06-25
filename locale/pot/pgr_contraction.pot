@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,10 +70,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_contraction.rst:52
 #: ../../build/doc/pgr_contraction.rst:114
-#: ../../build/doc/pgr_contraction.rst:143
-#: ../../build/doc/pgr_contraction.rst:178
 #: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgr_contraction.rst:143
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_contraction.rst:178
 msgid "Description"
 msgstr ""
 
@@ -146,6 +146,8 @@ msgid "The pgr_contraction function has the following signature:"
 msgstr ""
 
 #: ../../build/doc/pgr_contraction.rst:0
+#: ../../build/doc/pgr_contraction.rst:0
+#: ../../build/doc/pgr_contraction.rst:0
 msgid "Example"
 msgstr ""
 
@@ -162,10 +164,10 @@ msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgr_contraction.rst:113
-#: ../../build/doc/pgr_contraction.rst:141
-#: ../../build/doc/pgr_contraction.rst:177
 #: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgr_contraction.rst:141
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_contraction.rst:177
 msgid "Type"
 msgstr ""
 
@@ -207,15 +209,15 @@ msgstr ""
 msgid "Optional Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:140
-#: ../../build/doc/pgr_contraction.rst:176
 #: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/pgr_contraction.rst:140
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_contraction.rst:176
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:142
 #: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/pgr_contraction.rst:142
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
@@ -280,8 +282,8 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:189
 #: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgr_contraction.rst:189
 msgid "``id``"
 msgstr ""
 
@@ -295,8 +297,8 @@ msgstr ""
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:205
 #: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgr_contraction.rst:205
 msgid "``source``"
 msgstr ""
 
@@ -304,8 +306,8 @@ msgstr ""
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:210
 #: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgr_contraction.rst:210
 msgid "``target``"
 msgstr ""
 
@@ -313,8 +315,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_contraction.rst:215
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgr_contraction.rst:215
 msgid "``cost``"
 msgstr ""
 

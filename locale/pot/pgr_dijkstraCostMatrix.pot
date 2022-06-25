@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -184,6 +184,7 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
+#: ../../build/doc/pgr_dijkstraCostMatrix.rst:0
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:0
 msgid "Example"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 00:25+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,10 +87,10 @@ msgstr ""
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:47
 #: ../../build/doc/costMatrix-category.rst:10
 #: ../../build/doc/dijkstra-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgr_withPointsCost.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/withPoints-category.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Description"
 msgstr ""
 
@@ -251,10 +251,10 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:9
 #: ../../build/doc/dijkstra-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgr_withPointsCost.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/withPoints-category.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Type"
 msgstr ""
 
@@ -296,8 +296,8 @@ msgid "Optional parameters"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgr_withPointsCost.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/withPoints-category.rst:10
 msgid "Default"
 msgstr ""

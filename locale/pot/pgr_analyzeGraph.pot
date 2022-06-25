@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,7 @@ msgid "``float8`` Snapping tolerance of disconnected edges. (in projection unit)
 msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:0
+#: ../../build/doc/pgr_analyzeGraph.rst:0
 msgid "the_geom"
 msgstr ""
 
@@ -111,6 +112,7 @@ msgstr ""
 msgid "``text``  Geometry column name of the network table. Default value is ``the_geom``."
 msgstr ""
 
+#: ../../build/doc/pgr_analyzeGraph.rst:0
 #: ../../build/doc/pgr_analyzeGraph.rst:0
 msgid "id"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,9 +89,9 @@ msgid "New **experimental** signature"
 msgstr ""
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:45
-#: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/coloring-family.rst:6
 msgid "Description"
 msgstr ""
 
@@ -163,8 +163,9 @@ msgstr ""
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/coloring-family.rst:6
 msgid "Type"
 msgstr ""
 
@@ -188,8 +189,8 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/coloring-family.rst:6
 msgid "Column"
 msgstr ""
 

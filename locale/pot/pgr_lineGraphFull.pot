@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,9 +113,9 @@ msgid "New **Experimental** function"
 msgstr ""
 
 #: ../../build/doc/pgr_lineGraphFull.rst:40
-#: ../../build/doc/pgr_lineGraphFull.rst:117
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_lineGraphFull.rst:117
 msgid "Description"
 msgstr ""
 
@@ -168,6 +168,10 @@ msgid "Summary"
 msgstr ""
 
 #: ../../build/doc/pgr_lineGraphFull.rst:0
+#: ../../build/doc/pgr_lineGraphFull.rst:0
+#: ../../build/doc/pgr_lineGraphFull.rst:0
+#: ../../build/doc/pgr_lineGraphFull.rst:0
+#: ../../build/doc/pgr_lineGraphFull.rst:0
 msgid "Example"
 msgstr ""
 
@@ -183,8 +187,9 @@ msgstr ""
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraphFull.rst:116
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_lineGraphFull.rst:116
 msgid "Type"
 msgstr ""
 
@@ -208,8 +213,8 @@ msgstr ""
 msgid "Edges SQL"
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraphFull.rst:115
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_lineGraphFull.rst:115
 msgid "Column"
 msgstr ""
 
@@ -231,8 +236,8 @@ msgstr ""
 msgid "Identifier of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraphFull.rst:123
 #: ../../build/doc/pgRouting-concepts.rst:16
+#: ../../build/doc/pgr_lineGraphFull.rst:123
 msgid "``source``"
 msgstr ""
 
@@ -240,8 +245,8 @@ msgstr ""
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraphFull.rst:128
 #: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgr_lineGraphFull.rst:128
 msgid "``target``"
 msgstr ""
 
@@ -249,8 +254,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraphFull.rst:133
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgr_lineGraphFull.rst:133
 msgid "``cost``"
 msgstr ""
 
@@ -263,8 +268,8 @@ msgstr ""
 msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
-#: ../../build/doc/pgr_lineGraphFull.rst:139
 #: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/pgr_lineGraphFull.rst:139
 msgid "``reverse_cost``"
 msgstr ""
 
@@ -387,6 +392,7 @@ msgid "|first|"
 msgstr ""
 
 #: ../../build/doc/pgr_lineGraphFull.rst:171
+#: ../../build/doc/pgr_lineGraphFull.rst:171
 msgid "first"
 msgstr ""
 
@@ -398,6 +404,7 @@ msgstr ""
 msgid "|second|"
 msgstr ""
 
+#: ../../build/doc/pgr_lineGraphFull.rst:185
 #: ../../build/doc/pgr_lineGraphFull.rst:185
 msgid "second"
 msgstr ""
