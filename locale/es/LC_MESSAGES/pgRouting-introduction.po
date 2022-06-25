@@ -6,25 +6,24 @@
 # Translators:
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-10 13:47+0000\n"
-"PO-Revision-Date: 2020-11-04 18:33+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
+"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgrouting-introduction/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"(https://www.transifex.com/pgrouting/teams/1219/es/)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgRouting-introduction.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/pgRouting-introduction.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
@@ -34,11 +33,13 @@ msgid ""
 "/pgRouting-introduction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
 "/pgRouting-introduction.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  <https://docs.pgrouting.org/latest/es"
-"/pgRouting-introduction.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/pgRouting-introduction.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/pgRouting-introduction.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es"
-"/pgRouting-introduction.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
-"/pgRouting-introduction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
-"/pgRouting-introduction.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgRouting-introduction.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgRouting-introduction.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgRouting-introduction.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgRouting-introduction.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgRouting-introduction.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgRouting-introduction.html>`__"
 
 #: ../../build/doc/pgRouting-introduction.rst:19
 msgid ""
@@ -333,4 +334,3 @@ msgid ""
 msgstr ""
 "La guía de Migración se puede encontrar en "
 "https://github.com/pgRouting/pgrouting/wiki/Migration-Guide."
-
