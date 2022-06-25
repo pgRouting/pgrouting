@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-25 17:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "coloring-family/es/>\n"
@@ -26,7 +26,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/coloring-family.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/coloring-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
@@ -34,9 +33,10 @@ msgid ""
 "/coloring-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en"
 "/coloring-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/coloring-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/coloring-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/coloring-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es"
-"/coloring-family.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"coloring-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/coloring-"
+"family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/coloring-family."
+"html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/coloring-family.html>`__"
 
 #: ../../build/doc/coloring-family.rst:20
 msgid "Coloring - Family of functions"
@@ -310,4 +310,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/coloring-family.rst:112
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
