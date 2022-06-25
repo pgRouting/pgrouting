@@ -38,8 +38,10 @@ msgid ""
 msgstr ""
 "**Versiones soportadas:** `Última  "
 "<https://docs.pgrouting.org/latest/es/pgr_lengauerTarjanDominatorTree.html>`__"
-" (`3.3
-"<https://docs.pgrouting.org/3.3/es/pgr_lengauerTarjanDominatorTree.html>`__)"
+" (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_lengauerTarjanDominatorTree.html>`__)"
+" `3.3"
+"<https://docs.pgrouting.org/3.3/es/pgr_lengauerTarjanDominatorTree.html>`__"
 " `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_lengauerTarjanDominatorTree.html>`__"
 
