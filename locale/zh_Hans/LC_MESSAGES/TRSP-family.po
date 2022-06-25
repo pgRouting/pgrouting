@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-03-28 21:21+0000\n"
 "Last-Translator: Chen <onsummer@foxmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -209,8 +209,8 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/TRSP-family.rst:92 ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/TRSP-family.rst:92 ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Description"
 msgstr ""
 
@@ -248,8 +248,8 @@ msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:103
-#: ../../build/doc/pgRouting-concepts.rst:21
 #: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Where:"
 msgstr ""
 
@@ -338,9 +338,9 @@ msgstr ""
 msgid "``cost``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**ANY-NUMERICAL**"
 msgstr ""
 
@@ -366,8 +366,8 @@ msgid ""
 "not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
@@ -375,8 +375,8 @@ msgstr ""
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 

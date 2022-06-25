@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -88,10 +88,10 @@ msgid "New **proposed** function ``pgr_trspVia`` (`One Via`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:37 ../../build/doc/TRSP-family.rst:10
-#: ../../build/doc/dijkstra-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/dijkstra-family.rst:11 ../../build/doc/via-category.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/via-category.rst:10 ../../build/doc/via-category.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/via-category.rst:10
 msgid "Description"
 msgstr "Descripción"
 
@@ -157,7 +157,7 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/TRSP-family.rst:9 ../../build/doc/dijkstra-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/via-category.rst:9
+#: ../../build/doc/via-category.rst:9 ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr "Tipo"
 
@@ -193,8 +193,8 @@ msgstr "``ARRAY[`` **ENTEROS** ``]``"
 msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
-#: ../../build/doc/TRSP-family.rst:21 ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/TRSP-family.rst:21 ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Where:"
 msgstr "Donde:"
 
@@ -215,9 +215,8 @@ msgstr "Parámetros opcionales"
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/dijkstra-family.rst:10 ../../build/doc/via-category.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/via-category.rst:10
 msgid "Default"
 msgstr "x Defecto"
 
@@ -316,9 +315,9 @@ msgstr "Identificador del segundo vértice de la arista."
 msgid "``cost``"
 msgstr "``cost``"
 
-#: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**ANY-NUMERICAL**"
 msgstr "**FLOTANTES**"
 
@@ -346,8 +345,8 @@ msgstr ""
 "Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
 "no es parte del grafo."
 
-#: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/pgRouting-concepts.rst:23
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
@@ -355,8 +354,8 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
-#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
@@ -617,4 +616,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_trspVia.rst:239
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
