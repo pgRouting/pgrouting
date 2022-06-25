@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -77,14 +77,14 @@ msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:55 ../../build/doc/BFS-category.rst:92
-#: ../../build/doc/BFS-category.rst:127
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/BFS-category.rst:127
 msgid "Type"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:56 ../../build/doc/BFS-category.rst:94
-#: ../../build/doc/BFS-category.rst:128
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/BFS-category.rst:128
 msgid "Description"
 msgstr ""
 
@@ -141,8 +141,9 @@ msgstr ""
 msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:74 ../../build/doc/BFS-category.rst:158
+#: ../../build/doc/BFS-category.rst:74
 #: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/BFS-category.rst:158
 msgid "Where:"
 msgstr ""
 
@@ -229,8 +230,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:151
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/BFS-category.rst:151
 msgid "``cost``"
 msgstr ""
 

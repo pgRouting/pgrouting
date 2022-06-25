@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-05 17:43+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,7 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../build/doc/reference.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference.html>`__)"
+msgid ""
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
+"reference.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/reference."
+"html>`__)"
 msgstr ""
 
 #: ../../build/doc/reference.rst:17

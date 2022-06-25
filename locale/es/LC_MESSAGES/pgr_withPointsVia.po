@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 00:25+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -88,12 +88,12 @@ msgstr ""
 msgid "New **proposed** function ``pgr_withPointsVia`` (`One Via`_)"
 msgstr ""
 
-#: ../../build/doc/pgr_withPointsVia.rst:38
+#: ../../build/doc/pgr_withPointsVia.rst:38 ../../build/doc/via-category.rst:11
 #: ../../build/doc/dijkstra-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/via-category.rst:10 ../../build/doc/via-category.rst:11
-#: ../../build/doc/withPoints-category.rst:11
 #: ../../build/doc/withPoints-family.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/withPoints-category.rst:11
+#: ../../build/doc/via-category.rst:10
 msgid "Description"
 msgstr "Descripción"
 
@@ -163,23 +163,22 @@ msgstr ""
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/via-category.rst:8 ../../build/doc/withPoints-category.rst:8
-#: ../../build/doc/withPoints-family.rst:8
+#: ../../build/doc/via-category.rst:8 ../../build/doc/withPoints-family.rst:8
+#: ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/dijkstra-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/via-category.rst:9
-#: ../../build/doc/withPoints-category.rst:9
+#: ../../build/doc/via-category.rst:9 ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/withPoints-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/withPoints-category.rst:9
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/dijkstra-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/via-category.rst:10
-#: ../../build/doc/withPoints-category.rst:10
+#: ../../build/doc/via-category.rst:10 ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/withPoints-family.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/withPoints-category.rst:10
 msgid "Default"
 msgstr "x Defecto"
 
@@ -219,13 +218,13 @@ msgstr "Cuando sea positivo se considera como un identificador de vértice"
 msgid "When negative it is considered a point identifier"
 msgstr "Cuando sea negativo se considera como un identificador de punto"
 
-#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/via-category.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/withPoints-category.rst:40
 msgid "Where:"
 msgstr "Donde:"
 
-#: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/via-category.rst:0
+#: ../../build/doc/via-category.rst:0 ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
 msgid "ANY-INTEGER"
 msgstr "ENTEROS"
@@ -234,7 +233,7 @@ msgstr "ENTEROS"
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr "``SMALLINT, INTEGER, BIGINT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:0 ../../build/doc/via-category.rst:0
+#: ../../build/doc/via-category.rst:0 ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
@@ -312,13 +311,13 @@ msgstr ""
 msgid "``driving_side``"
 msgstr ""
 
-#: ../../build/doc/withPoints-category.rst:32
 #: ../../build/doc/withPoints-family.rst:13
+#: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
 msgstr "``CHAR``"
 
-#: ../../build/doc/withPoints-category.rst:33
 #: ../../build/doc/withPoints-family.rst:14
+#: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
 msgstr "``b``"
 
@@ -724,4 +723,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_withPointsVia.rst:213
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
@@ -128,9 +128,9 @@ msgid "New **experimental** signature"
 msgstr "Nueva función **experimental**"
 
 #: ../../build/doc/pgr_edgeColoring.rst:40
-#: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/coloring-family.rst:6
 msgid "Description"
 msgstr "Descripción"
 
@@ -192,8 +192,8 @@ msgid ""
 "of the graph, (:math:`x'(G) = \\Delta`)"
 msgstr ""
 "El número cromático :math:`x'(G)` (mínima cantidad de colores necesitados "
-"para colorear apropiadamentnte las aristas de un grafo) es igual al grado "
-":math:`\\Delta + 1` del grafo, (:math:`x'(G) = \\Delta`)"
+"para colorear apropiadamentnte las aristas de un grafo) es igual al grado :"
+"math:`\\Delta + 1` del grafo, (:math:`x'(G) = \\Delta`)"
 
 #: ../../build/doc/pgr_edgeColoring.rst:66
 msgid "The algorithm tries to assign the least possible color to every edge."
@@ -246,8 +246,8 @@ msgstr "Parámetros"
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/coloring-family.rst:6
 msgid "Type"
 msgstr "Tipo"
 
@@ -271,8 +271,8 @@ msgstr "Consultas internas"
 msgid "Edges SQL"
 msgstr "SQL de aristas"
 
-#: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/coloring-family.rst:6
 msgid "Column"
 msgstr "Columna"
 
@@ -290,8 +290,8 @@ msgstr "``id``"
 msgid "**ANY-INTEGER**"
 msgstr "**ENTEROS**"
 
-#: ../../build/doc/coloring-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/coloring-family.rst:8
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
