@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,10 +98,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:47
 #: ../../build/doc/BFS-category.rst:10
-#: ../../build/doc/BFS-category.rst:11
-#: ../../build/doc/BFS-category.rst:12
 #: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/BFS-category.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/BFS-category.rst:12
 msgid "Description"
 msgstr ""
 
@@ -158,6 +158,8 @@ msgid "Single vertex"
 msgstr ""
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:0
+#: ../../build/doc/pgr_depthFirstSearch.rst:0
+#: ../../build/doc/pgr_depthFirstSearch.rst:0
 msgid "Example"
 msgstr ""
 
@@ -178,14 +180,16 @@ msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:8
+#: ../../build/doc/BFS-category.rst:8
 #: ../../build/doc/BFS-category.rst:10
 msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:9
-#: ../../build/doc/BFS-category.rst:11
 #: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/BFS-category.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/BFS-category.rst:11
 msgid "Type"
 msgstr ""
 
@@ -205,9 +209,9 @@ msgstr ""
 msgid "**Root vid**"
 msgstr ""
 
+#: ../../build/doc/BFS-category.rst:15
 #: ../../build/doc/BFS-category.rst:13
 #: ../../build/doc/BFS-category.rst:14
-#: ../../build/doc/BFS-category.rst:15
 #: ../../build/doc/BFS-category.rst:17
 #: ../../build/doc/BFS-category.rst:23
 #: ../../build/doc/BFS-category.rst:27
@@ -244,13 +248,14 @@ msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:28
-#: ../../build/doc/BFS-category.rst:42
 #: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/BFS-category.rst:42
 msgid "Where:"
 msgstr ""
 
 #: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -259,6 +264,7 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
+#: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/BFS-category.rst:0
 msgid "ANY-NUMERIC"
 msgstr ""
@@ -277,8 +283,8 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
@@ -361,8 +367,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:35
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/BFS-category.rst:35
 msgid "``cost``"
 msgstr ""
 
@@ -497,9 +503,11 @@ msgid "|ascending| |descending|"
 msgstr ""
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:171
+#: ../../build/doc/pgr_depthFirstSearch.rst:171
 msgid "ascending"
 msgstr ""
 
+#: ../../build/doc/pgr_depthFirstSearch.rst:174
 #: ../../build/doc/pgr_depthFirstSearch.rst:174
 msgid "descending"
 msgstr ""

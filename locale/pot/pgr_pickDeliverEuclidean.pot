@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,10 +247,20 @@ msgid "Parameters"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:8
+#: ../../build/doc/VRP-category.rst:8
 #: ../../build/doc/VRP-category.rst:16
 msgid "Column"
 msgstr ""
 
+#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/VRP-category.rst:9
+#: ../../build/doc/VRP-category.rst:9
 #: ../../build/doc/VRP-category.rst:9
 #: ../../build/doc/VRP-category.rst:17
 msgid "Type"
@@ -258,6 +268,10 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:10
 #: ../../build/doc/VRP-category.rst:11
+#: ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:10
+#: ../../build/doc/VRP-category.rst:10
 #: ../../build/doc/VRP-category.rst:18
 msgid "Description"
 msgstr ""
@@ -312,8 +326,8 @@ msgid "``max_cycles``"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:17
-#: ../../build/doc/VRP-category.rst:20
 #: ../../build/doc/VRP-category.rst:21
+#: ../../build/doc/VRP-category.rst:20
 #: ../../build/doc/VRP-category.rst:23
 #: ../../build/doc/VRP-category.rst:46
 msgid "``INTEGER``"
@@ -373,12 +387,13 @@ msgid "A `SELECT` statement that returns the following columns:"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:149
+#: ../../build/doc/VRP-category.rst:40
 #: ../../build/doc/VRP-category.rst:24
 #: ../../build/doc/VRP-category.rst:28
-#: ../../build/doc/VRP-category.rst:40
 msgid "Where:"
 msgstr ""
 
+#: ../../build/doc/VRP-category.rst:11
 #: ../../build/doc/VRP-category.rst:11
 msgid "``id``"
 msgstr ""
@@ -395,17 +410,29 @@ msgstr ""
 msgid "``demand``"
 msgstr ""
 
+#: ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:18
+#: ../../build/doc/VRP-category.rst:21
+#: ../../build/doc/VRP-category.rst:24
+#: ../../build/doc/VRP-category.rst:29
+#: ../../build/doc/VRP-category.rst:32
+#: ../../build/doc/VRP-category.rst:35
 #: ../../build/doc/VRP-category.rst:12
 #: ../../build/doc/VRP-category.rst:15
 #: ../../build/doc/VRP-category.rst:18
 #: ../../build/doc/VRP-category.rst:21
-#: ../../build/doc/VRP-category.rst:23
+#: ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:18
+#: ../../build/doc/VRP-category.rst:21
 #: ../../build/doc/VRP-category.rst:24
 #: ../../build/doc/VRP-category.rst:29
-#: ../../build/doc/VRP-category.rst:32
 #: ../../build/doc/VRP-category.rst:34
-#: ../../build/doc/VRP-category.rst:35
 #: ../../build/doc/VRP-category.rst:39
+#: ../../build/doc/VRP-category.rst:12
+#: ../../build/doc/VRP-category.rst:15
+#: ../../build/doc/VRP-category.rst:18
+#: ../../build/doc/VRP-category.rst:23
 msgid "|ANY-NUMERICAL|"
 msgstr ""
 
@@ -475,12 +502,14 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
+#: ../../build/doc/VRP-category.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
 
+#: ../../build/doc/VRP-category.rst:43
 #: ../../build/doc/VRP-category.rst:26
 #: ../../build/doc/VRP-category.rst:30
-#: ../../build/doc/VRP-category.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 

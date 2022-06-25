@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-23 16:16+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,8 +136,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1314
 #: ../../build/doc/pgRouting-concepts.rst:1343
 #: ../../build/doc/pgRouting-concepts.rst:1372
-#: ../../build/doc/pgRouting-concepts.rst:1503
 #: ../../build/doc/withPoints-category.rst:40
+#: ../../build/doc/pgRouting-concepts.rst:1503
 msgid "Where:"
 msgstr ""
 
@@ -155,8 +155,9 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1704
 #: ../../build/doc/pgRouting-concepts.rst:1770
 #: ../../build/doc/pgRouting-concepts.rst:1827
-#: ../../build/doc/pgRouting-concepts.rst:1886
 #: ../../build/doc/flow-family.rst:4
+#: ../../build/doc/flow-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:1886
 msgid "Column"
 msgstr ""
 
@@ -169,6 +170,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1278
 #: ../../build/doc/pgRouting-concepts.rst:1335
 #: ../../build/doc/pgRouting-concepts.rst:1361
+#: ../../build/doc/withPoints-category.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:1406
 #: ../../build/doc/pgRouting-concepts.rst:1434
 #: ../../build/doc/pgRouting-concepts.rst:1480
@@ -178,9 +180,9 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1706
 #: ../../build/doc/pgRouting-concepts.rst:1772
 #: ../../build/doc/pgRouting-concepts.rst:1829
-#: ../../build/doc/pgRouting-concepts.rst:1888
 #: ../../build/doc/flow-family.rst:4
-#: ../../build/doc/withPoints-category.rst:11
+#: ../../build/doc/flow-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:1888
 msgid "Description"
 msgstr ""
 
@@ -512,6 +514,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1276
 #: ../../build/doc/pgRouting-concepts.rst:1334
 #: ../../build/doc/pgRouting-concepts.rst:1360
+#: ../../build/doc/withPoints-category.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:1405
 #: ../../build/doc/pgRouting-concepts.rst:1432
 #: ../../build/doc/pgRouting-concepts.rst:1479
@@ -521,9 +524,9 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1705
 #: ../../build/doc/pgRouting-concepts.rst:1771
 #: ../../build/doc/pgRouting-concepts.rst:1828
-#: ../../build/doc/pgRouting-concepts.rst:1887
 #: ../../build/doc/flow-family.rst:4
-#: ../../build/doc/withPoints-category.rst:9
+#: ../../build/doc/flow-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:1887
 msgid "Type"
 msgstr ""
 
@@ -550,10 +553,10 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1299
 #: ../../build/doc/pgRouting-concepts.rst:1337
 #: ../../build/doc/pgRouting-concepts.rst:1340
-#: ../../build/doc/pgRouting-concepts.rst:1491
-#: ../../build/doc/pgRouting-concepts.rst:1497
 #: ../../build/doc/withPoints-category.rst:13
 #: ../../build/doc/withPoints-category.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:1491
+#: ../../build/doc/pgRouting-concepts.rst:1497
 msgid "**ANY-INTEGER**"
 msgstr ""
 
@@ -573,6 +576,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1239
 #: ../../build/doc/pgRouting-concepts.rst:1286
 #: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:9
 msgid "Identifier of the first end point vertex of the edge."
 msgstr ""
 
@@ -582,6 +586,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1171
 #: ../../build/doc/pgRouting-concepts.rst:1243
 #: ../../build/doc/pgRouting-concepts.rst:1290
+#: ../../build/doc/flow-family.rst:11
 #: ../../build/doc/flow-family.rst:11
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
@@ -610,7 +615,16 @@ msgid "Weight of the edge (``source``, ``target``)"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -619,6 +633,13 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
 msgid "ANY-NUMERICAL"
@@ -1506,8 +1527,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1158
 #: ../../build/doc/pgRouting-concepts.rst:1230
 #: ../../build/doc/pgRouting-concepts.rst:1277
-#: ../../build/doc/pgRouting-concepts.rst:1433
 #: ../../build/doc/withPoints-category.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:1433
 msgid "Default"
 msgstr ""
 
@@ -1535,8 +1556,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1316
 #: ../../build/doc/pgRouting-concepts.rst:1345
 #: ../../build/doc/pgRouting-concepts.rst:1374
-#: ../../build/doc/pgRouting-concepts.rst:1505
 #: ../../build/doc/withPoints-category.rst:42
+#: ../../build/doc/pgRouting-concepts.rst:1505
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
@@ -1579,9 +1600,9 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:1156
 #: ../../build/doc/pgRouting-concepts.rst:1333
+#: ../../build/doc/withPoints-category.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:1404
 #: ../../build/doc/pgRouting-concepts.rst:1431
-#: ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
 msgstr ""
 
@@ -2000,6 +2021,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1709
 #: ../../build/doc/pgRouting-concepts.rst:1775
 #: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/flow-family.rst:6
 msgid "Sequential value starting from **1**."
 msgstr ""
 
@@ -2048,12 +2070,17 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1796
 #: ../../build/doc/pgRouting-concepts.rst:1831
 #: ../../build/doc/pgRouting-concepts.rst:1834
-#: ../../build/doc/pgRouting-concepts.rst:1890
 #: ../../build/doc/flow-family.rst:7
 #: ../../build/doc/flow-family.rst:9
 #: ../../build/doc/flow-family.rst:11
 #: ../../build/doc/flow-family.rst:13
 #: ../../build/doc/flow-family.rst:15
+#: ../../build/doc/flow-family.rst:7
+#: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:13
+#: ../../build/doc/flow-family.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:1890
 msgid "``BIGINT``"
 msgstr ""
 
@@ -2117,9 +2144,9 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1800
 #: ../../build/doc/pgRouting-concepts.rst:1804
 #: ../../build/doc/pgRouting-concepts.rst:1837
-#: ../../build/doc/pgRouting-concepts.rst:1893
 #: ../../build/doc/flow-family.rst:17
 #: ../../build/doc/flow-family.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:1893
 msgid "``FLOAT``"
 msgstr ""
 
@@ -2345,17 +2372,21 @@ msgid ":doc:`flow-family`"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:6
+#: ../../build/doc/flow-family.rst:6
 msgid "**seq**"
 msgstr ""
 
+#: ../../build/doc/flow-family.rst:6
 #: ../../build/doc/flow-family.rst:6
 msgid "``INT``"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:7
+#: ../../build/doc/flow-family.rst:7
 msgid "**edge**"
 msgstr ""
 
+#: ../../build/doc/flow-family.rst:7
 #: ../../build/doc/flow-family.rst:7
 msgid "Identifier of the edge in the original query (edges_sql)."
 msgstr ""
@@ -2369,6 +2400,7 @@ msgid "**end_vid**"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:13
+#: ../../build/doc/flow-family.rst:13
 msgid "**flow**"
 msgstr ""
 
@@ -2376,6 +2408,7 @@ msgstr ""
 msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
 msgstr ""
 
+#: ../../build/doc/flow-family.rst:15
 #: ../../build/doc/flow-family.rst:15
 msgid "**residual_capacity**"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,9 +45,9 @@ msgid "New **Official** function"
 msgstr ""
 
 #: ../../build/doc/pgr_primDD.rst:37
-#: ../../build/doc/BFS-category.rst:12
 #: ../../build/doc/drivingDistance-category.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/BFS-category.rst:12
 msgid "Description"
 msgstr ""
 
@@ -132,6 +132,7 @@ msgid "Single vertex"
 msgstr ""
 
 #: ../../build/doc/pgr_primDD.rst:0
+#: ../../build/doc/pgr_primDD.rst:0
 msgid "Example"
 msgstr ""
 
@@ -151,14 +152,14 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/drivingDistance-category.rst:8
+#: ../../build/doc/BFS-category.rst:10
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:11
 #: ../../build/doc/drivingDistance-category.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/BFS-category.rst:11
 msgid "Type"
 msgstr ""
 
@@ -178,12 +179,12 @@ msgstr ""
 msgid "**Root vid**"
 msgstr ""
 
+#: ../../build/doc/drivingDistance-category.rst:15
 #: ../../build/doc/BFS-category.rst:14
 #: ../../build/doc/BFS-category.rst:17
 #: ../../build/doc/BFS-category.rst:23
 #: ../../build/doc/BFS-category.rst:27
 #: ../../build/doc/BFS-category.rst:30
-#: ../../build/doc/drivingDistance-category.rst:15
 msgid "``BIGINT``"
 msgstr ""
 
@@ -215,9 +216,9 @@ msgstr ""
 msgid "**distance**"
 msgstr ""
 
+#: ../../build/doc/drivingDistance-category.rst:24
 #: ../../build/doc/BFS-category.rst:36
 #: ../../build/doc/BFS-category.rst:39
-#: ../../build/doc/drivingDistance-category.rst:24
 msgid "``FLOAT``"
 msgstr ""
 
@@ -225,15 +226,15 @@ msgstr ""
 msgid "Upper limit for the inclusion of a node in the result."
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:42
 #: ../../build/doc/drivingDistance-category.rst:27
 #: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/BFS-category.rst:42
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/drivingDistance-category.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -242,8 +243,8 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:0
 #: ../../build/doc/drivingDistance-category.rst:0
+#: ../../build/doc/BFS-category.rst:0
 msgid "ANY-NUMERIC"
 msgstr ""
 
@@ -298,8 +299,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:35
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/BFS-category.rst:35
 msgid "``cost``"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "This is the manual for pgRouting |release|."
 msgstr ""
 
-#: ../../build/doc/index.rst:-1
+#: ../../build/doc/index.rst:None
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
 msgstr ""
 
@@ -217,8 +217,8 @@ msgstr ""
 msgid ":doc:`pgr_kruskal`"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:3
 #: ../../build/doc/kruskal-family.rst:4
+#: ../../build/doc/BFS-category.rst:3
 msgid ":doc:`pgr_kruskalBFS`"
 msgstr ""
 
@@ -226,8 +226,8 @@ msgstr ""
 msgid ":doc:`pgr_kruskalDD`"
 msgstr ""
 
-#: ../../build/doc/DFS-category.rst:3
 #: ../../build/doc/kruskal-family.rst:6
+#: ../../build/doc/DFS-category.rst:3
 msgid ":doc:`pgr_kruskalDFS`"
 msgstr ""
 
@@ -240,8 +240,8 @@ msgstr ""
 msgid ":doc:`pgr_prim`"
 msgstr ""
 
-#: ../../build/doc/BFS-category.rst:4
 #: ../../build/doc/prim-family.rst:4
+#: ../../build/doc/BFS-category.rst:4
 msgid ":doc:`pgr_primBFS`"
 msgstr ""
 
@@ -249,8 +249,8 @@ msgstr ""
 msgid ":doc:`pgr_primDD`"
 msgstr ""
 
-#: ../../build/doc/DFS-category.rst:4
 #: ../../build/doc/prim-family.rst:6
+#: ../../build/doc/DFS-category.rst:4
 msgid ":doc:`pgr_primDFS`"
 msgstr ""
 

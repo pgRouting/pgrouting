@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 00:25+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,13 +81,14 @@ msgid "New **proposed** function ``pgr_trspVia_withPoints`` (`One Via`_)"
 msgstr ""
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:38
-#: ../../build/doc/dijkstra-family.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_trsp_withPoints.rst:11
-#: ../../build/doc/via-category.rst:10
 #: ../../build/doc/via-category.rst:11
+#: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/via-category.rst:11
+#: ../../build/doc/pgr_trsp_withPoints.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/withPoints-category.rst:11
+#: ../../build/doc/via-category.rst:10
 msgid "Description"
 msgstr ""
 
@@ -167,24 +168,29 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:8
 #: ../../build/doc/via-category.rst:8
+#: ../../build/doc/via-category.rst:8
+#: ../../build/doc/pgr_trsp_withPoints.rst:8
 #: ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgr_trsp_withPoints.rst:9
 #: ../../build/doc/via-category.rst:9
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/via-category.rst:9
+#: ../../build/doc/pgr_trsp_withPoints.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/withPoints-category.rst:9
+#: ../../build/doc/via-category.rst:9
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/dijkstra-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgr_trsp_withPoints.rst:10
 #: ../../build/doc/via-category.rst:10
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/via-category.rst:10
+#: ../../build/doc/pgr_trsp_withPoints.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/withPoints-category.rst:10
 msgid "Default"
 msgstr ""
@@ -211,8 +217,8 @@ msgstr ""
 msgid "**via vertices**"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/via-category.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
 msgstr ""
 
@@ -228,15 +234,16 @@ msgstr ""
 msgid "When negative it is considered a point identifier"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/via-category.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgRouting-concepts.rst:21
 #: ../../build/doc/withPoints-category.rst:40
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/via-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
@@ -245,8 +252,9 @@ msgstr ""
 msgid "SMALLINT, INTEGER, BIGINT"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/via-category.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst:0
 #: ../../build/doc/withPoints-category.rst:0
 msgid "ANY-NUMERICAL"
 msgstr ""
@@ -261,6 +269,7 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/via-category.rst:8
 msgid "Column"
 msgstr ""
@@ -270,9 +279,9 @@ msgid "``directed``"
 msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:13
-#: ../../build/doc/pgr_trsp_withPoints.rst:21
 #: ../../build/doc/via-category.rst:13
 #: ../../build/doc/via-category.rst:18
+#: ../../build/doc/pgr_trsp_withPoints.rst:21
 msgid "``BOOLEAN``"
 msgstr ""
 
@@ -297,8 +306,8 @@ msgstr ""
 msgid "``strict``"
 msgstr ""
 
-#: ../../build/doc/pgr_trsp_withPoints.rst:22
 #: ../../build/doc/via-category.rst:14
+#: ../../build/doc/pgr_trsp_withPoints.rst:22
 msgid "``false``"
 msgstr ""
 
@@ -408,9 +417,9 @@ msgstr ""
 msgid "``cost``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
+#: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/withPoints-category.rst:27
 msgid "**ANY-NUMERICAL**"
 msgstr ""
@@ -435,14 +444,14 @@ msgstr ""
 msgid "When negative: edge (``target``, ``source``) does not exist, therefore it's not part of the graph."
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/withPoints-category.rst:42
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/withPoints-category.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""

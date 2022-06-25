@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,9 +57,9 @@ msgid "New **proposed** function"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:44
-#: ../../build/doc/aStar-family.rst:11
 #: ../../build/doc/costMatrix-category.rst:10
 #: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/aStar-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Description"
@@ -119,6 +119,7 @@ msgid "Summary"
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:0
+#: ../../build/doc/pgr_bdAstarCostMatrix.rst:0
 msgid "Example"
 msgstr ""
 
@@ -136,9 +137,9 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:9
 #: ../../build/doc/costMatrix-category.rst:9
 #: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/aStar-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Type"
@@ -172,8 +173,8 @@ msgstr ""
 msgid "Optional parameters"
 msgstr ""
 
-#: ../../build/doc/aStar-family.rst:10
 #: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/aStar-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""

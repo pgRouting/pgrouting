@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,9 +109,9 @@ msgid "New **experimental** signature"
 msgstr ""
 
 #: ../../build/doc/pgr_chinesePostmanCost.rst:38
-#: ../../build/doc/pgr_chinesePostmanCost.rst:87
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_chinesePostmanCost.rst:87
 msgid "Description"
 msgstr ""
 
@@ -151,8 +151,9 @@ msgstr ""
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:86
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_chinesePostmanCost.rst:86
 msgid "Type"
 msgstr ""
 
@@ -180,8 +181,8 @@ msgstr ""
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
 msgstr ""
 
-#: ../../build/doc/pgr_chinesePostmanCost.rst:85
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgr_chinesePostmanCost.rst:85
 msgid "Column"
 msgstr ""
 

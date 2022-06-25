@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-06-25 12:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgid "**Official** pgr_drivingDistance(single vertex)"
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:51
-#: ../../build/doc/pgr_drivingDistance.rst:132
-#: ../../build/doc/pgr_drivingDistance.rst:165
-#: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/drivingDistance-category.rst:10
+#: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgr_drivingDistance.rst:132
 #: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_drivingDistance.rst:165
 msgid "Description"
 msgstr ""
 
@@ -81,6 +81,8 @@ msgstr ""
 msgid "Single Vertex"
 msgstr ""
 
+#: ../../build/doc/pgr_drivingDistance.rst:0
+#: ../../build/doc/pgr_drivingDistance.rst:0
 #: ../../build/doc/pgr_drivingDistance.rst:0
 msgid "Example"
 msgstr ""
@@ -101,16 +103,16 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:163
 #: ../../build/doc/drivingDistance-category.rst:8
+#: ../../build/doc/pgr_drivingDistance.rst:163
 msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:130
-#: ../../build/doc/pgr_drivingDistance.rst:164
-#: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/drivingDistance-category.rst:9
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgr_drivingDistance.rst:130
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgr_drivingDistance.rst:164
 msgid "Type"
 msgstr ""
 
@@ -130,11 +132,11 @@ msgstr ""
 msgid "**Root vid**"
 msgstr ""
 
+#: ../../build/doc/drivingDistance-category.rst:15
 #: ../../build/doc/pgr_drivingDistance.rst:167
 #: ../../build/doc/pgr_drivingDistance.rst:170
 #: ../../build/doc/pgr_drivingDistance.rst:174
 #: ../../build/doc/pgr_drivingDistance.rst:177
-#: ../../build/doc/drivingDistance-category.rst:15
 msgid "``BIGINT``"
 msgstr ""
 
@@ -166,9 +168,9 @@ msgstr ""
 msgid "**distance**"
 msgstr ""
 
+#: ../../build/doc/drivingDistance-category.rst:24
 #: ../../build/doc/pgr_drivingDistance.rst:183
 #: ../../build/doc/pgr_drivingDistance.rst:186
-#: ../../build/doc/drivingDistance-category.rst:24
 msgid "``FLOAT``"
 msgstr ""
 
@@ -176,15 +178,15 @@ msgstr ""
 msgid "Upper limit for the inclusion of a node in the result."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:189
 #: ../../build/doc/drivingDistance-category.rst:27
 #: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgr_drivingDistance.rst:189
 msgid "Where:"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:0
 #: ../../build/doc/drivingDistance-category.rst:0
 #: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgr_drivingDistance.rst:0
 msgid "ANY-INTEGER"
 msgstr ""
 
@@ -193,8 +195,8 @@ msgstr ""
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:0
 #: ../../build/doc/drivingDistance-category.rst:0
+#: ../../build/doc/pgr_drivingDistance.rst:0
 msgid "ANY-NUMERIC"
 msgstr ""
 
@@ -207,14 +209,14 @@ msgstr ""
 msgid "Optional parameters"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:129
 #: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/pgr_drivingDistance.rst:129
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:131
 #: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/pgr_drivingDistance.rst:131
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
@@ -223,13 +225,13 @@ msgstr ""
 msgid "``directed``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:134
 #: ../../build/doc/dijkstra-family.rst:13
+#: ../../build/doc/pgr_drivingDistance.rst:134
 msgid "``BOOLEAN``"
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:135
 #: ../../build/doc/dijkstra-family.rst:14
+#: ../../build/doc/pgr_drivingDistance.rst:135
 msgid "``true``"
 msgstr ""
 
@@ -295,8 +297,8 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
-#: ../../build/doc/pgr_drivingDistance.rst:182
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgr_drivingDistance.rst:182
 msgid "``cost``"
 msgstr ""
 
