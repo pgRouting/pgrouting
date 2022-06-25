@@ -186,7 +186,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad:</p>
@@ -194,7 +194,7 @@
 <li><p>Versión 3.2.1</p>
 <ul>
 <li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
-<li><p>El algoritmo de recocido simulado ya no es utilizado.</p>
+<li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
 <li><p>The Simulated Annealing Algorithm related parameters are ignored:
 <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>,
@@ -345,7 +345,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>El primer vértice visitado</p>
 <ul class="simple">
-<li><p>Cuando <cite>0</cite>  cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
+<li><p>Cuando <cite>0</cite> cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
 </ul>
 </td>
 </tr>
@@ -404,7 +404,7 @@ vertex</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Secuencia de filas.</p></td>
 </tr>
@@ -412,19 +412,19 @@ vertex</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del nodo/coordenada/punto.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<tr class="row-even"><td><p><strong>costo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</p>
+<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en la secuencia de ruta.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la última fila de la secuencia del recorrido.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la última fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
+<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la primera fila en la secuencia del recorrido.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la primera fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
@@ -530,7 +530,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
-<li><p>Red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
@@ -556,7 +556,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

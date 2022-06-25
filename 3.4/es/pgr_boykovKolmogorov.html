@@ -176,7 +176,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Availability</p>
@@ -215,7 +215,7 @@
 <li><p>El proceso se realiza sólo en aristas con capacidades positivas.</p></li>
 <li><p>Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: <strong>EMPTY SET</strong>.</p>
 <ul>
-<li><p>No hay ningún flujo cuando el  <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</p></li>
+<li><p>No hay ningún flujo cuando el <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</p></li>
 </ul>
 </li>
 <li><p>Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será ignorado.</p></li>
@@ -225,7 +225,7 @@
 </ul>
 </li>
 <li><p>Crea una <strong>súper origen</strong>, con aristas para todos los orígen(es), y un <strong>súper destino</strong> con aristas para todos los destino(s).</p></li>
-<li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por  <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
+<li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
 <ul>
 <li><p>Mediante la agregación del flujo saliente de los orígenes</p></li>
 <li><p>Mediante la agregación del flujo entrante a los destinos</p></li>
@@ -467,12 +467,12 @@ vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to verti
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer vértice extremo de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
@@ -493,7 +493,7 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
@@ -528,7 +528,7 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
@@ -544,7 +544,7 @@ it’s not part of the graph.</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
 <td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
 </tr>
@@ -553,19 +553,19 @@ it’s not part of the graph.</p></li>
 <td><p>Identifier of the edge in the original query
 (edges_sql).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start_vid</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del primer vértice extremo de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end_vid</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>flujo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Flujo a través del arista en la dirección  (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p></td>
+<td><p>Flujo a través del arista en la dirección (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>residual_capacity</strong> (<strong>capacidad residual</strong>)</p></td>
+<tr class="row-odd"><td><p><strong>residual_capacity</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Capacidad residual del arista en la dirección (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>).</p></td>
 </tr>
@@ -626,7 +626,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

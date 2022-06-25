@@ -98,7 +98,7 @@
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
-<li><a class="reference internal" href="#single-vertex">Un solo vértice</a></li>
+<li><a class="reference internal" href="#single-vertex">Vértice único</a></li>
 <li><a class="reference internal" href="#multiple-vertices">Múltiples vértices</a></li>
 </ul>
 </li>
@@ -174,7 +174,7 @@ First Search ordering.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
@@ -220,7 +220,7 @@ of the Minimum Spanning Tree created using Kruskal’s algorithm.</p>
 pgr_kruskalBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth])
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <section id="single-vertex">
-<span id="index-0"></span><h3>Un solo vértice<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
+<span id="index-0"></span><h3>Vértice único<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
 <pre class="literal-block">pgr_kruskalBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth])
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
@@ -312,7 +312,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>Raíces</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[ANY-INTEGER]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARREGLO[ENTEROS]</span></code></p></td>
 <td><p>Arreglo de identificadores de los vértices raíz.</p>
 <ul class="simple">
 <li><p>Valores <span class="math notranslate nohighlight">\(0\)</span> son ignorados</p></li>
@@ -324,8 +324,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">ANY-NUMERIC<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
@@ -382,12 +382,12 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer vértice extremo de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -408,10 +408,10 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -468,8 +468,8 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">ANY-NUMERIC<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
@@ -506,7 +506,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

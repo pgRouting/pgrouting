@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Via - Category &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>Via- Categoria &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="withPoints - Category" href="withPoints-category.html" />
+    <link rel="next" title="withPoints- Categoría" href="withPoints-category.html" />
     <link rel="prev" title="pgr_withPointsVia - Proposed" href="pgr_withPointsVia.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -95,19 +95,19 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Via - Category</a><ul>
-<li><a class="reference internal" href="#general-information">General Information</a></li>
+<li><a class="reference internal" href="#">Via- Categoria</a><ul>
+<li><a class="reference internal" href="#general-information">Información general</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#via-optional-parameters">Via optional parameters</a></li>
+<li><a class="reference internal" href="#via-optional-parameters">Vía parámetros opcional</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
-<li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+<li><a class="reference internal" href="#restrictions-sql">Restricciones SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Puntos SQL</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -124,7 +124,7 @@
     </a>
   </li>
   <li>
-    <a href="withPoints-category.html" title="Next Chapter: withPoints - Category"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">withPoints - Category &raquo;</span>
+    <a href="withPoints-category.html" title="Next Chapter: withPoints- Categoría"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">withPoints- Categoría &raquo;</span>
     </a>
   </li>
               
@@ -156,13 +156,11 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/via-category.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/via-category.html">3.4</a>)</p></li>
+<li><p><strong>Versiones Soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/en/via-category.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/en/via-category.html">3.4</a>)</p></li>
 </ul>
 <section id="via-category">
-<h1>Via - Category<a class="headerlink" href="#via-category" title="Permalink to this heading">¶</a></h1>
-<p class="rubric">proposed</p>
+<h1>Via- Categoria<a class="headerlink" href="#via-category" title="Permalink to this heading">¶</a></h1>
+<p class="rubric">propuesta</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -170,7 +168,7 @@
 <li><p>No están oficialmente en la versión actual.</p></li>
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
-<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
 <li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
@@ -187,26 +185,24 @@
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a></p></li>
 </ul>
 <section id="general-information">
-<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
-<p>This category intends to solve the general problem:</p>
+<h2>Información general<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
+<p>La intención de esta categoría es resolver el problema general:</p>
 <blockquote>
-<div><p>Given a graph and a list of vertices, find the shortest path between
-<span class="math notranslate nohighlight">\(vertex_i\)</span> and <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> for all vertices</p>
+<div><p>Dado un grafo y una lista de vértices, encuentra el camino mas corto entre <span class="math notranslate nohighlight">\(vertex_i\)</span> and <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> para todos los vértices</p>
 </div></blockquote>
-<p>In other words, find a continuos route that visits all the vertices in the order
-given.</p>
+<p>En otras palabras, encuentre la ruta continua que visite todos los vértices en el orden dado.</p>
 <dl class="field-list simple">
-<dt class="field-odd">path<span class="colon">:</span></dt>
-<dd class="field-odd"><p>represents a section of a <strong>route</strong>.</p>
+<dt class="field-odd">camino<span class="colon">:</span></dt>
+<dd class="field-odd"><p>representa una sección de una <strong>ruta</strong>.</p>
 </dd>
-<dt class="field-even">route<span class="colon">:</span></dt>
-<dd class="field-even"><p>is a sequence of <strong>paths</strong></p>
+<dt class="field-even">ruta<span class="colon">:</span></dt>
+<dd class="field-even"><p>es una secuencia de <strong>caminos</strong></p>
 </dd>
 </dl>
 </section>
 <section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
-<p><strong>Used on:</strong></p>
+<p><strong>Usado en:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a></p></li>
@@ -229,25 +225,25 @@ given.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>SQL query as described.</p></td>
+<td><p>consulta SQL como descrito.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<tr class="row-odd"><td><p><strong>vía vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
-<td><p>Arreglo ordenados de identificadores de vértices que serán visitados.</p></td>
+<td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p><strong>Used on:</strong></p>
+<p><strong>Usado en:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a></p></li>
@@ -270,20 +266,20 @@ given.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>SQL query as described.</p></td>
+<td><p>consulta SQL como descrito.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>SQL query as described.</p></td>
+<td><p>consulta SQL como descrito.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>via vertices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<tr class="row-even"><td><p><strong>vía vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
-<td><p>Arreglo ordenados de identificadores de vértices que serán visitados.</p>
+<td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p>
 <ul class="simple">
-<li><p>When positive it is considered a vertex identifier</p></li>
-<li><p>When negative it is considered a point identifier</p></li>
+<li><p>Cuando sea positivo se considera como un identificador de vértice</p></li>
+<li><p>Cuando sea negativo se considera como un identificador de punto</p></li>
 </ul>
 </td>
 </tr>
@@ -291,18 +287,17 @@ given.</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p>Besides the compulsory parameters each function has, there are optional
-parameters that exist due to the kind of function.</p>
+<p>Ademas de los parámetros obligatorios que tiene cada función, hay parámetros opcionales que existen dado el tipo de función.</p>
 <section id="via-optional-parameters">
-<h3>Via optional parameters<a class="headerlink" href="#via-optional-parameters" title="Permalink to this heading">¶</a></h3>
-<p class="rubric">Used on all Via functions</p>
+<h3>Vía parámetros opcional<a class="headerlink" href="#via-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<p class="rubric">Usado en todas las funciones Via</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -322,8 +317,8 @@ parameters that exist due to the kind of function.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> if a path is missing stops and returns <strong>EMPTY SET</strong></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> ignores missing paths returning all paths found</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> si un camino le faltan paradas y regresa <strong>EMPTY SET</strong></p></li>
+<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignora las rutas faltantes y devuelve todas las rutas encontradas</p></li>
 </ul>
 </td>
 </tr>
@@ -331,7 +326,7 @@ parameters that exist due to the kind of function.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> departing from a visited vertex will not try to avoid</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> saliendo desde un vértice visitado no intentara esquivarlo</p></li>
 </ul>
 </td>
 </tr>
@@ -340,11 +335,11 @@ parameters that exist due to the kind of function.</p>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
-<p>Depending on the function one or more inner queries are needed.</p>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<p>Dependiendo de la función, serán necesarias una o mas consultas internas.</p>
 <section id="edges-sql">
 <h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
-<p class="rubric">Used on all Via functions</p>
+<p class="rubric">Usado en todas las funciones Via</p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -361,29 +356,29 @@ parameters that exist due to the kind of function.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identificador del primer vértice extremo de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Peso de la arsita (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
 <li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
@@ -393,30 +388,59 @@ parameters that exist due to the kind of function.</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
-<p>Used on</p>
+<h3>Restricciones SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<p>Usado en</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a></p></li>
 </ul>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">end-before<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Sequence of edge identifiers that form a path that is not allowed to be
+taken.
+- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
+- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>Cost of taking the forbidden path.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
 </dl>
-</div></blockquote>
 </section>
 <section id="points-sql">
-<h3>Points SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
-<p>Used on</p>
+<h3>Puntos SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<p>Usado en</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPointsVia.html"><span class="doc">pgr_withPointsVia - Proposed</span></a></p></li>
 </ul>
@@ -436,36 +460,33 @@ parameters that exist due to the kind of function.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p><strong>value</strong></p></td>
-<td><p>Identifier of the point.</p>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p><strong>valor</strong></p></td>
+<td><p>Identificador del punto.</p>
 <ul class="simple">
-<li><p>Use with positive value, as internally will be converted to negative
-value</p></li>
-<li><p>If column is present, it can not be NULL.</p></li>
-<li><p>If column is not present, a sequential negative <strong>value</strong> will be given
-automatically.</p></li>
+<li><p>Use con un valor positivo, dado que internamente se convertirá a un valor negativo</p></li>
+<li><p>Si columna esta presente, no puede ser NULL.</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo automáticamente se otorgará..</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the «closest» edge to the point.</p></td>
+<td><p>Identificador de la arista «más cercana» al punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Value in &lt;0,1&gt; that indicates the relative postition from the first end
-point of the edge.</p></td>
+<td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicating if the point is:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicando si el punto es:</p>
 <ul class="simple">
-<li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
-<li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
+<li><p>A la izquierda <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
 <li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
@@ -474,17 +495,17 @@ point of the edge.</p></td>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -526,8 +547,8 @@ point of the edge.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
-<li><p>-1 para el último nodo de la ruta</p></li>
-<li><p>-2 para el último nodo de la ruta</p></li>
+<li><p>-1 para el último nodo de la ruta.</p></li>
+<li><p>-2 para el último nodo de la ruta.</p></li>
 </ul>
 </td>
 </tr>
@@ -547,8 +568,7 @@ point of the edge.</p></td>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>When <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> and <code class="docutils literal notranslate"><span class="pre">node</span></code> columns have negative values,
-the identifier is for a Point.</p>
+<p>Cuando las columnas <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>, <code class="docutils literal notranslate"><span class="pre">end_vid</span></code> y``node`` tengan valores negativos, el identificador es para un Punto.</p>
 </div>
 </section>
 <section id="see-also">
@@ -579,7 +599,7 @@ the identifier is for a Point.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

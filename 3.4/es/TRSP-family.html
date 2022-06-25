@@ -95,12 +95,12 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">TRSP - Familia de funciones</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a><ul>
-<li><a class="reference internal" href="#trsp-algorithm">TRSP algorithm</a></li>
-<li><a class="reference internal" href="#parameters">Parameters</a></li>
-<li><a class="reference internal" href="#restrictions">Restrictions</a></li>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
-<li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
+<li><a class="reference internal" href="#introduction">Introducción</a><ul>
+<li><a class="reference internal" href="#trsp-algorithm">Algoritmo TRSP</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a></li>
+<li><a class="reference internal" href="#restrictions">Restricciones</a></li>
+<li><a class="reference internal" href="#edges-sql">SQL de aristas</a><ul>
+<li><a class="reference internal" href="#restrictions-sql">Restricciones SQL</a></li>
 </ul>
 </li>
 </ul>
@@ -157,7 +157,7 @@
 </ul>
 <section id="trsp-family-of-functions">
 <h1>TRSP - Familia de funciones<a class="headerlink" href="#trsp-family-of-functions" title="Permalink to this heading">¶</a></h1>
-<p>When points are also given as input:</p>
+<p>Cuando los puntos también se dan como entrada:</p>
 <p class="rubric">Propuesto</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -166,7 +166,7 @@
 <li><p>No están oficialmente en la versión actual.</p></li>
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
-<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
 <li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
@@ -177,69 +177,63 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Vertex - Vertex routing with restrictions.</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> - Via Vertices routing with restrictions.</p></li>
-<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Vertex/Point routing with restrictions.</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Vertex/point routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a> - Ruteo Vértice - Vértice con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia.html"><span class="doc">pgr_trspVia - Proposed</span></a> - Via Ruteo de Vértices con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Ruteo de Punto/Vértice con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Ruteo de Punto/Vértice con restricciones.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Read the <a class="reference internal" href="migration.html"><span class="doc">Migration guide</span></a> about how to migrate from the
-deprecated TRSP functionality to the new signatures or replacement functions.</p>
+<p>Leer <a class="reference internal" href="migration.html"><span class="doc">Migration guide</span></a> sobre como migrar de la funcionalidad obsoleta de TRSP a las nuevas firmas o funciones que las reemplazan.</p>
 </div>
 <p class="rubric">Experimental</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Possible server crash</p>
+<p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>These functions might create a server crash</p></li>
+<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Experimental functions</p>
+<p>Funciones experimentales</p>
 <ul class="simple">
-<li><p>They are not officially of the current release.</p></li>
-<li><p>They likely will not be officially be part of the next release:</p>
+<li><p>No son oficialmente de la versión actual.</p></li>
+<li><p>Es probable que oficialmente no formen parte de la siguiente versión:</p>
 <ul>
-<li><p>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</p></li>
-<li><p>Name might change.</p></li>
-<li><p>Signature might change.</p></li>
-<li><p>Functionality might change.</p></li>
-<li><p>pgTap tests might be missing.</p></li>
-<li><p>Might need c/c++ coding.</p></li>
-<li><p>May lack documentation.</p></li>
-<li><p>Documentation if any might need to be rewritten.</p></li>
-<li><p>Documentation examples might need to be automatically generated.</p></li>
-<li><p>Might need a lot of feedback from the comunity.</p></li>
-<li><p>Might depend on a proposed function of pgRouting</p></li>
-<li><p>Might depend on a deprecated function of pgRouting</p></li>
+<li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
+<li><p>El nombre puede cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La funcionalidad puede cambiar.</p></li>
+<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Posiblemente necesite codificación c/c++.</p></li>
+<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
+<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
+<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede depender de una función propuesta de pgRouting</p></li>
+<li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_turnRestrictedPath.html"><span class="doc">pgr_turnRestrictedPath - Experimental</span></a> - Routing with restrictions.</p></li>
+<li><p><a class="reference internal" href="pgr_turnRestrictedPath.html"><span class="doc">pgr_turnRestrictedPath - Experimental</span></a> - Ruteo con restricciones.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
-<p>Road restrictions are a sequence of road segments that can not be taken in a
-sequential manner.
-Some restrictions are implicit on a directed graph, for example, one way roads
-where the wrong way edge is not even inserted on the graph.
-But normally on turns like <strong>left turn</strong> or <strong>right turn</strong>, hence the name turn
-restrictions, there are sometimes restrictions.</p>
+<h2>Introducción<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>Las restricciones viales son una secuencia de tramos viales que no se pueden tomar de manera secuencial. Algunas restricciones están implícitas en un grafo dirigido, por ejemplo, caminos de un solo sentido donde el sentido contrario ni siquiera se inserta en el grafo. Pero normalmente en giros como <strong>giro a la izquierda</strong> o <strong>giro a la derecha</strong>, de ahí el nombre de restricciones de giro, a veces hay restricciones.</p>
 <img alt="_images/restrictions.png" src="_images/restrictions.png" />
 <section id="trsp-algorithm">
-<h3>TRSP algorithm<a class="headerlink" href="#trsp-algorithm" title="Permalink to this heading">¶</a></h3>
+<h3>Algoritmo TRSP<a class="headerlink" href="#trsp-algorithm" title="Permalink to this heading">¶</a></h3>
 <p>The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in
 order to find out if the attempted path has a restriction. This allows the
 algorithm to pass twice on the same vertex.</p>
 </section>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 23%" />
@@ -247,46 +241,45 @@ algorithm to pass twice on the same vertex.</p>
 <col style="width: 51%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> query as described.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">SQL de restricciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a> query as described.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>via vertices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
+<tr class="row-even"><td><p><strong>vía vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="restrictions">
-<h3>Restrictions<a class="headerlink" href="#restrictions" title="Permalink to this heading">¶</a></h3>
+<h3>Restricciones<a class="headerlink" href="#restrictions" title="Permalink to this heading">¶</a></h3>
 <p>On road networks, there are restrictions such as left or right turn restrictions,
 no U turn restrictions.</p>
-<p>A restriction is a sequence of edges, called <strong>path</strong> and that <strong>path</strong> is to be
-avoided.</p>
+<p>Una restricción es una secuencia de aristas, llamado <strong>path</strong> y ese <strong>path</strong> se debería evitar.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" src="_images/with_restrictions.png" style="width: 475.5px; height: 433.0px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>Restrictions on the road network</strong></span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text"><strong>Restricciones en la red de calles</strong></span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
-<p>These restrictions are represented on a table as follows:</p>
+<p>Éstas restricciones son representadas en la siguiente tabla:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="n">r1</span> <span class="o">*/</span>
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
     <span class="nb">id</span> <span class="n">SERIAL</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span>
@@ -307,13 +300,11 @@ avoided.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>The table has an identifier, which maybe is needed for the
-administration of the restrictions, but the algorithms do not need that
-information. If given it will be ignored.</p>
+<p>La tabla tiene un identificador, lo cual pueda ser necesaria para la administración de las restricciones, pero el algoritmo no necesita esa información. Si se le da, será ignorada.</p>
 </div>
 </section>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -324,38 +315,37 @@ information. If given it will be ignored.</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Default</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the edge.</p></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the first end point vertex of the edge.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -363,15 +353,15 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 <section id="restrictions-sql">
-<h4>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h4>
+<h4>Restricciones SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10%" />
@@ -386,7 +376,7 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Sequence of edge identifiers that form a path that is not allowed to be
 taken.
 - Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
@@ -394,16 +384,16 @@ taken.
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
-<td><p>Cost of taking the forbidden path.</p></td>
+<td><p>Costo de tomar el camino prohibido.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -433,7 +423,7 @@ taken.
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

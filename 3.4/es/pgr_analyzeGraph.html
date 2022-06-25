@@ -200,7 +200,7 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> ajuste tolerancia de bordes desconectados. (en la unidad de proyección)</p>
 </dd>
 <dt class="field-odd">the_geom<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
 </dd>
 <dt class="field-even">id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>.</p>
@@ -220,7 +220,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> Cuando el análisis ha terminado.</p>
 <ul>
 <li><p>Utiliza la tabla de los vértices: &lt;edge_table&gt;_vertices_pgr.</p></li>
-<li><p>Llena totalmente las columnas <code class="docutils literal notranslate"><span class="pre">cnt</span></code> y <code class="docutils literal notranslate"><span class="pre">chk</span></code>  de la tabla de vértices.</p></li>
+<li><p>Llena totalmente las columnas <code class="docutils literal notranslate"><span class="pre">cnt</span></code> y <code class="docutils literal notranslate"><span class="pre">chk</span></code> de la tabla de vértices.</p></li>
 <li><p>Devuelve el análisis de la sección de la red definida por <code class="docutils literal notranslate"><span class="pre">rows_where</span></code></p></li>
 </ul>
 </li>
@@ -450,7 +450,7 @@ is passed to the function as the geometry column, and the geometry column
 
 </pre></div>
 </div>
-<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100 de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="n">SELECT</span> <span class="mi">1</span>
 <span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom,1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
@@ -523,7 +523,7 @@ is passed to the function as the geometry column, and the geometry column
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado: en este ejemplo, la columna  <code class="docutils literal notranslate"><span class="pre">gid</span></code>  de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> se pasa a la función como geometría, y la columna de geometría``mygeom`` se pasa a la función como columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<p>Un error puede ocurrir cuando los argumentos no se dan en el orden adecuado: en este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">gid</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> se pasa a la función como geometría, y la columna de geometría``mygeom`` se pasa a la función como columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -678,7 +678,7 @@ is passed to the function as the geometry column, and the geometry column
 
 </pre></div>
 </div>
-<p>Seleccionar las filas donde la geometría está cerca de la place=”myhouse”  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>. (Nótese el uso de quote_literal)</p>
+<p>Seleccionar las filas donde la geometría está cerca de la place=”myhouse” de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>. (Nótese el uso de quote_literal)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="s1">&#39;myhouse&#39;</span><span class="p">::</span><span class="n">text</span> <span class="n">AS</span> <span class="n">place</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
@@ -873,7 +873,7 @@ is passed to the function as the geometry column, and the geometry column
 
 </pre></div>
 </div>
-<p>Los ejemplos usan la red de ejemplo  <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p>
+<p>Los ejemplos usan la red de ejemplo <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
@@ -904,7 +904,7 @@ is passed to the function as the geometry column, and the geometry column
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

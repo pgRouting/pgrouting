@@ -179,7 +179,7 @@
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
+<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -191,7 +191,7 @@
 <ul>
 <li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
 <li><p>El nombre puede cambiar.</p></li>
-<li><p>La declaración de funciones podría cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
 <li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
@@ -458,10 +458,10 @@
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -489,7 +489,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
@@ -523,7 +523,7 @@ are needed:</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-odd">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -617,7 +617,7 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
@@ -659,7 +659,7 @@ are needed:</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-odd">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -1023,7 +1023,7 @@ All time units have to be converted to a <strong>0</strong> reference and the sa
 <td><p>horas</p></td>
 <td><p>9</p></td>
 <td><p>16.5</p></td>
-<td><p><span class="math notranslate nohighlight">\(10.5 / 60  = 0.175\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>0:00 am</p></td>
 <td><p>minutos</p></td>
@@ -1035,7 +1035,7 @@ All time units have to be converted to a <strong>0</strong> reference and the sa
 <td><p>horas</p></td>
 <td><p>0</p></td>
 <td><p>7.5</p></td>
-<td><p><span class="math notranslate nohighlight">\(10.5 / 60  = 0.175\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10.5 / 60 = 0.175\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>9:00 am</p></td>
 <td><p>minutos</p></td>
@@ -1159,7 +1159,7 @@ For a 1000m lenght value on the matrix:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

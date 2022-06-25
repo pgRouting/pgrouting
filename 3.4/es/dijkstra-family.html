@@ -184,7 +184,7 @@
 <li><p>No están oficialmente en la versión actual.</p></li>
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
-<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
 <li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
@@ -197,7 +197,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a> - Obtener la ruta al vértice más cercano.</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a> - Get the cost to the nearest vertex.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a> - Consigue el costo del vértice más cercano.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -417,17 +417,12 @@ it’s not part of the graph.</p></li>
 <ul class="simple">
 <li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_{vid}} \cup  {end_{vid}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_{vid}} \cup {end_{vid}}\)</span></p></li>
 </ul>
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
-\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\
-\text{ }  \text{ }  &amp; \quad \text{ } \\
-\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp;  \quad \text{ } \\
-\cup      \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\
-\end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{if } reverse\_cost = \varnothing \\ \text{ } \text{ } &amp; \quad \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i&gt;=0 \} &amp; \quad \text{if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -436,27 +431,19 @@ it’s not part of the graph.</p></li>
 <ul class="simple">
 <li><p>Conjunto de vértices <span class="math notranslate nohighlight">\(V\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_v{vid}} \cup  {end_{vid}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V = source \cup target \cup {start_v{vid}} \cup {end_{vid}}\)</span></p></li>
 </ul>
 </li>
 <li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(E = \begin{cases}
-\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ } \\
-\cup      \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \}  &amp; \quad \text{ if } reverse\_cost = \varnothing \\
-\text{ }  \text{ }  &amp; \text{ } \\
-\text{ }  \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
-\cup  \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\
-\cup  \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\
-\cup  \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\
-\end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \begin{cases} \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \quad \text{ if } reverse\_cost = \varnothing \\ \text{ } \text{ } &amp; \text{ } \\ \text{ } \{(source_i, target_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, cost_i) \text{ when } cost &gt;=0 \} &amp; \text{ } \\ \cup \{(target_i, source_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \text{ } \\ \cup \{(source_i, target_i, reverse\_cost_i) \text{ when } reverse\_cost_i &gt;=0)\} &amp; \quad \text{ if } reverse\_cost \neq \varnothing \\ \end{cases}\)</span></p></li>
 </ul>
 </li>
 </ul>
 <p class="rubric">El problema</p>
 <p>Dado:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(start_{vid} \in V\)</span> a starting vertex</p></li>
+<li><p><span class="math notranslate nohighlight">\(start_{vid} \in V\)</span> un vértice inicial</p></li>
 <li><p><span class="math notranslate nohighlight">\(end_{vid} \in V\)</span> un vértice final</p></li>
 <li><p><span class="math notranslate nohighlight">\(G(V,E) = \begin{cases}
 G_d(V,E) &amp; \quad \text{ if6 } directed = true \\
@@ -473,11 +460,11 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 <li><p><span class="math notranslate nohighlight">\(path\_seq_{| \pi |} = | \pi |\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(node_i \in V\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(node_1 = start_{vid}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(node_{| \pi |}  = end_{vid}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(node_{| \pi |} = end_{vid}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\forall i \neq | \pi |, \quad (node_i, node_{i+1}, cost_i) \in E\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(edge_i  = \begin{cases}  id_{(node_i, node_{i+1},cost_i)}  &amp;\quad  \text{when } i \neq | \pi | \\ -1 &amp;\quad  \text{when } i = | \pi | \\ \end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(edge_i = \begin{cases} id_{(node_i, node_{i+1},cost_i)} &amp;\quad \text{when } i \neq | \pi | \\ -1 &amp;\quad \text{when } i = | \pi | \\ \end{cases}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(cost_i = cost_{(node_i, node_{i+1})}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(agg\_cost_i  = \begin{cases}  0   &amp;\quad  \text{when } i = 1  \\ \displaystyle\sum_{k=1}^{i}  cost_{(node_{k-1}, node_k)}  &amp;\quad  \text{when } i \neq 1 \\ \end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(agg\_cost_i = \begin{cases} 0 &amp;\quad \text{when } i = 1 \\ \displaystyle\sum_{k=1}^{i} cost_{(node_{k-1}, node_k)} &amp;\quad \text{when } i \neq 1 \\ \end{cases}\)</span></p></li>
 </ul>
 </dd>
 </dl>
@@ -485,7 +472,7 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 <span class="math notranslate nohighlight">\(start_{vid}\)</span> and <span class="math notranslate nohighlight">\(end_{vid}\)</span>, if it exists, in terms of a sequence
 of nodes  and of edges,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(path\_seq\)</span> indica la posición relativa en el camino de  <span class="math notranslate nohighlight">\(node\)</span> o <span class="math notranslate nohighlight">\(edge\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(path\_seq\)</span> indica la posición relativa en el camino de <span class="math notranslate nohighlight">\(node\)</span> o <span class="math notranslate nohighlight">\(edge\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(cost\)</span> es el coste del borde que se utilizará para ir al siguiente nodo.</p></li>
 <li><p><span class="math notranslate nohighlight">\(agg\_cost\)</span> es el costo desde el <span class="math notranslate nohighlight">\(start_{vid}\)</span> hasta el nodo.</p></li>
 </ul>
@@ -515,7 +502,7 @@ of nodes  and of edges,</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

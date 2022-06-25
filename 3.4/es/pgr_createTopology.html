@@ -188,7 +188,7 @@
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>La función devuelve:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code>  después de que se ha construido la topología de red y la tabla de vértices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> después de que se ha construido la topología de red y la tabla de vértices.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando el la red topológica no se no se completó debido a un error.</p></li>
 </ul>
 </section>
@@ -212,7 +212,7 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> ajuste tolerancia de bordes desconectados. (en la unidad de proyección)</p>
 </dd>
 <dt class="field-odd">the_geom<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
 </dd>
 <dt class="field-even">id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>.</p>
@@ -255,7 +255,7 @@
 <ul>
 <li><p>Crea una tabla de vértices: &lt;edge_table&gt;_vertices_pgr.</p></li>
 <li><p>Llena las columnas <code class="docutils literal notranslate"><span class="pre">id</span></code> y <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> de la tabla de vértices.</p></li>
-<li><p>Llena las columnas los origen y destino  de la tabla de borde haciendo referencia al <code class="docutils literal notranslate"><span class="pre">id</span></code>  de la tabla de los vértices.</p></li>
+<li><p>Llena las columnas los origen y destino de la tabla de borde haciendo referencia al <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla de los vértices.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando la topología de red no se construyó debido a un error:</p>
@@ -403,7 +403,7 @@ passed to the function as the geometry column, and the geometry column
 
 </pre></div>
 </div>
-<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100 de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span>  <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">1</span>
 <span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span>
@@ -505,7 +505,7 @@ passed to the function AS the id column.</p>
 
 </pre></div>
 </div>
-<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100 de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
@@ -734,7 +734,7 @@ passed to the function AS the id column.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

@@ -172,11 +172,11 @@
 </ul>
 <section id="pgr-maxflow">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code><a class="headerlink" href="#pgr-maxflow" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> —  Calcula el flujo máximo en un gráfico dirigido desde los orígene(s) a los destino(s) mediante el algoritmo Push Relabel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> — Calcula el flujo máximo en un gráfico dirigido desde los orígene(s) a los destino(s) mediante el algoritmo Push Relabel.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
@@ -209,7 +209,7 @@
 <li><p>Calcula el flujo máximo desde <cite>source(s)</cite> a <cite>target(s)</cite>.</p>
 <ul>
 <li><p>Cuando el flujo máximo es <strong>0</strong>, entonces no hay flujo y se devuelve <strong>0</strong>.</p></li>
-<li><p>No hay ningún flujo cuando el  <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</p></li>
+<li><p>No hay ningún flujo cuando el <strong>orígen</strong> es el mismo que el <strong>destino</strong>.</p></li>
 </ul>
 </li>
 <li><p>Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será ignorado.</p></li>
@@ -417,12 +417,12 @@ vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to verti
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer vértice extremo de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
@@ -443,7 +443,7 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
@@ -478,7 +478,7 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
@@ -550,7 +550,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

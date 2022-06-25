@@ -170,7 +170,7 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>El análisis de segmentos que tienen un solo sentido es bastante simple, pero a la vez  ser una herramienta poderosa para identificar algunos problemas potenciales que son creados al establecer la dirección de un segmento de la manera equivocada. Un nodo es un <cite>source</cite> si tiene bordes que salen de ese nodo y no hay bordes que entren a  ese nodo. Por el contrario, un nodo es un`sink` si todos los bordes entran al nodo pero ninguno sale de ese nodo. Para un nodo <cite>source</cite> es lógicamente imposible existir porque ningún vehículo puede salir del nodo o si algún vehículo logró entrar en el nodo. Asimismo, si tuvieras un nodo <cite>sink</cite> tienes un número infinito de vehículos que se van  acumulando en este nodo porque no pueden salir de el.</p>
+<p>El análisis de segmentos que tienen un solo sentido es bastante simple, pero a la vez ser una herramienta poderosa para identificar algunos problemas potenciales que son creados al establecer la dirección de un segmento de la manera equivocada. Un nodo es un <cite>source</cite> si tiene bordes que salen de ese nodo y no hay bordes que entren a ese nodo. Por el contrario, un nodo es un`sink` si todos los bordes entran al nodo pero ninguno sale de ese nodo. Para un nodo <cite>source</cite> es lógicamente imposible existir porque ningún vehículo puede salir del nodo o si algún vehículo logró entrar en el nodo. Asimismo, si tuvieras un nodo <cite>sink</cite> tienes un número infinito de vehículos que se van acumulando en este nodo porque no pueden salir de el.</p>
 <p>Así que ¿por qué nos importa si no es factibles? Si la dirección de un borde se revirtió por error podríamos generar exactamente en estas condiciones. Pensar en una carretera dividida y en el carril que va al norte un segmento o varios segmentos fueron introducidos al revés, o tal vez esto sucedió en una glorieta. El resultado sería potencialmente un nodo <cite>source</cite> y/o a <cite>sink</cite> node.</p>
 <p>Así contando el número de aristas entrantes y salientes de cada nodo podemos identificar los nodos <cite>source</cite> y <cite>sink</cite>, así que usted puede mirar esas áreas de su red para hacer reparaciones o informar del problema a su proveedor de datos.</p>
 <p class="rubric">Pre-requisitos</p>
@@ -252,7 +252,7 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</p>
 </dd>
 <dt class="field-even">cnt<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice. Consulte  <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGgraph</span></a>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice. Consulte <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGgraph</span></a>.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte  <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
@@ -343,7 +343,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

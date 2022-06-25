@@ -182,7 +182,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad:</p>
@@ -190,7 +190,7 @@
 <li><p>Versión 3.2.1</p>
 <ul>
 <li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
-<li><p>El algoritmo de recocido simulado ya no es utilizado.</p>
+<li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
 <li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
@@ -260,14 +260,14 @@
 </li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">end_vid</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">Y</span> <span class="pre">start_vid</span> <span class="pre">!=</span> <span class="pre">end_vid</span></code></p>
 <ul>
-<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo, debido al hecho de que <cite>end_vid</cite>  se ve obligado a estar en una posición fija.</p></li>
+<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo, debido al hecho de que <cite>end_vid</cite> se ve obligado a estar en una posición fija.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Con <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo.</p></li>
+<li><p><strong>No está garantizado</strong> que la solución sea, en el peor de los casos, el doble de larga que el recorrido óptimo</p></li>
 <li><p>Generará un grafo que:</p>
 <ul>
 <li><p>es dirigido</p></li>
@@ -278,7 +278,7 @@
 <li><p>Como se requiere un grafo no dirigido, el grafo dirigido se transforma de la siguiente manera:</p>
 <ul>
 <li><p>los segmentos <cite>(u, v)</cite> y <cite>(v, u)</cite> se consideran el mismo segmentos (denotado <cite>(u, v)</cite></p></li>
-<li><p>Si “<code class="docutils literal notranslate"><span class="pre">agg_cost</span></code>  difiere entre una o más instancias del segmento <cite>(u, v)</cite></p></li>
+<li><p>Si “<code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> difiere entre una o más instancias del segmento <cite>(u, v)</cite></p></li>
 <li><p>El valor mínimo de <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code>  en todas las instancias del segmento <cite>(u, v)</cite> se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de la arista <cite>(u, v)</cite></p></li>
 <li><p>Algunos (o todos) los costos de viaje en los segmentos aún podrían no obedecer a la desigualdad del triángulo.</p></li>
 </ul>
@@ -373,7 +373,7 @@ not connected.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>El primer vértice visitado</p>
 <ul class="simple">
-<li><p>Cuando <cite>0</cite>  cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
+<li><p>Cuando <cite>0</cite> cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
 </ul>
 </td>
 </tr>
@@ -432,7 +432,7 @@ vertex</p></li>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Secuencia de filas.</p></td>
 </tr>
@@ -440,19 +440,19 @@ vertex</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del nodo/coordenada/punto.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<tr class="row-even"><td><p><strong>costo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</p>
+<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en la secuencia de ruta.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la última fila en la secuencia del recorrido.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la última fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
+<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la primera fila en la secuencia del recorrido.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la primera fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
@@ -508,7 +508,7 @@ vertex</p></li>
 including it in the query</p></li>
 <li><p><strong>Line 6</strong> Generating an asymetric matrix with <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span>  se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
+<li><p><span class="math notranslate nohighlight">\(min(agg\_cost(u, v), agg\_cost(v, u))\)</span> se considera como el <code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></li>
 <li><p>La solución que puede ser mayor que <em>el doble de larga que el tour óptimo</em> porque:</p>
 <ul>
 <li><p>La desigualdad del triángulo podría no estar satisfecha.</p></li>
@@ -628,7 +628,7 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

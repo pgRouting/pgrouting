@@ -177,14 +177,14 @@ non-negative integer, is termed as a “binary graph”.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloqueo del servidor</p></li>
+<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -196,7 +196,7 @@ non-negative integer, is termed as a “binary graph”.</p>
 <ul>
 <li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
 <li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma o declaración de funciones podría cambiar.</p></li>
+<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
 <li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
@@ -250,7 +250,7 @@ is a variation of the standard Breadth First Search problem to solve the SSSP
 edge belongs to the set {0,X}, where “X” is any non-negative real integer.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en “grafos binarios”. (“Grafo binario”: Cualquier grafo  cuyos pesos de aristas pertenezcan al conjunto {0, X}, donde “X” es cualquier entero real no negativo).</p></li>
+<li><p>El proceso se realiza sólo en “grafos binarios”. (“Grafo binario”: Cualquier grafo cuyos pesos de aristas pertenezcan al conjunto {0, X}, donde “X” es cualquier entero real no negativo.)</p></li>
 <li><p>Para fines de optimización, se omite cualquier valor duplicado en <cite>start_vids</cite> o <cite>end_vids</cite>.</p></li>
 <li><p>Los valores regresados se ordenan:</p>
 <ul>
@@ -551,12 +551,12 @@ OR EMPTY SET</pre>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del primer vértice extremo de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ANY-INTEGER</strong></p></td>
 <td></td>
-<td><p>Identificador del segundo vértice extremo de la arista.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>ANY-NUMERICAL</strong></p></td>
@@ -577,10 +577,10 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -612,7 +612,7 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
@@ -750,7 +750,7 @@ path sequence. <strong>-1</strong> for the last node of the path.</p></td>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 23, 2022.<br/>
+      Actualizado por última vez en jun 25, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
