@@ -13,15 +13,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"vrp-category/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/vrp-"
-"category/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/VRP-category.rst:12
@@ -459,7 +460,7 @@ msgstr "``6`` Orden de avance que permite insertar más órdenes en la parte fro
 
 #: ../../build/doc/VRP-category.rst:197
 msgid "Inner Queries"
-msgstr "Consultas Internas"
+msgstr "Consultas internas"
 
 #: ../../build/doc/VRP-category.rst:200
 #, fuzzy
@@ -474,9 +475,8 @@ msgstr ""
 "implementación de recogida como de entrega:"
 
 #: ../../build/doc/VRP-category.rst:214 ../../build/doc/VRP-category.rst:329
-#, fuzzy
 msgid "``id``"
-msgstr "``-1``"
+msgstr "``id``"
 
 #: ../../build/doc/VRP-category.rst:215 ../../build/doc/VRP-category.rst:264
 #: ../../build/doc/VRP-category.rst:268 ../../build/doc/VRP-category.rst:380
@@ -584,7 +584,7 @@ msgstr "ENTEROS"
 #: ../../build/doc/VRP-category.rst:245 ../../build/doc/VRP-category.rst:274
 #: ../../build/doc/VRP-category.rst:392
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/VRP-category.rst
 msgid "ANY-NUMERICAL"
@@ -593,7 +593,7 @@ msgstr "FLOTANTES"
 #: ../../build/doc/VRP-category.rst:246 ../../build/doc/VRP-category.rst:306
 #: ../../build/doc/VRP-category.rst:428
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/VRP-category.rst:250
 msgid ""
@@ -862,26 +862,25 @@ msgstr "**matrix_sql**"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "Set of ``(start_vid, end_vid, agg_cost)``"
-msgstr ""
+msgstr "Conjunto de ``(start_vid, end_vid, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "``start_vid``"
-msgstr "`start_y`"
+msgstr "``start_vid``"
 
 #: ../../build/doc/VRP-category.rst:497 ../../build/doc/VRP-category.rst:582
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the starting vertex."
-msgstr ""
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``end_vid``"
-msgstr ""
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #, fuzzy
@@ -890,7 +889,7 @@ msgstr "Identificador del par de órdenes recogida-entrega."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``agg_cost``"
-msgstr ""
+msgstr "``agg_cost``"
 
 #: ../../build/doc/VRP-category.rst:503 ../../build/doc/VRP-category.rst:508
 #: ../../build/doc/VRP-category.rst:515 ../../build/doc/VRP-category.rst:522
@@ -900,11 +899,11 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:601 ../../build/doc/VRP-category.rst:606
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
-msgstr ""
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
 
 #: ../../build/doc/VRP-category.rst:441
 #, fuzzy
@@ -912,9 +911,8 @@ msgid "Return columns"
 msgstr "columnas de retorno"
 
 #: ../../build/doc/VRP-category.rst:461 ../../build/doc/VRP-category.rst:560
-#, fuzzy
 msgid "``seq``"
-msgstr "``-1``"
+msgstr "``seq``"
 
 #: ../../build/doc/VRP-category.rst:463
 msgid "Sequential value starting from **1**."
@@ -1879,4 +1877,3 @@ msgstr ":ref:`search`"
 
 #~ msgid "All time units have to be converted"
 #~ msgstr "Todas las unidades de tiempo tienen que ser convertidas"
-

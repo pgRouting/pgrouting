@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-category/es/>\n"
@@ -268,7 +268,7 @@ msgstr "Descripción"
 
 #: ../../build/doc/withPoints-category.rst:106
 msgid "`Edges SQL`_"
-msgstr "`SQL de Aristas`_"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/withPoints-category.rst:107
 #: ../../build/doc/withPoints-category.rst:110
@@ -278,7 +278,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/withPoints-category.rst:108
 msgid "`Edges SQL`_ as described below"
-msgstr ""
+msgstr "`Consulta de aristas`_ como se describe a continuación"
 
 #: ../../build/doc/withPoints-category.rst:109
 msgid "`Points SQL`_"
@@ -290,15 +290,15 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:112
 msgid "`Combinations SQL`_"
-msgstr ""
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/withPoints-category.rst:114
 msgid "`Combinations SQL`_ as described below"
-msgstr ""
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/withPoints-category.rst:115
 msgid "**start vid**"
-msgstr ""
+msgstr "**vid de salida**"
 
 #: ../../build/doc/withPoints-category.rst:116
 #: ../../build/doc/withPoints-category.rst:124
@@ -313,7 +313,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:119
 msgid "**start vids**"
-msgstr ""
+msgstr "**vid salidas**"
 
 #: ../../build/doc/withPoints-category.rst:120
 #: ../../build/doc/withPoints-category.rst:128
@@ -328,7 +328,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:123
 msgid "**end vid**"
-msgstr ""
+msgstr "**vid destino**"
 
 #: ../../build/doc/withPoints-category.rst:125
 msgid ""
@@ -338,7 +338,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:127
 msgid "**end vids**"
-msgstr ""
+msgstr "**vids destinos**"
 
 #: ../../build/doc/withPoints-category.rst:129
 msgid ""
@@ -414,7 +414,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:166
 msgid "Inner Queries"
-msgstr "Consultas Internas"
+msgstr "Consultas internas"
 
 #: ../../build/doc/withPoints-category.rst:169
 msgid "Edges SQL"
@@ -464,7 +464,7 @@ msgstr "``cost``"
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
@@ -598,15 +598,15 @@ msgstr "In both sides ``b``, ``NULL``"
 
 #: ../../build/doc/withPoints-category.rst:225
 msgid "Combinations SQL"
-msgstr "Combinaciones SQL"
+msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the departure vertex."
-msgstr ""
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Identifier of the arrival vertex."
-msgstr ""
+msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/withPoints-category.rst:232
 msgid "Advanced documentation"

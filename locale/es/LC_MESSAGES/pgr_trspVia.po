@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-24 21:14+0000\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trspvia/es/>\n"
@@ -163,7 +163,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/TRSP-family.rst:11
 msgid "`Edges SQL`_"
-msgstr "`SQL de Aristas`_"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/TRSP-family.rst:12 ../../build/doc/TRSP-family.rst:15
 msgid "``TEXT``"
@@ -223,7 +223,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
 msgid "``directed``"
-msgstr ""
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13 ../../build/doc/via-category.rst:13
 #: ../../build/doc/via-category.rst:18
@@ -236,7 +236,7 @@ msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr "En caso de ``true``, el grafo se considera **dirigido**"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
@@ -275,7 +275,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia.rst:100
 msgid "Inner Queries"
-msgstr "Consultas Internas"
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_trspVia.rst:103
 msgid "Edges SQL"
@@ -320,7 +320,7 @@ msgstr "``cost``"
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
@@ -487,7 +487,7 @@ msgstr "``agg_cost``"
 
 #: ../../build/doc/via-category.rst:43
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+msgstr "Coste agregado desde ``start_vid`` al ``node``."
 
 #: ../../build/doc/via-category.rst:44
 msgid "``route_agg_cost``"

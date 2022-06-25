@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "trsp-family/es/>\n"
@@ -229,7 +229,7 @@ msgstr "Descripción"
 
 #: ../../build/doc/TRSP-family.rst:93
 msgid "`Edges SQL`_"
-msgstr "`SQL de Aristas`_"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/TRSP-family.rst:94 ../../build/doc/TRSP-family.rst:97
 msgid "``TEXT``"
@@ -360,7 +360,7 @@ msgstr "``cost``"
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"

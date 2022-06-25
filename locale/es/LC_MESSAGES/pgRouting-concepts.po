@@ -12,15 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgrouting-concepts/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
-"/pgrouting-concepts/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.12.2\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -35,8 +36,7 @@ msgid ""
 "/pgRouting-concepts.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última  <https://docs.pgrouting.org/latest/es"
-"/pgRouting-concepts.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/es"
-"/pgRouting-concepts.html>`__) `3.2 <https://docs.pgrouting.org/3.2/es"
+"/pgRouting-concepts.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/pgRouting-concepts.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/pgRouting-concepts.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es"
 "/pgRouting-concepts.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
 "/pgRouting-concepts.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
 "/pgRouting-concepts.html>`__"
@@ -233,9 +233,8 @@ msgstr "Descripción"
 #: ../../build/doc/pgRouting-concepts.rst:1160
 #: ../../build/doc/pgRouting-concepts.rst:1232
 #: ../../build/doc/pgRouting-concepts.rst:1279
-#, fuzzy
 msgid "``id``"
-msgstr "``INT``"
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:96
 msgid ""
@@ -251,9 +250,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1236
 #: ../../build/doc/pgRouting-concepts.rst:1283
 #: ../../build/doc/pgRouting-concepts.rst:1336
-#, fuzzy
 msgid "``source``"
-msgstr "``true``"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:99
 #: ../../build/doc/pgRouting-concepts.rst:101
@@ -269,9 +267,8 @@ msgstr "Identificador del vértice inicial."
 #: ../../build/doc/pgRouting-concepts.rst:1240
 #: ../../build/doc/pgRouting-concepts.rst:1287
 #: ../../build/doc/pgRouting-concepts.rst:1339
-#, fuzzy
 msgid "``target``"
-msgstr "``true``"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:102
 #: ../../build/doc/pgRouting-concepts.rst:366
@@ -285,9 +282,8 @@ msgstr "``true``"
 #: ../../build/doc/pgRouting-concepts.rst:1743
 #: ../../build/doc/pgRouting-concepts.rst:1799
 #: ../../build/doc/pgRouting-concepts.rst:1892
-#, fuzzy
 msgid "``cost``"
-msgstr "``true``"
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:103
 #, fuzzy
@@ -310,7 +306,6 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1126
 #: ../../build/doc/pgRouting-concepts.rst:1179
 #: ../../build/doc/pgRouting-concepts.rst:1309
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -318,9 +313,8 @@ msgstr "``reverse_cost``"
 #: ../../build/doc/pgRouting-concepts.rst:1084
 #: ../../build/doc/pgRouting-concepts.rst:1129
 #: ../../build/doc/pgRouting-concepts.rst:1251
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:111
 #, fuzzy
@@ -659,9 +653,8 @@ msgstr "Tipo"
 #: ../../build/doc/pgRouting-concepts.rst:1497
 #: ../../build/doc/withPoints-category.rst:13
 #: ../../build/doc/withPoints-category.rst:23
-#, fuzzy
 msgid "**ANY-INTEGER**"
-msgstr "**arista**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:359
 #: ../../build/doc/pgRouting-concepts.rst:1068
@@ -707,13 +700,12 @@ msgstr "Identificador del segundo vértice de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:1369
 #: ../../build/doc/withPoints-category.rst:27
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:368
 #: ../../build/doc/pgRouting-concepts.rst:1080
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
@@ -1555,9 +1547,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:940
 #: ../../build/doc/pgRouting-concepts.rst:1496
-#, fuzzy
 msgid "**end vid**"
-msgstr "``end_vid``"
+msgstr "**vid destino**"
 
 #: ../../build/doc/pgRouting-concepts.rst:942
 msgid "Is the third parameter."
@@ -1571,9 +1562,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:947
 #: ../../build/doc/pgRouting-concepts.rst:1443
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/pgRouting-concepts.rst:949
 msgid "Is the fourth parameter."
@@ -1723,7 +1713,7 @@ msgstr "`Combinaciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:1019
 msgid "Inner Queries"
-msgstr "Consultas Internas"
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgRouting-concepts.rst:1024
 #, fuzzy
@@ -1809,13 +1799,12 @@ msgstr "-1"
 #: ../../build/doc/pgRouting-concepts.rst:1253
 #: ../../build/doc/pgRouting-concepts.rst:1296
 #: ../../build/doc/pgRouting-concepts.rst:1303
-#, fuzzy
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
-" es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:1091
 #: ../../build/doc/pgRouting-concepts.rst:1136
@@ -1826,9 +1815,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1374
 #: ../../build/doc/pgRouting-concepts.rst:1505
 #: ../../build/doc/withPoints-category.rst:42
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr "smallint, int, bigint"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1092
 #: ../../build/doc/pgRouting-concepts.rst:1137
@@ -1837,9 +1825,8 @@ msgstr "smallint, int, bigint"
 #: ../../build/doc/pgRouting-concepts.rst:1317
 #: ../../build/doc/pgRouting-concepts.rst:1375
 #: ../../build/doc/withPoints-category.rst:43
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr "smallint, int, bigint, real, float"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1097
 msgid "General without ``id``"
@@ -1853,9 +1840,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1125
 #: ../../build/doc/pgRouting-concepts.rst:1175
 #: ../../build/doc/pgRouting-concepts.rst:1247
-#, fuzzy
 msgid "Weight of the edge  (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:1142
 msgid "General with (X,Y)"
@@ -2009,9 +1995,8 @@ msgid "Weight of the edge (``target``, ``source``) if it exist"
 msgstr "Peso de la arista `(destino, origen)` si existe."
 
 #: ../../build/doc/pgRouting-concepts.rst:1322
-#, fuzzy
 msgid "Combinations SQL"
-msgstr "Combinaciones"
+msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:1325
 msgid "Used on combination signatures"
@@ -2020,14 +2005,12 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1338
 #: ../../build/doc/pgRouting-concepts.rst:1492
 #: ../../build/doc/pgRouting-concepts.rst:1498
-#, fuzzy
 msgid "Identifier of the departure vertex."
-msgstr "Identificador del vértice inicial."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:1341
-#, fuzzy
 msgid "Identifier of the arrival vertex."
-msgstr "Identificador del vértice inicial."
+msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgRouting-concepts.rst:1350
 msgid "Restrictions SQL"
@@ -2169,9 +2152,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1407
 #: ../../build/doc/pgRouting-concepts.rst:1435
 #: ../../build/doc/pgRouting-concepts.rst:1481
-#, fuzzy
 msgid "`Edges SQL`_"
-msgstr "edges_sql"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:1408
 #: ../../build/doc/pgRouting-concepts.rst:1436
@@ -2182,9 +2164,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1409
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta SQL como se describió anteriormente."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgRouting-concepts.rst:1413
 msgid ""
@@ -2310,23 +2291,20 @@ msgid "`Restrictions SQL`_"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:1487
-#, fuzzy
 msgid "`Combinations SQL`_"
-msgstr "`Combinaciones`_"
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:1489
 msgid "`Combinations SQL`_ as described below"
-msgstr ""
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/pgRouting-concepts.rst:1490
-#, fuzzy
 msgid "**start vid**"
-msgstr "``start_vid``"
+msgstr "**vid de salida**"
 
 #: ../../build/doc/pgRouting-concepts.rst:1493
-#, fuzzy
 msgid "**start vids**"
-msgstr "``start_vid``"
+msgstr "**vid salidas**"
 
 #: ../../build/doc/pgRouting-concepts.rst:1495
 #: ../../build/doc/pgRouting-concepts.rst:1501
@@ -2335,9 +2313,8 @@ msgid "Array of identifiers of destination vertices."
 msgstr "Identificador del vértice inicial."
 
 #: ../../build/doc/pgRouting-concepts.rst:1499
-#, fuzzy
 msgid "**end vids**"
-msgstr "``end_vid``"
+msgstr "**vids destinos**"
 
 #: ../../build/doc/pgRouting-concepts.rst:1510
 #, fuzzy
@@ -2362,17 +2339,16 @@ msgid ""
 "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, "
 "cost, agg_cost)``"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_seq [, start_vid] [, end_vid], node,"
-" edge, cost, agg_cost)``"
+"Devuelve el conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid], "
+"node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1535
 #: ../../build/doc/pgRouting-concepts.rst:1591
 #: ../../build/doc/pgRouting-concepts.rst:1656
 #: ../../build/doc/pgRouting-concepts.rst:1707
 #: ../../build/doc/pgRouting-concepts.rst:1773
-#, fuzzy
 msgid "``seq``"
-msgstr "``false``"
+msgstr "``seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1536
 #: ../../build/doc/pgRouting-concepts.rst:1539
@@ -2386,9 +2362,8 @@ msgstr "``false``"
 #: ../../build/doc/pgRouting-concepts.rst:1774
 #: ../../build/doc/pgRouting-concepts.rst:1777
 #: ../../build/doc/pgRouting-concepts.rst:1783
-#, fuzzy
 msgid "``INTEGER``"
-msgstr "``true``"
+msgstr "``INTEGER``"
 
 #: ../../build/doc/flow-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:1537
@@ -2404,9 +2379,8 @@ msgstr "Valor secuencial a partir de **1**."
 #: ../../build/doc/pgRouting-concepts.rst:1659
 #: ../../build/doc/pgRouting-concepts.rst:1716
 #: ../../build/doc/pgRouting-concepts.rst:1782
-#, fuzzy
 msgid "``path_seq``"
-msgstr "``false``"
+msgstr "``path_seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1540
 #: ../../build/doc/pgRouting-concepts.rst:1661
@@ -2424,7 +2398,6 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1720
 #: ../../build/doc/pgRouting-concepts.rst:1786
 #: ../../build/doc/pgRouting-concepts.rst:1830
-#, fuzzy
 msgid "``start_vid``"
 msgstr "``start_vid``"
 
@@ -2471,7 +2444,6 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1728
 #: ../../build/doc/pgRouting-concepts.rst:1789
 #: ../../build/doc/pgRouting-concepts.rst:1833
-#, fuzzy
 msgid "``end_vid``"
 msgstr "``end_vid``"
 
@@ -2489,9 +2461,8 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1669
 #: ../../build/doc/pgRouting-concepts.rst:1736
 #: ../../build/doc/pgRouting-concepts.rst:1792
-#, fuzzy
 msgid "``node``"
-msgstr "``true``"
+msgstr "``node``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1558
 #: ../../build/doc/pgRouting-concepts.rst:1671
@@ -2506,21 +2477,19 @@ msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 #: ../../build/doc/pgRouting-concepts.rst:1739
 #: ../../build/doc/pgRouting-concepts.rst:1795
 #: ../../build/doc/pgRouting-concepts.rst:1889
-#, fuzzy
 msgid "``edge``"
-msgstr "``true``"
+msgstr "``edge``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1561
 #: ../../build/doc/pgRouting-concepts.rst:1674
 #: ../../build/doc/pgRouting-concepts.rst:1741
 #: ../../build/doc/pgRouting-concepts.rst:1797
-#, fuzzy
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
-"Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo "
-"de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
+"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
+"la secuencia de ruta. **-1** para el último nodo de la ruta."
 
 #: ../../build/doc/flow-family.rst:17 ../../build/doc/flow-family.rst:19
 #: ../../build/doc/pgRouting-concepts.rst:1564
@@ -2556,7 +2525,6 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1747
 #: ../../build/doc/pgRouting-concepts.rst:1803
 #: ../../build/doc/pgRouting-concepts.rst:1836
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
@@ -2565,9 +2533,8 @@ msgstr "``agg_cost``"
 #: ../../build/doc/pgRouting-concepts.rst:1682
 #: ../../build/doc/pgRouting-concepts.rst:1749
 #: ../../build/doc/pgRouting-concepts.rst:1805
-#, fuzzy
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr "Coste agregado de ``start_v`` to ``node``."
+msgstr "Coste agregado desde ``start_vid`` al ``node``."
 
 #: ../../build/doc/pgRouting-concepts.rst:1574
 #: ../../build/doc/pgRouting-concepts.rst:1641
@@ -2758,7 +2725,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:1788
 #: ../../build/doc/pgRouting-concepts.rst:1832
 msgid "Identifier of the starting vertex."
-msgstr "Identificador del vértice inicial."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:1791
 #: ../../build/doc/pgRouting-concepts.rst:1835
@@ -2783,13 +2750,12 @@ msgid ":doc:`costMatrix-category`"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:1820
-#, fuzzy
 msgid "Set of ``(start_vid, end_vid, agg_cost)``"
-msgstr "Devuelve SET OF ``(start_vid, end_vid, agg_cost)``"
+msgstr "Conjunto de ``(start_vid, end_vid, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:1838
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
-msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:1845
 msgid ""
@@ -3868,4 +3834,3 @@ msgstr ":ref:`search`"
 
 #~ msgid "Or create a new topology if the change is permanent:"
 #~ msgstr "O crear una nueva topología si el cambio es permanente:"
-

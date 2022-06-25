@@ -38,7 +38,7 @@ msgid ""
 msgstr ""
 "**Versiones soportadas:** `Última  "
 "<https://docs.pgrouting.org/latest/es/pgr_connectedComponents.html>`__ "
-"(`3.3 "
+"(`3.3
 "<https://docs.pgrouting.org/3.3/es/pgr_connectedComponents.html>`__) `3.2"
 " <https://docs.pgrouting.org/3.2/es/pgr_connectedComponents.html>`__ `3.1"
 " <https://docs.pgrouting.org/3.1/es/pgr_connectedComponents.html>`__ `3.0"

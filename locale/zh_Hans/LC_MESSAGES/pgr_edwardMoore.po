@@ -20,8 +20,7 @@ msgstr ""
 "X-Generator: Weblate 4.11.2\n"
 
 #: ../../build/doc/pgr_edwardMoore.rst:12
-msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html>`__ (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_edwardMoore.html>`__) `3.2 <https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html>`__"
-msgstr ""
+msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_edwardMoore.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_edwardMoore.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_edwardMoore.html>`__  `3.2 <https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html>`__ msgstr"
 
 #: ../../build/doc/pgr_edwardMoore.rst:18
 msgid "pgr_edwardMoore - Experimental"

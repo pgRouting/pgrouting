@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgecoloring/es/>\n"
 "Language: es\n"
@@ -253,7 +253,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "`Edges SQL`_"
-msgstr "`SQL de Aristas`_"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
@@ -261,11 +261,11 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "`Edges SQL`_ as described below."
-msgstr "`SQL de aristas`_ descritas más adelante."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_edgeColoring.rst:107
 msgid "Inner Queries"
-msgstr "Consultas Internas"
+msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_edgeColoring.rst:110
 msgid "Edges SQL"
@@ -318,7 +318,7 @@ msgstr "``cost``"
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
