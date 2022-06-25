@@ -36,8 +36,9 @@ msgid ""
 "<https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_extractVertices.html>`__ (`3.3
-"<https://docs.pgrouting.org/3.3/es/pgr_extractVertices.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/es/pgr_extractVertices.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_extractVertices.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_extractVertices.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_extractVertices.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/es/pgr_extractVertices.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_extractVertices.html>`__"
@@ -743,67 +744,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_extractVertices.rst:310
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "**Edges SQL**"
-#~ msgstr "**SQL de aristas**"
-
-#~ msgid ""
-#~ "The set of edges of the graph. "
-#~ "It is an `Inner Query`_ as "
-#~ "described below."
-#~ msgstr ""
-#~ "El conjunto de aristas del grafo. "
-#~ "Es una `Inner Query`_  como se "
-#~ "describe a continuación."
-
-#~ msgid "**id**"
-#~ msgstr "**id**"
-
-#~ msgid "**geom**"
-#~ msgstr "**geom**"
-
-#~ msgid "**startpoint**"
-#~ msgstr "**startpoint**"
-
-#~ msgid "**endpoint**"
-#~ msgstr "**endpoint**"
-
-#~ msgid "**source**"
-#~ msgstr "**origen**"
-
-#~ msgid "**target**"
-#~ msgstr "**objetivo**"
-
-#~ msgid "Rreturns set of (id, in_edges, out_edges, x, y, geom)"
-#~ msgstr "Devuelve un conjunto de (id, in_edges, out_edges, x, y, geom)"
-
-#~ msgid "**x**"
-#~ msgstr "**x**"
-
-#~ msgid "X value of the POINT geometry"
-#~ msgstr "Valor X de la geometría POINT"
-
-#~ msgid "**y**"
-#~ msgstr "**y**"
-
-#~ msgid "Example 1"
-#~ msgstr "Ejemplo 1"
-
-#~ msgid "Example 2"
-#~ msgstr "Ejemplo 2"
-
-#~ msgid ""
-#~ ":doc:`topology-functions`  for an overview "
-#~ "of a topology for routing algorithms."
-#~ msgstr ""
-#~ ":doc:`topology-functions` para obtener una "
-#~ "visión general de una topología para "
-#~ "algoritmos de ruteo."
-
-#~ msgid ""
-#~ ":doc:`pgr_createVerticesTable` to create a "
-#~ "topology based on the geometry."
-#~ msgstr ""
-#~ ":doc:`pgr_createVerticesTable` para crear una "
-#~ "topología basada en la geometría."
 

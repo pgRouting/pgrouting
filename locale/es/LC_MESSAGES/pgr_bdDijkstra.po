@@ -35,8 +35,9 @@ msgid ""
 "<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstra.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_bdDijkstra.html>`__ (`3.3
-"<https://docs.pgrouting.org/3.3/es/pgr_bdDijkstra.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/es/pgr_bdDijkstra.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_bdDijkstra.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_bdDijkstra.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_bdDijkstra.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/es/pgr_bdDijkstra.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_bdDijkstra.html>`__"
@@ -755,73 +756,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_bdDijkstra.rst:265
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "Using defaults"
-#~ msgstr "Uso de valores predeterminados"
-
-#~ msgid "From vertex :math:`2` to vertex  :math:`3`"
-#~ msgstr "Del vértice :math:`2` al vértice :math:`3`"
-
-#~ msgid "**Edges SQL**"
-#~ msgstr "**SQL de aristas**"
-
-#~ msgid "**Combinations SQL**"
-#~ msgstr "**Combinaciones SQL**"
-
-#~ msgid "**id**"
-#~ msgstr "**id**"
-
-#~ msgid "``ANY-INTEGER``"
-#~ msgstr "``ANY-INTEGER``"
-
-#~ msgid "**source**"
-#~ msgstr "**origen**"
-
-#~ msgid "**target**"
-#~ msgstr "**objetivo**"
-
-#~ msgid "**cost**"
-#~ msgstr "**costo**"
-
-#~ msgid "``ANY-NUMERICAL``"
-#~ msgstr "``ANY-NUMERICAL``"
-
-#~ msgid ""
-#~ "When negative: edge `(source, target)` "
-#~ "does not exist, therefore it's not "
-#~ "part of the graph."
-#~ msgstr ""
-#~ "Cuando es negativo: la arista `(source,"
-#~ " target)` no existe, por lo tanto "
-#~ "no es parte del grafo."
-
-#~ msgid "SMALLINT, INTEGER, BIGINT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT"
-
-#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-
-#~ msgid "**seq**"
-#~ msgstr "``seq``"
-
-#~ msgid "**path_id**"
-#~ msgstr "``path_id``"
-
-#~ msgid ""
-#~ "Path identifier. Has value **1** for "
-#~ "the first of a path. Used when "
-#~ "there are multiple paths for the "
-#~ "same ``start_vid`` to ``end_vid`` combination."
-#~ msgstr ""
-#~ "Identificador de ruta. Tiene el valor"
-#~ " **1** para el primero de una "
-#~ "ruta. Se utiliza cuando hay varias "
-#~ "rutas para la misma combinación de "
-#~ "``start_vid`` a ``end_vid``."
-
-#~ msgid "**node**"
-#~ msgstr "**nodo**"
-
-#~ msgid "The queries use the :doc:`sampledata` network."
-#~ msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 

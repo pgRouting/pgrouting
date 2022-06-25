@@ -35,8 +35,9 @@ msgid ""
 "<https://docs.pgrouting.org/3.0/en/pgr_bellmanFord.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_bellmanFord.html>`__ (`3.3
-"<https://docs.pgrouting.org/3.3/es/pgr_bellmanFord.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/es/pgr_bellmanFord.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_bellmanFord.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_bellmanFord.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_bellmanFord.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/es/pgr_bellmanFord.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_bellmanFord.html>`__"
@@ -781,78 +782,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_bellmanFord.rst:273
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "``pgr_bellmanFord`` — Returns the shortest "
-#~ "path(s) using Bellman-Ford algorithm. In"
-#~ " particular, the Bellman-Ford algorithm "
-#~ "implemented by Boost.Graph."
-#~ msgstr ""
-#~ "``pgr_bellmanFord`` — Devuelve la o las"
-#~ " ruta(s) más cortas mediante el "
-#~ "algoritmo Bellman-Ford. En particular, "
-#~ "el algoritmo Bellman-Ford implementado "
-#~ "por Boost.Graph."
-
-#~ msgid "New **experimental** function"
-#~ msgstr "Nueva función **experimental**"
-
-#~ msgid "Using defaults"
-#~ msgstr "Uso de valores predeterminados"
-
-#~ msgid "From vertex :math:`2` to vertex :math:`3` on an **undirected** graph"
-#~ msgstr "Del vértice :math:`2` al vértice :math:`3` en un grafo **no dirigido**"
-
-#~ msgid "Description of the parameters of the signatures"
-#~ msgstr ""
-#~ "Descripción de los parámetros de las "
-#~ "firmas (declaraciones de funciones)"
-
-#~ msgid "**Edges SQL**"
-#~ msgstr "**SQL de aristas**"
-
-#~ msgid "**Combinations SQL**"
-#~ msgstr "**Combinaciones SQL**"
-
-#~ msgid "**id**"
-#~ msgstr "**id**"
-
-#~ msgid "``ANY-INTEGER``"
-#~ msgstr "``ANY-INTEGER``"
-
-#~ msgid "**source**"
-#~ msgstr "**origen**"
-
-#~ msgid "**target**"
-#~ msgstr "**objetivo**"
-
-#~ msgid "**cost**"
-#~ msgstr "**costo**"
-
-#~ msgid "``ANY-NUMERICAL``"
-#~ msgstr "``ANY-NUMERICAL``"
-
-#~ msgid ""
-#~ "When negative: edge `(source, target)` "
-#~ "does not exist, therefore it's not "
-#~ "part of the graph."
-#~ msgstr ""
-#~ "Cuando es negativo: la arista `(source,"
-#~ " target)` no existe, por lo tanto "
-#~ "no es parte del grafo."
-
-#~ msgid "SMALLINT, INTEGER, BIGINT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT"
-
-#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-
-#~ msgid "**seq**"
-#~ msgstr "``seq``"
-
-#~ msgid "**node**"
-#~ msgstr "**nodo**"
-
-#~ msgid "The queries use the :doc:`sampledata` network."
-#~ msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 

@@ -33,8 +33,9 @@ msgid ""
 "<https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_bipartite.html>`__ (`3.3
-"<https://docs.pgrouting.org/3.3/es/pgr_bipartite.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/es/pgr_bipartite.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_bipartite.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_bipartite.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_bipartite.html>`__"
 
 #: ../../build/doc/pgr_bipartite.rst:19
@@ -415,82 +416,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_bipartite.rst:139
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid ""
-#~ "``pgr_bipartite`` — If graph is "
-#~ "bipartite then function returns the "
-#~ "vertex id along with color (0 and"
-#~ " 1) else it will return an "
-#~ "empty set. In particular, the "
-#~ "is_bipartite() algorithm implemented by "
-#~ "Boost.Graph."
-#~ msgstr ""
-#~ "``pgr_bipartite`` — Si el grafo es "
-#~ "bipartito, la función devuelve la "
-#~ "identificación del vértice junto con el"
-#~ " color (0 y 1); de lo "
-#~ "contrario, devolverá un conjunto vacío. "
-#~ "En particular, el algoritmo is_bipartite "
-#~ "() implementado por Boost.Graph"
-
-#~ msgid ""
-#~ "The pgr_bipartite algorithm with and "
-#~ "edge_sql as a parameter when graph "
-#~ "is bipartite:"
-#~ msgstr ""
-#~ "El algoritmo pgr_bipartite con edge_sql "
-#~ "como parámetro cuando el grafo es "
-#~ "bipartito:"
-
-#~ msgid "**Edges SQL**"
-#~ msgstr "**SQL de aristas**"
-
-#~ msgid ""
-#~ "an SQL query of an **undirected** "
-#~ "graph, which should return a set "
-#~ "of rows with the following columns:"
-#~ msgstr ""
-#~ "Una consulta SQL de un grafo **no"
-#~ " dirigido**, que debería devolver un "
-#~ "conjunto de filas con las siguientes "
-#~ "columnas:"
-
-#~ msgid "**id**"
-#~ msgstr "**id**"
-
-#~ msgid "``ANY-INTEGER``"
-#~ msgstr "``ANY-INTEGER``"
-
-#~ msgid "**cost**"
-#~ msgstr "**costo**"
-
-#~ msgid "``ANY-NUMERICAL``"
-#~ msgstr "``ANY-NUMERICAL``"
-
-#~ msgid "When positive: edge `(source, target)` exist on the graph."
-#~ msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
-
-#~ msgid "When negative: edge `(source, target)` does not exist on the graph."
-#~ msgstr "Cuando es negativo: el borde `(origen, desitno)` no existe en el grafo."
-
-#~ msgid "When positive: edge `(target, source)` exist on the graph."
-#~ msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
-
-#~ msgid "SMALLINT, INTEGER, BIGINT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT"
-
-#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-
-#~ msgid ""
-#~ "The new graph is not bipartite "
-#~ "because it has a odd length cycle"
-#~ " of 5 vertices. Edges in blue "
-#~ "represent odd length cycle."
-#~ msgstr ""
-#~ "El nuevo grafo no es bipartito "
-#~ "porque tiene un ciclo de longitud "
-#~ "impar de 5 vértices. Las aristas "
-#~ "en azul representan un ciclo de "
-#~ "longitud impar."
 

@@ -329,5 +329,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#~ msgid "**Sir William Rowam Hamilton** and **Thomas Penyngton Kirkman**."
-#~ msgstr "**Sir William Rowam Hamilton** y **Thomas Penyngton Kirkman**."

@@ -35,8 +35,9 @@ msgid ""
 "<https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html>`__"
 msgstr ""
 "**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_TSPeuclidean.html>`__ (`3.3
-"<https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html>`__) `3.2 "
+"<https://docs.pgrouting.org/latest/es/pgr_TSPeuclidean.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_TSPeuclidean.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_TSPeuclidean.html>`__ `3.1 "
 "<https://docs.pgrouting.org/3.1/es/pgr_TSPeuclidean.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_TSPeuclidean.html>`__"
@@ -536,37 +537,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_TSPeuclidean.rst:206
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "General Characteristics"
-#~ msgstr "Características generales"
-
-#~ msgid "Duplicated identifiers with different coordinates are not allowed"
-#~ msgstr "No se permiten identificadores duplicados con diferentes coordenadas"
-
-#~ msgid "**Coordinates SQL**"
-#~ msgstr "**Coordenadas SQL**"
-
-#~ msgid "An SQL query, described in the `Coordinates SQL`_ section"
-#~ msgstr "Una consulta SQL, descrita en la sección `Coordenadas SQL`_"
-
-#~ msgid "**end_vid**"
-#~ msgstr "``end_vid``"
-
-#~ msgid ""
-#~ "**Coordinates SQL**: an SQL query, which"
-#~ " should return a set of rows "
-#~ "with the following columns:"
-#~ msgstr ""
-#~ "**Coordenadas SQL**: una consulta SQL, "
-#~ "que debe devolver un conjunto de "
-#~ "filas con las siguientes columnas:"
-
-#~ msgid "**id**"
-#~ msgstr "**id**"
-
-#~ msgid "**x**"
-#~ msgstr "**x**"
-
-#~ msgid "**y**"
-#~ msgstr "**y**"
 

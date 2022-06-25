@@ -39,8 +39,10 @@ msgid ""
 msgstr ""
 "**Versiones soportadas:** `Última "
 "<https://docs.pgrouting.org/latest/es/pgr_sequentialVertexColoring.html>`__"
-" (`3.3
-"<https://docs.pgrouting.org/3.3/es/pgr_sequentialVertexColoring.html>`__)"
+" (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_sequentialVertexColoring.html>`__)"
+" `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_sequentialVertexColoring.html>`__"
 " `3.2 "
 "<https://docs.pgrouting.org/3.2/es/pgr_sequentialVertexColoring.html>`__"
 
@@ -410,44 +412,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:130
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "**Edges SQL**"
-#~ msgstr "**SQL de aristas**"
-
-#~ msgid ""
-#~ "an SQL query of an **undirected** "
-#~ "graph, which should return a set "
-#~ "of rows with the following columns:"
-#~ msgstr ""
-#~ "Una consulta SQL de un grafo **no"
-#~ " dirigido**, que debería devolver un "
-#~ "conjunto de filas con las siguientes "
-#~ "columnas:"
-
-#~ msgid "**id**"
-#~ msgstr "**id**"
-
-#~ msgid "``ANY-INTEGER``"
-#~ msgstr "``ANY-INTEGER``"
-
-#~ msgid "**cost**"
-#~ msgstr "**costo**"
-
-#~ msgid "``ANY-NUMERICAL``"
-#~ msgstr "``ANY-NUMERICAL``"
-
-#~ msgid "When positive: edge `(source, target)` exist on the graph."
-#~ msgstr "Cuando es positivo: el borde `(origen, destino)` existe en el grafo."
-
-#~ msgid "When negative: edge `(source, target)` does not exist on the graph."
-#~ msgstr "Cuando es negativo: el borde `(origen, desitno)` no existe en el grafo."
-
-#~ msgid "When positive: edge `(target, source)` exist on the graph."
-#~ msgstr "Cuando es positivo: la arista `(origen, destino)` existe en el grafo."
-
-#~ msgid "SMALLINT, INTEGER, BIGINT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT"
-
-#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
 

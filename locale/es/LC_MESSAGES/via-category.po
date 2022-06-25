@@ -634,14 +634,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#~ msgid "``path``"
-#~ msgstr "``path``"
-
-#~ msgid "``Cost``"
-#~ msgstr "``Cost``"
-
-#~ msgid "Cost of taking the forbidden path."
-#~ msgstr "Costo de tomar el camino prohibido."
-
-#~ msgid "end-before"
-#~ msgstr ""

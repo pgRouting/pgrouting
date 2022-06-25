@@ -842,23 +842,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#~ msgid "Example 1"
-#~ msgstr "Ejemplo 1"
-
-#~ msgid "Example 2"
-#~ msgstr "Ejemplo 2"
-
-#~ msgid "Example 3"
-#~ msgstr "Ejemplo 3"
-
-#~ msgid "Example 4"
-#~ msgstr "Ejemplo 4"
-
-#~ msgid "Example 5"
-#~ msgstr "Ejemplo 5"
-
-#~ msgid "Example 6"
-#~ msgstr "Ejemplo 6"
-
-#~ msgid "Example 7"
-#~ msgstr "Ejemplo 7"
