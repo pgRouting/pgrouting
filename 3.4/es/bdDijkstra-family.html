@@ -179,28 +179,25 @@ from the target, stopping when the two meet in the middle.</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en las aristas con costos positivos.</p>
 <ul>
-<li><p>A negative value on a cost column is interpreted as the edge does not exist.</p></li>
+<li><p>Valor no negativo en una columna de costo se interpreta como la arsta no exite.</p></li>
 </ul>
 </li>
 <li><p>Valores son regresados cuando hay una ruta.</p></li>
-<li><p>When there is no path:</p>
+<li><p>Cuando no hay ruta:</p>
 <ul>
-<li><p>When the starting vertex and ending vertex are the same.</p>
+<li><p>Cuando el vértice de salida y el vértice destino son iguales, no hay camino.</p>
 <ul>
-<li><p>The <strong>aggregate cost</strong> of the non included values <span class="math notranslate nohighlight">\((v, v)\)</span> is
-<span class="math notranslate nohighlight">\(0\)</span></p></li>
+<li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((v, v)\)</span> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
 <li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
 <ul>
-<li><p>The <strong>aggregate cost</strong> the non included values <span class="math notranslate nohighlight">\((u, v)\)</span> is
-<span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+<li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((u, v)\)</span> es :math: <cite>infty</cite></p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>For optimization purposes, any duplicated value in the starting vertices or on
-the ending vertices are ignored.</p></li>
+<li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución (peor de los casos): <span class="math notranslate nohighlight">\(O((V \log V + E))\)</span></p></li>
 <li><p>Para grandes gráficos donde hay un camino entre el vértice inicial y el vértice final:</p>
 <ul>

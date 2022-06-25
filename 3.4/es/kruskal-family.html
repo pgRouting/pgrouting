@@ -97,7 +97,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Kruskal - Familia de funciones</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas internas</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -195,7 +195,7 @@
 </ul>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -212,32 +212,31 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>

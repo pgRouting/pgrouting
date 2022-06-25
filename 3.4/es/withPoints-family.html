@@ -98,14 +98,14 @@
 <li><a class="reference internal" href="#">withPoints - Familia de funciones</a><ul>
 <li><a class="reference internal" href="#introduction">Introducción</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
 <li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#advanced-documentation">Advanced Documentation</a><ul>
@@ -240,34 +240,34 @@ functions that compose them are based one way or another on dijkstra algorithm.<
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Consulta de aristas</a> como se describe a continuación</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a> como se describe a abajo</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the starting vertex of the path. Negative value is for
 point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array of identifiers of starting vertices. Negative values are for
 point’s identifiers.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the ending vertex of the path. Negative value is for
 point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array of identifiers of ending vertices. Negative values are for point’s
 identifiers.</p></td>
@@ -275,12 +275,12 @@ identifiers.</p></td>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
@@ -289,8 +289,8 @@ identifiers.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
 </ul>
 </td>
 </tr>
@@ -309,7 +309,7 @@ identifiers.</p></td>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
@@ -340,9 +340,9 @@ path.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -353,38 +353,37 @@ path.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the edge.</p></td>
+<td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identifier of the first end point vertex of the edge.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identifier of the second end point vertex of the edge.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -412,13 +411,13 @@ it’s not part of the graph.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Default</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p><strong>value</strong></p></td>
 <td><p>Identifier of the point.</p>
 <ul class="simple">
@@ -431,12 +430,12 @@ automatically.</p></li>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identifier of the «closest» edge to the point.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
 <td><p>Value in &lt;0,1&gt; that indicates the relative postition from the first end
 point of the edge.</p></td>
@@ -465,7 +464,7 @@ point of the edge.</p></td>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -480,12 +479,12 @@ point of the edge.</p></td>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the arrival vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de llegada.</p></td>
 </tr>
 </tbody>
 </table>

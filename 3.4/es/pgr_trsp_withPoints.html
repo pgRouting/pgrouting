@@ -110,11 +110,11 @@
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
 <li><a class="reference internal" href="#restrictions-sql">Restricciones SQL</a></li>
 <li><a class="reference internal" href="#points-sql">Puntos SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinaciones SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -478,7 +478,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>consulta SQL como descrito.</p></td>
 </tr>
@@ -486,23 +486,23 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>consulta SQL como descrito.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a> como se describe a abajo</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>vid de salida</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Array of identifiers of destination vertices.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Array of identifiers of destination vertices.</p></td>
 </tr>
@@ -529,7 +529,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">true</span></code>, el grafo se considera <strong>dirigido</strong></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
 </ul>
 </td>
@@ -583,7 +583,7 @@ path.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
@@ -617,12 +617,12 @@ path.</p></li>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
 <td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
@@ -665,7 +665,7 @@ taken.
 - Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>Costo de tomar el camino prohibido.</p></td>
 </tr>
 </tbody>
@@ -714,7 +714,7 @@ taken.
 <td><p>Identificador de la arista «más cercana» al punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
 <td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto de la arista.</p></td>
 </tr>
@@ -742,7 +742,7 @@ taken.
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinaciones SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -758,11 +758,11 @@ taken.
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p>Identifier of the arrival vertex.</p></td>
+<td><p>Identificador del vértice de llegada.</p></td>
 </tr>
 </tbody>
 </table>
@@ -827,7 +827,7 @@ taken.
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</p></li>
 </ul>

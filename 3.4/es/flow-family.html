@@ -97,9 +97,9 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Flow - Familia de funciones.</a><ul>
 <li><a class="reference internal" href="#flow-functions-general-information">Información General de las Funciones de Flujo</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinaciones SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -242,7 +242,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a>, but the actual flow through each edge may vary.</p>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Capacity edges</p>
@@ -267,32 +267,31 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -328,47 +327,45 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Capacity of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Capacity of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
 <td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) if it exist</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
 <td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) if it exist</p></td>
 </tr>
@@ -403,32 +400,31 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -445,7 +441,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinaciones SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -460,12 +456,12 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the arrival vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de llegada.</p></td>
 </tr>
 </tbody>
 </table>

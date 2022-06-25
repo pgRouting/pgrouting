@@ -106,7 +106,7 @@
 <li><a class="reference internal" href="#via-optional-parameters">Vía parámetros opcional</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
 <li><a class="reference internal" href="#restrictions-sql">Restricciones SQL</a></li>
 </ul>
@@ -284,7 +284,7 @@ order on an <strong>directed</strong> graph.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL de Aristas</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> query as described.</p></td>
 </tr>
@@ -319,7 +319,7 @@ order on an <strong>directed</strong> graph.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">true</span></code>, el grafo se considera <strong>dirigido</strong></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
 </ul>
 </td>
@@ -366,7 +366,7 @@ order on an <strong>directed</strong> graph.</p>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
@@ -400,12 +400,12 @@ order on an <strong>directed</strong> graph.</p>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
 <td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
 <td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
@@ -448,7 +448,7 @@ taken.
 - Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>Costo de tomar el camino prohibido.</p></td>
 </tr>
 </tbody>
@@ -518,7 +518,7 @@ taken.
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">route_agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>

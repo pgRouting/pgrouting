@@ -106,9 +106,9 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinaciones SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -369,7 +369,7 @@ OR EMPTY SET</pre>
 vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{10, 15, 14\}\)</span>.</p>
 </dd>
 </dl>
-<p>The combinations table:</p>
+<p>La tabla de combinaciones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="n">FROM</span> <span class="n">combinations</span>
 <span class="n">WHERE</span> <span class="n">target</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
  <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
@@ -381,7 +381,7 @@ vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to verti
 
 </pre></div>
 </div>
-<p>The query:</p>
+<p>La consulta:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
   <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
@@ -413,27 +413,27 @@ vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to verti
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#edges-sql">Consulta de aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a> como se describe a abajo</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start vid</strong></p></td>
+<tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the starting vertex of the path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start vids</strong></p></td>
+<tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array of identifiers of starting vertices.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end vid</strong></p></td>
+<tr class="row-even"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the ending vertex of the path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end vids</strong></p></td>
+<tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array of identifiers of ending vertices.</p></td>
 </tr>
@@ -441,7 +441,7 @@ vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to verti
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
@@ -460,32 +460,31 @@ vertices <span class="math notranslate nohighlight">\(\{5, 6\}\)</span> to verti
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -502,7 +501,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinaciones SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -517,12 +516,12 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the arrival vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de llegada.</p></td>
 </tr>
 </tbody>
 </table>
@@ -576,7 +575,7 @@ it’s not part of the graph.</p></li>
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Manually assigned vertex combinations.</p>
+<dd class="field-odd"><p>Manualmente asignar combinaciones de vértices.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
