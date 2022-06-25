@@ -327,9 +327,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#~ msgid ":doc:`pgr_binaryBreadthFirstSearch`"
-#~ msgstr ":doc:`pgr_binaryBreadthFirstSearch`"
-
-#~ msgid ":doc:`pgr_breadthFirstSearch`"
-#~ msgstr ":doc:`pgr_breadthFirstSearch`"
-

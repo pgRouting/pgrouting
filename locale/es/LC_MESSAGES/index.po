@@ -459,21 +459,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#~ msgid "Reference"
-#~ msgstr "Referencias"
-
-#~ msgid ":doc:`pgr_version` - Get pgRouting's version information."
-#~ msgstr ":doc:`pgr_version` - Obtener información de versión de pgRouting."
-
-#~ msgid ":doc:`pgr_full_version` - Get pgRouting's details of version."
-#~ msgstr ":doc:`pgr_full_version` - Obtener los detalles de pgRouting de la versión."
-
-#, fuzzy
-#~| msgid ":doc:`KSP-category`"
-#~ msgid ":doc:`via-category`"
-#~ msgstr ":doc:`KSP-category`"
-
-#, fuzzy
-#~| msgid ":doc:`pgr_dijkstraCost`"
-#~ msgid ":doc:`pgr_dijkstraVia`"
-#~ msgstr ":doc:`pgr_dijkstraCost`"

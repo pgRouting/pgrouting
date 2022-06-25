@@ -350,36 +350,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#~ msgid "**Edges SQL**"
-#~ msgstr "**SQL de aristas**"
-
-#~ msgid "SQL query described in `Inner query`_."
-#~ msgstr "Consulta SQL descrita en `Inner query`_."
-
-#~ msgid "**id**"
-#~ msgstr "**id**"
-
-#~ msgid "``ANY-INTEGER``"
-#~ msgstr "``ANY-INTEGER``"
-
-#~ msgid "**cost**"
-#~ msgstr "**costo**"
-
-#~ msgid "``ANY-NUMERICAL``"
-#~ msgstr "``ANY-NUMERICAL``"
-
-#~ msgid ""
-#~ "When negative: edge `(source, target)` "
-#~ "does not exist, therefore it's not "
-#~ "part of the graph."
-#~ msgstr ""
-#~ "Cuando es negativo: la arista `(source,"
-#~ " target)` no existe, por lo tanto "
-#~ "no es parte del grafo."
-
-#~ msgid "SMALLINT, INTEGER, BIGINT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT"
-
-#~ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-#~ msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-

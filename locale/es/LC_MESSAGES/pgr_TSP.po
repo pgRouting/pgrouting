@@ -673,36 +673,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#~ msgid "pgr_TSP"
-#~ msgstr "pgr_TSP"
-
-#~ msgid "General Characteristics"
-#~ msgstr "Características generales"
-
-#~ msgid "**Matrix SQL**"
-#~ msgstr "**Matrix SQL**"
-
-#~ msgid "An SQL query, described in the `Matrix SQL`_ section."
-#~ msgstr "Una consulta SQL, descrita en la sección `Matrix SQL`_."
-
-#~ msgid ""
-#~ "**Matrix SQL**: an SQL query, which "
-#~ "should return a set of rows with"
-#~ " the following columns:"
-#~ msgstr ""
-#~ "**Matrix SQL**: una consulta SQL, que"
-#~ " debe devolver un conjunto de filas"
-#~ " con las siguientes columnas:"
-
-#~ msgid ""
-#~ "Edge `(5,12)` does not exist on "
-#~ "the initial data, but it is "
-#~ "calculated internally."
-#~ msgstr ""
-#~ "El segmento `(5, 12)` no existe en"
-#~ " los datos iniciales, pero se calcula"
-#~ " internamente."
-
-#~ msgid "The queries use the :doc:`sampledata` network."
-#~ msgstr "Las consultas utilizan la red :doc:`sampledata` ."
-
