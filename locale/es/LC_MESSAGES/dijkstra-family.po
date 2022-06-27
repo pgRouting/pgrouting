@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "dijkstra-family/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/dijkstra-family.rst:12
@@ -163,9 +163,9 @@ msgid ""
 msgstr ""
 "Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra "
 "en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de "
-"ruta más corta para un grafo con costos de aristad no negativos, produciendo "
+"ruta más corta para un grafo con costos de aristas no negativos, produciendo "
 "la ruta más corta desde un vértice inicial a un vértice final . Esta "
-"implementación se puede utilizar con un grafo dirigido y uno no dirigido."
+"implementación se puede utilizar con un grafos dirigidos y no dirigidos."
 
 #: ../../build/doc/dijkstra-family.rst:82
 msgid "The main characteristics are:"
@@ -173,7 +173,7 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:86
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/dijkstra-family.rst:88
 msgid ""
@@ -185,7 +185,7 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:90
 msgid "Values are returned when there is a path."
-msgstr ""
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/dijkstra-family.rst:91
 msgid "When there is no path:"
@@ -193,8 +193,7 @@ msgstr "Cuando no hay ruta:"
 
 #: ../../build/doc/dijkstra-family.rst:93
 msgid "When the starting vertex and ending vertex are the same."
-msgstr ""
-"Cuando el vértice de salida y el vértice destino son iguales, no hay camino."
+msgstr "Cuando el vértice de salida y el vértice destino son iguales."
 
 #: ../../build/doc/dijkstra-family.rst:95
 msgid ""
@@ -208,6 +207,8 @@ msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path:"
 msgstr ""
+"Cuando el vértice de salida y el vértice destino son diferentes y no hay "
+"ninguna ruta:"
 
 #: ../../build/doc/dijkstra-family.rst:101
 msgid ""
@@ -235,19 +236,19 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:114
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../build/doc/dijkstra-family.rst:123
 #: ../../build/doc/dijkstra-family.rst:157
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/dijkstra-family.rst:124
 #: ../../build/doc/dijkstra-family.rst:158
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/dijkstra-family.rst:125
 #: ../../build/doc/dijkstra-family.rst:160
@@ -267,7 +268,7 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:128
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:129
 msgid "`Combinations SQL`_"
@@ -354,7 +355,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/dijkstra-family.rst:173
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -379,7 +380,7 @@ msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:20
@@ -431,7 +432,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38

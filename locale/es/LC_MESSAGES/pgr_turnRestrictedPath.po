@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-04 15:50+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_turnrestrictedpath/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_turnrestrictedpath/es/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:12
@@ -161,14 +161,14 @@ msgstr "Parámetros"
 #: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/pgr_KSP.rst:8
 #: ../../build/doc/pgr_turnRestrictedPath.rst:89
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:12 ../../build/doc/pgr_KSP.rst:9
 #: ../../build/doc/pgr_turnRestrictedPath.rst:90
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/pgr_KSP.rst:11
 msgid "`Edges SQL`_"
@@ -191,23 +191,23 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:21 ../../build/doc/pgr_KSP.rst:15
 #: ../../build/doc/pgr_KSP.rst:18 ../../build/doc/pgr_KSP.rst:21
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgr_KSP.rst:16 ../../build/doc/pgr_KSP.rst:19
 msgid "Identifier of the departure vertex."
-msgstr ""
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgr_KSP.rst:17
 msgid "**end vid**"
-msgstr ""
+msgstr "**vid destino**"
 
 #: ../../build/doc/pgr_KSP.rst:20
 msgid "**K**"
-msgstr ""
+msgstr "**K**"
 
 #: ../../build/doc/pgr_KSP.rst:22
 msgid "Number of required paths"
-msgstr ""
+msgstr "Cantidad de rutas requeridas"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 #: ../../build/doc/pgRouting-concepts.rst:36 ../../build/doc/pgr_KSP.rst:24
@@ -216,7 +216,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst ../../build/doc/pgr_KSP.rst
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:38 ../../build/doc/pgr_KSP.rst:26
@@ -232,17 +232,17 @@ msgstr "Parámetros"
 #: ../../build/doc/pgRouting-concepts.rst:10 ../../build/doc/pgr_KSP.rst:10
 #: ../../build/doc/pgr_turnRestrictedPath.rst:91
 msgid "Default"
-msgstr ""
+msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
 msgid "``directed``"
-msgstr ""
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13 ../../build/doc/pgr_KSP.rst:13
 #: ../../build/doc/pgr_turnRestrictedPath.rst:94
 #: ../../build/doc/pgr_turnRestrictedPath.rst:100
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/dijkstra-family.rst:14
 #: ../../build/doc/pgr_turnRestrictedPath.rst:95
@@ -251,11 +251,11 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr ""
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr ""
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:75
 msgid "KSP Optional parameters"
@@ -283,6 +283,9 @@ msgid ""
 "Roughly, when the shortest path has ``N`` edges, the heap will contain "
 "about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
 msgstr ""
+"Aproximadamente, si la ruta más corta tiene ``N`` aristas, las procesadas "
+"contendrán aproximadamente ``N * K`` rutas para valores pequeños de ``K`` y "
+"``K > 5``."
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:82
 msgid "Special optional parameters"
@@ -319,27 +322,27 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:109
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
-msgstr ""
+msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``source``"
-msgstr ""
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
-msgstr ""
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -348,21 +351,21 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:40
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr ""
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "``reverse_cost``"
-msgstr ""
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
@@ -370,7 +373,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr ""
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
@@ -393,7 +396,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "``path``"
-msgstr ""
+msgstr "``path``"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
@@ -423,24 +426,26 @@ msgid ""
 "Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge,"
 " cost, agg_cost)``"
 msgstr ""
+"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, node, "
+"edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``INTEGER``"
-msgstr ""
+msgstr "``INTEGER``"
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Sequential value starting from **1**."
-msgstr ""
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``path_id``"
-msgstr ""
+msgstr "``path_id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Path identifier."
@@ -449,10 +454,11 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
 msgstr ""
+"Tiene valor **1** para el primero de la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "``path_seq``"
-msgstr ""
+msgstr "``path_seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 msgid ""
@@ -462,38 +468,38 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "``start_vid``"
-msgstr ""
+msgstr "``start_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 #: ../../build/doc/pgRouting-concepts.rst:31
 #: ../../build/doc/pgRouting-concepts.rst:34
 #: ../../build/doc/pgRouting-concepts.rst:37
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "Identifier of the starting vertex."
-msgstr ""
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "``end_vid``"
-msgstr ""
+msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:32
 msgid "Identifier of the ending vertex."
-msgstr ""
+msgstr "Identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/pgRouting-concepts.rst:35
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
-msgstr ""
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid ""
@@ -504,17 +510,19 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:41
 #: ../../build/doc/pgRouting-concepts.rst:45
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:42
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
+"en la secuencia de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:44
 msgid "``agg_cost``"
-msgstr ""
+msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:46
 msgid "Aggregate cost from ``start_vid`` to ``node``."
@@ -546,11 +554,11 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:157
 msgid ":doc:`KSP-category`"
-msgstr ""
+msgstr ":doc:`KSP-category`"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:158
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:161
 msgid "Indices and tables"
@@ -563,4 +571,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_turnRestrictedPath.rst:163
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

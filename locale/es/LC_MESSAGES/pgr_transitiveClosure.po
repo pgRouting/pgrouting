@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_transitiveclosure/es/>\n"
@@ -21,11 +21,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_transitiveClosure.html>`__ "
@@ -35,11 +34,12 @@ msgid ""
 "`3.1 <https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html>`__ "
 "`3.0 <https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_transitiveClosure.html>`__ "
-"(`3.4 <https://docs.pgrouting.org/3.4/es/pgr_transitiveClosure.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/pgr_transitiveClosure.html>`__   "
-"`3.1 <https://docs.pgrouting.org/3.1/es/pgr_transitiveClosure.html>`__ "
-"`3.0 <https://docs.pgrouting.org/3.0/es/pgr_transitiveClosure.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_transitiveClosure.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_transitiveClosure.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_transitiveClosure.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_transitiveClosure.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_transitiveClosure.html>`__"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:21
 #, fuzzy
@@ -234,7 +234,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:92
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_transitiveClosure.rst:108
@@ -345,9 +345,8 @@ msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:113
-#, fuzzy
 msgid "Sequential value starting from :math:`1`"
-msgstr "Valor secuencial a partir de **1**."
+msgstr "Valor secuencial a partir de :math:`1`"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:114
 msgid "``vid``"
@@ -359,9 +358,8 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:116
-#, fuzzy
 msgid "Identifier of the source of the edges"
-msgstr "Identificador de la arista."
+msgstr "Identificador del nodo inicial de las aristas"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:117
 #, fuzzy
@@ -369,9 +367,8 @@ msgid "``target_array``"
 msgstr "**target_array**"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:119
-#, fuzzy
 msgid "Identifiers of the targets of the edges"
-msgstr "Identificador de la arista."
+msgstr "Identificador del nodo final de las aristas"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:121
 #, fuzzy
@@ -386,7 +383,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:126
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:127
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
@@ -403,4 +400,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_transitiveClosure.rst:132
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

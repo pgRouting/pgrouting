@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_createtopology/es/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_createTopology.rst:12
@@ -306,14 +306,12 @@ msgid "The Vertices Table"
 msgstr "La tabla de vértices"
 
 #: ../../build/doc/pgr_createTopology.rst:116
-#, fuzzy
 msgid ""
 "The vertices table is a requirement of the :doc:`pgr_analyzeGraph` and "
 "the :doc:`pgr_analyzeOneWay` functions."
 msgstr ""
 "La tabla de vértices es un requerimiento de las funciones "
-":doc:`pgr_analyzeGraph <pgr_analyzeGraph>` y   :doc:`pgr_analyzeOneWay "
-"<pgr_analyzeOneWay>`."
+":doc:`pgr_analyzeGraph>` y :doc:`pgr_analyzeOneWay`."
 
 #: ../../build/doc/pgr_createTopology.rst:119
 msgid "The structure of the vertices table is:"
@@ -503,9 +501,8 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_createTopology.rst:265
-#, fuzzy
 msgid "Create a routing topology"
-msgstr "pgr_createTopology"
+msgstr "Creación de una topología de ruteo"
 
 #: ../../build/doc/pgr_createTopology.rst:267
 msgid ""
@@ -515,11 +512,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:4
 msgid "Make sure the database does not have the ``vertices_table``"
-msgstr ""
+msgstr "Asegurarse de que la base de datos no tiene ``vertices_table``"
 
 #: ../../build/doc/pgr_extractVertices.rst:11
 msgid "Clean up the columns of the routing topology to be created"
-msgstr ""
+msgstr "Limpieza de las columnas de la topología de ruteo que se creará"
 
 #: ../../build/doc/pgr_extractVertices.rst:18
 #, fuzzy
@@ -551,7 +548,7 @@ msgstr "La tabla de vértices"
 
 #: ../../build/doc/pgr_extractVertices.rst:38
 msgid "Create the routing topology on the edge table"
-msgstr ""
+msgstr "Creación de la topología de ruteo en la tabla de aristas"
 
 #: ../../build/doc/pgr_extractVertices.rst:40
 msgid "Updating the ``source`` information"
@@ -559,16 +556,15 @@ msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:46
 msgid "Updating the ``target`` information"
-msgstr ""
+msgstr "Actualización de la información de ``target``"
 
 #: ../../build/doc/pgr_extractVertices.rst:53
 msgid "Inspect the routing topology"
-msgstr ""
+msgstr "Inspección de la topología de ruteo"
 
 #: ../../build/doc/pgr_extractVertices.rst:62
-#, fuzzy
 msgid "**Generated topology**"
-msgstr "pgr_createTopology"
+msgstr "**Topología generada**"
 
 #: ../../build/doc/pgr_createTopology.rst:275
 msgid "With full output"
@@ -592,7 +588,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_createTopology.rst:289
 msgid ":doc:`topology-functions`"
-msgstr ""
+msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/pgr_createTopology.rst:290
 msgid ":doc:`pgr_createVerticesTable`"

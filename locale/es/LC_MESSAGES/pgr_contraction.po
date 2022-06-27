@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_contraction/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_contraction.rst:12
@@ -132,7 +132,7 @@ msgstr "Las características principales son:"
 
 #: ../../build/doc/pgr_contraction.rst:60
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/pgr_contraction.rst:61
 msgid "Does not return the full contracted graph"
@@ -197,13 +197,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_contraction.rst:97
-#, fuzzy
 msgid ""
 "Making a dead end and linear contraction in that order on an undirected "
 "graph."
 msgstr ""
-"Hacer una contracción sin salida y una contracción lineal con el vértice "
-"2 cuya contracción está prohibida"
+"Hacer una contracción de callejón sin salida y una contracción lineal en ese "
+"orden en un grafo no dirigido."
 
 #: ../../build/doc/pgr_contraction.rst:105
 msgid "Parameters"
@@ -275,9 +274,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "``BOOLEAN``"
@@ -288,9 +286,8 @@ msgid "``true``"
 msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
-#, fuzzy
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr "En caso de ''true'' el grafo se considera como `Dirigido`."
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
@@ -330,13 +327,12 @@ msgid ":math:`1`"
 msgstr ":math:`1`"
 
 #: ../../build/doc/pgr_contraction.rst:151
-#, fuzzy
 msgid ""
 "Number of times the contraction operations on ``contraction_order`` will "
 "be performed."
 msgstr ""
-"Número de veces que se realizarán las operaciones de contracción en "
-"`contraction_order` "
+"Número de veces que se realizarán las operaciones de contracción en el orden "
+"``contraction_order``."
 
 #: ../../build/doc/pgr_contraction.rst:155
 #, fuzzy
@@ -345,18 +341,18 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_contraction.rst:158
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgr_contraction.rst:189
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
@@ -364,9 +360,8 @@ msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgr_contraction.rst:205
-#, fuzzy
 msgid "``source``"
-msgstr "``true``"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
@@ -374,9 +369,8 @@ msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgr_contraction.rst:210
-#, fuzzy
 msgid "``target``"
-msgstr "``true``"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -384,22 +378,19 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgr_contraction.rst:215
-#, fuzzy
 msgid "``cost``"
-msgstr "``true``"
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -408,9 +399,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy

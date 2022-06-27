@@ -12,15 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_kruskalbfs/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_kruskalbfs/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:12
@@ -87,11 +88,11 @@ msgstr "**Las características principales son:**"
 
 #: ../../build/doc/spanningTree-family.rst:3
 msgid "It's implementation is only on **undirected** graph."
-msgstr "Su implementación solo para grafo **no direccionado**."
+msgstr "Su implementación es solo para grafo **no dirigido**."
 
 #: ../../build/doc/spanningTree-family.rst:4
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/spanningTree-family.rst:5
 msgid "When the graph is connected"
@@ -188,7 +189,7 @@ msgstr ""
 
 #: ../../build/doc/BFS-category.rst:14
 msgid "**Root vid**"
-msgstr "**Raíz**"
+msgstr "**id raíz**"
 
 #: ../../build/doc/BFS-category.rst:13 ../../build/doc/BFS-category.rst:14
 #: ../../build/doc/BFS-category.rst:15 ../../build/doc/BFS-category.rst:17
@@ -206,8 +207,8 @@ msgid ""
 "When value is :math:`0` then gets the spanning forest starting in "
 "aleatory nodes for each tree in the forest."
 msgstr ""
-"Cuando el valor es :math:`0` se obtiene el bosque de expansión que "
-"comienza en nodos aleatorios para cada árbol del bosque."
+"Cuando el valor es :math:`0` se obtiene el bosque de expansión que comienza "
+"en nodos aleatorios para cada árbol del bosque."
 
 #: ../../build/doc/BFS-category.rst:21
 msgid "**Root vids**"
@@ -251,9 +252,8 @@ msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 msgstr ""
 
 #: ../../build/doc/pgr_kruskalBFS.rst:105
-#, fuzzy
 msgid "BFS optional parameters"
-msgstr "Parámetros opcionales"
+msgstr "Párametros opcionales de BFS"
 
 #: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -261,23 +261,20 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/BFS-category.rst:12
-#, fuzzy
 msgid "``max_depth``"
-msgstr "**max_depth**"
+msgstr "``max_depth``"
 
 #: ../../build/doc/BFS-category.rst:14
 msgid ":math:`9223372036854775807`"
 msgstr ":math:`9223372036854775807`"
 
 #: ../../build/doc/BFS-category.rst:15
-#, fuzzy
 msgid "Upper limit of the depth of the tree."
-msgstr "Límite superior para la profundidad del nodo en el árbol"
+msgstr "Límite superior para la profundidad del árbol."
 
 #: ../../build/doc/BFS-category.rst:17
-#, fuzzy
 msgid "When negative throws an error."
-msgstr "Cuando el valor es ``Negativo`` entonces **produce error**"
+msgstr "Cuando negativo arroja error."
 
 #: ../../build/doc/pgr_kruskalBFS.rst:112
 #, fuzzy
@@ -286,7 +283,7 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:115
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
@@ -294,32 +291,29 @@ msgstr "Columna"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
 msgid "**ANY-INTEGER**"
-msgstr "**arista**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -328,20 +322,18 @@ msgstr "Identificador del segundo vértice de la arista."
 #: ../../build/doc/BFS-category.rst:35
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -350,9 +342,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -385,7 +376,7 @@ msgstr "Regresa ``SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/BFS-category.rst:13
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 #: ../../build/doc/BFS-category.rst:15
 msgid "Sequential value starting from :math:`1`."
@@ -405,7 +396,6 @@ msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/BFS-category.rst:22
-#, fuzzy
 msgid "``start_vid``"
 msgstr "``start_vid``"
 
@@ -415,7 +405,7 @@ msgstr "Identificador del vértice raíz."
 
 #: ../../build/doc/BFS-category.rst:26
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/BFS-category.rst:28
 msgid "Identifier of ``node`` reached using ``edge``."
@@ -423,16 +413,15 @@ msgstr "Identificador del ``node`` alcanzado usando ``edge``."
 
 #: ../../build/doc/BFS-category.rst:29
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/BFS-category.rst:31
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/BFS-category.rst:33
-#, fuzzy
 msgid ":math:`-1` when ``node`` = ``start_vid``."
-msgstr ":math:`-1`  cuando ``node`` = ``start_vid``."
+msgstr ":math:`-1` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/BFS-category.rst:36 ../../build/doc/BFS-category.rst:39
 msgid "``FLOAT``"
@@ -443,7 +432,6 @@ msgid "Cost to traverse ``edge``."
 msgstr "Costo por recorrer ``edge``."
 
 #: ../../build/doc/BFS-category.rst:38
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
@@ -465,7 +453,7 @@ msgstr ":doc:`kruskal-family`"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:133
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:134
 #, fuzzy
@@ -495,4 +483,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_kruskalBFS.rst:142
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

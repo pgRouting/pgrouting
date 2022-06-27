@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-family/es/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/withPoints-family.rst:12
@@ -176,20 +176,20 @@ msgstr "pgr_withPoints se basa en pgr_dijkstra"
 
 #: ../../build/doc/withPoints-family.rst:72
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/withPoints-category.rst:8
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/withPoints-category.rst:9
 #: ../../build/doc/withPoints-family.rst:96
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -212,15 +212,15 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:13
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/withPoints-category.rst:14
 msgid "`Points SQL`_"
-msgstr ""
+msgstr "`SQL puntos`_"
 
 #: ../../build/doc/withPoints-category.rst:16
 msgid "`Points SQL`_ as described below"
-msgstr ""
+msgstr "`SQL puntos`_ como se describe abajo"
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid "`Combinations SQL`_"
@@ -259,6 +259,8 @@ msgid ""
 "Array of identifiers of starting vertices. Negative values are for "
 "point’s identifiers."
 msgstr ""
+"Arreglo de identificadores de vértices iniciales. Valores negativos son para "
+"identificadores de puntos."
 
 #: ../../build/doc/withPoints-category.rst:28
 msgid "**end vid**"
@@ -323,14 +325,13 @@ msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:99
-#, fuzzy
 msgid "``driving_side``"
-msgstr "Lado de conducción izquierdo"
+msgstr "**Lado de manejo**"
 
 #: ../../build/doc/withPoints-category.rst:32
 #: ../../build/doc/withPoints-family.rst:100
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:33
 #: ../../build/doc/withPoints-family.rst:101
@@ -342,9 +343,8 @@ msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:104
-#, fuzzy
 msgid "``r`` for right driving side."
-msgstr "Lado de conducción derecho"
+msgstr "``r`` para manejo del lado derecho."
 
 #: ../../build/doc/withPoints-family.rst:105
 #, fuzzy
@@ -357,7 +357,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:107
 msgid "``details``"
-msgstr ""
+msgstr "``details``"
 
 #: ../../build/doc/withPoints-family.rst:109
 msgid "``false``"
@@ -379,7 +379,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/withPoints-family.rst:120
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -406,7 +406,7 @@ msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:20
@@ -460,7 +460,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
@@ -480,15 +480,15 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/withPoints-family.rst:127
 msgid "Points SQL"
-msgstr ""
+msgstr "SQL puntos"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/withPoints-category.rst:14
 msgid "**value**"
-msgstr ""
+msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
 msgid "Identifier of the point."
@@ -507,6 +507,8 @@ msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará "
+"automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
@@ -514,11 +516,11 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
-msgstr ""
+msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 #: ../../build/doc/withPoints-category.rst:29
 msgid ""
@@ -532,7 +534,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr ""
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
@@ -540,7 +542,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
-msgstr ""
+msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
@@ -894,4 +896,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/withPoints-family.rst:155
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

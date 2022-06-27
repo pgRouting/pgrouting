@@ -12,15 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_astarcostmatrix/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_astarcostmatrix/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:12
@@ -150,13 +151,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:80
-#, fuzzy
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
 "**undirected** graph using heuristic :math:`2`"
 msgstr ""
-"Matriz de costes simetrica para los vértices :math:`\\{1, 2, 3, 4\\}` en "
-"un grafo **no dirigido** usando la  heurística :math:`2`"
+"Matriz simétrica de costes para los vértices :math:`\\{5, 6, 10, 15\\}` en "
+"un grafo **no dirigido** usando la heurística :math:`2`"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:88
 msgid "Parameters"
@@ -186,12 +186,11 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/costMatrix-category.rst:13
 msgid "`Edges SQL`_ as described below"
-msgstr ""
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/costMatrix-category.rst:14
-#, fuzzy
 msgid "**start vids**"
-msgstr "``start_vid``"
+msgstr "**vid salidas**"
 
 #: ../../build/doc/costMatrix-category.rst:15
 msgid "``ARRAY[BIGINT]``"
@@ -213,9 +212,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "``BOOLEAN``"
@@ -226,14 +224,12 @@ msgid "``true``"
 msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
-#, fuzzy
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr "En caso de ``true`` el grafo se considera como Dirigido."
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
-#, fuzzy
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr "Cuando ``false`` el gráfico se considera como No Dirigido."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:102
 #, fuzzy
@@ -255,12 +251,11 @@ msgstr "``INTEGER``"
 
 #: ../../build/doc/aStar-family.rst:14
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../../build/doc/aStar-family.rst:15
-#, fuzzy
 msgid "Heuristic number. Current valid values 0~5."
-msgstr "Número heurístico. Valores actuales válidos 0~5. Default ``5``"
+msgstr "Número heurístico. Valores válidos 0~5."
 
 #: ../../build/doc/aStar-family.rst:17
 #, fuzzy
@@ -273,19 +268,16 @@ msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 msgstr "1: h(v) abs(max(dx, dy))"
 
 #: ../../build/doc/aStar-family.rst:19
-#, fuzzy
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
-msgstr "2: h(v) abs(min(dx, dy))"
+msgstr "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
 
 #: ../../build/doc/aStar-family.rst:20
-#, fuzzy
 msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
-msgstr "3: h(v) = dx * dx + dy * dy"
+msgstr "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
 
 #: ../../build/doc/aStar-family.rst:21
-#, fuzzy
 msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
-msgstr "4: h(v) = sqrt(dx * dx + dy * dy)"
+msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:22
 #, fuzzy
@@ -307,11 +299,8 @@ msgid "``1``"
 msgstr "``1``"
 
 #: ../../build/doc/aStar-family.rst:26
-#, fuzzy
 msgid "For units manipulation. :math:`factor > 0`."
-msgstr ""
-"Para la manipulación de unidades. math:`factor > 0`. Ver "
-":ref:`astar_factor`"
+msgstr "Para la manipulación de unidades. math:`factor > 0`."
 
 #: ../../build/doc/aStar-family.rst:27
 #, fuzzy
@@ -334,47 +323,42 @@ msgid "Inner Queries"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:112
-#, fuzzy
 msgid "Edges SQL"
-msgstr "edges_sql"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
-#, fuzzy
 msgid "``id``"
-msgstr "``5``"
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "``true``"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "``true``"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#, fuzzy
 msgid "``cost``"
-msgstr "``true``"
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:32
@@ -383,12 +367,11 @@ msgstr "``true``"
 #: ../../build/doc/pgRouting-concepts.rst:47
 #: ../../build/doc/pgRouting-concepts.rst:51
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge  (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
 #, fuzzy
@@ -400,7 +383,6 @@ msgstr ""
 "no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -487,12 +469,10 @@ msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
-#, fuzzy
 msgid "Set of ``(start_vid, end_vid, agg_cost)``"
-msgstr "Devuelve SET OF ``(start_vid, end_vid, agg_cost)``"
+msgstr "Conjunto de ``(start_vid, end_vid, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "``start_vid``"
 msgstr "``start_vid``"
 
@@ -503,19 +483,17 @@ msgstr "``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the starting vertex."
-msgstr "Identificador del vértice inicial."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``end_vid``"
 msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
-msgstr "Identificador del vértice final."
+msgstr "Identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
@@ -549,7 +527,7 @@ msgstr ":doc:`TSP-family`"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:140
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:143
 msgid "Indices and tables"
@@ -562,4 +540,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_aStarCostMatrix.rst:145
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

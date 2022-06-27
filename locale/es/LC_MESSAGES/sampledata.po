@@ -6,21 +6,21 @@
 # Translators:
 # MarPetra <mvergaratrejo@gmail.com>, 2021
 # Vicky Vergara <vicky@georepublic.de>, 2021
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 14:20+0000\n"
-"PO-Revision-Date: 2020-11-04 18:32+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"sampledata/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"(https://www.transifex.com/pgrouting/teams/1219/es/)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/sampledata.rst:12
@@ -124,7 +124,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:67 ../../build/doc/sampledata.rst:210
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/sampledata.rst:68 ../../build/doc/sampledata.rst:211
 #, fuzzy
@@ -133,7 +133,7 @@ msgstr "Restricciones"
 
 #: ../../build/doc/sampledata.rst:69
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/sampledata.rst:70 ../../build/doc/sampledata.rst:213
 msgid "A unique identifier."
@@ -141,7 +141,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:71
 msgid "``source``"
-msgstr ""
+msgstr "``source``"
 
 #: ../../build/doc/sampledata.rst:72
 msgid "Identifier of the starting vertex of the geometry ``geom``."
@@ -149,7 +149,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:73
 msgid "``target``"
-msgstr ""
+msgstr "``target``"
 
 #: ../../build/doc/sampledata.rst:74
 msgid "Identifier of the ending vertex of the geometry ``geom``"
@@ -157,7 +157,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:75
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/sampledata.rst:76
 msgid "Cost to traverse from `source` to ``target``."
@@ -165,7 +165,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:77
 msgid "``reverse_cost``"
-msgstr ""
+msgstr "``reverse_cost``"
 
 #: ../../build/doc/sampledata.rst:78
 msgid "Cost to traverse from `target` to ``source``."
@@ -359,7 +359,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:212
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/sampledata.rst:214
 msgid "``edge_id``"
@@ -379,7 +379,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:218
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 #: ../../build/doc/sampledata.rst:219
 msgid "Where in the segment is the point located."
@@ -407,9 +407,8 @@ msgid "Inserting the data of the points of interest:"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:238
-#, fuzzy
 msgid "Points of interest fillup"
-msgstr "Puntos de interés"
+msgstr "LLenado de puntos de interés"
 
 #: ../../build/doc/sampledata.rst:240
 msgid ""
@@ -589,4 +588,3 @@ msgstr ""
 #: ../../build/doc/sampledata.rst:409
 msgid "The original data needs to be converted to an appropiate table:"
 msgstr ""
-

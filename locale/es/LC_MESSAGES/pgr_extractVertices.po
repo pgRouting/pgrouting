@@ -13,19 +13,19 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-23 16:16+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_extractvertices/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_extractvertices/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_extractVertices.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_extractVertices.html>`__ (`3.4 "
@@ -35,24 +35,21 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_extractVertices.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_extractVertices.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_extractVertices.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_extractVertices.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_extractVertices.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_extractVertices.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_extractVertices.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_extractVertices.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_extractVertices.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_extractVertices.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_extractVertices.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_extractVertices.html>`__"
 
 #: ../../build/doc/pgr_extractVertices.rst:21
 msgid "pgr_extractVertices -- Proposed"
 msgstr "pgr_extractVertices -- Propuesto"
 
 #: ../../build/doc/pgr_extractVertices.rst:23
-#, fuzzy
 msgid "``pgr_extractVertices`` — Extracts the vertices information"
-msgstr ""
-"``pgr_extractVertices`` — Extrae la información de vértices en función "
-"del origen y el destino."
+msgstr "``pgr_extractVertices`` — Extrae la información de los vértices"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -177,7 +174,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_extractVertices.rst:75
 msgid "`Edges SQL`_ as described below"
-msgstr ""
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/pgr_extractVertices.rst:79
 #, fuzzy
@@ -186,7 +183,7 @@ msgstr "Parámetros"
 
 #: ../../build/doc/pgr_extractVertices.rst:82
 msgid "Default"
-msgstr ""
+msgstr "x Defecto"
 
 #: ../../build/doc/pgr_extractVertices.rst:84
 #, fuzzy
@@ -195,7 +192,7 @@ msgstr "**dryrun**"
 
 #: ../../build/doc/pgr_extractVertices.rst:84
 msgid "``BOOLEAN``"
-msgstr ""
+msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_extractVertices.rst:84
 #, fuzzy
@@ -214,7 +211,7 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_extractVertices.rst:95
 msgid "Edges SQL"
-msgstr ""
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgr_extractVertices.rst:98
 msgid "When line geometry is known"
@@ -232,7 +229,7 @@ msgstr "Columna"
 #: ../../build/doc/pgr_extractVertices.rst:148
 #: ../../build/doc/pgr_extractVertices.rst:167
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgr_extractVertices.rst:103
 #: ../../build/doc/pgr_extractVertices.rst:126
@@ -390,9 +387,8 @@ msgid "``NULL`` When the ``id`` is not part of the inner query"
 msgstr "``NULL`` When the ``id`` no forma parte de la consulta interna"
 
 #: ../../build/doc/pgr_extractVertices.rst:176
-#, fuzzy
 msgid "``out_edges``"
-msgstr "**out_edges**"
+msgstr "``out_edges``"
 
 #: ../../build/doc/pgr_extractVertices.rst:178
 msgid ""
@@ -403,9 +399,8 @@ msgstr ""
 "como *segundo punto final*."
 
 #: ../../build/doc/pgr_extractVertices.rst:182
-#, fuzzy
 msgid "``x``"
-msgstr "``TEXT``"
+msgstr "``x``"
 
 #: ../../build/doc/pgr_extractVertices.rst:183
 #: ../../build/doc/pgr_extractVertices.rst:188
@@ -425,9 +420,8 @@ msgid "``NULL`` When no geometry is provided"
 msgstr "``NULL`` Cuando no se proporciona geometría"
 
 #: ../../build/doc/pgr_extractVertices.rst:187
-#, fuzzy
 msgid "``y``"
-msgstr "``TEXT``"
+msgstr "``y``"
 
 #: ../../build/doc/pgr_extractVertices.rst:194
 #, fuzzy
@@ -459,17 +453,14 @@ msgstr ""
 "refinamiento basado en las necesidades de desarrollo de back-end."
 
 #: ../../build/doc/pgr_extractVertices.rst:219
-#, fuzzy
 msgid "Create a routing topology"
 msgstr "Creación de una topología de ruteo"
 
 #: ../../build/doc/pgr_extractVertices.rst:224
-#, fuzzy
 msgid "Make sure the database does not have the ``vertices_table``"
-msgstr "Asegurarse de que la base de datos no tiene el  ``vertices_table``"
+msgstr "Asegurarse de que la base de datos no tiene ``vertices_table``"
 
 #: ../../build/doc/pgr_extractVertices.rst:231
-#, fuzzy
 msgid "Clean up the columns of the routing topology to be created"
 msgstr "Limpieza de las columnas de la topología de ruteo que se creará"
 
@@ -502,7 +493,6 @@ msgid "Inspect the vertices table"
 msgstr "Inspección de la tabla de vértices"
 
 #: ../../build/doc/pgr_extractVertices.rst:258
-#, fuzzy
 msgid "Create the routing topology on the edge table"
 msgstr "Creación de la topología de ruteo en la tabla de aristas"
 
@@ -515,13 +505,12 @@ msgid "Updating the ``target`` information"
 msgstr "Actualización de la información de ``target``"
 
 #: ../../build/doc/pgr_extractVertices.rst:273
-#, fuzzy
 msgid "Inspect the routing topology"
 msgstr "Inspección de la topología de ruteo"
 
 #: ../../build/doc/pgr_extractVertices.rst:282
 msgid "**Generated topology**"
-msgstr ""
+msgstr "**Topología generada**"
 
 #: ../../build/doc/pgr_extractVertices.rst:288
 msgid "Crossing edges"
@@ -648,9 +637,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:79
-#, fuzzy
 msgid "Updating edges topology"
-msgstr "Creación de una topología de ruteo"
+msgstr "Actualizar la topología de aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:86
 msgid "Removing the surplus edges"
@@ -669,9 +657,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:99
-#, fuzzy
 msgid "Updating vertices topology"
-msgstr "Creación de una topología de ruteo"
+msgstr "Actializar la topología de vértices"
 
 #: ../../build/doc/pgRouting-concepts.rst:101
 msgid "To keep the graph consistent, the vertices topology needs to be updated"
@@ -726,7 +713,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_extractVertices.rst:304
 msgid ":doc:`topology-functions`"
-msgstr ""
+msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/pgr_extractVertices.rst:305
 #, fuzzy
@@ -744,4 +731,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_extractVertices.rst:310
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

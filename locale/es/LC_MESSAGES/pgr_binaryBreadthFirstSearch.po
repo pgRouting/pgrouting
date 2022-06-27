@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_binarybreadthfirstsearch/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:12
@@ -213,7 +213,6 @@ msgstr ""
 "Algoritmo de Dijkstra que se ejecuta en :math:`O(|E|log|V|)` tiempo."
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:64
-#, fuzzy
 msgid ""
 "However if the weights are more constrained, we can use a faster "
 "algorithm. This algorithm, termed as 'Binary Breadth First Search' as "
@@ -222,13 +221,13 @@ msgid ""
 ":math:`O(|E|)`, if the weights of each edge belongs to the set {0,X}, "
 "where 'X' is any non-negative real integer."
 msgstr ""
-"Sin embargo, si los pesos están más restringidos, podemos usar un "
-"algoritmo más rápido. Este algoritmo, llamado 'Binary Breadth First "
-"Search' así como '0-1 BFS', es una variación del problema estándar de "
-"Breadth First Search para resolver el problema SSSP (ruta más corta de "
-"una sola fuente) en :math:`O(|E|)`,  si los pesos de cada arista "
-"pertenecen al conjunto de caracteres de {0,X}, donde 'X' es cualquier "
-"entero real no negativo."
+"Sin embargo, si los pesos están más restringidos, podemos usar un algoritmo "
+"más rápido. Este algoritmo, llamado 'búsqueda binaria de primero "
+"profundidad' así como '0-1 BFS', es una variación del problema estándar de "
+"búsqueda de primero profundidad para resolver el problema SSSP (ruta más "
+"corta de una sola fuente) en :math:`O(|E|)`, si los pesos de cada arista "
+"pertenecen al conjunto de caracteres de {0,X}, donde 'X' es cualquier entero "
+"no negativo."
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:71
 msgid "**The main Characteristics are:**"
@@ -291,25 +290,20 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:121
-#, fuzzy
 msgid "From vertex :math:`6` to vertex  :math:`10` on a **directed** graph"
-msgstr ""
-"Del vértice :math:`2` al vértice :math:`3` en un grafo binario "
-"**dirigido** "
+msgstr "Del vértice :math:`6` al vértice :math:`10` en un grafo **dirigido**"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:131
-#, fuzzy
 msgid "One to Many"
-msgstr "Uno a muchos"
+msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:140
-#, fuzzy
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed** "
 "graph"
 msgstr ""
-"Del vértice :math:`2`  a los vértices :math:`\\{3, 5\\}` en un grafo "
-"binario  **no dirigido**"
+"Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo "
+"**dirigido**"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:151
 msgid "Many to One"
@@ -329,32 +323,28 @@ msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:180
-#, fuzzy
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
 "**undirected** graph"
 msgstr ""
-"De los vértices :math:`\\{2, 11\\}` a los vértices :math:`\\{3, 5\\}` en "
-"un grafo binario **no dirigido**"
+"De los vértices :math:`\\{6, 1\\}` a los vértices :math:`\\{10, 17\\}` en un "
+"grafo **no dirigido**"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:191
 msgid "Combinations"
 msgstr "Combinaciones"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:200
-#, fuzzy
 msgid "Using a combinations table on an **undirected** graph"
-msgstr "Uso de una tabla de combinaciones en un grafo binario **no dirigido**."
+msgstr "Usando una tabla de combinaciones en un grafo **no dirigido**"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:202
-#, fuzzy
 msgid "The combinations table:"
-msgstr "Consulta de combinaciones"
+msgstr "La tabla de combinaciones:"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:208
-#, fuzzy
 msgid "The query:"
-msgstr "Consulta de aristas"
+msgstr "La consulta:"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:215
 msgid "Parameters"
@@ -382,9 +372,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below"
-msgstr "Consulta de bordes como se describe a continuación."
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
 #, fuzzy
@@ -392,9 +381,8 @@ msgid "`Combinations SQL`_"
 msgstr "Combinaciones"
 
 #: ../../build/doc/dijkstra-family.rst:16
-#, fuzzy
 msgid "`Combinations SQL`_ as described below"
-msgstr "Consulta de combinaciones como se describe a continuación."
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/dijkstra-family.rst:17
 #, fuzzy
@@ -415,9 +403,8 @@ msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:20
-#, fuzzy
 msgid "**start vids**"
-msgstr "``start_vids``"
+msgstr "**vid salidas**"
 
 #: ../../build/doc/dijkstra-family.rst:21
 #: ../../build/doc/dijkstra-family.rst:27
@@ -429,9 +416,8 @@ msgid "Array of identifiers of starting vertices."
 msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/dijkstra-family.rst:23
-#, fuzzy
 msgid "**end vid**"
-msgstr "``end_vid``"
+msgstr "**vid destino**"
 
 #: ../../build/doc/dijkstra-family.rst:25
 msgid "Identifier of the ending vertex of the path."
@@ -457,9 +443,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "``BOOLEAN``"
@@ -470,7 +455,6 @@ msgid "``true``"
 msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
-#, fuzzy
 msgid "When ``true`` the graph is considered `Directed`"
 msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
@@ -484,23 +468,20 @@ msgid "Inner Queries"
 msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:232
-#, fuzzy
 msgid "Edges SQL"
-msgstr "Consulta de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
-#, fuzzy
 msgid "``id``"
-msgstr "``INT``"
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
 msgid "**ANY-INTEGER**"
-msgstr "**arista**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
@@ -508,9 +489,8 @@ msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "``true``"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
@@ -518,9 +498,8 @@ msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "``true``"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -528,22 +507,19 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:50
-#, fuzzy
 msgid "``cost``"
-msgstr "``true``"
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -552,9 +528,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -597,14 +572,12 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "Identifier of the departure vertex."
-msgstr "Identificador del vértice inicial de la ruta."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "Identifier of the arrival vertex."
-msgstr "Identificador de la arista."
+msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:246
 #, fuzzy
@@ -621,23 +594,20 @@ msgstr ""
 "end_vid], node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
-#, fuzzy
 msgid "``seq``"
-msgstr "``true``"
+msgstr "``seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:24
-#, fuzzy
 msgid "``INTEGER``"
-msgstr "``true``"
+msgstr "``INTEGER``"
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
-#, fuzzy
 msgid "``path_id``"
 msgstr "``path_id``"
 
@@ -646,12 +616,11 @@ msgid "Path identifier."
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
 msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
-msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
+msgstr ""
+"Tiene valor **1** para el primero de la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
-#, fuzzy
 msgid "``path_seq``"
 msgstr "``path_seq``"
 
@@ -664,7 +633,6 @@ msgstr ""
 "una ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "``start_vid``"
 msgstr "``start_vid``"
 
@@ -692,7 +660,6 @@ msgid "`Combinations`_"
 msgstr "Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:35
-#, fuzzy
 msgid "``end_vid``"
 msgstr "``end_vid``"
 
@@ -709,18 +676,16 @@ msgid "`One to Many`_"
 msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:43
-#, fuzzy
 msgid "``node``"
-msgstr "``true``"
+msgstr "``node``"
 
 #: ../../build/doc/pgRouting-concepts.rst:45
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:46
-#, fuzzy
 msgid "``edge``"
-msgstr "``true``"
+msgstr "``edge``"
 
 #: ../../build/doc/pgRouting-concepts.rst:48
 #, fuzzy
@@ -741,11 +706,10 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
-"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el "
-"siguiente nodo en la secuencia de ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
+"en la secuencia de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:54
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
@@ -760,7 +724,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:256
 msgid "Manually assigned vertex combinations."
-msgstr ""
+msgstr "Manualmente asignar combinaciones de vértices."
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:263
 msgid "See Also"
@@ -768,7 +732,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:264
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:265
 msgid "https://cp-algorithms.com/graph/01_bfs.html"

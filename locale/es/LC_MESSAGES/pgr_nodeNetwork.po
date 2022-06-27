@@ -11,15 +11,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 13:19+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_nodenetwork/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_nodenetwork/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:12
@@ -241,26 +242,24 @@ msgid "source"
 msgstr "source"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:91
-#, fuzzy
 msgid ""
 "``integer`` Empty source column to be used with :doc:`pgr_createTopology`"
 " function"
 msgstr ""
 "``integer`` Columna de origen vacía que se utilizará con la función "
-":doc:`pgr_createTopology` "
+":doc:`pgr_createTopology`"
 
 #: ../../build/doc/pgr_nodeNetwork.rst
 msgid "target"
 msgstr "target"
 
 #: ../../build/doc/pgr_nodeNetwork.rst:93
-#, fuzzy
 msgid ""
 "``integer`` Empty target column to be used with :doc:`pgr_createTopology`"
 " function"
 msgstr ""
-"``integer`` Columna  vacía de destinoque se utilizará con la función  "
-":doc:`pgr_createTopology` "
+"``integer`` Columna vacía de destino que se utilizará con la función "
+":doc:`pgr_createTopology`"
 
 #: ../../build/doc/pgr_nodeNetwork.rst
 msgid "the geom"
@@ -523,4 +522,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_nodeNetwork.rst:241
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

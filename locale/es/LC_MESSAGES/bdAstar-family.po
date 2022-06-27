@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bdastar-family/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/bdAstar-family.rst:12
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:6
 msgid "first by ``start_vid`` (if exists)"
-msgstr ""
+msgstr "primero por ``start_vid`` (si existe)"
 
 #: ../../build/doc/aStar-family.rst:7
 msgid "then by ``end_vid``"
@@ -123,7 +123,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:9
 msgid "Values are returned when there is a path."
-msgstr "Valores son regresados cuando hay una ruta."
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/aStar-family.rst:10
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
@@ -139,7 +139,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:15
 msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
-msgstr ""
+msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
 
 #: ../../build/doc/aStar-family.rst:17
 msgid "There is no path when :math:`v = u` therefore"
@@ -156,6 +156,8 @@ msgstr ""
 #: ../../build/doc/aStar-family.rst:24
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
 msgstr ""
+"Se utiliza una selección aleatoria de las coordenadas del vértice "
+":math:`(x,y)`."
 
 #: ../../build/doc/aStar-family.rst:26
 #, fuzzy
@@ -186,7 +188,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/bdAstar-family.rst:73
 msgid ":doc:`aStar-family`"
-msgstr ""
+msgstr ":doc:`aStar-family`"
 
 #: ../../build/doc/bdAstar-family.rst:74
 msgid "https://www.boost.org/libs/graph/doc/astar_search.html"

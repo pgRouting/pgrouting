@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trspvia/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 
 #: ../../build/doc/pgr_trspVia.rst:12
 msgid ""
@@ -81,7 +81,7 @@ msgstr "Disponibilidad"
 
 #: ../../build/doc/pgr_trspVia.rst:32
 msgid "Version 3.4.0"
-msgstr ""
+msgstr "Versión 3.4.0"
 
 #: ../../build/doc/pgr_trspVia.rst:34
 msgid "New **proposed** function ``pgr_trspVia`` (`One Via`_)"
@@ -140,13 +140,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_trspVia.rst:71
-#, fuzzy
 msgid ""
 "Find the route that visits the vertices :math:`\\{ 5, 1, 8\\}` in that order "
 "on an **directed** graph."
 msgstr ""
-"Encontrar la ruta que visita los vértices :math:`\\{1, 5, 7, 10, 4\\}` en "
-"ese orden"
+"Encontrar la ruta que visita los vértices :math:`\\{ 5, 1, 8\\}` en ese "
+"orden, en un grafo **dirigido**."
 
 #: ../../build/doc/pgr_trspVia.rst:79
 msgid "Parameters"
@@ -183,7 +182,7 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:17
 msgid "**via vertices**"
-msgstr "**vía vértices**"
+msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:18 ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
@@ -243,7 +242,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_trspVia.rst:93
 msgid "Via optional parameters"
-msgstr "Vía parámetros opcional"
+msgstr "Parámetros opcionales Vía"
 
 #: ../../build/doc/via-category.rst:12
 msgid "``strict``"
@@ -260,7 +259,7 @@ msgstr "Cuando ``true`` si un camino le faltan paradas y regresa **EMPTY SET**"
 #: ../../build/doc/via-category.rst:16
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
-"En caso de ``false``, ignora las rutas faltantes y devuelve todas las rutas "
+"Cuando ``false``, ignora las rutas faltantes y devuelve todas las rutas "
 "encontradas"
 
 #: ../../build/doc/via-category.rst:17
@@ -278,7 +277,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_trspVia.rst:103
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -477,8 +476,8 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
-"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
-"nodo en la secuencia de ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
+"en la secuencia de la ruta."
 
 #: ../../build/doc/via-category.rst:41
 msgid "``agg_cost``"
@@ -505,13 +504,12 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_trspVia.rst:129
-#, fuzzy
 msgid ""
 "All this examples are about the route that visits the vertices :math:`\\{5, "
 "7, 1, 8, 15\\}` in that order on a **directed** graph."
 msgstr ""
-"Encontrar la ruta que visita los vértices :math:`\\{1, 5, 7, 10, 4\\}` en "
-"ese orden"
+"Todos estos ejemplos son sobre la ruta que visita los vértices :math:`\\{5, "
+"7, 1, 8, 15\\}` en ese orden, en un grafo **dirigido**."
 
 #: ../../build/doc/pgr_trspVia.rst:133
 msgid "The main query"

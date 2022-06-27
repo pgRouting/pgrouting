@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_depthfirstsearch/es/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:12
@@ -157,8 +157,8 @@ msgid ""
 "Provides the Depth First Search traversal order from a root vertex or "
 "from a set of root vertices."
 msgstr ""
-"Proporciona la orden del recorrido de Primera Búsqueda de Profundidad  "
-"desde un vértice raíz o desde un conjunto de vértices raíz."
+"Proporciona el recorrido de Búsqueda de Primero Profundidad desde un vértice "
+"raíz o desde un conjunto de vértices raíz."
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:59
 msgid ""
@@ -228,13 +228,13 @@ msgid "Multiple vertices"
 msgstr "Múltiples vértices"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:108
-#, fuzzy
 msgid ""
 "From root vertices :math:`\\{12, 6\\}` on an **undirected** graph with "
 "**depth** :math:`<= 2` and edges in ascending order of ``id``"
 msgstr ""
-"A partir de los vértices de la raíz :math:`\\{11, 2\\}` en un grafo **no "
-"dirigido** con :math:`depth <= 2`"
+"A partir de los vértices de la raíz :math:`\\{12, 6\\}` en un grafo **no "
+"dirigido** con **profundidad** :math:`<= 2` y aristas ordenadas "
+"ascendentemente in términos de ``id``"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:116
 msgid "Parameters"
@@ -264,7 +264,7 @@ msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/BFS-category.rst:14
 msgid "**Root vid**"
-msgstr "**Raíz**"
+msgstr "**id raíz**"
 
 #: ../../build/doc/BFS-category.rst:13 ../../build/doc/BFS-category.rst:14
 #: ../../build/doc/BFS-category.rst:15 ../../build/doc/BFS-category.rst:17
@@ -282,6 +282,8 @@ msgid ""
 "When value is :math:`0` then gets the spanning forest starting in "
 "aleatory nodes for each tree in the forest."
 msgstr ""
+"Cuando el valor es :math:`0` se obtiene el bosque de expansión que comienza "
+"en nodos aleatorios para cada árbol del bosque."
 
 #: ../../build/doc/BFS-category.rst:21
 msgid "**Root vids**"
@@ -297,7 +299,7 @@ msgstr "Arreglo de identificadores de los vértices raíz."
 
 #: ../../build/doc/BFS-category.rst:25
 msgid ":math:`0` values are ignored"
-msgstr ""
+msgstr "Valores :math:`0` son ignorados"
 
 #: ../../build/doc/BFS-category.rst:26
 msgid "For optimization purposes, any duplicated value is ignored."
@@ -364,23 +366,20 @@ msgid "DFS optional parameters"
 msgstr "Parámetros opcionales"
 
 #: ../../build/doc/BFS-category.rst:12
-#, fuzzy
 msgid "``max_depth``"
-msgstr "**max_depth**"
+msgstr "``max_depth``"
 
 #: ../../build/doc/BFS-category.rst:14
 msgid ":math:`9223372036854775807`"
 msgstr ":math:`9223372036854775807`"
 
 #: ../../build/doc/BFS-category.rst:15
-#, fuzzy
 msgid "Upper limit of the depth of the tree."
-msgstr "Límite superior para la profundidad del recorrido"
+msgstr "Límite superior para la profundidad del árbol."
 
 #: ../../build/doc/BFS-category.rst:17
-#, fuzzy
 msgid "When negative throws an error."
-msgstr "Cuando el valor es ``Negativo`` entonces **produce error**"
+msgstr "Cuando negativo arroja error."
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:137
 msgid "Inner Queries"
@@ -388,7 +387,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:140
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -467,7 +466,6 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:147
-#, fuzzy
 msgid "Return columns"
 msgstr "Columnas de Resultados"
 
@@ -521,9 +519,8 @@ msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/BFS-category.rst:33
-#, fuzzy
 msgid ":math:`-1` when ``node`` = ``start_vid``."
-msgstr ":math:`-1`  cuando ``node`` = ``start_vid``."
+msgstr ":math:`-1` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/BFS-category.rst:36 ../../build/doc/BFS-category.rst:39
 msgid "``FLOAT``"
@@ -554,13 +551,13 @@ msgid "The resulting traversal is different."
 msgstr "El recorrido resultante es diferente."
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:164
-#, fuzzy
 msgid ""
 "The left image shows the result with ascending order of ids and the right"
 " image shows with descending order of the edge identifiers."
 msgstr ""
-"La imagen izquierda muestra el resultado con el orden ascendente de los "
-"ids y la imagen derecha muestra con el orden descendente de los ids:"
+"La imagen izquierda muestra el resultado con el orden ascendente de los ids "
+"y la imagen derecha muestra con el orden descendente de los identificadores "
+"de aristas."
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:167
 msgid "|ascending| |descending|"
@@ -580,11 +577,11 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:180
 msgid ":doc:`DFS-category`"
-msgstr ""
+msgstr ":doc:`DFS-category`"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:181
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:182
 msgid ""
@@ -621,4 +618,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_depthFirstSearch.rst:192
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

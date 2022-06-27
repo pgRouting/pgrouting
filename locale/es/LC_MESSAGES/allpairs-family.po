@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "allpairs-family/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/allpairs-family.rst:12
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:52
 msgid "It does not return a path."
-msgstr ""
+msgstr "No devuelve una ruta."
 
 #: ../../build/doc/allpairs-family.rst:53
 msgid ""
@@ -97,7 +97,7 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:55
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/allpairs-family.rst:56
 msgid ""
@@ -119,11 +119,11 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:65
 msgid "For the undirected graph, the results are symmetric."
-msgstr ""
+msgstr "Para el grafo no dirigido, los resultados son simétricos."
 
 #: ../../build/doc/allpairs-family.rst:67
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
-msgstr ""
+msgstr "El `agg_cost` de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/allpairs-family.rst:69
 msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
@@ -132,10 +132,11 @@ msgstr ""
 #: ../../build/doc/allpairs-family.rst:71
 msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
 msgstr ""
+"**Recomendación: utilice un cuadro delimitador de no más de 3500 aristas.**"
 
 #: ../../build/doc/allpairs-family.rst:76
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../build/doc/allpairs-family.rst:85
 msgid "Parameter"
@@ -145,7 +146,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/allpairs-family.rst:87
 #: ../../build/doc/dijkstra-family.rst:10
@@ -180,7 +181,7 @@ msgstr "Parámetros opcionales"
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/dijkstra-family.rst:12
 msgid "``directed``"
@@ -208,7 +209,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/allpairs-family.rst:107
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``source``"
@@ -221,7 +222,7 @@ msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "``target``"
@@ -270,7 +271,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:34
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
@@ -311,7 +312,7 @@ msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
-msgstr ""
+msgstr "Identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``agg_cost``"

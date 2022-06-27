@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskaldd/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_kruskalDD.rst:12
@@ -84,11 +84,11 @@ msgstr "**Las características principales son:**"
 
 #: ../../build/doc/spanningTree-family.rst:3
 msgid "It's implementation is only on **undirected** graph."
-msgstr "Su implementación solo para grafo **no direccionado**."
+msgstr "Su implementación es solo para grafo **no dirigido**."
 
 #: ../../build/doc/spanningTree-family.rst:4
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/spanningTree-family.rst:5
 msgid "When the graph is connected"
@@ -169,26 +169,24 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_kruskalDD.rst:76
-#, fuzzy
 msgid ""
 "The Minimum Spanning Tree starting on vertex :math:`6` with "
 ":math:`distance \\leq 3.5`"
 msgstr ""
-"El árbol de expansión mínimo que comienza en el vértice:math:`2` con  "
-":math:`agg\\_cost <= 3.5`"
+"El mínimo árbol de expansión que comienza en el vértice:math:`6` con :math:`"
+"distance \\leq 3.5`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:87
 msgid "Multiple vertices"
 msgstr "Múltiples vértices"
 
 #: ../../build/doc/pgr_kruskalDD.rst:94
-#, fuzzy
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
 ":math:`distance \\leq 3.5`"
 msgstr ""
-"El árbol de expansión mínimo que comienza en los vértices  :math:`\\{13, "
-"2\\}` con :math:`agg\\_cost <= 3.5`;"
+"El árbol de expansión mínimo que comienza en los vértices :math:`\\{9, 6\\}` "
+"con :math:`distance \\leq 3.5`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:102
 msgid "Parameters"
@@ -219,7 +217,7 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:14
 msgid "**Root vid**"
-msgstr "**Raíz**"
+msgstr "**id raíz**"
 
 #: ../../build/doc/BFS-category.rst:14 ../../build/doc/BFS-category.rst:17
 #: ../../build/doc/BFS-category.rst:23 ../../build/doc/BFS-category.rst:27
@@ -263,7 +261,6 @@ msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
 #: ../../build/doc/drivingDistance-category.rst:25
-#, fuzzy
 msgid "Upper limit for the inclusion of a node in the result."
 msgstr "Límite superior para la inclusión del nodo en el resultado."
 
@@ -300,7 +297,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_kruskalDD.rst:112
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
@@ -432,9 +429,8 @@ msgid "Identifier of the ``edge`` used to arrive to ``node``."
 msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/BFS-category.rst:33
-#, fuzzy
 msgid ":math:`-1` when ``node`` = ``start_vid``."
-msgstr ":math:`-1`  cuando ``node`` = ``start_vid``."
+msgstr ":math:`-1` cuando ``node`` = ``start_vid``."
 
 #: ../../build/doc/BFS-category.rst:37
 msgid "Cost to traverse ``edge``."
@@ -470,7 +466,7 @@ msgstr ":doc:`kruskal-family`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:130
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:131
 #, fuzzy
@@ -500,4 +496,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_kruskalDD.rst:139
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

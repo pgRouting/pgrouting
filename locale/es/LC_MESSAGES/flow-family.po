@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "flow-family/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/flow-family.rst:12
@@ -273,7 +273,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/flow-family.rst:112
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/flow-family.rst:115
 #, fuzzy
@@ -282,15 +282,15 @@ msgstr "**capacidad**"
 
 #: ../../build/doc/flow-family.rst:116 ../../build/doc/flow-family.rst:153
 msgid ":doc:`pgr_pushRelabel`"
-msgstr ""
+msgstr ":doc:`pgr_pushRelabel`"
 
 #: ../../build/doc/flow-family.rst:117 ../../build/doc/flow-family.rst:154
 msgid ":doc:`pgr_edmondsKarp`"
-msgstr ""
+msgstr ":doc:`pgr_edmondsKarp`"
 
 #: ../../build/doc/flow-family.rst:118 ../../build/doc/flow-family.rst:155
 msgid ":doc:`pgr_boykovKolmogorov`"
-msgstr ""
+msgstr ":doc:`pgr_boykovKolmogorov`"
 
 #: ../../build/doc/flow-family.rst:160 ../../build/doc/flow-family.rst:182
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -448,9 +448,8 @@ msgid "**ANY-NUMERICAL**"
 msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:41
-#, fuzzy
 msgid "Weight of the edge  (``source``, ``target``) if it exist"
-msgstr "Peso de la arista `(origen, destino)` si existe."
+msgstr "Peso de la arista (``source``, ``target``) si existe"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 #: ../../build/doc/pgRouting-concepts.rst:42
@@ -463,9 +462,8 @@ msgid ":math:`-1`"
 msgstr ":math:`G(V,E)`"
 
 #: ../../build/doc/pgRouting-concepts.rst:45
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``) if it exist"
-msgstr "Peso de la arista `(destino, origen)` si existe."
+msgstr "Peso de la arista (``target``, ``source``) si existe"
 
 #: ../../build/doc/flow-family.rst:134
 msgid "Cost edges"

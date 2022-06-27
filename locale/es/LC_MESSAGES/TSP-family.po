@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "tsp-family/es/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/TSP-family.rst:12
@@ -236,11 +236,11 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:125
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/TSP-family.rst:126
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/TSP-family.rst:127
 msgid "Default"
@@ -283,6 +283,8 @@ msgid ""
 "When ``0`` any vertex can become the last visiting vertex before "
 "returning to ``start_id``."
 msgstr ""
+"Cuando ``0`` cualquier vértice puede convertirse en el último vértice "
+"visitado antes de regresar a ``start_vid``."
 
 #: ../../build/doc/TSP-family.rst:143
 msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
@@ -297,13 +299,12 @@ msgid "References"
 msgstr "Referencias"
 
 #: ../../build/doc/TSP-family.rst:153
-#, fuzzy
 msgid ""
 "`Boost's metric appro's metric approximation "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
-"Algoritmo Metrico de la `Librería Boost "
-"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+"`Algoritmo Métrico de la Librería Boost <https://www.boost.org/libs/graph/"
+"doc/metric_tsp_approx.html>`__"
 
 #: ../../build/doc/TSP-family.rst:155
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"

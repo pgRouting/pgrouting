@@ -11,15 +11,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"proposed/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/proposed/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/proposed.rst:12
@@ -255,9 +256,8 @@ msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ":doc:`pgr_withPointsKSP` - Algoritmo de Yen basado en pgr_withPoints"
 
 #: ../../build/doc/proposed.rst:120
-#, fuzzy
 msgid ":doc:`via-category`"
-msgstr ":doc:`KSP-category`"
+msgstr ":doc:`via-category`"
 
 #: ../../build/doc/via-category.rst:3
 #, fuzzy
@@ -320,4 +320,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/proposed.rst:157
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

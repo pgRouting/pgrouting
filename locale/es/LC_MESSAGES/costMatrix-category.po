@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "costmatrix-category/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/costMatrix-category.rst:12
@@ -221,35 +221,31 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:88
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/costMatrix-category.rst:89
 msgid "Values are returned when there is a path."
-msgstr "Valores son regresados cuando hay una ruta."
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/costMatrix-category.rst:91
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
 
 #: ../../build/doc/costMatrix-category.rst:93
-#, fuzzy
 msgid "The aggregate cost in the non included values `(v, v)` is `0`."
-msgstr "El `agg_cost` en los valores no incluidos de `(v, v)` es `0`."
+msgstr "El costo agregado de los valores no incluídos `(v, v)` es `0`."
 
 #: ../../build/doc/costMatrix-category.rst:95
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path."
 msgstr ""
-"Cuando el vértice inicial y el vértice final son diferentes y no hay "
-"ninguna ruta."
+"Cuando el vértice inicial y el vértice final son diferentes y no hay ruta."
 
 #: ../../build/doc/costMatrix-category.rst:98
-#, fuzzy
 msgid "The aggregate cost in the non included values `(u, v)` is :math:`\\infty`."
 msgstr ""
-"El '`agg_cost`' en los valores no incluidos de `(u, v)` es "
-":math:`\\infty`."
+"El costo agregado de los valores no incluídos ``(u, v)`` es :math: `\\infty`."
 
 #: ../../build/doc/costMatrix-category.rst:100
 #, fuzzy
@@ -274,9 +270,8 @@ msgstr ""
 "simétricos."
 
 #: ../../build/doc/costMatrix-category.rst:106
-#, fuzzy
 msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
-msgstr "El  `agg_cost` de `(u, v)`  es el mismo que para `(v, u)`."
+msgstr "El costo agregado de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/costMatrix-category.rst:108
 #, fuzzy
@@ -288,18 +283,16 @@ msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/costMatrix-category.rst:112
-#, fuzzy
 msgid "``start_vid`` ascending"
-msgstr "`start_vid` ascendente"
+msgstr "``start_vid`` ascendente"
 
 #: ../../build/doc/costMatrix-category.rst:113
-#, fuzzy
 msgid "``end_vid`` ascending"
-msgstr "`end_vid` ascendente"
+msgstr "``end_vid`` ascendente"
 
 #: ../../build/doc/costMatrix-category.rst:118
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../build/doc/costMatrix-category.rst:121
 #: ../../build/doc/costMatrix-category.rst:145
@@ -313,7 +306,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Column"
-msgstr ""
+msgstr "Columna"
 
 #: ../../build/doc/costMatrix-category.rst:133
 #: ../../build/doc/costMatrix-category.rst:156
@@ -322,7 +315,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/withPoints-category.rst:9
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/costMatrix-category.rst:134
 #: ../../build/doc/costMatrix-category.rst:157
@@ -347,7 +340,7 @@ msgstr ""
 #: ../../build/doc/costMatrix-category.rst:137
 #: ../../build/doc/costMatrix-category.rst:160
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/costMatrix-category.rst:138
 #: ../../build/doc/costMatrix-category.rst:164
@@ -366,11 +359,11 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:161
 msgid "`Points SQL`_"
-msgstr ""
+msgstr "`SQL puntos`_"
 
 #: ../../build/doc/costMatrix-category.rst:163
 msgid "`Points SQL`_ as described below"
-msgstr ""
+msgstr "`SQL puntos`_ como se describe abajo"
 
 #: ../../build/doc/costMatrix-category.rst:171
 msgid "Optional parameters"
@@ -408,7 +401,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/costMatrix-category.rst:181
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -432,7 +425,7 @@ msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``target``"
@@ -484,7 +477,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
 msgid "ANY-INTEGER"
-msgstr ""
+msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 #: ../../build/doc/withPoints-category.rst:42
@@ -503,7 +496,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/costMatrix-category.rst:193
 msgid "Points SQL"
-msgstr ""
+msgstr "SQL puntos"
 
 #: ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
@@ -511,11 +504,11 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/withPoints-category.rst:14
 msgid "**value**"
-msgstr ""
+msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
 msgid "Identifier of the point."
@@ -534,6 +527,8 @@ msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará "
+"automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
@@ -541,11 +536,11 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
-msgstr ""
+msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid "``fraction``"
-msgstr ""
+msgstr "``fraction``"
 
 #: ../../build/doc/withPoints-category.rst:29
 msgid ""
@@ -559,7 +554,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
-msgstr ""
+msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
@@ -567,7 +562,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr ""
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
@@ -575,7 +570,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
-msgstr ""
+msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
@@ -608,7 +603,7 @@ msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
-msgstr ""
+msgstr "Identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``agg_cost``"

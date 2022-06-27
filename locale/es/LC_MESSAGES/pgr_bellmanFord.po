@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bellmanford/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_bellmanFord.rst:12
@@ -208,7 +208,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_bellmanFord.rst:63
 msgid "Values are returned when there is a path."
-msgstr "Valores son regresados cuando hay una ruta."
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/pgr_bellmanFord.rst:65
 #, fuzzy
@@ -290,23 +290,20 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_bellmanFord.rst:116
-#, fuzzy
 msgid "From vertex :math:`6` to vertex :math:`10` on a **directed** graph"
-msgstr "Del vértice :math:`2` al :`3` en un grafo **dirigido** "
+msgstr "Del vértice :math:`6` al vértice :math:`10` en un grafo **dirigido**"
 
 #: ../../build/doc/pgr_bellmanFord.rst:126
-#, fuzzy
 msgid "One to Many"
-msgstr "Uno a muchos"
+msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_bellmanFord.rst:134
-#, fuzzy
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{ 10, 17\\}` on a **directed**"
 " graph"
 msgstr ""
-"Desde el vértice  :math:`2` a los vértices :math:`\\{ 3, 5\\}` en un "
-"grafo **no dirigido**"
+"Desde el vértice :math:`6` a los vértices :math:`\\{ 10, 17\\}` en un grafo "
+"**dirigido**"
 
 #: ../../build/doc/pgr_bellmanFord.rst:145
 msgid "Many to One"
@@ -326,13 +323,12 @@ msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_bellmanFord.rst:172
-#, fuzzy
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertices :math:`\\{10, 17\\}` on an "
 "**undirected** graph"
 msgstr ""
-"De los vértices :math:`\\{2, 11\\}` a los vértices :math:`\\{3, 5\\}` en "
-"un grafo **no dirigido**"
+"De los vértices :math:`\\{6, 1\\}` a los vértices :math:`\\{10, 17\\}` en un "
+"grafo **no dirigido**"
 
 #: ../../build/doc/pgr_bellmanFord.rst:183
 msgid "Combinations"
@@ -343,14 +339,12 @@ msgid "Using a combinations table on an **undirected** graph."
 msgstr "Uso de una tabla de combinaciones en un grafo **no dirigido**."
 
 #: ../../build/doc/pgr_bellmanFord.rst:193
-#, fuzzy
 msgid "The combinations table:"
-msgstr "Consulta de combinaciones"
+msgstr "La tabla de combinaciones:"
 
 #: ../../build/doc/pgr_bellmanFord.rst:199
-#, fuzzy
 msgid "The query:"
-msgstr "Consulta de aristas"
+msgstr "La consulta:"
 
 #: ../../build/doc/pgr_bellmanFord.rst:206
 msgid "Parameters"
@@ -378,9 +372,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below"
-msgstr "Consulta de bordes como se describe a continuación."
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
 #, fuzzy
@@ -388,9 +381,8 @@ msgid "`Combinations SQL`_"
 msgstr "Combinaciones"
 
 #: ../../build/doc/dijkstra-family.rst:16
-#, fuzzy
 msgid "`Combinations SQL`_ as described below"
-msgstr "Consulta de combinaciones como se describe a continuación."
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/dijkstra-family.rst:17
 #, fuzzy
@@ -411,9 +403,8 @@ msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:20
-#, fuzzy
 msgid "**start vids**"
-msgstr "``start_vids``"
+msgstr "**vid salidas**"
 
 #: ../../build/doc/dijkstra-family.rst:21
 #: ../../build/doc/dijkstra-family.rst:27
@@ -425,9 +416,8 @@ msgid "Array of identifiers of starting vertices."
 msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/dijkstra-family.rst:23
-#, fuzzy
 msgid "**end vid**"
-msgstr "``end_vid``"
+msgstr "**vid destino**"
 
 #: ../../build/doc/dijkstra-family.rst:25
 msgid "Identifier of the ending vertex of the path."
@@ -453,9 +443,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "``BOOLEAN``"
@@ -466,7 +455,6 @@ msgid "``true``"
 msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
-#, fuzzy
 msgid "When ``true`` the graph is considered `Directed`"
 msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
@@ -479,23 +467,20 @@ msgid "Inner Queries"
 msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_bellmanFord.rst:223
-#, fuzzy
 msgid "Edges SQL"
-msgstr "Consulta de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
-#, fuzzy
 msgid "``id``"
-msgstr "``INT``"
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
 msgid "**ANY-INTEGER**"
-msgstr "**arista**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
@@ -503,9 +488,8 @@ msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "``true``"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
@@ -513,9 +497,8 @@ msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "``true``"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -523,22 +506,19 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:42
-#, fuzzy
 msgid "``cost``"
-msgstr "``true``"
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -547,9 +527,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -592,17 +571,14 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "Identifier of the departure vertex."
-msgstr "Identificador del vértice inicial de la ruta."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "Identifier of the arrival vertex."
-msgstr "Identificador de la arista."
+msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgr_bellmanFord.rst:237
-#, fuzzy
 msgid "Return columns"
 msgstr "Columnas de Resultados"
 
@@ -615,22 +591,19 @@ msgstr ""
 " edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
-#, fuzzy
 msgid "``seq``"
-msgstr "``true``"
+msgstr "``seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:18
-#, fuzzy
 msgid "``INTEGER``"
-msgstr "``true``"
+msgstr "``INTEGER``"
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
-#, fuzzy
 msgid "``path_seq``"
 msgstr "``path_seq``"
 
@@ -643,7 +616,6 @@ msgstr ""
 "una ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
 msgid "``start_vid``"
 msgstr "``start_vid``"
 
@@ -665,7 +637,6 @@ msgid "`Many to Many`_"
 msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``end_vid``"
 msgstr "``end_vid``"
 
@@ -682,18 +653,16 @@ msgid "`One to Many`_"
 msgstr "`Uno a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:35
-#, fuzzy
 msgid "``node``"
-msgstr "``true``"
+msgstr "``node``"
 
 #: ../../build/doc/pgRouting-concepts.rst:37
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:38
-#, fuzzy
 msgid "``edge``"
-msgstr "``true``"
+msgstr "``edge``"
 
 #: ../../build/doc/pgRouting-concepts.rst:40
 #, fuzzy
@@ -714,11 +683,10 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
-"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el "
-"siguiente nodo en la secuencia de ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
+"en la secuencia de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:46
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
@@ -741,22 +709,20 @@ msgid "Demonstration of repeated values are ignored, and result is sorted."
 msgstr ""
 
 #: ../../build/doc/pgr_bellmanFord.rst
-#, fuzzy
 msgid "Example 2"
-msgstr "Ejemplo"
+msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_bellmanFord.rst:252
 msgid "Making **start vids** the same as **end vids**."
 msgstr ""
 
 #: ../../build/doc/pgr_bellmanFord.rst
-#, fuzzy
 msgid "Example 3"
-msgstr "Ejemplo"
+msgstr "Ejemplo 3"
 
 #: ../../build/doc/pgr_bellmanFord.rst:258
 msgid "Manually assigned vertex combinations."
-msgstr ""
+msgstr "Manualmente asignar combinaciones de vértices."
 
 #: ../../build/doc/pgr_bellmanFord.rst:265
 msgid "See Also"
@@ -769,7 +735,7 @@ msgstr "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
 
 #: ../../build/doc/pgr_bellmanFord.rst:268
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_bellmanFord.rst:271
 msgid "Indices and tables"

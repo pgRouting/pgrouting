@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_connectedcomponents/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_connectedComponents.rst:12
@@ -134,14 +134,12 @@ msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/pgr_connectedComponents.rst:64
-#, fuzzy
 msgid "``component`` ascending"
-msgstr "`component` ascendente."
+msgstr "``component`` ascendente"
 
 #: ../../build/doc/pgr_connectedComponents.rst:65
-#, fuzzy
 msgid "``node`` ascending"
-msgstr "`node`  ascendente."
+msgstr "``node`` ascendente"
 
 #: ../../build/doc/pgr_connectedComponents.rst:67
 msgid "Running time: :math:`O(V + E)`"
@@ -191,9 +189,8 @@ msgid "Inner Queries"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_connectedComponents.rst:102
-#, fuzzy
 msgid "Edges SQL"
-msgstr "bordes SQL"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_connectedComponents.rst:121
@@ -206,31 +203,29 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -238,20 +233,18 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -260,9 +253,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -303,7 +295,7 @@ msgstr "Devuelve el conjunto de``(seq, component, node)``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:124
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:125
 #: ../../build/doc/pgr_connectedComponents.rst:128
@@ -334,7 +326,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_connectedComponents.rst:132
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:134
 #, fuzzy
@@ -346,9 +338,8 @@ msgid "Additional Examples"
 msgstr ""
 
 #: ../../build/doc/pgr_connectedComponents.rst:142
-#, fuzzy
 msgid "Connecting disconnected components"
-msgstr "pgr_connectedComponents"
+msgstr "Conectando componentes desconectados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "To get the graph connectivity:"

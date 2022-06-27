@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_astarcost/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_aStarCost.rst:12
@@ -137,9 +137,8 @@ msgid "then by ``end_vid``"
 msgstr "luego por ``end_vid``"
 
 #: ../../build/doc/aStar-family.rst:9
-#, fuzzy
 msgid "Values are returned when there is a path."
-msgstr "Los valores se devuelven cuando hay una ruta"
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/aStar-family.rst:10
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
@@ -173,9 +172,10 @@ msgstr ""
 "difieren:"
 
 #: ../../build/doc/aStar-family.rst:24
-#, fuzzy
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
-msgstr "Se utiliza una selección aleatoria de las coordenadas del vértice (x,y)."
+msgstr ""
+"Se utiliza una selección aleatoria de las coordenadas del vértice "
+":math:`(x,y)`."
 
 #: ../../build/doc/aStar-family.rst:26
 msgid "Running time: :math:`O((E + V) * \\log V)`"
@@ -183,7 +183,7 @@ msgstr "Tiempo de ejecución: :math:`O((E + V) * \\log V)`"
 
 #: ../../build/doc/pgr_aStarCost.rst:62
 msgid "It does not return a path."
-msgstr ""
+msgstr "No devuelve una ruta."
 
 #: ../../build/doc/pgr_aStarCost.rst:63
 msgid ""
@@ -203,7 +203,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst:70
 msgid "The  `agg_cost` of `(u, v)` is the same as for `(v, u)`."
-msgstr ""
+msgstr "El `agg_cost` de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/pgr_aStarCost.rst:72
 msgid "The returned values are ordered in ascending order:"
@@ -247,52 +247,48 @@ msgid "One to Many"
 msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_aStarCost.rst:130
-#, fuzzy
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 12\\}` on a **directed** "
 "graph with heuristic :math:`3` and factor :math:`3.5`"
 msgstr ""
-"Desde el vértice :math:`2`  a los vértices :math:`\\{3, 12\\}`  en un "
-"grafo **dirigido** usando la heurística :math:`2`"
+"Desde el vértice :math:`6` a los vértices :math:`\\{12, 10\\}` en un grafo "
+"**dirigido** usando la heurística :math:`3` con factor :math:`3.5`"
 
 #: ../../build/doc/pgr_aStarCost.rst:141
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_aStarCost.rst:150
-#, fuzzy
 msgid ""
 "From vertices :math:`\\{6, 8\\}` to vertex :math:`10` on an "
 "**undirected** graph with heuristic :math:`4`"
 msgstr ""
-"De los vértices :math:`\\{7, 2\\}` al vértice :math:`12` en un grafo "
-"**dirigido** usando la heurística  :math:`0`"
+"De los vértices :math:`\\{6, 8}` al vértice :math:`10` en un grafo **no "
+"dirigido** usando la heurística :math:`4`"
 
 #: ../../build/doc/pgr_aStarCost.rst:161
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_aStarCost.rst:170
-#, fuzzy
 msgid ""
 "From vertices :math:`\\{6, 8\\}` to vertices :math:`\\{10, 12\\}` on a "
 "**directed** graph with factor :math:`0.5`"
 msgstr ""
-"De los vértices :math:`\\{7, 2\\}` a los vértices  :math:`\\{3, 12\\}` en"
-" un gráfico **dirigido** usando la heurística :math:`2`"
+"De los vértices :math:`\\{6, 8\\}` a los vértices :math:`\\{10, 12\\}` en un "
+"gráfico **dirigido** con factor :math:`0.5`"
 
 #: ../../build/doc/pgr_aStarCost.rst:181
 msgid "Combinations"
 msgstr "Combinaciones"
 
 #: ../../build/doc/pgr_aStarCost.rst:190
-#, fuzzy
 msgid ""
 "Using a combinations table on a **directed** graph with factor "
 ":math:`0.5`."
 msgstr ""
-"Usando una tabla de combinaciones en un grafo **dirigido** usando "
-"heurística :math:`2`."
+"Usando una tabla de combinaciones en un grafo **dirigido** con factor "
+":math:`0.5`."
 
 #: ../../build/doc/pgr_aStarCost.rst:193
 msgid "The combinations table:"
@@ -328,7 +324,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "`Combinations SQL`_"
@@ -435,12 +431,11 @@ msgstr "``INTEGER``"
 
 #: ../../build/doc/aStar-family.rst:14
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: ../../build/doc/aStar-family.rst:15
-#, fuzzy
 msgid "Heuristic number. Current valid values 0~5."
-msgstr "Número heurístico. Valores actuales válidos 0~5. Default ``5``"
+msgstr "Número heurístico. Valores válidos 0~5."
 
 #: ../../build/doc/aStar-family.rst:17
 #, fuzzy
@@ -453,19 +448,16 @@ msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 msgstr "1: h(v) abs(max(dx, dy))"
 
 #: ../../build/doc/aStar-family.rst:19
-#, fuzzy
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
-msgstr "2: h(v) abs(min(dx, dy))"
+msgstr "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
 
 #: ../../build/doc/aStar-family.rst:20
-#, fuzzy
 msgid "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
-msgstr "3: h(v) = dx * dx + dy * dy"
+msgstr "3: :math:`h(v) = \\Delta x * \\Delta x + \\Delta y * \\Delta y`"
 
 #: ../../build/doc/aStar-family.rst:21
-#, fuzzy
 msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
-msgstr "4: h(v) = sqrt(dx * dx + dy * dy)"
+msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:22
 #, fuzzy
@@ -487,11 +479,8 @@ msgid "``1``"
 msgstr "``1``"
 
 #: ../../build/doc/aStar-family.rst:26
-#, fuzzy
 msgid "For units manipulation. :math:`factor > 0`."
-msgstr ""
-"Para la manipulación de unidades. math:`factor > 0`. Ver "
-":ref:`astar_factor`"
+msgstr "Para la manipulación de unidades. math:`factor > 0`."
 
 #: ../../build/doc/aStar-family.rst:27
 #, fuzzy
@@ -514,7 +503,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_aStarCost.rst:230
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -693,7 +682,7 @@ msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
-msgstr "Identificador del vértice final."
+msgstr "Identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``agg_cost``"
@@ -726,9 +715,8 @@ msgid "Making **start vids** the same as **end vids**."
 msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst
-#, fuzzy
 msgid "Example 3"
-msgstr "Ejemplo"
+msgstr "Ejemplo 3"
 
 #: ../../build/doc/pgr_aStarCost.rst:265
 msgid "Manually assigned vertex combinations."
@@ -747,9 +735,8 @@ msgid ":doc:`cost-category`"
 msgstr ":doc:`cost-category`"
 
 #: ../../build/doc/pgr_aStarCost.rst:276
-#, fuzzy
 msgid ":doc:`sampledata`"
-msgstr "Los ejemplos utilizan la red :doc:`sampledata` "
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_aStarCost.rst:279
 msgid "Indices and tables"
@@ -762,4 +749,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_aStarCost.rst:281
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

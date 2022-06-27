@@ -11,16 +11,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 13:19+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_createverticestable/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_createverticestable/es/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:12
@@ -241,14 +241,12 @@ msgid "The Vertices Table"
 msgstr "La tabla de vértices"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:102
-#, fuzzy
 msgid ""
 "The vertices table is a requierment of the :doc:`pgr_analyzeGraph` and "
 "the :doc:`pgr_analyzeOneWay` functions."
 msgstr ""
 "La tabla de vértices es un requerimiento de las funciones "
-":doc:`pgr_analyzeGraph <pgr_analyzeGraph>`  y  :doc:`pgr_analyzeOneWay "
-"<pgr_analyzeOneWay>`."
+":doc:`pgr_analyzeGraph` y :doc:`pgr_analyzeOneWay`."
 
 #: ../../build/doc/pgr_createVerticesTable.rst:105
 msgid "The structure of the vertices table is:"
@@ -577,4 +575,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_createVerticesTable.rst:302
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
