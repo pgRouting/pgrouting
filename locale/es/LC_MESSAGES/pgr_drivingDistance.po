@@ -12,19 +12,19 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
-"Last-Translator: Pedro Jose Rios Vergara <jose@georepublic.de>\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_drivingdistance/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_drivingdistance/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_drivingDistance.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_drivingDistance.html>`__ (`3.4 "
@@ -34,13 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_drivingDistance.html>`__) `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_drivingDistance.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_drivingDistance.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_drivingDistance.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_drivingDistance.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_drivingDistance.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_drivingDistance.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_drivingDistance.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_drivingDistance.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_drivingDistance.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_drivingDistance.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_drivingDistance.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_drivingDistance.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_drivingDistance.html>`__"
 
 #: ../../build/doc/pgr_drivingDistance.rst:19
 msgid ""
@@ -185,9 +185,8 @@ msgid "Edges SQL as described below."
 msgstr "Consulta SQL como se describió anteriormente."
 
 #: ../../build/doc/drivingDistance-category.rst:14
-#, fuzzy
 msgid "**Root vid**"
-msgstr "**id**"
+msgstr "**id raíz**"
 
 #: ../../build/doc/drivingDistance-category.rst:15
 #: ../../build/doc/pgr_drivingDistance.rst:167
@@ -198,9 +197,8 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/drivingDistance-category.rst:16
-#, fuzzy
 msgid "Identifier of the root vertex of the tree."
-msgstr "Identificador del primer vértice de la arista."
+msgstr "Identificador del vértice raíz del árbol."
 
 #: ../../build/doc/drivingDistance-category.rst:17
 #, fuzzy
@@ -218,7 +216,7 @@ msgstr "Arreglo de identificadores de los vértices iniciales."
 
 #: ../../build/doc/drivingDistance-category.rst:21
 msgid ":math:`0` values are ignored"
-msgstr ""
+msgstr "Valores :math:`0` son ignorados"
 
 #: ../../build/doc/drivingDistance-category.rst:22
 msgid "For optimization purposes, any duplicated value is ignored."
@@ -235,7 +233,6 @@ msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
 #: ../../build/doc/drivingDistance-category.rst:25
-#, fuzzy
 msgid "Upper limit for the inclusion of a node in the result."
 msgstr "Límite superior para la inclusión del nodo en el resultado."
 
@@ -284,9 +281,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 #: ../../build/doc/pgr_drivingDistance.rst:134
@@ -300,15 +296,15 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr ""
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr ""
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_drivingDistance.rst:120
 msgid "Driving distance optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de distancia de manejo"
 
 #: ../../build/doc/pgr_drivingDistance.rst:133
 #, fuzzy
@@ -320,15 +316,12 @@ msgid "When ``true`` the node will only appear in the closest ``from_v`` list."
 msgstr ""
 
 #: ../../build/doc/pgr_drivingDistance.rst:138
-#, fuzzy
 msgid ""
 "When ``false`` which resembles several calls using the single starting "
 "point signatures. Tie brakes are arbitrary."
 msgstr ""
-"(opcional). En caso de ``true`` el nodo solo aparecerá en la lista "
-"``start_vid`` más cercana.  El valor predeterminado es ``false``, que se "
-"asemeja a varias llamadas que utilizan las firmas de punto de inicio "
-"único. Los frenos de corbata son arbitrarios."
+"Cuando ``false``que asemeja a varias llamadas utilizando las firma de punto "
+"de inicio único. Los empates se rompen arbitrariamente."
 
 #: ../../build/doc/pgr_drivingDistance.rst:144
 #, fuzzy
@@ -336,38 +329,34 @@ msgid "Inner Queries"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_drivingDistance.rst:147
-#, fuzzy
 msgid "Edges SQL"
-msgstr "**edges_sql**"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
 msgid "**ANY-INTEGER**"
-msgstr "**arista**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -376,20 +365,18 @@ msgstr "Identificador del segundo vértice de la arista."
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgr_drivingDistance.rst:182
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -398,9 +385,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -426,7 +412,7 @@ msgstr "Devuelve el conjunto ``(seq [, start_v], node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:166
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:168
 #, fuzzy
@@ -444,7 +430,7 @@ msgstr "Identificador del vértice inicial."
 
 #: ../../build/doc/pgr_drivingDistance.rst:173
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:175
 #, fuzzy
@@ -453,25 +439,21 @@ msgstr "Identificador del nodo en la ruta dentro de los límites de ``start_vid`
 
 #: ../../build/doc/pgr_drivingDistance.rst:176
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:178
-#, fuzzy
 msgid "Identifier of the ``edge`` used to arrive to ``node``."
-msgstr ""
-"Identificador del borde utilizado para llegar a ``node``. ``0`` cuando  "
-"``node`` es el ``start_vid``."
+msgstr "Identificador del ``edge`` utilizado para llegar a ``node``."
 
 #: ../../build/doc/pgr_drivingDistance.rst:180
 msgid ":math:`0` when ``node`` = ``from_v``."
-msgstr ""
+msgstr ":math:`0` cuando ``node`` = ``from_v``."
 
 #: ../../build/doc/pgr_drivingDistance.rst:184
 msgid "Cost to traverse ``edge``."
 msgstr "Costo por recorrer ``edge``."
 
 #: ../../build/doc/pgr_drivingDistance.rst:185
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
@@ -521,4 +503,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_drivingDistance.rst:213
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

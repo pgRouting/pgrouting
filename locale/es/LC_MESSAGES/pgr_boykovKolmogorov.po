@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_boykovkolmogorov/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:12
@@ -216,27 +216,24 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:94
-#, fuzzy
 msgid "From vertex :math:`11` to vertex :math:`12`"
-msgstr "Del vértice :math:`6` al vértice :math:`11`"
+msgstr "Del vértice :math:`11` al vértice :math:`12`"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:104
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:112
-#, fuzzy
 msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
-msgstr "Del vértice :math:`6` a los vértices :math:`\\{1, 3, 11\\}`"
+msgstr "Desde el vértice :math:`11` a los vértices :math:`\\{5, 10, 12\\}`"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:122
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:130
-#, fuzzy
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
-msgstr "De los vértices vertices :math:`\\{6, 8, 12\\}` al vértice :math:`11`"
+msgstr "De los vértices vertices :math:`\\{11, 3, 17\\}` al vértice :math:`12`"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:140
 msgid "Many to Many"
@@ -254,14 +251,12 @@ msgid "Combinations"
 msgstr "Combinaciones"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:166
-#, fuzzy
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
 "vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
 msgstr ""
-"Usando una tabla de combinaciones, equivalente a calcular el resultado de"
-" los vértices  :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, "
-"11\\}`."
+"Usando una tabla de combinaciones, equivalente a calcular el resultado de "
+"los vértices :math:`\\{5, 6\\}` a los vértices :math:`\\{10, 15, 14\\}`."
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:169
 msgid "The combinations table:"
@@ -296,7 +291,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "`Combinations SQL`_"
@@ -360,7 +355,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:192
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
@@ -542,11 +537,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:226
 msgid ":doc:`pgr_edmondsKarp`"
-msgstr ""
+msgstr ":doc:`pgr_edmondsKarp`"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:227
 msgid ":doc:`pgr_pushRelabel`"
-msgstr ""
+msgstr ":doc:`pgr_pushRelabel`"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:229
 msgid "https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"

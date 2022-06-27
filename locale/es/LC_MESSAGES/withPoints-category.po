@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-category/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid ""
@@ -279,15 +279,15 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/withPoints-category.rst:108
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/withPoints-category.rst:109
 msgid "`Points SQL`_"
-msgstr "`Points SQL`_"
+msgstr "`SQL puntos`_"
 
 #: ../../build/doc/withPoints-category.rst:111
 msgid "`Points SQL`_ as described below"
-msgstr ""
+msgstr "`SQL puntos`_ como se describe abajo"
 
 #: ../../build/doc/withPoints-category.rst:112
 msgid "`Combinations SQL`_"
@@ -326,6 +326,8 @@ msgid ""
 "Array of identifiers of starting vertices. Negative values are for point’s "
 "identifiers."
 msgstr ""
+"Arreglo de identificadores de vértices iniciales. Valores negativos son para "
+"identificadores de puntos."
 
 #: ../../build/doc/withPoints-category.rst:123
 msgid "**end vid**"
@@ -365,7 +367,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/withPoints-category.rst:148
 msgid "``driving_side``"
-msgstr ""
+msgstr "**Lado de manejo**"
 
 #: ../../build/doc/withPoints-category.rst:149
 #: ../../build/doc/withPoints-category.rst:209
@@ -394,7 +396,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:156
 msgid "``details``"
-msgstr ""
+msgstr "``details``"
 
 #: ../../build/doc/withPoints-category.rst:157
 msgid "``BOOLEAN``"
@@ -419,7 +421,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/withPoints-category.rst:169
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -520,7 +522,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/withPoints-category.rst:176
 msgid "Points SQL"
-msgstr "Puntos SQL"
+msgstr "SQL puntos"
 
 #: ../../build/doc/withPoints-category.rst:189
 msgid "``pid``"
@@ -550,8 +552,8 @@ msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
-"Si columna no esta presente, un **valor** secuencial negativo "
-"automáticamente se otorgará.."
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará "
+"automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:199
 msgid "``edge_id``"
@@ -583,7 +585,7 @@ msgstr "``b``"
 
 #: ../../build/doc/withPoints-category.rst:211
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] indicando si el punto es:"
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:213
 msgid "In the right ``r``,"
@@ -591,7 +593,7 @@ msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:214
 msgid "In the left ``l``,"
-msgstr "A la izquierda ``l``,"
+msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:215
 msgid "In both sides ``b``, ``NULL``"

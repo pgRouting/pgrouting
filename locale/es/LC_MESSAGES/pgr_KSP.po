@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_ksp/"
 "es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_KSP.rst:12
@@ -167,28 +167,24 @@ msgstr "``start_vid``"
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21 ../../build/doc/pgr_KSP.rst:93
 #: ../../build/doc/pgr_KSP.rst:96 ../../build/doc/pgr_KSP.rst:99
-#, fuzzy
 msgid "**ANY-INTEGER**"
-msgstr "**arista**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgr_KSP.rst:94 ../../build/doc/pgr_KSP.rst:97
-#, fuzzy
 msgid "Identifier of the departure vertex."
-msgstr "Identificador del vértice inicial."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgr_KSP.rst:95
-#, fuzzy
 msgid "**end vid**"
-msgstr "``end_vid``"
+msgstr "**vid destino**"
 
 #: ../../build/doc/pgr_KSP.rst:98
-#, fuzzy
 msgid "**K**"
-msgstr "**k**"
+msgstr "**K**"
 
 #: ../../build/doc/pgr_KSP.rst:100
 msgid "Number of required paths"
-msgstr ""
+msgstr "Cantidad de rutas requeridas"
 
 #: ../../build/doc/pgRouting-concepts.rst:36 ../../build/doc/pgr_KSP.rst:102
 msgid "Where:"
@@ -213,9 +209,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13 ../../build/doc/pgr_KSP.rst:130
 msgid "``BOOLEAN``"
@@ -227,11 +222,11 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr ""
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr ""
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_KSP.rst:116
 msgid "KSP Optional parameters"
@@ -255,14 +250,13 @@ msgid "When ``true`` all the calculated paths while processing are returned."
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:134
-#, fuzzy
 msgid ""
 "Roughly, when the shortest path has ``N`` edges, the heap will contain "
 "about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
 msgstr ""
-"Aproximadamente, si la ruta más corta tiene ``N`` aristas, el montón "
-"contendrá aproximadamente más que las rutas ``N * k`` para valores "
-"pequeños de ``k`` y ``k > 1``."
+"Aproximadamente, si la ruta más corta tiene ``N`` aristas, las procesadas "
+"contendrán aproximadamente ``N * K`` rutas para valores pequeños de ``K`` y "
+"``K > 5``."
 
 #: ../../build/doc/pgr_KSP.rst:141
 #, fuzzy
@@ -270,31 +264,28 @@ msgid "Inner Queries"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_KSP.rst:144
-#, fuzzy
 msgid "Edges SQL"
-msgstr "**edges_sql**"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -302,20 +293,18 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24 ../../build/doc/pgr_KSP.rst:186
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -324,9 +313,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -350,17 +338,16 @@ msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_KSP.rst:155
-#, fuzzy
 msgid ""
 "Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge,"
 " cost, agg_cost)``"
 msgstr ""
-"Ddevuelve el conjunto de ``(seq, path_seq, path_id, node, edge, cost, "
-"agg_cost)``"
+"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, node, "
+"edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_KSP.rst:166
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_KSP.rst:167 ../../build/doc/pgr_KSP.rst:170
 #: ../../build/doc/pgr_KSP.rst:176
@@ -372,7 +359,6 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_KSP.rst:169
-#, fuzzy
 msgid "``path_id``"
 msgstr "``path_id``"
 
@@ -385,7 +371,6 @@ msgid "Has value **1** for the first of a path from **start vid** to **end_vid**
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:175
-#, fuzzy
 msgid "``path_seq``"
 msgstr "``path_seq``"
 
@@ -400,20 +385,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:179
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/pgr_KSP.rst:180 ../../build/doc/pgr_KSP.rst:183
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/pgr_KSP.rst:181
-#, fuzzy
 msgid "Identifier of the node in the path from **start vid** to **end vid**"
-msgstr "Identificador del nodo en la ruta."
+msgstr ""
+"Identificador del nodo en la ruta como **nodo de salida** o **nodo destino**"
 
 #: ../../build/doc/pgr_KSP.rst:182
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/pgr_KSP.rst:184
 #, fuzzy
@@ -433,22 +418,20 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
-"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el "
-"siguiente nodo en la secuencia de ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
+"en la secuencia de la ruta."
 
 #: ../../build/doc/pgr_KSP.rst:191
 msgid ":math:`0` for the last ``node`` of the path."
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:192
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_KSP.rst:194
-#, fuzzy
 msgid "Aggregate cost from **start vid** to ``node``."
-msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+msgstr "Costo agregado desde **vid inicial** hasta ``node``."
 
 #: ../../build/doc/pgr_KSP.rst:200
 msgid "Additional Examples"
@@ -468,12 +451,11 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_KSP.rst:213
 msgid ":doc:`KSP-category`"
-msgstr ""
+msgstr ":doc:`KSP-category`"
 
 #: ../../build/doc/pgr_KSP.rst:214
-#, fuzzy
 msgid ":doc:`sampledata`"
-msgstr "Red :doc:`sampledata` ."
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_KSP.rst:215
 msgid "https://en.wikipedia.org/wiki/K_shortest_path_routing"

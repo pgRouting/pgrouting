@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/via-"
-"category/es/>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"via-category/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/via-category.rst:12
@@ -187,7 +187,7 @@ msgstr "consulta SQL como descrito."
 
 #: ../../build/doc/via-category.rst:71 ../../build/doc/via-category.rst:107
 msgid "**via vertices**"
-msgstr "**vía vértices**"
+msgstr ""
 
 #: ../../build/doc/via-category.rst:72 ../../build/doc/via-category.rst:108
 #: ../../build/doc/pgRouting-concepts.rst:12
@@ -221,11 +221,11 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/via-category.rst:79 ../../build/doc/via-category.rst:118
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
 
 #: ../../build/doc/via-category.rst:103
 msgid "`Points SQL`_"
-msgstr "`Points SQL`_"
+msgstr "`SQL puntos`_"
 
 #: ../../build/doc/via-category.rst:112
 msgid "When positive it is considered a vertex identifier"
@@ -245,7 +245,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:126
 msgid "Via optional parameters"
-msgstr "Vía parámetros opcional"
+msgstr "Parámetros opcionales Vía"
 
 #: ../../build/doc/via-category.rst:129 ../../build/doc/via-category.rst:162
 msgid "Used on all Via functions"
@@ -270,7 +270,7 @@ msgstr "Cuando ``true`` si un camino le faltan paradas y regresa **EMPTY SET**"
 #: ../../build/doc/via-category.rst:145
 msgid "When ``false`` ignores missing paths returning all paths found"
 msgstr ""
-"En caso de ``false``, ignora las rutas faltantes y devuelve todas las rutas "
+"Cuando ``false``, ignora las rutas faltantes y devuelve todas las rutas "
 "encontradas"
 
 #: ../../build/doc/via-category.rst:146
@@ -297,7 +297,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:159
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/via-category.rst:199
@@ -393,9 +393,8 @@ msgid "Used on"
 msgstr "Usado en"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
-#, fuzzy
 msgid "``path``"
-msgstr "``path_id``"
+msgstr "``path``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
@@ -415,7 +414,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:179
 msgid "Points SQL"
-msgstr "Puntos SQL"
+msgstr "SQL puntos"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
@@ -445,8 +444,8 @@ msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
-"Si columna no esta presente, un **valor** secuencial negativo "
-"automáticamente se otorgará.."
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará "
+"automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
@@ -482,7 +481,7 @@ msgstr "``b``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] indicando si el punto es:"
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
@@ -490,7 +489,7 @@ msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
-msgstr "A la izquierda ``l``,"
+msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
@@ -591,8 +590,8 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the path "
 "sequence."
 msgstr ""
-"Costo del desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
-"nodo en la secuencia de ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
+"en la secuencia de la ruta."
 
 #: ../../build/doc/via-category.rst:232
 msgid "``agg_cost``"

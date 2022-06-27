@@ -13,16 +13,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_sequentialvertexcoloring/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_sequentialvertexcoloring/es/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:12
@@ -247,7 +247,7 @@ msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:100
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:8
@@ -260,31 +260,29 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:17
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -292,19 +290,18 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr ""
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -314,7 +311,7 @@ msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr ""
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -365,9 +362,8 @@ msgid "Identifier of the vertex."
 msgstr "Identificador del vértice."
 
 #: ../../build/doc/coloring-family.rst:9
-#, fuzzy
 msgid "``color_id``"
-msgstr "**color_id**"
+msgstr "``color_id``"
 
 #: ../../build/doc/coloring-family.rst:9
 msgid "Identifier of the color of the vertex."
@@ -412,4 +408,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:130
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

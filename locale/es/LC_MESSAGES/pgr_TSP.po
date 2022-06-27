@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_tsp/"
 "es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_TSP.rst:12
@@ -316,11 +316,8 @@ msgstr ""
 "obedecer a la desigualdad del triángulo."
 
 #: ../../build/doc/pgr_TSP.rst:119
-#, fuzzy
 msgid "When the data is incomplete, but it is a connected graph:"
-msgstr ""
-"Cuando los datos están incompletos, pero es un grafo conectado, los "
-"valores faltantes se calcularán con el algoritmo Dijkstra."
+msgstr "Cuando los datos están incompletos, pero es un grafo conectado:"
 
 #: ../../build/doc/pgr_TSP.rst:121
 #, fuzzy
@@ -402,7 +399,7 @@ msgstr "``start_vid``"
 
 #: ../../build/doc/TSP-family.rst:13 ../../build/doc/TSP-family.rst:20
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/TSP-family.rst:14 ../../build/doc/TSP-family.rst:21
 msgid "``0``"
@@ -427,13 +424,12 @@ msgid "Last visiting vertex before returning to ``start_vid``."
 msgstr "Último vértice visitado antes de regresar a '``start_vid``."
 
 #: ../../build/doc/TSP-family.rst:24
-#, fuzzy
 msgid ""
 "When ``0`` any vertex can become the last visiting vertex before "
 "returning to ``start_id``."
 msgstr ""
-"Cuando  ``0``  cualquier vértice puede convertirse en el último vértice "
-"visitado antes de regresr a ``start_vid``."
+"Cuando ``0`` cualquier vértice puede convertirse en el último vértice "
+"visitado antes de regresar a ``start_vid``."
 
 #: ../../build/doc/TSP-family.rst:26
 #, fuzzy
@@ -452,7 +448,6 @@ msgid "Matrix SQL"
 msgstr "Matriz SQL"
 
 #: ../../src/common/matrixRows_input.c:6
-#, fuzzy
 msgid "``start_vid``"
 msgstr "``start_vid``"
 
@@ -462,19 +457,17 @@ msgstr "``ANY-INTEGER``"
 
 #: ../../src/common/matrixRows_input.c:6
 msgid "Identifier of the starting vertex."
-msgstr "Identificador del vértice inicial."
+msgstr "Identificador del vértice de salida."
 
 #: ../../src/common/matrixRows_input.c:7
-#, fuzzy
 msgid "``end_vid``"
 msgstr "``end_vid``"
 
 #: ../../src/common/matrixRows_input.c:7
 msgid "Identifier of the ending vertex."
-msgstr "Identificador del vértice final."
+msgstr "Identificador del vértice destino."
 
 #: ../../src/common/matrixRows_input.c:8
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
@@ -574,13 +567,12 @@ msgid "To generate an asymmetric matrix:"
 msgstr "Para generar una matriz asimétrica:"
 
 #: ../../build/doc/pgr_TSP.rst:200
-#, fuzzy
 msgid ""
 "**Line 4** The ``side`` information of ``pointsOfInterset`` is ignored by"
 " not including it in the query"
 msgstr ""
-"**Línea 5** La información  ``side``  de ``pointsOfInterset`` se ignora "
-"al no incluirla en la consulta"
+"**Línea 4** La información ``side`` de ``pointsOfInterset`` se ignora al no "
+"incluirla en la consulta"
 
 #: ../../build/doc/pgr_TSP.rst:202
 #, fuzzy
@@ -616,13 +608,12 @@ msgid "Connected incomplete data"
 msgstr "Datos incompletos conectados"
 
 #: ../../build/doc/pgr_TSP.rst:220
-#, fuzzy
 msgid ""
 "Using selected edges :math:`\\{2, 4, 5, 8, 9, 15\\}` the matrix is not "
 "complete."
 msgstr ""
-"Usando segmentos seleccionados (2, 4, 5, 8, 9, 15) la matriz no es "
-"completa pero está conectada"
+"Usando aristas seleccionadas :math:`\\{2, 4, 5, 8, 9, 15\\}` la matriz no es "
+"completa."
 
 #: ../../build/doc/pgr_TSP.rst:227
 msgid ""
@@ -640,16 +631,15 @@ msgstr ":doc:`TSP-family`"
 
 #: ../../build/doc/pgr_TSP.rst:239
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_TSP.rst:240
-#, fuzzy
 msgid ""
 "`Boost's metric appro's metric approximation "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
-"`Librería Boost "
-"<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+"`Algoritmo Métrico de la Librería Boost <https://www.boost.org/libs/graph/"
+"doc/metric_tsp_approx.html>`__"
 
 #: ../../build/doc/pgr_TSP.rst:242
 msgid ""

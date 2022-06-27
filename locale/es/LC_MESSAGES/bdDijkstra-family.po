@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bddijkstra-family/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/bdDijkstra-family.rst:13
@@ -116,7 +116,7 @@ msgstr "Las características principales son:"
 
 #: ../../build/doc/bdDijkstra-family.rst:66
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/bdDijkstra-family.rst:68
 msgid ""
@@ -128,7 +128,7 @@ msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:70
 msgid "Values are returned when there is a path."
-msgstr "Valores son regresados cuando hay una ruta."
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/bdDijkstra-family.rst:71
 msgid "When there is no path:"
@@ -136,8 +136,7 @@ msgstr "Cuando no hay ruta:"
 
 #: ../../build/doc/bdDijkstra-family.rst:73
 msgid "When the starting vertex and ending vertex are the same."
-msgstr ""
-"Cuando el vértice de salida y el vértice destino son iguales, no hay camino."
+msgstr "Cuando el vértice de salida y el vértice destino son iguales."
 
 #: ../../build/doc/bdDijkstra-family.rst:75
 msgid ""
@@ -151,8 +150,8 @@ msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path:"
 msgstr ""
-"Cuando el vértice inicial y el vértice final son diferentes y no hay "
-"camino:"
+"Cuando el vértice de salida y el vértice destino son diferentes y no hay "
+"ninguna ruta:"
 
 #: ../../build/doc/bdDijkstra-family.rst:81
 msgid ""

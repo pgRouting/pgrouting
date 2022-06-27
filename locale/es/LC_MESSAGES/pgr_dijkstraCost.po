@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstracost/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:12
@@ -120,13 +120,13 @@ msgid ""
 msgstr ""
 "Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra "
 "en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de "
-"ruta más corta para un grafo con costos de aristad no negativos, produciendo "
+"ruta más corta para un grafo con costos de aristas no negativos, produciendo "
 "la ruta más corta desde un vértice inicial a un vértice final . Esta "
-"implementación se puede utilizar con un grafo dirigido y uno no dirigido."
+"implementación se puede utilizar con un grafos dirigidos y no dirigidos."
 
 #: ../../build/doc/dijkstra-family.rst:3
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/dijkstra-family.rst:5
 msgid ""
@@ -138,7 +138,7 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:7
 msgid "Values are returned when there is a path."
-msgstr "Valores son regresados cuando hay una ruta."
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/dijkstra-family.rst:8
 msgid "When there is no path:"
@@ -146,8 +146,7 @@ msgstr "Cuando no hay ruta:"
 
 #: ../../build/doc/dijkstra-family.rst:10
 msgid "When the starting vertex and ending vertex are the same."
-msgstr ""
-"Cuando el vértice de salida y el vértice destino son iguales, no hay camino."
+msgstr "Cuando el vértice de salida y el vértice destino son iguales."
 
 #: ../../build/doc/dijkstra-family.rst:12
 msgid ""
@@ -157,13 +156,12 @@ msgstr ""
 "El **costo agregado** de los valores no incluídos :math:`(v, v)` es :math:`0`"
 
 #: ../../build/doc/dijkstra-family.rst:15
-#, fuzzy
 msgid ""
 "When the starting vertex and ending vertex are the different and there is"
 " no path:"
 msgstr ""
-"Cuando el vértice inicial y el vértice final son diferentes y no hay "
-"ninguna ruta."
+"Cuando el vértice de salida y el vértice destino son diferentes y no hay "
+"ninguna ruta:"
 
 #: ../../build/doc/dijkstra-family.rst:18
 msgid ""
@@ -215,11 +213,10 @@ msgid ""
 msgstr "Para grafos no dirigidos, los resultados son simétricos."
 
 #: ../../build/doc/cost-category.rst:11
-#, fuzzy
 msgid ""
 "The  **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, "
 "u)`."
-msgstr "El  `agg_cost` de `(u, v)`  es el mismo que para `(v, u)`."
+msgstr "El **costo agregado** de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/cost-category.rst:13
 #, fuzzy
@@ -231,14 +228,12 @@ msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/cost-category.rst:17
-#, fuzzy
 msgid "``start_vid`` ascending"
-msgstr "`start_vid` ascendente"
+msgstr "``start_vid`` ascendente"
 
 #: ../../build/doc/cost-category.rst:18
-#, fuzzy
 msgid "``end_vid`` ascending"
-msgstr "`end_vid` ascendente"
+msgstr "``end_vid`` ascendente"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:70
 msgid "Signatures"
@@ -265,12 +260,11 @@ msgid "One to Many"
 msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:114
-#, fuzzy
 msgid ""
 "From vertex :math:`6` to vertices :math:`\\{10, 17\\}` on a **directed** "
 "graph"
 msgstr ""
-"Del vértice :math:`2` a los vértices :math:`\\{3, 11\\}` en un grafo "
+"Del vértice :math:`6` a los vértices :math:`\\{10, 17\\}` en un grafo "
 "**dirigido**"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:125
@@ -303,7 +297,7 @@ msgstr "Combinaciones"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:171
 msgid "Using a combinations table on an **undirected** graph"
-msgstr "Uso de una tabla de combinaciones en un grafo **no direccionado**"
+msgstr "Usando una tabla de combinaciones en un grafo **no dirigido**"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:173
 msgid "The combinations table:"
@@ -340,7 +334,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "`Combinations SQL`_"
@@ -429,7 +423,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:203
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -558,7 +552,7 @@ msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
-msgstr "Identificador del vértice final."
+msgstr "Identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``agg_cost``"
@@ -610,9 +604,8 @@ msgid ":doc:`dijkstra-family`"
 msgstr ""
 
 #: ../../build/doc/pgr_dijkstraCost.rst:248
-#, fuzzy
 msgid ":doc:`sampledata`"
-msgstr "Red :doc:`sampledata` ."
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:249
 #, python-format
@@ -630,4 +623,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_dijkstraCost.rst:254
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

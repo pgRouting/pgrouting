@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 13:19+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "prim-family/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/prim-family.rst:12
@@ -109,13 +109,12 @@ msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
 #: ../../build/doc/spanningTree-family.rst:3
-#, fuzzy
 msgid "It's implementation is only on **undirected** graph."
-msgstr "Su implementación solo está en **grafo no dirigido**."
+msgstr "Su implementación es solo para grafo **no dirigido**."
 
 #: ../../build/doc/spanningTree-family.rst:4
 msgid "Process is done only on edges with positive costs."
-msgstr "El proceso se realiza sólo en las aristas con costos positivos."
+msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/spanningTree-family.rst:5
 msgid "When the graph is connected"
@@ -138,9 +137,8 @@ msgid "The resulting edges make up a forest."
 msgstr "Las aristas resultantes conforman un bosque."
 
 #: ../../build/doc/prim-family.rst:71
-#, fuzzy
 msgid "Prim's running time: :math:`O(E * log V)`"
-msgstr "Tiempo de ejecución de Prim:  :math:`O(E*log V)`"
+msgstr "Tiempo de ejecución de Prim: :math:`O(E*log V)`"
 
 #: ../../build/doc/prim-family.rst:76
 msgid ""
@@ -286,4 +284,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/prim-family.rst:99
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

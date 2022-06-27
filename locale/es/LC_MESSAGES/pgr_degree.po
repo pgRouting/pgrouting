@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_degree/es/>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_degree/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 
 #: ../../build/doc/pgr_degree.rst:12
 msgid "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/pgr_degree.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_degree.html>`__)"
@@ -72,7 +73,7 @@ msgstr "Disponibilidad"
 
 #: ../../build/doc/pgr_degree.rst:28
 msgid "Version 3.4.0"
-msgstr ""
+msgstr "Versión 3.4.0"
 
 #: ../../build/doc/pgr_degree.rst:30
 msgid "New **proposed** function"
@@ -124,7 +125,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_degree.rst:63
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/pgr_degree.rst:64
 msgid "`Vertex SQL`_"
@@ -164,7 +165,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_degree.rst:86
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgr_degree.rst:91 ../../build/doc/pgr_degree.rst:106
 #: ../../build/doc/pgr_degree.rst:136
@@ -211,7 +212,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_degree.rst:118
 msgid "``out_edges``"
-msgstr ""
+msgstr "``out_edges``"
 
 #: ../../build/doc/pgr_degree.rst:120
 msgid "Array of identifiers of the edges that have the vertex ``id`` as *second end point*."

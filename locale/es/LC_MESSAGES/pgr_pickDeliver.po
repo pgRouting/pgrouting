@@ -12,19 +12,19 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_pickdeliver/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_pickdeliver/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_pickDeliver.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_pickDeliver.html>`__ (`3.4 "
@@ -34,13 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_pickDeliver.html>`__) `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_pickDeliver.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/pgr_pickDeliver.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_pickDeliver.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_pickDeliver.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_pickDeliver.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_pickDeliver.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_pickDeliver.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_pickDeliver.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_pickDeliver.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_pickDeliver.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_pickDeliver.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_pickDeliver.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_pickDeliver.html>`__"
 
 #: ../../build/doc/pgr_pickDeliver.rst:21
 #, fuzzy
@@ -271,7 +271,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:108
 msgid "The query:"
-msgstr ""
+msgstr "La consulta:"
 
 #: ../../build/doc/pgr_pickDeliver.rst:115
 msgid "Parameters"
@@ -426,7 +426,7 @@ msgstr "Donde:"
 
 #: ../../build/doc/VRP-category.rst:11
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/VRP-category.rst:12 ../../build/doc/VRP-category.rst:16
 msgid "|ANY-INTEGER|"
@@ -579,7 +579,7 @@ msgstr "**capacidad**"
 
 #: ../../build/doc/VRP-category.rst:16
 msgid "Maiximum capacity units"
-msgstr ""
+msgstr "Máxima capacidad"
 
 #: ../../build/doc/VRP-category.rst:17
 #, fuzzy
@@ -694,34 +694,35 @@ msgstr "``SMALLINT, INTEGER, BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:6
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:182
 msgid "Return columns"
-msgstr ""
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/VRP-category.rst:19
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 #: ../../build/doc/VRP-category.rst:21
 msgid "Sequential value starting from **1**."
-msgstr ""
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/VRP-category.rst:22
-#, fuzzy
 msgid "``vehicle_seq``"
-msgstr "**vehicles_sql**"
+msgstr "``vehicle_seq``"
 
 #: ../../build/doc/VRP-category.rst:24
 msgid ""
 "Sequential value starting from **1** for current vehicles. The "
 ":math:`n_{th}` vehicle in the solution."
 msgstr ""
+"Valor secuencial a partir de **1** para vehículos actuales. El vehículo "
+":math:`n_{th}` en la solución."
 
 #: ../../build/doc/VRP-category.rst:27
 msgid "Value :math:`-2` indicates it is the summary row."
-msgstr ""
+msgstr "Valor :math:`-2` para indicar que es una fila de resumen."
 
 #: ../../build/doc/VRP-category.rst:28
 msgid "``vehicle_id``"
@@ -733,7 +734,7 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:30
 msgid "Current vehicle identifier."
-msgstr ""
+msgstr "Identificador del vehículo actual."
 
 #: ../../build/doc/VRP-category.rst:32
 msgid "Sumary row has the **total capacity violations**."
@@ -773,16 +774,15 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:47
 msgid "Kind of stop location the vehicle is at"
-msgstr ""
+msgstr "Tipo de parada en la que se encuentra el vehículo"
 
 #: ../../build/doc/VRP-category.rst:49
 msgid ":math:`-1`: at the solution summary row"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:50
-#, fuzzy
 msgid ":math:`1`: Starting location"
-msgstr "La misma ubicación de Inicio."
+msgstr "``1``: Ubicación inicial"
 
 #: ../../build/doc/VRP-category.rst:51
 msgid ":math:`2`: Pickup location"
@@ -790,7 +790,7 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:52
 msgid ":math:`3`: Delivery location"
-msgstr ""
+msgstr ":math:`3`: Lugar de entrega"
 
 #: ../../build/doc/VRP-category.rst:53
 msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
@@ -802,7 +802,7 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:55
 msgid "``BIGINT``"
-msgstr ""
+msgstr "``BIGINT``"
 
 #: ../../build/doc/VRP-category.rst:56
 #, fuzzy
@@ -821,11 +821,11 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:73 ../../build/doc/VRP-category.rst:80
 #: ../../build/doc/VRP-category.rst:87 ../../build/doc/VRP-category.rst:94
 msgid "``FLOAT``"
-msgstr ""
+msgstr "``FLOAT``"
 
 #: ../../build/doc/VRP-category.rst:62
 msgid "Cargo units of the vehicle when leaving the stop."
-msgstr ""
+msgstr "Unidades de carga del vehículo al salir de la parada."
 
 #: ../../build/doc/VRP-category.rst:64
 msgid "Value :math:`-1` on solution summary row."
@@ -845,7 +845,7 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:71
 msgid "The sum of all the ``travel_time``."
-msgstr ""
+msgstr "La suma de todos los ``travel_time``."
 
 #: ../../build/doc/VRP-category.rst:72
 msgid "``arrival_time``"
@@ -866,7 +866,7 @@ msgstr "La misma ubicación de Inicio."
 
 #: ../../build/doc/VRP-category.rst:79
 msgid "``wait_time``"
-msgstr ""
+msgstr "``wait_time``"
 
 #: ../../build/doc/VRP-category.rst:83
 msgid "Summary row has the **total waiting time**:"
@@ -874,12 +874,11 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:85
 msgid "The sum of all the ``wait_time``."
-msgstr ""
+msgstr "La suma de todo el ``wait_time``."
 
 #: ../../build/doc/VRP-category.rst:86
-#, fuzzy
 msgid "``service_time``"
-msgstr "tiene un tiempo de servicio."
+msgstr "``service_time``"
 
 #: ../../build/doc/VRP-category.rst:88
 msgid "Service duration at current location."
@@ -890,13 +889,12 @@ msgid "Summary row has the **total service time**:"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:92
-#, fuzzy
 msgid "The sum of all the ``service_time``."
-msgstr "tiene un tiempo de servicio."
+msgstr "La suma de todo el ``service_time``."
 
 #: ../../build/doc/VRP-category.rst:93
 msgid "``departure_time``"
-msgstr ""
+msgstr "``departure_time``"
 
 #: ../../build/doc/VRP-category.rst:95
 msgid "The time at which the vehicle departs from the stop."
@@ -904,11 +902,12 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:97
 msgid ":math:`arrival\\_time + wait\\_time + service\\_time`."
-msgstr ""
+msgstr ":math:`arrival\\_time + wait\\_time + service\\_time`."
 
 #: ../../build/doc/VRP-category.rst:99
 msgid "The ending location has the **total time** used by the current vehicle."
 msgstr ""
+"El destino final tiene el **tiempo total** utilizado por el vehículo actual."
 
 #: ../../build/doc/VRP-category.rst:101
 msgid "Summary row has the **total solution time**:"
@@ -930,7 +929,7 @@ msgstr ":doc:`VRP-category`"
 
 #: ../../build/doc/pgr_pickDeliver.rst:192
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_pickDeliver.rst:195
 msgid "Indices and tables"
@@ -943,4 +942,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_pickDeliver.rst:197
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

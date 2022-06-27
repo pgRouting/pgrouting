@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_articulationpoints/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_articulationPoints.rst:12
@@ -127,9 +127,8 @@ msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/pgr_articulationPoints.rst:60
-#, fuzzy
 msgid "``node`` ascending"
-msgstr "`node`  ascendente."
+msgstr "``node`` ascendente"
 
 #: ../../build/doc/pgr_articulationPoints.rst:62
 msgid "Running time: :math:`O(V + E)`"
@@ -182,7 +181,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_articulationPoints.rst:98
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_articulationPoints.rst:114

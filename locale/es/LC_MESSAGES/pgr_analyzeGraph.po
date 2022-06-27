@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_analyzegraph/es/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:12
@@ -365,16 +365,14 @@ msgid "the arguments are not given in the appropriate order:"
 msgstr "Cuando los argumentos se escriben en el orden descrito en los parámetros:"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:140
-#, fuzzy
 msgid ""
 "In this example, the column ``id`` of the table ``mytable`` is passed to "
 "the function as the geometry column, and the geometry column ``the_geom``"
 " is passed to the function as the id column."
 msgstr ""
-"Un error puede ocurri cuando los argumentos no se dan en el orden "
-"adecuado: en este ejemplo, la columna  ``id``  de la tabla ``mytable`` se"
-" pasa a la función como geometría, y la columna de geometría ``the_geom``"
-" se pasa a la función de como columna ``id``."
+"En este ejemplo, la columna ``id`` de la tabla ``mytable`` se pasa a la "
+"función como geometría, y la columna de geometría ``the_geom`` se pasa a la "
+"función de columna ``id``."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:150
 #: ../../build/doc/pgr_analyzeGraph.rst:219
@@ -408,13 +406,12 @@ msgstr ""
 "la red."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:177
-#, fuzzy
 msgid ""
 "Selecting the rows where the geometry is near the geometry of row with "
 "``id`` = 5"
 msgstr ""
-"Seleccionar las filas donde la geometría está cerca de la geometría de la"
-" fila con ``id`` =5."
+"Seleccionar las filas donde la geometría está cerca de la geometría de la "
+"fila con ``id`` = 5"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:184
 msgid ""
@@ -498,7 +495,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:299
 msgid ":doc:`topology-functions`"
-msgstr ""
+msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:300
 #, fuzzy

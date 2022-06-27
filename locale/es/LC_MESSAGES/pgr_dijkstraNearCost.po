@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-25 14:11+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstranearcost/es/>\n"
@@ -22,11 +22,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html>`__ (`3.4"
@@ -34,11 +33,11 @@ msgid ""
 "<https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_dijkstraNearCost.html>`__ (`3.4"
-" <https://docs.pgrouting.org/3.4/es/pgr_dijkstraNearCost.html>`__) `3.3 "
-" <https://docs.pgrouting.org/3.3/es/pgr_dijkstraNearCost.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_dijkstraNearCost.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_dijkstraNearCost.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_dijkstraNearCost.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_dijkstraNearCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_dijkstraNearCost.html>`__"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:19
 #, fuzzy
@@ -216,11 +215,10 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:88
-#, fuzzy
 msgid "Departing on car from vertex :math:`6` find the nearest subway station."
 msgstr ""
-"Saliendo en coche desde el vértice  :math:`2` encontrar la estación de "
-"metro más cercana."
+"Saliendo en coche desde el vértice :math:`6` encontrar la estación de metro "
+"más cercana."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:91
 #: ../../build/doc/pgr_dijkstraNearCost.rst:122
@@ -464,7 +462,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "`Edges SQL`_ as described below"
-msgstr "`Consulta de aristas`_ como se describe a continuación"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "`Combinations SQL`_"
@@ -594,7 +592,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:254
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
@@ -719,7 +717,7 @@ msgstr "``end_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "Identifier of the ending vertex."
-msgstr "Identificador del vértice final."
+msgstr "Identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "``agg_cost``"
@@ -769,4 +767,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_dijkstraNearCost.rst:286
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

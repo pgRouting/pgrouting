@@ -12,15 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_withpointsksp/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_withpointsksp/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:12
@@ -152,9 +153,10 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:65
-#, fuzzy
 msgid "Get 2 paths from Point :math:`1` to point :math:`2` on a directed graph."
-msgstr "Del punto :math:`1` al punto :math:`2` in :math:`2` ciclos"
+msgstr ""
+"Obtener 2 rutas desde el punto :math:`1` al punto :math:`2` en un grafo "
+"dirigido."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:68
 #, fuzzy
@@ -215,9 +217,8 @@ msgid "`Edges SQL`_ query as described."
 msgstr "Consulta de aristas SQL como se describió anteriormente."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:92
-#, fuzzy
 msgid "`Points SQL`_"
-msgstr "points_sql"
+msgstr "`SQL puntos`_"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:94
 #, fuzzy
@@ -237,29 +238,25 @@ msgstr "**start_pid**"
 #: ../../build/doc/pgr_withPointsKSP.rst:102
 #: ../../build/doc/withPoints-category.rst:13
 #: ../../build/doc/withPoints-category.rst:23
-#, fuzzy
 msgid "**ANY-INTEGER**"
-msgstr "**arista**"
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:97
 #: ../../build/doc/pgr_withPointsKSP.rst:100
-#, fuzzy
 msgid "Identifier of the departure vertex."
-msgstr "Identificador de la arista."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:98
-#, fuzzy
 msgid "**end vid**"
-msgstr "**end_pid**"
+msgstr "**vid destino**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:101
 msgid "**K**"
 msgstr "**K**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:103
-#, fuzzy
 msgid "Number of required paths"
-msgstr "Número de rutas más cortas."
+msgstr "Cantidad de rutas requeridas"
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/pgr_withPointsKSP.rst:105
@@ -292,9 +289,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/dijkstra-family.rst:12
-#, fuzzy
 msgid "``directed``"
-msgstr "**dirigido**"
+msgstr "``directed``"
 
 #: ../../build/doc/dijkstra-family.rst:13 ../../build/doc/pgr_KSP.rst:13
 #: ../../build/doc/withPoints-family.rst:21
@@ -307,11 +303,11 @@ msgstr ""
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
-msgstr ""
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr ""
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:117
 msgid "KSP Optional parameters"
@@ -339,6 +335,9 @@ msgid ""
 "Roughly, when the shortest path has ``N`` edges, the heap will contain "
 "about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
 msgstr ""
+"Aproximadamente, si la ruta más corta tiene ``N`` aristas, las procesadas "
+"contendrán aproximadamente ``N * K`` rutas para valores pequeños de ``K`` y "
+"``K > 5``."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:124
 msgid "With points optional parameters"
@@ -350,9 +349,8 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/withPoints-family.rst:12
-#, fuzzy
 msgid "``driving_side``"
-msgstr "**driving_side**"
+msgstr "**Lado de manejo**"
 
 #: ../../build/doc/withPoints-category.rst:32
 #: ../../build/doc/withPoints-family.rst:13
@@ -374,7 +372,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:17
 msgid "``r`` for right driving side."
-msgstr ""
+msgstr "``r`` para manejo del lado derecho."
 
 #: ../../build/doc/withPoints-family.rst:18
 msgid "``l`` for left driving side."
@@ -385,9 +383,8 @@ msgid "``b`` for both."
 msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:20
-#, fuzzy
 msgid "``details``"
-msgstr "**detalles**"
+msgstr "``details``"
 
 #: ../../build/doc/withPoints-family.rst:23
 msgid "When ``true`` the results will include the points that are in the path."
@@ -405,31 +402,28 @@ msgid "Inner Queries"
 msgstr "Consulta interna"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:134
-#, fuzzy
 msgid "Edges SQL"
-msgstr "**edges_sql**"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
 msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -437,21 +431,19 @@ msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24 ../../build/doc/pgr_KSP.rst:34
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
 #: ../../build/doc/withPoints-category.rst:27
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Weight of the edge (``source``, ``target``)"
-msgstr "Peso de la arista `(source, target)`"
+msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -460,9 +452,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``)"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 #, fuzzy
@@ -485,18 +476,16 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "smallint, int, bigint, real, float"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:141
-#, fuzzy
 msgid "Points SQL"
-msgstr "points_sql"
+msgstr "SQL puntos"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
-msgstr ""
+msgstr "``pid``"
 
 #: ../../build/doc/withPoints-category.rst:14
-#, fuzzy
 msgid "**value**"
-msgstr "**objetivo**"
+msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
 #, fuzzy
@@ -513,13 +502,12 @@ msgid "If column is present, it can not be NULL."
 msgstr "Si la columna está presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
-#, fuzzy
 msgid ""
 "If column is not present, a sequential negative **value** will be given "
 "automatically."
 msgstr ""
-"Si la columna no está presente, se proporcionará automáticamente un "
-"identificador secuencial."
+"Si columna no esta presente, un **valor** secuencial negativo se otorgará "
+"automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
 #, fuzzy
@@ -531,9 +519,8 @@ msgid "Identifier of the \"closest\" edge to the point."
 msgstr "Identificador de la arista \"más cercana\" al punto."
 
 #: ../../build/doc/withPoints-category.rst:26
-#, fuzzy
 msgid "``fraction``"
-msgstr "**fraction**"
+msgstr "``fraction``"
 
 #: ../../build/doc/withPoints-category.rst:29
 msgid ""
@@ -548,9 +535,8 @@ msgid "``side``"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:34
-#, fuzzy
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
-msgstr "(opcional) Valor en ['b', 'r', 'l', NULL] que indica si el punto es:"
+msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 #, fuzzy
@@ -559,7 +545,7 @@ msgstr "A la derecha o a la izquierda o"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
-msgstr ""
+msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
@@ -574,10 +560,12 @@ msgid ""
 "Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge,"
 " cost, agg_cost)``"
 msgstr ""
+"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, node, "
+"edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_KSP.rst:14
 msgid "``seq``"
-msgstr ""
+msgstr "``seq``"
 
 #: ../../build/doc/pgr_KSP.rst:15 ../../build/doc/pgr_KSP.rst:18
 #: ../../build/doc/pgr_KSP.rst:24
@@ -586,10 +574,9 @@ msgstr "``INTEGER``"
 
 #: ../../build/doc/pgr_KSP.rst:16
 msgid "Sequential value starting from **1**."
-msgstr ""
+msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_KSP.rst:17
-#, fuzzy
 msgid "``path_id``"
 msgstr "``path_id``"
 
@@ -602,7 +589,6 @@ msgid "Has value **1** for the first of a path from **start vid** to **end_vid**
 msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:23
-#, fuzzy
 msgid "``path_seq``"
 msgstr "``path_seq``"
 
@@ -617,7 +603,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:27
 msgid "``node``"
-msgstr ""
+msgstr "``node``"
 
 #: ../../build/doc/pgr_KSP.rst:28 ../../build/doc/pgr_KSP.rst:31
 msgid "``BIGINT``"
@@ -626,10 +612,11 @@ msgstr "``BIGINT``"
 #: ../../build/doc/pgr_KSP.rst:29
 msgid "Identifier of the node in the path from **start vid** to **end vid**"
 msgstr ""
+"Identificador del nodo en la ruta como **nodo de salida** o **nodo destino**"
 
 #: ../../build/doc/pgr_KSP.rst:30
 msgid "``edge``"
-msgstr ""
+msgstr "``edge``"
 
 #: ../../build/doc/pgr_KSP.rst:32
 #, fuzzy
@@ -645,13 +632,12 @@ msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
 #: ../../build/doc/pgr_KSP.rst:36
-#, fuzzy
 msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
-"Coste para atravesar desde ``node`` usando ``edge`` para el siguiente "
-"``node`` en la secuncia de ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
+"en la secuencia de la ruta."
 
 #: ../../build/doc/pgr_KSP.rst:39
 #, fuzzy
@@ -659,14 +645,12 @@ msgid ":math:`0` for the last ``node`` of the path."
 msgstr "``0`` para la última fila de la secuencia de ruta."
 
 #: ../../build/doc/pgr_KSP.rst:40
-#, fuzzy
 msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_KSP.rst:42
-#, fuzzy
 msgid "Aggregate cost from **start vid** to ``node``."
-msgstr "Coste agregado de ``start_pid`` a ``node``."
+msgstr "Costo agregado desde **vid inicial** hasta ``node``."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:155
 msgid "Additional Examples"
@@ -692,13 +676,12 @@ msgid "Left driving side"
 msgstr "**driving_side**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:175
-#, fuzzy
 msgid ""
 "Get :math:`2` paths using left side driving topology, from point "
 ":math:`1` to point :math:`2` with details."
 msgstr ""
-"Topología de conducción del lado izquierdo desde el punto :math:`1` a "
-"punto :math:`2` en :math:`2` ciclos, con detalles"
+"Obtener :math:`2` rutas, usando topología de manejo por la izquierda, desde "
+"el punto :math:`1` al punto :math:`2, detallado."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:183
 #, fuzzy
@@ -706,13 +689,12 @@ msgid "Right driving side"
 msgstr "**driving_side**"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:185
-#, fuzzy
 msgid ""
 "Get :math:`2` paths using right side driving topology from, point "
 ":math:`1` to point :math:`2` with heap paths and details."
 msgstr ""
-"Topología de conducción del lado derecho desde el punto :math:`1` al "
-"punto :math:`2` en :math:`2` ciclos, con montones de rutas y detalles"
+"Obtener :math:`2` rutas, usando topología de manejo por la derecha, desde el "
+"punto :math:`1` al punto :math:`2, detallado y con rutas procesadas."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:192
 msgid "The queries use the :doc:`sampledata` network."
@@ -728,11 +710,11 @@ msgstr ":doc:`withPoints-family`"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:198
 msgid ":doc:`KSP-category`"
-msgstr ""
+msgstr ":doc:`KSP-category`"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:199
 msgid ":doc:`sampledata`"
-msgstr ""
+msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:202
 msgid "Indices and tables"
@@ -745,4 +727,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_withPointsKSP.rst:204
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

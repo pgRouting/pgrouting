@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-24 16:38+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_maxflowmincost_cost/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_maxflowmincost_cost/es/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:12
@@ -42,14 +42,12 @@ msgid "``pgr_maxFlowMinCost_Cost`` - Experimental"
 msgstr "pgr_maxFlowMinCost_Cost - Experimental"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:23
-#, fuzzy
 msgid ""
 "``pgr_maxFlowMinCost_Cost`` — Calculates the minimum total cost of the "
 "maximum flow on a graph"
 msgstr ""
-"``pgr_maxFlowMinCost_Cost`` — Calcula el costo mínimo para el máximo "
-"flujo en un grafo dirigido desde el/los origen(es) hacia el/los "
-"destino(s)."
+"``pgr_maxFlowMinCost_Cost`` — Calcula el costo mínimo para el máximo flujo "
+"en un grafo"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:29
 msgid "Boost Graph Inside"
@@ -168,7 +166,7 @@ msgstr "El grafo es **dirigido**."
 
 #: ../../build/doc/flow-family.rst:6
 msgid "Process is done only on edges with positive capacities."
-msgstr ""
+msgstr "El proceso se realiza sólo en aristas con capacidades positivas."
 
 #: ../../build/doc/flow-family.rst:7
 #, fuzzy
@@ -234,22 +232,20 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:66
 msgid "Running time: :math:`O(U * (E + V * logV))`"
-msgstr ""
+msgstr "Tiempo de ejecución: :math:`O(U * (E + V * log V))`"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:68
 msgid "where :math:`U` is the value of the max flow."
-msgstr ""
+msgstr "donde :math:`U` es el valor de flujo máximo."
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:69
-#, fuzzy
 msgid ""
 ":math:`U` is upper bound on number of iterations. In many real world "
 "cases number of iterations is much smaller than :math:`U`."
 msgstr ""
-"Tiempo de ejecución: :math:`O(U * (E + V * logV))`, donde :math:`U` es el"
-" valor del flujo máximo. :math:`U` es el límite máximo en número de "
-"iteraciones is upper bound on number of iteration. En muchos casos "
-"reales, la cantidad de iteraciones es mucho menor que  :math:`U`."
+":math:`U` es el límite superior de la cantidad de iteraciones. En muchos "
+"casos de la vida reales, la cantidad de iteraciones es mucho menor que "
+":math:`U`."
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:73
 msgid "Signatures"
@@ -268,27 +264,24 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:97
-#, fuzzy
 msgid "From vertex :math:`11` to vertex :math:`12`"
-msgstr "Desde el vértice :math:`2` al vértice :math:`3`"
+msgstr "Del vértice :math:`11` al vértice :math:`12`"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:107
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:114
-#, fuzzy
 msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
-msgstr "Desde el vértice :math:`13` a los vértices :math:`\\{7, 1, 4\\}`"
+msgstr "Desde el vértice :math:`11` a los vértices :math:`\\{5, 10, 12\\}`"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:124
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:131
-#, fuzzy
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
-msgstr "Desde los vértices :math:`\\{1, 7, 14\\}` al vértice :math:`12`"
+msgstr "De los vértices vertices :math:`\\{11, 3, 17\\}` al vértice :math:`12`"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:141
 msgid "Many to Many"
@@ -304,22 +297,20 @@ msgid "Combinations"
 msgstr "Combinaciones"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:166
-#, fuzzy
 msgid ""
 "Using a combinations table, equivalent to calculating result from "
 "vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
 msgstr ""
-"Usando una tabla de combinaciones, equivalente a calcular el resultado de"
-" los vértices  :math:`\\{7, 13\\} a los vértices :math:`\\{3, 9\\}`. "
+"Usando una tabla de combinaciones, equivalente a calcular el resultado de "
+"los vértices :math:`\\{5, 6\\}` a los vértices :math:`\\{10, 15, 14\\}`."
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:169
-#, fuzzy
 msgid "The combinations table:"
-msgstr "Combinaciones"
+msgstr "La tabla de combinaciones:"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:175
 msgid "The query:"
-msgstr ""
+msgstr "La consulta:"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:182
 msgid "Parameters"
@@ -347,7 +338,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:13
 msgid "`Edges SQL`_ as described below"
-msgstr ""
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
 #, fuzzy
@@ -355,9 +346,8 @@ msgid "`Combinations SQL`_"
 msgstr "Combinaciones"
 
 #: ../../build/doc/dijkstra-family.rst:16
-#, fuzzy
 msgid "`Combinations SQL`_ as described below"
-msgstr "Consultas de combinaciones como se describe en `Consultas internas`_."
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/dijkstra-family.rst:17
 #, fuzzy
@@ -375,9 +365,8 @@ msgid "Identifier of the starting vertex of the path."
 msgstr "Identificador del vértice inicial del flujo."
 
 #: ../../build/doc/dijkstra-family.rst:20
-#, fuzzy
 msgid "**start vids**"
-msgstr "**destinos**"
+msgstr "**vid salidas**"
 
 #: ../../build/doc/dijkstra-family.rst:21
 #: ../../build/doc/dijkstra-family.rst:27
@@ -390,9 +379,8 @@ msgid "Array of identifiers of starting vertices."
 msgstr "Conjunto de identificadores de los vértices iniciales del flujo."
 
 #: ../../build/doc/dijkstra-family.rst:23
-#, fuzzy
 msgid "**end vid**"
-msgstr "**id**"
+msgstr "**vid destino**"
 
 #: ../../build/doc/dijkstra-family.rst:25
 #, fuzzy
@@ -416,7 +404,7 @@ msgstr "Consultas internas"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:192
 msgid "Edges SQL"
-msgstr "SQL de aristas"
+msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
@@ -424,7 +412,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``id``"
-msgstr ""
+msgstr "``id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -434,7 +422,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:32
 msgid "**ANY-INTEGER**"
-msgstr ""
+msgstr "**ENTEROS**"
 
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
@@ -442,9 +430,8 @@ msgstr "Identificador de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "``source``"
-msgstr "**origen**"
+msgstr "``source``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
@@ -452,9 +439,8 @@ msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #: ../../build/doc/pgRouting-concepts.rst:20
-#, fuzzy
 msgid "``target``"
-msgstr "**objetivo**"
+msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
@@ -496,20 +482,18 @@ msgstr "Capacidad de la arista `(destino, origen)`,"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``cost``"
-msgstr ""
+msgstr "``cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/pgRouting-concepts.rst:43
 msgid "**ANY-NUMERICAL**"
-msgstr ""
+msgstr "**FLOTANTES**"
 
 #: ../../build/doc/pgRouting-concepts.rst:41
-#, fuzzy
 msgid "Weight of the edge  (``source``, ``target``) if it exist"
-msgstr "Peso de la arista `(origen, destino)` si existe."
+msgstr "Peso de la arista (``source``, ``target``) si existe"
 
 #: ../../build/doc/pgRouting-concepts.rst:42
-#, fuzzy
 msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
@@ -518,9 +502,8 @@ msgid ":math:`-1`"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:45
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``) if it exist"
-msgstr "Peso de la arista `(destino, origen)` si existe."
+msgstr "Peso de la arista (``target``, ``source``) si existe"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:47
@@ -555,14 +538,12 @@ msgid "Parameter"
 msgstr "Parámetros"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "Identifier of the departure vertex."
-msgstr "Identificador del vértice inicial del flujo."
+msgstr "Identificador del vértice de salida."
 
 #: ../../build/doc/pgRouting-concepts.rst:16
-#, fuzzy
 msgid "Identifier of the arrival vertex."
-msgstr "Identificador de la arista."
+msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:206
 #, fuzzy
@@ -585,7 +566,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:217
 msgid "Manually assigned vertex combinations."
-msgstr ""
+msgstr "Manualmente asignar combinaciones de vértices."
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:224
 msgid "See Also"
@@ -610,4 +591,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:232
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

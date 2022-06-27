@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-25 17:58+0000\n"
+"PO-Revision-Date: 2022-06-27 17:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "astar-family/es/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/aStar-family.rst:12
@@ -106,9 +106,8 @@ msgid "then by ``end_vid``"
 msgstr "luego por ``end_vid``"
 
 #: ../../build/doc/aStar-family.rst:59
-#, fuzzy
 msgid "Values are returned when there is a path."
-msgstr "Los valores se devuelven cuando hay una ruta"
+msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/aStar-family.rst:60
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
@@ -142,9 +141,10 @@ msgstr ""
 "difieren:"
 
 #: ../../build/doc/aStar-family.rst:74
-#, fuzzy
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
-msgstr "Se utiliza una selección aleatoria de las coordenadas del vértice (x,y)."
+msgstr ""
+"Se utiliza una selección aleatoria de las coordenadas del vértice "
+":math:`(x,y)`."
 
 #: ../../build/doc/aStar-family.rst:76
 msgid "Running time: :math:`O((E + V) * \\log V)`"
@@ -160,7 +160,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:91
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../../build/doc/aStar-family.rst:92
 msgid "Default"
@@ -176,13 +176,12 @@ msgid "``INTEGER``"
 msgstr "``INTEGER``"
 
 #: ../../build/doc/aStar-family.rst:96
-#, fuzzy
 msgid "5"
-msgstr "45"
+msgstr "5"
 
 #: ../../build/doc/aStar-family.rst:97
 msgid "Heuristic number. Current valid values 0~5."
-msgstr ""
+msgstr "Número heurístico. Valores válidos 0~5."
 
 #: ../../build/doc/aStar-family.rst:99 ../../build/doc/aStar-family.rst:129
 msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
@@ -223,7 +222,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:108
 msgid "For units manipulation. :math:`factor > 0`."
-msgstr ""
+msgstr "Para la manipulación de unidades. math:`factor > 0`."
 
 #: ../../build/doc/aStar-family.rst:109
 msgid "``epsilon``"
@@ -352,7 +351,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/aStar-family.rst:192
 msgid ":doc:`bdAstar-family`"
-msgstr ""
+msgstr ":doc:`bdAstar-family`"
 
 #: ../../build/doc/aStar-family.rst:193
 msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
