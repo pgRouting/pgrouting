@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:50+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bdastar-family/es/>\n"
@@ -119,7 +119,7 @@ msgstr "primero por ``start_vid`` (si existe)"
 
 #: ../../build/doc/aStar-family.rst:7
 msgid "then by ``end_vid``"
-msgstr ""
+msgstr "luego por ``end_vid``"
 
 #: ../../build/doc/aStar-family.rst:9
 msgid "Values are returned when there is a path."
@@ -147,7 +147,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:20
 msgid "``agg_cost`` from `v` to `u` is :math:`0`"
-msgstr ""
+msgstr "``agg_cost`` de `v` a `u` es :math:`0`"
 
 #: ../../build/doc/aStar-family.rst:22
 msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"

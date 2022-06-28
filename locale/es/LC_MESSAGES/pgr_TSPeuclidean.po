@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:51+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_tspeuclidean/es/>\n"
@@ -302,7 +302,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:22
 msgid "Last visiting vertex before returning to ``start_vid``."
-msgstr "Último vértice visitado antes de regresar a '``start_vid``."
+msgstr "Último vértice visitado antes de regresar a ``start_vid``."
 
 #: ../../build/doc/TSP-family.rst:24
 msgid ""

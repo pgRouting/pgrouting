@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 00:24+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "costmatrix-category/es/>\n"
@@ -70,9 +70,8 @@ msgstr ":doc:`pgr_aStarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:31
 #: ../../build/doc/costMatrix-category.rst:33
-#, fuzzy
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
-msgstr ":doc:`pgr_dijkstraCostMatrix`"
+msgstr ":doc:`pgr_bdDijkstraCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:32
 #: ../../build/doc/costMatrix-category.rst:123
@@ -161,11 +160,12 @@ msgid "Can be used as input to :doc:`pgr_TSP`."
 msgstr "Se puede utilizar como entrada para :doc:`pgr_TSP`."
 
 #: ../../build/doc/costMatrix-category.rst:71
-#, fuzzy
 msgid ""
 "Use directly when the resulting matrix is symmetric and there is no "
 ":math:`\\infty` value."
-msgstr "cuando la matriz resultante es simétrica y no hay valor :math:`\\infty` "
+msgstr ""
+"Usar directamente cuando la matriz resultante es simétrica y no hay valor "
+":math:`\\infty`."
 
 #: ../../build/doc/costMatrix-category.rst:73
 msgid "It will be the users responsibility to make the matrix symmetric."
@@ -335,7 +335,7 @@ msgstr "`SQL Aristas`_"
 #: ../../build/doc/costMatrix-category.rst:159
 #: ../../build/doc/costMatrix-category.rst:162
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/costMatrix-category.rst:137
 #: ../../build/doc/costMatrix-category.rst:160
@@ -558,7 +558,7 @@ msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:33
 msgid "``b``"
-msgstr ""
+msgstr "``b``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edwardmoore/es/>\n"
@@ -363,7 +363,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/dijkstra-family.rst:11
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/dijkstra-family.rst:12
 #: ../../build/doc/dijkstra-family.rst:15
@@ -384,9 +384,8 @@ msgid "`Combinations SQL`_ as described below"
 msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/dijkstra-family.rst:17
-#, fuzzy
 msgid "**start vid**"
-msgstr "``start_vid``"
+msgstr "**vid de salida**"
 
 #: ../../build/doc/dijkstra-family.rst:18
 #: ../../build/doc/dijkstra-family.rst:24
@@ -423,9 +422,8 @@ msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:26
-#, fuzzy
 msgid "**end vids**"
-msgstr "``end_vids``"
+msgstr "**vids destinos**"
 
 #: ../../build/doc/dijkstra-family.rst:28
 msgid "Array of identifiers of ending vertices."
@@ -531,13 +529,12 @@ msgid "Weight of the edge (``target``, ``source``)"
 msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
-#, fuzzy
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
-" es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:36
@@ -613,8 +610,8 @@ msgid ""
 "Relative position in the path. Has value **1** for the beginning of a "
 "path."
 msgstr ""
-"Posición relativa en la ruta. Tiene el valor **1** para el principio de "
-"una ruta."
+"Posición relativa en la ruta. Tiene el valor **1** para el inicio de una "
+"ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "``start_vid``"
@@ -692,9 +689,8 @@ msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:48
-#, fuzzy
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr "Coste agregado de ``start_v`` to ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/pgr_edwardMoore.rst:244
 msgid "Additional Examples"

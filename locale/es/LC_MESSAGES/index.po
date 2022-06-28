@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 00:26+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
@@ -60,7 +60,7 @@ msgstr "Este es el manual para pgRouting |release|."
 
 #: ../../build/doc/index.rst:None
 msgid "Creative Commons Attribution-Share Alike 3.0 License"
-msgstr "Licencia de Creative Commons Attribution-Share Alike 3.0 "
+msgstr "Licencia de Creative Commons Attribution-Share Alike 3.0"
 
 #: ../../build/doc/index.rst:42
 msgid "The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <https://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to https://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page."

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 00:23+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "release_notes/es/>\n"
@@ -521,7 +521,7 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:201
 msgid "pgRouting 3.2.0 Release Notes"
-msgstr "Notas del Lanzamiento de pgRouting 3.2.0 "
+msgstr "Notas del Lanzamiento de pgRouting 3.2.0"
 
 #: ../../build/doc/release_notes.rst:203
 #, python-format
@@ -1027,8 +1027,8 @@ msgid ""
 "`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed "
 "CGAL dependency"
 msgstr ""
-"`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Se "
-"suprimió la dependencia CGAL "
+"`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Se suprimió "
+"la dependencia CGAL"
 
 #: ../../build/doc/release_notes.rst:486
 msgid ""
@@ -1818,7 +1818,7 @@ msgstr "Limpiado el código interno de withPoints"
 
 #: ../../build/doc/release_notes.rst:758
 msgid "pgRouting 2.5.5 Release Notes"
-msgstr "Notas de la versión de PgRouting 2.5.5 "
+msgstr "Notas de la versión de PgRouting 2.5.5"
 
 #: ../../build/doc/release_notes.rst:760
 #, python-format
@@ -1849,7 +1849,7 @@ msgstr "Arreglos de compilación para python3 y perl5"
 
 #: ../../build/doc/release_notes.rst:772
 msgid "pgRouting 2.5.4 Release Notes"
-msgstr "Notas de la versión de pgRouting 2.5.4 "
+msgstr "Notas de la versión de pgRouting 2.5.4"
 
 #: ../../build/doc/release_notes.rst:774
 #, python-format
@@ -1866,7 +1866,7 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:811
 msgid "pgRouting 2.5.3 Release Notes"
-msgstr "Notas de la versión de pgRouting 2.5.3 "
+msgstr "Notas de la versión de pgRouting 2.5.3"
 
 #: ../../build/doc/release_notes.rst:813
 #, python-format
@@ -2040,7 +2040,7 @@ msgstr "pgr_pointToEdgeNode"
 
 #: ../../build/doc/release_notes.rst:915
 msgid "pgRouting 2.4.2 Release Notes"
-msgstr "Notas de la versión de pgRouting 2.4.2 "
+msgstr "Notas de la versión de pgRouting 2.4.2"
 
 #: ../../build/doc/release_notes.rst:917
 #, python-format
@@ -2187,7 +2187,7 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:988
 msgid "pgRouting 2.3.2 Release Notes"
-msgstr "Notas de la versión de pgRouting 2.3.2 "
+msgstr "Notas de la versión de pgRouting 2.3.2"
 
 #: ../../build/doc/release_notes.rst:990
 msgid ""
@@ -2368,7 +2368,7 @@ msgstr "pgr_textToPoints"
 
 #: ../../build/doc/release_notes.rst:1077
 msgid "pgRouting 2.2.4 Release Notes"
-msgstr "Notas de la versión de pgRouting 2.2.4 "
+msgstr "Notas de la versión de pgRouting 2.2.4"
 
 #: ../../build/doc/release_notes.rst:1079
 msgid ""
@@ -2396,7 +2396,7 @@ msgstr "Error de regresión pgr_nodeNetwork"
 
 #: ../../build/doc/release_notes.rst:1091
 msgid "pgRouting 2.2.3 Release Notes"
-msgstr "Notas de la versión de pgRouting 2.2.3 "
+msgstr "Notas de la versión de pgRouting 2.2.3"
 
 #: ../../build/doc/release_notes.rst:1093
 msgid ""
@@ -2416,7 +2416,7 @@ msgstr "Problemas de compatibilidad con PostgreSQL 9.6 corregidos."
 
 #: ../../build/doc/release_notes.rst:1103
 msgid "pgRouting 2.2.2 Release Notes"
-msgstr "Notas de la versión de pgRouting 2.2.2 "
+msgstr "Notas de la versión de pgRouting 2.2.2"
 
 #: ../../build/doc/release_notes.rst:1105
 msgid ""
@@ -2924,8 +2924,8 @@ msgid ""
 "New TSP solver that simplifies the code and the build process (pgr_tsp), "
 "dropped \"Gaul Library\" dependency"
 msgstr ""
-"Nuevo solucionador TSP  que simplifica el código donde  el proceso de "
-"compilación (pgr_tsp), ya no dependene de la biblioteca \"Gaul Library\" "
+"Nuevo solucionador TSP que simplifica el código donde el proceso de "
+"compilación (pgr_tsp), ya no dependene de la biblioteca \"Gaul Library\""
 
 #: ../../build/doc/release_notes.rst:1319
 msgid "Turn Restricted shortest path (pgr_trsp) that replaces Shooting Star"
@@ -2989,7 +2989,7 @@ msgstr "Soporte para esquema en los parámetros de las funciones"
 
 #: ../../build/doc/release_notes.rst:1333
 msgid "Support for ``st_`` PostGIS function prefix"
-msgstr "Soporte para el prefijo ``st_`` de las funciones de PostGIS "
+msgstr "Soporte para el prefijo ``st_`` de las funciones de PostGIS"
 
 #: ../../build/doc/release_notes.rst:1334
 msgid "Added ``pgr_`` prefix to functions and types"
@@ -3005,7 +3005,7 @@ msgstr "shooting_star está descontinuado"
 
 #: ../../build/doc/release_notes.rst:1342
 msgid "pgRouting 1.x Release Notes"
-msgstr "Notas de versión de pgRouting 1.x "
+msgstr "Notas de versión de pgRouting 1.x"
 
 #: ../../build/doc/release_notes.rst:1344
 msgid ""
@@ -3060,7 +3060,7 @@ msgstr "Núcleo y funciones adicionales están separadas"
 
 #: ../../build/doc/release_notes.rst:1381
 msgid "Cmake build process"
-msgstr "Proceso de compilación con CMake "
+msgstr "Proceso de compilación con CMake"
 
 #: ../../build/doc/release_notes.rst:1386
 msgid "Changes for release 1.0.0b"

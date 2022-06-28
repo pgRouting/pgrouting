@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 14:20+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:54+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "sampledata/es/>\n"
@@ -468,9 +468,8 @@ msgid "The creation of the restrictions table"
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:306
-#, fuzzy
 msgid "Adding the restrictions"
-msgstr "Restricciones"
+msgstr "Agregando las restricciones"
 
 #: ../../build/doc/sampledata.rst:313
 #, fuzzy

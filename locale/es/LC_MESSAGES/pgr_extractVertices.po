@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-23 16:16+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:47+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_extractvertices/es/>\n"
@@ -166,7 +166,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgr_extractVertices.rst:75
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgr_extractVertices.rst:75
 msgid "``TEXT``"
@@ -195,9 +195,8 @@ msgid "``BOOLEAN``"
 msgstr "``BOOLEAN``"
 
 #: ../../build/doc/pgr_extractVertices.rst:84
-#, fuzzy
 msgid "``false``"
-msgstr "``target``"
+msgstr "``false``"
 
 #: ../../build/doc/pgr_extractVertices.rst:84
 #, fuzzy

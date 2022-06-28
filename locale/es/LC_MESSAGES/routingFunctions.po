@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "routingfunctions/es/>\n"
@@ -352,6 +352,9 @@ msgid ""
 "The following functions modify the database directly therefore the user "
 "must have special permissions given by the administrators to use them."
 msgstr ""
+"Las siguientes funciones modifican la base de datos directamente, por lo que "
+"el usuario debe tener permisos especiales otorgados por un administrador "
+"para usarlos."
 
 #: ../../build/doc/topology-functions.rst:6
 #, fuzzy
@@ -452,9 +455,8 @@ msgstr ":doc:`pgr_aStarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:5
 #: ../../build/doc/costMatrix-category.rst:7
-#, fuzzy
 msgid ":doc:`pgr_bdDijkstraCostMatrix`"
-msgstr ":doc:`pgr_dijkstraCostMatrix`"
+msgstr ":doc:`pgr_bdDijkstraCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:6
 msgid ":doc:`pgr_dijkstraCostMatrix`"

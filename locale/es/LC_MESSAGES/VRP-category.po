@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 00:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "vrp-category/es/>\n"
@@ -1485,9 +1485,8 @@ msgid "Conversion"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:719 ../../build/doc/VRP-category.rst:752
-#, fuzzy
 msgid "Factor"
-msgstr "**factor**"
+msgstr "Factor"
 
 #: ../../build/doc/VRP-category.rst:720
 #, fuzzy
@@ -1496,7 +1495,7 @@ msgstr "5"
 
 #: ../../build/doc/VRP-category.rst:721
 msgid "1 longitude degree is (78846.81m)/(25m/s)"
-msgstr ""
+msgstr "1 grado de longitud es (78846.81m)/(25m/s)"
 
 #: ../../build/doc/VRP-category.rst:722
 msgid "3153 s"

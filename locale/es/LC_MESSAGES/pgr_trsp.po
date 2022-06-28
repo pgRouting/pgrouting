@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp/es/>\n"
@@ -314,13 +314,13 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:15
 #: ../../build/doc/pgRouting-concepts.rst:18
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:16
@@ -342,7 +342,7 @@ msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "**start vid**"
-msgstr ""
+msgstr "**vid de salida**"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/pgRouting-concepts.rst:13
@@ -380,7 +380,7 @@ msgstr "**vid destino**"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "**end vids**"
-msgstr ""
+msgstr "**vids destinos**"
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:21
@@ -495,6 +495,8 @@ msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -522,9 +524,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:17
-#, fuzzy
 msgid "``Cost``"
-msgstr "Costo"
+msgstr "``Cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Cost of taking the forbidden path."
@@ -590,6 +591,8 @@ msgid ""
 "Relative position in the path. Has value **1** for the beginning of a "
 "path."
 msgstr ""
+"Posición relativa en la ruta. Tiene el valor **1** para el inicio de una "
+"ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "``start_vid``"
@@ -651,7 +654,7 @@ msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:46
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr ""
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/pgr_trsp.rst:256
 msgid "See Also"
