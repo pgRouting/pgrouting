@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 00:15+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "proposed/es/>\n"
@@ -158,7 +158,7 @@ msgstr ":doc:`traversal-family`"
 
 #: ../../build/doc/TRSP-family.rst:3
 msgid ":doc:`pgr_trsp` - Vertex - Vertex routing with restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trsp` - Ruteo Vértice - Vértice con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:4
 msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
@@ -265,13 +265,12 @@ msgid ":doc:`pgr_dijkstraVia`"
 msgstr ":doc:`dijkstra-family`"
 
 #: ../../build/doc/via-category.rst:4
-#, fuzzy
 msgid ":doc:`pgr_withPointsVia`"
-msgstr ":doc:`pgr_withPointsCost`"
+msgstr ":doc:`pgr_withPointsVia`"
 
 #: ../../build/doc/via-category.rst:5
 msgid ":doc:`pgr_trspVia`"
-msgstr ""
+msgstr ":doc:`pgr_trspVia`"
 
 #: ../../build/doc/via-category.rst:6
 #, fuzzy
@@ -285,7 +284,7 @@ msgstr ":doc:`cost-category`"
 
 #: ../../build/doc/withPoints-category.rst:3
 msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
-msgstr ""
+msgstr ":doc:`withPoints-family` - Funciones basadas en el algoritmo Dijkstra."
 
 #: ../../build/doc/withPoints-category.rst:4
 #, fuzzy

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 00:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "dijkstra-family/es/>\n"
@@ -264,7 +264,7 @@ msgstr "`SQL Aristas`_"
 #: ../../build/doc/dijkstra-family.rst:127
 #: ../../build/doc/dijkstra-family.rst:130
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/dijkstra-family.rst:128
 msgid "`Edges SQL`_ as described below"
@@ -464,9 +464,8 @@ msgid "Identifier of the arrival vertex."
 msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/dijkstra-family.rst:187
-#, fuzzy
 msgid "Advanced documentation"
-msgstr "La definición de problema (Documentación avanzada)"
+msgstr "Documentación avanzada"
 
 #: ../../build/doc/dijkstra-family.rst:190
 msgid "The problem definition (Advanced documentation)"

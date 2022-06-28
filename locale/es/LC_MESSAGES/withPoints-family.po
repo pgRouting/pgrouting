@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 00:19+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-family/es/>\n"
@@ -208,7 +208,7 @@ msgstr "`SQL Aristas`_"
 #: ../../build/doc/withPoints-category.rst:15
 #: ../../build/doc/withPoints-category.rst:18
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/withPoints-category.rst:13
 msgid "`Edges SQL`_ as described below"
@@ -336,7 +336,7 @@ msgstr "``CHAR``"
 #: ../../build/doc/withPoints-category.rst:33
 #: ../../build/doc/withPoints-family.rst:101
 msgid "``b``"
-msgstr ""
+msgstr "``b``"
 
 #: ../../build/doc/withPoints-family.rst:102
 msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
@@ -361,7 +361,7 @@ msgstr "``details``"
 
 #: ../../build/doc/withPoints-family.rst:109
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 #: ../../build/doc/withPoints-family.rst:110
 msgid "When ``true`` the results will include the points that are in the path."
@@ -566,7 +566,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:4
 msgid "Contents"
-msgstr ""
+msgstr "Contenido"
 
 #: ../../build/doc/withPoints-category.rst:7
 msgid "About points"
@@ -616,9 +616,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:34
-#, fuzzy
 msgid "Driving side"
-msgstr "Lado de conducción izquierdo"
+msgstr "Lado de manejo"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the the folowwing images:"
@@ -721,9 +720,8 @@ msgid "Point **4** located on edge ``(3, 1)`` and ``(1, 3)``"
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:87
-#, fuzzy
 msgid "Creating temporary vertices"
-msgstr "Creación de Vértices Temporales en el grafo"
+msgstr "Creación de vértices temporales"
 
 #: ../../build/doc/withPoints-category.rst:89
 msgid ""
@@ -748,9 +746,8 @@ msgid "On a right hand side driving network"
 msgstr "En una red de conducción del lado derecho"
 
 #: ../../build/doc/withPoints-category.rst:114
-#, fuzzy
 msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
-msgstr "Podemos llegar al punto sólo a través del vértice 12."
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **16**"
 
 #: ../../build/doc/withPoints-category.rst:115
 msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
@@ -797,9 +794,8 @@ msgid "On a left hand side driving network"
 msgstr "En una red de conducción del lado izquierdo"
 
 #: ../../build/doc/withPoints-category.rst:134
-#, fuzzy
 msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
-msgstr "Podemos llegar al punto sólo a través del vértice 12."
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **17**"
 
 #: ../../build/doc/withPoints-category.rst:135
 msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."
@@ -842,16 +838,16 @@ msgid "Arrival to point ``-2`` can be achived via vertices **16** or **17**."
 msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:163
-#, fuzzy
 msgid ""
 "Affects the edges ``(16, 17)`` and ``(17, 16)``, therefore the edges are "
 "removed."
-msgstr "Sólo afecta a la arista (15, 12,9 20) por lo que esa arista se elimina."
+msgstr ""
+"Afecta las aristas ``(16, 17)`` y ``(17, 16)`` por lo que esas aristas se "
+"eliminan."
 
 #: ../../build/doc/withPoints-category.rst:164
-#, fuzzy
 msgid "Create four new edges:"
-msgstr "Crear nuevas aristas:"
+msgstr "Crear cuatro nuevas aristas:"
 
 #: ../../build/doc/withPoints-category.rst:174
 msgid "Flip the Edges and add all the edges to the graph:"

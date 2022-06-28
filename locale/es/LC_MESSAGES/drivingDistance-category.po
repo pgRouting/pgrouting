@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:44+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "drivingdistance-category/es/>\n"
@@ -180,11 +180,11 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:86
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/drivingDistance-category.rst:87
 msgid "``TEXT``"
-msgstr ""
+msgstr "``TEXT``"
 
 #: ../../build/doc/drivingDistance-category.rst:88
 msgid "Edges SQL as described below."
@@ -334,6 +334,8 @@ msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"

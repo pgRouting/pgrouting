@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:48+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpoints/es/>\n"
@@ -310,7 +310,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/withPoints-category.rst:11
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/withPoints-category.rst:12
 #: ../../build/doc/withPoints-category.rst:15
@@ -340,9 +340,8 @@ msgid "`Combinations SQL`_ as described below"
 msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/withPoints-category.rst:20
-#, fuzzy
 msgid "**start vid**"
-msgstr "``start_vid``"
+msgstr "**vid de salida**"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:30
@@ -393,9 +392,8 @@ msgstr ""
 "punto."
 
 #: ../../build/doc/withPoints-category.rst:32
-#, fuzzy
 msgid "**end vids**"
-msgstr "``end_vids``"
+msgstr "**vids destinos**"
 
 #: ../../build/doc/withPoints-category.rst:34
 #, fuzzy
@@ -460,9 +458,8 @@ msgstr "``CHAR``"
 
 #: ../../build/doc/withPoints-category.rst:33
 #: ../../build/doc/withPoints-family.rst:14
-#, fuzzy
 msgid "``b``"
-msgstr "``TEXT``"
+msgstr "``b``"
 
 #: ../../build/doc/withPoints-family.rst:15
 #, fuzzy
@@ -489,7 +486,7 @@ msgstr "``details``"
 
 #: ../../build/doc/withPoints-family.rst:22
 msgid "``false``"
-msgstr ""
+msgstr "``false``"
 
 #: ../../build/doc/withPoints-family.rst:23
 msgid "When ``true`` the results will include the points that are in the path."
@@ -574,13 +571,12 @@ msgid "Weight of the edge (``target``, ``source``)"
 msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
-#, fuzzy
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
-" es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:36
@@ -839,9 +835,8 @@ msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:56
-#, fuzzy
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr "Coste agregado de ``start_pid`` a ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/pgr_withPoints.rst:251
 msgid "Additional Examples"

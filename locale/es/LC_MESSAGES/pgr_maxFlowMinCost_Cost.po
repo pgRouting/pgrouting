@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:44+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_maxflowmincost_cost/es/>\n"
@@ -329,7 +329,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/dijkstra-family.rst:11
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/dijkstra-family.rst:12
 #: ../../build/doc/dijkstra-family.rst:15
@@ -350,9 +350,8 @@ msgid "`Combinations SQL`_ as described below"
 msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/dijkstra-family.rst:17
-#, fuzzy
 msgid "**start vid**"
-msgstr "**objetivo**"
+msgstr "**vid de salida**"
 
 #: ../../build/doc/dijkstra-family.rst:18
 #: ../../build/doc/dijkstra-family.rst:24
@@ -388,9 +387,8 @@ msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final del flujo."
 
 #: ../../build/doc/dijkstra-family.rst:26
-#, fuzzy
 msgid "**end vids**"
-msgstr "**id**"
+msgstr "**vids destinos**"
 
 #: ../../build/doc/dijkstra-family.rst:28
 #, fuzzy
@@ -458,13 +456,12 @@ msgstr "Capacidad de la arista `(origen, destino)`"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
 #: ../../build/doc/pgRouting-concepts.rst:36
-#, fuzzy
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
-" es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 #, fuzzy

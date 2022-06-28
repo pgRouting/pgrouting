@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:49+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bdastarcost/es/>\n"
@@ -111,8 +111,8 @@ msgid ""
 "The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest "
 "path(s) using the bidirectional A* algorithm."
 msgstr ""
-"la función ``pgr_bdAstarCost`` Sumariza el costo del camon(s) más corto "
-"utilizando el algoritmo :doc:`pgr_aStar`."
+"La función ``pgr_bdAstarCost`` Sumariza el costo del camon(s) más corto "
+"utilizando el algoritmo bidireccional A*."
 
 #: ../../build/doc/pgr_bdAstarCost.rst:56
 msgid "**The main characteristics are:**"
@@ -312,9 +312,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: ../../build/doc/dijkstra-family.rst:11
-#, fuzzy
 msgid "`Edges SQL`_"
-msgstr "edges_sql"
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/dijkstra-family.rst:12
 #: ../../build/doc/dijkstra-family.rst:15
@@ -335,9 +334,8 @@ msgid "`Combinations SQL`_ as described below"
 msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
 #: ../../build/doc/dijkstra-family.rst:17
-#, fuzzy
 msgid "**start vid**"
-msgstr "``start_vid``"
+msgstr "**vid de salida**"
 
 #: ../../build/doc/dijkstra-family.rst:18
 #: ../../build/doc/dijkstra-family.rst:24
@@ -375,9 +373,8 @@ msgid "Identifier of the ending vertex of the path."
 msgstr "Identificador del vértice final."
 
 #: ../../build/doc/dijkstra-family.rst:26
-#, fuzzy
 msgid "**end vids**"
-msgstr "``end_vid``"
+msgstr "**vids destinos**"
 
 #: ../../build/doc/dijkstra-family.rst:28
 #, fuzzy
@@ -583,13 +580,12 @@ msgid "Weight of the edge (``target``, ``source``),"
 msgstr "Peso de la arista `(target, source)`,"
 
 #: ../../build/doc/pgRouting-concepts.rst:36
-#, fuzzy
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
-" es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 #, fuzzy
@@ -696,7 +692,7 @@ msgstr "``agg_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
-msgstr "Coste agregado de ``start_vid`` a ``end_vid``."
+msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
 
 #: ../../build/doc/pgr_bdAstarCost.rst:251
 msgid "Additional Examples"

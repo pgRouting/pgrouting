@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-27 23:44+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bridges/es/>\n"
@@ -151,7 +151,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "`Edges SQL`_"
-msgstr ""
+msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
@@ -235,13 +235,12 @@ msgid "Weight of the edge (``target``, ``source``)"
 msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
-#, fuzzy
 msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista `(target, source)` no existe, por lo tanto no"
-" es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"

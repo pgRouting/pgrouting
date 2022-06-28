@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "topology-functions/es/>\n"
@@ -112,6 +112,9 @@ msgid ""
 "The following functions modify the database directly therefore the user "
 "must have special permissions given by the administrators to use them."
 msgstr ""
+"Las siguientes funciones modifican la base de datos directamente, por lo que "
+"el usuario debe tener permisos especiales otorgados por un administrador "
+"para usarlos."
 
 #: ../../build/doc/topology-functions.rst:56
 #, fuzzy

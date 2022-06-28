@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 00:27+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "contraction-family/es/>\n"
@@ -422,9 +422,8 @@ msgid "It's not possible to go :math:`z \\rightarrow c \\rightarrow y`"
 msgstr ""
 
 #: ../../build/doc/contraction-family.rst:337
-#, fuzzy
 msgid "Is symmetrical?"
-msgstr "La linealidad es simétrica"
+msgstr "Es simétrico?"
 
 #: ../../build/doc/contraction-family.rst:339
 msgid ":math:`\\{u, v\\}`"
@@ -511,8 +510,8 @@ msgid ""
 "A new edge :math:`u \\rightarrow z` is inserted represented with red "
 "color."
 msgstr ""
-"Se inserta un nuevo arista :math:`u \\rightarrow z`  y se representa con "
-"color rojo.  "
+"Se inserta un nuevo arista :math:`u \\rightarrow z` y se representa con "
+"color rojo."
 
 #: ../../build/doc/contraction-family.rst:412
 msgid ""
@@ -647,7 +646,7 @@ msgstr "**contracted_vertices**"
 
 #: ../../build/doc/contraction-family.rst:507
 msgid "The vertices set belonging to the vertex/edge"
-msgstr "El conjunto de vértices que pertenecen al vértice/arista "
+msgstr "El conjunto de vértices que pertenecen al vértice/arista"
 
 #: ../../build/doc/contraction-family.rst:508
 #, fuzzy
