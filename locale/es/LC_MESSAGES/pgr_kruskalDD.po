@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:45+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskaldd/es/>\n"
@@ -293,7 +293,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:109
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_kruskalDD.rst:112
 msgid "Edges SQL"
@@ -469,13 +469,12 @@ msgid ":doc:`sampledata`"
 msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:131
-#, fuzzy
 msgid ""
 "`Boost: Kruskal's algorithm "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
-"`Boost: algoritmo de Kruskal "
-"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+"`Boost: algoritmo de Kruskal <https://www.boost.org/libs/graph/doc/"
+"kruskal_min_spanning_tree.html>`__"
 
 #: ../../build/doc/pgr_kruskalDD.rst:133
 msgid ""

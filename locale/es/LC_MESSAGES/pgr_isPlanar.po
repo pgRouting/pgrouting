@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_isplanar/es/>\n"
@@ -80,7 +80,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -96,7 +96,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -211,7 +211,7 @@ msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_isPlanar.rst:82
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_isPlanar.rst:85
 msgid "Edges SQL"
@@ -333,9 +333,8 @@ msgid "`false` when the graph is not planar."
 msgstr "`false` cuando el grafo no es planar."
 
 #: ../../build/doc/pgr_isPlanar.rst:104
-#, fuzzy
 msgid "Additional Examples"
-msgstr "Ejemplo Adicional:"
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_isPlanar.rst:106
 #, fuzzy

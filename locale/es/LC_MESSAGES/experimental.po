@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 00:15+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "experimental/es/>\n"
@@ -99,7 +99,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:42
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:43
 msgid "Functionality might change."
@@ -115,7 +115,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:46
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:47
 msgid "Documentation if any might need to be rewritten."
@@ -235,9 +235,8 @@ msgid ":doc:`TRSP-family`"
 msgstr ":doc:`flow-family`"
 
 #: ../../build/doc/TRSP-family.rst:3
-#, fuzzy
 msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."
-msgstr ":doc:`pgr_turnRestrictedPath`"
+msgstr ":doc:`pgr_turnRestrictedPath` - Ruteo con restricciones."
 
 #: ../../build/doc/experimental.rst:107
 msgid "categories"

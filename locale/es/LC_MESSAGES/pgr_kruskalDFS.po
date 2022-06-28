@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:44+0000\n"
+"PO-Revision-Date: 2022-06-28 15:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskaldfs/es/>\n"
@@ -246,7 +246,7 @@ msgstr "``SMALLINT, INTEGER, BIGINT``"
 
 #: ../../build/doc/BFS-category.rst
 msgid "ANY-NUMERIC"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/BFS-category.rst:31 ../../build/doc/BFS-category.rst:45
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
@@ -279,9 +279,8 @@ msgid "When negative throws an error."
 msgstr "Cuando negativo arroja error."
 
 #: ../../build/doc/pgr_kruskalDFS.rst:112
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:115
 msgid "Edges SQL"
@@ -357,7 +356,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -365,7 +364,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:122
 msgid "Result Columns"
@@ -457,13 +456,12 @@ msgid ":doc:`sampledata`"
 msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:134
-#, fuzzy
 msgid ""
 "`Boost: Kruskal's algorithm "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
-"`Boost: algoritmo de Kruskal "
-"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+"`Boost: algoritmo de Kruskal <https://www.boost.org/libs/graph/doc/"
+"kruskal_min_spanning_tree.html>`__"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:136
 msgid ""

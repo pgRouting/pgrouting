@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-27 23:48+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsvia/es/>\n"
@@ -192,7 +192,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/via-category.rst:15 ../../build/doc/via-category.rst:19
 msgid "SQL query as described."
-msgstr "consulta SQL como descrito."
+msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/via-category.rst:16
 msgid "`Points SQL`_"
@@ -331,7 +331,7 @@ msgstr "``r`` para manejo del lado derecho."
 
 #: ../../build/doc/withPoints-family.rst:18
 msgid "``l`` for left driving side."
-msgstr ""
+msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/withPoints-family.rst:19
 msgid "``b`` for both."
@@ -352,7 +352,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsVia.rst:110
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_withPointsVia.rst:113
 msgid "Edges SQL"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:45+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgedisjointpaths/es/>\n"
@@ -248,9 +248,8 @@ msgid "`Edges SQL`_ as described below"
 msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
-#, fuzzy
 msgid "`Combinations SQL`_"
-msgstr "Combinaciones"
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "`Combinations SQL`_ as described below"
@@ -303,9 +302,8 @@ msgid "Array of identifiers of ending vertices."
 msgstr "Arreglo de identificadores de vértices finales."
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:204
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -333,9 +331,8 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:211
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:214
 msgid "Edges SQL"
@@ -421,7 +418,7 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -429,7 +426,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:221
 msgid "Combinations SQL"
@@ -556,12 +553,11 @@ msgid "``edge``"
 msgstr "``edge``"
 
 #: ../../build/doc/pgRouting-concepts.rst:48
-#, fuzzy
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
-"Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo "
+"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
 "de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:51
@@ -587,7 +583,7 @@ msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:235
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:237
 msgid "Manually assigned vertex combinations on an undirected graph."

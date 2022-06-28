@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:44+0000\n"
+"PO-Revision-Date: 2022-06-28 01:51+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_primdd/es/>\n"
@@ -286,7 +286,7 @@ msgstr "ENTEROS"
 #: ../../build/doc/drivingDistance-category.rst:29
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/BFS-category.rst
 #: ../../build/doc/drivingDistance-category.rst
@@ -296,12 +296,11 @@ msgstr "FLOTANTES"
 #: ../../build/doc/drivingDistance-category.rst:30
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_primDD.rst:109
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_primDD.rst:112
 msgid "Edges SQL"

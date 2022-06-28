@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:47+0000\n"
+"PO-Revision-Date: 2022-06-28 02:56+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_ksp/"
 "es/>\n"
@@ -153,9 +153,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_KSP.rst:91
-#, fuzzy
 msgid "SQL query as described."
-msgstr "Consulta SQL como se describió anteriormente."
+msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/pgr_KSP.rst:92
 msgid "**start vid**"
@@ -194,12 +193,11 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38 ../../build/doc/pgr_KSP.rst:104
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgr_KSP.rst:109
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10 ../../build/doc/pgr_KSP.rst:127
@@ -216,7 +214,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -257,9 +255,8 @@ msgstr ""
 "``K > 5``."
 
 #: ../../build/doc/pgr_KSP.rst:141
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_KSP.rst:144
 msgid "Edges SQL"
@@ -328,7 +325,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_KSP.rst:151
 msgid "Result Columns"
@@ -397,13 +394,12 @@ msgid "``edge``"
 msgstr "``edge``"
 
 #: ../../build/doc/pgr_KSP.rst:184
-#, fuzzy
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
-"Identificador de la arista utilizada para ir desde ``node`` al siguiente "
-"nodo en la secuencia de ruta . ``-1`` para el último nodo de la ruta."
+"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgr_KSP.rst:187 ../../build/doc/pgr_KSP.rst:193
 msgid "``FLOAT``"

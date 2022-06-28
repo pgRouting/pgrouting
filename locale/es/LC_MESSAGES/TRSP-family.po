@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 15:24+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "trsp-family/es/>\n"
@@ -83,7 +83,7 @@ msgstr ":doc:`pgr_trsp` - Ruteo Vértice - Vértice con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:30
 msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
-msgstr ":doc:`pgr_trspVia` - Via Ruteo de Vértices con restricciones."
+msgstr ":doc:`pgr_trspVia` - Ruteo Via Vértices con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:31
 msgid ":doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions."
@@ -93,7 +93,7 @@ msgstr ":doc:`pgr_trsp_withPoints` - Ruteo de Punto/Vértice con restricciones."
 msgid ""
 ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
 msgstr ""
-":doc:`pgr_trspVia_withPoints` - Via Ruteo de Punto/Vértice con restricciones."
+":doc:`pgr_trspVia_withPoints` - Ruteo Vía Punto/Vértice con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:36
 msgid ""
@@ -137,7 +137,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -153,7 +153,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -237,7 +237,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/TRSP-family.rst:95
 msgid "`Edges SQL`_ query as described."
-msgstr ""
+msgstr "Consulta `SQL aristas`_ como se describen."
 
 #: ../../build/doc/TRSP-family.rst:96
 msgid "`Restrictions SQL`_"

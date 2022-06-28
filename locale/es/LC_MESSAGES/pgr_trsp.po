@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:53+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp/es/>\n"
@@ -164,9 +164,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:70
-#, fuzzy
 msgid "The main characteristics are:"
-msgstr "**Las características principales son:**"
+msgstr "Las principales características son:"
 
 #: ../../build/doc/pgr_trsp.rst:72
 msgid "Automatic detection of ``reverse_cost`` column"
@@ -212,7 +211,7 @@ msgstr "Propuesto"
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
-msgstr ""
+msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
@@ -240,11 +239,11 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
-msgstr ""
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
-msgstr ""
+msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_trsp.rst:112
 msgid "One to One"
@@ -270,7 +269,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:151
 msgid "Many to One"
-msgstr ""
+msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_trsp.rst:160
 msgid ""
@@ -280,7 +279,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:171
 msgid "Many to Many"
-msgstr ""
+msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_trsp.rst:180
 msgid ""
@@ -325,7 +324,7 @@ msgstr "``TEXT``"
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "SQL query as described."
-msgstr ""
+msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 #, fuzzy
@@ -334,7 +333,7 @@ msgstr "restrict_sql"
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "`Combinations SQL`_"
-msgstr ""
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "`Combinations SQL`_ as described below"
@@ -398,11 +397,11 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:35
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgr_trsp.rst:216
 msgid "Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -419,7 +418,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -431,7 +430,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_trsp.rst:223
 msgid "Inner Queries"
-msgstr ""
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_trsp.rst:226
 msgid "Edges SQL"
@@ -484,7 +483,7 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
@@ -500,12 +499,12 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_trsp.rst:233
 #, fuzzy
@@ -537,7 +536,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Identifier of the arrival vertex."
@@ -634,6 +633,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
+"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:41
 #: ../../build/doc/pgRouting-concepts.rst:45

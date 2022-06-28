@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 15:24+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "traversal-family/es/>\n"
@@ -25,7 +25,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/traversal-family.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/traversal-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
@@ -33,9 +32,10 @@ msgid ""
 "/traversal-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en"
 "/traversal-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/traversal-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/traversal-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/traversal-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es"
-"/traversal-family.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"traversal-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/traversal-"
+"family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/traversal-family."
+"html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/traversal-family.html>`__"
 
 #: ../../build/doc/traversal-family.rst:19
 msgid "Traversal - Family of functions"
@@ -89,7 +89,7 @@ msgstr ""
 
 #: ../../build/doc/traversal-family.rst:34
 msgid "Experimental"
-msgstr ""
+msgstr "Experimental"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -108,28 +108,24 @@ msgid "They are not officially of the current release."
 msgstr "No son oficialmente de la versión actual."
 
 #: ../../build/doc/experimental.rst:10
-#, fuzzy
 msgid "They likely will not be officially be part of the next release:"
-msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
+msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
 
 #: ../../build/doc/experimental.rst:12
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
 msgstr ""
 
 #: ../../build/doc/experimental.rst:13
-#, fuzzy
 msgid "Name might change."
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
-#, fuzzy
 msgid "Signature might change."
-msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
-#, fuzzy
 msgid "Functionality might change."
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
@@ -141,12 +137,11 @@ msgstr ""
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr ""
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
-#, fuzzy
 msgid "Documentation if any might need to be rewritten."
-msgstr "Es posible que la documentación necesite un refinamiento."
+msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 #, fuzzy

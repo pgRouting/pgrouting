@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 00:24+0000\n"
+"PO-Revision-Date: 2022-06-28 01:51+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstracostmatrix/es/>\n"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:3
 msgid "The main Characteristics are:"
-msgstr ""
+msgstr "Las características principales son:"
 
 #: ../../build/doc/costMatrix-category.rst:5
 msgid "Can be used as input to :doc:`pgr_TSP`."
@@ -163,6 +163,8 @@ msgstr ""
 #: ../../build/doc/costMatrix-category.rst:18
 msgid "It is also the users responsibility to fix an :math:`\\infty` value."
 msgstr ""
+"También es responsabilidad de los usuarios para fijar un valor :math:`\\infty"
+"`."
 
 #: ../../build/doc/costMatrix-category.rst:20
 msgid "Each function works as part of the family it belongs to."
@@ -189,6 +191,7 @@ msgstr "Los valores se devuelven cuando hay una ruta."
 #: ../../build/doc/costMatrix-category.rst:27
 msgid "When the starting vertex and ending vertex are the same, there is no path."
 msgstr ""
+"Cuando el vértice inicial y el vértice final son iguales, no hay camino."
 
 #: ../../build/doc/costMatrix-category.rst:29
 msgid "The aggregate cost in the non included values `(v, v)` is `0`."
@@ -208,7 +211,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:36
 msgid "Let be the case the values returned are stored in a table:"
-msgstr ""
+msgstr "Sea el caso, los valores devueltos se almacenan en una tabla:"
 
 #: ../../build/doc/costMatrix-category.rst:38
 msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
@@ -305,9 +308,8 @@ msgid "Array of identifiers of starting vertices."
 msgstr "Arreglo de identificadores de los vértices."
 
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:86
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -324,7 +326,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -335,9 +337,8 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:93
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:96
 msgid "Edges SQL"
@@ -416,7 +417,7 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -424,7 +425,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_dijkstraCostMatrix.rst:103
 #, fuzzy

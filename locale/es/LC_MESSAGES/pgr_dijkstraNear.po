@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:45+0000\n"
+"PO-Revision-Date: 2022-06-28 02:57+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstranear/es/>\n"
@@ -468,9 +468,8 @@ msgid "`Edges SQL`_ as described below"
 msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
-#, fuzzy
 msgid "`Combinations SQL`_"
-msgstr "Combinaciones"
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "`Combinations SQL`_ as described below"
@@ -593,9 +592,8 @@ msgid "When ``false``: ``cap`` limit per ``Start vid`` will be returned"
 msgstr "Cuando ``false``: ``cap`` límite por ``Start vid`` será devuelto"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:299
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:302
 msgid "Edges SQL"
@@ -681,7 +679,7 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -689,7 +687,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:309
 #, fuzzy
@@ -746,9 +744,8 @@ msgid "``start_vid``"
 msgstr "``start_vid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:22
-#, fuzzy
 msgid "Identifier of the starting vertex of the current path."
-msgstr "Identificador del vértice inicial de la ruta."
+msgstr "Identificador del vértice inicial de la ruta actual."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "``end_vid``"
@@ -776,6 +773,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
+"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:34
 #: ../../build/doc/pgRouting-concepts.rst:38

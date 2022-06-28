@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 00:12+0000\n"
+"PO-Revision-Date: 2022-06-28 15:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "vrp-category/es/>\n"
@@ -73,7 +73,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -89,7 +89,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -393,9 +393,8 @@ msgid "1"
 msgstr "1"
 
 #: ../../build/doc/VRP-category.rst:175
-#, fuzzy
 msgid "Travel time multiplier. See :ref:`pd_factor`"
-msgstr "(Opcional) Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
+msgstr "Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
 
 #: ../../build/doc/VRP-category.rst:176
 #, fuzzy
@@ -458,7 +457,7 @@ msgstr "``6`` Orden de avance que permite insertar más órdenes en la parte fro
 
 #: ../../build/doc/VRP-category.rst:197
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/VRP-category.rst:200
 #, fuzzy
@@ -951,9 +950,8 @@ msgid "A capacity violation happens when overloading or underloading a vehicle."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:478 ../../build/doc/VRP-category.rst:572
-#, fuzzy
 msgid "``stop_seq``"
-msgstr "**stop_seq**"
+msgstr "``stop_seq``"
 
 #: ../../build/doc/VRP-category.rst:479 ../../build/doc/VRP-category.rst:573
 msgid "INTEGER"
@@ -1014,7 +1012,7 @@ msgstr "**order_id**"
 
 #: ../../build/doc/VRP-category.rst:498
 msgid "Pickup-Delivery order pair identifier."
-msgstr "Identificador de par de órdenes Recogida-Entrega."
+msgstr "Identificador de par de órdenes Recoger-Entregar."
 
 #: ../../build/doc/VRP-category.rst:500
 #, fuzzy
@@ -1043,8 +1041,7 @@ msgstr "**travel_time**"
 #: ../../build/doc/VRP-category.rst:509
 msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
 msgstr ""
-"Tiempo de viaje desde el ``stop_seq`` anterior hasta el ``stop_seq`` "
-"actual."
+"Tiempo de viaje desde el ``stop_seq`` anterior hasta el ``stop_seq`` actual."
 
 #: ../../build/doc/VRP-category.rst:511
 msgid "Summary has the **total traveling time**:"
@@ -1055,9 +1052,8 @@ msgid "The sum of all the ``travel_time``."
 msgstr "La suma de todos los ``travel_time``."
 
 #: ../../build/doc/VRP-category.rst:514 ../../build/doc/VRP-category.rst:592
-#, fuzzy
 msgid "``arrival_time``"
-msgstr "**arrival_time**"
+msgstr "``arrival_time``"
 
 #: ../../build/doc/VRP-category.rst:516 ../../build/doc/VRP-category.rst:523
 #, fuzzy
@@ -1146,9 +1142,8 @@ msgid "**total capacity violations**:"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:574
-#, fuzzy
 msgid "**total time windows violations**:"
-msgstr "No hay varias ventanas de tiempo para una ubicación."
+msgstr "**Cantidad total de violaciones de ventanas de tiempo**:"
 
 #: ../../build/doc/VRP-category.rst:580 ../../build/doc/VRP-category.rst:583
 #: ../../build/doc/VRP-category.rst:586 ../../build/doc/VRP-category.rst:594
@@ -1156,19 +1151,16 @@ msgid ":math:`-1`"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:589
-#, fuzzy
 msgid "**total traveling time**:"
-msgstr "**travel_time**"
+msgstr "**tiempo total transportándose**:"
 
 #: ../../build/doc/VRP-category.rst:597
-#, fuzzy
 msgid "**total waiting time**:"
-msgstr "**wait_time**"
+msgstr "*tiempo total de espera**:"
 
 #: ../../build/doc/VRP-category.rst:602
-#, fuzzy
 msgid "**total service time**:"
-msgstr "**service_time**"
+msgstr "**tiempo total de servicio**:"
 
 #: ../../build/doc/VRP-category.rst:612
 msgid "Handling Parameters"
@@ -1478,11 +1470,11 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:717
 msgid "Latitude"
-msgstr ""
+msgstr "Latitud"
 
 #: ../../build/doc/VRP-category.rst:718 ../../build/doc/VRP-category.rst:751
 msgid "Conversion"
-msgstr ""
+msgstr "Conversión"
 
 #: ../../build/doc/VRP-category.rst:719 ../../build/doc/VRP-category.rst:752
 msgid "Factor"
@@ -1499,7 +1491,7 @@ msgstr "1 grado de longitud es (78846.81m)/(25m/s)"
 
 #: ../../build/doc/VRP-category.rst:722
 msgid "3153 s"
-msgstr ""
+msgstr "3153 s"
 
 #: ../../build/doc/VRP-category.rst:724
 msgid "1 longitude degree is (111319.46 m)/(25m/s)"
@@ -1507,7 +1499,7 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:725
 msgid "4452 s"
-msgstr ""
+msgstr "4452 s"
 
 #: ../../build/doc/VRP-category.rst:727
 msgid "For the :doc:`pgr_pickDeliver`:"

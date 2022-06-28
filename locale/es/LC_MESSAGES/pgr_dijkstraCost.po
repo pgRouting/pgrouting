@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstracost/es/>\n"
@@ -78,9 +78,8 @@ msgid "Version 3.1.0"
 msgstr "Versión 3.1.0"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:42
-#, fuzzy
 msgid "New **proposed** signature:"
-msgstr "Nuevas funciones **Propuestas**:"
+msgstr "Nueva firma **propuesta**:"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:44
 #, fuzzy
@@ -188,13 +187,12 @@ msgid "It does not return a path."
 msgstr "No devuelve una ruta."
 
 #: ../../build/doc/cost-category.rst:4
-#, fuzzy
 msgid ""
 "Returns the sum of the costs of the shortest path of each pair "
 "combination of nodes requested."
 msgstr ""
-"Devuelve la suma de los costos de la ruta más corta para la combinación "
-"de pares de nodos en el grafo."
+"Devuelve la suma de los costos de la ruta más corta para cada par de "
+"combinación de nodos requeridos."
 
 #: ../../build/doc/cost-category.rst:6
 #, fuzzy
@@ -219,9 +217,10 @@ msgid ""
 msgstr "El **costo agregado** de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/cost-category.rst:13
-#, fuzzy
 msgid "Any duplicated value in the start or end vertex identifiers are ignored."
-msgstr "Se omite cualquier valor duplicado en `start_vids` o `end_vids`."
+msgstr ""
+"Se omite cualquier valor duplicado en los identificadores de vertices de "
+"inicio y destino."
 
 #: ../../build/doc/cost-category.rst:15
 msgid "The returned values are ordered:"
@@ -419,7 +418,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_dijkstraCost.rst:200
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:203
 msgid "Edges SQL"
@@ -576,8 +575,7 @@ msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:226
 msgid "Demonstration of repeated values are ignored, and result is sorted."
-msgstr ""
-"Demostración de ignorar los valores repertidos, y el resultado es ordenado."
+msgstr "Demostración de ignorar los valores repertidos, y resultado ordenado."
 
 #: ../../build/doc/pgr_dijkstraCost.rst
 msgid "Example 2"
@@ -601,7 +599,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:247
 msgid ":doc:`dijkstra-family`"
-msgstr ""
+msgstr ":doc:`dijkstra-family`"
 
 #: ../../build/doc/pgr_dijkstraCost.rst:248
 msgid ":doc:`sampledata`"

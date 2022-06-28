@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 23:48+0000\n"
+"PO-Revision-Date: 2022-06-28 15:18+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstravia/es/>\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
-msgstr ""
+msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
@@ -84,11 +84,11 @@ msgstr ""
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
-msgstr ""
+msgstr "Se han hecho pruebas con pgTap. Pero tal vez se necesiten más."
 
 #: ../../build/doc/proposed.rst:13
 msgid "Documentation might need refinement."
-msgstr ""
+msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:38
 msgid "Boost Graph Inside"
@@ -96,15 +96,15 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:41
 msgid "Availability"
-msgstr ""
+msgstr "Disponibilidad"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:42
 msgid "Version 2.2.0"
-msgstr ""
+msgstr "Version 2.2.0"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:44
 msgid "New **proposed** function"
-msgstr ""
+msgstr "Nueva función **propuesta**"
 
 #: ../../build/doc/dijkstra-family.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:11
@@ -160,7 +160,7 @@ msgstr "Parámetros"
 
 #: ../../build/doc/via-category.rst:8
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9 ../../build/doc/via-category.rst:9
@@ -183,7 +183,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/via-category.rst:15
 msgid "SQL query as described."
-msgstr ""
+msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/via-category.rst:16
 msgid "**via vertices**"
@@ -212,7 +212,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst ../../build/doc/via-category.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/via-category.rst:24
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
@@ -220,7 +220,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:88
 msgid "Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:8 ../../build/doc/via-category.rst:8
@@ -238,7 +238,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/dijkstra-family.rst:14 ../../build/doc/via-category.rst:19
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -280,7 +280,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:102
 msgid "Inner Queries"
-msgstr ""
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:105
 msgid "Edges SQL"
@@ -336,7 +336,7 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
@@ -352,11 +352,11 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:112
 msgid "Result Columns"
@@ -436,7 +436,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:35
 msgid "-1 for the last node of the path."
-msgstr ""
+msgstr "-1 para el último nodo de la ruta."
 
 #: ../../build/doc/via-category.rst:36
 msgid "-2 for the last node of the route."
@@ -465,7 +465,7 @@ msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/via-category.rst:44
 msgid "``route_agg_cost``"
-msgstr ""
+msgstr "``route_agg_cost``"
 
 #: ../../build/doc/via-category.rst:46
 msgid ""
@@ -477,7 +477,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:119
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:124
 msgid ""
@@ -505,7 +505,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst:156
 msgid "The aggregate costs of the route when the visited vertices are reached."
-msgstr ""
+msgstr "Costo agregado de la ruta al llegar a los vértices visitados."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:163
 msgid "Status of \"passes in front\" or \"visits\" of the nodes."
@@ -530,7 +530,7 @@ msgstr ":doc:`sampledata` ."
 #: ../../build/doc/pgr_dijkstraVia.rst:175
 #, python-format
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
-msgstr ""
+msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:178
 msgid "Indices and tables"

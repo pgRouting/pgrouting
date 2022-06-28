@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 02:48+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_findcloseedges/es/>\n"
@@ -302,7 +302,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:176
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:179
 msgid "Edges SQL"
@@ -847,7 +847,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:53
 msgid "Connecting components"
-msgstr ""
+msgstr "Conectando componentes"
 
 #: ../../build/doc/pgRouting-concepts.rst:55
 msgid "There are three basic ways to connect the components"

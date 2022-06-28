@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 15:05+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_pickdelivereuclidean/es/>\n"
@@ -97,7 +97,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -113,7 +113,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -274,9 +274,8 @@ msgid "Solve the following problem"
 msgstr ""
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:105
-#, fuzzy
 msgid "Given the vehicles:"
-msgstr "Los vehículos"
+msgstr "Dados los vehículos:"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:111
 msgid "and the orders:"
@@ -347,9 +346,8 @@ msgid "1"
 msgstr "1"
 
 #: ../../build/doc/VRP-category.rst:15
-#, fuzzy
 msgid "Travel time multiplier. See :ref:`pd_factor`"
-msgstr "(Opcional) Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
+msgstr "Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
 
 #: ../../build/doc/VRP-category.rst:16
 #, fuzzy
@@ -520,7 +518,7 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/VRP-category.rst:42
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/VRP-category.rst
 msgid "ANY-NUMERICAL"
@@ -529,7 +527,7 @@ msgstr "FLOTANTES"
 #: ../../build/doc/VRP-category.rst:26 ../../build/doc/VRP-category.rst:30
 #: ../../build/doc/VRP-category.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/VRP-category.rst:11
 #, fuzzy
@@ -756,9 +754,8 @@ msgid "A capacity violation happens when overloading or underloading a vehicle."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:36
-#, fuzzy
 msgid "``stop_seq``"
-msgstr "**stop_seq**"
+msgstr "``stop_seq``"
 
 #: ../../build/doc/VRP-category.rst:37
 msgid "INTEGER"
@@ -823,7 +820,7 @@ msgstr "``BIGINT``"
 
 #: ../../build/doc/VRP-category.rst:56
 msgid "Pickup-Delivery order pair identifier."
-msgstr "Identificador de par de órdenes Recogida-Entrega."
+msgstr "Identificador de par de órdenes Recoger-Entregar."
 
 #: ../../build/doc/VRP-category.rst:58
 #, fuzzy
@@ -870,9 +867,8 @@ msgid "The sum of all the ``travel_time``."
 msgstr "La suma de todos los ``travel_time``."
 
 #: ../../build/doc/VRP-category.rst:72
-#, fuzzy
 msgid "``arrival_time``"
-msgstr "**arrival_time**"
+msgstr "``arrival_time``"
 
 #: ../../build/doc/VRP-category.rst:74 ../../build/doc/VRP-category.rst:81
 #, fuzzy

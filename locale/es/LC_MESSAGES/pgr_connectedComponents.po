@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:44+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_connectedcomponents/es/>\n"
@@ -184,9 +184,8 @@ msgid "`Edges SQL`_ as described below."
 msgstr "Consulta interna como se describe a continuación."
 
 #: ../../build/doc/pgr_connectedComponents.rst:99
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_connectedComponents.rst:102
 msgid "Edges SQL"
@@ -274,7 +273,7 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -282,7 +281,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:110
 msgid "Result Columns"
@@ -334,7 +333,7 @@ msgstr "Identificador del vértice que pertenece a **componente**."
 
 #: ../../build/doc/pgr_connectedComponents.rst:139
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_connectedComponents.rst:142
 msgid "Connecting disconnected components"
@@ -392,9 +391,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:53
-#, fuzzy
 msgid "Connecting components"
-msgstr "pgr_connectedComponents"
+msgstr "Conectando componentes"
 
 #: ../../build/doc/pgRouting-concepts.rst:55
 msgid "There are three basic ways to connect the components"

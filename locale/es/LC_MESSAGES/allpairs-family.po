@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:35+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "allpairs-family/es/>\n"
@@ -83,7 +83,7 @@ msgstr ""
 
 #: ../../build/doc/allpairs-family.rst:50
 msgid "The main characteristics are:"
-msgstr ""
+msgstr "Las principales características son:"
 
 #: ../../build/doc/allpairs-family.rst:52
 msgid "It does not return a path."
@@ -140,7 +140,7 @@ msgstr "Parámetros"
 
 #: ../../build/doc/allpairs-family.rst:85
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/allpairs-family.rst:86 ../../build/doc/dijkstra-family.rst:9
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -205,7 +205,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/allpairs-family.rst:104
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/allpairs-family.rst:107
 msgid "Edges SQL"
@@ -251,7 +251,7 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge (``target``, ``source``)"
@@ -279,7 +279,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:35
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"

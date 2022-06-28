@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_transitiveclosure/es/>\n"
@@ -84,7 +84,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -100,7 +100,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -170,9 +170,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_transitiveClosure.rst:55
-#, fuzzy
 msgid "The returned values are not ordered"
-msgstr "Los valores devueltos no se ordenan:"
+msgstr "Los valores devueltos no se ordenan"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:56
 msgid "The returned graph is compresed"
@@ -207,9 +206,8 @@ msgid "Parameters"
 msgstr "Parámetros"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#, fuzzy
 msgid "Parameter"
-msgstr "Parámetros"
+msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 #: ../../build/doc/pgr_transitiveClosure.rst:109
@@ -230,7 +228,7 @@ msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_transitiveClosure.rst:89
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_transitiveClosure.rst:92
 msgid "Edges SQL"

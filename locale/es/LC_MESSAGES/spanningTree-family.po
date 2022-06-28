@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "spanningtree-family/es/>\n"
@@ -25,7 +25,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/spanningTree-family.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/spanningTree-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
@@ -35,11 +34,13 @@ msgid ""
 "/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
 "/spanningTree-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/spanningTree-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/spanningTree-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/spanningTree-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es"
-"/spanningTree-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
-"/spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
-"/spanningTree-family.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"spanningTree-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"spanningTree-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"spanningTree-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"spanningTree-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"spanningTree-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"spanningTree-family.html>`__"
 
 #: ../../build/doc/spanningTree-family.rst:21
 msgid "Spanning Tree - Category"
@@ -116,13 +117,12 @@ msgstr ""
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 
 #: ../../build/doc/spanningTree-family.rst:64
-#, fuzzy
 msgid ""
 "`Boost: Kruskal's algorithm "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
-"`Boost: Documentación del algorithmo de Prim "
-"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+"`Boost: algoritmo de Kruskal <https://www.boost.org/libs/graph/doc/"
+"kruskal_min_spanning_tree.html>`__"
 
 #: ../../build/doc/spanningTree-family.rst:66
 #, python-format

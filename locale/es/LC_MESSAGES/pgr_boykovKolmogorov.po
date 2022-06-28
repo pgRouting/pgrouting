@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_boykovkolmogorov/es/>\n"
@@ -78,18 +78,16 @@ msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:37
-#, fuzzy
 msgid "Availability"
-msgstr "Disponibilidad:"
+msgstr "Disponibilidad"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:38
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:40
-#, fuzzy
 msgid "New **proposed** signature"
-msgstr "Nueva función **propuesta**:"
+msgstr "Nueva función **propuesta**"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:42
 #, fuzzy
@@ -345,13 +343,12 @@ msgid "**end vids**"
 msgstr "**vids destinos**"
 
 #: ../../build/doc/dijkstra-family.rst:28
-#, fuzzy
 msgid "Array of identifiers of ending vertices."
-msgstr "Conjunto de identificadores de los vértices finales del flujo."
+msgstr "Arreglo de identificadores de vértices finales."
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:189
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:192
 msgid "Edges SQL"
@@ -443,7 +440,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
@@ -454,9 +451,8 @@ msgid "Combinations SQL"
 msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#, fuzzy
 msgid "Parameter"
-msgstr "Parámetros"
+msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the departure vertex."
@@ -521,7 +517,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:213
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:215
 msgid "Manually assigned vertex combinations."
@@ -533,7 +529,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:224
 msgid ":doc:`flow-family`"
-msgstr ""
+msgstr ":doc:`flow-family`"
 
 #: ../../build/doc/pgr_boykovKolmogorov.rst:226
 msgid ":doc:`pgr_edmondsKarp`"

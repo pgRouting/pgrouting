@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-28 00:23+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "release_notes/es/>\n"
@@ -25,7 +25,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/release_notes.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/release_notes.html>`__ (`3.4 "
@@ -35,13 +34,12 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/release_notes.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/release_notes.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/release_notes.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/release_notes.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/release_notes.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/release_notes.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/release_notes.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/release_notes.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"release_notes.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/release_notes"
+".html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/release_notes.html>`__ `"
+"3.2 <https://docs.pgrouting.org/3.2/es/release_notes.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/release_notes.html>`__ `3.0 <https://docs."
+"pgrouting.org/3.0/es/release_notes.html>`__"
 
 #: ../../build/doc/release_notes.rst:19
 msgid ""
@@ -230,16 +228,16 @@ msgid "pgRouting 3.3.2 Release Notes"
 msgstr "Notas de la versión 3.3.0 de pgRouting"
 
 #: ../../build/doc/release_notes.rst:92
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "To see all issues & pull requests closed by this release see the `Git "
 "closed milestone for 3.3.2 "
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
 msgstr ""
-"Para ver todos los problemas y solicitudes de extracción cerrados pora "
-"ésta versión, consulte la `meta cerrada de 3.3.0 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_"
-" en Github."
+"Para ver todos los problemas y solicitudes de extracción cerrados pora ésta "
+"versión, consulte la `meta cerrada de 3.3.0 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`_ en "
+"Github"
 
 #: ../../build/doc/release_notes.rst:97 ../../build/doc/release_notes.rst:112
 #: ../../build/doc/release_notes.rst:126 ../../build/doc/release_notes.rst:192
@@ -450,10 +448,10 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_"
 " on Github."
 msgstr ""
-"Para ver todos los problemas y solicitudes de extracción cerrados pora "
-"ésta versión, consulte la `meta cerrada 3.2.2  "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_"
-" en Github."
+"Para ver todos los problemas y solicitudes de extracción cerrados pora ésta "
+"versión, consulte la `meta cerrada 3.2.2 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`_ en "
+"Github."
 
 #: ../../build/doc/release_notes.rst:179
 msgid "Issues"
@@ -934,10 +932,10 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_"
 " on Github."
 msgstr ""
-"Para ver todos los problemas y solicitudes de extracción cerradas por "
-"esta versión, consulte el  `hito de cierre de Git para 3.0.4 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_"
-" en Github."
+"Para ver todos los problemas y solicitudes de extracción cerradas por esta "
+"versión, consulte la `meta cerrada para 3.0.4 <https://github.com/pgRouting/"
+"pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`_ en "
+"Github."
 
 #: ../../build/doc/release_notes.rst:427
 msgid "pgRouting 3.0.3 Release Notes"
@@ -955,10 +953,9 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_"
 " on Github."
 msgstr ""
-"Para ver los problemas cerrados por esta versión, consulte en Github el  "
-"`Hito cerrado de Git para 3.0.2 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_"
-"  en Github."
+"Para ver los problemas cerrados por esta versión, consulte en Github la `"
+"meta cerrada para 3.0.2 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`_ en Github."
 
 #: ../../build/doc/release_notes.rst:454
 msgid ""
@@ -1019,8 +1016,8 @@ msgid ""
 "`#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed "
 "pgr_eucledianTSP to pgr_TSPeuclidean"
 msgstr ""
-"`#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: "
-"Renombrado de  pgr_eucledianTSP a pgr_TSPeuclidean"
+"`#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renombrado "
+"de pgr_eucledianTSP a pgr_TSPeuclidean"
 
 #: ../../build/doc/release_notes.rst:484
 msgid ""
@@ -1112,7 +1109,7 @@ msgstr "Propuesta cambió a oficial en pgRouting"
 
 #: ../../build/doc/release_notes.rst:515
 msgid "aStar Family"
-msgstr " Familia aStar"
+msgstr "Familia aStar"
 
 #: ../../build/doc/release_notes.rst:517
 msgid "pgr_aStar(one to many)"
@@ -1360,7 +1357,7 @@ msgstr "Contracción:"
 
 #: ../../build/doc/release_notes.rst:588
 msgid "Removed unnecessary column seq"
-msgstr "Se ha eliminado la  innecesaria columna seq"
+msgstr "Se ha eliminado la innecesaria columna seq"
 
 #: ../../build/doc/release_notes.rst:589 ../../build/doc/release_notes.rst:995
 #: ../../build/doc/release_notes.rst:1012
@@ -1572,9 +1569,9 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_"
 " on Github."
 msgstr ""
-"Para ver los problemas cerrados por esta versión, consulte en Github el  "
-"`Git closed milestone for 2.6.2 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_."
+"Para ver los problemas cerrados por esta versión, consulte en Github la `"
+"meta cerrada para 2.6.2 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22%20>`_."
 
 #: ../../build/doc/release_notes.rst:671
 msgid ""
@@ -1589,8 +1586,8 @@ msgid ""
 "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Fixes "
 "windows test"
 msgstr ""
-"`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ "
-"Correcciones de pruebas de ventanas."
+"`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__ Correcciones "
+"de pruebas de ventanas"
 
 #: ../../build/doc/release_notes.rst:675
 msgid ""
@@ -1753,10 +1750,9 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_"
 " on Github."
 msgstr ""
-"Para ver los problemas cerrados por esta versión, consulte el  `Git "
-"closed milestone for 2.6.0 "
-"<https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_"
-" en Github."
+"Para ver los problemas cerrados por esta versión, consulte la `meta cerrada "
+"para 2.6.0 <https://github.com/pgRouting/pgrouting/"
+"issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22%20>`_ en Github."
 
 #: ../../build/doc/release_notes.rst:730 ../../build/doc/release_notes.rst:890
 msgid "pgr_lineGraphFull"
@@ -1965,7 +1961,7 @@ msgstr "pgr_edgeDisjointPaths:"
 
 #: ../../build/doc/release_notes.rst:863
 msgid "Added path_id, cost and agg_cost columns on the result"
-msgstr "Columnas path_id, cost y agg_cost añadidas en el resultado."
+msgstr "Columnas path_id, cost y agg_cost añadidas al resultado"
 
 #: ../../build/doc/release_notes.rst:864
 msgid "Parameter names changed"
@@ -2425,10 +2421,9 @@ msgid ""
 "<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_"
 " on Github."
 msgstr ""
-" Para ver los problemas cerrados por esta versión, consulte los `Git "
-"closed issues for 2.2.2 "
-"<https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_"
-" en Github."
+"Para ver los problemas cerrados por esta versión, consulte la `meta cerrada "
+"para 2.2.2 <https://github.com/pgRouting/pgrouting/"
+"issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ en Github."
 
 #: ../../build/doc/release_notes.rst:1111
 msgid "Fixed regression error on pgr_drivingDistance"
@@ -2900,15 +2895,15 @@ msgid ""
 "Two new All Pairs Short Path algorithms (pgr_apspJohnson, "
 "pgr_apspWarshall)"
 msgstr ""
-"Dos nuevos algoritmos para el camino más corto de todos pares  "
-"(pgr_apspJohnson, pgr_apspWarshall)"
+"Dos nuevos algoritmos para el camino más corto de todos pares ("
+"pgr_apspJohnson, pgr_apspWarshall)"
 
 #: ../../build/doc/release_notes.rst:1313
 msgid ""
 "Bi-directional Dijkstra and A-star search algorithms (pgr_bdAstar, "
 "pgr_bdDijkstra)"
 msgstr ""
-"Algoritmos para el Dijkstra bidireccional y la  búsqueda A*(pgr_bdAstar, "
+"Algoritmos bidireccionales para las búsquedas Dijkstra y A*(pgr_bdAstar, "
 "pgr_bdDijkstra)"
 
 #: ../../build/doc/release_notes.rst:1315
@@ -2917,7 +2912,7 @@ msgstr "Búsqueda de uno a varios nodos (pgr_kDijkstra)"
 
 #: ../../build/doc/release_notes.rst:1316
 msgid "K alternate paths shortest path (pgr_ksp)"
-msgstr " K rutas más cortas alternas de (pgr_ksp)"
+msgstr "K rutas más cortas alternas (pgr_ksp)"
 
 #: ../../build/doc/release_notes.rst:1317
 msgid ""
@@ -2942,8 +2937,8 @@ msgid ""
 "Built a test infrastructure that is run before major code changes are "
 "checked in"
 msgstr ""
-"Se construye una  infraestructura de pruebas que se ejecuta antes de que "
-"se incorporen grandes cambios al código principal."
+"Se construye una infraestructura de pruebas que se ejecuta antes de que se "
+"incorporen grandes cambios al código principal"
 
 #: ../../build/doc/release_notes.rst:1323
 msgid ""
@@ -2993,7 +2988,7 @@ msgstr "Soporte para el prefijo ``st_`` de las funciones de PostGIS"
 
 #: ../../build/doc/release_notes.rst:1334
 msgid "Added ``pgr_`` prefix to functions and types"
-msgstr "Prefijo ``pgr_``  agregado a las funciones y tipos"
+msgstr "Prefijo ``pgr_`` agregado a las funciones y tipos"
 
 #: ../../build/doc/release_notes.rst:1335
 msgid "Better documentation: https://docs.pgrouting.org"
@@ -3048,7 +3043,7 @@ msgstr "Se resolvieron problemas de compilación"
 
 #: ../../build/doc/release_notes.rst:1372
 msgid "Changes for release 1.01"
-msgstr "Cambios para la  versión 1.01"
+msgstr "Cambios para la versión 1.01"
 
 #: ../../build/doc/release_notes.rst:1378
 msgid "Changes for release 1.0"

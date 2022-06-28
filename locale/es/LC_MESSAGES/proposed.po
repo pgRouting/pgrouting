@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-28 00:15+0000\n"
+"PO-Revision-Date: 2022-06-28 15:18+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "proposed/es/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/proposed.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/proposed.html>`__ (`3.4 "
@@ -34,13 +33,12 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/proposed.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/proposed.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/proposed.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/proposed.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/proposed.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/proposed.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/proposed.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/proposed.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"proposed.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/proposed.html>`__)"
+" `3.3 <https://docs.pgrouting.org/3.3/es/proposed.html>`__ `3.2 <https://docs"
+".pgrouting.org/3.2/es/proposed.html>`__ `3.1 <https://docs.pgrouting.org/3.1/"
+"es/proposed.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/proposed."
+"html>`__"
 
 #: ../../build/doc/proposed.rst:19
 msgid ""
@@ -147,9 +145,8 @@ msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
 
 #: ../../build/doc/withPoints-family.rst:8
-#, fuzzy
 msgid ":doc:`pgr_withPointsVia` - Via routing"
-msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
+msgstr ":doc:`pgr_withPointsVia` - Ruteo vía ubicaciones"
 
 #: ../../build/doc/proposed.rst:59
 #, fuzzy
@@ -162,18 +159,18 @@ msgstr ":doc:`pgr_trsp` - Ruteo Vértice - Vértice con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:4
 msgid ":doc:`pgr_trspVia` - Via Vertices routing with restrictions."
-msgstr ""
+msgstr ":doc:`pgr_trspVia` - Ruteo Via Vértices con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:5 ../../build/doc/withPoints-category.rst:6
-#, fuzzy
 msgid ":doc:`pgr_trsp_withPoints` - Vertex/Point routing with restrictions."
-msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
+msgstr ":doc:`pgr_trsp_withPoints` - Ruteo de Punto/Vértice con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:6 ../../build/doc/withPoints-category.rst:7
 msgid ""
 ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with "
 "restrictions."
 msgstr ""
+":doc:`pgr_trspVia_withPoints` - Ruteo Vía Punto/Vértice con restricciones."
 
 #: ../../build/doc/proposed.rst:70
 msgid ":doc:`topology-functions`"
@@ -287,9 +284,8 @@ msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
 msgstr ":doc:`withPoints-family` - Funciones basadas en el algoritmo Dijkstra."
 
 #: ../../build/doc/withPoints-category.rst:4
-#, fuzzy
 msgid "From the :doc:`TRSP-family`:"
-msgstr ":doc:`traversal-family`"
+msgstr "Desde :doc:`TRSP-family` :"
 
 #: ../../build/doc/proposed.rst:141
 msgid "Utilities"

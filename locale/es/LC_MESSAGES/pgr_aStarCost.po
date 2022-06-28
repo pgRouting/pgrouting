@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_astarcost/es/>\n"
@@ -73,9 +73,8 @@ msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_aStarCost.rst:38
-#, fuzzy
 msgid "New **proposed** signature:"
-msgstr "Nueva función **propuesta**:"
+msgstr "Nueva firma **propuesta**:"
 
 #: ../../build/doc/pgr_aStarCost.rst:40
 #, fuzzy
@@ -190,6 +189,8 @@ msgid ""
 "Returns the sum of the costs of the shortest path of each pair "
 "combination of nodes requested."
 msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para cada par de "
+"combinación de nodos requeridos."
 
 #: ../../build/doc/pgr_aStarCost.rst:65
 msgid ""
@@ -215,7 +216,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst:75
 msgid "`end_vid` ascending"
-msgstr ""
+msgstr "`end_vid` ascendente"
 
 #: ../../build/doc/pgr_aStarCost.rst:78
 msgid "Signatures"
@@ -234,13 +235,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_aStarCost.rst:110
-#, fuzzy
 msgid ""
 "From vertex :math:`6` to vertex :math:`12` on a **directed** graph with "
 "heuristic :math:`2`"
 msgstr ""
-"De vértice :math:`2` a vértice :math:`12` en un grafo **no dirigido** "
-"usando la heurística :math:`2`"
+"De vértice :math:`6` a vértice :math:`12` en un grafo **dirigido** usando la "
+"heurística :math:`2`"
 
 #: ../../build/doc/pgr_aStarCost.rst:121
 msgid "One to Many"
@@ -378,9 +378,8 @@ msgid "**end vids**"
 msgstr "**vids destinos**"
 
 #: ../../build/doc/dijkstra-family.rst:28
-#, fuzzy
 msgid "Array of identifiers of ending vertices."
-msgstr "Identificador del vértice final."
+msgstr "Arreglo de identificadores de vértices finales."
 
 #: ../../build/doc/pgr_aStarCost.rst:213
 msgid "Optional parameters"
@@ -443,9 +442,8 @@ msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
 msgstr "0: h(v) = 0 (utilizar este valor para comparar con pgr_dijkstra)"
 
 #: ../../build/doc/aStar-family.rst:18
-#, fuzzy
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
-msgstr "1: h(v) abs(max(dx, dy))"
+msgstr "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 
 #: ../../build/doc/aStar-family.rst:19
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
@@ -460,9 +458,8 @@ msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:22
-#, fuzzy
 msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
-msgstr "5: h(v) = abs(dx) + abs(dy)"
+msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:23
 #, fuzzy
@@ -483,9 +480,8 @@ msgid "For units manipulation. :math:`factor > 0`."
 msgstr "Para la manipulación de unidades. math:`factor > 0`."
 
 #: ../../build/doc/aStar-family.rst:27
-#, fuzzy
 msgid "``epsilon``"
-msgstr "**epsilon**"
+msgstr "``epsilon``"
 
 #: ../../build/doc/aStar-family.rst:30
 msgid "For less restricted results. :math:`epsilon >= 1`."
@@ -499,7 +495,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_aStarCost.rst:227
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_aStarCost.rst:230
 msgid "Edges SQL"
@@ -607,9 +603,8 @@ msgid "Y coordinate of ``source`` vertex."
 msgstr "Coordenada Y del vértice `source`."
 
 #: ../../build/doc/pgRouting-concepts.rst:46
-#, fuzzy
 msgid "``x2``"
-msgstr "``5``"
+msgstr "``x2``"
 
 #: ../../build/doc/pgRouting-concepts.rst:49
 #, fuzzy
@@ -694,7 +689,7 @@ msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
 
 #: ../../build/doc/pgr_aStarCost.rst:251
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_aStarCost.rst
 #, fuzzy
@@ -703,8 +698,7 @@ msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_aStarCost.rst:253
 msgid "Demonstration of repeated values are ignored, and result is sorted."
-msgstr ""
-"Demostración de ignorar los valores repertidos, y el resultado es ordenado."
+msgstr "Demostración de ignorar los valores repertidos, y resultado ordenado."
 
 #: ../../build/doc/pgr_aStarCost.rst
 msgid "Example 2"
