@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-27 23:53+0000\n"
+"PO-Revision-Date: 2022-06-28 02:56+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "via-category/es/>\n"
@@ -183,7 +183,7 @@ msgstr "``TEXT``"
 #: ../../build/doc/via-category.rst:70 ../../build/doc/via-category.rst:102
 #: ../../build/doc/via-category.rst:106
 msgid "SQL query as described."
-msgstr "consulta SQL como descrito."
+msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/via-category.rst:71 ../../build/doc/via-category.rst:107
 msgid "**via vertices**"
@@ -288,7 +288,7 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:154
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/via-category.rst:156
 msgid "Depending on the function one or more inner queries are needed."

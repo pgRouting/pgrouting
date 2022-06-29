@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 23:44+0000\n"
+"PO-Revision-Date: 2022-06-28 15:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "drivingdistance-category/es/>\n"
@@ -63,8 +63,8 @@ msgid ""
 ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
 "algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo "
-"de Dijkstra."
+":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo de "
+"Dijkstra"
 
 #: ../../build/doc/drivingDistance-category.rst:30
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
@@ -73,8 +73,7 @@ msgstr ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 #: ../../build/doc/drivingDistance-category.rst:31
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de "
-"Kruskal."
+":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:32
 msgid "Post pocessing"
@@ -166,7 +165,7 @@ msgstr "Parámetros"
 
 #: ../../build/doc/drivingDistance-category.rst:83
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/drivingDistance-category.rst:84
 #: ../../build/doc/pgRouting-concepts.rst:9
@@ -204,7 +203,7 @@ msgstr "Identificador del vértice raíz del árbol."
 
 #: ../../build/doc/drivingDistance-category.rst:92
 msgid "**Root vids**"
-msgstr ""
+msgstr "**Raíces**"
 
 #: ../../build/doc/drivingDistance-category.rst:93
 msgid "``ARRAY[ANY-INTEGER]``"
@@ -247,20 +246,20 @@ msgstr "ENTEROS"
 #: ../../build/doc/drivingDistance-category.rst:104
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/drivingDistance-category.rst
 msgid "ANY-NUMERIC"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/drivingDistance-category.rst:105
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/drivingDistance-category.rst:110
 msgid "Inner Queries"
-msgstr ""
+msgstr "Consultas Internas"
 
 #: ../../build/doc/drivingDistance-category.rst:113
 msgid "Edges SQL"
@@ -323,7 +322,7 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
@@ -339,7 +338,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/drivingDistance-category.rst:120
 msgid "See Also"

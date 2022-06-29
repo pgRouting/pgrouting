@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:49+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bdastarcostmatrix/es/>\n"
@@ -86,9 +86,8 @@ msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:41
-#, fuzzy
 msgid "New **proposed** function"
-msgstr "Nueva función **Propuesta**"
+msgstr "Nueva función **propuesta**"
 
 #: ../../build/doc/aStar-family.rst:11
 #: ../../build/doc/costMatrix-category.rst:10
@@ -207,7 +206,6 @@ msgid "Array of identifiers of starting vertices."
 msgstr "Identificador del vértice inicial."
 
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:94
-#, fuzzy
 msgid "Optional parameters"
 msgstr "Parámetros opcionales"
 
@@ -268,9 +266,8 @@ msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
 msgstr "0: h(v) = 0 (utilizar este valor para comparar con pgr_dijkstra)"
 
 #: ../../build/doc/aStar-family.rst:18
-#, fuzzy
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
-msgstr "1: h(v) abs(max(dx, dy))"
+msgstr "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 
 #: ../../build/doc/aStar-family.rst:19
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
@@ -285,9 +282,8 @@ msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:22
-#, fuzzy
 msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
-msgstr "5: h(v) = abs(dx) + abs(dy)"
+msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:23
 #, fuzzy
@@ -308,9 +304,8 @@ msgid "For units manipulation. :math:`factor > 0`."
 msgstr "Para la manipulación de unidades. math:`factor > 0`."
 
 #: ../../build/doc/aStar-family.rst:27
-#, fuzzy
 msgid "``epsilon``"
-msgstr "**epsilon**"
+msgstr "``epsilon``"
 
 #: ../../build/doc/aStar-family.rst:30
 msgid "For less restricted results. :math:`epsilon >= 1`."
@@ -323,9 +318,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:108
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:111
 msgid "Edges SQL"
@@ -429,9 +423,8 @@ msgid "Y coordinate of ``source`` vertex."
 msgstr "Coordenada Y del vértice `source`."
 
 #: ../../build/doc/pgRouting-concepts.rst:46
-#, fuzzy
 msgid "``x2``"
-msgstr "``5``"
+msgstr "``x2``"
 
 #: ../../build/doc/pgRouting-concepts.rst:49
 #, fuzzy
@@ -458,7 +451,7 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:57
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -466,7 +459,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:58
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_bdAstarCostMatrix.rst:118
 msgid "Result Columns"

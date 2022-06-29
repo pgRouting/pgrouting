@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:51+0000\n"
+"PO-Revision-Date: 2022-06-28 15:24+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_tsp/"
 "es/>\n"
@@ -393,9 +393,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/TSP-family.rst:12
-#, fuzzy
 msgid "``start_id``"
-msgstr "``start_vid``"
+msgstr "``start_id``"
 
 #: ../../build/doc/TSP-family.rst:13 ../../build/doc/TSP-family.rst:20
 msgid "**ANY-INTEGER**"
@@ -432,16 +431,13 @@ msgstr ""
 "visitado antes de regresar a ``start_vid``."
 
 #: ../../build/doc/TSP-family.rst:26
-#, fuzzy
 msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
 msgstr ""
-"Cuando ``No es 0`` y ``start_vid = 0`` entonces es el primer y último "
-"vértice"
+"Cuando ``NOT 0`` y ``start_vid = 0`` entonces es el primer y último vértice"
 
 #: ../../build/doc/pgr_TSP.rst:163
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_TSP.rst:166
 msgid "Matrix SQL"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 15:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_pickdeliver/es/>\n"
@@ -83,7 +83,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -99,7 +99,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -263,7 +263,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_pickDeliver.rst:96
 msgid "Given the vehicles:"
-msgstr ""
+msgstr "Dados los vehículos:"
 
 #: ../../build/doc/pgr_pickDeliver.rst:102
 msgid "and the orders:"
@@ -524,7 +524,7 @@ msgstr "ENTEROS"
 #: ../../build/doc/VRP-category.rst:22 ../../build/doc/VRP-category.rst:24
 #: ../../build/doc/VRP-category.rst:42
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/VRP-category.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -532,7 +532,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/VRP-category.rst:43
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/VRP-category.rst:11
 #, fuzzy
@@ -746,11 +746,11 @@ msgstr ""
 
 #: ../../build/doc/VRP-category.rst:36
 msgid "``stop_seq``"
-msgstr ""
+msgstr "``stop_seq``"
 
 #: ../../build/doc/VRP-category.rst:37
 msgid "INTEGER"
-msgstr ""
+msgstr "INTEGER"
 
 #: ../../build/doc/VRP-category.rst:38
 msgid ""
@@ -805,9 +805,8 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/VRP-category.rst:56
-#, fuzzy
 msgid "Pickup-Delivery order pair identifier."
-msgstr "Identificador del par de órdenes recogida-entrega."
+msgstr "Identificador de par de órdenes Recoger-Entregar."
 
 #: ../../build/doc/VRP-category.rst:58
 msgid "Value :math:`-1`: When no order is involved on the current stop location."
@@ -838,6 +837,7 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:67
 msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
 msgstr ""
+"Tiempo de viaje desde el ``stop_seq`` anterior hasta el ``stop_seq`` actual."
 
 #: ../../build/doc/VRP-category.rst:69
 msgid "Summary has the **total traveling time**:"
@@ -849,7 +849,7 @@ msgstr "La suma de todos los ``travel_time``."
 
 #: ../../build/doc/VRP-category.rst:72
 msgid "``arrival_time``"
-msgstr ""
+msgstr "``arrival_time``"
 
 #: ../../build/doc/VRP-category.rst:74 ../../build/doc/VRP-category.rst:81
 msgid "Time spent waiting for current location to open."

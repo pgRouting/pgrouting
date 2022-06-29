@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:48+0000\n"
+"PO-Revision-Date: 2022-06-28 15:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsdd/es/>\n"
@@ -244,9 +244,8 @@ msgid "Negative values represent a point"
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsDD.rst:126
-#, fuzzy
 msgid "**Root vids**"
-msgstr "**id**"
+msgstr "**Raíces**"
 
 #: ../../build/doc/pgr_withPointsDD.rst:127
 msgid "``ARRAY[ANY-INTEGER]``"
@@ -280,9 +279,8 @@ msgid "Upper limit for the inclusion of a node in the result."
 msgstr "Límite superior para la inclusión del nodo en el resultado."
 
 #: ../../build/doc/pgr_withPointsDD.rst:139
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -305,7 +303,7 @@ msgstr "``BOOLEAN``"
 #: ../../build/doc/dijkstra-family.rst:14
 #: ../../build/doc/pgr_drivingDistance.rst:14
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -352,7 +350,7 @@ msgstr "``r`` para manejo del lado derecho."
 
 #: ../../build/doc/withPoints-family.rst:18
 msgid "``l`` for left driving side."
-msgstr ""
+msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/withPoints-family.rst:19
 msgid "``b`` for both."
@@ -398,9 +396,8 @@ msgstr ""
 "de inicio único. Los empates se rompen arbitrariamente."
 
 #: ../../build/doc/pgr_withPointsDD.rst:160
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_withPointsDD.rst:163
 msgid "Edges SQL"
@@ -486,9 +483,8 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 #: ../../build/doc/withPoints-category.rst:42
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr "smallint, int, bigint"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
@@ -497,9 +493,8 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/withPoints-category.rst:43
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr "smallint, int, bigint, real, float"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_withPointsDD.rst:170
 msgid "Points SQL"
@@ -591,7 +586,7 @@ msgstr "``seq``"
 
 #: ../../build/doc/pgr_withPointsDD.rst:191
 msgid "Sequential value starting from :math:`1`."
-msgstr ""
+msgstr "Valor secuencial a partir de :math:`1`."
 
 #: ../../build/doc/pgr_withPointsDD.rst:192
 #, fuzzy
@@ -642,7 +637,7 @@ msgstr "``SMALLINT, INTEGER, BIGINT``"
 
 #: ../../build/doc/pgr_withPointsDD.rst
 msgid "ANY-NUMERIC"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgr_withPointsDD.rst:215
 #, fuzzy

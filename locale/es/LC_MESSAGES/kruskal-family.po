@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "kruskal-family/es/>\n"
@@ -122,7 +122,7 @@ msgstr "Tiempo de ejecución de Kruskal: :math:`O(E * log E)`"
 
 #: ../../build/doc/kruskal-family.rst:66
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
@@ -228,13 +228,12 @@ msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
 #: ../../build/doc/kruskal-family.rst:76
-#, fuzzy
 msgid ""
 "`Boost: Kruskal's algorithm "
 "<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
-"`Boost:  algoritmo de documentación de Kruskal "
-"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+"`Boost: algoritmo de Kruskal <https://www.boost.org/libs/graph/doc/"
+"kruskal_min_spanning_tree.html>`__"
 
 #: ../../build/doc/kruskal-family.rst:77
 msgid ""

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "flow-family/es/>\n"
@@ -57,7 +57,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:26
 msgid "Flow - Family of functions"
-msgstr "Flow - Familia de funciones."
+msgstr "Flow - Familia de funciones"
 
 #: ../../build/doc/flow-family.rst:30
 msgid ""
@@ -145,7 +145,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -161,7 +161,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -269,7 +269,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:109
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/flow-family.rst:112
 msgid "Edges SQL"
@@ -482,9 +482,8 @@ msgid "Combinations SQL"
 msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
-#, fuzzy
 msgid "Parameter"
-msgstr "Parámetros"
+msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the departure vertex."
@@ -630,14 +629,13 @@ msgstr ""
 "máximo y el flujo de cada arista."
 
 #: ../../build/doc/flow-family.rst:215
-#, fuzzy
 msgid ""
 "The maximum flow through the graph is guaranteed to be the same with all "
 "implementations, but the actual flow through each edge may vary."
 msgstr ""
-"Se garantiza que el flujo máximo a través del grafo es el mismo con todas"
-" las implementaciones, pero el flujo real a través de cada arista puede "
-"variar. Dada la siguiente consulta:"
+"Se garantiza que el flujo máximo a través del grafo sea el mismo con todas "
+"las implementaciones, pero el flujo real a través de cada arista puede "
+"variar."
 
 #: ../../build/doc/flow-family.rst:218
 msgid "Given the following query:"
@@ -657,7 +655,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:225
 msgid "Graph definition"
-msgstr "Definición del grafo"
+msgstr "Definición de grafo"
 
 #: ../../build/doc/flow-family.rst:226
 msgid "The weighted directed graph, :math:`G(V,E)`, is defined as:"

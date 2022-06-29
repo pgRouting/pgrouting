@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:48+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpoints/es/>\n"
@@ -331,9 +331,8 @@ msgid "`Points SQL`_ as described below"
 msgstr "`SQL puntos`_ como se describe abajo"
 
 #: ../../build/doc/withPoints-category.rst:17
-#, fuzzy
 msgid "`Combinations SQL`_"
-msgstr "Consulta de combinaciones"
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/withPoints-category.rst:19
 msgid "`Combinations SQL`_ as described below"
@@ -405,9 +404,8 @@ msgstr ""
 " pid de un punto."
 
 #: ../../build/doc/pgr_withPoints.rst:206
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -427,7 +425,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -474,7 +472,7 @@ msgstr "``r`` para manejo del lado derecho."
 
 #: ../../build/doc/withPoints-family.rst:18
 msgid "``l`` for left driving side."
-msgstr ""
+msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/withPoints-family.rst:19
 msgid "``b`` for both."
@@ -499,9 +497,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_withPoints.rst:220
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_withPoints.rst:223
 msgid "Edges SQL"
@@ -592,9 +589,8 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
 #: ../../build/doc/withPoints-category.rst:42
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr "smallint, int, bigint"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
@@ -603,9 +599,8 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/withPoints-category.rst:43
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr "smallint, int, bigint, real, float"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_withPoints.rst:230
 msgid "Points SQL"
@@ -704,6 +699,8 @@ msgid ""
 "Returns set of ``(seq, path_seq [, start_pid] [, end_pid], node, edge, "
 "cost, agg_cost)``"
 msgstr ""
+"Devuelve el conjunto de ``(seq, path_seq [, start_pid] [, end_pid], node, "
+"edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "``seq``"
@@ -783,11 +780,11 @@ msgstr "``node``"
 
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "Identifier of the node in the path from ``start_pid`` to ``end_pid``."
-msgstr ""
+msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:40
 msgid "When positive is the identifier of the a vertex."
-msgstr ""
+msgstr "Cuando es positivo, es el identificador de un vértice."
 
 #: ../../build/doc/pgRouting-concepts.rst:41
 #, fuzzy

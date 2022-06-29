@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 23:50+0000\n"
+"PO-Revision-Date: 2022-06-28 01:46+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bdastar-family/es/>\n"
@@ -135,7 +135,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:14 ../../build/doc/aStar-family.rst:19
 msgid "no corresponding row is returned"
-msgstr ""
+msgstr "no se devuelve ninguna fila correspondiente"
 
 #: ../../build/doc/aStar-family.rst:15
 msgid "``agg_cost`` from :math:`v` to :math:`u` is :math:`\\infty`"
@@ -192,11 +192,11 @@ msgstr ":doc:`aStar-family`"
 
 #: ../../build/doc/bdAstar-family.rst:74
 msgid "https://www.boost.org/libs/graph/doc/astar_search.html"
-msgstr ""
+msgstr "https://www.boost.org/libs/graph/doc/astar_search.html"
 
 #: ../../build/doc/bdAstar-family.rst:75
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
-msgstr ""
+msgstr "https://en.wikipedia.org/wiki/A*_search_algorithm"
 
 #: ../../build/doc/bdAstar-family.rst:78
 msgid "Indices and tables"

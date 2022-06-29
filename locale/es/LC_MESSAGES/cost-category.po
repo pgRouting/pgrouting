@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "cost-category/es/>\n"
@@ -144,13 +144,12 @@ msgid "It does not return a path."
 msgstr "No devuelve una ruta."
 
 #: ../../build/doc/cost-category.rst:66
-#, fuzzy
 msgid ""
 "Returns the sum of the costs of the shortest path of each pair "
 "combination of nodes requested."
 msgstr ""
-"Devuelve la suma de los costos de las rutas resultantes para la "
-"combinación de pares de nodos en el grafo.."
+"Devuelve la suma de los costos de la ruta más corta para cada par de "
+"combinación de nodos requeridos."
 
 #: ../../build/doc/cost-category.rst:68
 #, fuzzy
@@ -176,9 +175,10 @@ msgid ""
 msgstr "El **costo agregado** de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/cost-category.rst:75
-#, fuzzy
 msgid "Any duplicated value in the start or end vertex identifiers are ignored."
-msgstr "Se omite cualquier valor duplicado en  `start_vids` o `end_vids`."
+msgstr ""
+"Se omite cualquier valor duplicado en los identificadores de vertices de "
+"inicio y destino."
 
 #: ../../build/doc/cost-category.rst:77
 msgid "The returned values are ordered:"

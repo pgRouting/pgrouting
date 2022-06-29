@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 00:20+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "routingfunctions/es/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/routingFunctions.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/routingFunctions.html>`__ (`3.4 "
@@ -34,13 +33,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/routingFunctions.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/routingFunctions.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/routingFunctions.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/routingFunctions.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/routingFunctions.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/routingFunctions.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/routingFunctions.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/routingFunctions.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"routingFunctions.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"routingFunctions.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"routingFunctions.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"routingFunctions.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"routingFunctions.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"routingFunctions.html>`__"
 
 #: ../../build/doc/routingFunctions.rst:19
 msgid ""
@@ -449,9 +448,8 @@ msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ":doc:`pgr_aStarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:4
-#, fuzzy
 msgid ":doc:`pgr_bdAstarCostMatrix`"
-msgstr ":doc:`pgr_aStarCostMatrix`"
+msgstr ":doc:`pgr_bdAstarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:5
 #: ../../build/doc/costMatrix-category.rst:7
@@ -471,8 +469,8 @@ msgid ""
 ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
 "algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Distancia Manejando basada en el algoritmo "
-"de Dijkstra."
+":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo de "
+"Dijkstra"
 
 #: ../../build/doc/drivingDistance-category.rst:4
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
@@ -481,8 +479,7 @@ msgstr ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 #: ../../build/doc/drivingDistance-category.rst:5
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Distancia Manejando basada en el algoritmo de "
-"Kruskal."
+":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:6
 msgid "Post pocessing"

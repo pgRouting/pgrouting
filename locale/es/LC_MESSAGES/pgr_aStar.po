@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:50+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_astar/es/>\n"
@@ -84,9 +84,8 @@ msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_aStar.rst:42
-#, fuzzy
 msgid "New **proposed** signature:"
-msgstr "Nueva función **propuesta**:"
+msgstr "Nueva firma **propuesta**:"
 
 #: ../../build/doc/pgr_aStar.rst:44
 #, fuzzy
@@ -271,13 +270,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_aStar.rst:124
-#, fuzzy
 msgid ""
 "From vertex :math:`6` to vertex :math:`12` on a **directed** graph with "
 "heuristic :math:`2`"
 msgstr ""
-"De vértice :math:`2` a vértice :math:`12` en un grafo **no dirigido** "
-"usando la heurística :math:`2`"
+"De vértice :math:`6` a vértice :math:`12` en un grafo **dirigido** usando la "
+"heurística :math:`2`"
 
 #: ../../build/doc/pgr_aStar.rst:135
 msgid "One to Many"
@@ -364,9 +362,8 @@ msgid "`Edges SQL`_ as described below"
 msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
-#, fuzzy
 msgid "`Combinations SQL`_"
-msgstr "Combinaciones"
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "`Combinations SQL`_ as described below"
@@ -418,10 +415,9 @@ msgstr "**vids destinos**"
 
 #: ../../build/doc/dijkstra-family.rst:28
 msgid "Array of identifiers of ending vertices."
-msgstr ""
+msgstr "Arreglo de identificadores de vértices finales."
 
 #: ../../build/doc/pgr_aStar.rst:227
-#, fuzzy
 msgid "Optional parameters"
 msgstr "Parámetros opcionales"
 
@@ -484,9 +480,8 @@ msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
 msgstr "0: h(v) = 0 (utilizar este valor para comparar con pgr_dijkstra)"
 
 #: ../../build/doc/aStar-family.rst:18
-#, fuzzy
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
-msgstr "1: h(v) abs(max(dx, dy))"
+msgstr "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
 
 #: ../../build/doc/aStar-family.rst:19
 msgid "2: :math:`h(v) = abs(min(\\Delta x, \\Delta y))`"
@@ -501,9 +496,8 @@ msgid "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 msgstr "4: :math:`h(v) = sqrt(\\Delta x * \\Delta x + \\Delta y * \\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:22
-#, fuzzy
 msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
-msgstr "5: h(v) = abs(dx) + abs(dy)"
+msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:23
 #, fuzzy
@@ -525,9 +519,8 @@ msgid "For units manipulation. :math:`factor > 0`."
 msgstr "Para la manipulación de unidades. math:`factor > 0`."
 
 #: ../../build/doc/aStar-family.rst:27
-#, fuzzy
 msgid "``epsilon``"
-msgstr "**epsilon**"
+msgstr "``epsilon``"
 
 #: ../../build/doc/aStar-family.rst:30
 msgid "For less restricted results. :math:`epsilon >= 1`."
@@ -540,9 +533,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_aStar.rst:241
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_aStar.rst:244
 msgid "Edges SQL"
@@ -651,9 +643,8 @@ msgid "Y coordinate of ``source`` vertex."
 msgstr "Coordenada Y del vértice `source`."
 
 #: ../../build/doc/pgRouting-concepts.rst:46
-#, fuzzy
 msgid "``x2``"
-msgstr "``5``"
+msgstr "``x2``"
 
 #: ../../build/doc/pgRouting-concepts.rst:49
 #, fuzzy
@@ -682,7 +673,7 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:57
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -690,7 +681,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:58
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_aStar.rst:251
 #, fuzzy
@@ -714,8 +705,8 @@ msgid ""
 "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, "
 "cost, agg_cost)``"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_seq [, start_vid] [, end_vid], node,"
-" edge, cost, agg_cost)``"
+"Devuelve el conjunto de ``(seq, path_seq [, start_vid] [, end_vid], node, "
+"edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "``seq``"
@@ -787,12 +778,11 @@ msgid "``edge``"
 msgstr "``edge``"
 
 #: ../../build/doc/pgRouting-concepts.rst:40
-#, fuzzy
 msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
-"Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo "
+"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
 "de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:44
@@ -813,7 +803,7 @@ msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
 #: ../../build/doc/pgr_aStar.rst:265
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_aStar.rst
 #, fuzzy
@@ -822,7 +812,7 @@ msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_aStar.rst:267
 msgid "Demonstration of repeated values are ignored, and result is sorted."
-msgstr ""
+msgstr "Demostración de ignorar los valores repertidos, y resultado ordenado."
 
 #: ../../build/doc/pgr_aStar.rst
 msgid "Example 2"

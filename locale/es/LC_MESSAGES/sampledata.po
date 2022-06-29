@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 14:20+0000\n"
-"PO-Revision-Date: 2022-06-27 23:54+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "sampledata/es/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/sampledata.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/sampledata.html>`__ (`3.4 "
@@ -34,13 +33,12 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/sampledata.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/sampledata.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  "
-"<https://docs.pgrouting.org/latest/es/sampledata.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/sampledata.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/sampledata.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/sampledata.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/sampledata.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/sampledata.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"sampledata.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/sampledata."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/sampledata.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/sampledata.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/es/sampledata.html>`__ `3.0 <https://docs.pgrouting.org/3."
+"0/es/sampledata.html>`__"
 
 #: ../../build/doc/sampledata.rst:19
 msgid ""
@@ -330,9 +328,8 @@ msgid "Topology data"
 msgstr "Topología"
 
 #: ../../build/doc/sampledata.rst:189
-#, fuzzy
 msgid "Points outside the graph"
-msgstr "Los puntos están fuera del grafo."
+msgstr "Puntos fuera del grafo"
 
 #: ../../build/doc/sampledata.rst:194
 msgid "Points of interest"
@@ -447,9 +444,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:279
-#, fuzzy
 msgid "Inserting the data:"
-msgstr "Insertar datos"
+msgstr "Insertar los datos:"
 
 #: ../../build/doc/sampledata.rst:286
 msgid "Combinations data"
@@ -487,8 +483,8 @@ msgstr "Las flechas rojas corresponden cuando ``cost`` > 0 en la tabla de arista
 #: ../../build/doc/sampledata.rst:325
 msgid "Blue arrows correspond when ``reverse_cost`` > 0 in the edge table."
 msgstr ""
-"Las flechas azules corresponden cuando  ``reverse_cost`` > 0 en la tabla "
-"de aristas."
+"Las flechas azules corresponden cuando ``reverse_cost`` > 0 en la tabla de "
+"aristas."
 
 #: ../../build/doc/sampledata.rst:326
 msgid "Points are outside the graph."

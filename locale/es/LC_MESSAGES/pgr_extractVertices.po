@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-23 16:16+0000\n"
-"PO-Revision-Date: 2022-06-27 23:47+0000\n"
+"PO-Revision-Date: 2022-06-28 02:48+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_extractvertices/es/>\n"
@@ -177,9 +177,8 @@ msgid "`Edges SQL`_ as described below"
 msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/pgr_extractVertices.rst:79
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/pgr_extractVertices.rst:82
 msgid "Default"
@@ -204,9 +203,8 @@ msgid "When true do not process and get in a NOTICE the resulting query."
 msgstr "No procese y reciba un AVISO de la consulta resultante."
 
 #: ../../build/doc/pgr_extractVertices.rst:89
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_extractVertices.rst:95
 msgid "Edges SQL"
@@ -625,9 +623,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:69
-#, fuzzy
 msgid "Adding new vertices"
-msgstr "Creación de la tabla de vértices"
+msgstr "Añadiendo nuevos vértices"
 
 #: ../../build/doc/pgRouting-concepts.rst:71
 msgid ""

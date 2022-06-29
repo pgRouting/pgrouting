@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-27 23:45+0000\n"
+"PO-Revision-Date: 2022-06-28 02:56+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
@@ -296,7 +296,7 @@ msgstr "``TEXT``"
 #: ../../build/doc/pgRouting-concepts.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:16
 msgid "SQL query as described."
-msgstr "consulta SQL como descrito."
+msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "`Restrictions SQL`_"
@@ -465,7 +465,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:242
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:245
 msgid "Edges SQL"

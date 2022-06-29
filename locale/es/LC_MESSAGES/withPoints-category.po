@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-28 00:19+0000\n"
+"PO-Revision-Date: 2022-06-28 15:18+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-category/es/>\n"
@@ -89,7 +89,7 @@ msgstr ":doc:`pgr_trsp_withPoints` - Ruteo de Punto/Vértice con restricciones."
 msgid ""
 ":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
 msgstr ""
-":doc:`pgr_trspVia_withPoints` - Via Ruteo de Punto/Vértice con restricciones."
+":doc:`pgr_trspVia_withPoints` - Ruteo Vía Punto/Vértice con restricciones."
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "Introduction"
@@ -416,7 +416,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:166
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/withPoints-category.rst:169
 msgid "Edges SQL"
@@ -795,7 +795,7 @@ msgstr "En una red de conducción del lado derecho"
 
 #: ../../build/doc/withPoints-category.rst:347
 msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
-msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **16**"
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **16**."
 
 #: ../../build/doc/withPoints-category.rst:348
 msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
@@ -842,7 +842,7 @@ msgstr "En una red de conducción del lado izquierdo"
 
 #: ../../build/doc/withPoints-category.rst:367
 msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
-msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **17**"
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **17**."
 
 #: ../../build/doc/withPoints-category.rst:368
 msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."

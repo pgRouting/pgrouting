@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "prim-family/es/>\n"
@@ -25,7 +25,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/prim-family.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/prim-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/prim-"
@@ -35,11 +34,12 @@ msgid ""
 "family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en/prim-"
 "family.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  <https://docs.pgrouting.org/latest/es"
-"/prim-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/prim-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/prim-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es/prim-"
-"family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/prim-"
-"family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/prim-"
-"family.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/prim-"
+"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/prim-family."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/prim-family.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/prim-family.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/es/prim-family.html>`__ `3.0 <https://docs.pgrouting.org/3."
+"0/es/prim-family.html>`__"
 
 #: ../../build/doc/prim-family.rst:21
 msgid "Prim - Family of functions"
@@ -150,7 +150,7 @@ msgstr ""
 
 #: ../../build/doc/prim-family.rst:81
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"

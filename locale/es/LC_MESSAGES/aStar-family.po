@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-06-28 01:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "astar-family/es/>\n"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:90
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/aStar-family.rst:91
 msgid "Type"
@@ -226,11 +226,11 @@ msgstr "Para la manipulación de unidades. math:`factor > 0`."
 
 #: ../../build/doc/aStar-family.rst:109
 msgid "``epsilon``"
-msgstr ""
+msgstr "``epsilon``"
 
 #: ../../build/doc/aStar-family.rst:112
 msgid "For less restricted results. :math:`epsilon >= 1`."
-msgstr ""
+msgstr "Para resultados menos restringidos. :math:`epsilon >= 1`."
 
 #: ../../build/doc/aStar-family.rst:114
 msgid ""

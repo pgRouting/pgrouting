@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:53+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_turnrestrictedpath/es/>\n"
@@ -75,7 +75,7 @@ msgstr "El nombre puede cambiar."
 
 #: ../../build/doc/experimental.rst:14
 msgid "Signature might change."
-msgstr "La firma (declaración de funciones) podría cambiar."
+msgstr "La firma puede cambiar."
 
 #: ../../build/doc/experimental.rst:15
 msgid "Functionality might change."
@@ -91,7 +91,7 @@ msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
-msgstr "Puede haber carencia de documentación."
+msgstr "Puede carecer documentación."
 
 #: ../../build/doc/experimental.rst:19
 msgid "Documentation if any might need to be rewritten."
@@ -180,7 +180,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_KSP.rst:13
 msgid "SQL query as described."
-msgstr ""
+msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/pgr_KSP.rst:14
 msgid "**start vid**"
@@ -221,12 +221,11 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:23
 #: ../../build/doc/pgRouting-concepts.rst:38 ../../build/doc/pgr_KSP.rst:26
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:68
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10 ../../build/doc/pgr_KSP.rst:10
@@ -247,7 +246,7 @@ msgstr "``BOOLEAN``"
 #: ../../build/doc/dijkstra-family.rst:14
 #: ../../build/doc/pgr_turnRestrictedPath.rst:95
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -316,9 +315,8 @@ msgid "When ``false`` returns the paths found"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:106
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:109
 msgid "Edges SQL"
@@ -369,7 +367,7 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
@@ -385,12 +383,12 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:116
 msgid "Restrictions SQL"
@@ -510,6 +508,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
+"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:41
 #: ../../build/doc/pgRouting-concepts.rst:45

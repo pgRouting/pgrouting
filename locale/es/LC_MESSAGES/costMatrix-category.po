@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 00:24+0000\n"
+"PO-Revision-Date: 2022-06-28 02:48+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "costmatrix-category/es/>\n"
@@ -64,9 +64,8 @@ msgid ":doc:`pgr_aStarCostMatrix`"
 msgstr ":doc:`pgr_aStarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:30
-#, fuzzy
 msgid ":doc:`pgr_bdAstarCostMatrix`"
-msgstr ":doc:`pgr_aStarCostMatrix`"
+msgstr ":doc:`pgr_bdAstarCostMatrix`"
 
 #: ../../build/doc/costMatrix-category.rst:31
 #: ../../build/doc/costMatrix-category.rst:33
@@ -200,8 +199,8 @@ msgstr ""
 #: ../../build/doc/costMatrix-category.rst:82
 msgid "It is also the users responsibility to fix an :math:`\\infty` value."
 msgstr ""
-"También es responsabilidad de los usuarios para fijar un valor "
-":math:`\\infty` value."
+"También es responsabilidad de los usuarios para fijar un valor :math:`\\infty"
+"`."
 
 #: ../../build/doc/costMatrix-category.rst:84
 msgid "Each function works as part of the family it belongs to."
@@ -229,7 +228,8 @@ msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/costMatrix-category.rst:91
 msgid "When the starting vertex and ending vertex are the same, there is no path."
-msgstr "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
+msgstr ""
+"Cuando el vértice inicial y el vértice final son iguales, no hay camino."
 
 #: ../../build/doc/costMatrix-category.rst:93
 msgid "The aggregate cost in the non included values `(v, v)` is `0`."
@@ -248,11 +248,8 @@ msgstr ""
 "El costo agregado de los valores no incluídos ``(u, v)`` es :math: `\\infty`."
 
 #: ../../build/doc/costMatrix-category.rst:100
-#, fuzzy
 msgid "Let be the case the values returned are stored in a table:"
-msgstr ""
-"Sea el caso, los valores devueltos se almacenan en una tabla, por lo que "
-"el índice único sería el par: '(start_vid, end_vid)'."
+msgstr "Sea el caso, los valores devueltos se almacenan en una tabla:"
 
 #: ../../build/doc/costMatrix-category.rst:102
 #, fuzzy
@@ -397,7 +394,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/costMatrix-category.rst:178
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/costMatrix-category.rst:181
 msgid "Edges SQL"
@@ -455,7 +452,7 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
@@ -487,7 +484,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/withPoints-category.rst:43
@@ -500,7 +497,7 @@ msgstr "SQL puntos"
 
 #: ../../build/doc/withPoints-category.rst:8
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/withPoints-category.rst:12
 msgid "``pid``"
@@ -547,6 +544,8 @@ msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto de "
+"la arista."
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"

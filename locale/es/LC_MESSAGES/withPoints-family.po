@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 00:19+0000\n"
+"PO-Revision-Date: 2022-06-28 14:58+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "withpoints-family/es/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/withPoints-family.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
 "/withPoints-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en"
@@ -34,11 +33,13 @@ msgid ""
 "/withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/en"
 "/withPoints-family.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última  <https://docs.pgrouting.org/latest/es"
-"/withPoints-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/withPoints-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/withPoints-family.html>`__  `3.2 <https://docs.pgrouting.org/3.2/es"
-"/withPoints-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
-"/withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es"
-"/withPoints-family.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"withPoints-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"withPoints-family.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"withPoints-family.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"withPoints-family.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"withPoints-family.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"withPoints-family.html>`__"
 
 #: ../../build/doc/withPoints-family.rst:19
 msgid ""
@@ -125,9 +126,8 @@ msgid ":doc:`pgr_withPointsDD` - Driving distance."
 msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
 
 #: ../../build/doc/withPoints-family.rst:42
-#, fuzzy
 msgid ":doc:`pgr_withPointsVia` - Via routing"
-msgstr ":doc:`pgr_withPointsDD` - Distancia de conducción."
+msgstr ":doc:`pgr_withPointsVia` - Ruteo vía ubicaciones"
 
 #: ../../build/doc/withPoints-family.rst:57
 msgid "Introduction"
@@ -322,7 +322,7 @@ msgstr ""
 #: ../../build/doc/withPoints-category.rst:8
 #: ../../build/doc/withPoints-family.rst:95
 msgid "Parameter"
-msgstr ""
+msgstr "Parámetro"
 
 #: ../../build/doc/withPoints-family.rst:99
 msgid "``driving_side``"
@@ -347,9 +347,8 @@ msgid "``r`` for right driving side."
 msgstr "``r`` para manejo del lado derecho."
 
 #: ../../build/doc/withPoints-family.rst:105
-#, fuzzy
 msgid "``l`` for left driving side."
-msgstr "Lado de conducción izquierdo"
+msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/withPoints-family.rst:106
 msgid "``b`` for both."
@@ -375,7 +374,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-family.rst:117
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/withPoints-family.rst:120
 msgid "Edges SQL"
@@ -437,7 +436,7 @@ msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "Weight of the edge (``target``, ``source``)"
@@ -471,7 +470,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
 msgid "ANY-NUMERICAL"
-msgstr ""
+msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/withPoints-category.rst:43
@@ -527,6 +526,8 @@ msgid ""
 "Value in <0,1> that indicates the relative postition from the first end "
 "point of the edge."
 msgstr ""
+"El valor en <0,1> que indica la posición relativa desde el primer punto de "
+"la arista."
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
@@ -747,7 +748,7 @@ msgstr "En una red de conducción del lado derecho"
 
 #: ../../build/doc/withPoints-category.rst:114
 msgid "Arrival to point ``-2`` can be achived only via vertex **16**."
-msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **16**"
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **16**."
 
 #: ../../build/doc/withPoints-category.rst:115
 msgid "Does not affects edge ``(17, 16)``, therefore the edge is kept."
@@ -795,7 +796,7 @@ msgstr "En una red de conducción del lado izquierdo"
 
 #: ../../build/doc/withPoints-category.rst:134
 msgid "Arrival to point ``-2`` can be achived only via vertex **17**."
-msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **17**"
+msgstr "Llegada al punto ``-2`` se logra solo vía el vértice **17**."
 
 #: ../../build/doc/withPoints-category.rst:135
 msgid "Does not affects edge ``(16, 17)``, therefore the edge is kept."

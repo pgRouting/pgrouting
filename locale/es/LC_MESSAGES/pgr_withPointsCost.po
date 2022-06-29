@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:49+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointscost/es/>\n"
@@ -386,9 +386,8 @@ msgid "`Points SQL`_ as described below"
 msgstr "`SQL puntos`_ como se describe abajo"
 
 #: ../../build/doc/withPoints-category.rst:17
-#, fuzzy
 msgid "`Combinations SQL`_"
-msgstr "Consulta de combinaciones"
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/withPoints-category.rst:19
 msgid "`Combinations SQL`_ as described below"
@@ -458,9 +457,8 @@ msgstr ""
 " pid de un punto."
 
 #: ../../build/doc/pgr_withPointsCost.rst:228
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -479,7 +477,7 @@ msgstr "``BOOLEAN``"
 
 #: ../../build/doc/dijkstra-family.rst:14
 msgid "``true``"
-msgstr ""
+msgstr "``true``"
 
 #: ../../build/doc/dijkstra-family.rst:15
 msgid "When ``true`` the graph is considered `Directed`"
@@ -526,16 +524,15 @@ msgstr "``r`` para manejo del lado derecho."
 
 #: ../../build/doc/pgr_withPointsCost.rst:254
 msgid "``l`` for left driving side."
-msgstr ""
+msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/pgr_withPointsCost.rst:255
 msgid "``b`` for both."
 msgstr ""
 
 #: ../../build/doc/pgr_withPointsCost.rst:260
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consulta interna"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_withPointsCost.rst:263
 msgid "Edges SQL"
@@ -625,9 +622,8 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
 #: ../../build/doc/withPoints-category.rst:42
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr "smallint, int, bigint"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
@@ -636,9 +632,8 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/withPoints-category.rst:43
-#, fuzzy
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr "smallint, int, bigint, real, float"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:270
 msgid "Points SQL"

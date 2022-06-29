@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:45+0000\n"
+"PO-Revision-Date: 2022-06-28 01:46+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstra/es/>\n"
@@ -405,7 +405,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_dijkstra.rst:213
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_dijkstra.rst:216
 msgid "Edges SQL"
@@ -526,8 +526,8 @@ msgid ""
 "Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, "
 "cost, agg_cost)``"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid], "
-"node, edge, cost, agg_cost)``"
+"Devuelve el conjunto de ``(seq, path_seq [, start_vid] [, end_vid], node, "
+"edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "``seq``"
@@ -608,8 +608,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
-"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
-"la secuencia de ruta. **-1** para el último nodo de la ruta."
+"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:43
 #: ../../build/doc/pgRouting-concepts.rst:47
@@ -638,8 +638,7 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_dijkstra.rst:239
 msgid "Demonstration of repeated values are ignored, and result is sorted."
-msgstr ""
-"Demostración de ignorar los valores repertidos, y el resultado es ordenado."
+msgstr "Demostración de ignorar los valores repertidos, y resultado ordenado."
 
 #: ../../build/doc/pgr_dijkstra.rst
 msgid "Example 2"

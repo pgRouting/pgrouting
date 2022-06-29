@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 23:49+0000\n"
+"PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bddijkstracost/es/>\n"
@@ -63,18 +63,16 @@ msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:35
-#, fuzzy
 msgid "Availability"
-msgstr "Disponibilidad:"
+msgstr "Disponibilidad"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:36
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:38
-#, fuzzy
 msgid "New **proposed** signature:"
-msgstr "Nueva función **propuesta**:"
+msgstr "Nueva firma **propuesta**:"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:40
 #, fuzzy
@@ -193,6 +191,8 @@ msgid ""
 "Returns the sum of the costs of the shortest path of each pair "
 "combination of nodes requested."
 msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para cada par de "
+"combinación de nodos requeridos."
 
 #: ../../build/doc/cost-category.rst:6
 msgid ""
@@ -215,6 +215,8 @@ msgstr "El **costo agregado** de `(u, v)` es el mismo que para `(v, u)`."
 #: ../../build/doc/cost-category.rst:13
 msgid "Any duplicated value in the start or end vertex identifiers are ignored."
 msgstr ""
+"Se omite cualquier valor duplicado en los identificadores de vertices de "
+"inicio y destino."
 
 #: ../../build/doc/cost-category.rst:15
 msgid "The returned values are ordered:"
@@ -331,9 +333,8 @@ msgid "`Edges SQL`_ as described below"
 msgstr "`SQL Aristas`_ como se describe a continuación"
 
 #: ../../build/doc/dijkstra-family.rst:14
-#, fuzzy
 msgid "`Combinations SQL`_"
-msgstr "Combinaciones"
+msgstr "`SQL Combinaciones`_"
 
 #: ../../build/doc/dijkstra-family.rst:16
 msgid "`Combinations SQL`_ as described below"
@@ -384,9 +385,8 @@ msgid "Array of identifiers of ending vertices."
 msgstr "Arreglo de identificadores de vértices finales."
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:189
-#, fuzzy
 msgid "Optional parameters"
-msgstr "Parámetros"
+msgstr "Parámetros opcionales"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -414,9 +414,8 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:196
-#, fuzzy
 msgid "Inner Queries"
-msgstr "Consultas internas"
+msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:199
 msgid "Edges SQL"
@@ -501,7 +500,7 @@ msgstr "ENTEROS"
 #: ../../build/doc/pgRouting-concepts.rst:20
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -509,7 +508,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:206
 #, fuzzy
@@ -566,7 +565,7 @@ msgstr "Costo afregado desde ``start_vid`` hasta ``end_vid``."
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:220
 msgid "Additional Examples"
-msgstr ""
+msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst
 #, fuzzy
@@ -575,7 +574,7 @@ msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:222
 msgid "Demonstration of repeated values are ignored, and result is sorted."
-msgstr ""
+msgstr "Demostración de ignorar los valores repertidos, y resultado ordenado."
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst
 msgid "Example 2"
