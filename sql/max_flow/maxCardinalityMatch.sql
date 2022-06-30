@@ -25,33 +25,50 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
---v2.6
+--v3.4
 CREATE FUNCTION pgr_maxCardinalityMatch(
-    TEXT, -- edges_sql (required)
+  TEXT, -- edges_sql (required)
 
-    directed BOOLEAN DEFAULT true,
-
-    OUT seq INTEGER,
-    OUT edge BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT)
-RETURNS SETOF RECORD AS
+  OUT edge BIGINT)
+RETURNS SETOF BIGINT AS
 $BODY$
-    SELECT *
-    FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), $2)
+SELECT edge
+FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), false)
 $BODY$
 LANGUAGE SQL VOLATILE STRICT
 COST 100
 ROWS 1000;
 
--- COMMENTS
+--v3.4
+CREATE FUNCTION pgr_maxCardinalityMatch(
+  TEXT, -- edges_sql (required)
 
+  directed BOOLEAN,
+
+  OUT seq INTEGER,
+  OUT edge BIGINT,
+  OUT source BIGINT,
+  OUT target BIGINT)
+RETURNS SETOF RECORD AS
+$BODY$
+BEGIN
+RAISE WARNING 'pgr_maxCardinalityMatch(text,boolean) is been deprecated';
+RETURN QUERY SELECT *
+FROM _pgr_maxCardinalityMatch(_pgr_get_statement($1), $2);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE STRICT
+COST 100
+ROWS 1000;
+
+-- COMMENTS
 COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT, BOOLEAN)
+IS 'Deprecated function';
+
+COMMENT ON FUNCTION pgr_maxCardinalityMatch(TEXT)
 IS 'pgr_maxCardinalityMatch
 - Parameters:
-  - Edges SQL with columns: id, source, target, going [,coming]
-- Optional Parameters:
-  - directed := true
+  - Edges SQL with columns: id, source, target, cost [,reverse_cost]
 - Documentation:
-  - ${PROJECT_DOC_LINK}/pgr_maxCardinalityMatch.html
+- ${PROJECT_DOC_LINK}/pgr_maxCardinalityMatch.html
 ';
