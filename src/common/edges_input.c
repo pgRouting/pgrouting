@@ -53,7 +53,7 @@ static
 void fetch_basic_edge(
     HeapTuple *tuple,
     TupleDesc *tupdesc,
-    Column_info_t info[5],
+    Column_info_t info[7],
     int64_t *default_id,
     Edge_bool_t_rt *edge,
     size_t *valid_edges) {
