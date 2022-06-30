@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-06-30 15:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bdastarcost/es/>\n"
@@ -54,8 +54,8 @@ msgid ""
 "``pgr_bdAstarCost`` - Total cost of the shortest path(s) using the "
 "bidirectional A* algorithm."
 msgstr ""
-"``pgr_bdAstarCost`` - Devuelve el costo agregado de la ruta más corta "
-"mediante el algoritmo :doc:`pgr_aStar`."
+"``pgr_bdAstarCost`` - Devuelve el costo agregado de la ruta más corta usando "
+"el algoritmo bidireccional A*."
 
 #: ../../build/doc/pgr_bdAstarCost.rst:32
 msgid "Boost Graph Inside"
@@ -109,7 +109,7 @@ msgid ""
 "The ``pgr_bdAstarCost`` function sumarizes of the cost of the shortest "
 "path(s) using the bidirectional A* algorithm."
 msgstr ""
-"La función ``pgr_bdAstarCost`` Sumariza el costo del camon(s) más corto "
+"La función ``pgr_bdAstarCost`` Sumariza el costo del camino más corto "
 "utilizando el algoritmo bidireccional A*."
 
 #: ../../build/doc/pgr_bdAstarCost.rst:56
@@ -641,9 +641,8 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_bdAstarCost.rst:237
-#, fuzzy
 msgid "Combinations SQL"
-msgstr "Combinaciones"
+msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the departure vertex."

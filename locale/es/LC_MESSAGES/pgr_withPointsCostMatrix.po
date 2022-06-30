@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-06-29 15:32+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointscostmatrix/es/>\n"
@@ -619,7 +619,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:126
 msgid "Result Columns"
-msgstr ""
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "Set of ``(start_vid, end_vid, agg_cost)``"

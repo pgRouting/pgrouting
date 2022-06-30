@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-06-29 15:32+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_binarybreadthfirstsearch/es/>\n"
@@ -309,13 +309,12 @@ msgid "Many to One"
 msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:160
-#, fuzzy
 msgid ""
 "From vertices :math:`\\{6, 1\\}` to vertex :math:`17` on a **directed** "
 "graph"
 msgstr ""
-"De los vértices :math:`\\{2, 11\\}` al vértice :math:`5` en un grafo "
-"binario **dirigido**"
+"De los vértices :math:`\\{6, 1\\}` al vertice :math:`17` en un grafo "
+"**dirigido**"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:171
 msgid "Many to Many"
@@ -557,9 +556,8 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:239
-#, fuzzy
 msgid "Combinations SQL"
-msgstr "Combinaciones"
+msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
@@ -574,7 +572,6 @@ msgid "Identifier of the arrival vertex."
 msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgr_binaryBreadthFirstSearch.rst:246
-#, fuzzy
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 

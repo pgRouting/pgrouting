@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 02:57+0000\n"
+"PO-Revision-Date: 2022-06-29 15:32+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstranear/es/>\n"
@@ -690,9 +690,8 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:309
-#, fuzzy
 msgid "Combinations SQL"
-msgstr "Combinaciones"
+msgstr "SQL Combinaciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "Identifier of the departure vertex."
@@ -703,7 +702,6 @@ msgid "Identifier of the arrival vertex."
 msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgr_dijkstraNear.rst:316
-#, fuzzy
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 

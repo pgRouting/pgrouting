@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:18+0000\n"
+"PO-Revision-Date: 2022-06-30 15:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsksp/es/>\n"
@@ -670,7 +670,7 @@ msgid ""
 ":math:`1` to point :math:`2` with details."
 msgstr ""
 "Obtener :math:`2` rutas, usando topología de manejo por la izquierda, desde "
-"el punto :math:`1` al punto :math:`2, detallado."
+"el punto :math:`1` al punto :math:`2`, detallado."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:183
 #, fuzzy
@@ -683,7 +683,7 @@ msgid ""
 ":math:`1` to point :math:`2` with heap paths and details."
 msgstr ""
 "Obtener :math:`2` rutas, usando topología de manejo por la derecha, desde el "
-"punto :math:`1` al punto :math:`2, detallado y con rutas procesadas."
+"punto :math:`1` al punto :math:`2`, detallado y con rutas procesadas."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:192
 msgid "The queries use the :doc:`sampledata` network."
