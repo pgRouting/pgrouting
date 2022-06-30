@@ -1,12 +1,23 @@
 BEGIN;
 
 UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT plan(5);
+SELECT CASE WHEN min_lib_version('3.4.0') THEN plan(36) ELSE PLAN(5) END;
 
-PREPARE edges AS
+PREPARE edges1 AS
+SELECT id, source, target, cost FROM edge_table;
+PREPARE edges2 AS
+SELECT id, source, target, cost, reverse_cost FROM edge_table;
+
+SELECT isnt_empty('edges1', 'Should not be empty true to tests be meaningful');
+SELECT isnt_empty('edges2', 'Should not be empty true to tests be meaningful');
+
+-- TODO v4 going & coming are to be removed, remove these prepares
+PREPARE edges_1 AS
+SELECT id, source, target, cost AS going FROM edge_table;
+PREPARE edges_2 AS
 SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table;
-
-SELECT isnt_empty('edges', 'Should not be empty true to tests be meaningful');
+SELECT isnt_empty('edges_1', 'Should not be empty true to tests be meaningful');
+SELECT isnt_empty('edges_2', 'Should not be empty true to tests be meaningful');
 
 
 CREATE OR REPLACE FUNCTION test_function()
@@ -16,13 +27,35 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-    params = ARRAY[
-        '$$SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table$$'
-        ]::TEXT[];
-    subs = ARRAY[
-        'NULL'
-        ]::TEXT[];
+  subs = ARRAY[
+  'NULL'
+  ]::TEXT[];
 
+  IF min_lib_version('3.4.0') THEN
+    params = ARRAY[
+        '$$SELECT id, source, target, cost, reverse_cost FROM edge_table$$'
+        ]::TEXT[];
+    RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
+
+    params[1] := '$$SELECT id, source, target, cost FROM edge_table$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
+
+    params[1] := '$$edges1$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
+    params[1] := '$$edges2$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
+  ELSE
+    RETURN QUERY SELECT skip(1, 'cost & reverse cost used on 3.4');
+  END IF;
+
+    -- TODO v4 going & coming are to be removed, remove these tests
+    params[1] := '$$SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
+    params[1] := '$$SELECT id, source, target, cost AS going FROM edge_table$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
+    params[1] := '$$edges_1$$';
+    RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
+    params[1] := '$$edges_2$$';
     RETURN query SELECT * FROM no_crash_test('pgr_maxCardinalityMatch', params, subs);
 
 END
