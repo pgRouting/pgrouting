@@ -67,7 +67,6 @@ pgRouting 3.4.0 Release Notes
     * ``pgr_trsp_withPoints`` (Many to Many)
     * ``pgr_trsp_withPoints`` (Combinations)
 
-
 * Topology
 
   * ``pgr_degree``
@@ -76,6 +75,14 @@ pgRouting 3.4.0 Release Notes
 
   * ``pgr_findCloseEdges`` (One point)
   * ``pgr_findCloseEdges`` (Many points)
+
+.. rubric:: Official functions changes
+
+* Flow functions
+
+  * ``pgr_maxCardinalityMatch(text)``
+
+    * Deprecating ``pgr_maxCardinalityMatch(text,boolean)``
 
 .. rubric:: Deprecated functions
 
