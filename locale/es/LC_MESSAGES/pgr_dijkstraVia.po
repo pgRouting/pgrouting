@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 15:18+0000\n"
+"PO-Revision-Date: 2022-06-29 15:32+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstravia/es/>\n"
@@ -360,7 +360,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:112
 msgid "Result Columns"
-msgstr ""
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/via-category.rst:11
 msgid "``seq``"
