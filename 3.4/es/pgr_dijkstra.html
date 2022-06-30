@@ -109,8 +109,8 @@
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
@@ -270,22 +270,22 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristad no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafo dirigido y uno no dirigido.</p>
+<p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristas no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafos dirigidos y no dirigidos.</p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p>
 <ul>
 <li><p>Valor no negativo en una columna de costo se interpreta como la arsta no exite.</p></li>
 </ul>
 </li>
-<li><p>Valores son regresados cuando hay una ruta.</p></li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
 <li><p>Cuando no hay ruta:</p>
 <ul>
-<li><p>Cuando el vértice de salida y el vértice destino son iguales, no hay camino.</p>
+<li><p>Cuando el vértice de salida y el vértice destino son iguales.</p>
 <ul>
 <li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((v, v)\)</span> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
-<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
+<li><p>Cuando el vértice de salida y el vértice destino son diferentes y no hay ninguna ruta:</p>
 <ul>
 <li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((u, v)\)</span> es :math: <cite>infty</cite></p></li>
 </ul>
@@ -445,7 +445,7 @@ RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Uso de una tabla de combinaciones en un grafo <strong>no direccionado</strong></p>
+<dd class="field-odd"><p>Usando una tabla de combinaciones en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
 <p>La tabla de combinaciones:</p>
@@ -501,7 +501,7 @@ OR EMPTY SET</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Consulta de aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -550,9 +550,9 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -644,7 +644,7 @@ OR EMPTY SET</pre>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -664,7 +664,7 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -690,15 +690,15 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <strong>-1</strong> para el último nodo de la ruta.</p></td>
+<td><p>Identificador de la arista utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code> para el último nodo de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -707,7 +707,7 @@ OR EMPTY SET</pre>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y el resultado es ordenado.</p>
+<dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_Dijkstra</span><span class="p">(</span>
@@ -1631,7 +1631,7 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

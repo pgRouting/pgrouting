@@ -109,8 +109,8 @@
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
@@ -187,7 +187,7 @@ algorithm.</p>
 <ul class="simple">
 <li><p>Versión 3.1.0</p>
 <ul>
-<li><p>New <strong>proposed</strong> signature:</p>
+<li><p>Nueva firma <strong>propuesta</strong>:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
@@ -204,23 +204,22 @@ algorithm.</p>
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">pgr_dijkstraCost</span></code> function sumarizes of the cost of the shortest path(s)
 using Dijkstra Algorithm.</p>
-<p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristad no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafo dirigido y uno no dirigido.</p>
+<p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristas no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafos dirigidos y no dirigidos.</p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p>
 <ul>
 <li><p>Valor no negativo en una columna de costo se interpreta como la arsta no exite.</p></li>
 </ul>
 </li>
-<li><p>Valores son regresados cuando hay una ruta.</p></li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
 <li><p>Cuando no hay ruta:</p>
 <ul>
-<li><p>Cuando el vértice de salida y el vértice destino son iguales, no hay camino.</p>
+<li><p>Cuando el vértice de salida y el vértice destino son iguales.</p>
 <ul>
 <li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((v, v)\)</span> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
-<li><p>When the starting vertex and ending vertex are the different and there is
-no path:</p>
+<li><p>Cuando el vértice de salida y el vértice destino son diferentes y no hay ninguna ruta:</p>
 <ul>
 <li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((u, v)\)</span> es :math: <cite>infty</cite></p></li>
 </ul>
@@ -232,20 +231,19 @@ no path:</p>
 </ul>
 <ul class="simple">
 <li><p>No devuelve una ruta.</p></li>
-<li><p>Returns the sum of the costs of the shortest path of each pair combination of
-nodes requested.</p></li>
+<li><p>Devuelve la suma de los costos de la ruta más corta para cada par de combinación de nodos requeridos.</p></li>
 <li><p>Let be the case the values returned are stored in a table, so the unique index
 would be the pair: <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>.</p></li>
 <li><p>Depending on the function and its parameters, the results can be symmetric.</p>
 <ul>
-<li><p>The  <strong>aggregate cost</strong> of <span class="math notranslate nohighlight">\((u, v)\)</span> is the same as for <span class="math notranslate nohighlight">\((v, u)\)</span>.</p></li>
+<li><p>El <strong>costo agregado</strong> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Any duplicated value in the start or end vertex identifiers are ignored.</p></li>
+<li><p>Se omite cualquier valor duplicado en los identificadores de vertices de inicio y destino.</p></li>
 <li><p>Los valores regresados se ordenan:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascending</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascendente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascendente</p></li>
 </ul>
 </li>
 </ul>
@@ -288,8 +286,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> on a <strong>directed</strong>
-graph</p>
+<dd class="field-odd"><p>Del vértice <span class="math notranslate nohighlight">\(6\)</span> a los vértices <span class="math notranslate nohighlight">\(\{10, 17\}\)</span> en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
@@ -358,7 +355,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Uso de una tabla de combinaciones en un grafo <strong>no direccionado</strong></p>
+<dd class="field-odd"><p>Usando una tabla de combinaciones en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
 <p>La tabla de combinaciones:</p>
@@ -408,7 +405,7 @@ OR EMPTY SET</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Consulta de aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -457,9 +454,9 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -571,7 +568,7 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice final.</p></td>
+<td><p>Identificador del vértice destino.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -584,7 +581,7 @@ OR EMPTY SET</pre>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 1<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y el resultado es ordenado.</p>
+<dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraCost</span><span class="p">(</span>
@@ -668,7 +665,7 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

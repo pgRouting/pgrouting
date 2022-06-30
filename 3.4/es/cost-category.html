@@ -16,7 +16,6 @@
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -148,13 +147,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/cost-category.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/cost-category.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/cost-category.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/cost-category.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/cost-category.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/cost-category.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/cost-category.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/cost-category.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/cost-category.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/cost-category.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/cost-category.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/cost-category.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/cost-category.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/cost-category.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/cost-category.html">2.6</a></p></li>
 </ul>
 <section id="cost-category">
@@ -195,20 +188,19 @@
 <p>Las características principales son:</p>
 <ul class="simple">
 <li><p>No devuelve una ruta.</p></li>
-<li><p>Returns the sum of the costs of the shortest path of each pair combination of
-nodes requested.</p></li>
+<li><p>Devuelve la suma de los costos de la ruta más corta para cada par de combinación de nodos requeridos.</p></li>
 <li><p>Let be the case the values returned are stored in a table, so the unique index
 would be the pair: <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>.</p></li>
 <li><p>Dependiendo de la función y sus parámetros, los resultados pueden ser simétricos.</p>
 <ul>
-<li><p>The  <strong>aggregate cost</strong> of <span class="math notranslate nohighlight">\((u, v)\)</span> is the same as for <span class="math notranslate nohighlight">\((v, u)\)</span>.</p></li>
+<li><p>El <strong>costo agregado</strong> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Any duplicated value in the start or end vertex identifiers are ignored.</p></li>
+<li><p>Se omite cualquier valor duplicado en los identificadores de vertices de inicio y destino.</p></li>
 <li><p>Los valores regresados se ordenan:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascending</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascendente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascendente</p></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +229,7 @@ would be the pair: <code class="docutils literal notranslate"><span class="pre">
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

@@ -97,7 +97,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Conceptos de pgRouting</a><ul>
 <li><a class="reference internal" href="#graphs">Graphs</a><ul>
-<li><a class="reference internal" href="#graph-definition">Graph definition</a></li>
+<li><a class="reference internal" href="#graph-definition">Definición de grafo</a></li>
 <li><a class="reference internal" href="#graph-with-cost">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></li>
 <li><a class="reference internal" href="#graph-with-cost-and-reverse-cost">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></li>
 </ul>
@@ -127,10 +127,10 @@
 <li><a class="reference internal" href="#check-the-routing-topology">Compruebe la Topología de Ruteo</a><ul>
 <li><a class="reference internal" href="#crossing-edges">Crossing edges</a><ul>
 <li><a class="reference internal" href="#adding-split-edges">Adding split edges</a></li>
-<li><a class="reference internal" href="#adding-new-vertices">Adding new vertices</a></li>
-<li><a class="reference internal" href="#updating-edges-topology">Updating edges topology</a></li>
+<li><a class="reference internal" href="#adding-new-vertices">Añadiendo nuevos vértices</a></li>
+<li><a class="reference internal" href="#updating-edges-topology">Actualizar la topología de aristas</a></li>
 <li><a class="reference internal" href="#removing-the-surplus-edges">Removing the surplus edges</a></li>
-<li><a class="reference internal" href="#updating-vertices-topology">Updating vertices topology</a></li>
+<li><a class="reference internal" href="#updating-vertices-topology">Actializar la topología de vértices</a></li>
 <li><a class="reference internal" href="#checking-for-crossing-edges">Checking for crossing edges</a></li>
 </ul>
 </li>
@@ -139,7 +139,7 @@
 <li><a class="reference internal" href="#save-the-vertices-connection-information">Save the vertices connection information</a></li>
 <li><a class="reference internal" href="#save-the-edges-connection-information">Save the edges connection information</a></li>
 <li><a class="reference internal" href="#get-the-closest-vertex">Get the closest vertex</a></li>
-<li><a class="reference internal" href="#connecting-components">Connecting components</a></li>
+<li><a class="reference internal" href="#connecting-components">Conectando componentes</a></li>
 <li><a class="reference internal" href="#checking-components">Checking components</a></li>
 </ul>
 </li>
@@ -159,25 +159,25 @@
 <li><a class="reference internal" href="#combinations">Combinaciones</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a><ul>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a><ul>
 <li><a class="reference internal" href="#general">General</a></li>
 <li><a class="reference internal" href="#general-without-id">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li><a class="reference internal" href="#general-with-x-y">General with (X,Y)</a></li>
-<li><a class="reference internal" href="#flow">Flow</a></li>
+<li><a class="reference internal" href="#flow">Flujo</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 <li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#parameters-for-the-via-functions">Parameters for the Via functions</a></li>
-<li><a class="reference internal" href="#for-the-trsp-functions">For the TRSP functions</a></li>
+<li><a class="reference internal" href="#for-the-trsp-functions">Para las funciones de TRSP</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#return-columns">Return columns</a><ul>
+<li><a class="reference internal" href="#return-columns">Columnas de Resultados</a><ul>
 <li><a class="reference internal" href="#return-columns-for-a-path">Return columns for a path</a></li>
 <li><a class="reference internal" href="#multiple-paths">Multiple paths</a><ul>
 <li><a class="reference internal" href="#selective-for-multiple-paths">Selective for multiple paths.</a></li>
@@ -241,13 +241,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-concepts.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgRouting-concepts.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgRouting-concepts.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-concepts.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-concepts.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-concepts.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgRouting-concepts.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgRouting-concepts.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgRouting-concepts.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgRouting-concepts.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgRouting-concepts.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgRouting-concepts.html">3.0</a></p></li>
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-concepts.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-concepts.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-concepts.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/tutorial/index.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/tutorial/index.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/tutorial/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/tutorial/index.html">2.0</a></p></li>
 </ul>
 <section id="pgrouting-concepts">
@@ -262,9 +256,9 @@ with pgRouting. This guide covers:</p>
 <li><p><a class="reference internal" href="#check-the-routing-topology" id="id11">Compruebe la Topología de Ruteo</a></p></li>
 <li><p><a class="reference internal" href="#function-s-structure" id="id12">Function’s structure</a></p></li>
 <li><p><a class="reference internal" href="#function-s-overloads" id="id13">Function’s overloads</a></p></li>
-<li><p><a class="reference internal" href="#inner-queries" id="id14">Consultas internas</a></p></li>
+<li><p><a class="reference internal" href="#inner-queries" id="id14">Consultas Internas</a></p></li>
 <li><p><a class="reference internal" href="#parameters" id="id15">Parámetros</a></p></li>
-<li><p><a class="reference internal" href="#return-columns" id="id16">Return columns</a></p></li>
+<li><p><a class="reference internal" href="#return-columns" id="id16">Columnas de Resultados</a></p></li>
 <li><p><a class="reference internal" href="#performance-tips" id="id17">Consejos de Rendimiento</a></p></li>
 <li><p><a class="reference internal" href="#how-to-contribute" id="id18">Cómo contribuir</a></p></li>
 </ul>
@@ -273,13 +267,13 @@ with pgRouting. This guide covers:</p>
 <h2><a class="toc-backref" href="#id8" role="doc-backlink">Graphs</a><a class="headerlink" href="#graphs" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#graph-definition" id="id19">Graph definition</a></p></li>
+<li><p><a class="reference internal" href="#graph-definition" id="id19">Definición de grafo</a></p></li>
 <li><p><a class="reference internal" href="#graph-with-cost" id="id20">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a></p></li>
 <li><p><a class="reference internal" href="#graph-with-cost-and-reverse-cost" id="id21">Graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a></p></li>
 </ul>
 </nav>
 <section id="graph-definition">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Graph definition</a><a class="headerlink" href="#graph-definition" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Definición de grafo</a><a class="headerlink" href="#graph-definition" title="Permalink to this heading">¶</a></h3>
 <p>A graph is an ordered pair <span class="math notranslate nohighlight">\(G = (V ,E)\)</span> where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V\)</span> is a set of vertices, also called nodes.</p></li>
@@ -287,7 +281,7 @@ with pgRouting. This guide covers:</p>
 </ul>
 <p>There are different kinds of graphs:</p>
 <ul class="simple">
-<li><p>Undirected graph</p>
+<li><p>Grafo no dirigido</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V\}\)</span></p></li>
 </ul>
@@ -297,7 +291,7 @@ with pgRouting. This guide covers:</p>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid u , v \in V, u \neq v\}\)</span></p></li>
 </ul>
 </li>
-<li><p>Directed graph</p>
+<li><p>Grafo dirigido</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(E \subseteq \{( u, v ) \mid (u , v) \in (V X V) \}\)</span></p></li>
 </ul>
@@ -346,7 +340,7 @@ manner.</p></td>
 <td><p>Identifier of a vertex.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>):</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>):</p>
 <ul class="simple">
 <li><p>When negative the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) do not exist on the
 graph.</p></li>
@@ -374,7 +368,7 @@ executing a pgRouting algorithm.</p>
 <li><p>Graph data is obtained with a query</p>
 <p><code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">id,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">cost</span> <span class="pre">FROM</span> <span class="pre">edges</span></code></p>
 </li>
-<li><p>the set of edges <span class="math notranslate nohighlight">\(E\)</span></p>
+<li><p>El conjunto de aristas <span class="math notranslate nohighlight">\(E\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E = \{(source_{id}, target_{id}, cost_{id}) \text{ when } cost_{id}
 \ge 0 \}\)</span></p></li>
@@ -388,7 +382,7 @@ executing a pgRouting algorithm.</p>
 </ul>
 </li>
 </ul>
-<p class="rubric">Directed graph</p>
+<p class="rubric">Grafo dirigido</p>
 <p>In a directed graph the edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> has
 directionality: <span class="math notranslate nohighlight">\(source_{id} \rightarrow target_{id}\)</span></p>
 <p>For the following data:</p>
@@ -409,7 +403,7 @@ directionality: <span class="math notranslate nohighlight">\(source_{id} \righta
  1 -&gt; 2 [label=&quot;  1(5)&quot;];
  3;
 }" class="graphviz" /></div>
-<p class="rubric">Undirected graph</p>
+<p class="rubric">Grafo no dirigido</p>
 <p>In an undirected graph the edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span>
 does not have directionality: <span class="math notranslate nohighlight">\(source_{id} \frac{\;\;\;\;\;}{}
 target_{id}\)</span></p>
@@ -463,7 +457,7 @@ negative are part of the graph.</p></li>
 </ul>
 </li>
 </ul>
-<p class="rubric">Directed graph</p>
+<p class="rubric">Grafo dirigido</p>
 <p>In a directed graph both edges have directionality</p>
 <ul class="simple">
 <li><p>edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> has directionality: <span class="math notranslate nohighlight">\(source_{id}
@@ -496,7 +490,7 @@ negative are part of the graph.</p></li>
  3 -&gt; 1 [label=&quot;  2(4)&quot;];
  2 -&gt; 3 [label=&quot;  3(7)&quot;];
 }" class="graphviz" /></div>
-<p class="rubric">Undirected graph</p>
+<p class="rubric">Grafo no dirigido</p>
 <p>In a directed graph both edges do not have directionality</p>
 <ul class="simple">
 <li><p>Edge <span class="math notranslate nohighlight">\((source_{id}, target_{id}, cost_{id})\)</span> is <span class="math notranslate nohighlight">\(source_{id}
@@ -640,7 +634,7 @@ wiki =# CREATE EXTENSION pgRouting CASCADE;
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
 <p>Using this table design for this example:</p>
@@ -963,10 +957,10 @@ on the original graph.</p>
 <li><p><a class="reference internal" href="#crossing-edges" id="id34">Crossing edges</a></p>
 <ul>
 <li><p><a class="reference internal" href="#adding-split-edges" id="id35">Adding split edges</a></p></li>
-<li><p><a class="reference internal" href="#adding-new-vertices" id="id36">Adding new vertices</a></p></li>
-<li><p><a class="reference internal" href="#updating-edges-topology" id="id37">Updating edges topology</a></p></li>
+<li><p><a class="reference internal" href="#adding-new-vertices" id="id36">Añadiendo nuevos vértices</a></p></li>
+<li><p><a class="reference internal" href="#updating-edges-topology" id="id37">Actualizar la topología de aristas</a></p></li>
 <li><p><a class="reference internal" href="#removing-the-surplus-edges" id="id38">Removing the surplus edges</a></p></li>
-<li><p><a class="reference internal" href="#updating-vertices-topology" id="id39">Updating vertices topology</a></p></li>
+<li><p><a class="reference internal" href="#updating-vertices-topology" id="id39">Actializar la topología de vértices</a></p></li>
 <li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id40">Checking for crossing edges</a></p></li>
 </ul>
 </li>
@@ -976,7 +970,7 @@ on the original graph.</p>
 <li><p><a class="reference internal" href="#save-the-vertices-connection-information" id="id43">Save the vertices connection information</a></p></li>
 <li><p><a class="reference internal" href="#save-the-edges-connection-information" id="id44">Save the edges connection information</a></p></li>
 <li><p><a class="reference internal" href="#get-the-closest-vertex" id="id45">Get the closest vertex</a></p></li>
-<li><p><a class="reference internal" href="#connecting-components" id="id46">Connecting components</a></p></li>
+<li><p><a class="reference internal" href="#connecting-components" id="id46">Conectando componentes</a></p></li>
 <li><p><a class="reference internal" href="#checking-components" id="id47">Checking components</a></p></li>
 </ul>
 </li>
@@ -1074,7 +1068,7 @@ copied.</p>
 <ul class="simple">
 <li><p><strong>factor</strong> based on the position of the intersection of the edges can be used
 to adjust the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns.</p></li>
-<li><p>Capacity information, used on the <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a> functions does not need
+<li><p>Capacity information, used on the <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a> functions does not need
 to change when splitting edges.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
@@ -1125,7 +1119,7 @@ to change when splitting edges.</p></li>
 </div>
 </section>
 <section id="adding-new-vertices">
-<h4><a class="toc-backref" href="#id36" role="doc-backlink">Adding new vertices</a><a class="headerlink" href="#adding-new-vertices" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id36" role="doc-backlink">Añadiendo nuevos vértices</a><a class="headerlink" href="#adding-new-vertices" title="Permalink to this heading">¶</a></h4>
 <p>After adding all the split edges required by the application, the newly created
 vertices need to be added to the vertices table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
@@ -1137,7 +1131,7 @@ vertices need to be added to the vertices table.</p>
 </div>
 </section>
 <section id="updating-edges-topology">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">Updating edges topology</a><a class="headerlink" href="#updating-edges-topology" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">Actualizar la topología de aristas</a><a class="headerlink" href="#updating-edges-topology" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
 <span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
@@ -1165,7 +1159,7 @@ to the new edges, then the crossing edges can be deleted.</p>
 view.</p>
 </section>
 <section id="updating-vertices-topology">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">Updating vertices topology</a><a class="headerlink" href="#updating-vertices-topology" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">Actializar la topología de vértices</a><a class="headerlink" href="#updating-vertices-topology" title="Permalink to this heading">¶</a></h4>
 <p>To keep the graph consistent, the vertices topology needs to be updated</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">SET</span>
 <span class="n">in_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span>
@@ -1276,7 +1270,7 @@ FROM pgr_findCloseEdges(
 information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
 </section>
 <section id="connecting-components">
-<h4><a class="toc-backref" href="#id46" role="doc-backlink">Connecting components</a><a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id46" role="doc-backlink">Conectando componentes</a><a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h4>
 <p>There are three basic ways to connect the components</p>
 <ul class="simple">
 <li><p>From the vertex to the starting point of the edge</p></li>
@@ -1460,7 +1454,7 @@ named parameters.</p>
 <p>For example, for this <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> signature:</p>
 <pre class="literal-block">pgr_dijkstra(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>  [, <code class="docutils literal notranslate"><span class="pre">directed</span></code>])</pre>
 <ul class="simple">
-<li><p><a class="reference internal" href="#edges-sql">Edges SQL</a>:</p>
+<li><p><a class="reference internal" href="#edges-sql">SQL aristas</a>:</p>
 <ul>
 <li><p>Is the first parameter.</p></li>
 <li><p>It is compulsory.</p></li>
@@ -1469,7 +1463,7 @@ named parameters.</p>
 needs to be used</p></li>
 </ul>
 </li>
-<li><p><strong>start vid</strong>:</p>
+<li><p><strong>vid inical</strong>:</p>
 <ul>
 <li><p>Is the second parameter.</p></li>
 <li><p>It is compulsory.</p></li>
@@ -1517,15 +1511,15 @@ type change remains the same.</p>
 <h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
-<li><p>Desde el vértice inicial <strong>one</strong></p></li>
-<li><p>al  vértice final <strong>one</strong></p></li>
+<li><p>Desde <strong>un</strong> vértice inicial</p></li>
+<li><p>al <strong>un</strong> vértice final</p></li>
 </ul>
 </section>
 <section id="one-to-many">
 <h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
-<li><p>Desde el vértice inicial <strong>one</strong></p></li>
+<li><p>Desde <strong>un</strong> vértice inicial</p></li>
 <li><p>a los vértices finales <strong>many</strong></p></li>
 </ul>
 </section>
@@ -1533,15 +1527,15 @@ type change remains the same.</p>
 <h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
-<li><p>Desde  vértices iniciales <strong>many</strong></p></li>
-<li><p>al  vértice final <strong>one</strong></p></li>
+<li><p>Desde <strong>muchos</strong> vértices iniciales</p></li>
+<li><p>al <strong>un</strong> vértice final</p></li>
 </ul>
 </section>
 <section id="many-to-many">
 <h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
 <p>Cuando se rutea desde:</p>
 <ul class="simple">
-<li><p>Desde  vértices iniciales <strong>many</strong></p></li>
+<li><p>Desde <strong>muchos</strong> vértices iniciales</p></li>
 <li><p>a los vértices finales <strong>many</strong></p></li>
 </ul>
 </section>
@@ -1558,20 +1552,20 @@ type change remains the same.</p>
 </section>
 </section>
 <section id="inner-queries">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Consultas internas</a><a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Consultas Internas</a><a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="id5">
 <ul class="simple">
-<li><p><a class="reference internal" href="#edges-sql" id="id51">SQL de aristas</a></p>
+<li><p><a class="reference internal" href="#edges-sql" id="id51">SQL aristas</a></p>
 <ul>
 <li><p><a class="reference internal" href="#general" id="id52">General</a></p></li>
 <li><p><a class="reference internal" href="#general-without-id" id="id53">General without <code class="docutils literal notranslate"><span class="pre">id</span></code></a></p></li>
 <li><p><a class="reference internal" href="#general-with-x-y" id="id54">General with (X,Y)</a></p></li>
-<li><p><a class="reference internal" href="#flow" id="id55">Flow</a></p></li>
+<li><p><a class="reference internal" href="#flow" id="id55">Flujo</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#combinations-sql" id="id56">SQL Combinaciones</a></p></li>
 <li><p><a class="reference internal" href="#restrictions-sql" id="id57">Restrictions SQL</a></p></li>
-<li><p><a class="reference internal" href="#points-sql" id="id58">Points SQL</a></p></li>
+<li><p><a class="reference internal" href="#points-sql" id="id58">SQL puntos</a></p></li>
 </ul>
 </nav>
 <p>There are several kinds of valid inner queries and also the columns returned are
@@ -1584,11 +1578,11 @@ To simplify variety of types, <strong>ANY-INTEGER</strong> and <strong>ANY-NUMER
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id51" role="doc-backlink">SQL de aristas</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id51" role="doc-backlink">SQL aristas</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <section id="general">
 <h4><a class="toc-backref" href="#id52" role="doc-backlink">General</a><a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h4>
 <p class="rubric">Edges SQL for</p>
@@ -1803,8 +1797,8 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="flow">
-<h4><a class="toc-backref" href="#id55" role="doc-backlink">Flow</a><a class="headerlink" href="#flow" title="Permalink to this heading">¶</a></h4>
-<p class="rubric">Edges SQL for <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
+<h4><a class="toc-backref" href="#id55" role="doc-backlink">Flujo</a><a class="headerlink" href="#flow" title="Permalink to this heading">¶</a></h4>
+<p class="rubric">Edges SQL for <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p>
 <p class="rubric">Edges SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
@@ -1866,7 +1860,7 @@ it’s not part of the graph.</p></li>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p class="rubric">Edges SQL for the following functions of <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
+<p class="rubric">Edges SQL for the following functions of <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost_Cost.html"><span class="doc">pgr_maxFlowMinCost_Cost - Experimental</span></a></p></li>
@@ -1922,12 +1916,12 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Weight of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) if it exist</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) si existe</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(-1\)</span></p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) if it exist</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) si existe</p></td>
 </tr>
 </tbody>
 </table>
@@ -2014,7 +2008,7 @@ taken.
 </dl>
 </section>
 <section id="points-sql">
-<h3><a class="toc-backref" href="#id58" role="doc-backlink">Points SQL</a><a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id58" role="doc-backlink">SQL puntos</a><a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Points SQL for</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p></li>
@@ -2036,14 +2030,13 @@ taken.
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
-<td><p><strong>value</strong></p></td>
+<td><p><strong>valor</strong></p></td>
 <td><p>Identifier of the point.</p>
 <ul class="simple">
 <li><p>Use with positive value, as internally will be converted to negative
 value</p></li>
 <li><p>If column is present, it can not be NULL.</p></li>
-<li><p>If column is not present, a sequential negative <strong>value</strong> will be given
-automatically.</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
 </tr>
@@ -2060,10 +2053,10 @@ automatically.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicating if the point is:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
-<li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>A la izquierda <cite>l</cite>,</p></li>
 <li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
@@ -2126,7 +2119,7 @@ The optional parameters are named parameters and will have a default value.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>SQL query as described.</p></td>
+<td><p>Consulta SQL como se describe.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
@@ -2147,7 +2140,7 @@ The optional parameters are named parameters and will have a default value.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
 <li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> if a path is missing stops and returns <strong>EMPTY SET</strong></p></li>
-<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignora las rutas faltantes y devuelve todas las rutas encontradas</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignora las rutas faltantes y devuelve todas las rutas encontradas</p></li>
 </ul>
 </td>
 </tr>
@@ -2168,7 +2161,7 @@ with same identifier is used when no other path is found.</p></li>
 </table>
 </section>
 <section id="for-the-trsp-functions">
-<h3>For the TRSP functions<a class="headerlink" href="#for-the-trsp-functions" title="Permalink to this heading">¶</a></h3>
+<h3>Para las funciones de TRSP<a class="headerlink" href="#for-the-trsp-functions" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
 </ul>
@@ -2187,11 +2180,11 @@ with same identifier is used when no other path is found.</p></li>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>SQL query as described.</p></td>
+<td><p>Consulta SQL como se describe.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>SQL query as described.</p></td>
+<td><p>Consulta SQL como se describe.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -2203,7 +2196,7 @@ with same identifier is used when no other path is found.</p></li>
 </tr>
 <tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Array of identifiers of destination vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
@@ -2211,7 +2204,7 @@ with same identifier is used when no other path is found.</p></li>
 </tr>
 <tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Array of identifiers of destination vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2224,7 +2217,7 @@ with same identifier is used when no other path is found.</p></li>
 </section>
 </section>
 <section id="return-columns">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Return columns</a><a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Columnas de Resultados</a><a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="id6">
 <ul class="simple">
 <li><p><a class="reference internal" href="#return-columns-for-a-path" id="id59">Return columns for a path</a></p></li>
@@ -2243,7 +2236,7 @@ with same identifier is used when no other path is found.</p></li>
 <section id="return-columns-for-a-path">
 <h3><a class="toc-backref" href="#id59" role="doc-backlink">Return columns for a path</a><a class="headerlink" href="#return-columns-for-a-path" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Used on functions that return one path solution</p>
-<p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -2263,7 +2256,7 @@ with same identifier is used when no other path is found.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -2289,15 +2282,15 @@ with same identifier is used when no other path is found.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <strong>-1</strong> para el último nodo de la ruta.</p></td>
+<td><p>Identificador de la arista utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code> para el último nodo de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2305,8 +2298,7 @@ with same identifier is used when no other path is found.</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a></p></li>
 </ul>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
-<span class="pre">agg_cost)</span></code></p>
+<p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_pid]</span> <span class="pre">[,</span> <span class="pre">end_pid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -2336,7 +2328,7 @@ with same identifier is used when no other path is found.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of a starting vertex/point of the path.</p>
 <ul class="simple">
-<li><p>When positive is the identifier of the starting vertex.</p></li>
+<li><p>Cunado positivo, es el identificador del vértice inicial.</p></li>
 <li><p>When negative is the identifier of the starting point.</p></li>
 <li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a>  and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
@@ -2347,16 +2339,16 @@ with same identifier is used when no other path is found.</p></li>
 <td><p>Identifier of an ending vertex/point of the path.</p>
 <ul class="simple">
 <li><p>When positive is the identifier of the ending vertex.</p></li>
-<li><p>When negative is the identifier of the ending point.</p></li>
+<li><p>Cuando es negativo, es el identificador del vértice destino.</p></li>
 <li><p>Returned on <a class="reference internal" href="#one-to-many">One to Many</a> and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the node in the path from <code class="docutils literal notranslate"><span class="pre">start_pid</span></code> to <code class="docutils literal notranslate"><span class="pre">end_pid</span></code>.</p>
+<td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p>
 <ul class="simple">
-<li><p>When positive is the identifier of the a vertex.</p></li>
+<li><p>Cuando es positivo, es el identificador de un vértice.</p></li>
 <li><p>When negative is the identifier of the a point.</p></li>
 </ul>
 </td>
@@ -2372,7 +2364,7 @@ path sequence.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p>
 <ul class="simple">
 <li><p><strong>0</strong> For the first row of the path.</p></li>
 </ul>
@@ -2380,7 +2372,7 @@ path sequence.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><strong>0</strong> For the first row of the path.</p></li>
 </ul>
@@ -2392,7 +2384,7 @@ path sequence.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a></p></li>
 </ul>
-<p>Returns <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Regresa <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -2412,11 +2404,11 @@ path sequence.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the current path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta actual.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -2428,15 +2420,15 @@ path sequence.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <strong>-1</strong> para el último nodo de la ruta.</p></td>
+<td><p>Identificador de la arista utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code> para el último nodo de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2469,14 +2461,13 @@ path sequence.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Path identifier.</p>
 <ul class="simple">
-<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
-<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>Tiene valor <strong>1</strong> para el primero de la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -2504,15 +2495,15 @@ path sequence.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <strong>-1</strong> para el último nodo de la ruta.</p></td>
+<td><p>Identificador de la arista utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code> para el último nodo de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2523,8 +2514,7 @@ path sequence.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_trsp.html"><span class="doc">pgr_trsp - Proposed</span></a></p></li>
 </ul>
-<p>Returns set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
-<span class="pre">agg_cost)</span></code></p>
+<p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -2546,14 +2536,13 @@ path sequence.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Path identifier.</p>
 <ul class="simple">
-<li><p>Has value <strong>1</strong> for the first of a path from <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> to
-<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
+<li><p>Tiene valor <strong>1</strong> para el primero de la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -2561,7 +2550,7 @@ path sequence.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice final.</p></td>
+<td><p>Identificador del vértice destino.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -2569,15 +2558,15 @@ path sequence.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <strong>-1</strong> para el último nodo de la ruta.</p></td>
+<td><p>Identificador de la arista utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta. <code class="docutils literal notranslate"><span class="pre">-1</span></code> para el último nodo de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2611,7 +2600,7 @@ path sequence.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice final.</p></td>
+<td><p>Identificador del vértice destino.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -2629,7 +2618,7 @@ a Point.</p>
 <h3><a class="toc-backref" href="#id64" role="doc-backlink">Return columns for flow functions</a><a class="headerlink" href="#return-columns-for-flow-functions" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Edges SQL for the following</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p></li>
+<li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p></li>
 </ul>
 <table class="docutils align-default">
 <thead>
@@ -2666,7 +2655,7 @@ a Point.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Edges SQL for the following functions of <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
+<p class="rubric">Edges SQL for the following functions of <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlowMinCost.html"><span class="doc">pgr_maxFlowMinCost - Experimental</span></a></p></li>
 </ul>
@@ -2736,7 +2725,7 @@ a Point.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Cost to traverse the edge.</p></td>
+<td><p>Coste para atravezar el borde.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2752,8 +2741,7 @@ a Point.</p>
 <section id="for-the-routing-functions">
 <h3><a class="toc-backref" href="#id66" role="doc-backlink">Para las funciones de Ruteo</a><a class="headerlink" href="#for-the-routing-functions" title="Permalink to this heading">¶</a></h3>
 <p>To get faster results bound the queries to an area of interest of routing.</p>
-<p>In this example Use an inner query SQL that does not include some edges in the
-routing function and is within the area of the results.</p>
+<p>En este ejemplo, usar una consulta SQL interna que no incluya algunas aristas en la función de ruteo y dentro del área de los resultados.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra($$
   SELECT id, source, target, cost, reverse_cost from edges
   WHERE geom &amp;&amp; (SELECT st_buffer(geom, 1) AS myarea
@@ -2771,7 +2759,7 @@ routing function and is within the area of the results.</p>
 <h2><a class="toc-backref" href="#id18" role="doc-backlink">Cómo contribuir</a><a class="headerlink" href="#how-to-contribute" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Wiki</p>
 <ul class="simple">
-<li><p>Edit an existing  <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a> page.</p></li>
+<li><p>Edita una página existente <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">Wiki de pgRouting</a>.</p></li>
 <li><p>O crea una nueva página Wiki</p>
 <ul>
 <li><p>Create a page on the <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a></p></li>
@@ -2803,7 +2791,7 @@ routing function and is within the area of the results.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

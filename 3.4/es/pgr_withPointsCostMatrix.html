@@ -99,19 +99,19 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#result-columns">Result Columns</a></li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Use <span class="xref std std-doc">pgr_findCloseEdges</span> in the Points SQL.</a></li>
-<li><a class="reference internal" href="#use-with-pgr-tsp">Use with <span class="xref std std-doc">pgr_TSP</span>.</a></li>
+<li><a class="reference internal" href="#use-with-pgr-tsp">Usar con <span class="xref std std-doc">pgr_TSP</span>.</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -208,67 +208,58 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>Using Dijkstra algorithm, calculate and return a cost matrix.</p>
-<p>Dijkstra’s algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
-1956.
-It is a graph search algorithm that solves the shortest path problem for a graph
-with non-negative edge path costs, producing a shortest path from a starting
-vertex to an ending vertex.
-This implementation can be used with a directed graph and an undirected graph.</p>
-<p>The main Characteristics are:</p>
+<p>Utilizando el algoritmo Dijkstra, calcula y devuelve una matriz de costes.</p>
+<p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristas no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafos dirigidos y no dirigidos.</p>
+<p>Las características principales son:</p>
 <ul class="simple">
-<li><p>Can be used as input to <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</p>
+<li><p>Se puede utilizar como entrada para <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</p>
 <ul>
-<li><p>Use directly when the resulting matrix is symmetric and there is no
-<span class="math notranslate nohighlight">\(\infty\)</span> value.</p></li>
+<li><p>Usar directamente cuando la matriz resultante es simétrica y no hay valor <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
 <li><p>It will be the users responsibility to make the matrix symmetric.</p>
 <ul>
-<li><p>By using geometric or harmonic average of the non symmetric values.</p></li>
+<li><p>Mediante el uso de la media geométrica o armónica de los valores no simétricos.</p></li>
 <li><p>By using max or min the non symmetric values.</p></li>
-<li><p>By setting the upper triangle to be the mirror image of the lower
-triangle.</p></li>
-<li><p>By setting the lower triangle to be the mirror image of the upper
-triangle.</p></li>
+<li><p>Estableciendo el triángulo superior para que sea la imagen reflejada del triángulo inferior.</p></li>
+<li><p>Estableciendo el triángulo inferior para que sea la imagen reflejada del triángulo superior.</p></li>
 </ul>
 </li>
-<li><p>It is also the users responsibility to fix an <span class="math notranslate nohighlight">\(\infty\)</span> value.</p></li>
+<li><p>También es responsabilidad de los usuarios para fijar un valor <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
 </ul>
 </li>
 <li><p>Each function works as part of the family it belongs to.</p></li>
-<li><p>It does not return a path.</p></li>
+<li><p>No devuelve una ruta.</p></li>
 <li><p>Returns the sum of the costs of the shortest path for pair combination of
 nodes in the graph.</p></li>
-<li><p>Process is done only on edges with positive costs.</p></li>
-<li><p>Values are returned when there is a path.</p>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p>
 <ul>
-<li><p>When the starting vertex and ending vertex are the same, there is no path.</p>
+<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
 <ul>
-<li><p>The aggregate cost in the non included values <cite>(v, v)</cite> is <cite>0</cite>.</p></li>
+<li><p>El costo agregado de los valores no incluídos <cite>(v, v)</cite> es <cite>0</cite>.</p></li>
 </ul>
 </li>
-<li><p>When the starting vertex and ending vertex are the different and there is no
-path.</p>
+<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay ruta.</p>
 <ul>
-<li><p>The aggregate cost in the non included values <cite>(u, v)</cite> is <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
+<li><p>El costo agregado de los valores no incluídos <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">v)</span></code> es :math: <cite>infty</cite>.</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Let be the case the values returned are stored in a table:</p>
+<li><p>Sea el caso, los valores devueltos se almacenan en una tabla:</p>
 <ul>
 <li><p>The unique index would be the pair: <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Depending on the function and its parameters, the results can be symmetric.</p>
 <ul>
-<li><p>The aggregate cost of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</p></li>
+<li><p>El costo agregado de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
 <li><p>Any duplicated value in the <strong>start vids</strong> are ignored.</p></li>
 <li><p>The returned values are ordered:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascending</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascending</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascendente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascendente</p></li>
 </ul>
 </li>
 </ul>
@@ -327,22 +318,22 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL puntos</a> como se describe abajo</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array of identifiers of starting vertices.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -356,8 +347,8 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
 </ul>
 </td>
 </tr>
@@ -375,13 +366,13 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 <td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para manejo del lado derecho.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para lado de manejo izquierdo.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
 </ul>
 </td>
@@ -391,9 +382,9 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -410,32 +401,31 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -452,7 +442,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="points-sql">
-<h3>Points SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -469,35 +459,34 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p><strong>value</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p><strong>valor</strong></p></td>
 <td><p>Identifier of the point.</p>
 <ul class="simple">
 <li><p>Use with positive value, as internally will be converted to negative
 value</p></li>
 <li><p>If column is present, it can not be NULL.</p></li>
-<li><p>If column is not present, a sequential negative <strong>value</strong> will be given
-automatically.</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista «más cercana» al punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
 <td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicating if the point is:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
-<li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>A la izquierda <cite>l</cite>,</p></li>
 <li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
@@ -516,8 +505,8 @@ automatically.</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Result Columns<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -533,15 +522,15 @@ automatically.</p></li>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice inicial.</p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice final.</p></td>
+<td><p>Identificador del vértice destino.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+<td><p>Costo afregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -556,7 +545,7 @@ a Point.</p>
 <nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the Points SQL.</a></p></li>
-<li><p><a class="reference internal" href="#use-with-pgr-tsp" id="id3">Use with <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</a></p></li>
+<li><p><a class="reference internal" href="#use-with-pgr-tsp" id="id3">Usar con <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
@@ -596,7 +585,7 @@ locations on the graph of point <cite>(2.9, 1.8)</cite>.</p>
 </ul>
 </section>
 <section id="use-with-pgr-tsp">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Use with <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</a><a class="headerlink" href="#use-with-pgr-tsp" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Usar con <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</a><a class="headerlink" href="#use-with-pgr-tsp" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSP(
   $$
   SELECT * FROM pgr_withPointsCostMatrix(
@@ -649,7 +638,7 @@ HINT:  Ignoring annaeling parameters
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

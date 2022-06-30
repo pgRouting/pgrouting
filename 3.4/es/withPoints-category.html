@@ -101,21 +101,21 @@
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
-<li><a class="reference internal" href="#points-sql">Puntos SQL</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#advanced-documentation">Documentación avanzada</a><ul>
 <li><a class="reference internal" href="#about-points">About points</a></li>
-<li><a class="reference internal" href="#driving-side">Driving side</a><ul>
+<li><a class="reference internal" href="#driving-side">Lado de manejo</a><ul>
 <li><a class="reference internal" href="#right-driving-side">Lado de conducción derecho</a></li>
 <li><a class="reference internal" href="#left-driving-side">Lado de conducción izquierdo</a></li>
 <li><a class="reference internal" href="#driving-side-does-not-matter">Driving side does not matter</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#creating-temporary-vertices">Creating temporary vertices</a><ul>
+<li><a class="reference internal" href="#creating-temporary-vertices">Creación de vértices temporales</a><ul>
 <li><a class="reference internal" href="#on-a-right-hand-side-driving-network">En una red de conducción del lado derecho</a></li>
 <li><a class="reference internal" href="#on-a-left-hand-side-driving-network">En una red de conducción del lado izquierdo</a></li>
 <li><a class="reference internal" href="#when-driving-side-does-not-matter">Cuando el lado de conducción no importa</a></li>
@@ -194,11 +194,11 @@
 </ul>
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a> - Funciones que se basan en el algoritmo Dijkstra.</p></li>
+<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a> - Funciones basadas en el algoritmo Dijkstra.</p></li>
 <li><p>Desde <a class="reference internal" href="TRSP-family.html"><span class="doc">TRSP - Familia de funciones</span></a> :</p>
 <ul>
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> - Ruteo de Punto/Vértice con restricciones.</p></li>
-<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Via Ruteo de Punto/Vértice con restricciones.</p></li>
+<li><p><a class="reference internal" href="pgr_trspVia_withPoints.html"><span class="doc">pgr_trspVia_withPoints - Proposed</span></a> - Ruteo Vía Punto/Vértice con restricciones.</p></li>
 </ul>
 </li>
 </ul>
@@ -275,11 +275,11 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Consulta de aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL puntos</a> como se describe abajo</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -292,8 +292,7 @@ point’s identifier.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices. Negative values are for
-point’s identifiers.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales. Valores negativos son para identificadores de puntos.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -324,7 +323,7 @@ identifiers.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
 <td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>] indicating if the driving side is:</p>
@@ -350,9 +349,9 @@ path.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -410,7 +409,7 @@ path.</p></li>
 </dl>
 </section>
 <section id="points-sql">
-<h3>Puntos SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -433,7 +432,7 @@ path.</p></li>
 <ul class="simple">
 <li><p>Use con un valor positivo, dado que internamente se convertirá a un valor negativo</p></li>
 <li><p>Si columna esta presente, no puede ser NULL.</p></li>
-<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo automáticamente se otorgará..</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
 </tr>
@@ -450,10 +449,10 @@ path.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicando si el punto es:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
 <li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
-<li><p>A la izquierda <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>A la izquierda <cite>l</cite>,</p></li>
 <li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
@@ -509,14 +508,14 @@ path.</p></li>
 <p class="topic-title">Contenido</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#about-points" id="id1">About points</a></p></li>
-<li><p><a class="reference internal" href="#driving-side" id="id2">Driving side</a></p>
+<li><p><a class="reference internal" href="#driving-side" id="id2">Lado de manejo</a></p>
 <ul>
 <li><p><a class="reference internal" href="#right-driving-side" id="id3">Lado de conducción derecho</a></p></li>
 <li><p><a class="reference internal" href="#left-driving-side" id="id4">Lado de conducción izquierdo</a></p></li>
 <li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id5">Driving side does not matter</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#creating-temporary-vertices" id="id6">Creating temporary vertices</a></p>
+<li><p><a class="reference internal" href="#creating-temporary-vertices" id="id6">Creación de vértices temporales</a></p>
 <ul>
 <li><p><a class="reference internal" href="#on-a-right-hand-side-driving-network" id="id7">En una red de conducción del lado derecho</a></p></li>
 <li><p><a class="reference internal" href="#on-a-left-hand-side-driving-network" id="id8">En una red de conducción del lado izquierdo</a></p></li>
@@ -563,7 +562,7 @@ for this example:</p>
 </div>
 </section>
 <section id="driving-side">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Driving side</a><a class="headerlink" href="#driving-side" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Lado de manejo</a><a class="headerlink" href="#driving-side" title="Permalink to this heading">¶</a></h3>
 <p>In the the folowwing images:</p>
 <ul class="simple">
 <li><p>The squared vertices are the temporary vertices,</p></li>
@@ -614,7 +613,7 @@ is interpreted.</p></li>
 </section>
 </section>
 <section id="creating-temporary-vertices">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Creating temporary vertices</a><a class="headerlink" href="#creating-temporary-vertices" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Creación de vértices temporales</a><a class="headerlink" href="#creating-temporary-vertices" title="Permalink to this heading">¶</a></h3>
 <p>This section will demonstrate how a temporary vertex is created internally on
 the graph.</p>
 <p class="rubric">Problem</p>
@@ -643,7 +642,7 @@ the graph.</p>
 <p class="rubric">Lado de conducción derecho</p>
 <a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
 <ul class="simple">
-<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived only via vertex <strong>16</strong>.</p></li>
+<li><p>Llegada al punto <code class="docutils literal notranslate"><span class="pre">-2</span></code> se logra solo vía el vértice <strong>16</strong>.</p></li>
 <li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edge is kept.</p></li>
 <li><p>It only affects the edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, therefore the edge is removed.</p></li>
 <li><p>Create two new edges:</p>
@@ -662,7 +661,7 @@ the graph.</p>
 <p class="rubric">Lado de conducción izquierdo</p>
 <a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
 <ul class="simple">
-<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived only via vertex <strong>17</strong>.</p></li>
+<li><p>Llegada al punto <code class="docutils literal notranslate"><span class="pre">-2</span></code> se logra solo vía el vértice <strong>17</strong>.</p></li>
 <li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, therefore the edge is kept.</p></li>
 <li><p>It only affects the edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edge is removed.</p></li>
 <li><p>Create two new edges:</p>
@@ -694,8 +693,8 @@ the graph.</p></li>
 <a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
 <ul class="simple">
 <li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
-<li><p>Affects the edges <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> and <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edges are removed.</p></li>
-<li><p>Create four new edges:</p>
+<li><p>Afecta las aristas <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> y <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code> por lo que esas aristas se eliminan.</p></li>
+<li><p>Crear cuatro nuevas aristas:</p>
 <ul>
 <li><p>Work with the original edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> as the fraction is a fraction of the
 original:</p>
@@ -748,7 +747,7 @@ the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

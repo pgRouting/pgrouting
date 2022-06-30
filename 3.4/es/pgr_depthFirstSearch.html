@@ -107,11 +107,11 @@
 <li><a class="reference internal" href="#dfs-optional-parameters">DFS optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#return-columns">Return columns</a></li>
+<li><a class="reference internal" href="#return-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -202,7 +202,7 @@
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> signatures:</p>
+<li><p>Nueva función <strong>experimental</strong>:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> (<a class="reference internal" href="#single-vertex">Single Vertex</a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_depthFirstSearch</span></code> (<a class="reference internal" href="#multiple-vertices">Multiple Vertices</a>)</p></li>
@@ -217,7 +217,7 @@
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>La implementación funciona para los grafos <strong>dirigidos</strong> y <strong>no dirigidos</strong>.</p></li>
-<li><p>Proporciona la orden del recorrido de Primera Búsqueda de Profundidad  desde un vértice raíz o desde un conjunto de vértices raíz.</p></li>
+<li><p>Proporciona el recorrido de Búsqueda de Primero Profundidad desde un vértice raíz o desde un conjunto de vértices raíz.</p></li>
 <li><p>Un parámetro opcional de profundidad máxima no negativo para limitar los resultados hasta una profundidad particular.</p></li>
 <li><p>Para fines de optimización, se omiten los valores duplicados en los <cite>Root vids</cite>.</p></li>
 <li><p>No produce la ruta más corta desde un vértice de origen a un vértice de destino.</p></li>
@@ -272,8 +272,7 @@ ascending order of <code class="docutils literal notranslate"><span class="pre">
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From root vertices <span class="math notranslate nohighlight">\(\{12, 6\}\)</span> on an <strong>undirected</strong> graph with
-<strong>depth</strong> <span class="math notranslate nohighlight">\(&lt;= 2\)</span> and edges in ascending order of <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
+<dd class="field-odd"><p>A partir de los vértices de la raíz <span class="math notranslate nohighlight">\(\{12, 6\}\)</span> en un grafo <strong>no dirigido</strong> con <strong>profundidad</strong> <span class="math notranslate nohighlight">\(&lt;= 2\)</span> y aristas ordenadas ascendentemente in términos de <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_depthFirstSearch</span><span class="p">(</span>
@@ -323,12 +322,11 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Raíz</strong></p></td>
+<tr class="row-odd"><td><p><strong>id raíz</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice raíz del árbol.</p>
 <ul class="simple">
-<li><p>When value is <span class="math notranslate nohighlight">\(0\)</span> then gets the spanning forest starting in
-aleatory nodes for each tree in the forest.</p></li>
+<li><p>Cuando el valor es <span class="math notranslate nohighlight">\(0\)</span> se obtiene el bosque de expansión que comienza en nodos aleatorios para cada árbol del bosque.</p></li>
 </ul>
 </td>
 </tr>
@@ -336,7 +334,7 @@ aleatory nodes for each tree in the forest.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARREGLO[ENTEROS]</span></code></p></td>
 <td><p>Arreglo de identificadores de los vértices raíz.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> values are ignored</p></li>
+<li><p>Valores <span class="math notranslate nohighlight">\(0\)</span> son ignorados</p></li>
 <li><p>Con el propósito de optimización, valores duplicados son ignorados.</p></li>
 </ul>
 </td>
@@ -348,7 +346,7 @@ aleatory nodes for each tree in the forest.</p></li>
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERIC<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
 </dd>
 </dl>
@@ -389,9 +387,9 @@ aleatory nodes for each tree in the forest.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(9223372036854775807\)</span></p></td>
-<td><p>Upper limit of the depth of the tree.</p>
+<td><p>Límite superior para la profundidad del árbol.</p>
 <ul class="simple">
-<li><p>When negative throws an error.</p></li>
+<li><p>Cuando negativo arroja error.</p></li>
 </ul>
 </td>
 </tr>
@@ -400,9 +398,9 @@ aleatory nodes for each tree in the forest.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -461,7 +459,7 @@ aleatory nodes for each tree in the forest.</p></li>
 </section>
 </section>
 <section id="return-columns">
-<h2>Return columns<a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
 <p>Regresa <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">OF</span> <span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -495,7 +493,7 @@ aleatory nodes for each tree in the forest.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">edge</span></code> utilizado para llegar a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(-1\)</span> when <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
@@ -505,7 +503,7 @@ aleatory nodes for each tree in the forest.</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -514,7 +512,7 @@ aleatory nodes for each tree in the forest.</p></li>
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERIC<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
 </dd>
 </dl>
@@ -550,8 +548,7 @@ aleatory nodes for each tree in the forest.</p></li>
 </pre></div>
 </div>
 <p>El recorrido resultante es diferente.</p>
-<p>The left image shows the result with ascending order of ids and the right image
-shows with descending order of the edge identifiers.</p>
+<p>La imagen izquierda muestra el resultado con el orden ascendente de los ids y la imagen derecha muestra con el orden descendente de los identificadores de aristas.</p>
 <p><a class="reference internal" href="_images/Fig1-AscendingOrder.png"><img alt="ascendente" src="_images/Fig1-AscendingOrder.png" style="width: 466.0px; height: 432.5px;" /></a> <a class="reference internal" href="_images/Fig2-DescendingOrder.png"><img alt="descendente" src="_images/Fig2-DescendingOrder.png" style="width: 476.0px; height: 430.0px;" /></a></p>
 </section>
 <section id="see-also">
@@ -584,7 +581,7 @@ shows with descending order of the edge identifiers.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

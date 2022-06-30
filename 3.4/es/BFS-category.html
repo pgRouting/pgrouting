@@ -100,8 +100,8 @@
 <li><a class="reference internal" href="#bfs-optional-parameters">Párametros opcionales de BFS</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -163,8 +163,8 @@
 </ul>
 <p>recorrido usando la búsqueda en anchura.</p>
 <ul class="simple">
-<li><p>Su implementación solo para grafo <strong>no direccionado</strong>.</p></li>
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
+<li><p>Su implementación es solo para grafo <strong>no dirigido</strong>.</p></li>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
 <li><p>Cuando el grafo es conectado</p>
 <ul>
 <li><p>Las aristas resultantes componen un árbol</p></li>
@@ -196,7 +196,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Raíz</strong></p></td>
+<tr class="row-odd"><td><p><strong>id raíz</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice raíz del árbol.</p>
 <ul class="simple">
@@ -238,9 +238,9 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p><span class="math notranslate nohighlight">\(9223372036854775807\)</span></p></td>
-<td><p>Límite superior de la profundidad del árbol.</p>
+<td><p>Límite superior para la profundidad del árbol.</p>
 <ul class="simple">
-<li><p>Cuando negativo arroja un error.</p></li>
+<li><p>Cuando negativo arroja error.</p></li>
 </ul>
 </td>
 </tr>
@@ -249,9 +249,9 @@
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -354,7 +354,7 @@
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -397,7 +397,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

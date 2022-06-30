@@ -103,8 +103,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -188,8 +188,8 @@ than or equal to a <strong>distance</strong> from a <strong>root</strong> vertex
 calculated minimum spanning tree.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>Su implementación solo para grafo <strong>no direccionado</strong>.</p></li>
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
+<li><p>Su implementación es solo para grafo <strong>no dirigido</strong>.</p></li>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
 <li><p>Cuando el grafo es conectado</p>
 <ul>
 <li><p>Las aristas resultantes componen un árbol</p></li>
@@ -236,8 +236,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The Minimum Spanning Tree starting on vertex <span class="math notranslate nohighlight">\(6\)</span> with
-<span class="math notranslate nohighlight">\(distance \leq 3.5\)</span></p>
+<dd class="field-odd"><p>El mínimo árbol de expansión que comienza en el vértice:math:<cite>6</cite> con <span class="math notranslate nohighlight">\(distance \leq 3.5\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalDD</span><span class="p">(</span>
@@ -261,8 +260,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The Minimum Spanning Tree starting on vertices <span class="math notranslate nohighlight">\(\{9, 6\}\)</span> with
-<span class="math notranslate nohighlight">\(distance \leq 3.5\)</span></p>
+<dd class="field-odd"><p>El árbol de expansión mínimo que comienza en los vértices <span class="math notranslate nohighlight">\(\{9, 6\}\)</span> con <span class="math notranslate nohighlight">\(distance \leq 3.5\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalDD</span><span class="p">(</span>
@@ -307,7 +305,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Edges SQL as described below.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Raíz</strong></p></td>
+<tr class="row-odd"><td><p><strong>id raíz</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice raíz del árbol.</p></td>
 </tr>
@@ -322,7 +320,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </tr>
 <tr class="row-odd"><td><p><strong>distance</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Upper limit for the inclusion of a node in the result.</p></td>
+<td><p>Límite superior para la inclusión del nodo en el resultado.</p></td>
 </tr>
 </tbody>
 </table>
@@ -337,9 +335,9 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </dl>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -432,7 +430,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">edge</span></code> utilizado para llegar a <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(-1\)</span> when <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>
@@ -442,7 +440,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -462,7 +460,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html">Boost: Kruskal’s algorithm</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html">Boost: algoritmo de Kruskal</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kruskal's_algorithm">Wikipedia: algoritmo de Kruskal</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
@@ -486,7 +484,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

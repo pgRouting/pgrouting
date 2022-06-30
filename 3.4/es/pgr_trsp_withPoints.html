@@ -110,10 +110,10 @@
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 <li><a class="reference internal" href="#restrictions-sql">Restricciones SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Puntos SQL</a></li>
+<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
@@ -204,7 +204,7 @@
 </figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Version 3.4.0</p>
+<li><p>Versión 3.4.0</p>
 <ul>
 <li><p>New <strong>Proposed</strong> signatures</p>
 <ul>
@@ -223,7 +223,7 @@
 <p>Modificar el grafo para incluir puntos definidos por points_sql. Usando el algoritmo Dijkstra, busar la o las rutas más cortas</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
 <li><p>Driving side can not be <cite>b</cite> (<strong>both</strong>)</p></li>
 <li><p>Los vértices del grafo son:</p>
 <ul>
@@ -231,14 +231,14 @@
 <li><p><strong>negative</strong> when it belongs to the <a class="reference internal" href="#points-sql">Points SQL</a></p></li>
 </ul>
 </li>
-<li><p>Valores son regresados cuando hay una ruta.</p>
+<li><p>Los valores se devuelven cuando hay una ruta.</p>
 <ul>
 <li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
 <ul>
 <li><p>The agg_cost the non included values (v, v) is 0</p></li>
 </ul>
 </li>
-<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
+<li><p>Cuando el vértice de salida y el vértice destino son diferentes y no hay ninguna ruta:</p>
 <ul>
 <li><p>The agg_cost the non included values (u, v) is ∞</p></li>
 </ul>
@@ -480,11 +480,11 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>consulta SQL como descrito.</p></td>
+<td><p>Consulta SQL como se describe.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">SQL de restricciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>consulta SQL como descrito.</p></td>
+<td><p>Consulta SQL como se describe.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -496,7 +496,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 </tr>
 <tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Array of identifiers of destination vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
@@ -504,7 +504,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 </tr>
 <tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Array of identifiers of destination vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
 </tbody>
 </table>
@@ -554,7 +554,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
 <td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>] indicating if the driving side is:</p>
@@ -583,9 +583,9 @@ path.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -681,7 +681,7 @@ taken.
 </dl>
 </section>
 <section id="points-sql">
-<h3>Puntos SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -704,7 +704,7 @@ taken.
 <ul class="simple">
 <li><p>Use con un valor positivo, dado que internamente se convertirá a un valor negativo</p></li>
 <li><p>Si columna esta presente, no puede ser NULL.</p></li>
-<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo automáticamente se otorgará..</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
 </tr>
@@ -721,10 +721,10 @@ taken.
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicando si el punto es:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
 <li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
-<li><p>A la izquierda <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>A la izquierda <cite>l</cite>,</p></li>
 <li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
@@ -795,7 +795,7 @@ taken.
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -819,7 +819,7 @@ taken.
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the last row in the path sequence.</p></li>
 </ul>
@@ -827,7 +827,7 @@ taken.
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> for the first row in the path sequence.</p></li>
 </ul>
@@ -995,7 +995,7 @@ on an <strong>undirected</strong> graph, with details.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

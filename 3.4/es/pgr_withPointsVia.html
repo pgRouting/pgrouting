@@ -103,13 +103,13 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#via-optional-parameters">Vía parámetros opcional</a></li>
+<li><a class="reference internal" href="#via-optional-parameters">Parámetros opcionales Vía</a></li>
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
-<li><a class="reference internal" href="#points-sql">Puntos SQL</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -206,7 +206,7 @@ points.</p>
 </figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Version 3.4.0</p>
+<li><p>Versión 3.4.0</p>
 <ul>
 <li><p>New <strong>proposed</strong> function <code class="docutils literal notranslate"><span class="pre">pgr_withPointsVia</span></code> (<a class="reference internal" href="#one-via">One Via</a>)</p></li>
 </ul>
@@ -293,14 +293,14 @@ that order on a <strong>directed</strong> graph.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>consulta SQL como descrito.</p></td>
+<td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p>consulta SQL como descrito.</p></td>
+<td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vía vértices</strong></p></td>
+<tr class="row-even"><td><p><strong>via vertices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
 <td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p>
@@ -318,7 +318,7 @@ that order on a <strong>directed</strong> graph.</p>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
 </dd>
 </dl>
 <section id="optional-parameters">
@@ -345,7 +345,7 @@ that order on a <strong>directed</strong> graph.</p>
 </table>
 </section>
 <section id="via-optional-parameters">
-<h3>Vía parámetros opcional<a class="headerlink" href="#via-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales Vía<a class="headerlink" href="#via-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -366,7 +366,7 @@ that order on a <strong>directed</strong> graph.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> si un camino le faltan paradas y regresa <strong>EMPTY SET</strong></p></li>
-<li><p>En caso de <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignora las rutas faltantes y devuelve todas las rutas encontradas</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignora las rutas faltantes y devuelve todas las rutas encontradas</p></li>
 </ul>
 </td>
 </tr>
@@ -398,13 +398,13 @@ that order on a <strong>directed</strong> graph.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 <td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para manejo del lado derecho.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para lado de manejo izquierdo.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
 </ul>
 </td>
@@ -424,9 +424,9 @@ path.</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -484,7 +484,7 @@ path.</p></li>
 </dl>
 </section>
 <section id="points-sql">
-<h3>Puntos SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -507,7 +507,7 @@ path.</p></li>
 <ul class="simple">
 <li><p>Use con un valor positivo, dado que internamente se convertirá a un valor negativo</p></li>
 <li><p>Si columna esta presente, no puede ser NULL.</p></li>
-<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo automáticamente se otorgará..</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
 </tr>
@@ -524,10 +524,10 @@ path.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicando si el punto es:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
 <li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
-<li><p>A la izquierda <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>A la izquierda <cite>l</cite>,</p></li>
 <li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
@@ -570,7 +570,7 @@ path.</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el principio de una ruta.</p></td>
+<td><p>Posición relativa en la ruta. Tiene el valor <strong>1</strong> para el inicio de una ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -595,11 +595,11 @@ path.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo del desplazamiento desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando `` edge`` hasta el siguiente nodo en la secuencia de ruta.</p></td>
+<td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> al <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">route_agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -823,7 +823,7 @@ path.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

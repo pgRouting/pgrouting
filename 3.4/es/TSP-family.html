@@ -99,7 +99,7 @@
 <li><a class="reference internal" href="#general-information">Información general</a><ul>
 <li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
 <li><a class="reference internal" href="#origin">Origen</a></li>
-<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#characteristics">Características</a></li>
 <li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
 </ul>
 </li>
@@ -151,13 +151,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/TSP-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/TSP-family.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/TSP-family.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/TSP-family.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/TSP-family.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/TSP-family.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/TSP-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/TSP-family.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/TSP-family.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/TSP-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/TSP-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/TSP-family.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/TSP-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/TSP-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/TSP-family.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/tsp.html">2.3</a></p></li>
 </ul>
 <section id="traveling-sales-person-family-of-functions">
@@ -175,7 +169,7 @@
 <ul>
 <li><p><a class="reference internal" href="#problem-definition" id="id2">Definición del Problema</a></p></li>
 <li><p><a class="reference internal" href="#origin" id="id3">Origen</a></p></li>
-<li><p><a class="reference internal" href="#characteristics" id="id4">Characteristics</a></p></li>
+<li><p><a class="reference internal" href="#characteristics" id="id4">Características</a></p></li>
 <li><p><a class="reference internal" href="#tsp-optional-parameters" id="id5">TSP optional parameters</a></p></li>
 </ul>
 </li>
@@ -193,8 +187,7 @@
 </section>
 <section id="origin">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">Origen</a><a class="headerlink" href="#origin" title="Permalink to this heading">¶</a></h3>
-<p>The traveling sales person problem was studied in the 18th century by
-mathematicians <strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Penyngton Kirkman</strong>.</p>
+<p>El problema del vendedor viajante fue estudiado en el siglo 18 por matemáticos <strong>Sir William Rowam Hamilton</strong> y <strong>Thomas Penyngton Kirkman</strong>.</p>
 <p>Una discusión sobre el trabajo de Hamilton &amp; Kirkman se puede encontrar en el libro <strong>Graph Theory (Biggs et al. 1976)</strong>.</p>
 <ul class="simple">
 <li><p>ISBN-13: 978-0198539162</p></li>
@@ -216,7 +209,7 @@ mathematicians <strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Pe
 </ul>
 </section>
 <section id="characteristics">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Characteristics</a><a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Características</a><a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
 <li><p>Se utiliza el algoritmo métrico</p></li>
@@ -246,8 +239,8 @@ mathematicians <strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Pe
 <col style="width: 56%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Column</p></th>
-<th class="head"><p>Type</p></th>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
@@ -265,12 +258,10 @@ mathematicians <strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Pe
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Last visiting vertex before returning to <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<td><p>Último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before
-returning to <code class="docutils literal notranslate"><span class="pre">start_id</span></code>.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last
-vertex</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">0</span></code> cualquier vértice puede convertirse en el último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> entonces es el primer y último vértice</p></li>
 </ul>
 </td>
 </tr>
@@ -282,7 +273,7 @@ vertex</p></li>
 <h2><a class="toc-backref" href="#id6" role="doc-backlink">Ver también</a><a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Referencias</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Algoritmo Métrico de la Librería Boost</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
 </ul>
@@ -307,7 +298,7 @@ vertex</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

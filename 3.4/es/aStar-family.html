@@ -153,13 +153,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/aStar-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/aStar-family.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/aStar-family.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/aStar-family.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/aStar-family.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/aStar-family.html">3.0</a></p></li>
+<li><p><strong>*Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/aStar-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/aStar-family.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/aStar-family.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/aStar-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/aStar-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/aStar-family.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/aStar-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/aStar-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/aStar-family.html">2.4</a></p></li>
 </ul>
 <section id="a-family-of-functions">
@@ -183,7 +177,7 @@
 <li><p>luego por <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </li>
-<li><p>Values are returned when there is a path.</p></li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
 <li><p>Permita que <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> sean nodos en el grafo:</p>
 <ul>
 <li><p>Si no hay camino de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span>:</p>
@@ -202,7 +196,7 @@
 </li>
 <li><p>When <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates for the same vertex identifier differ:</p>
 <ul>
-<li><p>A random selection of the vertex’s <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates is used.</p></li>
+<li><p>Se utiliza una selección aleatoria de las coordenadas del vértice <span class="math notranslate nohighlight">\((x,y)\)</span>.</p></li>
 </ul>
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
@@ -211,8 +205,8 @@
 <h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Type</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
@@ -221,7 +215,7 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heuristic</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>5</p></td>
-<td><p>Heuristic number. Current valid values 0~5.</p>
+<td><p>Número heurístico. Valores válidos 0~5.</p>
 <ul class="simple">
 <li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Utilizat este valor para comparar con pgr_dijkstra)</p></li>
 <li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
@@ -235,12 +229,12 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p>For units manipulation. <span class="math notranslate nohighlight">\(factor &gt; 0\)</span>.</p></td>
+<td><p>Para la manipulación de unidades. math:<cite>factor &gt; 0</cite>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">epsilon</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p>For less restricted results. <span class="math notranslate nohighlight">\(epsilon &gt;= 1\)</span>.</p></td>
+<td><p>Para resultados menos restringidos. <span class="math notranslate nohighlight">\(epsilon &gt;= 1\)</span>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -336,7 +330,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

@@ -99,8 +99,8 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -152,13 +152,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_transitiveClosure.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_transitiveClosure.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_transitiveClosure.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_transitiveClosure.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_transitiveClosure.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_transitiveClosure.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_transitiveClosure.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_transitiveClosure.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_transitiveClosure.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_transitiveClosure.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_transitiveClosure.html">3.0</a></p></li>
 </ul>
 <section id="pgr-transitiveclosure-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_transitiveClosure</span></code> - Experimental<a class="headerlink" href="#pgr-transitiveclosure-experimental" title="Permalink to this heading">¶</a></h1>
@@ -185,11 +179,11 @@
 <ul>
 <li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
 <li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
 <li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
-<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
 <li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
@@ -219,7 +213,7 @@
 belong to the same connected component. (see <a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a>)</p></li>
 </ul>
 </li>
-<li><p>The returned values are not ordered</p></li>
+<li><p>Los valores devueltos no se ordenan</p></li>
 <li><p>The returned graph is compresed</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(|V||E|)\)</span></p></li>
 </ul>
@@ -258,7 +252,7 @@ RETURNS SETOF (seq, vid, target_array)</pre>
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
@@ -272,9 +266,9 @@ RETURNS SETOF (seq, vid, target_array)</pre>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -345,15 +339,15 @@ RETURNS SETOF (seq, vid, target_array)</pre>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Sequential value starting from <span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p>Valor secuencial a partir de <span class="math notranslate nohighlight">\(1\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the source of the edges</p></td>
+<td><p>Identificador del nodo inicial de las aristas</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target_array</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifiers of the targets of the edges</p>
+<td><p>Identificador del nodo final de las aristas</p>
 <ul class="simple">
 <li><p>Identifiers of the vertices that are reachable from vertex v.</p></li>
 </ul>
@@ -389,7 +383,7 @@ RETURNS SETOF (seq, vid, target_array)</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

@@ -94,7 +94,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Contenido</a><ul>
-<li><a class="reference internal" href="#general">Generalidades</a><ul>
+<li><a class="reference internal" href="#general">General</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#pgrouting-concepts">Conceptos de pgRouting</a></li>
@@ -154,10 +154,10 @@
 <h1>Contenido<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h1>
 <p>pgRouting extiende la base de datos geospacial de <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> para proporcionar enrutamiento geoespacial y otras funciones de análisis de red.</p>
 <p>Este es el manual para pgRouting v3.4.0-dev.</p>
-<img alt="Licencia de Creative Commons Attribution-Share Alike 3.0 " class="align-left" src="_images/ccbysa.png" />
-<p>El Manual de pgRouting está bajo licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>.  Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>. Para otras licencias utilizadas en pgRouting, consulte la página <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licencias</span></a> .</p>
+<img alt="Licencia de Creative Commons Attribution-Share Alike 3.0" class="align-left" src="_images/ccbysa.png" />
+<p>El Manual de pgRouting está bajo licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>. Para otras licencias utilizadas en pgRouting, consulte la página <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licencias</span></a> .</p>
 <section id="general">
-<h2>Generalidades<a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h2>
+<h2>General<a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introducción</a><ul>
@@ -202,9 +202,9 @@
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#check-the-routing-topology">Compruebe la Topología de Ruteo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-structure">Function’s structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-overloads">Function’s overloads</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">Consultas internas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">Consultas Internas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#parameters">Parámetros</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#return-columns">Return columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#return-columns">Columnas de Resultados</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Consejos de Rendimiento</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">Cómo contribuir</a></li>
 </ul>
@@ -259,7 +259,7 @@
 <li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra para calcular información de captación.</p></li>
 <li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use el algoritmo Yen con pgr_dijkstra para obtener las rutas más cortas K.</p></li>
 </ul>
-<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones.</span></a></p>
+<p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Solo el flujo máximo se calcula usando los algoritmos Push y Relabel.</p></li>
 <li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Algoritmos Boykov y Kolmogorov con detalles del flujo en aristas.</p></li>
@@ -327,9 +327,9 @@
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Distancia Manejando - Categoría</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Distancia Manejando basada en el algoritmo de Dijkstra.</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Distancia de Manejo basada en el algoritmo de Dijkstra</p></li>
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a> - Distancia Manejando basada en el algoritmo de Prim</p></li>
-<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Distancia Manejando basada en el algoritmo de Kruskal.</p></li>
+<li><p><a class="reference internal" href="pgr_kruskalDD.html"><span class="doc">pgr_kruskalDD</span></a> - Distancia de Manejo basada en el algoritmo de Kruskal</p></li>
 <li><p>Post procesamiento</p>
 <ul>
 <li><p><a class="reference internal" href="pgr_alphaShape.html"><span class="doc">pgr_alphaShape</span></a> - Cálculo de la forma Alpha</p></li>
@@ -441,7 +441,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

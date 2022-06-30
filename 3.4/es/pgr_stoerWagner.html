@@ -99,8 +99,8 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -150,13 +150,7 @@
     <div class="body col-md-12 content" role="main">
       
   <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_stoerWagner.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_stoerWagner.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_stoerWagner.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_stoerWagner.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_stoerWagner.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_stoerWagner.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_stoerWagner.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_stoerWagner.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_stoerWagner.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_stoerWagner.html">3.0</a></p></li>
 </ul>
 <section id="pgr-stoerwagner-experimental">
 <h1>pgr_stoerWagner - Experimental<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Permalink to this heading">¶</a></h1>
@@ -183,11 +177,11 @@
 <ul>
 <li><p>Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL</p></li>
 <li><p>El nombre puede cambiar.</p></li>
-<li><p>La firma (declaración de funciones) podría cambiar.</p></li>
+<li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
 <li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
-<li><p>Puede haber carencia de documentación.</p></li>
+<li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
 <li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
 <li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
@@ -213,8 +207,8 @@
 <p>Un corte es una partición de los vértices de un grafo en dos subconjuntos separados. Un corte mínimo es un corte para el que el tamaño o peso del corte no es mayor que el tamaño de cualquier otro corte. Para un grafo no ponderado, el corte mínimo sería simplemente el corte con menos aristas. Para un grafo ponderado, la suma del peso de todas las aristas en el corte determina si se trata de un corte mínimo.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
-<li><p>Su implementación solo para grafo <strong>no direccionado</strong>.</p></li>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
+<li><p>Su implementación es solo para grafo <strong>no dirigido</strong>.</p></li>
 <li><p>La suma de los pesos de todas las aristas entre los dos conjuntos es mincut.</p>
 <ul>
 <li><p>Un <strong>mincut</strong> es un corte que tiene el menor peso.</p></li>
@@ -263,7 +257,7 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
 </tr>
@@ -271,9 +265,9 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -290,32 +284,31 @@ OR EMPTY SET</pre>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -428,7 +421,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

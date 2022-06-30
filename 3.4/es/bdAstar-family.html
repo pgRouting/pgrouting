@@ -145,13 +145,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/bdAstar-family.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/bdAstar-family.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/bdAstar-family.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/bdAstar-family.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/bdAstar-family.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/bdAstar-family.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/bdAstar-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/bdAstar-family.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/bdAstar-family.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/bdAstar-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/bdAstar-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/bdAstar-family.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/bdAstar-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/bdAstar-family.html">2.6</a></p></li>
 </ul>
 <section id="bidirectional-a-family-of-functions">
@@ -173,30 +167,30 @@ algorithm.</p>
 <li><p>Process works for directed and undirected graphs.</p></li>
 <li><p>Ordering is:</p>
 <ul>
-<li><p>first by <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (if exists)</p></li>
-<li><p>then by <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
+<li><p>primero por <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (si existe)</p></li>
+<li><p>luego por <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </li>
-<li><p>Valores son regresados cuando hay una ruta.</p></li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(u\)</span> be nodes on the graph:</p>
 <ul>
 <li><p>If there is no path from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span>:</p>
 <ul>
-<li><p>no corresponding row is returned</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(u\)</span> is <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+<li><p>no se devuelve ninguna fila correspondiente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span> es <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
 </ul>
 </li>
 <li><p>There is no path when <span class="math notranslate nohighlight">\(v = u\)</span> therefore</p>
 <ul>
-<li><p>no corresponding row is returned</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> from <cite>v</cite> to <cite>u</cite> is <span class="math notranslate nohighlight">\(0\)</span></p></li>
+<li><p>no se devuelve ninguna fila correspondiente</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de <cite>v</cite> a <cite>u</cite> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>When <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates for the same vertex identifier differ:</p>
 <ul>
-<li><p>A random selection of the vertex’s <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates is used.</p></li>
+<li><p>Se utiliza una selección aleatoria de las coordenadas del vértice <span class="math notranslate nohighlight">\((x,y)\)</span>.</p></li>
 </ul>
 </li>
 <li><p>Running time: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
@@ -238,7 +232,7 @@ algorithm.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

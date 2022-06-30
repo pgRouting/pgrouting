@@ -106,8 +106,8 @@
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -129,17 +129,17 @@
 <li><a class="reference internal" href="#a-point-of-interest-table">A point of interest table</a><ul>
 <li><a class="reference internal" href="#points-of-interest">Points of interest</a></li>
 <li><a class="reference internal" href="#points-of-interest-geometry">Points of interest geometry</a></li>
-<li><a class="reference internal" href="#points-of-interest-fillup">Points of interest fillup</a></li>
+<li><a class="reference internal" href="#points-of-interest-fillup">LLenado de puntos de interés</a></li>
 <li><a class="reference internal" href="#a-special-case-to-arrive-from-both-sides-of-the-edge">A special case to arrive from both sides of the edge.</a></li>
 <li><a class="reference internal" href="#points-of-interest-data">Points of interest data</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#connecting-disconnected-components">Connecting disconnected components</a><ul>
+<li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a><ul>
 <li><a class="reference internal" href="#prepare-storage-for-connection-information">Prepare storage for connection information</a></li>
 <li><a class="reference internal" href="#save-the-vertices-connection-information">Save the vertices connection information</a></li>
 <li><a class="reference internal" href="#save-the-edges-connection-information">Save the edges connection information</a></li>
 <li><a class="reference internal" href="#get-the-closest-vertex">Get the closest vertex</a></li>
-<li><a class="reference internal" href="#connecting-components">Connecting components</a></li>
+<li><a class="reference internal" href="#connecting-components">Conectando componentes</a></li>
 <li><a class="reference internal" href="#checking-components">Checking components</a></li>
 </ul>
 </li>
@@ -208,7 +208,7 @@
 </figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
-<li><p>Version 3.4.0</p>
+<li><p>Versión 3.4.0</p>
 <ul>
 <li><p>New <strong>proposed</strong> signatures:</p>
 <ul>
@@ -387,9 +387,9 @@ calculations is exposed in a PostgreSQL <code class="docutils literal notranslat
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -586,18 +586,18 @@ connects the <strong>original point</strong> with the closest point on the <span
 <ul>
 <li><p><a class="reference internal" href="#points-of-interest" id="id13">Points of interest</a></p></li>
 <li><p><a class="reference internal" href="#points-of-interest-geometry" id="id14">Points of interest geometry</a></p></li>
-<li><p><a class="reference internal" href="#points-of-interest-fillup" id="id15">Points of interest fillup</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-fillup" id="id15">LLenado de puntos de interés</a></p></li>
 <li><p><a class="reference internal" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" id="id16">A special case to arrive from both sides of the edge.</a></p></li>
 <li><p><a class="reference internal" href="#points-of-interest-data" id="id17">Points of interest data</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#connecting-disconnected-components" id="id18">Connecting disconnected components</a></p>
+<li><p><a class="reference internal" href="#connecting-disconnected-components" id="id18">Conectando componentes desconectados</a></p>
 <ul>
 <li><p><a class="reference internal" href="#prepare-storage-for-connection-information" id="id19">Prepare storage for connection information</a></p></li>
 <li><p><a class="reference internal" href="#save-the-vertices-connection-information" id="id20">Save the vertices connection information</a></p></li>
 <li><p><a class="reference internal" href="#save-the-edges-connection-information" id="id21">Save the edges connection information</a></p></li>
 <li><p><a class="reference internal" href="#get-the-closest-vertex" id="id22">Get the closest vertex</a></p></li>
-<li><p><a class="reference internal" href="#connecting-components" id="id23">Connecting components</a></p></li>
+<li><p><a class="reference internal" href="#connecting-components" id="id23">Conectando componentes</a></p></li>
 <li><p><a class="reference internal" href="#checking-components" id="id24">Checking components</a></p></li>
 </ul>
 </li>
@@ -1156,7 +1156,7 @@ will be stored on a table.</p>
 </div>
 </section>
 <section id="points-of-interest-fillup">
-<h4><a class="toc-backref" href="#id15" role="doc-backlink">Points of interest fillup</a><a class="headerlink" href="#points-of-interest-fillup" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id15" role="doc-backlink">LLenado de puntos de interés</a><a class="headerlink" href="#points-of-interest-fillup" title="Permalink to this heading">¶</a></h4>
 <p>Using <a class="reference internal" href="#"><span class="doc">pgr_findCloseEdges</span></a>
 Calculating for visual purposes the points over the graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE pointsOfInterest AS p SET
@@ -1202,7 +1202,7 @@ UPDATE 6
 </section>
 </section>
 <section id="connecting-disconnected-components">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Connecting disconnected components</a><a class="headerlink" href="#connecting-disconnected-components" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Conectando componentes desconectados</a><a class="headerlink" href="#connecting-disconnected-components" title="Permalink to this heading">¶</a></h3>
 <p>To get the graph connectivity:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -1288,7 +1288,7 @@ FROM pgr_findCloseEdges(
 information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
 </section>
 <section id="connecting-components">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">Connecting components</a><a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Conectando componentes</a><a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h4>
 <p>There are three basic ways to connect the components</p>
 <ul class="simple">
 <li><p>From the vertex to the starting point of the edge</p></li>
@@ -1413,7 +1413,7 @@ as there is only one component.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

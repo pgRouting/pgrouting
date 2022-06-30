@@ -105,7 +105,7 @@
 <li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#coordinates-sql">Coordenadas SQL</a></li>
 </ul>
 </li>
@@ -169,13 +169,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_TSPeuclidean.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_TSPeuclidean.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_TSPeuclidean.html">3.4</a>)`3.3 &lt;<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html">https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html</a>&gt;`__ <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_TSPeuclidean.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_TSPeuclidean.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_TSPeuclidean.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP">2.3</a></p></li>
 </ul>
 <section id="pgr-tspeuclidean">
@@ -247,7 +241,7 @@
 </ul>
 <ul>
 <li><dl class="simple">
-<dt>Any duplicated identifier will be ignored. The coordinates that will be kept</dt><dd><p>is arbitrarly.</p>
+<dt>Cualquier identificador duplicado será ignorado. Las coordenadas que se mantendrán</dt><dd><p>is arbitrarly.</p>
 </dd>
 </dl>
 <ul>
@@ -341,7 +335,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>El primer vértice visitado</p>
 <ul class="simple">
@@ -350,14 +344,12 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Último vértice visitado antes de regresar a “<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<td><p>Último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
 <ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">0</span></code> any vertex can become the last visiting vertex before
-returning to <code class="docutils literal notranslate"><span class="pre">start_id</span></code>.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">start_id</span> <span class="pre">=</span> <span class="pre">0</span></code> then it is the first and last
-vertex</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">0</span></code> cualquier vértice puede convertirse en el último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> entonces es el primer y último vértice</p></li>
 </ul>
 </td>
 </tr>
@@ -366,7 +358,7 @@ vertex</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="coordinates-sql">
 <h3>Coordenadas SQL<a class="headerlink" href="#coordinates-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
@@ -379,7 +371,7 @@ vertex</p></li>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identificador del vértice inicial.</p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
@@ -531,7 +523,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost’s metric appro’s metric approximation</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Algoritmo Métrico de la Librería Boost</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
 <li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
 </ul>
@@ -556,7 +548,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

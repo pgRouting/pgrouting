@@ -150,13 +150,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_analyzeGraph.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_analyzeGraph.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_analyzeGraph.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_analyzeGraph.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_analyzeGraph.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_analyzeGraph.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_analyzeGraph.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_analyzeGraph.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_analyzeGraph.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_analyzeGraph.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_analyzeGraph.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_analyzeGraph.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_analyzeGraph.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_analyzeGraph.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_analyzeGraph.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeGraph.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeGraph.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_graph.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_graph.html">2.0</a></p></li>
 </ul>
 <section id="pgr-analyzegraph">
@@ -324,9 +318,7 @@
 <p class="admonition-title">Advertencia</p>
 <p>An error would occur when</p>
 <p>the arguments are not given in the appropriate order:</p>
-<p>In this example, the column <code class="docutils literal notranslate"><span class="pre">id</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code>
-is passed to the function as the geometry column, and the geometry column
-<code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the id column.</p>
+<p>En este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> se pasa a la función como geometría, y la columna de geometría <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> se pasa a la función de columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -434,8 +426,7 @@ is passed to the function as the geometry column, and the geometry column
 
 </pre></div>
 </div>
-<p>Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal notranslate"><span class="pre">id</span></code> =
-5</p>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con <code class="docutils literal notranslate"><span class="pre">id</span></code> = 5</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom,0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom,0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">)</span>
@@ -904,7 +895,7 @@ is passed to the function as the geometry column, and the geometry column
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

@@ -106,14 +106,14 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 <li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
-<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
-<li><a class="reference internal" href="#combinations-sql">Combinaciones SQL</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+<li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
+<li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
@@ -237,8 +237,8 @@
 <li><p><strong>negativo</strong> cuando pertenece a points_sql</p></li>
 </ul>
 </li>
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
-<li><p>Valores son regresados cuando hay una ruta.</p>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p>
 <ul>
 <li><p>Los valores devueltos tienen la forma de un conjunto de <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
 <li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
@@ -246,7 +246,7 @@
 <li><p>El <cite>agg_cost</cite> en los valores no incluidos <cite>(v, v)</cite> es <cite>0</cite></p></li>
 </ul>
 </li>
-<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay ninguna ruta.</p>
+<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay ruta.</p>
 <ul>
 <li><p>El <cite>agg_cost</cite> en los valores no incluidos <cite>(u, v)</cite> es <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
 </ul>
@@ -256,7 +256,7 @@
 <li><p>Si los valores devueltos se almacenan en una tabla, el índice único sería el par: <cite>(start_vid, end_vid)</cite>.</p></li>
 <li><p>Para los grafos <strong>no dirigidos</strong>, los resultados son <strong>simétricos</strong>.</p>
 <ul>
-<li><p>El  <cite>agg_cost</cite> de <cite>(u, v)</cite>  es el mismo que para <cite>(v, u)</cite>.</p></li>
+<li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
 <li><p>Para fines de optimización, se omite cualquier valor duplicado en <cite>start_vids</cite> o <cite>end_vids</cite> .</p></li>
@@ -318,8 +318,7 @@ RETURNS (start_vid, end_vid, agg_cost)</pre>
 RETURNS (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to point <span class="math notranslate nohighlight">\(3\)</span> and vertex <span class="math notranslate nohighlight">\(7\)</span> on an
-undirected graph</p>
+<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(7\)</span> en un grafo no dirigido</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
@@ -343,7 +342,7 @@ undirected graph</p>
 RETURNS (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span> to point <span class="math notranslate nohighlight">\(3\)</span></p>
+<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(6\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
@@ -366,8 +365,7 @@ RETURNS (start_vid, end_vid, agg_cost)</pre>
 RETURNS (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(15\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span>  to point <span class="math notranslate nohighlight">\(3\)</span> and
-vertex <span class="math notranslate nohighlight">\(1\)</span></p>
+<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(15\)</span> y vértice <span class="math notranslate nohighlight">\(6\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y vértice <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
@@ -427,34 +425,33 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">SQL puntos</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#points-sql">SQL puntos</a> como se describe abajo</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a> como se describe a abajo</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the starting vertex of the path. Negative value is for
 point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices. Negative values are for
-point’s identifiers.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales. Valores negativos son para identificadores de puntos.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identifier of the ending vertex of the path. Negative value is for
 point’s identifier.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
 <td><p>Array of identifiers of ending vertices. Negative values are for point’s
 identifiers.</p></td>
@@ -462,7 +459,7 @@ identifiers.</p></td>
 </tbody>
 </table>
 <section id="optional-parameters">
-<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -476,8 +473,8 @@ identifiers.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
 </ul>
 </td>
 </tr>
@@ -495,13 +492,13 @@ identifiers.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 <td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para manejo del lado derecho.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para lado de manejo izquierdo.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
 </ul>
 </td>
@@ -511,9 +508,9 @@ identifiers.</p></td>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -530,32 +527,31 @@ identifiers.</p></td>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
@@ -572,7 +568,7 @@ it’s not part of the graph.</p></li>
 </dl>
 </section>
 <section id="points-sql">
-<h3>Points SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -589,35 +585,34 @@ it’s not part of the graph.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p><strong>value</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p><strong>valor</strong></p></td>
 <td><p>Identifier of the point.</p>
 <ul class="simple">
 <li><p>Use with positive value, as internally will be converted to negative
 value</p></li>
 <li><p>If column is present, it can not be NULL.</p></li>
-<li><p>If column is not present, a sequential negative <strong>value</strong> will be given
-automatically.</p></li>
+<li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td></td>
 <td><p>Identificador de la arista «más cercana» al punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
-<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
 <td><p>El valor en &lt;0,1&gt; que indica la posición relativa desde el primer punto de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicating if the point is:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
 <li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
-<li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>A la izquierda <cite>l</cite>,</p></li>
 <li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
@@ -635,7 +630,7 @@ automatically.</p></li>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>Combinaciones SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -650,12 +645,12 @@ automatically.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the departure vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><strong>ANY-INTEGER</strong></p></td>
-<td><p>Identifier of the arrival vertex.</p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td><p>Identificador del vértice de llegada.</p></td>
 </tr>
 </tbody>
 </table>
@@ -697,7 +692,7 @@ automatically.</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste agregado de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+<td><p>Costo afregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -741,8 +736,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
 </section>
 <section id="right-side-driving-topology">
 <h3><a class="toc-backref" href="#id3" role="doc-backlink">Right side driving topology</a><a class="headerlink" href="#right-side-driving-topology" title="Permalink to this heading">¶</a></h3>
-<p>Traveling from point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(5\)</span> to points <span class="math notranslate nohighlight">\(\{2, 3,
-6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
+<p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y vértice <span class="math notranslate nohighlight">\(5\)</span> al los puntos <span class="math notranslate nohighlight">\(\{2, 3, 6\}`y vértices :math:\)</span>{10, 11}`</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -767,8 +761,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
 </section>
 <section id="left-side-driving-topology">
 <h3><a class="toc-backref" href="#id4" role="doc-backlink">Left side driving topology</a><a class="headerlink" href="#left-side-driving-topology" title="Permalink to this heading">¶</a></h3>
-<p>Traveling from point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(5\)</span> to points <span class="math notranslate nohighlight">\(\{2, 3,
-6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
+<p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y vértice <span class="math notranslate nohighlight">\(5\)</span> al los puntos <span class="math notranslate nohighlight">\(\{2, 3, 6\}`y vértices :math:\)</span>{10, 11}`</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -793,8 +786,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
 </section>
 <section id="does-not-matter-driving-side-driving-topology">
 <h3><a class="toc-backref" href="#id5" role="doc-backlink">Does not matter driving side driving topology</a><a class="headerlink" href="#does-not-matter-driving-side-driving-topology" title="Permalink to this heading">¶</a></h3>
-<p>Traveling from point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(5\)</span> to points <span class="math notranslate nohighlight">\(\{2, 3,
-6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
+<p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y vértice <span class="math notranslate nohighlight">\(5\)</span> al los puntos <span class="math notranslate nohighlight">\(\{2, 3, 6\}`y vértices :math:\)</span>{10, 11}`</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsCost</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -844,7 +836,7 @@ on the graph of point <cite>(2.9, 1.8)</cite>.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

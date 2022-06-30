@@ -110,13 +110,13 @@
 <li><a class="reference internal" href="#astar-optional-parameters">aStar optional Parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Additional Examples</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -187,7 +187,7 @@
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New <strong>proposed</strong> signature:</p>
+<li><p>Nueva firma <strong>propuesta</strong>:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_aStarCost</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
 </ul>
@@ -218,7 +218,7 @@ using the A* algorithm.</p>
 <li><p>luego por <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </li>
-<li><p>Values are returned when there is a path.</p></li>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
 <li><p>Permita que <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> sean nodos en el grafo:</p>
 <ul>
 <li><p>Si no hay camino de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span>:</p>
@@ -237,26 +237,25 @@ using the A* algorithm.</p>
 </li>
 <li><p>When <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates for the same vertex identifier differ:</p>
 <ul>
-<li><p>A random selection of the vertex’s <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates is used.</p></li>
+<li><p>Se utiliza una selección aleatoria de las coordenadas del vértice <span class="math notranslate nohighlight">\((x,y)\)</span>.</p></li>
 </ul>
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
 <ul class="simple">
-<li><p>It does not return a path.</p></li>
-<li><p>Returns the sum of the costs of the shortest path of each pair combination of
-nodes requested.</p></li>
+<li><p>No devuelve una ruta.</p></li>
+<li><p>Devuelve la suma de los costos de la ruta más corta para cada par de combinación de nodos requeridos.</p></li>
 <li><p>Let be the case the values returned are stored in a table, so the unique index
 would be the pair: <cite>(start_vid, end_vid)</cite></p></li>
 <li><p>For undirected graphs, the results are symmetric.</p>
 <ul>
-<li><p>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</p></li>
+<li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
 <li><p>The returned values are ordered in ascending order:</p>
 <ul>
 <li><p><cite>start_vid</cite> ascending</p></li>
-<li><p><cite>end_vid</cite> ascending</p></li>
+<li><p><cite>end_vid</cite> ascendente</p></li>
 </ul>
 </li>
 </ul>
@@ -284,8 +283,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertex <span class="math notranslate nohighlight">\(12\)</span> on a <strong>directed</strong> graph
-with heuristic <span class="math notranslate nohighlight">\(2\)</span></p>
+<dd class="field-odd"><p>De vértice <span class="math notranslate nohighlight">\(6\)</span> a vértice <span class="math notranslate nohighlight">\(12\)</span> en un grafo <strong>dirigido</strong> usando la heurística <span class="math notranslate nohighlight">\(2\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
@@ -309,8 +307,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(6\)</span> to vertices <span class="math notranslate nohighlight">\(\{10, 12\}\)</span> on a <strong>directed</strong>
-graph with heuristic <span class="math notranslate nohighlight">\(3\)</span> and factor <span class="math notranslate nohighlight">\(3.5\)</span></p>
+<dd class="field-odd"><p>Desde el vértice <span class="math notranslate nohighlight">\(6\)</span> a los vértices <span class="math notranslate nohighlight">\(\{12, 10\}\)</span> en un grafo <strong>dirigido</strong> usando la heurística <span class="math notranslate nohighlight">\(3\)</span> con factor <span class="math notranslate nohighlight">\(3.5\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
@@ -335,8 +332,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{6, 8\}\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> on an
-<strong>undirected</strong> graph with heuristic <span class="math notranslate nohighlight">\(4\)</span></p>
+<dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{6, 8}\)</span> al vértice <span class="math notranslate nohighlight">\(10\)</span> en un grafo <strong>no dirigido</strong> usando la heurística <span class="math notranslate nohighlight">\(4\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
@@ -361,8 +357,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{6, 8\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{10, 12\}\)</span> on a
-<strong>directed</strong> graph with factor <span class="math notranslate nohighlight">\(0.5\)</span></p>
+<dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{6, 8\}\)</span> a los vértices <span class="math notranslate nohighlight">\(\{10, 12\}\)</span> en un gráfico <strong>dirigido</strong> con factor <span class="math notranslate nohighlight">\(0.5\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
@@ -389,8 +384,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Using a combinations table on a <strong>directed</strong> graph with factor
-<span class="math notranslate nohighlight">\(0.5\)</span>.</p>
+<dd class="field-odd"><p>Usando una tabla de combinaciones en un grafo <strong>dirigido</strong> con factor <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 </dd>
 </dl>
 <p>La tabla de combinaciones:</p>
@@ -441,7 +435,7 @@ OR EMPTY SET</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Consulta de aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -461,7 +455,7 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of ending vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices finales.</p></td>
 </tr>
 </tbody>
 </table>
@@ -502,7 +496,7 @@ OR EMPTY SET</pre>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heuristic</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>5</p></td>
-<td><p>Heuristic number. Current valid values 0~5.</p>
+<td><p>Número heurístico. Valores válidos 0~5.</p>
 <ul class="simple">
 <li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Use this value to compare with pgr_dijkstra)</p></li>
 <li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
@@ -516,7 +510,7 @@ OR EMPTY SET</pre>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p>For units manipulation. <span class="math notranslate nohighlight">\(factor &gt; 0\)</span>.</p></td>
+<td><p>Para la manipulación de unidades. math:<cite>factor &gt; 0</cite>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">epsilon</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -529,9 +523,9 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -668,7 +662,7 @@ it’s not part of the graph.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice final.</p></td>
+<td><p>Identificador del vértice destino.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -678,10 +672,10 @@ it’s not part of the graph.</p></li>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Example 1<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y el resultado es ordenado.</p>
+<dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_aStarCost</span><span class="p">(</span>
@@ -722,7 +716,7 @@ it’s not part of the graph.</p></li>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Example 3<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo 3<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Manualmente asignar combinaciones de vértices.</p>
 </dd>
 </dl>
@@ -768,7 +762,7 @@ it’s not part of the graph.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

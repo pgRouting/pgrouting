@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Flow - Familia de funciones." href="flow-family.html" />
+    <link rel="next" title="Flow - Familia de funciones" href="flow-family.html" />
     <link rel="prev" title="pgr_dijkstraNear - Proposed" href="pgr_dijkstraNear.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -112,8 +112,8 @@
 <li><a class="reference internal" href="#near-optional-parameters">Near optional parameters</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inner-queries">Consultas internas</a><ul>
-<li><a class="reference internal" href="#edges-sql">SQL de aristas</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
@@ -134,7 +134,7 @@
     </a>
   </li>
   <li>
-    <a href="flow-family.html" title="Next Chapter: Flow - Familia de funciones."><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Flow - Famili... &raquo;</span>
+    <a href="flow-family.html" title="Next Chapter: Flow - Familia de funciones"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Flow - Famili... &raquo;</span>
     </a>
   </li>
               
@@ -166,11 +166,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraNearCost.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dijkstraNearCost.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraNearCost.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html">3.2</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_dijkstraNearCost.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_dijkstraNearCost.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dijkstraNearCost.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_dijkstraNearCost.html">3.2</a></p></li>
 </ul>
 <section id="pgr-dijkstranearcost-proposed">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Proposed<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Permalink to this heading">¶</a></h1>
@@ -274,8 +270,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Departing on car from vertex <span class="math notranslate nohighlight">\(6\)</span> find the nearest subway
-station.</p>
+<dd class="field-odd"><p>Saliendo en coche desde el vértice <span class="math notranslate nohighlight">\(6\)</span> encontrar la estación de metro más cercana.</p>
 </dd>
 </dl>
 <ul class="simple">
@@ -484,7 +479,7 @@ first <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Consulta de aristas</a> como se describe a continuación</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
@@ -567,9 +562,9 @@ first <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL de aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -681,7 +676,7 @@ first <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del vértice final.</p></td>
+<td><p>Identificador del vértice destino.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
@@ -720,7 +715,7 @@ first <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 25, 2022.<br/>
+      Actualizado por última vez en jun 30, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
