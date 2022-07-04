@@ -11,32 +11,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-04 10:33-0500\n"
+"POT-Creation-Date: 2022-07-04 17:04+0000\n"
 "PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language: es\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_kruskaldd/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_kruskaldd/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/pgr_kruskalDD.rst:12
 msgid ""
-"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
-"pgr_kruskalDD.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
-"pgr_kruskalDD.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
-"pgr_kruskalDD.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/pgr_kruskalDD."
-"html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalDD.html>`__ `3.0 "
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_kruskalDD.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_kruskalDD.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_kruskalDD.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_kruskalDD.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_kruskalDD.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_kruskalDD.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"pgr_kruskalDD.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
-"pgr_kruskalDD.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
-"pgr_kruskalDD.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/pgr_kruskalDD."
-"html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/pgr_kruskalDD.html>`__ `3.0 "
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_kruskalDD.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_kruskalDD.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_kruskalDD.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_kruskalDD.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_kruskalDD.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/es/pgr_kruskalDD.html>`__"
 
 #: ../../build/doc/pgr_kruskalDD.rst:21
@@ -45,8 +47,7 @@ msgstr "``pgr_kruskalDD``"
 
 #: ../../build/doc/pgr_kruskalDD.rst:23
 msgid "``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm."
-msgstr ""
-"``pgr_kruskalDD`` — Nodos de captación utilizando el algoritmo de Kruskal."
+msgstr "``pgr_kruskalDD`` — Nodos de captación utilizando el algoritmo de Kruskal."
 
 #: ../../build/doc/pgr_kruskalDD.rst:28
 msgid "Boost Graph Inside"
@@ -73,13 +74,13 @@ msgstr "Descripción"
 
 #: ../../build/doc/pgr_kruskalDD.rst:39
 msgid ""
-"Using Kruskal's algorithm, extracts the nodes that have aggregate costs less "
-"than or equal to a **distance** from a **root** vertex (or vertices) within "
-"the calculated minimum spanning tree."
+"Using Kruskal's algorithm, extracts the nodes that have aggregate costs "
+"less than or equal to a **distance** from a **root** vertex (or vertices)"
+" within the calculated minimum spanning tree."
 msgstr ""
 "Usando el algoritmo de Kruskal, extraerá los nodos que tienen costos "
-"agregados menores o iguales a la **distancia** desde un vértice (o vértices) "
-"**raíz** dentro del árbol de expansión mínimo calculado."
+"agregados menores o iguales a la **distancia** desde un vértice (o "
+"vértices) **raíz** dentro del árbol de expansión mínimo calculado."
 
 #: ../../build/doc/pgr_kruskalDD.rst:43
 msgid "**The main Characteristics are:**"
@@ -133,32 +134,32 @@ msgstr ""
 msgid "The edges extracted will conform to the corresponding spanning tree."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:7
+#: ../../build/doc/drivingDistance-category.rst:6
 msgid "Edge :math:`(u, v)` will not be included when:"
 msgstr "Arista :math:`(u, v)` no se incluye cuando:"
 
-#: ../../build/doc/drivingDistance-category.rst:9
+#: ../../build/doc/drivingDistance-category.rst:8
 msgid "The distance from the **root** to :math:`u` > limit distance."
 msgstr "La distancia de la **raiz** a:math:`u` > límite de la distancia."
 
-#: ../../build/doc/drivingDistance-category.rst:10
+#: ../../build/doc/drivingDistance-category.rst:9
 msgid "The distance from the **root** to :math:`v` > limit distance."
 msgstr "La distancia de la **raiz** a :math:`v` > límite de la distancia."
 
-#: ../../build/doc/drivingDistance-category.rst:11
+#: ../../build/doc/drivingDistance-category.rst:10
 msgid ""
-"No new nodes are created on the graph, so when is within the limit and is "
-"not within the limit, the edge is not included."
+"No new nodes are created on the graph, so when is within the limit and is"
+" not within the limit, the edge is not included."
 msgstr ""
 "No se crean nuevos nodos en el grafo, por lo que cuando el vértice está "
-"dentro de los límites y parte de la arista no está dentro de los límites, la "
-"arsta no se incluye."
+"dentro de los límites y parte de la arista no está dentro de los límites,"
+" la arsta no se incluye."
 
 #: ../../build/doc/pgr_kruskalDD.rst:53
 msgid "Returned tree nodes from a root vertex are on Depth First Search order."
 msgstr ""
-"Los nodos de árbol devueltos de un vértice raíz están en el orden de Primera "
-"Búsqueda de Profundidad."
+"Los nodos de árbol devueltos de un vértice raíz están en el orden de "
+"Primera Búsqueda de Profundidad."
 
 #: ../../build/doc/pgr_kruskalDD.rst:54
 msgid "Depth First Search running time: :math:`O(E + V)`"
@@ -178,11 +179,11 @@ msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_kruskalDD.rst:76
 msgid ""
-"The Minimum Spanning Tree starting on vertex :math:`6` with :math:`distance "
-"\\leq 3.5`"
+"The Minimum Spanning Tree starting on vertex :math:`6` with "
+":math:`distance \\leq 3.5`"
 msgstr ""
-"El mínimo árbol de expansión que comienza en el vértice:math:`6` con :math:"
-"`distance \\leq 3.5`"
+"El mínimo árbol de expansión que comienza en el vértice:math:`6` con "
+":math:`distance \\leq 3.5`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:87
 msgid "Multiple vertices"
@@ -190,11 +191,11 @@ msgstr "Múltiples vértices"
 
 #: ../../build/doc/pgr_kruskalDD.rst:94
 msgid ""
-"The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with :math:"
-"`distance \\leq 3.5`"
+"The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
+":math:`distance \\leq 3.5`"
 msgstr ""
-"El árbol de expansión mínimo que comienza en los vértices :math:`\\{9, 6\\}` "
-"con :math:`distance \\leq 3.5`"
+"El árbol de expansión mínimo que comienza en los vértices :math:`\\{9, "
+"6\\}` con :math:`distance \\leq 3.5`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:102
 msgid "Parameters"
@@ -372,11 +373,11 @@ msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
-"When negative: edge (``target``, ``source``) does not exist, therefore it's "
-"not part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -476,19 +477,19 @@ msgstr ":doc:`sampledata`"
 
 #: ../../build/doc/pgr_kruskalDD.rst:131
 msgid ""
-"`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/"
-"kruskal_min_spanning_tree.html>`__"
+"`Boost: Kruskal's algorithm "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 msgstr ""
-"`Boost: algoritmo de Kruskal <https://www.boost.org/libs/graph/doc/"
-"kruskal_min_spanning_tree.html>`__"
+"`Boost: algoritmo de Kruskal "
+"<https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
 
 #: ../../build/doc/pgr_kruskalDD.rst:133
 msgid ""
-"`Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/"
-"Kruskal's_algorithm>`__"
+"`Wikipedia: Kruskal's algorithm "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 msgstr ""
-"`Wikipedia: algoritmo de Kruskal <https://en.wikipedia.org/wiki/"
-"Kruskal's_algorithm>`__"
+"`Wikipedia: algoritmo de Kruskal "
+"<https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__"
 
 #: ../../build/doc/pgr_kruskalDD.rst:137
 msgid "Indices and tables"
@@ -502,7 +503,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#: ../../build/doc/drivingDistance-category.rst:5
-msgid ""
-"The edges extracted will conform to the corresponding spanning tree. Edge"
-msgstr "Las aristas extraídas conforman el correspondiente árbol de expansion."

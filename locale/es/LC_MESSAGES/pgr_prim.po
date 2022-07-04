@@ -11,42 +11,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-03 19:08-0500\n"
+"POT-Creation-Date: 2022-07-04 17:04+0000\n"
 "PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_prim/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_prim/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/pgr_prim.rst:12
 msgid ""
-"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
-"pgr_prim.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_prim."
-"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_prim.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_prim.html>`__ `3.1 <https://docs."
-"pgrouting.org/3.1/en/pgr_prim.html>`__ `3.0 <https://docs.pgrouting.org/3.0/"
-"en/pgr_prim.html>`__"
+"**Supported versions:** `Latest "
+"<https://docs.pgrouting.org/latest/en/pgr_prim.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/en/pgr_prim.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_prim.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/en/pgr_prim.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/en/pgr_prim.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"pgr_prim.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/pgr_prim."
-"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/pgr_prim.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_prim.html>`__ `3.1 <https://docs."
-"pgrouting.org/3.1/es/pgr_prim.html>`__ `3.0 <https://docs.pgrouting.org/3.0/"
-"es/pgr_prim.html>`__"
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_prim.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_prim.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_prim.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_prim.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_prim.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_prim.html>`__"
 
 #: ../../build/doc/pgr_prim.rst:21
 msgid "``pgr_prim``"
 msgstr "``pgr_prim``"
 
 #: ../../build/doc/pgr_prim.rst:23
-msgid ""
-"``pgr_prim`` — Minimum spanning forest of a graph using Prim's algorithm."
+msgid "``pgr_prim`` — Minimum spanning forest of a graph using Prim's algorithm."
 msgstr ""
 "``pgr_prim`` — Mínimo bosque de expansión de un grafo, utilizando el "
 "algoritmo de Prim."
@@ -75,8 +75,8 @@ msgstr "Descripción"
 
 #: ../../build/doc/pgr_prim.rst:39
 msgid ""
-"This algorithm finds the minimum spanning forest in a possibly disconnected "
-"graph using Prim's algorithm."
+"This algorithm finds the minimum spanning forest in a possibly "
+"disconnected graph using Prim's algorithm."
 msgstr ""
 "Este algoritmo encuentra el bosque de expansión mínimo en un grafo "
 "posiblemente desconectado usando el algoritmo de Prim."
@@ -237,11 +237,11 @@ msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
-"When negative: edge (``target``, ``source``) does not exist, therefore it's "
-"not part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
@@ -305,20 +305,20 @@ msgstr "Las consultas utilizan la red :doc:`sampledata` ."
 
 #: ../../build/doc/pgr_prim.rst:102
 msgid ""
-"`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/"
-"prim_minimum_spanning_tree.html>`__"
+"`Boost: Prim's algorithm documentation "
+"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
-"`Boost: algoritmo de Prim <https://www.boost.org/libs/graph/doc/"
-"prim_minimum_spanning_tree.html>`__"
+"`Boost: algoritmo de Prim "
+"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 
 #: ../../build/doc/pgr_prim.rst:104
 #, python-format
 msgid ""
-"`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim"
-"%27s_algorithm>`__"
+"`Wikipedia: Prim's algorithm "
+"<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
-"`Wikipedia: algoritmo de Prim <https://en.wikipedia.org/wiki/Prim"
-"%27s_algorithm>`__"
+"`Wikipedia: algoritmo de Prim "
+"<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 
 #: ../../build/doc/pgr_prim.rst:108
 msgid "Indices and tables"
@@ -332,22 +332,3 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#: ../../build/doc/pgr_prim.rst:94
-msgid "include:: pgRouting-concepts.rst"
-msgstr ".. include:: pgRouting-concepts.rst"
-
-#: ../../build/doc/pgr_prim.rst
-msgid "start-after"
-msgstr "start-after"
-
-#: ../../build/doc/pgr_prim.rst:93
-msgid "r-edge-cost-start"
-msgstr "r-edge-cost-start"
-
-#: ../../build/doc/pgr_prim.rst
-msgid "end-before"
-msgstr "end-before"
-
-#: ../../build/doc/pgr_prim.rst:94
-msgid "r-edge-cost-end"
-msgstr "r-edge-cost-end"
