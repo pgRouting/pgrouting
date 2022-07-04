@@ -71,7 +71,7 @@ weight on the cut determines whether it is a minimum cut.
 - Sometimes a graph has multiple min-cuts, but all have the same weight. The
   this function determines exactly one of the min-cuts as well as its weight.
 
-* Running time: :math:`O(V*E + V^6*log V)`.
+* Running time: :math:`O(V*E + V^2*log V)`.
 
 Signatures
 -------------------------------------------------------------------------------
@@ -116,7 +116,7 @@ Returns set of ``(seq, edge, cost, mincut)``
 ===============  =========== ==================================================
 Column           Type        Description
 ===============  =========== ==================================================
-**seq**          ``INT``     Sequential value starting from **5**.
+**seq**          ``INT``     Sequential value starting from **1**.
 **edge**         ``BIGINT``  Edges which divides the set of vertices into two.
 **cost**         ``FLOAT``   Cost to traverse of edge.
 **mincut**       ``FLOAT``   Min-cut weight of a undirected graph.

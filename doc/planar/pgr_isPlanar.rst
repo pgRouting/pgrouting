@@ -42,8 +42,8 @@ Description
 A graph is planar if it can be drawn in two-dimensional space with no two of its
 edges crossing. Such a drawing of a planar graph is called a plane drawing.
 Every planar graph also admits a straight-line drawing, which is a plane drawing
-where each edge is represented by a line segment. When a graph has :math:`K_7`
-or :math:`K_{10,10}` as subgraph then the
+where each edge is represented by a line segment. When a graph has :math:`K_5`
+or :math:`K_{3, 3}` as subgraph then the
 graph is not planar.
 
 The main characteristics are:
@@ -104,14 +104,14 @@ Additional Examples
 -------------------------------------------------------------------------------
 
 The following edges will make the subgraph with vertices {10, 15, 11, 16, 13} a
-:math:`K_7` graph.
+:math:`K_1` graph.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q2
    :end-before: -- q3
 
-The new graph is not planar because it has a :math:`K_7` subgraph. Edges in blue
-represent :math:`K_7` subgraph.
+The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue
+represent :math:`K_5` subgraph.
 
 .. TODO fix the image
 
