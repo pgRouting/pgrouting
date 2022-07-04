@@ -10,17 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 19:21+0000\n"
+"POT-Creation-Date: 2022-07-04 10:33-0500\n"
 "PO-Revision-Date: 2022-06-28 15:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"drivingdistance-category/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/drivingdistance-category/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/drivingDistance-category.rst:12
@@ -34,13 +33,14 @@ msgid ""
 "/drivingDistance-category.html>`__) `3.0 "
 "<https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"drivingDistance-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
-"drivingDistance-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
-"drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
-"drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
-"drivingDistance-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
-"drivingDistance-category.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
+"/drivingDistance-category.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/drivingDistance-category.html>`__) "
+"`3.3 <https://docs.pgrouting.org/3.3/es/drivingDistance-category.html>`__"
+" `3.2 <https://docs.pgrouting.org/3.2/es/drivingDistance-"
+"category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
+"/drivingDistance-category.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/drivingDistance-category.html>`__"
 
 #: ../../build/doc/drivingDistance-category.rst:19
 msgid ""
@@ -63,8 +63,8 @@ msgid ""
 ":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
 "algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo de "
-"Dijkstra"
+":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo "
+"de Dijkstra"
 
 #: ../../build/doc/drivingDistance-category.rst:30
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
@@ -73,7 +73,8 @@ msgstr ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 #: ../../build/doc/drivingDistance-category.rst:31
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de Kruskal"
+":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de "
+"Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:32
 msgid "Post pocessing"
@@ -138,102 +139,102 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:62
-msgid "The edges extracted will conform to the corresponding spanning tree. Edge"
+msgid "The edges extracted will conform to the corresponding spanning tree."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:64
+#: ../../build/doc/drivingDistance-category.rst:63
 msgid "Edge :math:`(u, v)` will not be included when:"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:66
+#: ../../build/doc/drivingDistance-category.rst:65
 msgid "The distance from the **root** to :math:`u` > limit distance."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:67
+#: ../../build/doc/drivingDistance-category.rst:66
 msgid "The distance from the **root** to :math:`v` > limit distance."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:68
+#: ../../build/doc/drivingDistance-category.rst:67
 msgid ""
 "No new nodes are created on the graph, so when is within the limit and is"
 " not within the limit, the edge is not included."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:74
+#: ../../build/doc/drivingDistance-category.rst:73
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/drivingDistance-category.rst:83
+#: ../../build/doc/drivingDistance-category.rst:82
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: ../../build/doc/drivingDistance-category.rst:84
+#: ../../build/doc/drivingDistance-category.rst:83
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/drivingDistance-category.rst:85
+#: ../../build/doc/drivingDistance-category.rst:84
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:86
+#: ../../build/doc/drivingDistance-category.rst:85
 msgid "`Edges SQL`_"
 msgstr "`SQL Aristas`_"
 
-#: ../../build/doc/drivingDistance-category.rst:87
+#: ../../build/doc/drivingDistance-category.rst:86
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/drivingDistance-category.rst:88
+#: ../../build/doc/drivingDistance-category.rst:87
 msgid "Edges SQL as described below."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:89
+#: ../../build/doc/drivingDistance-category.rst:88
 msgid "**Root vid**"
 msgstr "**id raíz**"
 
-#: ../../build/doc/drivingDistance-category.rst:90
+#: ../../build/doc/drivingDistance-category.rst:89
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/drivingDistance-category.rst:91
+#: ../../build/doc/drivingDistance-category.rst:90
 msgid "Identifier of the root vertex of the tree."
 msgstr "Identificador del vértice raíz del árbol."
 
-#: ../../build/doc/drivingDistance-category.rst:92
+#: ../../build/doc/drivingDistance-category.rst:91
 msgid "**Root vids**"
 msgstr "**Raíces**"
 
-#: ../../build/doc/drivingDistance-category.rst:93
+#: ../../build/doc/drivingDistance-category.rst:92
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARREGLO[ENTEROS]``"
 
-#: ../../build/doc/drivingDistance-category.rst:94
+#: ../../build/doc/drivingDistance-category.rst:93
 msgid "Array of identifiers of the root vertices."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:96
+#: ../../build/doc/drivingDistance-category.rst:95
 msgid ":math:`0` values are ignored"
 msgstr "Valores :math:`0` son ignorados"
 
-#: ../../build/doc/drivingDistance-category.rst:97
+#: ../../build/doc/drivingDistance-category.rst:96
 msgid "For optimization purposes, any duplicated value is ignored."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:98
+#: ../../build/doc/drivingDistance-category.rst:97
 msgid "**distance**"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:99
+#: ../../build/doc/drivingDistance-category.rst:98
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/drivingDistance-category.rst:100
+#: ../../build/doc/drivingDistance-category.rst:99
 msgid "Upper limit for the inclusion of a node in the result."
 msgstr "Límite superior para la inclusión del nodo en el resultado."
 
-#: ../../build/doc/drivingDistance-category.rst:102
+#: ../../build/doc/drivingDistance-category.rst:101
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
@@ -243,7 +244,7 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
-#: ../../build/doc/drivingDistance-category.rst:104
+#: ../../build/doc/drivingDistance-category.rst:103
 #: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
@@ -252,16 +253,16 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgid "ANY-NUMERIC"
 msgstr "FLOTANTES"
 
-#: ../../build/doc/drivingDistance-category.rst:105
+#: ../../build/doc/drivingDistance-category.rst:104
 #: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
-#: ../../build/doc/drivingDistance-category.rst:110
+#: ../../build/doc/drivingDistance-category.rst:109
 msgid "Inner Queries"
 msgstr "Consultas Internas"
 
-#: ../../build/doc/drivingDistance-category.rst:113
+#: ../../build/doc/drivingDistance-category.rst:112
 msgid "Edges SQL"
 msgstr "SQL aristas"
 
@@ -333,25 +334,26 @@ msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
-#: ../../build/doc/drivingDistance-category.rst:120
+#: ../../build/doc/drivingDistance-category.rst:119
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/drivingDistance-category.rst:123
+#: ../../build/doc/drivingDistance-category.rst:122
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/drivingDistance-category.rst:124
+#: ../../build/doc/drivingDistance-category.rst:123
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/drivingDistance-category.rst:125
+#: ../../build/doc/drivingDistance-category.rst:124
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
