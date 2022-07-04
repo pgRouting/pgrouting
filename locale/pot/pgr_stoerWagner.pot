@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 12:55-0500\n"
+"POT-Creation-Date: 2022-07-03 19:08-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,7 +164,7 @@ msgid "Sometimes a graph has multiple min-cuts, but all have the same weight. Th
 msgstr ""
 
 #: ../../build/doc/pgr_stoerWagner.rst:74
-msgid "Running time: :math:`O(V*E + V^6*log V)`."
+msgid "Running time: :math:`O(V*E + V^2*log V)`."
 msgstr ""
 
 #: ../../build/doc/pgr_stoerWagner.rst:77
@@ -320,7 +320,7 @@ msgid "``INT``"
 msgstr ""
 
 #: ../../build/doc/pgr_stoerWagner.rst:119
-msgid "Sequential value starting from **5**."
+msgid "Sequential value starting from **1**."
 msgstr ""
 
 #: ../../build/doc/pgr_stoerWagner.rst:120

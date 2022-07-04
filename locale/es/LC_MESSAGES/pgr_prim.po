@@ -11,17 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-24 12:46-0500\n"
+"POT-Creation-Date: 2022-07-03 19:08-0500\n"
 "PO-Revision-Date: 2022-06-28 01:51+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_prim/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_prim/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_prim.rst:12
@@ -34,12 +33,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_prim.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"pgr_prim.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/pgr_prim.html>`__)"
-" `3.3 <https://docs.pgrouting.org/3.3/es/pgr_prim.html>`__ `3.2 <https://docs"
-".pgrouting.org/3.2/es/pgr_prim.html>`__ `3.1 <https://docs.pgrouting.org/3.1/"
-"es/pgr_prim.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/pgr_prim."
-"html>`__"
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_prim.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_prim.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_prim.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_prim.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_prim.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_prim.html>`__"
 
 #: ../../build/doc/pgr_prim.rst:21
 #, fuzzy
@@ -69,7 +69,8 @@ msgid "New **Official** function"
 msgstr "Nueva función **Oficial**"
 
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/pgr_prim.rst:37
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12 ../../build/doc/pgr_prim.rst:37
 msgid "Description"
 msgstr "Descripción"
 
@@ -147,6 +148,7 @@ msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Type"
 msgstr "Tipo"
 
@@ -171,6 +173,7 @@ msgid "Edges SQL"
 msgstr "SQL aristas"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Column"
 msgstr "Columna"
 
@@ -208,6 +211,7 @@ msgstr "``target``"
 msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo vértice de la arista."
 
+#: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
 msgstr "``cost``"
@@ -238,8 +242,8 @@ msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
@@ -265,25 +269,27 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
-#: ../../build/doc/pgr_prim.rst:94
-msgid "include:: pgRouting-concepts.rst"
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid "Returns SET OF ``(edge, cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst
+#: ../../build/doc/pgRouting-concepts.rst:13
 #, fuzzy
-msgid "start-after"
-msgstr "Parámetro"
+msgid "``edge``"
+msgstr "``id``"
 
-#: ../../build/doc/pgr_prim.rst:93
-msgid "r-edge-cost-start"
-msgstr ""
+#: ../../build/doc/pgRouting-concepts.rst:14
+#, fuzzy
+msgid "``BIGINT``"
+msgstr "``id``"
 
-#: ../../build/doc/pgr_prim.rst
-msgid "end-before"
-msgstr ""
+#: ../../build/doc/pgRouting-concepts.rst:17
+#, fuzzy
+msgid "``FLOAT``"
+msgstr "``cost``"
 
-#: ../../build/doc/pgr_prim.rst:94
-msgid "r-edge-cost-end"
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "Cost to traverse the edge."
 msgstr ""
 
 #: ../../build/doc/pgr_prim.rst:97
@@ -330,3 +336,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_prim.rst:110
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+

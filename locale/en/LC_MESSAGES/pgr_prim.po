@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 12:55-0500\n"
+"POT-Creation-Date: 2022-07-03 19:08-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,8 @@ msgid "New **Official** function"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/pgr_prim.rst:37
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:12 ../../build/doc/pgr_prim.rst:37
 msgid "Description"
 msgstr ""
 
@@ -128,6 +129,7 @@ msgid "Parameter"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Type"
 msgstr ""
 
@@ -152,6 +154,7 @@ msgid "Edges SQL"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Column"
 msgstr ""
 
@@ -189,6 +192,7 @@ msgstr ""
 msgid "Identifier of the second end point vertex of the edge."
 msgstr ""
 
+#: ../../build/doc/pgRouting-concepts.rst:16
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
 msgstr ""
@@ -244,24 +248,24 @@ msgstr ""
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:94
-msgid "include:: pgRouting-concepts.rst"
+#: ../../build/doc/pgRouting-concepts.rst:3
+msgid "Returns SET OF ``(edge, cost)``"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst
-msgid "start-after"
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "``edge``"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:93
-msgid "r-edge-cost-start"
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst
-msgid "end-before"
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/pgr_prim.rst:94
-msgid "r-edge-cost-end"
+#: ../../build/doc/pgRouting-concepts.rst:18
+msgid "Cost to traverse the edge."
 msgstr ""
 
 #: ../../build/doc/pgr_prim.rst:97

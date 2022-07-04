@@ -11,17 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-24 12:46-0500\n"
+"POT-Creation-Date: 2022-07-03 19:08-0500\n"
 "PO-Revision-Date: 2022-06-28 14:59+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_stoerwagner/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_stoerwagner/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_stoerWagner.rst:11
@@ -34,13 +33,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_stoerWagner.html>`__) `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"pgr_stoerWagner.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
-"pgr_stoerWagner.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
-"pgr_stoerWagner.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
-"pgr_stoerWagner.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
-"pgr_stoerWagner.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
-"pgr_stoerWagner.html>`__"
+"**Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_stoerWagner.html>`__ (`3.4 "
+"<https://docs.pgrouting.org/3.4/es/pgr_stoerWagner.html>`__) `3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_stoerWagner.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_stoerWagner.html>`__ `3.1 "
+"<https://docs.pgrouting.org/3.1/es/pgr_stoerWagner.html>`__ `3.0 "
+"<https://docs.pgrouting.org/3.0/es/pgr_stoerWagner.html>`__"
 
 #: ../../build/doc/pgr_stoerWagner.rst:20
 msgid "pgr_stoerWagner - Experimental"
@@ -227,7 +226,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_stoerWagner.rst:74
 #, fuzzy
-msgid "Running time: :math:`O(V*E + V^6*log V)`."
+msgid "Running time: :math:`O(V*E + V^2*log V)`."
 msgstr "Tiempo de ejecución: :math:`O(V*E + V^2*log V)`."
 
 #: ../../build/doc/pgr_stoerWagner.rst:77
@@ -345,8 +344,8 @@ msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
@@ -386,7 +385,7 @@ msgstr "``INT``"
 
 #: ../../build/doc/pgr_stoerWagner.rst:119
 #, fuzzy
-msgid "Sequential value starting from **5**."
+msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_stoerWagner.rst:120
@@ -458,3 +457,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_stoerWagner.rst:149
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
