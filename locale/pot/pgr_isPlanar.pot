@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 12:55-0500\n"
+"POT-Creation-Date: 2022-07-03 19:08-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgid "Description"
 msgstr ""
 
 #: ../../build/doc/pgr_isPlanar.rst:42
-msgid "A graph is planar if it can be drawn in two-dimensional space with no two of its edges crossing. Such a drawing of a planar graph is called a plane drawing. Every planar graph also admits a straight-line drawing, which is a plane drawing where each edge is represented by a line segment. When a graph has :math:`K_7` or :math:`K_{10,10}` as subgraph then the graph is not planar."
+msgid "A graph is planar if it can be drawn in two-dimensional space with no two of its edges crossing. Such a drawing of a planar graph is called a plane drawing. Every planar graph also admits a straight-line drawing, which is a plane drawing where each edge is represented by a line segment. When a graph has :math:`K_5` or :math:`K_{3, 3}` as subgraph then the graph is not planar."
 msgstr ""
 
 #: ../../build/doc/pgr_isPlanar.rst:49
@@ -306,11 +306,11 @@ msgid "Additional Examples"
 msgstr ""
 
 #: ../../build/doc/pgr_isPlanar.rst:106
-msgid "The following edges will make the subgraph with vertices {10, 15, 11, 16, 13} a :math:`K_7` graph."
+msgid "The following edges will make the subgraph with vertices {10, 15, 11, 16, 13} a :math:`K_1` graph."
 msgstr ""
 
 #: ../../build/doc/pgr_isPlanar.rst:113
-msgid "The new graph is not planar because it has a :math:`K_7` subgraph. Edges in blue represent :math:`K_7` subgraph."
+msgid "The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue represent :math:`K_5` subgraph."
 msgstr ""
 
 #: ../../build/doc/pgr_isPlanar.rst:126
