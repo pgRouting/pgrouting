@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 12:55-0500\n"
+"POT-Creation-Date: 2022-07-04 10:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,22 +108,22 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:5
-msgid "The edges extracted will conform to the corresponding spanning tree. Edge"
+msgid "The edges extracted will conform to the corresponding spanning tree."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:7
+#: ../../build/doc/drivingDistance-category.rst:6
 msgid "Edge :math:`(u, v)` will not be included when:"
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:9
+#: ../../build/doc/drivingDistance-category.rst:8
 msgid "The distance from the **root** to :math:`u` > limit distance."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:10
+#: ../../build/doc/drivingDistance-category.rst:9
 msgid "The distance from the **root** to :math:`v` > limit distance."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:11
+#: ../../build/doc/drivingDistance-category.rst:10
 msgid ""
 "No new nodes are created on the graph, so when is within the limit and is"
 " not within the limit, the edge is not included."

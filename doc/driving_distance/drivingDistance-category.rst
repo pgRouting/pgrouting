@@ -60,7 +60,6 @@ Calculate nodes that are within a distance.
 * Extracts all the nodes that have costs less than or equal to the value
   distance.
 * The edges extracted will conform to the corresponding spanning tree.
-  Edge
 * Edge :math:`(u, v)` will not be included when:
 
   * The distance from the **root** to :math:`u` > limit distance.

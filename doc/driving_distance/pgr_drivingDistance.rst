@@ -194,7 +194,7 @@ Where:
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: From vertices :math:`\{11, 16\}` for a distance of :math:`10.0` on an
+:Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` on an
           undirected graph
 
 .. literalinclude:: doc-pgr_drivingDistance.queries
