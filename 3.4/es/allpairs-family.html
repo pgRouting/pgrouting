@@ -96,7 +96,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Todos los Pares - Familia de Funciones</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#introduction">Introducción</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 </ul>
@@ -172,28 +172,24 @@
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2>Introducción<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Las principales características son:</p>
 <ul class="simple">
 <li><p>No devuelve una ruta.</p></li>
-<li><p>Returns the sum of the costs of the shortest path for each pair of nodes in
-the graph.</p></li>
+<li><p>Regresa la suma de los costos de la ruta más corta para cada par de nodos del grafo.</p></li>
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
-<li><p>Boost returns a <span class="math notranslate nohighlight">\(V \times V\)</span> matrix, where the infinity values.
-Represent the distance between vertices for which there is no path.</p>
+<li><p>Boost devuelve una matriz <span class="math notranslate nohighlight">\(V \times V\)</span> donde los valores infinitos representan la distancia entre vértices para los que no hay ruta.</p>
 <ul>
-<li><p>We return only the non infinity values in form of a set of <cite>(start_vid,
-end_vid, agg_cost)</cite>.</p></li>
+<li><p>Solo regresa los valores no infinitos en forma de un conjunto de <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Let be the case the values returned are stored in a table, so the unique index
-would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
+<li><p>Sea el caso donde los valores devueltos se almacenan en una tabla, por lo que el índice único sería el par: <cite>(start_vid, end_vid)</cite>.</p></li>
 <li><p>Para el grafo no dirigido, los resultados son simétricos.</p>
 <ul>
 <li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>When  <cite>start_vid</cite> = <cite>end_vid</cite>, the <cite>agg_cost</cite> = 0.</p></li>
+<li><p>En caso de <cite>start_vid</cite> = <cite>end_vid</cite>, el <cite>agg_cost</cite> = 0.</p></li>
 <li><p><strong>Recomendación: utilice un cuadro delimitador de no más de 3500 aristas.</strong></p></li>
 </ul>
 </section>
@@ -204,7 +200,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -222,7 +218,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -254,7 +250,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -266,7 +262,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
@@ -284,7 +280,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -307,7 +303,7 @@ would be the pair: <cite>(start_vid, end_vid)</cite>.</p></li>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -722,7 +718,7 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
-<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">floyd-Warshall</a></p></li>
+<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Algoritmo floyd-Warshall</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">

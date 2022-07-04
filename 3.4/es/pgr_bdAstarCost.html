@@ -107,7 +107,7 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#astar-optional-parameters">aStar optional Parameters</a></li>
+<li><a class="reference internal" href="#astar-optional-parameters">Parámetros opcionales de aStar</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -165,13 +165,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_bdAstarCost.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_bdAstarCost.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_bdAstarCost.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_bdAstarCost.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_bdAstarCost.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_bdAstarCost.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_bdAstarCost.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_bdAstarCost.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_bdAstarCost.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_bdAstarCost.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_bdAstarCost.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_bdAstarCost.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_bdAstar.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_bdAstar.html">2.5</a></p></li>
 </ul>
 <section id="pgr-bdastarcost">
@@ -189,7 +183,7 @@
 <ul>
 <li><p>Nueva firma <strong>propuesta</strong>:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCost</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCost</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -199,7 +193,7 @@
 <li><p>Función <strong>oficial</strong></p></li>
 </ul>
 </li>
-<li><p>Version 2.4.0</p>
+<li><p>Versión 2.4.0</p>
 <ul>
 <li><p>Nueva función <strong>propuesta</strong></p></li>
 </ul>
@@ -210,15 +204,15 @@
 <p>La función <code class="docutils literal notranslate"><span class="pre">pgr_bdAstarCost</span></code> Sumariza el costo del camino más corto utilizando el algoritmo bidireccional A*.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>Process works for directed and undirected graphs.</p></li>
-<li><p>Ordering is:</p>
+<li><p>Funciona para grafos dirigidos y no dirigidos.</p></li>
+<li><p>Ordenamiento es:</p>
 <ul>
 <li><p>primero por <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (si existe)</p></li>
 <li><p>luego por <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </li>
 <li><p>Los valores se devuelven cuando hay una ruta.</p></li>
-<li><p>Permita que <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> sean nodos en el grafo:</p>
+<li><p>Sean <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> nodos en el grafo:</p>
 <ul>
 <li><p>Si no hay camino de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span>:</p>
 <ul>
@@ -234,7 +228,7 @@
 </li>
 </ul>
 </li>
-<li><p>When <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates for the same vertex identifier differ:</p>
+<li><p>Cuando las coordenadas (x,y) para el mismo identificador de vértice difieren:</p>
 <ul>
 <li><p>Se utiliza una selección aleatoria de las coordenadas del vértice <span class="math notranslate nohighlight">\((x,y)\)</span>.</p></li>
 </ul>
@@ -244,16 +238,15 @@
 <ul class="simple">
 <li><p>No devuelve una ruta.</p></li>
 <li><p>Devuelve la suma de los costos de la ruta más corta para cada par de combinación de nodos requeridos.</p></li>
-<li><p>Let be the case the values returned are stored in a table, so the unique index
-would be the pair: <cite>(start_vid, end_vid)</cite></p></li>
-<li><p>For undirected graphs, the results are symmetric.</p>
+<li><p>Sea el caso de que los resultados se almacenen en una tabla, el índice unico lo conformarían el par <cite>(start_vid, end_vid)</cite></p></li>
+<li><p>Para grafos no dirigidos, los resultados son simétricos.</p>
 <ul>
 <li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>The returned values are ordered in ascending order:</p>
+<li><p>Loas valores regresandos son ordenados en orden ascendente:</p>
 <ul>
-<li><p><cite>start_vid</cite> ascending</p></li>
+<li><p><cite>start_vid</cite> ascendente</p></li>
 <li><p><cite>end_vid</cite> ascendente</p></li>
 </ul>
 </li>
@@ -447,15 +440,15 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
@@ -487,7 +480,7 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="astar-optional-parameters">
-<h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de aStar<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -502,7 +495,7 @@ OR EMPTY SET</pre>
 <td><p>5</p></td>
 <td><p>Número heurístico. Valores válidos 0~5.</p>
 <ul class="simple">
-<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Use this value to compare with pgr_dijkstra)</p></li>
+<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Utilizar este valor para comparar con pgr_dijkstra)</p></li>
 <li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
 <li><p>2: <span class="math notranslate nohighlight">\(h(v) = abs(min(\Delta x, \Delta y))\)</span></p></li>
 <li><p>3: <span class="math notranslate nohighlight">\(h(v) = \Delta x * \Delta x + \Delta y * \Delta y\)</span></p></li>
@@ -523,7 +516,7 @@ OR EMPTY SET</pre>
 </tr>
 </tbody>
 </table>
-<p>See <a class="reference internal" href="aStar-family.html#astar-heuristics"><span class="std std-ref">heuristics</span></a> available and <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">factor</span></a> handling.</p>
+<p>Ver <a class="reference internal" href="aStar-family.html#astar-heuristics"><span class="std std-ref">heuristicas</span></a> disponibles y manupulación de <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">factor</span></a>.</p>
 </section>
 </section>
 <section id="inner-queries">
@@ -565,15 +558,14 @@ OR EMPTY SET</pre>
 <td></td>
 <td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando es negativo: la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>),</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>),</p>
 <ul class="simple">
 <li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
@@ -582,22 +574,22 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x1</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>X coordinate of <code class="docutils literal notranslate"><span class="pre">source</span></code> vertex.</p></td>
+<td><p>Coordenada X del vértice <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y1</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Y coordinate of <code class="docutils literal notranslate"><span class="pre">source</span></code> vertex.</p></td>
+<td><p>Coordenada Y del vértice <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x2</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>X coordinate of <code class="docutils literal notranslate"><span class="pre">target</span></code> vertex.</p></td>
+<td><p>Coordenada X del vértice <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y2</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Y coordinate of <code class="docutils literal notranslate"><span class="pre">target</span></code> vertex.</p></td>
+<td><p>Coordenada Y del vértice <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -678,7 +670,7 @@ it’s not part of the graph.</p></li>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example 1<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo 1<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
@@ -700,7 +692,7 @@ it’s not part of the graph.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 2<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Making <strong>start vids</strong> the same as <strong>end vids</strong>.</p>
+<dd class="field-odd"><p>Haciendo <strong>vids iniciales</strong> los mismos que <strong>vids destinos</strong>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstarCost</span><span class="p">(</span>

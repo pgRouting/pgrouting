@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_bipartite -Experimental &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_bipartite - Experimental &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_bipartite -Experimental</a><ul>
+<li><a class="reference internal" href="#">pgr_bipartite - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
@@ -156,9 +156,8 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_bipartite.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_bipartite.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_bipartite.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_bipartite.html">3.2</a></p></li>
 </ul>
 <section id="pgr-bipartite-experimental">
-<h1>pgr_bipartite -Experimental<a class="headerlink" href="#pgr-bipartite-experimental" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_bipartite</span></code> — Disjoint sets of vertices such that no two vertices within
-the same set are adjacent.</p>
+<h1>pgr_bipartite - Experimental<a class="headerlink" href="#pgr-bipartite-experimental" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_bipartite</span></code> — Conjuntos disjuntos tal que ningun par de vertices en el mismo conjunto son adjacentes.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/is_bipartite.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -169,7 +168,7 @@ the same set are adjacent.</p>
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -183,12 +182,12 @@ the same set are adjacent.</p>
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -199,7 +198,7 @@ the same set are adjacent.</p>
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> signature</p></li>
+<li><p>Nueva función <strong>experimental</strong></p></li>
 </ul>
 </li>
 </ul>
@@ -210,9 +209,7 @@ the same set are adjacent.</p>
 <ul class="simple">
 <li><p>El algoritmo solo funciona en un grafo no dirigido.</p></li>
 <li><p>Los valores devueltos no están ordenados.</p></li>
-<li><p>The algorithm checks graph is bipartite or not. If it is bipartite then it
-returns the node along with two    colors <cite>0</cite> and <cite>1</cite> which represents two
-different sets.</p></li>
+<li><p>El algoritmo comprueba si el grafo es bi-partido o no. Si es bipartido, devuelve el nodo junto con dos colores <cite>0</cite> y <cite>1</cite> que representan dos conjuntos diferentes.</p></li>
 <li><p>Si el grafo no es bipartito, el algoritmo devuelve un conjunto vacío.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
@@ -225,7 +222,7 @@ RETURNS SET OF (vertex_id, color_id)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>When the graph is bipartite</p>
+<dd class="field-odd"><p>Cuando el grafo es bi-partido</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_bipartite(
@@ -267,7 +264,7 @@ OR EMPTY SET</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>
@@ -366,14 +363,13 @@ OR EMPTY SET</pre>
 <dd class="field-odd"><p>El gráfico cíclico de longitud impar no puede ser bipartito.</p>
 </dd>
 </dl>
-<p>The edge <span class="math notranslate nohighlight">\(5 \rightarrow 1\)</span> will make subgraph with vertices <span class="math notranslate nohighlight">\(\{1, 3,
-7, 6, 5\}\)</span> an odd length cyclic graph, as the cycle has 5 vertices.</p>
+<p>La arista <span class="math notranslate nohighlight">\(5 \rightarrow 1\)</span> hace que el sub-grafo con vértices:math:<cite>{1, 3, 7, 6, 5}</cite> se un grafo de ciclo impar, ya que ciclo tiene 5 vértices.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>Edges in blue represent odd length cycle subgraph.</p>
+<p>Aristas en azul representan un grafo de ciclo impar.</p>
 <a class="reference internal image-reference" href="_images/bipartite.png"><img alt="_images/bipartite.png" src="_images/bipartite.png" style="width: 371.6px; height: 346.0px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_bipartite(
     $$SELECT id, source, target, cost, reverse_cost FROM edges$$
@@ -388,7 +384,7 @@ OR EMPTY SET</pre>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/is_bipartite.html">Boost: is_bipartite</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/is_bipartite.html">Boost: es bipartido</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bipartite_graph">Wikipedia: grafo bipartito</a></p></li>
 </ul>
 <ul class="simple">

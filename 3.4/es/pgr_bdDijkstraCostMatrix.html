@@ -156,19 +156,12 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_bdDijkstraCostMatrix.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_bdDijkstraCostMatrix.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_bdDijkstraCostMatrix.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_bdDijkstraCostMatrix.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_bdDijkstraCostMatrix.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_bdDijkstraCostMatrix.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_bdDijkstraCostMatrix.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_bdDijkstraCostMatrix.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_bdDijkstraCostMatrix.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_bdDijkstraCostMatrix.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_bdDijkstraCostMatrix.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html">2.5</a></p></li>
 </ul>
 <section id="pgr-bddijkstracostmatrix">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstraCostMatrix</span></code><a class="headerlink" href="#pgr-bddijkstracostmatrix" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstraCostMatrix</span></code> - Calculates a cost matrix using
-<a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstraCostMatrix</span></code> - Calcula la matriz de costes utilizando <a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a>.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -190,11 +183,11 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>Using bidirectional Dijkstra algorithm, calculate and return a cost matrix.</p>
+<p>Usando el algoritmo bidireccional de Dijkstra, calcular y regresar una matriz de costos.</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p>
 <ul>
-<li><p>A negative value on a cost column is interpreted as the edge does not exist.</p></li>
+<li><p>Valor no negativo en una columna de costo se interpreta como la arista no exite.</p></li>
 </ul>
 </li>
 <li><p>Los valores se devuelven cuando hay una ruta.</p></li>
@@ -225,10 +218,10 @@
 <li><p>Se puede utilizar como entrada para <a class="reference internal" href="pgr_TSP.html"><span class="doc">pgr_TSP</span></a>.</p>
 <ul>
 <li><p>Usar directamente cuando la matriz resultante es simétrica y no hay valor <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
-<li><p>It will be the users responsibility to make the matrix symmetric.</p>
+<li><p>Es responsabilidad dels usuario hacer que la matriz sea simétrica.</p>
 <ul>
 <li><p>Mediante el uso de la media geométrica o armónica de los valores no simétricos.</p></li>
-<li><p>By using max or min the non symmetric values.</p></li>
+<li><p>Mediante el uso de max o min, los valores no simétricos.</p></li>
 <li><p>Estableciendo el triángulo superior para que sea la imagen reflejada del triángulo inferior.</p></li>
 <li><p>Estableciendo el triángulo inferior para que sea la imagen reflejada del triángulo superior.</p></li>
 </ul>
@@ -236,10 +229,9 @@
 <li><p>También es responsabilidad de los usuarios para fijar un valor <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
 </ul>
 </li>
-<li><p>Each function works as part of the family it belongs to.</p></li>
+<li><p>Cada función funciona como parte de la familia a la que pertenece.</p></li>
 <li><p>No devuelve una ruta.</p></li>
-<li><p>Returns the sum of the costs of the shortest path for pair combination of
-nodes in the graph.</p></li>
+<li><p>Devuelve la suma de los costos de la ruta más corta para la combinación de pares de nodos en el grafo.</p></li>
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
 <li><p>Los valores se devuelven cuando hay una ruta.</p>
 <ul>
@@ -257,16 +249,16 @@ nodes in the graph.</p></li>
 </li>
 <li><p>Sea el caso, los valores devueltos se almacenan en una tabla:</p>
 <ul>
-<li><p>The unique index would be the pair: <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>.</p></li>
+<li><p>El índice único es el par: <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid)</span></code>.</p></li>
 </ul>
 </li>
-<li><p>Depending on the function and its parameters, the results can be symmetric.</p>
+<li><p>Dependiendo de la función y sus parámetros, los resultados pueden ser simétricos.</p>
 <ul>
 <li><p>El costo agregado de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Any duplicated value in the <strong>start vids</strong> are ignored.</p></li>
-<li><p>The returned values are ordered:</p>
+<li><p>Se omite cualquier valor duplicado en <strong>ids de veértices</strong>.</p></li>
+<li><p>Los valores regresados se ordenan:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code> ascendente</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code> ascendente</p></li>
@@ -281,8 +273,7 @@ nodes in the graph.</p></li>
 RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Symmetric cost matrix for vertices <span class="math notranslate nohighlight">\(\{5, 6, 10, 15\}\)</span> on an
-<strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>Matriz de costos simétrica para vértices <span class="math notranslate nohighlight">\(\{5, 6, 10, 15}\)</span> en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstraCostMatrix</span><span class="p">(</span>
@@ -326,7 +317,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)</pre>
 </tr>
 <tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
 </tbody>
 </table>

@@ -159,18 +159,11 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_kruskalBFS.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_kruskalBFS.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_kruskalBFS.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_kruskalBFS.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_kruskalBFS.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_kruskalBFS.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_kruskalBFS.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_kruskalBFS.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_kruskalBFS.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_kruskalBFS.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_kruskalBFS.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_kruskalBFS.html">3.0</a></p></li>
 </ul>
 <section id="pgr-kruskalbfs">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code><a class="headerlink" href="#pgr-kruskalbfs" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> — Kruskal’s algorithm for Minimum Spanning Tree with breadth
-First Search ordering.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_kruskalBFS</span></code> — Algoritmo de Kruskal para el Árbol de Expansión Mínimo con orden de Primera Búsqueda en Anchura.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -187,8 +180,7 @@ First Search ordering.</p>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>Visits and extracts the nodes information in Breath First Search ordering
-of the Minimum Spanning Tree created using Kruskal’s algorithm.</p>
+<p>Visita y extrae la información de los nodos en la orden de Primera Búsqueda en Anchura del Árbol de Expansión Mínimo creado con el algoritmo de Kruskal.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>Su implementación es solo para grafo <strong>no dirigido</strong>.</p></li>
@@ -225,7 +217,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The Minimum Spanning Tree having as root vertex <span class="math notranslate nohighlight">\(6\)</span></p>
+<dd class="field-odd"><p>El Árbol de Expansión Mínimo que tiene como vértice raíz <span class="math notranslate nohighlight">\(6\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalBFS</span><span class="p">(</span>
@@ -257,8 +249,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The Minimum Spanning Tree starting on vertices <span class="math notranslate nohighlight">\(\{9, 6\}\)</span> with
-<span class="math notranslate nohighlight">\(depth \leq 3\)</span></p>
+<dd class="field-odd"><p>El Árbol de Expansión Mínimo que comienza en los vértices <span class="math notranslate nohighlight">\(\{9, 6\}\)</span> con :<span class="math notranslate nohighlight">\(depth \leq 3\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_kruskalBFS</span><span class="p">(</span>
@@ -301,7 +292,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>id raíz</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -435,7 +426,7 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Profundidad del <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0\)</span> when <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span> cuando <code class="docutils literal notranslate"><span class="pre">node</span></code> = <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 </ul>
 </td>
 </tr>

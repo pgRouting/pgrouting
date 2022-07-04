@@ -107,7 +107,7 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#astar-optional-parameters">aStar optional Parameters</a></li>
+<li><a class="reference internal" href="#astar-optional-parameters">Parámetros opcionales de aStar</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -170,7 +170,7 @@
 </ul>
 <section id="pgr-bdastar">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code><a class="headerlink" href="#pgr-bdastar" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> — Shortest path using the bidirectional A* algorithm.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> — Devuelve la ruta más corta usando el algoritmo Bidireccional A*.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -183,7 +183,7 @@
 <ul>
 <li><p>Nueva firma <strong>propuesta</strong>:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -195,14 +195,14 @@
 </li>
 <li><p>Versión 2.5.0</p>
 <ul>
-<li><p>New <strong>Proposed</strong> signatures:</p>
+<li><p>Nuevas firmas <strong>propuestas</strong>:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
 </ul>
 </li>
-<li><p>Signature change on <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p>
+<li><p>Cambio de firma en <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p>
 <ul>
 <li><p>Firma antigua ya no soportada</p></li>
 </ul>
@@ -211,7 +211,7 @@
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p><strong>Official</strong> <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p></li>
+<li><p><strong>Oficial</strong> <code class="docutils literal notranslate"><span class="pre">pgr_bdAstar</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -219,15 +219,15 @@
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
-<li><p>Process works for directed and undirected graphs.</p></li>
-<li><p>Ordering is:</p>
+<li><p>Funciona para grafos dirigidos y no dirigidos.</p></li>
+<li><p>Ordenamiento es:</p>
 <ul>
 <li><p>primero por <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (si existe)</p></li>
 <li><p>luego por <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </li>
 <li><p>Los valores se devuelven cuando hay una ruta.</p></li>
-<li><p>Permita que <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> sean nodos en el grafo:</p>
+<li><p>Sean <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> nodos en el grafo:</p>
 <ul>
 <li><p>Si no hay camino de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span>:</p>
 <ul>
@@ -243,7 +243,7 @@
 </li>
 </ul>
 </li>
-<li><p>When <span class="math notranslate nohighlight">\((x,y)\)</span> coordinates for the same vertex identifier differ:</p>
+<li><p>Cuando las coordenadas (x,y) para el mismo identificador de vértice difieren:</p>
 <ul>
 <li><p>Se utiliza una selección aleatoria de las coordenadas del vértice <span class="math notranslate nohighlight">\((x,y)\)</span>.</p></li>
 </ul>
@@ -491,15 +491,15 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
@@ -531,7 +531,7 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="astar-optional-parameters">
-<h3>aStar optional Parameters<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de aStar<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -546,7 +546,7 @@ OR EMPTY SET</pre>
 <td><p>5</p></td>
 <td><p>Número heurístico. Valores válidos 0~5.</p>
 <ul class="simple">
-<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Use this value to compare with pgr_dijkstra)</p></li>
+<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Utilizar este valor para comparar con pgr_dijkstra)</p></li>
 <li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
 <li><p>2: <span class="math notranslate nohighlight">\(h(v) = abs(min(\Delta x, \Delta y))\)</span></p></li>
 <li><p>3: <span class="math notranslate nohighlight">\(h(v) = \Delta x * \Delta x + \Delta y * \Delta y\)</span></p></li>
@@ -567,7 +567,7 @@ OR EMPTY SET</pre>
 </tr>
 </tbody>
 </table>
-<p>See <a class="reference internal" href="aStar-family.html#astar-heuristics"><span class="std std-ref">heuristics</span></a> available and <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">factor</span></a> handling.</p>
+<p>Ver <a class="reference internal" href="aStar-family.html#astar-heuristics"><span class="std std-ref">heuristicas</span></a> disponibles y manupulación de <a class="reference internal" href="aStar-family.html#astar-factor"><span class="std std-ref">factor</span></a>.</p>
 </section>
 </section>
 <section id="inner-queries">
@@ -609,15 +609,14 @@ OR EMPTY SET</pre>
 <td></td>
 <td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
 <ul class="simple">
-<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) does not exist, therefore
-it’s not part of the graph.</p></li>
+<li><p>Cuando es negativo: la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>),</p>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>),</p>
 <ul class="simple">
 <li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
@@ -626,22 +625,22 @@ it’s not part of the graph.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x1</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>X coordinate of <code class="docutils literal notranslate"><span class="pre">source</span></code> vertex.</p></td>
+<td><p>Coordenada X del vértice <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y1</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Y coordinate of <code class="docutils literal notranslate"><span class="pre">source</span></code> vertex.</p></td>
+<td><p>Coordenada Y del vértice <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x2</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>X coordinate of <code class="docutils literal notranslate"><span class="pre">target</span></code> vertex.</p></td>
+<td><p>Coordenada X del vértice <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y2</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
 <td></td>
-<td><p>Y coordinate of <code class="docutils literal notranslate"><span class="pre">target</span></code> vertex.</p></td>
+<td><p>Coordenada Y del vértice <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -752,7 +751,7 @@ it’s not part of the graph.</p></li>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example 1<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo 1<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
@@ -790,7 +789,7 @@ it’s not part of the graph.</p></li>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 2<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Making <strong>start vids</strong> the same as <strong>end vids</strong>.</p>
+<dd class="field-odd"><p>Haciendo <strong>vids iniciales</strong> los mismos que <strong>vids destinos</strong>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdAstar</span><span class="p">(</span>
@@ -857,7 +856,7 @@ it’s not part of the graph.</p></li>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Family of functions</span></a></p></li>
+<li><p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>

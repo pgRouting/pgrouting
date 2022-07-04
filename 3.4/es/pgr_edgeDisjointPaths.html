@@ -164,13 +164,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_edgeDisjointPaths.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_edgeDisjointPaths.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_edgeDisjointPaths.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_edgeDisjointPaths.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_edgeDisjointPaths.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_edgeDisjointPaths.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_edgeDisjointPaths.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_edgeDisjointPaths.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_edgeDisjointPaths.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_edgeDisjointPaths.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_edgeDisjointPaths.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_edgeDisjointPaths.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_edgeDisjointPaths.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_edgeDisjointPaths.html">2.3</a></p></li>
 </ul>
 <section id="pgr-edgedisjointpaths">
@@ -345,7 +339,7 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{11, 3, 17\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{5, 10, 12\}\)</span></p>
+<dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{11, 3, 17\}\)</span> a los vértices <span class="math notranslate nohighlight">\(\{5, 10, 12\}\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>
@@ -609,8 +603,7 @@ OR EMPTY SET</pre>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
-<span class="pre">agg_cost)</span></code></p>
+<p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -630,7 +623,7 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Path identifier.</p>
+<td><p>Identificador del camino.</p>
 <ul class="simple">
 <li><p>Tiene valor <strong>1</strong> para el primero de la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
@@ -646,7 +639,7 @@ OR EMPTY SET</pre>
 <ul class="simple">
 <li><p><a class="reference internal" href="#many-to-one">Muchos a Uno</a></p></li>
 <li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinations</a></p></li>
+<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
 </td>
 </tr>
@@ -656,7 +649,7 @@ OR EMPTY SET</pre>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-many">Uno a Muchos</a></p></li>
 <li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinations</a></p></li>
+<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
 </td>
 </tr>
@@ -683,7 +676,7 @@ OR EMPTY SET</pre>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Manually assigned vertex combinations on an undirected graph.</p>
+<dd class="field-odd"><p>Asignando manualmente las combinaciones de vértices en un grafo no dirigido.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edgeDisjointPaths</span><span class="p">(</span>

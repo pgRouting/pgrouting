@@ -179,7 +179,7 @@
 <ul>
 <li><p>Nueva función <strong>propuesta</strong></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_boykovKolmogorov</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_boykovKolmogorov</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -218,11 +218,11 @@
 <li><p>Se omiten las aristas con flujo cero.</p></li>
 </ul>
 </li>
-<li><p>Crea una <strong>súper origen</strong>, con aristas para todos los orígen(es), y un <strong>súper destino</strong> con aristas para todos los destino(s).</p></li>
+<li><p>Crea una <strong>súper origen</strong>, con aristas para todos las fuentes(es), y un <strong>súper destino</strong> con aristas para todos los destino(s).</p></li>
 <li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
 <ul>
-<li><p>Mediante la agregación del flujo saliente de los orígenes</p></li>
-<li><p>Mediante la agregación del flujo entrante a los destinos</p></li>
+<li><p>Mediante la suma de los flujos salientes de las fuentes</p></li>
+<li><p>Mediante la suma de los flujos llegantes a los destinos</p></li>
 </ul>
 </li>
 </ul>
@@ -328,7 +328,7 @@ RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{11, 3, 17\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{5, 10, 12\}\)</span></p>
+<dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{11, 3, 17\}\)</span> a los vértices <span class="math notranslate nohighlight">\(\{5, 10, 12\}\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_boykovKolmogorov</span><span class="p">(</span>
@@ -416,15 +416,15 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
@@ -542,8 +542,7 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-odd"><td><p><strong>arista</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge in the original query
-(edges_sql).</p></td>
+<td><p>Identificador de la arista en la consulta original(edges_sql).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>

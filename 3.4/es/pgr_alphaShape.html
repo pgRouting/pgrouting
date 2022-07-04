@@ -195,7 +195,7 @@
 </ul>
 </li>
 <li><p>Un área de triángulo se considera parte de la forma alfa cuando <span class="math notranslate nohighlight">\(circumcenter\ radius &lt; spoon\_radius\)</span></p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter is the <strong>spoon radius</strong></p></li>
+<li><p>El parámetro <code class="docutils literal notranslate"><span class="pre">alpha</span></code> es el <strong>radio de cuchara</strong></p></li>
 <li><p>Cuando el número total de puntos es menor que 3, devuelve una geometría EMPTY</p></li>
 </ul>
 </section>
@@ -205,9 +205,8 @@
 <pre class="literal-block" id="index-0">pgr_alphaShape(<strong>geometry</strong>,   [alpha])
 RETURNS geometry</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>passing a geometry collection with spoon radius <span class="math notranslate nohighlight">\(1.5\)</span> using the
-return variable <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pasar una colección de geometrías con radio de cuchara <span class="math notranslate nohighlight">\(1.5\)</span> usando la variable de retorno <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>

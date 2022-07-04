@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_dijkstraNear - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_dijkstraNear - Propuesto &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_dijkstraNearCost - Proposed" href="pgr_dijkstraNearCost.html" />
+    <link rel="next" title="pgr_dijkstraNearCost - Propuesto" href="pgr_dijkstraNearCost.html" />
     <link rel="prev" title="pgr_dijkstraVia - Proposed" href="pgr_dijkstraVia.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Propuesto</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a><ul>
 <li><a class="reference internal" href="#characteristics">Características</a></li>
 </ul>
@@ -108,8 +108,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#dijkstra-optional-parameters">Dijkstra optional parameters</a></li>
-<li><a class="reference internal" href="#near-optional-parameters">Near optional parameters</a></li>
+<li><a class="reference internal" href="#dijkstra-optional-parameters">Parámetros opcionales de Dijkstra</a></li>
+<li><a class="reference internal" href="#near-optional-parameters">Parámetros opcionales de Cercanía</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -134,7 +134,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_dijkstraNearCost.html" title="Next Chapter: pgr_dijkstraNearCost - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
+    <a href="pgr_dijkstraNearCost.html" title="Next Chapter: pgr_dijkstraNearCost - Propuesto"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
     </a>
   </li>
               
@@ -166,16 +166,11 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraNear.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dijkstraNear.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraNear.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html">3.2</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_dijkstraNear.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_dijkstraNear.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dijkstraNear.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_dijkstraNear.html">3.2</a></p></li>
 </ul>
 <section id="pgr-dijkstranear-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Proposed<a class="headerlink" href="#pgr-dijkstranear-proposed" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> — Using Dijkstra’s algorithm, finds the route that leads to
-the nearest vertex.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> - Propuesto<a class="headerlink" href="#pgr-dijkstranear-proposed" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNear</span></code> — Utilizando el algoritmo dijkstra, encuentra la ruta que conduce al vértice más cercano.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -184,9 +179,9 @@ the nearest vertex.</p>
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -280,7 +275,7 @@ OR EMPTY SET</pre>
 </dl>
 <ul class="simple">
 <li><p>Usando un grafo <strong>dirigido</strong> para el ruteo de automóviles.</p></li>
-<li><p>The subway stations are on the following vertices <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
+<li><p>Las estaciones de metro se encuentran en los siguientes vértices <span class="math notranslate nohighlight">\(\{ 1, 10, 11\}\)</span></p></li>
 <li><p>Los valores predeterminados utilizados:</p>
 <ul>
 <li><p><cite>directed =&gt; true</cite></p></li>
@@ -300,7 +295,7 @@ OR EMPTY SET</pre>
 <span class="linenos">10</span>
 </pre></div>
 </div>
-<p>The result shows that station at vertex <span class="math notranslate nohighlight">\(11\)</span> is the nearest.</p>
+<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(11\)</span> es la más cercana.</p>
 </section>
 <section id="many-to-one">
 <span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
@@ -315,7 +310,7 @@ OR EMPTY SET</pre>
 </dl>
 <ul class="simple">
 <li><p>Usando un grafo <strong>dirigido</strong> para el ruteo de automóviles.</p></li>
-<li><p>The subway stations are on the following vertices <span class="math notranslate nohighlight">\(\{ 1, 10, 11\}\)</span></p></li>
+<li><p>Las estaciones de metro se encuentran en los siguientes vértices <span class="math notranslate nohighlight">\(\{ 1, 10, 11\}\)</span></p></li>
 <li><p>En la línea <cite>4</cite>: utilizando el parámetro posicional: <cite>directed</cite> configurado en <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
 <li><p>En la línea <cite>5</cite>: usando el parámetro con nombre <cite>cap =&gt; 2</cite></p></li>
 </ul>
@@ -335,8 +330,7 @@ OR EMPTY SET</pre>
 <span class="linenos">14</span>
 </pre></div>
 </div>
-<p>The result shows that station at vertex <span class="math notranslate nohighlight">\(10\)</span> is the nearest and the next
-best is <span class="math notranslate nohighlight">\(11\)</span>.</p>
+<p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(10\)</span> es la más cercana y la siguiente mejor es <span class="math notranslate nohighlight">\(11\)</span>.</p>
 </section>
 <section id="many-to-many">
 <span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
@@ -353,8 +347,8 @@ OR EMPTY SET</pre>
 </dl>
 <ul class="simple">
 <li><p>Usando un grafo <strong>no dirigido</strong> para el ruteo de peatones</p></li>
-<li><p>The first subway line stations are at <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
-<li><p>The second subway line stations stops are at <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
+<li><p>Las estaciones de la primera línea de metro están en <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
+<li><p>Las estaciones de la segunda línea de metro están en <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
 <li><p>En la línea <cite>4</cite>: utilizando el parámetro con nombre: <cite>directed =&gt; false</cite></p></li>
 <li><p>Los valores predeterminados utilizados:</p>
 <ul>
@@ -375,8 +369,7 @@ OR EMPTY SET</pre>
 <span class="linenos">10</span>
 </pre></div>
 </div>
-<p>For a pedestrian the best connection is to get on/off is at vertex <span class="math notranslate nohighlight">\(15\)</span> of
-the first subway line and at vertex <span class="math notranslate nohighlight">\(10\)</span> of the second subway line.</p>
+<p>Para un peatón la mejor conexión es subir/bajar en el vértice <span class="math notranslate nohighlight">\(15\)</span> de la primera línea de metro y en el vértice <span class="math notranslate nohighlight">\(10\)</span> de la segunda línea de metro.</p>
 <p>Solo se devuelve <cite>una</cite> ruta porque <cite>global</cite> es <code class="docutils literal notranslate"><span class="pre">true</span></code> y <cite>cap</cite> es <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
 </section>
 <section id="combinations">
@@ -392,10 +385,10 @@ OR EMPTY SET</pre>
 </dl>
 <ul class="simple">
 <li><p>Usando un grafo <strong>dirigido</strong> para el ruteo de automóviles.</p></li>
-<li><p>The first subway line stations stops are at <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
-<li><p>The second subway line stations are at <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
+<li><p>Las estaciones de la primera línea de metro están en <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span></p></li>
+<li><p>Las estaciones de la segunda línea de metro están en <span class="math notranslate nohighlight">\(\{15, 16\}\)</span></p></li>
 </ul>
-<p>The combinations contents:</p>
+<p>El contenido de las combinaciones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">unnest</span><span class="p">(</span><span class="n">ARRAY</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span> <span class="n">AS</span> <span class="n">target</span><span class="p">)</span> <span class="n">a</span>
   <span class="n">UNION</span>
@@ -421,11 +414,9 @@ OR EMPTY SET</pre>
 </div>
 <p>La consulta:</p>
 <ul class="simple">
-<li><p>lines <cite>3~4</cite> sets the start vertices to be from the first subway line and the
-ending vertices to be from the second subway line</p></li>
-<li><p>lines <cite>6~7</cite> sets the start vertices to be from the first subway line and the
-ending vertices to be from the first subway line</p></li>
-<li><p>On line <cite>8</cite>: using the named parameter is <cite>global =&gt; false</cite></p></li>
+<li><p>líneas <cite>3~4</cite> establece los vértices de inicio de la primera línea de metro y los vértices finales de la segunda línea de metro</p></li>
+<li><p>la línea <cite>6~7</cite> establecen los vértices de inicio de la primera línea de metro y los vértices finales de la primera línea de metro</p></li>
+<li><p>En la línea <cite>8</cite>: usando el parámetro con nombre <cite>global =&gt; false</cite></p></li>
 <li><p>Los valores predeterminados utilizados:</p>
 <ul>
 <li><p><cite>directed =&gt; true</cite></p></li>
@@ -463,22 +454,16 @@ ending vertices to be from the first subway line</p></li>
 </div>
 <p>A partir de los resultados:</p>
 <ul class="simple">
-<li><p>making a connection from the first subway line <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span> to the
-second <span class="math notranslate nohighlight">\(\{15, 16\}\)</span>:</p>
+<li><p>haciendo una conexión desde la primera línea de metro <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span> a la segunda <span class="math notranslate nohighlight">\(\{15, 16\}\)</span>:</p>
 <ul>
-<li><p>The best connections from all the stations from the first line are:
-<span class="math notranslate nohighlight">\({(1 \rightarrow 16) (10 \rightarrow 16) (11 \rightarrow 16)}\)</span></p></li>
-<li><p>The best one is <span class="math notranslate nohighlight">\((11 \rightarrow 16)\)</span> with a cost of <span class="math notranslate nohighlight">\(1\)</span> (lines:
-<cite>11</cite> and <cite>12</cite>)</p></li>
+<li><p>Las mejores conecciones de todas las estaciones desde la primera línea son: <span class="math notranslate nohighlight">\({(1 \rightarrow 16) (10 \rightarrow 16) (11 \rightarrow 16)}\)</span></p></li>
+<li><p>La mejor es:math:<cite>(11 rightarrow 16)</cite> con un costo de <span class="math notranslate nohighlight">\(1\)</span> (líneas: <cite>11</cite> y <cite>12</cite>)</p></li>
 </ul>
 </li>
-<li><p>making a connection from the second subway line <span class="math notranslate nohighlight">\(\{15, 16\}\)</span> to the
-first <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
+<li><p>haciendo una conexión desde la segunda línea de metro <span class="math notranslate nohighlight">\(\{15, 16\}\)</span> a la primera <span class="math notranslate nohighlight">\(\{1, 10, 11\}\)</span>:</p>
 <ul>
-<li><p>The best connections from all the stations from the second line are:
-<span class="math notranslate nohighlight">\({(15 \rightarrow 10) (16 \rightarrow 11)}\)</span></p></li>
-<li><p>Both are equaly good as they have the same cost. (lines: <cite>13</cite> and <cite>14</cite> and
-lines: <cite>15</cite> and <cite>16</cite>)</p></li>
+<li><p>Las mejores conecciones de todas las estaciones desde la segunda línea son: <span class="math notranslate nohighlight">\({(15 \rightarrow 10) (16 \rightarrow 11)}\)</span></p></li>
+<li><p>Ambas son igualmente buenas, como también tienen el mismo costo. (lines: <cite>13</cite> and <cite>14</cite> and lines: <cite>15</cite> and <cite>16</cite>)</p></li>
 </ul>
 </li>
 </ul>
@@ -526,7 +511,7 @@ lines: <cite>15</cite> and <cite>16</cite>)</p></li>
 </tbody>
 </table>
 <section id="dijkstra-optional-parameters">
-<h3>Dijkstra optional parameters<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de Dijkstra<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -549,7 +534,7 @@ lines: <cite>15</cite> and <cite>16</cite>)</p></li>
 </table>
 </section>
 <section id="near-optional-parameters">
-<h3>Near optional parameters<a class="headerlink" href="#near-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de Cercanía<a class="headerlink" href="#near-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -706,7 +691,7 @@ lines: <cite>15</cite> and <cite>16</cite>)</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the current path.</p></td>
+<td><p>Identificador del vértice final de la ruta actual.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -731,7 +716,7 @@ lines: <cite>15</cite> and <cite>16</cite>)</p></li>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 <li><p>boost: <a class="reference external" href="https://www.boost.org/libs/graph/doc/table_of_contents.html">https://www.boost.org/libs/graph/doc/table_of_contents.html</a></p></li>
 <li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>

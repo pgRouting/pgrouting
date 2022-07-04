@@ -109,7 +109,7 @@
 <li><a class="reference internal" href="#example">Ejemplo</a><ul>
 <li><a class="reference internal" href="#the-vehicles">Los vehículos</a></li>
 <li><a class="reference internal" href="#the-original-orders">The original orders</a></li>
-<li><a class="reference internal" href="#the-orders">The orders</a></li>
+<li><a class="reference internal" href="#the-orders">Las órdenes</a></li>
 <li><a class="reference internal" href="#the-query">The query</a></li>
 </ul>
 </li>
@@ -177,7 +177,7 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -191,12 +191,12 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -635,7 +635,7 @@ vehicle.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stop_seq</span></code></p></td>
 <td><p>INTEGER</p></td>
-<td><p>Valor secuencial a partir de <strong>1</strong> para las paradas realizadas por el vehículo actual. La parada <span class="math notranslate nohighlight">\(m_{th}\)</span> vdel vehículo actual.</p>
+<td><p>Valor secuencial a partir de <strong>1</strong> para las paradas realizadas por el vehículo actual. La parada <span class="math notranslate nohighlight">\(m_{th}\)</span> del vehículo actual.</p>
 <ul class="simple">
 <li><p>Sumary row has the <strong>total time windows violations</strong>.</p>
 <ul>
@@ -653,7 +653,7 @@ closed.</p></li>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(-1\)</span>: at the solution summary row</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: Ubicación inicial</p></li>
-<li><p><span class="math notranslate nohighlight">\(2\)</span>: Pickup location</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span>: Ubicación de recogida</p></li>
 <li><p><span class="math notranslate nohighlight">\(3\)</span>: Lugar de entrega</p></li>
 <li><p><span class="math notranslate nohighlight">\(6\)</span>: Ending location and indicates the vehicle’s summary row</p></li>
 </ul>
@@ -665,8 +665,7 @@ closed.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador de par de órdenes Recoger-Entregar.</p>
 <ul class="simple">
-<li><p>Value <span class="math notranslate nohighlight">\(-1\)</span>: When no order is involved on the current stop
-location.</p></li>
+<li><p>Valor <span class="math notranslate nohighlight">\(-1\)</span>: Cuando no hay pedidos involucrados en la ubicación de la parada actual.</p></li>
 </ul>
 </td>
 </tr>
@@ -692,16 +691,16 @@ location.</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">arrival_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Time spent waiting for current location to open.</p>
+<td><p>Tiempo de espera para la apertura de la ubicación actual.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(-1\)</span>: at the solution summary row.</p></li>
-<li><p><span class="math notranslate nohighlight">\(0\)</span>: at the starting location.</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span>: en la ubicación inicial.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wait_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Time spent waiting for current location to open.</p>
+<td><p>Tiempo de espera para la apertura de la ubicación actual.</p>
 <ul class="simple">
 <li><p>Summary row has the <strong>total waiting time</strong>:</p>
 <ul>
@@ -713,7 +712,7 @@ location.</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service_time</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Service duration at current location.</p>
+<td><p>Duralción del servicio en la ubicación actual.</p>
 <ul class="simple">
 <li><p>Summary row has the <strong>total service time</strong>:</p>
 <ul>
@@ -749,7 +748,7 @@ location.</p></li>
 <ul class="simple">
 <li><p><a class="reference internal" href="#the-vehicles" id="id1">Los vehículos</a></p></li>
 <li><p><a class="reference internal" href="#the-original-orders" id="id2">The original orders</a></p></li>
-<li><p><a class="reference internal" href="#the-orders" id="id3">The orders</a></p></li>
+<li><p><a class="reference internal" href="#the-orders" id="id3">Las órdenes</a></p></li>
 <li><p><a class="reference internal" href="#the-query" id="id4">The query</a></p></li>
 </ul>
 </nav>
@@ -903,7 +902,7 @@ order.</p>
 </div>
 </section>
 <section id="the-orders">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">The orders</a><a class="headerlink" href="#the-orders" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Las órdenes</a><a class="headerlink" href="#the-orders" title="Permalink to this heading">¶</a></h3>
 <p>The original data needs to be converted to an appropiate table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>

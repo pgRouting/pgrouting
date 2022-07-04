@@ -115,8 +115,8 @@
 <li><a class="reference internal" href="#create-a-routing-topology">Creación de una topología de ruteo</a><ul>
 <li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
 <li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Limpieza de las columnas de la topología de ruteo que se creará</a></li>
-<li><a class="reference internal" href="#create-the-vertices-table">Create the vertices table</a></li>
-<li><a class="reference internal" href="#inspect-the-vertices-table">Inspect the vertices table</a></li>
+<li><a class="reference internal" href="#create-the-vertices-table">Crear la tabla de vértices</a></li>
+<li><a class="reference internal" href="#inspect-the-vertices-table">Inspeccionar la tabla de vértices</a></li>
 <li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Creación de la topología de ruteo en la tabla de aristas</a></li>
 <li><a class="reference internal" href="#inspect-the-routing-topology">Inspección de la topología de ruteo</a></li>
 </ul>
@@ -133,7 +133,7 @@
 <li><a class="reference internal" href="#graphs-without-geometries">Graphs without geometries</a><ul>
 <li><a class="reference internal" href="#insert-the-data">Insert the data</a></li>
 <li><a class="reference internal" href="#find-the-shortest-path">Find the shortest path</a></li>
-<li><a class="reference internal" href="#vertex-information">Vertex information</a></li>
+<li><a class="reference internal" href="#vertex-information">Información de vertices</a></li>
 </ul>
 </li>
 </ul>
@@ -199,9 +199,9 @@
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -295,8 +295,7 @@ RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When true do not process and get in a
-NOTICE the resulting query.</p></li>
+<li><p>Cuando verdadero, no procesar y recibir un AVISO de la consulta resultante.</p></li>
 </ul>
 </td>
 </tr>
@@ -480,8 +479,8 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 <ul>
 <li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id9">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
 <li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id10">Limpieza de las columnas de la topología de ruteo que se creará</a></p></li>
-<li><p><a class="reference internal" href="#create-the-vertices-table" id="id11">Create the vertices table</a></p></li>
-<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id12">Inspect the vertices table</a></p></li>
+<li><p><a class="reference internal" href="#create-the-vertices-table" id="id11">Crear la tabla de vértices</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id12">Inspeccionar la tabla de vértices</a></p></li>
 <li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id13">Creación de la topología de ruteo en la tabla de aristas</a></p></li>
 <li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id14">Inspección de la topología de ruteo</a></p></li>
 </ul>
@@ -500,7 +499,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 <ul>
 <li><p><a class="reference internal" href="#insert-the-data" id="id23">Insert the data</a></p></li>
 <li><p><a class="reference internal" href="#find-the-shortest-path" id="id24">Find the shortest path</a></p></li>
-<li><p><a class="reference internal" href="#vertex-information" id="id25">Vertex information</a></p></li>
+<li><p><a class="reference internal" href="#vertex-information" id="id25">Información de vertices</a></p></li>
 </ul>
 </li>
 </ul>
@@ -577,7 +576,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="create-the-vertices-table">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Create the vertices table</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Crear la tabla de vértices</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
 <li><p>For big edge tables that are been prepared,</p>
@@ -594,7 +593,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="inspect-the-vertices-table">
-<h4><a class="toc-backref" href="#id12" role="doc-backlink">Inspect the vertices table</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Inspeccionar la tabla de vértices</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
@@ -623,7 +622,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </section>
 <section id="create-the-routing-topology-on-the-edge-table">
 <h4><a class="toc-backref" href="#id13" role="doc-backlink">Creación de la topología de ruteo en la tabla de aristas</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this heading">¶</a></h4>
-<p>Actualización de la información de <code class="docutils literal notranslate"><span class="pre">source</span></code></p>
+<p>Actualizar de la información de <code class="docutils literal notranslate"><span class="pre">source</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
 <span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">out_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
@@ -755,7 +754,7 @@ removed and the routing topology needs to be updated.</p>
 <p>The columns inserted and the way are calculated are based on the application.
 For example, if the edges have a trait <strong>name</strong>, then that column is to be
 copied.</p>
-<p>For pgRouting calculations</p>
+<p>Para llos cálculos de pgRouting</p>
 <ul class="simple">
 <li><p><strong>factor</strong> based on the position of the intersection of the edges can be used
 to adjust the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns.</p></li>
@@ -931,7 +930,7 @@ view.</p>
 }" class="graphviz" /></div>
 </section>
 <section id="vertex-information">
-<h4><a class="toc-backref" href="#id25" role="doc-backlink">Vertex information</a><a class="headerlink" href="#vertex-information" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id25" role="doc-backlink">Información de vertices</a><a class="headerlink" href="#vertex-information" title="Permalink to this heading">¶</a></h4>
 <p>To obtain the vertices information, use <a class="reference internal" href="#"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
 <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>

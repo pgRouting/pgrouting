@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span> <span class="pre">-</span> <span class="pre">Experimental</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
@@ -165,8 +165,8 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_bellmanFord.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_bellmanFord.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_bellmanFord.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_bellmanFord.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_bellmanFord.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_bellmanFord.html">3.0</a></p></li>
 </ul>
 <section id="pgr-bellmanford-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span> <span class="pre">-</span> <span class="pre">Experimental</span></code><a class="headerlink" href="#pgr-bellmanford-experimental" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> — Shortest path(s) using Bellman-Ford algorithm.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> - Experimental<a class="headerlink" href="#pgr-bellmanford-experimental" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> —Camino m+as corto usando el algoritmo de Bellman-Ford.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -177,7 +177,7 @@
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -191,12 +191,12 @@
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -207,9 +207,9 @@
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> signature:</p>
+<li><p>Nueva firma <strong>experimental</strong>:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -218,10 +218,10 @@
 <ul>
 <li><p>Nueva función <strong>experimental</strong>:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#many-to-one">Muchos a uno</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bellmanFord</span></code> (<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -229,19 +229,13 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>Bellman-Ford’s algorithm, is named after Richard Bellman and Lester Ford, who
-first published it in 1958 and 1956, respectively.It is a graph search algorithm
-that computes shortest paths from a starting vertex (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) to an ending
-vertex (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>) in a graph where some of the edge weights may be negative.
-Though it is more versatile, it is slower than Dijkstra’s algorithm.This
-implementation can be used with a directed graph and an undirected graph.</p>
+<p>El algoritmo de Bellman-Ford, lleva el nombre de Richard Bellman y Lester Ford, quienes lo publicaron por primera vez en 1958 y 1956, respectivamente. Es un algoritmo de búsqueda de grafos que calcula las rutas más cortas desde un vértice inicial (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) hasta un vértice final (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>) en un grafo donde algunos de los pesos de borde pueden ser números negativos. Aunque es más versátil, es más lento que el algoritmo de Dijkstra/ Esta implementación se puede utilizar con un grafo dirigido y un grafo no dirigido.</p>
 <dl class="simple">
 <dt><strong>Las características principales son:</strong></dt><dd><ul class="simple">
 <li><p>El proceso es válido para aristas con grosores de arista positivos y negativos.</p></li>
 <li><p>Los valores se devuelven cuando hay una ruta.</p>
 <ul>
-<li><p>When the start vertex and the end vertex are the same, there is no path.
-The agg_cost would be <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p>Cuando el vértice inicial y el vértice final son los mismos, no hay ruta. El agg_cost sería <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
 <li><p>Cuando el vértice inicial y el vértice final son diferentes, y existe una ruta entre ellos sin tener un <em>ciclo negativo</em>. El agg_cost sería un valor finito que indica la distancia más corta entre ellos.</p></li>
 <li><p>Cuando el vértice inicial y el vértice final son diferentes y existe una ruta entre ellos, pero contiene un <em>ciclo negativo</em>. En tal caso, agg_cost para esos vértices siguen disminuyendo además, por lo tanto agg_cost no se puede definir para ellos.</p></li>
 <li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay ruta. El agg_cost es <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
@@ -664,7 +658,7 @@ OR EMPTY SET</pre>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example 1<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo 1<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
@@ -701,7 +695,7 @@ OR EMPTY SET</pre>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 2<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Making <strong>start vids</strong> the same as <strong>end vids</strong>.</p>
+<dd class="field-odd"><p>Haciendo <strong>vids iniciales</strong> los mismos que <strong>vids destinos</strong>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bellmanFord</span><span class="p">(</span>

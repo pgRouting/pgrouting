@@ -153,11 +153,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_isPlanar.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_isPlanar.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html">3.2</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_isPlanar.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_isPlanar.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_isPlanar.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_isPlanar.html">3.2</a></p></li>
 </ul>
 <section id="pgr-isplanar-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_isPlanar</span></code> - Experimental<a class="headerlink" href="#pgr-isplanar-experimental" title="Permalink to this heading">¶</a></h1>
@@ -172,7 +168,7 @@
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -186,12 +182,12 @@
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -208,12 +204,7 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>A graph is planar if it can be drawn in two-dimensional space with no two of its
-edges crossing. Such a drawing of a planar graph is called a plane drawing.
-Every planar graph also admits a straight-line drawing, which is a plane drawing
-where each edge is represented by a line segment. When a graph has <span class="math notranslate nohighlight">\(K_5\)</span>
-or <span class="math notranslate nohighlight">\(K_{3, 3}\)</span> as subgraph then the
-graph is not planar.</p>
+<p>Un grafo es planar si se puede dibujar en un espacio bidimensional sin que se crucen dos de sus aristas. Este dibujo de un grafo planaro es llamado dibujo de plano. Cada grafo planar también admite un dibujo de línea recta, que es un dibujo de plano donde cada arista está representada por un segmento de línea. Cuando un grafo tiene <span class="math notranslate nohighlight">\(K_5\)</span> or <span class="math notranslate nohighlight">\(K_{3,3}\)</span> como subgrafo, entonces el grafo no es planar.</p>
 <p>Las principales características son:</p>
 <ul class="simple">
 <li><p>Esta implementación utiliza la Prueba de Planaridad de Boyer-Myrvold.</p></li>
@@ -342,8 +333,7 @@ RETURNS BOOLEAN</pre>
 </section>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
-<p>The following edges will make the subgraph with vertices {10, 15, 11, 16, 13} a
-<span class="math notranslate nohighlight">\(K_1\)</span> graph.</p>
+<p>Las siguientes aristas harán de el subgrafo con los vértices {10, 15, 11, 16, 13} un grafo <span class="math notranslate nohighlight">\(K_5\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
   <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
   <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -351,8 +341,7 @@ RETURNS BOOLEAN</pre>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>The new graph is not planar because it has a <span class="math notranslate nohighlight">\(K_5\)</span> subgraph. Edges in blue
-represent <span class="math notranslate nohighlight">\(K_5\)</span> subgraph.</p>
+<p>El nuevo grafo no es planar porque tiene un subgráfico <span class="math notranslate nohighlight">\(K_5\)</span>. Las aristas en azul representan el subgrafo <span class="math notranslate nohighlight">\(K_5\)</span>.</p>
 <a class="reference internal image-reference" href="_images/nonPlanar.png"><img alt="_images/nonPlanar.png" src="_images/nonPlanar.png" style="width: 503.5px; height: 430.5px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_isPlanar</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>

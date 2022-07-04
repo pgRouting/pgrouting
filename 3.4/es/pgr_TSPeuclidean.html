@@ -102,7 +102,7 @@
 </li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
-<li><a class="reference internal" href="#tsp-optional-parameters">TSP optional parameters</a></li>
+<li><a class="reference internal" href="#tsp-optional-parameters">Parámetros opcionales de TSP</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -114,9 +114,9 @@
 <li><a class="reference internal" href="#test-29-cities-of-western-sahara">Prueba 29 ciudades del Sáhara Occidental</a><ul>
 <li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">Creación de una tabla para datos y almacenamiento de los datos</a></li>
 <li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">Agregar una geometría (con fines visuales)</a></li>
-<li><a class="reference internal" href="#total-tour-cost">Total tour cost</a></li>
+<li><a class="reference internal" href="#total-tour-cost">Costo total del tour</a></li>
 <li><a class="reference internal" href="#getting-a-geometry-of-the-tour">Obtener una geometría del recorrido</a></li>
-<li><a class="reference internal" href="#visual-results">Visual results</a></li>
+<li><a class="reference internal" href="#visual-results">Resultados visuales</a></li>
 </ul>
 </li>
 </ul>
@@ -190,11 +190,7 @@
 <li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
 <li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
-<li><p>The Simulated Annealing Algorithm related parameters are ignored:
-<cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>,
-<cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>,
-<cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>,
-<cite>randomize</cite></p></li>
+<li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
 </li>
 </ul>
@@ -234,18 +230,17 @@
 <li><p>En un grafo no dirigido:</p>
 <ul>
 <li><p>Los costos del viaje son simétricos:</p></li>
-<li><p>Traveling costs from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> are just as much as traveling from
-<code class="docutils literal notranslate"><span class="pre">v</span></code> to <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
+<li><p>Los costos del viaje de <code class="docutils literal notranslate"><span class="pre">u</span></code> a <code class="docutils literal notranslate"><span class="pre">v</span></code> son tanto como viajar de <code class="docutils literal notranslate"><span class="pre">v</span></code> a <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
 </ul>
 </li>
 </ul>
 <ul>
 <li><dl class="simple">
-<dt>Cualquier identificador duplicado será ignorado. Las coordenadas que se mantendrán</dt><dd><p>is arbitrarly.</p>
+<dt>Cualquier identificador duplicado será ignorado. Las coordenadas que se mantendrán</dt><dd><p>es arbitrario.</p>
 </dd>
 </dl>
 <ul>
-<li><p>The coordinates are quite similar for the same identifier, for example</p>
+<li><p>Las coordenadas son bastante similares para el mismo identificador, por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span>
 <span class="mi">1</span><span class="p">,</span> <span class="mf">3.499999999999</span> <span class="mf">0.9999999</span>
 </pre></div>
@@ -311,14 +306,14 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#coordinates-sql">SQL coordenadas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#coordinates-sql">Coordinates SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#coordinates-sql">SQL de coordenadas</a> descritas más adelante</p></td>
 </tr>
 </tbody>
 </table>
 <section id="tsp-optional-parameters">
-<h3>TSP optional parameters<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de TSP<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
@@ -431,9 +426,9 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 <ul>
 <li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id3">Creación de una tabla para datos y almacenamiento de los datos</a></p></li>
 <li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id4">Agregar una geometría (con fines visuales)</a></p></li>
-<li><p><a class="reference internal" href="#total-tour-cost" id="id5">Total tour cost</a></p></li>
+<li><p><a class="reference internal" href="#total-tour-cost" id="id5">Costo total del tour</a></p></li>
 <li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id6">Obtener una geometría del recorrido</a></p></li>
-<li><p><a class="reference internal" href="#visual-results" id="id7">Visual results</a></p></li>
+<li><p><a class="reference internal" href="#visual-results" id="id7">Resultados visuales</a></p></li>
 </ul>
 </li>
 </ul>
@@ -484,7 +479,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="total-tour-cost">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Total tour cost</a><a class="headerlink" href="#total-tour-cost" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Costo total del tour</a><a class="headerlink" href="#total-tour-cost" title="Permalink to this heading">¶</a></h4>
 <p>Al obtener un costo total del recorrido, comparar el valor con la duración de un recorrido óptimo, que es 27603, dado en el conjunto de datos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
@@ -511,7 +506,7 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 </div>
 </section>
 <section id="visual-results">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Visual results</a><a class="headerlink" href="#visual-results" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Resultados visuales</a><a class="headerlink" href="#visual-results" title="Permalink to this heading">¶</a></h4>
 <p>Visualmente, la primera imagen es la “solución óptima”&lt;<a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">https://www.math.uwaterloo.ca/tsp/world/witour.html</a>&gt;`__  y la segunda imagen es la solución obtenida con <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
 <a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
 <a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" /></a>

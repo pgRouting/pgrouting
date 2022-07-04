@@ -111,7 +111,7 @@
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#resturn-columns">Resturn Columns</a></li>
+<li><a class="reference internal" href="#resturn-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
@@ -161,13 +161,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dagShortestPath.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dagShortestPath.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dagShortestPath.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_dagShortestPath.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_dagShortestPath.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dagShortestPath.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dagShortestPath.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_dagShortestPath.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dagShortestPath.html">3.0</a></p></li>
 </ul>
 <section id="pgr-dagshortestpath-experimental">
 <h1>pgr_dagShortestPath - Experimental<a class="headerlink" href="#pgr-dagshortestpath-experimental" title="Permalink to this heading">¶</a></h1>
@@ -182,7 +176,7 @@
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -196,12 +190,12 @@
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -279,7 +273,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(5\)</span> to vertex  <span class="math notranslate nohighlight">\(11\)</span> on a <strong>directed</strong> graph</p>
+<dd class="field-odd"><p>Desde el vértice <span class="math notranslate nohighlight">\(5\)</span> al vértice <span class="math notranslate nohighlight">\(11\)</span> en un grafo <strong>dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
@@ -303,7 +297,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(5\)</span> to vertices <span class="math notranslate nohighlight">\(\{7, 11\}\)</span></p>
+<dd class="field-odd"><p>Desde el vértice <span class="math notranslate nohighlight">\(5\)</span> a los vértices <span class="math notranslate nohighlight">\(\{ 7, 11\}\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
@@ -330,7 +324,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{5, 10\}\)</span> to vertex <span class="math notranslate nohighlight">\(11\)</span></p>
+<dd class="field-odd"><p>Desde los vértices <span class="math notranslate nohighlight">\(\{5, 10\}\)</span> al vértice <span class="math notranslate nohighlight">\(11\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
@@ -356,8 +350,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{5, 15\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{11, 17\}\)</span> on an
-<strong>undirected</strong> graph</p>
+<dd class="field-odd"><p>Desde los vértices <span class="math notranslate nohighlight">\(\{5, 15\}\)</span> a los vértices <span class="math notranslate nohighlight">\(\{11, 17\}\)</span> en un grafo <strong>no dirigido</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>
@@ -556,7 +549,7 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="resturn-columns">
-<h2>Resturn Columns<a class="headerlink" href="#resturn-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#resturn-columns" title="Permalink to this heading">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
@@ -619,7 +612,7 @@ OR EMPTY SET</pre>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example 1<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo 1<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
@@ -650,7 +643,7 @@ OR EMPTY SET</pre>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 2<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Making <strong>start_vids</strong> the same as <strong>end_vids</strong></p>
+<dd class="field-odd"><p>Haciendo <strong>vértices de salida</strong> igual que <strong>vértices destino</strong></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dagShortestPath</span><span class="p">(</span>

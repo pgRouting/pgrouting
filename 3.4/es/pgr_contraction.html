@@ -100,7 +100,7 @@
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#contraction-optional-parameters">Contraction optional parameters</a></li>
+<li><a class="reference internal" href="#contraction-optional-parameters">Parámetros opcionales de Contracción</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -210,8 +210,8 @@
 </li>
 <li><p>Los valores devueltos se ordenan de la siguiente manera:</p>
 <ul>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> ascending when type is <code class="docutils literal notranslate"><span class="pre">v</span></code></p></li>
-<li><p>column <code class="docutils literal notranslate"><span class="pre">id</span></code> descending when type is <code class="docutils literal notranslate"><span class="pre">e</span></code></p></li>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> ascendente cuando el tipo = <code class="docutils literal notranslate"><span class="pre">v</span></code></p></li>
+<li><p>columna <code class="docutils literal notranslate"><span class="pre">id</span></code> descendente cuando el tipo = <code class="docutils literal notranslate"><span class="pre">e</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -257,9 +257,9 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>contraction Order</strong></p></td>
+<tr class="row-odd"><td><p><strong>Orden de contracciones</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Operaciones de contracción ordenadas.</p>
 <ul class="simple">
@@ -294,7 +294,7 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
 </table>
 </section>
 <section id="contraction-optional-parameters">
-<h3>Contraction optional parameters<a class="headerlink" href="#contraction-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de Contracción<a class="headerlink" href="#contraction-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 22%" />
@@ -312,8 +312,8 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forbidden_vertices</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p><strong>Empty</strong></p></td>
-<td><p>Identifiers of vertices forbidden for contraction.</p></td>
+<td><p><strong>vacío</strong></p></td>
+<td><p>Identificadores de vértices prohibidos para contracción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_cycles</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
@@ -399,16 +399,16 @@ RETURNS SETOF (type, id, contracted_vertices, source, target, cost)</pre>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Type of the <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<td><p>Tipo del <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> when the row is a vertex.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> cuando la fila es un vértice.</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a positive value</p></li>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor positivo</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> when the row is an edge.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> cuando la fila es una arista.</p>
 <ul>
-<li><p>Column <code class="docutils literal notranslate"><span class="pre">id</span></code> has a negative value</p></li>
+<li><p>Columna <code class="docutils literal notranslate"><span class="pre">id</span></code> tiene valor negativo</p></li>
 </ul>
 </li>
 </ul>

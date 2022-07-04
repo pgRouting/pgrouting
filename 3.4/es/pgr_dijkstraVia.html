@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_dijkstraNear - Proposed" href="pgr_dijkstraNear.html" />
+    <link rel="next" title="pgr_dijkstraNear - Propuesto" href="pgr_dijkstraNear.html" />
     <link rel="prev" title="pgr_KSP" href="pgr_KSP.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -96,7 +96,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraVia</span></code> - Proposed</a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#one-via">One Via</a></li>
 </ul>
@@ -114,8 +114,8 @@
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#the-main-query">The main query</a><ul>
 <li><a class="reference internal" href="#aggregate-cost-of-the-third-path">Costo agregado de la tercera ruta.</a></li>
-<li><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">Route’s aggregate cost of the route at the end of the third path.</a></li>
-<li><a class="reference internal" href="#nodes-visited-in-the-route">Nodes visited in the route.</a></li>
+<li><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">Costo agregado al final de la tercera ruta.</a></li>
+<li><a class="reference internal" href="#nodes-visited-in-the-route">Nodos visitados en la ruta.</a></li>
 <li><a class="reference internal" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached">Costo agregado de la ruta al llegar a los vértices visitados.</a></li>
 <li><a class="reference internal" href="#status-of-passes-in-front-or-visits-of-the-nodes">Status of «passes in front» or «visits» of the nodes.</a></li>
 </ul>
@@ -138,7 +138,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_dijkstraNear.html" title="Next Chapter: pgr_dijkstraNear - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
+    <a href="pgr_dijkstraNear.html" title="Next Chapter: pgr_dijkstraNear - Propuesto"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraN... &raquo;</span>
     </a>
   </li>
               
@@ -170,13 +170,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_dijkstraVia.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_dijkstraVia.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_dijkstraVia.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraVia.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html">3.0</a></p></li>
+<li><p><strong>*Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_dijkstraVia.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_dijkstraVia.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dijkstraVia.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_dijkstraVia.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_dijkstraVia.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_dijkstraVia.html">3.0</a></p></li>
 <li><p><strong>Unsupported versions:</strong>
 <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_dijkstraVia.html">2.6</a>
 <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_dijkstraVia.html">2.5</a>
@@ -191,13 +185,13 @@
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
-<li><p>They are not officially in the current release.</p></li>
-<li><p>They will likely officially be part of the next mayor release:</p>
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Name might not change. (But still can)</p></li>
-<li><p>Signature might not change. (But still can)</p></li>
-<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -207,7 +201,7 @@
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/table_of_contents.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
-<p><span class="caption-text">Boost Graph Inside</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+<p><span class="caption-text">Adentro: Boost Graph</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
 </figcaption>
 </figure>
 <p class="rubric">Disponibilidad</p>
@@ -219,7 +213,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Given a list of vertices and a graph, this function is equivalent to finding the
 shortest path between <span class="math notranslate nohighlight">\(vertex_i\)</span> and <span class="math notranslate nohighlight">\(vertex_{i+1}\)</span> for all <span class="math notranslate nohighlight">\(i
 &lt; size\_of(via\;vertices)\)</span>.</p>
@@ -242,7 +236,7 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
                 node, edge, cost, agg_cost, route_agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Find the route that visits the vertices <span class="math notranslate nohighlight">\(\{5, 1, 8\}\)</span> in that
 order on an <strong>directed</strong> graph.</p>
 </dd>
@@ -280,7 +274,7 @@ order on an <strong>directed</strong> graph.</p>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -289,20 +283,20 @@ order on an <strong>directed</strong> graph.</p>
 <td></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>via vertices</strong></p></td>
+<tr class="row-odd"><td><p><strong>vía vértices</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td></td>
-<td><p>Array of ordered vertices identifiers that are going to be visited.</p></td>
+<td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
-<dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
 <dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 <section id="optional-parameters">
@@ -312,7 +306,7 @@ order on an <strong>directed</strong> graph.</p>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -341,7 +335,7 @@ order on an <strong>directed</strong> graph.</p>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -349,7 +343,7 @@ order on an <strong>directed</strong> graph.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> if a path is missing stops and returns <strong>EMPTY SET</strong></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> si un camino le faltan paradas y regresa <strong>EMPTY SET</strong></p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code>, ignora las rutas faltantes y devuelve todas las rutas encontradas</p></li>
 </ul>
 </td>
@@ -358,7 +352,7 @@ order on an <strong>directed</strong> graph.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> departing from a visited vertex will not try to avoid</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> saliendo desde un vértice visitado no intentara esquivarlo</p></li>
 </ul>
 </td>
 </tr>
@@ -381,7 +375,7 @@ order on an <strong>directed</strong> graph.</p>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -398,7 +392,7 @@ order on an <strong>directed</strong> graph.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
@@ -416,7 +410,7 @@ order on an <strong>directed</strong> graph.</p>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -438,7 +432,7 @@ order on an <strong>directed</strong> graph.</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -456,11 +450,11 @@ order on an <strong>directed</strong> graph.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -468,11 +462,10 @@ order on an <strong>directed</strong> graph.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge used to go from <code class="docutils literal notranslate"><span class="pre">node</span></code> to the next node in the
-path sequence.</p>
+<td><p>Identificador de la arsita utilizada para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
 <li><p>-1 para el último nodo de la ruta.</p></li>
-<li><p>-2 for the last node of the route.</p></li>
+<li><p>-2 para el último nodo de la ruta.</p></li>
 </ul>
 </td>
 </tr>
@@ -498,8 +491,8 @@ path sequence.</p>
 <li><p><a class="reference internal" href="#the-main-query" id="id2">The main query</a></p>
 <ul>
 <li><p><a class="reference internal" href="#aggregate-cost-of-the-third-path" id="id3">Costo agregado de la tercera ruta.</a></p></li>
-<li><p><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" id="id4">Route’s aggregate cost of the route at the end of the third path.</a></p></li>
-<li><p><a class="reference internal" href="#nodes-visited-in-the-route" id="id5">Nodes visited in the route.</a></p></li>
+<li><p><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" id="id4">Costo agregado al final de la tercera ruta.</a></p></li>
+<li><p><a class="reference internal" href="#nodes-visited-in-the-route" id="id5">Nodos visitados en la ruta.</a></p></li>
 <li><p><a class="reference internal" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached" id="id6">Costo agregado de la ruta al llegar a los vértices visitados.</a></p></li>
 <li><p><a class="reference internal" href="#status-of-passes-in-front-or-visits-of-the-nodes" id="id7">Status of «passes in front» or «visits» of the nodes.</a></p></li>
 </ul>
@@ -548,7 +541,7 @@ path sequence.</p>
 </div>
 </section>
 <section id="route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Route’s aggregate cost of the route at the end of the third path.</a><a class="headerlink" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Costo agregado al final de la tercera ruta.</a><a class="headerlink" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">route_agg_cost</span> <span class="n">FROM</span> <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges order by id&#39;</span><span class="p">,</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
@@ -562,7 +555,7 @@ path sequence.</p>
 </div>
 </section>
 <section id="nodes-visited-in-the-route">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Nodes visited in the route.</a><a class="headerlink" href="#nodes-visited-in-the-route" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Nodos visitados en la ruta.</a><a class="headerlink" href="#nodes-visited-in-the-route" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span> <span class="p">()</span> <span class="k">as</span> <span class="n">node_seq</span><span class="p">,</span> <span class="n">node</span>
 <span class="n">FROM</span>  <span class="n">pgr_dijkstraVia</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges order by id&#39;</span><span class="p">,</span>
@@ -643,7 +636,7 @@ path sequence.</p>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></p></li>
 </ul>
-<p class="rubric">Indices and tables</p>
+<p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>

@@ -21,7 +21,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="pgr_maxFlow" href="pgr_maxFlow.html" />
-    <link rel="prev" title="pgr_dijkstraNearCost - Proposed" href="pgr_dijkstraNearCost.html" />
+    <link rel="prev" title="pgr_dijkstraNearCost - Propuesto" href="pgr_dijkstraNearCost.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -116,7 +116,7 @@
               
                 
   <li>
-    <a href="pgr_dijkstraNearCost.html" title="Previous Chapter: pgr_dijkstraNearCost - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
+    <a href="pgr_dijkstraNearCost.html" title="Previous Chapter: pgr_dijkstraNearCost - Propuesto"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_dijkstraN...</span>
     </a>
   </li>
   <li>
@@ -174,7 +174,7 @@
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -188,12 +188,12 @@
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -223,11 +223,11 @@
 <li><p>Se omiten las aristas con flujo cero.</p></li>
 </ul>
 </li>
-<li><p>Crea una <strong>súper origen</strong>, con aristas para todos los orígen(es), y un <strong>súper destino</strong> con aristas para todos los destino(s).</p></li>
+<li><p>Crea una <strong>súper origen</strong>, con aristas para todos las fuentes(es), y un <strong>súper destino</strong> con aristas para todos los destino(s).</p></li>
 <li><p>Se garantiza que el flujo máximo a través del grafo es el valor devuelto por <a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> cuando es ejecutado con los mismos parámetros y se puede calcular:</p>
 <ul>
-<li><p>Mediante la agregación del flujo saliente de los orígenes</p></li>
-<li><p>Mediante la agregación del flujo entrante a los destinos</p></li>
+<li><p>Mediante la suma de los flujos salientes de las fuentes</p></li>
+<li><p>Mediante la suma de los flujos llegantes a los destinos</p></li>
 </ul>
 </li>
 </ul>
@@ -239,7 +239,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
-<p class="rubric">Capacity edges</p>
+<p class="rubric">Aristas de capacidad</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a></p></li>
@@ -338,7 +338,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Capacity of the edge  (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
+<td><p>Capacidad de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p>
 <ul class="simple">
 <li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
@@ -347,7 +347,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_capacity</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p>-1</p></td>
-<td><p>Capacity of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<td><p>Capacidad de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
 <li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
 </ul>
@@ -489,8 +489,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </tr>
 <tr class="row-odd"><td><p><strong>arista</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge in the original query
-(edges_sql).</p></td>
+<td><p>Identificador de la arista en la consulta original(edges_sql).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -525,8 +524,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 </tr>
 <tr class="row-odd"><td><p><strong>arista</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the edge in the original query
-(edges_sql).</p></td>
+<td><p>Identificador de la arista en la consulta original(edges_sql).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>origen</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -560,7 +558,7 @@ the same on the functions <a class="reference internal" href="pgr_pushRelabel.ht
 <p>Una red de flujo es un gráfico dirigido donde cada arista tiene una capacidad y un flujo. El flujo a través de una arista no debe exceder la capacidad de la misma. Además, el flujo entrante y saliente de un nodo debe ser igual, excepto para el origen que solo tiene flujo saliente, y el destino (receptor) que solo tiene flujo entrante.</p>
 <p>Los algoritmos de Flujo Máximo se calculan a través del grafo del flujo máximo y el flujo de cada arista.</p>
 <p>Se garantiza que el flujo máximo a través del grafo sea el mismo con todas las implementaciones, pero el flujo real a través de cada arista puede variar.</p>
-<p>Given the following query:</p>
+<p>Dada la siguiente consulta:</p>
 <p>pgr_maxFlow <span class="math notranslate nohighlight">\((edges\_sql, source\_vertex, sink\_vertex)\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i)\}\)</span></p>
 <p class="rubric">Definición de grafo</p>

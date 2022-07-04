@@ -179,7 +179,7 @@
 <ul>
 <li><p>Nueva función <strong>propuesta</strong></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxFlow</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -291,7 +291,7 @@ RETURNS BIGINT</pre>
 RETURNS BIGINT</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{11, 3, 17\}\)</span> to vertices <span class="math notranslate nohighlight">\(\{5, 10, 12\}\)</span></p>
+<dd class="field-odd"><p>De los vértices <span class="math notranslate nohighlight">\(\{11, 3, 17\}\)</span> a los vértices <span class="math notranslate nohighlight">\(\{5, 10, 12\}\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxFlow</span><span class="p">(</span>
@@ -366,15 +366,15 @@ RETURNS BIGINT</pre>
 </tr>
 <tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>

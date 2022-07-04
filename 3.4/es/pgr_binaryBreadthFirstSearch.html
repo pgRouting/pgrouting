@@ -106,7 +106,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#optional-parameters">Optional Parameters</a></li>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
@@ -166,10 +166,8 @@
 </ul>
 <section id="pgr-binarybreadthfirstsearch-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_binaryBreadthFirstSearch</span></code> - Experimental<a class="headerlink" href="#pgr-binarybreadthfirstsearch-experimental" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_binaryBreadthFirstSearch</span></code> — Returns the shortest path(s) in a binary
-graph.</p>
-<p>Any graph whose edge-weights belongs to the set {0,X}, where “X” is any
-non-negative integer, is termed as a “binary graph”.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_binaryBreadthFirstSearch</span></code> — Regresa los caminos más cortos en un grafo binario.</p>
+<p>Un grafo cuyos pesos de las aristas pertenece al conjunto {0, X}, donde “X” es un entero no negativo, se le llama “grafo binario”.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/breadth_first_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -180,7 +178,7 @@ non-negative integer, is termed as a “binary graph”.</p>
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -194,12 +192,12 @@ non-negative integer, is termed as a “binary graph”.</p>
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -210,9 +208,9 @@ non-negative integer, is termed as a “binary graph”.</p>
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> signature:</p>
+<li><p>Nueva firma <strong>experimental</strong>:</p>
 <ul>
-<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -221,10 +219,10 @@ non-negative integer, is termed as a “binary graph”.</p>
 <ul>
 <li><p>Nueva función <strong>experimental</strong>:</p>
 <ul>
-<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#one-to-one">One to One</a>)</p></li>
-<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
-<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
-<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
+<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
+<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
+<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#many-to-one">Muchos a Uno</a>)</p></li>
+<li><p>pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -259,7 +257,7 @@ edge belongs to the set {0,X}, where “X” is any non-negative real integer.</
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<p class="rubric">Summary</p>
+<p class="rubric">Resumen</p>
 <pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vid</strong>
             [, directed])
 pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vids</strong>
@@ -495,7 +493,7 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="optional-parameters">
-<h2>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -612,8 +610,7 @@ OR EMPTY SET</pre>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Set of <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span>
-<span class="pre">agg_cost)</span></code></p>
+<p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
@@ -633,7 +630,7 @@ OR EMPTY SET</pre>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Path identifier.</p>
+<td><p>Identificador del camino.</p>
 <ul class="simple">
 <li><p>Tiene valor <strong>1</strong> para el primero de la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>
@@ -649,7 +646,7 @@ OR EMPTY SET</pre>
 <ul class="simple">
 <li><p><a class="reference internal" href="#many-to-one">Muchos a Uno</a></p></li>
 <li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinations</a></p></li>
+<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
 </td>
 </tr>
@@ -659,7 +656,7 @@ OR EMPTY SET</pre>
 <ul class="simple">
 <li><p><a class="reference internal" href="#one-to-many">Uno a Muchos</a></p></li>
 <li><p><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
-<li><p><a class="reference internal" href="#combinations">Combinations</a></p></li>
+<li><p><a class="reference internal" href="#combinations">Combinaciones</a></p></li>
 </ul>
 </td>
 </tr>

@@ -101,7 +101,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#new-restrictions-structure">New restrictions structure</a><ul>
-<li><a class="reference internal" href="#restrictions-data">Restrictions data</a></li>
+<li><a class="reference internal" href="#restrictions-data">Datos de restricciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#migration">Migration</a></li>
@@ -203,7 +203,7 @@ different from the replacement function.</p>
 </li>
 <li><p><a class="reference internal" href="#new-restrictions-structure" id="id5">New restrictions structure</a></p>
 <ul>
-<li><p><a class="reference internal" href="#restrictions-data" id="id6">Restrictions data</a></p></li>
+<li><p><a class="reference internal" href="#restrictions-data" id="id6">Datos de restricciones</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#migration" id="id7">Migration</a></p></li>
@@ -354,7 +354,7 @@ different from the replacement function.</p>
 </pre></div>
 </div>
 <section id="restrictions-data">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">Restrictions data</a><a class="headerlink" href="#restrictions-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Datos de restricciones</a><a class="headerlink" href="#restrictions-data" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">restrictions</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span>  <span class="n">path</span>   <span class="o">|</span> <span class="n">cost</span>
 <span class="o">----+---------+------</span>
@@ -679,7 +679,7 @@ FROM pgr_trsp(
 </div>
 <p>Migrate by using:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> when there are no restrictions,</p></li>
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> when there are no restrictions,</p></li>
 <li><p><a class="reference internal" href="pgr_trsp_withPoints.html"><span class="doc">pgr_trsp_withPoints - Proposed</span></a> (One to One) when there are restrictions.</p></li>
 </ul>
 <section id="migrating-pgr-trsp-edges-using-pgr-withpoints">
@@ -709,7 +709,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 </ul>
 </li>
 </ul>
-<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a> instead.</p>
+<p>Use <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a> instead.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT pid, edge_id, fraction FROM pointsOfInterest WHERE pid IN (4, 3)$$,
@@ -729,7 +729,7 @@ WARNING:  pgr_trsp(text,integer,float,integer,float,boolean,boolean) is been dep
 <ul class="simple">
 <li><p>The types casting has been removed.</p></li>
 <li><p>Do not show details, as the deprecated function does not show details.</p></li>
-<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a>:</p>
+<li><p><a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a>:</p>
 <ul>
 <li><p>Autodetects if <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column is in the edges
 SQL.</p></li>

@@ -163,8 +163,7 @@
 </ul>
 <section id="pgr-topologicalsort-experimental">
 <h1><code class="docutils literal notranslate"><span class="pre">pgr_topologicalSort</span></code> - Experimental<a class="headerlink" href="#pgr-topologicalsort-experimental" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_topologicalSort</span></code> — Linear ordering of the vertices for directed acyclic
-graphs (DAG).</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_topologicalSort</span></code> — Devuelve el orden lineal de los vértices para los grafos acíclicos dirigidos ponderados (DAG).</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/topological_sort.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
 <figcaption>
@@ -175,7 +174,7 @@ graphs (DAG).</p>
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -189,12 +188,12 @@ graphs (DAG).</p>
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -211,9 +210,7 @@ graphs (DAG).</p>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>The topological sort algorithm creates a linear ordering of the vertices such
-that if edge <span class="math notranslate nohighlight">\((u,v)\)</span> appears in the graph, then <span class="math notranslate nohighlight">\(v\)</span> comes before
-<span class="math notranslate nohighlight">\(u\)</span> in the ordering.</p>
+<p>El algoritmo de ordenación topológica crea un orden lineal de los vértices de tal manera que si la arista <span class="math notranslate nohighlight">\((u,v)\)</span> aparece en el grafo, entonces <span class="math notranslate nohighlight">\(v\)</span> viene antes de <span class="math notranslate nohighlight">\(u\)</span> en el orden.</p>
 <p>Las principales características son:</p>
 <ul class="simple">
 <li><p>El proceso solo es válido para grafos acíclicos dirigidos. de lo contrario lanzará advertencias.</p></li>
@@ -223,7 +220,7 @@ that if edge <span class="math notranslate nohighlight">\((u,v)\)</span> appears
 </dl>
 </li>
 <li><p>Los valores devueltos se ordenan en orden topológico:</p></li>
-<li><p>Running time: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
+<li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(V + E)\)</span></p></li>
 </ul>
 </section>
 <section id="signatures">
@@ -279,7 +276,7 @@ OR EMPTY SET</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>

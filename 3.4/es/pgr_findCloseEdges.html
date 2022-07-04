@@ -127,11 +127,11 @@
 </li>
 <li><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point">Find at most two routes to a given point</a></li>
 <li><a class="reference internal" href="#a-point-of-interest-table">A point of interest table</a><ul>
-<li><a class="reference internal" href="#points-of-interest">Points of interest</a></li>
-<li><a class="reference internal" href="#points-of-interest-geometry">Points of interest geometry</a></li>
+<li><a class="reference internal" href="#points-of-interest">Puntos de interés</a></li>
+<li><a class="reference internal" href="#points-of-interest-geometry">Geometría de los puntos de interés</a></li>
 <li><a class="reference internal" href="#points-of-interest-fillup">LLenado de puntos de interés</a></li>
 <li><a class="reference internal" href="#a-special-case-to-arrive-from-both-sides-of-the-edge">A special case to arrive from both sides of the edge.</a></li>
-<li><a class="reference internal" href="#points-of-interest-data">Points of interest data</a></li>
+<li><a class="reference internal" href="#points-of-interest-data">Datos de puntos de interés</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#connecting-disconnected-components">Conectando componentes desconectados</a><ul>
@@ -584,11 +584,11 @@ connects the <strong>original point</strong> with the closest point on the <span
 <li><p><a class="reference internal" href="#find-at-most-two-routes-to-a-given-point" id="id11">Find at most two routes to a given point</a></p></li>
 <li><p><a class="reference internal" href="#a-point-of-interest-table" id="id12">A point of interest table</a></p>
 <ul>
-<li><p><a class="reference internal" href="#points-of-interest" id="id13">Points of interest</a></p></li>
-<li><p><a class="reference internal" href="#points-of-interest-geometry" id="id14">Points of interest geometry</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest" id="id13">Puntos de interés</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-geometry" id="id14">Geometría de los puntos de interés</a></p></li>
 <li><p><a class="reference internal" href="#points-of-interest-fillup" id="id15">LLenado de puntos de interés</a></p></li>
 <li><p><a class="reference internal" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" id="id16">A special case to arrive from both sides of the edge.</a></p></li>
-<li><p><a class="reference internal" href="#points-of-interest-data" id="id17">Points of interest data</a></p></li>
+<li><p><a class="reference internal" href="#points-of-interest-data" id="id17">Datos de puntos de interés</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#connecting-disconnected-components" id="id18">Conectando componentes desconectados</a></p>
@@ -1062,7 +1062,7 @@ WHERE rn &lt;= 1
 </section>
 <section id="find-at-most-two-routes-to-a-given-point">
 <h3><a class="toc-backref" href="#id11" role="doc-backlink">Find at most two routes to a given point</a><a class="headerlink" href="#find-at-most-two-routes-to-a-given-point" title="Permalink to this heading">¶</a></h3>
-<p>Using <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a></p>
+<p>Using <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Propuesto</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
   $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
@@ -1095,7 +1095,7 @@ WHERE rn &lt;= 1
 <h3><a class="toc-backref" href="#id12" role="doc-backlink">A point of interest table</a><a class="headerlink" href="#a-point-of-interest-table" title="Permalink to this heading">¶</a></h3>
 <p>Handling points outside the graph.</p>
 <section id="points-of-interest">
-<h4><a class="toc-backref" href="#id13" role="doc-backlink">Points of interest</a><a class="headerlink" href="#points-of-interest" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Puntos de interés</a><a class="headerlink" href="#points-of-interest" title="Permalink to this heading">¶</a></h4>
 <p>Some times the applications work «on the fly» starting from a location that is
 not a vertex in the graph.
 Those locations, in pgRrouting are called points of interest.</p>
@@ -1142,7 +1142,7 @@ will be stored on a table.</p>
 </div>
 </section>
 <section id="points-of-interest-geometry">
-<h4><a class="toc-backref" href="#id14" role="doc-backlink">Points of interest geometry</a><a class="headerlink" href="#points-of-interest-geometry" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Geometría de los puntos de interés</a><a class="headerlink" href="#points-of-interest-geometry" title="Permalink to this heading">¶</a></h4>
 <p>Inserting the data of the points of interest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
@@ -1182,7 +1182,7 @@ UPDATE 6
 </div>
 </section>
 <section id="points-of-interest-data">
-<h4><a class="toc-backref" href="#id17" role="doc-backlink">Points of interest data</a><a class="headerlink" href="#points-of-interest-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">Datos de puntos de interés</a><a class="headerlink" href="#points-of-interest-data" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span>
        <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">newPoint</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">pointsOfInterest</span>
@@ -1203,7 +1203,7 @@ UPDATE 6
 </section>
 <section id="connecting-disconnected-components">
 <h3><a class="toc-backref" href="#id18" role="doc-backlink">Conectando componentes desconectados</a><a class="headerlink" href="#connecting-disconnected-components" title="Permalink to this heading">¶</a></h3>
-<p>To get the graph connectivity:</p>
+<p>Para obtener la conectividad del grafo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
 <span class="p">);</span>

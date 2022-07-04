@@ -205,7 +205,7 @@ RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertex <span class="math notranslate nohighlight">\(11\)</span> for a distance of <span class="math notranslate nohighlight">\(3.0\)</span></p>
+<dd class="field-odd"><p>Desde el vértice <span class="math notranslate nohighlight">\(11\)</span> por una distancia de <span class="math notranslate nohighlight">\(3.0\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
@@ -238,8 +238,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From vertices <span class="math notranslate nohighlight">\(\{11, 16\}\)</span> for a distance of <span class="math notranslate nohighlight">\(3.0\)</span> with
-equi-cost on a directed graph</p>
+<dd class="field-odd"><p>Desde los vertices <span class="math notranslate nohighlight">\(\{11, 16\}\)</span> por una distancia de <span class="math notranslate nohighlight">\(3.0\)</span> con equi-cost en un grafo dirigido</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_drivingDistance</span><span class="p">(</span>
@@ -283,7 +282,7 @@ equi-cost on a directed graph</p>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p>Edges SQL as described below.</p></td>
+<td><p>SQL de aristas como se describen abajo.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>id raíz</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -291,10 +290,10 @@ equi-cost on a directed graph</p>
 </tr>
 <tr class="row-even"><td><p><strong>Raíces</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARREGLO[ENTEROS]</span></code></p></td>
-<td><p>Array of identifiers of the root vertices.</p>
+<td><p>Arreglo de identificadores de los vértices raíz.</p>
 <ul class="simple">
 <li><p>Valores <span class="math notranslate nohighlight">\(0\)</span> son ignorados</p></li>
-<li><p>For optimization purposes, any duplicated value is ignored.</p></li>
+<li><p>Con el propósito de optimización, valores duplicados son ignorados.</p></li>
 </ul>
 </td>
 </tr>
@@ -357,8 +356,7 @@ equi-cost on a directed graph</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the node will only appear in the closest <code class="docutils literal notranslate"><span class="pre">from_v</span></code>
-list.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el nodo solo aparecen en la lista más cercana <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> que asemeja a varias llamadas utilizando las firma de punto de inicio único. Los empates se rompen arbitrariamente.</p></li>
 </ul>
 </td>
@@ -430,7 +428,7 @@ list.</p></li>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">from_v,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Devuelve el conjunto <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">from_v,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -445,11 +443,11 @@ list.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[from_v]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the root vertex.</p></td>
+<td><p>Identificador del vértice raíz.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of <code class="docutils literal notranslate"><span class="pre">node</span></code> within the limits from <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></td>
+<td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">node</span></code> en la ruta dentro de los límites de <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -465,7 +463,7 @@ list.</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>

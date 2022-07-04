@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span> <span class="pre">-</span> <span class="pre">Experimental</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> - Experimental</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
@@ -169,13 +169,13 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_edwardMoore.html">3.2</a></p></li>
 </ul>
 <section id="pgr-edwardmoore-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span> <span class="pre">-</span> <span class="pre">Experimental</span></code><a class="headerlink" href="#pgr-edwardmoore-experimental" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> —  Returns the shortest path using Edward-Moore algorithm.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> - Experimental<a class="headerlink" href="#pgr-edwardmoore-experimental" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> — Devuelve la ruta más cortas usando el algoritmo Edward-Moore.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Posible bloqueo del servidor</p>
 <ul class="simple">
-<li><p>Estas funciones pueden crear un bloque del servidor</p></li>
+<li><p>Estas funciones pueden crear una caída del servidor</p></li>
 </ul>
 </div>
 <div class="admonition warning">
@@ -189,12 +189,12 @@
 <li><p>El nombre puede cambiar.</p></li>
 <li><p>La firma puede cambiar.</p></li>
 <li><p>La funcionalidad puede cambiar.</p></li>
-<li><p>Las pruebas de pgTap pueden estar ausentes.</p></li>
+<li><p>Las pruebas de pgTap pueden faltar.</p></li>
 <li><p>Posiblemente necesite codificación c/c++.</p></li>
 <li><p>Puede carecer documentación.</p></li>
 <li><p>Hay documentación que, en dado caso, podría ser necesario reescribir.</p></li>
-<li><p>Ejemplos de documentación que puede ser necesario generar automáticamente.</p></li>
-<li><p>Puede ser necesaria más retroalimentación por parte de la comunidad.</p></li>
+<li><p>Puede ser necesario que los ejemplos de documentación se generen automáticamente.</p></li>
+<li><p>Puede ser necesaria retroalimentación por parte de la comunidad.</p></li>
 <li><p>Puede depender de una función propuesta de pgRouting</p></li>
 <li><p>Podría depender de una función obsoleta de pgRouting</p></li>
 </ul>
@@ -205,9 +205,9 @@
 <ul class="simple">
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> signature:</p>
+<li><p>Nueva firma <strong>experimental</strong>:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_edwardMoore</span></code> (<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -229,15 +229,14 @@
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Algoritmo de Edward Moore es una mejora del algoritmo Bellman-Ford. Puede calcular las rutas más cortas desde un único vértice de origen a todos los demás vértices de un grafo dirigido ponderado. La principal diferencia entre algoritmo de Edward Moore y algoritmo de Bellman Ford radica en el tiempo de ejecución.</p>
 <p>El peor de los casos de funcionamiento del algoritmo es <span class="math notranslate nohighlight">\(O(| V | * | E |)\)</span> similar a la complejidad temporal del algoritmo Bellman-Ford. Sin embargo, los experimentos sugieren que este algoritmo tiene una complejidad de tiempo de ejecución promedio de <span class="math notranslate nohighlight">\(O( | E | )\)</span> para grafos aleatorios. Esto es significativamente más rápido en términos de velocidad de cálculo.</p>
-<p>Thus, the algorithm is at-best, significantly faster than Bellman-Ford algorithm
-and is at-worst,as good as Bellman-Ford algorithm</p>
+<p>Por lo tanto, el algoritmo es, en el mejor de los casos, significativamente más rápido que el algoritmo Bellman-Ford y es en el peor de los casos, tan bueno como el algoritmo Bellman-Ford</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>Los valores se devuelven cuando hay una ruta.</p>
 <ul>
 <li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
 <ul>
-<li><p>The <cite>agg_cost</cite> the non included values <cite>(v, v)</cite> is <span class="math notranslate nohighlight">\(0\)</span></p></li>
+<li><p>El <cite>agg_cost</cite> de los valores no incluídos <cite>(v, v)</cite> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
 <li><p>Cuando el vértice de salida y el vértice destino son diferentes y no hay ninguna ruta:</p>
@@ -247,12 +246,11 @@ and is at-worst,as good as Bellman-Ford algorithm</p>
 </li>
 </ul>
 </li>
-<li><p>For optimization purposes, any duplicated value in the <cite>start vids</cite> or <cite>end
-vids</cite> are ignored.</p></li>
+<li><p>Para fines de optimización, se omite cualquier valor duplicado en <cite>start_vids</cite> o <cite>end_vids</cite>.</p></li>
 <li><p>Los valores regresados se ordenan:</p>
 <ul>
-<li><p><cite>start vid</cite> ascending</p></li>
-<li><p><cite>end vid</cite> ascending</p></li>
+<li><p><cite>start_vid</cite> ascendente</p></li>
+<li><p><cite>end_vid</cite> ascendente</p></li>
 </ul>
 </li>
 <li><p>Running time:</p>
@@ -265,7 +263,7 @@ vids</cite> are ignored.</p></li>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<p class="rubric">Summary</p>
+<p class="rubric">Resumen</p>
 <pre class="literal-block">pgr_edwardMoore(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vid</strong>  [, directed])
 pgr_edwardMoore(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>,  <strong>end vids</strong> [, directed])
 pgr_edwardMoore(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>  [, directed])
@@ -668,7 +666,7 @@ OR EMPTY SET</pre>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example 1<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo 1<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
@@ -705,7 +703,7 @@ OR EMPTY SET</pre>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 2<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Making <strong>start vids</strong> the same as <strong>end vids</strong>.</p>
+<dd class="field-odd"><p>Haciendo <strong>vids iniciales</strong> los mismos que <strong>vids destinos</strong>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edwardMoore</span><span class="p">(</span>

@@ -182,7 +182,7 @@
 <ul>
 <li><p>Nueva firma <strong>propuesta</strong>:</p>
 <ul>
-<li><p>pgr_bdDijkstra(<a class="reference internal" href="#combinations">Combinations</a>)</p></li>
+<li><p>pgr_bdDijkstra(<a class="reference internal" href="#combinations">Combinaciones</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -196,16 +196,16 @@
 <ul>
 <li><p>Nuevas funciones <strong>Propuestas</strong>:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#one-to-many">One to Many</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#many-to-one">Many to One</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#many-to-many">Many to Many</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#one-to-many">Uno a Muchos</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#many-to-one">Muchos a Uno</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#many-to-many">Muchos a Muchos</a>)</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Versión 2.4.0</p>
 <ul>
-<li><p>Signature change on <code class="docutils literal notranslate"><span class="pre">pgr_bdDijsktra</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p>
+<li><p>La firma cambió en <code class="docutils literal notranslate"><span class="pre">pgr_bdDijsktra</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p>
 <ul>
 <li><p>Firma antigua ya no soportada</p></li>
 </ul>
@@ -214,7 +214,7 @@
 </li>
 <li><p>Versión 2.0.0</p>
 <ul>
-<li><p><strong>Official</strong> <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#one-to-one">One to One</a>)</p></li>
+<li><p><strong>Oficial</strong> <code class="docutils literal notranslate"><span class="pre">pgr_bdDijkstra</span></code> (<a class="reference internal" href="#one-to-one">Uno a Uno</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +224,7 @@
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p>
 <ul>
-<li><p>A negative value on a cost column is interpreted as the edge does not exist.</p></li>
+<li><p>Valor no negativo en una columna de costo se interpreta como la arista no exite.</p></li>
 </ul>
 </li>
 <li><p>Los valores se devuelven cuando hay una ruta.</p></li>
@@ -656,7 +656,7 @@ OR EMPTY SET</pre>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Example 1<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo 1<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Demostración de ignorar los valores repertidos, y resultado ordenado.</p>
 </dd>
 </dl>
@@ -693,7 +693,7 @@ OR EMPTY SET</pre>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo 2<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Making <strong>start vids</strong> the same as <strong>end vids</strong>.</p>
+<dd class="field-odd"><p>Haciendo <strong>vids iniciales</strong> los mismos que <strong>vids destinos</strong>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>

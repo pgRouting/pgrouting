@@ -107,19 +107,19 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">Parámetros opcionales para Con puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#restrictions-sql">Restricciones SQL</a></li>
+<li><a class="reference internal" href="#restrictions-sql">SQL restricciones</a></li>
 <li><a class="reference internal" href="#points-sql">SQL puntos</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Usa <span class="xref std std-doc">pgr_findCloseEdges</span> en el Points SQL.</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Usa <span class="xref std std-doc">pgr_findCloseEdges</span> en el SQL puntos.</a></li>
 <li><a class="reference internal" href="#pass-in-front-or-visits">Pass in front or visits</a></li>
 <li><a class="reference internal" href="#show-details-on-undirected-graph">Show details on undirected graph</a></li>
 </ul>
@@ -187,9 +187,9 @@
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -495,7 +495,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 <td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
@@ -503,7 +503,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 <td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Arreglo de identificadores de vértices destino.</p></td>
 </tr>
 </tbody>
@@ -538,7 +538,7 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 </table>
 </section>
 <section id="with-points-optional-parameters">
-<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -557,11 +557,11 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 <tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>] indicating if the driving side is:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>] indicando si el lado de manejo es:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side</p></li>
-<li><p>Any other value will be considered as <code class="docutils literal notranslate"><span class="pre">r</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para el manejo del lado derecho</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para el manejo del lado izquierdo</p></li>
+<li><p>Cualquier otro valor se considera como <code class="docutils literal notranslate"><span class="pre">r</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -569,9 +569,8 @@ point <span class="math notranslate nohighlight">\(3\)</span> with <strong>right
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the points that are in the path.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the results will not include the points that are in the
-path.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> los resultados incluyen los puntos que están en el camino.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> los resultados no incluyen los puntos que están en el camino.</p></li>
 </ul>
 </td>
 </tr>
@@ -643,7 +642,7 @@ path.</p></li>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3>Restricciones SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL restricciones<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10%" />
@@ -658,11 +657,8 @@ path.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of edge identifiers that form a path that is not allowed to be
-taken.
-- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
-- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
@@ -725,7 +721,7 @@ taken.
 <ul class="simple">
 <li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>A la izquierda <cite>l</cite>,</p></li>
-<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>En ambos lados <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -811,7 +807,7 @@ taken.
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
+<td><p>Identificador de la arsita utilizada para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
 <li><p>-1 para el último nodo de la ruta.</p></li>
 </ul>
@@ -840,15 +836,14 @@ taken.
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el Points SQL.</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el SQL puntos.</a></p></li>
 <li><p><a class="reference internal" href="#pass-in-front-or-visits" id="id3">Pass in front or visits</a></p></li>
 <li><p><a class="reference internal" href="#show-details-on-undirected-graph" id="id4">Show details on undirected graph</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">Points SQL</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Permalink to this heading">¶</a></h3>
-<p>Find the routes from vertex <span class="math notranslate nohighlight">\(1\)</span> to the two closest locations on the graph
-of point <cite>(2.9, 1.8)</cite>.</p>
+<h3>Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">SQL puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Permalink to this heading">¶</a></h3>
+<p>Wncontrar las rutas desde el vértice <span class="math notranslate nohighlight">\(1\)</span> a las dos ubicaciones más cercanas en el grafo al punto`(2.9, 1.8)`.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp_withPoints(
   $e$ SELECT * FROM edges $e$,
   $r$ SELECT id, path, cost FROM restrictions $r$,
@@ -882,8 +877,8 @@ of point <cite>(2.9, 1.8)</cite>.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9,1.8)</cite>.</p></li>
-<li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9,1.8)</cite>.</p></li>
+<li><p>Punto <span class="math notranslate nohighlight">\(-1\)</span> corresponde a la arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
+<li><p>Punto <span class="math notranslate nohighlight">\(-2\)</span> corresponde a la segunda arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
 </ul>
 </section>
 <section id="pass-in-front-or-visits">

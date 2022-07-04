@@ -179,8 +179,8 @@
 <p class="rubric">Pre-requisitos</p>
 <p>La tabla de bordes debe ser analizada debe contener una columna de origen y una columna de destino llena con los identificadores de los vértices de los segmentos y los vértices correspondientes de la tabla &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
 <ul class="simple">
-<li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to create the vertices table.</p></li>
-<li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> to create the topology and the vertices table.</p></li>
+<li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear la tabla de vértices.</p></li>
+<li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</p></li>
 </ul>
 </section>
 <section id="parameters">
@@ -203,7 +203,7 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> condición para seleccionar un subconjunto o filas.  Valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas.</p>
@@ -290,7 +290,7 @@
 
 </pre></div>
 </div>
-<p class="rubric">Arguments are given in the order described in the parameters:</p>
+<p class="rubric">Los argumentos se escriben en el orden descrito en los parámetros:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
@@ -316,8 +316,8 @@
 <p>Obtenemos el mismo resultado que la forma más sencilla de utilizar la función.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>An error would occur when</p>
-<p>the arguments are not given in the appropriate order:</p>
+<p>Un error puede ocurrir cuando</p>
+<p>los argumentos se no se escriben en el orden apropiado:</p>
 <p>En este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> se pasa a la función como geometría, y la columna de geometría <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> se pasa a la función de columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
@@ -872,7 +872,7 @@
 <li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> to create nodes to a not noded edge table.</p></li>
+<li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> para crear nodos en una tabla sin nodos.</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">

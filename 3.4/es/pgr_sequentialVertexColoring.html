@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_bipartite -Experimental" href="pgr_bipartite.html" />
+    <link rel="next" title="pgr_bipartite - Experimental" href="pgr_bipartite.html" />
     <link rel="prev" title="Coloración - Familia de funciones" href="coloring-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -120,7 +120,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_bipartite.html" title="Next Chapter: pgr_bipartite -Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bipartite... &raquo;</span>
+    <a href="pgr_bipartite.html" title="Next Chapter: pgr_bipartite - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_bipartite... &raquo;</span>
     </a>
   </li>
               
@@ -152,11 +152,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_sequentialVertexColoring.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_sequentialVertexColoring.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html">3.2</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_sequentialVertexColoring.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_sequentialVertexColoring.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_sequentialVertexColoring.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_sequentialVertexColoring.html">3.2</a></p></li>
 </ul>
 <section id="pgr-sequentialvertexcoloring-proposed">
 <h1>pgr_sequentialVertexColoring - Propuesto<a class="headerlink" href="#pgr-sequentialvertexcoloring-proposed" title="Permalink to this heading">¶</a></h1>
@@ -175,9 +171,9 @@
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -188,20 +184,18 @@
 <ul class="simple">
 <li><p>Versión 3.3.0</p>
 <ul>
-<li><p>Promoted to <strong>proposed</strong> signature</p></li>
+<li><p>Promovido a firma <strong>propuesta</strong></p></li>
 </ul>
 </li>
 <li><p>Versión 3.2.0</p>
 <ul>
-<li><p>New <strong>experimental</strong> signature</p></li>
+<li><p>Nueva función <strong>experimental</strong></p></li>
 </ul>
 </li>
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>Sequential vertex coloring algorithm is a graph coloring algorithm in which
-color identifiers are assigned to the vertices of a graph in a sequential
-manner, such that no edge connects two identically colored vertices.</p>
+<p>El algoritmo de Coloración de Vértices Secuenciales es un algoritmo de coloración de grafos en el que se asignan identificadores de color a los vértices de un grafo de forma secuencial, de modo que ninguna arista conecte dos vértices de colores idénticos.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>La implementación solo es aplicable a los grafos <strong>no dirigidos</strong>.</p></li>
@@ -270,7 +264,7 @@ OR EMPTY SET</pre>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>

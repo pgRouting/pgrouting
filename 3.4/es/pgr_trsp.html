@@ -102,7 +102,7 @@
 <li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
 <li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
 <li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
-<li><a class="reference internal" href="#combinations">Combinations</a></li>
+<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
@@ -111,7 +111,7 @@
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></li>
+<li><a class="reference internal" href="#restrictions-sql">SQL restricciones</a></li>
 <li><a class="reference internal" href="#combinations-sql">SQL Combinaciones</a></li>
 </ul>
 </li>
@@ -240,13 +240,13 @@ real world navigable road networks.</p>
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
-<li><p>They are not officially in the current release.</p></li>
-<li><p>They will likely officially be part of the next mayor release:</p>
+<li><p>No están oficialmente en la versión actual.</p></li>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Name might not change. (But still can)</p></li>
-<li><p>Signature might not change. (But still can)</p></li>
-<li><p>Functionality might not change. (But still can)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -399,7 +399,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="combinations">
-<span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
 <pre class="literal-block">pgr_trsp(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#restrictions-sql">Restrictions SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>,
             [, directed]) -- Proposed on v3.4
 RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
@@ -465,7 +465,7 @@ OR EMPTY SET</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#restrictions-sql">SQL de restricciones</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p>Consulta SQL como se describe.</p></td>
 </tr>
@@ -491,7 +491,7 @@ OR EMPTY SET</pre>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -553,7 +553,7 @@ OR EMPTY SET</pre>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
@@ -571,7 +571,7 @@ OR EMPTY SET</pre>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -582,7 +582,7 @@ OR EMPTY SET</pre>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL restricciones<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10%" />
@@ -598,18 +598,15 @@ OR EMPTY SET</pre>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of edge identifiers that form a path that is not allowed to be
-taken.
-- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
-- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
+<td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
-<td><p>Cost of taking the forbidden path.</p></td>
+<td><p>Costo de tomar el camino prohibido.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -644,7 +641,7 @@ taken.
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -674,7 +671,7 @@ taken.
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Path identifier.</p>
+<td><p>Identificador del camino.</p>
 <ul class="simple">
 <li><p>Tiene valor <strong>1</strong> para el primero de la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></li>
 </ul>

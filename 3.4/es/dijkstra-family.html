@@ -96,7 +96,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Dijkstra - Familia de funciones</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#introduction">Introducción</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
 </ul>
@@ -179,9 +179,9 @@
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -190,19 +190,19 @@
 </div>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Proposed</span></a> - Obtener la ruta al vértice más cercano.</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a> - Consigue el costo del vértice más cercano.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> - Obtener la ruta al vértice más cercano.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a> - Consigue el costo del vértice más cercano.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2>Introducción<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Algoritmo de Dijkstra, concebido por el informático holandés Edsger Dijkstra en 1956. Es un algoritmo de búsqueda en grafos que resuelve el problema de ruta más corta para un grafo con costos de aristas no negativos, produciendo la ruta más corta desde un vértice inicial a un vértice final . Esta implementación se puede utilizar con un grafos dirigidos y no dirigidos.</p>
 <p>Las principales características son:</p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p>
 <ul>
-<li><p>Valor no negativo en una columna de costo se interpreta como la arsta no exite.</p></li>
+<li><p>Valor no negativo en una columna de costo se interpreta como la arista no exite.</p></li>
 </ul>
 </li>
 <li><p>Los valores se devuelven cuando hay una ruta.</p></li>
@@ -223,7 +223,7 @@
 <li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O(| start\_vids | * (V \log V + E))\)</span></p></li>
 </ul>
-<p>The Dijkstra family functions are based on the Dijkstra algorithm.</p>
+<p>Las funciones de la familia de Dijkstra se basan en el algoritmo de Dijkstra.</p>
 </section>
 <section id="parameters">
 <h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
@@ -236,7 +236,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -250,15 +250,15 @@
 </tr>
 <tr class="row-even"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path.</p></td>
+<td><p>Identificador del vértice inicial de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of starting vertices.</p></td>
+<td><p>Arreglo de identificadores de vértices iniciales.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path.</p></td>
+<td><p>Identificador del vértice final de la ruta.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
@@ -273,7 +273,7 @@
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -305,7 +305,7 @@
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
 <th class="head"><p>x Defecto</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -322,7 +322,7 @@
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td></td>
-<td><p>Identifier of the second end point vertex of the edge.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
@@ -340,7 +340,7 @@
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -361,7 +361,7 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Description</p></th>
+<th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
@@ -375,7 +375,7 @@
 </tr>
 </tbody>
 </table>
-<p>Where:</p>
+<p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
@@ -452,9 +452,7 @@ G_u(V,E) &amp; \quad \text{ if5 } directed = false \\
 </ul>
 </dd>
 </dl>
-<p>In other words: The algorithm returns a the shortest path between
-<span class="math notranslate nohighlight">\(start_{vid}\)</span> and <span class="math notranslate nohighlight">\(end_{vid}\)</span>, if it exists, in terms of a sequence
-of nodes  and of edges,</p>
+<p>En otras palabras: El algoritmo devuelve la ruta más corta entre <span class="math notranslate nohighlight">\(start_{vid}\)</span> y <span class="math notranslate nohighlight">\(end_{vid}\)</span>, si es que existe, en términos de una secuencia de nodos y de aristas,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(path\_seq\)</span> indica la posición relativa en el camino de <span class="math notranslate nohighlight">\(node\)</span> o <span class="math notranslate nohighlight">\(edge\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(cost\)</span> es el coste del borde que se utilizará para ir al siguiente nodo.</p></li>

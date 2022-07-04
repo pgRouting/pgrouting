@@ -150,13 +150,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_createVerticesTable.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_createVerticesTable.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_createVerticesTable.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_createVerticesTable.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_createVerticesTable.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_createVerticesTable.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_createVerticesTable.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_createVerticesTable.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_createVerticesTable.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_createVerticesTable.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_createVerticesTable.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createVerticesTable.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_createVerticesTable.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_createVerticesTable.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createVerticesTable.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createVerticesTable.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_vert_table.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_vert_table.html">2.0</a></p></li>
 </ul>
 <section id="pgr-createverticestable">
@@ -200,7 +194,7 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> condición para seleccionar un subconjunto o filas.  Valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas.</p>
@@ -244,20 +238,16 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</p>
 </dd>
 <dt class="field-even">cnt<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this
-vertex. See <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en la edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem. See
-<a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this
-vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que hacen referencia a este vértice como entrante. Consulte <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 </dd>
 <dt class="field-odd">eout<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this
-vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en el edge_table que hacen referencia a este vértice como saliente. Consulte <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 </dd>
 <dt class="field-even">the_geom<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Valor de la geometría POINT del vértice.</p>

@@ -108,14 +108,14 @@
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
-<li><a class="reference internal" href="#restrictions-sql">Restricciones SQL</a></li>
+<li><a class="reference internal" href="#restrictions-sql">SQL restricciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#the-main-query">The main query</a><ul>
 <li><a class="reference internal" href="#aggregate-cost-of-the-third-path">Costo agregado de la tercera ruta.</a></li>
-<li><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">Costo agregado de al final de la tercera ruta.</a></li>
+<li><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">Costo agregado al final de la tercera ruta.</a></li>
 <li><a class="reference internal" href="#nodes-visited-in-the-route">Nodos visitados en la ruta.</a></li>
 <li><a class="reference internal" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached">Costo agregado de la ruta al llegar a los vértices visitados.</a></li>
 <li><a class="reference internal" href="#status-of-passes-in-front-or-visits-of-the-nodes">Status of «passes in front» or «visits» of the nodes.</a></li>
@@ -187,9 +187,9 @@
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -291,8 +291,8 @@ OR EMPTY SET</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td><p><a class="reference internal" href="#restrictions-sql">Restrictions SQL</a> query as described.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>via vertices</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<tr class="row-even"><td><p><strong>vía vértices</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
 <td><p>Arreglo ordenado de identificadores de vértices que serán visitados.</p></td>
 </tr>
 </tbody>
@@ -425,7 +425,7 @@ OR EMPTY SET</pre>
 </dl>
 </section>
 <section id="restrictions-sql">
-<h3>Restricciones SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL restricciones<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10%" />
@@ -440,11 +440,8 @@ OR EMPTY SET</pre>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ENTEROS</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
-<td><p>Sequence of edge identifiers that form a path that is not allowed to be
-taken.
-- Empty arrays or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrays are ignored.
-- Arrays that have a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> element will raise an exception.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[</span></code> <strong>ANY-INTEGER</strong> <code class="docutils literal notranslate"><span class="pre">]</span></code></p></td>
+<td><p>Secuencia de identificadores de aristas que forman un camino que no se permite tomar. - Arreglos vacios o <code class="docutils literal notranslate"><span class="pre">NULL</span></code> son ignorados. - Arreglos que tienen <code class="docutils literal notranslate"><span class="pre">NULL</span></code> arrojan una excepción.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cost</span></code></p></td>
 <td><p><strong>FLOTANTES</strong></p></td>
@@ -504,7 +501,7 @@ taken.
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
+<td><p>Identificador de la arsita utilizada para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
 <li><p>-1 para el último nodo de la ruta.</p></li>
 <li><p>-2 para el último nodo de la ruta.</p></li>
@@ -533,7 +530,7 @@ taken.
 <li><p><a class="reference internal" href="#the-main-query" id="id2">The main query</a></p>
 <ul>
 <li><p><a class="reference internal" href="#aggregate-cost-of-the-third-path" id="id3">Costo agregado de la tercera ruta.</a></p></li>
-<li><p><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" id="id4">Costo agregado de al final de la tercera ruta.</a></p></li>
+<li><p><a class="reference internal" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" id="id4">Costo agregado al final de la tercera ruta.</a></p></li>
 <li><p><a class="reference internal" href="#nodes-visited-in-the-route" id="id5">Nodos visitados en la ruta.</a></p></li>
 <li><p><a class="reference internal" href="#the-aggregate-costs-of-the-route-when-the-visited-vertices-are-reached" id="id6">Costo agregado de la ruta al llegar a los vértices visitados.</a></p></li>
 <li><p><a class="reference internal" href="#status-of-passes-in-front-or-visits-of-the-nodes" id="id7">Status of «passes in front» or «visits» of the nodes.</a></p></li>
@@ -586,7 +583,7 @@ WHERE path_id = 3 AND edge &lt; 0;
 </div>
 </section>
 <section id="route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Costo agregado de al final de la tercera ruta.</a><a class="headerlink" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Costo agregado al final de la tercera ruta.</a><a class="headerlink" href="#route-s-aggregate-cost-of-the-route-at-the-end-of-the-third-path" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT route_agg_cost FROM pgr_trspVia(
   $$SELECT id, source, target, cost, reverse_cost FROM edges$$,
   $$SELECT path, cost FROM restrictions$$,

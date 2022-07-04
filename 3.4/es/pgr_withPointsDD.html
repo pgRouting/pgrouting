@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_withPointsDD - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_withPointsDD - Propuesto &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -95,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Propuesto</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#single-vertex">Vértice único</a></li>
@@ -104,7 +104,7 @@
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">Parámetros opcionales para Con puntos</a></li>
 <li><a class="reference internal" href="#driving-distance-optional-parameters">Parámetros opcionales de distancia de manejo</a></li>
 </ul>
 </li>
@@ -115,8 +115,8 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Use <span class="xref std std-doc">pgr_findCloseEdges</span> in the Points SQL.</a></li>
-<li><a class="reference internal" href="#driving-side-does-not-matter">Driving side does not matter</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Usa <span class="xref std std-doc">pgr_findCloseEdges</span> en el SQL puntos.</a></li>
+<li><a class="reference internal" href="#driving-side-does-not-matter">Lado de manejo no importa</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
@@ -171,8 +171,8 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPointsDD.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPointsDD.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPointsDD.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsDD.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html">2.2</a></p></li>
 </ul>
 <section id="pgr-withpointsdd-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Proposed<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Returns the driving <strong>distance</strong> from a starting point.</p>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Propuesto<a class="headerlink" href="#pgr-withpointsdd-proposed" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsDD</span></code> - Devuelve la <strong>distancia</strong> de conducción desde un punto de partida.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>Funciones propuestas para la próxima versión mayor.</p>
@@ -181,9 +181,9 @@
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -206,10 +206,7 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>Modify the graph to include points and using Dijkstra algorithm, extracts all
-the nodes and points that have costs less than or equal to the value
-<code class="docutils literal notranslate"><span class="pre">**distance**</span></code> from the starting point.
-The edges extracted will conform the corresponding spanning tree.</p>
+<p>Modifica el grafo para incluir puntos y utilizando el algoritmo Dijkstra, extrae todos los nodos y puntos que tienen costes menores o iguales que el valor de <code class="docutils literal notranslate"><span class="pre">**distance**</span></code> desde el punto inicial. Las aristas extraídas conformarán el árbol de expansión correspondiente.</p>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
@@ -253,8 +250,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)</pre>
 RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(16\)</span> within a distance of
-<span class="math notranslate nohighlight">\(3.3\)</span> with <code class="docutils literal notranslate"><span class="pre">equicost</span></code> on a directed graph</p>
+<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(16\)</span> dentro de una distancia de <span class="math notranslate nohighlight">\(3.3\)</span> con <code class="docutils literal notranslate"><span class="pre">equicost</span></code> en un grafo dirigido</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
@@ -310,17 +306,17 @@ RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del vértice raíz del árbol.</p>
 <ul class="simple">
-<li><p>Negative values represent a point</p></li>
+<li><p>Valores negativos representan un punto</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>Raíces</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARREGLO[ENTEROS]</span></code></p></td>
-<td><p>Array of identifiers of the root vertices.</p>
+<td><p>Arreglo de identificadores de los vértices raíz.</p>
 <ul class="simple">
-<li><p>Negative values represent a point</p></li>
+<li><p>Valores negativos representan un punto</p></li>
 <li><p>Valores <span class="math notranslate nohighlight">\(0\)</span> son ignorados</p></li>
-<li><p>For optimization purposes, any duplicated value is ignored.</p></li>
+<li><p>Con el propósito de optimización, valores duplicados son ignorados.</p></li>
 </ul>
 </td>
 </tr>
@@ -354,7 +350,7 @@ RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</pre>
 </table>
 </section>
 <section id="with-points-optional-parameters">
-<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -373,11 +369,11 @@ RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</pre>
 <tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indica si el lado de manejo es:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para manejo del lado derecho.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para lado de manejo izquierdo.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for ambos.</p></li>
 </ul>
 </td>
 </tr>
@@ -385,9 +381,8 @@ RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the points that are in the path.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the results will not include the points that are in the
-path.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> los resultados incluyen los puntos que están en el camino.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> los resultados no incluyen los puntos que están en el camino.</p></li>
 </ul>
 </td>
 </tr>
@@ -415,8 +410,7 @@ path.</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the node will only appear in the closest <code class="docutils literal notranslate"><span class="pre">from_v</span></code>
-list.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el nodo solo aparecen en la lista más cercana <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> que asemeja a varias llamadas utilizando las firma de punto de inicio único. Los empates se rompen arbitrariamente.</p></li>
 </ul>
 </td>
@@ -505,11 +499,10 @@ list.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p><strong>valor</strong></p></td>
-<td><p>Identifier of the point.</p>
+<td><p>Identificador del punto.</p>
 <ul class="simple">
-<li><p>Use with positive value, as internally will be converted to negative
-value</p></li>
-<li><p>If column is present, it can not be NULL.</p></li>
+<li><p>Use con un valor positivo, dado que internamente se convertirá a un valor negativo</p></li>
+<li><p>Si columna esta presente, no puede ser NULL.</p></li>
 <li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
@@ -529,9 +522,9 @@ value</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 <td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
-<li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
+<li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>A la izquierda <cite>l</cite>,</p></li>
-<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>En ambos lados <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -550,7 +543,7 @@ value</p></li>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
+<p>Regresa vonjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">[start_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -565,11 +558,11 @@ value</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[start_vid]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the root vertex.</p></td>
+<td><p>Identificador del vértice raíz.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of <code class="docutils literal notranslate"><span class="pre">node</span></code> within the limits from <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></td>
+<td><p>Identificador del <code class="docutils literal notranslate"><span class="pre">node</span></code> en la ruta dentro de los límites de <code class="docutils literal notranslate"><span class="pre">from_v</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
@@ -585,7 +578,7 @@ value</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Aggregate cost from <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
+<td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">from_v</span></code> to <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -603,14 +596,13 @@ value</p></li>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the Points SQL.</a></p></li>
-<li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id3">Driving side does not matter</a></p></li>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el SQL puntos.</a></p></li>
+<li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id3">Lado de manejo no importa</a></p></li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the <a class="reference internal" href="#points-sql">Points SQL</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Permalink to this heading">¶</a></h3>
-<p>Find the driving distance from the two closest locations on the graph of point
-<cite>(2.9, 1.8)</cite>.</p>
+<h3>Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">SQL puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Permalink to this heading">¶</a></h3>
+<p>Encontrar la distancia de manejo de las dos ubicaciones más cercanas al grafo del punto <cite>(2.8, 1.8)</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPointsDD(
   $e$ SELECT * FROM edges $e$,
   $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
@@ -650,12 +642,12 @@ value</p></li>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9,1.8)</cite>.</p></li>
-<li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9,1.8)</cite>.</p></li>
+<li><p>Punto <span class="math notranslate nohighlight">\(-1\)</span> corresponde a la arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
+<li><p>Punto <span class="math notranslate nohighlight">\(-2\)</span> corresponde a la segunda arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
 </ul>
 </section>
 <section id="driving-side-does-not-matter">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Driving side does not matter</a><a class="headerlink" href="#driving-side-does-not-matter" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Lado de manejo no importa</a><a class="headerlink" href="#driving-side-does-not-matter" title="Permalink to this heading">¶</a></h3>
 <p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> dentro de una distancia de <span class="math notranslate nohighlight">\(3.3\)</span>, sin importar el lado de manejo, detallada.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsDD</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>

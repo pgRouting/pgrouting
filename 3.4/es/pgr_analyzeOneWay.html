@@ -147,13 +147,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_analyzeOneWay.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_analyzeOneWay.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_analyzeOneWay.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_analyzeOneWay.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_analyzeOneWay.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_analyzeOneWay.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_analyzeOneWay.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_analyzeOneWay.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_analyzeOneWay.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_analyzeOneWay.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_analyzeOneWay.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_analyzeOneWay.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_analyzeOneWay.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_analyzeOneWay.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_analyzeOneWay.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_analyzeOneWay.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/analyze_oneway.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/analyze_oneway.html">2.0</a></p></li>
 </ul>
 <section id="pgr-analyzeoneway">
@@ -176,8 +170,8 @@
 <p class="rubric">Pre-requisitos</p>
 <p>La tabla de bordes debe ser analizada debe contener una columna de origen y una columna de destino llena con los identificadores de los vértices de los segmentos y los vértices correspondientes de la tabla &lt;edge_table&gt;_vertices_pgr que almacena la información de los vértices.</p>
 <ul class="simple">
-<li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to create the vertices table.</p></li>
-<li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> to create the topology and the vertices table.</p></li>
+<li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para crear la tabla de vértices.</p></li>
+<li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> para crear la topología y los vértices.</p></li>
 </ul>
 </section>
 <section id="signatures">
@@ -215,10 +209,10 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">two_way_if_null<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code>  bandera para tratar los valores NULL de oneway como bidireccional.  Valor predeterminado es``true``.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> bandera para tratar los valores NULL de oneway como bidireccional.  Valor predeterminado es``true``.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -243,8 +237,7 @@
 </ul>
 <p>Las reglas se definen como un conjunto de textos que si encajan con el valor de <code class="docutils literal notranslate"><span class="pre">oneway</span></code> se contara como <code class="docutils literal notranslate"><span class="pre">true</span></code> para las condiciones de el origen o destino <strong>in</strong> o <strong>out</strong> .</p>
 <p class="rubric">La tabla de vértices</p>
-<p>The vertices table can be created with <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> or
-<a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
+<p>Los vértices pueden ser creados con <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> o <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a></p>
 <p>La estructura de la tabla de los vértices es:</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>

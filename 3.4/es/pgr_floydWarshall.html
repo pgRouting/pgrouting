@@ -155,13 +155,7 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_floydWarshall.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_floydWarshall.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_floydWarshall.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_floydWarshall.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_floydWarshall.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_floydWarshall.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_floydWarshall.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_floydWarshall.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_floydWarshall.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_floydWarshall.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_floydWarshall.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_floydWarshall.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_floydWarshall.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_floydWarshall.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/allpairs/doc/pgr_floydWarshall.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/allpairs/doc/pgr_floydWarshall.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/apsp_warshall/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-floydwarshall">
@@ -193,20 +187,20 @@
 <p>Las principales características son:</p>
 <ul class="simple">
 <li><p>No devuelve una ruta.</p></li>
-<li><p>Devuelve la suma de los costos de la ruta más corta para cada par de nodos del grafo.</p></li>
+<li><p>Regresa la suma de los costos de la ruta más corta para cada par de nodos del grafo.</p></li>
 <li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
-<li><p>Boost devuelve una matriz:math:<cite>V times V</cite> donde los valores son infinitos. Representar la distancia entre vértices para los que no hay ruta.</p>
+<li><p>Boost devuelve una matriz <span class="math notranslate nohighlight">\(V \times V\)</span> donde los valores infinitos representan la distancia entre vértices para los que no hay ruta.</p>
 <ul>
-<li><p>Solo devolvemos los valores no infinitos en forma de un conjunto de <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
+<li><p>Solo regresa los valores no infinitos en forma de un conjunto de <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
 </ul>
 </li>
-<li><p>Sea el caso, los valores devueltos se almacenan en una tabla, por lo que el índice único sería el par: “(start_vid, end_vid)”.</p></li>
+<li><p>Sea el caso donde los valores devueltos se almacenan en una tabla, por lo que el índice único sería el par: <cite>(start_vid, end_vid)</cite>.</p></li>
 <li><p>Para el grafo no dirigido, los resultados son simétricos.</p>
 <ul>
 <li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
 </ul>
 </li>
-<li><p>En caso de <cite>start_vid</cite> = <cite>end_vid</cite>, el  <cite>agg_cost</cite> = 0.</p></li>
+<li><p>En caso de <cite>start_vid</cite> = <cite>end_vid</cite>, el <cite>agg_cost</cite> = 0.</p></li>
 <li><p><strong>Recomendación: utilice un cuadro delimitador de no más de 3500 aristas.</strong></p></li>
 </ul>
 </section>
@@ -217,8 +211,8 @@
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Example<span class="colon">:</span></dt>
-<dd class="field-odd"><p>For a directed subgraph with edges <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
+<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Para sub-grafo con aristas <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_floydWarshall</span><span class="p">(</span>
@@ -259,7 +253,7 @@ OR EMPTY SET</pre>
 <tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
 <td></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
 </tr>
 </tbody>
 </table>
@@ -379,7 +373,7 @@ OR EMPTY SET</pre>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
-<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">floyd-Warshall</a></p></li>
+<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Algoritmo floyd-Warshall</a></p></li>
 <li><p>Queries utiliza la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a>.</p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>

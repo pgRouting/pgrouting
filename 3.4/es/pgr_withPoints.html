@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>pgr_withPoints - Proposed &#8212; pgRouting Manual (3.4-dev)</title>
+    <title>pgr_withPoints - Propuesto &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="pgr_withPointsCost - Proposed" href="pgr_withPointsCost.html" />
+    <link rel="next" title="pgr_withPointsCost - Propuesto" href="pgr_withPointsCost.html" />
     <link rel="prev" title="withPoints - Familia de funciones" href="withPoints-family.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -95,19 +95,19 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Proposed</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Propuesto</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a><ul>
 <li><a class="reference internal" href="#one-to-one">Uno a Uno</a></li>
 <li><a class="reference internal" href="#one-to-many">Uno a Muchos</a></li>
 <li><a class="reference internal" href="#many-to-one">Muchos a Uno</a></li>
 <li><a class="reference internal" href="#many-to-many">Muchos a Muchos</a></li>
-<li><a class="reference internal" href="#combinations">Combinations</a></li>
+<li><a class="reference internal" href="#combinations">Combinaciones</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#parameters">Parámetros</a><ul>
 <li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
-<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">Parámetros opcionales para Con puntos</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
@@ -118,10 +118,10 @@
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Use <span class="xref std std-doc">pgr_findCloseEdges</span> in the Points SQL.</a></li>
-<li><a class="reference internal" href="#usage-variations">Usage variations</a><ul>
-<li><a class="reference internal" href="#passes-in-front-or-visits-with-right-side-driving">Passes in front or visits with right side driving.</a></li>
-<li><a class="reference internal" href="#passes-in-front-or-visits-with-left-side-driving">Passes in front or visits with left side driving.</a></li>
+<li><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql">Usa <span class="xref std std-doc">pgr_findCloseEdges</span> en el SQL puntos.</a></li>
+<li><a class="reference internal" href="#usage-variations">Variaciones de uso</a><ul>
+<li><a class="reference internal" href="#passes-in-front-or-visits-with-right-side-driving">Pasa enfrente o visita con lado derecho de manejo.</a></li>
+<li><a class="reference internal" href="#passes-in-front-or-visits-with-left-side-driving">Pasa enfrente o visita con lado izquierdo de manejo.</a></li>
 </ul>
 </li>
 </ul>
@@ -142,7 +142,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
+    <a href="pgr_withPointsCost.html" title="Next Chapter: pgr_withPointsCost - Propuesto"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_withPoint... &raquo;</span>
     </a>
   </li>
               
@@ -174,17 +174,11 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Supported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_withPoints.html">Latest</a>
-(<a class="reference external" href="https://docs.pgrouting.org/3.4/en/pgr_withPoints.html">3.4</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_withPoints.html">3.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_withPoints.html">3.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_withPoints.html">3.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_withPoints.html">3.0</a></p></li>
+<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_withPoints.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_withPoints.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_withPoints.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_withPoints.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_withPoints.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_withPoints.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPoints.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPoints.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPoints.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPoints.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html">2.2</a></p></li>
 </ul>
 <section id="pgr-withpoints-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Proposed<a class="headerlink" href="#pgr-withpoints-proposed" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Propuesto<a class="headerlink" href="#pgr-withpoints-proposed" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPoints</span></code> - Devuelve la ruta más corta de un grafo con vértices temporales adicionales.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -194,9 +188,9 @@
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
 <li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
 <li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
@@ -272,7 +266,7 @@ RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)</pre
 RETURNS (seq, path_seq, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span> with details</p>
+<dd class="field-odd"><p>Del punto <span class="math notranslate nohighlight">\(1\)</span> al vértice <span class="math notranslate nohighlight">\(10\)</span> con detalles</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
@@ -362,8 +356,7 @@ RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)</pre>
 RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>From point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(6\)</span>  to point <span class="math notranslate nohighlight">\(3\)</span> and
-vertex <span class="math notranslate nohighlight">\(1\)</span></p>
+<dd class="field-odd"><p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> y el vértice <span class="math notranslate nohighlight">\(6\)</span> al punto <span class="math notranslate nohighlight">\(3\)</span> y al vértice <span class="math notranslate nohighlight">\(1\)</span></p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
@@ -396,17 +389,16 @@ vertex <span class="math notranslate nohighlight">\(1\)</span></p>
 </div>
 </section>
 <section id="combinations">
-<span id="index-4"></span><h3>Combinations<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<span id="index-4"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
 <pre class="literal-block">pgr_withPoints(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <cite>Points SQL</cite>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>,
       [, directed] [, driving_side] [, details])
 RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Two combinations</p>
+<dd class="field-odd"><p>Dos combinaciones</p>
 </dd>
 </dl>
-<p>From point <span class="math notranslate nohighlight">\(1\)</span> to vertex <span class="math notranslate nohighlight">\(10\)</span>, and from vertex <span class="math notranslate nohighlight">\(6\)</span> to point
-<span class="math notranslate nohighlight">\(3\)</span> with <strong>right</strong> side driving.</p>
+<p>Desde el punto <span class="math notranslate nohighlight">\(1\)</span> hasta el vértice <span class="math notranslate nohighlight">\(10\)</span>, y desde el vértice <span class="math notranslate nohighlight">\(6\)</span> hasta el punto <span class="math notranslate nohighlight">\(3\)</span> con lado de manejo <strong>derecho</strong>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
   <span class="s1">&#39;SELECT pid, edge_id, fraction, side from pointsOfInterest&#39;</span><span class="p">,</span>
@@ -463,8 +455,7 @@ RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)</pre>
 </tr>
 <tr class="row-odd"><td><p><strong>vid de salida</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the starting vertex of the path. Negative value is for
-point’s identifier.</p></td>
+<td><p>Identificador del vértice inicial de la ruta. Valor negativo es para identificador de punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vid salidas</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
@@ -472,13 +463,11 @@ point’s identifier.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vid destino</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of the ending vertex of the path. Negative value is for
-point’s identifier.</p></td>
+<td><p>Identificador del vértice final de la ruta. Valor negativo es para identificador de punto.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vids destinos</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
-<td><p>Array of identifiers of ending vertices. Negative values are for point’s
-identifiers.</p></td>
+<td><p>Arreglo de identificadores de vértices finales. Valores negativos son para identificadores de puntos.</p></td>
 </tr>
 </tbody>
 </table>
@@ -506,7 +495,7 @@ identifiers.</p></td>
 </table>
 </section>
 <section id="with-points-optional-parameters">
-<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
@@ -525,11 +514,11 @@ identifiers.</p></td>
 <tr class="row-even"><td><p><strong>Lado de manejo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
-<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
+<td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indica si el lado de manejo es:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> para manejo del lado derecho.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> para lado de manejo izquierdo.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for ambos.</p></li>
 </ul>
 </td>
 </tr>
@@ -537,9 +526,8 @@ identifiers.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the points that are in the path.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the results will not include the points that are in the
-path.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> los resultados incluyen los puntos que están en el camino.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> los resultados no incluyen los puntos que están en el camino.</p></li>
 </ul>
 </td>
 </tr>
@@ -627,11 +615,10 @@ path.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
 <td><p><strong>ENTEROS</strong></p></td>
 <td><p><strong>valor</strong></p></td>
-<td><p>Identifier of the point.</p>
+<td><p>Identificador del punto.</p>
 <ul class="simple">
-<li><p>Use with positive value, as internally will be converted to negative
-value</p></li>
-<li><p>If column is present, it can not be NULL.</p></li>
+<li><p>Use con un valor positivo, dado que internamente se convertirá a un valor negativo</p></li>
+<li><p>Si columna esta presente, no puede ser NULL.</p></li>
 <li><p>Si columna no esta presente, un <strong>valor</strong> secuencial negativo se otorgará automáticamente.</p></li>
 </ul>
 </td>
@@ -651,9 +638,9 @@ value</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
 <td><p>Valor en [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] que indica si el punto es:</p>
 <ul class="simple">
-<li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
+<li><p>A la derecha <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
 <li><p>A la izquierda <cite>l</cite>,</p></li>
-<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+<li><p>En ambos lados <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
 </ul>
 </td>
 </tr>
@@ -724,29 +711,29 @@ value</p></li>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">path_seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
-<td><p>Relative position in the path.</p>
+<td><p>Posición relativa en la ruta.</p>
 <ul class="simple">
-<li><p><strong>1</strong> For the first row of the path.</p></li>
+<li><p><strong>1</strong> para la primera fila de la secuencia de ruta.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_pid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of a starting vertex/point of the path.</p>
+<td><p>Identificador del vértice/punto inicial de la ruta.</p>
 <ul class="simple">
 <li><p>Cunado positivo, es el identificador del vértice inicial.</p></li>
-<li><p>When negative is the identifier of the starting point.</p></li>
-<li><p>Returned on <a class="reference internal" href="#many-to-one">Many to One</a>  and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p>Cuando negativo, es el identificador del punto inicial.</p></li>
+<li><p>Regresado en <a class="reference internal" href="#many-to-one">Muchos a Uno</a> y <a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_pid</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identifier of an ending vertex/point of the path.</p>
+<td><p>Identificador d vértice/punto final del camino.</p>
 <ul class="simple">
-<li><p>When positive is the identifier of the ending vertex.</p></li>
+<li><p>Cuando negativo, es el identificador del vertice final.</p></li>
 <li><p>Cuando es negativo, es el identificador del vértice destino.</p></li>
-<li><p>Returned on <a class="reference internal" href="#one-to-many">One to Many</a> and <a class="reference internal" href="#many-to-many">Many to Many</a></p></li>
+<li><p>Regresado en <a class="reference internal" href="#one-to-many">Uno a Muchos</a> y <a class="reference internal" href="#many-to-many">Muchos a Muchos</a></p></li>
 </ul>
 </td>
 </tr>
@@ -755,15 +742,15 @@ value</p></li>
 <td><p>Identificador del nodo en la ruta de <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> a <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p>
 <ul class="simple">
 <li><p>Cuando es positivo, es el identificador de un vértice.</p></li>
-<li><p>When negative is the identifier of the a point.</p></li>
+<li><p>Cuando es negativo, es identificador de un punto.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del borde utilizado para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
+<td><p>Identificador de la arsita utilizada para ir del <code class="docutils literal notranslate"><span class="pre">node</span></code> al siguiente nodo de la secuencia de ruta.</p>
 <ul class="simple">
-<li><p><strong>-1</strong> for the last row of the path.</p></li>
+<li><p><strong>-1</strong> para la última fila de la ruta.</p></li>
 </ul>
 </td>
 </tr>
@@ -771,7 +758,7 @@ value</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo para atravesar desde <code class="docutils literal notranslate"><span class="pre">node</span></code> usando <code class="docutils literal notranslate"><span class="pre">edge</span></code> hasta el siguiente nodo en la secuencia de la ruta.</p>
 <ul class="simple">
-<li><p><strong>0</strong> For the first row of the path.</p></li>
+<li><p><strong>0</strong> para la primera fila de la secuencia de ruta.</p></li>
 </ul>
 </td>
 </tr>
@@ -779,7 +766,7 @@ value</p></li>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
 <td><p>Costo agregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">node</span></code>.</p>
 <ul class="simple">
-<li><p><strong>0</strong> For the first row of the path.</p></li>
+<li><p><strong>0</strong> para la primera fila de la secuencia de ruta.</p></li>
 </ul>
 </td>
 </tr>
@@ -790,19 +777,18 @@ value</p></li>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the Points SQL.</a></p></li>
-<li><p><a class="reference internal" href="#usage-variations" id="id3">Usage variations</a></p>
+<li><p><a class="reference internal" href="#use-pgr-findcloseedges-in-the-points-sql" id="id2">Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el SQL puntos.</a></p></li>
+<li><p><a class="reference internal" href="#usage-variations" id="id3">Variaciones de uso</a></p>
 <ul>
-<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-right-side-driving" id="id4">Passes in front or visits with right side driving.</a></p></li>
-<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-left-side-driving" id="id5">Passes in front or visits with left side driving.</a></p></li>
+<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-right-side-driving" id="id4">Pasa enfrente o visita con lado derecho de manejo.</a></p></li>
+<li><p><a class="reference internal" href="#passes-in-front-or-visits-with-left-side-driving" id="id5">Pasa enfrente o visita con lado izquierdo de manejo.</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="use-pgr-findcloseedges-in-the-points-sql">
-<h3>Use <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> in the <a class="reference internal" href="#points-sql">Points SQL</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Permalink to this heading">¶</a></h3>
-<p>Find the routes from vertex <span class="math notranslate nohighlight">\(1\)</span> to the two closest locations on the graph
-of point <cite>(2.9, 1.8)</cite>.</p>
+<h3>Usa <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a> en el <a class="reference internal" href="#points-sql">SQL puntos</a>.<a class="headerlink" href="#use-pgr-findcloseedges-in-the-points-sql" title="Permalink to this heading">¶</a></h3>
+<p>Wncontrar las rutas desde el vértice <span class="math notranslate nohighlight">\(1\)</span> a las dos ubicaciones más cercanas en el grafo al punto`(2.9, 1.8)`.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
   $e$ SELECT * FROM edges $e$,
   $p$ SELECT edge_id, round(fraction::numeric, 2) AS fraction, side
@@ -831,14 +817,13 @@ of point <cite>(2.9, 1.8)</cite>.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Point <span class="math notranslate nohighlight">\(-1\)</span> corresponds to the closest edge from point <cite>(2.9,1.8)</cite>.</p></li>
-<li><p>Point <span class="math notranslate nohighlight">\(-2\)</span> corresponds to the next close edge from point <cite>(2.9,1.8)</cite>.</p></li>
+<li><p>Punto <span class="math notranslate nohighlight">\(-1\)</span> corresponde a la arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
+<li><p>Punto <span class="math notranslate nohighlight">\(-2\)</span> corresponde a la segunda arista más cercana al punto <cite>(2.9, 1.8)</cite>.</p></li>
 </ul>
 </section>
 <section id="usage-variations">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Usage variations</a><a class="headerlink" href="#usage-variations" title="Permalink to this heading">¶</a></h3>
-<p>All the examples are about traveling from point <span class="math notranslate nohighlight">\(1\)</span> and vertex <span class="math notranslate nohighlight">\(5\)</span>
-to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and vertices <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Variaciones de uso</a><a class="headerlink" href="#usage-variations" title="Permalink to this heading">¶</a></h3>
+<p>Todos los ejemplos son acerca de viajar desde el punto <span class="math notranslate nohighlight">\(1\)</span> y vértice <span class="math notranslate nohighlight">\(5\)</span> al los puntos <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> y vértices <span class="math notranslate nohighlight">\(\{10, 11\}\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">pgr_withPoints</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
@@ -915,7 +900,7 @@ to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and 
 </pre></div>
 </div>
 <section id="passes-in-front-or-visits-with-right-side-driving">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Passes in front or visits with right side driving.</a><a class="headerlink" href="#passes-in-front-or-visits-with-right-side-driving" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Pasa enfrente o visita con lado derecho de manejo.</a><a class="headerlink" href="#passes-in-front-or-visits-with-right-side-driving" title="Permalink to this heading">¶</a></h4>
 <p>Del punto <span class="math notranslate nohighlight">\(6\)</span> al vértice <span class="math notranslate nohighlight">\(11\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; -&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
   <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
@@ -955,7 +940,7 @@ to points <span class="math notranslate nohighlight">\(\{2, 3, 6\}\)</span> and 
 </div>
 </section>
 <section id="passes-in-front-or-visits-with-left-side-driving">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Passes in front or visits with left side driving.</a><a class="headerlink" href="#passes-in-front-or-visits-with-left-side-driving" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Pasa enfrente o visita con lado izquierdo de manejo.</a><a class="headerlink" href="#passes-in-front-or-visits-with-left-side-driving" title="Permalink to this heading">¶</a></h4>
 <p>Del punto <span class="math notranslate nohighlight">\(6\)</span> al vértice <span class="math notranslate nohighlight">\(11\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="p">(</span><span class="n">start_pid</span> <span class="o">||</span> <span class="s1">&#39; =&gt; &#39;</span> <span class="o">||</span> <span class="n">end_pid</span> <span class="o">||</span><span class="s1">&#39; at &#39;</span> <span class="o">||</span> <span class="n">path_seq</span> <span class="o">||</span> <span class="s1">&#39;th step&#39;</span><span class="p">)::</span><span class="n">TEXT</span> <span class="n">AS</span> <span class="n">path_at</span><span class="p">,</span>
   <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">edge</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39; visits&#39;</span>
