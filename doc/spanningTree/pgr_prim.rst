@@ -89,7 +89,7 @@ Edges SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-include:: pgRouting-concepts.rst
+.. include:: pgRouting-concepts.rst
    :start-after: r-edge-cost-start
    :end-before: r-edge-cost-end
 
