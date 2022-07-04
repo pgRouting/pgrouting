@@ -236,10 +236,14 @@ non-negative integer, is termed as a “binary graph”.</p>
 vertices can be found using Breadth First Search in <span class="math notranslate nohighlight">\(O(|E|)\)</span> in an
 unweighted graph, i.e. the distance is the minimal number of edges that you
 need to traverse from the source to another vertex. We can interpret such a
-graph also as a weighted graph, where every edge has the weight <span class="math notranslate nohighlight">\(5\)</span>.
+graph also as a weighted graph, where every edge has the weight <span class="math notranslate nohighlight">\(1\)</span>.
 If not alledges in graph have the same weight, that we need a more general
 algorithm, like Dijkstra’s Algorithm  which runs in <span class="math notranslate nohighlight">\(O(|E|log|V|)\)</span> time.</p>
-<p>Sin embargo, si los pesos están más restringidos, podemos usar un algoritmo más rápido. Este algoritmo, llamado “búsqueda binaria de primero profundidad” así como “0-1 BFS”, es una variación del problema estándar de búsqueda de primero profundidad para resolver el problema SSSP (ruta más corta de una sola fuente) en <span class="math notranslate nohighlight">\(O(|E|)\)</span>, si los pesos de cada arista pertenecen al conjunto de caracteres de {0,X}, donde “X” es cualquier entero no negativo.</p>
+<p>However if the weights are more constrained, we can use a faster algorithm.
+This algorithm, termed as “Binary Breadth First Search” as well as “0-1 BFS”,
+is a variation of the standard Breadth First Search problem to solve the SSSP
+(single-source shortest path) problem in <span class="math notranslate nohighlight">\(O(|E|)\)</span>, if the weights of each
+edge belongs to the set {0,X}, where “X” is any non-negative real integer.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en “grafos binarios”. (“Grafo binario”: Cualquier grafo cuyos pesos de aristas pertenezcan al conjunto {0, X}, donde “X” es cualquier entero real no negativo.)</p></li>
@@ -269,7 +273,7 @@ pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edg
 RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <p><strong>Note:</strong> Using the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> Network as all weights are same (i.e
-<span class="math notranslate nohighlight">\(5`\)</span>)</p>
+<span class="math notranslate nohighlight">\(1`\)</span>)</p>
 <section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
 <pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>
