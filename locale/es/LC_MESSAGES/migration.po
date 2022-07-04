@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-27 23:54+0000\n"
+"PO-Revision-Date: 2022-07-03 18:57+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "migration/es/>\n"
@@ -190,7 +190,7 @@ msgstr "Agregando las restricciones"
 
 #: ../../build/doc/sampledata.rst:16
 msgid "Restrictions data"
-msgstr ""
+msgstr "Datos de restricciones"
 
 #: ../../build/doc/migration.rst:109
 msgid ""
@@ -617,11 +617,11 @@ msgstr "Ver también"
 
 #: ../../build/doc/migration.rst:680
 msgid ":doc:`TRSP-family`"
-msgstr ""
+msgstr ":doc:`TRSP-family`"
 
 #: ../../build/doc/migration.rst:681
 msgid ":doc:`withPoints-category`"
-msgstr ""
+msgstr ":doc:`withPoints-category`"
 
 #: ../../build/doc/migration.rst:684
 msgid "Indices and tables"

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-30 15:53+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_createtopology/es/>\n"
@@ -193,8 +193,8 @@ msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
 msgstr ""
-"``text``  El nombre de la columna del nodo de llegada del segmento.  El "
-"valor por defecto es ``target``."
+"``text`` El nombre de la columna del nodo de llegada del segmento.  El valor "
+"por defecto es ``target``."
 
 #: ../../build/doc/pgr_createTopology.rst
 msgid "rows_where"
@@ -326,53 +326,48 @@ msgid "cnt"
 msgstr "cnt"
 
 #: ../../build/doc/pgr_createTopology.rst:122
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex. See :doc:`pgr_analyzeGraph`."
 msgstr ""
-"``integer`` Número de vértices en the edge_table que referencian este "
-"vértice. Ver :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
+"``integer`` Número de vértices en la edge_table que referencian este "
+"vértice. Ver :doc:`pgr_analyzeGraph`."
 
 #: ../../build/doc/pgr_createTopology.rst
 msgid "chk"
 msgstr "chk"
 
 #: ../../build/doc/pgr_createTopology.rst:124
-#, fuzzy
 msgid ""
 "``integer``  Indicator that the vertex might have a problem. See "
 ":doc:`pgr_analyzeGraph`."
 msgstr ""
-"``integer`` Indicador de que el vértice podría tener un problema. "
-"Consulte  :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
+"``integer`` Indicador de que el vértice podría tener un problema. Consulte "
+":doc:`pgr_analyzeGraph`."
 
 #: ../../build/doc/pgr_createTopology.rst
 msgid "ein"
 msgstr "ein"
 
 #: ../../build/doc/pgr_createTopology.rst:126
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex AS incoming. See :doc:`pgr_analyzeOneWay`."
 msgstr ""
-"``integer`` Número de vértices en edge_table que referencian a este "
-"vértice como (AS) entrante. Ver :doc:`pgr_analyzeOneWay "
-"<pgr_analyzeOneWay>`."
+"``integer`` Número de vértices en edge_table que referencian a este vértice "
+"como (AS) entrante. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
 
 #: ../../build/doc/pgr_createTopology.rst
 msgid "eout"
 msgstr "eout"
 
 #: ../../build/doc/pgr_createTopology.rst:128
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex AS outgoing. See :doc:`pgr_analyzeOneWay`."
 msgstr ""
-"``integer`` Número de vértices en edge_table que referencian este vértice"
-" como (AS) saliente. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
+"``integer`` Número de vértices en edge_table que referencian este vértice "
+"como (AS) saliente. Ver :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`."
 
 #: ../../build/doc/pgr_createTopology.rst:130
 msgid "``geometry`` Point geometry of the vertex."
@@ -389,9 +384,9 @@ msgid "The simplest way to use pgr_createTopology is:"
 msgstr "La forma más sencilla de utilizar pgr_createTopology es:"
 
 #: ../../build/doc/pgr_createTopology.rst:142
-#, fuzzy
 msgid "When the arguments are given in the order described:"
-msgstr "Cuando los argumentos se escriben en el orden descrito en los parámetros:"
+msgstr ""
+"Cuando los argumentos se escriben en el orden descrito en los parámetros:"
 
 #: ../../build/doc/pgr_createTopology.rst:143
 msgid "We get the same result AS the simplest way to use the function."
@@ -519,9 +514,8 @@ msgid "Clean up the columns of the routing topology to be created"
 msgstr "Limpieza de las columnas de la topología de ruteo que se creará"
 
 #: ../../build/doc/pgr_extractVertices.rst:18
-#, fuzzy
 msgid "Create the vertices table"
-msgstr "La tabla de vértices"
+msgstr "Crear la tabla de vértices"
 
 #: ../../build/doc/pgr_extractVertices.rst:20
 msgid ""
@@ -542,9 +536,8 @@ msgid "After the table is created ``ALTER TABLE .. SET LOGGED``"
 msgstr ""
 
 #: ../../build/doc/pgr_extractVertices.rst:31
-#, fuzzy
 msgid "Inspect the vertices table"
-msgstr "La tabla de vértices"
+msgstr "Inspeccionar la tabla de vértices"
 
 #: ../../build/doc/pgr_extractVertices.rst:38
 msgid "Create the routing topology on the edge table"
@@ -552,7 +545,7 @@ msgstr "Creación de la topología de ruteo en la tabla de aristas"
 
 #: ../../build/doc/pgr_extractVertices.rst:40
 msgid "Updating the ``source`` information"
-msgstr ""
+msgstr "Actualizar de la información de ``source``"
 
 #: ../../build/doc/pgr_extractVertices.rst:46
 msgid "Updating the ``target`` information"
@@ -592,11 +585,11 @@ msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/pgr_createTopology.rst:290
 msgid ":doc:`pgr_createVerticesTable`"
-msgstr ""
+msgstr ":doc:`pgr_createVerticesTable`"
 
 #: ../../build/doc/pgr_createTopology.rst:291
 msgid ":doc:`pgr_analyzeGraph`"
-msgstr ""
+msgstr ":doc:`pgr_analyzeGraph`"
 
 #: ../../build/doc/pgr_createTopology.rst:294
 msgid "Indices and tables"

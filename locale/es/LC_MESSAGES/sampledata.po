@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 14:20+0000\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-03 18:56+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "sampledata/es/>\n"
@@ -125,9 +125,8 @@ msgid "Column"
 msgstr "Columna"
 
 #: ../../build/doc/sampledata.rst:68 ../../build/doc/sampledata.rst:211
-#, fuzzy
 msgid "Description"
-msgstr "Restricciones"
+msgstr "Descripción"
 
 #: ../../build/doc/sampledata.rst:69
 msgid "``id``"
@@ -171,7 +170,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:79
 msgid "``capacity``"
-msgstr ""
+msgstr "``capacity``"
 
 #: ../../build/doc/sampledata.rst:80
 msgid "Flow capacity from `source` to ``target``."
@@ -179,7 +178,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:81
 msgid "``reverse_capacity``"
-msgstr ""
+msgstr "``reverse_capacity``"
 
 #: ../../build/doc/sampledata.rst:82 ../../build/doc/sampledata.rst:84
 #: ../../build/doc/sampledata.rst:86
@@ -196,7 +195,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:87
 msgid "``x1``"
-msgstr ""
+msgstr "``x1``"
 
 #: ../../build/doc/sampledata.rst:88
 msgid ":math:`x` coordinate of the starting vertex of the geometry."
@@ -210,7 +209,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:92
 msgid "``y2``"
-msgstr ""
+msgstr "``y2``"
 
 #: ../../build/doc/sampledata.rst:93
 msgid ":math:`y` coordinate of the ending vertex of the geometry."
@@ -224,7 +223,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:97 ../../build/doc/sampledata.rst:220
 msgid "``geom``"
-msgstr ""
+msgstr "``geom``"
 
 #: ../../build/doc/sampledata.rst:98
 msgid "The geometry of the segments."
@@ -360,7 +359,7 @@ msgstr "``pid``"
 
 #: ../../build/doc/sampledata.rst:214
 msgid "``edge_id``"
-msgstr ""
+msgstr "``edge_id``"
 
 #: ../../build/doc/sampledata.rst:215
 msgid "Identifier of the edge nearest edge that allows an arrival to the point."
@@ -368,7 +367,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:216
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/sampledata.rst:217
 msgid "Is it on the left, right or both sides of the segment ``edge_id``"
@@ -395,9 +394,8 @@ msgid "The geometry of the points moved on top of the segment."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:230
-#, fuzzy
 msgid "Points of interest geometry"
-msgstr "Puntos de interés"
+msgstr "Geometría de los puntos de interés"
 
 #: ../../build/doc/sampledata.rst:231
 msgid "Inserting the data of the points of interest:"
@@ -418,9 +416,8 @@ msgid "A special case to arrive from both sides of the edge."
 msgstr ""
 
 #: ../../build/doc/sampledata.rst:255
-#, fuzzy
 msgid "Points of interest data"
-msgstr "Puntos de interés"
+msgstr "Datos de puntos de interés"
 
 #: ../../build/doc/sampledata.rst:264
 #, fuzzy
@@ -429,7 +426,7 @@ msgstr "Crear tabla"
 
 #: ../../build/doc/sampledata.rst:267
 msgid "Combinations"
-msgstr ""
+msgstr "Combinaciones"
 
 #: ../../build/doc/sampledata.rst:269
 msgid ""
@@ -468,9 +465,8 @@ msgid "Adding the restrictions"
 msgstr "Agregando las restricciones"
 
 #: ../../build/doc/sampledata.rst:313
-#, fuzzy
 msgid "Restrictions data"
-msgstr "Restricciones"
+msgstr "Datos de restricciones"
 
 #: ../../build/doc/sampledata.rst:322
 msgid "Images"
@@ -560,7 +556,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:388
 msgid "The vehicles"
-msgstr ""
+msgstr "Los vehículos"
 
 #: ../../build/doc/sampledata.rst:390
 msgid "There are 25 vehciles in the problem all with the same characteristics."
@@ -578,7 +574,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:407
 msgid "The orders"
-msgstr ""
+msgstr "Las órdenes"
 
 #: ../../build/doc/sampledata.rst:409
 msgid "The original data needs to be converted to an appropiate table:"

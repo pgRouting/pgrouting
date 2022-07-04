@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 13:19+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_createverticestable/es/>\n"
@@ -34,6 +34,13 @@ msgid ""
 " <https://docs.pgrouting.org/3.1/en/pgr_createVerticesTable.html>`__ `3.0"
 " <https://docs.pgrouting.org/3.0/en/pgr_createVerticesTable.html>`__"
 msgstr ""
+"**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_createVerticesTable.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_createVerticesTable.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_createVerticesTable.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_createVerticesTable.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_createVerticesTable.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_createVerticesTable.html>`__"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:19
 msgid ""
@@ -165,8 +172,8 @@ msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
 msgstr ""
-"``text``  El nombre de la columna del nodo de llegada del segmento.  El "
-"valor por defecto es ``target``."
+"``text`` El nombre de la columna del nodo de llegada del segmento.  El valor "
+"por defecto es ``target``."
 
 #: ../../build/doc/pgr_createVerticesTable.rst
 msgid "rows_where"
@@ -265,54 +272,48 @@ msgid "cnt"
 msgstr "cnt"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:108
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex. See :doc:`pgr_analyzeGraph`."
 msgstr ""
-"``integer`` Número de vértices en the edge_table que referencian este "
-"vértice. Ver :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
+"``integer`` Número de vértices en la edge_table que referencian este "
+"vértice. Ver :doc:`pgr_analyzeGraph`."
 
 #: ../../build/doc/pgr_createVerticesTable.rst
 msgid "chk"
 msgstr "chk"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:110
-#, fuzzy
 msgid ""
 "``integer``  Indicator that the vertex might have a problem. See "
 ":doc:`pgr_analyzeGraph`."
 msgstr ""
-"``integer`` Indicador de que el vértice podría tener un problema. "
-"Consulte  :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`."
+"``integer`` Indicador de que el vértice podría tener un problema. Consulte "
+":doc:`pgr_analyzeGraph`."
 
 #: ../../build/doc/pgr_createVerticesTable.rst
 msgid "ein"
 msgstr "ein"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:112
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex as incoming. See :doc:`pgr_analyzeOneWay`."
 msgstr ""
 "``integer`` Número de vértices en edge_table que hacen referencia a este "
-"vértice como entrante. Consulte "
-":doc:`pgr_analyzeOneWay<pgr_analyzeOneWay>`."
+"vértice como entrante. Consulte :doc:`pgr_analyzeOneWay`."
 
 #: ../../build/doc/pgr_createVerticesTable.rst
 msgid "eout"
 msgstr "eout"
 
 #: ../../build/doc/pgr_createVerticesTable.rst:114
-#, fuzzy
 msgid ""
 "``integer`` Number of vertices in the edge_table that reference this "
 "vertex as outgoing. See :doc:`pgr_analyzeOneWay`."
 msgstr ""
-"``integer`` Número de vértices en el edge_table que hacen referencia a "
-"este vértice como saliente. Consulte :doc:`pgr_analyzeOneWay "
-"<pgr_analyzeOneWay>`."
+"``integer`` Número de vértices en el edge_table que hacen referencia a este "
+"vértice como saliente. Consulte :doc:`pgr_analyzeOneWay`."
 
 #: ../../build/doc/pgr_createVerticesTable.rst:116
 msgid "``geometry`` Point geometry of the vertex."

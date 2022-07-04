@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstravia/es/>\n"
@@ -34,6 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_dijkstraVia.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_dijkstraVia.html>`__"
 msgstr ""
+"***Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_dijkstraVia.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_dijkstraVia.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_dijkstraVia.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_dijkstraVia.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_dijkstraVia.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_dijkstraVia.html>`__"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:19
 msgid ""
@@ -60,11 +67,11 @@ msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
-msgstr ""
+msgstr "No están oficialmente en la versión actual."
 
 #: ../../build/doc/proposed.rst:6
 msgid "They will likely officially be part of the next mayor release:"
-msgstr ""
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
@@ -72,15 +79,15 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr ""
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
-msgstr ""
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr ""
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -92,7 +99,7 @@ msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:38
 msgid "Boost Graph Inside"
-msgstr ""
+msgstr "Adentro: Boost Graph"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:41
 msgid "Availability"
@@ -111,7 +118,7 @@ msgstr "Nueva función **propuesta**"
 #: ../../build/doc/pgr_dijkstraVia.rst:47 ../../build/doc/via-category.rst:10
 #: ../../build/doc/via-category.rst:11
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:49
 msgid ""
@@ -146,7 +153,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_dijkstraVia.rst
 msgid "Example"
-msgstr ""
+msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:73
 msgid ""
@@ -187,20 +194,20 @@ msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/via-category.rst:16
 msgid "**via vertices**"
-msgstr ""
+msgstr "**vía vértices**"
 
 #: ../../build/doc/via-category.rst:17
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr ""
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/via-category.rst:19
 msgid "Array of ordered vertices identifiers that are going to be visited."
-msgstr ""
+msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/via-category.rst:21
 msgid "Where:"
-msgstr ""
+msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst ../../build/doc/via-category.rst
 msgid "ANY-INTEGER"
@@ -208,7 +215,7 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/via-category.rst:23
 msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
+msgstr "``SMALLINT, INTEGER, BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst ../../build/doc/via-category.rst
 msgid "ANY-NUMERICAL"
@@ -216,7 +223,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/via-category.rst:24
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:88
 msgid "Optional parameters"
@@ -254,7 +261,7 @@ msgstr "Parámetros opcionales Vía"
 
 #: ../../build/doc/via-category.rst:12
 msgid "``strict``"
-msgstr ""
+msgstr "``strict``"
 
 #: ../../build/doc/via-category.rst:14
 msgid "``false``"
@@ -262,7 +269,7 @@ msgstr "``false``"
 
 #: ../../build/doc/via-category.rst:15
 msgid "When ``true`` if a path is missing stops and returns **EMPTY SET**"
-msgstr ""
+msgstr "Cuando ``true`` si un camino le faltan paradas y regresa **EMPTY SET**"
 
 #: ../../build/doc/via-category.rst:16
 msgid "When ``false`` ignores missing paths returning all paths found"
@@ -272,11 +279,12 @@ msgstr ""
 
 #: ../../build/doc/via-category.rst:17
 msgid "``U_turn_on_edge``"
-msgstr ""
+msgstr "``U_turn_on_edge``"
 
 #: ../../build/doc/via-category.rst:20
 msgid "When ``true`` departing from a visited vertex will not try to avoid"
 msgstr ""
+"Cuando ``true`` saliendo desde un vértice visitado no intentara esquivarlo"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:102
 msgid "Inner Queries"
@@ -314,7 +322,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/via-category.rst:37
@@ -406,7 +414,7 @@ msgstr "``BIGINT``"
 
 #: ../../build/doc/via-category.rst:23
 msgid "Identifier of the starting vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/via-category.rst:24
 msgid "``end_vid``"
@@ -414,7 +422,7 @@ msgstr "``end_vid``"
 
 #: ../../build/doc/via-category.rst:26
 msgid "Identifier of the ending vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/via-category.rst:27
 msgid "``node``"
@@ -433,6 +441,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence."
 msgstr ""
+"Identificador de la arsita utilizada para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta."
 
 #: ../../build/doc/via-category.rst:35
 msgid "-1 for the last node of the path."
@@ -440,7 +450,7 @@ msgstr "-1 para el último nodo de la ruta."
 
 #: ../../build/doc/via-category.rst:36
 msgid "-2 for the last node of the route."
-msgstr ""
+msgstr "-2 para el último nodo de la ruta."
 
 #: ../../build/doc/via-category.rst:38 ../../build/doc/via-category.rst:42
 #: ../../build/doc/via-category.rst:45
@@ -497,11 +507,11 @@ msgstr "Costo agregado de la tercera ruta."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:142
 msgid "Route's aggregate cost of the route at the end of the third path."
-msgstr ""
+msgstr "Costo agregado al final de la tercera ruta."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:149
 msgid "Nodes visited in the route."
-msgstr ""
+msgstr "Nodos visitados en la ruta."
 
 #: ../../build/doc/pgr_dijkstraVia.rst:156
 msgid "The aggregate costs of the route when the visited vertices are reached."
@@ -534,7 +544,7 @@ msgstr "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:178
 msgid "Indices and tables"
-msgstr ""
+msgstr "Índices y tablas"
 
 #: ../../build/doc/pgr_dijkstraVia.rst:179
 msgid ":ref:`genindex`"

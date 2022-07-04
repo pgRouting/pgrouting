@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp/es/>\n"
@@ -107,7 +107,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:47
 msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-msgstr ""
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
 
 #: ../../build/doc/pgr_trsp.rst:48
 msgid "``pgr_trsp(text,integer,float,integer,float,boolean,boolean,text)``"
@@ -215,11 +215,11 @@ msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/proposed.rst:5
 msgid "They are not officially in the current release."
-msgstr ""
+msgstr "No están oficialmente en la versión actual."
 
 #: ../../build/doc/proposed.rst:6
 msgid "They will likely officially be part of the next mayor release:"
-msgstr ""
+msgstr "Es probable que oficialmente formen parte del próximo lanzamiento:"
 
 #: ../../build/doc/proposed.rst:8
 msgid "The functions make use of ANY-INTEGER and ANY-NUMERICAL"
@@ -227,15 +227,15 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr ""
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
-msgstr ""
+msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr ""
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -289,7 +289,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:191
 msgid "Combinations"
-msgstr ""
+msgstr "Combinaciones"
 
 #: ../../build/doc/pgr_trsp.rst:200
 msgid "Using a combinations table on an **undirected** graph"
@@ -327,9 +327,8 @@ msgid "SQL query as described."
 msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/pgRouting-concepts.rst:14
-#, fuzzy
 msgid "`Restrictions SQL`_"
-msgstr "restrict_sql"
+msgstr "`SQL de restricciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "`Combinations SQL`_"
@@ -366,7 +365,7 @@ msgstr "**vid salidas**"
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr ""
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:31
@@ -386,7 +385,7 @@ msgstr "**vids destinos**"
 #: ../../build/doc/pgRouting-concepts.rst:33
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
-msgstr ""
+msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
@@ -460,7 +459,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:40
@@ -507,9 +506,8 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_trsp.rst:233
-#, fuzzy
 msgid "Restrictions SQL"
-msgstr "restrict_sql"
+msgstr "SQL restricciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "``path``"
@@ -521,6 +519,9 @@ msgid ""
 "taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have "
 "a ``NULL`` element will raise an exception."
 msgstr ""
+"Secuencia de identificadores de aristas que forman un camino que no se "
+"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que "
+"tienen ``NULL`` arrojan una excepción."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``Cost``"
@@ -528,7 +529,7 @@ msgstr "``Cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Cost of taking the forbidden path."
-msgstr ""
+msgstr "Costo de tomar el camino prohibido."
 
 #: ../../build/doc/pgr_trsp.rst:240
 msgid "Combinations SQL"
@@ -574,7 +575,7 @@ msgstr "``path_id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Path identifier."
-msgstr ""
+msgstr "Identificador del camino."
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
@@ -663,7 +664,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_trsp.rst:258
 msgid ":doc:`TRSP-family`"
-msgstr ""
+msgstr ":doc:`TRSP-family`"
 
 #: ../../build/doc/pgr_trsp.rst:259
 msgid ""

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 15:24+0000\n"
+"PO-Revision-Date: 2022-07-03 03:30+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "traversal-family/es/>\n"
@@ -63,7 +63,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -71,7 +71,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -93,15 +93,15 @@ msgstr "Experimental"
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
-msgstr ""
+msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr ""
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
-msgstr ""
+msgstr "Funciones experimentales"
 
 #: ../../build/doc/experimental.rst:9
 msgid "They are not officially of the current release."
@@ -113,7 +113,7 @@ msgstr "Es probable que oficialmente no formen parte de la siguiente versión:"
 
 #: ../../build/doc/experimental.rst:12
 msgid "The functions might not make use of ANY-INTEGER and ANY-NUMERICAL"
-msgstr ""
+msgstr "Las funciones no podrían hacer uso de ANY-INTEGER ni ANY-NUMERICAL"
 
 #: ../../build/doc/experimental.rst:13
 msgid "Name might change."
@@ -129,11 +129,11 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr ""
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
-msgstr ""
+msgstr "Posiblemente necesite codificación c/c++."
 
 #: ../../build/doc/experimental.rst:18
 msgid "May lack documentation."
@@ -144,47 +144,45 @@ msgid "Documentation if any might need to be rewritten."
 msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
-#, fuzzy
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Es posible que la documentación necesite un refinamiento."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr ""
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
-msgstr ""
+msgstr "Puede depender de una función propuesta de pgRouting"
 
 #: ../../build/doc/experimental.rst:23
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
 #: ../../build/doc/traversal-family.rst:41
-#, fuzzy
 msgid ""
 ":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the "
 "graph."
 msgstr ""
-":doc:`pgr_depthFirstSearch` - Recorrido de búsqueda en profundidad del "
-"grafo."
+":doc:`pgr_breadthFirstSearch` - Recorrido de búsqueda en anchura del grafo."
 
 #: ../../build/doc/traversal-family.rst:42
-#, fuzzy
 msgid ""
 ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of "
 "the graph."
 msgstr ""
-":doc:`pgr_depthFirstSearch` - Recorrido de búsqueda en profundidad del "
+":doc:`pgr_binaryBreadthFirstSearch` - Recorrido de búsqueda en anchura del "
 "grafo."
 
 #: ../../build/doc/traversal-family.rst:47
 msgid "Aditionaly there are 2 categories under this family"
-msgstr ""
+msgstr "Adicionalmente, hay dos categorías en esta familia"
 
 #: ../../build/doc/traversal-family.rst:49
 msgid ":doc:`BFS-category`"
-msgstr ""
+msgstr ":doc:`BFS-category`"
 
 #: ../../build/doc/traversal-family.rst:50
 msgid ":doc:`DFS-category`"

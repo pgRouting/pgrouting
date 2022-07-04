@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bipartite/es/>\n"
@@ -39,13 +39,15 @@ msgstr ""
 
 #: ../../build/doc/pgr_bipartite.rst:19
 msgid "pgr_bipartite -Experimental"
-msgstr "pgr_bipartite -Experimental"
+msgstr "pgr_bipartite - Experimental"
 
 #: ../../build/doc/pgr_bipartite.rst:21
 msgid ""
 "``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices "
 "within the same set are adjacent."
 msgstr ""
+"``pgr_bipartite`` — Conjuntos disjuntos tal que ningun par de vertices en el "
+"mismo conjunto son adjacentes."
 
 #: ../../build/doc/pgr_bipartite.rst:27
 msgid "Boost Graph Inside"
@@ -57,7 +59,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -89,7 +91,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -105,11 +107,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -128,7 +132,6 @@ msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_bipartite.rst:37
-#, fuzzy
 msgid "New **experimental** signature"
 msgstr "Nueva función **experimental**"
 
@@ -164,14 +167,13 @@ msgid "The returned values are not ordered."
 msgstr "Los valores devueltos no están ordenados."
 
 #: ../../build/doc/pgr_bipartite.rst:51
-#, fuzzy
 msgid ""
 "The algorithm checks graph is bipartite or not. If it is bipartite then "
 "it returns the node along with two    colors `0` and `1` which represents"
 " two different sets."
 msgstr ""
-"El algoritmo comprueba si el gráfico es bipartito o no. Si es bipartito, "
-"devuelve el nodo junto con dos colores '0' y '1' que representa dos "
+"El algoritmo comprueba si el grafo es bi-partido o no. Si es bipartido, "
+"devuelve el nodo junto con dos colores `0` y `1` que representan dos "
 "conjuntos diferentes."
 
 #: ../../build/doc/pgr_bipartite.rst:54
@@ -192,7 +194,7 @@ msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_bipartite.rst:71
 msgid "When the graph is bipartite"
-msgstr ""
+msgstr "Cuando el grafo es bi-partido"
 
 #: ../../build/doc/pgr_bipartite.rst:78
 msgid "Parameters"
@@ -216,9 +218,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta interna como se describe a continuación."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_bipartite.rst:85
 msgid "Inner Queries"
@@ -329,9 +330,8 @@ msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr "Devuelve SET OF ``(vertex_id, color_id)``"
 
 #: ../../build/doc/coloring-family.rst:8
-#, fuzzy
 msgid "``vertex_id``"
-msgstr "**vertex_id**"
+msgstr "``vertex_id``"
 
 #: ../../build/doc/coloring-family.rst:8 ../../build/doc/coloring-family.rst:9
 msgid "``BIGINT``"
@@ -362,31 +362,30 @@ msgid "The odd length cyclic graph can not be bipartite."
 msgstr "El gráfico cíclico de longitud impar no puede ser bipartito."
 
 #: ../../build/doc/pgr_bipartite.rst:106
-#, fuzzy
 msgid ""
 "The edge :math:`5 \\rightarrow 1` will make subgraph with vertices "
 ":math:`\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has "
 "5 vertices."
 msgstr ""
-"En el siguiente borde se hará de el subgrafo con vértices {1, 2, 5, 7, 8}"
-" un grafo cíclico de longitud impar."
+"La arista :math:`5 \\rightarrow 1` hace que el sub-grafo con vértices:math:`"
+"\\{1, 3, 7, 6, 5\\}` se un grafo de ciclo impar, ya que ciclo tiene 5 "
+"vértices."
 
 #: ../../build/doc/pgr_bipartite.rst:113
 msgid "Edges in blue represent odd length cycle subgraph."
-msgstr ""
+msgstr "Aristas en azul representan un grafo de ciclo impar."
 
 #: ../../build/doc/pgr_bipartite.rst:123
 msgid "See Also"
 msgstr "Ver también"
 
 #: ../../build/doc/pgr_bipartite.rst:127
-#, fuzzy
 msgid ""
 "`Boost: is_bipartite "
 "<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 msgstr ""
-"`Boost: documentación del algoritmo is_bipartite "
-"<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+"`Boost: es bipartido <https://www.boost.org/libs/graph/doc/is_bipartite."
+"html>`__"
 
 #: ../../build/doc/pgr_bipartite.rst:129
 msgid ""

@@ -14,8 +14,8 @@ msgstr ""
 "PO-Revision-Date: 2022-06-28 15:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language: es\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
-"/drivingdistance-category/es/>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"drivingdistance-category/es/>\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -24,35 +24,33 @@ msgstr ""
 
 #: ../../build/doc/drivingDistance-category.rst:12
 msgid ""
-"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
-"/drivingDistance-category.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/en/drivingDistance-category.html>`__) "
-"`3.3 <https://docs.pgrouting.org/3.3/en/drivingDistance-category.html>`__"
-" `3.2 <https://docs.pgrouting.org/3.2/en/drivingDistance-"
-"category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en"
-"/drivingDistance-category.html>`__) `3.0 "
-"<https://docs.pgrouting.org/3.0/en/drivingDistance-category.html>`__"
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
+"drivingDistance-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/"
+"drivingDistance-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/"
+"drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/en/"
+"drivingDistance-category.html>`__) `3.0 <https://docs.pgrouting.org/3.0/en/"
+"drivingDistance-category.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es"
-"/drivingDistance-category.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/drivingDistance-category.html>`__) "
-"`3.3 <https://docs.pgrouting.org/3.3/es/drivingDistance-category.html>`__"
-" `3.2 <https://docs.pgrouting.org/3.2/es/drivingDistance-"
-"category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es"
-"/drivingDistance-category.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/drivingDistance-category.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"drivingDistance-category.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"drivingDistance-category.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"drivingDistance-category.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"drivingDistance-category.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"drivingDistance-category.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"drivingDistance-category.html>`__"
 
 #: ../../build/doc/drivingDistance-category.rst:19
 msgid ""
-"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en"
-"/drivingDistance-category.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/drivingDistance-category.html>`__ `2.4"
-" <https://docs.pgrouting.org/2.4/en/drivingDistance-category.html>`__"
+"**Unsupported versions:** `2.6 <https://docs.pgrouting.org/2.6/en/"
+"drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
+"drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
+"drivingDistance-category.html>`__"
 msgstr ""
-"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en"
-"/drivingDistance-category.html>`__ `2.5 "
-"<https://docs.pgrouting.org/2.5/en/drivingDistance-category.html>`__ `2.4"
-" <https://docs.pgrouting.org/2.4/en/drivingDistance-category.html>`__"
+"**Versiones no soportadas:** `2.6 <https://docs.pgrouting.org/2.6/en/"
+"drivingDistance-category.html>`__ `2.5 <https://docs.pgrouting.org/2.5/en/"
+"drivingDistance-category.html>`__ `2.4 <https://docs.pgrouting.org/2.4/en/"
+"drivingDistance-category.html>`__"
 
 #: ../../build/doc/drivingDistance-category.rst:25
 msgid "Driving Distance - Category"
@@ -60,11 +58,10 @@ msgstr "Distancia Manejando - Categoría"
 
 #: ../../build/doc/drivingDistance-category.rst:29
 msgid ""
-":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's "
-"algorithm"
+":doc:`pgr_drivingDistance` - Driving Distance based on Dijkstra's algorithm"
 msgstr ""
-":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo "
-"de Dijkstra"
+":doc:`pgr_drivingDistance` - Distancia de Manejo basada en el algoritmo de "
+"Dijkstra"
 
 #: ../../build/doc/drivingDistance-category.rst:30
 msgid ":doc:`pgr_primDD` - Driving Distance based on Prim's algorithm"
@@ -73,8 +70,7 @@ msgstr ":doc:`pgr_primDD` - Distancia Manejando basada en el algoritmo de Prim"
 #: ../../build/doc/drivingDistance-category.rst:31
 msgid ":doc:`pgr_kruskalDD` - Driving Distance based on Kruskal's algorithm"
 msgstr ""
-":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de "
-"Kruskal"
+":doc:`pgr_kruskalDD` - Distancia de Manejo basada en el algoritmo de Kruskal"
 
 #: ../../build/doc/drivingDistance-category.rst:32
 msgid "Post pocessing"
@@ -106,7 +102,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -114,7 +110,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -137,107 +133,125 @@ msgid ""
 "Extracts all the nodes that have costs less than or equal to the value "
 "distance."
 msgstr ""
+"Extrae todos los nodos que tienen costos menor o igual al valor de la "
+"distancia."
 
 #: ../../build/doc/drivingDistance-category.rst:62
 msgid "The edges extracted will conform to the corresponding spanning tree."
 msgstr ""
 
-#: ../../build/doc/drivingDistance-category.rst:63
+#: ../../build/doc/drivingDistance-category.rst:64
 msgid "Edge :math:`(u, v)` will not be included when:"
-msgstr ""
-
-#: ../../build/doc/drivingDistance-category.rst:65
-msgid "The distance from the **root** to :math:`u` > limit distance."
-msgstr ""
+msgstr "Arista :math:`(u, v)` no se incluye cuando:"
 
 #: ../../build/doc/drivingDistance-category.rst:66
-msgid "The distance from the **root** to :math:`v` > limit distance."
-msgstr ""
+msgid "The distance from the **root** to :math:`u` > limit distance."
+msgstr "La distancia de la **raiz** a:math:`u` > límite de la distancia."
 
 #: ../../build/doc/drivingDistance-category.rst:67
+msgid "The distance from the **root** to :math:`v` > limit distance."
+msgstr "La distancia de la **raiz** a :math:`v` > límite de la distancia."
+
+#: ../../build/doc/drivingDistance-category.rst:68
 msgid ""
-"No new nodes are created on the graph, so when is within the limit and is"
-" not within the limit, the edge is not included."
+"No new nodes are created on the graph, so when is within the limit and is "
+"not within the limit, the edge is not included."
 msgstr ""
+"No se crean nuevos nodos en el grafo, por lo que cuando el vértice está "
+"dentro de los límites y parte de la arista no está dentro de los límites, la "
+"arsta no se incluye."
 
 #: ../../build/doc/drivingDistance-category.rst:73
+#: ../../build/doc/drivingDistance-category.rst:74
 msgid "Parameters"
 msgstr "Parámetros"
 
 #: ../../build/doc/drivingDistance-category.rst:82
+#: ../../build/doc/drivingDistance-category.rst:83
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/drivingDistance-category.rst:83
 #: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/drivingDistance-category.rst:84
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/drivingDistance-category.rst:84
+#: ../../build/doc/drivingDistance-category.rst:85
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/drivingDistance-category.rst:85
+#: ../../build/doc/drivingDistance-category.rst:86
 msgid "`Edges SQL`_"
 msgstr "`SQL Aristas`_"
 
 #: ../../build/doc/drivingDistance-category.rst:86
+#: ../../build/doc/drivingDistance-category.rst:87
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/drivingDistance-category.rst:87
+#: ../../build/doc/drivingDistance-category.rst:88
 msgid "Edges SQL as described below."
-msgstr ""
+msgstr "SQL de aristas como se describen abajo."
 
 #: ../../build/doc/drivingDistance-category.rst:88
+#: ../../build/doc/drivingDistance-category.rst:89
 msgid "**Root vid**"
 msgstr "**id raíz**"
 
 #: ../../build/doc/drivingDistance-category.rst:89
+#: ../../build/doc/drivingDistance-category.rst:90
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/drivingDistance-category.rst:90
+#: ../../build/doc/drivingDistance-category.rst:91
 msgid "Identifier of the root vertex of the tree."
 msgstr "Identificador del vértice raíz del árbol."
 
 #: ../../build/doc/drivingDistance-category.rst:91
+#: ../../build/doc/drivingDistance-category.rst:92
 msgid "**Root vids**"
 msgstr "**Raíces**"
 
 #: ../../build/doc/drivingDistance-category.rst:92
+#: ../../build/doc/drivingDistance-category.rst:93
 msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARREGLO[ENTEROS]``"
 
-#: ../../build/doc/drivingDistance-category.rst:93
+#: ../../build/doc/drivingDistance-category.rst:94
 msgid "Array of identifiers of the root vertices."
-msgstr ""
+msgstr "Arreglo de identificadores de los vértices raíz."
 
 #: ../../build/doc/drivingDistance-category.rst:95
+#: ../../build/doc/drivingDistance-category.rst:96
 msgid ":math:`0` values are ignored"
 msgstr "Valores :math:`0` son ignorados"
 
-#: ../../build/doc/drivingDistance-category.rst:96
-msgid "For optimization purposes, any duplicated value is ignored."
-msgstr ""
-
 #: ../../build/doc/drivingDistance-category.rst:97
-msgid "**distance**"
-msgstr ""
+msgid "For optimization purposes, any duplicated value is ignored."
+msgstr "Con el propósito de optimización, valores duplicados son ignorados."
 
 #: ../../build/doc/drivingDistance-category.rst:98
+msgid "**distance**"
+msgstr "**distancia**"
+
+#: ../../build/doc/drivingDistance-category.rst:98
+#: ../../build/doc/drivingDistance-category.rst:99
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
 #: ../../build/doc/drivingDistance-category.rst:99
+#: ../../build/doc/drivingDistance-category.rst:100
 msgid "Upper limit for the inclusion of a node in the result."
 msgstr "Límite superior para la inclusión del nodo en el resultado."
 
-#: ../../build/doc/drivingDistance-category.rst:101
+#: ../../build/doc/drivingDistance-category.rst:102
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
-msgstr ""
+msgstr "Donde:"
 
 #: ../../build/doc/drivingDistance-category.rst
 #: ../../build/doc/pgRouting-concepts.rst
@@ -246,6 +260,7 @@ msgstr "ENTEROS"
 
 #: ../../build/doc/drivingDistance-category.rst:103
 #: ../../build/doc/pgRouting-concepts.rst:38
+#: ../../build/doc/drivingDistance-category.rst:104
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
@@ -255,14 +270,17 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/drivingDistance-category.rst:104
 #: ../../build/doc/pgRouting-concepts.rst:39
+#: ../../build/doc/drivingDistance-category.rst:105
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/drivingDistance-category.rst:109
+#: ../../build/doc/drivingDistance-category.rst:110
 msgid "Inner Queries"
 msgstr "Consultas Internas"
 
 #: ../../build/doc/drivingDistance-category.rst:112
+#: ../../build/doc/drivingDistance-category.rst:113
 msgid "Edges SQL"
 msgstr "SQL aristas"
 
@@ -302,7 +320,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
@@ -331,29 +349,37 @@ msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
-"When negative: edge (``target``, ``source``) does not exist, therefore "
-"it's not part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore it's "
+"not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
-"tanto no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
 #: ../../build/doc/drivingDistance-category.rst:119
+#: ../../build/doc/drivingDistance-category.rst:120
 msgid "See Also"
 msgstr "Ver también"
 
 #: ../../build/doc/drivingDistance-category.rst:122
+#: ../../build/doc/drivingDistance-category.rst:123
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
 #: ../../build/doc/drivingDistance-category.rst:123
+#: ../../build/doc/drivingDistance-category.rst:124
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
 #: ../../build/doc/drivingDistance-category.rst:124
+#: ../../build/doc/drivingDistance-category.rst:125
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
+#: ../../build/doc/drivingDistance-category.rst:62
+msgid ""
+"The edges extracted will conform to the corresponding spanning tree. Edge"
+msgstr "Las aristas extraídas conforman el correspondiente árbol de expansion."

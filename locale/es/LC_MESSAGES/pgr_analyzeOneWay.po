@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-23 16:16+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_analyzeoneway/es/>\n"
@@ -33,6 +33,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_analyzeOneWay.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_analyzeOneWay.html>`__"
 msgstr ""
+"**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_analyzeOneWay.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_analyzeOneWay.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_analyzeOneWay.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_analyzeOneWay.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_analyzeOneWay.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_analyzeOneWay.html>`__"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:19
 msgid ""
@@ -165,20 +172,14 @@ msgstr ""
 "<edge_table>_vertices_pgr que almacena la información de los vértices."
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:72
-#, fuzzy
 msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
-msgstr ""
-"Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` para crear "
-"la tabla de vértices."
+msgstr "Use :doc:`pgr_createVerticesTable` para crear la tabla de vértices."
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:73
-#, fuzzy
 msgid ""
 "Use :doc:`pgr_createTopology` to create the topology and the vertices "
 "table."
-msgstr ""
-"Use :doc:`pgr_createTopology <pgr_createTopology>` para crear la "
-"topología y los vértices."
+msgstr "Use :doc:`pgr_createTopology` para crear la topología y los vértices."
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:76
 msgid "Signatures"
@@ -261,8 +262,8 @@ msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
 msgstr ""
-"``text``  El nombre de la columna del nodo de llegada del segmento.  El "
-"valor por defecto es ``target``."
+"``text`` El nombre de la columna del nodo de llegada del segmento.  El valor "
+"por defecto es ``target``."
 
 #: ../../build/doc/pgr_analyzeOneWay.rst
 msgid "two_way_if_null"
@@ -273,7 +274,7 @@ msgid ""
 "``boolean`` flag to treat oneway NULL values as bi-directional.  Default "
 "value is ``true``."
 msgstr ""
-"``boolean``  bandera para tratar los valores NULL de oneway como "
+"``boolean`` bandera para tratar los valores NULL de oneway como "
 "bidireccional.  Valor predeterminado es``true``."
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:104
@@ -337,14 +338,12 @@ msgid "The Vertices Table"
 msgstr "La tabla de vértices"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:127
-#, fuzzy
 msgid ""
 "The vertices table can be created with :doc:`pgr_createVerticesTable` or "
 ":doc:`pgr_createTopology`"
 msgstr ""
-"Los vértices pueden ser creados con :doc:`pgr_createVerticesTable "
-"<pgr_createVerticesTable>` o :doc:`pgr_createTopology "
-"<pgr_createTopology>`"
+"Los vértices pueden ser creados con :doc:`pgr_createVerticesTable` o "
+":doc:`pgr_createTopology`"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:130
 msgid "The structure of the vertices table is:"
@@ -427,13 +426,12 @@ msgid ":doc:`topology-functions`"
 msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:155
-#, fuzzy
 msgid ":doc:`pgr_analyzeGraph`"
-msgstr "pgr_analyzeOneWay"
+msgstr ":doc:`pgr_analyzeGraph`"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:156
 msgid ":doc:`pgr_createVerticesTable`"
-msgstr ""
+msgstr ":doc:`pgr_createVerticesTable`"
 
 #: ../../build/doc/pgr_analyzeOneWay.rst:157
 msgid ":doc:`sampledata`"

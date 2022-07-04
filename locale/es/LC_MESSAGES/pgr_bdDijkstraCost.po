@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bddijkstracost/es/>\n"
@@ -34,6 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCost.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCost.html>`__"
 msgstr ""
+"**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_bdDijkstraCost.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_bdDijkstraCost.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_bdDijkstraCost.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_bdDijkstraCost.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_bdDijkstraCost.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_bdDijkstraCost.html>`__"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:19
 msgid ""
@@ -46,9 +53,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCost.html>`__"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:24
-#, fuzzy
 msgid "``pgr_bdDijkstraCost``"
-msgstr "pgr_bdDijkstraCost"
+msgstr "``pgr_bdDijkstraCost``"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:26
 msgid ""
@@ -75,9 +81,8 @@ msgid "New **proposed** signature:"
 msgstr "Nueva firma **propuesta**:"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:40
-#, fuzzy
 msgid "``pgr_bdDijkstraCost`` (`Combinations`_)"
-msgstr "pgr_bdDijkstraCost(Combinaciones)"
+msgstr "``pgr_bdDijkstraCost`` (`Combinaciones`_)"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:42
 msgid "Version 3.0.0"
@@ -105,13 +110,12 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:54
-#, fuzzy
 msgid ""
 "The ``pgr_bdDijkstraCost`` function sumarizes of the cost of the shortest"
 " path using the bidirectional Dijkstra Algorithm."
 msgstr ""
-"``pgr_bdDijkstraCost`` — Devuelve la ruta(s) más corta utilizando el "
-"algoritmo de Dijkstra Bidireccional."
+"La función ``pgr_bdDijkstraCost`` sumarisa el costo de la ruta más corta "
+"utilizando el algoritmo de bidirecional de Dijkstra."
 
 #: ../../build/doc/bdDijkstra-family.rst:3
 msgid "Process is done only on edges with positive costs."
@@ -122,6 +126,8 @@ msgid ""
 "A negative value on a cost column is interpreted as the edge does not "
 "exist."
 msgstr ""
+"Valor no negativo en una columna de costo se interpreta como la arista no "
+"exite."
 
 #: ../../build/doc/bdDijkstra-family.rst:7
 msgid "Values are returned when there is a path."
@@ -199,12 +205,16 @@ msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: ``(start_vid, end_vid)``."
 msgstr ""
+"Sea el caso que los valores devueltos se almacenen en una tabla, el índice "
+"único sería el par: `(start_vid, end_vid)`."
 
 #: ../../build/doc/cost-category.rst:9
 msgid ""
 "Depending on the function and its parameters, the results can be "
 "symmetric."
 msgstr ""
+"Dependiendo de la función y sus parámetros, los resultados pueden ser "
+"simétricos."
 
 #: ../../build/doc/cost-category.rst:11
 msgid ""
@@ -220,7 +230,7 @@ msgstr ""
 
 #: ../../build/doc/cost-category.rst:15
 msgid "The returned values are ordered:"
-msgstr ""
+msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/cost-category.rst:17
 msgid "``start_vid`` ascending"
@@ -566,9 +576,8 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst
-#, fuzzy
 msgid "Example 1"
-msgstr "Ejemplo"
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:222
 msgid "Demonstration of repeated values are ignored, and result is sorted."
@@ -580,7 +589,7 @@ msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst:228
 msgid "Making **start vids** the same as **end vids**."
-msgstr ""
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #: ../../build/doc/pgr_bdDijkstraCost.rst
 msgid "Example 3"

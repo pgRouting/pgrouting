@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:05+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_pickdelivereuclidean/es/>\n"
@@ -73,7 +73,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -105,7 +105,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -121,11 +121,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -333,9 +335,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/VRP-category.rst:12
-#, fuzzy
 msgid "``factor``"
-msgstr "**factor**"
+msgstr "``factor``"
 
 #: ../../build/doc/VRP-category.rst:13
 msgid "``NUMERIC``"
@@ -350,9 +351,8 @@ msgid "Travel time multiplier. See :ref:`pd_factor`"
 msgstr "Multiplicador de tiempo de viaje. Ver :ref:`pd_factor`"
 
 #: ../../build/doc/VRP-category.rst:16
-#, fuzzy
 msgid "``max_cycles``"
-msgstr "**max_cycles**"
+msgstr "``max_cycles``"
 
 #: ../../build/doc/VRP-category.rst:17 ../../build/doc/VRP-category.rst:20
 #: ../../build/doc/VRP-category.rst:21 ../../build/doc/VRP-category.rst:23
@@ -580,9 +580,8 @@ msgid "Identifier of the vehicle."
 msgstr "Velocidad media del vehículo."
 
 #: ../../build/doc/VRP-category.rst:14
-#, fuzzy
 msgid "``capacity``"
-msgstr "**capacidad**"
+msgstr "``capacity``"
 
 #: ../../build/doc/VRP-category.rst:16
 msgid "Maiximum capacity units"
@@ -733,9 +732,8 @@ msgid "Value :math:`-2` indicates it is the summary row."
 msgstr "Valor :math:`-2` para indicar que es una fila de resumen."
 
 #: ../../build/doc/VRP-category.rst:28
-#, fuzzy
 msgid "``vehicle_id``"
-msgstr "**vehicle_id**"
+msgstr "``vehicle_id``"
 
 #: ../../build/doc/VRP-category.rst:29
 msgid "BIGINT"
@@ -767,7 +765,7 @@ msgid ""
 "vehicle. The :math:`m_{th}` stop of the current vehicle."
 msgstr ""
 "Valor secuencial a partir de **1** para las paradas realizadas por el "
-"vehículo actual. La parada :math:`m_{th}` vdel vehículo actual."
+"vehículo actual. La parada :math:`m_{th}` del vehículo actual."
 
 #: ../../build/doc/VRP-category.rst:41
 msgid "Sumary row has the **total time windows violations**."
@@ -780,9 +778,8 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:45
-#, fuzzy
 msgid "``stop_type``"
-msgstr "**stop_type**"
+msgstr "``stop_type``"
 
 #: ../../build/doc/VRP-category.rst:47
 msgid "Kind of stop location the vehicle is at"
@@ -797,9 +794,8 @@ msgid ":math:`1`: Starting location"
 msgstr "``1``: Ubicación inicial"
 
 #: ../../build/doc/VRP-category.rst:51
-#, fuzzy
 msgid ":math:`2`: Pickup location"
-msgstr "``2``: Ubicación de recogida"
+msgstr ":math:`2`: Ubicación de recogida"
 
 #: ../../build/doc/VRP-category.rst:52
 msgid ":math:`3`: Delivery location"
@@ -810,9 +806,8 @@ msgid ":math:`6`: Ending location and indicates the vehicle's summary row"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:54
-#, fuzzy
 msgid "``order_id``"
-msgstr "**order_id**"
+msgstr "``order_id``"
 
 #: ../../build/doc/VRP-category.rst:55
 msgid "``BIGINT``"
@@ -823,11 +818,10 @@ msgid "Pickup-Delivery order pair identifier."
 msgstr "Identificador de par de órdenes Recoger-Entregar."
 
 #: ../../build/doc/VRP-category.rst:58
-#, fuzzy
 msgid "Value :math:`-1`: When no order is involved on the current stop location."
 msgstr ""
-"``-1``: Cuando no hay ningún pedido involucrado en la ubicación actual de"
-" la parada."
+"Valor :math:`-1`: Cuando no hay pedidos involucrados en la ubicación de la "
+"parada actual."
 
 #: ../../build/doc/VRP-category.rst:60
 msgid "``cargo``"
@@ -848,9 +842,8 @@ msgid "Value :math:`-1` on solution summary row."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:65
-#, fuzzy
 msgid "``travel_time``"
-msgstr "**travel_time**"
+msgstr "``travel_time``"
 
 #: ../../build/doc/VRP-category.rst:67
 msgid "Travel time from previous ``stop_seq`` to current ``stop_seq``."
@@ -871,18 +864,16 @@ msgid "``arrival_time``"
 msgstr "``arrival_time``"
 
 #: ../../build/doc/VRP-category.rst:74 ../../build/doc/VRP-category.rst:81
-#, fuzzy
 msgid "Time spent waiting for current location to open."
-msgstr "Tiempo dedicado a la apertura de `ubicación` actual."
+msgstr "Tiempo de espera para la apertura de la ubicación actual."
 
 #: ../../build/doc/VRP-category.rst:76
 msgid ":math:`-1`: at the solution summary row."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:77
-#, fuzzy
 msgid ":math:`0`: at the starting location."
-msgstr "valor :math:`y` de la coordenada de la ubicación de inicio."
+msgstr ":math:`0`: en la ubicación inicial."
 
 #: ../../build/doc/VRP-category.rst:79
 msgid "``wait_time``"
@@ -901,9 +892,8 @@ msgid "``service_time``"
 msgstr "``service_time``"
 
 #: ../../build/doc/VRP-category.rst:88
-#, fuzzy
 msgid "Service duration at current location."
-msgstr "Tiempo de servicio en la `ubicación` actual."
+msgstr "Duralción del servicio en la ubicación actual."
 
 #: ../../build/doc/VRP-category.rst:90
 msgid "Summary row has the **total service time**:"
@@ -935,13 +925,12 @@ msgid "Summary row has the **total solution time**:"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:103
-#, fuzzy
 msgid ""
 ":math:`total\\ traveling\\ time + total\\ waiting\\ time + total\\ "
 "service\\ time`."
 msgstr ""
-"`total_solution_time` = :math:`total\\_travel\\_time + "
-"total\\_wait\\_time + total\\_service\\_time`."
+":math:`total\\ traveling\\ time + total\\ waiting\\ time + total\\ service\\ "
+"time`."
 
 #: ../../build/doc/sampledata.rst:3
 msgid ""
@@ -965,7 +954,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:26
 msgid "The orders"
-msgstr ""
+msgstr "Las órdenes"
 
 #: ../../build/doc/sampledata.rst:28
 msgid "The original data needs to be converted to an appropiate table:"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-30 15:59+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_connectedcomponents/es/>\n"
@@ -121,9 +121,8 @@ msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_connectedComponents.rst:59
-#, fuzzy
 msgid "Works for **undirected** graphs."
-msgstr "La firma es para un grafo **no dirigido**."
+msgstr "Funciona para grafos **no dirigidos**."
 
 #: ../../build/doc/pgr_connectedComponents.rst:60
 msgid "Components are described by vertices"
@@ -179,9 +178,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta interna como se describe a continuación."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_connectedComponents.rst:99
 msgid "Inner Queries"
@@ -306,30 +304,24 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_connectedComponents.rst:127
-#, fuzzy
 msgid "``component``"
-msgstr "**component**"
+msgstr "``component``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:129
-#, fuzzy
 msgid "Component identifier."
-msgstr "`component` ascendente."
+msgstr "Identificador de componente."
 
 #: ../../build/doc/pgr_connectedComponents.rst:131
-#, fuzzy
 msgid "Has the value of the minimum node identifier in the component."
-msgstr ""
-"Identificador del componente. Es igual al identificador de nodo mínimo en"
-" el componente."
+msgstr "Continene le valor mínimo de identificador de nodo en el componente."
 
 #: ../../build/doc/pgr_connectedComponents.rst:132
 msgid "``node``"
 msgstr "``node``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:134
-#, fuzzy
 msgid "Identifier of the vertex that belongs to the ``component``."
-msgstr "Identificador del vértice que pertenece a **componente**."
+msgstr "Identificador del vértice que pertenece al ``component``."
 
 #: ../../build/doc/pgr_connectedComponents.rst:139
 msgid "Additional Examples"
@@ -341,7 +333,7 @@ msgstr "Conectando componentes desconectados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "To get the graph connectivity:"
-msgstr ""
+msgstr "Para obtener la conectividad del grafo:"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid ""

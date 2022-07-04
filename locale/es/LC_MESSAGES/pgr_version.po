@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-07-02 17:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_version/es/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_version.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_version.html>`__ (`3.4 "
@@ -34,13 +33,12 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_version.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_version.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_version.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_version.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_version.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_version.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_version.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_version.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_version.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/pgr_version."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/pgr_version.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_version.html>`__ `3.1 <https://docs."
+"pgrouting.org/3.1/es/pgr_version.html>`__ `3.0 <https://docs.pgrouting.org/3."
+"0/es/pgr_version.html>`__"
 
 #: ../../build/doc/pgr_version.rst:19
 msgid ""
@@ -69,9 +67,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__"
 
 #: ../../build/doc/pgr_version.rst:29
-#, fuzzy
 msgid "``pgr_version``"
-msgstr "pgr_version"
+msgstr "``pgr_version``"
 
 #: ../../build/doc/pgr_version.rst:31
 msgid "``pgr_version`` — Query for pgRouting version information."
@@ -142,9 +139,8 @@ msgid "See Also"
 msgstr "Ver también"
 
 #: ../../build/doc/pgr_version.rst:78
-#, fuzzy
 msgid ":doc:`reference`"
-msgstr ":doc:`pgr_full_version`"
+msgstr ":doc:`reference`"
 
 #: ../../build/doc/pgr_version.rst:79
 msgid ":doc:`pgr_full_version`"

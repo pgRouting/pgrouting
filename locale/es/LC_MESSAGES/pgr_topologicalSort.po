@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_topologicalsort/es/>\n"
@@ -36,19 +36,16 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_topologicalSort.rst:21
-#, fuzzy
 msgid "``pgr_topologicalSort`` - Experimental"
-msgstr "pgr_topologicalSort - Experimental"
+msgstr "``pgr_topologicalSort`` - Experimental"
 
 #: ../../build/doc/pgr_topologicalSort.rst:23
-#, fuzzy
 msgid ""
 "``pgr_topologicalSort`` — Linear ordering of the vertices for directed "
 "acyclic graphs (DAG)."
 msgstr ""
-"``pgr_topologicalSort`` — Devuelve el orden lineal de los vértices para "
-"los grafos acíclicos dirigidos ponderados (DAG). En particular, el "
-"algoritmo de ordenación topológica implementado por Boost.Graph."
+"``pgr_topologicalSort`` — Devuelve el orden lineal de los vértices para los "
+"grafos acíclicos dirigidos ponderados (DAG)."
 
 #: ../../build/doc/pgr_topologicalSort.rst:29
 msgid "Boost Graph Inside"
@@ -60,7 +57,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -92,7 +89,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -108,11 +105,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -142,15 +141,14 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_topologicalSort.rst:44
-#, fuzzy
 msgid ""
 "The topological sort algorithm creates a linear ordering of the vertices "
 "such that if edge :math:`(u,v)` appears in the graph, then :math:`v` "
 "comes before :math:`u` in the ordering."
 msgstr ""
-"El algoritmo de ordenación topológica crea un orden lineal de los "
-"vértices de tal manera que si la arista (u,v) aparece en el grafo, "
-"entonces v viene antes de u en el orden."
+"El algoritmo de ordenación topológica crea un orden lineal de los vértices "
+"de tal manera que si la arista :math:`(u,v)` aparece en el grafo, entonces "
+":math:`v` viene antes de :math:`u` en el orden."
 
 #: ../../build/doc/pgr_topologicalSort.rst:48
 msgid "The main characteristics are:"
@@ -177,9 +175,8 @@ msgid "The returned values are ordered in topological order:"
 msgstr "Los valores devueltos se ordenan en orden topológico:"
 
 #: ../../build/doc/pgr_topologicalSort.rst:58
-#, fuzzy
 msgid "Running time: :math:`O(V + E)`"
-msgstr "Tiempo de ejecución: :math:`O( (V + E))`"
+msgstr "Tiempo de ejecución: :math:`O(V + E)`"
 
 #: ../../build/doc/pgr_topologicalSort.rst:62
 msgid "Signatures"
@@ -219,9 +216,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta SQL como se describió anteriormente."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_topologicalSort.rst:89
 msgid "Inner Queries"
@@ -344,9 +340,8 @@ msgid "Sequential value starting from :math:`1`"
 msgstr "Valor secuencial a partir de :math:`1`"
 
 #: ../../build/doc/pgr_topologicalSort.rst:114
-#, fuzzy
 msgid "``sorted_v``"
-msgstr "**sorted_v**"
+msgstr "``sorted_v``"
 
 #: ../../build/doc/pgr_topologicalSort.rst:115
 msgid "``BIGINT``"

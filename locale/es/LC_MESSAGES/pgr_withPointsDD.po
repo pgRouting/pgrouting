@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-30 15:53+0000\n"
+"PO-Revision-Date: 2022-07-04 16:00+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsdd/es/>\n"
@@ -61,18 +61,16 @@ msgstr ""
 "<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsDD.html>`__"
 
 #: ../../build/doc/pgr_withPointsDD.rst:27
-#, fuzzy
 msgid "``pgr_withPointsDD`` - Proposed"
-msgstr "pgr_withPointsDD - Propuesto"
+msgstr "``pgr_withPointsDD`` - Propuesto"
 
 #: ../../build/doc/pgr_withPointsDD.rst:29
-#, fuzzy
 msgid ""
 "``pgr_withPointsDD`` - Returns the driving **distance** from a starting "
 "point."
 msgstr ""
-"``pgr_withPointsDD`` - Devuelve la distancia de conducción desde un punto"
-" de partida."
+"``pgr_withPointsDD`` - Devuelve la **distancia** de conducción desde un "
+"punto de partida."
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -92,7 +90,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -100,7 +98,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -138,16 +136,15 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_withPointsDD.rst:50
-#, fuzzy
 msgid ""
 "Modify the graph to include points and using Dijkstra algorithm, extracts"
 " all the nodes and points that have costs less than or equal to the value"
 " ``**distance**`` from the starting point. The edges extracted will "
 "conform the corresponding spanning tree."
 msgstr ""
-"Modifica el grafo para incluir puntos y utilizando el algoritmo Dijkstra,"
-" extrae todos los nodos y puntos que tienen costes menores o iguales que "
-"el valor de ``distance`` desde el punto inicial. Las aristas extraídas "
+"Modifica el grafo para incluir puntos y utilizando el algoritmo Dijkstra, "
+"extrae todos los nodos y puntos que tienen costes menores o iguales que el "
+"valor de ``**distance**`` desde el punto inicial. Las aristas extraídas "
 "conformarán el árbol de expansión correspondiente."
 
 #: ../../build/doc/pgr_withPointsDD.rst:56
@@ -179,6 +176,8 @@ msgid ""
 "From point :math:`1` and vertex :math:`16` within a distance of "
 ":math:`3.3` with ``equicost`` on a directed graph"
 msgstr ""
+"Desde el punto :math:`1` y el vértice :math:`16` dentro de una distancia de "
+":math:`3.3` con ``equicost`` en un grafo dirigido"
 
 #: ../../build/doc/pgr_withPointsDD.rst:105
 msgid "Parameters"
@@ -241,7 +240,7 @@ msgstr "Identificador del vértice raíz del árbol."
 #: ../../build/doc/pgr_withPointsDD.rst:125
 #: ../../build/doc/pgr_withPointsDD.rst:131
 msgid "Negative values represent a point"
-msgstr ""
+msgstr "Valores negativos representan un punto"
 
 #: ../../build/doc/pgr_withPointsDD.rst:126
 msgid "**Root vids**"
@@ -252,9 +251,8 @@ msgid "``ARRAY[ANY-INTEGER]``"
 msgstr "``ARREGLO[ENTEROS]``"
 
 #: ../../build/doc/pgr_withPointsDD.rst:128
-#, fuzzy
 msgid "Array of identifiers of the root vertices."
-msgstr "Identificador de la arista."
+msgstr "Arreglo de identificadores de los vértices raíz."
 
 #: ../../build/doc/pgr_withPointsDD.rst:132
 msgid ":math:`0` values are ignored"
@@ -262,7 +260,7 @@ msgstr "Valores :math:`0` son ignorados"
 
 #: ../../build/doc/pgr_withPointsDD.rst:133
 msgid "For optimization purposes, any duplicated value is ignored."
-msgstr ""
+msgstr "Con el propósito de optimización, valores duplicados son ignorados."
 
 #: ../../build/doc/pgr_withPointsDD.rst:134
 msgid "**distance**"
@@ -315,7 +313,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_withPointsDD.rst:146
 msgid "With points optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales para Con puntos"
 
 #: ../../build/doc/pgr_withPointsDD.rst:186
 #: ../../build/doc/withPoints-category.rst:8
@@ -338,11 +336,8 @@ msgid "``b``"
 msgstr "``b``"
 
 #: ../../build/doc/withPoints-family.rst:15
-#, fuzzy
 msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
-msgstr ""
-"(opcional). Valor en ['b', 'r', 'l', NULL] que indica si el lado de "
-"conducción es:"
+msgstr "Valor en [``r``, ``l``, ``b``] indica si el lado de manejo es:"
 
 #: ../../build/doc/withPoints-family.rst:17
 msgid "``r`` for right driving side."
@@ -354,7 +349,7 @@ msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/withPoints-family.rst:19
 msgid "``b`` for both."
-msgstr ""
+msgstr "``b`` for ambos."
 
 #: ../../build/doc/withPoints-family.rst:20
 msgid "``details``"
@@ -367,25 +362,28 @@ msgstr "``false``"
 #: ../../build/doc/withPoints-family.rst:23
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
+"Cuando ``true`` los resultados incluyen los puntos que están en el camino."
 
 #: ../../build/doc/withPoints-family.rst:24
 msgid ""
 "When ``false`` the results will not include the points that are in the "
 "path."
 msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
 
 #: ../../build/doc/pgr_withPointsDD.rst:153
 msgid "Driving distance optional parameters"
 msgstr "Parámetros opcionales de distancia de manejo"
 
 #: ../../build/doc/pgr_drivingDistance.rst:12
-#, fuzzy
 msgid "``equicost``"
-msgstr "**equicost**"
+msgstr "``equicost``"
 
 #: ../../build/doc/pgr_drivingDistance.rst:15
 msgid "When ``true`` the node will only appear in the closest ``from_v`` list."
 msgstr ""
+"Cuando ``true`` el nodo solo aparecen en la lista más cercana ``from_v``."
 
 #: ../../build/doc/pgr_drivingDistance.rst:17
 msgid ""
@@ -509,18 +507,18 @@ msgid "**value**"
 msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
-#, fuzzy
 msgid "Identifier of the point."
-msgstr "(opcional) Identificador del punto."
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
-#, fuzzy
 msgid "If column is present, it can not be NULL."
-msgstr "Si la columna está presente, no puede ser NULL."
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
@@ -531,9 +529,8 @@ msgstr ""
 "automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
-#, fuzzy
 msgid "``edge_id``"
-msgstr "**edge_id**"
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
@@ -553,16 +550,15 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
-#, fuzzy
 msgid "In the right ``r``,"
-msgstr "A la derecha o a la izquierda o"
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
@@ -570,7 +566,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_withPointsDD.rst:177
 msgid "Result Columns"
@@ -578,7 +574,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgr_withPointsDD.rst:179
 msgid "Returns SET OF ``(seq, [start_vid,] node, edge, cost, agg_cost)``"
-msgstr ""
+msgstr "Regresa vonjunto de ``(seq, [start_vid,] node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgr_withPointsDD.rst:189
 msgid "``seq``"
@@ -589,14 +585,12 @@ msgid "Sequential value starting from :math:`1`."
 msgstr "Valor secuencial a partir de :math:`1`."
 
 #: ../../build/doc/pgr_withPointsDD.rst:192
-#, fuzzy
 msgid "``[start_vid]``"
-msgstr "``start_vid``"
+msgstr "``[start_vid]``"
 
 #: ../../build/doc/pgr_withPointsDD.rst:194
-#, fuzzy
 msgid "Identifier of the root vertex."
-msgstr "Identificador de la arista."
+msgstr "Identificador del vértice raíz."
 
 #: ../../build/doc/pgr_withPointsDD.rst:196
 msgid "``node``"
@@ -605,6 +599,7 @@ msgstr "``node``"
 #: ../../build/doc/pgr_withPointsDD.rst:198
 msgid "Identifier of ``node`` within the limits from ``from_v``."
 msgstr ""
+"Identificador del ``node`` en la ruta dentro de los límites de ``from_v``."
 
 #: ../../build/doc/pgr_withPointsDD.rst:199
 msgid "``edge``"
@@ -627,9 +622,8 @@ msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
 #: ../../build/doc/pgr_withPointsDD.rst:210
-#, fuzzy
 msgid "Aggregate cost from ``from_v`` to ``node``."
-msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
+msgstr "Costo agregado desde ``from_v`` to ``node``."
 
 #: ../../build/doc/pgr_withPointsDD.rst:214
 msgid "SMALLINT, INTEGER, BIGINT"
@@ -640,9 +634,8 @@ msgid "ANY-NUMERIC"
 msgstr "FLOTANTES"
 
 #: ../../build/doc/pgr_withPointsDD.rst:215
-#, fuzzy
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
-msgstr "smallint, int, bigint, real, float"
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 
 #: ../../build/doc/pgr_withPointsDD.rst:218
 msgid "Additional Examples"
@@ -650,27 +643,32 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_withPointsDD.rst:224
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr ""
+msgstr "Usa :doc:`pgr_findCloseEdges` en el `SQL puntos`_."
 
 #: ../../build/doc/pgr_withPointsDD.rst:226
 msgid ""
 "Find the driving distance from the two closest locations on the graph of "
 "point `(2.9, 1.8)`."
 msgstr ""
+"Encontrar la distancia de manejo de las dos ubicaciones más cercanas al "
+"grafo del punto `(2.8, 1.8)`."
 
 #: ../../build/doc/pgr_withPointsDD.rst:233
 msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-1` corresponde a la arista más cercana al punto `(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_withPointsDD.rst:234
 msgid ""
 "Point :math:`-2` corresponds to the next close edge from point "
 "`(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-2` corresponde a la segunda arista más cercana al punto `(2.9, "
+"1.8)`."
 
 #: ../../build/doc/pgr_withPointsDD.rst:237
 msgid "Driving side does not matter"
-msgstr ""
+msgstr "Lado de manejo no importa"
 
 #: ../../build/doc/pgr_withPointsDD.rst:239
 msgid ""
@@ -686,11 +684,11 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_withPointsDD.rst:250
 msgid ":doc:`pgr_drivingDistance`"
-msgstr ""
+msgstr ":doc:`pgr_drivingDistance`"
 
 #: ../../build/doc/pgr_withPointsDD.rst:251
 msgid ":doc:`pgr_alphaShape`"
-msgstr ""
+msgstr ":doc:`pgr_alphaShape`"
 
 #: ../../build/doc/pgr_withPointsDD.rst:252
 msgid ":doc:`sampledata`"

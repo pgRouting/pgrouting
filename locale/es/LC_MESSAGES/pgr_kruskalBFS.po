@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:12+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskalbfs/es/>\n"
@@ -34,20 +34,25 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_kruskalBFS.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_kruskalBFS.html>`__"
 msgstr ""
+"**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_kruskalBFS.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_kruskalBFS.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_kruskalBFS.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_kruskalBFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_kruskalBFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_kruskalBFS.html>`__"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:21
-#, fuzzy
 msgid "``pgr_kruskalBFS``"
-msgstr "pgr_kruskalBFS"
+msgstr "``pgr_kruskalBFS``"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:23
-#, fuzzy
 msgid ""
 "``pgr_kruskalBFS`` — Kruskal's algorithm for Minimum Spanning Tree with "
 "breadth First Search ordering."
 msgstr ""
-"``pgr_kruskalBFS`` — Algoritmo Prim para el Árbol de Expansión Mínima con"
-" orden de Primera Búsqueda en Profundidad."
+"``pgr_kruskalBFS`` — Algoritmo de Kruskal para el Árbol de Expansión Mínimo "
+"con orden de Primera Búsqueda en Anchura."
 
 #: ../../build/doc/pgr_kruskalBFS.rst:29
 msgid "Boost Graph Inside"
@@ -73,14 +78,12 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:41
-#, fuzzy
 msgid ""
 "Visits and extracts the nodes information in Breath First Search ordering"
 " of the Minimum Spanning Tree created using Kruskal's algorithm."
 msgstr ""
-"Visita y extrae la información de los nodos en la orden de Primera "
-"Búsqueda en Profundidad del Árbol de Expansión Mínima creado con el "
-"algoritmo de Prim."
+"Visita y extrae la información de los nodos en la orden de Primera Búsqueda "
+"en Anchura del Árbol de Expansión Mínimo creado con el algoritmo de Kruskal."
 
 #: ../../build/doc/pgr_kruskalBFS.rst:44
 msgid "**The main Characteristics are:**"
@@ -145,22 +148,20 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:73
-#, fuzzy
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
-msgstr "El Árbol de Expansión Mínimo que tiene como vértice raíz :math:`2`"
+msgstr "El Árbol de Expansión Mínimo que tiene como vértice raíz :math:`6`"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:83
 msgid "Multiple vertices"
 msgstr "Múltiples vértices"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:90
-#, fuzzy
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
 ":math:`depth \\leq 3`"
 msgstr ""
-"El Árbol de Expansión Mínimo que comienza en los vértices :math:`\\{13, "
-"2\\}` con :math:`depth <= 3`"
+"El Árbol de Expansión Mínimo que comienza en los vértices :math:`\\{9, 6\\}` "
+"con ::math:`depth \\leq 3`"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:98
 msgid "Parameters"
@@ -185,7 +186,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/BFS-category.rst:13
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/BFS-category.rst:14
 msgid "**Root vid**"
@@ -249,7 +250,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/BFS-category.rst:31 ../../build/doc/BFS-category.rst:45
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
-msgstr ""
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 
 #: ../../build/doc/pgr_kruskalBFS.rst:105
 msgid "BFS optional parameters"
@@ -382,14 +383,13 @@ msgstr "Valor secuencial a partir de :math:`1`."
 
 #: ../../build/doc/BFS-category.rst:16
 msgid "``depth``"
-msgstr ""
+msgstr "``depth``"
 
 #: ../../build/doc/BFS-category.rst:18
 msgid "Depth of the ``node``."
 msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/BFS-category.rst:20
-#, fuzzy
 msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 

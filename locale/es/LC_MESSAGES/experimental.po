@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-03 03:28+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "experimental/es/>\n"
@@ -75,7 +75,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:33
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:35
 msgid "Experimental functions"
@@ -107,7 +107,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:44
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:45
 msgid "Might need c/c++ coding."
@@ -123,11 +123,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:48
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:49
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:50
 msgid "Might depend on a proposed function of pgRouting"
@@ -212,12 +214,15 @@ msgid ""
 ":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the "
 "graph."
 msgstr ""
+":doc:`pgr_breadthFirstSearch` - Recorrido de búsqueda en anchura del grafo."
 
 #: ../../build/doc/traversal-family.rst:4
 msgid ""
 ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of "
 "the graph."
 msgstr ""
+":doc:`pgr_binaryBreadthFirstSearch` - Recorrido de búsqueda en anchura del "
+"grafo."
 
 #: ../../build/doc/experimental.rst:87
 msgid ":doc:`components-family`"
@@ -230,9 +235,8 @@ msgstr ""
 "conectados."
 
 #: ../../build/doc/experimental.rst:93
-#, fuzzy
 msgid ":doc:`TRSP-family`"
-msgstr ":doc:`flow-family`"
+msgstr ":doc:`TRSP-family`"
 
 #: ../../build/doc/TRSP-family.rst:3
 msgid ":doc:`pgr_turnRestrictedPath` - Routing with restrictions."

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dagshortestpath/es/>\n"
@@ -34,6 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_dagShortestPath.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_dagShortestPath.html>`__"
 msgstr ""
+"**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_dagShortestPath.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_dagShortestPath.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_dagShortestPath.html>`__ `3.2 <https://docs.pgrouting.org/3.2/en/"
+"pgr_dagShortestPath.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_dagShortestPath.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_dagShortestPath.html>`__"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:21
 msgid "pgr_dagShortestPath - Experimental"
@@ -59,7 +66,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -91,7 +98,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -107,11 +114,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -260,38 +269,37 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:118
-#, fuzzy
 msgid "From vertex :math:`5` to vertex  :math:`11` on a **directed** graph"
-msgstr "Desde el vértice :math:`1` al vértice :math:`6`"
+msgstr ""
+"Desde el vértice :math:`5` al vértice :math:`11` en un grafo **dirigido**"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:128
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:136
-#, fuzzy
 msgid "From vertex :math:`5` to vertices :math:`\\{7, 11\\}`"
-msgstr "Desde el vértice :math:`1` a los vértices :math:`\\{ 5, 6\\}`"
+msgstr "Desde el vértice :math:`5` a los vértices :math:`\\{ 7, 11\\}`"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:146
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:154
-#, fuzzy
 msgid "From vertices :math:`\\{5, 10\\}` to vertex :math:`11`"
-msgstr "Desde los vértices :math:`\\{1, 3\\}` al vértice :math:`6`"
+msgstr "Desde los vértices :math:`\\{5, 10\\}` al vértice :math:`11`"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:164
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:172
-#, fuzzy
 msgid ""
 "From vertices :math:`\\{5, 15\\}` to vertices :math:`\\{11, 17\\}` on an "
 "**undirected** graph"
-msgstr "Desde los vértices :`\\{1, 4\\}` a los vértices :math:`\\{12, 6\\}`"
+msgstr ""
+"Desde los vértices :math:`\\{5, 15\\}` a los vértices :math:`\\{11, 17\\}` "
+"en un grafo **no dirigido**"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:183
 msgid "Combinations"
@@ -511,7 +519,6 @@ msgid "Identifier of the arrival vertex."
 msgstr "Identificador del vértice de llegada."
 
 #: ../../build/doc/pgr_dagShortestPath.rst:230
-#, fuzzy
 msgid "Resturn Columns"
 msgstr "Columnas de Resultados"
 
@@ -631,9 +638,8 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_dagShortestPath.rst
-#, fuzzy
 msgid "Example 1"
-msgstr "Ejemplo"
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:239
 msgid "Demonstration of repeated values are ignored, and result is sorted."
@@ -645,7 +651,7 @@ msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_dagShortestPath.rst:245
 msgid "Making **start_vids** the same as **end_vids**"
-msgstr ""
+msgstr "Haciendo **vértices de salida** igual que **vértices destino**"
 
 #: ../../build/doc/pgr_dagShortestPath.rst
 msgid "Example 3"

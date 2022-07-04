@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-28 02:56+0000\n"
+"PO-Revision-Date: 2022-07-04 16:00+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trspvia_withpoints/es/>\n"
@@ -54,7 +54,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -62,7 +62,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -219,12 +219,12 @@ msgstr "`SQL puntos`_"
 
 #: ../../build/doc/via-category.rst:20
 msgid "**via vertices**"
-msgstr ""
+msgstr "**vía vértices**"
 
 #: ../../build/doc/via-category.rst:21
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr "``ARRAY[`` **ENTEROS** ``]``"
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/via-category.rst:23
 msgid "Array of ordered vertices identifiers that are going to be visited."
@@ -261,7 +261,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/via-category.rst:31
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:96
 msgid "Optional parameters"
@@ -328,7 +328,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:110
 msgid "With points optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales para Con puntos"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:12
 msgid "``driving_side``"
@@ -341,23 +341,23 @@ msgstr "``CHAR``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:14
 msgid "``r``"
-msgstr ""
+msgstr "``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:15
 msgid "Value in [``r``, ``l``] indicating if the driving side is:"
-msgstr ""
+msgstr "Valor en [``r``, ``l``] indicando si el lado de manejo es:"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:17
 msgid "``r`` for right driving side"
-msgstr ""
+msgstr "``r`` para el manejo del lado derecho"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:18
 msgid "``l`` for left driving side"
-msgstr ""
+msgstr "``l`` para el manejo del lado izquierdo"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:19
 msgid "Any other value will be considered as ``r``"
-msgstr ""
+msgstr "Cualquier otro valor se considera como ``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:20
 msgid "``details``"
@@ -366,11 +366,14 @@ msgstr "``details``"
 #: ../../build/doc/pgr_trsp_withPoints.rst:23
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
+"Cuando ``true`` los resultados incluyen los puntos que están en el camino."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:24
 msgid ""
 "When ``false`` the results will not include the points that are in the path."
 msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:117
 msgid "Inner Queries"
@@ -462,7 +465,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:127
 msgid "Restrictions SQL"
-msgstr "Restricciones SQL"
+msgstr "SQL restricciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "``path``"
@@ -474,6 +477,9 @@ msgid ""
 "taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a "
 "``NULL`` element will raise an exception."
 msgstr ""
+"Secuencia de identificadores de aristas que forman un camino que no se "
+"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que "
+"tienen ``NULL`` arrojan una excepción."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``Cost``"
@@ -560,7 +566,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:141
 msgid "Result Columns"
@@ -636,8 +642,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path "
 "sequence."
 msgstr ""
-"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
-"la secuencia de ruta."
+"Identificador de la arsita utilizada para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta."
 
 #: ../../build/doc/via-category.rst:35
 msgid "-1 for the last node of the path."
@@ -694,7 +700,7 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:158
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr "Usa :doc:`pgr_findCloseEdges` en el `Points SQL`_."
+msgstr "Usa :doc:`pgr_findCloseEdges` en el `SQL puntos`_."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:160
 msgid ""
@@ -706,11 +712,14 @@ msgstr ""
 msgid ""
 "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-1` corresponde a la arista más cercana al punto `(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:168
 msgid ""
 "Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-2` corresponde a la segunda arista más cercana al punto `(2.9, "
+"1.8)`."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:169
 msgid ""
@@ -720,7 +729,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:173
 msgid "Usage variations"
-msgstr ""
+msgstr "Variaciones de uso"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:175
 msgid ""
@@ -734,7 +743,7 @@ msgstr "Costo agregado de la tercera ruta."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:190
 msgid "Route's aggregate cost of the route at the end of the third path."
-msgstr "Costo agregado de al final de la tercera ruta."
+msgstr "Costo agregado al final de la tercera ruta."
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:197
 msgid "Nodes visited in the route."
@@ -813,17 +822,15 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:279
 msgid ":doc:`TRSP-family`"
-msgstr ""
+msgstr ":doc:`TRSP-family`"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:280
 msgid ":doc:`via-category`"
 msgstr ":doc:`via-category`"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:281
-#, fuzzy
-#| msgid ":doc:`via-category`"
 msgid ":doc:`withPoints-category`"
-msgstr ":doc:`via-category`"
+msgstr ":doc:`withPoints-category`"
 
 #: ../../build/doc/pgr_trspVia_withPoints.rst:282
 msgid ":doc:`sampledata` network."

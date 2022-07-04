@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-30 15:53+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointsksp/es/>\n"
@@ -25,7 +25,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_withPointsKSP.html>`__ (`3.4 "
@@ -35,13 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_withPointsKSP.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_withPointsKSP.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_withPointsKSP.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_withPointsKSP.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_withPointsKSP.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_withPointsKSP.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_withPointsKSP.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_withPointsKSP.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_withPointsKSP.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_withPointsKSP.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_withPointsKSP.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_withPointsKSP.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_withPointsKSP.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_withPointsKSP.html>`__"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:19
 msgid ""
@@ -66,7 +65,6 @@ msgid "pgr_withPointsKSP - Proposed"
 msgstr "pgr_withPointsKSP - Propuesto"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:29
-#, fuzzy
 msgid ""
 "``pgr_withPointsKSP`` — Yen's algorithm for K shortest paths using "
 "Dijkstra."
@@ -92,7 +90,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -100,7 +98,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -136,13 +134,12 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:50
-#, fuzzy
 msgid ""
 "Modifies the graph to include the points defined in the `Points SQL`_ and"
 " using Yen algorithm, finds the :math:`K` shortest paths."
 msgstr ""
-"Modifica el grafo para incluir los puntos definidos en`points_sql`` y "
-"utilizando el algoritmo Yen, encuentra las rutas más cortas :math:`K`."
+"Modifica el grafo para incluir los puntos definidos en `SQL puntos`_ y "
+"utilizando el algoritmo Yen, encuentra las :math:`K` rutas más cortas."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:57
 msgid "Signatures"
@@ -159,9 +156,8 @@ msgstr ""
 "dirigido."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:68
-#, fuzzy
 msgid "For a directed graph."
-msgstr "Para un grafo **dirigido**."
+msgstr "Para un grafo dirigido."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:69
 msgid ""
@@ -172,16 +168,14 @@ msgstr ""
 " hacia/desde el o los puntos, puede ser en cualquier dirección."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:71
-#, fuzzy
 msgid "No details are given about distance of other points of the query."
 msgstr ""
-"No se proporcionan **detalles** sobre la distancia de otros puntos de la "
+"No se proporcionan detalles sobre la distancia de otros puntos de la "
 "consulta."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:72
-#, fuzzy
 msgid "No heap paths are returned."
-msgstr "No se devuelven **montones de rutas**."
+msgstr "No se devuelven rutas pre-calculadas."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:79
 msgid "Parameters"
@@ -219,9 +213,8 @@ msgid "`Points SQL`_"
 msgstr "`SQL puntos`_"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:94
-#, fuzzy
 msgid "`Points SQL`_ query as described."
-msgstr "Consulta SQL de puntos como se describe arriba."
+msgstr "`SQL puntos`_ como se describe."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:95
 msgid "**start vid**"
@@ -306,12 +299,11 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:117
 msgid "KSP Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de KSP"
 
 #: ../../build/doc/pgr_KSP.rst:12
-#, fuzzy
 msgid "``heap_paths``"
-msgstr "**heap_paths**"
+msgstr "``heap_paths``"
 
 #: ../../build/doc/pgr_KSP.rst:14 ../../build/doc/withPoints-family.rst:22
 msgid "``false``"
@@ -319,11 +311,12 @@ msgstr "``false``"
 
 #: ../../build/doc/pgr_KSP.rst:15
 msgid "When ``false`` Returns at most K paths"
-msgstr ""
+msgstr "Cuando ``false`` Regresa a lo más K caminos"
 
 #: ../../build/doc/pgr_KSP.rst:16
 msgid "When ``true`` all the calculated paths while processing are returned."
 msgstr ""
+"Cuando ``true`` se regresan todos los caminos calulados mientras se procesa."
 
 #: ../../build/doc/pgr_KSP.rst:17
 msgid ""
@@ -336,7 +329,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_withPointsKSP.rst:124
 msgid "With points optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales para Con puntos"
 
 #: ../../build/doc/withPoints-category.rst:8
 #: ../../build/doc/withPoints-family.rst:8
@@ -358,11 +351,8 @@ msgid "``b``"
 msgstr "``b``"
 
 #: ../../build/doc/withPoints-family.rst:15
-#, fuzzy
 msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
-msgstr ""
-"(opcional) Valor en ['b', 'r', 'l', NULL] que indica si el lado de "
-"conducción es:"
+msgstr "Valor en [``r``, ``l``, ``b``] indica si el lado de manejo es:"
 
 #: ../../build/doc/withPoints-family.rst:17
 msgid "``r`` for right driving side."
@@ -374,7 +364,7 @@ msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/withPoints-family.rst:19
 msgid "``b`` for both."
-msgstr ""
+msgstr "``b`` for ambos."
 
 #: ../../build/doc/withPoints-family.rst:20
 msgid "``details``"
@@ -383,12 +373,15 @@ msgstr "``details``"
 #: ../../build/doc/withPoints-family.rst:23
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
+"Cuando ``true`` los resultados incluyen los puntos que están en el camino."
 
 #: ../../build/doc/withPoints-family.rst:24
 msgid ""
 "When ``false`` the results will not include the points that are in the "
 "path."
 msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:131
 msgid "Inner Queries"
@@ -479,18 +472,18 @@ msgid "**value**"
 msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
-#, fuzzy
 msgid "Identifier of the point."
-msgstr "(opcional) Identificador del punto."
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
-#, fuzzy
 msgid "If column is present, it can not be NULL."
-msgstr "Si la columna está presente, no puede ser NULL."
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
@@ -501,9 +494,8 @@ msgstr ""
 "automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
-#, fuzzy
 msgid "``edge_id``"
-msgstr "**edge_id**"
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
@@ -523,16 +515,15 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
-#, fuzzy
 msgid "In the right ``r``,"
-msgstr "A la derecha o a la izquierda o"
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
@@ -540,7 +531,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:148
 msgid "Result Columns"
@@ -573,11 +564,12 @@ msgstr "``path_id``"
 
 #: ../../build/doc/pgr_KSP.rst:19
 msgid "Path identifier."
-msgstr ""
+msgstr "Identificador del camino."
 
 #: ../../build/doc/pgr_KSP.rst:21
 msgid "Has value **1** for the first of a path from **start vid** to **end_vid**"
 msgstr ""
+"Tiene valor **1** para el primer camnio desde **start vid** a **end_vid**"
 
 #: ../../build/doc/pgr_KSP.rst:23
 msgid "``path_seq``"
@@ -629,9 +621,8 @@ msgstr ""
 "en la secuencia de la ruta."
 
 #: ../../build/doc/pgr_KSP.rst:39
-#, fuzzy
 msgid ":math:`0` for the last ``node`` of the path."
-msgstr "``0`` para la última fila de la secuencia de ruta."
+msgstr ":math:`0` para el último ``node`` de la ruta."
 
 #: ../../build/doc/pgr_KSP.rst:40
 msgid "``agg_cost``"
@@ -647,22 +638,25 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:161
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr ""
+msgstr "Usa :doc:`pgr_findCloseEdges` en el `SQL puntos`_."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:163
 msgid ""
 "Get :math:`2` paths using left side driving topology, from vertex "
 ":math:`1` to the closest location on the graph of point `(2.9, 1.8)`."
 msgstr ""
+"Obtener :math:`2` caminos usando el lado izquierdo de manejo, desde el "
+"vértice :math:`1` a la ubicación mpas cercana en el grafo al punto `(2.9, 1."
+"8)`."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:170
 msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-1` corresponde a la arista más cercana al punto `(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:173
-#, fuzzy
 msgid "Left driving side"
-msgstr "**driving_side**"
+msgstr "Lado de manejo izquierdo"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:175
 msgid ""
@@ -673,9 +667,8 @@ msgstr ""
 "el punto :math:`1` al punto :math:`2`, detallado."
 
 #: ../../build/doc/pgr_withPointsKSP.rst:183
-#, fuzzy
 msgid "Right driving side"
-msgstr "**driving_side**"
+msgstr "Lado de manejo derecho"
 
 #: ../../build/doc/pgr_withPointsKSP.rst:185
 msgid ""

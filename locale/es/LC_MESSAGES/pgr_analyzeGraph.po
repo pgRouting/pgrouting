@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_analyzegraph/es/>\n"
@@ -123,20 +123,14 @@ msgstr ""
 "<edge_table>_vertices_pgr que almacena la información de los vértices."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:63
-#, fuzzy
 msgid "Use :doc:`pgr_createVerticesTable` to create the vertices table."
-msgstr ""
-"Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` para crear "
-"la tabla de vértices."
+msgstr "Use :doc:`pgr_createVerticesTable` para crear la tabla de vértices."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:64
-#, fuzzy
 msgid ""
 "Use :doc:`pgr_createTopology` to create the topology and the vertices "
 "table."
-msgstr ""
-"Use :doc:`pgr_createTopology <pgr_createTopology>` para crear la "
-"topología y los vértices."
+msgstr "Use :doc:`pgr_createTopology` para crear la topología y los vértices."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:67
 msgid "Parameters"
@@ -209,8 +203,8 @@ msgid ""
 "``text``  Target column name of the network table.  Default value is "
 "``target``."
 msgstr ""
-"``text``  El nombre de la columna del nodo de llegada del segmento.  El "
-"valor por defecto es ``target``."
+"``text`` El nombre de la columna del nodo de llegada del segmento.  El valor "
+"por defecto es ``target``."
 
 #: ../../build/doc/pgr_analyzeGraph.rst
 msgid "rows_where"
@@ -345,9 +339,8 @@ msgid "The simplest way to use pgr_analyzeGraph is:"
 msgstr "La forma más sencilla de usar pgr_analyzeGraph es:"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:129
-#, fuzzy
 msgid "Arguments are given in the order described in the parameters:"
-msgstr "Cuando los argumentos se escriben en el orden descrito en los parámetros:"
+msgstr "Los argumentos se escriben en el orden descrito en los parámetros:"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:134
 msgid "We get the same result as the simplest way to use the function."
@@ -357,12 +350,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_analyzeGraph.rst:136
 msgid "An error would occur when"
-msgstr ""
+msgstr "Un error puede ocurrir cuando"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:138
-#, fuzzy
 msgid "the arguments are not given in the appropriate order:"
-msgstr "Cuando los argumentos se escriben en el orden descrito en los parámetros:"
+msgstr "los argumentos se no se escriben en el orden apropiado:"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:140
 msgid ""
@@ -498,20 +490,16 @@ msgid ":doc:`topology-functions`"
 msgstr ":doc:`topology-functions`"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:300
-#, fuzzy
 msgid ":doc:`pgr_analyzeOneWay`"
-msgstr "pgr_analyzeGraph"
+msgstr ":doc:`pgr_analyzeOneWay`"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:301
 msgid ":doc:`pgr_createVerticesTable`"
-msgstr ""
+msgstr ":doc:`pgr_createVerticesTable`"
 
 #: ../../build/doc/pgr_analyzeGraph.rst:302
-#, fuzzy
 msgid ":doc:`pgr_nodeNetwork` to create nodes to a not noded edge table."
-msgstr ""
-":doc:`pgr_nodeNetwork <pgr_nodeNetwork>` para crear nodos en una tabla "
-"sin nodos."
+msgstr ":doc:`pgr_nodeNetwork` para crear nodos en una tabla sin nodos."
 
 #: ../../build/doc/pgr_analyzeGraph.rst:305
 msgid "Indices and tables"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:12+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_depthfirstsearch/es/>\n"
@@ -26,7 +26,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_depthFirstSearch.html>`__ (`3.4"
@@ -34,15 +33,15 @@ msgid ""
 "<https://docs.pgrouting.org/3.3/en/pgr_depthFirstSearch.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_depthFirstSearch.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_depthFirstSearch.html>`__ (`3.3"
-" <https://docs.pgrouting.org/3.3/es/pgr_depthFirstSearch.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_depthFirstSearch.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_depthFirstSearch.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_depthFirstSearch.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_depthFirstSearch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_depthFirstSearch.html>`__"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:19
-#, fuzzy
 msgid "``pgr_depthFirstSearch`` - Proposed"
-msgstr "pgr_depthFirstSearch - Propuesto"
+msgstr "``pgr_depthFirstSearch`` - Propusto"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:21
 msgid ""
@@ -74,7 +73,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -82,7 +81,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -114,11 +113,11 @@ msgstr "Nueva función **experimental**:"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:43
 msgid "``pgr_depthFirstSearch`` (`Single Vertex`_)"
-msgstr ""
+msgstr "``pgr_depthFirstSearch`` (`Vértice único`_)"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:44
 msgid "``pgr_depthFirstSearch`` (`Multiple Vertices`_)"
-msgstr ""
+msgstr "``pgr_depthFirstSearch`` (`Vértices multiples`_)"
 
 #: ../../build/doc/BFS-category.rst:10 ../../build/doc/BFS-category.rst:11
 #: ../../build/doc/BFS-category.rst:12 ../../build/doc/dijkstra-family.rst:11
@@ -214,13 +213,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:90
-#, fuzzy
 msgid ""
 "From root vertex :math:`6` on a **directed** graph with edges in "
 "ascending order of ``id``"
 msgstr ""
-"Desde el vértice raíz :math:`2` en un grafo **no dirigido**, con "
-":math:`depth <= 2`"
+"Desde el vértice raíz :math:`6` en un grafo **dirigido** con aristas en "
+"orden ascendente de ``id``"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:101
 msgid "Multiple vertices"
@@ -323,7 +321,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/BFS-category.rst:31 ../../build/doc/BFS-category.rst:45
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
-msgstr ""
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:123
 msgid "Optional parameters"
@@ -360,9 +358,8 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:130
-#, fuzzy
 msgid "DFS optional parameters"
-msgstr "Parámetros opcionales"
+msgstr "Parámetros opcionales de DFS"
 
 #: ../../build/doc/BFS-category.rst:12
 msgid "``max_depth``"
@@ -482,14 +479,13 @@ msgstr "Valor secuencial a partir de :math:`1`."
 
 #: ../../build/doc/BFS-category.rst:16
 msgid "``depth``"
-msgstr ""
+msgstr "``depth``"
 
 #: ../../build/doc/BFS-category.rst:18
 msgid "Depth of the ``node``."
 msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/BFS-category.rst:20
-#, fuzzy
 msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
@@ -544,6 +540,7 @@ msgstr "Ejemplos Adicionales"
 #: ../../build/doc/pgr_depthFirstSearch.rst:156
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr ""
+"Igual que `Vértice único`_ pero con aristas en orden descendente de ``id``."
 
 #: ../../build/doc/pgr_depthFirstSearch.rst:162
 msgid "The resulting traversal is different."

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-28 02:56+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "via-category/es/>\n"
@@ -56,7 +56,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -64,7 +64,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -187,12 +187,12 @@ msgstr "Consulta SQL como se describe."
 
 #: ../../build/doc/via-category.rst:71 ../../build/doc/via-category.rst:107
 msgid "**via vertices**"
-msgstr ""
+msgstr "**vía vértices**"
 
 #: ../../build/doc/via-category.rst:72 ../../build/doc/via-category.rst:108
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr "``ARRAY[`` **ENTEROS** ``]``"
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/via-category.rst:74 ../../build/doc/via-category.rst:110
 msgid "Array of ordered vertices identifiers that are going to be visited."
@@ -221,7 +221,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/via-category.rst:79 ../../build/doc/via-category.rst:118
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr ""
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/via-category.rst:103
 msgid "`Points SQL`_"
@@ -386,7 +386,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/via-category.rst:168
 msgid "Restrictions SQL"
-msgstr "Restricciones SQL"
+msgstr "SQL restricciones"
 
 #: ../../build/doc/via-category.rst:170 ../../build/doc/via-category.rst:181
 msgid "Used on"
@@ -402,6 +402,9 @@ msgid ""
 "taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a "
 "``NULL`` element will raise an exception."
 msgstr ""
+"Secuencia de identificadores de aristas que forman un camino que no se "
+"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que "
+"tienen ``NULL`` arrojan una excepción."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``Cost``"
@@ -409,7 +412,7 @@ msgstr "``Cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Cost of taking the forbidden path."
-msgstr ""
+msgstr "Costo de tomar el camino prohibido."
 
 #: ../../build/doc/via-category.rst:179
 msgid "Points SQL"
@@ -492,7 +495,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/via-category.rst:190
 msgid "Result Columns"
@@ -568,8 +571,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path "
 "sequence."
 msgstr ""
-"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
-"la secuencia de ruta."
+"Identificador de la arsita utilizada para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta."
 
 #: ../../build/doc/via-category.rst:226
 msgid "-1 for the last node of the path."

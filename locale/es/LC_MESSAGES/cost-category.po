@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-03 03:28+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "cost-category/es/>\n"
@@ -62,18 +62,16 @@ msgid ":doc:`pgr_aStarCost`"
 msgstr ":doc:`pgr_aStarCost`"
 
 #: ../../build/doc/cost-category.rst:32
-#, fuzzy
 msgid ":doc:`pgr_bdAstarCost`"
-msgstr ":doc:`pgr_aStarCost`"
+msgstr ":doc:`pgr_bdAstarCost`"
 
 #: ../../build/doc/cost-category.rst:33
 msgid ":doc:`pgr_dijkstraCost`"
 msgstr ":doc:`pgr_dijkstraCost`"
 
 #: ../../build/doc/cost-category.rst:34
-#, fuzzy
 msgid ":doc:`pgr_bdDijkstraCost`"
-msgstr ":doc:`pgr_dijkstraCost`"
+msgstr ":doc:`pgr_bdDijkstraCost`"
 
 #: ../../build/doc/cost-category.rst:35
 msgid ":doc:`pgr_dijkstraNearCost`"
@@ -101,7 +99,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -109,7 +107,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -152,13 +150,12 @@ msgstr ""
 "combinación de nodos requeridos."
 
 #: ../../build/doc/cost-category.rst:68
-#, fuzzy
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: ``(start_vid, end_vid)``."
 msgstr ""
-"Sea el caso, los valores devueltos se almacenan en una tabla, por lo que "
-"el índice único sería el par: '(start_vid, end_vid)'."
+"Sea el caso que los valores devueltos se almacenen en una tabla, el índice "
+"único sería el par: `(start_vid, end_vid)`."
 
 #: ../../build/doc/cost-category.rst:71
 msgid ""

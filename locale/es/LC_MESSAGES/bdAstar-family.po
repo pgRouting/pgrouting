@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 01:46+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "bdastar-family/es/>\n"
@@ -60,6 +60,8 @@ msgid ""
 "The bidirectional A* (pronounced \"A Star\") algorithm is based on the A*"
 " algorithm."
 msgstr ""
+"El algoritmo bidirectional A* (leído \"A estrella\") se basa en el algoritmo "
+"A*."
 
 #: ../../build/doc/bdAstar-family.rst:31
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
@@ -107,11 +109,11 @@ msgstr "Las características principales son:"
 
 #: ../../build/doc/aStar-family.rst:3
 msgid "Process works for directed and undirected graphs."
-msgstr ""
+msgstr "Funciona para grafos dirigidos y no dirigidos."
 
 #: ../../build/doc/aStar-family.rst:4
 msgid "Ordering is:"
-msgstr ""
+msgstr "Ordenamiento es:"
 
 #: ../../build/doc/aStar-family.rst:6
 msgid "first by ``start_vid`` (if exists)"
@@ -127,11 +129,11 @@ msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/aStar-family.rst:10
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
-msgstr ""
+msgstr "Sean :math:`v` y :math:`u` nodos en el grafo:"
 
 #: ../../build/doc/aStar-family.rst:12
 msgid "If there is no path from :math:`v` to :math:`u`:"
-msgstr ""
+msgstr "Si no hay camino de :math:`v` a :math:`u`:"
 
 #: ../../build/doc/aStar-family.rst:14 ../../build/doc/aStar-family.rst:19
 msgid "no corresponding row is returned"
@@ -143,7 +145,7 @@ msgstr "``agg_cost`` de :math:`v` a :math:`u` es :math:`\\infty`"
 
 #: ../../build/doc/aStar-family.rst:17
 msgid "There is no path when :math:`v = u` therefore"
-msgstr ""
+msgstr "No hay camino cuando :math:`v = u` por lo tanto"
 
 #: ../../build/doc/aStar-family.rst:20
 msgid "``agg_cost`` from `v` to `u` is :math:`0`"
@@ -152,6 +154,7 @@ msgstr "``agg_cost`` de `v` a `u` es :math:`0`"
 #: ../../build/doc/aStar-family.rst:22
 msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"
 msgstr ""
+"Cuando las coordenadas (x,y) para el mismo identificador de vértice difieren:"
 
 #: ../../build/doc/aStar-family.rst:24
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
@@ -160,9 +163,8 @@ msgstr ""
 ":math:`(x,y)`."
 
 #: ../../build/doc/aStar-family.rst:26
-#, fuzzy
 msgid "Running time: :math:`O((E + V) * \\log V)`"
-msgstr "Duración (peor de los casos): :math:`O ((E + V) * \\log V)`"
+msgstr "Tiempo de ejecución: :math:`O((E + V) * \\log V)`"
 
 #: ../../build/doc/bdAstar-family.rst:62
 msgid ""
@@ -181,6 +183,8 @@ msgid ""
 "See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
 "<astar_factor>` handling."
 msgstr ""
+"Ver :ref:`heuristicas <astar_heuristics>` disponibles y manupulación de "
+":ref:`factor <astar_factor>`."
 
 #: ../../build/doc/bdAstar-family.rst:71
 msgid "See Also"

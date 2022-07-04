@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-28 01:21+0000\n"
+"PO-Revision-Date: 2022-07-03 18:57+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_degree/es/>\n"
@@ -49,7 +49,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -57,7 +57,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -145,7 +145,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgr_degree.rst:75
 msgid "``dryrun``"
-msgstr ""
+msgstr "``dryrun``"
 
 #: ../../build/doc/pgr_degree.rst:75
 msgid "``BOOLEAN``"
@@ -158,6 +158,7 @@ msgstr "``false``"
 #: ../../build/doc/pgr_degree.rst:75
 msgid "When true do not process and get in a NOTICE the resulting query."
 msgstr ""
+"Cuando verdadero, no procesar y recibir un AVISO de la consulta resultante."
 
 #: ../../build/doc/pgr_degree.rst:80
 msgid "Inner Queries"
@@ -196,7 +197,7 @@ msgstr "Identificador del primer vértice de la arista."
 
 #: ../../build/doc/pgr_degree.rst:112
 msgid "``in_edges``"
-msgstr ""
+msgstr "``in_edges``"
 
 #: ../../build/doc/pgr_degree.rst:113 ../../build/doc/pgr_degree.rst:119
 msgid "``BIGINT[]``"

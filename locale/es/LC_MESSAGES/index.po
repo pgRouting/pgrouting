@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-03 03:10+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/index/"
 "es/>\n"
@@ -77,9 +77,8 @@ msgid "General"
 msgstr "General"
 
 #: ../../build/doc/index.rst:60
-#, fuzzy
 msgid ":doc:`sampledata` that is used in the examples of this manual."
-msgstr ":doc:`sampledata` that is used in the examples of this manual."
+msgstr ":doc:`sampledata` es usado en los ejemplos de este manual."
 
 #: ../../build/doc/index.rst:68
 msgid "Pgrouting Concepts"

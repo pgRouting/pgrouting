@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 16:00+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpoints/es/>\n"
@@ -25,7 +25,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_withPoints.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_withPoints.html>`__ (`3.4 "
@@ -35,13 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_withPoints.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_withPoints.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_withPoints.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_withPoints.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_withPoints.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_withPoints.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_withPoints.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_withPoints.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_withPoints.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_withPoints.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_withPoints.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_withPoints.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_withPoints.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_withPoints.html>`__"
 
 #: ../../build/doc/pgr_withPoints.rst:19
 msgid ""
@@ -62,9 +61,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPoints.html>`__"
 
 #: ../../build/doc/pgr_withPoints.rst:27
-#, fuzzy
 msgid "``pgr_withPoints`` - Proposed"
-msgstr "pgr_withPoints - Propuesto"
+msgstr "``pgr_withPoints`` - Propuesto"
 
 #: ../../build/doc/pgr_withPoints.rst:29
 msgid ""
@@ -92,7 +90,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -100,7 +98,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -232,9 +230,8 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_withPoints.rst:115
-#, fuzzy
 msgid "From point :math:`1` to vertex :math:`10` with details"
-msgstr "Del punto :math:`1` al vértice :math:`3` con detalles de puntos de paso"
+msgstr "Del punto :math:`1` al vértice :math:`10` con detalles"
 
 #: ../../build/doc/pgr_withPoints.rst:125
 msgid "One to Many"
@@ -261,33 +258,28 @@ msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_withPoints.rst:170
-#, fuzzy
 msgid ""
 "From point :math:`1` and vertex :math:`6`  to point :math:`3` and vertex "
 ":math:`1`"
 msgstr ""
-"Desde el punto :math:`1` y el vértice :math:`2` al punto :math:`3` y al "
-"vértice :math:`7`"
+"Desde el punto :math:`1` y el vértice :math:`6` al punto :math:`3` y al "
+"vértice :math:`1`"
 
 #: ../../build/doc/pgr_withPoints.rst:181
-#, fuzzy
 msgid "Combinations"
-msgstr "Combinaciones SQL"
+msgstr "Combinaciones"
 
 #: ../../build/doc/pgr_withPoints.rst:189
-#, fuzzy
 msgid "Two combinations"
-msgstr "Combinaciones SQL"
+msgstr "Dos combinaciones"
 
 #: ../../build/doc/pgr_withPoints.rst:191
-#, fuzzy
 msgid ""
 "From point :math:`1` to vertex :math:`10`, and from vertex :math:`6` to "
 "point :math:`3` with **right** side driving."
 msgstr ""
-"Dos combinaciones (origen, destino): (desde el punto :math:`1` hasta el "
-"vértice :math:`3`), y (desde el vértice :math:`2` hasta el punto "
-":math:`3`) con la topología de conducción del lado **derecho**."
+"Desde el punto :math:`1` hasta el vértice :math:`10`, y desde el vértice "
+":math:`6` hasta el punto :math:`3` con lado de manejo **derecho**."
 
 #: ../../build/doc/pgr_withPoints.rst:199
 msgid "Parameters"
@@ -352,13 +344,12 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/withPoints-category.rst:22
-#, fuzzy
 msgid ""
 "Identifier of the starting vertex of the path. Negative value is for "
 "point’s identifier."
 msgstr ""
-"Identificador del vértice inicial. Cuando es negativo: es el pid de un "
-"punto."
+"Identificador del vértice inicial de la ruta. Valor negativo es para "
+"identificador de punto."
 
 #: ../../build/doc/withPoints-category.rst:24
 msgid "**start vids**"
@@ -367,7 +358,7 @@ msgstr "**vid salidas**"
 #: ../../build/doc/withPoints-category.rst:25
 #: ../../build/doc/withPoints-category.rst:33
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/withPoints-category.rst:26
 msgid ""
@@ -382,26 +373,24 @@ msgid "**end vid**"
 msgstr "**vid destino**"
 
 #: ../../build/doc/withPoints-category.rst:30
-#, fuzzy
 msgid ""
 "Identifier of the ending vertex of the path. Negative value is for "
 "point’s identifier."
 msgstr ""
-"Identificador del vértice final. Cuando es negativo: es el pid de un "
-"punto."
+"Identificador del vértice final de la ruta. Valor negativo es para "
+"identificador de punto."
 
 #: ../../build/doc/withPoints-category.rst:32
 msgid "**end vids**"
 msgstr "**vids destinos**"
 
 #: ../../build/doc/withPoints-category.rst:34
-#, fuzzy
 msgid ""
 "Array of identifiers of ending vertices. Negative values are for point’s "
 "identifiers."
 msgstr ""
-"Arreglo de identificadores de vértices finales. Cuando es negativo: es el"
-" pid de un punto."
+"Arreglo de identificadores de vértices finales. Valores negativos son para "
+"identificadores de puntos."
 
 #: ../../build/doc/pgr_withPoints.rst:206
 msgid "Optional parameters"
@@ -437,7 +426,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_withPoints.rst:213
 msgid "With points optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales para Con puntos"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/withPoints-category.rst:8
@@ -460,11 +449,8 @@ msgid "``b``"
 msgstr "``b``"
 
 #: ../../build/doc/withPoints-family.rst:15
-#, fuzzy
 msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
-msgstr ""
-"(opcional) Valor en ['b', 'r', 'l', NULL] que indica si el lado de "
-"conducción es:"
+msgstr "Valor en [``r``, ``l``, ``b``] indica si el lado de manejo es:"
 
 #: ../../build/doc/withPoints-family.rst:17
 msgid "``r`` for right driving side."
@@ -476,7 +462,7 @@ msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/withPoints-family.rst:19
 msgid "``b`` for both."
-msgstr ""
+msgstr "``b`` for ambos."
 
 #: ../../build/doc/withPoints-family.rst:20
 msgid "``details``"
@@ -489,12 +475,15 @@ msgstr "``false``"
 #: ../../build/doc/withPoints-family.rst:23
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
+"Cuando ``true`` los resultados incluyen los puntos que están en el camino."
 
 #: ../../build/doc/withPoints-family.rst:24
 msgid ""
 "When ``false`` the results will not include the points that are in the "
 "path."
 msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
 
 #: ../../build/doc/pgr_withPoints.rst:220
 msgid "Inner Queries"
@@ -615,18 +604,18 @@ msgid "**value**"
 msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
-#, fuzzy
 msgid "Identifier of the point."
-msgstr "(opcional) Identificador del punto."
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
-#, fuzzy
 msgid "If column is present, it can not be NULL."
-msgstr "Si la columna está presente, no puede ser NULL."
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
@@ -637,9 +626,8 @@ msgstr ""
 "automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
-#, fuzzy
 msgid "``edge_id``"
-msgstr "**edge_id**"
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
@@ -659,16 +647,15 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
-#, fuzzy
 msgid "In the right ``r``,"
-msgstr "A la derecha o a la izquierda o"
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
@@ -676,7 +663,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_withPoints.rst:237
 msgid "Combinations SQL"
@@ -720,26 +707,20 @@ msgid "``path_seq``"
 msgstr "``path_seq``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
-#, fuzzy
 msgid "Relative position in the path."
-msgstr ""
-"Secuencia de ruta de acceso que indica la posición relativa en la ruta de"
-" acceso."
+msgstr "Posición relativa en la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:21
-#, fuzzy
 msgid "**1** For the first row of the path."
-msgstr "``0`` para la primera fila de la secuencia de ruta."
+msgstr "**1** para la primera fila de la secuencia de ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:22
-#, fuzzy
 msgid "``start_pid``"
-msgstr "``start_vid``"
+msgstr "``start_pid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#, fuzzy
 msgid "Identifier of a starting vertex/point of the path."
-msgstr "Identificador del primer vértice de la arista."
+msgstr "Identificador del vértice/punto inicial de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:26
 msgid "When positive is the identifier of the starting vertex."
@@ -747,24 +728,23 @@ msgstr "Cunado positivo, es el identificador del vértice inicial."
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "When negative is the identifier of the starting point."
-msgstr ""
+msgstr "Cuando negativo, es el identificador del punto inicial."
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 msgid "Returned on `Many to One`_  and `Many to Many`_"
-msgstr ""
+msgstr "Regresado en `Muchos a Uno`_ y `Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
 msgid "``end_pid``"
-msgstr ""
+msgstr "``end_pid``"
 
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "Identifier of an ending vertex/point of the path."
-msgstr "Identificador del segundo vértice de la arista."
+msgstr "Identificador d vértice/punto final del camino."
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid "When positive is the identifier of the ending vertex."
-msgstr ""
+msgstr "Cuando negativo, es el identificador del vertice final."
 
 #: ../../build/doc/pgRouting-concepts.rst:34
 msgid "When negative is the identifier of the ending point."
@@ -772,7 +752,7 @@ msgstr "Cuando es negativo, es el identificador del vértice destino."
 
 #: ../../build/doc/pgRouting-concepts.rst:35
 msgid "Returned on `One to Many`_ and `Many to Many`_"
-msgstr ""
+msgstr "Regresado en `Uno a Muchos`_ y `Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "``node``"
@@ -787,9 +767,8 @@ msgid "When positive is the identifier of the a vertex."
 msgstr "Cuando es positivo, es el identificador de un vértice."
 
 #: ../../build/doc/pgRouting-concepts.rst:41
-#, fuzzy
 msgid "When negative is the identifier of the a point."
-msgstr "(opcional) Identificador del punto."
+msgstr "Cuando es negativo, es identificador de un punto."
 
 #: ../../build/doc/pgRouting-concepts.rst:42
 msgid "``edge``"
@@ -800,13 +779,12 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence."
 msgstr ""
-"Identificador del borde utilizado para ir del ``node`` al siguiente nodo "
+"Identificador de la arsita utilizada para ir del ``node`` al siguiente nodo "
 "de la secuencia de ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:47
-#, fuzzy
 msgid "**-1** for the last row of the path."
-msgstr "``-1`` para la última fila de la secuencia de ruta."
+msgstr "**-1** para la última fila de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:49
 #: ../../build/doc/pgRouting-concepts.rst:55
@@ -823,9 +801,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:53
 #: ../../build/doc/pgRouting-concepts.rst:58
-#, fuzzy
 msgid "**0** For the first row of the path."
-msgstr "``0`` para la primera fila de la secuencia de ruta."
+msgstr "**0** para la primera fila de la secuencia de ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:54
 msgid "``agg_cost``"
@@ -841,41 +818,45 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_withPoints.rst:257
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr ""
+msgstr "Usa :doc:`pgr_findCloseEdges` en el `SQL puntos`_."
 
 #: ../../build/doc/pgr_withPoints.rst:259
 msgid ""
 "Find the routes from vertex :math:`1` to the two closest locations on the"
 " graph of point `(2.9, 1.8)`."
 msgstr ""
+"Wncontrar las rutas desde el vértice :math:`1` a las dos ubicaciones más "
+"cercanas en el grafo al punto`(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_withPoints.rst:266
 msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-1` corresponde a la arista más cercana al punto `(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_withPoints.rst:267
 msgid ""
 "Point :math:`-2` corresponds to the next close edge from point "
 "`(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-2` corresponde a la segunda arista más cercana al punto `(2.9, "
+"1.8)`."
 
 #: ../../build/doc/pgr_withPoints.rst:270
 msgid "Usage variations"
-msgstr ""
+msgstr "Variaciones de uso"
 
 #: ../../build/doc/pgr_withPoints.rst:272
-#, fuzzy
 msgid ""
 "All the examples are about traveling from point :math:`1` and vertex "
 ":math:`5` to points :math:`\\{2, 3, 6\\}` and vertices :math:`\\{10, "
 "11\\}`"
 msgstr ""
-"Desde el punto :math:`1` y el vértice :math:`2` al punto :math:`3` y al "
-"vértice :math:`7`"
+"Todos los ejemplos son acerca de viajar desde el punto :math:`1` y vértice "
+":math:`5` al los puntos :math:`\\{2, 3, 6\\}` y vértices :math:`\\{10, 11\\}`"
 
 #: ../../build/doc/pgr_withPoints.rst:280
 msgid "Passes in front or visits with right side driving."
-msgstr ""
+msgstr "Pasa enfrente o visita con lado derecho de manejo."
 
 #: ../../build/doc/pgr_withPoints.rst:282
 #: ../../build/doc/pgr_withPoints.rst:292
@@ -884,7 +865,7 @@ msgstr "Del punto :math:`6` al vértice :math:`11`."
 
 #: ../../build/doc/pgr_withPoints.rst:290
 msgid "Passes in front or visits with left side driving."
-msgstr ""
+msgstr "Pasa enfrente o visita con lado izquierdo de manejo."
 
 #: ../../build/doc/pgr_withPoints.rst:300
 msgid "See Also"
@@ -895,9 +876,8 @@ msgid ":doc:`withPoints-family`"
 msgstr ":doc:`withPoints-family`"
 
 #: ../../build/doc/pgr_withPoints.rst:303
-#, fuzzy
 msgid ":doc:`withPoints-category`"
-msgstr ":doc:`withPoints-family`"
+msgstr ":doc:`withPoints-category`"
 
 #: ../../build/doc/pgr_withPoints.rst:304
 msgid ":doc:`sampledata`"

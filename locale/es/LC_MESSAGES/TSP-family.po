@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 15:24+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "tsp-family/es/>\n"
@@ -220,17 +220,15 @@ msgid "The traveling costs are symmetric:"
 msgstr "Los costos del viaje son simétricos:"
 
 #: ../../build/doc/TSP-family.rst:110
-#, fuzzy
 msgid ""
 "Traveling costs from ``u`` to ``v`` are just as much as traveling from "
 "``v`` to ``u``"
 msgstr ""
-"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a "
-"``u``"
+"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a ``u``"
 
 #: ../../build/doc/TSP-family.rst:116
 msgid "TSP optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de TSP"
 
 #: ../../build/doc/TSP-family.rst:125
 msgid "Column"
@@ -246,7 +244,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/TSP-family.rst:128
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/TSP-family.rst:129
 msgid "``start_id``"
@@ -262,15 +260,16 @@ msgstr "``0``"
 
 #: ../../build/doc/TSP-family.rst:132
 msgid "The first visiting vertex"
-msgstr ""
+msgstr "El primer vértice visitado"
 
 #: ../../build/doc/TSP-family.rst:134
 msgid "When `0` any vertex can become the first visiting vertex."
 msgstr ""
+"Cuando `0` cualquier vértice puede convertirse en el primer vértice visitado."
 
 #: ../../build/doc/TSP-family.rst:136
 msgid "``end_id``"
-msgstr ""
+msgstr "``end_id``"
 
 #: ../../build/doc/TSP-family.rst:139
 msgid "Last visiting vertex before returning to ``start_vid``."

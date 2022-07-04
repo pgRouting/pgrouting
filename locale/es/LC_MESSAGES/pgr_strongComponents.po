@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:20+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_strongcomponents/es/>\n"
@@ -53,9 +53,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.5/en/pgr_strongComponents.html>`__"
 
 #: ../../build/doc/pgr_strongComponents.rst:24
-#, fuzzy
 msgid "``pgr_strongComponents``"
-msgstr "pgr_strongComponents"
+msgstr "``pgr_strongComponents``"
 
 #: ../../build/doc/pgr_strongComponents.rst:26
 msgid ""
@@ -121,9 +120,8 @@ msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_strongComponents.rst:58
-#, fuzzy
 msgid "Works for **directed** graphs."
-msgstr "La firma es para un grafo **dirigido**."
+msgstr "Funciona paragrafos **dirigidos**."
 
 #: ../../build/doc/pgr_strongComponents.rst:59
 msgid "Components are described by vertices identifiers."
@@ -305,30 +303,24 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_connectedComponents.rst:16
-#, fuzzy
 msgid "``component``"
-msgstr "**component**"
+msgstr "``component``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:18
-#, fuzzy
 msgid "Component identifier."
-msgstr "`component` ascendente."
+msgstr "Identificador de componente."
 
 #: ../../build/doc/pgr_connectedComponents.rst:20
-#, fuzzy
 msgid "Has the value of the minimum node identifier in the component."
-msgstr ""
-"Identificador del componente. Es igual al identificador de nodo mínimo en"
-" el componente."
+msgstr "Continene le valor mínimo de identificador de nodo en el componente."
 
 #: ../../build/doc/pgr_connectedComponents.rst:21
 msgid "``node``"
 msgstr "``node``"
 
 #: ../../build/doc/pgr_connectedComponents.rst:23
-#, fuzzy
 msgid "Identifier of the vertex that belongs to the ``component``."
-msgstr "Identificador del vértice que pertenece a **componente**."
+msgstr "Identificador del vértice que pertenece al ``component``."
 
 #: ../../build/doc/pgr_strongComponents.rst:114
 msgid "See Also"

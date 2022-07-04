@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-03 03:21+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "dijkstra-family/es/>\n"
@@ -117,7 +117,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -125,7 +125,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -151,7 +151,7 @@ msgstr ":doc:`pgr_dijkstraNearCost` - Consigue el costo del vértice más cercan
 
 #: ../../build/doc/dijkstra-family.rst:69
 msgid "Introduction"
-msgstr ""
+msgstr "Introducción"
 
 #: ../../build/doc/dijkstra-family.rst:73
 msgid ""
@@ -180,7 +180,7 @@ msgid ""
 "A negative value on a cost column is interpreted as the edge does not "
 "exist."
 msgstr ""
-"Valor no negativo en una columna de costo se interpreta como la arsta no "
+"Valor no negativo en una columna de costo se interpreta como la arista no "
 "exite."
 
 #: ../../build/doc/dijkstra-family.rst:90
@@ -233,6 +233,7 @@ msgstr "Tiempo de ejecución: :math:`O(| start\\_vids | * (V \\log V + E))`"
 #: ../../build/doc/dijkstra-family.rst:111
 msgid "The Dijkstra family functions are based on the Dijkstra algorithm."
 msgstr ""
+"Las funciones de la familia de Dijkstra se basan en el algoritmo de Dijkstra."
 
 #: ../../build/doc/dijkstra-family.rst:114
 msgid "Parameters"
@@ -255,7 +256,7 @@ msgstr "Tipo"
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/dijkstra-family.rst:126
 msgid "`Edges SQL`_"
@@ -289,7 +290,7 @@ msgstr "``BIGINT``"
 
 #: ../../build/doc/dijkstra-family.rst:134
 msgid "Identifier of the starting vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:135
 msgid "**start vids**"
@@ -298,11 +299,11 @@ msgstr "**vid salidas**"
 #: ../../build/doc/dijkstra-family.rst:136
 #: ../../build/doc/dijkstra-family.rst:142
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/dijkstra-family.rst:137
 msgid "Array of identifiers of starting vertices."
-msgstr ""
+msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/dijkstra-family.rst:138
 msgid "**end vid**"
@@ -310,7 +311,7 @@ msgstr "**vid destino**"
 
 #: ../../build/doc/dijkstra-family.rst:140
 msgid "Identifier of the ending vertex of the path."
-msgstr ""
+msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:141
 msgid "**end vids**"
@@ -389,7 +390,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
@@ -426,7 +427,6 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:36
-#, fuzzy
 msgid "Where:"
 msgstr "Donde:"
 
@@ -676,15 +676,14 @@ msgstr ""
 "\\text{when } i \\neq 1 \\\\ \\end{cases}`"
 
 #: ../../build/doc/dijkstra-family.rst:282
-#, fuzzy
 msgid ""
 "In other words: The algorithm returns a the shortest path between "
 ":math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a "
 "sequence of nodes  and of edges,"
 msgstr ""
-"En otras palabras: El algoritmo devuelve una ruta más corta entre "
-":math:`start_{vid}` y :math:`end_{vid}`, si es que existe, en términos de"
-" una secuencia de nodos y de aristas,"
+"En otras palabras: El algoritmo devuelve la ruta más corta entre "
+":math:`start_{vid}` y :math:`end_{vid}`, si es que existe, en términos de "
+"una secuencia de nodos y de aristas,"
 
 #: ../../build/doc/dijkstra-family.rst:286
 msgid ""

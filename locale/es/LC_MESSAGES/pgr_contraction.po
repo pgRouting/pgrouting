@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:51+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_contraction/es/>\n"
@@ -57,9 +57,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/contraction/doc/pgr_contractGraph.html>`__"
 
 #: ../../build/doc/pgr_contraction.rst:27
-#, fuzzy
 msgid "``pgr_contraction``"
-msgstr "pgr_contraction"
+msgstr "``pgr_contraction``"
 
 #: ../../build/doc/pgr_contraction.rst:29
 msgid ""
@@ -171,14 +170,12 @@ msgid "The returned values are ordered as follows:"
 msgstr "Los valores devueltos se ordenan de la siguiente manera:"
 
 #: ../../build/doc/pgr_contraction.rst:77
-#, fuzzy
 msgid "column ``id`` ascending when type is ``v``"
-msgstr "columna `id` ascendente cuando el tipo = `v`"
+msgstr "columna ``id`` ascendente cuando el tipo = ``v``"
 
 #: ../../build/doc/pgr_contraction.rst:78
-#, fuzzy
 msgid "column ``id`` descending when type is ``e``"
-msgstr "columna `id` descendente cuando el tipo = `e`"
+msgstr "columna ``id`` descendente cuando el tipo = ``e``"
 
 #: ../../build/doc/pgr_contraction.rst:82
 msgid "Signatures"
@@ -231,17 +228,16 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_contraction.rst:117
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_contraction.rst:118
-#, fuzzy
 msgid "**contraction Order**"
-msgstr "**Orden de Contracciones**"
+msgstr "**Orden de contracciones**"
 
 #: ../../build/doc/pgr_contraction.rst:119
 #: ../../build/doc/pgr_contraction.rst:145
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr ""
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/pgr_contraction.rst:120
 msgid "Ordered contraction operations."
@@ -293,29 +289,24 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_contraction.rst:133
-#, fuzzy
 msgid "Contraction optional parameters"
-msgstr "Parámetros opcionales"
+msgstr "Parámetros opcionales de Contracción"
 
 #: ../../build/doc/pgr_contraction.rst:144
-#, fuzzy
 msgid "``forbidden_vertices``"
-msgstr "**forbidden_vertices**"
+msgstr "``forbidden_vertices``"
 
 #: ../../build/doc/pgr_contraction.rst:146
-#, fuzzy
 msgid "**Empty**"
-msgstr "**tipo**"
+msgstr "**vacío**"
 
 #: ../../build/doc/pgr_contraction.rst:147
-#, fuzzy
 msgid "Identifiers of vertices forbidden for contraction."
-msgstr "Identificadores de vértices prohibidos de contracción."
+msgstr "Identificadores de vértices prohibidos para contracción."
 
 #: ../../build/doc/pgr_contraction.rst:148
-#, fuzzy
 msgid "``max_cycles``"
-msgstr "**max_cycles**"
+msgstr "``max_cycles``"
 
 #: ../../build/doc/pgr_contraction.rst:149
 msgid "``INTEGER``"
@@ -443,32 +434,28 @@ msgid "The function returns a single row. The columns of the row are:"
 msgstr "La función devuelve una sola fila. Las columnas de la fila son:"
 
 #: ../../build/doc/pgr_contraction.rst:179
-#, fuzzy
 msgid "``type``"
-msgstr "``true``"
+msgstr "``type``"
 
 #: ../../build/doc/pgr_contraction.rst:181
-#, fuzzy
 msgid "Type of the ``id``."
-msgstr "Tipo del `id`."
+msgstr "Tipo del ``id``."
 
 #: ../../build/doc/pgr_contraction.rst:183
-#, fuzzy
 msgid "``v`` when the row is a vertex."
-msgstr "**'v'** cuando la fila es un vértice."
+msgstr "``v`` cuando la fila es un vértice."
 
 #: ../../build/doc/pgr_contraction.rst:185
 msgid "Column ``id`` has a positive value"
-msgstr ""
+msgstr "Columna ``id`` tiene valor positivo"
 
 #: ../../build/doc/pgr_contraction.rst:186
-#, fuzzy
 msgid "``e`` when the row is an edge."
-msgstr "**'e'** cuando la fila es una arista."
+msgstr "``e`` cuando la fila es una arista."
 
 #: ../../build/doc/pgr_contraction.rst:188
 msgid "Column ``id`` has a negative value"
-msgstr ""
+msgstr "Columna ``id`` tiene valor negativo"
 
 #: ../../build/doc/pgr_contraction.rst:190
 #: ../../build/doc/pgr_contraction.rst:206
@@ -505,9 +492,8 @@ msgstr ""
 "aristas originales."
 
 #: ../../build/doc/pgr_contraction.rst:202
-#, fuzzy
 msgid "``contracted_vertices``"
-msgstr "**contracted_vertices**"
+msgstr "``contracted_vertices``"
 
 #: ../../build/doc/pgr_contraction.rst:203
 msgid "``ARRAY[BIGINT]``"

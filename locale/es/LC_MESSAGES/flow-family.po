@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "flow-family/es/>\n"
@@ -121,7 +121,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -153,7 +153,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -169,11 +169,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -238,8 +240,8 @@ msgid ""
 "Creates a **super source** and edges to all the source(s), and a **super "
 "target** and the edges from all the targets(s)."
 msgstr ""
-"Crea una **súper origen**, con aristas para todos los orígen(es), y un "
-"**súper destino** con aristas para todos los destino(s)."
+"Crea una **súper origen**, con aristas para todos las fuentes(es), y un **"
+"súper destino** con aristas para todos los destino(s)."
 
 #: ../../build/doc/flow-family.rst:94
 msgid ""
@@ -253,11 +255,11 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:98
 msgid "By aggregation of the outgoing flow from the sources"
-msgstr "Mediante la agregación del flujo saliente de los orígenes"
+msgstr "Mediante la suma de los flujos salientes de las fuentes"
 
 #: ../../build/doc/flow-family.rst:99
 msgid "By aggregation of the incoming flow to the targets"
-msgstr "Mediante la agregación del flujo entrante a los destinos"
+msgstr "Mediante la suma de los flujos llegantes a los destinos"
 
 #: ../../build/doc/flow-family.rst:104
 msgid ""
@@ -276,9 +278,8 @@ msgid "Edges SQL"
 msgstr "SQL aristas"
 
 #: ../../build/doc/flow-family.rst:115
-#, fuzzy
 msgid "Capacity edges"
-msgstr "**capacidad**"
+msgstr "Aristas de capacidad"
 
 #: ../../build/doc/flow-family.rst:116 ../../build/doc/flow-family.rst:153
 msgid ":doc:`pgr_pushRelabel`"
@@ -352,9 +353,8 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#, fuzzy
 msgid "``capacity``"
-msgstr "**capacidad**"
+msgstr "``capacity``"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge  (``source``, ``target``)"
@@ -362,9 +362,8 @@ msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
 #: ../../build/doc/pgRouting-concepts.rst:31
-#, fuzzy
 msgid "``reverse_capacity``"
-msgstr "**reverse_capacity** (**capacidad inversa**)"
+msgstr "``reverse_capacity``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 #: ../../build/doc/pgRouting-concepts.rst:33
@@ -416,24 +415,20 @@ msgid "Capacity-Cost edges"
 msgstr ""
 
 #: ../../build/doc/flow-family.rst:126
-#, fuzzy
 msgid ":doc:`pgr_maxFlowMinCost`"
-msgstr "Para :doc:`pgr_maxFlowMinCost`"
+msgstr ":doc:`pgr_maxFlowMinCost`"
 
 #: ../../build/doc/flow-family.rst:127
-#, fuzzy
 msgid ":doc:`pgr_maxFlowMinCost_Cost`"
-msgstr "Para :doc:`pgr_maxFlowMinCost`"
+msgstr ":doc:`pgr_maxFlowMinCost_Cost`"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
-#, fuzzy
 msgid "Capacity of the edge  (``source``, ``target``)"
-msgstr "Capacidad de la arista `(origen, destino)`"
+msgstr "Capacidad de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:34
-#, fuzzy
 msgid "Capacity of the edge (``target``, ``source``)"
-msgstr "Capacidad de la arista `(destino, origen)`,"
+msgstr "Capacidad de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 #: ../../build/doc/pgRouting-concepts.rst:38
@@ -457,9 +452,8 @@ msgid "``reverse_cost``"
 msgstr "``reverse_cost``"
 
 #: ../../build/doc/pgRouting-concepts.rst:44
-#, fuzzy
 msgid ":math:`-1`"
-msgstr ":math:`G(V,E)`"
+msgstr ":math:`-1`"
 
 #: ../../build/doc/pgRouting-concepts.rst:45
 msgid "Weight of the edge (``target``, ``source``) if it exist"
@@ -526,7 +520,6 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/flow-family.rst:163 ../../build/doc/flow-family.rst:185
-#, fuzzy
 msgid "Identifier of the edge in the original query (edges_sql)."
 msgstr "Identificador de la arista en la consulta original(edges_sql)."
 
@@ -639,7 +632,7 @@ msgstr ""
 
 #: ../../build/doc/flow-family.rst:218
 msgid "Given the following query:"
-msgstr ""
+msgstr "Dada la siguiente consulta:"
 
 #: ../../build/doc/flow-family.rst:220
 msgid "pgr_maxFlow :math:`(edges\\_sql, source\\_vertex, sink\\_vertex)`"

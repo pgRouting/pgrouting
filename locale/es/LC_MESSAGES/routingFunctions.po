@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-02 17:09+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "routingfunctions/es/>\n"
@@ -331,16 +331,15 @@ msgstr ":doc:`pgr_primDFS`"
 
 #: ../../build/doc/routingFunctions.rst:97
 msgid ":doc:`reference`"
-msgstr ""
+msgstr ":doc:`reference`"
 
 #: ../../build/doc/reference.rst:3
 msgid ":doc:`pgr_version`"
 msgstr ":doc:`pgr_version`"
 
 #: ../../build/doc/reference.rst:4
-#, fuzzy
 msgid ":doc:`pgr_full_version`"
-msgstr ":doc:`pgr_prim`"
+msgstr ":doc:`pgr_full_version`"
 
 #: ../../build/doc/routingFunctions.rst:103
 msgid ":doc:`topology-functions`"
@@ -356,20 +355,17 @@ msgstr ""
 "para usarlos."
 
 #: ../../build/doc/topology-functions.rst:6
-#, fuzzy
 msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
 msgstr ""
-":doc:`pgr_createTopology` -  para crear una topología basada en la "
-"geometría."
+":doc:`pgr_createTopology` - para crear una topología basada en la geometría."
 
 #: ../../build/doc/topology-functions.rst:7
-#, fuzzy
 msgid ""
 ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on "
 "the source and target information."
 msgstr ""
-":doc:`pgr_createVerticesTable` - para reconstruir la tabla de vértices en"
-" base a la información de origen y destino."
+":doc:`pgr_createVerticesTable` - reconstruir la tabla de vértices en base a "
+"la información de origen y destino."
 
 #: ../../build/doc/topology-functions.rst:9
 msgid ""
@@ -422,18 +418,16 @@ msgid ":doc:`pgr_aStarCost`"
 msgstr ":doc:`pgr_aStarCost`"
 
 #: ../../build/doc/cost-category.rst:4
-#, fuzzy
 msgid ":doc:`pgr_bdAstarCost`"
-msgstr ":doc:`pgr_aStarCost`"
+msgstr ":doc:`pgr_bdAstarCost`"
 
 #: ../../build/doc/cost-category.rst:5
 msgid ":doc:`pgr_dijkstraCost`"
 msgstr ":doc:`pgr_dijkstraCost`"
 
 #: ../../build/doc/cost-category.rst:6
-#, fuzzy
 msgid ":doc:`pgr_bdDijkstraCost`"
-msgstr ":doc:`pgr_dijkstraCost`"
+msgstr ":doc:`pgr_bdDijkstraCost`"
 
 #: ../../build/doc/cost-category.rst:7
 msgid ":doc:`pgr_dijkstraNearCost`"
@@ -502,9 +496,8 @@ msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
 #: ../../build/doc/routingFunctions.rst:152
-#, fuzzy
 msgid ":doc:`BFS-category`"
-msgstr ":doc:`cost-category`"
+msgstr ":doc:`BFS-category`"
 
 #: ../../build/doc/routingFunctions.rst:158
 msgid ":doc:`DFS-category`"

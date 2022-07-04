@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bellmanford/es/>\n"
@@ -43,13 +43,13 @@ msgstr ""
 "pgr_bellmanFord.html>`__"
 
 #: ../../build/doc/pgr_bellmanFord.rst:21
-#, fuzzy
 msgid "``pgr_bellmanFord - Experimental``"
-msgstr "pgr_bellmanFord - Experimental"
+msgstr "``pgr_bellmanFord`` - Experimental"
 
 #: ../../build/doc/pgr_bellmanFord.rst:23
 msgid "``pgr_bellmanFord`` — Shortest path(s) using Bellman-Ford algorithm."
 msgstr ""
+"``pgr_bellmanFord`` —Camino m+as corto usando el algoritmo de Bellman-Ford."
 
 #: ../../build/doc/pgr_bellmanFord.rst:28
 msgid "Boost Graph Inside"
@@ -61,7 +61,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -93,7 +93,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -109,11 +109,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -132,14 +134,12 @@ msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_bellmanFord.rst:38
-#, fuzzy
 msgid "New **experimental** signature:"
-msgstr "Nueva función **experimental**:"
+msgstr "Nueva firma **experimental**:"
 
 #: ../../build/doc/pgr_bellmanFord.rst:40
-#, fuzzy
 msgid "``pgr_bellmanFord`` (`Combinations`_)"
-msgstr "pgr_bellmanFord(Combinaciones)"
+msgstr "``pgr_bellmanFord`` (`Combinaciones`_)"
 
 #: ../../build/doc/pgr_bellmanFord.rst:42
 msgid "Version 3.0.0"
@@ -151,19 +151,19 @@ msgstr "Nueva función **experimental**:"
 
 #: ../../build/doc/pgr_bellmanFord.rst:46
 msgid "``pgr_bellmanFord`` (`One to One`_)"
-msgstr ""
+msgstr "``pgr_bellmanFord`` (`Uno a Uno`_)"
 
 #: ../../build/doc/pgr_bellmanFord.rst:47
 msgid "``pgr_bellmanFord`` (`One to Many`_)"
-msgstr ""
+msgstr "``pgr_bellmanFord`` (`Uno a Muchos`_)"
 
 #: ../../build/doc/pgr_bellmanFord.rst:48
 msgid "``pgr_bellmanFord`` (`Many to One`_)"
-msgstr ""
+msgstr "``pgr_bellmanFord`` (`Muchos a uno`_)"
 
 #: ../../build/doc/pgr_bellmanFord.rst:49
 msgid "``pgr_bellmanFord`` (`Many to Many`_)"
-msgstr ""
+msgstr "``pgr_bellmanFord`` (`Muchos a Muchos`_)"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/dijkstra-family.rst:11
@@ -175,7 +175,6 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_bellmanFord.rst:54
-#, fuzzy
 msgid ""
 "Bellman-Ford's algorithm, is named after Richard Bellman and Lester Ford,"
 " who first published it in 1958 and 1956, respectively.It is a graph "
@@ -185,14 +184,14 @@ msgid ""
 "slower than Dijkstra's algorithm.This implementation can be used with a "
 "directed graph and an undirected graph."
 msgstr ""
-"El algoritmo de Bellman-Ford, lleva el nombre de Richard Bellman y Lester"
-" Ford, quienes lo publicaron por primera vez en 1958 y 1956, "
-"respectivamente. Es un algoritmo de búsqueda de grafos que calcula las "
-"rutas más cortas desde un vértice inicial (``start_vid``) hasta un "
-"vértice final (``end_vid``) en un grafo donde algunos de los pesos de "
-"borde pueden ser números negativos. Aunque es más versátil, es más lento "
-"que el algoritmo de Dijkstra/ Esta implementación se puede utilizar con "
-"un grafo dirigido y un grafo no dirigido."
+"El algoritmo de Bellman-Ford, lleva el nombre de Richard Bellman y Lester "
+"Ford, quienes lo publicaron por primera vez en 1958 y 1956, respectivamente. "
+"Es un algoritmo de búsqueda de grafos que calcula las rutas más cortas desde "
+"un vértice inicial (``start_vid``) hasta un vértice final (``end_vid``) en "
+"un grafo donde algunos de los pesos de borde pueden ser números negativos. "
+"Aunque es más versátil, es más lento que el algoritmo de Dijkstra/ Esta "
+"implementación se puede utilizar con un grafo dirigido y un grafo no "
+"dirigido."
 
 #: ../../build/doc/pgr_bellmanFord.rst:87
 msgid "**The main characteristics are:**"
@@ -209,13 +208,12 @@ msgid "Values are returned when there is a path."
 msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/pgr_bellmanFord.rst:65
-#, fuzzy
 msgid ""
 "When the start vertex and the end vertex are the same, there is no path. "
 "The agg_cost would be :math:`0`."
 msgstr ""
-"Cuando el vértice inicial y el vértice final son los mismos, no hay ruta."
-" El agg_cost sería 0."
+"Cuando el vértice inicial y el vértice final son los mismos, no hay ruta. El "
+"agg_cost sería :math:`0`."
 
 #: ../../build/doc/pgr_bellmanFord.rst:67
 msgid ""
@@ -689,9 +687,8 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_bellmanFord.rst
-#, fuzzy
 msgid "Example 1"
-msgstr "Ejemplo"
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_bellmanFord.rst:246
 msgid "Demonstration of repeated values are ignored, and result is sorted."
@@ -703,7 +700,7 @@ msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_bellmanFord.rst:252
 msgid "Making **start vids** the same as **end vids**."
-msgstr ""
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #: ../../build/doc/pgr_bellmanFord.rst
 msgid "Example 3"

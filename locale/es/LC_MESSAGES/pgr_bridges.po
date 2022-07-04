@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:51+0000\n"
+"PO-Revision-Date: 2022-07-03 03:01+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bridges/es/>\n"
@@ -52,9 +52,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.5/en/pgr_bridges.html>`__"
 
 #: ../../build/doc/pgr_bridges.rst:24
-#, fuzzy
 msgid "``pgr_bridges``"
-msgstr "pgr_bridges"
+msgstr "``pgr_bridges``"
 
 #: ../../build/doc/pgr_bridges.rst:26
 msgid "``pgr_bridges`` - Return the bridges of an undirected graph."
@@ -109,9 +108,8 @@ msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_bridges.rst:53
-#, fuzzy
 msgid "Works for **undirected** graphs."
-msgstr "La firma es para un grafo **no dirigido**."
+msgstr "Funciona para grafos **no dirigidos**."
 
 #: ../../build/doc/pgr_bridges.rst:54
 msgid "The returned values are ordered:"
@@ -158,9 +156,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta interna como se describe a continuación."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_bridges.rst:89
 msgid "Inner Queries"
