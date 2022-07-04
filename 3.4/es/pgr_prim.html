@@ -310,17 +310,25 @@ OR EMPTY SET</pre>
 </section>
 <section id="result-columns">
 <h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
-<dl class="simple">
-<dt>include:: pgRouting-concepts.rst</dt><dd><dl class="field-list simple">
-<dt class="field-odd">start-after<span class="colon">:</span></dt>
-<dd class="field-odd"><p>r-edge-cost-start</p>
-</dd>
-<dt class="field-even">end-before<span class="colon">:</span></dt>
-<dd class="field-even"><p>r-edge-cost-end</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p>Returns SET OF <code class="docutils literal notranslate"><span class="pre">(edge,</span> <span class="pre">cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Cost to traverse the edge.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
@@ -352,7 +360,7 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jun 30, 2022.<br/>
+      Actualizado por última vez en jul 04, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

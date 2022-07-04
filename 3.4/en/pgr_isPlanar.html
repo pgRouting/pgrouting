@@ -210,8 +210,8 @@
 <p>A graph is planar if it can be drawn in two-dimensional space with no two of its
 edges crossing. Such a drawing of a planar graph is called a plane drawing.
 Every planar graph also admits a straight-line drawing, which is a plane drawing
-where each edge is represented by a line segment. When a graph has <span class="math notranslate nohighlight">\(K_7\)</span>
-or <span class="math notranslate nohighlight">\(K_{10,10}\)</span> as subgraph then the
+where each edge is represented by a line segment. When a graph has <span class="math notranslate nohighlight">\(K_5\)</span>
+or <span class="math notranslate nohighlight">\(K_{3, 3}\)</span> as subgraph then the
 graph is not planar.</p>
 <p>The main characteristics are:</p>
 <ul class="simple">
@@ -343,7 +343,7 @@ it’s not part of the graph.</p></li>
 <section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <p>The following edges will make the subgraph with vertices {10, 15, 11, 16, 13} a
-<span class="math notranslate nohighlight">\(K_7\)</span> graph.</p>
+<span class="math notranslate nohighlight">\(K_1\)</span> graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">)</span> <span class="n">VALUES</span>
   <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
   <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -351,8 +351,8 @@ it’s not part of the graph.</p></li>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>The new graph is not planar because it has a <span class="math notranslate nohighlight">\(K_7\)</span> subgraph. Edges in blue
-represent <span class="math notranslate nohighlight">\(K_7\)</span> subgraph.</p>
+<p>The new graph is not planar because it has a <span class="math notranslate nohighlight">\(K_5\)</span> subgraph. Edges in blue
+represent <span class="math notranslate nohighlight">\(K_5\)</span> subgraph.</p>
 <a class="reference internal image-reference" href="_images/nonPlanar.png"><img alt="_images/nonPlanar.png" src="_images/nonPlanar.png" style="width: 503.5px; height: 430.5px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_isPlanar</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost</span>
@@ -392,7 +392,7 @@ represent <span class="math notranslate nohighlight">\(K_7\)</span> subgraph.</p
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jun 30, 2022.<br/>
+      Last updated on Jul 04, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
