@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edgedisjointpaths/es/>\n"
@@ -34,6 +34,13 @@ msgid ""
 "`3.1 <https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__ "
 "`3.0 <https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_edgeDisjointPaths.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_edgeDisjointPaths.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_edgeDisjointPaths.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_edgeDisjointPaths.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_edgeDisjointPaths.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_edgeDisjointPaths.html>`__"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:19
 msgid ""
@@ -50,9 +57,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_edgeDisjointPaths.html>`__"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:26
-#, fuzzy
 msgid "``pgr_edgeDisjointPaths``"
-msgstr "pgr_edgeDisjointPaths"
+msgstr "``pgr_edgeDisjointPaths``"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:28
 msgid ""
@@ -190,11 +196,10 @@ msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:161
-#, fuzzy
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
-"De los vértices :math:`\\{3, 6\\}` a los vértices :math:`\\{4, 5, 10\\}` "
-"en un grafo **dirigido**"
+"De los vértices :math:`\\{11, 3, 17\\}` a los vértices :math:`\\{5, 10, 12\\"
+"}`"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:171
 msgid "Combinations"
@@ -449,13 +454,12 @@ msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
-#, fuzzy
 msgid ""
 "Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, "
 "cost, agg_cost)``"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq [, start_vid] [, "
-"end_vid], node, edge, cost, agg_cost)``"
+"Conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, "
+"cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "``seq``"
@@ -477,7 +481,7 @@ msgstr "``path_id``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Path identifier."
-msgstr ""
+msgstr "Identificador del camino."
 
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
@@ -519,9 +523,8 @@ msgstr "`Muchos a Muchos`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:34
 #: ../../build/doc/pgRouting-concepts.rst:42
-#, fuzzy
 msgid "`Combinations`_"
-msgstr "Combinaciones"
+msgstr "`Combinaciones`_"
 
 #: ../../build/doc/pgRouting-concepts.rst:35
 msgid "``end_vid``"
@@ -587,6 +590,7 @@ msgstr "Ejemplos Adicionales"
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:237
 msgid "Manually assigned vertex combinations on an undirected graph."
 msgstr ""
+"Asignando manualmente las combinaciones de vértices en un grafo no dirigido."
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:244
 msgid "See Also"

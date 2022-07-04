@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:12+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskaldfs/es/>\n"
@@ -34,20 +34,25 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_kruskalDFS.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_kruskalDFS.html>`__"
 msgstr ""
+"**Versiónes soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_kruskalDFS.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_kruskalDFS.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_kruskalDFS.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_kruskalDFS.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_kruskalDFS.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_kruskalDFS.html>`__"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:21
-#, fuzzy
 msgid "``pgr_kruskalDFS``"
-msgstr "pgr_kruskalDFS"
+msgstr "``pgr_kruskalDFS``"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:23
-#, fuzzy
 msgid ""
 "``pgr_kruskalDFS`` — Kruskal's algorithm for Minimum Spanning Tree with "
 "Depth First Search ordering."
 msgstr ""
-"``pgr_kruskalDFS`` — Algoritmo Kruskal para el Árbol de Expansión Mínima "
-"con orden de Búsqueda en Primera Profundidad."
+"``pgr_kruskalDFS`` — Algoritmo Kruskal para el Árbol de Expansión Mínima con "
+"orden de Búsqueda Primero en Profundidad."
 
 #: ../../build/doc/pgr_kruskalDFS.rst:29
 msgid "Boost Graph Inside"
@@ -146,22 +151,20 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:73
-#, fuzzy
 msgid "The Minimum Spanning Tree having as root vertex :math:`6`"
-msgstr "El Árbol de Expansión Mínima que comienza en el vértice :math:`2`"
+msgstr "El Árbol de Expansión Mínimo que tiene como vértice raíz :math:`6`"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:83
 msgid "Multiple vertices"
 msgstr "Múltiples vértices"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:90
-#, fuzzy
 msgid ""
 "The Minimum Spanning Tree starting on vertices :math:`\\{9, 6\\}` with "
 ":math:`depth \\leq 3`"
 msgstr ""
-"El Árbol de Expansión Mínimo que comienza en los vértices :math:`\\{13, "
-"2\\}` con :math:`depth <= 3`"
+"El Árbol de Expansión Mínimo que comienza en los vértices :math:`\\{9, 6\\}` "
+"con ::math:`depth \\leq 3`"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:98
 msgid "Parameters"
@@ -186,7 +189,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/BFS-category.rst:13
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/BFS-category.rst:14
 msgid "**Root vid**"
@@ -250,12 +253,11 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/BFS-category.rst:31 ../../build/doc/BFS-category.rst:45
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
-msgstr ""
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 
 #: ../../build/doc/pgr_kruskalDFS.rst:105
-#, fuzzy
 msgid "DFS optional parameters"
-msgstr "Parámetros opcionales"
+msgstr "Parámetros opcionales de DFS"
 
 #: ../../build/doc/BFS-category.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -384,14 +386,13 @@ msgstr "Valor secuencial a partir de :math:`1`."
 
 #: ../../build/doc/BFS-category.rst:16
 msgid "``depth``"
-msgstr ""
+msgstr "``depth``"
 
 #: ../../build/doc/BFS-category.rst:18
 msgid "Depth of the ``node``."
 msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/BFS-category.rst:20
-#, fuzzy
 msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 

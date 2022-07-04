@@ -12,38 +12,41 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-03 19:08-0500\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_isplanar/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_isplanar/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_isPlanar.rst:12
 msgid ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_isPlanar.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/en/pgr_isPlanar.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__ `3.2 "
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
+"pgr_isPlanar.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_isPlanar."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_isPlanar.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/pgr_isPlanar."
+"html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/pgr_isPlanar.html>`__ `3.2 "
+"<https://docs.pgrouting.org/3.2/es/pgr_isPlanar.html>`__"
 
 #: ../../build/doc/pgr_isPlanar.rst:19
-#, fuzzy
 msgid "``pgr_isPlanar`` - Experimental"
-msgstr "pgr_isPlanar - Experimental"
+msgstr "``pgr_isPlanar`` - Experimental"
 
 #: ../../build/doc/pgr_isPlanar.rst:21
 msgid ""
 "``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the "
 "graph."
 msgstr ""
-"``pgr_isPlanar`` — Devuelve un valor boolean dependiendo de la planaridad"
-" del grafo."
+"``pgr_isPlanar`` — Devuelve un valor boolean dependiendo de la planaridad "
+"del grafo."
 
 #: ../../build/doc/pgr_isPlanar.rst:26
 msgid "Boost Graph Inside"
@@ -55,7 +58,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -87,7 +90,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -103,11 +106,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -136,21 +141,19 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_isPlanar.rst:42
-#, fuzzy
 msgid ""
-"A graph is planar if it can be drawn in two-dimensional space with no two"
-" of its edges crossing. Such a drawing of a planar graph is called a "
-"plane drawing. Every planar graph also admits a straight-line drawing, "
-"which is a plane drawing where each edge is represented by a line "
-"segment. When a graph has :math:`K_5` or :math:`K_{3, 3}` as subgraph "
-"then the graph is not planar."
+"A graph is planar if it can be drawn in two-dimensional space with no two of "
+"its edges crossing. Such a drawing of a planar graph is called a plane "
+"drawing. Every planar graph also admits a straight-line drawing, which is a "
+"plane drawing where each edge is represented by a line segment. When a graph "
+"has :math:`K_5` or :math:`K_{3, 3}` as subgraph then the graph is not planar."
 msgstr ""
-"Un grafo es planar si se puede dibujar en un espacio bidimensional sin "
-"que se crucen dos de sus aristas. Este dibujo de un grafo planaro es "
-"llamado dibujo de plano. Cada grafo planar también admite un dibujo de "
-"línea recta, que es un dibujo de plano donde cada arista está "
-"representada por un segmento de línea. Cuando un grafo tiene :math:`K_5` "
-"or :math:`K_{3,3}` como subgrafo, entonces el grafo no es planar."
+"Un grafo es planar si se puede dibujar en un espacio bidimensional sin que "
+"se crucen dos de sus aristas. Este dibujo de un grafo planaro es llamado "
+"dibujo de plano. Cada grafo planar también admite un dibujo de línea recta, "
+"que es un dibujo de plano donde cada arista está representada por un "
+"segmento de línea. Cuando un grafo tiene :math:`K_5` or :math:`K_{3,3}` como "
+"subgrafo, entonces el grafo no es planar."
 
 #: ../../build/doc/pgr_isPlanar.rst:49
 msgid "The main characteristics are:"
@@ -161,7 +164,8 @@ msgid "This implementation use the Boyer-Myrvold Planarity Testing."
 msgstr "Esta implementación utiliza la Prueba de Planaridad de Boyer-Myrvold."
 
 #: ../../build/doc/pgr_isPlanar.rst:52
-msgid "It will return a boolean value depending upon the planarity of the graph."
+msgid ""
+"It will return a boolean value depending upon the planarity of the graph."
 msgstr "Devolverá un valor boolean dependiendo de la planaridad del grrafo."
 
 #: ../../build/doc/pgr_isPlanar.rst:53
@@ -281,11 +285,11 @@ msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
-"When negative: edge (``target``, ``source``) does not exist, therefore "
-"it's not part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore it's "
+"not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
-"tanto no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
+"no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
@@ -336,22 +340,20 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_isPlanar.rst:106
-#, fuzzy
 msgid ""
-"The following edges will make the subgraph with vertices {10, 15, 11, 16,"
-" 13} a :math:`K_1` graph."
+"The following edges will make the subgraph with vertices {10, 15, 11, 16, "
+"13} a :math:`K_1` graph."
 msgstr ""
-"Las siguientes aristas harán de el subgrafo con los vértices {3, 4, 6, 9,"
-" 16} un grafo :math:`K_5`."
+"Las siguientes aristas harán de el subgrafo con los vértices {10, 15, 11, "
+"16, 13} un grafo :math:`K_5`."
 
 #: ../../build/doc/pgr_isPlanar.rst:113
-#, fuzzy
 msgid ""
-"The new graph is not planar because it has a :math:`K_5` subgraph. Edges "
-"in blue represent :math:`K_5` subgraph."
+"The new graph is not planar because it has a :math:`K_5` subgraph. Edges in "
+"blue represent :math:`K_5` subgraph."
 msgstr ""
 "El nuevo grafo no es planar porque tiene un subgráfico :math:`K_5`. Las "
-"aristas en azul representan el subgrafo :math:'K_5'."
+"aristas en azul representan el subgrafo :math:`K_5`."
 
 #: ../../build/doc/pgr_isPlanar.rst:126
 msgid "See Also"
@@ -377,3 +379,34 @@ msgstr ":ref:`genindex`"
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
+#: ../../build/doc/pgr_isPlanar.rst:42
+msgid ""
+"A graph is planar if it can be drawn in two-dimensional space with no two of "
+"its edges crossing. Such a drawing of a planar graph is called a plane "
+"drawing. Every planar graph also admits a straight-line drawing, which is a "
+"plane drawing where each edge is represented by a line segment. When a graph "
+"has :math:`K_7` or :math:`K_{10,10}` as subgraph then the graph is not "
+"planar."
+msgstr ""
+"Un grafo es planar si se puede dibujar en un espacio bidimensional sin que "
+"se crucen dos de sus aristas. Este dibujo de un grafo planar es llamado "
+"dibujo en plano. Cada grafo planar también admite un dibujo de línea recta, "
+"que es un dibujo en plano donde cada arista está representada por un "
+"segmento de línea. Cuando un grafo tiene :math:`K_5` or :math:`K_{3,3}` como "
+"subgrafo, entonces el grafo no es planar."
+
+#: ../../build/doc/pgr_isPlanar.rst:106
+msgid ""
+"The following edges will make the subgraph with vertices {10, 15, 11, 16, "
+"13} a :math:`K_7` graph."
+msgstr ""
+"Las siguientes aristas harán de el subgrafo con los vértices {0, 15, 11, 16, "
+"13} un grafo :math:`K_5`."
+
+#: ../../build/doc/pgr_isPlanar.rst:113
+msgid ""
+"The new graph is not planar because it has a :math:`K_7` subgraph. Edges in "
+"blue represent :math:`K_7` subgraph."
+msgstr ""
+"El nuevo grafo no es planar porque tiene un subgráfico :math:`K_5`. Las "
+"aristas en azul representan el subgrafo :math:'K_5'."

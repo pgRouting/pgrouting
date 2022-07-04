@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 16:00+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_withpointscostmatrix/es/>\n"
@@ -36,6 +36,13 @@ msgid ""
 " <https://docs.pgrouting.org/3.1/en/pgr_withPointsCostMatrix.html>`__ "
 "`3.0 <https://docs.pgrouting.org/3.0/en/pgr_withPointsCostMatrix.html>`__"
 msgstr ""
+"Columna ``id`` tiene valor positivo <https://docs.pgrouting.org/latest/es/"
+"pgr_withPointsCostMatrix.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_withPointsCostMatrix.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_withPointsCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_withPointsCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_withPointsCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_withPointsCostMatrix.html>`__"
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:19
 msgid ""
@@ -54,15 +61,16 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_withPointsCostMatrix.html>`__"
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:26
-#, fuzzy
 msgid "``pgr_withPointsCostMatrix`` - proposed"
-msgstr "pgr_withPointsCostMatrix - propuesto"
+msgstr "``pgr_withPointsCostMatrix`` - propuesto"
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:28
 msgid ""
 "``pgr_withPointsCostMatrix`` - Calculates a cost matrix using "
 ":doc:`pgr_withPoints`."
 msgstr ""
+"``pgr_withPointsCostMatrix`` - Calcula una matriz de costos usando "
+":doc:`pgr_withPoints`."
 
 #: ../../build/doc/proposed.rst:3
 msgid "Proposed functions for next mayor release."
@@ -82,7 +90,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -90,7 +98,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -163,7 +171,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:9
 msgid "It will be the users responsibility to make the matrix symmetric."
-msgstr ""
+msgstr "Es responsabilidad dels usuario hacer que la matriz sea simétrica."
 
 #: ../../build/doc/costMatrix-category.rst:11
 msgid "By using geometric or harmonic average of the non symmetric values."
@@ -173,7 +181,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:12
 msgid "By using max or min the non symmetric values."
-msgstr ""
+msgstr "Mediante el uso de max o min, los valores no simétricos."
 
 #: ../../build/doc/costMatrix-category.rst:13
 msgid ""
@@ -199,7 +207,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:20
 msgid "Each function works as part of the family it belongs to."
-msgstr ""
+msgstr "Cada función funciona como parte de la familia a la que pertenece."
 
 #: ../../build/doc/costMatrix-category.rst:21
 msgid "It does not return a path."
@@ -210,6 +218,8 @@ msgid ""
 "Returns the sum of the costs of the shortest path for pair combination of"
 " nodes in the graph."
 msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para la combinación de "
+"pares de nodos en el grafo."
 
 #: ../../build/doc/costMatrix-category.rst:24
 msgid "Process is done only on edges with positive costs."
@@ -246,13 +256,15 @@ msgstr "Sea el caso, los valores devueltos se almacenan en una tabla:"
 
 #: ../../build/doc/costMatrix-category.rst:38
 msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
-msgstr ""
+msgstr "El índice único es el par: ``(start_vid, end_vid)``."
 
 #: ../../build/doc/costMatrix-category.rst:40
 msgid ""
 "Depending on the function and its parameters, the results can be "
 "symmetric."
 msgstr ""
+"Dependiendo de la función y sus parámetros, los resultados pueden ser "
+"simétricos."
 
 #: ../../build/doc/costMatrix-category.rst:42
 msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
@@ -260,11 +272,11 @@ msgstr "El costo agregado de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/costMatrix-category.rst:44
 msgid "Any duplicated value in the **start vids** are ignored."
-msgstr ""
+msgstr "Se omite cualquier valor duplicado en **ids de veértices**."
 
 #: ../../build/doc/costMatrix-category.rst:46
 msgid "The returned values are ordered:"
-msgstr ""
+msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/costMatrix-category.rst:48
 msgid "``start_vid`` ascending"
@@ -295,13 +307,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:76
-#, fuzzy
 msgid ""
 "Cost matrix for points :math:`\\{1, 6\\}` and vertices :math:`\\{10, "
 "11\\}` on an **undirected** graph"
 msgstr ""
-"Matriz de costos para puntos :math:`\\{1, 6\\}` y vértices :math:`\\{3, "
-"6\\}` en un grafo **no dirigido**"
+"Matriz de costos para puntos :math:`\\{1, 6\\}` y vértices :math:`\\{10, 11\\"
+"}` en un grafo **no dirigido**"
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:79
 msgid "Returning a **symmetrical** cost matrix"
@@ -362,12 +373,11 @@ msgstr "**vid salidas**"
 
 #: ../../build/doc/costMatrix-category.rst:18
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/costMatrix-category.rst:19
-#, fuzzy
 msgid "Array of identifiers of starting vertices."
-msgstr "Identificador del vértice inicial."
+msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:95
 msgid "Optional parameters"
@@ -402,7 +412,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:102
 msgid "With points optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales para Con puntos"
 
 #: ../../build/doc/pgr_withPointsCost.rst:8
 #: ../../build/doc/withPoints-category.rst:8
@@ -424,11 +434,8 @@ msgid "``b``"
 msgstr "``b``"
 
 #: ../../build/doc/pgr_withPointsCost.rst:15
-#, fuzzy
 msgid "Value in [``r``, ``l``, ``b``] indicating if the driving side is:"
-msgstr ""
-"(opcional) Valor en ['b', 'r', 'l', NULL] que indica si el lado de "
-"conducción es:"
+msgstr "Valor en [``r``, ``l``, ``b``] indica si el lado de manejo es:"
 
 #: ../../build/doc/pgr_withPointsCost.rst:17
 msgid "``r`` for right driving side."
@@ -440,7 +447,7 @@ msgstr "``l`` para lado de manejo izquierdo."
 
 #: ../../build/doc/pgr_withPointsCost.rst:19
 msgid "``b`` for both."
-msgstr ""
+msgstr "``b`` for ambos."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:109
 msgid "Inner Queries"
@@ -554,18 +561,18 @@ msgid "**value**"
 msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
-#, fuzzy
 msgid "Identifier of the point."
-msgstr "(opcional) Identificador del punto."
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
-#, fuzzy
 msgid "If column is present, it can not be NULL."
-msgstr "Si la columna está presente, no puede ser NULL."
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
@@ -576,9 +583,8 @@ msgstr ""
 "automáticamente."
 
 #: ../../build/doc/withPoints-category.rst:22
-#, fuzzy
 msgid "``edge_id``"
-msgstr "**edge_id**"
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
@@ -598,16 +604,15 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:34
 msgid "Value in [``b``, ``r``, ``l``, ``NULL``] indicating if the point is:"
 msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
-#, fuzzy
 msgid "In the right ``r``,"
-msgstr "A la derecha o a la izquierda o"
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
@@ -615,7 +620,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:126
 msgid "Result Columns"
@@ -663,6 +668,8 @@ msgid ""
 "When start_vid or end_vid columns have negative values, the identifier is"
 " for a Point."
 msgstr ""
+"Cuando las columnas del vértice inicial o del destino continen valores "
+"negativos, el identificador es para un Punto."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:137
 msgid "Additional Examples"
@@ -670,23 +677,28 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:143
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr ""
+msgstr "Usa :doc:`pgr_findCloseEdges` en el `SQL puntos`_."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:145
 msgid ""
 "Find the matrix cost of the routes from vertex :math:`1` and the two "
 "closest locations on the graph of point `(2.9, 1.8)`."
 msgstr ""
+"Encontrar la matriz de costos de las rutas desde el vértice :math:`1` y las "
+"dos ubicaciones más cercanas en el grafo al punto `(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:152
 msgid "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-1` corresponde a la arista más cercana al punto `(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:153
 msgid ""
 "Point :math:`-2` corresponds to the next close edge from point "
 "`(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-2` corresponde a la segunda arista más cercana al punto `(2.9, "
+"1.8)`."
 
 #: ../../build/doc/pgr_withPointsCostMatrix.rst:156
 msgid "Use with :doc:`pgr_TSP`."

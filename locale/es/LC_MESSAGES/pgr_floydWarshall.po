@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 01:51+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_floydwarshall/es/>\n"
@@ -25,7 +25,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_floydWarshall.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_floydWarshall.html>`__ (`3.4 "
@@ -35,13 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_floydWarshall.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_floydWarshall.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_floydWarshall.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_floydWarshall.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_floydWarshall.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_floydWarshall.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_floydWarshall.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_floydWarshall.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_floydWarshall.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_floydWarshall.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_floydWarshall.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_floydWarshall.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_floydWarshall.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_floydWarshall.html>`__"
 
 #: ../../build/doc/pgr_floydWarshall.rst:19
 msgid ""
@@ -70,9 +69,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.0/en/src/apsp_warshall/doc/index.html>`__"
 
 #: ../../build/doc/pgr_floydWarshall.rst:29
-#, fuzzy
 msgid "``pgr_floydWarshall``"
-msgstr "pgr_floydWarshall"
+msgstr "``pgr_floydWarshall``"
 
 #: ../../build/doc/pgr_floydWarshall.rst:31
 msgid ""
@@ -144,8 +142,8 @@ msgid ""
 "Returns the sum of the costs of the shortest path for each pair of nodes "
 "in the graph."
 msgstr ""
-"Devuelve la suma de los costos de la ruta más corta para cada par de "
-"nodos del grafo."
+"Regresa la suma de los costos de la ruta más corta para cada par de nodos "
+"del grafo."
 
 #: ../../build/doc/allpairs-family.rst:8
 msgid "Process is done only on edges with positive costs."
@@ -156,25 +154,24 @@ msgid ""
 "Boost returns a :math:`V \\times V` matrix, where the infinity values. "
 "Represent the distance between vertices for which there is no path."
 msgstr ""
-"Boost devuelve una matriz:math:`V \\times V` donde los valores son "
-"infinitos. Representar la distancia entre vértices para los que no hay "
-"ruta."
+"Boost devuelve una matriz :math:`V \\times V` donde los valores infinitos "
+"representan la distancia entre vértices para los que no hay ruta."
 
 #: ../../build/doc/allpairs-family.rst:12
 msgid ""
 "We return only the non infinity values in form of a set of `(start_vid, "
 "end_vid, agg_cost)`."
 msgstr ""
-"Solo devolvemos los valores no infinitos en forma de un conjunto de "
-"`(start_vid, end_vid, agg_cost)`."
+"Solo regresa los valores no infinitos en forma de un conjunto de `("
+"start_vid, end_vid, agg_cost)`."
 
 #: ../../build/doc/allpairs-family.rst:15
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
-"Sea el caso, los valores devueltos se almacenan en una tabla, por lo que "
-"el índice único sería el par: '(start_vid, end_vid)'."
+"Sea el caso donde los valores devueltos se almacenan en una tabla, por lo "
+"que el índice único sería el par: `(start_vid, end_vid)`."
 
 #: ../../build/doc/allpairs-family.rst:18
 msgid "For the undirected graph, the results are symmetric."
@@ -186,7 +183,7 @@ msgstr "El `agg_cost` de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/allpairs-family.rst:22
 msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
-msgstr "En caso de `start_vid` = `end_vid`, el  `agg_cost` = 0."
+msgstr "En caso de `start_vid` = `end_vid`, el `agg_cost` = 0."
 
 #: ../../build/doc/allpairs-family.rst:24
 msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
@@ -203,13 +200,12 @@ msgid "Summary"
 msgstr "Resumen"
 
 #: ../../build/doc/pgr_floydWarshall.rst
-#, fuzzy
 msgid "Example"
-msgstr "Ejemplo 2"
+msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_floydWarshall.rst:73
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
-msgstr ""
+msgstr "Para sub-grafo con aristas :math:`\\{1, 2, 3, 4\\}`."
 
 #: ../../build/doc/pgr_floydWarshall.rst:80
 msgid "Parameters"
@@ -240,9 +236,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/allpairs-family.rst:15
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta SQL como se describió anteriormente."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_floydWarshall.rst:87
 msgid "Optional parameters"
@@ -410,14 +405,12 @@ msgid ":doc:`pgr_johnson`"
 msgstr ":doc:`pgr_johnson`"
 
 #: ../../build/doc/pgr_floydWarshall.rst:116
-#, fuzzy
 msgid ""
 "Boost `floyd-Warshall "
 "<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
 msgstr ""
-"`Algoritmo floyd-Warshall "
-"<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ en "
-"Boost"
+"Boost `Algoritmo floyd-Warshall <https://www.boost.org/libs/graph/doc/"
+"floyd_warshall_shortest.html>`_"
 
 #: ../../build/doc/pgr_floydWarshall.rst:118
 msgid "Queries uses the :doc:`sampledata` network."

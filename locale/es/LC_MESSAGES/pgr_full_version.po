@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-27 17:01+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_full_version/es/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_full_version.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_full_version.html>`__ (`3.4 "
@@ -34,18 +33,17 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_full_version.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_full_version.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_full_version.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_full_version.html>`__) `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_full_version.html>`__ `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_full_version.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_full_version.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_full_version.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_full_version.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_full_version.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_full_version.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_full_version.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_full_version.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_full_version.html>`__"
 
 #: ../../build/doc/pgr_full_version.rst:21
-#, fuzzy
 msgid "``pgr_full_version``"
-msgstr "pgr_full_version"
+msgstr "``pgr_full_version``"
 
 #: ../../build/doc/pgr_full_version.rst:23
 msgid "``pgr_full_version`` — Get the details of pgRouting version information."
@@ -71,9 +69,8 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_full_version.rst:35
-#, fuzzy
 msgid "Get complete details of pgRouting version information"
-msgstr "Obtenga los detalles de la información de la versión de pgRouting"
+msgstr "Obtener los detalles de la información de la versión de pgRouting"
 
 #: ../../build/doc/pgr_full_version.rst:41
 msgid "Signatures"
@@ -100,9 +97,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: ../../build/doc/pgr_full_version.rst:61
-#, fuzzy
 msgid "``version``"
-msgstr "**version**"
+msgstr "``version``"
 
 #: ../../build/doc/pgr_full_version.rst:61
 #: ../../build/doc/pgr_full_version.rst:62
@@ -121,36 +117,32 @@ msgid "pgRouting version"
 msgstr "Versión de pgRouting"
 
 #: ../../build/doc/pgr_full_version.rst:62
-#, fuzzy
 msgid "``build_type``"
-msgstr "**build_type**"
+msgstr "``build_type``"
 
 #: ../../build/doc/pgr_full_version.rst:62
 msgid "The Build type"
 msgstr "El tipo de Compilación"
 
 #: ../../build/doc/pgr_full_version.rst:63
-#, fuzzy
 msgid "``compile_date``"
-msgstr "**compile_date**"
+msgstr "``compile_date``"
 
 #: ../../build/doc/pgr_full_version.rst:63
 msgid "Compilation date"
 msgstr "Fecha de compilación"
 
 #: ../../build/doc/pgr_full_version.rst:64
-#, fuzzy
 msgid "``library``"
-msgstr "**library**"
+msgstr "``library``"
 
 #: ../../build/doc/pgr_full_version.rst:64
 msgid "Library name and version"
 msgstr "Nombre y versión de la biblioteca"
 
 #: ../../build/doc/pgr_full_version.rst:65
-#, fuzzy
 msgid "``system``"
-msgstr "**system**"
+msgstr "``system``"
 
 #: ../../build/doc/pgr_full_version.rst:65
 msgid "Operative system"
@@ -158,16 +150,15 @@ msgstr "Sistema operativo"
 
 #: ../../build/doc/pgr_full_version.rst:66
 msgid "``postgreSQL``"
-msgstr ""
+msgstr "``postgreSQL``"
 
 #: ../../build/doc/pgr_full_version.rst:66
 msgid "pgsql used"
 msgstr "pgsql utilizado"
 
 #: ../../build/doc/pgr_full_version.rst:67
-#, fuzzy
 msgid "``compiler``"
-msgstr "**compiler**"
+msgstr "``compiler``"
 
 #: ../../build/doc/pgr_full_version.rst:67
 msgid "Compiler and version"
@@ -175,7 +166,7 @@ msgstr "Compilador y versión"
 
 #: ../../build/doc/pgr_full_version.rst:68
 msgid "``boost``"
-msgstr ""
+msgstr "``boost``"
 
 #: ../../build/doc/pgr_full_version.rst:68
 msgid "Boost version"
@@ -183,7 +174,7 @@ msgstr "Versión de Boost"
 
 #: ../../build/doc/pgr_full_version.rst:69
 msgid "``hash``"
-msgstr ""
+msgstr "``hash``"
 
 #: ../../build/doc/pgr_full_version.rst:69
 msgid "Git hash of pgRouting build"
@@ -194,9 +185,8 @@ msgid "See Also"
 msgstr "Ver también"
 
 #: ../../build/doc/pgr_full_version.rst:75
-#, fuzzy
 msgid ":doc:`reference`"
-msgstr ":doc:`pgr_version`"
+msgstr ":doc:`reference`"
 
 #: ../../build/doc/pgr_full_version.rst:76
 msgid ":doc:`pgr_version`"

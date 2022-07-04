@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "topology-functions/es/>\n"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: ../../build/doc/topology-functions.rst:44
 msgid ":doc:`contraction-family`"
-msgstr ""
+msgstr ":doc:`contraction-family`"
 
 #: ../../build/doc/topology-functions.rst:46
 msgid "Additional functions to analyze a graph:"
@@ -117,20 +117,17 @@ msgstr ""
 "para usarlos."
 
 #: ../../build/doc/topology-functions.rst:56
-#, fuzzy
 msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
 msgstr ""
-":doc:`pgr_createTopology` -  para crear una topología basada en la "
-"geometría."
+":doc:`pgr_createTopology` - para crear una topología basada en la geometría."
 
 #: ../../build/doc/topology-functions.rst:57
-#, fuzzy
 msgid ""
 ":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on "
 "the source and target information."
 msgstr ""
-":doc:`pgr_createVerticesTable` - para reconstruir la tabla de vértices en"
-" base a la información de origen y destino."
+":doc:`pgr_createVerticesTable` - reconstruir la tabla de vértices en base a "
+"la información de origen y destino."
 
 #: ../../build/doc/topology-functions.rst:59
 msgid ""
@@ -172,7 +169,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -180,7 +177,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -191,22 +188,20 @@ msgid "Documentation might need refinement."
 msgstr "Es posible que la documentación necesite un refinamiento."
 
 #: ../../build/doc/topology-functions.rst:76
-#, fuzzy
 msgid "These proposed functions do not modify the database."
 msgstr "Funciones propuestas para la próxima versión mayor."
 
 #: ../../build/doc/topology-functions.rst:78
 msgid ":doc:`pgr_degree` - Calculates the degree of the vertices of a graph."
-msgstr ""
+msgstr ":doc:`pgr_degree` - Calcula el grado de los vertices del grafo."
 
 #: ../../build/doc/topology-functions.rst:79
-#, fuzzy
 msgid ""
 ":doc:`pgr_extractVertices` - Extracts vertex information based on the "
 "edge table information."
 msgstr ""
-":doc:`pgr_extractVertices` - extrae información de vértices basada en el "
-"origen y el destino."
+":doc:`pgr_extractVertices` - Extrae información de vértices basada en la "
+"tabla de aristas."
 
 #: ../../build/doc/topology-functions.rst:96
 msgid "See Also"

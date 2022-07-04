@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bddijkstracostmatrix/es/>\n"
@@ -36,6 +36,13 @@ msgid ""
 " <https://docs.pgrouting.org/3.1/en/pgr_bdDijkstraCostMatrix.html>`__ "
 "`3.0 <https://docs.pgrouting.org/3.0/en/pgr_bdDijkstraCostMatrix.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_bdDijkstraCostMatrix.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_bdDijkstraCostMatrix.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_bdDijkstraCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_bdDijkstraCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_bdDijkstraCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_bdDijkstraCostMatrix.html>`__"
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:19
 msgid ""
@@ -48,12 +55,10 @@ msgstr ""
 " <https://docs.pgrouting.org/2.5/en/pgr_bdDijkstraCostMatrix.html>`__"
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:24
-#, fuzzy
 msgid "``pgr_bdDijkstraCostMatrix``"
-msgstr "pgr_bdDijkstraCostMatrix"
+msgstr "``pgr_bdDijkstraCostMatrix``"
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:26
-#, fuzzy
 msgid ""
 "``pgr_bdDijkstraCostMatrix`` - Calculates a cost matrix using "
 ":doc:`pgr_bdDijkstra`."
@@ -98,6 +103,8 @@ msgid ""
 "Using bidirectional Dijkstra algorithm, calculate and return a cost "
 "matrix."
 msgstr ""
+"Usando el algoritmo bidireccional de Dijkstra, calcular y regresar una "
+"matriz de costos."
 
 #: ../../build/doc/bdDijkstra-family.rst:3
 #: ../../build/doc/costMatrix-category.rst:24
@@ -109,6 +116,8 @@ msgid ""
 "A negative value on a cost column is interpreted as the edge does not "
 "exist."
 msgstr ""
+"Valor no negativo en una columna de costo se interpreta como la arista no "
+"exite."
 
 #: ../../build/doc/bdDijkstra-family.rst:7
 #: ../../build/doc/costMatrix-category.rst:25
@@ -188,7 +197,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:9
 msgid "It will be the users responsibility to make the matrix symmetric."
-msgstr ""
+msgstr "Es responsabilidad dels usuario hacer que la matriz sea simétrica."
 
 #: ../../build/doc/costMatrix-category.rst:11
 msgid "By using geometric or harmonic average of the non symmetric values."
@@ -198,7 +207,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:12
 msgid "By using max or min the non symmetric values."
-msgstr ""
+msgstr "Mediante el uso de max o min, los valores no simétricos."
 
 #: ../../build/doc/costMatrix-category.rst:13
 msgid ""
@@ -224,7 +233,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:20
 msgid "Each function works as part of the family it belongs to."
-msgstr ""
+msgstr "Cada función funciona como parte de la familia a la que pertenece."
 
 #: ../../build/doc/costMatrix-category.rst:21
 msgid "It does not return a path."
@@ -235,6 +244,8 @@ msgid ""
 "Returns the sum of the costs of the shortest path for pair combination of"
 " nodes in the graph."
 msgstr ""
+"Devuelve la suma de los costos de la ruta más corta para la combinación de "
+"pares de nodos en el grafo."
 
 #: ../../build/doc/costMatrix-category.rst:27
 msgid "When the starting vertex and ending vertex are the same, there is no path."
@@ -262,13 +273,15 @@ msgstr "Sea el caso, los valores devueltos se almacenan en una tabla:"
 
 #: ../../build/doc/costMatrix-category.rst:38
 msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
-msgstr ""
+msgstr "El índice único es el par: ``(start_vid, end_vid)``."
 
 #: ../../build/doc/costMatrix-category.rst:40
 msgid ""
 "Depending on the function and its parameters, the results can be "
 "symmetric."
 msgstr ""
+"Dependiendo de la función y sus parámetros, los resultados pueden ser "
+"simétricos."
 
 #: ../../build/doc/costMatrix-category.rst:42
 msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
@@ -276,11 +289,11 @@ msgstr "El costo agregado de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/costMatrix-category.rst:44
 msgid "Any duplicated value in the **start vids** are ignored."
-msgstr ""
+msgstr "Se omite cualquier valor duplicado en **ids de veértices**."
 
 #: ../../build/doc/costMatrix-category.rst:46
 msgid "The returned values are ordered:"
-msgstr ""
+msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/costMatrix-category.rst:48
 msgid "``start_vid`` ascending"
@@ -303,12 +316,11 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:71
-#, fuzzy
 msgid ""
 "Symmetric cost matrix for vertices :math:`\\{5, 6, 10, 15\\}` on an "
 "**undirected** graph"
 msgstr ""
-"Matriz de costos simétrica para vértices :math:`\\{1, 2, 3, 4\\}` en un "
+"Matriz de costos simétrica para vértices :math:`\\{5, 6, 10, 15}` en un "
 "grafo **no dirigido**"
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:79
@@ -347,12 +359,11 @@ msgstr "**vid salidas**"
 
 #: ../../build/doc/costMatrix-category.rst:15
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/costMatrix-category.rst:16
-#, fuzzy
 msgid "Array of identifiers of starting vertices."
-msgstr "Arreglo de identificadores de los vértices."
+msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/pgr_bdDijkstraCostMatrix.rst:86
 msgid "Optional parameters"

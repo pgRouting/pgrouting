@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-10 13:47+0000\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-02 17:06+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgrouting-introduction/es/>\n"
@@ -319,7 +319,8 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-introduction.rst:190
 msgid "PostGIS extension at the PostGIS project web site https://postgis.net."
-msgstr "PostGIS extension at the PostGIS project web site https://postgis.net."
+msgstr ""
+"PostGIS extension en el sitio web del projecto PostGIS https://postgis.net."
 
 #: ../../build/doc/pgRouting-introduction.rst:191
 msgid "Boost C++ source libraries at https://www.boost.org."

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-03 03:12+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "spanningtree-family/es/>\n"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: ../../build/doc/spanningTree-family.rst:42
 msgid "Characteristics:"
-msgstr ""
+msgstr "Características:"
 
 #: ../../build/doc/spanningTree-family.rst:46
 msgid "It's implementation is only on **undirected** graph."
@@ -85,7 +85,7 @@ msgstr "El proceso se realiza sólo en aristas con costos positivos."
 
 #: ../../build/doc/spanningTree-family.rst:48
 msgid "When the graph is connected"
-msgstr ""
+msgstr "Cuando el grafo es conectado"
 
 #: ../../build/doc/spanningTree-family.rst:50
 msgid "The resulting edges make up a tree"
@@ -93,28 +93,27 @@ msgstr "Las aristas resultantes componen un árbol"
 
 #: ../../build/doc/spanningTree-family.rst:52
 msgid "When the graph is not connected,"
-msgstr ""
+msgstr "Cuando el grafo no está conectado,"
 
 #: ../../build/doc/spanningTree-family.rst:54
 msgid "Finds a minimum spanning tree for each connected component."
-msgstr ""
+msgstr "Encuentra un árbol de expansión mínimo para cada componente conectado."
 
 #: ../../build/doc/spanningTree-family.rst:55
 msgid "The resulting edges make up a forest."
-msgstr ""
+msgstr "Las aristas resultantes conforman un bosque."
 
 #: ../../build/doc/spanningTree-family.rst:60
 msgid "See Also"
 msgstr "Ver también"
 
 #: ../../build/doc/spanningTree-family.rst:62
-#, fuzzy
 msgid ""
 "`Boost: Prim's algorithm "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
-"`Boost: Documentación del algorithmo de Prim "
-"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+"`Boost: Algoritmo de Prim <https://www.boost.org/libs/graph/doc/"
+"prim_minimum_spanning_tree.html>`__"
 
 #: ../../build/doc/spanningTree-family.rst:64
 msgid ""

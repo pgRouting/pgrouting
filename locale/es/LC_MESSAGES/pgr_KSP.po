@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 02:56+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_ksp/"
 "es/>\n"
@@ -65,9 +65,8 @@ msgid "pgr_KSP"
 msgstr "pgr_KSP"
 
 #: ../../build/doc/pgr_KSP.rst:31
-#, fuzzy
 msgid "``pgr_KSP`` — Yen's algorithm for K shortest paths using Dijkstra."
-msgstr "``pgr_KSP`` — Devuelve la ruta más corta \"K\"."
+msgstr "``pgr_KSP`` — Devuelve las K rutas más cortas usando Dijkstra ."
 
 #: ../../build/doc/pgr_KSP.rst:37
 msgid "Boost Graph Inside"
@@ -226,12 +225,11 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_KSP.rst:116
 msgid "KSP Optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de KSP"
 
 #: ../../build/doc/pgr_KSP.rst:129
-#, fuzzy
 msgid "``heap_paths``"
-msgstr "**heap_paths**"
+msgstr "``heap_paths``"
 
 #: ../../build/doc/pgr_KSP.rst:131
 msgid "``false``"
@@ -239,11 +237,12 @@ msgstr "``false``"
 
 #: ../../build/doc/pgr_KSP.rst:132
 msgid "When ``false`` Returns at most K paths"
-msgstr ""
+msgstr "Cuando ``false`` Regresa a lo más K caminos"
 
 #: ../../build/doc/pgr_KSP.rst:133
 msgid "When ``true`` all the calculated paths while processing are returned."
 msgstr ""
+"Cuando ``true`` se regresan todos los caminos calulados mientras se procesa."
 
 #: ../../build/doc/pgr_KSP.rst:134
 msgid ""
@@ -358,11 +357,12 @@ msgstr "``path_id``"
 
 #: ../../build/doc/pgr_KSP.rst:171
 msgid "Path identifier."
-msgstr ""
+msgstr "Identificador del camino."
 
 #: ../../build/doc/pgr_KSP.rst:173
 msgid "Has value **1** for the first of a path from **start vid** to **end_vid**"
 msgstr ""
+"Tiene valor **1** para el primer camnio desde **start vid** a **end_vid**"
 
 #: ../../build/doc/pgr_KSP.rst:175
 msgid "``path_seq``"
@@ -415,7 +415,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_KSP.rst:191
 msgid ":math:`0` for the last ``node`` of the path."
-msgstr ""
+msgstr ":math:`0` para el último ``node`` de la ruta."
 
 #: ../../build/doc/pgr_KSP.rst:192
 msgid "``agg_cost``"

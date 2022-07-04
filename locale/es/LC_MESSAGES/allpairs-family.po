@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:59+0000\n"
+"PO-Revision-Date: 2022-07-03 03:21+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "allpairs-family/es/>\n"
@@ -79,7 +79,7 @@ msgstr ":doc:`pgr_johnson` - Algoritmo de Johnson"
 
 #: ../../build/doc/allpairs-family.rst:46
 msgid "Introduction"
-msgstr ""
+msgstr "Introducción"
 
 #: ../../build/doc/allpairs-family.rst:50
 msgid "The main characteristics are:"
@@ -94,6 +94,8 @@ msgid ""
 "Returns the sum of the costs of the shortest path for each pair of nodes "
 "in the graph."
 msgstr ""
+"Regresa la suma de los costos de la ruta más corta para cada par de nodos "
+"del grafo."
 
 #: ../../build/doc/allpairs-family.rst:55
 msgid "Process is done only on edges with positive costs."
@@ -104,18 +106,24 @@ msgid ""
 "Boost returns a :math:`V \\times V` matrix, where the infinity values. "
 "Represent the distance between vertices for which there is no path."
 msgstr ""
+"Boost devuelve una matriz :math:`V \\times V` donde los valores infinitos "
+"representan la distancia entre vértices para los que no hay ruta."
 
 #: ../../build/doc/allpairs-family.rst:59
 msgid ""
 "We return only the non infinity values in form of a set of `(start_vid, "
 "end_vid, agg_cost)`."
 msgstr ""
+"Solo regresa los valores no infinitos en forma de un conjunto de `("
+"start_vid, end_vid, agg_cost)`."
 
 #: ../../build/doc/allpairs-family.rst:62
 msgid ""
 "Let be the case the values returned are stored in a table, so the unique "
 "index would be the pair: `(start_vid, end_vid)`."
 msgstr ""
+"Sea el caso donde los valores devueltos se almacenan en una tabla, por lo "
+"que el índice único sería el par: `(start_vid, end_vid)`."
 
 #: ../../build/doc/allpairs-family.rst:65
 msgid "For the undirected graph, the results are symmetric."
@@ -127,7 +135,7 @@ msgstr "El `agg_cost` de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/allpairs-family.rst:69
 msgid "When  `start_vid` = `end_vid`, the `agg_cost` = 0."
-msgstr ""
+msgstr "En caso de `start_vid` = `end_vid`, el `agg_cost` = 0."
 
 #: ../../build/doc/allpairs-family.rst:71
 msgid "**Recommended, use a bounding box of no more than 3500 edges.**"
@@ -159,7 +167,7 @@ msgstr "x Defecto"
 #: ../../build/doc/pgRouting-concepts.rst:11
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/allpairs-family.rst:89
 msgid "`Edges SQL`_"
@@ -230,7 +238,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:20
 msgid "``cost``"
@@ -267,7 +275,7 @@ msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:32
 msgid "Where:"
-msgstr ""
+msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
@@ -1270,14 +1278,12 @@ msgid ":doc:`pgr_floydWarshall`"
 msgstr ":doc:`pgr_floydWarshall`"
 
 #: ../../build/doc/allpairs-family.rst:274
-#, fuzzy
 msgid ""
 "Boost `floyd-Warshall "
 "<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
 msgstr ""
-"`Algoritmo floyd-Warshall "
-"<https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ en "
-"Boost"
+"Boost `Algoritmo floyd-Warshall <https://www.boost.org/libs/graph/doc/"
+"floyd_warshall_shortest.html>`_"
 
 #: ../../build/doc/allpairs-family.rst:278
 msgid "Indices and tables"

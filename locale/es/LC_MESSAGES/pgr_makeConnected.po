@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_makeconnected/es/>\n"
@@ -32,18 +32,19 @@ msgid ""
 "<https://docs.pgrouting.org/3.3/en/pgr_makeConnected.html>`__ `3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__"
 msgstr ""
+"**Versiones soportadas** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_makeConnected.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_makeConnected.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_makeConnected.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_makeConnected.html>`__"
 
 #: ../../build/doc/pgr_makeConnected.rst:19
-#, fuzzy
 msgid "``pgr_makeConnected`` - Experimental"
-msgstr "pgr_makeConnected - Experimental"
+msgstr "``pgr_makeConnected`` - Experimental"
 
 #: ../../build/doc/pgr_makeConnected.rst:21
-#, fuzzy
 msgid "``pgr_makeConnected`` — Set of edges that will connect the graph."
-msgstr ""
-"``pgr_makeConnected`` — Devuelve el conjunto de bordes que harán que el "
-"gráfico esté conectado."
+msgstr "``pgr_makeConnected`` — Conjunto de aristas que conectan el grafo."
 
 #: ../../build/doc/pgr_makeConnected.rst:26
 msgid "Boost Graph Inside"
@@ -55,7 +56,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -87,7 +88,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -103,11 +104,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -159,9 +162,8 @@ msgid "The main characteristics are:"
 msgstr "Las principales características son:"
 
 #: ../../build/doc/pgr_makeConnected.rst:53
-#, fuzzy
 msgid "Works for **undirected** graphs."
-msgstr "Aplicable solo para grafos **no dirigidos**."
+msgstr "Funciona para grafos **no dirigidos**."
 
 #: ../../build/doc/pgr_makeConnected.rst:54
 msgid ""
@@ -176,9 +178,8 @@ msgid "The algorithm does not considers traversal costs in the calculations."
 msgstr "El algoritmo no considera los costos transversales en los cálculos."
 
 #: ../../build/doc/pgr_makeConnected.rst:57
-#, fuzzy
 msgid "The algorithm does not considers geometric topology in the calculations."
-msgstr "El algoritmo no considera los costos transversales en los cálculos."
+msgstr "El algoritmo no considera la topología geométrica en los cálculos."
 
 #: ../../build/doc/pgr_makeConnected.rst:58
 msgid "Running time: :math:`O(V + E)`"
@@ -193,13 +194,12 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_makeConnected.rst:73
-#, fuzzy
 msgid ""
 "Query done on :doc:`sampledata` network gives the list of edges that are "
 "needed to connect the graph."
 msgstr ""
-"La consulta realizada en la red de :doc:`sampledata` proporciona la lista"
-" de aristas que se necesitan en el grafo para que esté conectado."
+"La consulta realizada en la red de :doc:`sampledata` proporciona la lista de "
+"aristas que se necesitan en el grafo para conectarlo."
 
 #: ../../build/doc/pgr_makeConnected.rst:81
 msgid "Parameters"
@@ -223,9 +223,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta SQL como se describe a continuación."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_makeConnected.rst:88
 msgid "Inner Queries"

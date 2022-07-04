@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:51+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_astarcostmatrix/es/>\n"
@@ -34,6 +34,13 @@ msgid ""
 "<https://docs.pgrouting.org/3.1/en/pgr_aStarCostMatrix.html>`__ `3.0 "
 "<https://docs.pgrouting.org/3.0/en/pgr_aStarCostMatrix.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Latest <https://docs.pgrouting.org/latest/es/"
+"pgr_aStarCostMatrix.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_aStarCostMatrix.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_aStarCostMatrix.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_aStarCostMatrix.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_aStarCostMatrix.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_aStarCostMatrix.html>`__"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:19
 msgid ""
@@ -48,9 +55,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.4/en/pgr_aStarCostMatrix.html>`__"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:25
-#, fuzzy
 msgid "``pgr_aStarCostMatrix``"
-msgstr "pgr_aStarCostMatrix"
+msgstr "``pgr_aStarCostMatrix``"
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:27
 msgid ""
@@ -193,12 +199,11 @@ msgstr "**vid salidas**"
 
 #: ../../build/doc/costMatrix-category.rst:15
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/costMatrix-category.rst:16
-#, fuzzy
 msgid "Array of identifiers of starting vertices."
-msgstr "Identificador del vértice inicial."
+msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:95
 msgid "Optional parameters"
@@ -230,18 +235,16 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:102
-#, fuzzy
 msgid "aStar optional Parameters"
-msgstr "Parámetros opcionales"
+msgstr "Parámetros opcionales de aStar"
 
 #: ../../build/doc/aStar-family.rst:8 ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/aStar-family.rst:12
-#, fuzzy
 msgid "``heuristic``"
-msgstr "**heuristic**"
+msgstr "``heuristic``"
 
 #: ../../build/doc/aStar-family.rst:13
 msgid "``INTEGER``"
@@ -256,9 +259,9 @@ msgid "Heuristic number. Current valid values 0~5."
 msgstr "Número heurístico. Valores válidos 0~5."
 
 #: ../../build/doc/aStar-family.rst:17
-#, fuzzy
 msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
-msgstr "0: h(v) = 0 (utilizar este valor para comparar con pgr_dijkstra)"
+msgstr ""
+"0: :math:`h(v) = 0` (Utilizar este valor para comparar con pgr_dijkstra)"
 
 #: ../../build/doc/aStar-family.rst:18
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
@@ -281,9 +284,8 @@ msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:23
-#, fuzzy
 msgid "``factor``"
-msgstr "``true``"
+msgstr "``factor``"
 
 #: ../../build/doc/aStar-family.rst:24 ../../build/doc/aStar-family.rst:28
 #: ../../build/doc/pgRouting-concepts.rst:20
@@ -311,6 +313,8 @@ msgid ""
 "See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
 "<astar_factor>` handling."
 msgstr ""
+"Ver :ref:`heuristicas <astar_heuristics>` disponibles y manupulación de "
+":ref:`factor <astar_factor>`."
 
 #: ../../build/doc/pgr_aStarCostMatrix.rst:109
 msgid "Inner Queries"
@@ -368,13 +372,12 @@ msgid "Weight of the edge  (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
-#, fuzzy
 msgid ""
 "When negative: edge (``source``, ``target``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando es negativo: la arista (``source``, ``target``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "``reverse_cost``"
@@ -385,9 +388,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:34
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``),"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``),"
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid ""
@@ -398,43 +400,36 @@ msgstr ""
 "no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:38
-#, fuzzy
 msgid "``x1``"
-msgstr "``1``"
+msgstr "``x1``"
 
 #: ../../build/doc/pgRouting-concepts.rst:41
-#, fuzzy
 msgid "X coordinate of ``source`` vertex."
-msgstr "Coordenada Y del vértice `source`."
+msgstr "Coordenada X del vértice ``source``."
 
 #: ../../build/doc/pgRouting-concepts.rst:42
-#, fuzzy
 msgid "``y1``"
-msgstr "``1``"
+msgstr "``y1``"
 
 #: ../../build/doc/pgRouting-concepts.rst:45
-#, fuzzy
 msgid "Y coordinate of ``source`` vertex."
-msgstr "Coordenada Y del vértice `source`."
+msgstr "Coordenada Y del vértice ``source``."
 
 #: ../../build/doc/pgRouting-concepts.rst:46
 msgid "``x2``"
 msgstr "``x2``"
 
 #: ../../build/doc/pgRouting-concepts.rst:49
-#, fuzzy
 msgid "X coordinate of ``target`` vertex."
-msgstr "Coordenada Y del vértice `target`."
+msgstr "Coordenada X del vértice ``target``."
 
 #: ../../build/doc/pgRouting-concepts.rst:50
-#, fuzzy
 msgid "``y2``"
-msgstr "``5``"
+msgstr "``y2``"
 
 #: ../../build/doc/pgRouting-concepts.rst:53
-#, fuzzy
 msgid "Y coordinate of ``target`` vertex."
-msgstr "Coordenada Y del vértice `target`."
+msgstr "Coordenada Y del vértice ``target``."
 
 #: ../../build/doc/pgRouting-concepts.rst:55
 msgid "Where:"

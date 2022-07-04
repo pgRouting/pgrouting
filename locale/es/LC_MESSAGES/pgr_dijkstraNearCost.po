@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:20+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_dijkstranearcost/es/>\n"
@@ -40,9 +40,8 @@ msgstr ""
 "pgr_dijkstraNearCost.html>`__"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:19
-#, fuzzy
 msgid "``pgr_dijkstraNearCost`` - Proposed"
-msgstr "pgr_dijkstraNearCost - Propuesto"
+msgstr "``pgr_dijkstraNearCost`` - Propuesto"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:21
 msgid ""
@@ -70,7 +69,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -78,7 +77,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -228,11 +227,10 @@ msgstr "Usando un grafo **dirigido** para el ruteo de automóviles."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:92
 #: ../../build/doc/pgr_dijkstraNearCost.rst:123
-#, fuzzy
 msgid "The subway stations are on the following vertices :math:`\\{1, 10, 11\\}`"
 msgstr ""
-"Las estaciones de metro se encuentran en los siguientes vértices "
-":math:`\\{ 3, 6, 7\\}`"
+"Las estaciones de metro se encuentran en los siguientes vértices :math:`\\{ "
+"1, 10, 11\\}`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:93
 #: ../../build/doc/pgr_dijkstraNearCost.rst:154
@@ -252,10 +250,9 @@ msgid "`cap => 1`"
 msgstr "`cap => 1`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:104
-#, fuzzy
 msgid "The result shows that station at vertex :math:`11` is the nearest."
 msgstr ""
-"El resultado muestra que la estación en el vértice :math:`6` es la más "
+"El resultado muestra que la estación en el vértice :math:`11` es la más "
 "cercana."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:110
@@ -263,13 +260,12 @@ msgid "Many to One"
 msgstr "Muchos a Uno"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:119
-#, fuzzy
 msgid ""
 "Departing on a car from a subway station find the nearest **two** "
 "stations to vertex :math:`6`"
 msgstr ""
 "Saliendo en coche desde una estación de metro encontrar las **dos** "
-"estaciones más cercanas al vértice :math:`2`"
+"estaciones más cercanas al vértice :math:`6`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:124
 msgid "On line `4`: using the positional parameter: `directed` set to ``true``"
@@ -282,13 +278,12 @@ msgid "In line `5`: using named parameter `cap => 2`"
 msgstr "En la línea `5`: usando el parámetro con nombre `cap => 2`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:132
-#, fuzzy
 msgid ""
 "The result shows that station at vertex :math:`10` is the nearest and the"
 " next best is :math:`11`."
 msgstr ""
-"El resultado muestra que la estación en el vértice :math:`3` es la más "
-"cercana y la siguiente mejor es :math:`6`."
+"El resultado muestra que la estación en el vértice :math:`10` es la más "
+"cercana y la siguiente mejor es :math:`11`."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:139
 msgid "Many to Many"
@@ -303,14 +298,14 @@ msgid "Unsing an **undirected** graph for pedestrian routing"
 msgstr "Usando un grafo **no dirigido** para el ruteo de peatones"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:151
-#, fuzzy
 msgid "The first subway line stations are at :math:`\\{15, 16\\}`"
-msgstr "Las primeras paradas de la línea de metro están en :math:`\\{3, 6, 7\\}`"
+msgstr ""
+"Las estaciones de la primera línea de metro están en :math:`\\{15, 16\\}`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:152
-#, fuzzy
 msgid "The second subway line stations stops are at :math:`\\{1, 10, 11\\}`"
-msgstr "Las segundas estaciones de la línea de metro están en :math:`\\{4, 9\\}`"
+msgstr ""
+"Las estaciones de la segunda línea de metro están en :math:`\\{1, 10, 11\\}`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:153
 msgid "On line `4`: using the named parameter: `directed => false`"
@@ -321,15 +316,14 @@ msgid "`global => true`"
 msgstr "`global => true`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:164
-#, fuzzy
 msgid ""
 "For a pedestrian the best connection is to get on/off is at vertex "
 ":math:`15` of the first subway line and at vertex :math:`10` of the "
 "second subway line."
 msgstr ""
-"Para un peatón la mejor conexión es subir/bajar en el vértice :math:`3` "
-"de la primera línea de metro y en el vértice :math:`4` de la segunda "
-"línea de metro."
+"Para un peatón la mejor conexión es subir/bajar en el vértice :math:`15` de "
+"la primera línea de metro y en el vértice :math:`10` de la segunda línea de "
+"metro."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:167
 msgid ""
@@ -348,91 +342,92 @@ msgstr ""
 "líneas de metro"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:186
-#, fuzzy
 msgid "The first subway line stations stops are at :math:`\\{1, 10, 11\\}`"
-msgstr "Las primeras paradas de la línea de metro están en :math:`\\{3, 6, 7\\}`"
+msgstr ""
+"Las estaciones de la primera línea de metro están en :math:`\\{1, 10, 11\\}`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:187
-#, fuzzy
 msgid "The second subway line stations are at :math:`\\{15, 16\\}`"
-msgstr "Las segundas estaciones de la línea de metro están en :math:`\\{4, 9\\}`"
+msgstr ""
+"Las estaciones de la segunda línea de metro están en :math:`\\{15, 16\\}`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:189
 msgid "The combinations contents:"
-msgstr ""
+msgstr "El contenido de las combinaciones:"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:195
 msgid "The query:"
 msgstr "La consulta:"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:197
-#, fuzzy
 msgid ""
 "lines `3~4` sets the start vertices to be from the fisrt subway line and "
 "the ending vertices to be from the second subway line"
 msgstr ""
-"línea `3` establece los vértices de inicio para ser de la primera línea "
-"de metro y los vértices finales para ser de la segunda línea de metro"
+"líneas `3~4` establecen los vértices de inicio de la primera línea de metro "
+"y los vértices finales de la segunda línea de metro"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:199
-#, fuzzy
 msgid ""
 "lines `6~7` sets the start vertices to be from the first subway line and "
 "the ending vertices to be from the first subway line"
 msgstr ""
-"la línea `5` establece los vértices de inicio que sean de la primera "
-"línea de metro y los vértices finales de la primera línea de metro"
+"la línea `6~7` establecen los vértices de inicio de la primera línea de "
+"metro y los vértices finales de la primera línea de metro"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:201
-#, fuzzy
 msgid "On line `8`: using the named parameter is `global => false`"
-msgstr "En la línea `6`: el uso del parámetro con nombre es 'global '> false'"
+msgstr "En la línea `8`: usando el parámetro con nombre `global => false`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:212
 msgid "From the results:"
 msgstr "A partir de los resultados:"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:214
-#, fuzzy
 msgid ""
 "making a connection from the first subway line :math:`\\{1, 10, 11\\}` to"
 " the second :math:`\\{15, 16\\}`:"
-msgstr "haciendo una conexión desde la primera línea de metro a la segunda:"
+msgstr ""
+"haciendo una conexión desde la primera línea de metro :math:`\\{1, 10, 11\\}`"
+" a la segunda :math:`\\{15, 16\\}`:"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:217
 msgid ""
 "The best connections from all the stations from the first line are: "
 ":math:`{(1 \\rightarrow 16) (10 \\rightarrow 16) (11 \\rightarrow 16)}`"
 msgstr ""
+"Las mejores conecciones de todas las estaciones desde la primera línea son: "
+":math:`{(1 \\rightarrow 16) (10 \\rightarrow 16) (11 \\rightarrow 16)}`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:219
-#, fuzzy
 msgid ""
 "The best one is :math:`(11 \\rightarrow 16)` with a cost of :math:`1` "
 "(lines: `1`)"
 msgstr ""
-":math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` y lo mejor es :math:`(6 -> 9)` con "
-"un costo de :math:`1` (line: `11`)"
+"La mejor es :math:`(11 \\rightarrow 16)` con un costo de :math:`1` (line: "
+"`1`)"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:222
-#, fuzzy
 msgid ""
 "making a connection from the second subway line :math:`\\{15, 16\\}` to "
 "the first :math:`\\{1, 10, 11\\}`:"
-msgstr "haciendo una conexión desde la segunda línea de metro a la primera:"
+msgstr ""
+"haciendo una conexión desde la segunda línea de metro :math:`\\{15, 16\\}` a "
+"la primera :math:`\\{1, 10, 11\\}`:"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:225
 msgid ""
 "The best connections from all the stations from the second line are: "
 ":math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
 msgstr ""
+"Las mejores conecciones de todas las estaciones desde la segunda línea son: "
+":math:`{(15 \\rightarrow 10) (16 \\rightarrow 11)}`"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:227
-#, fuzzy
 msgid "Both are equaly good as they have the same cost. (lines: `12` and `13`)"
 msgstr ""
-":math:`{(4 -> 3) (9 -> 6)} ` y ambos son igualmente buenos ya que tienen "
-"el mismo costo. (líneas: `10` y`12`)"
+"Ambos son igualmente buenos ya que tienen el mismo costo. (lines: `12` and "
+"`13`)"
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:230
 msgid "Parameters"
@@ -519,7 +514,7 @@ msgstr "Arreglo de identificadores de vértices finales."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:237
 msgid "Dijkstra optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de Dijkstra"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:10
@@ -551,7 +546,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_dijkstraNearCost.rst:244
 msgid "Near optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de Cercanía"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgr_dijkstraNear.rst:8
@@ -560,12 +555,11 @@ msgstr "Parámetro"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:12
 msgid "``cap``"
-msgstr ""
+msgstr "``cap``"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:14
-#, fuzzy
 msgid "``1``"
-msgstr "``true``"
+msgstr "``1``"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:15
 msgid "Find at most ``cap`` number of nearest shortest paths"
@@ -574,9 +568,8 @@ msgstr ""
 "cercanos"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:16
-#, fuzzy
 msgid "``global``"
-msgstr "`global => true`"
+msgstr "``global``"
 
 #: ../../build/doc/pgr_dijkstraNear.rst:19
 msgid "When ``true``: only ``cap`` limit results will be returned"

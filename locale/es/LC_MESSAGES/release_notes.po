@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-20 00:25+0000\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "release_notes/es/>\n"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: ../../build/doc/release_notes.rst:75
 msgid "Utilities"
-msgstr ""
+msgstr "Utilidades"
 
 #: ../../build/doc/release_notes.rst:77
 msgid "``pgr_findCloseEdges`` (One point)"
@@ -201,11 +201,8 @@ msgid "Deprecated functions"
 msgstr "Funciones Obsoletas"
 
 #: ../../build/doc/release_notes.rst:84
-#, fuzzy
 msgid "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
-msgstr ""
-"Se ha limpiado el código interno de "
-"trsp(text,integer,integer,boolean,boolean [, text])"
+msgstr "``pgr_trsp(text,integer,integer,boolean,boolean,text)``"
 
 #: ../../build/doc/release_notes.rst:85
 #, fuzzy
@@ -426,7 +423,7 @@ msgstr "pgr_extractVertices"
 
 #: ../../build/doc/release_notes.rst:165
 msgid "Traversal"
-msgstr "Traversal"
+msgstr "Travesía"
 
 #: ../../build/doc/release_notes.rst:167
 msgid "pgr_depthFirstSearch(Multiple vertices)"
@@ -572,7 +569,7 @@ msgstr "pgr_depthFirstSearch"
 
 #: ../../build/doc/release_notes.rst:222
 msgid "Dijkstra Near"
-msgstr "Dijkstra Near"
+msgstr "Dijkstra Cercano"
 
 #: ../../build/doc/release_notes.rst:238
 msgid "pgr_edwardMoore(Combinations)"
@@ -1085,7 +1082,7 @@ msgstr "pgr_kruskalDFS"
 
 #: ../../build/doc/release_notes.rst:505
 msgid "Prim family"
-msgstr "Prim family"
+msgstr "Familia Prim"
 
 #: ../../build/doc/release_notes.rst:507
 msgid "pgr_prim"
@@ -1117,11 +1114,11 @@ msgstr "pgr_aStar(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:518
 msgid "pgr_aStar(many to one)"
-msgstr "pgr_aStar(many to one)"
+msgstr "pgr_aStar(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:519
 msgid "pgr_aStar(many to many)"
-msgstr "pgr_aStar(many to many)"
+msgstr "pgr_aStar(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:520
 msgid "pgr_aStarCost(one to one)"
@@ -1133,11 +1130,11 @@ msgstr "pgr_aStarCost(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:522
 msgid "pgr_aStarCost(many to one)"
-msgstr "pgr_aStarCost(many to one)"
+msgstr "pgr_aStarCost(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:523
 msgid "pgr_aStarCost(many to many)"
-msgstr "pgr_aStarCost(many to many)"
+msgstr "pgr_aStarCost(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:524
 msgid "pgr_aStarCostMatrix(one to one)"
@@ -1149,11 +1146,11 @@ msgstr "pgr_aStarCostMatrix(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:526
 msgid "pgr_aStarCostMatrix(many to one)"
-msgstr "pgr_aStarCostMatrix(many to one)"
+msgstr "pgr_aStarCostMatrix(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:527
 msgid "pgr_aStarCostMatrix(many to many)"
-msgstr "pgr_aStarCostMatrix(many to many)"
+msgstr "pgr_aStarCostMatrix(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:529
 msgid "bdAstar Family"
@@ -1165,11 +1162,11 @@ msgstr "pgr_bdAstar(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:532 ../../build/doc/release_notes.rst:874
 msgid "pgr_bdAstar(many to one)"
-msgstr "pgr_bdAstar(many to one)"
+msgstr "pgr_bdAstar(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:533 ../../build/doc/release_notes.rst:875
 msgid "pgr_bdAstar(many to many)"
-msgstr "pgr_bdAstar(many to many)"
+msgstr "pgr_bdAstar(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:534 ../../build/doc/release_notes.rst:876
 msgid "pgr_bdAstarCost(one to one)"
@@ -1181,11 +1178,11 @@ msgstr "pgr_bdAstarCost(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:536 ../../build/doc/release_notes.rst:878
 msgid "pgr_bdAstarCost(many to one)"
-msgstr "pgr_bdAstarCost(many to one)"
+msgstr "pgr_bdAstarCost(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:537 ../../build/doc/release_notes.rst:879
 msgid "pgr_bdAstarCost(many to many)"
-msgstr "pgr_bdAstarCost(many to many)"
+msgstr "pgr_bdAstarCost(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:538
 msgid "pgr_bdAstarCostMatrix(one to one)"
@@ -1197,11 +1194,11 @@ msgstr "pgr_bdAstarCostMatrix(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:540
 msgid "pgr_bdAstarCostMatrix(many to one)"
-msgstr "pgr_bdAstarCostMatrix(many to one)"
+msgstr "pgr_bdAstarCostMatrix(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:541
 msgid "pgr_bdAstarCostMatrix(many to many)"
-msgstr "pgr_bdAstarCostMatrix(many to many)"
+msgstr "pgr_bdAstarCostMatrix(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:543
 msgid "bdDijkstra Family"
@@ -1213,11 +1210,11 @@ msgstr "pgr_bdDijkstra(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:546 ../../build/doc/release_notes.rst:882
 msgid "pgr_bdDijkstra(many to one)"
-msgstr "pgr_bdDijkstra(many to one)"
+msgstr "pgr_bdDijkstra(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:547 ../../build/doc/release_notes.rst:883
 msgid "pgr_bdDijkstra(many to many)"
-msgstr "pgr_bdDijkstra(many to many)"
+msgstr "pgr_bdDijkstra(muchos to muchos)"
 
 #: ../../build/doc/release_notes.rst:548 ../../build/doc/release_notes.rst:884
 msgid "pgr_bdDijkstraCost(one to one)"
@@ -1229,11 +1226,11 @@ msgstr "pgr_bdDijkstraCost(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:550 ../../build/doc/release_notes.rst:886
 msgid "pgr_bdDijkstraCost(many to one)"
-msgstr "pgr_bdDijkstraCost(many to one)"
+msgstr "pgr_bdDijkstraCost(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:551 ../../build/doc/release_notes.rst:887
 msgid "pgr_bdDijkstraCost(many to many)"
-msgstr "pgr_bdDijkstraCost(many to many)"
+msgstr "pgr_bdDijkstraCost(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:552
 msgid "pgr_bdDijkstraCostMatrix(one to one)"
@@ -1245,11 +1242,11 @@ msgstr "pgr_bdDijkstraCostMatrix(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:554
 msgid "pgr_bdDijkstraCostMatrix(many to one)"
-msgstr "pgr_bdDijkstraCostMatrix(many to one)"
+msgstr "pgr_bdDijkstraCostMatrix(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:555
 msgid "pgr_bdDijkstraCostMatrix(many to many)"
-msgstr "pgr_bdDijkstraCostMatrix(many to many)"
+msgstr "pgr_bdDijkstraCostMatrix(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:557
 msgid "Flow Family"
@@ -1265,11 +1262,11 @@ msgstr "pgr_pushRelabel(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:561
 msgid "pgr_pushRelabel(many to one)"
-msgstr "pgr_pushRelabel(many to one)"
+msgstr "pgr_pushRelabel(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:562
 msgid "pgr_pushRelabel(many to many)"
-msgstr "pgr_pushRelabel(many to many)"
+msgstr "pgr_pushRelabel(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:563
 msgid "pgr_edmondsKarp(one to one)"
@@ -1281,11 +1278,11 @@ msgstr "pgr_edmondsKarp(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:565
 msgid "pgr_edmondsKarp(many to one)"
-msgstr "pgr_edmondsKarp(many to one)"
+msgstr "pgr_edmondsKarp(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:566
 msgid "pgr_edmondsKarp(many to many)"
-msgstr "pgr_edmondsKarp(many to many)"
+msgstr "pgr_edmondsKarp(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:567
 msgid "pgr_boykovKolmogorov (one to one)"
@@ -1297,11 +1294,11 @@ msgstr "pgr_boykovKolmogorov(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:569
 msgid "pgr_boykovKolmogorov (many to one)"
-msgstr "pgr_boykovKolmogorov (many to one)"
+msgstr "pgr_boykovKolmogorov (muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:570
 msgid "pgr_boykovKolmogorov (many to many)"
-msgstr "pgr_boykovKolmogorov (many to many)"
+msgstr "pgr_boykovKolmogorov (muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:571
 msgid "pgr_maxCardinalityMatching"
@@ -1321,11 +1318,11 @@ msgstr "pgr_edgeDisjointPaths(Uno a Muchos)"
 
 #: ../../build/doc/release_notes.rst:575 ../../build/doc/release_notes.rst:1055
 msgid "pgr_edgeDisjointPaths(many to one)"
-msgstr "pgr_edgeDisjointPaths(many to one)"
+msgstr "pgr_edgeDisjointPaths(muchos a uno)"
 
 #: ../../build/doc/release_notes.rst:576 ../../build/doc/release_notes.rst:1056
 msgid "pgr_edgeDisjointPaths(many to many)"
-msgstr "pgr_edgeDisjointPaths(many to many)"
+msgstr "pgr_edgeDisjointPaths(muchos a muchos)"
 
 #: ../../build/doc/release_notes.rst:578
 msgid "Components family"

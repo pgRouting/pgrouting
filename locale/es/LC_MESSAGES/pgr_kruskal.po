@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_kruskal/es/>\n"
@@ -42,18 +42,16 @@ msgstr ""
 "0/es/pgr_kruskal.html>`__"
 
 #: ../../build/doc/pgr_kruskal.rst:21
-#, fuzzy
 msgid "``pgr_kruskal``"
-msgstr "pgr_kruskal"
+msgstr "``pgr_kruskal``"
 
 #: ../../build/doc/pgr_kruskal.rst:23
-#, fuzzy
 msgid ""
 "``pgr_kruskal`` — Minimum spanning tree of a graph using Kruskal's "
 "algorithm."
 msgstr ""
-"``pgr_kruskal`` — Devuelve el árbol de expansión mínimo del grafo "
-"utilizando el algoritmo Kruskal."
+"``pgr_kruskal`` — Devuelve el árbol de expansión mínimo del grafo utilizando "
+"el algoritmo Kruskal."
 
 #: ../../build/doc/pgr_kruskal.rst:28
 msgid "Boost Graph Inside"
@@ -142,7 +140,6 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_kruskal.rst:65
-#, fuzzy
 msgid "Minimum spanning forest"
 msgstr "Bosque de expansión mínimo"
 
@@ -169,7 +166,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_kruskal.rst:79
 msgid "Inner Queries"
@@ -278,7 +275,7 @@ msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "Returns SET OF ``(edge, cost)``"
-msgstr "Devuelve SET OF (conjunto de) ``(edge, cost)``"
+msgstr "Devuelve CONJUNTO DE ``(edge, cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "``edge``"

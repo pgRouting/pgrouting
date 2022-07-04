@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 02:48+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "costmatrix-category/es/>\n"
@@ -100,7 +100,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -108,7 +108,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -168,7 +168,7 @@ msgstr ""
 
 #: ../../build/doc/costMatrix-category.rst:73
 msgid "It will be the users responsibility to make the matrix symmetric."
-msgstr "Será responsabilidad de los usuarios hacer que la matriz sea simétrica."
+msgstr "Es responsabilidad dels usuario hacer que la matriz sea simétrica."
 
 #: ../../build/doc/costMatrix-category.rst:75
 msgid "By using geometric or harmonic average of the non symmetric values."
@@ -252,11 +252,8 @@ msgid "Let be the case the values returned are stored in a table:"
 msgstr "Sea el caso, los valores devueltos se almacenan en una tabla:"
 
 #: ../../build/doc/costMatrix-category.rst:102
-#, fuzzy
 msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
-msgstr ""
-"Sea el caso, los valores devueltos se almacenan en una tabla, por lo que "
-"el índice único sería el par: '(start_vid, end_vid)'."
+msgstr "El índice único es el par: ``(start_vid, end_vid)``."
 
 #: ../../build/doc/costMatrix-category.rst:104
 msgid ""
@@ -271,9 +268,8 @@ msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
 msgstr "El costo agregado de `(u, v)` es el mismo que para `(v, u)`."
 
 #: ../../build/doc/costMatrix-category.rst:108
-#, fuzzy
 msgid "Any duplicated value in the **start vids** are ignored."
-msgstr "Se omite cualquier valor duplicado en `start_vids`."
+msgstr "Se omite cualquier valor duplicado en **ids de veértices**."
 
 #: ../../build/doc/costMatrix-category.rst:110
 msgid "The returned values are ordered:"
@@ -295,7 +291,7 @@ msgstr "Parámetros"
 #: ../../build/doc/costMatrix-category.rst:145
 #: ../../build/doc/costMatrix-category.rst:184
 msgid "Used in:"
-msgstr ""
+msgstr "Usado en:"
 
 #: ../../build/doc/costMatrix-category.rst:132
 #: ../../build/doc/costMatrix-category.rst:155
@@ -321,7 +317,7 @@ msgstr "Tipo"
 #: ../../build/doc/pgRouting-concepts.rst:12
 #: ../../build/doc/withPoints-category.rst:11
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/costMatrix-category.rst:135
 #: ../../build/doc/costMatrix-category.rst:158
@@ -347,12 +343,12 @@ msgstr "**vid salidas**"
 #: ../../build/doc/costMatrix-category.rst:139
 #: ../../build/doc/costMatrix-category.rst:165
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/costMatrix-category.rst:140
 #: ../../build/doc/costMatrix-category.rst:166
 msgid "Array of identifiers of starting vertices."
-msgstr ""
+msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/costMatrix-category.rst:161
 msgid "`Points SQL`_"
@@ -430,7 +426,7 @@ msgstr "``target``"
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
+msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
 msgid "``cost``"
@@ -469,7 +465,7 @@ msgstr ""
 #: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/withPoints-category.rst:40
 msgid "Where:"
-msgstr ""
+msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 #: ../../build/doc/withPoints-category.rst
@@ -509,15 +505,17 @@ msgstr "**valor**"
 
 #: ../../build/doc/withPoints-category.rst:15
 msgid "Identifier of the point."
-msgstr ""
+msgstr "Identificador del punto."
 
 #: ../../build/doc/withPoints-category.rst:17
 msgid "Use with positive value, as internally will be converted to negative value"
 msgstr ""
+"Use con un valor positivo, dado que internamente se convertirá a un valor "
+"negativo"
 
 #: ../../build/doc/withPoints-category.rst:19
 msgid "If column is present, it can not be NULL."
-msgstr ""
+msgstr "Si columna esta presente, no puede ser NULL."
 
 #: ../../build/doc/withPoints-category.rst:20
 msgid ""
@@ -529,7 +527,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:22
 msgid "``edge_id``"
-msgstr ""
+msgstr "``edge_id``"
 
 #: ../../build/doc/withPoints-category.rst:25
 msgid "Identifier of the \"closest\" edge to the point."
@@ -549,7 +547,7 @@ msgstr ""
 
 #: ../../build/doc/withPoints-category.rst:31
 msgid "``side``"
-msgstr ""
+msgstr "``side``"
 
 #: ../../build/doc/withPoints-category.rst:32
 msgid "``CHAR``"
@@ -565,7 +563,7 @@ msgstr "Valor en [``b``, ``r``, ``l``, ``NULL``] que indica si el punto es:"
 
 #: ../../build/doc/withPoints-category.rst:36
 msgid "In the right ``r``,"
-msgstr ""
+msgstr "A la derecha ``r``,"
 
 #: ../../build/doc/withPoints-category.rst:37
 msgid "In the left ``l``,"
@@ -573,7 +571,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr ""
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/costMatrix-category.rst:200
 msgid "Result Columns"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_bddijkstra/es/>\n"
@@ -69,9 +69,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.0/en/src/bd_dijkstra/doc/index.html>`__"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:29
-#, fuzzy
 msgid "``pgr_bdDijkstra``"
-msgstr "pgr_bdDijkstra"
+msgstr "``pgr_bdDijkstra``"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:31
 msgid ""
@@ -98,9 +97,8 @@ msgid "New **proposed** signature:"
 msgstr "Nueva firma **propuesta**:"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:45
-#, fuzzy
 msgid "pgr_bdDijkstra(`Combinations`_)"
-msgstr "pgr_bdDijkstra(Combinaciones)"
+msgstr "pgr_bdDijkstra(`Combinaciones`_)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:47
 msgid "Version 3.0.0"
@@ -119,28 +117,24 @@ msgid "New **Proposed** functions:"
 msgstr "Nuevas funciones **Propuestas**:"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:55
-#, fuzzy
 msgid "``pgr_bdDijkstra`` (`One to Many`_)"
-msgstr "pgr_bdDijkstra(Uno a Muchos)"
+msgstr "``pgr_bdDijkstra`` (`Uno a Muchos`_)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:56
-#, fuzzy
 msgid "``pgr_bdDijkstra`` (`Many to One`_)"
-msgstr "pgr_bdDijkstra(Muchos a Uno)"
+msgstr "``pgr_bdDijkstra`` (`Muchos a Uno`_)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:57
-#, fuzzy
 msgid "``pgr_bdDijkstra`` (`Many to Many`_)"
-msgstr "pgr_bdDijkstra(Muchos a Muchos)"
+msgstr "``pgr_bdDijkstra`` (`Muchos a Muchos`_)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:59
 msgid "Version 2.4.0"
 msgstr "Versión 2.4.0"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:61
-#, fuzzy
 msgid "Signature change on ``pgr_bdDijsktra`` (`One to One`_)"
-msgstr "La firma cambió en pgr_bdDijsktra(Uno a Uno)"
+msgstr "La firma cambió en ``pgr_bdDijsktra`` (`Uno a Uno`_)"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:63
 msgid "Old signature no longer supported"
@@ -151,9 +145,8 @@ msgid "Version 2.0.0"
 msgstr "Versión 2.0.0"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:67
-#, fuzzy
 msgid "**Official** ``pgr_bdDijkstra`` (`One to One`_)"
-msgstr "**Oficial** pgr_bdDijkstra(Uno a Uno)"
+msgstr "**Oficial** ``pgr_bdDijkstra`` (`Uno a Uno`_)"
 
 #: ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/dijkstra-family.rst:11
@@ -177,6 +170,8 @@ msgid ""
 "A negative value on a cost column is interpreted as the edge does not "
 "exist."
 msgstr ""
+"Valor no negativo en una columna de costo se interpreta como la arista no "
+"exite."
 
 #: ../../build/doc/bdDijkstra-family.rst:7
 msgid "Values are returned when there is a path."
@@ -655,9 +650,8 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_bdDijkstra.rst
-#, fuzzy
 msgid "Example 1"
-msgstr "Ejemplo"
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:236
 msgid "Demonstration of repeated values are ignored, and result is sorted."
@@ -669,7 +663,7 @@ msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_bdDijkstra.rst:242
 msgid "Making **start vids** the same as **end vids**."
-msgstr ""
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #: ../../build/doc/pgr_bdDijkstra.rst
 msgid "Example 3"

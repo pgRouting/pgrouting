@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:20+0000\n"
+"PO-Revision-Date: 2022-07-03 03:32+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_articulationpoints/es/>\n"
@@ -52,9 +52,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.5/en/pgr_articulationPoints.html>`__"
 
 #: ../../build/doc/pgr_articulationPoints.rst:25
-#, fuzzy
 msgid "``pgr_articulationPoints``"
-msgstr "pgr_articulationPoints"
+msgstr "``pgr_articulationPoints``"
 
 #: ../../build/doc/pgr_articulationPoints.rst:27
 msgid ""
@@ -118,9 +117,8 @@ msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_articulationPoints.rst:57
-#, fuzzy
 msgid "Works for **undirected** graphs."
-msgstr "La firma es para un grafo **no dirigido**."
+msgstr "Funciona para grafos **no dirigidos**."
 
 #: ../../build/doc/pgr_articulationPoints.rst:58
 msgid "The returned values are ordered:"
@@ -148,7 +146,7 @@ msgstr "Los puntos de articulación del grafo"
 
 #: ../../build/doc/pgr_articulationPoints.rst:82
 msgid "Nodes in red are the articulation points."
-msgstr ""
+msgstr "Nodos en rojo son los puntos de articulación."
 
 #: ../../build/doc/pgr_articulationPoints.rst:88
 msgid "Parameters"

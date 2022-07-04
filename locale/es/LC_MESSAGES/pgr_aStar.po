@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_astar/es/>\n"
@@ -62,12 +62,10 @@ msgstr ""
 "<https://docs.pgrouting.org/2.0/en/src/astar/doc/index.html>`__"
 
 #: ../../build/doc/pgr_aStar.rst:29
-#, fuzzy
 msgid "``pgr_aStar``"
-msgstr "pgr_aStar"
+msgstr "``pgr_aStar``"
 
 #: ../../build/doc/pgr_aStar.rst:31
-#, fuzzy
 msgid "``pgr_aStar`` — Shortest path using the A* algorithm."
 msgstr "``pgr_aStar`` — La ruta más corta utilizando el algoritmo A*."
 
@@ -88,9 +86,8 @@ msgid "New **proposed** signature:"
 msgstr "Nueva firma **propuesta**:"
 
 #: ../../build/doc/pgr_aStar.rst:44
-#, fuzzy
 msgid "``pgr_aStar`` (`Combinations`_)"
-msgstr "pgr_aStar(Combinaciones)"
+msgstr "``pgr_aStar`` (`Combinaciones`_)"
 
 #: ../../build/doc/pgr_aStar.rst:46
 msgid "Version 3.0.0"
@@ -105,33 +102,28 @@ msgid "Version 2.4.0"
 msgstr "Versión 2.4.0"
 
 #: ../../build/doc/pgr_aStar.rst:52
-#, fuzzy
 msgid "New **Proposed** signatures:"
-msgstr "Nueva función **propuesta**:"
+msgstr "Nuevas firmas **propuestas**:"
 
 #: ../../build/doc/pgr_aStar.rst:54
-#, fuzzy
 msgid "``pgr_aStar`` (`One to Many`_)"
-msgstr "`pgr_aStar(` `Uno a Muchos`_ `)`"
+msgstr "``pgr_aStar`` (`Uno a Muchos`_)"
 
 #: ../../build/doc/pgr_aStar.rst:55
-#, fuzzy
 msgid "``pgr_aStar`` (`Many to One`_)"
-msgstr "`pgr_aStar(` `Muchos a Uno`_ `)`"
+msgstr "``pgr_aStar`` (`Muchos a Uno`_)"
 
 #: ../../build/doc/pgr_aStar.rst:56
-#, fuzzy
 msgid "``pgr_aStar`` (`Many to Many`_)"
-msgstr "`pgr_aStar(` `Muchos a Muchos`_ `)`"
+msgstr "``pgr_aStar`` (`Muchos a Muchos`_)"
 
 #: ../../build/doc/pgr_aStar.rst:58
 msgid "Version 2.3.0"
 msgstr "Versión 2.3.0"
 
 #: ../../build/doc/pgr_aStar.rst:60
-#, fuzzy
 msgid "Signature change on ``pgr_astar`` (`One to One`_)"
-msgstr "Cambio de firma en pgr_aStar(Uno a Uno)"
+msgstr "Cambio de firma en ``pgr_astar`` (`Uno a Uno`_)"
 
 #: ../../build/doc/pgr_aStar.rst:62
 msgid "Old signature no longer supported"
@@ -142,9 +134,8 @@ msgid "Version 2.0.0"
 msgstr "Versión 2.0.0"
 
 #: ../../build/doc/pgr_aStar.rst:66
-#, fuzzy
 msgid "**Official** ``pgr_aStar`` (`One to One`_)"
-msgstr "**Oficial** pgr_aStar(Uno a Uno)"
+msgstr "**Oficial** ``pgr_aStar`` (`Uno a Uno`_)"
 
 #: ../../build/doc/aStar-family.rst:11 ../../build/doc/dijkstra-family.rst:10
 #: ../../build/doc/dijkstra-family.rst:11
@@ -160,11 +151,11 @@ msgstr "**Las características principales son:**"
 
 #: ../../build/doc/aStar-family.rst:3
 msgid "Process works for directed and undirected graphs."
-msgstr ""
+msgstr "Funciona para grafos dirigidos y no dirigidos."
 
 #: ../../build/doc/aStar-family.rst:4
 msgid "Ordering is:"
-msgstr ""
+msgstr "Ordenamiento es:"
 
 #: ../../build/doc/aStar-family.rst:6
 msgid "first by ``start_vid`` (if exists)"
@@ -180,7 +171,7 @@ msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/aStar-family.rst:10
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
-msgstr "Permita que :math:`v` y :math:`u` sean nodos en el grafo:"
+msgstr "Sean :math:`v` y :math:`u` nodos en el grafo:"
 
 #: ../../build/doc/aStar-family.rst:12
 msgid "If there is no path from :math:`v` to :math:`u`:"
@@ -203,11 +194,9 @@ msgid "``agg_cost`` from `v` to `u` is :math:`0`"
 msgstr "``agg_cost`` de `v` a `u` es :math:`0`"
 
 #: ../../build/doc/aStar-family.rst:22
-#, fuzzy
 msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"
 msgstr ""
-"Cuando las coordenadas (x,y) para el mismo identificador de vértice "
-"difieren:"
+"Cuando las coordenadas (x,y) para el mismo identificador de vértice difieren:"
 
 #: ../../build/doc/aStar-family.rst:24
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
@@ -383,9 +372,8 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/dijkstra-family.rst:19
-#, fuzzy
 msgid "Identifier of the starting vertex of the path."
-msgstr "Identificador del primer vértice de la arista."
+msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:20
 msgid "**start vids**"
@@ -394,20 +382,19 @@ msgstr "**vid salidas**"
 #: ../../build/doc/dijkstra-family.rst:21
 #: ../../build/doc/dijkstra-family.rst:27
 msgid "``ARRAY[BIGINT]``"
-msgstr ""
+msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/dijkstra-family.rst:22
 msgid "Array of identifiers of starting vertices."
-msgstr ""
+msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/dijkstra-family.rst:23
 msgid "**end vid**"
 msgstr "**vid destino**"
 
 #: ../../build/doc/dijkstra-family.rst:25
-#, fuzzy
 msgid "Identifier of the ending vertex of the path."
-msgstr "Identificador del primer vértice de la arista."
+msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:26
 msgid "**end vids**"
@@ -447,18 +434,16 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_aStar.rst:234
-#, fuzzy
 msgid "aStar optional Parameters"
-msgstr "Parámetros opcionales"
+msgstr "Parámetros opcionales de aStar"
 
 #: ../../build/doc/aStar-family.rst:8 ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
 msgstr "Parámetro"
 
 #: ../../build/doc/aStar-family.rst:12
-#, fuzzy
 msgid "``heuristic``"
-msgstr "**heuristic**"
+msgstr "``heuristic``"
 
 #: ../../build/doc/aStar-family.rst:13
 #: ../../build/doc/pgRouting-concepts.rst:15
@@ -475,9 +460,9 @@ msgid "Heuristic number. Current valid values 0~5."
 msgstr "Número heurístico. Valores válidos 0~5."
 
 #: ../../build/doc/aStar-family.rst:17
-#, fuzzy
 msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
-msgstr "0: h(v) = 0 (utilizar este valor para comparar con pgr_dijkstra)"
+msgstr ""
+"0: :math:`h(v) = 0` (Utilizar este valor para comparar con pgr_dijkstra)"
 
 #: ../../build/doc/aStar-family.rst:18
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
@@ -500,9 +485,8 @@ msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:23
-#, fuzzy
 msgid "``factor``"
-msgstr "``true``"
+msgstr "``factor``"
 
 #: ../../build/doc/aStar-family.rst:24 ../../build/doc/aStar-family.rst:28
 #: ../../build/doc/pgRouting-concepts.rst:43
@@ -531,6 +515,8 @@ msgid ""
 "See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
 "<astar_factor>` handling."
 msgstr ""
+"Ver :ref:`heuristicas <astar_heuristics>` disponibles y manupulación de "
+":ref:`factor <astar_factor>`."
 
 #: ../../build/doc/pgr_aStar.rst:241
 msgid "Inner Queries"
@@ -593,13 +579,12 @@ msgid "Weight of the edge  (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:29
-#, fuzzy
 msgid ""
 "When negative: edge (``source``, ``target``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando es negativo: la arista (``source``, ``target``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:31
 msgid "``reverse_cost``"
@@ -610,9 +595,8 @@ msgid "-1"
 msgstr "-1"
 
 #: ../../build/doc/pgRouting-concepts.rst:34
-#, fuzzy
 msgid "Weight of the edge (``target``, ``source``),"
-msgstr "Peso de la arista `(target, source)`,"
+msgstr "Peso de la arista (``target``, ``source``),"
 
 #: ../../build/doc/pgRouting-concepts.rst:36
 msgid ""
@@ -623,43 +607,36 @@ msgstr ""
 "no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst:38
-#, fuzzy
 msgid "``x1``"
-msgstr "``1``"
+msgstr "``x1``"
 
 #: ../../build/doc/pgRouting-concepts.rst:41
-#, fuzzy
 msgid "X coordinate of ``source`` vertex."
-msgstr "Coordenada Y del vértice `source`."
+msgstr "Coordenada X del vértice ``source``."
 
 #: ../../build/doc/pgRouting-concepts.rst:42
-#, fuzzy
 msgid "``y1``"
-msgstr "``1``"
+msgstr "``y1``"
 
 #: ../../build/doc/pgRouting-concepts.rst:45
-#, fuzzy
 msgid "Y coordinate of ``source`` vertex."
-msgstr "Coordenada Y del vértice `source`."
+msgstr "Coordenada Y del vértice ``source``."
 
 #: ../../build/doc/pgRouting-concepts.rst:46
 msgid "``x2``"
 msgstr "``x2``"
 
 #: ../../build/doc/pgRouting-concepts.rst:49
-#, fuzzy
 msgid "X coordinate of ``target`` vertex."
-msgstr "Coordenada Y del vértice `target`."
+msgstr "Coordenada X del vértice ``target``."
 
 #: ../../build/doc/pgRouting-concepts.rst:50
-#, fuzzy
 msgid "``y2``"
-msgstr "``5``"
+msgstr "``y2``"
 
 #: ../../build/doc/pgRouting-concepts.rst:53
-#, fuzzy
 msgid "Y coordinate of ``target`` vertex."
-msgstr "Coordenada Y del vértice `target`."
+msgstr "Coordenada Y del vértice ``target``."
 
 #: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:55
@@ -805,9 +782,8 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_aStar.rst
-#, fuzzy
 msgid "Example 1"
-msgstr "Ejemplo"
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_aStar.rst:267
 msgid "Demonstration of repeated values are ignored, and result is sorted."
@@ -819,7 +795,7 @@ msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_aStar.rst:273
 msgid "Making **start vids** the same as **end vids**."
-msgstr ""
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #: ../../build/doc/pgr_aStar.rst
 msgid "Example 3"

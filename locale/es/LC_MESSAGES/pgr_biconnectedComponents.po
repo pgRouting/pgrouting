@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:51+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_biconnectedcomponents/es/>\n"
@@ -60,19 +60,16 @@ msgstr ""
 "<https://docs.pgrouting.org/2.5/en/pgr_biconnectedComponents.html>`__"
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:25
-#, fuzzy
 msgid "``pgr_biconnectedComponents``"
-msgstr "pgr_biconnectedComponents"
+msgstr "``pgr_biconnectedComponents``"
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:27
-#, fuzzy
 msgid ""
 "``pgr_biconnectedComponents`` — Biconnected components of an undirected "
 "graph."
 msgstr ""
-"``pgr_biconnectedComponents`` — Devuelve los componentes biconectados de "
-"un grafo no dirigido. En particular, el algoritmo implementado por "
-"Boost.Graph."
+"``pgr_biconnectedComponents`` — Componentes biconectados de un grafo no "
+"dirigido."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:32
 msgid "Boost Graph Inside"
@@ -139,9 +136,8 @@ msgid "**The main characteristics are:**"
 msgstr "**Las características principales son:**"
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:63
-#, fuzzy
 msgid "Works for **undirected** graphs."
-msgstr "La firma es para un grafo **no dirigido**."
+msgstr "Funciona para grafos **no dirigidos**."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:64
 msgid "Components are described by edges."
@@ -152,14 +148,12 @@ msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:67
-#, fuzzy
 msgid "``component`` ascending."
-msgstr "`componente` ascendente."
+msgstr "``componente`` ascendente."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:68
-#, fuzzy
 msgid "``edge`` ascending."
-msgstr "`borde` ascendente."
+msgstr "``edge`` ascendente."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:70
 msgid "Running time: :math:`O(V + E)`"
@@ -199,9 +193,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta interna como se describe a continuación."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:101
 msgid "Inner Queries"
@@ -326,21 +319,16 @@ msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:126
-#, fuzzy
 msgid "``component``"
-msgstr "**component**"
+msgstr "``component``"
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:128
-#, fuzzy
 msgid "Component identifier."
-msgstr "`componente` ascendente."
+msgstr "Identificador de componente."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:130
-#, fuzzy
 msgid "Has the value of the minimum edge identifier in the component."
-msgstr ""
-"Identificador del componente. Es igual al identificador de arista mínima "
-"en el componente."
+msgstr "Contiene el identificador mínimo de arista en el componente."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:131
 msgid "``edge``"
@@ -348,7 +336,7 @@ msgstr "``edge``"
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:133
 msgid "Identifier of the edge that belongs to the ``component``."
-msgstr ""
+msgstr "Identificador de arista que pertenece a ``component``."
 
 #: ../../build/doc/pgr_biconnectedComponents.rst:136
 msgid "See Also"

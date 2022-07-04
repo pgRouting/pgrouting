@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:12+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_breadthfirstsearch/es/>\n"
@@ -34,11 +34,17 @@ msgid ""
 "`3.1 <https://docs.pgrouting.org/3.1/en/pgr_breadthFirstSearch.html>`__ "
 "`3.0 <https://docs.pgrouting.org/3.0/en/pgr_breadthFirstSearch.html>`__"
 msgstr ""
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_breadthFirstSearch.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
+"pgr_breadthFirstSearch.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
+"pgr_breadthFirstSearch.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
+"pgr_breadthFirstSearch.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
+"pgr_breadthFirstSearch.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
+"pgr_breadthFirstSearch.html>`__"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:21
-#, fuzzy
 msgid "``pgr_breadthFirstSearch`` - Experimental"
-msgstr "pgr_breadthFirstSearch - Experimental"
+msgstr "``pgr_breadthFirstSearch`` - Experimental"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:23
 msgid ""
@@ -58,7 +64,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -90,7 +96,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -106,11 +112,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -129,19 +137,16 @@ msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:39
-#, fuzzy
 msgid "New **experimental** signature:"
-msgstr "Nueva función **experimental**:"
+msgstr "Nueva firma **experimental**:"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:41
-#, fuzzy
 msgid "``pgr_breadthFirstSearch`` (`Single Vertex`_)"
-msgstr "pgr_breadthFirstSearch - Experimental"
+msgstr "``pgr_breadthFirstSearch`` (`Vértice único`_)"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:42
-#, fuzzy
 msgid "``pgr_breadthFirstSearch`` (`Multiple Vertices`_)"
-msgstr "pgr_breadthFirstSearch - Experimental"
+msgstr "``pgr_breadthFirstSearch`` (`Múltiples Vértices`_)"
 
 #: ../../build/doc/BFS-category.rst:10 ../../build/doc/BFS-category.rst:11
 #: ../../build/doc/BFS-category.rst:12 ../../build/doc/dijkstra-family.rst:11
@@ -175,9 +180,8 @@ msgstr ""
 "nodo de origen a un nivel de profundidad objetivo."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:55
-#, fuzzy
 msgid "Running time: :math:`O(E + V)`"
-msgstr "Tiempo de ejecución de la Primera Búsqueda de Anchura: :math:`O(E + V)`"
+msgstr "Tiempo de ejecución: :math:`O(E + V)`"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:58
 msgid "Signatures"
@@ -185,12 +189,11 @@ msgstr "Firmas"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:61
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:72
-#, fuzzy
 msgid "Single vertex"
-msgstr "Vértice Único"
+msgstr "Vértice único"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst
 msgid "Example"
@@ -201,6 +204,8 @@ msgid ""
 "From root vertex :math:`6` on a **directed** graph with edges in "
 "ascending order of ``id``"
 msgstr ""
+"Desde el vértice raíz :math:`6` en un grafo **dirigido** con aristas en "
+"orden ascendente de ``id``"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:90
 msgid "Multiple vertices"
@@ -239,7 +244,7 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/BFS-category.rst:13
 msgid "`Edges SQL`_ as described below."
-msgstr ""
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/BFS-category.rst:14
 msgid "**Root vid**"
@@ -303,7 +308,7 @@ msgstr "FLOTANTES"
 
 #: ../../build/doc/BFS-category.rst:31 ../../build/doc/BFS-category.rst:45
 msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
-msgstr ""
+msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:112
 msgid "Optional parameters"
@@ -340,9 +345,8 @@ msgid "When ``false`` the graph is considered as `Undirected`."
 msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:119
-#, fuzzy
 msgid "DFS optional parameters"
-msgstr "Parámetros opcionales"
+msgstr "Parámetros opcionales de DFS"
 
 #: ../../build/doc/BFS-category.rst:12
 msgid "``max_depth``"
@@ -462,14 +466,13 @@ msgstr "Valor secuencial a partir de :math:`1`."
 
 #: ../../build/doc/BFS-category.rst:16
 msgid "``depth``"
-msgstr ""
+msgstr "``depth``"
 
 #: ../../build/doc/BFS-category.rst:18
 msgid "Depth of the ``node``."
 msgstr "Profundidad del ``node``."
 
 #: ../../build/doc/BFS-category.rst:20
-#, fuzzy
 msgid ":math:`0` when ``node`` = ``start_vid``."
 msgstr ":math:`0` cuando ``node`` = ``start_vid``."
 
@@ -523,15 +526,15 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:145
 msgid "Same as `Single vertex`_ with edges in ascending order of ``id``."
-msgstr ""
+msgstr "Igual que `Vértice único`_ con aritas en orden ascendente de ``id``."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:151
 msgid "Same as `Single vertex`_ with edges in descending order of ``id``."
-msgstr ""
+msgstr "Igual que `Vértice único`_ con aritas en orden descendente de ``id``."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:157
 msgid "The resulting traversal is different."
-msgstr ""
+msgstr "El recorrido resultante es diferente."
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:159
 msgid ""
@@ -560,7 +563,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:173
 msgid ":doc:`BFS-category`"
-msgstr ""
+msgstr ":doc:`BFS-category`"
 
 #: ../../build/doc/pgr_breadthFirstSearch.rst:174
 msgid ":doc:`sampledata`"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:24+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/pgr_tsp/"
 "es/>\n"
@@ -62,7 +62,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSP.rst:29
 msgid "``pgr_TSP``"
-msgstr ""
+msgstr "``pgr_TSP``"
 
 #: ../../build/doc/pgr_TSP.rst:31
 msgid "``pgr_TSP`` - Aproximation using *metric* algorithm."
@@ -191,13 +191,11 @@ msgid "The traveling costs are symmetric:"
 msgstr "Los costos del viaje son simétricos:"
 
 #: ../../build/doc/TSP-family.rst:18
-#, fuzzy
 msgid ""
 "Traveling costs from ``u`` to ``v`` are just as much as traveling from "
 "``v`` to ``u``"
 msgstr ""
-"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a "
-"``u``"
+"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a ``u``"
 
 #: ../../build/doc/pgr_TSP.rst:75
 msgid ""
@@ -320,11 +318,8 @@ msgid "When the data is incomplete, but it is a connected graph:"
 msgstr "Cuando los datos están incompletos, pero es un grafo conectado:"
 
 #: ../../build/doc/pgr_TSP.rst:121
-#, fuzzy
 msgid "the missing values will be calculated with dijkstra algorithm."
-msgstr ""
-"Cuando los datos están incompletos, pero es un grafo conectado, los "
-"valores faltantes se calcularán con el algoritmo Dijkstra."
+msgstr "los datos están incompletos se calcularán con el algoritmo de Dijkstra."
 
 #: ../../build/doc/pgr_TSP.rst:124
 msgid "Signatures"
@@ -339,20 +334,17 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_TSP.rst:136
-#, fuzzy
 msgid "Using :doc:`pgr_dijkstraCostMatrix` to generate the matrix information"
 msgstr ""
-"Ejemplo: Usando :doc:`pgr_dijkstraCostMatrix` para generar la información"
-" de la matriz"
+"Usando :doc:`pgr_dijkstraCostMatrix` para generar la información de la matriz"
 
 #: ../../build/doc/pgr_TSP.rst:138
-#, fuzzy
 msgid ""
 "**Line 4** Vertices :math:`\\{2, 4, 13, 14\\}` are not included because "
 "they are not connected."
 msgstr ""
-"**Línea 5** Los vértices 15 a 18 no están incluidos porque no están "
-"conectados."
+"**Línea 5** Los vértices :math:`\\{2, 4, 13, 14\\}` no están incluidos "
+"porque no están conectados."
 
 #: ../../build/doc/pgr_TSP.rst:147
 msgid "Parameters"
@@ -369,7 +361,7 @@ msgstr "Tipo"
 
 #: ../../build/doc/pgr_TSP.rst:152
 msgid "`Matrix SQL`_"
-msgstr ""
+msgstr "`SQL matriz`_"
 
 #: ../../build/doc/pgr_TSP.rst:152
 msgid "``TEXT``"
@@ -377,11 +369,11 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_TSP.rst:152
 msgid "`Matrix SQL`_ as described below"
-msgstr ""
+msgstr "`SQL de matriz`_ como se describe más adelante"
 
 #: ../../build/doc/pgr_TSP.rst:156
 msgid "TSP optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de TSP"
 
 #: ../../build/doc/TSP-family.rst:8 ../../include/c_types/tsp_tour_rt.h:6
 #: ../../src/common/matrixRows_input.c:4
@@ -411,12 +403,11 @@ msgstr "El primer vértice visitado"
 #: ../../build/doc/TSP-family.rst:17
 msgid "When `0` any vertex can become the first visiting vertex."
 msgstr ""
-"Cuando `0` cualquier vértice puede convertirse en el primer vértice "
-"visitado."
+"Cuando `0` cualquier vértice puede convertirse en el primer vértice visitado."
 
 #: ../../build/doc/TSP-family.rst:19
 msgid "``end_id``"
-msgstr ""
+msgstr "``end_id``"
 
 #: ../../build/doc/TSP-family.rst:22
 msgid "Last visiting vertex before returning to ``start_vid``."
@@ -441,7 +432,7 @@ msgstr "Consultas Internas"
 
 #: ../../build/doc/pgr_TSP.rst:166
 msgid "Matrix SQL"
-msgstr "Matriz SQL"
+msgstr "SQL de matriz"
 
 #: ../../src/common/matrixRows_input.c:6
 msgid "``start_vid``"
@@ -545,14 +536,12 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_TSP.rst:186
-#, fuzzy
 msgid "Start from vertex :math:`1`"
-msgstr "Inicio en el vértice :math:`7`"
+msgstr "Inicio en el vértice :math:`1`"
 
 #: ../../build/doc/pgr_TSP.rst:188
-#, fuzzy
 msgid "**Line 6** ``start_vid => 1``"
-msgstr "**Línea 9** ``start_vid => 7``"
+msgstr "**Linea 6** ``start_vid => 1``"
 
 #: ../../build/doc/pgr_TSP.rst:196
 msgid "Using points of interest to generate an asymetric matrix."
@@ -571,9 +560,9 @@ msgstr ""
 "incluirla en la consulta"
 
 #: ../../build/doc/pgr_TSP.rst:202
-#, fuzzy
 msgid "**Line 6** Generating an asymetric matrix with ``directed => true``"
-msgstr "**Línea 7** Generación de una matriz asimétrica con `directed => true``"
+msgstr ""
+"**Línea 6** Generación de una matriz asimétrica con ``directed => true``"
 
 #: ../../build/doc/pgr_TSP.rst:204
 msgid ""
@@ -616,6 +605,8 @@ msgid ""
 "Cost value for :math:`17 \\rightarrow 10` do not exist on the matrix, but"
 " the value used is taken from :math:`10 \\rightarrow 17`."
 msgstr ""
+"Valor del cost para :math:`17 \\rightarrow 10` no existe en la matriz, pero "
+"el valor se toma de :math:`10 \\rightarrow 17`."
 
 #: ../../build/doc/pgr_TSP.rst:236
 msgid "See Also"

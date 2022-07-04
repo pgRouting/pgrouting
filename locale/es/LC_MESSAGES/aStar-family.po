@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 01:20+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "astar-family/es/>\n"
@@ -53,9 +53,8 @@ msgstr ""
 "family.html>`__"
 
 #: ../../build/doc/aStar-family.rst:25
-#, fuzzy
 msgid "A* - Family of functions"
-msgstr "aStar - Familia de Funciones"
+msgstr "A* - Familia de Funciones"
 
 #: ../../build/doc/aStar-family.rst:27
 msgid ""
@@ -83,7 +82,7 @@ msgstr ""
 
 #: ../../build/doc/aStar-family.rst:47 ../../build/doc/aStar-family.rst:93
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: ../../build/doc/aStar-family.rst:49
 msgid "The main Characteristics are:"
@@ -91,11 +90,11 @@ msgstr "Las características principales son:"
 
 #: ../../build/doc/aStar-family.rst:53
 msgid "Process works for directed and undirected graphs."
-msgstr ""
+msgstr "Funciona para grafos dirigidos y no dirigidos."
 
 #: ../../build/doc/aStar-family.rst:54
 msgid "Ordering is:"
-msgstr ""
+msgstr "Ordenamiento es:"
 
 #: ../../build/doc/aStar-family.rst:56
 msgid "first by ``start_vid`` (if exists)"
@@ -111,7 +110,7 @@ msgstr "Los valores se devuelven cuando hay una ruta."
 
 #: ../../build/doc/aStar-family.rst:60
 msgid "Let :math:`v` and :math:`u` be nodes on the graph:"
-msgstr "Permita que :math:`v` y :math:`u` sean nodos en el grafo:"
+msgstr "Sean :math:`v` y :math:`u` nodos en el grafo:"
 
 #: ../../build/doc/aStar-family.rst:62
 msgid "If there is no path from :math:`v` to :math:`u`:"
@@ -134,11 +133,9 @@ msgid "``agg_cost`` from `v` to `u` is :math:`0`"
 msgstr "``agg_cost`` de `v` a `u` es :math:`0`"
 
 #: ../../build/doc/aStar-family.rst:72
-#, fuzzy
 msgid "When :math:`(x,y)` coordinates for the same vertex identifier differ:"
 msgstr ""
-"Cuando las coordenadas (x,y) para el mismo identificador de vértice "
-"difieren:"
+"Cuando las coordenadas (x,y) para el mismo identificador de vértice difieren:"
 
 #: ../../build/doc/aStar-family.rst:74
 msgid "A random selection of the vertex's :math:`(x,y)` coordinates is used."
@@ -152,7 +149,7 @@ msgstr "Tiempo de ejecución: :math:`O((E + V) * \\log V)`"
 
 #: ../../build/doc/aStar-family.rst:81
 msgid "aStar optional Parameters"
-msgstr ""
+msgstr "Parámetros opcionales de aStar"
 
 #: ../../build/doc/aStar-family.rst:90
 msgid "Parameter"
@@ -167,9 +164,8 @@ msgid "Default"
 msgstr "x Defecto"
 
 #: ../../build/doc/aStar-family.rst:94
-#, fuzzy
 msgid "``heuristic``"
-msgstr "Heurística"
+msgstr "``heuristic``"
 
 #: ../../build/doc/aStar-family.rst:95
 msgid "``INTEGER``"
@@ -185,7 +181,8 @@ msgstr "Número heurístico. Valores válidos 0~5."
 
 #: ../../build/doc/aStar-family.rst:99 ../../build/doc/aStar-family.rst:129
 msgid "0: :math:`h(v) = 0` (Use this value to compare with pgr_dijkstra)"
-msgstr "0: :math:`h(v) = 0` (Utilizat este valor para comparar con pgr_dijkstra)"
+msgstr ""
+"0: :math:`h(v) = 0` (Utilizar este valor para comparar con pgr_dijkstra)"
 
 #: ../../build/doc/aStar-family.rst:100 ../../build/doc/aStar-family.rst:130
 msgid "1: :math:`h(v) = abs(max(\\Delta x, \\Delta y))`"
@@ -208,9 +205,8 @@ msgid "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 msgstr "5: :math:`h(v) = abs(\\Delta x) + abs(\\Delta y)`"
 
 #: ../../build/doc/aStar-family.rst:105
-#, fuzzy
 msgid "``factor``"
-msgstr "Factor"
+msgstr "``factor``"
 
 #: ../../build/doc/aStar-family.rst:106 ../../build/doc/aStar-family.rst:110
 msgid "``FLOAT``"
@@ -218,7 +214,7 @@ msgstr "``FLOAT``"
 
 #: ../../build/doc/aStar-family.rst:107 ../../build/doc/aStar-family.rst:111
 msgid "``1``"
-msgstr ""
+msgstr "``1``"
 
 #: ../../build/doc/aStar-family.rst:108
 msgid "For units manipulation. :math:`factor > 0`."
@@ -237,6 +233,8 @@ msgid ""
 "See :ref:`heuristics <astar_heuristics>` available and :ref:`factor "
 "<astar_factor>` handling."
 msgstr ""
+"Ver :ref:`heuristicas <astar_heuristics>` disponibles y manupulación de "
+":ref:`factor <astar_factor>`."
 
 #: ../../build/doc/aStar-family.rst:120
 msgid "Advanced documentation"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_edwardmoore/es/>\n"
@@ -34,19 +34,16 @@ msgid ""
 msgstr ""
 
 #: ../../build/doc/pgr_edwardMoore.rst:19
-#, fuzzy
 msgid "``pgr_edwardMoore - Experimental``"
-msgstr "pgr_edwardMoore - Experimental"
+msgstr "``pgr_edwardMoore`` - Experimental"
 
 #: ../../build/doc/pgr_edwardMoore.rst:21
-#, fuzzy
 msgid ""
 "``pgr_edwardMoore`` —  Returns the shortest path using Edward-Moore "
 "algorithm."
 msgstr ""
-"``pgr_edwardMoore`` — Devuelve las ruta(s) más cortas mediante el "
-"algoritmo Edward-Moore. El algoritmo de Edward Moore es una mejora del "
-"algoritmo Bellman-Ford."
+"``pgr_edwardMoore`` — Devuelve la ruta más cortas usando el algoritmo Edward-"
+"Moore."
 
 #: ../../build/doc/experimental.rst:3
 msgid "Possible server crash"
@@ -54,7 +51,7 @@ msgstr "Posible bloqueo del servidor"
 
 #: ../../build/doc/experimental.rst:5
 msgid "These functions might create a server crash"
-msgstr "Estas funciones pueden crear un bloque del servidor"
+msgstr "Estas funciones pueden crear una caída del servidor"
 
 #: ../../build/doc/experimental.rst:7
 msgid "Experimental functions"
@@ -86,7 +83,7 @@ msgstr "La funcionalidad puede cambiar."
 
 #: ../../build/doc/experimental.rst:16
 msgid "pgTap tests might be missing."
-msgstr "Las pruebas de pgTap pueden estar ausentes."
+msgstr "Las pruebas de pgTap pueden faltar."
 
 #: ../../build/doc/experimental.rst:17
 msgid "Might need c/c++ coding."
@@ -102,11 +99,13 @@ msgstr "Hay documentación que, en dado caso, podría ser necesario reescribir."
 
 #: ../../build/doc/experimental.rst:20
 msgid "Documentation examples might need to be automatically generated."
-msgstr "Ejemplos de documentación que puede ser necesario generar automáticamente."
+msgstr ""
+"Puede ser necesario que los ejemplos de documentación se generen "
+"automáticamente."
 
 #: ../../build/doc/experimental.rst:21
 msgid "Might need a lot of feedback from the comunity."
-msgstr "Puede ser necesaria más retroalimentación por parte de la comunidad."
+msgstr "Puede ser necesaria retroalimentación por parte de la comunidad."
 
 #: ../../build/doc/experimental.rst:22
 msgid "Might depend on a proposed function of pgRouting"
@@ -125,14 +124,12 @@ msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_edwardMoore.rst:32
-#, fuzzy
 msgid "New **experimental** signature:"
-msgstr "Nueva función **experimental**:"
+msgstr "Nueva firma **experimental**:"
 
 #: ../../build/doc/pgr_edwardMoore.rst:34
-#, fuzzy
 msgid "``pgr_edwardMoore`` (`Combinations`_)"
-msgstr "pgr_edwardMoore(Combinaciones)"
+msgstr "``pgr_edwardMoore`` (`Combinaciones`_)"
 
 #: ../../build/doc/pgr_edwardMoore.rst:36
 msgid "Version 3.0.0"
@@ -197,14 +194,13 @@ msgstr ""
 "velocidad de cálculo."
 
 #: ../../build/doc/pgr_edwardMoore.rst:60
-#, fuzzy
 msgid ""
 "Thus, the algorithm is at-best, significantly faster than Bellman-Ford "
 "algorithm and is at-worst,as good as Bellman-Ford algorithm"
 msgstr ""
-"Por lo tanto, el algoritmo es en el mejor de los casos, "
-"significativamente más rápido que el algoritmo Bellman-Ford y es en el "
-"peor de los casos, tan bueno como el algoritmo Bellman-Ford"
+"Por lo tanto, el algoritmo es, en el mejor de los casos, significativamente "
+"más rápido que el algoritmo Bellman-Ford y es en el peor de los casos, tan "
+"bueno como el algoritmo Bellman-Ford"
 
 #: ../../build/doc/pgr_edwardMoore.rst:63
 msgid "**The main characteristics are:**"
@@ -219,9 +215,8 @@ msgid "When the starting vertex and ending vertex are the same, there is no path
 msgstr "Cuando el vértice inicial y el vértice final son iguales, no hay camino."
 
 #: ../../build/doc/pgr_edwardMoore.rst:69
-#, fuzzy
 msgid "The `agg_cost` the non included values `(v, v)` is :math:`0`"
-msgstr "El `agg_cost` de los valores no incluídos `(v, v)` es `0`"
+msgstr "El `agg_cost` de los valores no incluídos `(v, v)` es :math:`0`"
 
 #: ../../build/doc/pgr_edwardMoore.rst:71
 msgid ""
@@ -236,7 +231,6 @@ msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
 msgstr "El ``agg_cost`` de los valores no incluídos ``(u, v)`` es :math: `\\infty`"
 
 #: ../../build/doc/pgr_edwardMoore.rst:76
-#, fuzzy
 msgid ""
 "For optimization purposes, any duplicated value in the `start vids` or "
 "`end vids` are ignored."
@@ -249,12 +243,10 @@ msgid "The returned values are ordered:"
 msgstr "Los valores regresados se ordenan:"
 
 #: ../../build/doc/pgr_edwardMoore.rst:81
-#, fuzzy
 msgid "`start vid` ascending"
 msgstr "`start_vid` ascendente"
 
 #: ../../build/doc/pgr_edwardMoore.rst:82
-#, fuzzy
 msgid "`end vid` ascending"
 msgstr "`end_vid` ascendente"
 
@@ -276,7 +268,7 @@ msgstr "Firmas"
 
 #: ../../build/doc/pgr_edwardMoore.rst:93
 msgid "Summary"
-msgstr ""
+msgstr "Resumen"
 
 #: ../../build/doc/pgr_edwardMoore.rst:108
 msgid "One to One"
@@ -688,9 +680,8 @@ msgid "Additional Examples"
 msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_edwardMoore.rst
-#, fuzzy
 msgid "Example 1"
-msgstr "Ejemplo"
+msgstr "Ejemplo 1"
 
 #: ../../build/doc/pgr_edwardMoore.rst:246
 msgid "Demonstration of repeated values are ignored, and result is sorted."
@@ -702,7 +693,7 @@ msgstr "Ejemplo 2"
 
 #: ../../build/doc/pgr_edwardMoore.rst:252
 msgid "Making **start vids** the same as **end vids**."
-msgstr ""
+msgstr "Haciendo **vids iniciales** los mismos que **vids destinos**."
 
 #: ../../build/doc/pgr_edwardMoore.rst
 msgid "Example 3"

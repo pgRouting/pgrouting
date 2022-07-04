@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-29 15:32+0000\n"
+"PO-Revision-Date: 2022-07-03 03:21+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_maxflow/es/>\n"
@@ -54,9 +54,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.4/en/pgr_maxFlow.html>`__"
 
 #: ../../build/doc/pgr_maxFlow.rst:25
-#, fuzzy
 msgid "``pgr_maxFlow``"
-msgstr "pgr_maxFlow"
+msgstr "``pgr_maxFlow``"
 
 #: ../../build/doc/pgr_maxFlow.rst:27
 msgid ""
@@ -83,9 +82,8 @@ msgid "New **proposed** signature"
 msgstr "Nueva función **propuesta**"
 
 #: ../../build/doc/pgr_maxFlow.rst:41
-#, fuzzy
 msgid "``pgr_maxFlow`` (`Combinations`_)"
-msgstr "pgr_maxFlow(Combinaciones)"
+msgstr "``pgr_maxFlow`` (`Combinaciones`_)"
 
 #: ../../build/doc/pgr_maxFlow.rst:43
 msgid "Version 3.0.0"
@@ -189,11 +187,10 @@ msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
 #: ../../build/doc/pgr_maxFlow.rst:144
-#, fuzzy
 msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
-"De los vértices :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, "
-"11\\}`"
+"De los vértices :math:`\\{11, 3, 17\\}` a los vértices :math:`\\{5, 10, 12\\"
+"}`"
 
 #: ../../build/doc/pgr_maxFlow.rst:154
 msgid "Combinations"
@@ -260,9 +257,8 @@ msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
 #: ../../build/doc/dijkstra-family.rst:19
-#, fuzzy
 msgid "Identifier of the starting vertex of the path."
-msgstr "Identificador del vértice inicial del flujo."
+msgstr "Identificador del vértice inicial de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:20
 msgid "**start vids**"
@@ -274,18 +270,16 @@ msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
 #: ../../build/doc/dijkstra-family.rst:22
-#, fuzzy
 msgid "Array of identifiers of starting vertices."
-msgstr "Conjunto de identificadores de los vértices iniciales del flujo."
+msgstr "Arreglo de identificadores de vértices iniciales."
 
 #: ../../build/doc/dijkstra-family.rst:23
 msgid "**end vid**"
 msgstr "**vid destino**"
 
 #: ../../build/doc/dijkstra-family.rst:25
-#, fuzzy
 msgid "Identifier of the ending vertex of the path."
-msgstr "Identificador del vértice final del flujo."
+msgstr "Identificador del vértice final de la ruta."
 
 #: ../../build/doc/dijkstra-family.rst:26
 msgid "**end vids**"
@@ -344,18 +338,16 @@ msgid "Identifier of the second end point vertex of the edge."
 msgstr "Identificador del segundo vértice de la arista."
 
 #: ../../build/doc/pgRouting-concepts.rst:24
-#, fuzzy
 msgid "``capacity``"
-msgstr "**capacidad**"
+msgstr "``capacity``"
 
 #: ../../build/doc/pgRouting-concepts.rst:27
 msgid "Weight of the edge  (``source``, ``target``)"
 msgstr "Peso de la arista (``source``, ``target``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:28
-#, fuzzy
 msgid "``reverse_capacity``"
-msgstr "**reverse_capacity** (**capacidad inversa**)"
+msgstr "``reverse_capacity``"
 
 #: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"

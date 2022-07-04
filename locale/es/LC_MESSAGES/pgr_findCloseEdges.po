@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-28 02:48+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_findcloseedges/es/>\n"
@@ -249,7 +249,7 @@ msgstr "x Defecto"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:158
 msgid "``cap``"
-msgstr ""
+msgstr "``cap``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:159
 msgid "``INTEGER``"
@@ -286,7 +286,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_findCloseEdges.rst:168
 msgid "``dryrun``"
-msgstr ""
+msgstr "``dryrun``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:170
 msgid "``false``"
@@ -329,7 +329,7 @@ msgstr "Identificador de la arista."
 #: ../../build/doc/pgr_findCloseEdges.rst:192
 #: ../../build/doc/pgr_findCloseEdges.rst:234 ../../build/doc/sampledata.rst:30
 msgid "``geom``"
-msgstr ""
+msgstr "``geom``"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:193
 #: ../../build/doc/pgr_findCloseEdges.rst:235
@@ -731,7 +731,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:4
 msgid "Points of interest"
-msgstr ""
+msgstr "Puntos de interés"
 
 #: ../../build/doc/sampledata.rst:5
 msgid "Some times the applications work \"on the fly\" starting from a location that is not a vertex in the graph. Those locations, in pgRrouting are called points of interest."
@@ -779,7 +779,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:40
 msgid "Points of interest geometry"
-msgstr ""
+msgstr "Geometría de los puntos de interés"
 
 #: ../../build/doc/sampledata.rst:41
 msgid "Inserting the data of the points of interest:"
@@ -799,7 +799,7 @@ msgstr ""
 
 #: ../../build/doc/sampledata.rst:65
 msgid "Points of interest data"
-msgstr ""
+msgstr "Datos de puntos de interés"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:626
 msgid "Connecting disconnected components"
@@ -807,7 +807,7 @@ msgstr "Conectando componentes desconectados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "To get the graph connectivity:"
-msgstr ""
+msgstr "Para obtener la conectividad del grafo:"
 
 #: ../../build/doc/pgRouting-concepts.rst:9
 msgid "In this example, the component :math:`2` consists of vertices :math:`\\{2, 4\\}` and both vertices are also part of the dead end result set."
@@ -887,7 +887,7 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:636
 msgid ":doc:`withPoints-category`"
-msgstr ""
+msgstr ":doc:`withPoints-category`"
 
 #: ../../build/doc/pgr_findCloseEdges.rst:637
 msgid ":doc:`sampledata`"

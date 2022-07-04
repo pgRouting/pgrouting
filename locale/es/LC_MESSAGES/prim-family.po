@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-02 17:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "prim-family/es/>\n"
@@ -256,22 +256,21 @@ msgid ":doc:`spanningTree-family`"
 msgstr ":doc:`spanningTree-family`"
 
 #: ../../build/doc/prim-family.rst:91
-#, fuzzy
 msgid ""
 "Boost: `Prim's algorithm "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
-"`Boost: Prim's algorithm documentation "
-"<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+"Boost: `Algoritmo de Prim <https://www.boost.org/libs/graph/doc/"
+"prim_minimum_spanning_tree.html>`__"
 
 #: ../../build/doc/prim-family.rst:93
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Wikipedia: `Prim's algorithm "
 "<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
-"`Wikipedia: algoritmo de Prim "
-"<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
+"Wikipedia: `Algoritmo de Prim <https://en.wikipedia.org/wiki/"
+"Prim%27s_algorithm>`__"
 
 #: ../../build/doc/prim-family.rst:97
 msgid "Indices and tables"

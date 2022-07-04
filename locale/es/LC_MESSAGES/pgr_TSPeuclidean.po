@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 15:24+0000\n"
+"PO-Revision-Date: 2022-07-04 16:53+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_tspeuclidean/es/>\n"
@@ -55,9 +55,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP>`__"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:25
-#, fuzzy
 msgid "``pgr_TSPeuclidean``"
-msgstr "pgr_TSPeuclidean"
+msgstr "``pgr_TSPeuclidean``"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:27
 msgid "``pgr_TSPeuclidean`` - Aproximation using *metric* algorithm."
@@ -88,15 +87,14 @@ msgid "Simulated Annealing Algorithm no longer supported"
 msgstr "El algoritmo de recocido simulado ya no es utilizado"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:43
-#, fuzzy
 msgid ""
 "The Simulated Annealing Algorithm related parameters are ignored: "
 "`max_processing_time`, `tries_per_temperature`, "
 "`max_changes_per_temperature`, `max_consecutive_non_changes`, "
 "`initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`"
 msgstr ""
-"Se ignoran los parámetros relacionados con el algoritmo de recocido "
-"simulado: `max_processing_time`, `tries_per_temperature`, "
+"Se ignoran los parámetros relacionados con el algoritmo de recocido simulado:"
+" `max_processing_time`, `tries_per_temperature`, "
 "`max_changes_per_temperature`, `max_consecutive_non_changes`, "
 "`initial_temperature`, `final_temperature`, `cooling_factor`, `randomize`"
 
@@ -183,13 +181,11 @@ msgid "The traveling costs are symmetric:"
 msgstr "Los costos del viaje son simétricos:"
 
 #: ../../build/doc/TSP-family.rst:18
-#, fuzzy
 msgid ""
 "Traveling costs from ``u`` to ``v`` are just as much as traveling from "
 "``v`` to ``u``"
 msgstr ""
-"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a "
-"``u``"
+"Los costos del viaje de ``u`` a ``v`` son tanto como viajar de ``v`` a ``u``"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:70
 msgid ""
@@ -201,13 +197,12 @@ msgstr ""
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:70
 msgid "is arbitrarly."
-msgstr ""
+msgstr "es arbitrario."
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:72
-#, fuzzy
 msgid "The coordinates are quite similar for the same identifier, for example ::"
 msgstr ""
-"Las coordenadas son bastante iguales para el mismo identificador, por "
+"Las coordenadas son bastante similares para el mismo identificador, por "
 "ejemplo:"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:78
@@ -248,9 +243,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:110
-#, fuzzy
 msgid "`Coordinates SQL`_"
-msgstr "Coordenadas SQL"
+msgstr "`SQL coordenadas`_"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:110
 msgid "``TEXT``"
@@ -258,11 +252,11 @@ msgstr "``TEXT``"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:110
 msgid "`Coordinates SQL`_ as described below"
-msgstr ""
+msgstr "`SQL de coordenadas`_ descritas más adelante"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:114
 msgid "TSP optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales de TSP"
 
 #: ../../build/doc/TSP-family.rst:8 ../../include/c_types/tsp_tour_rt.h:6
 #: ../../src/common/coordinates_input.c:4
@@ -297,7 +291,7 @@ msgstr ""
 
 #: ../../build/doc/TSP-family.rst:19
 msgid "``end_id``"
-msgstr ""
+msgstr "``end_id``"
 
 #: ../../build/doc/TSP-family.rst:22
 msgid "Last visiting vertex before returning to ``start_vid``."
@@ -455,7 +449,7 @@ msgstr "Agregar una geometría (con fines visuales)"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:165
 msgid "Total tour cost"
-msgstr ""
+msgstr "Costo total del tour"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:166
 msgid ""
@@ -472,7 +466,7 @@ msgstr "Obtener una geometría del recorrido"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:181
 msgid "Visual results"
-msgstr ""
+msgstr "Resultados visuales"
 
 #: ../../build/doc/pgr_TSPeuclidean.rst:182
 msgid ""

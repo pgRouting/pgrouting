@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-06-28 02:56+0000\n"
+"PO-Revision-Date: 2022-07-04 16:00+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
@@ -52,7 +52,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -60,7 +60,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -339,7 +339,7 @@ msgstr "**vid salidas**"
 #: ../../build/doc/pgRouting-concepts.rst:30
 #: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``ARRAY[`` **ANY-INTEGER** ``]``"
-msgstr "``ARRAY[`` **ENTEROS** ``]``"
+msgstr "``ARRAY[`` **ANY-INTEGER** ``]``"
 
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:31
@@ -409,7 +409,7 @@ msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:209
 msgid "With points optional parameters"
-msgstr ""
+msgstr "Parámetros opcionales para Con puntos"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:218
 #: ../../build/doc/withPoints-category.rst:8
@@ -428,23 +428,23 @@ msgstr "``CHAR``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:224
 msgid "``r``"
-msgstr ""
+msgstr "``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:225
 msgid "Value in [``r``, ``l``] indicating if the driving side is:"
-msgstr ""
+msgstr "Valor en [``r``, ``l``] indicando si el lado de manejo es:"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:227
 msgid "``r`` for right driving side"
-msgstr ""
+msgstr "``r`` para el manejo del lado derecho"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:228
 msgid "``l`` for left driving side"
-msgstr ""
+msgstr "``l`` para el manejo del lado izquierdo"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:229
 msgid "Any other value will be considered as ``r``"
-msgstr ""
+msgstr "Cualquier otro valor se considera como ``r``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:230
 msgid "``details``"
@@ -457,11 +457,14 @@ msgstr "``false``"
 #: ../../build/doc/pgr_trsp_withPoints.rst:233
 msgid "When ``true`` the results will include the points that are in the path."
 msgstr ""
+"Cuando ``true`` los resultados incluyen los puntos que están en el camino."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:234
 msgid ""
 "When ``false`` the results will not include the points that are in the path."
 msgstr ""
+"Cuando ``false`` los resultados no incluyen los puntos que están en el "
+"camino."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:242
 msgid "Inner Queries"
@@ -546,7 +549,7 @@ msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:252
 msgid "Restrictions SQL"
-msgstr "Restricciones SQL"
+msgstr "SQL restricciones"
 
 #: ../../build/doc/pgRouting-concepts.rst:11
 msgid "``path``"
@@ -558,6 +561,9 @@ msgid ""
 "taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a "
 "``NULL`` element will raise an exception."
 msgstr ""
+"Secuencia de identificadores de aristas que forman un camino que no se "
+"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que "
+"tienen ``NULL`` arrojan una excepción."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``Cost``"
@@ -644,7 +650,7 @@ msgstr "A la izquierda `l`,"
 
 #: ../../build/doc/withPoints-category.rst:38
 msgid "In both sides ``b``, ``NULL``"
-msgstr "In both sides ``b``, ``NULL``"
+msgstr "En ambos lados ``b``, ``NULL``"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:266
 msgid "Combinations SQL"
@@ -722,8 +728,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the path "
 "sequence."
 msgstr ""
-"Identificador del borde utilizado para ir del ``node`` al siguiente nodo de "
-"la secuencia de ruta."
+"Identificador de la arsita utilizada para ir del ``node`` al siguiente nodo "
+"de la secuencia de ruta."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:304
 msgid "-1 for the last node of the path."
@@ -764,23 +770,28 @@ msgstr "Ejemplos Adicionales"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:326
 msgid "Use :doc:`pgr_findCloseEdges` in the `Points SQL`_."
-msgstr "Usa :doc:`pgr_findCloseEdges` en el `Points SQL`_."
+msgstr "Usa :doc:`pgr_findCloseEdges` en el `SQL puntos`_."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:328
 msgid ""
 "Find the routes from vertex :math:`1` to the two closest locations on the "
 "graph of point `(2.9, 1.8)`."
 msgstr ""
+"Wncontrar las rutas desde el vértice :math:`1` a las dos ubicaciones más "
+"cercanas en el grafo al punto`(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:335
 msgid ""
 "Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-1` corresponde a la arista más cercana al punto `(2.9, 1.8)`."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:336
 msgid ""
 "Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`."
 msgstr ""
+"Punto :math:`-2` corresponde a la segunda arista más cercana al punto `(2.9, "
+"1.8)`."
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:339
 msgid "Pass in front or visits"
@@ -815,11 +826,11 @@ msgstr "Ver también"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:361
 msgid ":doc:`TRSP-family`"
-msgstr ""
+msgstr ":doc:`TRSP-family`"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:362
 msgid ":doc:`withPoints-category`"
-msgstr ""
+msgstr ":doc:`withPoints-category`"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:363
 msgid ":doc:`sampledata`"

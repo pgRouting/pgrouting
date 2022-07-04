@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-06-28 01:51+0000\n"
+"PO-Revision-Date: 2022-07-04 00:20+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_sequentialvertexcoloring/es/>\n"
@@ -26,7 +26,6 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:12
-#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_sequentialVertexColoring.html>`__"
@@ -37,14 +36,11 @@ msgid ""
 "`3.2 "
 "<https://docs.pgrouting.org/3.2/en/pgr_sequentialVertexColoring.html>`__"
 msgstr ""
-"**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_sequentialVertexColoring.html>`__"
-" (`3.4 "
-"<https://docs.pgrouting.org/3.4/es/pgr_sequentialVertexColoring.html>`__)"
-" `3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_sequentialVertexColoring.html>`__"
-" `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_sequentialVertexColoring.html>`__"
+"**Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
+"pgr_sequentialVertexColoring.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/"
+"es/pgr_sequentialVertexColoring.html>`__) `3.3 <https://docs.pgrouting.org/3."
+"3/es/pgr_sequentialVertexColoring.html>`__ `3.2 <https://docs.pgrouting.org/3"
+".2/es/pgr_sequentialVertexColoring.html>`__"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:19
 msgid "pgr_sequentialVertexColoring - Proposed"
@@ -80,7 +76,7 @@ msgstr "Las funciones hacen uso de ENTEROS y FLOTANTES"
 
 #: ../../build/doc/proposed.rst:9
 msgid "Name might not change. (But still can)"
-msgstr "Es posible que el nombre no cambie. (Pero todavía puede)"
+msgstr "Probablemente el nombre no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:10
 msgid "Signature might not change. (But still can)"
@@ -88,7 +84,7 @@ msgstr "Es posible que la firma no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:11
 msgid "Functionality might not change. (But still can)"
-msgstr "Es posible que la funcionalidad no cambie. (Pero todavía puede)"
+msgstr "Probablemente la funcionalidad no cambie. (Pero todavía puede)"
 
 #: ../../build/doc/proposed.rst:12
 msgid "pgTap tests have being done. But might need more."
@@ -107,16 +103,14 @@ msgid "Version 3.3.0"
 msgstr "Versión 3.3.0"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:37
-#, fuzzy
 msgid "Promoted to **proposed** signature"
-msgstr "Promovido a función **propuesta**"
+msgstr "Promovido a firma **propuesta**"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:39
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:41
-#, fuzzy
 msgid "New **experimental** signature"
 msgstr "Nueva función **experimental**"
 
@@ -128,7 +122,6 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:47
-#, fuzzy
 msgid ""
 "Sequential vertex coloring algorithm is a graph coloring algorithm in "
 "which color identifiers are assigned to the vertices of a graph in a "
@@ -137,8 +130,8 @@ msgid ""
 msgstr ""
 "El algoritmo de Coloración de Vértices Secuenciales es un algoritmo de "
 "coloración de grafos en el que se asignan identificadores de color a los "
-"vértices de un grafo de forma secuencial, de modo que ninguna arista "
-"conecta dos vértices de color idéntico."
+"vértices de un grafo de forma secuencial, de modo que ninguna arista conecte "
+"dos vértices de colores idénticos."
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:51
 msgid "**The main Characteristics are:**"
@@ -236,9 +229,8 @@ msgid "``TEXT``"
 msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-#, fuzzy
 msgid "`Edges SQL`_ as described below."
-msgstr "Consulta interna como se describe a continuación."
+msgstr "`SQL Aristas`_ descritas más adelante."
 
 #: ../../build/doc/pgr_sequentialVertexColoring.rst:97
 msgid "Inner Queries"
@@ -349,9 +341,8 @@ msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr "Devuelve SET OF ``(vertex_id, color_id)``"
 
 #: ../../build/doc/coloring-family.rst:8
-#, fuzzy
 msgid "``vertex_id``"
-msgstr "**vertex_id**"
+msgstr "``vertex_id``"
 
 #: ../../build/doc/coloring-family.rst:8 ../../build/doc/coloring-family.rst:9
 msgid "``BIGINT``"

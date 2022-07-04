@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-06 19:21+0000\n"
-"PO-Revision-Date: 2022-06-28 14:58+0000\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "contraction-family/es/>\n"
@@ -219,7 +219,7 @@ msgstr ""
 #: ../../build/doc/contraction-family.rst:166
 #: ../../build/doc/contraction-family.rst:176
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../../build/doc/contraction-family.rst:119
 #: ../../build/doc/contraction-family.rst:164
@@ -276,7 +276,7 @@ msgstr ""
 #: ../../build/doc/contraction-family.rst:173
 #: ../../build/doc/contraction-family.rst:182
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: ../../build/doc/contraction-family.rst:174
 msgid ":math:`d`"
@@ -636,9 +636,8 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/contraction-family.rst:506
-#, fuzzy
 msgid "``contracted_vertices``"
-msgstr "**contracted_vertices**"
+msgstr "``contracted_vertices``"
 
 #: ../../build/doc/contraction-family.rst:507
 msgid "The vertices set belonging to the vertex/edge"
