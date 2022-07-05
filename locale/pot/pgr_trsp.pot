@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.3.2
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -452,8 +452,7 @@ msgid "The \"Vertices\" signature version"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:261
-#: ../../build/doc/pgr_trsp.rst:363
-msgid "Different ways to represent 'no path found`"
+msgid "1 Different ways to represent 'no path found`"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:263
@@ -485,8 +484,7 @@ msgid "pgr_trsp use the original code when there are restrictions, even if they 
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:289
-#: ../../build/doc/pgr_trsp.rst:415
-msgid "Routing from/to same location"
+msgid "1 Routing from/to same location"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:291
@@ -530,8 +528,7 @@ msgid "In this case ``pgr_trsp`` calls the original code when there are restrict
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:328
-#: ../../build/doc/pgr_trsp.rst:443
-msgid "User contradictions"
+msgid "1 User contradictions"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:330
@@ -568,6 +565,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:354
 msgid "The \"Edges\" signature version"
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:363
+msgid "2 Different ways to represent 'no path found`"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:366
@@ -610,6 +611,10 @@ msgstr ""
 msgid "pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph, and will not return the last vertex of the path."
 msgstr ""
 
+#: ../../build/doc/pgr_trsp.rst:415
+msgid "2 Routing from/to same location"
+msgstr ""
+
 #: ../../build/doc/pgr_trsp.rst:417
 msgid "When routing from the same edge and position to the same edge and position, no path is needed to reach the destination, its already there. Therefore is expected to return an `EMPTY SET` or an `EXCEPTION` depending on the parameters, non of which is happening."
 msgstr ""
@@ -628,6 +633,10 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:438
 msgid "pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph, and will not have the row for the vertex :math:`-2`."
+msgstr ""
+
+#: ../../build/doc/pgr_trsp.rst:443
+msgid "2 User contradictions"
 msgstr ""
 
 #: ../../build/doc/pgr_trsp.rst:469

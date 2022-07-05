@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.3.2
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 15:58+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,7 +132,7 @@ msgstr ""
 msgid ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based coloring approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:4
+#: ../../build/doc/coloring-family.rst:5
 msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
 msgstr ""
 
@@ -149,6 +149,18 @@ msgid ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line
 msgstr ""
 
 #: ../../build/doc/experimental.rst:80
+msgid ":doc:`traversal-family`"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:3
+msgid ":doc:`pgr_breadthFirstSearch` - Breath first search traversal of the graph."
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:4
+msgid ":doc:`pgr_binaryBreadthFirstSearch` - Breath first search traversal of the graph."
+msgstr ""
+
+#: ../../build/doc/experimental.rst:86
 msgid ":doc:`components-family`"
 msgstr ""
 
@@ -156,11 +168,11 @@ msgstr ""
 msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
 msgstr ""
 
-#: ../../build/doc/experimental.rst:95
+#: ../../build/doc/experimental.rst:100
 msgid "categories"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:96
+#: ../../build/doc/experimental.rst:101
 msgid ":doc:`VRP-category`"
 msgstr ""
 
@@ -184,66 +196,58 @@ msgstr ""
 msgid ":doc:`pgr_vrpOneDepot` - From a single depot, distributes orders"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:108
+#: ../../build/doc/experimental.rst:113
 msgid "Not classified"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:109
+#: ../../build/doc/experimental.rst:114
 msgid ":doc:`pgr_bellmanFord`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:110
-msgid ":doc:`pgr_binaryBreadthFirstSearch`"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:111
-msgid ":doc:`pgr_breadthFirstSearch`"
-msgstr ""
-
-#: ../../build/doc/experimental.rst:112
+#: ../../build/doc/experimental.rst:115
 msgid ":doc:`pgr_dagShortestPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:113
+#: ../../build/doc/experimental.rst:116
 msgid ":doc:`pgr_edwardMoore`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:114
+#: ../../build/doc/experimental.rst:117
 msgid ":doc:`pgr_isPlanar`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:115
+#: ../../build/doc/experimental.rst:118
 msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:116
+#: ../../build/doc/experimental.rst:119
 msgid ":doc:`pgr_topologicalSort`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:117
+#: ../../build/doc/experimental.rst:120
 msgid ":doc:`pgr_transitiveClosure`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:118
+#: ../../build/doc/experimental.rst:121
 msgid ":doc:`pgr_turnRestrictedPath`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:119
+#: ../../build/doc/experimental.rst:122
 msgid ":doc:`pgr_lengauerTarjanDominatorTree`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:138
+#: ../../build/doc/experimental.rst:141
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:141
+#: ../../build/doc/experimental.rst:144
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:142
+#: ../../build/doc/experimental.rst:145
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/experimental.rst:143
+#: ../../build/doc/experimental.rst:146
 msgid ":ref:`search`"
 msgstr ""
