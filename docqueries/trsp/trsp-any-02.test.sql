@@ -13,10 +13,10 @@ INSERT INTO  restrictions2 (rid, to_cost, teid, feid, via) VALUES
 (2,4,8,3,'5'),
 (3,100,9,16,NULL);
 
-UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+UPDATE edges SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
 select * from pgr_trsp(
-    'select id::integer, source::integer, target::integer,cost, reverse_cost from edge_table ORDER BY ID',
+    'select id::integer, source::integer, target::integer,cost, reverse_cost from edges ORDER BY ID',
     1,    -- edge_id for start
     0.5,  -- midpoint of edge
     6,    -- edge_id of route end
