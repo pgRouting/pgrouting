@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     doc-pickDeliverEuclidean
     doc-pickDeliver
+    lc101
     )
 
 foreach (f ${LOCAL_FILES})
