@@ -14,10 +14,10 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_makeConnected.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_makeConnected.html>`__
 
-pgr_makeConnected - Experimental
+``pgr_makeConnected`` - Experimental
 ===============================================================================
 
-``pgr_makeConnected`` — Returns the set of edges that will make the graph connected.
+``pgr_makeConnected`` — Set of edges that will connect the graph.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/make_connected.html
@@ -38,37 +38,39 @@ pgr_makeConnected - Experimental
 Description
 -------------------------------------------------------------------------------
 
-Adds the minimum number of edges needed to make the input graph connected. The algorithm first identifies
-all of the connected components in the graph, then adds edges to connect those components together in a path.
-For example, if a graph contains three connected components A, B, and C, make_connected will add two edges.
-The two edges added might consist of one connecting a vertex in A with a vertex in B and one connecting a vertex in B with a vertex in C.
+Adds the minimum number of edges needed to make the input graph connected. The
+algorithm first identifies
+all of the connected components in the graph, then adds edges to connect those
+components together in a path.
+For example, if a graph contains three connected components A, B, and C,
+make_connected will add two edges.
+The two edges added might consist of one connecting a vertex in A with a vertex
+in B and one connecting a vertex in B with a vertex in C.
 
 The main characteristics are:
-  - It will give the minimum list of all edges which are needed in the graph to make the graph connected.
 
-  - Applicable only for **undirected** graphs.
+- Works for **undirected** graphs.
+- It will give a minimum list of all edges which are needed in the graph to
+  make connect it.
+- The algorithm does not considers traversal costs in the calculations.
+- The algorithm does not considers geometric topology in the calculations.
+- Running time: :math:`O(V + E)`
 
-  - The algorithm does not considers traversal costs in the calculations.
-
-  - Running time: :math:`O(V + E)`
-
-
-Signatures
--------------------------------------------------------------------------------
-
-.. rubric:: Summary
 
 .. index::
     single: makeConnected - Experimental on v3.2
 
-.. code-block:: none
+Signatures
+-------------------------------------------------------------------------------
 
-    pgr_makeConnected(Edges SQL)
+.. parsed-literal::
 
+    pgr_makeConnected(`Edges SQL`_)
     RETURNS SET OF (seq, start_vid, end_vid)
     OR EMPTY SET
 
-:Example: Query done on :doc:`sampledata` network gives the list of edges that are needed in the graph to make it connected.
+:Example: Query done on :doc:`sampledata` network gives the list of edges that
+          are needed to connect the graph.
 
 .. literalinclude:: doc-pgr_makeConnected.queries
    :start-after: -- q1
@@ -77,52 +79,42 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**Edges SQL**       ``TEXT``                         SQL query as described below.
-=================== ====================== ========= =================================================
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
-:Edges SQL: an SQL query, which should return a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``                Identifier of the edge.
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              - When positive: edge `(target, source)` is part of the graph.
-                                                 - When negative: edge `(target, source)` is not part of the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     - When positive: edge `(target, source)` is part of the graph.
-                                                 - When negative: edge `(target, source)` is not part of the graph.
-
-================= =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
-.. return_makeConnected_start
-
 Returns set of ``(seq, start_vid, end_vid)``
 
-===============  =========== ============================================================
-Column           Type        Description
-===============  =========== ============================================================
-**seq**          ``INT``     Sequential value starting from **1**.
-**start_vid**    ``BIGINT``  Identifier of the first end point vertex of the edge.
-**end_vid**      ``BIGINT``  Identifier of the second end point vertex of the edge.
-===============  =========== ============================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
-.. return_makeConnected_end
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``BIGINT``
+     - Sequential value starting from **1**.
+   * - ``start_vid``
+     - ``BIGINT``
+     - Identifier of the first end point vertex of the edge.
+   * - ``end_vid``
+     - ``BIGINT``
+     - Identifier of the second end point vertex of the edge.
 
 See Also
 -------------------------------------------------------------------------------
