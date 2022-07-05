@@ -47,18 +47,20 @@ The function returns:
 .. index::
 	single: analyzeGraph
 
-.. code-block:: sql
+.. parsed-literal::
 
 	varchar pgr_analyzeGraph(text edge_table, double precision tolerance,
-                           text the_geom:='the_geom', text id:='id',
-                           text source:='source',text target:='target',text rows_where:='true')
+            text the_geom:='the_geom', text id:='id',
+            text source:='source',text target:='target',text rows_where:='true')
 
 .. rubric:: Prerequisites
 
-The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
+The  edge table to be analyzed must contain a source column and a target column
+filled with id's of the vertices of the segments and the corresponding vertices
+table <edge_table>_vertices_pgr that stores the vertices information.
 
-- Use :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` to create the vertices table.
-- Use :doc:`pgr_createTopology <pgr_createTopology>` to create the topology and the vertices table.
+- Use :doc:`pgr_createVerticesTable` to create the vertices table.
+- Use :doc:`pgr_createTopology` to create the topology and the vertices table.
 
 Parameters
 -------------------------------------------------------------------------------
@@ -66,12 +68,18 @@ Parameters
 The analyze graph function accepts the following parameters:
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
-:tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection unit)
-:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.
-:id: ``text``  Primary key column name of the network table. Default value is ``id``.
-:source: ``text`` Source column name of the network table. Default value is ``source``.
-:target: ``text``  Target column name of the network table.  Default value is ``target``.
-:rows_where: ``text``   Condition to select  a subset or rows.  Default value is ``true`` to indicate all rows.
+:tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection
+            unit)
+:the_geom: ``text``  Geometry column name of the network table. Default value is
+           ``the_geom``.
+:id: ``text``  Primary key column name of the network table. Default value is
+     ``id``.
+:source: ``text`` Source column name of the network table. Default value is
+         ``source``.
+:target: ``text``  Target column name of the network table.  Default value is
+         ``target``.
+:rows_where: ``text``   Condition to select  a subset or rows.  Default value is
+             ``true`` to indicate all rows.
 
 The function returns:
 
@@ -92,15 +100,19 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table can be created with :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`
+The vertices table can be created with :doc:`pgr_createVerticesTable
+<pgr_createVerticesTable>` or :doc:`pgr_createTopology <pgr_createTopology>`
 
 The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
-:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex.
+:cnt: ``integer`` Number of vertices in the edge_table that reference this
+      vertex.
 :chk: ``integer``  Indicator that the vertex might have a problem.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+:ein: ``integer`` Number of vertices in the edge_table that reference this
+      vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+:eout: ``integer`` Number of vertices in the edge_table that reference this
+       vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 Usage when the edge table's columns MATCH the default values:
@@ -112,7 +124,7 @@ Usage when the edge table's columns MATCH the default values:
    :start-after: -- q1
    :end-before: -- q1.1
 
-.. rubric:: When the arguments are given in the order described in the parameters:
+.. rubric:: Arguments are given in the order described in the parameters:
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q3
@@ -120,7 +132,13 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column.
+.. warning::  An error would occur when
+
+   the arguments are not given in the appropriate order:
+
+   In this example, the column ``id`` of the table ``mytable``
+   is passed to the function as the geometry column, and the geometry column
+   ``the_geom`` is passed to the function as the id column.
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q5
@@ -139,7 +157,8 @@ The order of the parameters do not matter:
    :start-after: -- q7
    :end-before: -- q7.1
 
-Parameters defined with a default value can be omitted, as long as the value matches the default:
+Parameters defined with a default value can be omitted, as long as the value
+matches the default:
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q8
@@ -147,19 +166,22 @@ Parameters defined with a default value can be omitted, as long as the value mat
 
 .. rubric:: Selecting rows using rows_where parameter
 
-Selecting rows based on the id. Displays the analysis a the section of the network.
+Selecting rows based on the id. Displays the analysis a the section of the
+network.
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q9
    :end-before: -- q9.1
 
-Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
+Selecting the rows where the geometry is near the geometry of row with ``id`` =
+5
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q10
    :end-before: -- q10.1
 
-Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
+Selecting the rows where the geometry is near the geometry of the row with
+``gid`` =100 of the table ``othertable``.
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q11
@@ -182,7 +204,11 @@ The arguments need to be given in the order described in the parameters:
    :start-after: -- q13
    :end-before: -- q13.1
 
-.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``gid`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the id column.
+.. warning::  An error would occur when
+   the arguments are not given in the appropriate order: In this example, the
+   column ``gid`` of the table ``mytable`` is passed to the function as the
+   geometry column, and the geometry column ``mygeom`` is passed to the function
+   as the id column.
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q14
@@ -200,8 +226,8 @@ The order of the parameters do not matter:
    :start-after: -- q16
    :end-before: -- q16.1
 
-In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
-
+In this scenario omitting a parameter would create an error because the default
+values for the column names do not match the column names of the table.
 
 .. rubric:: Selecting rows using rows_where parameter
 
@@ -225,7 +251,8 @@ Selecting the rows WHERE the geometry is near the geometry of row with ``id`` =5
    :start-after: -- q20
    :end-before: -- q20.1
 
-Selecting the rows WHERE the geometry is near the place='myhouse' of the table ``othertable``. (note the use of quote_literal)
+Selecting the rows WHERE the geometry is near the place='myhouse' of the table
+``othertable``. (note the use of quote_literal)
 
 .. literalinclude:: doc-pgr_analyzeGraph.queries
    :start-after: -- q21
@@ -268,10 +295,10 @@ The examples use the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`topology-functions`  for an overview of a topology for routing algorithms.
-* :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
-* :doc:`pgr_createVerticesTable <pgr_createVerticesTable>` to reconstruct the vertices table based on the source and target information.
-* :doc:`pgr_nodeNetwork <pgr_nodeNetwork>` to create nodes to a not noded edge table.
+* :doc:`topology-functions`
+* :doc:`pgr_analyzeOneWay`
+* :doc:`pgr_createVerticesTable`
+* :doc:`pgr_nodeNetwork` to create nodes to a not noded edge table.
 
 .. rubric:: Indices and tables
 
