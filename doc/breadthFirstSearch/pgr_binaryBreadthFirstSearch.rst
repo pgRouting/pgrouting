@@ -14,11 +14,14 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_binaryBreadthFirstSearch.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_binaryBreadthFirstSearch.html>`__
 
-pgr_binaryBreadthFirstSearch - Experimental
+``pgr_binaryBreadthFirstSearch`` - Experimental
 ===============================================================================
 
-``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary graph.
-Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-negative real integer, is termed as a 'binary graph'.
+``pgr_binaryBreadthFirstSearch`` — Returns the shortest path(s) in a binary
+graph.
+
+Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any
+non-negative integer, is termed as a 'binary graph'.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/breadth_first_search.html
@@ -33,58 +36,73 @@ Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-nega
 
 * Version 3.2.0
 
-  * New **experimental** function:
+  * New **experimental** signature:
 
-    * pgr_binaryBreadthFirstSearch(Combinations)
+    * pgr_binaryBreadthFirstSearch(`Combinations`_)
 
 * Version 3.0.0
 
-  * New **experimental** function
+  * New **experimental** signatures:
+
+    * pgr_binaryBreadthFirstSearch(`One to One`_)
+    * pgr_binaryBreadthFirstSearch(`One to Many`_)
+    * pgr_binaryBreadthFirstSearch(`Many to One`_)
+    * pgr_binaryBreadthFirstSearch(`Many to Many`_)
 
 Description
 -------------------------------------------------------------------------------
 
-It is well-known that the shortest paths between a single source and all other vertices can be found using Breadth First Search in :math:`O(|E|)` in an unweighted graph, i.e. the distance is the minimal number of edges that you need to traverse from the source to another vertex. We can interpret such a graph also as a weighted graph, where every edge has the weight 1. If not all edges in graph have the same weight, that we need a more general algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
+It is well-known that the shortest paths between a single source and all other
+vertices can be found using Breadth First Search in :math:`O(|E|)` in an
+unweighted graph, i.e. the distance is the minimal number of edges that you
+need to traverse from the source to another vertex. We can interpret such a
+graph also as a weighted graph, where every edge has the weight :math:`1`.
+If not alledges in graph have the same weight, that we need a more general
+algorithm, like Dijkstra's Algorithm  which runs in :math:`O(|E|log|V|)` time.
 
-However if the weights are more constrained, we can use a faster algorithm. This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 BFS', is a variation of the standard Breadth First Search problem to solve the SSSP (single-source shortest path) problem in :math:`O(|E|)`, if the weights of each edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
+However if the weights are more constrained, we can use a faster algorithm.
+This algorithm, termed as 'Binary Breadth First Search' as well as '0-1 BFS',
+is a variation of the standard Breadth First Search problem to solve the SSSP
+(single-source shortest path) problem in :math:`O(|E|)`, if the weights of each
+edge belongs to the set {0,X}, where 'X' is any non-negative real integer.
 
 
 **The main Characteristics are:**
 
-  - Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose edge-weights belongs to the set {0,X}, where 'X' is any non-negative real integer.)
+* Process is done only on 'binary graphs'. ('Binary Graph': Any graph whose
+  edge-weights belongs to the set {0,X}, where 'X' is any non-negative real
+  integer.)
+* For optimization purposes, any duplicated value in the `start_vids` or
+  `end_vids` are ignored.
+* The returned values are ordered:
 
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
+  * `start_vid` ascending
+  * `end_vid` ascending
 
-  - The returned values are ordered:
-
-    - `start_vid` ascending
-    - `end_vid` ascending
-
-  - Running time: :math:`O(| start\_vids | * |E|)`
+* Running time: :math:`O(| start\_vids | * |E|)`
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: none
+.. rubric:: Summary
 
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid,  end_vid  [, directed])
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid,  end_vids [, directed])
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vid  [, directed])
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vids [, directed])
-    pgr_binaryBreadthFirstSearch(Edges SQL, Combinations SQL [, directed])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-    OR EMPTY SET
+.. parsed-literal::
 
-.. code-block:: none
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vid**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**,  **end vids**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**
+               [, directed])
+   pgr_binaryBreadthFirstSearch(`Edges SQL`_, **Combinations SQL**
+               [, directed])
+   RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+   OR EMPTY SET
 
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** binary graph
-
-.. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: -- q1
-   :end-before: -- q2
+**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e
+:math:`1``)
 
 .. index::
     single: binaryBreadthFirstSearch(One to One) - Experimental on v3.0
@@ -92,35 +110,38 @@ Signatures
 One to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vid [, directed]);
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vid**
+               [, directed]);
+    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** binary graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: binaryBreadthFirstSearch(One to Many) - Experimental on v3.0
 
-One to many
+One to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vid, end_vids [, directed]);
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vid**, **end vids**
+               [, directed]);
+    RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** binary graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
+          graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: binaryBreadthFirstSearch(Many to One) - Experimental on v3.0
@@ -128,17 +149,19 @@ One to many
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vid [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vid**
+               [, directed]);
+    RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** binary graph
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
+          graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: binaryBreadthFirstSearch(Many to Many) - Experimental on v3.0
@@ -146,17 +169,19 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(Edges SQL, start_vids, end_vids [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, **start vids**, **end vids**
+               [, directed]);
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** binary graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: -- q5
-   :end-before: -- q6
+   :start-after: -- q4
+   :end-before: -- q5
 
 .. index::
     single: binaryBreadthFirstSearch(Combinations) - Experimental on v3.2
@@ -164,56 +189,59 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_binaryBreadthFirstSearch(Edges SQL, Combinations SQL [, directed]);
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_binaryBreadthFirstSearch(`Edges SQL`_, `Combinations SQL`_
+               [, directed]);
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Using a combinations table on an **undirected** binary graph.
+:Example: Using a combinations table on an **undirected** graph
+
+The combinations table:
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: -- q6
-   :end-before: -- q7
+   :start-after: -- q5
+   :end-before: -- q51
+
+The query:
+
+.. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
+   :start-after: -- q51
+   :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
 
-.. pgr_binaryBreadthFirstSearch_parameters_start
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
-===================== ================== ======== =================================================
-Parameter             Type               Default     Description
-===================== ================== ======== =================================================
-**Edges SQL**         ``TEXT``                    Edges query as described below.
-**Combinations SQL**  ``TEXT``                    Combinations query as described below.
-**start_vid**         ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids**        ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**           ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**          ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**          ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
-                                                  - When ``false`` the graph is considered as `Undirected`.
-===================== ================== ======== =================================================
-
-.. pgr_binaryBreadthFirstSearch_parameters_end
-
-Inner queries
+Optional Parameters
 -------------------------------------------------------------------------------
 
-Edges query
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Inner Queries
+-------------------------------------------------------------------------------
+
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Combinations query
+Combinations SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -221,47 +249,18 @@ Return Columns
     :end-before: return_path_end
 
 
-Example Data
+Additional Examples
 -------------------------------------------------------------------------------
 
-This type of data is used on the examples of this page.
-
-Edwards-Moore Algorithm is best applied when trying to answer queries such as the following:
-**“Find the path with the minimum number from Source to Destination”**
-Here:
-* *Source* = Source Vertex, *Destination* =  Any arbitrary destination vertex
-* *X* is an event/property
-* Each edge  in the graph is either “*X*” or “*Not X*” .
-
-Example:
-“Find the path with the minimum number of road works from Source to Destination”
-
-Here, a road under work(aka **road works**)  means that part of the road is occupied for
-construction work/maintenance.
-
-Here:
-* Edge ( *u* , *v* ) has weight = 0 if no road work is ongoing on the road from *u* to *v*.
-* Edge ( *u*, *v*) has weight = 1 if road work is ongoing on the road from *u* to *v*.
-
-Then, upon running the algorithm, we obtain the path with the minimum number of road works
-from the given source and destination.
-
-Thus, the queries used in the previous section can be interpreted in this manner.
-
-Table Data
-...............................................................................
-
-
-The queries in the previous sections use the table 'roadworks'.
-The data of the table:
+:Example: Manually assigned vertex combinations.
 
 .. literalinclude:: doc-pgr_binaryBreadthFirstSearch.queries
-   :start-after: --data-start
-   :end-before: --data-end
+    :start-after: -- q6
+    :end-before: -- q7
 
 See Also
 -------------------------------------------------------------------------------
-
+* :doc:`sampledata`
 * https://cp-algorithms.com/graph/01_bfs.html
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Specialized_variants
 
