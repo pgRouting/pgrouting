@@ -24,7 +24,7 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/common/doc/utilities/version.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__
 
-pgr_version
+``pgr_version``
 ===============================================================================
 
 ``pgr_version`` — Query for pgRouting version information.
@@ -52,7 +52,7 @@ Returns pgRouting version information.
 Signature
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
+.. parsed-literal::
 
 	TEXT pgr_version();
 
@@ -74,6 +74,7 @@ Result Columns
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`reference`
 * :doc:`pgr_full_version`
 
 .. rubric:: Indices and tables

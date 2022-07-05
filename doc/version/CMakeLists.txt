@@ -2,6 +2,7 @@
 SET(LOCAL_FILES
     pgr_version.rst
     pgr_full_version.rst
+    reference.rst
     )
 
 foreach (f ${LOCAL_FILES})
