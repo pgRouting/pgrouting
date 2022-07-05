@@ -19,7 +19,8 @@
 pgr_turnRestrictedPath - Experimental
 ===============================================================================
 
-``pgr_turnRestrictedPath``
+``pgr_turnRestrictedPath`` Using Yen's algorithm Vertex -Vertex routing with
+restrictions
 
 .. include:: experimental.rst
    :start-after: begin-warn-expr
@@ -31,55 +32,131 @@ pgr_turnRestrictedPath - Experimental
 
   * New **Experimental** function
 
-
 Description
 -------------------------------------------------------------------------------
 
-* TBD
+Using Yen's algorithm to obtain K shortest paths and analyze the paths to select
+the paths that do not use the restrictions
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. index::
    single: turnRestrictedPath - Experimental on v3.0
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_turnRestrictedPath(Edges SQL, Restrictions SQL, Start vertex, End vertex, K cycles,
+    pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, Start vid, End vid, K cycles,
       [, directed] [,heap_paths] [, stop_on_first] [,strict])
     RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
-Parameters
--------------------------------------------------------------------------------
-* TBD
+:Example: From vertex :math:`3` to vertex  :math:`8` on a **directed** graph
+
+.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
 
-* TBD
+.. include:: pgr_KSP.rst
+    :start-after: ksp_parameters_start
+    :end-before: ksp_parameters_end
 
-Inner query
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+KSP Optional parameters
 -------------------------------------------------------------------------------
 
-* TBD
+.. include:: pgr_KSP.rst
+    :start-after: ksp_optionals_start
+    :end-before: ksp_optionals_end
+
+Special optional parameters
+-------------------------------------------------------------------------------
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``stop_on_first``
+     - ``BOOLEAN``
+     - ``true``
+     - * When ``true`` stops on first path found that dos not violate
+         restrictions
+       * When ``false`` returns at most K paths
+   * - ``strict``
+     - ``BOOLEAN``
+     - ``false``
+     - * When ``true`` returns only paths that do not violate restrictions
+       * When ``false`` returns the paths found
+
+Inner Queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Restrictions SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: restrictions_columns_start
+   :end-before: restrictions_columns_end
+
 
 Result Columns
 -------------------------------------------------------------------------------
 
-* TBD
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_all_columns_start
+    :end-before: return_path_all_columns_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example:
+:Example: From vertex :math:`3` to :math:`8` with ``strict`` flag on.
+
+No results because the only path available follows a restriction.
+
+.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+:Example: From vertex :math:`3` to vertex  :math:`8` on an **undirected** graph
+
+.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+:Example: From vertex :math:`3` to vertex  :math:`8` with more alternatives
+
+.. literalinclude:: doc-pgr_turnRestrictedPath.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
 
 See Also
 -------------------------------------------------------------------------------
+
+* :doc:`KSP-category`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-
