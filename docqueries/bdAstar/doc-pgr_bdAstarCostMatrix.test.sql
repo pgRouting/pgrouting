@@ -1,26 +1,18 @@
-SET client_min_messages TO WARNING;
-------------------------
--- bdAstarCostMatrix
-------------------------
-/* -- bdAstar q1 */
+/* -- q2 */
 SELECT * FROM pgr_bdAstarCostMatrix(
-    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5)
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges',
+  (SELECT array_agg(id) FROM vertices WHERE id IN (5, 6, 10, 15)),
+  directed => false, heuristic => 2
 );
-/* -- bdAstar q2 */
-SELECT * FROM pgr_bdAstarCostMatrix(
-    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
-    false
-);
-/* -- bdAstar q3 */
+/* -- q3 */
 SELECT * FROM pgr_TSP(
-    $$
-    SELECT * FROM pgr_bdAstarCostMatrix(
-        'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-        (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
-        false
-    )
-    $$
+  $$
+  SELECT * FROM pgr_bdAstarCostMatrix(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges',
+    (SELECT array_agg(id) FROM vertices WHERE id IN (5, 6, 10, 15)),
+    directed=> false, heuristic => 2
+  )
+  $$,
+  randomize => false
 );
-/* -- bdAstar q4 */
+/* -- q4 */
