@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 15:58+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,20 +126,16 @@ msgid ":doc:`topology-functions`"
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:3
+msgid "These proposed functions do not modify the database."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:5
 msgid ""
-":doc:`pgr_extractVertices` - Extracts vertices information based on the "
-"source and target."
+":doc:`pgr_extractVertices` - Extracts vertex information based on the "
+"edge table information."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:64
-msgid ":doc:`traversal-family`"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:3
-msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
-msgstr ""
-
-#: ../../build/doc/proposed.rst:70
 msgid ":doc:`coloring-family`"
 msgstr ""
 
@@ -149,11 +145,19 @@ msgid ""
 "greedy approach."
 msgstr ""
 
-#: ../../build/doc/proposed.rst:82
-msgid "categories"
+#: ../../build/doc/proposed.rst:70
+msgid ":doc:`traversal-family`"
+msgstr ""
+
+#: ../../build/doc/traversal-family.rst:3
+msgid ":doc:`pgr_depthFirstSearch` - Depth first search traversal of the graph."
 msgstr ""
 
 #: ../../build/doc/proposed.rst:83
+msgid "categories"
+msgstr ""
+
+#: ../../build/doc/proposed.rst:84
 msgid ":doc:`cost-category`"
 msgstr ""
 
@@ -161,7 +165,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCost`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:89
+#: ../../build/doc/proposed.rst:90
 msgid ":doc:`costMatrix-category`"
 msgstr ""
 
@@ -169,7 +173,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsCostMatrix`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:95
+#: ../../build/doc/proposed.rst:96
 msgid ":doc:`drivingDistance-category`"
 msgstr ""
 
@@ -177,7 +181,7 @@ msgstr ""
 msgid ":doc:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:101
+#: ../../build/doc/proposed.rst:102
 msgid ":doc:`KSP-category`"
 msgstr ""
 
@@ -185,23 +189,39 @@ msgstr ""
 msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ""
 
+#: ../../build/doc/proposed.rst:108
+msgid ":doc:`via-category`"
+msgstr ""
+
+#: ../../build/doc/via-category.rst:3
+msgid ":doc:`pgr_dijkstraVia`"
+msgstr ""
+
 #: ../../build/doc/proposed.rst:114
+msgid ":doc:`withPoints-category`"
+msgstr ""
+
+#: ../../build/doc/withPoints-category.rst:3
+msgid ":doc:`withPoints-family` - Functions based on Dijkstra algorithm."
+msgstr ""
+
+#: ../../build/doc/proposed.rst:129
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:116
+#: ../../build/doc/proposed.rst:131
 msgid ":doc:`experimental`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:119
+#: ../../build/doc/proposed.rst:134
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:120
+#: ../../build/doc/proposed.rst:135
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/proposed.rst:121
+#: ../../build/doc/proposed.rst:136
 msgid ":ref:`search`"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-13 05:24+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,38 +48,71 @@ msgstr ""
 
 #: ../../build/doc/topology-functions.rst:30
 msgid ""
-"The pgRouting's topology of a network, represented with an edge table "
-"with source and target attributes and a vertices table associated with "
-"it. Depending on the algorithm, you can create a topology or just "
-"reconstruct the vertices table, You can analyze the topology, We also "
-"provide a function to node an unoded network."
+"The pgRouting's topology of a network represented with a graph in form of"
+" two tables: and edge table and a vertex table."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:36
-msgid ":doc:`pgr_createTopology` -  to create a topology based on the geometry."
-msgstr ""
-
-#: ../../build/doc/topology-functions.rst:37
+#: ../../build/doc/topology-functions.rst:33
 msgid ""
-":doc:`pgr_createVerticesTable` - to reconstruct the vertices table based "
-"on the source and target information."
+"Attributes associated to the tables help to indicate if the graph is "
+"directed or undirected, if an edge is one way on a directed graph, and "
+"depending on the final application needs, suitable topology(s) need to be"
+" created."
 msgstr ""
 
 #: ../../build/doc/topology-functions.rst:38
+msgid ""
+"pgRouting suplies some functions to create a routing topology and to "
+"analyze the topology."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:41
+msgid "Additional functions to create a graph:"
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:43
+msgid ":doc:`contraction-family`"
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:45
+msgid "Additional functions to analyze a graph:"
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:47
+msgid ":doc:`components-family`"
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:52
+msgid ""
+"The following functions modify the database directly therefore the user "
+"must have special permissions given by the administrators to use them."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:55
+msgid ":doc:`pgr_createTopology` -  create a topology based on the geometry."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:56
+msgid ""
+":doc:`pgr_createVerticesTable` - reconstruct the vertices table based on "
+"the source and target information."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:58
 msgid ""
 ":doc:`pgr_analyzeGraph`  - to analyze the edges and vertices of the edge "
 "table."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:39
+#: ../../build/doc/topology-functions.rst:60
 msgid ":doc:`pgr_analyzeOneWay` - to analyze directionality of the edges."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:40
+#: ../../build/doc/topology-functions.rst:61
 msgid ":doc:`pgr_nodeNetwork`  -to create nodes to a not noded edge table."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:45
+#: ../../build/doc/topology-functions.rst:68
 msgid "Proposed"
 msgstr ""
 
@@ -119,25 +152,29 @@ msgstr ""
 msgid "Documentation might need refinement."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:52
-msgid ""
-":doc:`pgr_extractVertices` - Extracts vertices information based on the "
-"source and target."
+#: ../../build/doc/topology-functions.rst:75
+msgid "These proposed functions do not modify the database."
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:67
+#: ../../build/doc/topology-functions.rst:77
+msgid ""
+":doc:`pgr_extractVertices` - Extracts vertex information based on the "
+"edge table information."
+msgstr ""
+
+#: ../../build/doc/topology-functions.rst:93
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:70
+#: ../../build/doc/topology-functions.rst:96
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:71
+#: ../../build/doc/topology-functions.rst:97
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/topology-functions.rst:72
+#: ../../build/doc/topology-functions.rst:98
 msgid ":ref:`search`"
 msgstr ""
 
