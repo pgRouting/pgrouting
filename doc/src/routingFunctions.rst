@@ -93,6 +93,12 @@ Function Families
       :start-after: index from here
       :end-before: index to here
 
+:doc:`reference`
+
+.. include:: reference.rst
+   :start-after: index from here
+   :end-before: index to here
+
 :doc:`topology-functions`
 
 .. include:: topology-functions.rst
@@ -142,6 +148,18 @@ Functions by categories
    :start-after: index from here
    :end-before: index to here
 
+:doc:`BFS-category`
+
+.. include:: BFS-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:doc:`DFS-category`
+
+.. include:: DFS-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
 ..  to-here
 
 .. toctree::
@@ -157,6 +175,7 @@ Functions by categories
     flow-family
     kruskal-family
     prim-family
+    reference
     topology-functions
     TSP-family
     spanningTree-family
@@ -170,6 +189,7 @@ Functions by categories
     costMatrix-category
     drivingDistance-category
     spanningTree-family
+    BFS-category
 
 See Also
 -------------------------------------------------------------------------------

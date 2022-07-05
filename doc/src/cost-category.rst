@@ -28,7 +28,10 @@ Cost - Category
 .. index from here
 
 * :doc:`pgr_aStarCost`
+* :doc:`pgr_bdAstarCost`
 * :doc:`pgr_dijkstraCost`
+* :doc:`pgr_bdDijkstraCost`
+* :doc:`pgr_dijkstraNearCost`
 
 .. index to here
 
@@ -50,43 +53,36 @@ General Information
 
 
 Characteristics
-................
+...............................................................................
+
+Each function works as part of the family it belongs to.
 
 The main Characteristics are:
 
-* Each function works as part of the family it belongs to.
+.. cost_traits_start
+
 * It does not return a path.
-* Returns the sum of the costs of the resulting path(s) for pair combination of nodes in the graph.
-* Process is done only on edges with positive costs.
-* Values are returned when there is a path.
-
-  * The returned values are in the form of a set of `(start_vid, end_vid, agg_cost)`.
-
-  * When the starting vertex and ending vertex are the same, there is no path.
-
-    * The `agg_cost` int the non included values `(v, v)` is `0`.
-
-  * When the starting vertex and ending vertex are the different and there is no path.
-
-    * The `agg_cost` in the non included values `(u, v)` is :math:`\infty`.
-
-* Let be the case the values returned are stored in a table, so the unique index would be the pair: `(start_vid, end_vid)`.
+* Returns the sum of the costs of the shortest path of each pair combination of
+  nodes requested.
+* Let be the case the values returned are stored in a table, so the unique index
+  would be the pair: ``(start_vid, end_vid)``.
 
 * Depending on the function and its parameters, the results can be symmetric.
 
-  * The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+  * The  **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, u)`.
 
-* Any duplicated value in the `start_vids` or in `end_vids` are ignored.
+* Any duplicated value in the start or end vertex identifiers are ignored.
 
 * The returned values are ordered:
 
-  * `start_vid` ascending
-  * `end_vid` ascending
+  * ``start_vid`` ascending
+  * ``end_vid`` ascending
 
+.. cost_traits_end
 
 
 See Also
-................
+-------------------------------------------------------------------------------
 
 .. rubric:: Indices and tables
 
