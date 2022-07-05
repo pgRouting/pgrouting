@@ -1,5 +1,4 @@
 SET(LOCAL_FILES
-    lineGraph.png
     transformation.png
     original.png
     )
