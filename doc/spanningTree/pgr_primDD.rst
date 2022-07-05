@@ -16,7 +16,7 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_primDD.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primDD.html>`__
 
-pgr_primDD
+``pgr_primDD``
 ===============================================================================
 
 ``pgr_primDD`` — Catchament nodes using Prim's algorithm.
@@ -32,12 +32,12 @@ pgr_primDD
 
   * New **Official** function
 
-
 Description
 -------------------------------------------------------------------------------
 
-Using Prim algorithm, extracts the nodes that have aggregate costs less than
-or equal to the value ``Distance`` within the calculated minimum spanning tree.
+Using Prim's algorithm, extracts the nodes that have aggregate costs less than
+or equal to a **distance** from a **root** vertex (or vertices) within the
+calculated minimum spanning tree.
 
 **The main Characteristics are:**
 
@@ -45,19 +45,20 @@ or equal to the value ``Distance`` within the calculated minimum spanning tree.
    :start-after: prim-description-start
    :end-before: prim-description-end
 
+.. include:: drivingDistance-category.rst
+   :start-after: dd_traits_start
+   :end-before: dd_traits_end
+
 - Returned tree nodes from a root vertex are on Depth First Search order.
 - Depth First Search running time: :math:`O(E + V)`
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
+.. parsed-literal::
 
-.. code-block:: none
-
-    pgr_prim(Edges SQL, root vid, distance)
-    pgr_prim(Edges SQL, root vids, distance)
-
+    pgr_primDD(`Edges SQL`_, **Root vid**, **distance**)
+    pgr_primDD(`Edges SQL`_, **Root vids**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
@@ -66,13 +67,13 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_primDD(Edges SQL, root vid, distance)
-
+    pgr_primDD(`Edges SQL`_, **Root vid**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertex :math:`2` with :math:`agg\_cost <= 3.5`
+:Example: The Minimum Spanning Tree starting on vertex :math:`6` with
+          :math:`distance \leq 3.5`
 
 .. literalinclude:: doc-pgr_primDD.queries
    :start-after: -- q1
@@ -84,34 +85,52 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_primDD(Edges SQL, root vids, distance)
-
+    pgr_primDD(`Edges SQL`_, **Root vids**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with :math:`agg\_cost <= 3.5`;
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
+          :math:`distance \leq 3.5`
 
 .. literalinclude:: doc-pgr_primDD.queries
    :start-after: -- q2
    :end-before: -- q3
 
+Parameters
+-------------------------------------------------------------------------------
 
-.. Parameters, Inner query & result columns
+.. include:: drivingDistance-category.rst
+   :start-after: mst-dd-params_start
+   :end-before: mst-dd-params_end
 
-.. include:: pgr_kruskalDD.rst
-   :start-after: mstDD-information-start
-   :end-before: mstDD-information-end
+Inner Queries
+-------------------------------------------------------------------------------
 
+Edges SQL
+..............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-dd-result-columns-start
+   :end-before: mst-bfs-dfs-dd-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
-* The queries use the :doc:`sampledata` network.
-* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
+* :doc:`sampledata`
+* `Boost: Prim's algorithm documentation
+  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm
+  <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
 
 .. rubric:: Indices and tables
 

@@ -16,10 +16,10 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_prim.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__
 
-pgr_prim
+``pgr_prim``
 ===============================================================================
 
-``pgr_prim`` — Minimum spanning forest of graph using Prim algorithm.
+``pgr_prim`` — Minimum spanning forest of a graph using Prim's algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html
@@ -31,12 +31,6 @@ pgr_prim
 * Version 3.0.0
 
   * New **Official** function
-
-.. rubric:: Support
-
-* **Supported versions:**
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_prim.html>`__)
-  `3.0 <https://docs.pgrouting.org/3.0/en/pgr_prim.html>`__
 
 Description
 -------------------------------------------------------------------------------
@@ -61,28 +55,42 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_prim(edges_sql)
-
+    pgr_prim(`Edges SQL`_)
     RETURNS SET OF (edge, cost)
     OR EMPTY SET
 
 
-:Example: Minimum Spanning Forest of a subgraph
+:Example: Minimum spanning forest of a subgraph
 
 .. literalinclude:: doc-pgr_prim.queries
    :start-after: -- q1
    :end-before: -- q2
 
+Parameters
+-------------------------------------------------------------------------------
 
-.. parameters, inner query & result columns
-   are the same as kruskal's
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-.. include:: pgr_kruskal.rst
-   :start-after: mst_information_start
-   :end-before: mst_information_end
+Inner Queries
+-------------------------------------------------------------------------------
 
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+include:: pgRouting-concepts.rst
+   :start-after: r-edge-cost-start
+   :end-before: r-edge-cost-end
 
 See Also
 -------------------------------------------------------------------------------
@@ -90,8 +98,10 @@ See Also
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
 * The queries use the :doc:`sampledata` network.
-* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
+* `Boost: Prim's algorithm documentation
+  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm
+  <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
 
 .. rubric:: Indices and tables
 

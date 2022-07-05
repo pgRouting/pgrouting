@@ -16,11 +16,11 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_kruskalDFS.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_kruskalDFS.html>`__
 
-pgr_kruskalDFS
+``pgr_kruskalDFS``
 ===============================================================================
 
-``pgr_kruskalDFS`` — Kruskal algorithm for Minimum Spanning Tree with Depth First
-Search ordering.
+``pgr_kruskalDFS`` — Kruskal's algorithm for Minimum Spanning Tree with Depth
+First Search ordering.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html
@@ -52,11 +52,10 @@ of the Minimum Spanning Tree created using Kruskal's algorithm.
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_kruskalDFS(Edges SQL, Root vid [, max_depth])
-    pgr_kruskalDFS(Edges SQL, Root vids [, max_depth])
-
+    pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth])
+    pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
@@ -65,17 +64,16 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_kruskalDFS(Edges SQL, Root vid [, max_depth])
-
+    pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertex :math:`2`
+:Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
 .. literalinclude:: doc-pgr_kruskalDFS.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: kruskalDFS(Multiple vertices)
@@ -83,57 +81,37 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_kruskalDFS(Edges SQL, Root vids [, max_depth])
-
+    pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with :math:`depth <= 3`
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
+          :math:`depth \leq 3`
 
 .. literalinclude:: doc-pgr_kruskalDFS.queries
-   :start-after: --q2
-   :end-before: --q3
-
-
-.. mstfs-information-start
+   :start-after: -- q2
+   :end-before: -- q3
 
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== =================================================
-Parameter           Type                   Description
-=================== ====================== =================================================
-**Edges SQL**       ``TEXT``               SQL query described in `Inner query`_.
-**Root vid**        ``BIGINT``             Identifier of the root vertex of the tree.
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-params_start
+   :end-before: mst-bfs-dfs-params_end
 
-                                           - Used on `Single vertex`_
-                                           - When value is :math:`0` then gets the spanning forest
-                                             starting in aleatory nodes for each tree in the forest.
-
-**Root vids**       ``ARRAY[ANY-INTEGER]`` Array of identifiers of the root vertices.
-
-                                           - Used on `Multiple vertices`_
-                                           - :math:`0` values are ignored
-                                           - For optimization purposes, any duplicated value is ignored.
-=================== ====================== =================================================
-
-Optional Parameters
+DFS optional parameters
 ...............................................................................
 
+.. include:: BFS-category.rst
+   :start-after: max-depth-optional-start
+   :end-before: max-depth-optional-end
 
-=================== =========== =========================== =================================================
-Parameter           Type        Default                     Description
-=================== =========== =========================== =================================================
-**max_depth**       ``BIGINT``  :math:`9223372036854775807` Upper limit for depth of node in the tree
-
-                                                            - When value is ``Negative`` then **throws error**
-=================== =========== =========================== =================================================
-
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
-.. rubric::Edges SQL
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
    :start-after: basic_edges_sql_start
@@ -142,20 +120,20 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-.. include:: pgr_kruskalDD.rst
-   :start-after: result columns start
-   :end-before: result columns end
-
-.. mstfs-information-end
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-dd-result-columns-start
+   :end-before: mst-bfs-dfs-dd-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-family`
 * :doc:`kruskal-family`
-* The queries use the :doc:`sampledata` network.
-* `Boost: Kruskal's algorithm documentation <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
-* `Wikipedia: Kruskal's algorithm <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
+* :doc:`sampledata`
+* `Boost: Kruskal's algorithm
+  <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__
+* `Wikipedia: Kruskal's algorithm
+  <https://en.wikipedia.org/wiki/Kruskal's_algorithm>`__
 
 .. rubric:: Indices and tables
 
