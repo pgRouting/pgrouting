@@ -3,9 +3,9 @@ SET extra_float_digits=-3;
 SET client_min_messages TO WARNING;
 /* -- q1 */
 SELECT * FROM pgr_TSPeuclidean(
-    $$
-    SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr
-    $$);
+  $$
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  $$);
 /* -- q2 */
 SELECT *
 FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
@@ -17,5 +17,5 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 /* -- q4 */
 -- This query is used to create the optimal solution image visually deduced the ordering
 SELECT 1 AS gid, ST_MakeLine(ARRAY(
-    SELECT geom FROM unnest(array[1,2,6,10,11,12,15,19,18,17,21,22,23,29,28,26,20,25,27,24,16,14,13,9,7,3,4,8,5,1])
-    JOIN wi29 ON (unnest = id)));
+  SELECT geom FROM unnest(array[1,2,6,10,11,12,15,19,18,17,21,22,23,29,28,26,20,25,27,24,16,14,13,9,7,3,4,8,5,1])
+  JOIN wi29 ON (unnest = id)));
