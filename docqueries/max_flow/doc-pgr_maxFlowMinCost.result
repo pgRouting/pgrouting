@@ -3,107 +3,106 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
-SELECT * FROM pgr_MaxFlowMinCost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    2, 3
-);
+SELECT * FROM pgr_maxFlowMinCost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  11, 12);
  seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
-   1 |    4 |      2 |      5 |   80 |                20 |   80 |       80
-   2 |    3 |      4 |      3 |   80 |                50 |   80 |      160
-   3 |    8 |      5 |      6 |   80 |                20 |   80 |      240
-   4 |    9 |      6 |      9 |   80 |                50 |   80 |      320
-   5 |   16 |      9 |      4 |   80 |                 0 |   80 |      400
-(5 rows)
+   1 |   10 |      7 |      8 |  100 |                30 |  100 |      100
+   2 |   12 |      8 |     12 |  100 |                 0 |  100 |      200
+   3 |    8 |     11 |      7 |  100 |                30 |  100 |      300
+   4 |   11 |     11 |     12 |  130 |                 0 |  130 |      430
+(4 rows)
 
 /* -- q2 */
-SELECT * FROM pgr_MaxFlowMinCost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    ARRAY[1, 7, 14], 12
-);
+SELECT * FROM pgr_maxFlowMinCost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  11, ARRAY[5, 10, 12]);
  seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
-   1 |    1 |      1 |      2 |   80 |                 0 |   80 |       80
-   2 |    4 |      2 |      5 |   80 |                20 |   80 |      160
-   3 |    8 |      5 |      6 |  100 |                 0 |  100 |      260
-   4 |   10 |      5 |     10 |   30 |               100 |   30 |      290
-   5 |    9 |      6 |      9 |   50 |                80 |   50 |      340
-   6 |   11 |      6 |     11 |   50 |                80 |   50 |      390
-   7 |    6 |      7 |      8 |   50 |                 0 |   50 |      440
-   8 |    7 |      8 |      5 |   50 |                 0 |   50 |      490
-   9 |   15 |      9 |     12 |   50 |                30 |   50 |      540
-  10 |   12 |     10 |     11 |   30 |                70 |   30 |      570
-  11 |   13 |     11 |     12 |   80 |                20 |   80 |      650
-(11 rows)
+   1 |    1 |      6 |      5 |   30 |               100 |   30 |       30
+   2 |    4 |      7 |      6 |   30 |                20 |   30 |       60
+   3 |   10 |      7 |      8 |  100 |                30 |  100 |      160
+   4 |   12 |      8 |     12 |  100 |                 0 |  100 |      260
+   5 |    8 |     11 |      7 |  130 |                 0 |  130 |      390
+   6 |   11 |     11 |     12 |  130 |                 0 |  130 |      520
+   7 |    9 |     11 |     16 |   80 |                50 |   80 |      600
+   8 |    3 |     15 |     10 |   80 |                50 |   80 |      680
+   9 |   16 |     16 |     15 |   80 |                 0 |   80 |      760
+(9 rows)
 
 /* -- q3 */
-SELECT * FROM pgr_MaxFlowMinCost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    13, ARRAY[7, 1, 4]
-);
+SELECT * FROM pgr_maxFlowMinCost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  ARRAY[11, 3, 17], 12);
  seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
-   1 |    1 |      2 |      1 |   50 |                80 |   50 |       50
-   2 |    4 |      5 |      2 |   50 |                 0 |   50 |      100
-   3 |   16 |      9 |      4 |   50 |                30 |   50 |      150
-   4 |   10 |     10 |      5 |   50 |                 0 |   50 |      200
-   5 |   12 |     10 |     11 |   50 |                50 |   50 |      250
-   6 |   13 |     11 |     12 |   50 |                50 |   50 |      300
-   7 |   15 |     12 |      9 |   50 |                 0 |   50 |      350
-   8 |   14 |     13 |     10 |  100 |                30 |  100 |      450
-(8 rows)
+   1 |    7 |      3 |      7 |   50 |                 0 |   50 |       50
+   2 |   10 |      7 |      8 |  100 |                30 |  100 |      150
+   3 |   12 |      8 |     12 |  100 |                 0 |  100 |      250
+   4 |    8 |     11 |      7 |   50 |                80 |   50 |      300
+   5 |   11 |     11 |     12 |  130 |                 0 |  130 |      430
+(5 rows)
 
 /* -- q4 */
-SELECT * FROM pgr_MaxFlowMinCost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    ARRAY[7, 13], ARRAY[3, 9]
-);
+SELECT * FROM pgr_maxFlowMinCost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  ARRAY[11, 3, 17], ARRAY[5, 10, 12]);
  seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
-   1 |    8 |      5 |      6 |  100 |                 0 |  100 |      100
-   2 |    9 |      6 |      9 |  100 |                30 |  100 |      200
-   3 |    6 |      7 |      8 |   50 |                 0 |   50 |      250
-   4 |    7 |      8 |      5 |   50 |                 0 |   50 |      300
-   5 |   10 |     10 |      5 |   50 |                 0 |   50 |      350
-   6 |   12 |     10 |     11 |   50 |                50 |   50 |      400
-   7 |   13 |     11 |     12 |   50 |                50 |   50 |      450
-   8 |   15 |     12 |      9 |   50 |                 0 |   50 |      500
-   9 |   14 |     13 |     10 |  100 |                30 |  100 |      600
-(9 rows)
+   1 |    7 |      3 |      7 |   50 |                 0 |   50 |       50
+   2 |    1 |      6 |      5 |   50 |                80 |   50 |      100
+   3 |    4 |      7 |      6 |   50 |                 0 |   50 |      150
+   4 |   10 |      7 |      8 |  100 |                30 |  100 |      250
+   5 |   12 |      8 |     12 |  100 |                 0 |  100 |      350
+   6 |    8 |     11 |      7 |  100 |                30 |  100 |      450
+   7 |   11 |     11 |     12 |  130 |                 0 |  130 |      580
+   8 |    9 |     11 |     16 |   30 |               100 |   30 |      610
+   9 |    3 |     15 |     10 |   80 |                50 |   80 |      690
+  10 |   16 |     16 |     15 |   80 |                 0 |   80 |      770
+  11 |   15 |     17 |     16 |   50 |                 0 |   50 |      820
+(11 rows)
 
 /* -- q5 */
-SELECT * FROM pgr_MaxFlowMinCost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    'SELECT * FROM ( VALUES (7, 3), (13, 9) ) AS t(source, target)'
-);
+SELECT source, target FROM combinations
+WHERE target NOT IN (5, 6);
+ source | target
+--------+--------
+      5 |     10
+      6 |     15
+      6 |     14
+(3 rows)
+
+/* -- q51 */
+SELECT * FROM pgr_maxFlowMinCost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  'SELECT * FROM combinations WHERE target NOT IN (5, 6)');
  seq | edge | source | target | flow | residual_capacity | cost | agg_cost
 -----+------+--------+--------+------+-------------------+------+----------
-   1 |    8 |      5 |      6 |  100 |                 0 |  100 |      100
-   2 |    9 |      6 |      9 |  100 |                30 |  100 |      200
-   3 |    6 |      7 |      8 |   50 |                 0 |   50 |      250
-   4 |    7 |      8 |      5 |   50 |                 0 |   50 |      300
-   5 |   10 |     10 |      5 |   50 |                 0 |   50 |      350
-   6 |   12 |     10 |     11 |   50 |                50 |   50 |      400
-   7 |   13 |     11 |     12 |   50 |                50 |   50 |      450
-   8 |   15 |     12 |      9 |   50 |                 0 |   50 |      500
-   9 |   14 |     13 |     10 |  100 |                30 |  100 |      600
-(9 rows)
+   1 |    4 |      6 |      7 |   80 |                20 |   80 |       80
+   2 |    8 |      7 |     11 |   80 |                20 |   80 |      160
+   3 |    9 |     11 |     16 |   80 |                50 |   80 |      240
+   4 |   16 |     16 |     15 |   80 |                 0 |   80 |      320
+(4 rows)
 
 /* -- q6 */
+SELECT * FROM pgr_maxFlowMinCost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  'SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)');
+ seq | edge | source | target | flow | residual_capacity | cost | agg_cost
+-----+------+--------+--------+------+-------------------+------+----------
+   1 |    4 |      6 |      7 |   80 |                20 |   80 |       80
+   2 |    8 |      7 |     11 |   80 |                20 |   80 |      160
+   3 |    9 |     11 |     16 |   80 |                50 |   80 |      240
+   4 |   16 |     16 |     15 |   80 |                 0 |   80 |      320
+(4 rows)
+
+/* -- q7 */
 ROLLBACK;
 ROLLBACK

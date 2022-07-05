@@ -1,47 +1,34 @@
-
 /* -- q1 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    2, 3
-);
-
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  11, 12);
 /* -- q2 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    ARRAY[1, 7, 14], 12
-);
-
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  11, ARRAY[5, 10, 12]);
 /* -- q3 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    13, ARRAY[7, 1, 4]
-);
-
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  ARRAY[11, 3, 17], 12);
 /* -- q4 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    ARRAY[7, 13], ARRAY[3, 9]
-);
-
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  ARRAY[11, 3, 17], ARRAY[5, 10, 12]);
 /* -- q5 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    'SELECT * FROM ( VALUES (7, 3), (13, 9) ) AS t(source, target)'
-);
-
+SELECT source, target FROM combinations
+WHERE target NOT IN (5, 6);
+/* -- q51 */
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  'SELECT * FROM combinations WHERE target NOT IN (5, 6)');
 /* -- q6 */
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  'SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)');
+/* -- q7 */

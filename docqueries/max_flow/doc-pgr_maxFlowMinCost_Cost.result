@@ -3,70 +3,75 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    2, 3
-);
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  11, 12);
  pgr_maxflowmincost_cost
 -------------------------
-                     400
+                     430
 (1 row)
 
 /* -- q2 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    ARRAY[1, 7, 14], 12
-);
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  11, ARRAY[5, 10, 12]);
  pgr_maxflowmincost_cost
 -------------------------
-                     650
+                     760
 (1 row)
 
 /* -- q3 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    13, ARRAY[7, 1, 4]
-);
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  ARRAY[11, 3, 17], 12);
  pgr_maxflowmincost_cost
 -------------------------
-                     450
+                     430
 (1 row)
 
 /* -- q4 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    ARRAY[7, 13], ARRAY[3, 9]
-);
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  ARRAY[11, 3, 17], ARRAY[5, 10, 12]);
  pgr_maxflowmincost_cost
 -------------------------
-                     600
+                     820
 (1 row)
 
 /* -- q5 */
-SELECT * FROM pgr_MaxFlowMinCost_Cost(
-    'SELECT id,
-     source, target,
-     capacity, reverse_capacity,
-     cost, reverse_cost FROM edge_table',
-    'SELECT * FROM ( VALUES (7, 3), (13, 9) ) AS t(source, target)'
-);
+SELECT source, target FROM combinations
+WHERE target NOT IN (5, 6);
+ source | target
+--------+--------
+      5 |     10
+      6 |     15
+      6 |     14
+(3 rows)
+
+/* -- q51 */
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  'SELECT * FROM combinations WHERE target NOT IN (5, 6)');
  pgr_maxflowmincost_cost
 -------------------------
-                     600
+                     320
 (1 row)
 
 /* -- q6 */
+SELECT * FROM pgr_maxFlowMinCost_Cost(
+  'SELECT id, source, target, capacity, reverse_capacity, cost, reverse_cost
+  FROM edges',
+  'SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)');
+ pgr_maxflowmincost_cost
+-------------------------
+                     320
+(1 row)
+
+/* -- q7 */
 ROLLBACK;
 ROLLBACK
