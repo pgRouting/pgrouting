@@ -1,0 +1,35 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* --q1 */
+SELECT pid, edge_id, fraction, side FROM pointsOfInterest;
+ pid | edge_id | fraction | side
+-----+---------+----------+------
+   1 |       1 |      0.4 | l
+   2 |      15 |      0.4 | r
+   3 |      12 |      0.6 | l
+   4 |       6 |      0.3 | r
+   5 |       5 |      0.8 | l
+   6 |       4 |      0.7 | b
+(6 rows)
+
+/* --q2 */
+SELECT id, source, target, cost, reverse_cost
+FROM edges WHERE id = 15;
+ id | source | target | cost | reverse_cost
+----+--------+--------+------+--------------
+ 15 |     16 |     17 |    1 |            1
+(1 row)
+
+/* --q3 */
+SELECT pid, edge_id, fraction, side
+FROM pointsOfInterest WHERE pid = 2;
+ pid | edge_id | fraction | side
+-----+---------+----------+------
+   2 |      15 |      0.4 | r
+(1 row)
+
+/* --q4 */
+ROLLBACK;
+ROLLBACK
