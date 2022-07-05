@@ -1,54 +1,48 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.2.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
-# Translators:
-# 0a3886ca72a6d508a04563bd8c050dff, 2020
-# MarPetra <mvergaratrejo@gmail.com>, 2021
-# Vicky Vergara <vicky@georepublic.de>, 2021
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.2.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-04 17:31-0500\n"
-"PO-Revision-Date: 2022-07-04 16:53+0000\n"
+"PO-Revision-Date: 2022-07-03 03:28+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language: es\n"
 "Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_bipartite/es/>\n"
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_edgecoloring/es/>\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: ../../build/doc/pgr_bipartite.rst:12
+#: ../../build/doc/pgr_edgeColoring.rst:12
 #, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_bipartite.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_bipartite.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_bipartite.html>`__"
+"<https://docs.pgrouting.org/latest/en/pgr_edgeColoring.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/en/pgr_edgeColoring.html>`__)"
 msgstr ""
 "**Versiones soportadas:** `Última "
-"<https://docs.pgrouting.org/latest/es/pgr_bipartite.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_bipartite.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_bipartite.html>`__"
+"<https://docs.pgrouting.org/latest/es/pgr_edgeColoring.html>`__ (`3.3 "
+"<https://docs.pgrouting.org/3.3/es/pgr_edgeColoring.html>`__)"
 
-#: ../../build/doc/pgr_bipartite.rst:18
-msgid "pgr_bipartite -Experimental"
-msgstr "pgr_bipartite - Experimental"
+#: ../../build/doc/pgr_edgeColoring.rst:17
+msgid "pgr_edgeColoring - Experimental"
+msgstr "pgr_edgeColoring - Experimental"
 
-#: ../../build/doc/pgr_bipartite.rst:20
+#: ../../build/doc/pgr_edgeColoring.rst:19
 msgid ""
-"``pgr_bipartite`` — Disjoint sets of vertices such that no two vertices "
-"within the same set are adjacent."
+"``pgr_edgeColoring`` — Returns the edge coloring of undirected and loop-"
+"free graphs"
 msgstr ""
-"``pgr_bipartite`` — Conjuntos disjuntos tal que ningun par de vertices en"
-" el mismo conjunto son adjacentes."
+"``pgr_edgeColoring`` — Coloración de aristas de grafos no dirigidos "
+"acíclicos"
 
-#: ../../build/doc/pgr_bipartite.rst:26
+#: ../../build/doc/pgr_edgeColoring.rst:25
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
@@ -122,80 +116,129 @@ msgstr "Puede depender de una función propuesta de pgRouting"
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr "Podría depender de una función obsoleta de pgRouting"
 
-#: ../../build/doc/pgr_bipartite.rst:33
+#: ../../build/doc/pgr_edgeColoring.rst:32
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_bipartite.rst:34
-msgid "Version 3.2.0"
-msgstr "Versión 3.2.0"
+#: ../../build/doc/pgr_edgeColoring.rst:33
+msgid "Version 3.3.0"
+msgstr "Versión 3.3.0"
 
-#: ../../build/doc/pgr_bipartite.rst:36
+#: ../../build/doc/pgr_edgeColoring.rst:35
 msgid "New **experimental** signature"
 msgstr "Nueva función **experimental**"
 
 #: ../../build/doc/coloring-family.rst:6
 #: ../../build/doc/pgRouting-concepts.rst:10
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_bipartite.rst:40
+#: ../../build/doc/pgr_edgeColoring.rst:39
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_bipartite.rst:41
+#: ../../build/doc/pgr_edgeColoring.rst:41
 msgid ""
-"A bipartite graph is a graph with two sets of vertices which are "
-"connected to each other, but not within themselves. A bipartite graph is "
-"possible if the graph coloring is possible using two colors such that "
-"vertices in a set are colored with the same color."
+"Edge Coloring is an algorithm used for coloring of the edges for the "
+"vertices in the graph. It is an assignment of colors to the edges of the "
+"graph so that no two adjacent edges have the same color."
 msgstr ""
-"Un grafo bipartito es un grafo con dos conjuntos de vértices que están "
-"conectados entre sí, pero no dentro de sí mismos. Un gráfico bipartito es"
-" posible si el color del gráfico es posible utilizando dos colores, de "
-"modo que los vértices de un conjunto se colorean con el mismo color."
+"Coloración de arístas es un algoritmo utilizado para colorear aristas "
+"para los vértices de un grafo. Es una asignación de colores a las aristas"
+" del grafo de tal manera que dos aristas adjacentes no tengan el mismo "
+"color."
 
-#: ../../build/doc/pgr_bipartite.rst:46
+#: ../../build/doc/pgr_edgeColoring.rst:45
 msgid "**The main Characteristics are:**"
 msgstr "**Las características principales son:**"
 
-#: ../../build/doc/pgr_bipartite.rst:48
-msgid "The algorithm works in undirected graph only."
-msgstr "El algoritmo solo funciona en un grafo no dirigido."
+#: ../../build/doc/pgr_edgeColoring.rst:47
+msgid "The implementation is for **undirected** and **loop-free** graphs"
+msgstr "La implementación es para grafos **no dirigidos** sin **auto-ciclos**"
 
-#: ../../build/doc/pgr_bipartite.rst:49
-msgid "The returned values are not ordered."
-msgstr "Los valores devueltos no están ordenados."
+#: ../../build/doc/pgr_edgeColoring.rst
+msgid "loop free"
+msgstr "Sin auto ciclos"
 
-#: ../../build/doc/pgr_bipartite.rst:50
+#: ../../build/doc/pgr_edgeColoring.rst:49
+msgid "no self-loops and no parallel edges."
+msgstr "Sin auto ciclos ni aristas paralelas."
+
+#: ../../build/doc/pgr_edgeColoring.rst:52
+msgid "Provides the color to be assigned to all the edges present in the graph."
+msgstr "Provee el color asignado a todas las aristas existentes en el grafo."
+
+#: ../../build/doc/pgr_edgeColoring.rst:54
 msgid ""
-"The algorithm checks graph is bipartite or not. If it is bipartite then "
-"it returns the node along with two    colors `0` and `1` which represents"
-" two different sets."
+"At most :math:`\\Delta + 1` colors are used, where :math:`\\Delta` is the"
+" degree of the graph."
 msgstr ""
-"El algoritmo comprueba si el grafo es bi-partido o no. Si es bipartido, "
-"devuelve el nodo junto con dos colores `0` y `1` que representan dos "
-"conjuntos diferentes."
+"A lo más :math:`\\Delta + 1` colores son usados, donde :math:`\\Delta` is"
+" el grado del grafo."
 
-#: ../../build/doc/pgr_bipartite.rst:53
-msgid "If graph is not bipartite then algorithm returns empty set."
-msgstr "Si el grafo no es bipartito, el algoritmo devuelve un conjunto vacío."
+#: ../../build/doc/pgr_edgeColoring.rst:57
+msgid ""
+"This is optimal for some graphs, and by Vizing's theorem it uses at most "
+"one color more than the optimal for all others."
+msgstr ""
+"Esto es óptimo para algunos gráfos. y por el teorema de Vizing, utiliza a"
+" lo más un color extra que el óptimo para todos los demás."
 
-#: ../../build/doc/pgr_bipartite.rst:54
-msgid "Running time: :math:`O(V + E)`"
-msgstr "Tiempo de ejecución: :math:`O(V + E)`"
-
-#: ../../build/doc/pgr_bipartite.rst:57
-msgid "Signatures"
-msgstr "Firmas"
-
-#: ../../build/doc/pgr_bipartite.rst
-msgid "Example"
-msgstr "Ejemplo"
-
-#: ../../build/doc/pgr_bipartite.rst:70
+#: ../../build/doc/pgr_edgeColoring.rst:59
 msgid "When the graph is bipartite"
 msgstr "Cuando el grafo es bi-partido"
 
-#: ../../build/doc/pgr_bipartite.rst:77
+#: ../../build/doc/pgr_edgeColoring.rst:61
+msgid ""
+"the chromatic number :math:`x'(G)` (minimum number of colors needed for "
+"proper edge coloring of graph)  is equal to the degree :math:`\\Delta + "
+"1` of the graph, (:math:`x'(G) = \\Delta`)"
+msgstr ""
+"El número cromático :math:`x'(G)` (mínima cantidad de colores necesitados"
+" para colorear apropiadamentnte las aristas de un grafo) es igual al "
+"grado :math:`\\Delta + 1` del grafo, (:math:`x'(G) = \\Delta`)"
+
+#: ../../build/doc/pgr_edgeColoring.rst:65
+msgid "The algorithm tries to assign the least possible color to every edge."
+msgstr "El algoritmo trata de asignar el menor color a cada arista."
+
+#: ../../build/doc/pgr_edgeColoring.rst:67
+msgid "Does not always produce optimal coloring."
+msgstr "No produce siempre produce la coloración ótpima."
+
+#: ../../build/doc/pgr_edgeColoring.rst:69
+msgid "The returned rows are ordered in ascending order of the edge identifier."
+msgstr ""
+"Las filas de resultados son ordenados ascendentemente respecto al "
+"identificador de la arista."
+
+#: ../../build/doc/pgr_edgeColoring.rst:70
+msgid "Efficient graph coloring is an NP-Hard problem, and therefore:"
+msgstr "Coloración eficiente de un grafo es un problema NP-Duro, por lo que:"
+
+#: ../../build/doc/pgr_edgeColoring.rst:72
+msgid "In this implelentation the running time: :math:`O(|E|*|V|)`"
+msgstr "El tiempo de ejecución de esta implementación es: :math:`O(|E|*|V|)`"
+
+#: ../../build/doc/pgr_edgeColoring.rst:74
+msgid "where :math:`|E|` is the number of edges in the graph,"
+msgstr "donde :math:`|E|` es la cantidad de arístas en el grafo,"
+
+#: ../../build/doc/pgr_edgeColoring.rst:75
+msgid ":math:`|V|` is the number of vertices in the graph."
+msgstr ":math:`|V|` es la cantidad de vertices del grafo."
+
+#: ../../build/doc/pgr_edgeColoring.rst:78
+msgid "Signatures"
+msgstr "Firmas"
+
+#: ../../build/doc/pgr_edgeColoring.rst
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ../../build/doc/pgr_edgeColoring.rst:90
+msgid "Graph coloring of pgRouting :doc:`sampledata`"
+msgstr "Coloración de grafos de pgRouting :doc:`sampledata`"
+
+#: ../../build/doc/pgr_edgeColoring.rst:99
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -220,11 +263,11 @@ msgstr "``TEXT``"
 msgid "`Edges SQL`_ as described below."
 msgstr "`SQL Aristas`_ descritas más adelante."
 
-#: ../../build/doc/pgr_bipartite.rst:84
+#: ../../build/doc/pgr_edgeColoring.rst:106
 msgid "Inner Queries"
 msgstr "Consultas Internas"
 
-#: ../../build/doc/pgr_bipartite.rst:87
+#: ../../build/doc/pgr_edgeColoring.rst:109
 msgid "Edges SQL"
 msgstr "SQL aristas"
 
@@ -247,6 +290,7 @@ msgstr "``id``"
 msgid "**ANY-INTEGER**"
 msgstr "**ENTEROS**"
 
+#: ../../build/doc/coloring-family.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
@@ -320,93 +364,67 @@ msgstr "FLOTANTES"
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
-#: ../../build/doc/pgr_bipartite.rst:94
+#: ../../build/doc/pgr_edgeColoring.rst:116
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
 #: ../../build/doc/coloring-family.rst:3
-msgid "Returns SET OF ``(vertex_id, color_id)``"
-msgstr "Devuelve SET OF ``(vertex_id, color_id)``"
+msgid "Returns SET OF ``(edge_id, color_id)``"
+msgstr "Devuelve SET OF ``((edge_id, color_id)``"
 
 #: ../../build/doc/coloring-family.rst:8
-msgid "``vertex_id``"
-msgstr "``vertex_id``"
+msgid "``edge_id``"
+msgstr "``edge_id``"
 
 #: ../../build/doc/coloring-family.rst:8 ../../build/doc/coloring-family.rst:9
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
-
-#: ../../build/doc/coloring-family.rst:8
-msgid "Identifier of the vertex."
-msgstr "Identificador del vértice."
 
 #: ../../build/doc/coloring-family.rst:9
 msgid "``color_id``"
 msgstr "``color_id``"
 
 #: ../../build/doc/coloring-family.rst:9
-msgid "Identifier of the color of the vertex."
-msgstr "Identificador del color del vértice."
+msgid "Identifier of the color of the edge."
+msgstr "Identificador del color del segmento."
 
 #: ../../build/doc/coloring-family.rst:11
 msgid "The minimum value of color is 1."
 msgstr "El valor mínimo de color es 1."
 
-#: ../../build/doc/pgr_bipartite.rst:101
-msgid "Additional Example"
-msgstr "Ejemplo Adicional"
-
-#: ../../build/doc/pgr_bipartite.rst:103
-msgid "The odd length cyclic graph can not be bipartite."
-msgstr "El gráfico cíclico de longitud impar no puede ser bipartito."
-
-#: ../../build/doc/pgr_bipartite.rst:105
-msgid ""
-"The edge :math:`5 \\rightarrow 1` will make subgraph with vertices "
-":math:`\\{1, 3, 7, 6, 5\\}` an odd length cyclic graph, as the cycle has "
-"5 vertices."
-msgstr ""
-"La arista :math:`5 \\rightarrow 1` hace que el sub-grafo con "
-"vértices:math:`\\{1, 3, 7, 6, 5\\}` se un grafo de ciclo impar, ya que "
-"ciclo tiene 5 vértices."
-
-#: ../../build/doc/pgr_bipartite.rst:112
-msgid "Edges in blue represent odd length cycle subgraph."
-msgstr "Aristas en azul representan un grafo de ciclo impar."
-
-#: ../../build/doc/pgr_bipartite.rst:122
+#: ../../build/doc/pgr_edgeColoring.rst:124
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_bipartite.rst:126
+#: ../../build/doc/pgr_edgeColoring.rst:126
+msgid "The queries use the :doc:`sampledata` network."
+msgstr "Las consultas utilizan la red :doc:`sampledata` ."
+
+#: ../../build/doc/pgr_edgeColoring.rst:130
 msgid ""
-"`Boost: is_bipartite "
-"<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+"`Boost: Edge Coloring Algorithm documentation "
+"<https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
 msgstr ""
-"`Boost: es bipartido "
-"<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+"`Boost: Algoritmo de Coloración de Segmentos "
+"<https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
 
-#: ../../build/doc/pgr_bipartite.rst:128
+#: ../../build/doc/pgr_edgeColoring.rst:132
 msgid ""
-"`Wikipedia: bipartite graph "
-"<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
+"`Wikipedia: Graph Coloring "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
-"`Wikipedia: grafo bipartito "
-"<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
+"`Wikipedia: Coloración de grafos "
+"<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 
-#: ../../build/doc/pgr_bipartite.rst:133
-msgid ":doc:`sampledata` network."
-msgstr ":doc:`sampledata` ."
-
-#: ../../build/doc/pgr_bipartite.rst:136
+#: ../../build/doc/pgr_edgeColoring.rst:138
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_bipartite.rst:137
+#: ../../build/doc/pgr_edgeColoring.rst:139
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_bipartite.rst:138
+#: ../../build/doc/pgr_edgeColoring.rst:140
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 

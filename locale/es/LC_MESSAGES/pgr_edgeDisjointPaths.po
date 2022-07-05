@@ -2,43 +2,37 @@
 # Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2020-11-04 18:29+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
+"PO-Revision-Date: 2022-07-04 15:45+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_edgedisjointpaths/es/>"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:12
 msgid ""
 "**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_edgeDisjointPaths.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/en/pgr_edgeDisjointPaths.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/en/pgr_edgeDisjointPaths.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__"
+"<https://docs.pgrouting.org/latest/en/pgr_edgeDisjointPaths.html>`__ "
+"(`3.3 <https://docs.pgrouting.org/3.3/en/pgr_edgeDisjointPaths.html>`__) "
+"`3.2 <https://docs.pgrouting.org/3.2/en/pgr_edgeDisjointPaths.html>`__ "
+"`3.1 <https://docs.pgrouting.org/3.1/en/pgr_edgeDisjointPaths.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/en/pgr_edgeDisjointPaths.html>`__"
 msgstr ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/es/pgr_edgeDisjointPaths.html>`__ (`3.3 "
-"<https://docs.pgrouting.org/3.3/es/pgr_edgeDisjointPaths.html>`__) `3.2 "
-"<https://docs.pgrouting.org/3.2/es/pgr_edgeDisjointPaths.html>`__ `3.1 "
-"<https://docs.pgrouting.org/3.1/es/pgr_edgeDisjointPaths.html>`__ `3.0 "
-"<https://docs.pgrouting.org/3.0/es/pgr_edgeDisjointPaths.html>`__"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:18
 msgid ""
@@ -55,8 +49,8 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_edgeDisjointPaths.html>`__"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:25
-msgid "pgr_edgeDisjointPaths"
-msgstr "pgr_edgeDisjointPaths"
+msgid "``pgr_edgeDisjointPaths``"
+msgstr "``pgr_edgeDisjointPaths``"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:27
 msgid ""
@@ -66,92 +60,88 @@ msgstr ""
 "``pgr_edgeDisjointPaths`` — Calcula las rutas de aristas desarticuladas "
 "entre dos grupos de vértices."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:33
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:34
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:36
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:37
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:37
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:38
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:39
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:40
 msgid "New **proposed** function:"
 msgstr "Nueva función **propuesta**:"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:41
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:42
 msgid "pgr_edgeDisjointPaths(Combinations)"
 msgstr "pgr_edgeDisjointPaths(Combinaciones)"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:43
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:44
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:45
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:46
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:47
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:48
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:49
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:50
 msgid "**Proposed** function"
 msgstr "Función **propuesta**"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:51
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:52
 msgid "Version 2.3.0"
 msgstr "Versión 2.3.0"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:53
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:54
 msgid "New **Experimental** function"
 msgstr "Nueva función **Experimental**"
 
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_bdDijkstra.rst:4
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:57
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/dijkstra-family.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:58
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:59
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:60
 msgid ""
-"Calculates the edge disjoint paths between two groups of vertices. Utilizes "
-"underlying maximum flow algorithms to calculate the paths."
+"Calculates the edge disjoint paths between two groups of vertices. "
+"Utilizes underlying maximum flow algorithms to calculate the paths."
 msgstr ""
-"Calcula las rutas de aristas desarticuladas entre dos grupos de vértices. "
-"Utiliza algoritmos de flujo máximo subyacentes para calcular las rutas."
+"Calcula las rutas de aristas desarticuladas entre dos grupos de vértices."
+" Utiliza algoritmos de flujo máximo subyacentes para calcular las rutas."
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:67
 msgid "The main characterics are:"
 msgstr "Los principales características son:"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:63
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:64
 msgid "Calculates the edge disjoint paths between any two groups of vertices."
 msgstr ""
 "Calcula las rutas de aristas desarticuladas entre dos grupos de vértices "
 "cualquiera."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:64
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:65
 msgid ""
 "Returns EMPTY SET when source and destination are the same, or cannot be "
 "reached."
 msgstr ""
-"Devuelve un conjunto vacío EMPTY SET cuando el origen y el destino son los "
-"mismos o no se puede llegar."
-
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:65
-msgid "The graph can be directed or undirected."
-msgstr "El gráfico puede dirigido o no."
+"Devuelve un conjunto vacío EMPTY SET cuando el origen y el destino son "
+"los mismos o no se puede llegar."
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:66
-msgid "One to many, many to one, many to many versions are also supported."
-msgstr ""
-"Una a muchas, muchas a una, muchas a muchas, versiones que también son "
-"soportadas."
+msgid "The graph can be directed or undirected."
+msgstr "El gráfico puede dirigido o no."
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:67
 msgid "Uses :doc:`pgr_boykovKolmogorov` to calculate the paths."
@@ -165,453 +155,454 @@ msgstr "Firmas"
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:87
-msgid "Using defaults"
-msgstr "Uso de valores predeterminados"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:93
+msgid "One to One"
+msgstr "Uno a Uno"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:94
-msgid "From vertex :math:`3` to vertex :math:`5` on a **directed** graph"
-msgstr "Del vértice :math:`3` al vértice :math:`5` en un grafo **dirigido**"
-
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:104
-msgid "One to One"
-msgstr "Uno a Uno"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:102
+msgid "From vertex :math:`11` to vertex :math:`12`"
+msgstr "Del vértice :math:`11` al vértice :math:`12`"
 
 #: ../../build/doc/pgr_edgeDisjointPaths.rst:112
-msgid "From vertex :math:`3` to vertex :math:`5` on an **undirected** graph"
-msgstr ""
-"Del vértice :math:`3` al vértice :math:`5` en un grafo **no dirigido**"
-
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:122
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:130
-msgid ""
-"From vertex :math:`3` to vertices :math:`\\{4, 5, 10\\}` on a **directed** "
-"graph"
-msgstr ""
-"Del vértice :math:`3` a los vértices :math:`\\{4, 5, 10\\}` en un grafo "
-"**dirigido** graph"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:121
+msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
+msgstr "Desde el vértice :math:`11` a los vértices :math:`\\{5, 10, 12\\}`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:141
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:132
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:149
-msgid ""
-"From vertices :math:`\\{3, 6\\}` to vertex :math:`5` on a **directed** graph"
-msgstr ""
-"De los vértices :math:`\\{3, 6\\}` al vértice :math:`5` en un grafo "
-"**dirigido**"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:141
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
+msgstr "De los vértices vertices :math:`\\{11, 3, 17\\}` al vértice :math:`12`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:160
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:151
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:168
-msgid ""
-"From vertices :math:`\\{3, 6\\}` to vertices :math:`\\{4, 5, 10\\}` on a "
-"**directed** graph"
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:160
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
 msgstr ""
-"De los vértices :math:`\\{3, 6\\}` a los vértices :math:`\\{4, 5, 10\\}` en "
-"un grafo **dirigido**"
+"De los vértices :math:`\\{11, 3, 17\\}` a los vértices :math:`\\{5, 10, "
+"12\\}`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:179
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:170
 msgid "Combinations"
 msgstr "Combinaciones"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:187
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:179
 msgid ""
-"Using a combinations table, equivalent to calculating result from vertices "
-":math:`\\{3, 6\\}` to vertices :math:`\\{4, 5, 10\\}` on a **directed** "
-"graph."
+"Using a combinations table, equivalent to calculating result from "
+"vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}` on an "
+"undirected graph."
 msgstr ""
-"Usando una tabla de combinaciones, equivalente a calcular el resultado de "
-"los vértices :math:`\\{3, 6\\}` a los vértices :math:`\\{4, 5, 10\\}`  en un"
-" grafo **dirigido**."
+"Usando una tabla de combinaciones, equivalente a calcular el resultado de"
+" los vértices :math:`\\{5, 6\\}` a los vértices :math:`\\{10, 15, 14\\}` "
+"en un grafo no dirigido."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:194
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:183
+msgid "The combinations table:"
+msgstr "La tabla de combinaciones:"
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:189
+msgid "The query:"
+msgstr "La consulta:"
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:196
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/pgr_bdDijkstra.rst:4
-msgid "Parameter"
-msgstr "Parámetro"
-
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgr_bdDijkstra.rst:4
-msgid "Type"
-msgstr "Tipo"
-
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_bdDijkstra.rst:4
-msgid "Default"
-msgstr "Valores predeterminados"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:6
-msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:6 ../../build/doc/pgr_bdDijkstra.rst:7
-msgid "``TEXT``"
-msgstr "``TEXT``"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:6
-msgid "`Edges query` as described below"
-msgstr "`Consulta de bordes` como se describe a continuación"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:7
-msgid "**Combinations SQL**"
-msgstr "**Combinaciones SQL**"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:7
-msgid "`Combinations query` as described below"
-msgstr "`Consulta de combinaciones` como se describe a continuación"
-
+#: ../../build/doc/dijkstra-family.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:8
 #: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgr_bdDijkstra.rst:8
-msgid "**start_vid**"
-msgstr "**start_vid**"
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgRouting-concepts.rst:24
-#: ../../build/doc/pgRouting-concepts.rst:25
-#: ../../build/doc/pgr_bdDijkstra.rst:8 ../../build/doc/pgr_bdDijkstra.rst:10
-msgid "``BIGINT``"
-msgstr "``BIGINT``"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:8
-msgid "Identifier of the starting vertex of the path."
-msgstr "Identificador del vértice inicial de la ruta."
-
-#: ../../build/doc/pgr_bdDijkstra.rst:9
-msgid "**start_vids**"
-msgstr "**start_vids**"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:9 ../../build/doc/pgr_bdDijkstra.rst:11
-msgid "``ARRAY[BIGINT]``"
-msgstr "``ARRAY[BIGINT]``"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:9
-msgid "Array of identifiers of starting vertices."
-msgstr "Arreglo de identificadores de vértices iniciales."
-
-#: ../../build/doc/pgRouting-concepts.rst:18
-#: ../../build/doc/pgr_bdDijkstra.rst:10
-msgid "**end_vid**"
-msgstr "**end_vid**"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:10
-msgid "Identifier of the ending vertex of the path."
-msgstr "Identificador del vértice final de la ruta."
-
-#: ../../build/doc/pgr_bdDijkstra.rst:11
-msgid "**end_vids**"
-msgstr "**end_vids**"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:11
-msgid "Array of identifiers of ending vertices."
-msgstr "Arreglo de identificadores de vértices finales."
-
-#: ../../build/doc/pgr_bdDijkstra.rst:12
-msgid "**directed**"
-msgstr "**dirigido**"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:12
-msgid "``BOOLEAN``"
-msgstr "``BOOLEAN``"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:12
-msgid "``true``"
-msgstr "``true``"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:12
-msgid "When ``true`` Graph is considered `Directed`"
-msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
-
-#: ../../build/doc/pgr_bdDijkstra.rst:13
-msgid "When ``false`` the graph is considered as `Undirected`."
-msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`"
-
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:201
-msgid "Inner queries"
-msgstr "Consultas internas"
-
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:204
-msgid "Edges query"
-msgstr "Consulta de aristas"
-
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgRouting-concepts.rst:6
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**id**"
-msgstr "**id**"
+#: ../../build/doc/dijkstra-family.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:9
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "Type"
+msgstr "Tipo"
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
+#: ../../build/doc/dijkstra-family.rst:11
+msgid "`Edges SQL`_"
+msgstr "`SQL Aristas`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/dijkstra-family.rst:12
+#: ../../build/doc/dijkstra-family.rst:15
+msgid "``TEXT``"
+msgstr "``TEXT``"
+
+#: ../../build/doc/dijkstra-family.rst:13
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL Aristas`_ como se describe a continuación"
+
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "`Combinations SQL`_"
+msgstr "`SQL Combinaciones`_"
+
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
+
+#: ../../build/doc/dijkstra-family.rst:17
+msgid "**start vid**"
+msgstr "**vid de salida**"
+
+#: ../../build/doc/dijkstra-family.rst:18
+#: ../../build/doc/dijkstra-family.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:28
+#: ../../build/doc/pgRouting-concepts.rst:36
+#: ../../build/doc/pgRouting-concepts.rst:44
+#: ../../build/doc/pgRouting-concepts.rst:47
+msgid "``BIGINT``"
+msgstr "``BIGINT``"
+
+#: ../../build/doc/dijkstra-family.rst:19
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
+
+#: ../../build/doc/dijkstra-family.rst:20
+msgid "**start vids**"
+msgstr "**vid salidas**"
+
+#: ../../build/doc/dijkstra-family.rst:21
+#: ../../build/doc/dijkstra-family.rst:27
+msgid "``ARRAY[BIGINT]``"
+msgstr "``ARRAY[BIGINT]``"
+
+#: ../../build/doc/dijkstra-family.rst:22
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
+
+#: ../../build/doc/dijkstra-family.rst:23
+msgid "**end vid**"
+msgstr "**vid destino**"
+
+#: ../../build/doc/dijkstra-family.rst:25
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
+
+#: ../../build/doc/dijkstra-family.rst:26
+msgid "**end vids**"
+msgstr "**vids destinos**"
+
+#: ../../build/doc/dijkstra-family.rst:28
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:203
+msgid "Optional parameters"
+msgstr "Parámetros opcionales"
+
+#: ../../build/doc/dijkstra-family.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
+msgstr "x Defecto"
+
+#: ../../build/doc/dijkstra-family.rst:12
+msgid "``directed``"
+msgstr "``directed``"
+
+#: ../../build/doc/dijkstra-family.rst:13
+msgid "``BOOLEAN``"
+msgstr "``BOOLEAN``"
+
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "``true``"
+msgstr "``true``"
+
+#: ../../build/doc/dijkstra-family.rst:15
+msgid "When ``true`` the graph is considered `Directed`"
+msgstr "Cuando ``true`` el gráfo se considera `Dirigido`"
+
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "When ``false`` the graph is considered as `Undirected`."
+msgstr "Cuando ``false`` el gráfo se considera `No Dirigido`."
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:210
+msgid "Inner Queries"
+msgstr "Consultas Internas"
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:213
+msgid "Edges SQL"
+msgstr "SQL aristas"
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
+msgstr "``id``"
+
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
+
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**source**"
-msgstr "**origen**"
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**target**"
-msgstr "**objetivo**"
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:26
-msgid "**cost**"
-msgstr "**costo**"
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "``ANY-NUMERICAL``"
-msgstr "``ANY-NUMERICAL``"
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Weight of the edge  `(source, target)`"
-msgstr "Peso de la arista `(source, target)`"
-
 #: ../../build/doc/pgRouting-concepts.rst:11
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
-msgstr ""
-"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
-"es parte del grafo."
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
+msgstr "``source``"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**reverse_cost**"
-msgstr "**reverse_cost**"
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Identifier of the first end point vertex of the edge."
+msgstr "Identificador del primer vértice de la arista."
 
-#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
+msgstr "``target``"
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
+msgstr "Identificador del segundo vértice de la arista."
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:50
+msgid "``cost``"
+msgstr "``cost``"
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr "**FLOTANTES**"
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
+msgstr "``reverse_cost``"
+
+#: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
 msgstr "-1"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "Weight of the edge `(target, source)`,"
-msgstr "Peso de la arista `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
 
-#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
-"es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
-#: ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:19
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr "Donde:"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
-#: ../../build/doc/pgRouting-concepts.rst:13
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
-msgstr "ANY-NUMERICAL"
+msgstr "FLOTANTES"
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:211
-msgid "Combinations query"
-msgstr "Consulta de combinaciones"
-
-#: ../../build/doc/flow-family.rst
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:220
 msgid "Combinations SQL"
-msgstr "Combinaciones SQL"
+msgstr "SQL Combinaciones"
 
-#: ../../build/doc/flow-family.rst:3
-msgid ""
-"an SQL query which should return a set of rows with the following columns:"
-msgstr ""
-"una consulta SQL que debe devolver un conjunto de filas con las siguientes "
-"columnas:"
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Parameter"
+msgstr "Parámetro"
 
-#: ../../build/doc/flow-family.rst:9
-msgid ""
-"The function aggregates the sources and the targets, removes the duplicates,"
-" and then it calculates the result from the resultant source vertices to the"
-" target vertices."
-msgstr ""
-"La función agrega los orígenes y los destinos, quita los duplicados y, a "
-"continuación, calcula el resultado de los vértices de origen resultantes a "
-"los vértices de destino."
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:218
-msgid "Return Columns"
-msgstr "Columnas de Devoluciones"
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:227
+msgid "Result Columns"
+msgstr "Columnas de Resultados"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid ""
-"Returns set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, "
-"edge, cost, agg_cost)``"
+"Set of ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, edge, "
+"cost, agg_cost)``"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid],"
-" node, edge, cost, agg_cost)``"
+"Conjunto de ``(seq, path_id, path_seq [, start_vid] [, end_vid], node, "
+"edge, cost, agg_cost)``"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**seq**"
-msgstr "**seq**"
+#: ../../build/doc/pgRouting-concepts.rst:14
+msgid "``seq``"
+msgstr "``seq``"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "``INT``"
-msgstr "``INT``"
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``INTEGER``"
+msgstr "``INTEGER``"
 
-#: ../../build/doc/pgRouting-concepts.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:16
 msgid "Sequential value starting from **1**."
 msgstr "Valor secuencial a partir de **1**."
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "**path_id**"
-msgstr "**path_id**"
+#: ../../build/doc/pgRouting-concepts.rst:17
+msgid "``path_id``"
+msgstr "``path_id``"
 
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid ""
-"Path identifier. Has value **1** for the first of a path. Used when there "
-"are multiple paths for the same ``start_vid`` to ``end_vid`` combination."
+#: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Path identifier."
+msgstr "Identificador del camino."
+
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
 msgstr ""
-"Identificador de ruta. Tiene el valor **1** para el primero de una ruta. Se "
-"utiliza cuando hay varias rutas  para la misma combinación de ``start_vid`` "
-"a ``end_vid``."
+"Tiene valor **1** para el primero de la ruta de ``start_vid`` a "
+"``end_vid``."
 
-#: ../../build/doc/pgRouting-concepts.rst:10
-msgid "**path_seq**"
-msgstr "**path_seq**"
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "``path_seq``"
+msgstr "``path_seq``"
 
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:25
 msgid ""
-"Relative position in the path. Has value **1** for the beginning of a path."
+"Relative position in the path. Has value **1** for the beginning of a "
+"path."
 msgstr ""
-"Posición relativa en la ruta. Tiene el valor **1** para el principio de una "
+"Posición relativa en la ruta. Tiene el valor **1** para el inicio de una "
 "ruta."
 
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "``start_vid``"
+msgstr "``start_vid``"
+
+#: ../../build/doc/pgRouting-concepts.rst:29
 msgid ""
-"Identifier of the starting vertex. Returned when multiple starting vetrices "
-"are in the query."
+"Identifier of the starting vertex. Returned when multiple starting "
+"vetrices are in the query."
 msgstr ""
-"Identificador del vértice inicial. Se devuelve cuando hay varias vetrices "
-"iniciales en la consulta."
+"Identificador del vértice inicial. Se devuelve cuando hay varias vetrices"
+" iniciales en la consulta."
 
-#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:32
 msgid "`Many to One`_"
-msgstr "`Many to One`_"
+msgstr "`Muchos a Uno`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:15
-#: ../../build/doc/pgRouting-concepts.rst:22
+#: ../../build/doc/pgRouting-concepts.rst:33
+#: ../../build/doc/pgRouting-concepts.rst:41
 msgid "`Many to Many`_"
-msgstr "`Many to Many`_"
+msgstr "`Muchos a Muchos`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:34
+#: ../../build/doc/pgRouting-concepts.rst:42
+msgid "`Combinations`_"
+msgstr "`Combinaciones`_"
+
+#: ../../build/doc/pgRouting-concepts.rst:35
+msgid "``end_vid``"
+msgstr "``end_vid``"
+
+#: ../../build/doc/pgRouting-concepts.rst:37
 msgid ""
-"Identifier of the ending vertex. Returned when multiple ending vertices are "
-"in the query."
+"Identifier of the ending vertex. Returned when multiple ending vertices "
+"are in the query."
 msgstr ""
 "Identificador del vértice final. Se devuelve cuando hay varios vértices "
 "finales en la consulta."
 
-#: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:40
 msgid "`One to Many`_"
-msgstr "`One to Many`_"
+msgstr "`Uno a Muchos`_"
 
-#: ../../build/doc/pgRouting-concepts.rst:24
-msgid "**node**"
-msgstr "**nodo**"
+#: ../../build/doc/pgRouting-concepts.rst:43
+msgid "``node``"
+msgstr "``node``"
 
-#: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:45
 msgid "Identifier of the node in the path from ``start_vid`` to ``end_vid``."
 msgstr "Identificador del nodo en la ruta de ``start_vid`` a ``end_vid``."
 
-#: ../../build/doc/pgRouting-concepts.rst:25
-msgid "**edge**"
-msgstr "**arista**"
+#: ../../build/doc/pgRouting-concepts.rst:46
+msgid "``edge``"
+msgstr "``edge``"
 
-#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:48
 msgid ""
-"Identifier of the edge used to go from ``node`` to the next node in the path"
-" sequence. ``-1`` for the last node of the path."
+"Identifier of the edge used to go from ``node`` to the next node in the "
+"path sequence. **-1** for the last node of the path."
 msgstr ""
-"Identificador del borde utilizado para ir del ``nodo`` al siguiente nodo de "
-"la secuencia de ruta. ``-1``  para el último nodo de la ruta."
+"Identificador de la arista utilizado para ir del ``node`` al siguiente "
+"nodo de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
-#: ../../build/doc/pgRouting-concepts.rst:26
-#: ../../build/doc/pgRouting-concepts.rst:27
+#: ../../build/doc/pgRouting-concepts.rst:51
+#: ../../build/doc/pgRouting-concepts.rst:55
 msgid "``FLOAT``"
 msgstr "``FLOAT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:26
+#: ../../build/doc/pgRouting-concepts.rst:52
 msgid ""
-"Cost to traverse from ``node`` using ``edge`` to the next node in the path "
-"sequence."
+"Cost to traverse from ``node`` using ``edge`` to the next node in the "
+"path sequence."
 msgstr ""
-"Costo de desplazamiento desde ``node`` usando `` edge`` hasta el siguiente "
-"nodo en la secuencia de ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente "
+"nodo en la secuencia de la ruta."
 
-#: ../../build/doc/pgRouting-concepts.rst:27
-msgid "**agg_cost**"
-msgstr "**agg_cost**"
+#: ../../build/doc/pgRouting-concepts.rst:54
+msgid "``agg_cost``"
+msgstr "``agg_cost``"
 
-#: ../../build/doc/pgRouting-concepts.rst:27
-msgid "Aggregate cost from ``start_v`` to ``node``."
-msgstr "Coste agregado de ``start_v`` to ``node``."
+#: ../../build/doc/pgRouting-concepts.rst:56
+msgid "Aggregate cost from ``start_vid`` to ``node``."
+msgstr "Costo agregado desde ``start_vid`` hasta ``node``."
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:225
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:234
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:236
+msgid "Manually assigned vertex combinations on an undirected graph."
+msgstr ""
+"Asignando manualmente las combinaciones de vértices en un grafo no "
+"dirigido."
+
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:243
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:227
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:245
 msgid ":doc:`flow-family`"
 msgstr ":doc:`flow-family`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:230
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:248
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:231
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:249
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_edgeDisjointPaths.rst:232
+#: ../../build/doc/pgr_edgeDisjointPaths.rst:250
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
