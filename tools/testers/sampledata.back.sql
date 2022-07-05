@@ -7,7 +7,7 @@
 DROP TABLE IF EXISTS edges;
 DROP TABLE IF EXISTS vertices;
 DROP table if exists pointsOfInterest;
-DROP TABLE IF EXISTS new_restrictions;
+DROP TABLE IF EXISTS old_restrictions;
 DROP TABLE IF EXISTS restrictions;
 DROP TABLE IF EXISTS combinations;
 DROP TABLE IF EXISTS vehicles;
@@ -23,6 +23,8 @@ CREATE TABLE edges (
     reverse_cost FLOAT,
     capacity BIGINT,
     reverse_capacity BIGINT,
+    category_id INTEGER,
+    reverse_category_id INTEGER,
     x1 FLOAT,
     y1 FLOAT,
     x2 FLOAT,
@@ -32,26 +34,27 @@ CREATE TABLE edges (
 /* --EDGE TABLE CREATE end */
 /* --EDGE TABLE ADD DATA start */
 INSERT INTO edges (
+    category_id, reverse_category_id,
     cost, reverse_cost,
     capacity, reverse_capacity, geom) VALUES
-( 1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 0), ST_POINT(2, 1))),
-(-1,  1,  -1, 100,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(3, 1))),
-(-1,  1,  -1, 130,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(4, 1))),
-( 1,  1, 100,  50,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(2, 2))),
-( 1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(3, 2))),
-( 1,  1,  50, 100,   ST_MakeLine(ST_POINT(0, 2), ST_POINT(1, 2))),
-( 1,  1,  50, 130,   ST_MakeLine(ST_POINT(1, 2), ST_POINT(2, 2))),
-( 1,  1, 100, 130,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(3, 2))),
-( 1,  1, 130,  80,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(4, 2))),
-( 1,  1, 130,  50,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(2, 3))),
-( 1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(3, 3))),
-( 1, -1, 100,  -1,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(3, 3))),
-( 1, -1, 100,  -1,   ST_MakeLine(ST_POINT(3, 3), ST_POINT(4, 3))),
-( 1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(2, 4))),
-( 1,  1,  80,  50,   ST_MakeLine(ST_POINT(4, 2), ST_POINT(4, 3))),
-( 1,  1,  80,  80,   ST_MakeLine(ST_POINT(4, 1), ST_POINT(4, 2))),
-( 1,  1, 130, 100,   ST_MakeLine(ST_POINT(0.5, 3.5), ST_POINT(1.999999999999, 3.5))),
-( 1,  1,  50, 130,   ST_MakeLine(ST_POINT(3.5, 2.3), ST_POINT(3.5, 4)));
+(3, 1,    1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 0), ST_POINT(2, 1))),
+(3, 2,   -1,  1,  -1, 100,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(3, 1))),
+(2, 1,   -1,  1,  -1, 130,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(4, 1))),
+(2, 4,    1,  1, 100,  50,   ST_MakeLine(ST_POINT(2, 1), ST_POINT(2, 2))),
+(1, 4,    1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 1), ST_POINT(3, 2))),
+(4, 2,    1,  1,  50, 100,   ST_MakeLine(ST_POINT(0, 2), ST_POINT(1, 2))),
+(4, 1,    1,  1,  50, 130,   ST_MakeLine(ST_POINT(1, 2), ST_POINT(2, 2))),
+(2, 1,    1,  1, 100, 130,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(3, 2))),
+(1, 3,    1,  1, 130,  80,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(4, 2))),
+(1, 4,    1,  1, 130,  50,   ST_MakeLine(ST_POINT(2, 2), ST_POINT(2, 3))),
+(1, 2,    1, -1, 130,  -1,   ST_MakeLine(ST_POINT(3, 2), ST_POINT(3, 3))),
+(2, 3,    1, -1, 100,  -1,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(3, 3))),
+(2, 4,    1, -1, 100,  -1,   ST_MakeLine(ST_POINT(3, 3), ST_POINT(4, 3))),
+(3, 1,    1,  1,  80, 130,   ST_MakeLine(ST_POINT(2, 3), ST_POINT(2, 4))),
+(3, 4,    1,  1,  80,  50,   ST_MakeLine(ST_POINT(4, 2), ST_POINT(4, 3))),
+(3, 3,    1,  1,  80,  80,   ST_MakeLine(ST_POINT(4, 1), ST_POINT(4, 2))),
+(1, 2,    1,  1, 130, 100,   ST_MakeLine(ST_POINT(0.5, 3.5), ST_POINT(1.999999999999, 3.5))),
+(4, 1,    1,  1,  50, 130,   ST_MakeLine(ST_POINT(3.5, 2.3), ST_POINT(3.5, 4)));
 /* --EDGE TABLE ADD DATA end */
 
 /* -- q1 */
@@ -63,7 +66,7 @@ ALTER TABLE vertices ALTER COLUMN id SET DEFAULT nextval('vertices_id_seq');
 ALTER SEQUENCE vertices_id_seq OWNED BY vertices.id;
 SELECT setval('vertices_id_seq', (SELECT coalesce(max(id)) FROM vertices));
 /* -- q1-2 */
-\d vertices
+\dS+ vertices
 /* -- q2 */
 SELECT * FROM vertices;
 /* -- q3 */
@@ -85,38 +88,29 @@ FROM edges ORDER BY id;
 
 /* --POINTS CREATE start */
 
---POINTS CREATE end
-
 /* -- p1 */
 CREATE TABLE pointsOfInterest(
-    pid BIGSERIAL,
-    x FLOAT,
-    y FLOAT,
+    pid BIGSERIAL PRIMARY KEY,
     edge_id BIGINT,
     side CHAR,
     fraction FLOAT,
     geom geometry,
-    newPoint geometry
-);
+    newPoint geometry);
 /* -- p2 */
-INSERT INTO pointsOfInterest (x, y, edge_id, side, fraction) VALUES
-(1.8, 0.4,   1, 'l', 0.4),
-(4.2, 2.4,  15, 'r', 0.4),
-(2.6, 3.2,  12, 'l', 0.6),
-(0.3, 1.8,   6, 'r', 0.3),
-(2.9, 1.8,   5, 'l', 0.8),
-(2.2, 1.7,   4, 'b', 0.7);
+INSERT INTO pointsOfInterest (geom, edge_id, side, fraction) VALUES
+(ST_POINT(1.8, 0.4),  1, 'l', 0.4),
+(ST_POINT(4.2, 2.4), 15, 'r', 0.4),
+(ST_POINT(2.6, 3.2), 12, 'l', 0.6),
+(ST_POINT(0.3, 1.8),  6, 'r', 0.3),
+(ST_POINT(2.9, 1.8),  5, 'l', 0.8),
+(ST_POINT(2.2, 1.7),  4, 'b', 0.7);
 /* -- p3 */
-UPDATE pointsOfInterest SET geom = st_makePoint(x,y);
-
 UPDATE pointsOfInterest
     SET newPoint = ST_LineInterpolatePoint(e.geom, fraction)
     FROM edges AS e WHERE edge_id = id;
 /* -- p4 */
-SELECT pid, edge_id, side, fraction,
-       ST_AsText(geom), ST_AsText(newPoint)
-FROM pointsOfInterest
-ORDER BY pid;
+SELECT pid, edge_id, side, fraction, ST_AsText(geom), ST_AsText(newPoint)
+FROM pointsOfInterest;
 /* -- p5 */
 /* --POINTS CREATE end */
 
@@ -142,36 +136,21 @@ SELECT * FROM combinations;
 /* --RESTRICTIONS CREATE start */
 /* -- r1 */
 CREATE TABLE restrictions (
-    rid BIGINT NOT NULL,
-    to_cost FLOAT,
-    target_id BIGINT,
-    from_edge BIGINT,
-    via_path TEXT
-);
-/* -- r2 */
-
-INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
-(1, 100,  7,  4, NULL),
-(1, 100, 11,  8, NULL),
-(1, 100, 10,  7, NULL),
-(2,   4,  8,  3, 5),
-(3, 100,  9, 16, NULL);
-/* -- r3 */
-
-CREATE TABLE new_restrictions (
     id SERIAL PRIMARY KEY,
     path BIGINT[],
-    cost float
+    cost FLOAT
 );
-
-INSERT INTO new_restrictions (path, cost) VALUES
+/* -- r2 */
+INSERT INTO restrictions (path, cost) VALUES
 (ARRAY[4, 7], 100),
 (ARRAY[8, 11], 100),
 (ARRAY[7, 10], 100),
 (ARRAY[3, 5, 9], 4),
 (ARRAY[9, 16], 100);
+/* -- r3 */
+SELECT * FROM restrictions;
 /* -- r4 */
---RESTRICTIONS CREATE end
+/* --RESTRICTIONS CREATE end */
 
 
 /* --VEHICLES TABLE START */
@@ -234,3 +213,17 @@ INSERT INTO orders
 /* --ORDERS TABLE END */
 
 
+-- TODO remove in v4
+CREATE TABLE old_restrictions (
+    rid BIGINT NOT NULL,
+    to_cost FLOAT,
+    target_id BIGINT,
+    via_path TEXT
+);
+/* --rest01 */
+INSERT INTO old_restrictions (rid, to_cost, target_id, via_path) VALUES
+(1, 100,  7,  '4'),
+(1, 100, 11,  '8'),
+(1, 100, 10,  '7'),
+(2,   4,  9,  '5, 3'),
+(3, 100,  9, '16');

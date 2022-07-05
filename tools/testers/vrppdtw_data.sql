@@ -1,21 +1,33 @@
 
-DROP TABLE IF EXISTS customer CASCADE;
-CREATE table customer (
-    id BIGINT not null primary key,
-    x DOUBLE PRECISION,
-    y DOUBLE PRECISION,
-    demand INTEGER,
-    opentime INTEGER,
-    closetime INTEGER,
-    servicetime INTEGER,
-    pindex BIGINT,
-    dindex BIGINT
+DROP TABLE IF EXISTS lc101_c CASCADE;
+DROP TABLE IF EXISTS c_lc101 CASCADE;
+DROP TABLE IF EXISTS v_lc101 CASCADE;
+/* -- q1 */
+CREATE TABLE v_lc101(
+  id BIGINT NOT NULL primary key,
+  capacity BIGINT DEFAULT 200,
+  start_x FLOAT DEFAULT 30,
+  start_y FLOAT DEFAULT 50,
+  start_open INTEGER DEFAULT 0,
+  start_close INTEGER DEFAULT 1236);
+/* create 25 vehciles */
+INSERT INTO v_lc101 (id)
+(SELECT * FROM generate_series(1, 25));
+/* -- q2 */
+CREATE table lc101_c(
+  id BIGINT not null primary key,
+  x DOUBLE PRECISION,
+  y DOUBLE PRECISION,
+  demand INTEGER,
+  open INTEGER,
+  close INTEGER,
+  service INTEGER,
+  pindex BIGINT,
+  dindex BIGINT
 );
-
-
-INSERT INTO customer(
-  id,     x,    y, demand, opentime, closetime, servicetime, pindex, dindex) VALUES
-(  0,    40,   50,     0,     0,  1236,    0,    0,    0),
+/* the original data */
+INSERT INTO lc101_c(
+  id,     x,    y, demand, open, close, service, pindex, dindex) VALUES
 (  1,    45,   68,   -10,   912,   967,   90,   11,    0),
 (  2,    45,   70,   -20,   825,   870,   90,    6,    0),
 (  3,    42,   66,    10,    65,   146,   90,    0,   75),
@@ -122,3 +134,19 @@ INSERT INTO customer(
 ( 104,   88,   35,   -20,   109,   170,   90,   78,    0),
 ( 105,    5,   45,   -10,   665,   716,   90,   36,    0),
 ( 106,   60,   85,   -30,   561,   622,   90,   97,    0);
+/* -- q3 */
+WITH deliveries AS (SELECT * FROM lc101_c WHERE dindex = 0)
+SELECT
+  row_number() over() AS id, p.demand,
+  p.id as p_node_id, p.x AS p_x, p.y AS p_y, p.open AS p_open, p.close as p_close, p.service as p_service,
+  d.id as d_node_id, d.x AS d_x, d.y AS d_y, d.open AS d_open, d.close as d_close, d.service as d_service
+INTO c_lc101
+FROM deliveries as d JOIN lc101_c as p ON (d.pindex = p.id);
+SELECT * FROM c_lc101 LIMIT 1;
+/* -- q4 */
+SELECT travel_time, 828.94 AS best
+FROM pgr_pickDeliverEuclidean(
+  $$SELECT * FROM c_lc101 $$,
+  $$SELECT * FROM v_lc101 $$,
+  max_cycles => 2, initial_sol => 4) WHERE vehicle_seq = -2;
+/* -- q5 */
