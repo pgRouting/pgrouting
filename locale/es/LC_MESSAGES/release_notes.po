@@ -242,6 +242,47 @@ msgid "Issue fixes"
 msgstr "Corrección de problemas"
 
 #: ../../build/doc/release_notes.rst:98
+msgid "Simplifying table names and table columns, for example:"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:100
+msgid "``edges`` instead of ``edge_table``"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:102
+msgid "Removing unused columns ``category_id`` and ``reverse_category_id``."
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:104
+msgid "``combinations`` instead of ``combinations_table``"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:106
+msgid "Using PostGIS standard for geometry column."
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:108
+msgid "``geom`` instead of ``the_geom``"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:110
+msgid "Avoiding usage of functions that modify indexes, columns etc on tables."
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:112
+msgid "Using ``pgr_extractVertices`` to create a routing topology"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:114
+msgid "Restructure of the pgRouting concepts page."
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:118 ../../build/doc/release_notes.rst:133
+#: ../../build/doc/release_notes.rst:147 ../../build/doc/release_notes.rst:213
+msgid "Issue fixes"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:119
 #, fuzzy
 msgid ""
 "`#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__: "

@@ -169,6 +169,46 @@ msgstr ""
 msgid "To see all issues & pull requests closed by this release see the `Git closed milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_"
 msgstr ""
 
+#: ../../build/doc/release_notes.rst:96
+msgid "Revised documentation"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:98
+msgid "Simplifying table names and table columns, for example:"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:100
+msgid "``edges`` instead of ``edge_table``"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:102
+msgid "Removing unused columns ``category_id`` and ``reverse_category_id``."
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:104
+msgid "``combinations`` instead of ``combinations_table``"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:106
+msgid "Using PostGIS standard for geometry column."
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:108
+msgid "``geom`` instead of ``the_geom``"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:110
+msgid "Avoiding usage of functions that modify indexes, columns etc on tables."
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:112
+msgid "Using ``pgr_extractVertices`` to create a routing topology"
+msgstr ""
+
+#: ../../build/doc/release_notes.rst:114
+msgid "Restructure of the pgRouting concepts page."
+msgstr ""
+
 #: ../../build/doc/release_notes.rst:97
 #: ../../build/doc/release_notes.rst:112
 #: ../../build/doc/release_notes.rst:126
