@@ -42,6 +42,27 @@ To see all issues & pull requests closed by this release see the `Git closed
 milestone for 3.3.2
 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`_
 
+* Revised documentation
+
+  * Simplifying table names and table columns, for example:
+
+    * ``edges`` instead of ``edge_table``
+
+      * Removing unused columns ``category_id`` and ``reverse_category_id``.
+
+    * ``combinations`` instead of ``combinations_table``
+
+     * Using PostGIS standard for geometry column.
+
+       * ``geom`` instead of ``the_geom``
+
+  * Avoiding usage of functions that modify indexes, columns etc on tables.
+
+    * Using ``pgr_extractVertices`` to create a routing topology
+
+  * Restructure of the pgRouting concepts page.
+
+
 .. rubric:: Issue fixes
 
 * `#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__:
