@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-07-04 00:20+0000\n"
+"PO-Revision-Date: 2022-07-06 23:33+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trspvia/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.13.1\n"
 
 #: ../../build/doc/pgr_trspVia.rst:12
 msgid ""
@@ -178,7 +178,7 @@ msgstr "`SQL de restricciones`_"
 
 #: ../../build/doc/TRSP-family.rst:16
 msgid "`Restrictions SQL`_ query as described."
-msgstr ""
+msgstr "`SQL restricciones`_ consulta como se describe."
 
 #: ../../build/doc/TRSP-family.rst:17
 msgid "**via vertices**"
