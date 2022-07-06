@@ -69,10 +69,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
@@ -104,13 +100,13 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
-<li><a class="reference internal" href="#create-a-routing-topology">Create a routing topology</a><ul>
-<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
-<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Clean up the columns of the routing topology to be created</a></li>
-<li><a class="reference internal" href="#create-the-vertices-table">Create the vertices table</a></li>
-<li><a class="reference internal" href="#inspect-the-vertices-table">Inspect the vertices table</a></li>
-<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Create the routing topology on the edge table</a></li>
-<li><a class="reference internal" href="#inspect-the-routing-topology">Inspect the routing topology</a></li>
+<li><a class="reference internal" href="#create-a-routing-topology">Creación de una topología de ruteo</a><ul>
+<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
+<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Limpieza de las columnas de la topología de ruteo que se creará</a></li>
+<li><a class="reference internal" href="#create-the-vertices-table">Crear la tabla de vértices</a></li>
+<li><a class="reference internal" href="#inspect-the-vertices-table">Inspeccionar la tabla de vértices</a></li>
+<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Creación de la topología de ruteo en la tabla de aristas</a></li>
+<li><a class="reference internal" href="#inspect-the-routing-topology">Inspección de la topología de ruteo</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#with-full-output">Con salida completa</a></li>
@@ -164,7 +160,12 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_createTopology.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_createTopology.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_createTopology.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_createTopology.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_createTopology.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_createTopology.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_createTopology.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_createTopology.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_createTopology.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_createTopology.html">3.0</a></p></li>
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createTopology.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_createTopology.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_createTopology.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html">2.0</a></p></li>
 </ul>
 <section id="pgr-createtopology">
@@ -179,25 +180,20 @@
 </ul>
 </li>
 </ul>
-<p class="rubric">Soporte</p>
-<ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> actua​l(<a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_createTopology.html">3.1</a>) <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_createTopology.html">3.0</a> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_createTopology.html">2.6</a></p></li>
-<li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_createTopology.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_createTopology.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/topology/doc/pgr_createTopology.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/topology/doc/pgr_createTopology.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/common/doc/functions/create_topology.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/common/doc/functions/create_topology.html">2.0</a></p></li>
-</ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>La función devuelve:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code>  después de que se ha construido la topología de red y la tabla de vértices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> después de que se ha construido la topología de red y la tabla de vértices.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando el la red topológica no se no se completó debido a un error.</p></li>
 </ul>
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>varchar pgr_createTopology(text edge_table, double precision tolerance,
-                       text the_geom:=&#39;the_geom&#39;, text id:=&#39;id&#39;,
-                       text source:=&#39;source&#39;,text target:=&#39;target&#39;,
-                       text rows_where:=&#39;true&#39;, boolean clean:=false)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">varchar</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="n">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="n">precision</span> <span class="n">tolerance</span><span class="p">,</span>
+                       <span class="n">text</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">text</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
+                       <span class="n">text</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">text</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
+                       <span class="n">text</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">boolean</span> <span class="n">clean</span><span class="o">:=</span><span class="n">false</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -212,7 +208,7 @@
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> ajuste tolerancia de bordes desconectados. (en la unidad de proyección)</p>
 </dd>
 <dt class="field-odd">the_geom<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  nombre de la columna de la geometría en la tabla de la red. El valor por defecto es <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
 </dd>
 <dt class="field-even">id<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text``Nombre</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">clave</span> <span class="pre">principal</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">Valor</span> <span class="pre">por</span> <span class="pre">defecto</span> <span class="pre">es</span> <span class="pre">``id</span></code>.</p>
@@ -221,7 +217,7 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">id``Nombre</span> <span class="pre">de</span> <span class="pre">columna</span> <span class="pre">de</span> <span class="pre">origen</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">tabla</span> <span class="pre">de</span> <span class="pre">red.</span> <span class="pre">El</span> <span class="pre">valor</span> <span class="pre">predeterminado</span> <span class="pre">es``source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> El nombre de la columna del nodo de llegada del segmento.  El valor por defecto es <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condición para SELECCIONAR un subconjunto de filas.  El valor predeterminado es <code class="docutils literal notranslate"><span class="pre">true</span></code> para indicar todas las filas donde <code class="docutils literal notranslate"><span class="pre">source</span></code> o <code class="docutils literal notranslate"><span class="pre">target</span></code> tienen un valor nulo, de lo contrario se utiliza la condición.</p>
@@ -255,7 +251,7 @@
 <ul>
 <li><p>Crea una tabla de vértices: &lt;edge_table&gt;_vertices_pgr.</p></li>
 <li><p>Llena las columnas <code class="docutils literal notranslate"><span class="pre">id</span></code> y <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> de la tabla de vértices.</p></li>
-<li><p>Llena las columnas los origen y destino  de la tabla de borde haciendo referencia al <code class="docutils literal notranslate"><span class="pre">id</span></code>  de la tabla de los vértices.</p></li>
+<li><p>Llena las columnas los origen y destino de la tabla de borde haciendo referencia al <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla de los vértices.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> cuando la topología de red no se construyó debido a un error:</p>
@@ -268,17 +264,17 @@
 </li>
 </ul>
 <p class="rubric">La tabla de vértices</p>
-<p>La tabla de vértices es un requerimiento de las funciones <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> y   <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+<p>La tabla de vértices es un requerimiento de las funciones <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> y <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 <p>La estructura de la tabla de los vértices es:</p>
 <dl class="field-list simple">
 <dt class="field-odd">id<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> identificador del vértice.</p>
 </dd>
 <dt class="field-even">cnt<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en the edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en la edge_table que referencian este vértice. Ver <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte  <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Indicador de que el vértice podría tener un problema. Consulte <a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Número de vértices en edge_table que referencian a este vértice como (AS) entrante. Ver <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
@@ -293,14 +289,14 @@
 <section id="usage-when-the-edge-table-s-columns-match-the-default-values">
 <h3>Uso cuando las columnas de la tabla de borde coinciden con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this heading">¶</a></h3>
 <p>La forma más sencilla de utilizar pgr_createTopology es:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">18</span> <span class="n">edges</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
@@ -311,15 +307,15 @@
 </div>
 <p class="rubric">Cuando los argumentos se escriben en el orden descrito en los parámetros:</p>
 <p>Obtenemos el mismo resultado que la forma más sencilla de utilizar la función.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
-    <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">18</span> <span class="n">edges</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
@@ -330,18 +326,17 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<div class="line-block">
-<div class="line">Se produciría un error cuando los argumentos no se dan en el orden adecuado:</div>
-<div class="line">En este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">id</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">ege_table</span></code> se pasa a la función como la columna de geometría,</div>
-<div class="line">y la columna de geometría <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> se pasa a la función como la columna <code class="docutils literal notranslate"><span class="pre">id</span></code>.</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
-    <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+<p>An error would occur when the arguments are not given in the appropriate
+order: In this example, the column <code class="docutils literal notranslate"><span class="pre">id</span></code> of the table <code class="docutils literal notranslate"><span class="pre">ege_table</span></code> is
+passed to the function as the geometry column, and the geometry column
+<code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the id column.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----&gt;</span> <span class="n">PGR</span> <span class="n">ERROR</span> <span class="ow">in</span> <span class="n">pgr_createTopology</span><span class="p">:</span> <span class="n">Wrong</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">Column</span> <span class="nb">id</span><span class="p">:</span><span class="n">the_geom</span>
-<span class="n">HINT</span><span class="p">:</span>    <span class="o">----&gt;</span> <span class="n">Expected</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">the_geom</span> <span class="ow">is</span> <span class="n">integer</span><span class="p">,</span><span class="n">smallint</span> <span class="ow">or</span> <span class="n">bigint</span> <span class="n">but</span> <span class="n">USER</span><span class="o">-</span><span class="n">DEFINED</span> <span class="n">was</span> <span class="n">found</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----&gt;</span> <span class="n">PGR</span> <span class="n">ERROR</span> <span class="ow">in</span> <span class="n">pgr_createTopology</span><span class="p">:</span> <span class="n">Wrong</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">Column</span> <span class="nb">id</span><span class="p">:</span><span class="n">geom</span>
+<span class="n">HINT</span><span class="p">:</span>    <span class="o">----&gt;</span> <span class="n">Expected</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">geom</span> <span class="ow">is</span> <span class="n">integer</span><span class="p">,</span><span class="n">smallint</span> <span class="ow">or</span> <span class="n">bigint</span> <span class="n">but</span> <span class="n">USER</span><span class="o">-</span><span class="n">DEFINED</span> <span class="n">was</span> <span class="n">found</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Unexpected</span> <span class="n">error</span> <span class="n">raise_exception</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
@@ -353,8 +348,8 @@
 </div>
 <p class="rubric">Cuando se utiliza la notación por nombre</p>
 <p>Los parámetros definidos con un valor predeterminado se pueden omitir, siempre que el valor coincida con el valor predeterminado y el orden de los parámetros no importaría.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
-    <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -362,8 +357,8 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
-    <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -371,7 +366,7 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -381,7 +376,7 @@
 </div>
 <p class="rubric">Seleccionar filas utilizando el parámetro rows_where</p>
 <p>La selección de filas basadas en el id.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -390,8 +385,8 @@
 </pre></div>
 </div>
 <p>Selección de las filas en las que la geometría está cerca de la geometría de la fila con <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">5</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom, 0.05) FROM edges WHERE id=5)&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -399,11 +394,11 @@
 
 </pre></div>
 </div>
-<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100 de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span>  <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">1</span>
-<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span>
-    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span>
+    <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
@@ -415,7 +410,7 @@
 <section id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
 <h3>Uso cuando las columnas de la tabla de borde NO COINCIDEN con los valores por defecto:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this heading">¶</a></h3>
 <p>Para la siguiente tabla</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span>  <span class="n">the_geom</span> <span class="n">AS</span> <span class="n">mygeom</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">src</span> <span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">tgt</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">)</span> <span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span>  <span class="n">geom</span> <span class="n">AS</span> <span class="n">mygeom</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">src</span> <span class="p">,</span> <span class="n">target</span> <span class="n">AS</span> <span class="n">tgt</span> <span class="n">FROM</span> <span class="n">edges</span><span class="p">)</span> <span class="p">;</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 </pre></div>
 </div>
@@ -432,12 +427,12 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<div class="line-block">
-<div class="line">Se produciría un error cuando los argumentos no se dan en el orden apropiado:</div>
-<div class="line">En este ejemplo, la columna <code class="docutils literal notranslate"><span class="pre">gid</span></code> de la tabla <code class="docutils literal notranslate"><span class="pre">mytable</span></code> pasó a la función como (AS) la columna de geometría,</div>
-<div class="line">y la columna de geometría <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> se pasa a la función como (AS) la columna id.</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
+<p>An error would occur when the arguments are not given in the appropiriate
+order: In this example, the column <code class="docutils literal notranslate"><span class="pre">gid</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed
+to the function AS the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> is
+passed to the function AS the id column.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
@@ -451,6 +446,7 @@
 
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 <p class="rubric">Cuando se utiliza la notación por nombre</p>
 <p>En este escenario omitir un parámetro crearía un error porque los valores predeterminados para los nombres de columna no coinciden con los nombres de columna de la tabla. El orden de los parámetros no importa:</p>
@@ -500,7 +496,7 @@
 
 </pre></div>
 </div>
-<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100  de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<p>Seleccionar las filas donde la geometría está cerca de la geometría de la fila con``gid`` =100 de la tabla <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;mygeom&#39;</span><span class="p">,</span> <span class="s1">&#39;gid&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;tgt&#39;</span><span class="p">,</span>
     <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;mygeom &amp;&amp; (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
  <span class="n">pgr_createtopology</span>
@@ -523,24 +519,24 @@
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#create-a-routing-topology" id="id1">Create a routing topology</a></p>
+<li><p><a class="reference internal" href="#create-a-routing-topology" id="id2">Creación de una topología de ruteo</a></p>
 <ul>
-<li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id2">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
-<li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id3">Clean up the columns of the routing topology to be created</a></p></li>
-<li><p><a class="reference internal" href="#create-the-vertices-table" id="id4">Create the vertices table</a></p></li>
-<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id5">Inspect the vertices table</a></p></li>
-<li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id6">Create the routing topology on the edge table</a></p></li>
-<li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id7">Inspect the routing topology</a></p></li>
+<li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id3">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
+<li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id4">Limpieza de las columnas de la topología de ruteo que se creará</a></p></li>
+<li><p><a class="reference internal" href="#create-the-vertices-table" id="id5">Crear la tabla de vértices</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id6">Inspeccionar la tabla de vértices</a></p></li>
+<li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id7">Creación de la topología de ruteo en la tabla de aristas</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id8">Inspección de la topología de ruteo</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#with-full-output" id="id8">Con salida completa</a></p></li>
+<li><p><a class="reference internal" href="#with-full-output" id="id9">Con salida completa</a></p></li>
 </ul>
 </nav>
 <section id="create-a-routing-topology">
-<h3><a class="toc-backref" href="#id1" role="doc-backlink">Create a routing topology</a><a class="headerlink" href="#create-a-routing-topology" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Creación de una topología de ruteo</a><a class="headerlink" href="#create-a-routing-topology" title="Permalink to this heading">¶</a></h3>
 <p>An alternate method to create a routing topology use <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
 <section id="make-sure-the-database-does-not-have-the-vertices-table">
-<h4><a class="toc-backref" href="#id2" role="doc-backlink">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
@@ -548,17 +544,17 @@
 </div>
 </section>
 <section id="clean-up-the-columns-of-the-routing-topology-to-be-created">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Clean up the columns of the routing topology to be created</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table</span>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Limpieza de las columnas de la topología de ruteo que se creará</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
-   <span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
-   <span class="n">x2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
 </section>
 <section id="create-the-vertices-table">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Create the vertices table</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Crear la tabla de vértices</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
 <li><p>For big edge tables that are been prepared,</p>
@@ -569,13 +565,13 @@
 </li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices_table</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, the_geom AS geom FROM edge_table&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
 </section>
 <section id="inspect-the-vertices-table">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Inspect the vertices table</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Inspeccionar la tabla de vértices</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
@@ -603,26 +599,26 @@
 </div>
 </section>
 <section id="create-the-routing-topology-on-the-edge-table">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">Create the routing topology on the edge table</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this heading">¶</a></h4>
-<p>Updating the <code class="docutils literal notranslate"><span class="pre">source</span></code> information</p>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Creación de la topología de ruteo en la tabla de aristas</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this heading">¶</a></h4>
+<p>Actualizar de la información de <code class="docutils literal notranslate"><span class="pre">source</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
-    <span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
-        <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">out_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-        <span class="n">FROM</span> <span class="n">vertices_table</span>
-    <span class="p">)</span>
-<span class="n">UPDATE</span> <span class="n">edge_table</span>
+<span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">out_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+  <span class="n">FROM</span> <span class="n">vertices_table</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edges</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">FROM</span> <span class="n">out_going</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
-<p>Updating the <code class="docutils literal notranslate"><span class="pre">target</span></code> information</p>
+<p>Actualización de la información de <code class="docutils literal notranslate"><span class="pre">target</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
-    <span class="n">in_coming</span> <span class="n">AS</span> <span class="p">(</span>
-        <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">in_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-        <span class="n">FROM</span> <span class="n">vertices_table</span>
-    <span class="p">)</span>
-<span class="n">UPDATE</span> <span class="n">edge_table</span>
+<span class="n">in_coming</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">in_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+  <span class="n">FROM</span> <span class="n">vertices_table</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edges</span>
 <span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">FROM</span> <span class="n">in_coming</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
@@ -630,60 +626,66 @@
 </div>
 </section>
 <section id="inspect-the-routing-topology">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Inspect the routing topology</a><a class="headerlink" href="#inspect-the-routing-topology" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Inspección de la topología de ruteo</a><a class="headerlink" href="#inspect-the-routing-topology" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>
-<span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">x1</span>  <span class="o">|</span> <span class="n">y1</span>  <span class="o">|</span>       <span class="n">x2</span>       <span class="o">|</span> <span class="n">y2</span>
 <span class="o">----+--------+--------+-----+-----+----------------+-----</span>
-  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span>
- <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span>
   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span>
-  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
-  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
- <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span>
- <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
   <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span>
  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
  <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
- <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
-  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
-  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
- <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
  <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
 <span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Topología generada</strong></span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="with-full-output">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Con salida completa</a><a class="headerlink" href="#with-full-output" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Con salida completa</a><a class="headerlink" href="#with-full-output" title="Permalink to this heading">¶</a></h3>
 <p>En este ejemplo se inicia una topología limpia, con 5 aristas y, a continuación, se incrementa al resto de los bordes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;id &lt; 6&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">5</span> <span class="n">edges</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
-<span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span>  <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">13</span> <span class="n">edges</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
@@ -698,9 +700,9 @@
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a> para obtener una visión general de una topología para algoritmos de ruteo.</p></li>
-<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> para reconstruir la tabla de vértices en función de la información de origen y de destino.</p></li>
-<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a> para analizar los bordes y vértices de la tabla de bordes.</p></li>
+<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -723,8 +725,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

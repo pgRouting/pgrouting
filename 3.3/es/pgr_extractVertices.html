@@ -16,6 +16,7 @@
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -69,10 +70,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
@@ -99,9 +96,9 @@
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
 <li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
-<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
-<li><a class="reference internal" href="#edges-sql">Edges SQL</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a><ul>
 <li><a class="reference internal" href="#when-line-geometry-is-known">Cuando se conoce la geometría de línea</a></li>
 <li><a class="reference internal" href="#when-vertex-geometry-is-known">Cuando se conoce la geometría de vértices</a></li>
 <li><a class="reference internal" href="#when-identifiers-of-vertices-are-known">Cuando se conocen identificadores de vértices</a></li>
@@ -112,13 +109,28 @@
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
 <li><a class="reference internal" href="#dryrun-execution">Ejecución de Dryrun</a></li>
-<li><a class="reference internal" href="#create-a-routing-topology">Create a routing topology</a><ul>
-<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
-<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Clean up the columns of the routing topology to be created</a></li>
-<li><a class="reference internal" href="#create-the-vertices-table">Create the vertices table</a></li>
-<li><a class="reference internal" href="#inspect-the-vertices-table">Inspect the vertices table</a></li>
-<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Create the routing topology on the edge table</a></li>
-<li><a class="reference internal" href="#inspect-the-routing-topology">Inspect the routing topology</a></li>
+<li><a class="reference internal" href="#create-a-routing-topology">Creación de una topología de ruteo</a><ul>
+<li><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></li>
+<li><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created">Limpieza de las columnas de la topología de ruteo que se creará</a></li>
+<li><a class="reference internal" href="#create-the-vertices-table">Crear la tabla de vértices</a></li>
+<li><a class="reference internal" href="#inspect-the-vertices-table">Inspeccionar la tabla de vértices</a></li>
+<li><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table">Creación de la topología de ruteo en la tabla de aristas</a></li>
+<li><a class="reference internal" href="#inspect-the-routing-topology">Inspección de la topología de ruteo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#crossing-edges">Crossing edges</a><ul>
+<li><a class="reference internal" href="#adding-split-edges">Adding split edges</a></li>
+<li><a class="reference internal" href="#adding-new-vertices">Añadiendo nuevos vértices</a></li>
+<li><a class="reference internal" href="#updating-edges-topology">Actualizar la topología de aristas</a></li>
+<li><a class="reference internal" href="#removing-the-surplus-edges">Removing the surplus edges</a></li>
+<li><a class="reference internal" href="#updating-vertices-topology">Actializar la topología de vértices</a></li>
+<li><a class="reference internal" href="#checking-for-crossing-edges">Checking for crossing edges</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#graphs-without-geometries">Graphs without geometries</a><ul>
+<li><a class="reference internal" href="#insert-the-data">Insert the data</a></li>
+<li><a class="reference internal" href="#find-the-shortest-path">Find the shortest path</a></li>
+<li><a class="reference internal" href="#vertex-information">Información de vertices</a></li>
 </ul>
 </li>
 </ul>
@@ -171,23 +183,28 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_extractVertices.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_extractVertices.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_extractVertices.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_extractVertices.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_extractVertices.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_extractVertices.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_extractVertices.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_extractVertices.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_extractVertices.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_extractVertices.html">3.0</a></p></li>
 </ul>
 <section id="pgr-extractvertices-proposed">
 <h1>pgr_extractVertices – Propuesto<a class="headerlink" href="#pgr-extractvertices-proposed" title="Permalink to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> — Extracts the vertices information</p>
+<p><code class="docutils literal notranslate"><span class="pre">pgr_extractVertices</span></code> — Extrae la información de los vértices</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Funciones propuestas para la próxima versión.</p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
 <li><p>No están oficialmente en la versión actual.</p></li>
-<li><p>Es probable que oficialmente formen parte de la próxima versión:</p>
+<li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
-<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
-<li><p>Se han hecho pruebas de pgTap. Pero tal vez se necesiten más.</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
 </li>
@@ -223,8 +240,7 @@ RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, the_geom AS geom</span>
-    <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;);</span>
+  <span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">);</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
 <span class="o">----+----------+-----------+----------------+-----+--------------------------------------------</span>
   <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">}</span>       <span class="o">|</span>              <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span> <span class="mi">010100000000000000000000000000000000000040</span>
@@ -259,20 +275,20 @@ RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> como se describe a continuación</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="optional-parameters">
-<h2>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Default</p></th>
+<th class="head"><p>x Defecto</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
@@ -281,8 +297,7 @@ RETURNS SETOF (id, in_edges, out_edges, x, y, geom)</pre>
 <td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><ul class="simple">
-<li><p>When true do not process and get in a
-NOTICE the resulting query.</p></li>
+<li><p>Cuando verdadero, no procesar y recibir un AVISO de la consulta resultante.</p></li>
 </ul>
 </td>
 </tr>
@@ -290,22 +305,22 @@ NOTICE the resulting query.</p></li>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
-<li><p><a class="reference internal" href="#edges-sql" id="id2">Edges SQL</a></p>
+<li><p><a class="reference internal" href="#edges-sql" id="id3">SQL aristas</a></p>
 <ul>
-<li><p><a class="reference internal" href="#when-line-geometry-is-known" id="id3">Cuando se conoce la geometría de línea</a></p></li>
-<li><p><a class="reference internal" href="#when-vertex-geometry-is-known" id="id4">Cuando se conoce la geometría de vértices</a></p></li>
-<li><p><a class="reference internal" href="#when-identifiers-of-vertices-are-known" id="id5">Cuando se conocen identificadores de vértices</a></p></li>
+<li><p><a class="reference internal" href="#when-line-geometry-is-known" id="id4">Cuando se conoce la geometría de línea</a></p></li>
+<li><p><a class="reference internal" href="#when-vertex-geometry-is-known" id="id5">Cuando se conoce la geometría de vértices</a></p></li>
+<li><p><a class="reference internal" href="#when-identifiers-of-vertices-are-known" id="id6">Cuando se conocen identificadores de vértices</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="edges-sql">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Edges SQL</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">SQL aristas</a><a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <section id="when-line-geometry-is-known">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Cuando se conoce la geometría de línea</a><a class="headerlink" href="#when-line-geometry-is-known" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Cuando se conoce la geometría de línea</a><a class="headerlink" href="#when-line-geometry-is-known" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -337,7 +352,7 @@ NOTICE the resulting query.</p></li>
 </ul>
 </section>
 <section id="when-vertex-geometry-is-known">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Cuando se conoce la geometría de vértices</a><a class="headerlink" href="#when-vertex-geometry-is-known" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Cuando se conoce la geometría de vértices</a><a class="headerlink" href="#when-vertex-geometry-is-known" title="Permalink to this heading">¶</a></h4>
 <p>Para utilizar esta consulta interna, la columna <code class="docutils literal notranslate"><span class="pre">geom</span></code> no debe formar parte del conjunto de columnas.</p>
 <table class="docutils align-default">
 <thead>
@@ -373,7 +388,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </ul>
 </section>
 <section id="when-identifiers-of-vertices-are-known">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Cuando se conocen identificadores de vértices</a><a class="headerlink" href="#when-identifiers-of-vertices-are-known" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Cuando se conocen identificadores de vértices</a><a class="headerlink" href="#when-identifiers-of-vertices-are-known" title="Permalink to this heading">¶</a></h4>
 <p>Para utilizar esta consulta interna, las columnas <code class="docutils literal notranslate"><span class="pre">geom</span></code>, <code class="docutils literal notranslate"><span class="pre">startpoint</span></code> y <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> no deben formar parte del conjunto de columnas.</p>
 <table class="docutils align-default">
 <thead>
@@ -389,11 +404,11 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identificador del segundo punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
 </tbody>
 </table>
@@ -412,11 +427,11 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del primer punto final en el vértice de la arista.</p></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in_edges</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
-<td><p>Arreglo de identificadores de las aristas que tienen el vértice  <code class="docutils literal notranslate"><span class="pre">id</span></code> como <em>primer punto final</em>.</p>
+<td><p>Arreglo de identificadores de las aristas que tienen el vértice <code class="docutils literal notranslate"><span class="pre">id</span></code> como <em>primer punto final</em>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> When the <code class="docutils literal notranslate"><span class="pre">id</span></code> no forma parte de la consulta interna</p></li>
 </ul>
@@ -424,7 +439,7 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">out_edges</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT[]</span></code></p></td>
-<td><p>Arreglo de identificadores de las aristas que tienen el vértice <code class="docutils literal notranslate"><span class="pre">id</span></code>  como <em>segundo punto final</em>.</p>
+<td><p>Arreglo de identificadores de las aristas que tienen el vértice <code class="docutils literal notranslate"><span class="pre">id</span></code> como <em>segundo punto final</em>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code> When the <code class="docutils literal notranslate"><span class="pre">id</span></code> no forma parte de la consulta interna</p></li>
 </ul>
@@ -461,31 +476,48 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#dryrun-execution" id="id6">Ejecución de Dryrun</a></p></li>
-<li><p><a class="reference internal" href="#create-a-routing-topology" id="id7">Create a routing topology</a></p>
+<li><p><a class="reference internal" href="#dryrun-execution" id="id7">Ejecución de Dryrun</a></p></li>
+<li><p><a class="reference internal" href="#create-a-routing-topology" id="id8">Creación de una topología de ruteo</a></p>
 <ul>
-<li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id8">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
-<li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id9">Clean up the columns of the routing topology to be created</a></p></li>
-<li><p><a class="reference internal" href="#create-the-vertices-table" id="id10">Create the vertices table</a></p></li>
-<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id11">Inspect the vertices table</a></p></li>
-<li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id12">Create the routing topology on the edge table</a></p></li>
-<li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id13">Inspect the routing topology</a></p></li>
+<li><p><a class="reference internal" href="#make-sure-the-database-does-not-have-the-vertices-table" id="id9">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a></p></li>
+<li><p><a class="reference internal" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" id="id10">Limpieza de las columnas de la topología de ruteo que se creará</a></p></li>
+<li><p><a class="reference internal" href="#create-the-vertices-table" id="id11">Crear la tabla de vértices</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-vertices-table" id="id12">Inspeccionar la tabla de vértices</a></p></li>
+<li><p><a class="reference internal" href="#create-the-routing-topology-on-the-edge-table" id="id13">Creación de la topología de ruteo en la tabla de aristas</a></p></li>
+<li><p><a class="reference internal" href="#inspect-the-routing-topology" id="id14">Inspección de la topología de ruteo</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#crossing-edges" id="id15">Crossing edges</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-split-edges" id="id16">Adding split edges</a></p></li>
+<li><p><a class="reference internal" href="#adding-new-vertices" id="id17">Añadiendo nuevos vértices</a></p></li>
+<li><p><a class="reference internal" href="#updating-edges-topology" id="id18">Actualizar la topología de aristas</a></p></li>
+<li><p><a class="reference internal" href="#removing-the-surplus-edges" id="id19">Removing the surplus edges</a></p></li>
+<li><p><a class="reference internal" href="#updating-vertices-topology" id="id20">Actializar la topología de vértices</a></p></li>
+<li><p><a class="reference internal" href="#checking-for-crossing-edges" id="id21">Checking for crossing edges</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#graphs-without-geometries" id="id22">Graphs without geometries</a></p>
+<ul>
+<li><p><a class="reference internal" href="#insert-the-data" id="id23">Insert the data</a></p></li>
+<li><p><a class="reference internal" href="#find-the-shortest-path" id="id24">Find the shortest path</a></p></li>
+<li><p><a class="reference internal" href="#vertex-information" id="id25">Información de vertices</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="dryrun-execution">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Ejecución de Dryrun</a><a class="headerlink" href="#dryrun-execution" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Ejecución de Dryrun</a><a class="headerlink" href="#dryrun-execution" title="Permalink to this heading">¶</a></h3>
 <p>Para obtener la consulta generada que se usa para obtener la información de vértices, utilice <code class="docutils literal notranslate"><span class="pre">dryrun</span> <span class="pre">:=</span> <span class="pre">true</span></code>.</p>
 <p>Los resultados se pueden usar como código base para realizar un refinamiento basado en las necesidades de desarrollo de back-end.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span>
-    <span class="s1">&#39;SELECT id, the_geom AS geom FROM edge_table&#39;</span><span class="p">,</span>
-    <span class="n">dryrun</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+  <span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">,</span>
+  <span class="n">dryrun</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>
         <span class="n">WITH</span>
 
         <span class="n">main_sql</span> <span class="n">AS</span> <span class="p">(</span>
-          <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">the_geom</span> <span class="n">AS</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">edge_table</span>
+          <span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">geom</span> <span class="n">FROM</span> <span class="n">edges</span>
         <span class="p">),</span>
 
         <span class="n">the_out</span> <span class="n">AS</span> <span class="p">(</span>
@@ -526,9 +558,9 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="create-a-routing-topology">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Create a routing topology</a><a class="headerlink" href="#create-a-routing-topology" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Creación de una topología de ruteo</a><a class="headerlink" href="#create-a-routing-topology" title="Permalink to this heading">¶</a></h3>
 <section id="make-sure-the-database-does-not-have-the-vertices-table">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">Make sure the database does not have the <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Asegurarse de que la base de datos no tiene <code class="docutils literal notranslate"><span class="pre">vertices_table</span></code></a><a class="headerlink" href="#make-sure-the-database-does-not-have-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">vertices_table</span><span class="p">;</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">table</span> <span class="s2">&quot;vertices_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span><span class="p">,</span> <span class="n">skipping</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
@@ -536,17 +568,17 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="clean-up-the-columns-of-the-routing-topology-to-be-created">
-<h4><a class="toc-backref" href="#id9" role="doc-backlink">Clean up the columns of the routing topology to be created</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Permalink to this heading">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edge_table</span>
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Limpieza de las columnas de la topología de ruteo que se creará</a><a class="headerlink" href="#clean-up-the-columns-of-the-routing-topology-to-be-created" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
-   <span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
-   <span class="n">x2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
 </pre></div>
 </div>
 </section>
 <section id="create-the-vertices-table">
-<h4><a class="toc-backref" href="#id10" role="doc-backlink">Create the vertices table</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Crear la tabla de vértices</a><a class="headerlink" href="#create-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>When the <code class="docutils literal notranslate"><span class="pre">LINESTRING</span></code> has a SRID then use <code class="docutils literal notranslate"><span class="pre">geom::geometry(POINT,</span> <span class="pre">&lt;SRID&gt;)</span></code></p></li>
 <li><p>For big edge tables that are been prepared,</p>
@@ -557,13 +589,13 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">INTO</span> <span class="n">vertices_table</span>
-<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, the_geom AS geom FROM edge_table&#39;</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges ORDER BY id&#39;</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">17</span>
 </pre></div>
 </div>
 </section>
 <section id="inspect-the-vertices-table">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Inspect the vertices table</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Inspeccionar la tabla de vértices</a><a class="headerlink" href="#inspect-the-vertices-table" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span>
 <span class="n">FROM</span> <span class="n">vertices_table</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
@@ -591,14 +623,14 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="create-the-routing-topology-on-the-edge-table">
-<h4><a class="toc-backref" href="#id12" role="doc-backlink">Create the routing topology on the edge table</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this heading">¶</a></h4>
-<p>Actualización de la información de <code class="docutils literal notranslate"><span class="pre">source</span></code></p>
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Creación de la topología de ruteo en la tabla de aristas</a><a class="headerlink" href="#create-the-routing-topology-on-the-edge-table" title="Permalink to this heading">¶</a></h4>
+<p>Actualizar de la información de <code class="docutils literal notranslate"><span class="pre">source</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
-    <span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
-        <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">out_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-        <span class="n">FROM</span> <span class="n">vertices_table</span>
-    <span class="p">)</span>
-<span class="n">UPDATE</span> <span class="n">edge_table</span>
+<span class="n">out_going</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">out_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+  <span class="n">FROM</span> <span class="n">vertices_table</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edges</span>
 <span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">FROM</span> <span class="n">out_going</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
@@ -606,11 +638,11 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </div>
 <p>Actualización de la información de <code class="docutils literal notranslate"><span class="pre">target</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
-    <span class="n">in_coming</span> <span class="n">AS</span> <span class="p">(</span>
-        <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">in_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-        <span class="n">FROM</span> <span class="n">vertices_table</span>
-    <span class="p">)</span>
-<span class="n">UPDATE</span> <span class="n">edge_table</span>
+<span class="n">in_coming</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">vid</span><span class="p">,</span> <span class="n">unnest</span><span class="p">(</span><span class="n">in_edges</span><span class="p">)</span> <span class="n">AS</span> <span class="n">eid</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+  <span class="n">FROM</span> <span class="n">vertices_table</span>
+<span class="p">)</span>
+<span class="n">UPDATE</span> <span class="n">edges</span>
 <span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">vid</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">FROM</span> <span class="n">in_coming</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">eid</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">18</span>
@@ -618,30 +650,301 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="inspect-the-routing-topology">
-<h4><a class="toc-backref" href="#id13" role="doc-backlink">Inspect the routing topology</a><a class="headerlink" href="#inspect-the-routing-topology" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Inspección de la topología de ruteo</a><a class="headerlink" href="#inspect-the-routing-topology" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span>
-<span class="n">FROM</span> <span class="n">edge_table</span><span class="p">;</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">x1</span>  <span class="o">|</span> <span class="n">y1</span>  <span class="o">|</span>       <span class="n">x2</span>       <span class="o">|</span> <span class="n">y2</span>
 <span class="o">----+--------+--------+-----+-----+----------------+-----</span>
-  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span>
- <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span>
   <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span>
-  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
-  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
- <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span>
- <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
+  <span class="mi">4</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
   <span class="mi">5</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">7</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span>
   <span class="mi">8</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span>
+  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">10</span> <span class="o">|</span>      <span class="mi">7</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span>
  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
  <span class="mi">12</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span>
- <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
-  <span class="mi">3</span> <span class="o">|</span>     <span class="mi">10</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
-  <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
- <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>              <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
  <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
+ <span class="mi">16</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>              <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
+ <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">1.999999999999</span> <span class="o">|</span> <span class="mf">3.5</span>
+ <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span> <span class="o">|</span> <span class="mf">3.5</span> <span class="o">|</span> <span class="mf">2.3</span> <span class="o">|</span>            <span class="mf">3.5</span> <span class="o">|</span>   <span class="mi">4</span>
 <span class="p">(</span><span class="mi">18</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Topología generada</strong></span><a class="headerlink" href="#id2" title="Enlace permanente a esta imagen">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="crossing-edges">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Crossing edges</a><a class="headerlink" href="#crossing-edges" title="Permalink to this heading">¶</a></h3>
+<p>To get the crossing edges:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
+<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">st_crosses</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="nb">id</span>
+<span class="o">----+----</span>
+ <span class="mi">13</span> <span class="o">|</span> <span class="mi">18</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="_images/crossing_edges.png" src="_images/crossing_edges.png" />
+</figure>
+<p>That information is correct, for example, when in terms of vehicles, is it a
+tunnel or bride crossing over another road.</p>
+<p>It might be incorrect, for example:</p>
+<ol class="arabic simple">
+<li><p>When it is actually an intersection of roads, where vehicles can make turns.</p></li>
+<li><p>When in terms of electrical lines, the electrical line is able to switch
+roads even on a tunnel or bridge.</p></li>
+</ol>
+<p>When it is incorrect, it needs fixing:</p>
+<ol class="arabic simple">
+<li><p>For vehicles and pedestrians</p>
+<ul class="simple">
+<li><p>If the data comes from OSM and was imported to the database using
+<code class="docutils literal notranslate"><span class="pre">osm2pgrouting</span></code>, the fix needs to be done in the <a class="reference external" href="https://www.openstreetmap.org">OSM portal</a> and the data imported again.</p></li>
+<li><p>In general when the data comes from a supplier that has the data prepared
+for routing vehicles, and there is a problem, the data is to be fixed from
+the supplier</p></li>
+</ul>
+</li>
+<li><p>For very specific applications</p>
+<ul class="simple">
+<li><p>The data is correct when from the point of view of routing vehicles or
+pedestrians.</p></li>
+<li><p>The data needs a local fix for the specific application.</p></li>
+</ul>
+</li>
+</ol>
+<p>Once analyzed one by one the crossings, for the ones that need a local fix,
+the edges need to be <a class="reference external" href="https://postgis.net/docs/ST_Split.html">split</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_AsText</span><span class="p">((</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
+<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="n">ST_AsText</span><span class="p">((</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
+<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
+         <span class="n">st_astext</span>
+<span class="o">---------------------------</span>
+ <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mf">2.3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">LINESTRING</span><span class="p">(</span><span class="mi">3</span> <span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">LINESTRING</span><span class="p">(</span><span class="mf">3.5</span> <span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>The new edges need to be added to the edges table, the rest of the attributes
+need to be updated in the new edges, the old edges need to be
+removed and the routing topology needs to be updated.</p>
+<section id="adding-split-edges">
+<h4><a class="toc-backref" href="#id16" role="doc-backlink">Adding split edges</a><a class="headerlink" href="#adding-split-edges" title="Permalink to this heading">¶</a></h4>
+<p>For each pair of crossing edges a process similar to this one must be performed.</p>
+<p>The columns inserted and the way are calculated are based on the application.
+For example, if the edges have a trait <strong>name</strong>, then that column is to be
+copied.</p>
+<p>Para llos cálculos de pgRouting</p>
+<ul class="simple">
+<li><p><strong>factor</strong> based on the position of the intersection of the edges can be used
+to adjust the <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> columns.</p></li>
+<li><p>Capacity information, used on the <a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a> functions does not need
+to change when splitting edges.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">first_edge</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
+    <span class="n">ST_LineLocatePoint</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="n">factor</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
+  <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">),</span>
+<span class="n">first_segments</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">path</span><span class="p">,</span> <span class="n">first_edge</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
+    <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
+    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">cost</span>
+         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span>
+    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">reverse_cost</span>
+         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">reverse_cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">first_edge</span> <span class="p">,</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">13</span><span class="p">),</span>
+<span class="n">second_edge</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_Split</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">)))</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
+    <span class="n">ST_LineLocatePoint</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span><span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">))</span> <span class="n">AS</span> <span class="n">factor</span>
+  <span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
+  <span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">13</span> <span class="n">AND</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">),</span>
+<span class="n">second_segments</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">path</span><span class="p">,</span> <span class="n">second_edge</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span>
+    <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
+    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">cost</span>
+         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">cost</span><span class="p">,</span>
+    <span class="n">CASE</span> <span class="n">WHEN</span> <span class="n">path</span><span class="o">=</span><span class="mi">1</span> <span class="n">THEN</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">reverse_cost</span>
+         <span class="n">ELSE</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">reverse_cost</span> <span class="n">END</span> <span class="n">AS</span> <span class="n">reverse_cost</span>
+  <span class="n">FROM</span> <span class="n">second_edge</span> <span class="p">,</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">18</span><span class="p">),</span>
+<span class="n">all_segments</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">first_segments</span>
+  <span class="n">UNION</span>
+  <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">second_segments</span><span class="p">)</span>
+<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span>
+  <span class="p">(</span><span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span>
+    <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span>
+    <span class="n">geom</span><span class="p">)</span>
+<span class="p">(</span><span class="n">SELECT</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">reverse_capacity</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
+  <span class="n">ST_X</span><span class="p">(</span><span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span>
+  <span class="n">ST_X</span><span class="p">(</span><span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span> <span class="n">ST_Y</span><span class="p">(</span><span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">geom</span><span class="p">)),</span>
+  <span class="n">geom</span>
+  <span class="n">FROM</span> <span class="n">all_segments</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-new-vertices">
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">Añadiendo nuevos vértices</a><a class="headerlink" href="#adding-new-vertices" title="Permalink to this heading">¶</a></h4>
+<p>After adding all the split edges required by the application, the newly created
+vertices need to be added to the vertices table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">vertices</span> <span class="p">(</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
+<span class="p">(</span><span class="n">SELECT</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">nv</span><span class="o">.</span><span class="n">geom</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">)</span> <span class="n">AS</span> <span class="n">nv</span>
+<span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">USING</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">WHERE</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-edges-topology">
+<h4><a class="toc-backref" href="#id18" role="doc-backlink">Actualizar la topología de aristas</a><a class="headerlink" href="#updating-edges-topology" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">source</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">4</span>
+<span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">target</span> <span class="n">information</span> <span class="o">*/</span>
+<span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">e</span>
+<span class="n">SET</span> <span class="n">target</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span>
+<span class="n">FROM</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span>
+<span class="n">WHERE</span> <span class="n">target</span> <span class="n">IS</span> <span class="n">NULL</span> <span class="n">AND</span> <span class="n">ST_EndPoint</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="removing-the-surplus-edges">
+<h4><a class="toc-backref" href="#id19" role="doc-backlink">Removing the surplus edges</a><a class="headerlink" href="#removing-the-surplus-edges" title="Permalink to this heading">¶</a></h4>
+<p>Once all significant information needed by the application has been transported
+to the new edges, then the crossing edges can be deleted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="n">IN</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+<span class="n">DELETE</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>There are other options to do this task, like creating a view, or a materialized
+view.</p>
+</section>
+<section id="updating-vertices-topology">
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">Actializar la topología de vértices</a><a class="headerlink" href="#updating-vertices-topology" title="Permalink to this heading">¶</a></h4>
+<p>To keep the graph consistent, the vertices topology needs to be updated</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">AS</span> <span class="n">v</span> <span class="n">SET</span>
+<span class="n">in_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">out_edges</span>
+<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, geom FROM edges&#39;</span><span class="p">))</span> <span class="n">AS</span> <span class="n">nv</span>
+<span class="n">WHERE</span> <span class="n">v</span><span class="o">.</span><span class="n">geom</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">geom</span><span class="p">;</span>
+<span class="n">UPDATE</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-for-crossing-edges">
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">Checking for crossing edges</a><a class="headerlink" href="#checking-for-crossing-edges" title="Permalink to this heading">¶</a></h4>
+<p>There are no crossing edges on the graph.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">a</span><span class="p">,</span> <span class="n">edges</span> <span class="n">AS</span> <span class="n">b</span>
+<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="n">id</span> <span class="n">AND</span> <span class="n">st_crosses</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">geom</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">geom</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="nb">id</span>
+<span class="o">----+----</span>
+<span class="p">(</span><span class="mi">0</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="graphs-without-geometries">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Graphs without geometries</a><a class="headerlink" href="#graphs-without-geometries" title="Permalink to this heading">¶</a></h3>
+<p>Using this table design for this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wiki</span> <span class="p">(</span>
+  <span class="nb">id</span> <span class="n">SERIAL</span><span class="p">,</span>
+  <span class="n">source</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">target</span> <span class="n">INTEGER</span><span class="p">,</span>
+  <span class="n">cost</span> <span class="n">INTEGER</span><span class="p">);</span>
+<span class="n">CREATE</span> <span class="n">TABLE</span>
+</pre></div>
+</div>
+<section id="insert-the-data">
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">Insert the data</a><a class="headerlink" href="#insert-the-data" title="Permalink to this heading">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wiki</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span> <span class="n">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>  <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+<span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">9</span>
+</pre></div>
+</div>
+</section>
+<section id="find-the-shortest-path">
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">Find the shortest path</a><a class="headerlink" href="#find-the-shortest-path" title="Permalink to this heading">¶</a></h4>
+<p>To solve this example <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> is used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+  <span class="s1">&#39;SELECT id, source, target, cost FROM wiki&#39;</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+ <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
+<span class="o">-----+----------+------+------+------+----------</span>
+   <span class="mi">1</span> <span class="o">|</span>        <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>        <span class="mi">0</span>
+   <span class="mi">2</span> <span class="o">|</span>        <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>        <span class="mi">9</span>
+   <span class="mi">3</span> <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>       <span class="mi">11</span>
+   <span class="mi">4</span> <span class="o">|</span>        <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span> <span class="o">|</span>       <span class="mi">20</span>
+<span class="p">(</span><span class="mi">4</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>To go from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(5\)</span> the path goes thru the following vertices:
+<span class="math notranslate nohighlight">\(1 \rightarrow 3 \rightarrow 6 \rightarrow 5\)</span></p>
+<div class="graphviz"><img src="_images/graphviz-7095ca58fc489e099e284f23a9e49787441fc104.png" alt="graph G {
+ rankdir=&quot;LR&quot;;
+ 1 [color=&quot;red&quot;];
+ 5 [color=&quot;green&quot;];
+ 1 -- 2 [label=&quot;  (7)&quot;];
+ 5 -- 6 [label=&quot;  (9)&quot;, color=&quot;blue&quot;];
+ 1 -- 3 [label=&quot;  (9)&quot;, color=&quot;blue&quot;];
+ 1 -- 6 [label=&quot;  (14)&quot;];
+ 2 -- 3 [label=&quot;  (10)&quot;];
+ 2 -- 4 [label=&quot;  (13)&quot;];
+ 3 -- 4 [label=&quot;  (11)&quot;];
+ 3 -- 6 [label=&quot;  (2)&quot;, color=&quot;blue&quot;];
+ 4 -- 5 [label=&quot;  (6)&quot;];
+}" class="graphviz" /></div>
+</section>
+<section id="vertex-information">
+<h4><a class="toc-backref" href="#id25" role="doc-backlink">Información de vertices</a><a class="headerlink" href="#vertex-information" title="Permalink to this heading">¶</a></h4>
+<p>To obtain the vertices information, use <a class="reference internal" href="#"><span class="doc">pgr_extractVertices – Propuesto</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">in_edges</span><span class="p">,</span> <span class="n">out_edges</span>
+<span class="n">FROM</span> <span class="n">pgr_extractVertices</span><span class="p">(</span><span class="s1">&#39;SELECT id, source, target FROM wiki&#39;</span><span class="p">);</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span>
+<span class="o">----+----------+-----------</span>
+  <span class="mi">3</span> <span class="o">|</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>
+  <span class="mi">5</span> <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">9</span><span class="p">}</span>
+  <span class="mi">4</span> <span class="o">|</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>    <span class="o">|</span> <span class="p">{</span><span class="mi">8</span><span class="p">}</span>
+  <span class="mi">2</span> <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>      <span class="o">|</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
+  <span class="mi">1</span> <span class="o">|</span>          <span class="o">|</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">}</span>  <span class="o">|</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -675,8 +978,8 @@ columns are ignored when <code class="docutils literal notranslate"><span class=
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

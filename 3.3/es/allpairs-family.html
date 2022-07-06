@@ -70,10 +70,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
@@ -97,6 +93,16 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Todos los Pares - Familia de Funciones</a><ul>
+<li><a class="reference internal" href="#introduction">Introducción</a></li>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Parámetros opcionales</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
+<li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
 <li><a class="reference internal" href="#performance">Rendimiento</a><ul>
 <li><a class="reference internal" href="#data">Datos</a></li>
 <li><a class="reference internal" href="#results">Resultados</a></li>
@@ -162,11 +168,162 @@
 <h1>Todos los Pares - Familia de Funciones<a class="headerlink" href="#all-pairs-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <p>Las siguientes funciones funcionan en todas las combinaciones de pares de vértices</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Algoritmo de Floyd-Warshall</p></li>
+<li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Algoritmo de Floyd-Warshall.</p></li>
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Algoritmo de Johnson</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
+<section id="introduction">
+<h2>Introducción<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>Las principales características son:</p>
+<ul class="simple">
+<li><p>No devuelve una ruta.</p></li>
+<li><p>Regresa la suma de los costos de la ruta más corta para cada par de nodos del grafo.</p></li>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
+<li><p>Boost devuelve una matriz <span class="math notranslate nohighlight">\(V \times V\)</span> donde los valores infinitos representan la distancia entre vértices para los que no hay ruta.</p>
+<ul>
+<li><p>Solo regresa los valores no infinitos en forma de un conjunto de <cite>(start_vid, end_vid, agg_cost)</cite>.</p></li>
+</ul>
+</li>
+<li><p>Sea el caso donde los valores devueltos se almacenan en una tabla, por lo que el índice único sería el par: <cite>(start_vid, end_vid)</cite>.</p></li>
+<li><p>Para el grafo no dirigido, los resultados son simétricos.</p>
+<ul>
+<li><p>El <cite>agg_cost</cite> de <cite>(u, v)</cite> es el mismo que para <cite>(v, u)</cite>.</p></li>
+</ul>
+</li>
+<li><p>En caso de <cite>start_vid</cite> = <cite>end_vid</cite>, el <cite>agg_cost</cite> = 0.</p></li>
+<li><p><strong>Recomendación: utilice un cuadro delimitador de no más de 3500 aristas.</strong></p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#edges-sql">SQL Aristas</a> descritas más adelante.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">true</span></code> el gráfo se considera <cite>Dirigido</cite></p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">false</span></code> el gráfo se considera <cite>No Dirigido</cite>.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del primer vértice de la arista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
+<td></td>
+<td><p>Identificador del segundo vértice de la arista.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>FLOTANTES</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Peso de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
+<ul class="simple">
+<li><p>Cuando negativo: la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) no existe, por lo tanto no es parte del grafo.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Donde:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="result-columns">
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice de salida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identificador del vértice destino.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p>Costo afregado desde <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> hasta <code class="docutils literal notranslate"><span class="pre">end_vid</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="performance">
 <h2>Rendimiento<a class="headerlink" href="#performance" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
@@ -182,15 +339,13 @@
 <section id="data">
 <h3>Datos<a class="headerlink" href="#data" title="Permalink to this heading">¶</a></h3>
 <p>Se usaron los siguientes datos</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
-wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;https://www.overpass-api.de/api/xapi?*[bbox=][@meta]&quot;
-</pre></div>
-</div>
+<pre class="literal-block">BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
+wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="reference external" href="https://www.overpass-api.de/api/xapi?*[bbox=][&#64;meta">https://www.overpass-api.de/api/xapi?*[bbox=][&#64;meta</a>]&quot;</pre>
 <p>El procesamiento de datos se llevó a cabo con osm2pgrouting-alpha</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>createdb portland
-psql -c &quot;create extension postgis&quot; portland
-psql -c &quot;create extension pgrouting&quot; portland
-osm2pgrouting -f sampledata.osm -d portland -s 0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">portland</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension postgis&quot;</span> <span class="n">portland</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension pgrouting&quot;</span> <span class="n">portland</span>
+<span class="n">osm2pgrouting</span> <span class="o">-</span><span class="n">f</span> <span class="n">sampledata</span><span class="o">.</span><span class="n">osm</span> <span class="o">-</span><span class="n">d</span> <span class="n">portland</span> <span class="o">-</span><span class="n">s</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </section>
@@ -202,20 +357,22 @@ osm2pgrouting -f sampledata.osm -d portland -s 0
 </dd>
 </dl>
 <p>Esta prueba no se hace con cuadro delimitador. La densidad del gráfico que se pasa es extremadamente baja. Para cada &lt;SIZE&gt; se ejecutaron 30 pruebas para obtener el medio. La consulta probada es:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(
-   &#39;SELECT gid as id, source, target, cost, reverse_cost FROM ways where id &lt;=  &lt;SIZE&gt;&#39;);
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_floydWarshall</span><span class="p">(</span>
+   <span class="s1">&#39;SELECT gid as id, source, target, cost, reverse_cost</span>
+    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span>  <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">&#39;);</span>
 
-SELECT count(*) FROM pgr_johnson(
-   &#39;SELECT gid as id, source, target, cost, reverse_cost FROM ways where id &lt;=  &lt;SIZE&gt;&#39;);
+<span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
+   <span class="s1">&#39;SELECT gid as id, source, target, cost, reverse_cost</span>
+    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span>  <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">&#39;);</span>
 </pre></div>
 </div>
 <p>Los resultados de la prueba son:</p>
 <dl class="field-list simple">
 <dt class="field-odd">TAMAÑO<span class="colon">:</span></dt>
-<dd class="field-odd"><p>es el número de aristas entradas</p>
+<dd class="field-odd"><p>es la cantidad de aristas dadas como entradas.</p>
 </dd>
 <dt class="field-even">ARISTAS<span class="colon">:</span></dt>
-<dd class="field-even"><p>es el numero de registros en la consulta</p>
+<dd class="field-even"><p>es el número de registros en la consulta.</p>
 </dd>
 <dt class="field-odd">DENSIDAD<span class="colon">:</span></dt>
 <dd class="field-odd"><p>es la densidad de los datos <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</p>
@@ -389,15 +546,19 @@ SELECT count(*) FROM pgr_johnson(
 </dd>
 </dl>
 <p>Esta prueba se hace con cuadro delimitador. La densidad del gráfico que se pasa es superior a la de la prueba 1. Para cada &lt;SIZE&gt; se ejecutaron 30 pruebas para obtener el medio. La consulta de arista que se prueba es:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WITH
-    buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
-    bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer)
-SELECT gid as id, source, target, cost, reverse_cost FROM ways where the_geom &amp;&amp; (SELECT box from bbox);
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
+<span class="n">buffer</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">ST_Buffer</span><span class="p">(</span><span class="n">ST_Centroid</span><span class="p">(</span><span class="n">ST_Extent</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span> <span class="n">SIZE</span><span class="p">)</span> <span class="n">AS</span> <span class="n">geom</span>
+  <span class="n">FROM</span> <span class="n">ways</span><span class="p">),</span>
+<span class="n">bbox</span> <span class="n">AS</span> <span class="p">(</span>
+  <span class="n">SELECT</span> <span class="n">ST_Envelope</span><span class="p">(</span><span class="n">ST_Extent</span><span class="p">(</span><span class="n">geom</span><span class="p">))</span> <span class="k">as</span> <span class="n">box</span> <span class="n">FROM</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">gid</span> <span class="k">as</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="n">the_geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">box</span> <span class="kn">from</span> <span class="nn">bbox</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Las consultas probadas</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>SELECT count(*) FROM pgr_floydWarshall(&lt;edge query&gt;)
-SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_floydWarshall</span><span class="p">(</span><span class="o">&lt;</span><span class="n">edge</span> <span class="n">query</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span><span class="o">&lt;</span><span class="n">edge</span> <span class="n">query</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Los resultados de la prueba son:</p>
@@ -406,7 +567,7 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 <dd class="field-odd"><p>es el tamaño del cuadro delimitador.</p>
 </dd>
 <dt class="field-even">ARISTAS<span class="colon">:</span></dt>
-<dd class="field-even"><p>es el numero de registros en la consulta</p>
+<dd class="field-even"><p>es el número de registros en la consulta.</p>
 </dd>
 <dt class="field-odd">DENSIDAD<span class="colon">:</span></dt>
 <dd class="field-odd"><p>es la densidad de los datos <span class="math notranslate nohighlight">\(\dfrac{E}{V \times (V-1)}\)</span>.</p>
@@ -559,7 +720,7 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Algoritmo floyd-Warshall</a> en Boost</p></li>
+<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Algoritmo floyd-Warshall</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -583,8 +744,8 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

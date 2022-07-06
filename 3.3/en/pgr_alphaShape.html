@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Proposed Functions" href="proposed.html" />
+    <link rel="next" title="BFS - Category" href="BFS-category.html" />
     <link rel="prev" title="Driving Distance - Category" href="drivingDistance-category.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -69,10 +69,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
@@ -95,7 +91,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_alphaShape</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code></a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#signatures">Signatures</a></li>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
@@ -116,7 +112,7 @@
     </a>
   </li>
   <li>
-    <a href="proposed.html" title="Next Chapter: Proposed Functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Proposed Functions &raquo;</span>
+    <a href="BFS-category.html" title="Next Chapter: BFS - Category"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">BFS - Category &raquo;</span>
     </a>
   </li>
               
@@ -164,7 +160,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html">2.0</a></p></li>
 </ul>
 <section id="pgr-alphashape">
-<h1>pgr_alphaShape<a class="headerlink" href="#pgr-alphashape" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code><a class="headerlink" href="#pgr-alphashape" title="Permalink to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_alphaShape</span></code> — Polygon part of an alpha shape.</p>
 <p class="rubric">Availability</p>
 <ul class="simple">
@@ -194,19 +190,6 @@
 </li>
 </ul>
 <p class="rubric">Support</p>
-<ul class="simple">
-<li><p><strong>Supported versions:</strong>
-current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_alphaShape.html">3.1</a>)
-<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_alphaShape.html">3.0</a></p></li>
-<li><p><strong>Unsupported versions:</strong>
-<a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_alphaShape.html">2.6</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_alphaShape.html">2.5</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_alphaShape.html">2.4</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/alpha_shape/doc/pgr_alphaShape.html">2.3</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/alpha_shape/doc/pgr_alphaShape.html">2.2</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/driving_distance/doc/dd_alphashape.html">2.1</a>
-<a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/driving_distance/doc/dd_alphashape.html">2.0</a></p></li>
-</ul>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Returns the polygon part of an alpha shape.</p>
@@ -219,19 +202,25 @@ current(<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pg
 <li><p><span class="math notranslate nohighlight">\(spoon\_radius = \sqrt alpha\)</span></p></li>
 </ul>
 </li>
-<li><p>A Triangle area is considered part of the alpha shape when <span class="math notranslate nohighlight">\(circumcenter\ radius &lt; spoon\_radius\)</span></p></li>
+<li><p>A Triangle area is considered part of the alpha shape when
+<span class="math notranslate nohighlight">\(circumcenter\ radius &lt; spoon\_radius\)</span></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter is the <strong>spoon radius</strong></p></li>
 <li><p>When the total number of points is less than 3, returns an EMPTY geometry</p></li>
 </ul>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Summary</p>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_alphaShape(geometry,   [spoon_radius])
-RETURNS geometry
-</pre></div>
-</div>
-<p class="rubric">Example: passing a geometry collection with spoon radius <span class="math notranslate nohighlight">\(1.5\)</span> using the return variable <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table_vertices_pgr</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
+<pre class="literal-block" id="index-0">pgr_alphaShape(<strong>geometry</strong>,   [alpha])
+RETURNS geometry</pre>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p>passing a geometry collection with spoon radius <span class="math notranslate nohighlight">\(1.5\)</span> using the
+return variable <code class="docutils literal notranslate"><span class="pre">geom</span></code></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">ST_Area</span><span class="p">(</span><span class="n">pgr_alphaShape</span><span class="p">((</span><span class="n">SELECT</span> <span class="n">ST_Collect</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+      <span class="n">FROM</span> <span class="n">vertices</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">));</span>
  <span class="n">st_area</span>
 <span class="o">---------</span>
     <span class="mf">9.75</span>
@@ -256,10 +245,10 @@ RETURNS geometry
 <td></td>
 <td><p>Geometry with at least <span class="math notranslate nohighlight">\(3\)</span> points</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>spoon_radius</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td></td>
-<td><p>The radius of the spoon</p></td>
+<td><p>0</p></td>
+<td><p>The radius of the spoon.</p></td>
 </tr>
 </tbody>
 </table>
@@ -307,8 +296,8 @@ RETURNS geometry
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on Jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

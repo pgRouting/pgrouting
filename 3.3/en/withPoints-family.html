@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" />
-    <link rel="prev" title="pgr_depthFirstSearch - Proposed" href="pgr_depthFirstSearch.html" />
+    <link rel="prev" title="pgr_edgeColoring - Experimental" href="pgr_edgeColoring.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -70,10 +70,6 @@
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul class="current">
@@ -96,11 +92,34 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">withPoints - Family of functions</a><ul>
-<li><a class="reference internal" href="#images">Images</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#graph-edges">Graph &amp; edges</a></li>
-<li><a class="reference internal" href="#point-definition">Point Definition</a></li>
-<li><a class="reference internal" href="#creating-temporary-vertices-in-the-graph">Creating Temporary Vertices in the Graph</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li><a class="reference internal" href="#with-points-optional-parameters">With points optional parameters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
+<li><a class="reference internal" href="#edges-sql">Edges SQL</a></li>
+<li><a class="reference internal" href="#points-sql">Points SQL</a></li>
+<li><a class="reference internal" href="#combinations-sql">Combinations SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-documentation">Advanced Documentation</a><ul>
+<li><a class="reference internal" href="#about-points">About points</a></li>
+<li><a class="reference internal" href="#driving-side">Driving side</a><ul>
+<li><a class="reference internal" href="#right-driving-side">Right driving side</a></li>
+<li><a class="reference internal" href="#left-driving-side">Left driving side</a></li>
+<li><a class="reference internal" href="#driving-side-does-not-matter">Driving side does not matter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-temporary-vertices">Creating temporary vertices</a><ul>
+<li><a class="reference internal" href="#on-a-right-hand-side-driving-network">On a right hand side driving network</a></li>
+<li><a class="reference internal" href="#on-a-left-hand-side-driving-network">On a left hand side driving network</a></li>
+<li><a class="reference internal" href="#when-driving-side-does-not-matter">When driving side does not matter</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -113,7 +132,7 @@
               
                 
   <li>
-    <a href="pgr_depthFirstSearch.html" title="Previous Chapter: pgr_depthFirstSearch - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_depthFirs...</span>
+    <a href="pgr_edgeColoring.html" title="Previous Chapter: pgr_edgeColoring - Experimental"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_edgeColor...</span>
     </a>
   </li>
   <li>
@@ -191,158 +210,514 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<section id="images">
-<h2>Images<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h2>
-<p>The squared vertices are the temporary vertices, The temporary vertices are added according to the
-driving side, The following images visually show the differences on how depending on the driving side the data is interpreted.</p>
-<p class="rubric">Right driving side</p>
-<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 445.5px; height: 427.0px;" /></a>
-<p class="rubric">Left driving side</p>
-<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 442.0px; height: 421.5px;" /></a>
-<p class="rubric">doesn’t matter the driving side</p>
-<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 453.5px; height: 432.0px;" /></a>
-</section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
-<p>This family of functions was thought for routing vehicles, but might as well work
-for some other application that we can not think of.</p>
-<p>The with points family of function give you the ability to route between
-arbitrary points located outside the original graph.</p>
-<p>When given a point identified with a <cite>pid</cite> that its being mapped to and edge with
-an identifier <cite>edge_id</cite>, with a <cite>fraction</cite> along
-that edge (from the source to the target of the edge) and some additional
-information about which <cite>side</cite> of the edge the point is on, then routing
-from arbitrary points more accurately reflect routing vehicles in road networks,</p>
-<dl class="simple">
-<dt>I talk about a family of functions because it includes different functionalities.</dt><dd><ul class="simple">
-<li><p>pgr_withPoints is pgr_dijkstra based</p></li>
-<li><p>pgr_withPointsCost is pgr_dijkstraCost based</p></li>
-<li><p>pgr_withPointsKSP is pgr_ksp based</p></li>
-<li><p>pgr_withPointsDD is pgr_drivingDistance based</p></li>
-</ul>
-</dd>
-</dl>
-<p>In all this functions we have to take care of as many aspects as possible:</p>
+<p>This family of functions belongs to the <a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Category</span></a> and the
+functions that compose them are based one way or another on dijkstra algorithm.</p>
+<p>Depending on the name:</p>
 <ul class="simple">
-<li><p>Must work for routing:</p>
-<ul>
-<li><p>Cars (directed graph)</p></li>
-<li><p>Pedestrians (undirected graph)</p></li>
-</ul>
-</li>
-<li><p>Arriving at the point:</p>
-<ul>
-<li><p>In either side of the street.</p></li>
-<li><p>Compulsory arrival on the side of the street where the point is located.</p></li>
-</ul>
-</li>
-<li><p>Countries with:</p>
-<ul>
-<li><p>Right side driving</p></li>
-<li><p>Left side driving</p></li>
-</ul>
-</li>
-<li><p>Some points are:</p>
-<ul>
-<li><p>Permanent, for example the set of points of clients stored in a table in the data base</p></li>
-<li><p>Temporal, for example points given through a web application</p></li>
-</ul>
-</li>
-<li><p>The numbering of the points are handled with negative sign.</p>
-<ul>
-<li><p>Original point identifiers are to be positive.</p></li>
-<li><p>Transformation to negative is done internally.</p></li>
-<li><p>For results for involving vertices identifiers</p>
-<ul>
-<li><p>positive sign is a vertex of the original graph</p></li>
-<li><p>negative sign is a point of the temporary points</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
-</section>
-<section id="graph-edges">
-<h2>Graph &amp; edges<a class="headerlink" href="#graph-edges" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(G_d(V,E)\)</span> where <span class="math notranslate nohighlight">\(V\)</span> is the set of vertices and <span class="math notranslate nohighlight">\(E\)</span> is the set of edges be the original directed graph.</p>
-<ul>
-<li><p>An edge of the original <cite>edges_sql</cite> is <span class="math notranslate nohighlight">\((id, source, target, cost, reverse\_cost)\)</span> will generate internally</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\((id, source, target, cost)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((id, target, source, reverse\_cost)\)</span></p></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>pgr_withPoints is pgr_dijkstra <strong>with points</strong></p></li>
+<li><p>pgr_withPointsCost is pgr_dijkstraCost <strong>with points</strong></p></li>
+<li><p>pgr_withPointsCostMatrix is pgr_dijkstraCostMatrix <strong>with points</strong></p></li>
+<li><p>pgr_withPointsKSP is pgr_ksp <strong>with points</strong></p></li>
+<li><p>pgr_withPointsDD is pgr_drivingDistance <strong>with points</strong></p></li>
 </ul>
 </section>
-<section id="point-definition">
-<h2>Point Definition<a class="headerlink" href="#point-definition" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>A point is defined by the quadruplet: <span class="math notranslate nohighlight">\((pid, eid, fraction, side)\)</span></p>
-<ul>
-<li><p><strong>pid</strong> is the point identifier</p></li>
-<li><p><strong>eid</strong> is an edge id of the <cite>edges_sql</cite></p></li>
-<li><p><strong>fraction</strong> represents where the edge <cite>eid</cite> will be cut.</p></li>
-<li><p><strong>side</strong> Indicates the side of the edge where the point is located.</p></li>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#points-sql">Points SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#points-sql">Points SQL</a> as described below</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#combinations-sql">Combinations SQL</a> as described below</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the starting vertex of the path. Negative value is for
+point’s identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>start vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of starting vertices. Negative values are for
+point’s identifiers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end vid</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<td><p>Identifier of the ending vertex of the path. Negative value is for
+point’s identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>end vids</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ARRAY[BIGINT]</span></code></p></td>
+<td><p>Array of identifiers of ending vertices. Negative values are for point’s
+identifiers.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">directed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the graph is considered <cite>Directed</cite></p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the graph is considered as <cite>Undirected</cite>.</p></li>
 </ul>
-</li>
-</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="creating-temporary-vertices-in-the-graph">
-<h2>Creating Temporary Vertices in the Graph<a class="headerlink" href="#creating-temporary-vertices-in-the-graph" title="Permalink to this heading">¶</a></h2>
-<p>For edge (15,  9,12  10, 20), &amp; lets insert point (2, 12, 0.3, r)</p>
-<p class="rubric">On a right hand side driving network</p>
-<p>From first image above:</p>
+<section id="with-points-optional-parameters">
+<h3>With points optional parameters<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">driving_side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>] indicating if the driving side is:</p>
 <ul class="simple">
-<li><p>We can arrive to the point only via vertex 9.</p></li>
-<li><p>It only affects the edge (15, 9,12, 10) so that edge is removed.</p></li>
-<li><p>Edge (15, 12,9, 20) is kept.</p></li>
-<li><p>Create new edges:</p>
-<ul>
-<li><p>(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3</p></li>
-<li><p>(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> for right driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l</span></code> for left driving side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> for both.</p></li>
 </ul>
-</li>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">details</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><ul class="simple">
+<li><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code> the results will include the points that are in the path.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">false</span></code> the results will not include the points that are in the
+path.</p></li>
 </ul>
-<p class="rubric">On a left hand side driving network</p>
-<p>From second image above:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="inner-queries">
+<h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<section id="edges-sql">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the first end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the second end point vertex of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>Weight of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)</p>
 <ul class="simple">
-<li><p>We can arrive to the point only via vertex 12.</p></li>
-<li><p>It only affects the edge (15, 12,9 20) so that edge is removed.</p></li>
-<li><p>Edge (15, 9,12, 10) is kept.</p></li>
-<li><p>Create new edges:</p>
-<ul>
-<li><p>(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14</p></li>
-<li><p>(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6</p></li>
+<li><p>When negative: edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>) does not exist, therefore
+it’s not part of the graph.</p></li>
 </ul>
-</li>
-</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">Remember<span class="colon">:</span></dt>
-<dd class="field-odd"><p>that fraction is from vertex 9 to vertex 12</p>
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<p class="rubric">When driving side does not matter</p>
-<p>From third image above:</p>
+</section>
+<section id="points-sql">
+<h3>Points SQL<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p><strong>value</strong></p></td>
+<td><p>Identifier of the point.</p>
 <ul class="simple">
-<li><p>We can arrive to the point either via vertex 12 or via vertex 9</p></li>
-<li><p>Edge (15, 12,9 20) is removed.</p></li>
-<li><p>Edge (15, 9,12, 10) is removed.</p></li>
-<li><p>Create new edges:</p>
+<li><p>Use with positive value, as internally will be converted to negative
+value</p></li>
+<li><p>If column is present, it can not be NULL.</p></li>
+<li><p>If column is not present, a sequential negative <strong>value</strong> will be given
+automatically.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge_id</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
+<td><p>Identifier of the “closest” edge to the point.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
+<td><p>Value in &lt;0,1&gt; that indicates the relative postition from the first end
+point of the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">side</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+<td><p>Value in [<code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>] indicating if the point is:</p>
+<ul class="simple">
+<li><p>In the right <code class="docutils literal notranslate"><span class="pre">r</span></code>,</p></li>
+<li><p>In the left <code class="docutils literal notranslate"><span class="pre">l</span></code>,</p></li>
+<li><p>In both sides <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="combinations-sql">
+<h3>Combinations SQL<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>Identifier of the departure vertex.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td><p>Identifier of the arrival vertex.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<dl class="field-list simple">
+<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="advanced-documentation">
+<h2>Advanced Documentation<a class="headerlink" href="#advanced-documentation" title="Permalink to this heading">¶</a></h2>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#about-points" id="id1">About points</a></p></li>
+<li><p><a class="reference internal" href="#driving-side" id="id2">Driving side</a></p>
 <ul>
-<li><p>(15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14</p></li>
-<li><p>(15, -1,9, 6) edge from point 1 to vertex 9 has cost 6</p></li>
-<li><p>(15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3</p></li>
-<li><p>(15, -1,12, 7) edge from point 1 to vertex 12 has cost 7</p></li>
+<li><p><a class="reference internal" href="#right-driving-side" id="id3">Right driving side</a></p></li>
+<li><p><a class="reference internal" href="#left-driving-side" id="id4">Left driving side</a></p></li>
+<li><p><a class="reference internal" href="#driving-side-does-not-matter" id="id5">Driving side does not matter</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-temporary-vertices" id="id6">Creating temporary vertices</a></p>
+<ul>
+<li><p><a class="reference internal" href="#on-a-right-hand-side-driving-network" id="id7">On a right hand side driving network</a></p></li>
+<li><p><a class="reference internal" href="#on-a-left-hand-side-driving-network" id="id8">On a left hand side driving network</a></p></li>
+<li><p><a class="reference internal" href="#when-driving-side-does-not-matter" id="id9">When driving side does not matter</a></p></li>
 </ul>
 </li>
 </ul>
+</nav>
+<section id="about-points">
+<h3><a class="toc-backref" href="#id1" role="doc-backlink">About points</a><a class="headerlink" href="#about-points" title="Permalink to this heading">¶</a></h3>
+<p>For this section the following city (see <a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a>) some interesing
+points such as restaurant, supermarket, post office, etc. will be used as
+example.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>The graph is <strong>directed</strong></p></li>
+<li><p>Red arrows show the <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> of the edge on the edge table</p></li>
+<li><p>Blue arrows show the <code class="docutils literal notranslate"><span class="pre">(target,</span> <span class="pre">source)</span></code> of the edge on the edge table</p></li>
+<li><p>Each point location shows where it is located with relation of the edge
+<code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code></p>
+<ul>
+<li><p>On the right for points <strong>2</strong> and <strong>4</strong>.</p></li>
+<li><p>On the left for points <strong>1</strong>, <strong>3</strong> and <strong>5</strong>.</p></li>
+<li><p>On both sides for point <strong>6</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<p>The representation on the data base follows the <a class="reference internal" href="#points-sql">Points SQL</a> description, and
+for this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+----------+------</span>
+   <span class="mi">1</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">3</span> <span class="o">|</span>      <span class="mi">12</span> <span class="o">|</span>      <span class="mf">0.6</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">4</span> <span class="o">|</span>       <span class="mi">6</span> <span class="o">|</span>      <span class="mf">0.3</span> <span class="o">|</span> <span class="n">r</span>
+   <span class="mi">5</span> <span class="o">|</span>       <span class="mi">5</span> <span class="o">|</span>      <span class="mf">0.8</span> <span class="o">|</span> <span class="n">l</span>
+   <span class="mi">6</span> <span class="o">|</span>       <span class="mi">4</span> <span class="o">|</span>      <span class="mf">0.7</span> <span class="o">|</span> <span class="n">b</span>
+<span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="driving-side">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Driving side</a><a class="headerlink" href="#driving-side" title="Permalink to this heading">¶</a></h3>
+<p>In the the folowwing images:</p>
+<ul class="simple">
+<li><p>The squared vertices are the temporary vertices,</p></li>
+<li><p>The temporary vertices are added according to the driving side,</p></li>
+<li><p>visually showing the differences on how depending on the driving side the data
+is interpreted.</p></li>
+</ul>
+<section id="right-driving-side">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Right driving side</a><a class="headerlink" href="#right-driving-side" title="Permalink to this heading">¶</a></h4>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
+<ul class="simple">
+<li><p>Point <strong>1</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
+<li><p>Point <strong>2</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code></p></li>
+<li><p>Point <strong>3</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(8,</span> <span class="pre">12)</span></code></p></li>
+<li><p>Point <strong>4</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">3)</span></code></p></li>
+<li><p>Point <strong>5</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(10,</span> <span class="pre">11)</span></code></p></li>
+<li><p>Point <strong>6</strong> located on edges <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> and <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+<section id="left-driving-side">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Left driving side</a><a class="headerlink" href="#left-driving-side" title="Permalink to this heading">¶</a></h4>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
+<ul class="simple">
+<li><p>Point <strong>1</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code></p></li>
+<li><p>Point <strong>2</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code></p></li>
+<li><p>Point <strong>3</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(8,</span> <span class="pre">12)</span></code></p></li>
+<li><p>Point <strong>4</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1)</span></code></p></li>
+<li><p>Point <strong>5</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(10,</span> <span class="pre">11)</span></code></p></li>
+<li><p>Point <strong>6</strong> located on edges <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> and <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+<section id="driving-side-does-not-matter">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Driving side does not matter</a><a class="headerlink" href="#driving-side-does-not-matter" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Like having all points to be considered in both sides <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
+<li><p>Prefered usage on <strong>undirected</strong> graphs</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
+<ul class="simple">
+<li><p>Point <strong>1</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code> and <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">5)</span></code></p></li>
+<li><p>Point <strong>2</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)``and</span> <span class="pre">``16,</span> <span class="pre">17</span></code></p></li>
+<li><p>Point <strong>3</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(8,</span> <span class="pre">12)</span></code></p></li>
+<li><p>Point <strong>4</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1)</span></code> and <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">3)</span></code></p></li>
+<li><p>Point <strong>5</strong> located on edge <code class="docutils literal notranslate"><span class="pre">(10,</span> <span class="pre">11)</span></code></p></li>
+<li><p>Point <strong>6</strong> located on edges <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">7)</span></code> and <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">6)</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="creating-temporary-vertices">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Creating temporary vertices</a><a class="headerlink" href="#creating-temporary-vertices" title="Permalink to this heading">¶</a></h3>
+<p>This section will demonstrate how a temporary vertex is created internally on
+the graph.</p>
+<p class="rubric">Problem</p>
+<p>For edge:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
+<span class="n">FROM</span> <span class="n">edges</span> <span class="n">WHERE</span> <span class="nb">id</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+ <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">reverse_cost</span>
+<span class="o">----+--------+--------+------+--------------</span>
+ <span class="mi">15</span> <span class="o">|</span>     <span class="mi">16</span> <span class="o">|</span>     <span class="mi">17</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>            <span class="mi">1</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>insert point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">side</span>
+<span class="n">FROM</span> <span class="n">pointsOfInterest</span> <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="n">pid</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span> <span class="n">side</span>
+<span class="o">-----+---------+----------+------</span>
+   <span class="mi">2</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="n">r</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<section id="on-a-right-hand-side-driving-network">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">On a right hand side driving network</a><a class="headerlink" href="#on-a-right-hand-side-driving-network" title="Permalink to this heading">¶</a></h4>
+<p class="rubric">Right driving side</p>
+<a class="reference internal image-reference" href="_images/rightDrivingSide.png"><img alt="_images/rightDrivingSide.png" src="_images/rightDrivingSide.png" style="width: 501.5px; height: 433.5px;" /></a>
+<ul class="simple">
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived only via vertex <strong>16</strong>.</p></li>
+<li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edge is kept.</p></li>
+<li><p>It only affects the edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, therefore the edge is removed.</p></li>
+<li><p>Create two new edges:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
+0.4\)</span>)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+</ul>
+</li>
+<li><p>The total cost of the additional edges is equal to the original cost.</p></li>
+<li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
+</ul>
+</section>
+<section id="on-a-left-hand-side-driving-network">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">On a left hand side driving network</a><a class="headerlink" href="#on-a-left-hand-side-driving-network" title="Permalink to this heading">¶</a></h4>
+<p class="rubric">Left driving side</p>
+<a class="reference internal image-reference" href="_images/leftDrivingSide.png"><img alt="_images/leftDrivingSide.png" src="_images/leftDrivingSide.png" style="width: 510.0px; height: 436.5px;" /></a>
+<ul class="simple">
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived only via vertex <strong>17</strong>.</p></li>
+<li><p>Does not affects edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code>, therefore the edge is kept.</p></li>
+<li><p>It only affects the edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edge is removed.</p></li>
+<li><p>Create two new edges:</p>
+<ul>
+<li><p>Work with the original edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> as the fraction is a fraction of the
+original:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
+0.4\)</span>)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+<li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
+</ul>
+</li>
+<li><p>Flip the Edges and add them to the graph:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> and is added to the
+graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> and is added to
+the graph.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The total cost of the additional edges is equal to the original cost.</p></li>
+</ul>
+</section>
+<section id="when-driving-side-does-not-matter">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">When driving side does not matter</a><a class="headerlink" href="#when-driving-side-does-not-matter" title="Permalink to this heading">¶</a></h4>
+<a class="reference internal image-reference" href="_images/noMatterDrivingSide.png"><img alt="_images/noMatterDrivingSide.png" src="_images/noMatterDrivingSide.png" style="width: 470.0px; height: 432.5px;" /></a>
+<ul class="simple">
+<li><p>Arrival to point <code class="docutils literal notranslate"><span class="pre">-2</span></code> can be achived via vertices <strong>16</strong> or <strong>17</strong>.</p></li>
+<li><p>Affects the edges <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> and <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">16)</span></code>, therefore the edges are removed.</p></li>
+<li><p>Create four new edges:</p>
+<ul>
+<li><p>Work with the original edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">17)</span></code> as the fraction is a fraction of the
+original:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> (original cost * fraction == <span class="math notranslate nohighlight">\(1 *
+0.4\)</span>)</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> (the remaing cost)</p></li>
+<li><p>If more points are on the same edge, the process is repeated recursevly.</p></li>
+</ul>
+</li>
+<li><p>Flip the Edges and add all the edges to the graph:</p>
+<ul>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> is added to the graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> is added to the graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">-2)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">16)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.4</span></code> and is added to the
+graph.</p></li>
+<li><p>Edge <code class="docutils literal notranslate"><span class="pre">(-2,</span> <span class="pre">17)</span></code> becomes <code class="docutils literal notranslate"><span class="pre">(17,</span> <span class="pre">-2)</span></code> with cost <code class="docutils literal notranslate"><span class="pre">0.6</span></code> and is added to
+the graph.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints - Category</span></a></p></li>
+</ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -364,8 +739,8 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on Jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

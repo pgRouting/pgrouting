@@ -68,10 +68,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
@@ -183,13 +179,15 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">OK</span></code> after the analysis has finished.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FAIL</span></code> when the analysis was not completed due to an error.</p></li>
 </ul>
-<div class="highlight-sql notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="nb">varchar</span><span class="w"> </span><span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="nb">text</span><span class="w"> </span><span class="n">edge_table</span><span class="p">,</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="w"> </span><span class="n">tolerance</span><span class="p">,</span><span class="w"></span>
-<span class="w">                   </span><span class="nb">text</span><span class="w"> </span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                   </span><span class="nb">text</span><span class="w"> </span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="nb">text</span><span class="w"> </span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="nb">text</span><span class="w"> </span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span><span class="w"></span>
+<div class="highlight-default notranslate" id="index-0"><div class="highlight"><pre><span></span><span class="n">varchar</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="n">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="n">precision</span> <span class="n">tolerance</span><span class="p">,</span>
+    <span class="n">text</span> <span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="n">text</span> <span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
+    <span class="n">text</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">text</span> <span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">text</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">Prerequisites</p>
-<p>The  edge table to be analyzed must contain a source column and a target column filled with id’s of the vertices of the segments and the corresponding vertices table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
+<p>The  edge table to be analyzed must contain a source column and a target column
+filled with id’s of the vertices of the segments and the corresponding vertices
+table &lt;edge_table&gt;_vertices_pgr that stores the vertices information.</p>
 <ul class="simple">
 <li><p>Use <a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to create the vertices table.</p></li>
 <li><p>Use <a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> to create the topology and the vertices table.</p></li>
@@ -203,22 +201,28 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Network table name. (may contain the schema name as well)</p>
 </dd>
 <dt class="field-even">tolerance<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection unit)</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">float8</span></code> Snapping tolerance of disconnected edges. (in projection
+unit)</p>
 </dd>
 <dt class="field-odd">the_geom<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Geometry column name of the network table. Default value is
+<code class="docutils literal notranslate"><span class="pre">the_geom</span></code>.</p>
 </dd>
 <dt class="field-even">id<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Primary key column name of the network table. Default value is
+<code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </dd>
 <dt class="field-odd">source<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Source column name of the network table. Default value is <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code> Source column name of the network table. Default value is
+<code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
 </dd>
 <dt class="field-even">target<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>  Target column name of the network table.  Default value is
+<code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 </dd>
 <dt class="field-odd">rows_where<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to select  a subset or rows.  Default value is <code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">text</span></code>   Condition to select  a subset or rows.  Default value is
+<code class="docutils literal notranslate"><span class="pre">true</span></code> to indicate all rows.</p>
 </dd>
 </dl>
 <p>The function returns:</p>
@@ -248,16 +252,19 @@
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bigint</span></code> Identifier of the vertex.</p>
 </dd>
 <dt class="field-even">cnt<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this
+vertex.</p>
 </dd>
 <dt class="field-odd">chk<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code>  Indicator that the vertex might have a problem.</p>
 </dd>
 <dt class="field-even">ein<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this
+vertex as incoming. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 </dd>
 <dt class="field-odd">eout<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> Number of vertices in the edge_table that reference this
+vertex as outgoing. See <a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a>.</p>
 </dd>
 <dt class="field-even">the_geom<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Point geometry of the vertex.</p>
@@ -266,23 +273,23 @@
 <section id="usage-when-the-edge-table-s-columns-match-the-default-values">
 <h3>Usage when the edge table’s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">The simplest way to use pgr_analyzeGraph is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">18</span> <span class="n">edges</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
-<span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">);</span>
+<span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -302,10 +309,10 @@
 
 </pre></div>
 </div>
-<p class="rubric">When the arguments are given in the order described in the parameters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<p class="rubric">Arguments are given in the order described in the parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -328,16 +335,18 @@
 <p>We get the same result as the simplest way to use the function.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<div class="line-block">
-<div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal notranslate"><span class="pre">id</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the id column.</div>
+<p>An error would occur when</p>
+<p>the arguments are not given in the appropriate order:</p>
+<p>In this example, the column <code class="docutils literal notranslate"><span class="pre">id</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code>
+is passed to the function as the geometry column, and the geometry column
+<code class="docutils literal notranslate"><span class="pre">the_geom</span></code> is passed to the function as the id column.</p>
 </div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="n">function</span> <span class="n">st_srid</span><span class="p">(</span><span class="n">bigint</span><span class="p">)</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">something</span> <span class="n">went</span> <span class="n">wrong</span> <span class="n">when</span> <span class="n">checking</span> <span class="k">for</span> <span class="n">SRID</span> <span class="n">of</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">something</span> <span class="n">went</span> <span class="n">wrong</span> <span class="n">when</span> <span class="n">checking</span> <span class="k">for</span> <span class="n">SRID</span> <span class="n">of</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span>
  <span class="n">pgr_analyzegraph</span>
 <span class="o">------------------</span>
  <span class="n">FAIL</span>
@@ -347,9 +356,9 @@
 </div>
 <p class="rubric">When using the named notation</p>
 <p>The order of the parameters do not matter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -369,9 +378,9 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="nb">id</span><span class="o">:=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="n">target</span><span class="o">:=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="o">:=</span><span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -391,10 +400,11 @@
 
 </pre></div>
 </div>
-<p>Parameters defined with a default value can be omitted, as long as the value matches the default:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
+<p>Parameters defined with a default value can be omitted, as long as the value
+matches the default:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">:=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -415,10 +425,11 @@
 </pre></div>
 </div>
 <p class="rubric">Selecting rows using rows_where parameter</p>
-<p>Selecting rows based on the id. Displays the analysis a the section of the network.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<p>Selecting rows based on the id. Displays the analysis a the section of the
+network.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -438,35 +449,29 @@
 
 </pre></div>
 </div>
-<p>Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal notranslate"><span class="pre">id</span></code> =5 .</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
+<p>Selecting the rows where the geometry is near the geometry of row with <code class="docutils literal notranslate"><span class="pre">id</span></code> =
+5</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom,0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(the_geom,0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom,0.05) FROM edge_table WHERE id=5)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">isolated</span> <span class="n">edges</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">ring</span> <span class="n">geometries</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
-<span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">5</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Got</span> <span class="n">relation</span> <span class="s2">&quot;edge_table&quot;</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">ERROR</span><span class="p">:</span> <span class="n">Condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">correct</span><span class="o">.</span> <span class="n">Please</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">following</span> <span class="n">query</span> <span class="n">to</span> <span class="n">test</span> <span class="n">your</span> <span class="n">condition</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">public.edges</span> <span class="n">WHERE</span> <span class="n">true</span>   <span class="n">AND</span> <span class="p">(</span><span class="n">geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span><span class="mf">0.05</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">edge_table</span> <span class="n">WHERE</span> <span class="nb">id</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
  <span class="n">pgr_analyzegraph</span>
 <span class="o">------------------</span>
- <span class="n">OK</span>
+ <span class="n">FAIL</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
 </pre></div>
 </div>
-<p>Selecting the rows where the geometry is near the geometry of the row with <code class="docutils literal notranslate"><span class="pre">gid</span></code> =100 of the table <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
+<p>Selecting the rows where the geometry is near the geometry of the row with
+<code class="docutils literal notranslate"><span class="pre">gid</span></code> =100 of the table <code class="docutils literal notranslate"><span class="pre">othertable</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="mi">100</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
 <span class="n">SELECT</span> <span class="mi">1</span>
-<span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
+<span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom,1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom &amp;&amp; (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;geom &amp;&amp; (SELECT st_buffer(geom,1) FROM otherTable WHERE gid=100)&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -475,7 +480,7 @@
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">intersections</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>              <span class="n">ANALYSIS</span> <span class="n">RESULTS</span> <span class="n">FOR</span> <span class="n">SELECTED</span> <span class="n">EDGES</span><span class="p">:</span>
 <span class="n">NOTICE</span><span class="p">:</span>                    <span class="n">Isolated</span> <span class="n">segments</span><span class="p">:</span> <span class="mi">2</span>
-<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">NOTICE</span><span class="p">:</span>                            <span class="n">Dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">7</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Potential</span> <span class="n">gaps</span> <span class="n">found</span> <span class="n">near</span> <span class="n">dead</span> <span class="n">ends</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
@@ -490,7 +495,7 @@
 <section id="usage-when-the-edge-table-s-columns-do-not-match-the-default-values">
 <h3>Usage when the edge table’s columns DO NOT MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-do-not-match-the-default-values" title="Permalink to this heading">¶</a></h3>
 <p>For the following table</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">src</span> <span class="p">,</span><span class="n">target</span> <span class="n">AS</span> <span class="n">tgt</span> <span class="p">,</span> <span class="n">the_geom</span> <span class="n">AS</span> <span class="n">mygeom</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span> <span class="n">AS</span> <span class="n">gid</span><span class="p">,</span> <span class="n">source</span> <span class="n">AS</span> <span class="n">src</span> <span class="p">,</span><span class="n">target</span> <span class="n">AS</span> <span class="n">tgt</span> <span class="p">,</span> <span class="n">geom</span> <span class="n">AS</span> <span class="n">mygeom</span> <span class="n">FROM</span> <span class="n">edges</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">18</span>
 <span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -534,9 +539,11 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<div class="line-block">
-<div class="line">An error would occur when the arguments are not given in the appropriate order: In this example, the column <code class="docutils literal notranslate"><span class="pre">gid</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function as the geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> is passed to the function as the id column.</div>
-</div>
+<p>An error would occur when
+the arguments are not given in the appropriate order: In this example, the
+column <code class="docutils literal notranslate"><span class="pre">gid</span></code> of the table <code class="docutils literal notranslate"><span class="pre">mytable</span></code> is passed to the function as the
+geometry column, and the geometry column <code class="docutils literal notranslate"><span class="pre">mygeom</span></code> is passed to the function
+as the id column.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
@@ -597,7 +604,8 @@
 
 </pre></div>
 </div>
-<p>In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.</p>
+<p>In this scenario omitting a parameter would create an error because the default
+values for the column names do not match the column names of the table.</p>
 <p class="rubric">Selecting rows using rows_where parameter</p>
 <p>Selecting rows based on the id.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;mygeom&#39;</span><span class="p">,</span><span class="s1">&#39;gid&#39;</span><span class="p">,</span><span class="s1">&#39;src&#39;</span><span class="p">,</span><span class="s1">&#39;tgt&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;gid &lt; 10&#39;</span><span class="p">);</span>
@@ -691,7 +699,8 @@
 
 </pre></div>
 </div>
-<p>Selecting the rows WHERE the geometry is near the place=’myhouse’ of the table <code class="docutils literal notranslate"><span class="pre">othertable</span></code>. (note the use of quote_literal)</p>
+<p>Selecting the rows WHERE the geometry is near the place=’myhouse’ of the table
+<code class="docutils literal notranslate"><span class="pre">othertable</span></code>. (note the use of quote_literal)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">otherTable</span><span class="p">;</span>
 <span class="n">DROP</span> <span class="n">TABLE</span>
 <span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">otherTable</span> <span class="n">AS</span>  <span class="p">(</span><span class="n">SELECT</span> <span class="s1">&#39;myhouse&#39;</span><span class="p">::</span><span class="n">text</span> <span class="n">AS</span> <span class="n">place</span><span class="p">,</span> <span class="n">st_point</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="n">AS</span> <span class="n">other_geom</span><span class="p">)</span> <span class="p">;</span>
@@ -746,23 +755,23 @@
 </section>
 <section id="additional-examples">
 <h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">18</span> <span class="n">edges</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
  <span class="n">OK</span>
 <span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
 
-<span class="n">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<span class="n">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -782,9 +791,9 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -804,9 +813,9 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &gt;= 10&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &gt;= 10&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &gt;= 10&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &gt;= 10&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -826,9 +835,9 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -848,14 +857,14 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span><span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt;17&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="n">rows_where</span><span class="o">:=</span><span class="s1">&#39;id &lt;17&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">true</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;id &lt;17&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">rows_where</span> <span class="o">:=</span> <span class="s1">&#39;id &lt;17&#39;</span><span class="p">,</span> <span class="n">clean</span> <span class="o">:=</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">.....</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Creating</span> <span class="n">Topology</span><span class="p">,</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">-------------&gt;</span> <span class="n">TOPOLOGY</span> <span class="n">CREATED</span> <span class="n">FOR</span>  <span class="mi">16</span> <span class="n">edges</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Rows</span> <span class="k">with</span> <span class="n">NULL</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="n">NULL</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edge_table_vertices_pgr</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="n">table</span> <span class="k">for</span> <span class="n">table</span> <span class="n">public</span><span class="o">.</span><span class="n">edges</span> <span class="ow">is</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">edges_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="o">----------------------------------------------</span>
  <span class="n">pgr_createtopology</span>
 <span class="o">--------------------</span>
@@ -864,9 +873,9 @@
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">);</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;geom&#39;</span><span class="p">);</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
-<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="s1">&#39;geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Performing</span> <span class="n">checks</span><span class="p">,</span> <span class="n">please</span> <span class="n">wait</span> <span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">dead</span> <span class="n">ends</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Analyzing</span> <span class="k">for</span> <span class="n">gaps</span><span class="o">.</span> <span class="n">Please</span> <span class="n">wait</span><span class="o">...</span>
@@ -891,9 +900,9 @@
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a>  for an overview of a topology for routing algorithms.</p></li>
-<li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> to analyze directionality of the edges.</p></li>
-<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> to reconstruct the vertices table based on the source and target information.</p></li>
+<li><p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a> to create nodes to a not noded edge table.</p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -917,8 +926,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on Jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

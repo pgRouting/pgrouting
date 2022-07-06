@@ -68,10 +68,6 @@
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
@@ -97,9 +93,7 @@
 <li><a class="reference internal" href="#general">General</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting Concepts</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#pgrouting-concepts">Pgrouting Concepts</a></li>
 <li><a class="reference internal" href="#routingfunctions"><span class="xref std std-doc">routingFunctions</span></a></li>
 <li><a class="reference internal" href="#functions-by-categories">Functions by categories</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Available Functions but not official pgRouting functions</a></li>
@@ -164,13 +158,15 @@
 </ul>
 <section id="table-of-contents">
 <h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h1>
-<p>pgRouting extends the <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a>
-geospatial database to provide geospatial routing and other network analysis functionality.</p>
+<p>pgRouting extends the <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> geospatial database to provide geospatial
+routing and other network analysis functionality.</p>
 <p>This is the manual for pgRouting v3.3.2.</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="_images/ccbysa.png" />
-<p>The pgRouting Manual is licensed under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>.
-Feel free to use this material any way you like, but we ask that you attribute credit to
-the pgRouting Project and wherever possible, a link back to <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>.
+<p>The pgRouting Manual is licensed under a <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share
+Alike 3.0 License</a>.
+Feel free to use this material any way you like, but we ask that you attribute
+credit to the pgRouting Project and wherever possible, a link back to
+<a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>.
 For other licenses used in pgRouting see the <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licensing</span></a> page.</p>
 <section id="general">
 <h2>General<a class="headerlink" href="#general" title="Permalink to this heading">¶</a></h2>
@@ -212,24 +208,20 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#group-of-functions">Group of Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs">Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-without-geometries">Graphs without geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#graphs-with-geometries">Graphs with geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#check-the-routing-topology">Check the Routing Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-structure">Function’s structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#function-s-overloads">Function’s overloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#inner-queries">Inner Queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#return-columns-values">Return columns &amp; values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#advanced-topics">Advanced Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#return-columns">Return columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Performance Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">How to contribute</a></li>
 </ul>
 </li>
 </ul>
-</div>
-<p class="rubric">Reference</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_version.html"><span class="doc">pgr_version</span></a> - Get pgRouting’s version information.</p></li>
-<li><p><a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a> - Get pgRouting’s details of version.</p></li>
-</ul>
-<div class="toctree-wrapper compound">
 </div>
 </section>
 <section id="routingfunctions">
@@ -241,7 +233,7 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a> - Floyd-Warshall’s algorithm.</p></li>
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a> - Johnson’s algorithm</p></li>
 </ul>
-<p><a class="reference internal" href="aStar-family.html"><span class="doc">aStar - Family of functions</span></a></p>
+<p><a class="reference internal" href="aStar-family.html"><span class="doc">A* - Family of functions</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* algorithm for the shortest path.</p></li>
 <li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a> - Get the aggregate cost of the shortest paths.</p></li>
@@ -250,20 +242,27 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <p><a class="reference internal" href="bdAstar-family.html"><span class="doc">Bidirectional A* - Family of functions</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_bdAstar.html"><span class="doc">pgr_bdAstar</span></a> - Bidirectional A* algorithm for obtaining paths.</p></li>
-<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - Bidirectional A* algorithm to calculate the cost of the paths.</p></li>
-<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a> - Bidirectional A* algorithm to calculate a cost matrix of paths.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a> - Bidirectional A* algorithm to calculate the cost of
+the paths.</p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a> - Bidirectional A* algorithm to calculate a cost
+matrix of paths.</p></li>
 </ul>
 <p><a class="reference internal" href="bdDijkstra-family.html"><span class="doc">Bidirectional Dijkstra - Family of functions</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - Bidirectional Dijkstra algorithm for the shortest paths.</p></li>
-<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - Bidirectional Dijkstra to calculate the cost of the shortest paths</p></li>
-<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstra.html"><span class="doc">pgr_bdDijkstra</span></a> - Bidirectional Dijkstra algorithm for the shortest
+paths.</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a> - Bidirectional Dijkstra to calculate the cost of
+the shortest paths</p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a> - Bidirectional Dijkstra algorithm  to create
+a matrix of costs of the shortest paths.</p></li>
 </ul>
 <p><a class="reference internal" href="components-family.html"><span class="doc">Components - Family of functions</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_connectedComponents.html"><span class="doc">pgr_connectedComponents</span></a> - Connected components of an undirected graph.</p></li>
-<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> - Strongly connected components of a directed graph.</p></li>
-<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - Biconnected components of an undirected graph.</p></li>
+<li><p><a class="reference internal" href="pgr_strongComponents.html"><span class="doc">pgr_strongComponents</span></a> - Strongly connected components of a directed
+graph.</p></li>
+<li><p><a class="reference internal" href="pgr_biconnectedComponents.html"><span class="doc">pgr_biconnectedComponents</span></a> - Biconnected components of an undirected
+graph.</p></li>
 <li><p><a class="reference internal" href="pgr_articulationPoints.html"><span class="doc">pgr_articulationPoints</span></a> - Articulation points of an undirected graph.</p></li>
 <li><p><a class="reference internal" href="pgr_bridges.html"><span class="doc">pgr_bridges</span></a> - Bridges of an undirected graph.</p></li>
 </ul>
@@ -276,19 +275,27 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <li><p><a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> - Dijkstra’s algorithm for the shortest paths.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a> - Get the aggregate cost of the shortest paths.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a> - Use pgr_dijkstra to create a costs matrix.</p></li>
-<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament information.</p></li>
-<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.</p></li>
+<li><p><a class="reference internal" href="pgr_drivingDistance.html"><span class="doc">pgr_drivingDistance</span></a> - Use pgr_dijkstra to calculate catchament
+information.</p></li>
+<li><p><a class="reference internal" href="pgr_KSP.html"><span class="doc">pgr_KSP</span></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest
+paths.</p></li>
 </ul>
 <p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Family of functions</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel algorithm.</p></li>
-<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Boykov and Kolmogorov with details of flow on edges.</p></li>
-<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Edmonds and Karp algorithm with details of flow on edges.</p></li>
-<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Push and relabel algorithm with details of flow on edges.</p></li>
+<li><p><a class="reference internal" href="pgr_maxFlow.html"><span class="doc">pgr_maxFlow</span></a> - Only the Max flow calculation using Push and Relabel
+algorithm.</p></li>
+<li><p><a class="reference internal" href="pgr_boykovKolmogorov.html"><span class="doc">pgr_boykovKolmogorov</span></a> - Boykov and Kolmogorov with details of flow on
+edges.</p></li>
+<li><p><a class="reference internal" href="pgr_edmondsKarp.html"><span class="doc">pgr_edmondsKarp</span></a> - Edmonds and Karp algorithm with details of flow on
+edges.</p></li>
+<li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a> - Push and relabel algorithm with details of flow on
+edges.</p></li>
 <li><p>Applications</p>
 <ul>
-<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calculates edge disjoint paths between two groups of vertices.</p></li>
-<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calculates a maximum cardinality matching in a graph.</p></li>
+<li><p><a class="reference internal" href="pgr_edgeDisjointPaths.html"><span class="doc">pgr_edgeDisjointPaths</span></a> - Calculates edge disjoint paths between two
+groups of vertices.</p></li>
+<li><p><a class="reference internal" href="pgr_maxCardinalityMatch.html"><span class="doc">pgr_maxCardinalityMatch</span></a> - Calculates a maximum cardinality matching
+in a graph.</p></li>
 </ul>
 </li>
 </ul>
@@ -306,11 +313,20 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <li><p><a class="reference internal" href="pgr_primDD.html"><span class="doc">pgr_primDD</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
 </ul>
-<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p>
+<p><a class="reference internal" href="reference.html"><span class="doc">Reference</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> -  to create a topology based on the geometry.</p></li>
-<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - to reconstruct the vertices table based on the source and target information.</p></li>
-<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  - to analyze the edges and vertices of the edge table.</p></li>
+<li><p><a class="reference internal" href="pgr_version.html"><span class="doc">pgr_version</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_full_version.html"><span class="doc">pgr_full_version</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="topology-functions.html"><span class="doc">Topology - Family of Functions</span></a></p>
+<p>The following functions modify the database directly therefore the user must
+have special permissions given by the administrators to use them.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_createTopology.html"><span class="doc">pgr_createTopology</span></a> -  create a topology based on the geometry.</p></li>
+<li><p><a class="reference internal" href="pgr_createVerticesTable.html"><span class="doc">pgr_createVerticesTable</span></a> - reconstruct the vertices table based on
+the source and target information.</p></li>
+<li><p><a class="reference internal" href="pgr_analyzeGraph.html"><span class="doc">pgr_analyzeGraph</span></a>  - to analyze the edges and vertices of the edge
+table.</p></li>
 <li><p><a class="reference internal" href="pgr_analyzeOneWay.html"><span class="doc">pgr_analyzeOneWay</span></a> - to analyze directionality of the edges.</p></li>
 <li><p><a class="reference internal" href="pgr_nodeNetwork.html"><span class="doc">pgr_nodeNetwork</span></a>  -to create nodes to a not noded edge table.</p></li>
 </ul>
@@ -326,12 +342,18 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <p><a class="reference internal" href="cost-category.html"><span class="doc">Cost - Category</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCost.html"><span class="doc">pgr_bdAstarCost</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCost.html"><span class="doc">pgr_dijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCost.html"><span class="doc">pgr_bdDijkstraCost</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Proposed</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="costMatrix-category.html"><span class="doc">Cost Matrix - Category</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdAstarCostMatrix.html"><span class="doc">pgr_bdAstarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraCostMatrix.html"><span class="doc">pgr_dijkstraCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_bdDijkstraCostMatrix.html"><span class="doc">pgr_bdDijkstraCostMatrix</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Driving Distance - Category</span></a></p>
 <ul class="simple">
@@ -352,6 +374,16 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
 <ul class="simple">
 <li><p><a class="reference internal" href="kruskal-family.html"><span class="doc">Kruskal - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Family of functions</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="BFS-category.html"><span class="doc">BFS - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalBFS.html"><span class="doc">pgr_kruskalBFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primBFS.html"><span class="doc">pgr_primBFS</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="DFS-category.html"><span class="doc">DFS - Category</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_kruskalDFS.html"><span class="doc">pgr_kruskalDFS</span></a></p></li>
+<li><p><a class="reference internal" href="pgr_primDFS.html"><span class="doc">pgr_primDFS</span></a></p></li>
 </ul>
 </section>
 <section id="available-functions-but-not-official-pgrouting-functions">
@@ -436,8 +468,8 @@ For other licenses used in pgRouting see the <a class="reference internal" href=
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on Jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

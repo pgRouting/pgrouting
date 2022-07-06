@@ -70,10 +70,6 @@
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
 <ul>
@@ -99,13 +95,13 @@
 <li><a class="reference internal" href="#licensing">Licencias</a></li>
 <li><a class="reference internal" href="#contributors">Colaboradores</a><ul>
 <li><a class="reference internal" href="#this-release-contributors">Colaboradores de esta Versión</a><ul>
-<li><a class="reference internal" href="#individuals-in-alphabetical-order">Personas (en orden alfabético)</a></li>
-<li><a class="reference internal" href="#corporate-sponsors-in-alphabetical-order">Patrocinadores corporativos (en orden alfabético)</a></li>
+<li><a class="reference internal" href="#individuals-in-this-release-in-alphabetical-order">Individuals in this release (in alphabetical order)</a></li>
+<li><a class="reference internal" href="#corporate-sponsors-in-this-release-in-alphabetical-order">Corporate Sponsors in this release (in alphabetical order)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#contributors-past-present">Colaboradores, Pasado y Presente:</a><ul>
-<li><a class="reference internal" href="#id1">Personas (en orden alfabético)</a></li>
-<li><a class="reference internal" href="#id2">Patrocinadores corporativos (en orden alfabético)</a></li>
+<li><a class="reference internal" href="#individuals-in-alphabetical-order">Personas (en orden alfabético)</a></li>
+<li><a class="reference internal" href="#corporate-sponsors-in-alphabetical-order">Patrocinadores corporativos (en orden alfabético)</a></li>
 </ul>
 </li>
 </ul>
@@ -158,12 +154,17 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgRouting-introduction.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgRouting-introduction.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgRouting-introduction.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgRouting-introduction.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgRouting-introduction.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgRouting-introduction.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgRouting-introduction.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgRouting-introduction.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgRouting-introduction.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgRouting-introduction.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgRouting-introduction.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgRouting-introduction.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgRouting-introduction.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/introduction/introduction.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/introduction/introduction.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/introduction/introduction.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/introduction/introduction.html">2.0</a></p></li>
 </ul>
 <section id="introduction">
 <h1>Introducción<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
-<p>pgRouting es una extensión de la base de datos geoespacial  <a class="reference external" href="https://postgis.net">PostGIS</a> y <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a>  y agrega enrutamiento y otras funciones de análisis de redes. Un predecesor de pgRouting – pgDijkstra, escrito por Sylvain Pasche de <a class="reference external" href="https://camptocamp.com">Camptocamp</a>, fue más tarde extendido por Orkney y renombrado a pgRouting. El proyecto ahora es apoyado y mantenido por Georepublic &lt;<a class="reference external" href="https://georepublic.info">https://georepublic.info</a>&gt;`__, <a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a>  y una amplia comunidad de usuarios.</p>
+<p>pgRouting es una extensión de la base de datos geoespacial <a class="reference external" href="https://postgis.net">PostGIS</a> y <a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> y agrega ruteo y otras funciones de análisis de redes. Un predecesor de pgRouting – pgDijkstra, escrito por Sylvain Pasche de <a class="reference external" href="https://camptocamp.com">Camptocamp</a>, fue más tarde extendido por Orkney y renombrado a pgRouting. El proyecto ahora es apoyado y mantenido por Georepublic &lt;<a class="reference external" href="https://georepublic.info">https://georepublic.info</a>&gt;`__, <a class="reference external" href="https://www.paragoncorporation.com/">Paragon Corporation</a> y una amplia comunidad de usuarios.</p>
 <p>pgRouting es parte de la <cite>Comunidad de Proyectos de OSGeo &lt;https://wiki.osgeo.org/wiki/OSGeo_Community_Projects&gt;</cite> __ de la <cite>Fundación OSGeo &lt;https://www.osgeo.org&gt;</cite> __ y se incluye en`OSGeoLive &lt;<a class="reference external" href="http://live.osgeo.org/">http://live.osgeo.org/</a>&gt;`__.</p>
 <section id="licensing">
 <span id="license"></span><h2>Licencias<a class="headerlink" href="#licensing" title="Permalink to this heading">¶</a></h2>
@@ -197,21 +198,22 @@
 <h2>Colaboradores<a class="headerlink" href="#contributors" title="Permalink to this heading">¶</a></h2>
 <section id="this-release-contributors">
 <h3>Colaboradores de esta Versión<a class="headerlink" href="#this-release-contributors" title="Permalink to this heading">¶</a></h3>
-<section id="individuals-in-alphabetical-order">
-<h4>Personas (en orden alfabético)<a class="headerlink" href="#individuals-in-alphabetical-order" title="Permalink to this heading">¶</a></h4>
+<section id="individuals-in-this-release-in-alphabetical-order">
+<h4>Individuals in this release (in alphabetical order)<a class="headerlink" href="#individuals-in-this-release-in-alphabetical-order" title="Permalink to this heading">¶</a></h4>
 <p>Ashish Kumar,
 Cayetano Benavent,
 Daniel Kastl,
-Himanshu Raj,
-Martha Vergara,
+Rajat Shinde,
 Regina Obe,
-Veenit Kumar,
+Swapnil Joshi,
 Virginia Vergara</p>
-<p>Y todas las personas que nos dan un poco de su tiempo haciendo comentarios, encontrando problemas, haciendo solicitudes de extracción, etc. en cualquiera de nuestros productos: osm2pgrouting, pgRouting, pgRoutingLayer.</p>
+<p>And all the people that give us a little of their time making comments, finding
+issues, making pull requests etc.  in any of our products: osm2pgrouting,
+pgRouting, pgRoutingLayer, workshop.</p>
 </section>
-<section id="corporate-sponsors-in-alphabetical-order">
-<h4>Patrocinadores corporativos (en orden alfabético)<a class="headerlink" href="#corporate-sponsors-in-alphabetical-order" title="Permalink to this heading">¶</a></h4>
-<p>Estas son las entidades corporativas que han contribuido con tiempo de desarrollo, alojamiento,  o financiamiento monetario directo al proyecto de pgRouting:</p>
+<section id="corporate-sponsors-in-this-release-in-alphabetical-order">
+<h4>Corporate Sponsors in this release (in alphabetical order)<a class="headerlink" href="#corporate-sponsors-in-this-release-in-alphabetical-order" title="Permalink to this heading">¶</a></h4>
+<p>Estas son las entidades corporativas que han contribuido con tiempo de desarrollo, alojamiento, o financiamiento monetario directo al proyecto de pgRouting:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://georepublic.info/en/">Georepublic</a></p></li>
 <li><p><a class="reference external" href="https://summerofcode.withgoogle.com">Google Summer of Code</a></p></li>
@@ -221,31 +223,63 @@ Virginia Vergara</p>
 </section>
 <section id="contributors-past-present">
 <h3>Colaboradores, Pasado y Presente:<a class="headerlink" href="#contributors-past-present" title="Permalink to this heading">¶</a></h3>
-<section id="id1">
-<h4>Personas (en orden alfabético)<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
-<p>Aasheesh Tiwari, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Ashraf Hossain,
+<section id="individuals-in-alphabetical-order">
+<h4>Personas (en orden alfabético)<a class="headerlink" href="#individuals-in-alphabetical-order" title="Permalink to this heading">¶</a></h4>
+<p>Aasheesh Tiwari,
+Aditya Pratap Singh,
+Adrien Berchet,
+Akio Takubo,
+Andrea Nardelli,
+Anthony Tasca,
+Anton Patrushev,
+Ashraf Hossain,
 Ashish Kumar,
-Cayetano Benavent, Christian Gonzalez,
-Daniel Kastl, Dave Potts, David Techer, Denis Rykov,
+Cayetano Benavent,
+Christian Gonzalez,
+Daniel Kastl,
+Dave Potts,
+David Techer,
+Denis Rykov,
 Ema Miyawaki,
 Esteban Zimanyi,
-Florian Thurkow, Frederic Junod,
-Gerald Fenoy, Gudesa Venkata Sai Akhil,
+Florian Thurkow,
+Frederic Junod,
+Gerald Fenoy,
+Gudesa Venkata Sai Akhil,
 Hang Wu,
 Himanshu Raj,
 Imre Samu,
-Jay Mahadeokar, Jinfu Leng,
-Kai Behncke, Kishore Kumar, Ko Nagase,
+Jay Mahadeokar,
+Jinfu Leng,
+Kai Behncke,
+Kishore Kumar,
+Ko Nagase,
 Mahmoud Sakr,
-Manikata Kondeti, Mario Basa, Martin Wiesenhaan,  Maxim Dubinin, Maoguang Wang, Mohamed Bakli, Mohamed Zia, Mukul Priya,
+Manikata Kondeti,
+Mario Basa,
+Martin Wiesenhaan,
+Maxim Dubinin,
+Maoguang Wang,
+Mohamed Bakli,
+Mohamed Zia,
+Mukul Priya,
+Rajat Shinde,
 Razequl Islam,
-Regina Obe, Rohith Reddy,
-Sarthak Agarwal, Sourabh Garg, Stephen Woodbridge, Sylvain Housseman, Sylvain Pasche,
-Veenit Kumar, Vidhan Jain, Virginia Vergara</p>
+Regina Obe,
+Rohith Reddy,
+Sarthak Agarwal,
+Sourabh Garg,
+Stephen Woodbridge,
+Swapnil Joshi,
+Sylvain Housseman,
+Sylvain Pasche,
+Veenit Kumar,
+Vidhan Jain,
+Virginia Vergara</p>
 </section>
-<section id="id2">
-<h4>Patrocinadores corporativos (en orden alfabético)<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
-<p>Estas son las entidades corporativas que han contribuido con tiempo de desarrollo, alojamiento,  o financiamiento monetario directo al proyecto de pgRouting:</p>
+<section id="corporate-sponsors-in-alphabetical-order">
+<h4>Patrocinadores corporativos (en orden alfabético)<a class="headerlink" href="#corporate-sponsors-in-alphabetical-order" title="Permalink to this heading">¶</a></h4>
+<p>Estas son las entidades corporativas que han contribuido con tiempo de desarrollo, alojamiento, o financiamiento monetario directo al proyecto de pgRouting:</p>
 <ul class="simple">
 <li><p>Camptocamp</p></li>
 <li><p>CSIS (University of Tokyo)</p></li>
@@ -265,9 +299,10 @@ Veenit Kumar, Vidhan Jain, Virginia Vergara</p>
 <ul class="simple">
 <li><p>Lo último en software, documentación y noticias, se encuentra disponible en el sitio web de pgRouting <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>.</p></li>
 <li><p>Servidor de base de datos PostgreSQL en el sitio principal de PostgreSQL <a class="reference external" href="https://www.postgresql.org">https://www.postgresql.org</a>.</p></li>
-<li><p>PostGIS extension at the PostGIS project web site <a class="reference external" href="https://postgis.net">https://postgis.net</a>.</p></li>
+<li><p>PostGIS extension en el sitio web del projecto PostGIS <a class="reference external" href="https://postgis.net">https://postgis.net</a>.</p></li>
 <li><p>Bibliotecas de código Boost C++ en <a class="reference external" href="https://www.boost.org">https://www.boost.org</a>.</p></li>
-<li><p>La guía de Migración se puede encontrar en <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Migration-Guide">https://github.com/pgRouting/pgrouting/wiki/Migration-Guide</a>.</p></li>
+<li><p>The Migration guide from 2.6 can be found at
+<a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Migration-Guide">https://github.com/pgRouting/pgrouting/wiki/Migration-Guide</a>.</p></li>
 </ul>
 </section>
 </section>
@@ -285,8 +320,8 @@ Veenit Kumar, Vidhan Jain, Virginia Vergara</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

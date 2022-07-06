@@ -69,10 +69,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
@@ -144,7 +140,12 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/spanningTree-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/spanningTree-family.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/spanningTree-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/spanningTree-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/spanningTree-family.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/spanningTree-family.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/spanningTree-family.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/spanningTree-family.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/spanningTree-family.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/spanningTree-family.html">3.0</a></p></li>
 </ul>
 <section id="spanning-tree-category">
 <h1>Árbol de expansión - Categoría<a class="headerlink" href="#spanning-tree-category" title="Permalink to this heading">¶</a></h1>
@@ -156,11 +157,29 @@
 <p>Para un grafo desconectado, no hay un solo árbol, sino un bosque de expansión, que consiste en un árbol de expansión de cada componente conectado.</p>
 <div class="toctree-wrapper compound">
 </div>
+<p>Características:</p>
+<ul class="simple">
+<li><p>Su implementación es solo para grafo <strong>no dirigido</strong>.</p></li>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p></li>
+<li><p>Cuando el grafo es conectado</p>
+<ul>
+<li><p>Las aristas resultantes componen un árbol</p></li>
+</ul>
+</li>
+<li><p>Cuando el grafo no está conectado,</p>
+<ul>
+<li><p>Encuentra un árbol de expansión mínimo para cada componente conectado.</p></li>
+<li><p>Las aristas resultantes conforman un bosque.</p></li>
+</ul>
+</li>
+</ul>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Documentación del algorithmo de Prim</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html">Boost: Algoritmo de Prim</a></p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html">Boost: algoritmo de Kruskal</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Wikipedia: algoritmo de Prim</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kruskal's_algorithm">Wikipedia: algoritmo de Kruskal</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -183,8 +202,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

@@ -20,7 +20,7 @@
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
     <link rel="next" title="Traversal - Familia de funciones" href="traversal-family.html" />
-    <link rel="prev" title="pgr_alphaShape" href="pgr_alphaShape.html" />
+    <link rel="prev" title="BFS - Categoría" href="BFS-category.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -70,10 +70,6 @@
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
 <ul class="current">
@@ -108,7 +104,7 @@
               
                 
   <li>
-    <a href="pgr_alphaShape.html" title="Previous Chapter: pgr_alphaShape"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_alphaShape</span>
+    <a href="BFS-category.html" title="Previous Chapter: BFS - Categoría"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; BFS - Categoría</span>
     </a>
   </li>
   <li>
@@ -144,23 +140,28 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/proposed.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/proposed.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/proposed.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/proposed.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/proposed.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/proposed.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/proposed.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/proposed.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/proposed.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/proposed.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/proposed.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/proposed.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/proposed.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/proposed.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/proposed.html">2.2</a></p></li>
 </ul>
 <section id="proposed-functions">
 <h1>Funciones propuestas<a class="headerlink" href="#proposed-functions" title="Permalink to this heading">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
-<p>Funciones propuestas para el próximo lanzamineto.</p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
 <li><p>No están oficialmente en la versión actual.</p></li>
 <li><p>Es probable que oficialmente formen parte del próximo lanzamiento:</p>
 <ul>
-<li><p>Las funciones hacen uso de ANY-INTEGER y ANY-NUMERICAL</p></li>
-<li><p>Es posible que el nombre no cambie. (Pero todavía puede)</p></li>
+<li><p>Las funciones hacen uso de ENTEROS y FLOTANTES</p></li>
+<li><p>Probablemente el nombre no cambie. (Pero todavía puede)</p></li>
 <li><p>Es posible que la firma no cambie. (Pero todavía puede)</p></li>
-<li><p>Es posible que la funcionalidad no cambie. (Pero todavía puede)</p></li>
-<li><p>Se han hecho pruebas de pgTap. Pero tal vez necesite más.</p></li>
+<li><p>Probablemente la funcionalidad no cambie. (Pero todavía puede)</p></li>
+<li><p>Se han hecho pruebas con pgTap. Pero tal vez se necesiten más.</p></li>
 <li><p>Es posible que la documentación necesite un refinamiento.</p></li>
 </ul>
 </li>
@@ -169,9 +170,9 @@
 <p class="rubric">Familias</p>
 <p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Propuesto</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a> - Obtenga una ruta a partir de una secuencia de vértices.</p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a> - Obtener la ruta al vértice más cercano.</p></li>
-<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a> - Get the cost to the nearest vertex.</p></li>
+<li><p><a class="reference internal" href="pgr_dijkstraNearCost.html"><span class="doc">pgr_dijkstraNearCost - Propuesto</span></a> - Consigue el costo del vértice más cercano.</p></li>
 </ul>
 <p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p>
 <ul class="simple">
@@ -182,16 +183,17 @@
 <li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Distancia de conducción.</p></li>
 </ul>
 <p><a class="reference internal" href="topology-functions.html"><span class="doc">Topología - Familia de Funciones</span></a></p>
+<p>Funciones propuestas para la próxima versión mayor.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a> - extrae información de vértices basada en el origen y el destino.</p></li>
-</ul>
-<p><a class="reference internal" href="traversal-family.html"><span class="doc">Traversal - Familia de funciones</span></a></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Propuesto</span></a> - Primera Búsqueda en Profundidad traversal del grafo.</p></li>
+<li><p><a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a> - Extrae información de vértices basada en la tabla de aristas.</p></li>
 </ul>
 <p><a class="reference internal" href="coloring-family.html"><span class="doc">Coloración - Familia de funciones</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_sequentialVertexColoring.html"><span class="doc">pgr_sequentialVertexColoring - Propuesto</span></a>- Algoritmo de coloración de vértices mediante un enfoque codicioso.</p></li>
+</ul>
+<p><a class="reference internal" href="traversal-family.html"><span class="doc">Traversal - Familia de funciones</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_depthFirstSearch.html"><span class="doc">pgr_depthFirstSearch - Propusto</span></a> - Recorrido de búsqueda en profundidad del grafo.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -206,11 +208,19 @@
 </ul>
 <p><a class="reference internal" href="drivingDistance-category.html"><span class="doc">Distancia Manejando - Categoría</span></a></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Driving Distance basada en pgr_withPoints</p></li>
+<li><p><a class="reference internal" href="pgr_withPointsDD.html"><span class="doc">pgr_withPointsDD - Propuesto</span></a> - Distancia Manejando basada en pgr_withPoints</p></li>
 </ul>
 <p><a class="reference internal" href="KSP-category.html"><span class="doc">Rutas más cortas K - Categoría</span></a></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_withPointsKSP.html"><span class="doc">pgr_withPointsKSP - Propuesto</span></a> - Algoritmo de Yen basado en pgr_withPoints</p></li>
+</ul>
+<p><a class="reference internal" href="via-category.html"><span class="doc">Via- Categoria</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pgr_dijkstraVia.html"><span class="doc">pgr_dijkstraVia - Proposed</span></a></p></li>
+</ul>
+<p><a class="reference internal" href="withPoints-category.html"><span class="doc">withPoints- Categoría</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a> - Funciones basadas en el algoritmo Dijkstra.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -240,8 +250,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

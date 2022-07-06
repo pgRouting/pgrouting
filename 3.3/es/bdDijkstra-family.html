@@ -70,10 +70,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
@@ -148,7 +144,12 @@
 </div>
 <p class="rubric">Versiones anteriores de esta página</p>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/bdDijkstra-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/bdDijkstra-family.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/bdDijkstra-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/bdDijkstra-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/bdDijkstra-family.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/bdDijkstra-family.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/bdDijkstra-family.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/bdDijkstra-family.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/bdDijkstra-family.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/bdDijkstra-family.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/bdDijkstra-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/bdDijkstra-family.html">2.5</a></p></li>
 </ul>
 <section id="bidirectional-dijkstra-family-of-functions">
@@ -162,24 +163,37 @@
 </div>
 <section id="synopsis">
 <h2>Sinopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
-<p>Basada en el algoritmo  Dijkstra, la búsqueda bidireccional encuentra una ruta más corta: de un vértice inicial (<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>) a un vértice final (<code class="docutils literal notranslate"><span class="pre">end_vid</span></code>). Ejecuta dos búsquedas simultáneas: una adelante de la fuente y uno hacia atrás del objetivo, deteniéndose cuando los dos se encuentran en el medio. Esta implementación puede utilizarse con un gráfico dirigido y uno no dirigido.</p>
+<p>Based on Dijkstra’s algorithm, the bidirectional search finds a shortest path
+a starting vertex to an ending vertex.</p>
+<p>It runs two simultaneous searches: one forward from the source, and one backward
+from the target, stopping when the two meet in the middle.</p>
+<p>This implementation can be used with a directed graph and an undirected graph.</p>
 </section>
 <section id="characteristics">
 <h2>Características<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h2>
 <p>Las características principales son:</p>
 <ul class="simple">
-<li><p>El proceso se realiza sólo en las aristas con costos positivos.</p></li>
-<li><p>Valores son regresados cuando hay un camino.</p></li>
-<li><p>Cuando el vértice inicial y el vértice final son iguales, no hay camino.</p>
+<li><p>El proceso se realiza sólo en aristas con costos positivos.</p>
 <ul>
-<li><p>El <cite>agg_cost</cite> de los valores no incluídos <cite>(v, v)</cite> es <cite>0</cite></p></li>
+<li><p>Valor no negativo en una columna de costo se interpreta como la arista no exite.</p></li>
 </ul>
 </li>
-<li><p>Cuando el vértice inicial y el vértice final son diferentes y no hay camino:</p>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
+<li><p>Cuando no hay ruta:</p>
 <ul>
-<li><p>El  “agg_cost” de los valores no incluídos “(u, v)” es :math: <cite>infty</cite></p></li>
+<li><p>Cuando el vértice de salida y el vértice destino son iguales.</p>
+<ul>
+<li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((v, v)\)</span> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
 </ul>
 </li>
+<li><p>Cuando el vértice de salida y el vértice destino son diferentes y no hay ninguna ruta:</p>
+<ul>
+<li><p>El <strong>costo agregado</strong> de los valores no incluídos <span class="math notranslate nohighlight">\((u, v)\)</span> es :math: <cite>infty</cite></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Para fines de optimización, se ignora cualquier valor duplicado en los vertices de salida o destino.</p></li>
 <li><p>Tiempo de ejecución (peor de los casos): <span class="math notranslate nohighlight">\(O((V \log V + E))\)</span></p></li>
 <li><p>Para grandes gráficos donde hay un camino entre el vértice inicial y el vértice final:</p>
 <ul>
@@ -211,8 +225,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

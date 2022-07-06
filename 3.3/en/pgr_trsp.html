@@ -69,10 +69,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
@@ -103,16 +99,16 @@
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#the-restrictions">The restrictions</a></li>
 <li><a class="reference internal" href="#the-vertices-signature-version">The “Vertices” signature version</a><ul>
-<li><a class="reference internal" href="#different-ways-to-represent-no-path-found">Different ways to represent ‘no path found`</a></li>
-<li><a class="reference internal" href="#routing-from-to-same-location">Routing from/to same location</a></li>
-<li><a class="reference internal" href="#user-contradictions">User contradictions</a></li>
+<li><a class="reference internal" href="#different-ways-to-represent-no-path-found">1 Different ways to represent ‘no path found`</a></li>
+<li><a class="reference internal" href="#routing-from-to-same-location">1 Routing from/to same location</a></li>
+<li><a class="reference internal" href="#user-contradictions">1 User contradictions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-edges-signature-version">The “Edges” signature version</a><ul>
-<li><a class="reference internal" href="#id1">Different ways to represent ‘no path found`</a></li>
+<li><a class="reference internal" href="#id1">2 Different ways to represent ‘no path found`</a></li>
 <li><a class="reference internal" href="#paths-with-equal-number-of-vertices-and-edges">Paths with equal number of vertices and edges</a></li>
-<li><a class="reference internal" href="#id2">Routing from/to same location</a></li>
-<li><a class="reference internal" href="#id3">User contradictions</a></li>
+<li><a class="reference internal" href="#id2">2 Routing from/to same location</a></li>
+<li><a class="reference internal" href="#id3">2 User contradictions</a></li>
 <li><a class="reference internal" href="#using-a-points-of-interest-table">Using a points of interest table</a></li>
 <li><a class="reference internal" href="#routing-from-a-vertex-to-a-point">Routing from a vertex to a point</a></li>
 </ul>
@@ -412,17 +408,17 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span>
+        <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges&#39;</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span>
     <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="o">-----+-----+-----+------</span>
-   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
 <span class="p">(</span><span class="mi">6</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
@@ -434,67 +430,67 @@
 </dl>
 <p>Then a query with turn restrictions is created as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trsp</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges&#39;</span><span class="p">,</span>
+        <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4,</span>
         <span class="n">from_edge</span> <span class="o">||</span> <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span> <span class="o">||</span> <span class="n">via_path</span><span class="p">,</span> <span class="s1">&#39;&#39;&#39;&#39;) AS via_path</span>
 <span class="s1">        FROM restrictions&#39;</span>
 <span class="s1">    );</span>
 <span class="s1"> seq | id1 | id2 | cost</span>
 <span class="s1">-----+-----+-----+------</span>
-<span class="s1">   0 |   2 |   4 |    1</span>
-<span class="s1">   1 |   5 |  10 |    1</span>
-<span class="s1">   2 |  10 |  12 |    1</span>
-<span class="s1">   3 |  11 |  11 |    1</span>
-<span class="s1">   4 |   6 |   8 |    1</span>
-<span class="s1">   5 |   5 |   7 |    1</span>
-<span class="s1">   6 |   8 |   6 |    1</span>
-<span class="s1">   7 |   7 |  -1 |    0</span>
+<span class="s1">   0 |   6 |   4 |    1</span>
+<span class="s1">   1 |   7 |  10 |    1</span>
+<span class="s1">   2 |   8 |  12 |    1</span>
+<span class="s1">   3 |  12 |  11 |    1</span>
+<span class="s1">   4 |  11 |   8 |    1</span>
+<span class="s1">   5 |   7 |   7 |    1</span>
+<span class="s1">   6 |   3 |   6 |    1</span>
+<span class="s1">   7 |   1 |  -1 |    0</span>
 <span class="s1">(8 rows)</span>
 
 <span class="s1">SELECT * FROM pgr_trsp(</span>
-<span class="s1">        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;,</span>
-<span class="s1">        7, 11, false, false,</span>
+<span class="s1">        &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges&#39;,</span>
+<span class="s1">        1, 12, false, false,</span>
 <span class="s1">        &#39;SELECT to_cost, target_id::int4,</span>
 <span class="s1">        from_edge || coalesce(&#39;&#39;,&#39;&#39; || via_path, &#39;&#39;&#39;&#39;) AS via_path</span>
         <span class="n">FROM</span> <span class="n">restrictions</span><span class="s1">&#39;</span>
     <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">id1</span> <span class="o">|</span> <span class="n">id2</span> <span class="o">|</span> <span class="n">cost</span>
 <span class="o">-----+-----+-----+------</span>
-   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">5</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">6</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
+   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">6</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">1</span> <span class="o">|</span>   <span class="mi">3</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">3</span> <span class="o">|</span>  <span class="mi">11</span> <span class="o">|</span>   <span class="mi">9</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">4</span> <span class="o">|</span>  <span class="mi">16</span> <span class="o">|</span>  <span class="mi">15</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">5</span> <span class="o">|</span>  <span class="mi">17</span> <span class="o">|</span>  <span class="mi">13</span> <span class="o">|</span>    <span class="mi">1</span>
+   <span class="mi">6</span> <span class="o">|</span>  <span class="mi">12</span> <span class="o">|</span>  <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>    <span class="mi">0</span>
 <span class="p">(</span><span class="mi">7</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
 <p>An example query using vertex ids and via points:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trspViaVertices</span><span class="p">(</span>
-        <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table&#39;</span><span class="p">,</span>
-        <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]::</span><span class="n">INTEGER</span><span class="p">[],</span>
+        <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges&#39;</span><span class="p">,</span>
+        <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">]::</span><span class="n">INTEGER</span><span class="p">[],</span>
         <span class="n">false</span><span class="p">,</span>  <span class="n">false</span><span class="p">,</span>
         <span class="s1">&#39;SELECT to_cost, target_id::int4, from_edge ||</span>
         <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);</span>
 <span class="s1"> seq | id1 | id2 | id3 | cost</span>
 <span class="s1">-----+-----+-----+-----+------</span>
-<span class="s1">   1 |   1 |   2 |   4 |    1</span>
-<span class="s1">   2 |   1 |   5 |  10 |    1</span>
-<span class="s1">   3 |   1 |  10 |  12 |    1</span>
-<span class="s1">   4 |   1 |  11 |  11 |    1</span>
-<span class="s1">   5 |   1 |   6 |   8 |    1</span>
-<span class="s1">   6 |   1 |   5 |   7 |    1</span>
-<span class="s1">   7 |   1 |   8 |   6 |    1</span>
-<span class="s1">   8 |   2 |   7 |   6 |    1</span>
-<span class="s1">   9 |   2 |   8 |   7 |    1</span>
-<span class="s1">  10 |   2 |   5 |   8 |    1</span>
-<span class="s1">  11 |   2 |   6 |   9 |    1</span>
-<span class="s1">  12 |   2 |   9 |  15 |    1</span>
-<span class="s1">  13 |   2 |  12 |  13 |    1</span>
-<span class="s1">  14 |   2 |  11 |  -1 |    0</span>
+<span class="s1">   1 |   1 |   6 |   4 |    1</span>
+<span class="s1">   2 |   1 |   7 |  10 |    1</span>
+<span class="s1">   3 |   1 |   8 |  12 |    1</span>
+<span class="s1">   4 |   1 |  12 |  11 |    1</span>
+<span class="s1">   5 |   1 |  11 |   8 |    1</span>
+<span class="s1">   6 |   1 |   7 |   7 |    1</span>
+<span class="s1">   7 |   1 |   3 |   6 |    1</span>
+<span class="s1">   8 |   2 |   1 |   6 |    1</span>
+<span class="s1">   9 |   2 |   3 |   7 |    1</span>
+<span class="s1">  10 |   2 |   7 |   8 |    1</span>
+<span class="s1">  11 |   2 |  11 |   9 |    1</span>
+<span class="s1">  12 |   2 |  16 |  15 |    1</span>
+<span class="s1">  13 |   2 |  17 |  13 |    1</span>
+<span class="s1">  14 |   2 |  12 |  -1 |    0</span>
 <span class="s1">(14 rows)</span>
 
 </pre></div>
@@ -502,30 +498,30 @@
 <p>An example query using edge ids and vias:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_trspViaEdges</span><span class="p">(</span>
         <span class="s1">&#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost,</span>
-        <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edge_table</span><span class="s1">&#39;,</span>
+        <span class="n">reverse_cost</span> <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]::</span><span class="n">INTEGER</span><span class="p">[],</span>
         <span class="n">ARRAY</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]::</span><span class="n">FLOAT</span><span class="p">[],</span>
         <span class="n">true</span><span class="p">,</span>
         <span class="n">true</span><span class="p">,</span>
-        <span class="s1">&#39;SELECT to_cost, target_id::int4, FROM_edge ||</span>
+        <span class="s1">&#39;SELECT to_cost, target_id::int4, from_edge ||</span>
         <span class="n">coalesce</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">||</span><span class="n">via_path</span><span class="p">,</span><span class="s1">&#39;&#39;&#39;&#39;) AS via_path FROM restrictions&#39;);</span>
 <span class="s1"> seq | id1 | id2 | id3 | cost</span>
 <span class="s1">-----+-----+-----+-----+------</span>
 <span class="s1">   1 |   1 |  -1 |   2 |  0.5</span>
-<span class="s1">   2 |   1 |   2 |   4 |    1</span>
-<span class="s1">   3 |   1 |   5 |   8 |    1</span>
-<span class="s1">   4 |   1 |   6 |   9 |    1</span>
-<span class="s1">   5 |   1 |   9 |  16 |    1</span>
-<span class="s1">   6 |   1 |   4 |   3 |    1</span>
-<span class="s1">   7 |   1 |   3 |   5 |    1</span>
-<span class="s1">   8 |   1 |   6 |   8 |    1</span>
-<span class="s1">   9 |   1 |   5 |   7 |    1</span>
-<span class="s1">  10 |   2 |   5 |   8 |    1</span>
-<span class="s1">  11 |   2 |   6 |   9 |    1</span>
-<span class="s1">  12 |   2 |   9 |  16 |    1</span>
-<span class="s1">  13 |   2 |   4 |   3 |    1</span>
-<span class="s1">  14 |   2 |   3 |   5 |    1</span>
-<span class="s1">  15 |   2 |   6 |  11 |  0.5</span>
+<span class="s1">   2 |   1 |   6 |   4 |    1</span>
+<span class="s1">   3 |   1 |   7 |   8 |    1</span>
+<span class="s1">   4 |   1 |  11 |   9 |    1</span>
+<span class="s1">   5 |   1 |  16 |  16 |    1</span>
+<span class="s1">   6 |   1 |  15 |   3 |    1</span>
+<span class="s1">   7 |   1 |  10 |   5 |    1</span>
+<span class="s1">   8 |   1 |  11 |   8 |    1</span>
+<span class="s1">   9 |   1 |   7 |   7 |    1</span>
+<span class="s1">  10 |   2 |   7 |   8 |    1</span>
+<span class="s1">  11 |   2 |  11 |   9 |    1</span>
+<span class="s1">  12 |   2 |  16 |  16 |    1</span>
+<span class="s1">  13 |   2 |  15 |   3 |    1</span>
+<span class="s1">  14 |   2 |  10 |   5 |    1</span>
+<span class="s1">  15 |   2 |  11 |  11 |  0.5</span>
 <span class="s1">(15 rows)</span>
 
 </pre></div>
@@ -585,15 +581,15 @@
 </pre></div>
 </div>
 <section id="different-ways-to-represent-no-path-found">
-<h4>Different ways to represent ‘no path found`<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this heading">¶</a></h4>
+<h4>1 Different ways to represent ‘no path found`<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
 <li><p>Sometimes represents with Error a no path found</p></li>
 </ul>
 <p class="rubric">Returning EMPTY SET to represent no path found</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15, true, true
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
+    7, 4, true, true
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -604,8 +600,8 @@
 <p>pgr_trsp calls <a class="reference internal" href="pgr_dijkstra.html"><span class="doc">pgr_dijkstra</span></a> when there are no restrictions which returns
 <cite>EMPTY SET</cite> when a path is not found</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_dijkstra(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
+    7, 4
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
@@ -615,8 +611,8 @@
 </div>
 <p class="rubric">Throwing EXCEPTION to represent no path found</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-     1, 15, true, true,
+     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
+     7, 4, true, true,
      $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
@@ -627,7 +623,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 which will throw an EXCEPTION to represent no path found.</p>
 </section>
 <section id="routing-from-to-same-location">
-<h4>Routing from/to same location<a class="headerlink" href="#routing-from-to-same-location" title="Permalink to this heading">¶</a></h4>
+<h4>1 Routing from/to same location<a class="headerlink" href="#routing-from-to-same-location" title="Permalink to this heading">¶</a></h4>
 <p>When routing from location <span class="math notranslate nohighlight">\(1\)</span> to the same location <span class="math notranslate nohighlight">\(1\)</span>, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
 <cite>EMPTY SET</cite> or an <cite>EXCEPTION</cite> depending on the parameters</p>
@@ -638,8 +634,8 @@ reach the destination, its already there. Therefore is expected to return an
 </ul>
 <p class="rubric">Returning expected EMPTY SET to represent no path found</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  true, true
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
+    7, 7,  true, true
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
@@ -651,8 +647,8 @@ reach the destination, its already there. Therefore is expected to return an
 the expected to return <cite>EMPTY SET</cite> to represent no path found.</p>
 <p class="rubric">Returning expected EXCEPTION to represent no path found</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    14, 14, true, true,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
+    2, 2, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error computing path: Path Not Found
@@ -663,21 +659,21 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 in this case that code throws the expected EXCEPTION</p>
 <p class="rubric">Returning unexpected path</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1, true, true,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
+    5, 5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
-   0 |   1 |   1 |    1
-   1 |   2 |   4 |    1
-   2 |   5 |   8 |    1
-   3 |   6 |   9 |    1
-   4 |   9 |  16 |    1
-   5 |   4 |   3 |    1
-   6 |   3 |   2 |    1
-   7 |   2 |   1 |    1
-   8 |   1 |  -1 |    0
+   0 |   5 |   1 |    1
+   1 |   6 |   4 |    1
+   2 |   7 |   8 |    1
+   3 |  11 |   9 |    1
+   4 |  16 |  16 |    1
+   5 |  15 |   3 |    1
+   6 |  10 |   2 |    1
+   7 |   6 |   1 |    1
+   8 |   5 |  -1 |    0
 (9 rows)
 
 </pre></div>
@@ -686,7 +682,7 @@ in this case that code throws the expected EXCEPTION</p>
 in this case that code finds an unexpected path.</p>
 </section>
 <section id="user-contradictions">
-<h4>User contradictions<a class="headerlink" href="#user-contradictions" title="Permalink to this heading">¶</a></h4>
+<h4>1 User contradictions<a class="headerlink" href="#user-contradictions" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
 of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
@@ -696,8 +692,8 @@ of <code class="docutils literal notranslate"><span class="pre">reverse_cost</sp
 </ul>
 <p class="rubric">When the reverse_cost is missing, and the flag <cite>has_rcost</cite> is set to true.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
-    2, 3, false, true,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges$$,
+    6, 10, false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
 ERROR:  Error, reverse_cost is used, but query did&#39;t return &#39;reverse_cost&#39; column
@@ -707,16 +703,16 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 <p>An EXCEPTION is thrown.</p>
 <p class="rubric">When the reverse_cost exists, and the flag <cite>has_rcost</cite> is set to false</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    2, 3, false, false,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
+    6, 10, false, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
-   0 |   2 |   4 |    1
-   1 |   5 |   8 |    1
-   2 |   6 |   5 |    1
-   3 |   3 |  -1 |    0
+   0 |   6 |   4 |    1
+   1 |   7 |   8 |    1
+   2 |  11 |   5 |    1
+   3 |  10 |  -1 |    0
 (4 rows)
 
 </pre></div>
@@ -732,14 +728,14 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 </pre></div>
 </div>
 <section id="id1">
-<h4>Different ways to represent ‘no path found`<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<h4>2 Different ways to represent ‘no path found`<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
 <li><p>Sometimes represents with EXCEPTION a no path found</p></li>
 </ul>
 <p class="rubric">Returning EMPTY SET to represent no path found</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     1, 0.5, 17, 0.5, true, true
 );
  seq | id1 | id2 | cost
@@ -752,7 +748,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 <cite>EMPTY SET</cite> when a path is not found</p>
 <p class="rubric">Throwing EXCEPTION to represent no path found</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM _pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     1, 0.5, 17, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
@@ -771,7 +767,7 @@ which will throw an EXCEPTION to represent no path found.</p>
 </ul>
 <p class="rubric">Returning <cite>N</cite> vertices and <cite>N - 1</cite> edges.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     1, 0.5, 1, 0.8, true, true
 );
  seq | id1 | id2 | cost
@@ -787,7 +783,7 @@ the correct number of rows that will include all the vertices. The last row will
 on the edge column to indicate the edge number is invalidu for that row.</p>
 <p class="rubric">Returning <cite>N - 1</cite> vertices and <cite>N - 1</cite> edges.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     1, 0.5, 1, 0.8, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
@@ -802,13 +798,13 @@ on the edge column to indicate the edge number is invalidu for that row.</p>
 and will not return the last vertex of the path.</p>
 </section>
 <section id="id2">
-<h4>Routing from/to same location<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<h4>2 Routing from/to same location<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <p>When routing from the same edge and position to the same edge and position, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
 <cite>EMPTY SET</cite> or an <cite>EXCEPTION</cite> depending on the parameters, non of which is happening.</p>
 <p class="rubric">A path with 2 vertices and edge cost 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     1, 0.5, 1, 0.5, true, true
 );
  seq | id1 | id2 | cost
@@ -823,7 +819,7 @@ reach the destination, its already there. Therefore is expected to return an
 from the second <span class="math notranslate nohighlight">\((edge, position)\)</span> making them different points. But the cost using the edge, is <span class="math notranslate nohighlight">\(0\)</span>.</p>
 <p class="rubric">A path with 1 vertices and edge cost 0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     1, 0.5, 1, 0.5, true, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
@@ -838,7 +834,7 @@ from the second <span class="math notranslate nohighlight">\((edge, position)\)<
 and will not have the row for the vertex <span class="math notranslate nohighlight">\(-2\)</span>.</p>
 </section>
 <section id="id3">
-<h4>User contradictions<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<h4>2 User contradictions<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
 of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
@@ -848,7 +844,7 @@ of <code class="docutils literal notranslate"><span class="pre">reverse_cost</sp
 </ul>
 <p class="rubric">When the reverse_cost is missing, and the flag <cite>has_rcost</cite> is set to true.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edges$$,
     1, 0.5, 1, 0.8, false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
@@ -859,7 +855,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <p>An EXCEPTION is thrown.</p>
 <p class="rubric">When the reverse_cost exists, and the flag <cite>has_rcost</cite> is set to false</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
     1, 0.5, 1, 0.8, false, false,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, &#39;32, 33&#39;::TEXT AS via_path$$
 );
@@ -877,7 +873,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <p>Given a set of points of interest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
- <span class="n">pid</span> <span class="o">|</span>  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span>                  <span class="n">the_geom</span>                  <span class="o">|</span>                  <span class="n">newpoint</span>
+ <span class="n">pid</span> <span class="o">|</span>  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">side</span> <span class="o">|</span> <span class="n">fraction</span> <span class="o">|</span>                    <span class="n">geom</span>                    <span class="o">|</span>                  <span class="n">newpoint</span>
 <span class="o">-----+-----+-----+---------+------+----------+--------------------------------------------+--------------------------------------------</span>
    <span class="mi">1</span> <span class="o">|</span> <span class="mf">1.8</span> <span class="o">|</span> <span class="mf">0.4</span> <span class="o">|</span>       <span class="mi">1</span> <span class="o">|</span> <span class="n">l</span>    <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="mi">0101000000</span><span class="n">CDCCCCCCCCCCFC3F9A9999999999D93F</span> <span class="o">|</span> <span class="mi">010100000000000000000000409</span><span class="n">A9999999999D93F</span>
    <span class="mi">2</span> <span class="o">|</span> <span class="mf">4.2</span> <span class="o">|</span> <span class="mf">2.4</span> <span class="o">|</span>      <span class="mi">15</span> <span class="o">|</span> <span class="n">r</span>    <span class="o">|</span>      <span class="mf">0.4</span> <span class="o">|</span> <span class="mi">0101000000</span><span class="n">CDCCCCCCCCCC10403333333333330340</span> <span class="o">|</span> <span class="mi">010100000000000000000010403333333333330340</span>
@@ -891,7 +887,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </div>
 <p class="rubric">Using pgr_trsp</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TRSP(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
@@ -902,7 +898,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
  seq | id1 | id2 | cost
 -----+-----+-----+------
    0 |  -1 |   1 |  0.6
-   1 |   2 |   4 |  0.7
+   1 |   6 |   4 |  0.7
 (2 rows)
 
 </pre></div>
@@ -923,14 +919,14 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </ul>
 <p class="rubric">Using <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
     -1, -6
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
    1 |        1 |   -1 |    1 |  0.6 |        0
-   2 |        2 |    2 |    4 |  0.7 |      0.6
+   2 |        2 |    6 |    4 |  0.7 |      0.6
    3 |        3 |   -6 |   -1 |    0 |      1.3
 (3 rows)
 
@@ -947,7 +943,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <p>Solving a shortest path from vertex <span class="math notranslate nohighlight">\(6\)</span> to pid 1 using a points of interest table</p>
 <p class="rubric">Using pgr_trsp</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
     8, 1,
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
@@ -956,9 +952,9 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
-   0 |   6 |   8 |    1
-   1 |   5 |   4 |    1
-   2 |   2 |   1 |  0.6
+   0 |  11 |   8 |    1
+   1 |   7 |   4 |    1
+   2 |   6 |   1 |  0.6
 (3 rows)
 
 </pre></div>
@@ -967,7 +963,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <li><p>Vertex 6 is on edge 8 at 1 fraction</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges$$,
     11, 0,
     (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
     (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
@@ -976,9 +972,9 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 );
  seq | id1 | id2 | cost
 -----+-----+-----+------
-   0 |   6 |   8 |    1
-   1 |   5 |   4 |    1
-   2 |   2 |   1 |  0.6
+   0 |  11 |   8 |    1
+   1 |   7 |   4 |    1
+   2 |   6 |   1 |  0.6
 (3 rows)
 
 </pre></div>
@@ -988,15 +984,15 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </ul>
 <p class="rubric">Using <a class="reference internal" href="pgr_withPoints.html"><span class="doc">pgr_withPoints - Proposed</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_withPoints(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edges$$,
     $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
-    6, -1
+    11, -1
 );
  seq | path_seq | node | edge | cost | agg_cost
 -----+----------+------+------+------+----------
-   1 |        1 |    6 |    8 |    1 |        0
-   2 |        2 |    5 |    4 |    1 |        1
-   3 |        3 |    2 |    1 |  0.6 |        2
+   1 |        1 |   11 |    8 |    1 |        0
+   2 |        2 |    7 |    4 |    1 |        1
+   3 |        3 |    6 |    1 |  0.6 |        2
    4 |        4 |   -1 |   -1 |    0 |      2.6
 (4 rows)
 
@@ -1043,8 +1039,8 @@ When there are no restrictions and have a routing “via” problem with vertice
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on Jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

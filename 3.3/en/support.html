@@ -69,10 +69,6 @@
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Function Families</a></li>
 </ul>
 <ul>
@@ -162,21 +158,29 @@
 </ul>
 <section id="support">
 <h1>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h1>
-<p>pgRouting community support is available through the <a class="reference external" href="https://pgrouting.org/support.html">pgRouting website</a>, <a class="reference external" href="https://docs.pgrouting.org">documentation</a>, tutorials, mailing lists and others. If you’re looking for <a class="reference internal" href="#support-commercial"><span class="std std-ref">commercial support</span></a>, find below a list of companies providing pgRouting development and consulting services.</p>
+<p>pgRouting community support is available through the <a class="reference external" href="https://pgrouting.org/support.html">pgRouting website</a>, <a class="reference external" href="https://docs.pgrouting.org">documentation</a>, tutorials, mailing lists and others. If you’re
+looking for <a class="reference internal" href="#support-commercial"><span class="std std-ref">commercial support</span></a>, find below a list of
+companies providing pgRouting development and consulting services.</p>
 <section id="reporting-problems">
 <h2>Reporting Problems<a class="headerlink" href="#reporting-problems" title="Permalink to this heading">¶</a></h2>
 <p>Bugs are reported and managed in an <a class="reference external" href="https://github.com/pgrouting/pgrouting/issues">issue tracker</a>. Please follow these steps:</p>
 <ol class="arabic simple">
-<li><p>Search the tickets to see if your problem has already been reported. If so, add any extra context you might have found, or at least indicate that you too are having the problem. This will help us prioritize common issues.</p></li>
+<li><p>Search the tickets to see if your problem has already been reported. If so,
+add any extra context you might have found, or at least indicate that you too
+are having the problem. This will help us prioritize common issues.</p></li>
 <li><p>If your problem is unreported, create a <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues/new">new issue</a> for it.</p></li>
-<li><p>In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem.</p></li>
-<li><p>If you can test older versions of PostGIS for your problem, please do. On your ticket, note the earliest version the problem appears.</p></li>
-<li><p>For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL.</p></li>
-<li><p>It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem.</p></li>
+<li><p>In your report include explicit instructions to replicate your issue. The
+best tickets include the exact SQL necessary to replicate a problem.</p></li>
+<li><p>If you can test older versions of PostGIS for your problem, please do. On
+your ticket, note the earliest version the problem appears.</p></li>
+<li><p>For the versions where you can replicate the problem, note the operating
+system and version of pgRouting, PostGIS and PostgreSQL.</p></li>
+<li><p>It is recommended to use the following wrapper on the problem to pin point
+the step that is causing the problem.</p></li>
 </ol>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="n">client_min_messages</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">debug</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">code</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">SET</span><span class="w"> </span><span class="n">client_min_messages</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">notice</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SET</span> <span class="n">client_min_messages</span> <span class="n">TO</span> <span class="n">debug</span><span class="p">;</span>
+  <span class="o">&lt;</span><span class="n">your</span> <span class="n">code</span><span class="o">&gt;</span>
+<span class="n">SET</span> <span class="n">client_min_messages</span> <span class="n">TO</span> <span class="n">notice</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -187,15 +191,19 @@
 <li><p>User mailing list: <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/pgrouting-users">https://lists.osgeo.org/mailman/listinfo/pgrouting-users</a></p></li>
 <li><p>Developer mailing list: <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/pgrouting-dev">https://lists.osgeo.org/mailman/listinfo/pgrouting-dev</a></p></li>
 </ul>
-<p>For general questions and topics about how to use pgRouting, please write to the user mailing list.</p>
-<p>You can also ask at <a class="reference external" href="https://gis.stackexchange.com/">GIS StackExchange</a> and tag
-the question with <code class="docutils literal notranslate"><span class="pre">pgrouting</span></code>. Find all questions tagged with <code class="docutils literal notranslate"><span class="pre">pgrouting</span></code>
-under <a class="reference external" href="https://gis.stackexchange.com/questions/tagged/pgrouting">https://gis.stackexchange.com/questions/tagged/pgrouting</a> or subscribe to the
+<p>For general questions and topics about how to use pgRouting, please write to the
+user mailing list.</p>
+<p>You can also ask at <a class="reference external" href="https://gis.stackexchange.com/">GIS StackExchange</a> and
+tag the question with <code class="docutils literal notranslate"><span class="pre">pgrouting</span></code>.
+Find all questions tagged with <code class="docutils literal notranslate"><span class="pre">pgrouting</span></code> under
+<a class="reference external" href="https://gis.stackexchange.com/questions/tagged/pgrouting">https://gis.stackexchange.com/questions/tagged/pgrouting</a> or subscribe to the
 <a class="reference external" href="https://gis.stackexchange.com/feeds/tag?tagnames=pgrouting&amp;sort=newest">pgRouting questions feed</a>.</p>
 </section>
 <section id="commercial-support">
 <span id="support-commercial"></span><h2>Commercial Support<a class="headerlink" href="#commercial-support" title="Permalink to this heading">¶</a></h2>
-<p>For users who require professional support, development and consulting services, consider contacting any of the following organizations, which have significantly contributed to the development of pgRouting:</p>
+<p>For users who require professional support, development and consulting services,
+consider contacting any of the following organizations, which have significantly
+contributed to the development of pgRouting:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 22%" />
@@ -237,8 +245,8 @@ under <a class="reference external" href="https://gis.stackexchange.com/question
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Last updated on Jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Last updated on Jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

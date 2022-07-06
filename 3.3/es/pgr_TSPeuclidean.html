@@ -69,10 +69,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
@@ -95,21 +91,33 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_TSPeuclidean</a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code></a><ul>
 <li><a class="reference internal" href="#description">Descripción</a><ul>
 <li><a class="reference internal" href="#problem-definition">Definición del Problema</a></li>
-<li><a class="reference internal" href="#general-characteristics">Características generales</a></li>
 <li><a class="reference internal" href="#characteristics">Características</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
-<li><a class="reference internal" href="#parameters">Parámetros</a></li>
-<li><a class="reference internal" href="#inner-query">Consulta interna</a><ul>
+<li><a class="reference internal" href="#parameters">Parámetros</a><ul>
+<li><a class="reference internal" href="#tsp-optional-parameters">Parámetros opcionales de TSP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#coordinates-sql">Coordenadas SQL</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#result-columns">Columnas de Resultados</a></li>
-<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a></li>
+<li><a class="reference internal" href="#additional-examples">Ejemplos Adicionales</a><ul>
+<li><a class="reference internal" href="#test-29-cities-of-western-sahara">Prueba 29 ciudades del Sáhara Occidental</a><ul>
+<li><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data">Creación de una tabla para datos y almacenamiento de los datos</a></li>
+<li><a class="reference internal" href="#adding-a-geometry-for-visual-purposes">Agregar una geometría (con fines visuales)</a></li>
+<li><a class="reference internal" href="#total-tour-cost">Costo total del tour</a></li>
+<li><a class="reference internal" href="#getting-a-geometry-of-the-tour">Obtener una geometría del recorrido</a></li>
+<li><a class="reference internal" href="#visual-results">Resultados visuales</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -158,11 +166,16 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_TSPeuclidean.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_TSPeuclidean.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_TSPeuclidean.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_TSPeuclidean.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_TSPeuclidean.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/pgr_TSPeuclidean.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/pgr_TSPeuclidean.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_TSPeuclidean.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/pgr_TSPeuclidean.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_TSPeuclidean.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_eucledianTSP.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_eucledianTSP.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/tsp/doc/pgr_eucledianTSP">2.3</a></p></li>
 </ul>
 <section id="pgr-tspeuclidean">
-<h1>pgr_TSPeuclidean<a class="headerlink" href="#pgr-tspeuclidean" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code><a class="headerlink" href="#pgr-tspeuclidean" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code> - Aproximación usando el algoritmo <em>metric</em>.</p></li>
 </ul>
@@ -177,7 +190,7 @@
 <li><p>Versión 3.2.1</p>
 <ul>
 <li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
-<li><p>El algoritmo de recocido simulado ya no es utilizado.</p>
+<li><p>El algoritmo de recocido simulado ya no es utilizado</p>
 <ul>
 <li><p>Se ignoran los parámetros relacionados con el algoritmo de recocido simulado: <cite>max_processing_time</cite>, <cite>tries_per_temperature</cite>, <cite>max_changes_per_temperature</cite>, <cite>max_consecutive_non_changes</cite>, <cite>initial_temperature</cite>, <cite>final_temperature</cite>, <cite>cooling_factor</cite>, <cite>randomize</cite></p></li>
 </ul>
@@ -200,10 +213,12 @@
 <section id="problem-definition">
 <h3>Definición del Problema<a class="headerlink" href="#problem-definition" title="Permalink to this heading">¶</a></h3>
 <p>En el problema del vendedor viajante (TSP) hace la siguiente pregunta:</p>
-<p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
+<blockquote>
+<div><p><em>Dada una lista de ciudades y las distancias entre cada par de ciudades, que corresponde con la ruta más corta posible que para visite cada ciudad exactamente una vez y regrese a la ciudad de origen?</em></p>
+</div></blockquote>
 </section>
-<section id="general-characteristics">
-<h3>Características generales<a class="headerlink" href="#general-characteristics" title="Permalink to this heading">¶</a></h3>
+<section id="characteristics">
+<h3>Características<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Este problema es un problema de optimización NP-duro.</p></li>
 <li><p>Se utiliza el algoritmo métrico</p></li>
@@ -221,25 +236,24 @@
 </ul>
 </li>
 </ul>
-</section>
-<section id="characteristics">
-<h3>Características<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
 <ul>
-<li><p>No se permiten identificadores duplicados con diferentes coordenadas</p>
+<li><dl class="simple">
+<dt>Cualquier identificador duplicado será ignorado. Las coordenadas que se mantendrán</dt><dd><p>es arbitrario.</p>
+</dd>
+</dl>
 <ul>
-<li><p>Las coordenadas son bastante iguales para el mismo identificador, por ejemplo:</p>
+<li><p>Las coordenadas son bastante similares para el mismo identificador, por ejemplo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">1</span>
 <span class="mi">1</span><span class="p">,</span> <span class="mf">3.499999999999</span> <span class="mf">0.9999999</span>
 </pre></div>
 </div>
 </li>
 <li><p>Las coordenadas son bastante diferentes para el mismo identificador, por ejemplo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.0</span>
-<span class="mi">2</span> <span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">1.1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="mi">2</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">1.1</span>
 </pre></div>
 </div>
 </li>
-<li><p>Cualquier identificador duplicado será ignorado. Las coordenadas que se mantendrán son arbitrarias.</p></li>
 </ul>
 </li>
 </ul>
@@ -248,39 +262,37 @@
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
 <p class="rubric">Resumen</p>
-<div class="highlight-none notranslate" id="index-0"><div class="highlight"><pre><span></span>pgr_TSPeuclidean(Coordinates SQL, [start_id], [end_id])
-RETURNS SETOF (seq, node, cost, agg_cost)
-</pre></div>
-</div>
+<pre class="literal-block" id="index-0">pgr_TSPeuclidean(<a class="reference internal" href="#coordinates-sql">Coordinates SQL</a>, [start id], [end_id])
+RETURNS SETOF (seq, node, cost, agg_cost)</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Con valores predeterminados</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_TSPeuclidean(
-    $$
-    SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr
-    $$);
+  $$
+  SELECT id, st_X(geom) AS x, st_Y(geom)AS y  FROM vertices
+  $$);
  seq | node |      cost      |   agg_cost
 -----+------+----------------+---------------
    1 |    1 |              0 |             0
-   2 |    2 |              1 |             1
-   3 |    8 |  1.41421356237 | 2.41421356237
-   4 |    7 |              1 | 3.41421356237
-   5 |   14 |  1.58113883008 | 4.99535239246
-   6 |   15 |            1.5 | 6.49535239246
-   7 |   13 |            0.5 | 6.99535239246
-   8 |   17 |            1.5 | 8.49535239246
-   9 |   12 |  1.11803398875 | 9.61338638121
-  10 |    9 |              1 | 10.6133863812
-  11 |   16 | 0.583095189485 | 11.1964815707
-  12 |    6 | 0.583095189485 | 11.7795767602
-  13 |   11 |              1 | 12.7795767602
-  14 |   10 |              1 | 13.7795767602
-  15 |    5 |              1 | 14.7795767602
-  16 |    4 |   2.2360679775 | 17.0156447377
-  17 |    3 |              1 | 18.0156447377
-  18 |    1 |  1.41421356237 |    19.4298583
+   2 |    6 |   2.2360679775 |  2.2360679775
+   3 |    5 |              1 |  3.2360679775
+   4 |   10 |  1.41421356237 | 4.65028153987
+   5 |    7 |  1.41421356237 | 6.06449510225
+   6 |    2 |  2.12132034356 | 8.18581544581
+   7 |    9 |  1.58113883008 | 9.76695427589
+   8 |    4 |            0.5 | 10.2669542759
+   9 |   14 |  1.58113883009 |  11.848093106
+  10 |   17 |  1.11803398875 | 12.9661270947
+  11 |   16 |              1 | 13.9661270947
+  12 |   15 |              1 | 14.9661270947
+  13 |   11 |  1.41421356237 | 16.3803406571
+  14 |   13 | 0.583095189485 | 16.9634358466
+  15 |   12 | 0.860232526704 | 17.8236683733
+  16 |    8 |              1 | 18.8236683733
+  17 |    3 |  1.41421356237 | 20.2378819357
+  18 |    1 |              1 | 21.2378819357
 (18 rows)
 
 </pre></div>
@@ -292,31 +304,48 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
-<th class="head"><p>Valores predeterminados</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Coordenadas SQL</strong></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#coordinates-sql">SQL coordenadas</a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
-<td></td>
-<td><p>Una consulta SQL, descrita en la sección <a class="reference internal" href="#coordinates-sql">Coordenadas SQL</a></p></td>
+<td><p><a class="reference internal" href="#coordinates-sql">SQL de coordenadas</a> descritas más adelante</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>start_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+</tbody>
+</table>
+<section id="tsp-optional-parameters">
+<h3>Parámetros opcionales de TSP<a class="headerlink" href="#tsp-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start_id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 <td><p>El primer vértice visitado</p>
 <ul class="simple">
-<li><p>Cuando <cite>0</cite>  cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
+<li><p>Cuando <cite>0</cite> cualquier vértice puede convertirse en el primer vértice visitado.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>end_vid</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_id</span></code></p></td>
+<td><p><strong>ENTEROS</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p>Último vértice visitado antes de regresar a “<code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
+<td><p>Último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p>
 <ul class="simple">
-<li><p>Cuando  <code class="docutils literal notranslate"><span class="pre">0</span></code>  cualquier vértice puede convertirse en el último vértice visitado antes de regresr a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
+<li><p>Cuando <code class="docutils literal notranslate"><span class="pre">0</span></code> cualquier vértice puede convertirse en el último vértice visitado antes de regresar a <code class="docutils literal notranslate"><span class="pre">start_vid</span></code>.</p></li>
 <li><p>Cuando <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">start_vid</span> <span class="pre">=</span> <span class="pre">0</span></code> entonces es el primer y último vértice</p></li>
 </ul>
 </td>
@@ -324,11 +353,12 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tbody>
 </table>
 </section>
-<section id="inner-query">
-<h2>Consulta interna<a class="headerlink" href="#inner-query" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="inner-queries">
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="coordinates-sql">
 <h3>Coordenadas SQL<a class="headerlink" href="#coordinates-sql" title="Permalink to this heading">¶</a></h3>
-<p><strong>Coordenadas SQL</strong>: una consulta SQL, que debe devolver un conjunto de filas con las siguientes columnas:</p>
+<p><strong>Coordinates SQL</strong>: an SQL query, which should return a set of rows with the following columns:</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -339,7 +369,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <tbody>
 <tr class="row-even"><td><p><strong>id</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
-<td><p>Identificador del vértice inicial.</p></td>
+<td><p>Identificador del vértice de salida.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>x</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERICAL</span></code></p></td>
@@ -364,7 +394,7 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>seq</strong></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
 <td><p>Secuencia de filas.</p></td>
 </tr>
@@ -372,19 +402,19 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador del nodo/coordenada/punto.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>cost</strong></p></td>
+<tr class="row-even"><td><p><strong>costo</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code>  en la secuencia de ruta.</p>
+<td><p>Coste que se debe recorrer desde el <code class="docutils literal notranslate"><span class="pre">nodo</span></code> al siguiente <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en la secuencia de ruta.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la última fila de la secuencia del recorrido.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la última fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>agg_cost</strong></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
-<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en  <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
+<td><p>Costo agregado del <code class="docutils literal notranslate"><span class="pre">nodo</span></code> en <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></code> hacia el nodo actual.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>  para la primera fila en la secuencia del recorrido.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> para la primera fila en la secuencia del recorrido.</p></li>
 </ul>
 </td>
 </tr>
@@ -393,13 +423,24 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 </section>
 <section id="additional-examples">
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
-<dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Prueba 29 ciudades del Sáhara Occidental</p>
-</dd>
-</dl>
+<nav class="contents local" id="contenido">
+<ul class="simple">
+<li><p><a class="reference internal" href="#test-29-cities-of-western-sahara" id="id2">Prueba 29 ciudades del Sáhara Occidental</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-table-for-the-data-and-storing-the-data" id="id3">Creación de una tabla para datos y almacenamiento de los datos</a></p></li>
+<li><p><a class="reference internal" href="#adding-a-geometry-for-visual-purposes" id="id4">Agregar una geometría (con fines visuales)</a></p></li>
+<li><p><a class="reference internal" href="#total-tour-cost" id="id5">Costo total del tour</a></p></li>
+<li><p><a class="reference internal" href="#getting-a-geometry-of-the-tour" id="id6">Obtener una geometría del recorrido</a></p></li>
+<li><p><a class="reference internal" href="#visual-results" id="id7">Resultados visuales</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="test-29-cities-of-western-sahara">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Prueba 29 ciudades del Sáhara Occidental</a><a class="headerlink" href="#test-29-cities-of-western-sahara" title="Permalink to this heading">¶</a></h3>
 <p>Este ejemplo muestra cómo hacer pruebas de rendimiento utilizando los <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/countries.html">datos de ejemplo</a> de la Universidad de Waterloo utilizando el conjunto de datos de 29 ciudades del <a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/wi29.tsp">Sáhara Occidental</a></p>
-<p>Creación de una tabla para datos y almacenamiento de los datos</p>
+<section id="creating-a-table-for-the-data-and-storing-the-data">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Creación de una tabla para datos y almacenamiento de los datos</a><a class="headerlink" href="#creating-a-table-for-the-data-and-storing-the-data" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span> <span class="n">BIGINT</span><span class="p">,</span> <span class="n">x</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">y</span> <span class="n">FLOAT</span><span class="p">,</span> <span class="n">geom</span> <span class="n">geometry</span><span class="p">);</span>
 <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">wi29</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">20833.3333</span><span class="p">,</span><span class="mf">17100.0000</span><span class="p">),</span>
@@ -433,10 +474,15 @@ RETURNS SETOF (seq, node, cost, agg_cost)
 <span class="p">(</span><span class="mi">29</span><span class="p">,</span><span class="mf">27462.5000</span><span class="p">,</span><span class="mf">12992.2222</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Agregar una geometría (con fines visuales)</p>
+</section>
+<section id="adding-a-geometry-for-visual-purposes">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Agregar una geometría (con fines visuales)</a><a class="headerlink" href="#adding-a-geometry-for-visual-purposes" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">wi29</span> <span class="n">SET</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">ST_makePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
+</section>
+<section id="total-tour-cost">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Costo total del tour</a><a class="headerlink" href="#total-tour-cost" title="Permalink to this heading">¶</a></h4>
 <p>Al obtener un costo total del recorrido, comparar el valor con la duración de un recorrido óptimo, que es 27603, dado en el conjunto de datos</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT *
 FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$)
@@ -448,7 +494,9 @@ WHERE seq = 30;
 
 </pre></div>
 </div>
-<p>Obtener una geometría del recorrido</p>
+</section>
+<section id="getting-a-geometry-of-the-tour">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Obtener una geometría del recorrido</a><a class="headerlink" href="#getting-a-geometry-of-the-tour" title="Permalink to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WITH
 tsp_results AS (SELECT seq, geom FROM pgr_TSPeuclidean($$SELECT * FROM wi29$$) JOIN wi29 ON (node = id))
 SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
@@ -459,18 +507,23 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
 
 </pre></div>
 </div>
+</section>
+<section id="visual-results">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Resultados visuales</a><a class="headerlink" href="#visual-results" title="Permalink to this heading">¶</a></h4>
 <p>Visualmente, la primera imagen es la “solución óptima”&lt;<a class="reference external" href="https://www.math.uwaterloo.ca/tsp/world/witour.html">https://www.math.uwaterloo.ca/tsp/world/witour.html</a>&gt;`__  y la segunda imagen es la solución obtenida con <code class="docutils literal notranslate"><span class="pre">pgr_TSPeuclidean</span></code>.</p>
 <a class="reference internal image-reference" href="_images/wi29optimal.png"><img alt="_images/wi29optimal.png" src="_images/wi29optimal.png" style="width: 383.5px; height: 311.0px;" /></a>
 <a class="reference internal image-reference" href="_images/wi29Solution.png"><img alt="_images/wi29Solution.png" src="_images/wi29Solution.png" style="width: 357.0px; height: 313.0px;" /></a>
+</section>
+</section>
 </section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Vendedor Viajante - Familia de funciones</span></a></p></li>
-<li><p>Red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
-<li><p>Algoritmo Metrico de la <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Librería Boost</a></p></li>
+<li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
+<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Algoritmo Métrico de la Librería Boost</a></p></li>
 <li><p><a class="reference external" href="https://www.math.uwaterloo.ca/tsp/">Universided de Waterloo TSP</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
+<li><p><a class="reference external" href="https://es.wikipedia.org/wiki/Problema_del_viajante">Wikipedia: Problema del viajante</a></p></li>
 </ul>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
@@ -493,8 +546,8 @@ SELECT ST_MakeLine(ARRAY(SELECT geom FROM tsp_results ORDER BY seq));
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>

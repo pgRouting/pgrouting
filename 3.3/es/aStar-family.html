@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>aStar - Familia de Funciones &#8212; pgRouting Manual (3.3)</title>
+    <title>A* - Familia de Funciones &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -70,10 +70,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">Conceptos de pgRouting</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pgr_full_version.html">pgr_full_version</a></li>
-</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="routingFunctions.html">Familias de Funciones</a></li>
 </ul>
@@ -96,13 +92,16 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">aStar - Familia de Funciones</a><ul>
-<li><a class="reference internal" href="#general-information">Información general</a></li>
-<li><a class="reference internal" href="#advanced-documentation">Documentación avanzada</a><ul>
-<li><a class="reference internal" href="#heuristic">Heurística</a></li>
+<li><a class="reference internal" href="#">A* - Familia de Funciones</a><ul>
+<li><a class="reference internal" href="#description">Descripción</a><ul>
+<li><a class="reference internal" href="#astar-optional-parameters">Parámetros opcionales de aStar</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#advanced-documentation">Documentación avanzada</a><ul>
+<li><a class="reference internal" href="#heuristic">Heurística</a></li>
 <li><a class="reference internal" href="#factor">Factor</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#see-also">Ver también</a></li>
 </ul>
 </li>
@@ -151,11 +150,16 @@
 <div class="line"><br /></div>
 </div>
 <ul class="simple">
-<li><p><strong>*Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/aStar-family.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.3/es/aStar-family.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/aStar-family.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/aStar-family.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/aStar-family.html">3.0</a></p></li>
+<li><p><strong>Supported versions:</strong>
+<a class="reference external" href="https://docs.pgrouting.org/latest/en/aStar-family.html">Latest</a>
+(<a class="reference external" href="https://docs.pgrouting.org/3.3/en/aStar-family.html">3.3</a>)
+<a class="reference external" href="https://docs.pgrouting.org/3.2/en/aStar-family.html">3.2</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.1/en/aStar-family.html">3.1</a>
+<a class="reference external" href="https://docs.pgrouting.org/3.0/en/aStar-family.html">3.0</a></p></li>
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/aStar-family.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/aStar-family.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/aStar-family.html">2.4</a></p></li>
 </ul>
-<section id="astar-family-of-functions">
-<h1>aStar - Familia de Funciones<a class="headerlink" href="#astar-family-of-functions" title="Permalink to this heading">¶</a></h1>
+<section id="a-family-of-functions">
+<h1>A* - Familia de Funciones<a class="headerlink" href="#a-family-of-functions" title="Permalink to this heading">¶</a></h1>
 <p>El algoritmo A * (pronunciado «A estrella») se basa en el algoritmo de Dijkstra con una heurística que permite resolver problemas de ruta más cortos evaluando sólo un subconjunto de la gráfica.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a> - A* Algoritmo para la ruta más corta.</p></li>
@@ -164,24 +168,19 @@
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<section id="general-information">
-<h2>Información general<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
+<section id="description">
+<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
 <p>Las características principales son:</p>
 <ul class="simple">
-<li><p>El tipo predeterminado de grafo es <strong>dirigido</strong> cuando</p>
-<ul>
-<li><p>Falta la el indicador de <code class="docutils literal notranslate"><span class="pre">directed</span></code>.</p></li>
-<li><p>El indicador de <code class="docutils literal notranslate"><span class="pre">directed</span></code> se configura a «true».</p></li>
-</ul>
-</li>
-<li><p>A menos que se especifique lo contrario, la orden es:</p>
+<li><p>Funciona para grafos dirigidos y no dirigidos.</p></li>
+<li><p>Ordenamiento es:</p>
 <ul>
 <li><p>primero por <code class="docutils literal notranslate"><span class="pre">start_vid</span></code> (si existe)</p></li>
-<li><p>luego por  <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
+<li><p>luego por <code class="docutils literal notranslate"><span class="pre">end_vid</span></code></p></li>
 </ul>
 </li>
-<li><p>Los valores se devuelven cuando hay una ruta</p></li>
-<li><p>Permita que  <span class="math notranslate nohighlight">\(v\)</span>  y  <span class="math notranslate nohighlight">\(u\)</span>  sean nodos en el grafo:</p>
+<li><p>Los valores se devuelven cuando hay una ruta.</p></li>
+<li><p>Sean <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> nodos en el grafo:</p>
 <ul>
 <li><p>Si no hay camino de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span>:</p>
 <ul>
@@ -189,7 +188,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de <span class="math notranslate nohighlight">\(v\)</span> a <span class="math notranslate nohighlight">\(u\)</span> es <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
 </ul>
 </li>
-<li><p>No hay camino cuando  <span class="math notranslate nohighlight">\(v = u\)</span>  por lo tanto</p>
+<li><p>No hay camino cuando <span class="math notranslate nohighlight">\(v = u\)</span> por lo tanto</p>
 <ul>
 <li><p>no se devuelve ninguna fila correspondiente</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">agg_cost</span></code> de <cite>v</cite> a <cite>u</cite> es <span class="math notranslate nohighlight">\(0\)</span></p></li>
@@ -197,23 +196,60 @@
 </li>
 </ul>
 </li>
-<li><p>Los bordes con costes negativos no se incluyen en el grafo.</p></li>
 <li><p>Cuando las coordenadas (x,y) para el mismo identificador de vértice difieren:</p>
 <ul>
-<li><p>Se utiliza una selección aleatoria de las coordenadas del vértice (x,y).</p></li>
+<li><p>Se utiliza una selección aleatoria de las coordenadas del vértice <span class="math notranslate nohighlight">\((x,y)\)</span>.</p></li>
 </ul>
 </li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p></li>
 </ul>
+<section id="astar-optional-parameters">
+<h3>Parámetros opcionales de aStar<a class="headerlink" href="#astar-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>x Defecto</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heuristic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTEGER</span></code></p></td>
+<td><p>5</p></td>
+<td><p>Número heurístico. Valores válidos 0~5.</p>
+<ul class="simple">
+<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Utilizar este valor para comparar con pgr_dijkstra)</p></li>
+<li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
+<li><p>2: <span class="math notranslate nohighlight">\(h(v) = abs(min(\Delta x, \Delta y))\)</span></p></li>
+<li><p>3: <span class="math notranslate nohighlight">\(h(v) = \Delta x * \Delta x + \Delta y * \Delta y\)</span></p></li>
+<li><p>4: <span class="math notranslate nohighlight">\(h(v) = sqrt(\Delta x * \Delta x + \Delta y * \Delta y)\)</span></p></li>
+<li><p>5: <span class="math notranslate nohighlight">\(h(v) = abs(\Delta x) + abs(\Delta y)\)</span></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">factor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Para la manipulación de unidades. math:<cite>factor &gt; 0</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">epsilon</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Para resultados menos restringidos. <span class="math notranslate nohighlight">\(epsilon &gt;= 1\)</span>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ver <a class="reference internal" href="#astar-heuristics"><span class="std std-ref">heuristicas</span></a> disponibles y manupulación de <a class="reference internal" href="#astar-factor"><span class="std std-ref">factor</span></a>.</p>
+</section>
 </section>
 <section id="advanced-documentation">
 <h2>Documentación avanzada<a class="headerlink" href="#advanced-documentation" title="Permalink to this heading">¶</a></h2>
-<p>El algoritmo A * (pronunciado «A estrella») se basa en el algoritmo de Dijkstra con un heurística, que es una estimación de los costos desde el vértice al objetivo, esto permite resolver problemas de ruta más cortos evaluando sólo un subconjunto de la gráfica original. Tiempo de ejecución: <span class="math notranslate nohighlight">\(O((E + V) * \log V)\)</span></p>
 <section id="heuristic">
 <span id="astar-heuristics"></span><h3>Heurística<a class="headerlink" href="#heuristic" title="Permalink to this heading">¶</a></h3>
 <p>Actualmente las funciones heurísticas disponibles son:</p>
 <ul class="simple">
-<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Utilizat este valor para comparar con pgr_dijkstra)</p></li>
+<li><p>0: <span class="math notranslate nohighlight">\(h(v) = 0\)</span> (Utilizar este valor para comparar con pgr_dijkstra)</p></li>
 <li><p>1: <span class="math notranslate nohighlight">\(h(v) = abs(max(\Delta x, \Delta y))\)</span></p></li>
 <li><p>2: <span class="math notranslate nohighlight">\(h(v) = abs(min(\Delta x, \Delta y))\)</span></p></li>
 <li><p>3: <span class="math notranslate nohighlight">\(h(v) = \Delta x * \Delta x + \Delta y * \Delta y\)</span></p></li>
@@ -222,14 +258,13 @@
 </ul>
 <p>Donde <span class="math notranslate nohighlight">\(\Delta x = x_1 - x_0\)</span> y <span class="math notranslate nohighlight">\(\Delta y = y_1 - y_0\)</span></p>
 </section>
-</section>
 <section id="factor">
-<span id="astar-factor"></span><h2>Factor<a class="headerlink" href="#factor" title="Permalink to this heading">¶</a></h2>
+<span id="astar-factor"></span><h3>Factor<a class="headerlink" href="#factor" title="Permalink to this heading">¶</a></h3>
 <p class="rubric">Análisis 1</p>
 <p>Trabajando con cost/reverse_cost como longitud en grados, x / y en lat/lon: Factor = 1 (sin necesidad de cambiar unidades)</p>
 <p class="rubric">Análisis 2</p>
 <p>Trabajando con cost/reverse_cost donde la longitud es en metros, x / y es lat/lon: Factor dependere de la ubicación de los puntos:</p>
-<table class="docutils align-default">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Latitud</p></th>
 <th class="head"><p>Conversión</p></th>
@@ -249,7 +284,7 @@
 </table>
 <p class="rubric">Análisis 3</p>
 <p>Trabajando con cost/reverse_cost con el tiempo en segundos, x / y en lat/lon: Factor: que depende de la ubicación de los puntos y en la velocidad promedio, digamos que 25m/s es la velocidad.</p>
-<table class="docutils align-default">
+<table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Latitud</p></th>
 <th class="head"><p>Conversión</p></th>
@@ -268,12 +303,11 @@
 </tbody>
 </table>
 </section>
+</section>
 <section id="see-also">
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="pgr_aStar.html"><span class="doc">pgr_aStar</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_aStarCost.html"><span class="doc">pgr_aStarCost</span></a></p></li>
-<li><p><a class="reference internal" href="pgr_aStarCostMatrix.html"><span class="doc">pgr_aStarCostMatrix</span></a></p></li>
+<li><p><a class="reference internal" href="bdAstar-family.html"><span class="doc">A* Bidireccional - Familia de Funciones</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/astar_search.html">https://www.boost.org/libs/graph/doc/astar_search.html</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/A*_search_algorithm">https://en.wikipedia.org/wiki/A*_search_algorithm</a></p></li>
 </ul>
@@ -298,8 +332,8 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jun 13, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.1.<br/>
+      Actualizado por última vez en jul 06, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
 </footer>
