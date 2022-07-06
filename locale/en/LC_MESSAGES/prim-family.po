@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Boost Graph Inside"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4 ../../build/doc/prim-family.rst:46
+#: ../../build/doc/pgRouting-concepts.rst:11 ../../build/doc/prim-family.rst:46
 msgid "Description"
 msgstr ""
 
@@ -80,128 +80,122 @@ msgstr ""
 msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:66
-msgid "It's implementation is only on **undirected graph**."
+#: ../../build/doc/spanningTree-family.rst:3
+msgid "It's implementation is only on **undirected** graph."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:67
+#: ../../build/doc/spanningTree-family.rst:4
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:68
+#: ../../build/doc/spanningTree-family.rst:5
 msgid "When the graph is connected"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:70
+#: ../../build/doc/spanningTree-family.rst:7
 msgid "The resulting edges make up a tree"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:72
+#: ../../build/doc/spanningTree-family.rst:9
 msgid "When the graph is not connected,"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:74
+#: ../../build/doc/spanningTree-family.rst:11
 msgid "Finds a minimum spanning tree for each connected component."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:75
+#: ../../build/doc/spanningTree-family.rst:12
 msgid "The resulting edges make up a forest."
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:77
-msgid "Prim's running time: :math:`O(E*log V)`"
+#: ../../build/doc/prim-family.rst:70
+msgid "Prim's running time: :math:`O(E * log V)`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:82
+#: ../../build/doc/prim-family.rst:75
 msgid ""
 "From boost Graph: \"The algorithm as implemented in Boost.Graph does not "
 "produce correct results on graphs with parallel edges.\""
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:86
-msgid "Inner query"
+#: ../../build/doc/prim-family.rst:80
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:10
 msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**id**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "Identifier of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**target**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Weight of the edge  `(source, target)`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "-1"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "Weight of the edge `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
-msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
@@ -209,48 +203,48 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:93
+#: ../../build/doc/prim-family.rst:87
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:95
+#: ../../build/doc/prim-family.rst:89
 msgid ":doc:`spanningTree-family`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:96
+#: ../../build/doc/prim-family.rst:90
 msgid ""
-"`Boost: Prim's algorithm documentation "
+"Boost: `Prim's algorithm "
 "<https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:97
+#: ../../build/doc/prim-family.rst:92
 #, python-format
 msgid ""
-"`Wikipedia: Prim's algorithm "
+"Wikipedia: `Prim's algorithm "
 "<https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:100
+#: ../../build/doc/prim-family.rst:96
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:101
+#: ../../build/doc/prim-family.rst:97
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/prim-family.rst:102
+#: ../../build/doc/prim-family.rst:98
 msgid ":ref:`search`"
 msgstr ""
 

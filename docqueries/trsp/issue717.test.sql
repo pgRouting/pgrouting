@@ -31,14 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 -- directed  with reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     -- array of vids
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
+    ARRAY[6, 1, 12]::INTEGER[],     -- array of vids
     true,  -- directed graph?
     true  -- has_reverse_cost?
 );
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     true,  -- directed graph?
@@ -47,7 +47,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     true,  -- directed graph?
@@ -56,7 +56,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     true,  -- directed graph?
@@ -68,14 +68,14 @@ SELECT * FROM pgr_trspViaEdges(
 -- directed  without reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     -- array of vids
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
+    ARRAY[6, 1, 12]::INTEGER[],     -- array of vids
     true,  -- directed graph?
     false  -- has_reverse_cost?
 );
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     true,  -- directed graph?
@@ -84,7 +84,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     true,  -- directed graph?
@@ -93,7 +93,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     true,  -- directed graph?
@@ -106,14 +106,14 @@ SELECT * FROM pgr_trspViaEdges(
 -- undirected  with reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     -- array of vids
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
+    ARRAY[6, 1, 12]::INTEGER[],     -- array of vids
     false,  -- directed graph?
     true  -- has_reverse_cost?
 );
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     false,  -- directed graph?
@@ -122,7 +122,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     false,  -- directed graph?
@@ -131,7 +131,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     false,  -- directed graph?
@@ -143,14 +143,14 @@ SELECT * FROM pgr_trspViaEdges(
 -- undirected  without reverse_cost
 -------------------------------------
 SELECT * FROM pgr_trspViaVertices(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
-    ARRAY[2, 7, 11]::INTEGER[],     -- array of vids
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
+    ARRAY[6, 1, 12]::INTEGER[],     -- array of vids
     false,  -- directed graph?
     false  -- has_reverse_cost?
 );
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[4,6,11]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     false,  -- directed graph?
@@ -159,7 +159,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     false,  -- directed graph?
@@ -168,7 +168,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 
 SELECT * FROM pgr_trspViaEdges(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edges',
     ARRAY[1,11,6]::INTEGER[],           -- array of eids
     ARRAY[0.5, 0.5, 0.5]::float8[],     -- array of pcts
     false,  -- directed graph?

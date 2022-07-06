@@ -17,7 +17,8 @@
 pgr_lengauerTarjanDominatorTree -Experimental
 ===============================================================================
 
-``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all vertices.
+``pgr_lengauerTarjanDominatorTree`` — Returns the immediate dominator of all
+vertices.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm
@@ -37,7 +38,9 @@ pgr_lengauerTarjanDominatorTree -Experimental
 
 Description
 -------------------------------------------------------------------------------
-The algorithm calculates the *immidiate dominator* of each vertex called **idom**, once **idom** of each vertex is calculated then by making every **idom** of each vertex as its parent, the dominator tree can be built.
+The algorithm calculates the *immidiate dominator* of each vertex called
+**idom**, once **idom** of each vertex is calculated then by making every
+**idom** of each vertex as its parent, the dominator tree can be built.
 
 **The main Characteristics are:**
 
@@ -52,9 +55,9 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: sql
+.. parsed-literal::
 
-    pgr_lengauerTarjanDominatorTree(Edges SQL, root vertex)
+    pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)
     RETURNS SET OF (seq, vertex_id, idom)
     OR EMPTY SET
 
@@ -63,7 +66,7 @@ Signatures
     single: lengauerTarjanDominatorTree - Experimental on v3.2
 
 
-:Example: The lengauerTarjanDominatorTree with root vertex :math:`1`
+:Example: The dominator tree with root vertex :math:`5`
 
 .. literalinclude:: doc-lengauerTarjanDominatorTree.queries
    :start-after: --q1
@@ -80,8 +83,11 @@ Column          Type           Description
 =============== ============ =================================================
 
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
@@ -90,7 +96,7 @@ Inner query
 Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(seq, vertex_id,idom)``
+Returns set of ``(seq, vertex_id, idom)``
 
 ============== =========== =================================================
 Column         Type        Description
@@ -101,12 +107,9 @@ Column         Type        Description
 ============== =========== =================================================
 
 Additional Examples
-------------------------------------------------------------------------------------------
-The examples in this section use the following :ref:`fig1`
+-------------------------------------------------------------------------------
 
-:Example: When the edge is disonnectd from graph then it will returns immidiate dominator of all other vertex as zero.
-
-
+:Example: Dominator tree of another component.
 
 .. literalinclude:: doc-lengauerTarjanDominatorTree.queries
     :start-after: --q2
@@ -115,9 +118,11 @@ The examples in this section use the following :ref:`fig1`
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: lengauerTarjanDominatorTree algorithm documentation <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__
-* `Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__
-* :doc:`sampledata` network.
+* :doc:`sampledata`
+* `Boost: Lengauer-Tarjan dominator tree algorithm
+  <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__
+* `Wikipedia: dominator tree
+  <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__
 
 .. rubric:: Indices and tables
 

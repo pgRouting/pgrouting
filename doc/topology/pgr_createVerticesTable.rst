@@ -27,7 +27,8 @@
 pgr_createVerticesTable
 ===============================================================================
 
-``pgr_createVerticesTable`` — Reconstructs the vertices table based on the source and target information.
+``pgr_createVerticesTable`` — Reconstructs the vertices table based on the
+source and target information.
 
 .. rubric:: Availability
 
@@ -47,7 +48,7 @@ The function returns:
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: sql
+.. parsed-literal::
 
 	pgr_createVerticesTable(edge_table, the_geom, source, target, rows_where)
     RETURNS VARCHAR
@@ -55,19 +56,25 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-The reconstruction of the vertices table  function accepts the following parameters:
+The reconstruction of the vertices table  function accepts the following
+parameters:
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
-:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.
-:source: ``text`` Source column name of the network table. Default value is ``source``.
-:target: ``text``  Target column name of the network table.  Default value is ``target``.
-:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows.
+:the_geom: ``text``  Geometry column name of the network table. Default value is
+           ``the_geom``.
+:source: ``text`` Source column name of the network table. Default value is
+         ``source``.
+:target: ``text``  Target column name of the network table.  Default value is
+         ``target``.
+:rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is
+             ``true`` to indicate all rows.
 
 .. warning::
 
     The ``edge_table`` will be affected
 
-    - An index will be created, if it doesn't exists, to speed up the process to the following columns:
+    - An index will be created, if it doesn't exists, to speed up the process to
+      the following columns:
 
       * ``the_geom``
       * ``source``
@@ -78,26 +85,33 @@ The function returns:
 - ``OK`` after the vertices table has been reconstructed.
 
   * Creates a vertices table: <edge_table>_vertices_pgr.
-  * Fills ``id`` and ``the_geom`` columns of the vertices table based on the source and target columns of the edge table.
+  * Fills ``id`` and ``the_geom`` columns of the vertices table based on the
+    source and target columns of the edge table.
 
 - ``FAIL`` when the vertices table was not reconstructed due to an error.
 
-  * A required column of the Network table is not found or is not of the appropriate type.
+  * A required column of the Network table is not found or is not of the
+    appropriate type.
   * The condition is not well formed.
   * The names of source, target are the same.
   * The SRID of the geometry could not be determined.
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requierment of the :doc:`pgr_analyzeGraph <pgr_analyzeGraph>` and the :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>` functions.
+The vertices table is a requierment of the :doc:`pgr_analyzeGraph` and the
+:doc:`pgr_analyzeOneWay` functions.
 
 The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
-:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`.
-:chk: ``integer``  Indicator that the vertex might have a problem. See :doc:`pgr_analyzeGraph <pgr_analyzeGraph>`.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :doc:`pgr_analyzeOneWay <pgr_analyzeOneWay>`.
+:cnt: ``integer`` Number of vertices in the edge_table that reference this
+      vertex. See :doc:`pgr_analyzeGraph`.
+:chk: ``integer``  Indicator that the vertex might have a problem. See
+      :doc:`pgr_analyzeGraph`.
+:ein: ``integer`` Number of vertices in the edge_table that reference this
+      vertex as incoming. See :doc:`pgr_analyzeOneWay`.
+:eout: ``integer`` Number of vertices in the edge_table that reference this
+       vertex as outgoing. See :doc:`pgr_analyzeOneWay`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 :Example 1: The simplest way to use pgr_createVerticesTable
@@ -120,7 +134,11 @@ Additional Examples
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  An error would occur when the arguments are not given in the appropriate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column.
+.. warning::
+   An error would occur when the arguments are not given in the appropriate
+   order: In this example, the column source column ``source`` of the table
+   ``mytable`` is passed to the function as the geometry column, and the
+   geometry column ``the_geom`` is passed to the function as the source column.
 
    .. literalinclude:: doc-pgr_createVerticesTable.queries
       :start-after: --q2.1
@@ -142,7 +160,8 @@ We get the same result as the simplest way to use the function.
    :end-before: --q4.1
 
 
-:Example 5: Parameters defined with a default value can be omitted, as long as the value matches the default:
+:Example 5: Parameters defined with a default value can be omitted, as long as
+            the value matches the default:
 
 .. literalinclude:: doc-pgr_createVerticesTable.queries
    :start-after: --q5
@@ -158,14 +177,16 @@ We get the same result as the simplest way to use the function.
    :end-before: --q6.1
 
 
-:Example 7: Selecting the rows where the geometry is near the geometry of row with ``id`` =5 .
+:Example 7: Selecting the rows where the geometry is near the geometry of row
+            with ``id`` =5 .
 
 .. literalinclude:: doc-pgr_createVerticesTable.queries
    :start-after: --q7
    :end-before: --q7.1
 
 
-:Example 8: Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
+:Example 8: Selecting the rows where the geometry is near the geometry of the
+            row with ``gid`` =100 of the table ``othertable``.
 
 .. literalinclude:: doc-pgr_createVerticesTable.queries
    :start-after: --q8
@@ -189,7 +210,11 @@ Using the following table
    :start-after: --q9
    :end-before: --q9.1
 
-.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``src`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``mygeom`` is passed to the function as the source column.
+.. warning::
+   An error would occur when the arguments are not given in the appropriate
+   order: In this example, the column ``src`` of the table ``mytable`` is passed
+   to the function as the geometry column, and the geometry column ``mygeom`` is
+   passed to the function as the source column.
 
     .. literalinclude:: doc-pgr_createVerticesTable.queries
        :start-after: --q9.1
@@ -205,7 +230,8 @@ Using the following table
 
 :Example 11: Using a different ordering
 
-In this scenario omitting a parameter would create an error because the default values for the column names do not match the column names of the table.
+In this scenario omitting a parameter would create an error because the default
+values for the column names do not match the column names of the table.
 
 .. literalinclude:: doc-pgr_createVerticesTable.queries
    :start-after: --q11
@@ -226,7 +252,8 @@ In this scenario omitting a parameter would create an error because the default 
    :start-after: --q13
    :end-before: --q13.1
 
-:Example 14: Selecting the rows where the geometry is near the geometry of row with ``gid`` = 5.
+:Example 14: Selecting the rows where the geometry is near the geometry of row
+             with ``gid`` = 5.
 
 .. literalinclude:: doc-pgr_createVerticesTable.queries
    :start-after: --q14
@@ -239,7 +266,8 @@ In this scenario omitting a parameter would create an error because the default 
    :start-after: --q15
    :end-before: --q15.1
 
-:Example 16: Selecting the rows where the geometry is near the geometry of the row with ``gid`` =100 of the table ``othertable``.
+:Example 16: Selecting the rows where the geometry is near the geometry of the
+             row with ``gid`` =100 of the table ``othertable``.
 
 .. literalinclude:: doc-pgr_createVerticesTable.queries
    :start-after: --q16
@@ -260,8 +288,10 @@ The example uses the :doc:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :doc:`topology-functions`  for an overview of a topology for routing algorithms.
-* :doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based on the geometry.
+* :doc:`topology-functions`  for an overview of a topology for routing
+  algorithms.
+* :doc:`pgr_createTopology` <pgr_create_topology>` to create a topology based on
+  the geometry.
 * :doc:`pgr_analyzeGraph` to analyze the edges and vertices of the edge table.
 * :doc:`pgr_analyzeOneWay` to analyze directionality of the edges.
 

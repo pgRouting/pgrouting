@@ -16,8 +16,8 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_chinesePostman.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_chinesePostman.html>`__
 
-pgr_chinesePostman - Experimental
-============================================
+``pgr_chinesePostman`` - Experimental
+===============================================================================
 
 ``pgr_chinesePostman`` — Calculates the shortest circuit path which contains
 every edge in a directed graph and starts and ends on the same vertex.
@@ -30,8 +30,7 @@ every edge in a directed graph and starts and ends on the same vertex.
 
 * Version 3.0.0
 
-  * New **experimental** function
-
+  * New **experimental** signature
 
 Description
 -------------------------------------------------------------------------------
@@ -48,9 +47,9 @@ Signatures
 .. index::
     single: chinesePostman - Experimental on v3.0
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_chinesePostman(edges_sql)
+    pgr_chinesePostman(`Edges SQL`_)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -63,42 +62,55 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: chinesePostmanProblem-family.rst
-    :start-after: parameters-start
-    :end-before: parameters-end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: chinesePostmanProblem-family.rst
     :start-after: inner_query-start
     :end-before: inner_query-end
 
-
 Result Columns
 -------------------------------------------------------------------------------
 
 Returns set of ``(seq, node, edge, cost, agg_cost)``
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
-============== ========== =================================================
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
 
+   * - Column
+     - Type
+     - Description
+   * - ``seq``
+     - ``INT``
+     - Sequential value starting from ``1``
+   * - ``node``
+     - ``BIGINT``
+     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+   * - ``edge``
+     - ``BIGINT``
+     - Identifier of the edge used to go from ``node`` to the next node in
+       the path sequence. ``-1`` for the last node of the path.
+   * - ``cost``
+     - ``FLOAT``
+     - Cost to traverse from ``node`` using ``edge`` to the next node in the
+       path sequence.
+   * - ``agg_cost``
+     - ``FLOAT``
+     - Aggregate cost from ``start_v`` to ``node``.
 
 See Also
 -------------------------------------------------------------------------------
 
 * :doc:`chinesePostmanProblem-family`
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

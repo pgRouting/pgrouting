@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 16:45+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,35 +71,32 @@ msgid ""
 "and returns to the origin city?*"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:61
+#: ../../build/doc/TSP-family.rst:62
 msgid "Origin"
 msgstr ""
 
 #: ../../build/doc/TSP-family.rst:64
 msgid ""
 "The traveling sales person problem was studied in the 18th century by "
-"mathematicians"
+"mathematicians **Sir William Rowam Hamilton** and **Thomas Penyngton "
+"Kirkman**."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:64
-msgid "**Sir William Rowam Hamilton** and **Thomas Penyngton Kirkman**."
-msgstr ""
-
-#: ../../build/doc/TSP-family.rst:66
+#: ../../build/doc/TSP-family.rst:67
 msgid ""
 "A discussion about the work of Hamilton & Kirkman can be found in the "
 "book **Graph Theory (Biggs et  al. 1976)**."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:69
+#: ../../build/doc/TSP-family.rst:70
 msgid "ISBN-13: 978-0198539162"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:70
+#: ../../build/doc/TSP-family.rst:71
 msgid "ISBN-10: 0198539169"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:72
+#: ../../build/doc/TSP-family.rst:73
 msgid ""
 "It is believed that the general form of the TSP have been first studied "
 "by Kalr Menger in Vienna and Harvard. The problem was later promoted by "
@@ -109,117 +106,175 @@ msgid ""
 "<https://homepages.cwi.nl/~lex/files/histco.ps>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:77
+#: ../../build/doc/TSP-family.rst:80
 msgid "To calculate the number of different tours through :math:`n` cities:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:79
+#: ../../build/doc/TSP-family.rst:82
 msgid "Given a starting city,"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:80
+#: ../../build/doc/TSP-family.rst:83
 msgid "There are :math:`n-1` choices for the second city,"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:81
+#: ../../build/doc/TSP-family.rst:84
 msgid "And  :math:`n-2` choices for the third city, etc."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:82
+#: ../../build/doc/TSP-family.rst:85
 msgid "Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:83
+#: ../../build/doc/TSP-family.rst:86
 msgid ""
 "Now since the travel costs do not depend on the direction taken around "
 "the tour:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:85
+#: ../../build/doc/TSP-family.rst:89
 msgid "this number by 2"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:86
+#: ../../build/doc/TSP-family.rst:90
 msgid ":math:`(n-1)!/2`."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:91
-msgid "General Characteristics"
+#: ../../build/doc/TSP-family.rst:95
+msgid "Characteristics"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:93
+#: ../../build/doc/TSP-family.rst:97
 msgid "This problem is an NP-hard optimization problem."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:94
+#: ../../build/doc/TSP-family.rst:98
 msgid "Metric Algorithm is used"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:95
+#: ../../build/doc/TSP-family.rst:99
 msgid ""
 "Implementation generates solutions that *are twice as long as the optimal"
 " tour in the worst case* when:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:97
+#: ../../build/doc/TSP-family.rst:102
 msgid "Graph is undirected"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:98
+#: ../../build/doc/TSP-family.rst:103
 msgid "Graph is fully connected"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:99
+#: ../../build/doc/TSP-family.rst:104
 msgid "Graph where traveling costs on edges obey the triangle inequality."
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:101
+#: ../../build/doc/TSP-family.rst:106
 msgid "On an undirected graph:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:103
+#: ../../build/doc/TSP-family.rst:108
 msgid "The traveling costs are symmetric:"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:104
+#: ../../build/doc/TSP-family.rst:109
 msgid ""
-"Traveling costs from ``u`` to ``v`` are just as much as traveling from  "
+"Traveling costs from ``u`` to ``v`` are just as much as traveling from "
 "``v`` to ``u``"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:111
+#: ../../build/doc/TSP-family.rst:115
+msgid "TSP optional parameters"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:124
+msgid "Column"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:125
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:126
+msgid "Default"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:127
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:128
+msgid "``start_id``"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:129 ../../build/doc/TSP-family.rst:136
+msgid "**ANY-INTEGER**"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:130 ../../build/doc/TSP-family.rst:137
+msgid "``0``"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:131
+msgid "The first visiting vertex"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:133
+msgid "When `0` any vertex can become the first visiting vertex."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:135
+msgid "``end_id``"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:138
+msgid "Last visiting vertex before returning to ``start_vid``."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:140
+msgid ""
+"When ``0`` any vertex can become the last visiting vertex before "
+"returning to ``start_id``."
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:142
+msgid "When ``NOT 0`` and ``start_id = 0`` then it is the first and last vertex"
+msgstr ""
+
+#: ../../build/doc/TSP-family.rst:148
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:114
+#: ../../build/doc/TSP-family.rst:151
 msgid "References"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:115
+#: ../../build/doc/TSP-family.rst:152
 msgid ""
-"Metric Algorithm from `Boost library "
+"`Boost's metric appro's metric approximation "
 "<https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:116
+#: ../../build/doc/TSP-family.rst:154
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:117
+#: ../../build/doc/TSP-family.rst:155
 msgid ""
 "`Wikipedia: Traveling Salesman Problem "
 "<https://en.wikipedia.org/wiki/Traveling_salesman_problem>`__"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:120
+#: ../../build/doc/TSP-family.rst:159
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:121
+#: ../../build/doc/TSP-family.rst:160
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/TSP-family.rst:122
+#: ../../build/doc/TSP-family.rst:161
 msgid ":ref:`search`"
 msgstr ""
 

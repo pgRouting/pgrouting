@@ -2,29 +2,29 @@
 # Copyright (C) pgRouting Contributors - Version v3.2.0-dev
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # 0a3886ca72a6d508a04563bd8c050dff, 2020
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.2.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
-"PO-Revision-Date: 2020-11-04 18:32+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
+"PO-Revision-Date: 2022-07-03 03:28+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_pushrelabel/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_pushRelabel.rst:12
+#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_pushRelabel.html>`__ (`3.3 "
@@ -55,68 +55,71 @@ msgstr ""
 "<https://docs.pgrouting.org/2.3/en/src/max_flow/doc/pgr_maxFlowPushRelabel.html>`__"
 
 #: ../../build/doc/pgr_pushRelabel.rst:25
-msgid "pgr_pushRelabel"
-msgstr "pgr_pushRelabel"
+msgid "``pgr_pushRelabel``"
+msgstr "``pgr_pushRelabel``"
 
 #: ../../build/doc/pgr_pushRelabel.rst:27
 msgid ""
-"``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes "
-"the flow from the sources to the targets using Push Relabel Algorithm."
+"``pgr_pushRelabel`` — Calculates the flow on the graph edges that "
+"maximizes the flow from the sources to the targets using Push Relabel "
+"Algorithm."
 msgstr ""
-"``pgr_pushRelabel`` — Calcula el flujo en los bordes del grafo que maximiza "
-"el flujo de los orígenes a los destinos mediante el Algoritmo Push Relabel."
+"``pgr_pushRelabel`` — Calcula el flujo en los bordes del grafo que "
+"maximiza el flujo de los orígenes a los destinos mediante el Algoritmo "
+"Push Relabel."
 
-#: ../../build/doc/pgr_pushRelabel.rst:32
+#: ../../build/doc/pgr_pushRelabel.rst:33
 msgid "Boost Graph Inside"
 msgstr "Adentro: Boost Graph"
 
-#: ../../build/doc/pgr_pushRelabel.rst:35
+#: ../../build/doc/pgr_pushRelabel.rst:36
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: ../../build/doc/pgr_pushRelabel.rst:36
+#: ../../build/doc/pgr_pushRelabel.rst:37
 msgid "Version 3.2.0"
 msgstr "Versión 3.2.0"
 
-#: ../../build/doc/pgr_pushRelabel.rst:38
-msgid "New **proposed** function:"
-msgstr "Nueva función **propuesta**:"
+#: ../../build/doc/pgr_pushRelabel.rst:39
+msgid "New **proposed** signature"
+msgstr "Nueva función **propuesta**"
 
-#: ../../build/doc/pgr_pushRelabel.rst:40
-msgid "pgr_pushRelabel(Combinations)"
-msgstr "pgr_pushRelabel(Combinaciones)"
+#: ../../build/doc/pgr_pushRelabel.rst:41
+msgid "``pgr_pushRelabel`` (`Combinations`_)"
+msgstr "``pgr_pushRelabel`` (`Combinaciones`_)"
 
-#: ../../build/doc/pgr_pushRelabel.rst:42
+#: ../../build/doc/pgr_pushRelabel.rst:43
 msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
-#: ../../build/doc/pgr_pushRelabel.rst:44
+#: ../../build/doc/pgr_pushRelabel.rst:45
 msgid "**Official** function"
 msgstr "Función **oficial**"
 
-#: ../../build/doc/pgr_pushRelabel.rst:46
+#: ../../build/doc/pgr_pushRelabel.rst:47
 msgid "Version 2.5.0"
 msgstr "Versión 2.5.0"
 
-#: ../../build/doc/pgr_pushRelabel.rst:48
+#: ../../build/doc/pgr_pushRelabel.rst:49
 msgid "Renamed from ``pgr_maxFlowPushRelabel``"
 msgstr "Renombrado de ``pgr_maxFlowPushRelabel``"
 
-#: ../../build/doc/pgr_pushRelabel.rst:49
+#: ../../build/doc/pgr_pushRelabel.rst:50
 msgid "**Proposed** function"
 msgstr "Función **propuesta**"
 
-#: ../../build/doc/pgr_pushRelabel.rst:51
+#: ../../build/doc/pgr_pushRelabel.rst:52
 msgid "Version 2.3.0"
 msgstr "Versión 2.3.0"
 
-#: ../../build/doc/pgr_pushRelabel.rst:53
+#: ../../build/doc/pgr_pushRelabel.rst:54
 msgid "New **Experimental** function"
 msgstr "Nueva función **Experimental**"
 
-#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
-#: ../../build/doc/pgr_pushRelabel.rst:57
+#: ../../build/doc/dijkstra-family.rst:10 ../../build/doc/flow-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgr_pushRelabel.rst:58
 msgid "Description"
 msgstr "Descripción"
 
@@ -140,64 +143,63 @@ msgstr ""
 "Cuando el flujo máximo es 0 entonces no hay flujo, se devolverá: **EMPTY "
 "SET**."
 
-#: ../../build/doc/flow-family.rst:9
+#: ../../build/doc/flow-family.rst:10
 msgid "There is no flow when a **source** is the same as a **target**."
-msgstr ""
-"No hay ningún flujo cuando el  **orígen** es el mismo que el **destino**."
-
-#: ../../build/doc/flow-family.rst:11
-msgid "Any duplicated value in the source(s) or target(s) are ignored."
-msgstr ""
-"Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) será "
-"ignorado."
+msgstr "No hay ningún flujo cuando el **orígen** es el mismo que el **destino**."
 
 #: ../../build/doc/flow-family.rst:12
+msgid "Any duplicated value in the source(s) or target(s) are ignored."
+msgstr ""
+"Cualquier valor duplicado en el/los orígen(es) o en el/los destino(s) "
+"será ignorado."
+
+#: ../../build/doc/flow-family.rst:13
 msgid "Calculates the flow/residual capacity for each edge. In the output"
 msgstr "Calcula la capacidad de flujo/residuo para cada arista. En la salida"
 
-#: ../../build/doc/flow-family.rst:14
+#: ../../build/doc/flow-family.rst:15
 msgid "Edges with zero flow are omitted."
 msgstr "Se omiten las aristas con flujo cero."
 
-#: ../../build/doc/flow-family.rst:16
+#: ../../build/doc/flow-family.rst:17
 msgid ""
 "Creates a **super source** and edges to all the source(s), and a **super "
 "target** and the edges from all the targets(s)."
 msgstr ""
-"Crea una **súper origen**, con aristas para todos los orígenes, y un **súper"
-" destino** con aristas para todos los destinos."
-
-#: ../../build/doc/flow-family.rst:17
-msgid ""
-"The maximum flow through the graph is guaranteed to be the value returned by"
-" :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and"
-" can be calculated:"
-msgstr ""
-"Se garantiza que el flujo máximo a través del grafo es el valor devuelto por"
-"  :doc:`pgr_maxFlow <pgr_maxFlow>` cuando es ejecutado con los mismos "
-"parámetros y se puede calcular:"
+"Crea una **súper origen**, con aristas para todos las fuentes(es), y un "
+"**súper destino** con aristas para todos los destino(s)."
 
 #: ../../build/doc/flow-family.rst:19
+msgid ""
+"The maximum flow through the graph is guaranteed to be the value returned"
+" by :doc:`pgr_maxFlow <pgr_maxFlow>` when executed with the same "
+"parameters and can be calculated:"
+msgstr ""
+"Se garantiza que el flujo máximo a través del grafo es el valor devuelto "
+"por :doc:`pgr_maxFlow <pgr_maxFlow>` cuando es ejecutado con los mismos "
+"parámetros y se puede calcular:"
+
+#: ../../build/doc/flow-family.rst:23
 msgid "By aggregation of the outgoing flow from the sources"
-msgstr "Mediante la agregación del flujo saliente de los orígenes"
+msgstr "Mediante la suma de los flujos salientes de las fuentes"
 
-#: ../../build/doc/flow-family.rst:20
+#: ../../build/doc/flow-family.rst:24
 msgid "By aggregation of the incoming flow to the targets"
-msgstr "Mediante la agregación del flujo entrante a los destinos"
+msgstr "Mediante la suma de los flujos llegantes a los destinos"
 
-#: ../../build/doc/pgr_pushRelabel.rst:63
+#: ../../build/doc/pgr_pushRelabel.rst:64
 msgid "Running time: :math:`O( V ^ 3)`"
 msgstr "Tiempo de ejecución: :math:`O( V ^ 3)`"
 
-#: ../../build/doc/pgr_pushRelabel.rst:66
+#: ../../build/doc/pgr_pushRelabel.rst:67
 msgid "Signatures"
 msgstr "Firmas"
 
-#: ../../build/doc/pgr_pushRelabel.rst:69
+#: ../../build/doc/pgr_pushRelabel.rst:70
 msgid "Summary"
 msgstr "Resumen"
 
-#: ../../build/doc/pgr_pushRelabel.rst:84
+#: ../../build/doc/pgr_pushRelabel.rst:85
 msgid "One to One"
 msgstr "Uno a Uno"
 
@@ -205,255 +207,256 @@ msgstr "Uno a Uno"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ../../build/doc/pgr_pushRelabel.rst:92
-msgid "From vertex :math:`6` to vertex :math:`11`"
-msgstr "Del vértice :math:`6` al vértice :math:`11`"
+#: ../../build/doc/pgr_pushRelabel.rst:93
+msgid "From vertex :math:`11` to vertex :math:`12`"
+msgstr "Del vértice :math:`11` al vértice :math:`12`"
 
-#: ../../build/doc/pgr_pushRelabel.rst:102
+#: ../../build/doc/pgr_pushRelabel.rst:103
 msgid "One to Many"
 msgstr "Uno a Muchos"
 
-#: ../../build/doc/pgr_pushRelabel.rst:104
-msgid ""
-"Calculates the flow on the graph edges that maximizes the flow from the "
-"`source` to all of the `targets`."
-msgstr ""
-"Calcula el flujo en los bordes del gráfico que maximiza el flujo desde el "
-"`origen` a todos los `objetivos`."
+#: ../../build/doc/pgr_pushRelabel.rst:111
+msgid "From vertex :math:`11` to vertices :math:`\\{5, 10, 12\\}`"
+msgstr "Desde el vértice :math:`11` a los vértices :math:`\\{5, 10, 12\\}`"
 
-#: ../../build/doc/pgr_pushRelabel.rst:112
-msgid "From vertex :math:`6` to vertices :math:`\\{11, 1, 13\\}`"
-msgstr "Del vértice :math:`6` a los vértices :math:`\\{11, 1, 13\\}`"
-
-#: ../../build/doc/pgr_pushRelabel.rst:122
+#: ../../build/doc/pgr_pushRelabel.rst:121
 msgid "Many to One"
 msgstr "Muchos a Uno"
 
-#: ../../build/doc/pgr_pushRelabel.rst:130
-msgid "From vertices :math:`\\{6, 8, 12\\}` to vertex :math:`11`"
-msgstr "De los vértices vertices :math:`\\{6, 8, 12\\}` al vértice :math:`11`"
+#: ../../build/doc/pgr_pushRelabel.rst:129
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertex :math:`12`"
+msgstr "De los vértices vertices :math:`\\{11, 3, 17\\}` al vértice :math:`12`"
 
-#: ../../build/doc/pgr_pushRelabel.rst:140
+#: ../../build/doc/pgr_pushRelabel.rst:139
 msgid "Many to Many"
 msgstr "Muchos a Muchos"
 
-#: ../../build/doc/pgr_pushRelabel.rst:148
-msgid "From vertices :math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`"
-msgstr "De los vértices :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, 11\\}`"
+#: ../../build/doc/pgr_pushRelabel.rst:147
+msgid "From vertices :math:`\\{11, 3, 17\\}` to vertices :math:`\\{5, 10, 12\\}`"
+msgstr ""
+"De los vértices :math:`\\{11, 3, 17\\}` a los vértices :math:`\\{5, 10, "
+"12\\}`"
 
-#: ../../build/doc/pgr_pushRelabel.rst:158
+#: ../../build/doc/pgr_pushRelabel.rst:157
 msgid "Combinations"
 msgstr "Combinaciones"
 
-#: ../../build/doc/pgr_pushRelabel.rst:166
+#: ../../build/doc/pgr_pushRelabel.rst:165
 msgid ""
-"Using a combinations table, equivalent to calculating result from vertices "
-":math:`\\{6, 8, 12\\}` to vertices :math:`\\{1, 3, 11\\}`."
+"Using a combinations table, equivalent to calculating result from "
+"vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
 msgstr ""
-"Usando una tabla de combinaciones, equivalente a calcular el resultado de "
-"los vértices  :math:`\\{6, 8, 12\\}` a los vértices :math:`\\{1, 3, 11\\}`."
+"Usando una tabla de combinaciones, equivalente a calcular el resultado de"
+" los vértices :math:`\\{5, 6\\}` a los vértices :math:`\\{10, 15, 14\\}`."
 
-#: ../../build/doc/pgr_pushRelabel.rst:173
+#: ../../build/doc/pgr_pushRelabel.rst:168
+msgid "The combinations table:"
+msgstr "La tabla de combinaciones:"
+
+#: ../../build/doc/pgr_pushRelabel.rst:174
+msgid "The query:"
+msgstr "La consulta:"
+
+#: ../../build/doc/pgr_pushRelabel.rst:181
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/dijkstra-family.rst:8 ../../build/doc/flow-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Column"
 msgstr "Columna"
 
-#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/dijkstra-family.rst:9 ../../build/doc/flow-family.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/flow-family.rst:4 ../../build/doc/flow-family.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:4
-msgid "Default"
-msgstr "Valores predeterminados"
+#: ../../build/doc/dijkstra-family.rst:11
+msgid "`Edges SQL`_"
+msgstr "`SQL Aristas`_"
 
-#: ../../build/doc/flow-family.rst:6
-msgid "**Edges SQL**"
-msgstr "**Edges SQL**"
-
-#: ../../build/doc/flow-family.rst:6 ../../build/doc/flow-family.rst:7
+#: ../../build/doc/dijkstra-family.rst:12
+#: ../../build/doc/dijkstra-family.rst:15
 msgid "``TEXT``"
 msgstr "``TEXT``"
 
-#: ../../build/doc/flow-family.rst:6
-msgid "Edges query as described in `Inner Queries`_."
-msgstr "Consulta de bordes como se describe en `Consultas internas`_."
+#: ../../build/doc/dijkstra-family.rst:13
+msgid "`Edges SQL`_ as described below"
+msgstr "`SQL Aristas`_ como se describe a continuación"
 
-#: ../../build/doc/flow-family.rst:7
-msgid "**Combinations SQL**"
-msgstr "**Combinaciones SQL**"
+#: ../../build/doc/dijkstra-family.rst:14
+msgid "`Combinations SQL`_"
+msgstr "`SQL Combinaciones`_"
 
-#: ../../build/doc/flow-family.rst:7
-msgid "Combinations query as described in `Inner Queries`_."
-msgstr "Consultas de combinaciones como se describe en `Consultas internas`_."
+#: ../../build/doc/dijkstra-family.rst:16
+msgid "`Combinations SQL`_ as described below"
+msgstr "`SQL Combinaciones`_ como se describe a abajo"
 
-#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**source**"
-msgstr "**origen**"
+#: ../../build/doc/dijkstra-family.rst:17
+msgid "**start vid**"
+msgstr "**vid de salida**"
 
-#: ../../build/doc/flow-family.rst:7 ../../build/doc/flow-family.rst:8
-#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
-#: ../../build/doc/flow-family.rst:11
+#: ../../build/doc/dijkstra-family.rst:18
+#: ../../build/doc/dijkstra-family.rst:24 ../../build/doc/flow-family.rst:7
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:13 ../../build/doc/flow-family.rst:15
 msgid "``BIGINT``"
 msgstr "``BIGINT``"
 
-#: ../../build/doc/flow-family.rst:8
-msgid "Identifier of the starting vertex of the flow."
-msgstr "Identificador del vértice inicial del flujo."
+#: ../../build/doc/dijkstra-family.rst:19
+msgid "Identifier of the starting vertex of the path."
+msgstr "Identificador del vértice inicial de la ruta."
 
-#: ../../build/doc/flow-family.rst:9
-msgid "**sources**"
-msgstr "**orígenes**"
+#: ../../build/doc/dijkstra-family.rst:20
+msgid "**start vids**"
+msgstr "**vid salidas**"
 
-#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:11
+#: ../../build/doc/dijkstra-family.rst:21
+#: ../../build/doc/dijkstra-family.rst:27
 msgid "``ARRAY[BIGINT]``"
 msgstr "``ARRAY[BIGINT]``"
 
-#: ../../build/doc/flow-family.rst:9
-msgid "Array of identifiers of the starting vertices of the flow."
-msgstr "Conjunto de identificadores de los vértices iniciales del flujo."
+#: ../../build/doc/dijkstra-family.rst:22
+msgid "Array of identifiers of starting vertices."
+msgstr "Arreglo de identificadores de vértices iniciales."
 
-#: ../../build/doc/flow-family.rst:10 ../../build/doc/pgRouting-concepts.rst:7
-msgid "**target**"
-msgstr "**objetivo**"
+#: ../../build/doc/dijkstra-family.rst:23
+msgid "**end vid**"
+msgstr "**vid destino**"
 
-#: ../../build/doc/flow-family.rst:10
-msgid "Identifier of the ending vertex of the flow."
-msgstr "Identificador del vértice final del flujo."
+#: ../../build/doc/dijkstra-family.rst:25
+msgid "Identifier of the ending vertex of the path."
+msgstr "Identificador del vértice final de la ruta."
 
-#: ../../build/doc/flow-family.rst:11
-msgid "**targets**"
-msgstr "**destinos**"
+#: ../../build/doc/dijkstra-family.rst:26
+msgid "**end vids**"
+msgstr "**vids destinos**"
 
-#: ../../build/doc/flow-family.rst:11
-msgid "Array of identifiers of the ending vertices of the flow."
-msgstr "Conjunto de identificadores de los vértices finales del flujo."
+#: ../../build/doc/dijkstra-family.rst:28
+msgid "Array of identifiers of ending vertices."
+msgstr "Arreglo de identificadores de vértices finales."
 
-#: ../../build/doc/pgr_pushRelabel.rst:180
-msgid "Inner queries"
-msgstr "Consultas internas"
+#: ../../build/doc/pgr_pushRelabel.rst:188
+msgid "Inner Queries"
+msgstr "Consultas Internas"
 
-#: ../../build/doc/flow-family.rst
+#: ../../build/doc/pgr_pushRelabel.rst:191
 msgid "Edges SQL"
-msgstr "Edges SQL"
+msgstr "SQL aristas"
 
-#: ../../build/doc/flow-family.rst:3
-msgid ""
-"an SQL query of a directed graph of capacities, which should return a set of"
-" rows with the following columns:"
-msgstr ""
-"Consulta SQL de un grafo dirigido de capacidades, que debe devolver un "
-"conjunto de filas con las siguientes columnas:"
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
+msgstr "x Defecto"
 
-#: ../../build/doc/flow-family.rst:8
-msgid "**id**"
-msgstr "**id**"
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
+msgstr "``id``"
 
-#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
-#: ../../build/doc/flow-family.rst:10 ../../build/doc/flow-family.rst:11
-#: ../../build/doc/flow-family.rst:15 ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "``ANY-INTEGER``"
-msgstr "``ANY-INTEGER``"
+#: ../../build/doc/pgRouting-concepts.rst:12
+#: ../../build/doc/pgRouting-concepts.rst:13
+#: ../../build/doc/pgRouting-concepts.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-INTEGER**"
+msgstr "**ENTEROS**"
 
-#: ../../build/doc/flow-family.rst:8
+#: ../../build/doc/pgRouting-concepts.rst:15
 msgid "Identifier of the edge."
 msgstr "Identificador de la arista."
 
-#: ../../build/doc/flow-family.rst:8 ../../build/doc/flow-family.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:6
+#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
+msgstr "``source``"
+
+#: ../../build/doc/flow-family.rst:9 ../../build/doc/pgRouting-concepts.rst:19
 msgid "Identifier of the first end point vertex of the edge."
-msgstr "Identificador del primer punto final en el vértice de la arista."
+msgstr "Identificador del primer vértice de la arista."
 
-#: ../../build/doc/flow-family.rst:9 ../../build/doc/flow-family.rst:10
-#: ../../build/doc/pgRouting-concepts.rst:7
+#: ../../build/doc/pgRouting-concepts.rst:14
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
+msgstr "``target``"
+
+#: ../../build/doc/flow-family.rst:11 ../../build/doc/pgRouting-concepts.rst:23
 msgid "Identifier of the second end point vertex of the edge."
-msgstr "Identificador del segundo punto final en el vértice de la arista."
+msgstr "Identificador del segundo vértice de la arista."
 
-#: ../../build/doc/flow-family.rst:11
-msgid "**capacity**"
-msgstr "**capacidad**"
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``capacity``"
+msgstr "``capacity``"
 
-#: ../../build/doc/flow-family.rst:11
-msgid "Weight of the edge  `(source, target)`"
-msgstr "Peso de la arista `(source, target)`"
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge  (``source``, ``target``)"
+msgstr "Peso de la arista (``source``, ``target``)"
 
-#: ../../build/doc/flow-family.rst:13
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not "
-"part of the graph."
-msgstr ""
-"Cuando es negativo: la arista `(source, target)` no existe, por lo tanto no "
-"es parte del grafo."
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_capacity``"
+msgstr "``reverse_capacity``"
 
-#: ../../build/doc/flow-family.rst:15
-msgid "**reverse_capacity**"
-msgstr "**reverse_capacity** (**capacidad inversa**)"
-
-#: ../../build/doc/flow-family.rst:15
+#: ../../build/doc/pgRouting-concepts.rst:30
 msgid "-1"
 msgstr "-1"
 
-#: ../../build/doc/flow-family.rst:15
-msgid "Weight of the edge `(target, source)`,"
-msgstr "Peso de la arista `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr "Peso de la arista (``target``, ``source``)"
 
-#: ../../build/doc/flow-family.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not "
-"part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
 msgstr ""
-"En caso negativo: la arista  `(target, source)` no existe, por lo tanto no "
-"es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
-#: ../../build/doc/flow-family.rst:21
-#: ../../build/doc/pgRouting-concepts.rst:11
+#: ../../build/doc/pgRouting-concepts.rst:18
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr "Donde:"
 
-#: ../../build/doc/flow-family.rst ../../build/doc/pgRouting-concepts.rst
+#: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
-msgstr "ANY-INTEGER"
+msgstr "ENTEROS"
 
-#: ../../build/doc/flow-family.rst:23
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:20
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
-#: ../../build/doc/flow-family.rst
+#: ../../build/doc/pgRouting-concepts.rst
+msgid "ANY-NUMERICAL"
+msgstr "FLOTANTES"
+
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
+
+#: ../../build/doc/pgr_pushRelabel.rst:198
 msgid "Combinations SQL"
-msgstr "Combinaciones SQL"
+msgstr "SQL Combinaciones"
 
-#: ../../build/doc/flow-family.rst:3
-msgid ""
-"an SQL query which should return a set of rows with the following columns:"
-msgstr ""
-"una consulta SQL que debe devolver un conjunto de filas con las siguientes "
-"columnas:"
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Parameter"
+msgstr "Parámetro"
 
-#: ../../build/doc/flow-family.rst:9
-msgid ""
-"The function aggregates the sources and the targets, removes the duplicates,"
-" and then it calculates the result from the resultant source vertices to the"
-" target vertices."
-msgstr ""
-"La función agrega los orígenes y los destinos, quita los duplicados y, a "
-"continuación, calcula el resultado de los vértices de origen resultantes a "
-"los vértices de destino."
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "Identifier of the departure vertex."
+msgstr "Identificador del vértice de salida."
 
-#: ../../build/doc/pgr_pushRelabel.rst:191
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "Identifier of the arrival vertex."
+msgstr "Identificador del vértice de llegada."
+
+#: ../../build/doc/pgr_pushRelabel.rst:205
 msgid "Result Columns"
 msgstr "Columnas de Resultados"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "**seq**"
-msgstr "**seq**"
+msgstr "``seq``"
 
 #: ../../build/doc/flow-family.rst:6
 msgid "``INT``"
@@ -468,65 +471,79 @@ msgid "**edge**"
 msgstr "**arista**"
 
 #: ../../build/doc/flow-family.rst:7
-msgid "Identifier of the edge in the original query(edges_sql)."
+msgid "Identifier of the edge in the original query (edges_sql)."
 msgstr "Identificador de la arista en la consulta original(edges_sql)."
 
-#: ../../build/doc/flow-family.rst:8
-msgid "**start_vid**"
-msgstr "**start_vid**"
-
 #: ../../build/doc/flow-family.rst:9
-msgid "**end_vid**"
-msgstr "**end_vid**"
+msgid "**start_vid**"
+msgstr "``start_vid``"
 
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:11
+msgid "**end_vid**"
+msgstr "``end_vid``"
+
+#: ../../build/doc/flow-family.rst:13
 msgid "**flow**"
 msgstr "**flujo**"
 
-#: ../../build/doc/flow-family.rst:10
+#: ../../build/doc/flow-family.rst:13
 msgid "Flow through the edge in the direction (``start_vid``, ``end_vid``)."
-msgstr ""
-"Flujo a través del arista en la dirección  (``start_vid``, ``end_vid``)."
+msgstr "Flujo a través del arista en la dirección (``start_vid``, ``end_vid``)."
 
-#: ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:15
 msgid "**residual_capacity**"
-msgstr "**residual_capacity** (**capacidad residual**)"
+msgstr "**residual_capacity**"
 
-#: ../../build/doc/flow-family.rst:11
+#: ../../build/doc/flow-family.rst:15
 msgid ""
-"Residual capacity of the edge in the direction (``start_vid``, ``end_vid``)."
+"Residual capacity of the edge in the direction (``start_vid``, "
+"``end_vid``)."
 msgstr ""
-"Capacidad residual del arista en la dirección (``start_vid``, ``end_vid``)."
+"Capacidad residual del arista en la dirección (``start_vid``, "
+"``end_vid``)."
 
-#: ../../build/doc/pgr_pushRelabel.rst:198
+#: ../../build/doc/pgr_pushRelabel.rst:212
+msgid "Additional Examples"
+msgstr "Ejemplos Adicionales"
+
+#: ../../build/doc/pgr_pushRelabel.rst:214
+msgid "Manually assigned vertex combinations."
+msgstr "Manualmente asignar combinaciones de vértices."
+
+#: ../../build/doc/pgr_pushRelabel.rst:221
 msgid "See Also"
 msgstr "Ver también"
 
-#: ../../build/doc/pgr_pushRelabel.rst:200
-msgid ""
-":doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_edmondsKarp`"
-msgstr ""
-":doc:`flow-family`, :doc:`pgr_boykovKolmogorov`, :doc:`pgr_edmondsKarp`"
+#: ../../build/doc/pgr_pushRelabel.rst:223
+msgid ":doc:`flow-family`"
+msgstr ":doc:`flow-family`"
 
-#: ../../build/doc/pgr_pushRelabel.rst:201
+#: ../../build/doc/pgr_pushRelabel.rst:225
+msgid ":doc:`pgr_boykovKolmogorov`"
+msgstr ":doc:`pgr_boykovKolmogorov`"
+
+#: ../../build/doc/pgr_pushRelabel.rst:226
+msgid ":doc:`pgr_edmondsKarp`"
+msgstr ":doc:`pgr_edmondsKarp`"
+
+#: ../../build/doc/pgr_pushRelabel.rst:228
 msgid "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 msgstr "https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html"
 
-#: ../../build/doc/pgr_pushRelabel.rst:202
+#: ../../build/doc/pgr_pushRelabel.rst:229
 #, python-format
-msgid ""
-"https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
-msgstr ""
-"https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
+msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
+msgstr "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
 
-#: ../../build/doc/pgr_pushRelabel.rst:205
+#: ../../build/doc/pgr_pushRelabel.rst:232
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_pushRelabel.rst:206
+#: ../../build/doc/pgr_pushRelabel.rst:233
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_pushRelabel.rst:207
+#: ../../build/doc/pgr_pushRelabel.rst:234
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+

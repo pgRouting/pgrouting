@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.3.2
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,78 +36,98 @@ msgstr ""
 msgid ":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:30
+#: ../../build/doc/bdDijkstra-family.rst:31
 msgid ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:31
+#: ../../build/doc/bdDijkstra-family.rst:33
 msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm  to create a matrix of costs of the shortest paths."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:44
+#: ../../build/doc/bdDijkstra-family.rst:47
 msgid "Synopsis"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:46
-msgid "Based on Dijkstra's algorithm, the bidirectional search finds a shortest path a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs two simultaneous searches: one forward from the source, and one backward from the target, stopping when the two meet in the middle. This implementation can be used with a directed graph and an undirected graph."
+#: ../../build/doc/bdDijkstra-family.rst:49
+msgid "Based on Dijkstra's algorithm, the bidirectional search finds a shortest path a starting vertex to an ending vertex."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:53
+#: ../../build/doc/bdDijkstra-family.rst:52
+msgid "It runs two simultaneous searches: one forward from the source, and one backward from the target, stopping when the two meet in the middle."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:55
+msgid "This implementation can be used with a directed graph and an undirected graph."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:58
 msgid "Characteristics"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:56
+#: ../../build/doc/bdDijkstra-family.rst:61
 msgid "The main Characteristics are:"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:60
+#: ../../build/doc/bdDijkstra-family.rst:65
 msgid "Process is done only on edges with positive costs."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:61
-msgid "Values are returned when there is a path."
-msgstr ""
-
-#: ../../build/doc/bdDijkstra-family.rst:63
-msgid "When the starting vertex and ending vertex are the same, there is no path."
-msgstr ""
-
-#: ../../build/doc/bdDijkstra-family.rst:65
-msgid "The `agg_cost` the non included values `(v, v)` is `0`"
-msgstr ""
-
 #: ../../build/doc/bdDijkstra-family.rst:67
-msgid "When the starting vertex and ending vertex are the different and there is no path:"
+msgid "A negative value on a cost column is interpreted as the edge does not exist."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:69
-msgid "The `agg_cost` the non included values `(u, v)` is :math:`\\infty`"
+msgid "Values are returned when there is a path."
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:71
-msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+#: ../../build/doc/bdDijkstra-family.rst:70
+msgid "When there is no path:"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:72
-msgid "For large graphs where there is a path bewtween the starting vertex and ending vertex:"
+msgid "When the starting vertex and ending vertex are the same."
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:74
-msgid "It is expected to terminate faster than pgr_dijkstra"
+msgid "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:79
-msgid "See Also"
+#: ../../build/doc/bdDijkstra-family.rst:77
+msgid "When the starting vertex and ending vertex are the different and there is no path:"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:82
-msgid "Indices and tables"
+#: ../../build/doc/bdDijkstra-family.rst:80
+msgid "The **aggregate cost** the non included values :math:`(u, v)` is :math:`\\infty`"
 msgstr ""
 
 #: ../../build/doc/bdDijkstra-family.rst:83
+msgid "For optimization purposes, any duplicated value in the starting vertices or on the ending vertices are ignored."
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:85
+msgid "Running time (worse case scenario): :math:`O((V \\log V + E))`"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:86
+msgid "For large graphs where there is a path bewtween the starting vertex and ending vertex:"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:89
+msgid "It is expected to terminate faster than pgr_dijkstra"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:94
+msgid "See Also"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:97
+msgid "Indices and tables"
+msgstr ""
+
+#: ../../build/doc/bdDijkstra-family.rst:98
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/bdDijkstra-family.rst:84
+#: ../../build/doc/bdDijkstra-family.rst:99
 msgid ":ref:`search`"
 msgstr ""

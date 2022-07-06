@@ -50,152 +50,100 @@ When points are also given as input:
     pgr_withPointsKSP
     pgr_withPointsDD
 
-
-Images
---------------
-
-The squared vertices are the temporary vertices, The temporary vertices are added according to the
-driving side, The following images visually show the differences on how depending on the driving side the data is interpreted.
-
-.. rubric:: Right driving side
-
-.. image:: images/rightDrivingSide.png
-    :scale: 50%
-
-.. rubric:: Left driving side
-
-.. image:: images/leftDrivingSide.png
-    :scale: 50%
-
-.. rubric:: doesn't matter the driving side
-
-.. image:: images/noMatterDrivingSide.png
-    :scale: 50%
-
 Introduction
---------------
+-------------------------------------------------------------------------------
 
-This family of functions was thought for routing vehicles, but might as well work
-for some other application that we can not think of.
+This family of functions belongs to the :doc:`withPoints-category` and the
+functions that compose them are based one way or another on dijkstra algorithm.
 
-The with points family of function give you the ability to route between
-arbitrary points located outside the original graph.
+Depending on the name:
 
-When given a point identified with a `pid` that its being mapped to and edge with
-an identifier `edge_id`, with a `fraction` along
-that edge (from the source to the target of the edge) and some additional
-information about which `side` of the edge the point is on, then routing
-from arbitrary points more accurately reflect routing vehicles in road networks,
+- pgr_withPoints is pgr_dijkstra **with points**
+- pgr_withPointsCost is pgr_dijkstraCost **with points**
+- pgr_withPointsCostMatrix is pgr_dijkstraCostMatrix **with points**
+- pgr_withPointsKSP is pgr_ksp **with points**
+- pgr_withPointsDD is pgr_drivingDistance **with points**
 
+Parameters
+-------------------------------------------------------------------------------
 
-I talk about a family of functions because it includes different functionalities.
-  - pgr_withPoints is pgr_dijkstra based
-  - pgr_withPointsCost is pgr_dijkstraCost based
-  - pgr_withPointsKSP is pgr_ksp based
-  - pgr_withPointsDD is pgr_drivingDistance based
+.. include:: withPoints-category.rst
+    :start-after: withPoints_parameters_start
+    :end-before: withPoints_parameters_end
 
-In all this functions we have to take care of as many aspects as possible:
+Optional parameters
+...............................................................................
 
-- Must work for routing:
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
-  - Cars (directed graph)
-  - Pedestrians (undirected graph)
+With points optional parameters
+...............................................................................
 
-- Arriving at the point:
+.. withPoints_optionals_start
 
-  - In either side of the street.
-  - Compulsory arrival on the side of the street where the point is located.
+.. list-table::
+   :width: 81
+   :widths: 14 7 7 60
+   :header-rows: 1
 
-- Countries with:
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``driving_side``
+     - ``CHAR``
+     - ``b``
+     - Value in [``r``, ``l``, ``b``] indicating if the driving side is:
 
-  - Right side driving
-  - Left side driving
+       - ``r`` for right driving side.
+       - ``l`` for left driving side.
+       - ``b`` for both.
+   * - ``details``
+     - ``BOOLEAN``
+     - ``false``
+     - - When ``true`` the results will include the points that are in the path.
+       - When ``false`` the results will not include the points that are in the
+         path.
 
-- Some points are:
+.. withPoints_optionals_end
 
-  - Permanent, for example the set of points of clients stored in a table in the data base
-  - Temporal, for example points given through a web application
+Inner Queries
+-------------------------------------------------------------------------------
 
-- The numbering of the points are handled with negative sign.
+Edges SQL
+...............................................................................
 
-  - Original point identifiers are to be positive.
-  - Transformation to negative is done internally.
-  - For results for involving vertices identifiers
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-    - positive sign is a vertex of the original graph
-    - negative sign is a point of the temporary points
+Points SQL
+...............................................................................
 
-The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.
+.. include:: withPoints-category.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
 
-Graph & edges
-----------------
+Combinations SQL
+...............................................................................
 
-- Let :math:`G_d(V,E)` where :math:`V` is the set of vertices and :math:`E` is the set of edges be the original directed graph.
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
-  - An edge of the original `edges_sql` is :math:`(id, source, target, cost, reverse\_cost)` will generate internally
+Advanced Documentation
+-------------------------------------------------------------------------------
 
-    - :math:`(id, source, target, cost)`
-    - :math:`(id, target, source, reverse\_cost)`
-
-Point Definition
-----------------
-
-- A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`
-
-  - **pid** is the point identifier
-  - **eid** is an edge id of the `edges_sql`
-  - **fraction** represents where the edge `eid` will be cut.
-  - **side** Indicates the side of the edge where the point is located.
-
-
-Creating Temporary Vertices in the Graph
-----------------------------------------
-
-For edge (15,  9,12  10, 20), & lets insert point (2, 12, 0.3, r)
-
-.. rubric:: On a right hand side driving network
-
-From first image above:
-
-- We can arrive to the point only via vertex 9.
-- It only affects the edge (15, 9,12, 10) so that edge is removed.
-- Edge (15, 12,9, 20) is kept.
-- Create new edges:
-
-  - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
-  - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
-
-.. rubric:: On a left hand side driving network
-
-From second image above:
-
-- We can arrive to the point only via vertex 12.
-- It only affects the edge (15, 12,9 20) so that edge is removed.
-- Edge (15, 9,12, 10) is kept.
-- Create new edges:
-
-  - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
-  - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
-
-:Remember: that fraction is from vertex 9 to vertex 12
-
-
-.. rubric:: When driving side does not matter
-
-From third image above:
-
-- We can arrive to the point either via vertex 12 or via vertex 9
-- Edge (15, 12,9 20) is removed.
-- Edge (15, 9,12, 10) is removed.
-- Create new edges:
-
-  - (15, 12,-1, 14) edge from vertex 12 to point 1 has cost 14
-  - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
-  - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
-  - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
+.. include:: withPoints-category.rst
+   :start-after: advanced_documentation_start
+   :end-before: advanced_documentation_end
 
 See Also
 -------------------------------------------------------------------------------
+
+* :doc:`withPoints-category`
 
 .. rubric:: Indices and tables
 

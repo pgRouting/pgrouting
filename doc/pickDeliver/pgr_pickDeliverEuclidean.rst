@@ -13,7 +13,7 @@
   `Latest <https://docs.pgrouting.org/latest/en/pgr_pickDeliverEuclidean.html>`__
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_pickDeliverEuclidean.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_pickDeliverEuclidean.html>`__
-  current(`3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__)
+  `3.1 <https://docs.pgrouting.org/3.1/en/pgr_pickDeliverEuclidean.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_pickDeliverEuclidean.html>`__
 * **Unsupported versions:**
   `2.6 <https://docs.pgrouting.org/2.6/en/pgr_gsoc_vrppdtw.html>`__
@@ -23,7 +23,7 @@
   `2.2 <https://docs.pgrouting.org/2.2/en/src/vrppdtw/doc/index.html>`__
   `2.1 <https://docs.pgrouting.org/2.1/en/src/vrppdtw/doc/index.html>`__
 
-pgr_pickDeliverEuclidean - Experimental
+``pgr_pickDeliverEuclidean`` - Experimental
 ===============================================================================
 
 ``pgr_pickDeliverEuclidean`` - Pickup and delivery Vehicle Routing Problem
@@ -43,7 +43,8 @@ pgr_pickDeliverEuclidean - Experimental
 Synopsis
 -------------------------------------------------------------------------------
 
-Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.
+Problem: Distribute and optimize the pickup-delivery pairs into a fleet of
+vehicles.
 
 - Optimization problem is NP-hard.
 - Pickup and Delivery:
@@ -90,62 +91,59 @@ Characteristics
 Signature
 -------------------------------------------------------------------------------
 
-..
-    TEXT, -- orders_sql
-    TEXT, -- vehicles_sql
-    factor FLOAT DEFAULT 1,
-    max_cycles INTEGER DEFAULT 10,
-    initial_sol INTEGER DEFAULT 4,
+.. parsed-literal::
 
+    pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_,
+       [, factor], [max_cycles] [,initial_sol])
+    RETURNS SET OF (seq, vehicle_seq, vehicle_id,
+       stop_seq, stop_type, order_id, cargo,
+       travel_time, arrival_time, wait_time, service_time, departure_time)
 
-..
-    OUT seq INTEGER,
-    OUT vehicle_seq INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT stop_seq INTEGER,
-    OUT stop_type INTEGER,
-    OUT order_id BIGINT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT
+:Example: Solve the following problem
 
+Given the vehicles:
 
-.. code-block:: none
+.. literalinclude:: ./doc-pickDeliverEuclidean.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
-    pgr_pickDeliverEuclidean(orders_sql, vehicles_sql [,factor, max_cycles, initial_sol])
-    RETURNS SET OF (seq, vehicle_seq, vehicle_id, stop_seq, stop_type, order_id,
-        cargo, travel_time, arrival_time, wait_time, service_time, departure_time)
+and the orders:
+
+.. literalinclude:: ./doc-pickDeliverEuclidean.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+The query:
+
+.. literalinclude:: ./doc-pickDeliverEuclidean.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 
 Parameters
 ...............................................................................
 
-The parameters are:
+.. include:: VRP-category.rst
+    :start-after: pde_parameters_start
+    :end-before: pde_parameters_end
 
-.. code-block:: none
-
-    orders_sql, vehicles_sql [,factor, max_cycles, initial_sol]
-
-Where:
+Pick-Deliver optional parameters
+...............................................................................
 
 .. include:: VRP-category.rst
-    :start-after: pd_parameters_start
-    :end-before: pd_parameters_end
+    :start-after: pd_optionals_start
+    :end-before: pd_optionals_end
 
-
-Pick & Deliver Orders SQL
+Orders SQL
 ...............................................................................
 
 A `SELECT` statement that returns the following columns:
 
-.. code-block:: none
+.. parsed-literal::
 
     id, demand
-    p_x, p_y, p_open, p_close, [p_service, ]
-    d_x, d_y, d_open, d_close, [d_service, ]
+    p_x, p_y, p_open, p_close, [p_service,]
+    d_x, d_y, d_open, d_close, [d_service]
 
 Where:
 
@@ -158,14 +156,12 @@ Where:
     :start-after: pd_orders_euclidean_sql_start
     :end-before: pd_orders_euclidean_sql_end
 
-
-
-Pick & Deliver Vehicles SQL
-.........................................................................................
+Vehicles SQL
+...............................................................................
 
 A `SELECT` statement that returns the following columns:
 
-.. code-block:: none
+.. parsed-literal::
 
     id, capacity
     start_x, start_y, start_open, start_close [, start_service, ]
@@ -183,27 +179,35 @@ where:
     :end-before: pd_vehicle_sql_euclidean_end
 
 
+Return columns
+-------------------------------------------------------------------------------
+
 .. include:: VRP-category.rst
-    :start-after: return_vrp_euclidean_start:
-    :end-before: return_vrp_euclidean_end
-
-
-.. include:: pgRouting-concepts.rst
-    :start-after: where_definition_starts
-    :end-before: where_definition_ends
-
+    :start-after: pd_returns_start
+    :end-before: pd_returns_end
 
 Example
 -------------------------------------------------------------------------------
+.. contents::
+   :local:
 
-.. TODO
+.. include:: sampledata.rst
+    :start-after: pd_data_start
+    :end-before: pd_data_end
 
-This example use the following data: TODO put link
+The query
+...............................................................................
 
+Showing only the relevant information to compare with the best solution
+information published on
+https://www.sintef.no/projectweb/top/pdptw/100-customers/
 
-.. literalinclude:: ./doc-pickDeliverEuclidean.queries
-   :start-after: --q1
-   :end-before: --q2
+* The best solution found for **lc101** is a travel time: 828.94
+* This implementation's travel time: 854.54
+
+.. literalinclude:: ./lc101.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
 See Also
 -------------------------------------------------------------------------------

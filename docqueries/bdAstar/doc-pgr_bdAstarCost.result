@@ -2,83 +2,129 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-/* -- q1 */
-SELECT * FROM pgr_bdAstarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
-    FROM edge_table',
-    2, 3
-);
- start_vid | end_vid | agg_cost
------------+---------+----------
-         2 |       3 |        5
-(1 row)
-
 /* -- q2 */
 SELECT * FROM pgr_bdAstarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
-    FROM edge_table',
-    2, 3,
-    true, heuristic := 2
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  6, 12,
+  directed => true, heuristic => 2
 );
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
+         6 |      12 |        3
 (1 row)
 
 /* -- q3 */
 SELECT * FROM pgr_bdAstarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
-    FROM edge_table',
-    2, ARRAY[3, 11],
-    heuristic := 3, factor := 3.5
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  6, ARRAY[10, 12],
+  heuristic => 3, factor := 3.5
 );
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
-         2 |      11 |        3
+         6 |      10 |        5
+         6 |      12 |        3
 (2 rows)
 
 /* -- q4 */
 SELECT * FROM pgr_bdAstarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
-    FROM edge_table',
-    ARRAY[2, 7], 3,
-    false, heuristic := 4
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  ARRAY[6, 8], 10,
+  false, heuristic => 4
 );
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        1
-         7 |       3 |        4
+         6 |      10 |        1
+         8 |      10 |        3
 (2 rows)
 
 /* -- q5 */
 SELECT * FROM pgr_bdAstarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
-    FROM edge_table',
-    ARRAY[2, 7], ARRAY[3, 11],
-    factor := 0.5
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  ARRAY[6, 8], ARRAY[10, 12],
+  factor => 0.5
 );
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
-         2 |      11 |        3
-         7 |       3 |        6
-         7 |      11 |        4
+         6 |      10 |        5
+         6 |      12 |        3
+         8 |      10 |        5
+         8 |      12 |        1
+(4 rows)
+
+/* -- q51 */
+SELECT * FROM combinations;
+ source | target
+--------+--------
+      5 |      6
+      5 |     10
+      6 |      5
+      6 |     15
+      6 |     14
+(5 rows)
+
+/* -- q52 */
+SELECT * FROM pgr_bdAstarCost(
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  'SELECT * FROM combinations',
+  factor => 0.5
+);
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         5 |       6 |        1
+         5 |      10 |        6
+         6 |       5 |        1
+         6 |      15 |        4
 (4 rows)
 
 /* -- q6 */
-SELECT * FROM pgr_bdAstarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
-    FROM edge_table',
-    'SELECT * FROM ( VALUES (2, 3), (7, 11) ) AS t(source, target)',
-    factor := 0.5
-);
+ SELECT * FROM pgr_bdAstarCost(
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  ARRAY[7, 10, 15, 10, 10, 15], ARRAY[10, 7, 10, 15]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       3 |        5
-         7 |      11 |        4
-(2 rows)
+         7 |      10 |        4
+         7 |      15 |        3
+        10 |       7 |        2
+        10 |      15 |        3
+        15 |       7 |        3
+        15 |      10 |        1
+(6 rows)
 
 /* -- q7 */
+SELECT * FROM pgr_bdAstarCost(
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  ARRAY[7, 10, 15], ARRAY[7, 10, 15]);
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         7 |      10 |        4
+         7 |      15 |        3
+        10 |       7 |        2
+        10 |      15 |        3
+        15 |       7 |        3
+        15 |      10 |        1
+(6 rows)
+
+/* -- q8 */
+SELECT * FROM pgr_bdAstarCost(
+  'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2
+  FROM edges',
+  'SELECT * FROM (VALUES (6, 10), (6, 7), (12, 10)) AS combinations (source, target)');
+ start_vid | end_vid | agg_cost
+-----------+---------+----------
+         6 |       7 |        1
+         6 |      10 |        5
+        12 |      10 |        4
+(3 rows)
+
+-/* -- q9 */
 ROLLBACK;
-ROLLBACK
+ERROR:  syntax error at or near "-"
+LINE 1: -/* -- q9 */
+        ^

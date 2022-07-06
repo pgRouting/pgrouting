@@ -4,27 +4,16 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_articulationPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
 );
  node
 ------
-    2
-    5
+    3
+    6
+    7
     8
-   10
 (4 rows)
 
 /* -- q2 */
-SELECT * FROM pgr_articulationPoints(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
-);
- node
-------
-    2
-    5
-    8
-   10
-(4 rows)
-
 ROLLBACK;
 ROLLBACK

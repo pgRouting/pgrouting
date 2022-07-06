@@ -17,8 +17,8 @@
 pgr_sequentialVertexColoring - Proposed
 ===============================================================================
 
-``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an undirected graph,
-using greedy approach.
+``pgr_sequentialVertexColoring`` — Returns the vertex coloring of an undirected
+graph, using greedy approach.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html
@@ -33,19 +33,19 @@ using greedy approach.
 
 * Version 3.3.0
 
-  * Promoted to **proposed** function
+  * Promoted to **proposed** signature
 
 * Version 3.2.0
 
-  * New **experimental** function
+  * New **experimental** signature
 
 
 Description
 -------------------------------------------------------------------------------
 
-Sequential Vertex Coloring algorithm is a graph coloring algorithm in which color
-identifiers are assigned to the vertices of a graph in a sequential manner,
-such that no edge connects two identically colored vertices.
+Sequential vertex coloring algorithm is a graph coloring algorithm in which
+color identifiers are assigned to the vertices of a graph in a sequential
+manner, such that no edge connects two identically colored vertices.
 
 **The main Characteristics are:**
 
@@ -70,9 +70,9 @@ Signatures
 .. index::
     single: sequentialVertexColoring - Proposed on v3.3
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_sequentialVertexColoring(Edges SQL)
+    pgr_sequentialVertexColoring(`Edges SQL`_)
 
     RETURNS SET OF (vertex_id, color_id)
     OR EMPTY SET
@@ -83,24 +83,24 @@ Signatures
    :start-after: -- q1
    :end-before: -- q2
 
-.. Parameters, Inner query & result columns
+.. Parameters, Inner Queries & result columns
 
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: coloring-family.rst
-    :start-after: parameters start
-    :end-before: parameters end
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
-:Edges SQL: an SQL query of an **undirected** graph, which should return
-            a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
-.. include:: traversal-family.rst
-   :start-after: edges_sql_start
-   :end-before: edges_sql_end
+.. include:: pgRouting-concepts.rst
+   :start-after: basic_edges_sql_start
+   :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
@@ -117,7 +117,8 @@ See Also
 
 .. see also start
 
-* `Boost: Sequential Vertex Coloring algorithm documentation <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__
+* `Boost: Sequential Vertex Coloring algorithm documentation
+  <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__
 * `Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__
 
 .. see also end
@@ -126,4 +127,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

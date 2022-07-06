@@ -2,16 +2,39 @@ BEGIN;
 BEGIN
 SET client_min_messages TO NOTICE;
 SET
-UPDATE edge_table SET id = id * 100, source = 1000 * source, target = 1000 * target;
+DROP TABLE IF EXISTS edges1;
+NOTICE:  table "edges1" does not exist, skipping
+DROP TABLE
+SELECT id, NULL::BIGINT as source, NULL::BIGINT as target, cost, reverse_cost, x1, x2, y1, y2, geom AS the_geom
+INTO edges1
+FROM edges ORDER BY id;
+SELECT 18
+UPDATE edges1 SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2));
 UPDATE 18
-UPDATE edge_table_vertices_pgr SET id = id * 1000;
+SELECT pgr_createTopology('edges1',0.001);
+NOTICE:  PROCESSING:
+NOTICE:  pgr_createTopology('edges1', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  Performing checks, please wait .....
+NOTICE:  Creating Topology, Please wait...
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
+NOTICE:  Rows with NULL geometry or NULL id: 0
+NOTICE:  Vertices table for table public.edges1 is: public.edges1_vertices_pgr
+NOTICE:  ----------------------------------------------
+ pgr_createtopology
+--------------------
+ OK
+(1 row)
+
+UPDATE edges1 SET id = id * 100, source = 1000 * source, target = 1000 * target;
+UPDATE 18
+UPDATE edges1_vertices_pgr SET id = id * 1000;
 UPDATE 17
 DROP TABLE IF EXISTS result2;
 NOTICE:  table "result2" does not exist, skipping
 DROP TABLE
 SELECT  * INTO result2 FROM pgr_lineGraphFull(
     $$SELECT id, source, target, cost, reverse_cost
-    FROM edge_table$$
+    FROM edges1$$
 );
 SELECT 95
 SELECT * FROM result2;
@@ -191,7 +214,7 @@ SELECT * FROM result2_vertices_pgr;
 (60 rows)
 
 UPDATE result2_vertices_pgr AS r SET original_id = v.id
-FROM edge_table_vertices_pgr AS v WHERE v.id = r.id;
+FROM edges1_vertices_pgr AS v WHERE v.id = r.id;
 UPDATE 17
 WITH a AS (SELECT e.id, e.original_id FROM result2_vertices_pgr AS e WHERE original_id IS NOT NULL),
 b AS (SELECT * FROM result2 WHERE cost = 0 and source IN (SELECT id FROM a)),
@@ -209,12 +232,12 @@ UPDATE result2_vertices_pgr SET original_id = e.original_id FROM e WHERE e.sourc
 UPDATE 13
 WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
 b AS (SELECT source,edge FROM result2 WHERE source IN (SELECT id FROM a)),
-c AS (SELECT id,source FROM edge_table WHERE id IN (SELECT edge FROM b))
+c AS (SELECT id,source FROM edges1 WHERE id IN (SELECT edge FROM b))
 UPDATE result2_vertices_pgr AS d SET original_id = (SELECT source FROM c WHERE c.id = (SELECT edge FROM b WHERE b.source = d.id)) WHERE id IN (SELECT id FROM a);
 UPDATE 0
 WITH a AS (SELECT id FROM result2_vertices_pgr WHERE original_id IS NULL),
 b AS (SELECT target,edge FROM result2 WHERE target IN (SELECT id FROM a)),
-c AS (SELECT id,target FROM edge_table WHERE id IN (SELECT edge FROM b))
+c AS (SELECT id,target FROM edges1 WHERE id IN (SELECT edge FROM b))
 UPDATE result2_vertices_pgr AS d SET original_id = (SELECT target FROM c WHERE c.id = (SELECT edge FROM b WHERE b.target = d.id)) WHERE id IN (SELECT id FROM a);
 UPDATE 0
 SELECT * FROM result2_vertices_pgr;
@@ -581,7 +604,7 @@ FROM a;
  102 |       10 |      2000 |    3000 | 3000 |   -1 |    0 |        5
 (6 rows)
 
-SELECT * from pgr_dijkstra($$SELECT id, * FROM edge_table$$,
+SELECT * from pgr_dijkstra($$SELECT id, * FROM edges1$$,
     ARRAY[2000], ARRAY[3000]);
  seq | path_seq | start_vid | end_vid | node | edge | cost | agg_cost
 -----+----------+-----------+---------+------+------+------+----------

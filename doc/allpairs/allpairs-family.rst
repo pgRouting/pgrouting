@@ -41,6 +41,81 @@ The following functions work on all vertices pair combinations
     pgr_floydWarshall
     pgr_johnson
 
+Introduction
+-------------------------------------------------------------------------------
+
+.. characteristics_start
+
+The main characteristics are:
+
+- It does not return a path.
+- Returns the sum of the costs of the shortest path for each pair of nodes in
+  the graph.
+- Process is done only on edges with positive costs.
+- Boost returns a :math:`V \times V` matrix, where the infinity values.
+  Represent the distance between vertices for which there is no path.
+
+  - We return only the non infinity values in form of a set of `(start_vid,
+    end_vid, agg_cost)`.
+
+- Let be the case the values returned are stored in a table, so the unique index
+  would be the pair: `(start_vid, end_vid)`.
+
+- For the undirected graph, the results are symmetric.
+
+  - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
+
+- When  `start_vid` = `end_vid`, the `agg_cost` = 0.
+
+- **Recommended, use a bounding box of no more than 3500 edges.**
+
+.. characteristics_end
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. edges_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     -
+     - `Edges SQL`_ as described below.
+
+.. edges_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Inner Queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: no_id_edges_sql_start
+    :end-before: no_id_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
+
 
 Performance
 ------------------------------------------------------------------------------
@@ -57,15 +132,16 @@ Data
 
 The following data was used
 
-.. code-block:: none
+.. parsed-literal::
 
     BBOX="-122.8,45.4,-122.5,45.6"
-    wget --progress=dot:mega -O "sampledata.osm" "https://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
+    wget --progress=dot:mega -O "sampledata.osm" \
+         "https://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]"
 
 
 Data processing was done with osm2pgrouting-alpha
 
-.. code-block:: none
+.. parsed-literal::
 
     createdb portland
     psql -c "create extension postgis" portland
@@ -85,13 +161,15 @@ The density of the passed graph is extremely low.
 For each <SIZE> 30 tests were executed to get the average
 The tested query is:
 
-.. code-block:: none
+.. parsed-literal::
 
      SELECT count(*) FROM pgr_floydWarshall(
-        'SELECT gid as id, source, target, cost, reverse_cost FROM ways where id <=  <SIZE>');
+        'SELECT gid as id, source, target, cost, reverse_cost
+         FROM ways where id <=  <SIZE>');
 
      SELECT count(*) FROM pgr_johnson(
-        'SELECT gid as id, source, target, cost, reverse_cost FROM ways where id <=  <SIZE>');
+        'SELECT gid as id, source, target, cost, reverse_cost
+         FROM ways where id <=  <SIZE>');
 
 The results of this tests are presented as:
 
@@ -136,16 +214,20 @@ The density of the passed graph higher than of the Test One.
 For each <SIZE> 30 tests were executed to get the average
 The tested edge query is:
 
-.. code-block:: none
+.. parsed-literal::
 
     WITH
-        buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
-        bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer)
-    SELECT gid as id, source, target, cost, reverse_cost FROM ways where the_geom && (SELECT box from bbox);
+    buffer AS (
+      SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom
+      FROM ways),
+    bbox AS (
+      SELECT ST_Envelope(ST_Extent(geom)) as box FROM buffer)
+    SELECT gid as id, source, target, cost, reverse_cost
+    FROM ways where the_geom && (SELECT box from bbox);
 
 The tested queries
 
-.. code-block:: none
+.. parsed-literal::
 
     SELECT count(*) FROM pgr_floydWarshall(<edge query>)
     SELECT count(*) FROM pgr_johnson(<edge query>)
@@ -188,7 +270,8 @@ See Also
 
 * :doc:`pgr_johnson`
 * :doc:`pgr_floydWarshall`
-* `Boost floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
+* Boost `floyd-Warshall
+  <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__
 
 .. rubric:: Indices and tables
 

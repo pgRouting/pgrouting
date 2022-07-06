@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,137 +108,136 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:41
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/chinesePostmanProblem-family.rst:40
+#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:45
-msgid "The main characteristics are:"
+#: ../../build/doc/chinesePostmanProblem-family.rst:44
+msgid "**The main characteristics are:**"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:47
+#: ../../build/doc/chinesePostmanProblem-family.rst:46
 msgid "Process is done only on edges with **positive** costs."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:48
+#: ../../build/doc/chinesePostmanProblem-family.rst:47
 msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:49
+#: ../../build/doc/chinesePostmanProblem-family.rst:48
 msgid "Graph must be connected."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:54
+#: ../../build/doc/chinesePostmanProblem-family.rst:53
 msgid "Parameters"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
-#: ../../build/doc/pgRouting-concepts.rst:4
-msgid "Column"
+#: ../../build/doc/pgRouting-concepts.rst:8
+msgid "Parameter"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
-#: ../../build/doc/pgRouting-concepts.rst:4
+#: ../../build/doc/pgRouting-concepts.rst:9
 msgid "Type"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:59
-#: ../../build/doc/pgRouting-concepts.rst:4
-msgid "Default"
+#: ../../build/doc/pgRouting-concepts.rst:11
+msgid "`Edges SQL`_"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
-msgid "**edges_sql**"
-msgstr ""
-
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
+#: ../../build/doc/pgRouting-concepts.rst:12
 msgid "``TEXT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:61
-msgid "The edges SQL query as described in `Inner query`_."
+#: ../../build/doc/pgRouting-concepts.rst:13
+msgid "`Edges SQL`_ as described below."
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:68
-msgid "Inner query"
+#: ../../build/doc/chinesePostmanProblem-family.rst:60
+msgid "Inner Queries"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:72
+#: ../../build/doc/chinesePostmanProblem-family.rst:65
+msgid "Edges SQL"
+msgstr ""
+
+#: ../../build/doc/chinesePostmanProblem-family.rst:67
 msgid ""
 "An Edges SQL that represents a **directed** graph with the following "
 "columns"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "**id**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:6
-#: ../../build/doc/pgRouting-concepts.rst:7
 #: ../../build/doc/pgRouting-concepts.rst:8
-msgid "``ANY-INTEGER``"
+msgid "Column"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:6
-msgid "Identifier of the edge."
+#: ../../build/doc/pgRouting-concepts.rst:10
+msgid "Default"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:7
-msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "**target**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:8
-msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:9
-msgid "Weight of the edge  `(source, target)`"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:11
-msgid ""
-"When negative: edge `(source, target)` does not exist, therefore it's not"
-" part of the graph."
+#: ../../build/doc/pgRouting-concepts.rst:12
+msgid "``id``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:13
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "-1"
-msgstr ""
-
-#: ../../build/doc/pgRouting-concepts.rst:13
-msgid "Weight of the edge `(target, source)`,"
+#: ../../build/doc/pgRouting-concepts.rst:17
+#: ../../build/doc/pgRouting-concepts.rst:21
+msgid "**ANY-INTEGER**"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:15
-msgid ""
-"When negative: edge `(target, source)` does not exist, therefore it's not"
-" part of the graph."
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:16
+msgid "``source``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst:19
+msgid "Identifier of the first end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:20
+msgid "``target``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:23
+msgid "Identifier of the second end point vertex of the edge."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:24
+msgid "``cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:25
+#: ../../build/doc/pgRouting-concepts.rst:29
+msgid "**ANY-NUMERICAL**"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:27
+msgid "Weight of the edge (``source``, ``target``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:28
+msgid "``reverse_cost``"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:30
+msgid "-1"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:31
+msgid "Weight of the edge (``target``, ``source``)"
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:33
+msgid ""
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
+msgstr ""
+
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr ""
 
@@ -246,31 +245,31 @@ msgstr ""
 msgid "ANY-INTEGER"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:21
-msgid "SMALLINT, INTEGER, BIGINT"
+#: ../../build/doc/pgRouting-concepts.rst:38
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr ""
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr ""
 
-#: ../../build/doc/pgRouting-concepts.rst:22
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
+#: ../../build/doc/pgRouting-concepts.rst:39
+msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:81
+#: ../../build/doc/chinesePostmanProblem-family.rst:76
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:84
+#: ../../build/doc/chinesePostmanProblem-family.rst:79
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:85
+#: ../../build/doc/chinesePostmanProblem-family.rst:80
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/chinesePostmanProblem-family.rst:86
+#: ../../build/doc/chinesePostmanProblem-family.rst:81
 msgid ":ref:`search`"
 msgstr ""
 

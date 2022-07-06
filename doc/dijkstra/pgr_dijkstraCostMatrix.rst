@@ -21,10 +21,10 @@
   `2.4 <https://docs.pgrouting.org/2.4/en/pgr_dijkstraCostMatrix.html>`__
   `2.3 <https://docs.pgrouting.org/2.3/en/src/costMatrix/doc/pgr_dijkstraCostMatrix.html>`__
 
-pgr_dijkstraCostMatrix
+``pgr_dijkstraCostMatrix``
 ===============================================================================
 
-``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
+``pgr_dijkstraCostMatrix`` - Calculates a cost matrix using :doc:`pgr_dijkstra`.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
@@ -41,74 +41,64 @@ pgr_dijkstraCostMatrix
 
   * New **proposed** function
 
-
 Description
 -------------------------------------------------------------------------------
 
 Using Dijkstra algorithm, calculate and return a cost matrix.
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_description_start
+    :end-before: dijkstra_description_end
+
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_details_start
+    :end-before: costMatrix_details_end
+
+.. index::
+    single: dijkstraCostMatrix
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. index::
-    single: dijkstraCostMatrix
+.. parsed-literal::
 
-.. code-block:: none
-
-    pgr_dijkstraCostMatrix(edges_sql, start_vids [, directed])
+    pgr_dijkstraCost(`Edges SQL`_, **start vids** [, directed])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_dijkstraCostMatrix(edges_sql, start_vid)
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Cost matrix for vertices :math:`\{1, 2, 3, 4\}` on a **directed** graph
+:Example: Symmetric cost matrix for vertices :math:`\{5, 6, 10, 15\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
-   :start-after: -- dijkstra q1
-   :end-before: -- dijkstra q2
-
-
-Complete Signature
-...............................................................................
-
-.. code-block:: none
-
-    pgr_dijkstraCostMatrix(edges_sql, start_vids [, directed])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-
-:Example: Symmetric cost matrix for vertices :math:`\{1, 2, 3, 4\}` on an **undirected** graph
-
-.. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
-   :start-after: -- dijkstra q2
-   :end-before: -- dijkstra q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 Parameters
 -------------------------------------------------------------------------------
 
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as described above.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of the vertices.
-**directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-================ ====================== =================================================
+.. include:: costMatrix-category.rst
+    :start-after: costMatrix_parameters_start
+    :end-before: costMatrix_parameters_end
 
-Inner query
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Inner Queries
 -------------------------------------------------------------------------------
 
-.. rubric::edges_sql
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -118,11 +108,11 @@ Return Columns
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example: Use with tsp
+:Example: Use with :doc:`pgr_TSP`.
 
 .. literalinclude:: doc-pgr_dijkstraCostMatrix.queries
-   :start-after: -- dijkstra q3
-   :end-before: -- dijkstra q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 See Also
 -------------------------------------------------------------------------------
@@ -130,10 +120,9 @@ See Also
 * :doc:`dijkstra-family`
 * :doc:`costMatrix-category`
 * :doc:`TSP-family`
-* The queries use the :doc:`sampledata` network.
+* :doc:`sampledata`
 
 .. rubric:: Indices and tables
 
 * :ref:`genindex`
 * :ref:`search`
-

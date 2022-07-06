@@ -16,7 +16,7 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_primBFS.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_primBFS.html>`__
 
-pgr_primBFS
+``pgr_primBFS``
 ===============================================================================
 
 ``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First
@@ -52,11 +52,10 @@ of the Minimum Spanning Tree created with Prims's algorithm.
 Signatures
 -------------------------------------------------------------------------------
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_primBFS(Edges SQL, Root vid [, max_depth])
-    pgr_primBFS(Edges SQL, Root vids [, max_depth])
-
+    pgr_primBFS(`Edges SQL`_, **Root vid** [, max_depth])
+    pgr_primBFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
 .. index::
@@ -65,17 +64,16 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_primBFS(Edges SQL, Root vid [, max_depth])
-
+    pgr_primBFS(`Edges SQL`_, **Root vid** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree having as root vertex :math:`2`
+:Example: The Minimum Spanning Tree having as root vertex :math:`6`
 
 .. literalinclude:: doc-pgr_primBFS.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 .. index::
     single: primBFS(Multiple vertices)
@@ -83,25 +81,48 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_primBFS(Edges SQL, Root vids [, max_depth])
-
+    pgr_primBFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
 
-:Example: The Minimum Spanning Tree starting on vertices :math:`\{13, 2\}` with :math:`depth <= 3`
+:Example: The Minimum Spanning Tree starting on vertices :math:`\{9, 6\}` with
+          :math:`depth \leq 3`
 
 .. literalinclude:: doc-pgr_primBFS.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q2
+   :end-before: -- q3
 
-.. Parameters, Inner query & result columns
-   are the same as kruskal
+Parameters
+-------------------------------------------------------------------------------
 
-.. include:: pgr_kruskalDFS.rst
-   :start-after: mstfs-information-start
-   :end-before: mstfs-information-end
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-params_start
+   :end-before: mst-bfs-dfs-params_end
 
+BFS optional parameters
+...............................................................................
+
+.. include:: BFS-category.rst
+   :start-after: max-depth-optional-start
+   :end-before: max-depth-optional-end
+
+Inner Queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Result Columns
+-------------------------------------------------------------------------------
+
+.. include:: BFS-category.rst
+   :start-after: mst-bfs-dfs-dd-result-columns-start
+   :end-before: mst-bfs-dfs-dd-result-columns-end
 
 See Also
 -------------------------------------------------------------------------------
@@ -109,8 +130,10 @@ See Also
 * :doc:`spanningTree-family`
 * :doc:`prim-family`
 * The queries use the :doc:`sampledata` network.
-* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
+* `Boost: Prim's algorithm documentation
+  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* `Wikipedia: Prim's algorithm
+  <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
 
 .. rubric:: Indices and tables
 

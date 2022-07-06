@@ -30,8 +30,10 @@ Dijkstra - Family of functions
 * :doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
 * :doc:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
 * :doc:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix.
-* :doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information.
-* :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.
+* :doc:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament
+  information.
+* :doc:`pgr_KSP` - Use Yen algorithm with pgr_dijkstra to get the K shortest
+  paths.
 
 .. index to here
 
@@ -62,13 +64,131 @@ Dijkstra - Family of functions
     pgr_dijkstraNear
     pgr_dijkstraNearCost
 
+Introduction
+-------------------------------------------------------------------------------
+
+.. dijkstra_description_start
+
+Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in
+1956.
+It is a graph search algorithm that solves the shortest path problem for a graph
+with non-negative edge path costs, producing a shortest path from a starting
+vertex to an ending vertex.
+This implementation can be used with a directed graph and an undirected graph.
+
+.. dijkstra_description_end
+
+The main characteristics are:
+
+.. dijkstra_details_start
+
+- Process is done only on edges with positive costs.
+
+  - A negative value on a cost column is interpreted as the edge does not exist.
+
+- Values are returned when there is a path.
+- When there is no path:
+
+  - When the starting vertex and ending vertex are the same.
+
+    - The **aggregate cost** of the non included values :math:`(v, v)` is
+      :math:`0`
+
+  - When the starting vertex and ending vertex are the different and there is
+    no path:
+
+    - The **aggregate cost** the non included values :math:`(u, v)` is
+      :math:`\infty`
+
+- For optimization purposes, any duplicated value in the starting vertices or on
+  the ending vertices are ignored.
+
+- Running time: :math:`O(| start\ vids | * (V \log V + E))`
+
+.. dijkstra_details_end
+
+The Dijkstra family functions are based on the Dijkstra algorithm.
+
+Parameters
+-------------------------------------------------------------------------------
+
+.. dijkstra_parameters_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 14 44
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Description
+   * - `Edges SQL`_
+     - ``TEXT``
+     - `Edges SQL`_ as described below
+   * - `Combinations SQL`_
+     - ``TEXT``
+     - `Combinations SQL`_ as described below
+   * - **start vid**
+     - ``BIGINT``
+     - Identifier of the starting vertex of the path.
+   * - **start vids**
+     - ``ARRAY[BIGINT]``
+     -  Array of identifiers of starting vertices.
+   * - **end vid**
+     - ``BIGINT``
+     - Identifier of the ending vertex of the path.
+   * - **end vids**
+     - ``ARRAY[BIGINT]``
+     -  Array of identifiers of ending vertices.
+
+.. dijkstra_parameters_end
+
+Optional parameters
+...............................................................................
+
+.. dijkstra_optionals_start
+
+.. list-table::
+   :width: 81
+   :widths: auto
+   :header-rows: 1
+
+   * - Column
+     - Type
+     - Default
+     - Description
+   * - ``directed``
+     - ``BOOLEAN``
+     - ``true``
+     - * When ``true`` the graph is considered `Directed`
+       * When ``false`` the graph is considered as `Undirected`.
+
+.. dijkstra_optionals_end
+
+Inner Queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
+
+Advanced documentation
+-------------------------------------------------------------------------------
 
 The problem definition (Advanced documentation)
------------------------------------------------
-
+...............................................................................
 
 Given the following query:
-
 
 pgr_dijkstra(:math:`sql, start_{vid}, end_{vid}, directed`)
 
@@ -158,10 +278,14 @@ where:
 
 
 
-In other words: The algorithm returns a the shortest path between :math:`start_{vid}` and :math:`end_{vid}` , if it exists, in terms of a sequence of nodes  and of edges,
-  - :math:`path\_seq` indicates the relative position in the path of the :math:`node` or :math:`edge`.
-  - :math:`cost` is the cost of the edge to be used to go to the next node.
-  - :math:`agg\_cost` is the cost from the :math:`start_{vid}` up to the node.
+In other words: The algorithm returns a the shortest path between
+:math:`start_{vid}` and :math:`end_{vid}`, if it exists, in terms of a sequence
+of nodes  and of edges,
+
+- :math:`path\_seq` indicates the relative position in the path of the
+  :math:`node` or :math:`edge`.
+- :math:`cost` is the cost of the edge to be used to go to the next node.
+- :math:`agg\_cost` is the cost from the :math:`start_{vid}` up to the node.
 
 
 If there is no path, the resulting set is empty.

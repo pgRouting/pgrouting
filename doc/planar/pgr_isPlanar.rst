@@ -14,7 +14,7 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_isPlanar.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_isPlanar.html>`__
 
-pgr_isPlanar - Experimental
+``pgr_isPlanar`` - Experimental
 ===============================================================================
 
 ``pgr_isPlanar`` — Returns a boolean depending upon the planarity of the graph.
@@ -38,21 +38,20 @@ pgr_isPlanar - Experimental
 Description
 -------------------------------------------------------------------------------
 
-A graph is planar if it can be drawn in two-dimensional space with no two of its edges crossing. Such a drawing
-of a planar graph is called a plane drawing. Every planar graph also admits a straight-line drawing, which is a
-plane drawing where each edge is represented by a line segment. When a graph has :math:`K_5` or :math:`K_{3,3}` as subgraph then the
+A graph is planar if it can be drawn in two-dimensional space with no two of its
+edges crossing. Such a drawing of a planar graph is called a plane drawing.
+Every planar graph also admits a straight-line drawing, which is a plane drawing
+where each edge is represented by a line segment. When a graph has :math:`K_5`
+or :math:`K_{3, 3}` as subgraph then the
 graph is not planar.
 
 The main characteristics are:
-  - This implementation use the Boyer-Myrvold Planarity Testing.
 
-  - It will return a boolean value depending upon the planarity of the graph.
-
-  - Applicable only for **undirected** graphs.
-
-  - The algorithm does not considers traversal costs in the calculations.
-
-  - Running time: :math:`O(|V|)`
+* This implementation use the Boyer-Myrvold Planarity Testing.
+* It will return a boolean value depending upon the planarity of the graph.
+* Applicable only for **undirected** graphs.
+* The algorithm does not considers traversal costs in the calculations.
+* Running time: :math:`O(|V|)`
 
 Signatures
 -------------------------------------------------------------------------------
@@ -62,10 +61,9 @@ Signatures
 .. index::
    single: isPlanar - Experimental on v3.2
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_isPlanar(Edges SQL)
-
+    pgr_isPlanar(`Edges SQL`)
     RETURNS BOOLEAN
 
 .. literalinclude:: doc-pgr_isPlanar.queries
@@ -75,58 +73,46 @@ Signatures
 Parameters
 -------------------------------------------------------------------------------
 
-=================== ====================== ========= =================================================
-Parameter           Type                   Default   Description
-=================== ====================== ========= =================================================
-**Edges SQL**       ``TEXT``                         SQL query as described below.
-=================== ====================== ========= =================================================
+.. include:: pgRouting-concepts.rst
+   :start-after: only_edge_param_start
+   :end-before: only_edge_param_end
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
-:Edges SQL: an SQL query, which should return a set of rows with the following columns:
+Edges SQL
+...............................................................................
 
-================= =================== ======== =================================================
-Column            Type                 Default  Description
-================= =================== ======== =================================================
-**id**            ``ANY-INTEGER``                Identifier of the edge.
-**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``              - When positive: edge `(target, source)` is part of the graph.
-                                                 - When negative: edge `(target, source)` is not part of the graph.
-
-**reverse_cost**  ``ANY-NUMERICAL``       -1     - When positive: edge `(target, source)` is part of the graph.
-                                                 - When negative: edge `(target, source)` is not part of the graph.
-
-================= =================== ======== =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
 
 Returns a boolean ``(pgr_isplanar)``
 
-=================  =========== ============================================================
+=================  =========== ==========================================
 Column             Type        Description
-=================  =========== ============================================================
+=================  =========== ==========================================
 **pgr_isplanar**   ``BOOLEAN`` - `true` when the graph is planar.
                                - `false` when the graph is not planar.
-=================  =========== ============================================================
+=================  =========== ==========================================
 
-Additional Example:
+Additional Examples
 -------------------------------------------------------------------------------
 
-The following edges will make the subgraph with vertices {3, 4, 6, 9, 16} a :math:`K_5` graph.
+The following edges will make the subgraph with vertices {10, 15, 11, 16, 13} a
+:math:`K_1` graph.
 
 .. literalinclude:: doc-pgr_isPlanar.queries
    :start-after: -- q2
    :end-before: -- q3
 
-The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue represent :math:`K_5` subgraph.
+The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue
+represent :math:`K_5` subgraph.
+
+.. TODO fix the image
 
 .. image:: images/nonPlanar.png
    :scale: 50%
@@ -138,8 +124,8 @@ The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue
 See Also
 -------------------------------------------------------------------------------
 
+* :doc:`sampledata`
 * https://www.boost.org/libs/graph/doc/boyer_myrvold.html
-* The queries use the :doc:`sampledata` network.
 
 .. rubric:: Indices and tables
 

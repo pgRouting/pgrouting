@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) pgRouting Contributors - Version v3.3.0-dev
+# Copyright (C) pgRouting Contributors - Version v3.3.2
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.3.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 12:23+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,26 +104,26 @@ msgstr ""
 msgid ":doc:`pgr_lineGraphFull` - Transformation algorithm for generating a Line Graph out of each vertex in the input graph."
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:43
+#: ../../build/doc/transformation-family.rst:44
 msgid "Introduction"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:45
+#: ../../build/doc/transformation-family.rst:46
 msgid "This family of functions is used for transforming a given input graph :math:`G(V,E)` into a new graph :math:`G'(V',E')`."
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:48
+#: ../../build/doc/transformation-family.rst:50
 msgid "See Also"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:51
+#: ../../build/doc/transformation-family.rst:53
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:52
+#: ../../build/doc/transformation-family.rst:54
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/transformation-family.rst:53
+#: ../../build/doc/transformation-family.rst:55
 msgid ":ref:`search`"
 msgstr ""

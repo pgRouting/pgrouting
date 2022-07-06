@@ -63,26 +63,20 @@ forest.
 
 .. prim-description-start
 
-- It's implementation is only on **undirected graph**.
-- Process is done only on edges with positive costs.
-- When the graph is connected
+.. include:: spanningTree-family.rst
+   :start-after: spanntree_traits_start
+   :end-before: spanntree_traits_end
 
-  - The resulting edges make up a tree
-
-- When the graph is not connected,
-
-  - Finds a minimum spanning tree for each connected component.
-  - The resulting edges make up a forest.
-
-- Prim's running time: :math:`O(E*log V)`
+- Prim's running time: :math:`O(E * log V)`
 
 .. prim-description-end
 
 
 .. Note:: From boost Graph:
-   "The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges."
+   "The algorithm as implemented in Boost.Graph does not produce correct results
+   on graphs with parallel edges."
 
-Inner query
+Inner Queries
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
@@ -93,8 +87,10 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`spanningTree-family`
-* `Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
-* `Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
+* Boost: `Prim's algorithm
+  <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__
+* Wikipedia: `Prim's algorithm
+  <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__
 
 .. rubric:: Indices and tables
 

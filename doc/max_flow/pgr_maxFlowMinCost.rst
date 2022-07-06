@@ -16,11 +16,11 @@
   `3.1 <https://docs.pgrouting.org/3.1/en/pgr_maxFlowMinCost.html>`__
   `3.0 <https://docs.pgrouting.org/3.0/en/pgr_maxFlowMinCost.html>`__
 
-pgr_maxFlowMinCost - Experimental
-============================================
+``pgr_maxFlowMinCost`` - Experimental
+===============================================================================
 
-``pgr_maxFlowMinCost`` — Calculates the flow on the graph edges that maximizes
-the flow and minimizes the cost from the sources to the targets.
+``pgr_maxFlowMinCost`` — Calculates the edges that minimizes the total cost of
+the maximum flow on a graph
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
@@ -37,7 +37,7 @@ the flow and minimizes the cost from the sources to the targets.
 
   * New **experimental** function:
 
-    * pgr_maxFlowMinCost(Combinations)
+    * ``pgr_maxFlowMinCost`` (`Combinations`_)
 
 * Version 3.0.0
 
@@ -60,22 +60,22 @@ Description
 * Running time: :math:`O(U * (E + V * logV))`
 
   * where :math:`U` is the value of the max flow.
-  * :math:`U` is upper bound on number of iterations.
-    In many real world cases number of iterations is much smaller than :math:`U`.
+  * :math:`U` is upper bound on number of iterations. In many real world cases
+    number of iterations is much smaller than :math:`U`.
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_maxFlowMinCost(Edges SQL, source,  target)
-    pgr_maxFlowMinCost(Edges SQL, sources, target)
-    pgr_maxFlowMinCost(Edges SQL, source,  targets)
-    pgr_maxFlowMinCost(Edges SQL, sources, targets)
-    pgr_maxFlowMinCost(Edges SQL, Combinations SQL)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)
+    pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
 .. index::
@@ -84,13 +84,13 @@ Signatures
 One to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_maxFlowMinCost(Edges SQL, source, target)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vid**)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex :math:`3`
+:Example: From vertex :math:`11` to vertex :math:`12`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
    :start-after: -- q1
@@ -102,17 +102,17 @@ One to One
 One to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_maxFlowMinCost(Edges SQL, source, targets)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vid**, **end vids**)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`13` to vertices :math:`\{7, 1, 4\}`
+:Example: From vertex :math:`11` to vertices :math:`\{5, 10, 12\}`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: -- q2
+   :end-before: -- q3
 
 .. index::
     single: maxFlowMinCost(Many to One) - Experimental on v3.0
@@ -120,17 +120,17 @@ One to Many
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_maxFlowMinCost(Edges SQL, sources, target)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vid**)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{1, 7, 14\}` to vertex :math:`12`
+:Example: From vertices :math:`\{11, 3, 17\}` to vertex :math:`12`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
-   :start-after: -- q2
-   :end-before: -- q3
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
     single: maxFlowMinCost(Many to Many) - Experimental on v3.0
@@ -138,13 +138,13 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_maxFlowMinCost(Edges SQL, sources, targets)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    pgr_maxFlowMinCost(`Edges SQL`_, **start vids**, **end vids**)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{7, 13\}` to vertices :math:`\{3, 9\}`
+:Example: From vertices :math:`\{11, 3, 17\}` to vertices :math:`\{5, 10, 12\}`
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
    :start-after: -- q4
@@ -156,41 +156,66 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_maxFlowMinCost(Edges SQL, Combinations SQL)
-    RETURNS SET OF (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
+    pgr_maxFlowMinCost(`Edges SQL`_, `Combinations SQL`_)
+    RETURNS (seq, edge, source, target, flow, residual_capacity, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Using a combinations table, equivalent to calculating result from vertices :math:`\{7, 13\}` to vertices :math:`\{3, 9\}`.
+:Example: Using a combinations table, equivalent to calculating result from
+          vertices :math:`\{5, 6\}` to vertices :math:`\{10, 15, 14\}`.
+
+The combinations table:
 
 .. literalinclude:: doc-pgr_maxFlowMinCost.queries
    :start-after: -- q5
+   :end-before: -- q51
+
+The query:
+
+.. literalinclude:: doc-pgr_maxFlowMinCost.queries
+   :start-after: -- q51
    :end-before: -- q6
 
 Parameters
 -------------------------------------------------------------------------------
 
-.. include:: flow-family.rst
-    :start-after: pgr_flow_parameters_start
-    :end-before: pgr_flow_parameters_end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
-.. include:: flow-family.rst
+Edges SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
     :start-after: costFlow_edges_sql_start
     :end-before: costFlow_edges_sql_end
 
-.. include:: flow-family.rst
-    :start-after: flow_combinations_sql_start
-    :end-before: flow_combinations_sql_end
+Combinations SQL
+...............................................................................
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_combinations_sql_start
+    :end-before: basic_combinations_sql_end
 
 Result Columns
 -------------------------------------------------------------------------------
+
 .. include:: flow-family.rst
     :start-after: result_costFlow_start
     :end-before: result_costFlow_end
+
+Additional Examples
+-------------------------------------------------------------------------------
+
+:Example: Manually assigned vertex combinations.
+
+.. literalinclude:: doc-pgr_maxFlowMinCost.queries
+   :start-after: -- q6
+   :end-before: -- q7
 
 See Also
 -------------------------------------------------------------------------------

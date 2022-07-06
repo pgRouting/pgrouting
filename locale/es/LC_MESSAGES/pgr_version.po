@@ -2,28 +2,28 @@
 # Copyright (C) pgRouting Contributors - Version v3.1.0
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
-# 
+#
 # Translators:
 # MarPetra <mvergaratrejo@gmail.com>, 2020
 # Vicky Vergara <vicky@georepublic.de>, 2021
-# 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.1.0\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-02 19:29+0000\n"
-"PO-Revision-Date: 2020-11-04 18:30+0000\n"
-"Last-Translator: Vicky Vergara <vicky@georepublic.de>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/pgrouting/teams/1219/es/)\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
+"PO-Revision-Date: 2022-07-02 17:20+0000\n"
+"Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_version/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../build/doc/pgr_version.rst:12
+#, fuzzy
 msgid ""
 "**Supported versions:** `Latest "
 "<https://docs.pgrouting.org/latest/en/pgr_version.html>`__ (`3.3 "
@@ -45,8 +45,10 @@ msgid ""
 "<https://docs.pgrouting.org/2.6/en/pgr_version.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_version.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_version.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_version.html>`__ `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_version.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_version.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_version.html>`__ "
+"`2.1 "
 "<https://docs.pgrouting.org/2.1/en/src/common/doc/utilities/version.html>`__"
 " `2.0 "
 "<https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__"
@@ -55,20 +57,21 @@ msgstr ""
 "<https://docs.pgrouting.org/2.6/en/pgr_version.html>`__ `2.5 "
 "<https://docs.pgrouting.org/2.5/en/pgr_version.html>`__ `2.4 "
 "<https://docs.pgrouting.org/2.4/en/pgr_version.html>`__ `2.3 "
-"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_version.html>`__ `2.2 "
-"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_version.html>`__ `2.1 "
+"<https://docs.pgrouting.org/2.3/en/src/common/doc/pgr_version.html>`__ "
+"`2.2 "
+"<https://docs.pgrouting.org/2.2/en/src/common/doc/pgr_version.html>`__ "
+"`2.1 "
 "<https://docs.pgrouting.org/2.1/en/src/common/doc/utilities/version.html>`__"
 " `2.0 "
 "<https://docs.pgrouting.org/2.0/en/src/common/doc/utilities/version.html>`__"
 
 #: ../../build/doc/pgr_version.rst:28
-msgid "pgr_version"
-msgstr "pgr_version"
+msgid "``pgr_version``"
+msgstr "``pgr_version``"
 
 #: ../../build/doc/pgr_version.rst:30
 msgid "``pgr_version`` — Query for pgRouting version information."
-msgstr ""
-"``pgr_version`` — consulta de información sobre la versión de pgRouting."
+msgstr "``pgr_version`` — consulta de información sobre la versión de pgRouting."
 
 #: ../../build/doc/pgr_version.rst:33
 msgid "Availability"
@@ -135,17 +138,22 @@ msgid "See Also"
 msgstr "Ver también"
 
 #: ../../build/doc/pgr_version.rst:77
+msgid ":doc:`reference`"
+msgstr ":doc:`reference`"
+
+#: ../../build/doc/pgr_version.rst:78
 msgid ":doc:`pgr_full_version`"
 msgstr ":doc:`pgr_full_version`"
 
-#: ../../build/doc/pgr_version.rst:80
+#: ../../build/doc/pgr_version.rst:81
 msgid "Indices and tables"
 msgstr "Índices y tablas"
 
-#: ../../build/doc/pgr_version.rst:81
+#: ../../build/doc/pgr_version.rst:82
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../build/doc/pgr_version.rst:82
+#: ../../build/doc/pgr_version.rst:83
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+

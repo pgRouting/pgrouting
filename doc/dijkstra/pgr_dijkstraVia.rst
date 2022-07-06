@@ -22,11 +22,10 @@
   `2.3 <https://docs.pgrouting.org/2.3/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
   `2.2 <https://docs.pgrouting.org/2.2/en/src/dijkstra/doc/pgr_dijkstraVia.html>`__
 
-pgr_dijkstraVia - Proposed
+``pgr_dijkstraVia`` - Proposed
 ===============================================================================
 
-``pgr_dijkstraVia`` — Using dijkstra algorithm, it finds the route that goes through
-a list of vertices.
+``pgr_dijkstraVia`` — Route that goes through a list of vertices.
 
 .. include:: proposed.rst
    :start-after: stable-begin-warning
@@ -43,135 +42,136 @@ a list of vertices.
 
   * New **proposed** function
 
-
 Description
 -------------------------------------------------------------------------------
 
 Given a list of vertices and a graph, this function is equivalent to finding the
-shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\_of(vertex_via)`.
+shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i
+< size\_of(via\;vertices)`.
 
-The paths represents the sections of the route.
+:Route: is a sequence of paths.
+:Path: is a section of the route.
 
 Signatures
 -------------------------------------------------------------------------------
 
-.. rubric:: Summary
-
 .. index::
-    single: dijkstraVia - Proposed
+    single: dijkstraVia - Proposed on 2.2
 
-.. code-block:: none
-
-    pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost)
-    OR EMPTY SET
-
-.. rubric:: Using default
-
-.. code-block:: none
-
-    pgr_dijkstraVia(edges_sql, via_vertices)
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost)
-    OR EMPTY SET
-
-:Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}`  in that order
-
-.. literalinclude:: doc-pgr_dijkstraVia.queries
-    :start-after: -- q00
-    :end-before: -- q0
-
-Complete Signature
+One Via
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraVia(edges_sql, via_vertices [, directed] [, strict] [, U_turn_on_edge])
+    pgr_dijkstraVia(`Edges SQL`_, **via vertices**
+               [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v2.2
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-        node, edge, cost, agg_cost, route_agg_cost)
+                    node, edge, cost, agg_cost, route_agg_cost)
     OR EMPTY SET
 
-:Example: Find the route that visits the vertices :math:`\{ 1, 3, 9\}` in that order on an **undirected** graph, avoiding U-turns when possible
+:Example: Find the route that visits the vertices :math:`\{5, 1, 8\}` in that
+          order on an **directed** graph.
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
-    :start-after: -- q0
+    :start-after: -- q01
     :end-before: -- q1
 
-.. include:: pgRouting-concepts.rst
-    :start-after: pgr_dijkstra_via_parameters_start
-    :end-before: pgr_dijkstra_via_parameters_end
-
-Inner query
+Parameters
 -------------------------------------------------------------------------------
+
+.. include:: via-category.rst
+    :start-after: via_parameters_start
+    :end-before: via_parameters_end
+
+Optional parameters
+...............................................................................
+
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Via optional parameters
+...............................................................................
+
+.. include:: via-category.rst
+    :start-after: via_optionals_start
+    :end-before: via_optionals_end
+
+Inner Queries
+-------------------------------------------------------------------------------
+
+Edges SQL
+...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
-Returns set of ``(start_vid, end_vid, agg_cost)``
-
-================== ============= =================================================
-Column             Type          Description
-================== ============= =================================================
-**seq**            ``BIGINT``    Sequential value starting from 1.
-**path_pid**       ``BIGINT``    Identifier of the path.
-**path_seq**       ``BIGINT``    Sequential value starting from 1 for the path.
-**start_vid**      ``BIGINT``    Identifier of the starting vertex of the path.
-**end_vid**        ``BIGINT``    Identifier of the ending vertex of the path.
-**node**           ``BIGINT``    Identifier of the node in the path from start_vid to end_vid.
-**edge**           ``BIGINT``    Identifier of the edge used to go from node to the next node in the path sequence. -1 for the last node of the path. -2 for the last node of the route.
-**cost**           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
-**agg_cost**       ``FLOAT``     Total cost from ``start_vid`` to ``end_vid`` of the path.
-**route_agg_cost** ``FLOAT``     Total cost from ``start_vid`` of ``path_pid = 1`` to ``end_vid`` of the current ``path_pid`` .
-================== ============= =================================================
+.. include:: via-category.rst
+    :start-after: result_via_start
+    :end-before: result_via_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
-:Example 1: Find the route that visits the vertices :math:`\{1, 5, 3, 9, 4\}` in that order
+.. contents::
+   :local:
+
+All this examples are about the route that visits the vertices :math:`\{5, 7, 1,
+8, 15\}` in that order on a **directed** graph.
+
+The main query
+...............................................................................
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q1
     :end-before: -- q2
 
-:Example 2: What's the aggregate cost of the third path?
+Aggregate cost of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q2
     :end-before: -- q3
 
-:Example 3: What's the route's aggregate cost of the route at the end of the third path?
+Route's aggregate cost of the route at the end of the third path.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q3
     :end-before: -- q4
 
-:Example 4: How are the nodes visited in the route?
+Nodes visited in the route.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q4
     :end-before: -- q5
 
-:Example 5: What are the aggregate costs of the route when the visited vertices are reached?
+The aggregate costs of the route when the visited vertices are reached.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q5
     :end-before: -- q6
 
-:Example 6: Show the route's seq and aggregate cost and a status of "passes in front" or "visits" node :math:`9`
+Status of "passes in front" or "visits" of the nodes.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstraVia.queries
     :start-after: -- q6
+    :end-before: -- q7
 
 See Also
 -------------------------------------------------------------------------------
 
-* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :doc:`via-category`.
+* :doc:`dijkstra-family`.
 * :doc:`sampledata` network.
+* https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 .. rubric:: Indices and tables
 

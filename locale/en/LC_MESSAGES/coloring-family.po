@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pgRouting v3.2.0-dev\n"
+"Project-Id-Version: pgRouting v3.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 15:58+0000\n"
+"POT-Creation-Date: 2022-07-04 17:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,7 @@ msgid ""
 "greedy approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:34
+#: ../../build/doc/coloring-family.rst:35
 msgid "Experimental"
 msgstr ""
 
@@ -147,208 +147,85 @@ msgstr ""
 msgid "Might depend on a deprecated function of pgRouting"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:41
+#: ../../build/doc/coloring-family.rst:42
 msgid ""
 ":doc:`pgr_bipartite` - Bipartite graph algorithm using a DFS-based "
 "coloring approach."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:42
+#: ../../build/doc/coloring-family.rst:44
 msgid ":doc:`pgr_edgeColoring` - Edge Coloring algorithm using Vizing's theorem."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:56
-msgid "Parameters"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:61
-msgid "Parameter"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:61
-#: ../../build/doc/coloring-family.rst:87
-#: ../../build/doc/coloring-family.rst:103
-#: ../../build/doc/traversal-family.rst:4
-msgid "Type"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:61
-#: ../../build/doc/coloring-family.rst:87
-#: ../../build/doc/coloring-family.rst:103
-#: ../../build/doc/traversal-family.rst:4
-msgid "Description"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:63
-msgid "**Edges SQL**"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:63
-msgid "``TEXT``"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:63
-msgid "Inner query as described below."
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:69
-msgid "Inner query"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst
-msgid "Edges SQL"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:71
-msgid ""
-"an SQL query of an **undirected** graph, which should return a set of "
-"rows with the following columns:"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:87
-#: ../../build/doc/coloring-family.rst:103
-#: ../../build/doc/traversal-family.rst:4
-msgid "Column"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:4
-msgid "Default"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:6
-msgid "**id**"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:6
-#: ../../build/doc/traversal-family.rst:7
-#: ../../build/doc/traversal-family.rst:8
-msgid "``ANY-INTEGER``"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:105
-#: ../../build/doc/traversal-family.rst:6
-msgid "Identifier of the edge."
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:7
-msgid "**source**"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:7
-msgid "Identifier of the first end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:8
-msgid "**target**"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:8
-msgid "Identifier of the second end point vertex of the edge."
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:9
-msgid "**cost**"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:9
-#: ../../build/doc/traversal-family.rst:12
-msgid "``ANY-NUMERICAL``"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:9
-msgid "When positive: edge `(source, target)` exist on the graph."
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:10
-msgid "When negative: edge `(source, target)` does not exist on the graph."
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:12
-msgid "**reverse_cost**"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:12
-msgid "-1"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:12
-msgid "When positive: edge `(target, source)` exist on the graph."
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:13
-msgid "When negative: edge `(target, source)` does not exist on the graph."
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:17
-msgid "Where:"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst
-msgid "ANY-INTEGER"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:19
-msgid "SMALLINT, INTEGER, BIGINT"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst
-msgid "ANY-NUMERICAL"
-msgstr ""
-
-#: ../../build/doc/traversal-family.rst:20
-msgid "SMALLINT, INTEGER, BIGINT, REAL, FLOAT"
-msgstr ""
-
-#: ../../build/doc/coloring-family.rst:80
+#: ../../build/doc/coloring-family.rst:58
 msgid "Result Columns"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:84
+#: ../../build/doc/coloring-family.rst:62
 msgid "Returns SET OF ``(vertex_id, color_id)``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:89
-msgid "**vertex_id**"
+#: ../../build/doc/coloring-family.rst:65
+#: ../../build/doc/coloring-family.rst:81
+msgid "Column"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:89
-#: ../../build/doc/coloring-family.rst:90
-#: ../../build/doc/coloring-family.rst:105
-#: ../../build/doc/coloring-family.rst:106
+#: ../../build/doc/coloring-family.rst:65
+#: ../../build/doc/coloring-family.rst:81
+msgid "Type"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:65
+#: ../../build/doc/coloring-family.rst:81
+msgid "Description"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:67
+msgid "``vertex_id``"
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:67
+#: ../../build/doc/coloring-family.rst:68
+#: ../../build/doc/coloring-family.rst:83
+#: ../../build/doc/coloring-family.rst:84
 msgid "``BIGINT``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:89
+#: ../../build/doc/coloring-family.rst:67
 msgid "Identifier of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:90
-#: ../../build/doc/coloring-family.rst:106
-msgid "**color_id**"
+#: ../../build/doc/coloring-family.rst:68
+#: ../../build/doc/coloring-family.rst:84
+msgid "``color_id``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:90
+#: ../../build/doc/coloring-family.rst:68
 msgid "Identifier of the color of the vertex."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:92
-#: ../../build/doc/coloring-family.rst:108
+#: ../../build/doc/coloring-family.rst:70
+#: ../../build/doc/coloring-family.rst:86
 msgid "The minimum value of color is 1."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:100
+#: ../../build/doc/coloring-family.rst:78
 msgid "Returns SET OF ``(edge_id, color_id)``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:105
-msgid "**edge_id**"
+#: ../../build/doc/coloring-family.rst:83
+msgid "``edge_id``"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:106
+#: ../../build/doc/coloring-family.rst:83
+msgid "Identifier of the edge."
+msgstr ""
+
+#: ../../build/doc/coloring-family.rst:84
 msgid "Identifier of the color of the edge."
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:118
+#: ../../build/doc/coloring-family.rst:93
 msgid "See Also"
 msgstr ""
 
@@ -358,7 +235,7 @@ msgid ""
 "<https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_sequentialVertexColoring.rst:4
+#: ../../build/doc/pgr_sequentialVertexColoring.rst:5
 msgid ""
 "`Wikipedia: Graph coloring "
 "<https://en.wikipedia.org/wiki/Graph_coloring>`__"
@@ -366,11 +243,11 @@ msgstr ""
 
 #: ../../build/doc/pgr_bipartite.rst:3
 msgid ""
-"`Boost: is_bipartite algorithm documentation "
+"`Boost: is_bipartite "
 "<https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_bipartite.rst:4
+#: ../../build/doc/pgr_bipartite.rst:5
 msgid ""
 "`Wikipedia: bipartite graph "
 "<https://en.wikipedia.org/wiki/Bipartite_graph>`__"
@@ -382,21 +259,21 @@ msgid ""
 "<https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
 msgstr ""
 
-#: ../../build/doc/pgr_edgeColoring.rst:4
+#: ../../build/doc/pgr_edgeColoring.rst:5
 msgid ""
 "`Wikipedia: Graph Coloring "
 "<https://en.wikipedia.org/wiki/Graph_coloring>`__"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:134
+#: ../../build/doc/coloring-family.rst:109
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:135
+#: ../../build/doc/coloring-family.rst:110
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../build/doc/coloring-family.rst:136
+#: ../../build/doc/coloring-family.rst:111
 msgid ":ref:`search`"
 msgstr ""
 

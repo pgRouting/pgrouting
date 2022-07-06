@@ -257,7 +257,7 @@ The "Vertices" signature version
   pgr_trsp(sql text, source integer, target integer,
            directed boolean, has_rcost boolean [,restrict_sql text]);
 
-Different ways to represent 'no path found`
+1 Different ways to represent 'no path found`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Sometimes represents with EMPTY SET a no path found
@@ -285,7 +285,7 @@ pgr_trsp calls :doc:`pgr_dijkstra` when there are no restrictions which returns
 pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
 which will throw an EXCEPTION to represent no path found.
 
-Routing from/to same location
+1 Routing from/to same location
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 When routing from location :math:`1` to the same location :math:`1`, no path is needed to
@@ -324,7 +324,7 @@ In this case ``pgr_trsp`` calls the original code when there are restrictions, e
 in this case that code finds an unexpected path.
 
 
-User contradictions
+1 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of
@@ -359,7 +359,7 @@ The "Edges" signature version
            target_edge integer, target_pos float8,
            directed boolean, has_rcost boolean [,restrict_sql text]);
 
-Different ways to represent 'no path found`
+2 Different ways to represent 'no path found`
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Sometimes represents with EMPTY SET a no path found
@@ -411,7 +411,7 @@ on the edge column to indicate the edge number is invalidu for that row.
 pgr_trsp use the original code when there are restrictions, even if they have nothing to do with the graph,
 and will not return the last vertex of the path.
 
-Routing from/to same location
+2 Routing from/to same location
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 When routing from the same edge and position to the same edge and position, no path is needed to
@@ -439,7 +439,7 @@ pgr_trsp use the original code when there are restrictions, even if they have no
 and will not have the row for the vertex :math:`-2`.
 
 
-User contradictions
+2 User contradictions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ``pgr_trsp`` unlike other pgRouting functions does not autodectect the existence of

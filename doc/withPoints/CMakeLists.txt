@@ -6,7 +6,6 @@ SET(LOCAL_FILES
     pgr_withPointsCost.rst
     pgr_withPointsCostMatrix.rst
     pgr_withPointsKSP.rst
-    pgr_withPointsVia.rst
     )
 
 foreach (f ${LOCAL_FILES})

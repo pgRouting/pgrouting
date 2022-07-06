@@ -14,10 +14,10 @@
   (`3.3 <https://docs.pgrouting.org/3.3/en/pgr_dijkstraNear.html>`__)
   `3.2 <https://docs.pgrouting.org/3.2/en/pgr_dijkstraNear.html>`__
 
-pgr_dijkstraNear - Proposed
+``pgr_dijkstraNear`` - Proposed
 ===============================================================================
 
-``pgr_dijkstraNear`` — Using dijkstra algorithm, finds the route that leads to
+``pgr_dijkstraNear`` — Using Dijkstra's algorithm, finds the route that leads to
 the nearest vertex.
 
 .. include:: proposed.rst
@@ -83,13 +83,17 @@ Signatures
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNear(Edges SQL, Start vid,  End vids  [, directed] [, cap])
-    pgr_dijkstraNear(Edges SQL, Start vids, End vid   [, directed] [, cap])
-    pgr_dijkstraNear(Edges SQL, Start vids, End vids  [, directed] [, cap], [global])
-    pgr_dijkstraNear(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
+    pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 .. index::
@@ -98,16 +102,18 @@ Signatures
 One to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNear(Edges SQL, Start vid,  End vids [, directed] [, cap])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vid**, **end vids**
+               [, directed] [, cap])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Departing on car from vertex :math:`2` find the nearest subway station.
+:Example: Departing on car from vertex :math:`6` find the nearest subway
+          station.
 
 * Using a **directed** graph for car routing.
-* The subway stations are on the following vertices :math:`\{ 3, 6, 7\}`
+* The subway stations are on the following vertices :math:`\{1, 10, 11\}`
 * The defaults used:
 
   * `directed => true`
@@ -119,7 +125,7 @@ One to Many
     :end-before: -- q2
     :linenos:
 
-The result shows that station at vertex :math:`6` is the nearest.
+The result shows that station at vertex :math:`11` is the nearest.
 
 .. index::
     single: dijkstraNear(Many to One) - Proposed on v3.3
@@ -127,17 +133,18 @@ The result shows that station at vertex :math:`6` is the nearest.
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNear(Edges SQL, Start vids, End vid  [, directed] [, cap])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vid**
+               [, directed] [, cap])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Departing on a car from a subway station find the nearest **two**
           stations to vertex :math:`2`
 
 * Using a **directed** graph for car routing.
-* The subway stations are on the following vertices :math:`\{ 3, 6, 7\}`
+* The subway stations are on the following vertices :math:`\{ 1, 10, 11\}`
 * On line `4`: using the positional parameter: `directed` set to ``true``
 * In line `5`: using named parameter `cap => 2`
 
@@ -146,8 +153,8 @@ Many to One
     :end-before: -- q3
     :linenos:
 
-The result shows that station at vertex :math:`3` is the nearest and the next best
-is :math:`6`.
+The result shows that station at vertex :math:`10` is the nearest and the next
+best is :math:`11`.
 
 .. index::
     single: dijkstraNear(Many to Many) - Proposed on v3.3
@@ -155,17 +162,20 @@ is :math:`6`.
 Many to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNear(Edges SQL, Start vids, End vids [, directed] [, cap], [global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, **start vids**, **end vids**
+               [, directed] [, cap], [global])
+    pgr_dijkstraNear(Edges SQL, Start vids, End vids
+               [, directed] [, cap], [global])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example: Find the best pedestrian connection between two lines of buses
 
 * Unsing an **undirected** graph for pedestrian routing
-* The first subway line stations stops are at :math:`\{3, 6, 7\}`
-* The second subway line stations are at :math:`\{4, 9\}`
+* The first subway line stations are at :math:`\{15, 16\}`
+* The second subway line stations stops are at :math:`\{1, 10, 11\}`
 * On line `4`: using the named parameter: `directed => false`
 * The defaults used:
 
@@ -177,8 +187,8 @@ Many to Many
     :end-before: -- q4
     :linenos:
 
-For a pedestrian the best connection is to get on/off is at vertex :math:`3` of the
-first subway line and at vertex :math:`4` of the second subway line.
+For a pedestrian the best connection is to get on/off is at vertex :math:`15` of
+the first subway line and at vertex :math:`10` of the second subway line.
 
 Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 
@@ -188,108 +198,125 @@ Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstraNear(Edges SQL, Combinations SQL  [, directed] [, cap], [global])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstraNear(`Edges SQL`_, `Combinations SQL`_
+               [, directed] [, cap] [, global])
+    RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: Find the best car connection between all the stations of two subway lines
+:Example: Find the best car connection between all the stations of two subway
+          lines
 
 * Using a **directed** graph for car routing.
-* The first subway line stations stops are at :math:`\{3, 6, 7\}`
-* The second subway line stations are at :math:`\{4, 9\}`
-* line `3` sets the start vertices to be from the fisrt subway line and the ending
-  vertices to be from the second subway line
-* line `5` sets the start vertices to be from the first subway line and the ending
-  vertices to be from the first subway line
-* On line `6`: using the named parameter is `global => false`
+* The first subway line stations stops are at :math:`\{1, 10, 11\}`
+* The second subway line stations are at :math:`\{15, 16\}`
+
+The combinations contents:
+
+.. literalinclude:: doc-pgr_dijkstraNear.queries
+    :start-after: -- q4
+    :end-before: -- q41
+
+The query:
+
+* lines `3~4` sets the start vertices to be from the first subway line and the
+  ending vertices to be from the second subway line
+* lines `6~7` sets the start vertices to be from the first subway line and the
+  ending vertices to be from the first subway line
+* On line `8`: using the named parameter is `global => false`
 * The defaults used:
 
   * `directed => true`
   * `cap => 1`
 
 .. literalinclude:: doc-pgr_dijkstraNear.queries
-    :start-after: -- q4
+    :start-after: -- q41
     :end-before: -- q5
     :linenos:
 
 From the results:
 
-* making a connection from the first subway line to the second:
+* making a connection from the first subway line :math:`\{1, 10, 11\}` to the
+  second :math:`\{15, 16\}`:
 
-  * :math:`{(3 -> 9) (6 -> 9) (7 -> 9)}` and the best one is :math:`(6 -> 9)` with a
-    cost of :math:`1` (lines: `12` and `13`)
+  * The best connections from all the stations from the first line are:
+    :math:`{(1 \rightarrow 16) (10 \rightarrow 16) (11 \rightarrow 16)}`
+  * The best one is :math:`(11 \rightarrow 16)` with a cost of :math:`1` (lines:
+    `11` and `12`)
 
-* making a connection from the second subway line to the first:
+* making a connection from the second subway line :math:`\{15, 16\}` to the
+  first :math:`\{1, 10, 11\}`:
 
-  * :math:`{(4 -> 3) (9 -> 6)}` and both are equaly good as they have the same
-    cost. (lines: `10` and `11` and lines: `14` and `15`)
+  * The best connections from all the stations from the second line are:
+    :math:`{(15 \rightarrow 10) (16 \rightarrow 11)}`
+  * Both are equaly good as they have the same cost. (lines: `13` and `14` and
+    lines: `15` and `16`)
 
 
 Parameters
 -------------------------------------------------------------------------------
 
-====================== ================== ======== =================================================
-Parameter              Type               Default     Description
-====================== ================== ======== =================================================
-**Edges SQL**          ``TEXT``                    `Edges query`_ as described below
-**Combinations SQL**   ``TEXT`` 	  	               `Combinations query` as described below
-**Start vid**          ``BIGINT``                  Identifier of the starting vertex of the path.
-**Start vids**         ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**End vid**            ``BIGINT``                  Identifier of the ending vertex of the path.
-**End vids**           ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**           ``BOOLEAN``        ``true`` - When ``true`` the graph is considered `Directed`
-                                                   - When ``false`` the graph is considered as `Undirected`.
-**cap**                ``BIGINT``           1      Find at most ``cap`` number of nearest shortest paths
-**global**             ``BOOLEAN``        ``true`` - When ``true``: only ``cap`` limit results will be returned
-                                                   - When ``false``: ``cap`` limit per ``Start vid`` will be returned
-====================== ================== ======== =================================================
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
+Dijkstra optional parameters
+...............................................................................
 
-Inner query
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
+
+Near optional parameters
+...............................................................................
+
+.. near_optionals_start
+
+.. list-table::
+   :width: 81
+   :widths: 14 7 7 60
+   :header-rows: 1
+
+   * - Parameter
+     - Type
+     - Default
+     - Description
+   * - ``cap``
+     - ``BIGINT``
+     - ``1``
+     - Find at most ``cap`` number of nearest shortest paths
+   * - ``global``
+     - ``BOOLEAN``
+     - ``true``
+     - * When ``true``: only ``cap`` limit results will be returned
+       * When ``false``: ``cap`` limit per ``Start vid`` will be returned
+
+.. near_optionals_end
+
+Inner Queries
 -------------------------------------------------------------------------------
 
-Edges query
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Combinations query
+Combinations SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
-RETURNS SET OF ``(seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
-OR EMPTY SET
-
-================== ============= =================================================
-Column             Type          Description
-================== ============= =================================================
-**seq**            ``BIGINT``    Sequential value starting from 1.
-**path_seq**       ``BIGINT``    Sequential value starting from 1 for each :math:`(start\_vid \to end\_vid)` path.
-**start_vid**      ``BIGINT``    Identifier of the starting vertex of the path.
-**end_vid**        ``BIGINT``    Identifier of the ending vertex of the path.
-**node**           ``BIGINT``    Identifier of the node at position ``path_seq`` in the :math:`(start\_vid \to end\_vid)` path.
-**edge**           ``BIGINT``    Identifier of the edge used to go from node at ``path_seq`` to the node at ``path_seq + 1`` in the
-                                 :math:`(start\_vid \to end\_vid)` path.
-
-                                 * :math:`-1` for the last node of the path.
-
-**cost**           ``FLOAT``     Cost to traverse from ``node`` using ``edge`` to the next node in the route sequence.
-
-                                 * :math:`0` for the last row of the path.
-
-**agg_cost**       ``FLOAT``     Total cost of traversing :math:`(start\_vid \to node)` section of the :math:`(start\_vid \to end\_vid)` path.
-================== ============= =================================================
-
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_complete_start
+    :end-before: return_path_complete_end
 
 See Also
 -------------------------------------------------------------------------------

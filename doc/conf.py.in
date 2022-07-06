@@ -53,7 +53,9 @@ extensions = [
         'sphinx.ext.todo',
         'sphinx.ext.mathjax',
         'sphinx.ext.graphviz',
+        'sphinx.ext.autosectionlabel',
         ]
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -95,11 +97,6 @@ locale_dirs = ['@CMAKE_SOURCE_DIR@/locale/']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = [
-    'doc/build',
-    'pgr_withPointsVia.rst',
-    'maxFlowApplications.rst',
-    '*/notUsed',
-    'tools/template'
     ]
 
 #    'src/pickDeliver/doc/pgr_withPointsVia.rst',
@@ -318,14 +315,20 @@ pdf_style_path = ['.', '_styles']
 
 # cases to ignore during link checking
 linkcheck_ignore = [
-    'https://docs.pgrouting.org/latest/en/pgr_edgeColoring.html',
+    r'https://docs.pgrouting.org/.*/.*/via-category.html',
+    r'https://docs.pgrouting.org/.*/.*/withPoints-category.html',
+    r'https://docs.pgrouting.org/.*/.*/BFS-category.html',
+    r'https://docs.pgrouting.org/.*/.*/DFS-category.html',
+    r'https://docs.pgrouting.org/.*/.*/reference.html',
 
     # link failing used in contraction-family
     'https://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf'
 
     # FIXME: tmp disable due to Retry-After header for rate-limiting by Github not respected
     #        (see: https://github.com/sphinx-doc/sphinx/issues/7388)
-    "https://github.com/pgRouting/pgrouting/issues/*",    # limit only pgrouting
+    r'https://github.com/pgRouting/pgrouting/issues/*',    # limit only pgrouting
+    r'https://github.com/pgRouting/pgrouting/archive/*',
+    r'https://www.overpass-api.de/*'
 ]
 
 linkcheck_timeout = 20

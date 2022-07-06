@@ -24,11 +24,10 @@
   `2.1 <https://docs.pgrouting.org/2.1/en/src/dijkstra/doc/index.html>`__
   `2.0 <https://docs.pgrouting.org/2.0/en/src/dijkstra/doc/index.html>`__
 
-pgr_dijkstra
+``pgr_dijkstra``
 ===============================================================================
 
-``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
+``pgr_dijkstra`` — Shortest path(s) using Dijkstra algorithm.
 
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
@@ -41,7 +40,7 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
   * New **Proposed** functions:
 
-    * pgr_dijkstra(combinations)
+    * ``pgr_dijkstra`` (`Combinations`_)
 
 * Version 3.0.0
 
@@ -51,76 +50,46 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
   * New **proposed** functions:
 
-    * pgr_dijkstra(One to Many)
-    * pgr_dijkstra(Many to One)
-    * pgr_dijkstra(Many to Many)
+    * ``pgr_dijkstra`` (`One to Many`_)
+    * ``pgr_dijkstra`` (`Many to One`_)
+    * ``pgr_dijkstra`` (`Many to Many`_)
 
 * Version 2.1.0
 
-  * Signature change on pgr_dijkstra(One to One)
+  * Signature change on ``pgr_dijkstra`` (`One to One`_)
 
 * Version 2.0.0
 
-  * **Official** pgr_dijkstra(One to One)
+  * **Official** ``pgr_dijkstra`` (`One to One`_)
 
 
 Description
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
-It is a graph search algorithm that solves the shortest path problem for
-a graph with non-negative edge path costs, producing a shortest path from
-a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-This implementation can be used with a directed graph and an undirected graph.
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_description_start
+    :end-before: dijkstra_description_end
 
-The main characteristics are:
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_details_start
+    :end-before: dijkstra_details_end
 
-    - When the starting vertex and ending vertex are the same, there is no path.
-
-      - The `agg_cost` the non included values `(v, v)` is `0`
-
-    - When the starting vertex and ending vertex are the different and there is no path:
-
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
-
-  - The returned values are ordered:
-
-    - `start_vid` ascending
-    - `end_vid` ascending
-
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
+- Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. rubric:: Summary
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstra(Edges SQL, start_vid,  end_vid  [, directed])
-    pgr_dijkstra(Edges SQL, start_vid,  end_vids [, directed])
-    pgr_dijkstra(Edges SQL, start_vids, end_vid  [, directed])
-    pgr_dijkstra(Edges SQL, start_vids, end_vids [, directed])
-    pgr_dijkstra(Edges SQL, Combinations SQL [, directed])
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
+    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
+    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid**  [, directed])
+    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
+    pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
+    RETURNS (seq, path_seq [, start vid] [, end vid], node, edge, cost, agg_cost)
     OR EMPTY SET
-
-.. rubric:: Using defaults
-
-.. code-block:: none
-
-    pgr_dijkstra(Edges SQL, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
-
-:Example: From vertex :math:`2` to vertex  :math:`3` on a **directed** graph
-
-.. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q1
-   :end-before: -- q2
 
 .. index::
     single: dijkstra(One to One)
@@ -128,31 +97,33 @@ Signatures
 One to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstra(Edges SQL, start_vid,  end_vid  [, directed])
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    pgr_dijkstra(Edges SQL, start vid,  end vid  [, directed])
+    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
+    RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertex  :math:`3` on an **undirected** graph
+:Example: From vertex :math:`6` to vertex  :math:`10` on a **directed** graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q2
-   :end-before: -- q3
+    :start-after: -- q2
+    :end-before: -- q3
 
 .. index::
     single: dijkstra(One to Many)
 
-One to many
+One to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstra(Edges SQL, start_vid, end_vids, [, directed])
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
+    pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
+    RETURNS (seq, path_seq, end vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertex :math:`2` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertex :math:`6` to vertices :math:`\{10, 17\}` on a **directed**
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q3
@@ -164,13 +135,14 @@ One to many
 Many to One
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstra(Edges SQL, start_vids, end_vid, [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
+    RETURNS (seq, path_seq, start vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertex :math:`5` on a **directed** graph
+:Example: From vertices :math:`\{6, 1\}` to vertex :math:`17` on a **directed**
+          graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q4
@@ -182,17 +154,18 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstra(Edges SQL, start_vids, end_vids, [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
+    RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-:Example: From vertices :math:`\{2, 11\}` to vertices :math:`\{3, 5\}` on an **undirected** graph
+:Example: From vertices :math:`\{6, 1\}` to vertices :math:`\{10, 17\}` on an
+          **undirected** graph
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q5
-   :end-before: -- q6
+   :end-before: -- q51
 
 .. index::
     single: dijkstra(Combinations) - Proposed on v3.1
@@ -200,126 +173,420 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. code-block:: none
+.. parsed-literal::
 
-    pgr_dijkstra(Edges SQL, Combinations SQL, end_vids, [, directed])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
+   RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
+   OR EMPTY SET
 
 :Example: Using a combinations table on an **undirected** graph
 
+The combinations table:
+
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q19
-   :end-before: -- q20
+    :start-after: -- q51
+    :end-before: -- q52
+
+The query:
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+    :start-after: -- q52
+    :end-before: -- q6
 
 
 Parameters
 -------------------------------------------------------------------------------
 
-.. pgr_dijkstra_parameters_start
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_parameters_start
+    :end-before: dijkstra_parameters_end
 
-====================== ================== ======== =================================================
-Parameter              Type               Default     Description
-====================== ================== ======== =================================================
-**Edges SQL**          ``TEXT``                    `Edges query`_ as described below
-**Combinations SQL**   ``TEXT``                    `Combinations query`_ as described below
-**start_vid**          ``BIGINT``                  Identifier of the starting vertex of the path.
-**start_vids**         ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
-**end_vid**            ``BIGINT``                  Identifier of the ending vertex of the path.
-**end_vids**           ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
-**directed**           ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
-                                                   - When ``false`` the graph is considered as `Undirected`.
-====================== ================== ======== =================================================
+Optional parameters
+...............................................................................
 
-.. pgr_dijkstra_parameters_end
+.. include:: dijkstra-family.rst
+    :start-after: dijkstra_optionals_start
+    :end-before: dijkstra_optionals_end
 
-Inner queries
+Inner Queries
 -------------------------------------------------------------------------------
 
-Edges query
+Edges SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-Combinations query
+Combinations SQL
 ...............................................................................
 
 .. include:: pgRouting-concepts.rst
     :start-after: basic_combinations_sql_start
     :end-before: basic_combinations_sql_end
 
-Return Columns
+Result Columns
 -------------------------------------------------------------------------------
 
 .. include:: pgRouting-concepts.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
-
+    :start-after: return_path_short_start
+    :end-before: return_path_short_end
 
 Additional Examples
 -------------------------------------------------------------------------------
 
+:Example: Demonstration of repeated values are ignored, and result is sorted.
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+    :start-after: -- q6
+    :end-before: -- q7
+
+:Example 2: Making **start_vids** the same as **end_vids**
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+    :start-after: -- q7
+    :end-before: -- q8
+
+:Example: Manually assigned vertex combinations.
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+    :start-after: -- q8
+    :end-before: -- q9
+
+
 The examples of this section are based on the :doc:`sampledata` network.
 
-The examples include combinations from starting vertices 2 and 11 to ending vertices 3 and 5 in a directed and
-undirected graph with and with out reverse_cost.
+.. contents::
+   :local:
 
-:Examples: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+For **directed** graphs with ``cost`` and ``reverse_cost`` columns
+...............................................................................
 
-The examples in this section use the following :ref:`fig1`
+.. figure:: /images/Fig1-originalData.png
+   :scale: 50%
+
+   Directed graph with cost and reverse cost columns
+
+1) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q7
-   :end-before: -- q8
+   :start-after: -- q70
+   :end-before: -- q71
 
-:Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following :ref:`fig2`
+2) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q9
+   :start-after: -- q71
+   :end-before: -- q72
+
+3) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q72
+   :end-before: -- q73
+
+4) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q73
+   :end-before: -- q74
+
+5) Using `One to Many`_ to get the solution of examples 1 and 2
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q74
+   :end-before: -- q75
+
+6) Using `Many to One`_ to get the solution of examples 2 and 4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q75
+   :end-before: -- q76
+
+7) Using `Many to Many`_ to get the solution of examples 1 to 4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q76
+   :end-before: -- q77
+
+8) Using `Combinations`_ to get the solution of examples 1 to 3
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q77
+   :end-before: -- q80
+
+For **undirected** graphs with ``cost`` and ``reverse_cost`` columns
+...............................................................................
+
+.. figure:: /images/Fig6-undirected.png
+   :scale: 50%
+
+   Undirected graph with cost and reverse cost columns
+
+9) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q90
+   :end-before: -- q91
+
+10) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q91
+   :end-before: -- q92
+
+11) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q92
+   :end-before: -- q93
+
+12) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q93
+   :end-before: -- q94
+
+13) Using `One to Many`_ to get the solution of examples 9 and 10
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q94
+   :end-before: -- q95
+
+14) Using `Many to One`_ to get the solution of examples 10 and 12
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q95
+   :end-before: -- q96
+
+15) Using `Many to Many`_ to get the solution of examples 9 to 12
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q96
+   :end-before: -- q97
+
+16) Using `Combinations`_ to get the solution of examples 9 to 11
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q97
    :end-before: -- q10
 
-:Examples: For queries marked as ``directed`` with ``cost`` column
+For **directed** graphs only with ``cost`` column
+...............................................................................
 
-The examples in this section use the following :ref:`fig3`
+.. figure:: /images/Fig2-cost.png
+   :scale: 50%
+
+   Directed graph only with cost column
+
+17) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q11
+   :end-before: -- q111
+
+18) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q111
+   :end-before: -- q112
+
+19) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q112
+   :end-before: -- q113
+
+20) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q113
+   :end-before: -- q114
+
+21) Using `One to Many`_ to get the solution of examples 17 and 18
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q114
+   :end-before: -- q115
+
+22) Using `Many to One`_ to get the solution of examples 18 and 20
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q115
+   :end-before: -- q116
+
+23) Using `Many to Many`_ to get the solution of examples 17 to 20
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q116
+   :end-before: -- q117
+
+24) Using `Combinations`_ to get the solution of examples 17 to 19
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q117
    :end-before: -- q12
 
-:Examples: For queries marked as ``undirected`` with ``cost`` column
+For **undirected** graphs only with ``cost`` column
+...............................................................................
 
-The examples in this section use the following :ref:`fig4`
+.. figure:: /images/Fig4-costUndirected.png
+   :scale: 50%
+
+   Undirected graph only with cost column
+
+25) Path from :math:`6` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q13
+   :end-before: -- q131
+
+26) Path from :math:`6` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q131
+   :end-before: -- q132
+
+27) Path from :math:`12` to :math:`10`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q132
+   :end-before: -- q133
+
+28) Path from :math:`12` to :math:`7`
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q133
+   :end-before: -- q134
+
+29) Using `One to Many`_ to get the solution of examples 25 and 26
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q134
+   :end-before: -- q135
+
+30) Using `Many to One`_ to get the solution of examples 26 and 28
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q135
+   :end-before: -- q136
+
+31) Using `Many to Many`_ to get the solution of examples 25 to 28
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6, 12\}\rightarrow\{10, 7\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q136
+   :end-before: -- q137
+
+32) Using `Combinations`_ to get the solution of examples 25 to 27
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Paths :math:`\{6\}\rightarrow\{10, 7\}\cup\{12\}\rightarrow\{10\}`
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q137
    :end-before: -- q14
+
 
 Equvalences between signatures
 ...............................................................................
 
-:Examples: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+The following examples find the path for :math:`\{6\}\rightarrow\{10\}`
 
-The examples in this section use the following:
-
-* :ref:`fig1`
+33) Using `One to One`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q15
-   :end-before: -- q16
+   :end-before: -- q151
 
-:Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-
-The examples in this section use the following:
-
-* :ref:`fig2`
+34) Using `One to Many`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. literalinclude:: doc-pgr_dijkstra.queries
-   :start-after: -- q17
-   :end-before: -- q18
+   :start-after: -- q151
+   :end-before: -- q152
+
+35) Using `Many to One`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q152
+   :end-before: -- q153
+
+36) Using `Many to Many`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q153
+   :end-before: -- q154
+
+36) Using `Combinations`_
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. literalinclude:: doc-pgr_dijkstra.queries
+   :start-after: -- q154
+   :end-before: -- q16
 
 See Also
 -------------------------------------------------------------------------------

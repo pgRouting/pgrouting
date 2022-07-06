@@ -4,53 +4,73 @@ SET client_min_messages TO NOTICE;
 SET
 /* -- q1 */
 SELECT * FROM pgr_dijkstraNearCost(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    2, ARRAY[3, 6, 7]
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  6, ARRAY[10, 11, 1]);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         2 |       6 |        2
+         6 |      11 |        2
 (1 row)
 
 /* -- q2 */
 SELECT * FROM pgr_dijkstraNearCost(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[3, 6, 7], 2,
-    true,
-    cap => 2
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  ARRAY[10, 11, 1], 6,
+  true,
+  cap => 2) ORDER BY agg_cost;
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         3 |       2 |        1
-         6 |       2 |        2
+        10 |       6 |        1
+        11 |       6 |        2
 (2 rows)
 
 /* -- q3 */
 SELECT * FROM pgr_dijkstraNearCost(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[4, 9], ARRAY[3, 6, 7],
-    directed => false
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  ARRAY[15, 16], ARRAY[10, 11, 1],
+  directed => false);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         4 |       3 |        1
+        15 |      10 |        1
 (1 row)
 
 /* -- q4 */
+SELECT unnest(ARRAY[10, 11, 1]) as source, target
+FROM (SELECT unnest(ARRAY[15, 16]) AS target) a
+  UNION
+SELECT unnest(ARRAY[15, 16]), target
+FROM (SELECT unnest(ARRAY[10, 11, 1]) AS target) b ORDER BY source, target;
+ source | target
+--------+--------
+      1 |     15
+      1 |     16
+     10 |     15
+     10 |     16
+     11 |     15
+     11 |     16
+     15 |      1
+     15 |     10
+     15 |     11
+     16 |      1
+     16 |     10
+     16 |     11
+(12 rows)
+
+/* -- q41 */
 SELECT * FROM pgr_dijkstraNearCost(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT unnest(ARRAY[3, 6, 7]) as source, target FROM (SELECT unnest(ARRAY[4, 9]) AS target) a
-    UNION
-    SELECT unnest(ARRAY[4, 9]), target FROM (SELECT unnest(ARRAY[3, 6, 7]) AS target) b',
-    global => false
-);
+  'SELECT id, source, target, cost, reverse_cost FROM edges',
+  'SELECT unnest(ARRAY[10, 11, 1]) as source, target
+   FROM (SELECT unnest(ARRAY[15, 16]) AS target) a
+     UNION
+   SELECT unnest(ARRAY[15, 16]), target
+   FROM (SELECT unnest(ARRAY[10, 11, 1]) AS target) b',
+  global => false);
  start_vid | end_vid | agg_cost
 -----------+---------+----------
-         4 |       3 |        1
-         6 |       9 |        1
-         9 |       6 |        1
-         3 |       9 |        2
-         7 |       9 |        4
+        11 |      16 |        1
+        15 |      10 |        1
+        16 |      11 |        1
+        10 |      16 |        2
+         1 |      16 |        4
 (5 rows)
 
 /* -- q5 */
