@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 12:55-0500\n"
-"PO-Revision-Date: 2022-07-04 16:00+0000\n"
+"PO-Revision-Date: 2022-07-07 16:25+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_trsp_withpoints/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.13.1\n"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:12
 msgid ""
@@ -126,7 +126,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:48
 msgid "**The main characteristics are:**"
-msgstr "**Las características principales son:**"
+msgstr "**Las principales características son:**"
 
 #: ../../build/doc/pgr_trsp_withPoints.rst:50
 msgid "Process is done only on edges with positive costs."

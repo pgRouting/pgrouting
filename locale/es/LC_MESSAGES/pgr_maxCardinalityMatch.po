@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-04 09:40-0500\n"
-"PO-Revision-Date: 2022-06-28 01:20+0000\n"
+"PO-Revision-Date: 2022-07-07 16:25+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"pgr_maxcardinalitymatch/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/pgr_maxcardinalitymatch/es/>"
-"\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13.1\n"
 "Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:12
@@ -109,7 +109,7 @@ msgstr "Descripción"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:55
 msgid "**The main characteristics are:**"
-msgstr "**Las características principales son:**"
+msgstr "**Las principales características son:**"
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:57
 msgid ""
@@ -334,4 +334,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:140
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-

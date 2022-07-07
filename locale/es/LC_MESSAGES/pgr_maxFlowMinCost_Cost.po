@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.2.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-07-04 15:45+0000\n"
+"PO-Revision-Date: 2022-07-07 16:25+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_maxflowmincost_cost/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.13.1\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:12
@@ -164,7 +164,7 @@ msgstr "Descripción"
 #: ../../build/doc/flow-family.rst:3
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:55
 msgid "**The main characteristics are:**"
-msgstr "**Las características principales son:**"
+msgstr "**Las principales características son:**"
 
 #: ../../build/doc/flow-family.rst:5
 #: ../../build/doc/pgr_maxFlowMinCost_Cost.rst:57
