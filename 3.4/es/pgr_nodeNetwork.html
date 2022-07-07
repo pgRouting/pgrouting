@@ -177,7 +177,7 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p><strong>Las características principales son:</strong></p>
+<p><strong>Las principales características son:</strong></p>
 <p>Un problema común asociado con la incorporación de datos SIG en pgRouting es el hecho de que los datos a menudo no están correctamente referenciados con nodos. Esto provoca topologías no válidas, que resultan en rutas que son incorrectas.</p>
 <p>Que los bordes estén indicados como anudados significa que, en cada intersección de la red de caminos, las aristas se descompondrán en segmentos separados . Los casos como una intersección por puente o túnel donde no existe conexión vial no son detectados por esta función.</p>
 <p>Esta función lee la tabla <code class="docutils literal notranslate"><span class="pre">edge_table</span></code>, que tiene una columna de clave principal <code class="docutils literal notranslate"><span class="pre">id</span></code> y columna de la geometría llamada <code class="docutils literal notranslate"><span class="pre">the_geom</span></code>, y verifica la intersección de todos los segmentos contra todos los demás segmentos creando una tabla de salida <code class="docutils literal notranslate"><span class="pre">edge_table_noded</span></code>. Usa la tolerancia <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> para decidir cuáles nodos son considerados como mismo nodo.</p>
