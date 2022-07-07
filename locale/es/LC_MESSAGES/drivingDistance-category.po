@@ -11,15 +11,16 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-04 10:33-0500\n"
-"PO-Revision-Date: 2022-06-28 15:12+0000\n"
+"PO-Revision-Date: 2022-07-07 18:34+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"drivingdistance-category/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
-"/drivingdistance-category/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13.1\n"
 "Generated-By: Babel 2.10.3\n"
 
 #: ../../build/doc/drivingDistance-category.rst:12
@@ -130,7 +131,7 @@ msgstr ":doc:`pgr_withPointsDD` - Distancia Manejando basada en pgr_withPoints"
 
 #: ../../build/doc/drivingDistance-category.rst:56
 msgid "Calculate nodes that are within a distance."
-msgstr ""
+msgstr "Calcular nodos que están dentro de una distancia."
 
 #: ../../build/doc/drivingDistance-category.rst:60
 msgid ""
@@ -143,6 +144,7 @@ msgstr ""
 #: ../../build/doc/drivingDistance-category.rst:62
 msgid "The edges extracted will conform to the corresponding spanning tree."
 msgstr ""
+"Las aristas extraídas conformarán el correspondiente árbol de expansión."
 
 #: ../../build/doc/drivingDistance-category.rst:63
 msgid "Edge :math:`(u, v)` will not be included when:"
@@ -361,4 +363,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/drivingDistance-category.rst:124
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
