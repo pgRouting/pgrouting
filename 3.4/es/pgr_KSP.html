@@ -199,7 +199,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get 2 paths from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(17\)</span> on a directed graph.</p>
+<dd class="field-odd"><p>Obteners 2 caminos desde <span class="math notranslate nohighlight">\(6\)</span> hasta <span class="math notranslate nohighlight">\(17\)</span> en un grafo dirigido.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
@@ -424,10 +424,10 @@ OR EMPTY SET</pre>
 <h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Get 2 paths from <span class="math notranslate nohighlight">\(6\)</span> to <span class="math notranslate nohighlight">\(17\)</span> on an undirected graph</p>
+<dd class="field-odd"><p>Obteners 2 caminos desde <span class="math notranslate nohighlight">\(6\)</span> hasta <span class="math notranslate nohighlight">\(17\)</span> en un grafo no dirigido</p>
 </dd>
 </dl>
-<p>Also get the paths in the heap.</p>
+<p>También obtener los caminos procesados.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_KSP</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
   <span class="mi">6</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
@@ -488,7 +488,7 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jul 07, 2022.<br/>
+      Actualizado por última vez en jul 08, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>

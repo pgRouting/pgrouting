@@ -230,18 +230,8 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p>It is well-known that the shortest paths between a single source and all other
-vertices can be found using Breadth First Search in <span class="math notranslate nohighlight">\(O(|E|)\)</span> in an
-unweighted graph, i.e. the distance is the minimal number of edges that you
-need to traverse from the source to another vertex. We can interpret such a
-graph also as a weighted graph, where every edge has the weight <span class="math notranslate nohighlight">\(1\)</span>.
-If not alledges in graph have the same weight, that we need a more general
-algorithm, like Dijkstra’s Algorithm  which runs in <span class="math notranslate nohighlight">\(O(|E|log|V|)\)</span> time.</p>
-<p>However if the weights are more constrained, we can use a faster algorithm.
-This algorithm, termed as “Binary Breadth First Search” as well as “0-1 BFS”,
-is a variation of the standard Breadth First Search problem to solve the SSSP
-(single-source shortest path) problem in <span class="math notranslate nohighlight">\(O(|E|)\)</span>, if the weights of each
-edge belongs to the set {0,X}, where “X” is any non-negative real integer.</p>
+<p>Es bien sabido que las rutas más cortas entre una sola fuente y todos los demás vértices se pueden encontrar usando Breadth First Search en <span class="math notranslate nohighlight">\(O(|E|)\)</span> en un grafo no ponderado, es decir, la distancia es el número mínimo de aristas que necesita atravesar desde el origen a otro vértice. Podemos interpretar tal grafo también como un grafo ponderado, donde cada arista tiene el peso 1. Si no todas las aristas del grafo tienen el mismo peso, que necesitamos un algoritmo más general, como el Algoritmo de Dijkstra que se ejecuta en <span class="math notranslate nohighlight">\(O(|E|log|V|)\)</span> tiempo.</p>
+<p>Sin embargo, si los pesos están más restringidos, podemos usar un algoritmo más rápido. Este algoritmo, llamado “búsqueda binaria de primero profundidad” así como “0-1 BFS”, es una variación del problema estándar de búsqueda de primero profundidad para resolver el problema SSSP (ruta más corta de una sola fuente) en <span class="math notranslate nohighlight">\(O(|E|)\)</span>, si los pesos de cada arista pertenecen al conjunto de caracteres de {0,X}, donde “X” es cualquier entero no negativo.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
 <li><p>El proceso se realiza sólo en “grafos binarios”. (“Grafo binario”: Cualquier grafo cuyos pesos de aristas pertenezcan al conjunto {0, X}, donde “X” es cualquier entero real no negativo.)</p></li>
@@ -270,8 +260,7 @@ pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edg
             [, directed])
 RETURNS (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
 OR EMPTY SET</pre>
-<p><strong>Note:</strong> Using the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> Network as all weights are same (i.e
-<span class="math notranslate nohighlight">\(1`\)</span>)</p>
+<p><strong>Nota:</strong> Usando la red de <a class="reference internal" href="BFS-category.html"><span class="doc">BFS - Categoría</span></a> como todos los pesos son los mismos (i.e <span class="math notranslate nohighlight">\(1`\)</span>)</p>
 <section id="one-to-one">
 <span id="index-0"></span><h3>Uno a Uno<a class="headerlink" href="#one-to-one" title="Permalink to this heading">¶</a></h3>
 <pre class="literal-block">pgr_binaryBreadthFirstSearch(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vid</strong>
@@ -737,7 +726,7 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jul 07, 2022.<br/>
+      Actualizado por última vez en jul 08, 2022.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
     </p>
   </div>
