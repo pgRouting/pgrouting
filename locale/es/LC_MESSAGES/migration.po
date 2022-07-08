@@ -10,20 +10,19 @@ msgstr ""
 "POT-Creation-Date: 2022-07-07 10:07-0500\n"
 "PO-Revision-Date: 2022-07-03 18:57+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
+"migration/es/>\n"
 "Language: es\n"
-"Language-Team: Spanish "
-"<https://weblate.osgeo.org/projects/pgrouting/migration/es/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/migration.rst:12
 msgid ""
-"**Supported versions:** `Latest "
-"<https://docs.pgrouting.org/latest/en/pgr_trsp.html>`__ (`3.4 "
-"<https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)"
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/"
+"pgr_trsp.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/pgr_trsp.html>`__)"
 msgstr ""
 
 #: ../../build/doc/migration.rst:17
@@ -46,15 +45,15 @@ msgstr ""
 
 #: ../../build/doc/migration.rst:26
 msgid ""
-":doc:`pgr_maxCardinalityMatch` works only for undirected graphs, "
-"therefore the ``directed`` flag has been removed."
+":doc:`pgr_maxCardinalityMatch` works only for undirected graphs, therefore "
+"the ``directed`` flag has been removed."
 msgstr ""
 
 #: ../../build/doc/migration.rst:29
 msgid ""
-":doc:`pgr_trsp` signatures have changed and many issues have been fixed "
-"in the new signatures. This section will show how to migrate from the old"
-" signatures to the new replacement functions. This also affects the "
+":doc:`pgr_trsp` signatures have changed and many issues have been fixed in "
+"the new signatures. This section will show how to migrate from the old "
+"signatures to the new replacement functions. This also affects the "
 "restrictions."
 msgstr ""
 
@@ -104,14 +103,14 @@ msgstr ""
 msgid "The optional flag ``directed`` is removed."
 msgstr ""
 
-#: ../../build/doc/migration.rst
+#: ../../build/doc/migration.rst:0
 msgid "Before migration"
 msgstr ""
 
 #: ../../build/doc/migration.rst:64
 msgid ""
-"Columns used are ``going`` and ``coming`` to represent the existence of "
-"an edge."
+"Columns used are ``going`` and ``coming`` to represent the existence of an "
+"edge."
 msgstr ""
 
 #: ../../build/doc/migration.rst:66
@@ -130,14 +129,14 @@ msgid ""
 "**undirected**."
 msgstr ""
 
-#: ../../build/doc/migration.rst ../../build/doc/migration.rst:169
+#: ../../build/doc/migration.rst:0 ../../build/doc/migration.rst:169
 msgid "Migration"
 msgstr ""
 
 #: ../../build/doc/migration.rst:76
 msgid ""
-"Use the columns ``cost`` and ``reverse_cost`` to represent the existence "
-"of an edge."
+"Use the columns ``cost`` and ``reverse_cost`` to represent the existence of "
+"an edge."
 msgstr ""
 
 #: ../../build/doc/migration.rst:78
@@ -292,8 +291,8 @@ msgstr "Datos de restricciones"
 
 #: ../../build/doc/migration.rst:163
 msgid ""
-"The restriction with ``rid = 2`` represents the path :math:`3 "
-"\\rightarrow5 \\rightarrow9`."
+"The restriction with ``rid = 2`` represents the path :math:`3 \\rightarrow5 "
+"\\rightarrow9`."
 msgstr ""
 
 #: ../../build/doc/migration.rst:166
@@ -301,7 +300,8 @@ msgid "By inspection the path is clear."
 msgstr ""
 
 #: ../../build/doc/migration.rst:171
-msgid "To transform the old restrictions table to the new restrictions structure,"
+msgid ""
+"To transform the old restrictions table to the new restrictions structure,"
 msgstr ""
 
 #: ../../build/doc/migration.rst:173
@@ -314,8 +314,8 @@ msgstr ""
 
 #: ../../build/doc/migration.rst:177
 msgid ""
-"For this migration pgRouting supplies an auxiliary function for reversal "
-"of an array ``_pgr_array_reverse`` needed for the migration."
+"For this migration pgRouting supplies an auxiliary function for reversal of "
+"an array ``_pgr_array_reverse`` needed for the migration."
 msgstr ""
 
 #: ../../build/doc/migration.rst:180
@@ -369,8 +369,8 @@ msgstr ""
 #: ../../build/doc/migration.rst:217 ../../build/doc/migration.rst:346
 #: ../../build/doc/migration.rst:482 ../../build/doc/migration.rst:613
 msgid ""
-"User must be careful to match the existence of the column with the value "
-"of ``has_rcost`` parameter."
+"User must be careful to match the existence of the column with the value of "
+"``has_rcost`` parameter."
 msgstr ""
 
 #: ../../build/doc/migration.rst:220 ../../build/doc/migration.rst:349
@@ -485,8 +485,8 @@ msgstr ""
 #: ../../build/doc/migration.rst:263 ../../build/doc/migration.rst:315
 #: ../../build/doc/migration.rst:527 ../../build/doc/migration.rst:581
 msgid ""
-"When the need of using strictly the same (meaningless) names and types of"
-" the function been migrated then:"
+"When the need of using strictly the same (meaningless) names and types of "
+"the function been migrated then:"
 msgstr ""
 
 #: ../../build/doc/migration.rst:270 ../../build/doc/migration.rst:322
@@ -586,8 +586,8 @@ msgstr ""
 #: ../../build/doc/migration.rst:397 ../../build/doc/migration.rst:451
 #: ../../build/doc/migration.rst:666 ../../build/doc/migration.rst:720
 msgid ""
-"When the need of using strictly the same (meaningless) names and types, "
-"and node values of the function been migrated then:"
+"When the need of using strictly the same (meaningless) names and types, and "
+"node values of the function been migrated then:"
 msgstr ""
 
 #: ../../build/doc/migration.rst:409
@@ -663,8 +663,8 @@ msgstr ""
 
 #: ../../build/doc/migration.rst:624
 msgid ""
-"And will travel thru the following Via points "
-":math:`4\\rightarrow3\\rightarrow6`"
+"And will travel thru the following Via points :math:"
+"`4\\rightarrow3\\rightarrow6`"
 msgstr ""
 
 #: ../../build/doc/migration.rst:628
@@ -722,4 +722,3 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/migration.rst:740
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
