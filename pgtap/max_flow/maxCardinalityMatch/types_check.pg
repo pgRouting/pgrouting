@@ -1,20 +1,45 @@
 BEGIN;
 
-SELECT plan(5);
+SELECT CASE WHEN min_version('3.4.0') THEN plan(7) ELSE plan(5) END;
 
+-- TODO v4 to be removed: directed
 SELECT has_function('pgr_maxcardinalitymatch');
+
 SELECT has_function('pgr_maxcardinalitymatch', ARRAY['text', 'boolean']);
 SELECT function_returns('pgr_maxcardinalitymatch', ARRAY['text', 'boolean'], 'setof record');
 
-SELECT set_eq(
-  $$SELECT proargnames from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
-  $$SELECT '{"","directed","seq","edge","source","target"}'::TEXT[] $$
-);
+SELECT CASE
+WHEN min_version('3.4.0') THEN
+  collect_tap(
+    has_function('pgr_maxcardinalitymatch', ARRAY['text']),
+    function_returns('pgr_maxcardinalitymatch', ARRAY['text'], 'setof bigint'),
+    set_eq(
+      $$SELECT proargnames from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
+      $$VALUES
+      ('{"","directed","seq","edge","source","target"}'::TEXT[]),
+      ('{"","edge"}'::TEXT[])
+      $$
+    ),
 
-SELECT set_eq(
-  $$SELECT proallargtypes from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
-  $$SELECT '{25,16,23,20,20,20}'::OID[] $$
-);
+    set_eq(
+      $$SELECT proallargtypes from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
+      $$VALUES
+      ('{25,16,23,20,20,20}'::OID[]),
+      ('{25,20}'::OID[])
+      $$
+  ))
+ELSE
+  collect_tap(
+    set_eq(
+      $$SELECT proargnames from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
+      $$SELECT '{"","directed","seq","edge","source","target"}'::TEXT[]$$
+    ),
+
+    set_eq(
+      $$SELECT proallargtypes from pg_proc where proname = 'pgr_maxcardinalitymatch'$$,
+      $$SELECT '{25,16,23,20,20,20}'::OID[]$$
+  ))
+END;
 
 SELECT finish();
 ROLLBACK;

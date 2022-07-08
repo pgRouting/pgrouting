@@ -46,11 +46,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "c_types/flow_t.h"
 #include "c_types/edge_t.h"
 
+/*
+ * Only for undirected graph, without weights on the costs
+*/
 static
 void fetch_basic_edge(
     HeapTuple *tuple,
     TupleDesc *tupdesc,
-    Column_info_t info[5],
+    Column_info_t info[7],
     int64_t *default_id,
     Edge_bool_t_rt *edge,
     size_t *valid_edges) {
@@ -60,14 +63,21 @@ void fetch_basic_edge(
         edge->id = *default_id;
         ++(*default_id);
     }
+    bool new_columns = column_found(info[5].colNumber);
 
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
-    edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0 ?
-        true : false;
-    edge->coming = (column_found(info[4].colNumber)
-            && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0) ?
-        true : false;
+
+    edge->coming = false;
+    if (new_columns) {
+        edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[5]) > 0
+            || (column_found(info[6].colNumber)
+                    && pgr_SPI_getFloat8(tuple, tupdesc, info[6]) > 0);
+    } else {
+        edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0
+            || (column_found(info[4].colNumber)
+                    && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0);
+    }
 
     (*valid_edges)++;
 }
@@ -611,10 +621,10 @@ get_edges_basic(
     size_t total_tuples;
     size_t valid_edges;
 
-    Column_info_t info[5];
+    Column_info_t info[7];
 
     int i;
-    for (i = 0; i < 5; ++i) {
+    for (i = 0; i < 7; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
@@ -625,12 +635,19 @@ get_edges_basic(
     info[2].name = "target";
     info[3].name = "going";
     info[4].name = "coming";
+    info[5].name = "cost";
+    info[6].name = "reverse_cost";
 
     info[0].strict = !ignore_id;
+    info[3].strict = false;
     info[4].strict = false;
+    info[5].strict = false;
+    info[6].strict = false;
 
     info[3].eType = ANY_NUMERICAL;
     info[4].eType = ANY_NUMERICAL;
+    info[5].eType = ANY_NUMERICAL;
+    info[6].eType = ANY_NUMERICAL;
 
 
     void *SPIplan;
@@ -648,7 +665,7 @@ get_edges_basic(
     while (moredata == true) {
         SPI_cursor_fetch(SPIportal, true, tuple_limit);
         if (total_tuples == 0)
-            pgr_fetch_column_info(info, 5);
+            pgr_fetch_column_info(info, 7);
 
         size_t ntuples = SPI_processed;
         total_tuples += ntuples;

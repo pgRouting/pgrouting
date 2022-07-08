@@ -5,6 +5,10 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Ignroing directed flag & works only for undirected graph
+Copyright (c) 2022 Celia Vriginia Vergara Castillo
+Mail: vicky at georepublic.mail
+
 Function's developer:
 Copyright (c) 2016 Andrea Nardelli
 Mail: nrd.nardelli@gmail.com
@@ -43,7 +47,8 @@ void
 do_pgr_maximum_cardinality_matching(
     Edge_bool_t_rt *data_edges,
     size_t total_tuples,
-    bool directed,
+    /* TODO(v4) flag directed is to be removed */
+    bool,
 
     Edge_bool_t_rt **return_tuples,
     size_t *return_count,
@@ -58,13 +63,8 @@ do_pgr_maximum_cardinality_matching(
     try {
         std::vector<Edge_bool_t_rt> matched_vertices;
 
-        if (directed) {
-            pgrouting::flow::PgrCardinalityGraph<pgrouting::BasicDirectedGraph> G(data_edges, total_tuples);
-            matched_vertices = G.get_matched_vertices();
-        } else {
-            pgrouting::flow::PgrCardinalityGraph< pgrouting::BasicUndirectedGraph> G(data_edges, total_tuples);
-            matched_vertices = G.get_matched_vertices();
-        }
+        pgrouting::flow::PgrCardinalityGraph G(data_edges, total_tuples);
+        matched_vertices = G.get_matched_vertices();
 
         (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
         for (size_t i = 0; i < matched_vertices.size(); ++i) {

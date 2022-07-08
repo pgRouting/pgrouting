@@ -216,6 +216,12 @@ sub generate_upgrade_script {
             push @commands, "ALTER EXTENSION pgrouting DROP FUNCTION $old_function;\n";
             push @commands, "DROP FUNCTION IF EXISTS $old_function;\n\n";
         }
+
+        # updating to 3.4+
+        if ($old_mayor == 2 or $old_minor < 4) {
+            push @commands, drop_special_case_function("pgr_maxcardinalitymatch(text,boolean)");
+        }
+
     }
 
     #------------------------------------

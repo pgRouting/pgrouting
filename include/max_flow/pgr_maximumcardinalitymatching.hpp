@@ -3,6 +3,11 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Ignroing directed flag & works only for undirected graph
+Copyright (c) 2022 Celia Vriginia Vergara Castillo
+Mail: vicky at georepublic.mail
+
+Function's developer:
 Copyright (c) 2016 Andrea Nardelli
 Mail: nrd.nardelli@gmail.com
 
@@ -38,22 +43,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <utility>
 #include <set>
-
+#include <algorithm>
 
 #include "c_types/edge_bool_t_rt.h"
 
 
 namespace pgrouting {
 
-typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS>
-    BasicUndirectedGraph;
-typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS>
-    BasicDirectedGraph;
-
 namespace flow {
 
-template<class G>
 class PgrCardinalityGraph {
+  using G = boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS>;
+
  public:
   G boost_graph;
 
@@ -100,15 +101,12 @@ class PgrCardinalityGraph {
               boost::tie(e1, added) = boost::add_edge(v1, v2, boost_graph);
               E_to_id.insert(std::pair<E, int64_t>(e1, data_edges[i].id));
           }
-          if (data_edges[i].coming) {
-              boost::tie(e2, added) = boost::add_edge(v2, v1, boost_graph);
-              E_to_id.insert(std::pair<E, int64_t>(e2, data_edges[i].id));
-          }
       }
   }
 
   std::vector<Edge_bool_t_rt>
   get_matched_vertices() {
+      /* TODO(v4) source & target are to be removed */
       std::vector<V> mate_map(boost::num_vertices(boost_graph));
       std::vector<Edge_bool_t_rt> matched_vertices;
       maximum_cardinality_matching(mate_map);
@@ -116,50 +114,33 @@ class PgrCardinalityGraph {
       V_it vi, vi_end;
       E e;
       bool exists;
-      if (boost::is_directed(boost_graph)) {
-          std::vector<bool> already_matched(num_vertices(boost_graph), false);
-          for (boost::tie(vi, vi_end) = boost::vertices(boost_graph);
-               vi != vi_end;
-               ++vi) {
-              /*
-               * For each vertex I check:
-               * 1) It is matched with a non-null vertex
-               * 2) An edge exists from this vertex to his mate
-               * 3) The vertices have not been matched already
-               * (this last point prevents having double output with reversed
-               * source and target)
-               */
-              boost::tie(e, exists) = boost::edge(*vi, mate_map[*vi], boost_graph);
-              if (((uint64_t)mate_map[*vi]
-                          != boost::graph_traits<G>::null_vertex())
-                  && exists && !already_matched[*vi]
-                  && !already_matched[mate_map[*vi]]) {
-                  already_matched[*vi] = true;
-                  already_matched[mate_map[*vi]] = true;
-                  Edge_bool_t_rt matched_couple;
-                  matched_couple.source = get_vertex_id(*vi);
-                  matched_couple.target = get_vertex_id(mate_map[*vi]);
-                  matched_couple.edge_id = get_edge_id(e);
-                  matched_vertices.push_back(matched_couple);
-              }
-          }
-      } else {
-          for (boost::tie(vi, vi_end) = boost::vertices(boost_graph);
-               vi != vi_end;
-               ++vi) {
-              boost::tie(e, exists) =
-                  boost::edge(*vi, mate_map[*vi], boost_graph);
-              if (((uint64_t)mate_map[*vi]
-                          != boost::graph_traits<G>::null_vertex())
+
+      /*
+       * Check for each vertex:
+       * 1) It is matched with a non-null vertex
+       * 2) An edge exists from this vertex to his mate
+       * 3) The vertices have not been matched already
+       * (this last point prevents having double output with reversed
+       * source and target)
+       */
+      for (boost::tie(vi, vi_end) = boost::vertices(boost_graph);
+              vi != vi_end;
+              ++vi) {
+          boost::tie(e, exists) =
+              boost::edge(*vi, mate_map[*vi], boost_graph);
+          if (((uint64_t)mate_map[*vi]
+                      != boost::graph_traits<G>::null_vertex())
                   && (*vi < (uint64_t)mate_map[*vi])) {
-                  Edge_bool_t_rt matched_couple;
-                  matched_couple.source = get_vertex_id(*vi);
-                  matched_couple.target = get_vertex_id(mate_map[*vi]);
-                  matched_couple.edge_id = get_edge_id(e);
-                  matched_vertices.push_back(matched_couple);
-              }
+              Edge_bool_t_rt matched_couple;
+              matched_couple.source = get_vertex_id(*vi);
+              matched_couple.target = get_vertex_id(mate_map[*vi]);
+              matched_couple.edge_id = get_edge_id(e);
+              matched_vertices.push_back(matched_couple);
           }
       }
+      std::sort(matched_vertices.begin(), matched_vertices.end(),
+              [](const Edge_bool_t_rt &a, const Edge_bool_t_rt &b)
+              -> bool { return a.edge_id < b.edge_id; });
       return matched_vertices;
   }
 
