@@ -98,6 +98,7 @@
 <li><a class="reference internal" href="#">pgr_maxCardinalityMatch</a><ul>
 <li><a class="reference internal" href="#description">Descripción</a></li>
 <li><a class="reference internal" href="#signatures">Firmas</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#inner-queries">Consultas Internas</a><ul>
 <li><a class="reference internal" href="#edges-sql">SQL aristas</a></li>
 </ul>
@@ -171,6 +172,27 @@
 </figure>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
+<li><p>Version 3.4.0</p>
+<ul>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> on the inner query</p></li>
+<li><p>Results are ordered</p></li>
+<li><p>Works for undirected graphs.</p></li>
+<li><p>New signature</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text)</span></code> returns only <code class="docutils literal notranslate"><span class="pre">edge</span></code> column.</p></li>
+</ul>
+</li>
+<li><p>Deprecated signature</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pgr_maxCardinalityMatch(text,boolean)</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> when used.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>Versión 3.0.0</p>
 <ul>
 <li><p>Función <strong>oficial</strong></p></li>
@@ -190,16 +212,16 @@
 </ul>
 <section id="description">
 <h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
-<p><strong>Las principales características son:</strong></p>
+<p>The main characteristics are:</p>
 <ul class="simple">
+<li><p>Works for <strong>undirected</strong> graphs.</p></li>
 <li><p>Un conjunto de aristas coincidente o independiente en un grafo es un conjunto de aristas sin vértices comunes.</p></li>
 <li><p>Una coincidencia máxima es una coincidencia que contiene el mayor número posible de aristas.</p>
 <ul>
 <li><p>Puede haber muchas coincidencias máximas.</p></li>
-<li><p>Calcula <strong>una</strong> posible coincidencia máxima de cardinalidad en un grafo.</p></li>
+<li><p>Calculates one possible maximum cardinality matching in a graph.</p></li>
 </ul>
 </li>
-<li><p>El grafo puede ser <strong>dirigido</strong> o <strong>no dirigido</strong>.</p></li>
 <li><p>Tiempo de ejecución: <span class="math notranslate nohighlight">\(O( E*V * \alpha(E,V))\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\alpha(E,V)\)</span> es inverso a <a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">Ackermann function</a>.</p></li>
@@ -209,75 +231,103 @@
 </section>
 <section id="signatures">
 <h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
-<pre class="literal-block" id="index-0">pgr_maxCardinalityMatch(<a class="reference internal" href="#edges-sql">Edges SQL</a> [, directed])
-
-RETURNS SET OF (seq, edge_id, source, target)
+<pre class="literal-block" id="index-0">pgr_maxCardinalityMatch(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
+RETURNS SET OF (edge)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Para un grafo <strong>dirigido</strong></p>
+<dd class="field-odd"><p>Using all edges.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_maxCardinalityMatch</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost AS going, reverse_cost AS coming</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
-<span class="o">-----+------+--------+--------</span>
-   <span class="mi">1</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">17</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span>
-   <span class="mi">3</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">14</span> <span class="o">|</span>      <span class="mi">8</span> <span class="o">|</span>      <span class="mi">9</span>
-   <span class="mi">5</span> <span class="o">|</span>    <span class="mi">9</span> <span class="o">|</span>     <span class="mi">11</span> <span class="o">|</span>     <span class="mi">16</span>
-   <span class="mi">6</span> <span class="o">|</span>   <span class="mi">13</span> <span class="o">|</span>     <span class="mi">12</span> <span class="o">|</span>     <span class="mi">17</span>
-   <span class="mi">7</span> <span class="o">|</span>   <span class="mi">18</span> <span class="o">|</span>     <span class="mi">13</span> <span class="o">|</span>     <span class="mi">14</span>
-   <span class="mi">8</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>     <span class="mi">15</span> <span class="o">|</span>     <span class="mi">10</span>
+  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">);</span>
+ <span class="n">edge</span>
+<span class="o">------</span>
+    <span class="mi">1</span>
+    <span class="mi">5</span>
+    <span class="mi">6</span>
+   <span class="mi">13</span>
+   <span class="mi">14</span>
+   <span class="mi">16</span>
+   <span class="mi">17</span>
+   <span class="mi">18</span>
 <span class="p">(</span><span class="mi">8</span> <span class="n">rows</span><span class="p">)</span>
 
 </pre></div>
 </div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default" style="width: 81">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#edges-sql">Edges SQL</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td><p><a class="reference internal" href="#edges-sql">Edges SQL</a> as described below.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="inner-queries">
 <h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
 <section id="edges-sql">
 <h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
 <p>Una consulta SQL, que debe regresar un conjunto de filas con las siguientes columnas:</p>
-<table class="docutils align-default">
+<table class="docutils align-default" style="width: 81">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 56%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
+<th class="head"><p>Default</p></th>
 <th class="head"><p>Descripción</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
 <td><p>Identificador de la arista.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
 <td><p>Identificador del primer vértice de la arista.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-INTEGER</span></code></p></td>
+<td><p><strong>ANY-INTEGER</strong></p></td>
+<td></td>
 <td><p>Identificador del segundo vértice de la arista.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">going</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERIC</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td></td>
 <td><p>Un valor positivo representa la existencia de la arista (<code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">target</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">coming</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ANY-NUMERIC</span></code></p></td>
-<td><p>Un valor positivo representa la existencia de la arista (<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>).</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></p></td>
+<td><p><strong>ANY-NUMERICAL</strong></p></td>
+<td><p>-1</p></td>
+<td><p>A positive value represents the existence of the edge (<code class="docutils literal notranslate"><span class="pre">target</span></code>,
+<code class="docutils literal notranslate"><span class="pre">source</span></code>)</p></td>
 </tr>
 </tbody>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
 <dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
-<dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL FLOAT</p>
+<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
@@ -292,21 +342,9 @@ OR EMPTY SET</pre>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">seq</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">INT</span></code></p></td>
-<td><p>Valor secuencial a partir de <strong>1</strong>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">edge</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
 <td><p>Identificador de la arista en la consulta original.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del primer punto final de la arista.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p></td>
-<td><p>Identificador del segundo punto final de la arista.</p></td>
 </tr>
 </tbody>
 </table>
@@ -315,6 +353,7 @@ OR EMPTY SET</pre>
 <h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="flow-family.html"><span class="doc">Flow - Familia de funciones</span></a></p></li>
+<li><p><a class="reference internal" href="migration.html"><span class="doc">Migration guide</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/maximum_matching.html">https://www.boost.org/libs/graph/doc/maximum_matching.html</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Matching_%28graph_theory%29">https://en.wikipedia.org/wiki/Matching_%28graph_theory%29</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">https://en.wikipedia.org/wiki/Ackermann_function</a></p></li>
