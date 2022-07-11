@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 12:55-0500\n"
+"POT-Creation-Date: 2022-07-11 18:25-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,7 +105,7 @@ msgid "Version 3.0.0"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:34
-msgid "New **Experimental** function"
+msgid "New experimental function"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:37
@@ -135,7 +135,7 @@ msgid "Example"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:54
-msgid "From vertex :math:`3` to vertex  :math:`8` on a **directed** graph"
+msgid "From vertex :math:`3` to vertex  :math:`8` on a directed graph"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:61
@@ -518,7 +518,7 @@ msgid "No results because the only path available follows a restriction."
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:141
-msgid "From vertex :math:`3` to vertex  :math:`8` on an **undirected** graph"
+msgid "From vertex :math:`3` to vertex  :math:`8` on an undirected graph"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:147

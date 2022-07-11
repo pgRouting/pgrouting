@@ -11,17 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-24 12:46-0500\n"
+"POT-Creation-Date: 2022-07-11 18:25-0500\n"
 "PO-Revision-Date: 2022-07-04 15:45+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"pgr_turnrestrictedpath/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish "
+"<https://weblate.osgeo.org/projects/pgrouting/pgr_turnrestrictedpath/es/>"
+"\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:12
@@ -34,13 +34,13 @@ msgid ""
 "`3.1 <https://docs.pgrouting.org/3.1/en/pgr_turnRestrictedPath.html>`__ "
 "`3.0 <https://docs.pgrouting.org/3.0/en/pgr_turnRestrictedPath.html>`__"
 msgstr ""
-"***Versiones soportadas:** `Última <https://docs.pgrouting.org/latest/es/"
-"pgr_turnRestrictedPath.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/"
-"pgr_turnRestrictedPath.html>`__) `3.3 <https://docs.pgrouting.org/3.3/es/"
-"pgr_turnRestrictedPath.html>`__ `3.2 <https://docs.pgrouting.org/3.2/es/"
-"pgr_turnRestrictedPath.html>`__ `3.1 <https://docs.pgrouting.org/3.1/es/"
-"pgr_turnRestrictedPath.html>`__ `3.0 <https://docs.pgrouting.org/3.0/es/"
-"pgr_turnRestrictedPath.html>`__"
+"***Versiones soportadas:** `Última "
+"<https://docs.pgrouting.org/latest/es/pgr_turnRestrictedPath.html>`__ "
+"(`3.4 <https://docs.pgrouting.org/3.4/es/pgr_turnRestrictedPath.html>`__)"
+" `3.3 <https://docs.pgrouting.org/3.3/es/pgr_turnRestrictedPath.html>`__ "
+"`3.2 <https://docs.pgrouting.org/3.2/es/pgr_turnRestrictedPath.html>`__ "
+"`3.1 <https://docs.pgrouting.org/3.1/es/pgr_turnRestrictedPath.html>`__ "
+"`3.0 <https://docs.pgrouting.org/3.0/es/pgr_turnRestrictedPath.html>`__"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:21
 msgid "pgr_turnRestrictedPath - Experimental"
@@ -131,7 +131,8 @@ msgid "Version 3.0.0"
 msgstr "Versión 3.0.0"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:34
-msgid "New **Experimental** function"
+#, fuzzy
+msgid "New experimental function"
 msgstr "Nueva función **Experimental**"
 
 #: ../../build/doc/dijkstra-family.rst:11
@@ -158,7 +159,7 @@ msgid "Example"
 msgstr "Ejemplo"
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:54
-msgid "From vertex :math:`3` to vertex  :math:`8` on a **directed** graph"
+msgid "From vertex :math:`3` to vertex  :math:`8` on a directed graph"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:61
@@ -285,16 +286,17 @@ msgstr "Cuando ``false`` Regresa a lo más K caminos"
 #: ../../build/doc/pgr_KSP.rst:16
 msgid "When ``true`` all the calculated paths while processing are returned."
 msgstr ""
-"Cuando ``true`` se regresan todos los caminos calulados mientras se procesa."
+"Cuando ``true`` se regresan todos los caminos calulados mientras se "
+"procesa."
 
 #: ../../build/doc/pgr_KSP.rst:17
 msgid ""
 "Roughly, when the shortest path has ``N`` edges, the heap will contain "
 "about than ``N * K`` paths for small value of ``K`` and ``K > 5``."
 msgstr ""
-"Aproximadamente, si la ruta más corta tiene ``N`` aristas, las procesadas "
-"contendrán aproximadamente ``N * K`` rutas para valores pequeños de ``K`` y "
-"``K > 5``."
+"Aproximadamente, si la ruta más corta tiene ``N`` aristas, las procesadas"
+" contendrán aproximadamente ``N * K`` rutas para valores pequeños de "
+"``K`` y ``K > 5``."
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:82
 msgid "Special optional parameters"
@@ -388,8 +390,8 @@ msgid ""
 "When negative: edge (``target``, ``source``) does not exist, therefore "
 "it's not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
 #: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
@@ -419,8 +421,8 @@ msgid ""
 "a ``NULL`` element will raise an exception."
 msgstr ""
 "Secuencia de identificadores de aristas que forman un camino que no se "
-"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que "
-"tienen ``NULL`` arrojan una excepción."
+"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que"
+" tienen ``NULL`` arrojan una excepción."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``Cost``"
@@ -439,8 +441,8 @@ msgid ""
 "Returns set of ``(seq, path_id, path_seq, start_vid, end_vid, node, edge,"
 " cost, agg_cost)``"
 msgstr ""
-"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, node, "
-"edge, cost, agg_cost)``"
+"Devuelve el conjunto de ``(seq, path_id, path_seq, start_vid, end_vid, "
+"node, edge, cost, agg_cost)``"
 
 #: ../../build/doc/pgRouting-concepts.rst:14
 msgid "``seq``"
@@ -467,7 +469,8 @@ msgstr "Identificador del camino."
 #: ../../build/doc/pgRouting-concepts.rst:21
 msgid "Has value **1** for the first of a path from ``start_vid`` to ``end_vid``."
 msgstr ""
-"Tiene valor **1** para el primero de la ruta de ``start_vid`` a ``end_vid``."
+"Tiene valor **1** para el primero de la ruta de ``start_vid`` a "
+"``end_vid``."
 
 #: ../../build/doc/pgRouting-concepts.rst:23
 msgid "``path_seq``"
@@ -521,8 +524,8 @@ msgid ""
 "Identifier of the edge used to go from ``node`` to the next node in the "
 "path sequence. **-1** for the last node of the path."
 msgstr ""
-"Identificador de la arista utilizado para ir del ``node`` al siguiente nodo "
-"de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
+"Identificador de la arista utilizado para ir del ``node`` al siguiente "
+"nodo de la secuencia de ruta. ``-1`` para el último nodo de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:41
 #: ../../build/doc/pgRouting-concepts.rst:45
@@ -534,8 +537,8 @@ msgid ""
 "Cost to traverse from ``node`` using ``edge`` to the next node in the "
 "path sequence."
 msgstr ""
-"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente nodo "
-"en la secuencia de la ruta."
+"Costo para atravesar desde ``node`` usando ``edge`` hasta el siguiente "
+"nodo en la secuencia de la ruta."
 
 #: ../../build/doc/pgRouting-concepts.rst:44
 msgid "``agg_cost``"
@@ -558,7 +561,7 @@ msgid "No results because the only path available follows a restriction."
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:141
-msgid "From vertex :math:`3` to vertex  :math:`8` on an **undirected** graph"
+msgid "From vertex :math:`3` to vertex  :math:`8` on an undirected graph"
 msgstr ""
 
 #: ../../build/doc/pgr_turnRestrictedPath.rst:147
@@ -588,3 +591,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/pgr_turnRestrictedPath.rst:163
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
