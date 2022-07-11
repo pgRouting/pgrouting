@@ -64,7 +64,7 @@ Road restrictions are a sequence of road segments that can not be taken in a
 sequential manner.
 Some restrictions are implicit on a directed graph, for example, one way roads
 where the wrong way edge is not even inserted on the graph.
-But normally on turns like **left turn** or **right turn**, hence the name turn
+But normally on turns like no left turn or no right turn, hence the name turn
 restrictions, there are sometimes restrictions.
 
 .. image:: images/restrictions.png
@@ -112,7 +112,7 @@ Restrictions
 On road networks, there are restrictions such as left or right turn restrictions,
 no U turn restrictions.
 
-A restriction is a sequence of edges, called **path** and that **path** is to be
+A restriction is a sequence of edges, called path and that path is to be
 avoided.
 
 .. TODO update the image

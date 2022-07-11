@@ -18,20 +18,20 @@ pgr_trsp_withPoints - Proposed
 
 ``pgr_trsp_withPoints`` Routing Vertex/Point with restrictions.
 
-.. include:: proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
 
    Boost Graph Inside
 
+.. include:: proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New **Proposed** signatures
+  * New proposed signatures:
 
     * ``pgr_trsp_withPoints`` (`One to One`_)
     * ``pgr_trsp_withPoints`` (`One to Many`_)
@@ -45,15 +45,14 @@ Description
 Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, find the shortest path(s)
 
-**The main characteristics are:**
+Characteristics:
 
-- Process is done only on edges with positive costs.
-- Driving side can not be `b` (**both**)
 - Vertices of the graph are:
 
   - **positive** when it belongs to the `Edges SQL`_
   - **negative** when it belongs to the `Points SQL`_
 
+- Driving side can not be ``b``
 - Values are returned when there is a path.
 
   - When the starting vertex and ending vertex are the same, there is no path.
@@ -78,20 +77,19 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vid,  end vid
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vid,  end vids
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vids, end vid
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vids, end vids
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_,
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-   OR EMPTY SET
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vid**, [options])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vid**, **end vids**, [options])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vid**, [options])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start vids**, **end vids**, [options])
+   | pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_, [options])
+
+   :[options]: [directed, driving_side [details]
+
+   | RETURNS SET OF |generic-result|
+   | OR EMPTY SET
 
 .. index::
     single: trsp_withPoints(One to One) - Proposed on v3.4
@@ -99,15 +97,17 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vid,  end vid
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-   OR EMPTY SET
+   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
+   vid**, **end vid**, [directed, driving_side, details])
 
-:Example: From point :math:`1` to vertex :math:`10` with details on a **left**
-          driving side configuration on a **directed** graph with **details**.
+   | RETURNS SET OF |generic-result|
+   | OR EMPTY SET
+
+:Example: From point :math:`1` to vertex :math:`10` with details on a left
+          driving side configuration on a directed graph with details.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --e1
@@ -119,12 +119,14 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vid, end vids
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-   OR EMPTY SET
+   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
+   vid**, **end vids** [directed, driving_side, details])
+
+   | RETURNS SET OF |generic-result|
+   | OR EMPTY SET
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7`.
 
@@ -138,12 +140,14 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vids, end vid
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-   OR EMPTY SET
+   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
+   vids**, **end vid** [directed, driving_side, details])
+
+   | RETURNS SET OF |generic-result|
+   | OR EMPTY SET
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`.
 
@@ -157,14 +161,16 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, start vids, end vids
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-   OR EMPTY SET
+   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **start
+   vids**, **end vids** [directed, driving_side, details])
 
-:Example: From point :math:`1` and vertex :math:`6`  to point :math:`3` and
+   | RETURNS SET OF |generic-result|
+   | OR EMPTY SET
+
+:Example: From point :math:`1` and vertex :math:`6` to point :math:`3` and
           vertex :math:`1`.
 
 .. literalinclude:: trsp_withPoints.queries
@@ -177,14 +183,17 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_, `Points SQL`_,
-                             [, directed], [, driving_side] [, details]) -- Proposed on v3.4
-   RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   pgr_trsp_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Combinations SQL`_,
+   `Points SQL`_, [directed, driving_side, details])
+
+   | RETURNS SET OF |generic-result|
+   | OR EMPTY SET
 
 :Example: From point :math:`1` to vertex :math:`10` and from vertex :math:`6` to
-          point :math:`3` with **right** side driving configuration.
+          point :math:`3` with right side driving configuration.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --e5
@@ -236,8 +245,6 @@ With points optional parameters
 
 .. withPoints_parameters_end
 
-|
-
 Inner Queries
 -------------------------------------------------------------------------------
 
@@ -272,49 +279,9 @@ Combinations SQL
 Result Columns
 -------------------------------------------------------------------------------
 
-.. list-table::
-   :width: 81
-   :widths: 12 14 60
-   :header-rows: 1
-
-   * - Column
-     - Type
-     - Description
-   * - ``seq``
-     - ``INTEGER``
-     - Sequential value starting from **1**.
-   * - ``path_seq``
-     - ``INTEGER``
-     - Relative position in the path. Has value **1** for the beginning of a
-       path.
-   * - ``start_vid``
-     - ``BIGINT``
-     - Identifier of the starting vertex of the path.
-   * - ``end_vid``
-     - ``BIGINT``
-     - Identifier of the ending vertex of the path.
-   * - ``node``
-     - ``BIGINT``
-     - Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-   * - ``edge``
-     - ``BIGINT``
-     - Identifier of the edge used to go from ``node`` to the next node in the
-       path sequence.
-
-       * -1 for the last node of the path.
-   * - ``cost``
-     - ``FLOAT``
-     - Cost to traverse from ``node`` using ``edge`` to the next node in the
-       path sequence.
-
-       - ``0`` for the last row in the path sequence.
-   * - ``agg_cost``
-     - ``FLOAT``
-     - Aggregate cost from ``start_vid`` to ``node``.
-
-       - ``0`` for the first row in the path sequence.
-
-.. result columns end
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_all_columns_start
+    :end-before: return_path_all_columns_end
 
 Additional Examples
 -------------------------------------------------------------------------------
@@ -322,8 +289,10 @@ Additional Examples
 .. contents::
    :local:
 
-Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+Use ``pgr_findCloseEdges`` for points on the fly
 ...............................................................................
+
+Using :doc:`pgr_findCloseEdges`:
 
 Find the routes from vertex :math:`1` to the two closest locations on the graph
 of point `(2.9, 1.8)`.
@@ -332,24 +301,24 @@ of point `(2.9, 1.8)`.
     :start-after: --q3
     :end-before: -- q4
 
-* Point :math:`-1` corresponds to the closest edge from point `(2.9,1.8)`.
-* Point :math:`-2` corresponds to the next close edge from point `(2.9,1.8)`.
+* Point :math:`-1` corresponds to the closest edge from point `(2.9, 1.8)`.
+* Point :math:`-2` corresponds to the next close edge from point `(2.9, 1.8)`.
 
-Pass in front or visits
+Pass in front or visits.
 ...............................................................................
 
 Which path (if any) passes in front of point :math:`6` or vertex :math:`11` with
-**right** side driving topology.
+right side driving topology.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --q1
    :end-before: --q2
 
-Show details on undirected graph
+Show details on undirected graph.
 ...............................................................................
 
 From point :math:`1` and vertex :math:`6` to point :math:`3` to vertex :math:`1`
-on an **undirected** graph, with details.
+on an undirected graph, with details.
 
 .. literalinclude:: trsp_withPoints.queries
    :start-after: --q2
