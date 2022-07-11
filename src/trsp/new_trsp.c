@@ -4,8 +4,8 @@ File: new_trsp.c
 
 Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
-Copyright (c) 2022 Vicky Vergara
-* Handle combinations
+Copyright (c) 2017 Vicky Vergara
+Mail: vicky at georepublic.de
 
 
 ------
@@ -48,6 +48,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 PGDLLEXPORT Datum _trsp(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(_trsp);
+
+PGDLLEXPORT Datum _v4trsp(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(_v4trsp);
 
 
 static
@@ -138,9 +141,8 @@ void process(
 }
 
 
-
 PGDLLEXPORT Datum
-_trsp(PG_FUNCTION_ARGS) {
+_v4trsp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -171,6 +173,92 @@ _trsp(PG_FUNCTION_ARGS) {
                     PG_GETARG_BOOL(3),
                     &result_tuples, &result_count);
         }
+
+        funcctx->max_calls = result_count;
+        funcctx->user_fctx = result_tuples;
+
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE) {
+            ereport(ERROR,
+                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
+        }
+
+        funcctx->tuple_desc = tuple_desc;
+        MemoryContextSwitchTo(oldcontext);
+    }
+
+    funcctx = SRF_PERCALL_SETUP();
+
+    tuple_desc = funcctx->tuple_desc;
+    result_tuples = (Path_rt *) funcctx->user_fctx;
+
+    if (funcctx->call_cntr < funcctx->max_calls) {
+        HeapTuple    tuple;
+        Datum        result;
+        Datum *values;
+        bool* nulls;
+        size_t call_cntr = funcctx->call_cntr;
+
+        size_t numb = 9;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
+
+        size_t i;
+        for (i = 0; i < numb; ++i) {
+            nulls[i] = false;
+        }
+
+        int path_id = call_cntr == 0? 0 : result_tuples[call_cntr - 1].seq;
+        path_id += result_tuples[call_cntr].seq == 1? 1 : 0;
+
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(path_id);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+
+        result_tuples[call_cntr].seq = path_id;
+
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
+
+        result = HeapTupleGetDatum(tuple);
+
+        pfree(values);
+        pfree(nulls);
+
+        SRF_RETURN_NEXT(funcctx, result);
+    } else {
+        SRF_RETURN_DONE(funcctx);
+    }
+}
+
+PGDLLEXPORT Datum
+_trsp(PG_FUNCTION_ARGS) {
+    FuncCallContext     *funcctx;
+    TupleDesc            tuple_desc;
+
+    size_t result_count             = 0;
+    Path_rt  *result_tuples   = NULL;
+
+    if (SRF_IS_FIRSTCALL()) {
+        MemoryContext   oldcontext;
+        funcctx = SRF_FIRSTCALL_INIT();
+        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+
+        process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                NULL,
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_ARRAYTYPE_P(3),
+                PG_GETARG_BOOL(4),
+                &result_tuples, &result_count);
 
         funcctx->max_calls = result_count;
         funcctx->user_fctx = result_tuples;
