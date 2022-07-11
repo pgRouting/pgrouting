@@ -38,6 +38,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -73,6 +74,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -107,6 +109,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -141,6 +144,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -175,6 +179,7 @@ CREATE FUNCTION pgr_trsp_withPoints(
   details BOOLEAN DEFAULT false,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
