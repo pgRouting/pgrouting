@@ -1,33 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) pgRouting Contributors - Version v3.4.0-dev
 # This file is distributed under the same license as the pgRouting package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 12:55-0500\n"
+"POT-Creation-Date: 2022-07-11 18:25-0500\n"
 "PO-Revision-Date: 2022-07-07 16:48+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
-"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
-"trsp-family/es/>\n"
 "Language: es\n"
+"Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting"
+"/trsp-family/es/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/TRSP-family.rst:12
 msgid ""
-"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en/TRSP-"
-"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/TRSP-family."
-"html>`__)"
+"**Supported versions:** `Latest <https://docs.pgrouting.org/latest/en"
+"/TRSP-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/en/TRSP-"
+"family.html>`__)"
 msgstr ""
-"**Versiones Soportadas:** `Latest <https://docs.pgrouting.org/latest/es/TRSP-"
-"family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/TRSP-family."
-"html>`__)"
+"**Versiones Soportadas:** `Latest <https://docs.pgrouting.org/latest/es"
+"/TRSP-family.html>`__ (`3.4 <https://docs.pgrouting.org/3.4/es/TRSP-"
+"family.html>`__)"
 
 #: ../../build/doc/TRSP-family.rst:17
 msgid "TRSP - Family of functions"
@@ -91,17 +91,17 @@ msgstr ":doc:`pgr_trsp_withPoints` - Ruteo de Punto/Vértice con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:32
 msgid ""
-":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with restrictions."
-msgstr ""
-":doc:`pgr_trspVia_withPoints` - Ruteo Vía Punto/Vértice con restricciones."
+":doc:`pgr_trspVia_withPoints` - Via Vertex/point routing with "
+"restrictions."
+msgstr ":doc:`pgr_trspVia_withPoints` - Ruteo Vía Punto/Vértice con restricciones."
 
 #: ../../build/doc/TRSP-family.rst:36
 msgid ""
 "Read the :doc:`migration` about how to migrate from the deprecated TRSP "
 "functionality to the new signatures or replacement functions."
 msgstr ""
-"Leer :doc:`migration` sobre como migrar de la funcionalidad obsoleta de TRSP "
-"a las nuevas firmas o funciones que las reemplazan."
+"Leer :doc:`migration` sobre como migrar de la funcionalidad obsoleta de "
+"TRSP a las nuevas firmas o funciones que las reemplazan."
 
 #: ../../build/doc/TRSP-family.rst:40
 msgid "Experimental"
@@ -186,19 +186,21 @@ msgid "Introduction"
 msgstr "Introducción"
 
 #: ../../build/doc/TRSP-family.rst:63
+#, fuzzy
 msgid ""
-"Road restrictions are a sequence of road segments that can not be taken in a "
-"sequential manner. Some restrictions are implicit on a directed graph, for "
-"example, one way roads where the wrong way edge is not even inserted on the "
-"graph. But normally on turns like **left turn** or **right turn**, hence the "
-"name turn restrictions, there are sometimes restrictions."
+"Road restrictions are a sequence of road segments that can not be taken "
+"in a sequential manner. Some restrictions are implicit on a directed "
+"graph, for example, one way roads where the wrong way edge is not even "
+"inserted on the graph. But normally on turns like no left turn or no "
+"right turn, hence the name turn restrictions, there are sometimes "
+"restrictions."
 msgstr ""
-"Las restricciones viales son una secuencia de tramos viales que no se pueden "
-"tomar de manera secuencial. Algunas restricciones están implícitas en un "
-"grafo dirigido, por ejemplo, caminos de un solo sentido donde el sentido "
-"contrario ni siquiera se inserta en el grafo. Pero normalmente en giros como "
-"**giro a la izquierda** o **giro a la derecha**, de ahí el nombre de "
-"restricciones de giro, a veces hay restricciones."
+"Las restricciones viales son una secuencia de tramos viales que no se "
+"pueden tomar de manera secuencial. Algunas restricciones están implícitas"
+" en un grafo dirigido, por ejemplo, caminos de un solo sentido donde el "
+"sentido contrario ni siquiera se inserta en el grafo. Pero normalmente en"
+" giros como **giro a la izquierda** o **giro a la derecha**, de ahí el "
+"nombre de restricciones de giro, a veces hay restricciones."
 
 #: ../../build/doc/TRSP-family.rst:74
 msgid "TRSP algorithm"
@@ -206,13 +208,14 @@ msgstr "Algoritmo TRSP"
 
 #: ../../build/doc/TRSP-family.rst:76
 msgid ""
-"The internal TRSP algorithm performs a lookahead over the dijkstra algorithm "
-"in order to find out if the attempted path has a restriction. This allows "
-"the algorithm to pass twice on the same vertex."
+"The internal TRSP algorithm performs a lookahead over the dijkstra "
+"algorithm in order to find out if the attempted path has a restriction. "
+"This allows the algorithm to pass twice on the same vertex."
 msgstr ""
 "Wl algoritmo interno TRSP realiza una búsqueda de avanzada sobre el "
-"algoritmo de Dijkstra para encontrar un camino que contenga una restricción. "
-"Esto permite que el algoritmo pase dos veces sobre el mismo vértice."
+"algoritmo de Dijkstra para encontrar un camino que contenga una "
+"restricción. Esto permite que el algoritmo pase dos veces sobre el mismo "
+"vértice."
 
 #: ../../build/doc/TRSP-family.rst:81
 msgid "Parameters"
@@ -226,8 +229,8 @@ msgstr "Parámetro"
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../build/doc/TRSP-family.rst:92 ../../build/doc/pgRouting-concepts.rst:11
-#: ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/TRSP-family.rst:92 ../../build/doc/pgRouting-concepts.rst:10
+#: ../../build/doc/pgRouting-concepts.rst:11
 msgid "Description"
 msgstr "Descripción"
 
@@ -265,12 +268,12 @@ msgid "Array of ordered vertices identifiers that are going to be visited."
 msgstr "Arreglo ordenado de identificadores de vértices que serán visitados."
 
 #: ../../build/doc/TRSP-family.rst:103
-#: ../../build/doc/pgRouting-concepts.rst:36
 #: ../../build/doc/pgRouting-concepts.rst:21
+#: ../../build/doc/pgRouting-concepts.rst:36
 msgid "Where:"
 msgstr "Donde:"
 
-#: ../../build/doc/TRSP-family.rst:0 ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/TRSP-family.rst ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-INTEGER"
 msgstr "ENTEROS"
 
@@ -287,16 +290,17 @@ msgid ""
 "On road networks, there are restrictions such as left or right turn "
 "restrictions, no U turn restrictions."
 msgstr ""
-"En redes de caminos, hay restricciones como vuelta a la izquierda o derecha, "
-"no vuelta en U."
+"En redes de caminos, hay restricciones como vuelta a la izquierda o "
+"derecha, no vuelta en U."
 
 #: ../../build/doc/TRSP-family.rst:115
+#, fuzzy
 msgid ""
-"A restriction is a sequence of edges, called **path** and that **path** is "
-"to be avoided."
+"A restriction is a sequence of edges, called path and that path is to be "
+"avoided."
 msgstr ""
-"Una restricción es una secuencia de aristas, llamado **path** y ese **path** "
-"se debería evitar."
+"Una restricción es una secuencia de aristas, llamado **path** y ese "
+"**path** se debería evitar."
 
 #: ../../build/doc/TRSP-family.rst:123
 msgid "**Restrictions on the road network**"
@@ -308,9 +312,9 @@ msgstr "Éstas restricciones son representadas en la siguiente tabla:"
 
 #: ../../build/doc/TRSP-family.rst:131
 msgid ""
-"The table has an identifier, which maybe is needed for the administration of "
-"the restrictions, but the algorithms do not need that information. If given "
-"it will be ignored."
+"The table has an identifier, which maybe is needed for the administration"
+" of the restrictions, but the algorithms do not need that information. If"
+" given it will be ignored."
 msgstr ""
 "La tabla tiene un identificador, lo cual pueda ser necesaria para la "
 "administración de las restricciones, pero el algoritmo no necesita esa "
@@ -362,9 +366,9 @@ msgstr "Identificador del segundo vértice de la arista."
 msgid "``cost``"
 msgstr "``cost``"
 
+#: ../../build/doc/pgRouting-concepts.rst:18
 #: ../../build/doc/pgRouting-concepts.rst:25
 #: ../../build/doc/pgRouting-concepts.rst:29
-#: ../../build/doc/pgRouting-concepts.rst:18
 msgid "**ANY-NUMERICAL**"
 msgstr "**FLOTANTES**"
 
@@ -386,23 +390,23 @@ msgstr "Peso de la arista (``target``, ``source``)"
 
 #: ../../build/doc/pgRouting-concepts.rst:33
 msgid ""
-"When negative: edge (``target``, ``source``) does not exist, therefore it's "
-"not part of the graph."
+"When negative: edge (``target``, ``source``) does not exist, therefore "
+"it's not part of the graph."
 msgstr ""
-"Cuando negativo: la arista (``target``, ``source``) no existe, por lo tanto "
-"no es parte del grafo."
+"Cuando negativo: la arista (``target``, ``source``) no existe, por lo "
+"tanto no es parte del grafo."
 
-#: ../../build/doc/pgRouting-concepts.rst:38
 #: ../../build/doc/pgRouting-concepts.rst:23
+#: ../../build/doc/pgRouting-concepts.rst:38
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``"
 
-#: ../../build/doc/pgRouting-concepts.rst:0
+#: ../../build/doc/pgRouting-concepts.rst
 msgid "ANY-NUMERICAL"
 msgstr "FLOTANTES"
 
-#: ../../build/doc/pgRouting-concepts.rst:39
 #: ../../build/doc/pgRouting-concepts.rst:24
+#: ../../build/doc/pgRouting-concepts.rst:39
 msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
@@ -417,12 +421,12 @@ msgstr "``path``"
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid ""
 "Sequence of edge identifiers that form a path that is not allowed to be "
-"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have a "
-"``NULL`` element will raise an exception."
+"taken. - Empty arrays or ``NULL`` arrays are ignored. - Arrays that have "
+"a ``NULL`` element will raise an exception."
 msgstr ""
 "Secuencia de identificadores de aristas que forman un camino que no se "
-"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que "
-"tienen ``NULL`` arrojan una excepción."
+"permite tomar. - Arreglos vacios o ``NULL`` son ignorados. - Arreglos que"
+" tienen ``NULL`` arrojan una excepción."
 
 #: ../../build/doc/pgRouting-concepts.rst:17
 msgid "``Cost``"
@@ -447,3 +451,4 @@ msgstr ":ref:`genindex`"
 #: ../../build/doc/TRSP-family.rst:157
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+

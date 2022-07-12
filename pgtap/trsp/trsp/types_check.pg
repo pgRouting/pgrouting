@@ -12,20 +12,21 @@ SELECT function_returns('pgr_trsp', ARRAY['text','integer','integer','boolean','
 SELECT function_returns('pgr_trsp', ARRAY['text','integer','double precision','integer','double precision','boolean','boolean','text'],'setof record');
 
 SELECT bag_has(
-      $$SELECT  proargnames from pg_proc where proname = 'pgr_trsp'$$,
-      $$VALUES
-      ('{"","","","","","restrictions_sql","seq","id1","id2","cost"}'::TEXT[]),
-      ('{"","","","","","","","turn_restrict_sql","seq","id1","id2","cost"}'::TEXT[])
-      $$);
+  $$SELECT  proargnames from pg_proc where proname = 'pgr_trsp'$$,
+  $$VALUES
+  ('{"","","","","","restrictions_sql","seq","id1","id2","cost"}'::TEXT[]),
+  ('{"","","","","","","","turn_restrict_sql","seq","id1","id2","cost"}'::TEXT[])
+  $$, 'old signature names');
 
 SELECT bag_has(
-      $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trsp'$$,
-      $$VALUES
-      ('{25,23,23,16,16,25,23,23,23,701}'::OID[]),
-      ('{25,23,701,23,701,16,16,25,23,23,23,701}'::OID[])
-      $$);
+  $$SELECT  proallargtypes from pg_proc where proname = 'pgr_trsp'$$,
+  $$VALUES
+  ('{25,23,23,16,16,25,23,23,23,701}'::OID[]),
+  ('{25,23,701,23,701,16,16,25,23,23,23,701}'::OID[])
+  $$, 'old signature types');
 
-SELECT types_check_general('pgr_trsp_withpoints');
+
+SELECT types_check_general('pgr_trsp');
 
 SELECT finish();
 ROLLBACK;

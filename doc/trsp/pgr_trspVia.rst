@@ -18,20 +18,22 @@
 
 ``pgr_trspVia`` Route that goes through a list of vertices with restrictions.
 
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
 
    Boost Graph Inside
 
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New **proposed** function ``pgr_trspVia`` (`One Via`_)
+  * New proposed function:
+
+    * ``pgr_trspVia`` (`One Via`_)
 
 Description
 -------------------------------------------------------------------------------
@@ -60,16 +62,18 @@ Signatures
 One Via
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                    node, edge, cost, agg_cost, route_agg_cost)
-    OR EMPTY SET
+   pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, **via vertices**, [options])
+
+   :[options]: [directed, strict, U_turn_on_edge]
+
+   RETURNS SET OF |via-result|
+   OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{ 5, 1, 8\}` in that
-          order on an **directed** graph.
+          order on an directed graph.
 
 .. literalinclude:: trspVia.queries
     :start-after: -- q0
@@ -127,7 +131,7 @@ Additional Examples
    :local:
 
 All this examples are about the route that visits the vertices :math:`\{5, 7, 1,
-8, 15\}` in that order on a **directed** graph.
+8, 15\}` in that order on a directed graph.
 
 The main query
 ...............................................................................
@@ -171,7 +175,7 @@ Status of "passes in front" or "visits" of the nodes.
     :start-after: -- q6
     :end-before: -- q7
 
-Simulation of how algorithm works
+Simulation of how algorithm works.
 ...............................................................................
 
 The algorithm performs a :doc:`pgr_dijkstraVia`

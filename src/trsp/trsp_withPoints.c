@@ -7,7 +7,7 @@ Mail: project@pgrouting.org
 
 Function's developer:
 Copyright (c) 2022 Celia Virginia Vergara Castillo
-Mail:
+Mail: vicky at georepublic.de
 
 ------
 
@@ -190,10 +190,8 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**********************************************************************/
     Path_rt *result_tuples = 0;
     size_t result_count = 0;
-    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -237,8 +235,6 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
                 &result_count);
         }
 
-        /**********************************************************************/
-
         funcctx->max_calls = result_count;
 
         funcctx->user_fctx = result_tuples;
@@ -262,34 +258,31 @@ _pgr_trsp_withpoints(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/
-        // OUT seq BIGINT,
-        // OUT path_seq,
-        // OUT node BIGINT,
-        // OUT edge BIGINT,
-        // OUT cost FLOAT,
-        // OUT agg_cost FLOAT)
-
-
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(bool));
+        size_t numb = 9;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 8; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
+        int path_id = call_cntr == 0? 0 : result_tuples[call_cntr - 1].seq;
+        path_id += result_tuples[call_cntr].seq == 1? 1 : 0;
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /**********************************************************************/
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(path_id);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+
+        result_tuples[call_cntr].seq = path_id;
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

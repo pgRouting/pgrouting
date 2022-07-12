@@ -339,7 +339,7 @@ msgstr "Descripción"
 #: ../../build/doc/VRP-category.rst:125 ../../build/doc/VRP-category.rst:146
 #, fuzzy
 msgid "`Orders SQL`_"
-msgstr "**orders_sql**"
+msgstr "`Orders SQL`_"
 
 #: ../../build/doc/VRP-category.rst:126 ../../build/doc/VRP-category.rst:129
 #: ../../build/doc/VRP-category.rst:147 ../../build/doc/VRP-category.rst:150
@@ -354,7 +354,7 @@ msgstr ""
 #: ../../build/doc/VRP-category.rst:128 ../../build/doc/VRP-category.rst:149
 #, fuzzy
 msgid "`Vehicles SQL`_"
-msgstr "**vehicles_sql**"
+msgstr "`Vehicles SQL`_"
 
 #: ../../build/doc/VRP-category.rst:130 ../../build/doc/VRP-category.rst:151
 msgid "`Vehicles SQL`_ as described below."
@@ -365,8 +365,9 @@ msgid "Used in :doc:`pgr_pickDeliver`"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:152
+#, fuzzy
 msgid "`Matrix SQL`_"
-msgstr "`SQL matriz`_"
+msgstr "`Matrix SQL`_"
 
 #: ../../build/doc/VRP-category.rst:154
 msgid "`Matrix SQL`_ as described below."
@@ -461,7 +462,7 @@ msgstr "Consultas Internas"
 #: ../../build/doc/VRP-category.rst:200
 #, fuzzy
 msgid "Orders SQL"
-msgstr "**orders_sql**"
+msgstr "Orders SQL"
 
 #: ../../build/doc/VRP-category.rst:202
 #, fuzzy
@@ -609,7 +610,7 @@ msgid ""
 "`Matrix SQL`_."
 msgstr ""
 "El identificador de nodo de la recogida debe coincidir con un "
-"identificador de nodo en la tabla de matriz."
+"identificador de nodo en la `Matrix SQL`_."
 
 #: ../../build/doc/VRP-category.rst:267
 #, fuzzy
@@ -623,7 +624,7 @@ msgid ""
 "the `Matrix SQL`_."
 msgstr ""
 "El identificador de nodo de la entrega debe coincidir con un "
-"identificador de nodo en la tabla de matriz."
+"identificador de nodo en la `Matrix SQL`_."
 
 #: ../../build/doc/VRP-category.rst:278 ../../build/doc/VRP-category.rst:396
 msgid ""
@@ -670,9 +671,9 @@ msgstr "valor :math:`y` del lugar de entrega"
 #: ../../build/doc/VRP-category.rst:315
 #, fuzzy
 msgid "Vehicles SQL"
-msgstr "**vehicles_sql**"
+msgstr "Vehicles SQL"
 
-#: ../../build/doc/VRP-category.rst:317
+#: ../../build/doc/VRP-category.rst:315
 #, fuzzy
 msgid "Common columns for the vehicles SQL in both implementations:"
 msgstr ""
@@ -783,7 +784,7 @@ msgid ""
 " in the `Matrix SQL`_."
 msgstr ""
 "El identificador de nodo de la ubicación inicial debe coincidir con un "
-"identificador de nodo en la tabla de la matriz."
+"identificador de nodo en la `Matrix SQL`_."
 
 #: ../../build/doc/VRP-category.rst:383
 #, fuzzy
@@ -797,7 +798,7 @@ msgid ""
 "in the `Matrix SQL`_."
 msgstr ""
 "El identificador de nodo de la ubicación final debe coincidir con un "
-"identificador de nodo en la tabla de matriz."
+"identificador de nodo en la `Matrix SQL`_."
 
 #: ../../build/doc/VRP-category.rst:388
 msgid "When missing: ``end_node_id`` is used."
@@ -850,8 +851,9 @@ msgid "When missing: ``start_y`` is used."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:434
+#, fuzzy
 msgid "Matrix SQL"
-msgstr "SQL de matriz"
+msgstr "Matrix SQL"
 
 #: ../../build/doc/pgRouting-concepts.rst:3
 msgid "Set of ``(start_vid, end_vid, agg_cost)``"

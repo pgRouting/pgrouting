@@ -19,20 +19,22 @@
 ``pgr_trspVia_withPoints`` - Route that goes through a list of vertices and/or
 points with restrictions.
 
-.. include:: proposed.rst
-   :start-after: stable-begin-warning
-   :end-before: stable-end-warning
-
 .. figure:: images/boost-inside.jpeg
    :target: https://www.boost.org/libs/graph/doc/table_of_contents.html
 
    Boost Graph Inside
 
+.. include:: proposed.rst
+   :start-after: stable-begin-warning
+   :end-before: stable-end-warning
+
 .. rubric:: Availability
 
 * Version 3.4.0
 
-  * New **proposed** function ``pgr_trspVia_withPoints`` (`One Via`_)
+  * New proposed function:
+
+    ``pgr_trspVia_withPoints`` (`One Via`_)
 
 Description
 -------------------------------------------------------------------------------
@@ -70,16 +72,19 @@ Signatures
 One Via
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_trspVia_withPoints(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via vertices**
-               [, directed] [, strict] [, U_turn_on_edge]) - Proposed on v3.4
-    RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
-                    node, edge, cost, agg_cost, route_agg_cost)
-    OR EMPTY SET
+   pgr_trspVia(`Edges SQL`_, `Restrictions SQL`_, `Points SQL`_, **via
+   vertices**, [options])
+
+   :[options]: [directed, strict, U_turn_on_edge]
+
+   RETURNS SET OF |via-result|
+   OR EMPTY SET
 
 :Example: Find the route that visits the vertices :math:`\{-6, 15, -5\}` in that
-          order on an **directed** graph.
+          order on an directed graph.
 
 .. literalinclude:: trspVia_withPoints.queries
     :start-after: -- q0
@@ -154,8 +159,10 @@ Additional Examples
 .. contents::
    :local:
 
-Use :doc:`pgr_findCloseEdges` in the `Points SQL`_.
+Use ``pgr_findCloseEdges`` for points on the fly
 ...............................................................................
+
+Using :doc:`pgr_findCloseEdges`:
 
 Visit from vertex :math:`1` to the two locations on the graph of point `(2.9,
 1.8)` in order of closeness to the graph.
@@ -173,7 +180,7 @@ Usage variations
 ...............................................................................
 
 All this examples are about the route that visits the vertices :math:`\{-6, 7,
--4, 8, -2\}` in that order on a **directed** graph.
+-4, 8, -2\}` in that order on a directed graph.
 
 .. literalinclude:: trspVia_withPoints.queries
     :start-after: -- q1
@@ -214,7 +221,7 @@ Status of "passes in front" or "visits" of the nodes and points.
     :start-after: -- q6
     :end-before: -- q7
 
-Simulation of how algorithm works
+Simulation of how algorithm works.
 ...............................................................................
 
 The algorithm performs a :doc:`pgr_withPointsVia`
@@ -249,8 +256,8 @@ Getting the same result as ``pgr_trspVia_withPoints``:
 :Example 8: Sometimes ``U_turn_on_edge`` flag is ignored when is set to
             ``false``.
 
-The first step, doing a :doc:`pgr_withPointsVia` does consider not making a U turn
-on the same edge. But the path :math:`9 \rightarrow 16` (Rows 4 and 5) is
+The first step, doing a :doc:`pgr_withPointsVia` does consider not making a U
+turn on the same edge. But the path :math:`9 \rightarrow 16` (Rows 4 and 5) is
 restricted and the result is using it.
 
 .. literalinclude:: trspVia_withPoints.queries

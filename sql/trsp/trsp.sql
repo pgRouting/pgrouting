@@ -35,6 +35,7 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -46,7 +47,7 @@ CREATE FUNCTION pgr_trsp(
 RETURNS SETOF record AS
 $BODY$
 
-  SELECT * FROM _trsp(
+  SELECT * FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     ARRAY[$3]::BIGINT[],
@@ -68,6 +69,7 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -78,7 +80,7 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _trsp(
+  SELECT * FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     ARRAY[$3]::BIGINT[],
@@ -99,6 +101,7 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -109,7 +112,7 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _trsp(
+  SELECT * FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3::BIGINT[],
@@ -130,6 +133,7 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -140,7 +144,7 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _trsp(
+  SELECT * FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     $3::BIGINT[],
@@ -160,6 +164,7 @@ CREATE FUNCTION pgr_trsp(
   directed BOOLEAN DEFAULT true,
 
   OUT seq INTEGER,
+  OUT path_id INTEGER,
   OUT path_seq INTEGER,
   OUT start_vid BIGINT,
   OUT end_vid BIGINT,
@@ -170,7 +175,7 @@ CREATE FUNCTION pgr_trsp(
 
 RETURNS SETOF RECORD AS
 $BODY$
-  SELECT * FROM _trsp(
+  SELECT * FROM _v4trsp(
     _pgr_get_statement($1),
     _pgr_get_statement($2),
     _pgr_get_statement($3),

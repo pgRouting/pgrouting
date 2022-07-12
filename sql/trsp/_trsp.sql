@@ -56,13 +56,35 @@ RETURNS SETOF RECORD AS
 LANGUAGE 'c' VOLATILE;
 
 --v3.4
-CREATE FUNCTION _trsp(
+CREATE FUNCTION _v4trsp(
+    TEXT, -- edges SQL
+    TEXT, -- restrictions SQL
+    ANYARRAY,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+
+    OUT seq INTEGER,
+    OUT path_id INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+'MODULE_PATHNAME'
+LANGUAGE 'c' VOLATILE;
+
+--v3.4
+CREATE FUNCTION _v4trsp(
     TEXT, -- edges SQL
     TEXT, -- restrictions SQL
     TEXT, -- combinations SQL
     directed BOOLEAN DEFAULT true,
 
     OUT seq INTEGER,
+    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -78,5 +100,8 @@ LANGUAGE 'c' VOLATILE;
 COMMENT ON FUNCTION _trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
 IS 'pgRouting internal function';
 
-COMMENT ON FUNCTION _trsp(TEXT, TEXT, TEXT, BOOLEAN)
+COMMENT ON FUNCTION _v4trsp(TEXT, TEXT, ANYARRAY, ANYARRAY, BOOLEAN)
+IS 'pgRouting internal function';
+
+COMMENT ON FUNCTION _v4trsp(TEXT, TEXT, TEXT, BOOLEAN)
 IS 'pgRouting internal function';

@@ -12,8 +12,8 @@ DECLARE
 
   return_params_names TEXT[];
   return_params_numbers OID[];
-  return_params_names_start TEXT[] = ARRAY['seq','path_seq'];
-  return_params_numbers_start OID[] = ARRAY[23,23];
+  return_params_names_start TEXT[] = ARRAY['seq','path_id','path_seq'];
+  return_params_numbers_start OID[] = ARRAY[23,23,23];
   return_params_names_end TEXT[] = ARRAY['node','edge','cost','agg_cost'];
   return_params_numbers_end OID[] = ARRAY[20,20,701,701];
 
@@ -209,7 +209,7 @@ DECLARE
   return_params_numbers OID[] = ARRAY[23,23,23,20,20,20,20,701,701,701];
 
 BEGIN
-  IF fn IN ('pgr_trspvia') AND NOT min_version('3.4.0') THEN
+  IF fn IN ('pgr_trspvia','pgr_trspvia_withpoints') AND NOT min_version('3.4.0') THEN
     RETURN QUERY SELECT skip(1, 'Signature added on 3.4.0');
     RETURN;
   END IF;
