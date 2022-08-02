@@ -91,7 +91,7 @@ class Order : public Identifier {
       * @{
       */
 
-     void set_compatibles(const Order order, double speed);
+     void set_compatibles(const Order& order, double speed);
      /*!@}*/
 
      /*! @name To be or not to be

@@ -143,7 +143,7 @@ class Vehicle : public Identifier {
       *
       * @returns position where it was inserted
       */
-     POS insert(std::pair<POS, POS> position_limits, const Vehicle_node &node);
+     POS insert(const std::pair<POS, POS>& position_limits, const Vehicle_node &node);
 
 
 

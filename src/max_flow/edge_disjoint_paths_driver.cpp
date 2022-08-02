@@ -75,7 +75,7 @@ get_combinations(
 static
 std::vector<Path_rt>
 single_execution(
-        std::vector<Edge_t> edges,
+        const std::vector<Edge_t>& edges,
         int64_t source,
         int64_t target,
         bool directed) {

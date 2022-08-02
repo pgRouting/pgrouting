@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "cpp_common/linear_directed_graph.h"
 
 void get_turn_penalty_postgres_result(
-        std::vector< Line_graph_full_rt > edge_result,
+        const std::vector< Line_graph_full_rt >& edge_result,
         Line_graph_full_rt **return_tuples,
         size_t &sequence) {
     (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));

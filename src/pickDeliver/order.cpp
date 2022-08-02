@@ -108,7 +108,7 @@ Order::is_valid(double speed) const {
  *
  */
 void
-Order::set_compatibles(const Order J, double speed) {
+Order::set_compatibles(const Order& J, double speed) {
     if (J.idx() == idx()) return;
     if (J.isCompatibleIJ(*this, speed)) {
         /*

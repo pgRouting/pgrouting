@@ -105,7 +105,7 @@ Dmatrix::Dmatrix(const std::vector < IID_t_rt > &data_costs) {
 
 
 double
-get_distance(std::pair<double, double> p1 , std::pair<double, double> p2) {
+get_distance(const std::pair<double, double>& p1 , const std::pair<double, double>& p2) {
     auto dx = p1.first - p2.first;
     auto dy = p1.second - p2.second;
     return std::sqrt(dx * dx + dy * dy);

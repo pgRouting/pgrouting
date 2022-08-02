@@ -120,8 +120,8 @@ class Pgr_trspHandler {
             std::set<int64_t>> &combinations);
 
     std::deque<Path> process(
-            const std::vector<int64_t> sources,
-            const std::vector<int64_t> targets);
+            const std::vector<int64_t>& sources,
+            const std::vector<int64_t>& targets);
 
 
     void clear();
@@ -149,7 +149,7 @@ class Pgr_trspHandler {
 
     void explore(
             int64_t cur_node,
-            const EdgeInfo cur_edge,
+            const EdgeInfo& cur_edge,
             bool isStart);
 
     double getRestrictionCost(

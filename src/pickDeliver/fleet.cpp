@@ -103,7 +103,7 @@ Fleet::get_truck(size_t order) {
     pgassert(false);
     return m_trucks.back();
 
-    for (auto truck : m_trucks) {
+    for (const auto& truck : m_trucks) {
         if (truck.feasable_orders().has(order)) {
             idx = truck.idx();
             msg().log << "idx" << idx << "size" << m_trucks.size();
@@ -254,7 +254,7 @@ bool
 Fleet::is_fleet_ok() const {
     ENTERING(msg());
     if (!msg().get_error().empty()) return false;
-    for (auto truck : m_trucks) {
+    for (const auto& truck : m_trucks) {
         if (!truck.is_ok()) {
             msg().error << "Illegal values found on vehicle";
             msg().log << "On vehicle " << truck.id()

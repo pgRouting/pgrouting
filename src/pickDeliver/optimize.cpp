@@ -391,7 +391,7 @@ Optimize::move_reduce_cost(
  */
 bool
 Optimize::move_order(
-        Order order,
+        const Order& order,
         Vehicle_pickDeliver &from_truck,
         Vehicle_pickDeliver &to_truck) {
     pgassert(from_truck.has_order(order));

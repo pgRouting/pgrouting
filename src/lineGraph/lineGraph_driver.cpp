@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 void get_postgres_result(
-        std::vector< Edge_t > edge_result,
+        const std::vector< Edge_t >& edge_result,
         Edge_t **return_tuples,
         size_t &sequence) {
     (*return_tuples) = pgr_alloc(edge_result.size(), (*return_tuples));

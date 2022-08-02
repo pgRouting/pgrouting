@@ -71,12 +71,12 @@ class Pgr_alphaShape : public Pgr_messages {
 
  private:
      void make_triangles();
-     double radius(const Triangle t) const;
+     double radius(const Triangle& t) const;
      bool faceBelongs(
-             const Triangle face,
+             const Triangle& face,
              double alpha) const;
      void recursive_build(
-             const Triangle face,
+             const Triangle& face,
              std::set<Triangle> &used,
              std::set<E> &border_edges,
              double alpha) const;
