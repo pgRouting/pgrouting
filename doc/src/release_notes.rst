@@ -69,6 +69,8 @@ milestone for 3.3.2
   edgeDisjointPaths issues with start_vid and combinations
 * `#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__:
   pgr_extractVertices error when target is not BIGINT
+* `#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__:
+  Apply clang-tidy performance-*
 
 pgRouting 3.3.1 Release Notes
 -------------------------------------------------------------------------------
