@@ -72,7 +72,7 @@ std::vector < Basic_vertex > extract_vertices(
 
 std::vector < Basic_vertex > extract_vertices(
         std::vector < Basic_vertex > vertices,
-        const std::vector < Edge_t > data_edges);
+        const std::vector < Edge_t >& data_edges);
 
 std::vector < Basic_vertex > extract_vertices(
         const Edge_t *data_edges, size_t count);

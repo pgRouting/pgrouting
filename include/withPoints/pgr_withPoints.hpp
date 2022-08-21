@@ -49,7 +49,7 @@ class Pg_points_graph : public Pgr_messages {
      Pg_points_graph() = delete;
      Pg_points_graph(const Pg_points_graph &) = delete;
      Pg_points_graph(
-             std::vector<Point_on_edge_t> p_points,
+             const std::vector<Point_on_edge_t>& p_points,
              std::vector<Edge_t>      p_edges_to_modify,
              bool p_normal,
              char p_driving_side,
@@ -62,7 +62,7 @@ class Pg_points_graph : public Pgr_messages {
 
 
      Path eliminate_details(
-             Path path) const;
+             const Path& path) const;
 
      void eliminate_details_dd(
              Path &path) const;

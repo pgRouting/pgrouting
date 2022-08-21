@@ -30,13 +30,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "withPoints/pgr_withPoints.hpp"
 
-#include <sstream>
-#include <deque>
-#include <set>
-#include <vector>
-#include <string>
 #include <algorithm>
 #include <cassert>
+#include <deque>
+#include <set>
+#include <sstream>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "cpp_common/pgr_assert.h"
 
@@ -69,14 +70,14 @@ Pg_points_graph::edges_of_points() const {
 
 
 Pg_points_graph::Pg_points_graph(
-        std::vector<Point_on_edge_t> p_points,
+        const std::vector<Point_on_edge_t>& p_points,
         std::vector<Edge_t>      p_edges_of_points,
         bool p_normal,
         char p_driving_side,
         bool p_directed) :
     m_points(p_points),
     m_o_points(p_points),
-    m_edges_of_points(p_edges_of_points),
+    m_edges_of_points(std::move(p_edges_of_points)),
     m_driving_side(p_driving_side),
     m_directed(p_directed) {
     if (!p_normal) {
@@ -227,7 +228,7 @@ Pg_points_graph::eliminate_details_dd(
 
 Path
 Pg_points_graph::eliminate_details(
-        Path path) const {
+        const Path& path) const {
     /*
      * There is no path nothing to do
      */

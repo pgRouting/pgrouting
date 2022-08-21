@@ -224,7 +224,7 @@ Pgr_alphaShape::make_triangles() {
  * Radius of triangle's circumcenter
  */
 double
-Pgr_alphaShape::radius(const Triangle t) const {
+Pgr_alphaShape::radius(const Triangle& t) const {
         std::vector<E> edges(t.begin(), t.end());
         auto a = graph.source(edges[0]);
         auto b = graph.target(edges[0]);
@@ -240,7 +240,7 @@ Pgr_alphaShape::radius(const Triangle t) const {
  * The whole traingle face belongs to the shape?
  */
 bool
-Pgr_alphaShape::faceBelongs(const Triangle t, double alpha) const {
+Pgr_alphaShape::faceBelongs(const Triangle& t, double alpha) const {
         return radius(t) <= alpha;
 }
 
@@ -317,7 +317,7 @@ Pgr_alphaShape::build_best_alpha() const {
 
 void
 Pgr_alphaShape::recursive_build(
-        const Triangle face,
+        const Triangle& face,
         std::set<Triangle> &used,
         std::set<E> &border_edges,
         double alpha) const {

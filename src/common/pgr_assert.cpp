@@ -33,8 +33,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <execinfo.h>
 #endif
 
-#include <string>
 #include <exception>
+#include <string>
+#include <utility>
 
 
 std::string get_backtrace() {
@@ -69,5 +70,5 @@ const char* AssertFailedException::what() const throw() {
 }
 
 AssertFailedException::AssertFailedException(std::string msg) :
-    str(msg) {}
+    str(std::move(msg)) {}
 

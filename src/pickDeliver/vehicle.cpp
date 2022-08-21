@@ -62,7 +62,7 @@ Vehicle::invariant() const {
 }
 
 size_t
-Vehicle::insert(std::pair<POS, POS> position_limits, const Vehicle_node &node) {
+Vehicle::insert(const std::pair<POS, POS>& position_limits, const Vehicle_node &node) {
     invariant();
     pgassert(position_limits.first <= m_path.size());
     pgassert(position_limits.second <= m_path.size());

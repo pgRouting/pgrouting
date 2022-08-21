@@ -219,7 +219,7 @@ double Pgr_trspHandler::get_tot_cost(
 // -------------------------------------------------------------------------
 void Pgr_trspHandler::explore(
         int64_t cur_node,
-        const EdgeInfo cur_edge,
+        const EdgeInfo& cur_edge,
         bool isStart) {
     double totalCost;
 
@@ -342,8 +342,8 @@ Pgr_trspHandler::process(
  */
 std::deque<Path>
 Pgr_trspHandler::process(
-        const std::vector<int64_t> sources,
-        const std::vector<int64_t> targets) {
+        const std::vector<int64_t>& sources,
+        const std::vector<int64_t>& targets) {
     std::deque<Path> paths;
     for (const auto &s : sources) {
         for (const auto &t : targets) {
