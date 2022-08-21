@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_stoerWagner - Experimental &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -155,7 +155,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.0/en/pgr_stoerWagner.html">3.0</a></p></li>
 </ul>
 <section id="pgr-stoerwagner-experimental">
-<h1>pgr_stoerWagner - Experimental<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Permalink to this heading">¶</a></h1>
+<h1>pgr_stoerWagner - Experimental<a class="headerlink" href="#pgr-stoerwagner-experimental" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_stoerWagner</span></code> — El corte mínimo del grafo usando el algoritmo Stoer-Wagner.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -204,7 +204,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>En teoría de grafos, el algoritmo Stoer-Wagner es un algoritmo recursivo para resolver el problema de corte mínimo en gráficos ponderados no dirigidos con pesos no negativos. La idea esencial de este algoritmo es encoger el grafo mediante la fusión de los vértices más intensivos, hasta que el grafo sólo contiene dos conjuntos de vértices combinados. En cada fase, el algoritmo encuentra el corte s-t mínimo para dos vértices s y t elegidos a su voluntad. A continuación, el algoritmo encoge la arista entre s y t para buscar cortes no s-t. El corte mínimo encontrado en todas las fases será el corte ponderado mínimo del grafo.</p>
 <p>Un corte es una partición de los vértices de un grafo en dos subconjuntos separados. Un corte mínimo es un corte para el que el tamaño o peso del corte no es mayor que el tamaño de cualquier otro corte. Para un grafo no ponderado, el corte mínimo sería simplemente el corte con menos aristas. Para un grafo ponderado, la suma del peso de todas las aristas en el corte determina si se trata de un corte mínimo.</p>
 <p><strong>Las características principales son:</strong></p>
@@ -229,7 +229,7 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <pre class="literal-block" id="index-0">pgr_stoerWagner(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 RETURNS SET OF (seq, edge, cost, mincut)
 OR EMPTY SET</pre>
@@ -250,7 +250,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -267,15 +267,15 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -328,7 +328,7 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Devuelve conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">mincut)</span></code></p>
 <table class="docutils align-default">
 <thead>
@@ -358,7 +358,7 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="additional-example">
-<h2>Ejemplo Adicional:<a class="headerlink" href="#additional-example" title="Permalink to this heading">¶</a></h2>
+<h2>Ejemplo Adicional:<a class="headerlink" href="#additional-example" title="Enlace permanente a este encabezado">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>corte mínimo de una arista</p>
@@ -397,7 +397,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm">https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm</a></p></li>
@@ -423,8 +423,8 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jul 06, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en ago 21, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

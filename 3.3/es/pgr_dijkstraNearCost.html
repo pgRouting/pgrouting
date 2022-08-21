@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_dijkstraNearCost - Propuesto &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -169,7 +169,7 @@
 <a class="reference external" href="https://docs.pgrouting.org/3.2/en/pgr_dijkstraNearCost.html">3.2</a></p></li>
 </ul>
 <section id="pgr-dijkstranearcost-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Propuesto<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Propuesto<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> — Usando el algoritmo dijkstra, encuentra la ruta que conduce al vértice más cercano.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -208,10 +208,10 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Dado un grafo, un vértice inicial y un conjunto de vértices finales, esta función encuentra la ruta más corta desde el vértice inicial hasta el vértice final más cercano.</p>
 <section id="characteristics">
-<h3>Características<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
+<h3>Características<a class="headerlink" href="#characteristics" title="Enlace permanente a este encabezado">¶</a></h3>
 <ul class="simple">
 <li><p>Utiliza el algoritmo Dijkstra.</p></li>
 <li><p>Funciona para grafos <strong>dirigidos</strong> y <strong>no dirigidos</strong>.</p></li>
@@ -250,7 +250,7 @@
 </section>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Resumen</p>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
            [, directed] [, cap])
@@ -263,7 +263,7 @@ pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <section id="one-to-many">
-<span id="index-0"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
+<span id="index-0"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
            [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -296,7 +296,7 @@ OR EMPTY SET</pre>
 <p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(11\)</span> es la más cercana.</p>
 </section>
 <section id="many-to-one">
-<span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
+<span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlace permanente a este encabezado">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
            [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -328,7 +328,7 @@ OR EMPTY SET</pre>
 <p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(10\)</span> es la más cercana y la siguiente mejor es <span class="math notranslate nohighlight">\(11\)</span>.</p>
 </section>
 <section id="many-to-many">
-<span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
+<span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlace permanente a este encabezado">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
            [, directed] [, cap], [global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -365,7 +365,7 @@ OR EMPTY SET</pre>
 <p>Solo se devuelve <cite>una</cite> ruta porque <cite>global</cite> es <code class="docutils literal notranslate"><span class="pre">true</span></code> y <cite>cap</cite> es <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
 </section>
 <section id="combinations">
-<span id="index-3"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<span id="index-3"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlace permanente a este encabezado">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
            [, directed] [, cap] [, global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
@@ -454,12 +454,12 @@ ending vertices to be from the second subway line</p></li>
 </section>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 19%" />
-<col style="width: 61%" />
+<col style="width: 19.4%" />
+<col style="width: 19.4%" />
+<col style="width: 61.1%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -495,7 +495,7 @@ ending vertices to be from the second subway line</p></li>
 </tbody>
 </table>
 <section id="dijkstra-optional-parameters">
-<h3>Parámetros opcionales de Dijkstra<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de Dijkstra<a class="headerlink" href="#dijkstra-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -518,13 +518,13 @@ ending vertices to be from the second subway line</p></li>
 </table>
 </section>
 <section id="near-optional-parameters">
-<h3>Parámetros opcionales de Cercanía<a class="headerlink" href="#near-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales de Cercanía<a class="headerlink" href="#near-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 68%" />
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -553,15 +553,15 @@ ending vertices to be from the second subway line</p></li>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -613,12 +613,12 @@ ending vertices to be from the second subway line</p></li>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -646,13 +646,13 @@ ending vertices to be from the second subway line</p></li>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 16%" />
-<col style="width: 70%" />
+<col style="width: 14.0%" />
+<col style="width: 16.3%" />
+<col style="width: 69.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -677,7 +677,7 @@ ending vertices to be from the second subway line</p></li>
 </table>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a></p></li>
@@ -706,8 +706,8 @@ ending vertices to be from the second subway line</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jul 06, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en ago 21, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

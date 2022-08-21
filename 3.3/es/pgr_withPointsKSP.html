@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_withPointsKSP - Propuesto &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -171,7 +171,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_withPointsKSP.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_withPointsKSP.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_withPointsKSP.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/withPoints/doc/pgr_withPointsKSP.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/withPoints/doc/pgr_withPointsKSP.html">2.2</a></p></li>
 </ul>
 <section id="pgr-withpointsksp-proposed">
-<h1>pgr_withPointsKSP - Propuesto<a class="headerlink" href="#pgr-withpointsksp-proposed" title="Permalink to this heading">¶</a></h1>
+<h1>pgr_withPointsKSP - Propuesto<a class="headerlink" href="#pgr-withpointsksp-proposed" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_withPointsKSP</span></code> - Encuentra las rutas más cortas de K usando el algoritmo de Yen.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -205,11 +205,11 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Modifica el grafo para incluir los puntos definidos en <a class="reference internal" href="#points-sql">SQL puntos</a> y utilizando el algoritmo Yen, encuentra las <span class="math notranslate nohighlight">\(K\)</span> rutas más cortas.</p>
 </section>
 <section id="signatures">
-<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <pre class="literal-block">pgr_withPointsKSP(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#points-sql">Points SQL</a> <strong>start_pid</strong>, <strong>end_pid</strong>, <strong>K</strong>
   [, directed] [, heap_paths] [, driving_side] [, details])
 RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
@@ -249,12 +249,12 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 27%" />
-<col style="width: 53%" />
+<col style="width: 20.5%" />
+<col style="width: 26.5%" />
+<col style="width: 53.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -292,7 +292,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </dd>
 </dl>
 <section id="optional-parameters">
-<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales<a class="headerlink" href="#optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -316,7 +316,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="ksp-optional-parameters">
-<h2>Parámetros opcionales de KSP<a class="headerlink" href="#ksp-optional-parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros opcionales de KSP<a class="headerlink" href="#ksp-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -339,13 +339,13 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </tbody>
 </table>
 <section id="with-points-optional-parameters">
-<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros opcionales para Con puntos<a class="headerlink" href="#with-points-optional-parameters" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 68%" />
+<col style="width: 15.9%" />
+<col style="width: 8.0%" />
+<col style="width: 8.0%" />
+<col style="width: 68.2%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -380,15 +380,15 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -440,13 +440,13 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </dl>
 </section>
 <section id="points-sql">
-<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL puntos<a class="headerlink" href="#points-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 57%" />
+<col style="width: 15.6%" />
+<col style="width: 18.2%" />
+<col style="width: 9.1%" />
+<col style="width: 57.1%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -502,7 +502,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -552,7 +552,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <nav class="contents local" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#left-driving-side" id="id2">Lado de manejo izquierdo</a></p></li>
@@ -560,7 +560,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </ul>
 </nav>
 <section id="left-driving-side">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Lado de manejo izquierdo</a><a class="headerlink" href="#left-driving-side" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Lado de manejo izquierdo</a><a class="headerlink" href="#left-driving-side" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Obtener <span class="math notranslate nohighlight">\(2\)</span> rutas, usando topología de manejo por la izquierda, desde el punto <span class="math notranslate nohighlight">\(1\)</span> al punto <span class="math notranslate nohighlight">\(2\)</span>, detallado.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
@@ -591,7 +591,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="right-driving-side">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Lado de manejo derecho</a><a class="headerlink" href="#right-driving-side" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Lado de manejo derecho</a><a class="headerlink" href="#right-driving-side" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Obtener <span class="math notranslate nohighlight">\(2\)</span> rutas, usando topología de manejo por la derecha, desde el punto <span class="math notranslate nohighlight">\(1\)</span> al punto <span class="math notranslate nohighlight">\(2\)</span>, detallado y con rutas procesadas.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_withPointsKSP</span><span class="p">(</span>
     <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;</span><span class="p">,</span>
@@ -637,7 +637,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="withPoints-family.html"><span class="doc">withPoints - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="KSP-category.html"><span class="doc">Rutas más cortas K - Categoría</span></a></p></li>
@@ -664,8 +664,8 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jul 06, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en ago 21, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_connectedComponents &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -170,7 +170,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_connectedComponents.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_connectedComponents.html">2.5</a></p></li>
 </ul>
 <section id="pgr-connectedcomponents">
-<h1>pgr_connectedComponents<a class="headerlink" href="#pgr-connectedcomponents" title="Permalink to this heading">¶</a></h1>
+<h1>pgr_connectedComponents<a class="headerlink" href="#pgr-connectedcomponents" title="Enlace permanente a este encabezado">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_connectedComponents</span></code> — Componentes conectados de un grafo no dirigido mediante un enfoque basado en DFS.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/connected_components.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -198,7 +198,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Un componente conectado de un gráfico no direccionado es un conjunto de vértices que son todos accesibles entre sí.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
@@ -214,7 +214,7 @@
 </ul>
 </section>
 <section id="signatures">
-<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<span id="index-0"></span><h2>Firmas<a class="headerlink" href="#signatures" title="Enlace permanente a este encabezado">¶</a></h2>
 <pre class="literal-block">pgr_connectedComponents(<a class="reference internal" href="#edges-sql">Edges SQL</a>)
 
 RETURNS SET OF (seq, component, node)
@@ -255,7 +255,7 @@ OR EMPTY SET</pre>
 </figure>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlace permanente a este encabezado">¶</a></h2>
 <table class="docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
@@ -272,15 +272,15 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlace permanente a este encabezado">¶</a></h3>
 <table class="docutils align-default" style="width: 81">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 9%" />
-<col style="width: 56%" />
+<col style="width: 17.7%" />
+<col style="width: 17.7%" />
+<col style="width: 8.9%" />
+<col style="width: 55.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
@@ -333,7 +333,7 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>Devuelve el conjunto de``(seq, component, node)``</p>
 <table class="docutils align-default" style="width: 81">
 <thead>
@@ -363,9 +363,9 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="connecting-disconnected-components">
-<h3>Conectando componentes desconectados<a class="headerlink" href="#connecting-disconnected-components" title="Permalink to this heading">¶</a></h3>
+<h3>Conectando componentes desconectados<a class="headerlink" href="#connecting-disconnected-components" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>Para obtener la conectividad del grafo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -403,7 +403,7 @@ and both vertices are also part of the dead end result set.</p>
 the crossing edge in this graph is a different component.</p>
 </div>
 <section id="prepare-storage-for-connection-information">
-<h4>Prepare storage for connection information<a class="headerlink" href="#prepare-storage-for-connection-information" title="Permalink to this heading">¶</a></h4>
+<h4>Prepare storage for connection information<a class="headerlink" href="#prepare-storage-for-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">vertices</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span>
 <span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">edges</span> <span class="n">ADD</span> <span class="n">COLUMN</span> <span class="n">component</span> <span class="n">BIGINT</span><span class="p">;</span>
@@ -412,7 +412,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-vertices-connection-information">
-<h4>Save the vertices connection information<a class="headerlink" href="#save-the-vertices-connection-information" title="Permalink to this heading">¶</a></h4>
+<h4>Save the vertices connection information<a class="headerlink" href="#save-the-vertices-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
   <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span>
@@ -423,7 +423,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="save-the-edges-connection-information">
-<h4>Save the edges connection information<a class="headerlink" href="#save-the-edges-connection-information" title="Permalink to this heading">¶</a></h4>
+<h4>Save the edges connection information<a class="headerlink" href="#save-the-edges-connection-information" title="Enlace permanente a este encabezado">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">edges</span> <span class="n">SET</span> <span class="n">component</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">component</span>
 <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">component</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">)</span> <span class="n">AS</span> <span class="n">v</span>
 <span class="n">WHERE</span> <span class="n">source</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
@@ -432,7 +432,7 @@ the crossing edge in this graph is a different component.</p>
 </div>
 </section>
 <section id="get-the-closest-vertex">
-<h4>Get the closest vertex<a class="headerlink" href="#get-the-closest-vertex" title="Permalink to this heading">¶</a></h4>
+<h4>Get the closest vertex<a class="headerlink" href="#get-the-closest-vertex" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>The closest vertex to component <span class="math notranslate nohighlight">\(1\)</span> is
 vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest edge to vertex <span class="math notranslate nohighlight">\(4\)</span> is edge <span class="math notranslate nohighlight">\(14\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span>
@@ -469,7 +469,7 @@ vertex <span class="math notranslate nohighlight">\(4\)</span>. And the closest 
 information about the edge <span class="math notranslate nohighlight">\(14\)</span> to split the connecting edge.</p>
 </section>
 <section id="connecting-components">
-<h4>Conectando componentes<a class="headerlink" href="#connecting-components" title="Permalink to this heading">¶</a></h4>
+<h4>Conectando componentes<a class="headerlink" href="#connecting-components" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>There are three basic ways to connect the components</p>
 <ul class="simple">
 <li><p>From the vertex to the starting point of the edge</p></li>
@@ -531,7 +531,7 @@ information about the edge <span class="math notranslate nohighlight">\(14\)</sp
 </div>
 </section>
 <section id="checking-components">
-<h4>Checking components<a class="headerlink" href="#checking-components" title="Permalink to this heading">¶</a></h4>
+<h4>Checking components<a class="headerlink" href="#checking-components" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Ignoring the edge that requires further work. The graph is now fully connected
 as there is only one component.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_connectedComponents</span><span class="p">(</span>
@@ -565,7 +565,7 @@ as there is only one component.</p>
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="components-family.html"><span class="doc">Componentes - Familia de funciones</span></a></p></li>
 <li><p>Las consultas utilizan la red <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> .</p></li>
@@ -593,8 +593,8 @@ as there is only one component.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jul 06, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en ago 21, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>

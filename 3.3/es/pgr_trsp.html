@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>pgr_trsp - Turn Restriction Shortest Path (TRSP) &#8212; pgRouting Manual (3.3)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -174,7 +174,7 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/pgr_trsp.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/pgr_trsp.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/pgr_trsp.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/src/trsp/doc/pgr_trsp.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/src/trsp/doc/pgr_trsp.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/src/trsp/doc/index.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/src/trsp/doc/index.html">2.0</a></p></li>
 </ul>
 <section id="pgr-trsp-turn-restriction-shortest-path-trsp">
-<h1>pgr_trsp - Turn Restriction Shortest Path (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Permalink to this heading">¶</a></h1>
+<h1>pgr_trsp - Turn Restriction Shortest Path (TRSP)<a class="headerlink" href="#pgr-trsp-turn-restriction-shortest-path-trsp" title="Enlace permanente a este encabezado">¶</a></h1>
 <p id="index-0"><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> — Returns the shortest path with support for turn restrictions.</p>
 <p class="rubric">Disponibilidad</p>
 <ul class="simple">
@@ -195,7 +195,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlace permanente a este encabezado">¶</a></h2>
 <p>The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of (seq, id1, id2, cost) or (seq, id1, id2, id3, cost) rows, that make up a path.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
 <span class="w">                  </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
@@ -309,7 +309,7 @@
 </dl>
 </section>
 <section id="support-for-vias">
-<h2>Support for Vias<a class="headerlink" href="#support-for-vias" title="Permalink to this heading">¶</a></h2>
+<h2>Support for Vias<a class="headerlink" href="#support-for-vias" title="Enlace permanente a este encabezado">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
 <p>The Support for Vias functions are prototypes. Not all corner cases are being considered.</p>
@@ -395,7 +395,7 @@
 </dl>
 </section>
 <section id="additional-examples">
-<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Enlace permanente a este encabezado">¶</a></h2>
 <dl class="field-list simple">
 <dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Without turn restrictions</p>
@@ -523,9 +523,9 @@
 <p>The queries use the <a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a> network.</p>
 </section>
 <section id="known-issues">
-<h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this heading">¶</a></h2>
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Enlace permanente a este encabezado">¶</a></h2>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to <strong>hide</strong> the issues, not to fix them.</p>
 <p>For clarity on the queries:</p>
 <ul class="simple">
@@ -542,7 +542,7 @@
 </ul>
 </section>
 <section id="the-restrictions">
-<h3>The restrictions<a class="headerlink" href="#the-restrictions" title="Permalink to this heading">¶</a></h3>
+<h3>The restrictions<a class="headerlink" href="#the-restrictions" title="Enlace permanente a este encabezado">¶</a></h3>
 <p>The restriction used in the examples does not have to do anything with the graph:</p>
 <ul class="simple">
 <li><p>No vertex has id: 25, 32 or 33</p></li>
@@ -569,13 +569,13 @@
 <p>therefore the shortest path expected are as if there was no restriction involved</p>
 </section>
 <section id="the-vertices-signature-version">
-<h3>The «Vertices» signature version<a class="headerlink" href="#the-vertices-signature-version" title="Permalink to this heading">¶</a></h3>
+<h3>The «Vertices» signature version<a class="headerlink" href="#the-vertices-signature-version" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="different-ways-to-represent-no-path-found">
-<h4>1 Different ways to represent “no path found`<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Permalink to this heading">¶</a></h4>
+<h4>1 Different ways to represent “no path found`<a class="headerlink" href="#different-ways-to-represent-no-path-found" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
 <li><p>Sometimes represents with Error a no path found</p></li>
@@ -617,7 +617,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 which will throw an EXCEPTION to represent no path found.</p>
 </section>
 <section id="routing-from-to-same-location">
-<h4>1 Routing from/to same location<a class="headerlink" href="#routing-from-to-same-location" title="Permalink to this heading">¶</a></h4>
+<h4>1 Routing from/to same location<a class="headerlink" href="#routing-from-to-same-location" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>When routing from location <span class="math notranslate nohighlight">\(1\)</span> to the same location <span class="math notranslate nohighlight">\(1\)</span>, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
 <cite>EMPTY SET</cite> or an <cite>EXCEPTION</cite> depending on the parameters</p>
@@ -676,7 +676,7 @@ in this case that code throws the expected EXCEPTION</p>
 in this case that code finds an unexpected path.</p>
 </section>
 <section id="user-contradictions">
-<h4>1 User contradictions<a class="headerlink" href="#user-contradictions" title="Permalink to this heading">¶</a></h4>
+<h4>1 User contradictions<a class="headerlink" href="#user-contradictions" title="Enlace permanente a este encabezado">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
 of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
@@ -715,14 +715,14 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) 
 </section>
 </section>
 <section id="the-edges-signature-version">
-<h3>The «Edges» signature version<a class="headerlink" href="#the-edges-signature-version" title="Permalink to this heading">¶</a></h3>
+<h3>The «Edges» signature version<a class="headerlink" href="#the-edges-signature-version" title="Enlace permanente a este encabezado">¶</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">pgr_trsp</span><span class="p">(</span><span class="k">sql</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="n">source_edge</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">source_pos</span><span class="w"> </span><span class="n">float8</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">target_edge</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">target_pos</span><span class="w"> </span><span class="n">float8</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="n">directed</span><span class="w"> </span><span class="nb">boolean</span><span class="p">,</span><span class="w"> </span><span class="n">has_rcost</span><span class="w"> </span><span class="nb">boolean</span><span class="w"> </span><span class="p">[,</span><span class="n">restrict_sql</span><span class="w"> </span><span class="nb">text</span><span class="p">]);</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="id1">
-<h4>2 Different ways to represent “no path found`<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<h4>2 Different ways to represent “no path found`<a class="headerlink" href="#id1" title="Enlace permanente a este encabezado">¶</a></h4>
 <ul class="simple">
 <li><p>Sometimes represents with EMPTY SET a no path found</p></li>
 <li><p>Sometimes represents with EXCEPTION a no path found</p></li>
@@ -753,7 +753,7 @@ ERROR:  Error computing path: Path Not Found
 which will throw an EXCEPTION to represent no path found.</p>
 </section>
 <section id="paths-with-equal-number-of-vertices-and-edges">
-<h4>Paths with equal number of vertices and edges<a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Permalink to this heading">¶</a></h4>
+<h4>Paths with equal number of vertices and edges<a class="headerlink" href="#paths-with-equal-number-of-vertices-and-edges" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>A path is made of <cite>N</cite> vertices and <cite>N - 1</cite> edges.</p>
 <ul class="simple">
 <li><p>Sometimes returns <cite>N</cite> vertices and <cite>N - 1</cite> edges.</p></li>
@@ -792,7 +792,7 @@ on the edge column to indicate the edge number is invalidu for that row.</p>
 and will not return the last vertex of the path.</p>
 </section>
 <section id="id2">
-<h4>2 Routing from/to same location<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
+<h4>2 Routing from/to same location<a class="headerlink" href="#id2" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>When routing from the same edge and position to the same edge and position, no path is needed to
 reach the destination, its already there. Therefore is expected to return an
 <cite>EMPTY SET</cite> or an <cite>EXCEPTION</cite> depending on the parameters, non of which is happening.</p>
@@ -828,7 +828,7 @@ from the second <span class="math notranslate nohighlight">\((edge, position)\)<
 and will not have the row for the vertex <span class="math notranslate nohighlight">\(-2\)</span>.</p>
 </section>
 <section id="id3">
-<h4>2 User contradictions<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
+<h4>2 User contradictions<a class="headerlink" href="#id3" title="Enlace permanente a este encabezado">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trsp</span></code> unlike other pgRouting functions does not autodectect the existence of
 <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Therefor it has <code class="docutils literal notranslate"><span class="pre">has_rcost</span></code> parameter to check the existence
 of <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column. Contradictions happen:</p>
@@ -863,7 +863,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 <p>The <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> column will be effectively removed and will cost execution time</p>
 </section>
 <section id="using-a-points-of-interest-table">
-<h4>Using a points of interest table<a class="headerlink" href="#using-a-points-of-interest-table" title="Permalink to this heading">¶</a></h4>
+<h4>Using a points of interest table<a class="headerlink" href="#using-a-points-of-interest-table" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Given a set of points of interest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pointsOfInterest</span><span class="p">;</span>
@@ -933,7 +933,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </ul>
 </section>
 <section id="routing-from-a-vertex-to-a-point">
-<h4>Routing from a vertex to a point<a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Permalink to this heading">¶</a></h4>
+<h4>Routing from a vertex to a point<a class="headerlink" href="#routing-from-a-vertex-to-a-point" title="Enlace permanente a este encabezado">¶</a></h4>
 <p>Solving a shortest path from vertex <span class="math notranslate nohighlight">\(6\)</span> to pid 1 using a points of interest table</p>
 <p class="rubric">Using pgr_trsp</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT * FROM pgr_trsp(
@@ -1001,7 +1001,7 @@ CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,doubl
 </section>
 </section>
 <section id="prototypes">
-<h3>prototypes<a class="headerlink" href="#prototypes" title="Permalink to this heading">¶</a></h3>
+<h3>prototypes<a class="headerlink" href="#prototypes" title="Enlace permanente a este encabezado">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_trspViaVertices</span></code> and <code class="docutils literal notranslate"><span class="pre">pgr_trspViaEdges</span></code> were added to pgRouting as prototypes</p>
 <p>These functions use the pgr_trsp functions inheriting all the problems mentioned above.
 When there are no restrictions and have a routing «via» problem with vertices:</p>
@@ -1011,7 +1011,7 @@ When there are no restrictions and have a routing «via» problem with vertices:
 </section>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlace permanente a este encabezado">¶</a></h2>
 <p class="rubric">Índices y tablas</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
@@ -1033,8 +1033,8 @@ When there are no restrictions and have a routing «via» problem with vertices:
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.3.2.<br/>
-      Actualizado por última vez en jul 06, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en ago 21, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br/>
     </p>
   </div>
 </footer>
