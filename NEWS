@@ -1,6 +1,11 @@
 pgRouting 3.4.0 Release Notes
 -------------------------------------------------------------------------------
 
+**Issue fixes**
+
+* [#1891](https://github.com/pgRouting/pgrouting/issues/1891):
+  pgr_ksp doesn't give all correct shortest path
+
 **New proposed functions**
 
 * With points
