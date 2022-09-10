@@ -38,6 +38,11 @@ To see the full list of changes check the list of `Git commits
 pgRouting 3.4.0 Release Notes
 -------------------------------------------------------------------------------
 
+.. rubric:: Issue fixes
+
+* `#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__:
+  pgr_ksp doesn't give all correct shortest path
+
 .. rubric:: New proposed functions
 
 * With points
