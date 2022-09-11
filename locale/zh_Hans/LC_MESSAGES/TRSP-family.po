@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v3.4.0-dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 12:55-0500\n"
+"POT-Creation-Date: 2022-07-11 18:25-0500\n"
 "PO-Revision-Date: 2022-03-28 21:21+0000\n"
 "Last-Translator: Chen <onsummer@foxmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/"
@@ -182,7 +182,7 @@ msgid ""
 "Road restrictions are a sequence of road segments that can not be taken in a "
 "sequential manner. Some restrictions are implicit on a directed graph, for "
 "example, one way roads where the wrong way edge is not even inserted on the "
-"graph. But normally on turns like **left turn** or **right turn**, hence the "
+"graph. But normally on turns like no left turn or no right turn, hence the "
 "name turn restrictions, there are sometimes restrictions."
 msgstr ""
 
@@ -273,8 +273,8 @@ msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:115
 msgid ""
-"A restriction is a sequence of edges, called **path** and that **path** is "
-"to be avoided."
+"A restriction is a sequence of edges, called path and that path is to be "
+"avoided."
 msgstr ""
 
 #: ../../build/doc/TRSP-family.rst:123
