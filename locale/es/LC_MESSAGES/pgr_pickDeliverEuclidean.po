@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-24 12:46-0500\n"
-"PO-Revision-Date: 2022-07-04 15:45+0000\n"
+"PO-Revision-Date: 2022-09-11 04:55+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_pickdelivereuclidean/es/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.13.1\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:12
@@ -305,9 +305,8 @@ msgid "Description"
 msgstr "Descripción"
 
 #: ../../build/doc/VRP-category.rst:11
-#, fuzzy
 msgid "`Orders SQL`_"
-msgstr "**orders_sql**"
+msgstr "`Orders SQL`_"
 
 #: ../../build/doc/VRP-category.rst:12 ../../build/doc/VRP-category.rst:15
 msgid "``TEXT``"
@@ -318,9 +317,8 @@ msgid "`Orders SQL`_ as described below."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:14
-#, fuzzy
 msgid "`Vehicles SQL`_"
-msgstr "**vehicles_sql**"
+msgstr "`Vehicles SQL`_"
 
 #: ../../build/doc/VRP-category.rst:16
 msgid "`Vehicles SQL`_ as described below."
@@ -369,9 +367,8 @@ msgid "Maximum number of cycles to perform on the optimization."
 msgstr "Número máximo de ciclos a realizar en la optimización."
 
 #: ../../build/doc/VRP-category.rst:20
-#, fuzzy
 msgid "``initial_sol``"
-msgstr "**initial_sol**"
+msgstr "``initial_sol``"
 
 #: ../../build/doc/VRP-category.rst:22
 msgid "4"
@@ -408,9 +405,8 @@ msgid "``6`` Push front order that allows more orders to be inserted at the fron
 msgstr "``6`` Orden de avance que permite insertar más órdenes en la parte frontal"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:139
-#, fuzzy
 msgid "Orders SQL"
-msgstr "**orders_sql**"
+msgstr "Orders SQL"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:141
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:163
@@ -436,9 +432,8 @@ msgid "Identifier of the pick-delivery order pair."
 msgstr "Identificador del par de órdenes recogida-entrega."
 
 #: ../../build/doc/VRP-category.rst:14
-#, fuzzy
 msgid "``demand``"
-msgstr "**demanda**"
+msgstr "``demand``"
 
 #: ../../build/doc/VRP-category.rst:12 ../../build/doc/VRP-category.rst:15
 #: ../../build/doc/VRP-category.rst:18 ../../build/doc/VRP-category.rst:21
@@ -454,27 +449,24 @@ msgid "Number of units in the order"
 msgstr "Número de unidades en la orden"
 
 #: ../../build/doc/VRP-category.rst:17
-#, fuzzy
 msgid "``p_open``"
-msgstr "`start_open`"
+msgstr "``p_open``"
 
 #: ../../build/doc/VRP-category.rst:19
 msgid "The time, relative to 0, when the pickup location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación de recogida."
 
 #: ../../build/doc/VRP-category.rst:20
-#, fuzzy
 msgid "``p_close``"
-msgstr "`start_close`"
+msgstr "``p_close``"
 
 #: ../../build/doc/VRP-category.rst:22
 msgid "The time, relative to 0, when the pickup location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación de recogida."
 
 #: ../../build/doc/VRP-category.rst:23
-#, fuzzy
 msgid "[``p_service``]"
-msgstr "`start_service`"
+msgstr "[``p_service``]"
 
 #: ../../build/doc/VRP-category.rst:25
 msgid "The duration of the loading at the pickup location."
@@ -485,32 +477,28 @@ msgid "When missing: 0 time units are used"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:28
-#, fuzzy
 msgid "``d_open``"
-msgstr "`start_open`"
+msgstr "``d_open``"
 
 #: ../../build/doc/VRP-category.rst:30
 msgid "The time, relative to 0, when the delivery location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación de entrega."
 
 #: ../../build/doc/VRP-category.rst:31
-#, fuzzy
 msgid "``d_close``"
-msgstr "`start_close`"
+msgstr "``d_close``"
 
 #: ../../build/doc/VRP-category.rst:33
 msgid "The time, relative to 0, when the delivery location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación de entrega."
 
 #: ../../build/doc/VRP-category.rst:34
-#, fuzzy
 msgid "[``d_service``]"
-msgstr "`start_service`"
+msgstr "[``d_service``]"
 
 #: ../../build/doc/VRP-category.rst:36
-#, fuzzy
 msgid "The duration of the unloading at the delivery location."
-msgstr "La duración de la carga en el lugar de entrega."
+msgstr "La duración de descargar en el lugar de entrega."
 
 #: ../../build/doc/VRP-category.rst
 msgid "ANY-INTEGER"
@@ -530,54 +518,48 @@ msgid "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 msgstr "``SMALLINT``, ``INTEGER``, ``BIGINT``, ``REAL``, ``FLOAT``"
 
 #: ../../build/doc/VRP-category.rst:11
-#, fuzzy
 msgid "``p_x``"
-msgstr "``-1``"
+msgstr "``p_x``"
 
 #: ../../build/doc/VRP-category.rst:13
 msgid ":math:`x` value of the pick up location"
 msgstr ":math:`x` valor de la ubicación de recogida"
 
 #: ../../build/doc/VRP-category.rst:14
-#, fuzzy
 msgid "``p_y``"
-msgstr "``-1``"
+msgstr "``p_y``"
 
 #: ../../build/doc/VRP-category.rst:16
 msgid ":math:`y` value of the pick up location"
 msgstr ":math:`y` valor de la ubicación de recogida"
 
 #: ../../build/doc/VRP-category.rst:17
-#, fuzzy
 msgid "``d_x``"
-msgstr "``-1``"
+msgstr "``d_x``"
 
 #: ../../build/doc/VRP-category.rst:19
 msgid ":math:`x` value of the delivery location"
 msgstr "valor :math:`x` de la ubicación de entrega"
 
 #: ../../build/doc/VRP-category.rst:20
-#, fuzzy
 msgid "``d_y``"
-msgstr "``-1``"
+msgstr "``d_y``"
 
 #: ../../build/doc/VRP-category.rst:22
 msgid ":math:`y` value of the delivery location"
 msgstr "valor :math:`y` del lugar de entrega"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:161
-#, fuzzy
 msgid "Vehicles SQL"
-msgstr "**vehicles_sql**"
+msgstr "Vehicles SQL"
 
 #: ../../build/doc/pgr_pickDeliverEuclidean.rst:171
 msgid "where:"
 msgstr "Donde:"
 
 #: ../../build/doc/VRP-category.rst:13
-#, fuzzy
 msgid "Identifier of the vehicle."
-msgstr "Velocidad media del vehículo."
+msgstr "Identificador del vehículo."
 
 #: ../../build/doc/VRP-category.rst:14
 msgid "``capacity``"
@@ -588,27 +570,24 @@ msgid "Maiximum capacity units"
 msgstr "Máxima capacidad"
 
 #: ../../build/doc/VRP-category.rst:17
-#, fuzzy
 msgid "``start_open``"
-msgstr "`start_open`"
+msgstr "``start_open``"
 
 #: ../../build/doc/VRP-category.rst:19
 msgid "The time, relative to 0, when the starting location opens."
 msgstr "La hora, en relación con 0, cuando se abre la ubicación inicial."
 
 #: ../../build/doc/VRP-category.rst:20
-#, fuzzy
 msgid "``start_close``"
-msgstr "`start_close`"
+msgstr "``start_close``"
 
 #: ../../build/doc/VRP-category.rst:22
 msgid "The time, relative to 0, when the starting location closes."
 msgstr "La hora, en relación con 0, cuando se cierra la ubicación inicial."
 
 #: ../../build/doc/VRP-category.rst:23
-#, fuzzy
 msgid "[``start_service``]"
-msgstr "`start_service`"
+msgstr "[``start_service``]"
 
 #: ../../build/doc/VRP-category.rst:25
 msgid "The duration of the loading at the starting location."
@@ -619,9 +598,8 @@ msgid "When missing: A duration of :math:`0` time units is used."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:28
-#, fuzzy
 msgid "[``end_open``]"
-msgstr "**end_open**"
+msgstr "[``end_open``]"
 
 #: ../../build/doc/VRP-category.rst:30
 msgid "The time, relative to 0, when the ending location opens."
@@ -632,9 +610,8 @@ msgid "When missing: The value of ``start_open`` is used"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:33
-#, fuzzy
 msgid "[``end_close``]"
-msgstr "**end_close**"
+msgstr "[``end_close``]"
 
 #: ../../build/doc/VRP-category.rst:35
 msgid "The time, relative to 0, when the ending location closes."
@@ -645,9 +622,8 @@ msgid "When missing: The value of ``start_close`` is used"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:38
-#, fuzzy
 msgid "[``end_service``]"
-msgstr "**end_service**"
+msgstr "[``end_service``]"
 
 #: ../../build/doc/VRP-category.rst:40
 msgid "The duration of the loading at the ending location."
@@ -658,31 +634,26 @@ msgid "When missing: A duration in ``start_service`` is used."
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:11
-#, fuzzy
 msgid "``start_x``"
-msgstr "`start_x`"
+msgstr "``start_x``"
 
 #: ../../build/doc/VRP-category.rst:13
-#, fuzzy
 msgid ":math:`x` value of the starting location"
-msgstr ":math:`x` valor de la ubicación de recogida"
+msgstr "valor :math:`x` de la ubicación de recogida"
 
 #: ../../build/doc/VRP-category.rst:14
-#, fuzzy
 msgid "``start_y``"
-msgstr "`start_y`"
+msgstr "``start_y``"
 
 #: ../../build/doc/VRP-category.rst:16
-#, fuzzy
 msgid ":math:`y` value of the starting location"
-msgstr ":math:`y` valor de la ubicación de recogida"
+msgstr "valor :math:`y` de la ubicación de recogida"
 
 #: ../../build/doc/VRP-category.rst:17
 msgid "[``end_x``]"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:19
-#, fuzzy
 msgid ":math:`x` value of the ending location"
 msgstr "valor :math:`x` de la ubicación de entrega"
 
@@ -695,7 +666,6 @@ msgid "[``end_y``]"
 msgstr ""
 
 #: ../../build/doc/VRP-category.rst:24
-#, fuzzy
 msgid ":math:`y` value of the ending location"
 msgstr "valor :math:`y` del lugar de entrega"
 
