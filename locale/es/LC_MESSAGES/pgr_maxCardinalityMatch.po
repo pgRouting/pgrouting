@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: pgRouting v3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-07 10:07-0500\n"
-"PO-Revision-Date: 2022-06-28 01:20+0000\n"
+"PO-Revision-Date: 2022-09-11 04:55+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@georepublic.de>\n"
 "Language-Team: Spanish <https://weblate.osgeo.org/projects/pgrouting/"
 "pgr_maxcardinalitymatch/es/>\n"
@@ -205,7 +205,7 @@ msgstr ""
 
 #: ../../build/doc/pgr_maxCardinalityMatch.rst:107
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../build/doc/pgRouting-concepts.rst:8
 msgid "Parameter"
@@ -223,9 +223,8 @@ msgid "`Edges SQL`_"
 msgstr "``edge``"
 
 #: ../../build/doc/pgRouting-concepts.rst:12
-#, fuzzy
 msgid "``TEXT``"
-msgstr "``target``"
+msgstr "``TEXT``"
 
 #: ../../build/doc/pgRouting-concepts.rst:13
 msgid "`Edges SQL`_ as described below."
