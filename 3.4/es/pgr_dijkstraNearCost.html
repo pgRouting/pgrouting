@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_dijkstraNearCost - Propuesto &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,7 +13,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -26,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -169,7 +168,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_dijkstraNearCost.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_dijkstraNearCost.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_dijkstraNearCost.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_dijkstraNearCost.html">3.2</a></p></li>
 </ul>
 <section id="pgr-dijkstranearcost-proposed">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Propuesto<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> - Propuesto<a class="headerlink" href="#pgr-dijkstranearcost-proposed" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_dijkstraNearCost</span></code> — Usando el algoritmo dijkstra, encuentra la ruta que conduce al vértice más cercano.</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -208,10 +207,10 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Dado un grafo, un vértice inicial y un conjunto de vértices finales, esta función encuentra la ruta más corta desde el vértice inicial hasta el vértice final más cercano.</p>
 <section id="characteristics">
-<h3>Características<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h3>
+<h3>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Utiliza el algoritmo Dijkstra.</p></li>
 <li><p>Funciona para grafos <strong>dirigidos</strong> y <strong>no dirigidos</strong>.</p></li>
@@ -250,7 +249,7 @@
 </section>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
            [, directed] [, cap])
@@ -263,13 +262,13 @@ pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <section id="one-to-many">
-<span id="index-0"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Permalink to this heading">¶</a></h3>
+<span id="index-0"></span><h3>Uno a Muchos<a class="headerlink" href="#one-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vid</strong>, <strong>end vids</strong>
            [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Saliendo en coche desde el vértice <span class="math notranslate nohighlight">\(6\)</span> encontrar la estación de metro más cercana.</p>
 </dd>
 </dl>
@@ -296,13 +295,13 @@ OR EMPTY SET</pre>
 <p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(11\)</span> es la más cercana.</p>
 </section>
 <section id="many-to-one">
-<span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Permalink to this heading">¶</a></h3>
+<span id="index-1"></span><h3>Muchos a Uno<a class="headerlink" href="#many-to-one" title="Enlazar permanentemente con este título">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vid</strong>
            [, directed] [, cap])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Saliendo en coche desde una estación de metro encontrar las <strong>dos</strong> estaciones más cercanas al vértice <span class="math notranslate nohighlight">\(6\)</span></p>
 </dd>
 </dl>
@@ -328,13 +327,13 @@ OR EMPTY SET</pre>
 <p>El resultado muestra que la estación en el vértice <span class="math notranslate nohighlight">\(10\)</span> es la más cercana y la siguiente mejor es <span class="math notranslate nohighlight">\(11\)</span>.</p>
 </section>
 <section id="many-to-many">
-<span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Permalink to this heading">¶</a></h3>
+<span id="index-2"></span><h3>Muchos a Muchos<a class="headerlink" href="#many-to-many" title="Enlazar permanentemente con este título">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>start vids</strong>, <strong>end vids</strong>
            [, directed] [, cap], [global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Encuentra la mejor conexión peatonal entre dos líneas de autobuses</p>
 </dd>
 </dl>
@@ -365,13 +364,13 @@ OR EMPTY SET</pre>
 <p>Solo se devuelve <cite>una</cite> ruta porque <cite>global</cite> es <code class="docutils literal notranslate"><span class="pre">true</span></code> y <cite>cap</cite> es <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
 </section>
 <section id="combinations">
-<span id="index-3"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<span id="index-3"></span><h3>Combinaciones<a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
 <pre class="literal-block">pgr_dijkstraNearCost(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <a class="reference internal" href="#combinations-sql">Combinations SQL</a>
            [, directed] [, cap] [, global])
 RETURNS SET OF (start_vid, end_vid, agg_cost)
 OR EMPTY SET</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Encuentra la mejor conexión de coche entre todas las estaciones de dos líneas de metro</p>
 </dd>
 </dl>
@@ -453,8 +452,8 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
-<table class="docutils align-default" style="width: 81">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 19%" />
@@ -494,8 +493,8 @@ OR EMPTY SET</pre>
 </tbody>
 </table>
 <section id="dijkstra-optional-parameters">
-<h3>Parámetros opcionales de Dijkstra<a class="headerlink" href="#dijkstra-optional-parameters" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>Parámetros opcionales de Dijkstra<a class="headerlink" href="#dijkstra-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -517,8 +516,8 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="near-optional-parameters">
-<h3>Parámetros opcionales de Cercanía<a class="headerlink" href="#near-optional-parameters" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>Parámetros opcionales de Cercanía<a class="headerlink" href="#near-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 8%" />
@@ -552,10 +551,10 @@ OR EMPTY SET</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -603,17 +602,17 @@ OR EMPTY SET</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="combinations-sql">
-<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>SQL Combinaciones<a class="headerlink" href="#combinations-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -638,16 +637,16 @@ OR EMPTY SET</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Conjunto de <code class="docutils literal notranslate"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 16%" />
@@ -676,7 +675,7 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="dijkstra-family.html"><span class="doc">Dijkstra - Familia de funciones</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_dijkstraNear.html"><span class="doc">pgr_dijkstraNear - Propuesto</span></a></p></li>
@@ -705,8 +704,8 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jul 11, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en sept. 14, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>TRSP - Family of functions &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,7 +13,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -24,10 +23,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -157,7 +156,7 @@
 (<a class="reference external" href="https://docs.pgrouting.org/3.4/en/TRSP-family.html">3.4</a>)</p></li>
 </ul>
 <section id="trsp-family-of-functions">
-<h1>TRSP - Family of functions<a class="headerlink" href="#trsp-family-of-functions" title="Permalink to this heading">¶</a></h1>
+<h1>TRSP - Family of functions<a class="headerlink" href="#trsp-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <p>When points are also given as input:</p>
 <p class="rubric">Proposed</p>
 <div class="admonition warning">
@@ -225,23 +224,23 @@ deprecated TRSP functionality to the new signatures or replacement functions.</p
 <div class="toctree-wrapper compound">
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Road restrictions are a sequence of road segments that can not be taken in a
 sequential manner.
 Some restrictions are implicit on a directed graph, for example, one way roads
 where the wrong way edge is not even inserted on the graph.
-But normally on turns like <strong>left turn</strong> or <strong>right turn</strong>, hence the name turn
+But normally on turns like no left turn or no right turn, hence the name turn
 restrictions, there are sometimes restrictions.</p>
 <img alt="_images/restrictions.png" src="_images/restrictions.png" />
 <section id="trsp-algorithm">
-<h3>TRSP algorithm<a class="headerlink" href="#trsp-algorithm" title="Permalink to this heading">¶</a></h3>
+<h3>TRSP algorithm<a class="headerlink" href="#trsp-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>The internal TRSP algorithm performs a lookahead over the dijkstra algorithm in
 order to find out if the attempted path has a restriction. This allows the
 algorithm to pass twice on the same vertex.</p>
 </section>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 23%" />
 <col style="width: 26%" />
@@ -270,16 +269,16 @@ algorithm to pass twice on the same vertex.</p>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ANY-INTEGER</dt>
 <dd class="field-odd"><p>SMALLINT, INTEGER, BIGINT</p>
 </dd>
 </dl>
 </section>
 <section id="restrictions">
-<h3>Restrictions<a class="headerlink" href="#restrictions" title="Permalink to this heading">¶</a></h3>
+<h3>Restrictions<a class="headerlink" href="#restrictions" title="Permalink to this headline">¶</a></h3>
 <p>On road networks, there are restrictions such as left or right turn restrictions,
 no U turn restrictions.</p>
-<p>A restriction is a sequence of edges, called <strong>path</strong> and that <strong>path</strong> is to be
+<p>A restriction is a sequence of edges, called path and that path is to be
 avoided.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/with_restrictions.png"><img alt="_images/with_restrictions.png" src="_images/with_restrictions.png" style="width: 475.5px; height: 433.0px;" /></a>
@@ -314,8 +313,8 @@ information. If given it will be ignored.</p>
 </div>
 </section>
 <section id="edges-sql">
-<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>Edges SQL<a class="headerlink" href="#edges-sql" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -364,16 +363,16 @@ it’s not part of the graph.</p></li>
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ANY-INTEGER</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">ANY-NUMERICAL</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 <section id="restrictions-sql">
-<h4>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this heading">¶</a></h4>
-<table class="docutils align-default" style="width: 81">
+<h4>Restrictions SQL<a class="headerlink" href="#restrictions-sql" title="Permalink to this headline">¶</a></h4>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 25%" />
@@ -401,10 +400,10 @@ taken.
 </table>
 <p>Where:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ANY-INTEGER<span class="colon">:</span></dt>
+<dt class="field-odd">ANY-INTEGER</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">ANY-NUMERICAL<span class="colon">:</span></dt>
+<dt class="field-even">ANY-NUMERICAL</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
@@ -412,7 +411,7 @@ taken.
 </section>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
@@ -434,8 +433,8 @@ taken.
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Last updated on Jul 11, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Last updated on Sep 14, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
 </footer>

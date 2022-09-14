@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Datos Muestra &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,7 +13,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -26,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -194,12 +193,12 @@
 <li><p><strong>Versiones no soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/2.6/en/sampledata.html">2.6</a> <a class="reference external" href="https://docs.pgrouting.org/2.5/en/sampledata.html">2.5</a> <a class="reference external" href="https://docs.pgrouting.org/2.4/en/sampledata.html">2.4</a> <a class="reference external" href="https://docs.pgrouting.org/2.3/en/doc/src/developer/sampledata.html">2.3</a> <a class="reference external" href="https://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html">2.2</a> <a class="reference external" href="https://docs.pgrouting.org/2.1/en/doc/src/developer/sampledata.html">2.1</a> <a class="reference external" href="https://docs.pgrouting.org/2.0/en/doc/src/developer/sampledata.html">2.0</a></p></li>
 </ul>
 <section id="sample-data">
-<h1>Datos Muestra<a class="headerlink" href="#sample-data" title="Permalink to this heading">¶</a></h1>
+<h1>Datos Muestra<a class="headerlink" href="#sample-data" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>The documentation provides very simple example queries based on a small sample
 network that resembles a city.
 To be able to execute the mayority of the examples queries, follow the
 instructions bellow.</p>
-<nav class="contents local" id="contenido">
+<div class="contents local topic" id="contenido">
 <ul class="simple">
 <li><p><a class="reference internal" href="#main-graph" id="id5">Main graph</a></p>
 <ul>
@@ -259,9 +258,9 @@ instructions bellow.</p>
 </ul>
 </li>
 </ul>
-</nav>
+</div>
 <section id="main-graph">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Main graph</a><a class="headerlink" href="#main-graph" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Main graph</a><a class="headerlink" href="#main-graph" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>A graph consists of a set of edges and a set of vertices.</p>
 <p>The following city is to be inserted into the database:</p>
 <figure class="align-default">
@@ -272,12 +271,12 @@ cpacity values, category values and some locations that are not in the graph.</p
 <p>The process to have working topology starts by inserting the edges.
 After that everything else is calculated.</p>
 <section id="edges">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Edges</a><a class="headerlink" href="#edges" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6">Edges</a><a class="headerlink" href="#edges" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>The database design for the documentation of pgRouting, keeps in the same row 2
 segments, one in the direction of the geometry and the second in the oposite
 direction. Therfore some information has the <code class="docutils literal notranslate"><span class="pre">reverse_</span></code> prefix which
 corresponds to the segment on the oposite direction of the geometry.</p>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -368,7 +367,7 @@ front end.</p></li>
 </ul>
 <p>For this small example the indexes are skipped, except for <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
 <section id="edges-data">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Edges data</a><a class="headerlink" href="#edges-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id7">Edges data</a><a class="headerlink" href="#edges-data" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Inserting into the database the information of the edges:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span> <span class="p">(</span>
     <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span>
@@ -399,7 +398,7 @@ exist.</p>
 </section>
 </section>
 <section id="vertices">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Vertices</a><a class="headerlink" href="#vertices" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">Vertices</a><a class="headerlink" href="#vertices" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>The vertex information is calculated based on the identifier of the edge and the
 geometry and saved on a table.
 Saving all the information provided by <a class="reference internal" href="pgr_extractVertices.html"><span class="doc">pgr_extractVertices – Propuesto</span></a>:</p>
@@ -439,7 +438,7 @@ of an index on the table is needed.</p>
 </pre></div>
 </div>
 <section id="vertices-data">
-<h4><a class="toc-backref" href="#id9" role="doc-backlink">Vertices data</a><a class="headerlink" href="#vertices-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id9">Vertices data</a><a class="headerlink" href="#vertices-data" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>The saved information of the vertices is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">vertices</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">in_edges</span> <span class="o">|</span> <span class="n">out_edges</span> <span class="o">|</span>       <span class="n">x</span>        <span class="o">|</span>  <span class="n">y</span>  <span class="o">|</span>                    <span class="n">geom</span>
@@ -470,7 +469,7 @@ Additional columns names and types will depend on the application.</p>
 </section>
 </section>
 <section id="the-topology">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">The topology</a><a class="headerlink" href="#the-topology" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">The topology</a><a class="headerlink" href="#the-topology" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>This queries based on the vertices data create a topology by filling the
 <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> columns in the edges table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">source</span> <span class="n">information</span> <span class="o">*/</span>
@@ -488,7 +487,7 @@ Additional columns names and types will depend on the application.</p>
 </pre></div>
 </div>
 <section id="topology-data">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Topology data</a><a class="headerlink" href="#topology-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id11">Topology data</a><a class="headerlink" href="#topology-data" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span>
 <span class="n">FROM</span> <span class="n">edges</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="nb">id</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
@@ -518,9 +517,9 @@ Additional columns names and types will depend on the application.</p>
 </section>
 </section>
 <section id="points-outside-the-graph">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">Puntos fuera del grafo</a><a class="headerlink" href="#points-outside-the-graph" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">Puntos fuera del grafo</a><a class="headerlink" href="#points-outside-the-graph" title="Enlazar permanentemente con este título">¶</a></h3>
 <section id="points-of-interest">
-<h4><a class="toc-backref" href="#id13" role="doc-backlink">Puntos de interés</a><a class="headerlink" href="#points-of-interest" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id13">Puntos de interés</a><a class="headerlink" href="#points-of-interest" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Some times the applications work «on the fly» starting from a location that is
 not a vertex in the graph.
 Those locations, in pgRrouting are called points of interest.</p>
@@ -528,7 +527,7 @@ Those locations, in pgRrouting are called points of interest.</p>
 <code class="docutils literal notranslate"><span class="pre">side</span></code>, <code class="docutils literal notranslate"><span class="pre">fraction</span></code>.</p>
 <p>On this documentation there will be some 6 fixed points of interest and they
 will be stored on a table.</p>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Descripción</p></th>
@@ -567,7 +566,7 @@ will be stored on a table.</p>
 </div>
 </section>
 <section id="points-of-interest-geometry">
-<h4><a class="toc-backref" href="#id14" role="doc-backlink">Geometría de los puntos de interés</a><a class="headerlink" href="#points-of-interest-geometry" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id14">Geometría de los puntos de interés</a><a class="headerlink" href="#points-of-interest-geometry" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Inserting the data of the points of interest:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">pointsOfInterest</span> <span class="p">(</span><span class="n">geom</span><span class="p">)</span> <span class="n">VALUES</span>
 <span class="p">(</span><span class="n">ST_POINT</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)),</span>
@@ -581,7 +580,7 @@ will be stored on a table.</p>
 </div>
 </section>
 <section id="points-of-interest-fillup">
-<h4><a class="toc-backref" href="#id15" role="doc-backlink">LLenado de puntos de interés</a><a class="headerlink" href="#points-of-interest-fillup" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id15">LLenado de puntos de interés</a><a class="headerlink" href="#points-of-interest-fillup" title="Enlazar permanentemente con este título">¶</a></h4>
 <p>Using <a class="reference internal" href="pgr_findCloseEdges.html"><span class="doc">pgr_findCloseEdges</span></a>
 Calculating for visual purposes the points over the graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UPDATE pointsOfInterest AS p SET
@@ -599,7 +598,7 @@ UPDATE 6
 </div>
 </section>
 <section id="a-special-case-to-arrive-from-both-sides-of-the-edge">
-<h4><a class="toc-backref" href="#id16" role="doc-backlink">A special case to arrive from both sides of the edge.</a><a class="headerlink" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id16">A special case to arrive from both sides of the edge.</a><a class="headerlink" href="#a-special-case-to-arrive-from-both-sides-of-the-edge" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">pointsOfInterest</span> <span class="n">SET</span> <span class="n">side</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span>
 <span class="n">WHERE</span> <span class="n">pid</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">1</span>
@@ -607,7 +606,7 @@ UPDATE 6
 </div>
 </section>
 <section id="points-of-interest-data">
-<h4><a class="toc-backref" href="#id17" role="doc-backlink">Datos de puntos de interés</a><a class="headerlink" href="#points-of-interest-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id17">Datos de puntos de interés</a><a class="headerlink" href="#points-of-interest-data" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">pid</span><span class="p">,</span> <span class="n">edge_id</span><span class="p">,</span> <span class="n">side</span><span class="p">,</span> <span class="n">fraction</span><span class="p">,</span>
        <span class="n">ST_AsText</span><span class="p">(</span><span class="n">geom</span><span class="p">),</span> <span class="n">ST_AsText</span><span class="p">(</span><span class="n">newPoint</span><span class="p">)</span>
 <span class="n">FROM</span> <span class="n">pointsOfInterest</span>
@@ -628,9 +627,9 @@ UPDATE 6
 </section>
 </section>
 <section id="support-tables">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Support tables</a><a class="headerlink" href="#support-tables" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Support tables</a><a class="headerlink" href="#support-tables" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="combinations">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Combinaciones</a><a class="headerlink" href="#combinations" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">Combinaciones</a><a class="headerlink" href="#combinations" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Many functions can be used with a combinations of <code class="docutils literal notranslate"><span class="pre">(source,</span> <span class="pre">target)</span></code> pairs
 when wanting a route from <code class="docutils literal notranslate"><span class="pre">source</span></code> to <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p>
 <p>For convinence of this documentations, some combinations will be stored on a
@@ -654,7 +653,7 @@ table:</p>
 </pre></div>
 </div>
 <section id="combinations-data">
-<h4><a class="toc-backref" href="#id20" role="doc-backlink">Combinations data</a><a class="headerlink" href="#combinations-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id20">Combinations data</a><a class="headerlink" href="#combinations-data" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">combinations</span><span class="p">;</span>
  <span class="n">source</span> <span class="o">|</span> <span class="n">target</span>
 <span class="o">--------+--------</span>
@@ -670,7 +669,7 @@ table:</p>
 </section>
 </section>
 <section id="restrictions">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink">Restricciones</a><a class="headerlink" href="#restrictions" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">Restricciones</a><a class="headerlink" href="#restrictions" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Some functions accept soft restrictions about the segments.</p>
 <p>The creation of the restrictions table</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">restrictions</span> <span class="p">(</span>
@@ -692,7 +691,7 @@ table:</p>
 </pre></div>
 </div>
 <section id="restrictions-data">
-<h4><a class="toc-backref" href="#id22" role="doc-backlink">Datos de restricciones</a><a class="headerlink" href="#restrictions-data" title="Permalink to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id22">Datos de restricciones</a><a class="headerlink" href="#restrictions-data" title="Enlazar permanentemente con este título">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">restrictions</span><span class="p">;</span>
  <span class="nb">id</span> <span class="o">|</span>  <span class="n">path</span>   <span class="o">|</span> <span class="n">cost</span>
 <span class="o">----+---------+------</span>
@@ -709,7 +708,7 @@ table:</p>
 </section>
 </section>
 <section id="images">
-<h2><a class="toc-backref" href="#id23" role="doc-backlink">Imágenes</a><a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">Imágenes</a><a class="headerlink" href="#images" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p>Las flechas rojas corresponden cuando <code class="docutils literal notranslate"><span class="pre">cost</span></code> &gt; 0 en la tabla de aristas.</p></li>
 <li><p>Las flechas azules corresponden cuando <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code> &gt; 0 en la tabla de aristas.</p></li>
@@ -717,7 +716,7 @@ table:</p>
 <li><p>Haga clic en el grafo para ampliarlo.</p></li>
 </ul>
 <section id="directed-graph-with-cost-and-reverse-cost">
-<span id="fig1"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Permalink to this heading">¶</a></h3>
+<span id="fig1"></span><h3><a class="toc-backref" href="#id24">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost-and-reverse-cost" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de vista de los vehículos.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/Fig1-originalData.png"><img alt="_images/Fig1-originalData.png" src="_images/Fig1-originalData.png" style="width: 475.5px; height: 433.0px;" /></a>
@@ -727,7 +726,7 @@ table:</p>
 </figure>
 </section>
 <section id="undirected-graph-with-cost-and-reverse-cost">
-<span id="fig2"></span><h3><a class="toc-backref" href="#id25" role="doc-backlink">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Permalink to this heading">¶</a></h3>
+<span id="fig2"></span><h3><a class="toc-backref" href="#id25">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code> and <code class="docutils literal notranslate"><span class="pre">reverse_cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost-and-reverse-cost" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Cuando se trabaja con redes de ciudades, esto se recomienda para el punto de vista de los peatones.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/Fig6-undirected.png"><img alt="_images/Fig6-undirected.png" src="_images/Fig6-undirected.png" style="width: 482.0px; height: 435.0px;" /></a>
@@ -737,7 +736,7 @@ table:</p>
 </figure>
 </section>
 <section id="directed-graph-with-cost">
-<span id="fig3"></span><h3><a class="toc-backref" href="#id26" role="doc-backlink">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost" title="Permalink to this heading">¶</a></h3>
+<span id="fig3"></span><h3><a class="toc-backref" href="#id26">Directed graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#directed-graph-with-cost" title="Enlazar permanentemente con este título">¶</a></h3>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="_images/Fig2-cost.png"><img alt="_images/Fig2-cost.png" src="_images/Fig2-cost.png" style="width: 193.8px; height: 173.60000000000002px;" /></a>
 <figcaption>
@@ -746,7 +745,7 @@ table:</p>
 </figure>
 </section>
 <section id="undirected-graph-with-cost">
-<span id="fig4"></span><h3><a class="toc-backref" href="#id27" role="doc-backlink">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost" title="Permalink to this heading">¶</a></h3>
+<span id="fig4"></span><h3><a class="toc-backref" href="#id27">Undirected graph with <code class="docutils literal notranslate"><span class="pre">cost</span></code></a><a class="headerlink" href="#undirected-graph-with-cost" title="Enlazar permanentemente con este título">¶</a></h3>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 195.0px; height: 175.20000000000002px;" /></a>
 <figcaption>
@@ -756,11 +755,11 @@ table:</p>
 </section>
 </section>
 <section id="pick-deliver-data">
-<span id="pickdeliverdata"></span><h2><a class="toc-backref" href="#id28" role="doc-backlink">Datos de Recogida y Entrega</a><a class="headerlink" href="#pick-deliver-data" title="Permalink to this heading">¶</a></h2>
+<span id="pickdeliverdata"></span><h2><a class="toc-backref" href="#id28">Datos de Recogida y Entrega</a><a class="headerlink" href="#pick-deliver-data" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>This data example <strong>lc101</strong> is from data published at
 <a class="reference external" href="https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/">https://www.sintef.no/projectweb/top/pdptw/li-lim-benchmark/</a></p>
 <section id="the-vehicles">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">Los vehículos</a><a class="headerlink" href="#the-vehicles" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id29">Los vehículos</a><a class="headerlink" href="#the-vehicles" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>There are 25 vehciles in the problem all with the same characteristics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">v_lc101</span><span class="p">(</span>
   <span class="nb">id</span> <span class="n">BIGINT</span> <span class="n">NOT</span> <span class="n">NULL</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
@@ -778,7 +777,7 @@ table:</p>
 </div>
 </section>
 <section id="the-original-orders">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">The original orders</a><a class="headerlink" href="#the-original-orders" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id30">The original orders</a><a class="headerlink" href="#the-original-orders" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>The data comes in different rows for the pickup and the delivery of the same
 order.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">table</span> <span class="n">lc101_c</span><span class="p">(</span>
@@ -907,7 +906,7 @@ order.</p>
 </div>
 </section>
 <section id="the-orders">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">Las órdenes</a><a class="headerlink" href="#the-orders" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">Las órdenes</a><a class="headerlink" href="#the-orders" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>The original data needs to be converted to an appropiate table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WITH</span> <span class="n">deliveries</span> <span class="n">AS</span> <span class="p">(</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">lc101_c</span> <span class="n">WHERE</span> <span class="n">dindex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">SELECT</span>
@@ -942,8 +941,8 @@ order.</p>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jul 11, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en sept. 14, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
 </footer>

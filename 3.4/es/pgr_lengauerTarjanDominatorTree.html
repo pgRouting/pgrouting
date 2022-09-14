@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_lengauerTarjanDominatorTree -Experimental &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,23 +13,22 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Notas de versión" href="release_notes.html" />
+    <link rel="next" title="pgr_hawickCircuits - Experimental" href="hawickCircuits.html" />
     <link rel="prev" title="pgr_transitiveClosure - Experimental" href="pgr_transitiveClosure.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -121,7 +120,7 @@
     </a>
   </li>
   <li>
-    <a href="release_notes.html" title="Next Chapter: Notas de versión"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Notas de versión &raquo;</span>
+    <a href="hawickCircuits.html" title="Next Chapter: pgr_hawickCircuits - Experimental"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_hawickCir... &raquo;</span>
     </a>
   </li>
               
@@ -156,7 +155,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_lengauerTarjanDominatorTree.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_lengauerTarjanDominatorTree.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_lengauerTarjanDominatorTree.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_lengauerTarjanDominatorTree.html">3.2</a></p></li>
 </ul>
 <section id="pgr-lengauertarjandominatortree-experimental">
-<h1>pgr_lengauerTarjanDominatorTree -Experimental<a class="headerlink" href="#pgr-lengauertarjandominatortree-experimental" title="Permalink to this heading">¶</a></h1>
+<h1>pgr_lengauerTarjanDominatorTree -Experimental<a class="headerlink" href="#pgr-lengauertarjandominatortree-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_lengauerTarjanDominatorTree</span></code> — Devuelve el dominador inmediato de todos los vértices.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -203,7 +202,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El algoritmo calcula el <em>dominador inmediato</em> de cada vértice llamado <strong>idom</strong>, una vez que se calcula la <strong>idom</strong> de cada vértice y, a continuación, haciendo que cada <strong>idom</strong> de cada vértice como su elemento primario, se pueda construir el árbol del dominador.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
@@ -215,13 +214,13 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <p class="rubric">Resumen</p>
 <pre class="literal-block">pgr_lengauerTarjanDominatorTree(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>root vertex</strong>)
 RETURNS SET OF (seq, vertex_id, idom)
 OR EMPTY SET</pre>
 <dl class="field-list simple" id="index-0">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>El árbol dominante con vértice raíz <span class="math notranslate nohighlight">\(5\)</span></p>
 </dd>
 </dl>
@@ -253,8 +252,13 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 64%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -274,10 +278,10 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -325,19 +329,24 @@ OR EMPTY SET</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Devuelve el conjunto de <code class="docutils literal notranslate"><span class="pre">(seq,</span> <span class="pre">vertex_id,</span> <span class="pre">idom)</span></code></p>
 <table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 66%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -361,9 +370,9 @@ OR EMPTY SET</pre>
 </table>
 </section>
 <section id="additional-examples">
-<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Permalink to this heading">¶</a></h2>
+<h2>Ejemplos Adicionales<a class="headerlink" href="#additional-examples" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Árbnol dominante de otro componente.</p>
 </dd>
 </dl>
@@ -395,7 +404,7 @@ OR EMPTY SET</pre>
 </div>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
 <li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm">Boost: Algoritmo Lengauer-Tarjan de árbol dominante</a></p></li>
@@ -422,8 +431,8 @@ OR EMPTY SET</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jul 11, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en sept. 14, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
 </footer>

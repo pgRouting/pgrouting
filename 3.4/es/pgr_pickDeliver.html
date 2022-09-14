@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_pickDeliver - Experimental &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,7 +13,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -26,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -158,7 +157,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_pickDeliver.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_pickDeliver.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_pickDeliver.html">3.3</a> <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_pickDeliver.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_pickDeliver.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_pickDeliver.html">3.0</a></p></li>
 </ul>
 <section id="pgr-pickdeliver-experimental">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliver</span></code> - Experimental<a class="headerlink" href="#pgr-pickdeliver-experimental" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliver</span></code> - Experimental<a class="headerlink" href="#pgr-pickdeliver-experimental" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_pickDeliver</span></code> - Problema de enrutamiento del vehículo de recogida y entrega</p>
 <div class="admonition warning">
 <p class="admonition-title">Advertencia</p>
@@ -199,7 +198,7 @@
 </li>
 </ul>
 <section id="synopsis">
-<h2>Sinopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<h2>Sinopsis<a class="headerlink" href="#synopsis" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Problema: Distribuya y optimice los pares de recogida-entrega en una flota de vehículos.</p>
 <ul class="simple">
 <li><p>El problema de optimización es NP-hard.</p></li>
@@ -229,7 +228,7 @@
 </ul>
 </section>
 <section id="characteristics">
-<h2>Características<a class="headerlink" href="#characteristics" title="Permalink to this heading">¶</a></h2>
+<h2>Características<a class="headerlink" href="#characteristics" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p>Todos los camiones salen en el momento 0.</p></li>
 <li><p>No hay varias ventanas de tiempo para una ubicación.</p></li>
@@ -246,14 +245,14 @@
 </ul>
 </section>
 <section id="signature">
-<span id="index-0"></span><h2>Firma<a class="headerlink" href="#signature" title="Permalink to this heading">¶</a></h2>
+<span id="index-0"></span><h2>Firma<a class="headerlink" href="#signature" title="Enlazar permanentemente con este título">¶</a></h2>
 <pre class="literal-block">pgr_pickDeliver(<a class="reference internal" href="#orders-sql">Orders SQL</a>, <a class="reference internal" href="#vehicles-sql">Vehicles SQL</a>, <a class="reference internal" href="#matrix-sql">Matrix SQL</a>
    [, factor], [max_cycles] [,initial_sol])
 RETURNS SET OF (seq, vehicle_number, vehicle_id,
    stop, order_id, stop_type, cargo,
    travel_time, arrival_time, wait_time, service_time, departure_time)</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>Solve the following problem</p>
 </dd>
 </dl>
@@ -316,9 +315,9 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </pre></div>
 </div>
 <section id="parameters">
-<h3>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h3>
+<h3>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Los parámetros son:</p>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -342,8 +341,8 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </table>
 </section>
 <section id="pick-deliver-optional-parameters">
-<h3>Pick-Deliver optional parameters<a class="headerlink" href="#pick-deliver-optional-parameters" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>Pick-Deliver optional parameters<a class="headerlink" href="#pick-deliver-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -380,7 +379,7 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </table>
 </section>
 <section id="orders-sql">
-<h3>Orders SQL<a class="headerlink" href="#orders-sql" title="Permalink to this heading">¶</a></h3>
+<h3>Orders SQL<a class="headerlink" href="#orders-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Una instrucción <cite>SELECT</cite> que devuelve las siguientes columnas:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span> <span class="n">demand</span>
 <span class="n">p_node_id</span><span class="p">,</span> <span class="n">p_open</span><span class="p">,</span> <span class="n">p_close</span><span class="p">,</span> <span class="p">[</span><span class="n">p_service</span><span class="p">,]</span>
@@ -388,7 +387,7 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </pre></div>
 </div>
 <p>Donde:</p>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -440,14 +439,14 @@ RETURNS SET OF (seq, vehicle_number, vehicle_id,
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -469,13 +468,13 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="vehicles-sql">
-<h3>Vehicles SQL<a class="headerlink" href="#vehicles-sql" title="Permalink to this heading">¶</a></h3>
+<h3>Vehicles SQL<a class="headerlink" href="#vehicles-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Una instrucción <cite>SELECT</cite> que devuelve las siguientes columnas:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span> <span class="n">capacity</span>
 <span class="n">start_node_id</span><span class="p">,</span> <span class="n">start_open</span><span class="p">,</span> <span class="n">start_close</span> <span class="p">[,</span> <span class="n">start_service</span><span class="p">,]</span>
@@ -483,7 +482,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 </pre></div>
 </div>
 <p>Donde:</p>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -541,7 +540,7 @@ the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -567,26 +566,26 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
 </dl>
 </section>
 <section id="matrix-sql">
-<h3>SQL de matriz<a class="headerlink" href="#matrix-sql" title="Permalink to this heading">¶</a></h3>
+<h3>SQL de matriz<a class="headerlink" href="#matrix-sql" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="return-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#return-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#return-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RETURNS</span> <span class="n">SET</span> <span class="n">OF</span>
   <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">vehicle_seq</span><span class="p">,</span> <span class="n">vehicle_id</span><span class="p">,</span> <span class="n">stop_seq</span><span class="p">,</span> <span class="n">stop_type</span><span class="p">,</span>
       <span class="n">travel_time</span><span class="p">,</span> <span class="n">arrival_time</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">,</span> <span class="n">service_time</span><span class="p">,</span>  <span class="n">departure_time</span><span class="p">)</span>
@@ -594,7 +593,7 @@ in the <a class="reference internal" href="#matrix-sql">Matrix SQL</a>.</p>
   <span class="p">(</span><span class="n">summary</span> <span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Columna</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -737,7 +736,7 @@ closed.</p></li>
 </table>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="VRP-category.html"><span class="doc">Funciones de Ruteo de Vehículos - Categoría (Experimental)</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Datos Muestra</span></a></p></li>
@@ -763,8 +762,8 @@ closed.</p></li>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jul 11, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en sept. 14, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
 </footer>

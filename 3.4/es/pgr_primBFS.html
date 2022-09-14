@@ -3,7 +3,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>pgr_primBFS &#8212; pgRouting Manual (3.4-dev)</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,7 +13,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -26,10 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -162,7 +161,7 @@
 <li><p><strong>Versiones soportadas:</strong> <a class="reference external" href="https://docs.pgrouting.org/latest/es/pgr_primBFS.html">Última</a> (<a class="reference external" href="https://docs.pgrouting.org/3.4/es/pgr_primBFS.html">3.4</a>) <a class="reference external" href="https://docs.pgrouting.org/3.3/es/pgr_primBFS.html">3.3</a>) <a class="reference external" href="https://docs.pgrouting.org/3.2/es/pgr_primBFS.html">3.2</a> <a class="reference external" href="https://docs.pgrouting.org/3.1/es/pgr_primBFS.html">3.1</a> <a class="reference external" href="https://docs.pgrouting.org/3.0/es/pgr_primBFS.html">3.0</a></p></li>
 </ul>
 <section id="pgr-primbfs">
-<h1><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code><a class="headerlink" href="#pgr-primbfs" title="Permalink to this heading">¶</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code><a class="headerlink" href="#pgr-primbfs" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">pgr_primBFS</span></code> — Algoritmo de Prim para el árbol de expansión mínimo con orden de primera búsqueda de profundidad.</p>
 <figure class="align-default" id="id1">
 <a class="reference external image-reference" href="https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
@@ -179,7 +178,7 @@
 </li>
 </ul>
 <section id="description">
-<h2>Descripción<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Descripción<a class="headerlink" href="#description" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Visita y extrae la información de los nodos en el orden de búsqueda de Primera Búsqueda de Respiración del Árbol de Expansión Mínimo creado con el algoritmo de Prim.</p>
 <p><strong>Las características principales son:</strong></p>
 <ul class="simple">
@@ -206,16 +205,16 @@
 </ul>
 </section>
 <section id="signatures">
-<h2>Firmas<a class="headerlink" href="#signatures" title="Permalink to this heading">¶</a></h2>
+<h2>Firmas<a class="headerlink" href="#signatures" title="Enlazar permanentemente con este título">¶</a></h2>
 <pre class="literal-block">pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth])
 pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth])
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <section id="single-vertex">
-<span id="index-0"></span><h3>Vértice único<a class="headerlink" href="#single-vertex" title="Permalink to this heading">¶</a></h3>
+<span id="index-0"></span><h3>Vértice único<a class="headerlink" href="#single-vertex" title="Enlazar permanentemente con este título">¶</a></h3>
 <pre class="literal-block">pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vid</strong> [, max_depth])
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>El Árbol de Expansión Mínimo que tiene como vértice raíz <span class="math notranslate nohighlight">\(6\)</span></p>
 </dd>
 </dl>
@@ -243,11 +242,11 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </div>
 </section>
 <section id="multiple-vertices">
-<span id="index-1"></span><h3>Múltiples vértices<a class="headerlink" href="#multiple-vertices" title="Permalink to this heading">¶</a></h3>
+<span id="index-1"></span><h3>Múltiples vértices<a class="headerlink" href="#multiple-vertices" title="Enlazar permanentemente con este título">¶</a></h3>
 <pre class="literal-block">pgr_primBFS(<a class="reference internal" href="#edges-sql">Edges SQL</a>, <strong>Root vids</strong> [, max_depth])
 RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 <dl class="field-list simple">
-<dt class="field-odd">Ejemplo<span class="colon">:</span></dt>
+<dt class="field-odd">Ejemplo</dt>
 <dd class="field-odd"><p>El Árbol de Expansión Mínimo que comienza en los vértices <span class="math notranslate nohighlight">\(\{9, 6\}\)</span> con :<span class="math notranslate nohighlight">\(depth \leq 3\)</span></p>
 </dd>
 </dl>
@@ -280,8 +279,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="parameters">
-<h2>Parámetros<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
-<table class="docutils align-default" style="width: 81">
+<h2>Parámetros<a class="headerlink" href="#parameters" title="Enlazar permanentemente con este título">¶</a></h2>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 21%" />
@@ -319,16 +318,16 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES</dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
 </dd>
 </dl>
 <section id="bfs-optional-parameters">
-<h3>Párametros opcionales de BFS<a class="headerlink" href="#bfs-optional-parameters" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>Párametros opcionales de BFS<a class="headerlink" href="#bfs-optional-parameters" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -351,10 +350,10 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </section>
 </section>
 <section id="inner-queries">
-<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Permalink to this heading">¶</a></h2>
+<h2>Consultas Internas<a class="headerlink" href="#inner-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="edges-sql">
-<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Permalink to this heading">¶</a></h3>
-<table class="docutils align-default" style="width: 81">
+<h3>SQL aristas<a class="headerlink" href="#edges-sql" title="Enlazar permanentemente con este título">¶</a></h3>
+<table class="colwidths-given docutils align-default" style="width: 81">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -402,19 +401,19 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES</dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code>, <code class="docutils literal notranslate"><span class="pre">REAL</span></code>, <code class="docutils literal notranslate"><span class="pre">FLOAT</span></code></p>
 </dd>
 </dl>
 </section>
 </section>
 <section id="result-columns">
-<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Permalink to this heading">¶</a></h2>
+<h2>Columnas de Resultados<a class="headerlink" href="#result-columns" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Regresa <code class="docutils literal notranslate"><span class="pre">SET</span> <span class="pre">OF</span> <span class="pre">(seq,</span> <span class="pre">depth,</span> <span class="pre">start_vid,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></code></p>
-<table class="docutils align-default" style="width: 81">
+<table class="colwidths-auto docutils align-default" style="width: 81">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parámetro</p></th>
 <th class="head"><p>Tipo</p></th>
@@ -462,16 +461,16 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
 </table>
 <p>Donde:</p>
 <dl class="field-list simple">
-<dt class="field-odd">ENTEROS<span class="colon">:</span></dt>
+<dt class="field-odd">ENTEROS</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">SMALLINT,</span> <span class="pre">INTEGER,</span> <span class="pre">BIGINT</span></code></p>
 </dd>
-<dt class="field-even">FLOTANTES<span class="colon">:</span></dt>
+<dt class="field-even">FLOTANTES</dt>
 <dd class="field-even"><p>SMALLINT, INTEGER, BIGINT, REAL, FLOAT, NUMERIC</p>
 </dd>
 </dl>
 </section>
 <section id="see-also">
-<h2>Ver también<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>Ver también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="spanningTree-family.html"><span class="doc">Árbol de expansión - Categoría</span></a></p></li>
 <li><p><a class="reference internal" href="prim-family.html"><span class="doc">Prim - Familia de funciones</span></a></p></li>
@@ -500,8 +499,8 @@ RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)</pre>
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v3.4.0-dev.<br/>
-      Actualizado por última vez en jul 11, 2022.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br/>
+      Actualizado por última vez en sept. 14, 2022.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
     </p>
   </div>
 </footer>
