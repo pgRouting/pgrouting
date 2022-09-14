@@ -132,6 +132,7 @@ Experimental Functions
 - :doc:`pgr_topologicalSort`
 - :doc:`pgr_transitiveClosure`
 - :doc:`pgr_lengauerTarjanDominatorTree`
+- :doc:`hawickCircuits`
 
 .. toctree::
   :hidden:
@@ -146,6 +147,7 @@ Experimental Functions
   pgr_topologicalSort
   pgr_transitiveClosure
   pgr_lengauerTarjanDominatorTree
+  hawickCircuits
 
 
 See Also

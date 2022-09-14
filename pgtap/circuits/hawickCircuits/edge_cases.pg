@@ -1,0 +1,135 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(9) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.4.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.4.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex test
+
+PREPARE q1 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id > 18;
+
+RETURN QUERY
+SELECT is_empty('q1', 'Graph with 0 edge and 0 vertex');
+
+PREPARE hawickCircuits1 AS
+SELECT * FROM pgr_hawickcircuits('q1');
+
+RETURN QUERY
+SELECT is_empty('hawickCircuits1', 'Graph with 0 edge and 0 vertex -> Empty row is returned');
+
+
+-- 1 vertex test
+
+PREPARE q2 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id = 2;
+
+PREPARE hawickCircuits2 AS
+SELECT * FROM pgr_hawickcircuits('q2');
+
+RETURN QUERY
+SELECT is_empty('hawickCircuits2', 'One vertex graph can not have circuits -> Empty row is returned');
+
+-- 2 vertices test (connected)
+
+PREPARE q3 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id = 7;
+
+RETURN QUERY
+SELECT set_eq('q3', $$VALUES (7, 8, 5, 1, 1)$$, 'Graph with two connected vertices 8 and 5');
+
+PREPARE hawickCircuits3 AS
+SELECT * FROM pgr_hawickcircuits('q3');
+
+RETURN QUERY
+SELECT set_eq('hawickCircuits3',
+    $$VALUES
+        (1, 1, 0, 8, 8, 8, 7, 1, 0),
+        (2, 1, 1, 8, 8, 5, 7, 1, 1),
+        (3, 1, 2, 8, 8, 8, -1, 0, 2)
+    $$,
+    'Circuit between the vertex 8 and 5');
+
+-- 3 vertices test
+
+PREPARE q4 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id <= 2;
+
+RETURN QUERY
+SELECT set_eq('q4', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'Graph with three vertices 1, 2 and 3');
+
+PREPARE hawickCircuits4 AS
+SELECT * FROM pgr_hawickcircuits('q4');
+
+RETURN QUERY
+SELECT set_eq('hawickCircuits4',
+    $$VALUES
+        (1, 1, 0, 1, 1, 1, 1, 1, 0),
+        (2, 1, 1, 1, 1, 2, 1, 1, 1),
+        (3, 1, 2, 1, 1, 1, -1, 0, 2)
+    $$,
+    'Circuit between the vertex 1 and 2');
+
+-- 4 vertices test
+
+PREPARE q5 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id IN (3, 5, 9, 16);
+
+RETURN QUERY
+SELECT set_eq('q5',
+    $$VALUES
+        (3, 3, 4, -1, 1),
+        (5, 3, 6, 1, -1),
+        (9, 6, 9, 1, 1),
+        (16, 4, 9, 1, 1)
+    $$,
+    'Graph with four vertices 3, 4, 6 and 9');
+
+PREPARE hawickCircuits5 AS
+SELECT * FROM pgr_hawickCircuits('q5');
+
+RETURN QUERY
+SELECT set_eq('hawickCircuits5',
+    $$VALUES
+    (1, 1, 0, 3, 3, 3, 5, 1, 0),
+    (2, 1, 1, 3, 3, 6, 9, 1, 1),
+    (3, 1, 2, 3, 3, 9, 16, 1, 2),
+    (4, 1, 3, 3, 3, 4, 3, 1, 3),
+    (5, 1, 4, 3, 3, 3, -1, 0, 4),
+    (6, 2, 0, 4, 4, 4, 16, 1, 0),
+    (7, 2, 1, 4, 4, 9, 16, 1, 1),
+    (8, 2, 2, 4, 4, 4, -1, 0, 2),
+    (9, 3, 0, 6, 6, 6, 9, 1, 0),
+    (10, 3, 1, 6, 6, 9, 9, 1, 1),
+    (11, 3, 2, 6, 6, 6, -1, 0, 2)
+    $$,
+    'Circuit between 3->6->9->4->3, 4->9->4 & 6->9->6 expected');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;
