@@ -1,0 +1,157 @@
+BEGIN;
+
+UPDATE edge_table SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(11) END;
+
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+IF NOT min_version('3.4.0') THEN
+  RETURN QUERY
+  SELECT skip(1, 'Function is new on 3.4.0');
+  RETURN;
+END IF;
+
+-- 0 edge, 0 vertex test
+
+PREPARE q1 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id > 18;
+
+RETURN QUERY
+SELECT is_empty('q1', 'Graph with 0 edge and 0 vertex');
+
+PREPARE r2 AS
+SELECT * FROM pgr_cuthillMckeeOrdering('q1');
+
+RETURN QUERY
+SELECT is_empty('r2', 'Graph with 0 edge and 0 vertex -> Empty row is returned');
+
+-- 1 vertex test
+
+PREPARE q3 AS
+SELECT id, source, 2 AS target, cost, reverse_cost
+FROM edge_table
+WHERE id = 2;
+
+RETURN QUERY
+SELECT set_eq('q3', $$VALUES (2, 2, 2, -1, 1)$$, 'q3: Graph with only vertex 2');
+
+PREPARE r4 AS
+SELECT *
+FROM pgr_cuthillMckeeOrdering('q3');
+
+RETURN QUERY
+SELECT set_eq('r4', $$VALUES (1, 2)$$, '4: Same node returned');
+
+
+-- 2 vertices test (connected)
+
+PREPARE q5 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id = 7;
+
+RETURN QUERY
+SELECT set_eq('q5', $$VALUES (7, 8, 5, 1, 1)$$, 'q5: Graph with two connected vertices 8 and 5');
+
+PREPARE r6 AS
+SELECT *
+FROM pgr_cuthillMckeeOrdering('q5');
+
+RETURN QUERY
+SELECT set_eq('r6', $$VALUES (1,8), (2,5)$$, 'Does not matter if 8 comes first or 5');
+
+-- 2 vertices test (isolated)
+
+CREATE TABLE two_isolated_vertices_table (
+  id BIGSERIAL,
+  source BIGINT,
+  target BIGINT,
+  cost FLOAT,
+  reverse_cost FLOAT
+);
+
+INSERT INTO two_isolated_vertices_table (source, target, cost, reverse_cost) VALUES
+  (2, 2, -1, 1),
+  (1, 1, 1, -1);
+
+PREPARE q7 AS
+SELECT id, source, target, cost, reverse_cost
+FROM two_isolated_vertices_table;
+
+RETURN QUERY
+SELECT set_eq('q7', $$VALUES (1, 2, 2, -1, 1), (2, 1, 1, 1, -1)$$, 'q7: Graph with two isolated vertices 1 and 2');
+
+PREPARE r8 AS
+SELECT *
+FROM pgr_cuthillMckeeOrdering('q7');
+
+RETURN QUERY
+SELECT set_eq('r8', $$VALUES (1, 1), (2, 2)$$, 'Showing both vertex of disconnected graph');
+
+-- 3 vertices test
+
+PREPARE q9 AS
+SELECT id, source, target, cost, reverse_cost
+FROM edge_table
+WHERE id <= 2;
+
+RETURN QUERY
+SELECT set_eq('q9', $$VALUES (1, 1, 2, 1, 1), (2, 2, 3, -1, 1)$$, 'q9: Graph with three vertices 1, 2 and 3');
+
+PREPARE r10 AS
+SELECT *
+FROM pgr_cuthillMckeeOrdering('q9');
+
+RETURN QUERY
+SELECT set_eq('r10', $$VALUES (1, 1), (2, 2), (3, 3)$$, 'Basic test');
+
+
+-- pgRouting sample data
+
+CREATE TABLE expected_result (
+  seq BIGINT,
+  node BIGINT);
+
+INSERT INTO expected_result (seq, node) VALUES
+(1, 16),
+(2, 17),
+(3, 14),
+(4, 15),
+(5, 1),
+(6, 7),
+(7, 2),
+(8, 8),
+(9, 3),
+(10, 5),
+(11, 13),
+(12, 4),
+(13, 6),
+(14, 10),
+(15, 9),
+(16, 11),
+(17, 12);
+
+PREPARE q11 AS
+SELECT * FROM pgr_cuthillMckeeOrdering(
+  'SELECT id, source, target, cost, reverse_cost FROM edge_table');
+
+PREPARE r11 AS
+SELECT * FROM expected_result;
+
+RETURN QUERY SELECT set_eq('q11','r11','sample data graph of pgRouting');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+
+SELECT * FROM finish();
+ROLLBACK;

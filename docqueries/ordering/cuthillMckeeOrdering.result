@@ -1,0 +1,56 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+/* -- q1 */
+SELECT * FROM pgr_cuthillMckeeOrdering(
+  'SELECT id, source, target, cost, reverse_cost FROM edges'
+  );
+ seq | node
+-----+------
+   1 |   13
+   2 |   14
+   3 |    2
+   4 |    4
+   5 |    1
+   6 |    9
+   7 |    3
+   8 |    8
+   9 |    5
+  10 |    7
+  11 |   12
+  12 |    6
+  13 |   11
+  14 |   17
+  15 |   10
+  16 |   16
+  17 |   15
+(17 rows)
+
+/* -- q2 */
+
+CREATE TABLE expected_result (
+  seq BIGINT,
+  node BIGINT);
+CREATE TABLE
+INSERT INTO expected_result (seq, node) VALUES
+(1, 13),
+(2, 14),
+(3, 2),
+(4, 4),
+(5, 9),
+(6, 1),
+(7, 8),
+(8, 3),
+(9, 12),
+(10, 7),
+(11, 5),
+(12, 17),
+(13, 11),
+(14, 6),
+(15, 16),
+(16, 10),
+(17, 15);
+INSERT 0 17
+ROLLBACK;
+ROLLBACK
