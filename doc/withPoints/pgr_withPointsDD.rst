@@ -55,13 +55,14 @@ The edges extracted will conform the corresponding spanning tree.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
-       [, directed] [, driving_side] [, details])
-    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
-       [, directed] [, driving_side] [, details] [, equicost])
-    RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
+   |    [, directed] [, driving_side] [, details])
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
+   |    [, directed] [, driving_side] [, details] [, equicost])
+   | RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
 
 .. index::
     single: withPointsDD(Single Vertex) - Proposed on v2.2
@@ -69,11 +70,12 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
-       [, directed] [, driving_side] [, details])
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vid**, **distance**
+   |    [, directed] [, driving_side] [, details])
+   | RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 :Example: Right side driving topology, from point :math:`1` within a distance of
           :math:`3.3` with details.
@@ -88,11 +90,12 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
-       [, directed] [, driving_side] [, details] [, equicost])
-    RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
+   | pgr_withPointsDD(`Edges SQL`_, `Points SQL`_, **Root vids**, **distance**
+   |    [, directed] [, driving_side] [, details] [, equicost])
+   | RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`16` within a distance of
           :math:`3.3` with ``equicost`` on a directed graph

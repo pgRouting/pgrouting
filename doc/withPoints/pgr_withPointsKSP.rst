@@ -56,11 +56,12 @@ using Yen algorithm, finds the :math:`K` shortest paths.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start_pid**, **end_pid**, **K**
-     [, directed] [, heap_paths] [, driving_side] [, details])
-   RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+   | pgr_withPointsKSP(`Edges SQL`_, `Points SQL`_ **start_pid**, **end_pid**, **K**
+   |   [, directed] [, heap_paths] [, driving_side] [, details])
+   | RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 :Example: Get 2 paths from Point :math:`1` to point :math:`2` on a directed
           graph.
