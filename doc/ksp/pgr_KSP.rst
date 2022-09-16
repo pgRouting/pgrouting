@@ -60,12 +60,13 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**
-               [, directed] [, heap_paths])
-    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
+   | pgr_KSP(`Edges SQL`_, **start vid**, **end vid**, **K**
+   |            [, directed] [, heap_paths])
+   | RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+   | OR EMPTY SET
 
 :Example: Get 2 paths from :math:`6` to :math:`17` on a directed graph.
 
