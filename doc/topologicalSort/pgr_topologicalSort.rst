@@ -66,7 +66,8 @@ Signatures
 .. index::
    single: topologicalSort - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_topologicalSort(`Edges SQL`_)
     RETURNS SET OF (seq, sorted_v)
