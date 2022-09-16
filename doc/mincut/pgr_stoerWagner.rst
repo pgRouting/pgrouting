@@ -79,7 +79,8 @@ Signatures
 .. index::
     single: stoerWagner - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_stoerWagner(`Edges SQL`_)
     RETURNS SET OF (seq, edge, cost, mincut)
