@@ -62,7 +62,8 @@ Signatures
 .. index::
    single: isPlanar - Experimental on v3.2
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_isPlanar(`Edges SQL`)
     RETURNS BOOLEAN
