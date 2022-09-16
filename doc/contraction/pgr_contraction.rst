@@ -88,11 +88,12 @@ The pgr_contraction function has the following signature:
 .. index::
    single: contraction
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_contraction(`Edges SQL`_, **contraction order**
-         [, max_cycles] [, forbidden_vertices] [, directed])
-    RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
+   | pgr_contraction(`Edges SQL`_, **contraction order**
+   |      [, max_cycles] [, forbidden_vertices] [, directed])
+   | RETURNS SETOF (type, id, contracted_vertices, source, target, cost)
 
 :Example: Making a dead end and linear contraction in that order on an
           undirected graph.
