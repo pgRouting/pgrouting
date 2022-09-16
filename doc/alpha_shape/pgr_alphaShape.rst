@@ -79,7 +79,8 @@ Signatures
 .. index::
     single: alphaShape
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_alphaShape(**geometry**,   [alpha])
    RETURNS geometry
