@@ -128,7 +128,8 @@ Signatures
 .. index::
     single: TSP
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_TSP(`Matrix SQL`_, [start_id], [end_id])
     RETURNS SETOF (seq, node, cost, agg_cost)

@@ -90,7 +90,8 @@ Signatures
 .. index::
     single: TSPeuclidean
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_TSPeuclidean(`Coordinates SQL`_, [start id], [end_id])
     RETURNS SETOF (seq, node, cost, agg_cost)
