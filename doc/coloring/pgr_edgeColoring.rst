@@ -81,7 +81,8 @@ Signatures
 .. index::
     single: edgeColoring - Experimental on v3.3
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_edgeColoring(`Edges SQL`_)
 
