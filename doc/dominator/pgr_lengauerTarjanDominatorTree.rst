@@ -56,7 +56,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_lengauerTarjanDominatorTree(`Edges SQL`_, **root vertex**)
     RETURNS SET OF (seq, vertex_id, idom)
