@@ -56,7 +56,8 @@ calculated minimum spanning tree.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**)
     pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**)
@@ -68,7 +69,8 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_kruskalDD(`Edges SQL`_, **Root vid**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
@@ -86,7 +88,8 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_kruskalDD(`Edges SQL`_, **Root vids**, **distance**)
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
