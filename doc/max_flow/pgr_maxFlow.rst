@@ -70,7 +70,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**)
     pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**)
@@ -85,7 +86,8 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_maxFlow(`Edges SQL`_, **start vid**, **end vid**)
     RETURNS BIGINT
@@ -102,7 +104,8 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_maxFlow(`Edges SQL`_, **start vid**, **end vids**)
     RETURNS BIGINT
@@ -119,7 +122,8 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_maxFlow(`Edges SQL`_, **start vids**, **end vid**)
     RETURNS BIGINT
@@ -136,7 +140,8 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_maxFlow(`Edges SQL`_, **start vids**, **end vids**)
     RETURNS BIGINT
@@ -153,7 +158,8 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_maxFlow(`Edges SQL`_, `Combinations SQL`_)
     RETURNS BIGINT
