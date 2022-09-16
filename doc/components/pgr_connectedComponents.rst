@@ -72,7 +72,8 @@ from each other.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_connectedComponents(`Edges SQL`_)
 

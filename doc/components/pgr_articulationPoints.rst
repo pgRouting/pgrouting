@@ -67,7 +67,8 @@ This implementation can only be used with an undirected graph.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_articulationPoints(`Edges SQL`_)
     RETURNS SET OF (node)
