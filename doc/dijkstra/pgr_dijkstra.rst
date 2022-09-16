@@ -82,7 +82,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
     pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
@@ -98,9 +99,9 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstra(Edges SQL, start vid,  end vid  [, directed])
     pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, directed])
     RETURNS (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
@@ -117,10 +118,10 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dijkstra(`Edges SQL`_, **start vid**, **end vids** [, directed])
-    pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
     RETURNS (seq, path_seq, end vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -136,9 +137,10 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
+    pgr_dijkstra(`Edges SQL`_, **start vids**, **end vid** [, directed])
     RETURNS (seq, path_seq, start vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
@@ -155,7 +157,8 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dijkstra(`Edges SQL`_, **start vids**, **end vids** [, directed])
     RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)
@@ -174,7 +177,8 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_dijkstra(`Edges SQL`_, `Combinations SQL`_ [, directed])
    RETURNS (seq, path_seq, start vid, end vid, node, edge, cost, agg_cost)

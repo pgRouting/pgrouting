@@ -59,18 +59,18 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**
-               [, directed] [, cap])
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**
-               [, directed] [, cap])
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**
-               [, directed] [, cap], [global])
-    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_
-               [, directed] [, cap] [, global])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, [**options A**])
+   | pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, [**options A**])
+   | pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, [**options B**])
+   | pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options B**])
+   |  **options A:** ``[directed, cap]``
+   |  **options B:** ``[directed, cap, global]``
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 .. index::
     single: dijkstraNearCost(One to Many) - Proposed on v3.3
@@ -78,12 +78,14 @@ Signatures
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**
-               [, directed] [, cap])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstraNearCost(`Edges SQL`_, **start vid**, **end vids**, [**options**])
+   |  **options:** ``[directed, cap]``
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: Departing on car from vertex :math:`6` find the nearest subway
           station.
@@ -109,12 +111,14 @@ The result shows that station at vertex :math:`11` is the nearest.
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**
-               [, directed] [, cap])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vid**, [**options**])
+   |  **options:** ``[directed, cap]``
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: Departing on a car from a subway station find the nearest **two**
           stations to vertex :math:`6`
@@ -138,12 +142,14 @@ best is :math:`11`.
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**
-               [, directed] [, cap], [global])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstraNearCost(`Edges SQL`_, **start vids**, **end vids**, [**options**])
+   |  **options:** ``[directed, cap, global]``
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: Find the best pedestrian connection between two lines of buses
 
@@ -172,12 +178,14 @@ Only `one` route is returned because `global` is ``true`` and `cap` is ``1``
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_
-               [, directed] [, cap] [, global])
-    RETURNS SET OF (start_vid, end_vid, agg_cost)
-    OR EMPTY SET
+   | pgr_dijkstraNearCost(`Edges SQL`_, `Combinations SQL`_, [**options**])
+   |  **options:** ``[directed, cap, global]``
+
+   | RETURNS SET OF |matrix-result|
+   | OR EMPTY SET
 
 :Example: Find the best car connection between all the stations of two subway
           lines
