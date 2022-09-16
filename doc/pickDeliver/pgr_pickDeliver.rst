@@ -83,7 +83,8 @@ Characteristics
 Signature
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_pickDeliver(`Orders SQL`_, `Vehicles SQL`_, `Matrix SQL`_
        [, factor], [max_cycles] [,initial_sol])
@@ -132,7 +133,8 @@ Orders SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     id, demand
     p_node_id, p_open, p_close, [p_service,]
@@ -154,7 +156,8 @@ Vehicles SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     id, capacity
     start_node_id, start_open, start_close [, start_service,]
