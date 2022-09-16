@@ -44,6 +44,16 @@ pgRouting 3.4.0 Release Notes
   * ``pgr_findCloseEdges`` (One point)
   * ``pgr_findCloseEdges`` (Many points)
 
+**New experimental functions**
+
+* Ordering
+
+  * ``pgr_cuthillMckeeOrdering``
+
+* Unclassified
+
+  * ``pgr_hawickCircuits``
+
 **Official functions changes**
 
 * Flow functions
