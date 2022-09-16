@@ -89,7 +89,7 @@ jobs:
       - name: Update locale
         if: github.ref == 'refs/heads/develop'
         run: |
-          tools/transifex/update_locale.sh
+          bash tools/transifex/update_locale.sh
 
           # Add the files, commit and push
           for line in `cat build/doc/locale_changes_po_pot.txt`; do git add "$line"; done
