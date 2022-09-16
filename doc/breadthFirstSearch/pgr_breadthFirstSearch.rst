@@ -59,7 +59,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
   pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
   pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
@@ -71,7 +72,8 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_breadthFirstSearch(`Edges SQL`_, **Root vid** [, max_depth] [, directed])
    RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
@@ -89,7 +91,8 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
   pgr_breadthFirstSearch(`Edges SQL`_, **Root vids** [, max_depth] [, directed])
   RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
