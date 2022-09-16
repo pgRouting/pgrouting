@@ -49,7 +49,8 @@ Signatures
 .. index::
     single: chinesePostmanCost - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_chinesePostmanCost(`Edges SQL`_)
     RETURNS FLOAT
