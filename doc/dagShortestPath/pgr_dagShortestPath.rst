@@ -91,7 +91,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**)
     pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**)
@@ -109,7 +110,8 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vid**)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -127,7 +129,8 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dagShortestPath(`Edges SQL`_, **start vid**,  **end vids**)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -145,7 +148,8 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vid**)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -163,7 +167,8 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dagShortestPath(`Edges SQL`_, **start vids**, **end vids**)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -182,7 +187,8 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_dagShortestPath(`Edges SQL`_, Combinations)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
