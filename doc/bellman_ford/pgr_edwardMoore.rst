@@ -91,7 +91,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vid**  [, directed])
    pgr_edwardMoore(`Edges SQL`_, **start vid**,  **end vids** [, directed])
@@ -107,7 +108,8 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vid** [, directed]);
     RETURNS (seq, path_seq, node, edge, cost, agg_cost)
@@ -125,7 +127,8 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_edwardMoore(`Edges SQL`_, **start vid**, **end vids** [, directed]);
     RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
@@ -144,7 +147,8 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vid** [, directed]);
     RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
@@ -163,7 +167,8 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_edwardMoore(`Edges SQL`_, **start vids**, **end vids** [, directed]);
     RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
@@ -182,7 +187,8 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_edwardMoore(`Edges SQL`_, `Combinations SQL`_ [, directed]);
     RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)

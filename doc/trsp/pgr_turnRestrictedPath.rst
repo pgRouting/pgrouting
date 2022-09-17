@@ -45,11 +45,12 @@ Signatures
 .. index::
    single: turnRestrictedPath - Experimental on v3.0
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, Start vid, End vid, K cycles,
-      [, directed] [,heap_paths] [, stop_on_first] [,strict])
-    RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
+   | pgr_turnRestrictedPath(`Edges SQL`_, `Restrictions SQL`_, Start vid, End vid, K cycles,
+   |   [, directed] [,heap_paths] [, stop_on_first] [,strict])
+   | RETURNS SETOF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 :Example: From vertex :math:`3` to vertex  :math:`8` on a directed graph
 

@@ -75,7 +75,8 @@ only be contained in a single biconnected component.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_biconnectedComponents(`Edges SQL`_)
     RETURNS SET OF (seq, component, edge)

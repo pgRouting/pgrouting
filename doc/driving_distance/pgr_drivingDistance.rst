@@ -57,13 +57,14 @@ The edges extracted will conform to the corresponding spanning tree.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**
-               [, directed])
-    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**
-               [, directed] [, equicost])
-    RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)
+   | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**
+   |            [, directed])
+   | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**
+   |            [, directed] [, equicost])
+   | RETURNS SET OF (seq, [from_v,] node, edge, cost, agg_cost)
 
 .. index::
    single: drivingDistance(Single vertex)
@@ -71,11 +72,12 @@ Signatures
 Single Vertex
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**
-               [, directed])
-    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+   | pgr_drivingDistance(`Edges SQL`_, **Root vid**,  **distance**
+   |            [, directed])
+   | RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 :Example: From vertex :math:`11` for a distance of :math:`3.0`
 
@@ -89,11 +91,12 @@ Single Vertex
 Multiple Vertices
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-    pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**
-               [, directed] [, equicost])
-    RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)
+   | pgr_drivingDistance(`Edges SQL`_, **Root vids**, **distance**
+   |            [, directed] [, equicost])
+   | RETURNS SET OF (seq, from_v, node, edge, cost, agg_cost)
 
 :Example: From vertices :math:`\{11, 16\}` for a distance of :math:`3.0` with
           equi-cost on a directed graph

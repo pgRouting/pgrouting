@@ -92,7 +92,8 @@ Characteristics
 Signature
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_pickDeliverEuclidean(`Orders SQL`_, `Vehicles SQL`_,
        [, factor], [max_cycles] [,initial_sol])
@@ -140,7 +141,8 @@ Orders SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     id, demand
     p_x, p_y, p_open, p_close, [p_service,]
@@ -162,7 +164,8 @@ Vehicles SQL
 
 A `SELECT` statement that returns the following columns:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     id, capacity
     start_x, start_y, start_open, start_close [, start_service, ]

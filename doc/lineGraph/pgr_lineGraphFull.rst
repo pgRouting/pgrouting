@@ -71,7 +71,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_lineGraphFull(`Edges SQL`_)
     RETURNS SET OF (seq, source, target, cost, edge)

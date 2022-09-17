@@ -56,7 +56,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_kruskal(`Edges SQL`_)
     RETURNS SET OF (edge, cost)

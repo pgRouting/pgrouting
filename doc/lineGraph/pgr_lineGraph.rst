@@ -57,7 +57,8 @@ Given a graph G, its line graph L(G) is a graph such that:
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_lineGraph(`Edges SQL`_ [, directed])
     RETURNS SET OF (seq, source, target, cost, reverse_cost)

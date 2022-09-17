@@ -53,7 +53,8 @@ of the Minimum Spanning Tree created using Kruskal's algorithm.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth])
     pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth])
@@ -65,7 +66,8 @@ Signatures
 Single vertex
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_kruskalDFS(`Edges SQL`_, **Root vid** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)
@@ -82,7 +84,8 @@ Single vertex
 Multiple vertices
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_kruskalDFS(`Edges SQL`_, **Root vids** [, max_depth])
     RETURNS SET OF (seq, depth, start_vid, node, edge, cost, agg_cost)

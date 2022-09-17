@@ -42,7 +42,8 @@ Signatures
 .. index::
     single: pgr_degree - Proposed on v3.4
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_degree(`Edges SQL`_ , `Vertex SQL`_ [, dryrun])
    RETURNS SETOF (id, degree)

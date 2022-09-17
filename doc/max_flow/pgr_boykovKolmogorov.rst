@@ -69,7 +69,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)
     pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)
@@ -85,7 +86,8 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vid**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -103,7 +105,8 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_boykovKolmogorov(`Edges SQL`_, **start vid**, **end vids**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -121,7 +124,8 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vid**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -139,7 +143,8 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_boykovKolmogorov(`Edges SQL`_, **start vids**, **end vids**)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
@@ -157,7 +162,8 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_boykovKolmogorov(`Edges SQL`_, `Combinations SQL`_)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)

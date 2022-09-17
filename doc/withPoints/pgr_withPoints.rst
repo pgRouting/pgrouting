@@ -86,19 +86,20 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
-         [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
-         [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
-         [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
-         [, directed] [, driving_side] [, details])
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_
-         [, directed] [, driving_side] [, details])
-   RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
+   |       [, directed] [, driving_side] [, details])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
+   |       [, directed] [, driving_side] [, details])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
+   |       [, directed] [, driving_side] [, details])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
+   |       [, directed] [, driving_side] [, details])
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, `Combinations SQL`_
+   |       [, directed] [, driving_side] [, details])
+   | RETURNS (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
 
 .. index::
     single: withPoints(One to One) - Proposed on v2.2
@@ -106,11 +107,12 @@ Signatures
 One to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
-         [, directed] [, driving_side] [, details])
-   RETURNS (seq, path_seq, node, edge, cost, agg_cost)
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vid**
+   |       [, directed] [, driving_side] [, details])
+   | RETURNS (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` to vertex :math:`10` with details
 
@@ -124,11 +126,12 @@ One to One
 One to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
-         [, directed] [, driving_side] [, details])
-   RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vid**, **end vids**
+   |       [, directed] [, driving_side] [, details])
+   | RETURNS (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` to point :math:`3` and vertex :math:`7` on an
           undirected graph
@@ -143,11 +146,12 @@ One to Many
 Many to One
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
-         [, directed] [, driving_side] [, details])
-   RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vid**
+   |       [, directed] [, driving_side] [, details])
+   | RETURNS (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6` to point :math:`3`
 
@@ -161,11 +165,12 @@ Many to One
 Many to Many
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
-         [, directed] [, driving_side] [, details])
-   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`_, **start vids**, **end vids**
+   |       [, directed] [, driving_side] [, details])
+   | RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: From point :math:`1` and vertex :math:`6`  to point :math:`3` and
           vertex :math:`1`
@@ -180,11 +185,12 @@ Many to Many
 Combinations
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
-   pgr_withPoints(`Edges SQL`_, `Points SQL`, `Combinations SQL`_,
-         [, directed] [, driving_side] [, details])
-   RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+   | pgr_withPoints(`Edges SQL`_, `Points SQL`, `Combinations SQL`_,
+   |       [, directed] [, driving_side] [, details])
+   | RETURNS (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 
 :Example: Two combinations
 

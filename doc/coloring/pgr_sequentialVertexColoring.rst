@@ -71,7 +71,8 @@ Signatures
 .. index::
     single: sequentialVertexColoring - Proposed on v3.3
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_sequentialVertexColoring(`Edges SQL`_)
 

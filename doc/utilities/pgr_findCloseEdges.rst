@@ -49,7 +49,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**  [cap, partial, dryrun])
     pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**  [cap, partial, dryrun])
@@ -62,7 +63,8 @@ Signatures
 One point
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_findCloseEdges(`Edges SQL`_, **point**, **tolerance**  [cap, partial, dryrun])
    RETURNS SET OF (edge_id, fraction, side, distance, geom, edge)
@@ -94,7 +96,8 @@ One point
 Many points
 ...............................................................................
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_findCloseEdges(`Edges SQL`_, **points**, **tolerance**  [cap, partial, dryrun])
    RETURNS SET OF (edge_id, fraction, side, distance, geom, edge)

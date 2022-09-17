@@ -53,7 +53,8 @@ Returns pgRouting version information.
 Signature
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
 	TEXT pgr_version();
 

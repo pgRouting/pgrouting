@@ -116,11 +116,14 @@ pygments_style = 'sphinx'
 
 # -- Options for internationalization ---------------------------------------------------
 
-gettext_allow_fuzzy_translations = True
-gettext_location = True
-#gettext_uuid = True
-#gettext_additional_targets = [ ]
-#gettext_compact = "docs"
+gettext_allow_fuzzy_translations = False
+gettext_location = False
+gettext_compact = True
+gettext_uuid = False
+gettext_auto_build = True
+#For example: gettext_additional_targets = ['literal-block','raw','index','doctest-block']
+gettext_additional_targets = []
+gettext_compact = "pgrouting_doc_strings"
 
 
 
@@ -352,8 +355,9 @@ linkcheck_anchors = False
 rst_epilog="""
 .. |ANY-INTEGER| replace:: :abbr:`ANY-INTEGER(SMALLINT, INTEGER, BIGINT)`
 .. |ANY-NUMERICAL| replace:: :abbr:`ANY-NUMERICAL(SMALLINT, INTEGER, BIGINT, REAL, FLOAT)`
-.. |generic-result| replace:: (seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
-.. |via-result| replace:: (seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)
+.. |generic-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)``
+.. |via-result| replace:: ``(seq, path_id, path_seq, start_vid, end_vid, node, edge, cost, agg_cost, route_agg_cost)``
+.. |matrix-result| replace:: ``(start_vid, end_vid, agg_cost)``
 """
 
 # Create a compressed PDF

@@ -901,7 +901,8 @@ Once the graph preparation work has been done above, it is time to use a
 
 The general form of a pgRouting function call is:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)
 
@@ -918,7 +919,8 @@ named parameters.
 
 For example, for this :doc:`pgr_dijkstra` signature:
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_dijkstra(`Edges SQL`_, **start vid**, **end vid**  [, ``directed``])
 
@@ -1817,7 +1819,7 @@ Return columns for cost functions
 
 .. return_cost_start
 
-Set of ``(start_vid, end_vid, agg_cost)``
+Set of |matrix-result|
 
 .. list-table::
    :width: 81

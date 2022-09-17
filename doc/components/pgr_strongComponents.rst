@@ -70,7 +70,8 @@ all reachable from each other.
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_strongComponents(`Edges SQL`_)
     RETURNS SET OF (seq, component, node)

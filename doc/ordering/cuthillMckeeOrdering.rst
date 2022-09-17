@@ -72,7 +72,8 @@ Signatures
 .. index::
     single: cuthillMckeeOrdering - Experimental on v3.4
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     cuthillMckeeOrdering(`Edges SQL`_)
 

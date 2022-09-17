@@ -90,7 +90,8 @@ Signatures
 .. index::
     single: MaximumCardinalityMatch
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_maxCardinalityMatch(`Edges SQL`_)
     RETURNS SET OF (edge)

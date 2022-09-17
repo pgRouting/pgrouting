@@ -66,7 +66,8 @@ Signatures
 
 .. rubric:: Summary
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
    pgr_hawickCircuits(`Edges SQL`_)
    RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)

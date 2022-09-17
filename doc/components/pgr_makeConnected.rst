@@ -64,7 +64,8 @@ The main characteristics are:
 Signatures
 -------------------------------------------------------------------------------
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_makeConnected(`Edges SQL`_)
     RETURNS SET OF (seq, start_vid, end_vid)

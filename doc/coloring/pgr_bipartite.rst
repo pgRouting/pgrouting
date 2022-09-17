@@ -61,7 +61,8 @@ Signatures
     single: bipartite - Experimental on v3.2
 
 
-.. parsed-literal::
+.. admonition:: \ \
+   :class: signatures
 
     pgr_bipartite(`Edges SQL`_)
 
